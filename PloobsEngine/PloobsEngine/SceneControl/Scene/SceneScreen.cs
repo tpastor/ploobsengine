@@ -16,10 +16,9 @@ namespace PloobsEngine.SceneControl
     public class SceneScreen : IScreen
     {
         #region properties
-
-        private bool _isDebugDrawn = false;
+        
         private IRenderTechnic[] _renderTecnics = null;
-        private IRenderHelper _render;
+        private IRenderHelper _render = null;
         private bool _isFirstTimeTechnic = true;
 
         /// <summary>
@@ -34,7 +33,7 @@ namespace PloobsEngine.SceneControl
             {
                 this._render = value;
             }
-            get
+            internal get
             {
                 return this._render;
             }
@@ -56,24 +55,6 @@ namespace PloobsEngine.SceneControl
             {
                 _isFirstTimeTechnic = true;
                 this._renderTecnics = value;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether this instance is in debug drawn mode.
-        /// </summary>
-        /// <value>
-        /// 	<c>true</c> if this instance is debug drawn; otherwise, <c>false</c>.
-        /// </value>
-        public bool isDebugDrawn
-        {
-            set
-            {
-                this._isDebugDrawn = value;
-            }
-            get
-            {
-                return this._isDebugDrawn;
             }
         }
         
@@ -100,7 +81,7 @@ namespace PloobsEngine.SceneControl
         /// <summary>
         /// Function called After all the stuffs LoadContent is called
         /// </summary>
-        public override void AfterLoadContent()
+        protected override void AfterLoadContent()
         {
             foreach (IRenderTechnic item in RenderTechnics)
             {
@@ -113,24 +94,20 @@ namespace PloobsEngine.SceneControl
         #endregion
 
         /// <summary>
-        /// Allows the screen to run logic, such as updating the transition position.
-        /// Unlike HandleInput, this method is called regardless of whether the screen
-        /// is active, hidden, or in the middle of a transition.
+        /// Update the Screen
         /// </summary>
         /// <param name="gameTime"></param>
-        /// <param name="otherScreenHasFocus"></param>
-        /// <param name="coveredByOtherScreen"></param>
-        public override void Update(GameTime gameTime)
+        protected override void Update(GameTime gameTime)
         {            
             base.Update(gameTime);
-            World.UpdateWorld(gameTime);
+            World.iUpdateWorld(gameTime);
         }
 
         /// <summary>
         /// This is called when the screen should draw itself.
         /// </summary>
         /// <param name="gameTime"></param>
-        public override void Draw(Microsoft.Xna.Framework.GameTime gameTime)
+        protected override void Draw(Microsoft.Xna.Framework.GameTime gameTime)
         {
             if (_isFirstTimeTechnic == true)
             {                
@@ -146,9 +123,6 @@ namespace PloobsEngine.SceneControl
                 item.ExecuteTechnic(Render, this.World);
             }                 
             
-        
-            base.Draw(gameTime);
-            
         }
 
         /// <summary>
@@ -156,9 +130,8 @@ namespace PloobsEngine.SceneControl
         /// Here you create the Render Technic and the World
         /// </summary>
         /// <param name="es"></param>
-        public override void LoadContent()
-        {               
-            //this._render = new RenderHelper(es);            
+        protected override void LoadContent()        {               
+            
             base.LoadContent();
         }
       

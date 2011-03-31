@@ -11,13 +11,17 @@ namespace PloobsEngine.SceneControl
     /// The IObjectAtachtment method Update will be called everytime 
     /// the method Update of the object is called
     /// </summary>
-    public interface IObjectAtachtment
+    public abstract class IObjectAtachtment
     {
         /// <summary>
         /// Updates the atachment.
         /// </summary>
         /// <param name="obj">The obj.</param>
         /// <param name="gt">The gt.</param>
-        void Update(IObject obj, GameTime gt);
+        protected abstract void Update(IObject obj, GameTime gt);
+        internal void IUpdate(IObject obj, GameTime gt)
+        {
+            Update(obj, gt);
+        }
     }
 }

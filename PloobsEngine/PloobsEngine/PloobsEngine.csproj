@@ -5,7 +5,7 @@
     <ProjectTypeGuids>{6D335F3A-9D43-41b4-9D22-F6F17C4BE596};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PloobsEngine</RootNamespace>
     <AssemblyName>PloobsEngine</AssemblyName>
@@ -16,8 +16,10 @@
     <XnaProfile>HiDef</XnaProfile>
     <XnaCrossPlatformGroupID>85e948e5-0d9d-44dd-82fb-419c162360c5</XnaCrossPlatformGroupID>
     <XnaOutputType>Game</XnaOutputType>
-    <ApplicationIcon>Game.ico</ApplicationIcon>
-    <Thumbnail>GameThumbnail.png</Thumbnail>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <Thumbnail>
+    </Thumbnail>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -58,6 +60,9 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <PlatformTarget>x86</PlatformTarget>
     <XnaCompressContent>true</XnaCompressContent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
@@ -107,7 +112,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Audio\BackGroundAudioPlayer.cs" />
     <Compile Include="Audio\ISoundEmitter3D.cs" />
     <Compile Include="Cameras\CameraFirstPerson.cs" />
     <Compile Include="Cameras\CameraInterpolator.cs" />
@@ -125,6 +129,9 @@
     <Compile Include="DataStructure\PriorityQueueB.cs" />
     <Compile Include="DataStructure\SerializableDictionary.cs" />
     <Compile Include="DataStructure\TreeNode.cs" />
+    <Compile Include="Engine\Class1.cs" />
+    <Compile Include="Engine\IScreenUpdateable.cs" />
+    <Compile Include="Engine\PrincipalConstants.cs" />
     <Compile Include="Entity\EntityMapper.cs" />
     <Compile Include="Entity\IEntity.cs" />
     <Compile Include="IA\IAgent.cs" />
@@ -163,17 +170,12 @@
     <Compile Include="Particles\ParticleSettings.cs" />
     <Compile Include="Particles\ParticleSystem.cs" />
     <Compile Include="Particles\ParticleVertex.cs" />
-    <Compile Include="Physic\IDebugDrawn.cs" />
-    <Compile Include="Physic\IPhysicObject.cs" />
     <Compile Include="Physic\IPhysicWorld.cs" />
     <Compile Include="Physic\PhysicObjects\IPhysicObject.cs" />
     <Compile Include="Physic\SegmentInterceptInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Game1.cs" />
     <Compile Include="SceneControl\IContentManager.cs" />
     <Compile Include="SceneControl\IScreen.cs" />
-    <Compile Include="SceneControl\PrincipalConstants.cs" />
     <Compile Include="SceneControl\SceneManager.cs" />
     <Compile Include="SceneControl\Scene\DefRender\ICuller.cs" />
     <Compile Include="SceneControl\Scene\IDummy.cs" />
@@ -181,7 +183,6 @@
     <Compile Include="SceneControl\Scene\IObjectAtachtment.cs" />
     <Compile Include="SceneControl\Scene\IRenderHelper.cs" />
     <Compile Include="SceneControl\Scene\IRenderTechnic.cs" />
-    <Compile Include="SceneControl\Scene\IScreenUpdateable.cs" />
     <Compile Include="SceneControl\Scene\IWorld.cs" />
     <Compile Include="SceneControl\Scene\RayTestInfo.cs" />
     <Compile Include="SceneControl\Scene\SceneScreen.cs" />
@@ -205,10 +206,6 @@
     <Compile Include="Utils\RemoteLogger\RemoteLogger.cs" />
     <Compile Include="Utils\Serializer\SerializerHelper.cs" />
     <Compile Include="Utils\TimePassed.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Game.ico" />
-    <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PloobsEngineContent\PloobsEngineContent.contentproj">

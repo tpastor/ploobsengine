@@ -23,6 +23,7 @@ namespace PloobsEngine.Audio
         /// The world.
         /// </value>
         IWorld World {set; get;}
+        
         /// <summary>
         /// Sets the emitter position.
         /// </summary>

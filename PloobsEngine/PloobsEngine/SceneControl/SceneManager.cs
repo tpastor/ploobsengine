@@ -1,12 +1,3 @@
-#region File Description
-//-----------------------------------------------------------------------------
-// ScreenManager.cs
-//
-// Microsoft XNA Community Game Platform
-// Copyright (C) Microsoft Corporation. All rights reserved.
-//-----------------------------------------------------------------------------
-#endregion
-
 #region Using Statements
 using System;
 using System.Diagnostics;
@@ -22,8 +13,7 @@ namespace PloobsEngine.SceneControl
     /// <summary>
     /// The screen manager is a component which manages one or more GameScreen
     /// instances. It maintains a stack of screens, calls their Update and Draw
-    /// methods at the appropriate times, and automatically routes input to the
-    /// topmost active screen.
+    /// methods at the appropriate times
     /// </summary>    
     /// </remarks>
     public class ScreenManager 
@@ -37,12 +27,11 @@ namespace PloobsEngine.SceneControl
 
         List<IScreen> screens = new List<IScreen>();
         List<IScreen> screensToUpdate = new List<IScreen>();        
+        bool traceEnabled;        
         
         #endregion
 
 
-        bool isInitialized;
-        bool traceEnabled;
         
 
         #region Properties
@@ -61,62 +50,14 @@ namespace PloobsEngine.SceneControl
 
 
         #endregion
-
-
-        #region Initialization
-
-
-
-        /// <summary>
-        /// Initializes the screen manager component.
-        /// </summary>
-        public void Initialize()
-        {
-            //base.Initialize();
-
-            isInitialized = true;
-        }
-
-
-        /// <summary>
-        /// Load your graphics content.
-        /// </summary>
-        public  void LoadContent()
-        {
-            // Tell each of the screens to load their content.
-            foreach (IScreen screen in screens)
-            {
-                screen.LoadContent();
-            }
-        }
-
-
-        /// <summary>
-        /// Unload your graphics content.
-        /// </summary>
-        protected  void UnloadContent()
-        {            
-        }
-
-        public void AfterLoadContent()
-        {        
-            foreach (IScreen screen in screens)
-            {
-                screen.AfterLoadContent();
-            }
-        }
-
-
-        #endregion
-
+        
 
         #region Update and Draw
-
 
         /// <summary>
         /// Allows each screen to run logic.
         /// </summary>
-        public  void Update(GameTime gameTime)
+        internal  void Update(GameTime gameTime)
         {
             // Make a copy of the master screen list, to avoid confusion if
             // the process of updating one screen adds or removes others.
@@ -135,7 +76,7 @@ namespace PloobsEngine.SceneControl
 
                 // Update the screen.
                 if (screen.ScreenState != ScreenState.Paused && screen.ScreenState != ScreenState.Inactive)
-                    screen.Update(gameTime);                
+                    screen.iUpdate(gameTime);                
             }
 
             // Print debug trace?
@@ -162,14 +103,14 @@ namespace PloobsEngine.SceneControl
         /// <summary>
         /// Tells each screen to draw itself.
         /// </summary>
-        public  void Draw(GameTime gameTime)
+        internal void Draw(GameTime gameTime)
         {
             foreach (IScreen screen in screens)
             {
                 if (screen.ScreenState == ScreenState.Hidden || screen.ScreenState == ScreenState.Inactive)
                     continue;
                 
-                screen.Draw(gameTime);
+                screen.iDraw(gameTime);
             }
 
         }
@@ -179,7 +120,6 @@ namespace PloobsEngine.SceneControl
 
         #region Public Methods
 
-
         /// <summary>
         /// Adds a new screen to the screen manager.
         /// </summary>
@@ -188,12 +128,8 @@ namespace PloobsEngine.SceneControl
             screen.screenManager = this;
             screen.IsExiting = false;
 
-            // If we have a graphics device, tell the screen to load content.
-            if (isInitialized)
-            {
-                screen.LoadContent();
-                screen.AfterLoadContent();
-            }
+            screen.iLoadContent();
+            screen.iAfterLoadContent();        
 
             screens.Add(screen);
         }
@@ -205,7 +141,7 @@ namespace PloobsEngine.SceneControl
         /// the screen can gradually transition off rather than just being
         /// instantly removed.
         /// </summary>
-        public void RemoveScreen(IScreen screen)
+        internal void RemoveScreen(IScreen screen)
         {            
             screens.Remove(screen);
             screensToUpdate.Remove(screen);

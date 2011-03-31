@@ -65,25 +65,26 @@ namespace PloobsEngine.SceneControl
         
 
         /// <summary>
-        /// Gets the current screen state.
+        /// Gets or sets the state of the screen.
         /// </summary>
+        /// <value>
+        /// The state of the screen.
+        /// </value>
         public ScreenState ScreenState
         {
             get { return screenState; }
             set { screenState = value; }
         }
 
-       ScreenState screenState = ScreenState.Active;
+       private ScreenState screenState = ScreenState.Active;
 
-
-        /// <summary>
-        /// There are two possible reasons why a screen might be transitioning
-        /// off. It could be temporarily going away to make room for another
-        /// screen that is on top of it, or it could be going away for good.
-        /// This property indicates whether the screen is exiting for real:
-        /// if set, the screen will automatically remove itself as soon as the
-        /// transition finishes.
-        /// </summary>
+       /// <summary>
+       /// Gets or sets a value indicating whether this instance is exiting.
+       /// If you set to True the screen will be removed as soon as possible
+       /// </summary>
+       /// <value>
+       /// 	<c>true</c> if this instance is exiting; otherwise, <c>false</c>.
+       /// </value>
         public bool IsExiting
         {
             get { return isExiting; }
@@ -104,75 +105,62 @@ namespace PloobsEngine.SceneControl
             get { return screenManager; }            
         }
 
-        internal ScreenManager screenManager;
-
-                
+        internal ScreenManager screenManager;                
 
         #endregion
-
-
-        #region Initialization
-
 
         /// <summary>
         /// Load graphics content for the screen.
         /// </summary>
-        public virtual void LoadContent()
+        protected virtual void LoadContent() { }        
+        internal void iLoadContent()
         {
-                     
+            LoadContent();
         }
+        
 
+        internal void iAfterLoadContent()
+        {
+            AfterLoadContent();
+        }
         /// <summary>
         /// Called after all the screens LoadContent is called
         /// </summary>
-        public virtual void AfterLoadContent()
-        {
-        }
+        protected virtual void AfterLoadContent() { }
 
         
-
-        #endregion
-
-
-        #region Update and Draw
-
-
-        /// <summary>
-        /// Allows the screen to run logic, such as updating the transition position.
-        /// Unlike HandleInput, this method is called regardless of whether the screen
-        /// is active, hidden, or in the middle of a transition.
-        /// </summary>
-        public virtual void Update(GameTime gameTime)
+        internal void iUpdate(GameTime gameTime)
         {
-            //this.otherScreenHasFocus = otherScreenHasFocus;
-            
+            Update(gameTime);
+        }
+        /// <summary>
+        /// Update the Screen
+        /// </summary>
+        protected virtual void Update(GameTime gameTime)
+        {
             foreach (var item in updateables)
             {
                 item.Update(gameTime);
             }
 
             if (IsExiting)
-            {                
-                  ExitScreen();                                 
+            {
+                ExitScreen();
             }           
         }
-        
+                
+        internal void iDraw(GameTime gameTime)
+        {
+            Draw(gameTime);
+        }
         /// <summary>
         /// This is called when the screen should draw itself.
         /// </summary>
-        public virtual void Draw(GameTime gameTime)
-        {
-            
-        }
-
-        #endregion
-
-        #region Public Methods
-
-
+        protected abstract void Draw(GameTime gameTime);
+        
+        
         /// <summary>
-        /// Kill the screen
-        /// Should be overrided for cleanup
+        /// Kill the screen        
         /// </summary>
         public void ExitScreen()
         {
@@ -181,14 +169,11 @@ namespace PloobsEngine.SceneControl
         }
 
         /// <summary>
-        /// Cleans up everything.
-        /// Called when the screen is removed
+        /// Cleans up resources that dont are exclusive of the screen        
         /// </summary>
-        public virtual void CleanUp()
+        protected virtual void CleanUp()
         {
-        }
-
-        #endregion
+        }        
 
     }
 }

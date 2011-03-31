@@ -7,12 +7,18 @@ using Microsoft.Xna.Framework;
 
 namespace PloobsEngine.SceneControl
 {
+    /// <summary>
+    /// Specification of a Content Loader
+    /// </summary>
     public interface IContentManager
     {
-        T GetAsset<T>(String fileName);
-        ModelMesh GetModelParts(String fileName, int indexInModel);
-        Matrix[] GetTransformationMatrix(String fileName);
-        Matrix[] GetAnimatedTransformationMatrix(string fileName);        
+        /// <summary>
+        /// Gets the asset.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="fileName">Name of the file.</param>
+        /// <returns></returns>
+        T GetAsset<T>(String fileName);                
     }
     
 }

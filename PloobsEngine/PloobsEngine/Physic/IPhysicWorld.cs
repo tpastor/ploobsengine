@@ -14,8 +14,8 @@ namespace PloobsEngine.Physics
     /// <summary>
     /// Physic Object Specification
     /// </summary>
-    public interface IPhysicWorld : ISerializable
-    {
+    public abstract class IPhysicWorld : ISerializable
+    {        
         /// <summary>
         /// Gets or sets a value indicating whether this instance is debug draw.
         /// </summary>
@@ -34,13 +34,22 @@ namespace PloobsEngine.Physics
         /// </summary>
         /// <param name="gt">The gt.</param>
         /// <param name="cam">The cam.</param>
-        void DebugDrawn(GameTime gt, ICamera cam);
+        protected abstract void DebugDrawn(GameTime gt, ICamera cam);
+        internal void iDebugDrawn(GameTime gt, ICamera cam)
+        {
+            DebugDrawn(gt,cam);
+        }
+
 
         /// <summary>
         /// Updates 
         /// </summary>
         /// <param name="gt">The gt.</param>
-        void Update(GameTime gt);
+        protected abstract void Update(GameTime gt);
+        internal void iUpdate(GameTime gt)
+        {
+            Update(gt);
+        }
 
         /// <summary>
         /// Adds the object.
