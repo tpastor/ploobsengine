@@ -8,13 +8,14 @@ using PloobsEngine.Light;
 using PloobsEngine.Material;
 using PloobsEngine.Modelo;
 using PloobsEngine.Physics;
-using PloobsEngine.IA;
 using PloobsEngine.Cameras;
 using System.Runtime.Serialization;
+using PloobsEngine.Engine.Logger;
 
 
 namespace PloobsEngine.SceneControl
-{
+{   
+
     /// <summary>
     /// Called when the object is being removed
     /// </summary>
@@ -43,7 +44,7 @@ namespace PloobsEngine.SceneControl
     /// <summary>
     /// Object Specification
     /// </summary>
-    public abstract class IObject : IRecieveMessageEntity, ISerializable
+    public class IObject : IRecieveMessageEntity, ISerializable
     {
         public IObject(IMaterial Material, IModelo Modelo, IPhysicObject PhysicObject)
         {
@@ -53,12 +54,16 @@ namespace PloobsEngine.SceneControl
             Scale = Vector3.One;
             Rotation = Matrix.Identity;
             Position = Vector3.Zero;
-            WorldMatrix = Matrix.Identity;            
-            Agente = null;
+            WorldMatrix = Matrix.Identity;
+            IObjectAtachtment = new List<IObjectAtachtment>();
             Name = null;
         }
 
         private Matrix lastFrameWorld;
+        private IPhysicObject physicObject;
+        private IModelo modelo;
+        private IMaterial material;
+             
 
         /// <summary>
         /// Occurs when [on recieve message].
@@ -85,7 +90,17 @@ namespace PloobsEngine.SceneControl
         /// <value>
         /// The physic object.
         /// </value>
-        public abstract IPhysicObject PhysicObject { set; get; }
+        public IPhysicObject PhysicObject 
+        {
+            set
+            {
+                this.physicObject = value;
+            }
+            get
+            {
+                return physicObject;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the modelo.
@@ -93,7 +108,17 @@ namespace PloobsEngine.SceneControl
         /// <value>
         /// The modelo.
         /// </value>
-        public abstract IModelo Modelo { set; get; }
+        public IModelo Modelo 
+        {
+            set
+            {
+                this.modelo = value;
+            }
+            get
+            {
+                return modelo;
+            }
+        }
         
         /// <summary>
         /// Gets or sets the material.
@@ -101,57 +126,25 @@ namespace PloobsEngine.SceneControl
         /// <value>
         /// The material.
         /// </value>
-        public abstract IMaterial Material { set; get; }
+        public IMaterial Material 
+        {
+            set
+            {
+                this.material = value;
+            }
+            get
+            {
+                return material;
+            }
+        }        
         
-        /// <summary>
-        /// Pre drawn.
-        /// </summary>
-        /// <param name="world">The world.</param>
-        /// <param name="gt">The gt.</param>
-        /// <param name="cam">The cam.</param>
-        /// <param name="lights">The lights.</param>
-        /// <param name="render">The render.</param>
-        protected abstract void PreDrawn(IWorld world, GameTime gt, ICamera cam, IList<ILight> lights, IRenderHelper render);
-
-        internal void iPreDrawn(IWorld world, GameTime gt, ICamera cam, IList<ILight> lights, IRenderHelper render)
-        {            
-            PreDrawn(world, gt, cam, lights, render);
-        }
-
-
-        /// <summary>
-        /// Draw
-        /// </summary>
-        /// <param name="gt">The gt.</param>
-        /// <param name="cam">The cam.</param>
-        /// <param name="lights">The lights.</param>
-        /// <param name="render">The render.</param>
-        protected abstract void Drawn(GameTime gt ,ICamera cam ,IList<ILight> lights,IRenderHelper render);
-        internal void iDrawn(GameTime gt, ICamera cam, IList<ILight> lights, IRenderHelper render)
-        {
-            Drawn(gt, cam, lights, render);
-        }
-
-        /// <summary>
-        /// Post Drawn.
-        /// </summary>
-        /// <param name="gt">The gt.</param>
-        /// <param name="cam">The cam.</param>
-        /// <param name="lights">The lights.</param>
-        /// <param name="render">The render.</param>        
-        protected abstract void PosDrawn(GameTime gt, ICamera cam, IList<ILight> lights, IRenderHelper render);
-        internal void iPosDrawn(GameTime gt, ICamera cam, IList<ILight> lights, IRenderHelper render)
-        {
-            PosDrawn(gt, cam, lights, render);
-        }
-
         /// <summary>
         /// Updates the object.
         /// </summary>
         /// <param name="gt">The gt.</param>
         /// <param name="cam">The cam.</param>
         /// <param name="luzes">The luzes.</param>
-        protected abstract void UpdateObject(GameTime gt, ICamera cam, IList<ILight> luzes);
+        protected virtual void UpdateObject(GameTime gt, ICamera cam, IList<ILight> luzes) { }
         internal void iUpdateObject(GameTime gt, ICamera cam, IList<ILight> luzes)
         {
             UpdateObject(gt, cam, luzes);
@@ -162,6 +155,11 @@ namespace PloobsEngine.SceneControl
                     OnHasMoved(this);
 
                 lastFrameWorld = WorldMatrix;
+            }
+
+            foreach (var item in IObjectAtachtment)
+            {
+                item.IUpdate(this, gt);
             }
 
             if (OnUpdate != null)
@@ -196,37 +194,18 @@ namespace PloobsEngine.SceneControl
         public virtual Vector3 Scale { set; get; }
         /// <summary>
         /// Gets or sets the name of the object.
-        /// The IWorld use this name in his GetNameEntities queries
-        /// Can be NULL, so it is not added to the NameEntities (You cant make queries, just this)
         /// </summary>
         /// <value>
         /// The name.
         /// </value>
         public String Name { set; get; }
 
-        /// <summary>
-        /// Adds an atachment.
-        /// </summary>
-        /// <param name="obj">The obj.</param>
-        public abstract void AddAtachment(IObjectAtachtment obj);
-        /// <summary>
-        /// Removes the atachment.
-        /// </summary>
-        /// <param name="obj">The obj.</param>
-        public abstract void RemoveAtachment(IObjectAtachtment obj);
-        
-        /// <summary>
-        /// Gets or sets the agente.
-        /// If the object dont have an agent null is returned
-        /// </summary>
-        /// <value>
-        /// The agente.
-        /// </value>
-        public IAgent Agente
+        public List<IObjectAtachtment> IObjectAtachtment
         {
             set;
             get;
-        }
+
+        }        
 
         #region IRecieveMessageEntity Members
 
@@ -270,7 +249,7 @@ namespace PloobsEngine.SceneControl
         /// <returns>
         /// the id
         /// </returns>
-        public int getId()
+        public int GetId()
         {
             return id;
         }
@@ -279,7 +258,7 @@ namespace PloobsEngine.SceneControl
         /// sets the id
         /// </summary>
         /// <param name="id"></param>
-        public void setId(int id)
+        public void SetId(int id)
         {
             this.id = id;
         }
@@ -294,7 +273,10 @@ namespace PloobsEngine.SceneControl
         /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> to populate with data.</param>
         /// <param name="context">The destination (see <see cref="T:System.Runtime.Serialization.StreamingContext"/>) for this serialization.</param>
         /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
-        public abstract void GetObjectData(SerializationInfo info, StreamingContext context);
+        public virtual void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            ActiveLogger.LogMessage("Serialization is not implemented yet", LogLevel.RecoverableError);
+        }
         
         #endregion
     }

@@ -361,7 +361,7 @@ namespace PloobsEngine.Particle3D
         /// <summary>
         /// Draws the particle system.
         /// </summary>
-        public void Draw(IRenderHelper render, GameTime gameTime)
+        public void Draw(RenderHelper render, GameTime gameTime)
         {
             //GraphicsDevice device = EngineStuff.GraphicsDevice;
             //depthTexture.SetValue(render[PrincipalConstants.dephRT]);

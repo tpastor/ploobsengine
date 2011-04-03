@@ -14,7 +14,7 @@ namespace PloobsEngine
     /// this class update is also called
     /// has an id
     /// </summary>
-    public class IScreenUpdateable : IEntity
+    public abstract class IScreenUpdateable : IEntity
     {
 
         private int id;
@@ -60,8 +60,10 @@ namespace PloobsEngine
         /// Should be overloaded
         /// </summary>
         /// <param name="gameTime">The game time.</param>
-        public virtual void Update(GameTime gameTime)
+        protected abstract void Update(GameTime gameTime);
+        internal void iUpdate(GameTime gameTime)
         {
+            Update(gameTime);
         }
 
         #region IEntity Members
@@ -72,7 +74,7 @@ namespace PloobsEngine
         /// <returns>
         /// the id
         /// </returns>
-        public int getId()
+        public int GetId()
         {
             return this.id;
         }
@@ -81,7 +83,7 @@ namespace PloobsEngine
         /// sets the id
         /// </summary>
         /// <param name="id"></param>
-        public void setId(int id)
+        public void SetId(int id)
         {
             this.id = id;
         }

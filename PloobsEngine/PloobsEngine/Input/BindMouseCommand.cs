@@ -32,7 +32,7 @@ namespace PloobsEngine.Input
                 
         private InputAdvanced ia;
 
-        public void execute()
+        protected override void execute()
         {
             if (type == POSITION)
             {
@@ -44,7 +44,7 @@ namespace PloobsEngine.Input
             }
         }
 
-        public void setTarget(object obj)
+        protected override void setTarget(object obj)
         {
             ia = (InputAdvanced)obj;
         }
@@ -53,7 +53,7 @@ namespace PloobsEngine.Input
         #region ICommand Members
 
 
-        public string TargetName
+        public override string TargetName
         {
             get { return InputAdvanced.MyName; }
         }

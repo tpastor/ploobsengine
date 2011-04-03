@@ -69,8 +69,7 @@ namespace PloobsEngine.Cameras
         private float _nearPlane = 1.0f;
         private float _farPlane = 2000f;
         private Matrix _view;
-        private Matrix _projection;
-        private BoundingBox _box;
+        private Matrix _projection;        
         private BoundingFrustum _frustrum;
         private float leftrightRot;
         private float updownRot;
@@ -79,10 +78,6 @@ namespace PloobsEngine.Cameras
         private MouseState originalMouseState;
         private Viewport viewPort;
         private float moveSpeed = 1f;
-
-      
-
-        private int _id;
 
         #endregion
 
@@ -122,12 +117,12 @@ namespace PloobsEngine.Cameras
 
         #region ICamera Members
 
-        public bool Hasmoved
+        public override bool Hasmoved
         {
             get { return _hasmoved; }
         }
 
-        public Vector3 Position
+        public override Vector3 Position
         {
 
             get 
@@ -140,8 +135,8 @@ namespace PloobsEngine.Cameras
                 UpdateViewMatrix();
             }
         }
-        
-        public Microsoft.Xna.Framework.Vector3 Up
+
+        public override Vector3 Up
         {
             get
             {
@@ -154,7 +149,7 @@ namespace PloobsEngine.Cameras
             }
         }
 
-        public Microsoft.Xna.Framework.Quaternion Rotation
+        public override Quaternion Rotation
         {
             get
             {
@@ -167,7 +162,7 @@ namespace PloobsEngine.Cameras
             }
         }
 
-        public float FieldOfView
+        public override float FieldOfView
         {
             get
             {
@@ -181,7 +176,7 @@ namespace PloobsEngine.Cameras
             }
         }
 
-        public float AspectRatio
+        public override float AspectRatio
         {
             get
             {
@@ -194,7 +189,7 @@ namespace PloobsEngine.Cameras
             }
         }
 
-        public float NearPlane
+        public override float NearPlane
         {
             get
             {
@@ -207,7 +202,7 @@ namespace PloobsEngine.Cameras
             }
         }
 
-        public float FarPlane
+        public override float FarPlane
         {
             get
             {
@@ -220,17 +215,17 @@ namespace PloobsEngine.Cameras
             }
         }
 
-        public Microsoft.Xna.Framework.Matrix View
+        public override Matrix View
         {
             get { return _view; }
         }
 
-        public Microsoft.Xna.Framework.Matrix Projection
+        public override Matrix Projection
         {
             get { return _projection; }
         }
 
-        public Microsoft.Xna.Framework.BoundingFrustum BoundingFrustum
+        public override BoundingFrustum BoundingFrustum
         {
             get 
             {               
@@ -244,15 +239,6 @@ namespace PloobsEngine.Cameras
             }
         }
 
-        public Microsoft.Xna.Framework.BoundingBox BoundingBox
-        {
-            get
-            {
-                this._box = BoundingBox.CreateFromPoints(BoundingFrustum.GetCorners());
-                return this._box;
-                
-            }
-        }
         private void UpdateViewMatrix()
         {
             Matrix cameraRotation = Matrix.CreateRotationX(updownRot) * Matrix.CreateRotationY(leftrightRot);
@@ -270,7 +256,7 @@ namespace PloobsEngine.Cameras
         }
 
 
-        public void Update(Microsoft.Xna.Framework.GameTime gt)
+        protected override void Update(Microsoft.Xna.Framework.GameTime gt)
         {
              UpdateCamera(Mouse.GetState(),Keyboard.GetState());
         }
@@ -322,23 +308,8 @@ namespace PloobsEngine.Cameras
 
         }
 
-        #endregion
-
-        #region IEntity Members
-
-        public int getId()
-        {
-            return _id;
-        }
-
-        public void setId(int id)
-        {
-            this._id = id;
-        }
-
-        #endregion
-        
-        
+        #endregion       
+                
 
         public float UpDownRot
         {
@@ -352,8 +323,8 @@ namespace PloobsEngine.Cameras
             set { leftrightRot = value; }
         }
 
-        
-        public Vector3 Target
+
+        public override Vector3 Target
         {
             get
             {
@@ -393,43 +364,13 @@ namespace PloobsEngine.Cameras
             Vector3 rotatedVector = Vector3.Transform(vectorToAdd, cameraRotation);
             _position += moveSpeed * rotatedVector;
             UpdateViewMatrix();
-        }
-
-        public virtual bool HandleThisMessageType(SenderType type)
-        {
-            return true;
-        }
-
-        public virtual void HandleMessage(Message mes)
-        {
-
-        }
-
-        
-
-        String name;
-        public string Name
-        {
-            get
-            {
-                return name;
-            }
-            set
-            {
-                this.name = value;
-            }
-        }
-
-
-
-
-
+        }               
 
 
 
         #region ISerializable Members
 
-        public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
+        public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
         {
             
         }

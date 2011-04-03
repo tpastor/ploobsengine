@@ -9,24 +9,32 @@ namespace PloobsEngine.Commands
     /// Command Pattern
     /// Its a Class that encapsulates a function call
     /// </summary>
-    public interface ICommand
+    public abstract class ICommand
     {
         /// <summary>
         /// Executes the command Call.
         /// </summary>
-        void execute();
+        protected abstract void execute();
+        internal void iexecute()
+        {
+            execute();
+        }
         /// <summary>
         /// Sets the command target.
         /// </summary>
         /// <param name="obj">The obj.</param>
-        void setTarget(Object obj);
+        protected abstract void setTarget(Object obj);
+        internal void isetTarget(Object obj)
+        {
+            setTarget(obj);
+        }
         /// <summary>
         /// Gets the name of the command target.
         /// </summary>
         /// <value>
         /// The name of the target.
         /// </value>
-        String TargetName
+        public abstract String TargetName
         {
             get;
         }

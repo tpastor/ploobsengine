@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PloobsEngine", "PloobsEngine\PloobsEngine\PloobsEngine.csproj", "{1D050978-A350-47A8-B495-090DF10242B2}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "PloobsEngineContent", "PloobsEngine\PloobsEngineContent\PloobsEngineContent.contentproj", "{7ED0C250-A783-40B2-912E-4A4C222C4CE5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PloobsEngineContent", "PloobsEngine\PloobsEngineContent\PloobsEngineContent.contentproj", "{7ED0C250-A783-40B2-912E-4A4C222C4CE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EngineTestes", "EngineTestes\EngineTestes\EngineTestes.csproj", "{D8E39357-DDD4-45A2-820C-32411E409A2A}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "EngineTestesContent", "EngineTestes\EngineTestesContent\EngineTestesContent.contentproj", "{4DB11830-D1DC-4BD2-931D-11ADEAFA8BEA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +21,12 @@ Global
 		{1D050978-A350-47A8-B495-090DF10242B2}.Release|x86.Build.0 = Release|x86
 		{7ED0C250-A783-40B2-912E-4A4C222C4CE5}.Debug|x86.ActiveCfg = Debug|x86
 		{7ED0C250-A783-40B2-912E-4A4C222C4CE5}.Release|x86.ActiveCfg = Release|x86
+		{D8E39357-DDD4-45A2-820C-32411E409A2A}.Debug|x86.ActiveCfg = Debug|x86
+		{D8E39357-DDD4-45A2-820C-32411E409A2A}.Debug|x86.Build.0 = Debug|x86
+		{D8E39357-DDD4-45A2-820C-32411E409A2A}.Release|x86.ActiveCfg = Release|x86
+		{D8E39357-DDD4-45A2-820C-32411E409A2A}.Release|x86.Build.0 = Release|x86
+		{4DB11830-D1DC-4BD2-931D-11ADEAFA8BEA}.Debug|x86.ActiveCfg = Debug|x86
+		{4DB11830-D1DC-4BD2-931D-11ADEAFA8BEA}.Release|x86.ActiveCfg = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

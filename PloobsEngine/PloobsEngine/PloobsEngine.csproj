@@ -65,6 +65,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BEPUphysics">
+      <HintPath>Dlls\BEPUphysics.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
       <Private>False</Private>
     </Reference>
@@ -120,40 +123,42 @@
     <Compile Include="Commands\CommandProcessor.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\IReciever.cs" />
-    <Compile Include="Components\BasicComponent.cs" />
     <Compile Include="Components\ComponentManager.cs" />
     <Compile Include="Components\IComponent.cs" />
+    <Compile Include="SceneControl\Scene\Picking.cs" />
     <Compile Include="DataStructure\CircularList.cs" />
     <Compile Include="DataStructure\MergeSort.cs" />
     <Compile Include="DataStructure\Pool.cs" />
     <Compile Include="DataStructure\PriorityQueueB.cs" />
     <Compile Include="DataStructure\SerializableDictionary.cs" />
     <Compile Include="DataStructure\TreeNode.cs" />
-    <Compile Include="Engine\Class1.cs" />
+    <Compile Include="Engine\EngineStuff.cs" />
+    <Compile Include="Engine\GraphicFactory.cs" />
+    <Compile Include="Engine\GraphicInfo.cs" />
     <Compile Include="Engine\IScreenUpdateable.cs" />
+    <Compile Include="Engine\Logger\Logger.cs" />
     <Compile Include="Engine\PrincipalConstants.cs" />
     <Compile Include="Entity\EntityMapper.cs" />
     <Compile Include="Entity\IEntity.cs" />
-    <Compile Include="IA\IAgent.cs" />
     <Compile Include="Input\BindKeyCommand.cs" />
     <Compile Include="Input\BindMouseCommand.cs" />
     <Compile Include="Input\ClearInputsCommand.cs" />
     <Compile Include="Input\IInput.cs" />
     <Compile Include="Input\InputAdvanced.cs" />
-    <Compile Include="Input\InputPlayable.cs" />
     <Compile Include="Input\InputPlayableKeyBoard.cs" />
     <Compile Include="Input\InputPlaybleMouseBottom.cs" />
     <Compile Include="Input\InputPlaybleMousePosition.cs" />
-    <Compile Include="Input\SimpleConcreteInputPlayable.cs" />
     <Compile Include="Input\SimpleConcreteKeyboardInputPlayable.cs" />
     <Compile Include="Input\SimpleConcreteMouseBottomInputPlayable.cs" />
     <Compile Include="Input\SimpleConcreteMousePositionInputPlayable.cs" />
     <Compile Include="Input\TurnOffInputMaskCommand.cs" />
     <Compile Include="Input\TurnOnInputMaskCommand.cs" />
     <Compile Include="Light\ILight.cs" />
+    <Compile Include="Material\ForwardMaterial.cs" />
     <Compile Include="Material\IDepthExtractor.cs" />
     <Compile Include="Material\IMaterial.cs" />
     <Compile Include="Material\IShadder\IShader.cs" />
+    <Compile Include="Material\IShadder\XNABasicShader.cs" />
     <Compile Include="MessageSystem\IRecieveMessageEntity.cs" />
     <Compile Include="MessageSystem\Message.cs" />
     <Compile Include="MessageSystem\MessageDeliver.cs" />
@@ -163,6 +168,8 @@
     <Compile Include="Modelo\Animation\IAnimatedModel.cs" />
     <Compile Include="Modelo\BatchInformation.cs" />
     <Compile Include="Modelo\IModelo.cs" />
+    <Compile Include="Modelo\ModelBuilderHelper.cs" />
+    <Compile Include="Modelo\SimpleModel.cs" />
     <Compile Include="Particles\Emiters\GeneralEmiter.cs" />
     <Compile Include="Particles\IEmiter.cs" />
     <Compile Include="Particles\ParticleEmitter.cs" />
@@ -170,22 +177,38 @@
     <Compile Include="Particles\ParticleSettings.cs" />
     <Compile Include="Particles\ParticleSystem.cs" />
     <Compile Include="Particles\ParticleVertex.cs" />
+    <Compile Include="Physic\BepuPhysicWorld.cs" />
     <Compile Include="Physic\IPhysicWorld.cs" />
+    <Compile Include="Physic\PhysicObjects\BepuObject\BepuEntityObject.cs" />
+    <Compile Include="Physic\PhysicObjects\BepuObject\BoxObject.cs" />
+    <Compile Include="Physic\PhysicObjects\BepuObject\GhostObject.cs" />
+    <Compile Include="Physic\PhysicObjects\BepuObject\SphereObject.cs" />
+    <Compile Include="Physic\PhysicObjects\BepuObject\TriangleMeshObject.cs" />
     <Compile Include="Physic\PhysicObjects\IPhysicObject.cs" />
     <Compile Include="Physic\SegmentInterceptInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SceneControl\EngineContentManager.cs" />
     <Compile Include="SceneControl\IContentManager.cs" />
     <Compile Include="SceneControl\IScreen.cs" />
     <Compile Include="SceneControl\SceneManager.cs" />
-    <Compile Include="SceneControl\Scene\DefRender\ICuller.cs" />
+    <Compile Include="SceneControl\Scene\Culler\Octree.cs" />
+    <Compile Include="SceneControl\Scene\Culler\OctreeCuller.cs" />
+    <Compile Include="SceneControl\Scene\Culler\SimpleCuller.cs" />
+    <Compile Include="SceneControl\Scene\Culler\ICuller.cs" />
     <Compile Include="SceneControl\Scene\IDummy.cs" />
     <Compile Include="SceneControl\Scene\IObject.cs" />
     <Compile Include="SceneControl\Scene\IObjectAtachtment.cs" />
-    <Compile Include="SceneControl\Scene\IRenderHelper.cs" />
+    <Compile Include="SceneControl\Scene\RenderHelper.cs" />
     <Compile Include="SceneControl\Scene\IRenderTechnic.cs" />
     <Compile Include="SceneControl\Scene\IWorld.cs" />
-    <Compile Include="SceneControl\Scene\RayTestInfo.cs" />
-    <Compile Include="SceneControl\Scene\SceneScreen.cs" />
+    <Compile Include="SceneControl\Scene\IScene.cs" />
+    <Compile Include="SceneControl\Scene\QuadRender.cs" />
+    <Compile Include="SceneControl\Scene\RenderTechnich\ForwardRenderTecnich.cs" />
     <Compile Include="Trigger\ITrigger.cs" />
     <Compile Include="Utils\Curve3D.cs" />
     <Compile Include="Utils\FileUtils\BundleHandler.cs" />
@@ -239,6 +262,15 @@
       <ProductName>Microsoft XNA Framework Redistributable 4.0</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SceneControl\Scene\DefRender\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />

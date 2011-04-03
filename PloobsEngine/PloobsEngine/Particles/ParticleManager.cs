@@ -103,7 +103,7 @@ namespace PloobsEngine.Particle3D
             wlistAdd.Clear();
         }
 
-        public void Draw(IRenderHelper render, GameTime gt, ICamera cam)
+        public void Draw(RenderHelper render, GameTime gt, ICamera cam)
         {
             foreach (ParticleSystem item in _active)
             {

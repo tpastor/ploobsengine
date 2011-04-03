@@ -2,41 +2,55 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 
 namespace PloobsEngine.SceneControl
 {
     /// <summary>
     /// Specification of a Render Technic
     /// </summary>
-    public interface IRenderTechnic
+    public abstract class IRenderTechnic
     {
         /// <summary>
-        /// Initializations the specified render.
+        /// Befores the first execution.
         /// </summary>
         /// <param name="render">The render.</param>
         /// <param name="world">The world.</param>
-        /// <param name="engine">The engine.</param>
-        void Initialization(IRenderHelper render,IWorld world);
+        protected virtual void BeforeFirstExecution(RenderHelper render, IWorld world) { }
+        internal void iBeforeFirstExecution(RenderHelper render, IWorld world)
+        {
+            BeforeFirstExecution(render, world);
+        }
+
         /// <summary>
         /// Executes the technic.
         /// </summary>
         /// <param name="render">The render.</param>
         /// <param name="world">The world.</param>
-        void ExecuteTechnic(IRenderHelper render, IWorld world);
+        protected abstract void ExecuteTechnic(GameTime gameTime, RenderHelper render, IWorld world);
+        internal void iExecuteTechnic(GameTime gameTime, RenderHelper render, IWorld world)
+        {
+            ExecuteTechnic(gameTime, render, world);
+        }
 
         /// <summary>
         /// Called after the All the Engine stuffs are loaded
         /// </summary>
-        void AfterLoadContent();
+        protected virtual void AfterLoadContent() { }
+        internal void iAfterLoadContent()
+        {
+            AfterLoadContent();
+        }
         /// <summary>
         /// Gets the name of the technic.
         /// </summary>
         /// <value>
         /// The name of the technic.
         /// </value>
-        String TechnicName
+        public abstract String TechnicName
         {
             get;
         }
+        
     }
 }

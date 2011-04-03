@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using PloobsEngine.Audio;
 using PloobsEngine.Entity;
+using PloobsEngine.Engine;
 #endregion
 
 namespace PloobsEngine.SceneControl
@@ -39,7 +40,7 @@ namespace PloobsEngine.SceneControl
     /// </summary>
     public abstract class IScreen
     {        
-
+                
         private IList<IScreenUpdateable> updateables = new List<IScreenUpdateable>();
 
         /// <summary>
@@ -50,6 +51,7 @@ namespace PloobsEngine.SceneControl
         {
             updateables.Add(updateable);
         }
+        
 
         /// <summary>
         /// Removes the IScreenUpdateable.
@@ -77,25 +79,7 @@ namespace PloobsEngine.SceneControl
         }
 
        private ScreenState screenState = ScreenState.Active;
-
-       /// <summary>
-       /// Gets or sets a value indicating whether this instance is exiting.
-       /// If you set to True the screen will be removed as soon as possible
-       /// </summary>
-       /// <value>
-       /// 	<c>true</c> if this instance is exiting; otherwise, <c>false</c>.
-       /// </value>
-        public bool IsExiting
-        {
-            get { return isExiting; }
-            protected internal set
-            {                
-                isExiting = value;                
-            }
-        }
-
-        bool isExiting = false;
-
+       
 
         /// <summary>
         /// Gets the manager that this screen belongs to.
@@ -109,13 +93,39 @@ namespace PloobsEngine.SceneControl
 
         #endregion
 
+        private GraphicInfo graphicInfo;
+
+        public GraphicInfo GraphicInfo
+        {
+            get { return graphicInfo; }
+            internal set { graphicInfo = value; }
+        }
+        private GraphicFactory graphicFactory;
+
+        public GraphicFactory GraphicFactory
+        {
+            get { return graphicFactory; }
+            internal set { graphicFactory = value; }
+        }
+
         /// <summary>
         /// Load graphics content for the screen.
         /// </summary>
-        protected virtual void LoadContent() { }        
-        internal void iLoadContent()
+        protected virtual void LoadContent(GraphicInfo GraphicInfo,GraphicFactory factory , IContentManager contentManager) { }
+        internal void iLoadContent(GraphicInfo GraphicInfo,GraphicFactory factory, IContentManager contentManager)
         {
-            LoadContent();
+            LoadContent(GraphicInfo,factory,contentManager);
+        }
+
+        /// <summary>
+        /// Init Screen
+        /// </summary>
+        /// <param name="GraphicInfo">The graphic info.</param>
+        /// <param name="contentManager">The content manager.</param>
+        protected virtual void InitScreen(GraphicInfo GraphicInfo, IContentManager contentManager) { }
+        internal void iInitScreen(GraphicInfo GraphicInfo, IContentManager contentManager)
+        {
+            InitScreen(GraphicInfo, contentManager);
         }
         
 
@@ -140,34 +150,25 @@ namespace PloobsEngine.SceneControl
         {
             foreach (var item in updateables)
             {
-                item.Update(gameTime);
+                item.iUpdate(gameTime);
             }
-
-            if (IsExiting)
-            {
-                ExitScreen();
-            }           
+            
         }
-                
-        internal void iDraw(GameTime gameTime)
+
+        internal void iDraw(GameTime gameTime, RenderHelper render)
         {
-            Draw(gameTime);
+            Draw(gameTime,render);
         }
         /// <summary>
         /// This is called when the screen should draw itself.
         /// </summary>
-        protected abstract void Draw(GameTime gameTime);
-        
-        
-        /// <summary>
-        /// Kill the screen        
-        /// </summary>
-        public void ExitScreen()
+        protected abstract void Draw(GameTime gameTime, RenderHelper render);
+
+
+        internal void RemoveThisScreen()
         {
             CleanUp();
-            ScreenManager.RemoveScreen(this);                            
-        }
-
+        }        
         /// <summary>
         /// Cleans up resources that dont are exclusive of the screen        
         /// </summary>

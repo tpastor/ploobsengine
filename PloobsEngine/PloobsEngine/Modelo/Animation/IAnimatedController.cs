@@ -42,7 +42,7 @@ namespace PloobsEngine.Modelo.Animation
         /// </summary>
         /// <param name="boneName">Name of the bone.</param>
         /// <param name="rot">The rot.</param>
-        void TransformBone(String boneName,Quaternion rot);
+        void TransformBone(String boneName, Quaternion rot);
         /// <summary>
         /// Gets the bone absolute transform.
         /// </summary>
@@ -51,8 +51,9 @@ namespace PloobsEngine.Modelo.Animation
         Matrix GetBoneAbsoluteTransform(String boneName);
 
     }
+
     /// <summary>
-    /// 
+    /// AnimationChangeMode
     /// </summary>
    public  enum AnimationChangeMode
     {

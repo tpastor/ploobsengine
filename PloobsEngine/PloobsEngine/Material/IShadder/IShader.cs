@@ -8,6 +8,8 @@ using PloobsEngine.SceneControl;
 using PloobsEngine.Modelo;
 using PloobsEngine.Modelo.Animation;
 using System.Runtime.Serialization;
+using Microsoft.Xna.Framework;
+using PloobsEngine.Engine;
 
 #endregion
 
@@ -25,18 +27,15 @@ namespace PloobsEngine.Material
         /// </summary>
         protected IList<ILight> lights;
 
-
         /// <summary>
         /// Object owned by this shader
         /// </summary>
         protected IObject obj;
 
-
         /// <summary>
         /// is fist time that this shader is updated
         /// </summary>
-        protected bool firstTime = true;
-        
+        protected bool firstTime = true;        
         
         /// <summary>
         /// Shader ID that the object rendered by this shader will have        
@@ -45,6 +44,7 @@ namespace PloobsEngine.Material
         /// This parameter lets the object not be affect by light, or be recovered in a post proccess phase
         /// </remarks>
         protected float shaderId = 0;
+
         /// <summary>
         /// instance of class that implements IDepthExtractor 
         /// </summary>
@@ -101,7 +101,7 @@ namespace PloobsEngine.Material
         /// <summary>
         /// Initializes this instance.
         /// </summary>
-        public virtual void Initialize()
+        public virtual void Initialize(GraphicInfo ginfo, GraphicFactory factory, IObject obj)
         {            
             
         }
@@ -121,7 +121,7 @@ namespace PloobsEngine.Material
         /// </summary>
         /// <param name="ent">The ent.</param>
         /// <param name="lights">The lights.</param>
-        public virtual void Update(IObject ent, IList<ILight> lights)
+        public virtual void Update(GameTime gt, IObject ent, IList<ILight> lights)
         {
             if (firstTime)
             {             
@@ -134,16 +134,17 @@ namespace PloobsEngine.Material
             
         }
 
-        
+
         /// <summary>
-        /// Called every frame before the draw phase. 
+        /// Called every frame before the draw phase.
         /// In deferred it is called before the GBUFFER is setted
         /// </summary>
+        /// <param name="gt">The gt.</param>
         /// <param name="world">The world.</param>
-        /// <param name="modelo">The modelo.</param>
+        /// <param name="obj">The obj.</param>
         /// <param name="render">The render.</param>
         /// <param name="cam">The camera</param>
-        public virtual void PreDrawPhase(IWorld world,IModelo modelo, IRenderHelper render, ICamera cam)
+        public virtual void PreDrawPhase(GameTime gt, IWorld world, IObject obj, RenderHelper render, ICamera cam)
         {            
         }
 
@@ -156,7 +157,7 @@ namespace PloobsEngine.Material
         /// <param name="render">The render.</param>
         /// <param name="cam">The camera.</param>
         /// <param name="lights">The lights.</param>
-        public virtual void PosDrawPhase(IModelo modelo, IRenderHelper render, ICamera cam , IList<ILight> lights)
+        public virtual void PosDrawPhase(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<ILight> lights)
         {
             
         }
@@ -168,9 +169,26 @@ namespace PloobsEngine.Material
         /// <param name="modelo">The modelo.</param>
         /// <param name="render">The render.</param>
         /// <param name="cam">The cam.</param>
-        public virtual void Draw(IModelo modelo, IRenderHelper render, ICamera cam)
+        public virtual void Draw(GameTime gt , IObject obj, RenderHelper render, ICamera cam)
         {            
         }
+
+        /// <summary>
+        /// Extra draw.
+        /// Called when Someone need to draw this object (NOT THE ENGINE)
+        /// EX: Reflection effect need to draw all the scene in another point of view, he uses this function, not the normal
+        /// draw
+        /// </summary>
+        /// <param name="gt">The gt.</param>
+        /// <param name="obj">The obj.</param>
+        /// <param name="cam">The cam.</param>
+        /// <param name="lights">The lights.</param>
+        /// <param name="render">The render.</param>
+        public virtual void ExtraDraw(GameTime gt, IObject obj, ICamera cam, IList<ILight> lights, RenderHelper render)
+        {
+
+        }
+        
 
 
 

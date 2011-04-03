@@ -14,12 +14,12 @@ namespace PloobsEngine.Entity
         /// return the entity id
         /// </summary>
         /// <returns>the id</returns>
-        int getId();
+        int GetId();
 
         /// <summary>
         /// sets the id
         /// </summary>
         /// <param name="id"></param>
-        void setId(int id);
+        void SetId(int id);
     }
 }

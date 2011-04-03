@@ -6,6 +6,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Text;
+using PloobsEngine.Engine;
+using PloobsEngine.Engine.Logger;
 #endregion
 
 namespace PloobsEngine.SceneControl
@@ -18,39 +20,29 @@ namespace PloobsEngine.SceneControl
     /// </remarks>
     public class ScreenManager 
     {
-
-        public ScreenManager()
-        {            
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ScreenManager"/> class.
+        /// </summary>
+        /// <param name="GraphicInfo">The graphic info.</param>
+        /// <param name="factory">The factory.</param>
+        public ScreenManager(ref GraphicInfo GraphicInfo, GraphicFactory factory,IContentManager contentManager, RenderHelper render)
+        {
+            this.GraphicInfo = GraphicInfo;
+            this.GraphicFactory = factory;
+            this.contentManager = contentManager;
+            this.render = render;
         }
-
+        
         #region Fields
 
         List<IScreen> screens = new List<IScreen>();
-        List<IScreen> screensToUpdate = new List<IScreen>();        
-        bool traceEnabled;        
+        List<IScreen> screensToUpdate = new List<IScreen>();
+        internal GraphicInfo GraphicInfo;
+        internal GraphicFactory GraphicFactory;
+        internal IContentManager contentManager;
+        internal RenderHelper render;
         
         #endregion
-
-
-        
-
-        #region Properties
-
-
-        /// <summary>
-        /// If true, the manager prints out a list of all the screens
-        /// each time it is updated. This can be useful for making sure
-        /// everything is being added and removed at the right times.
-        /// </summary>
-        public bool TraceEnabled
-        {
-            get { return traceEnabled; }
-            set { traceEnabled = value; }
-        }
-
-
-        #endregion
-        
 
         #region Update and Draw
 
@@ -79,25 +71,8 @@ namespace PloobsEngine.SceneControl
                     screen.iUpdate(gameTime);                
             }
 
-            // Print debug trace?
-            if (traceEnabled)
-                TraceScreens();
+            
         }
-
-
-        /// <summary>
-        /// Prints a list of all the screens, for debugging.
-        /// </summary>
-        void TraceScreens()
-        {
-            List<string> screenNames = new List<string>();
-
-            foreach (IScreen screen in screens)
-                screenNames.Add(screen.GetType().Name);
-
-            Trace.WriteLine(string.Join(", ", screenNames.ToArray()));
-        }
-
 
 
         /// <summary>
@@ -110,7 +85,7 @@ namespace PloobsEngine.SceneControl
                 if (screen.ScreenState == ScreenState.Hidden || screen.ScreenState == ScreenState.Inactive)
                     continue;
                 
-                screen.iDraw(gameTime);
+                screen.iDraw(gameTime,render);
             }
 
         }
@@ -125,10 +100,14 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         public void AddScreen(IScreen screen)
         {
-            screen.screenManager = this;
-            screen.IsExiting = false;
+            screen.screenManager = this;            
 
-            screen.iLoadContent();
+            screen.GraphicFactory = GraphicFactory;
+            screen.GraphicInfo = GraphicInfo;
+
+
+            screen.iInitScreen(GraphicInfo, contentManager);
+            screen.iLoadContent(GraphicInfo,GraphicFactory,contentManager);
             screen.iAfterLoadContent();        
 
             screens.Add(screen);
@@ -141,8 +120,14 @@ namespace PloobsEngine.SceneControl
         /// the screen can gradually transition off rather than just being
         /// instantly removed.
         /// </summary>
-        internal void RemoveScreen(IScreen screen)
-        {            
+        public void RemoveScreen(IScreen screen)
+        {
+            if (screen == null)
+            {
+                ActiveLogger.LogMessage("cant remove null screen", LogLevel.RecoverableError);                
+            }
+
+            screen.RemoveThisScreen();
             screens.Remove(screen);
             screensToUpdate.Remove(screen);
         }

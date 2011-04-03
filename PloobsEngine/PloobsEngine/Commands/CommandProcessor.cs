@@ -100,7 +100,7 @@ namespace PloobsEngine.Commands
         /// <summary>
         /// Process the Assyncronous Commands        
         /// </summary>
-        public void ProcessCommands()
+        internal void ProcessCommands()
         {
             processing = true;
             foreach (string recieverId in _assyncronousCommands.Keys)
@@ -126,7 +126,7 @@ namespace PloobsEngine.Commands
         /// Registers the specified reciever.
         /// </summary>
         /// <param name="rec">The rec.</param>
-        public void Register(IReciever rec)
+        internal void Register(IReciever rec)
         {
             _idToReciever.Add(rec.getMyName(), rec);
         }
@@ -135,7 +135,7 @@ namespace PloobsEngine.Commands
         /// Unregister a specified reciever
         /// </summary>
         /// <param name="rec">The rec.</param>
-        public void UnRegister(IReciever rec)
+        internal void UnRegister(IReciever rec)
         {
             _idToReciever.Remove(rec.getMyName());
         }
@@ -148,8 +148,8 @@ namespace PloobsEngine.Commands
              
             }
             Object obj = _idToReciever[recieverId];
-            command.setTarget(obj);
-            command.execute();            
+            command.isetTarget(obj);
+            command.iexecute();            
         }
 
 

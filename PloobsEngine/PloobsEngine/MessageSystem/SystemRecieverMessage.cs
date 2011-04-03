@@ -10,7 +10,7 @@ namespace PloobsEngine.MessageSystem
     /// <summary>    
     /// Helper to Handle some message
     /// </summary>
-    public class SystemRecieverMessage : IRecieveMessageEntity, IDisposable
+    internal class SystemRecieverMessage : IRecieveMessageEntity, IDisposable
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SystemRecieverMessage"/> class.
@@ -51,7 +51,7 @@ namespace PloobsEngine.MessageSystem
         /// <returns>
         /// the id
         /// </returns>
-        public int getId()
+        public int GetId()
         {
             return id;
         }
@@ -60,7 +60,7 @@ namespace PloobsEngine.MessageSystem
         /// sets the id
         /// </summary>
         /// <param name="id"></param>
-        public void setId(int id)
+        public void SetId(int id)
         {
             this.id = id;
         }

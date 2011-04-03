@@ -22,12 +22,12 @@ namespace PloobsEngine.Physics
         /// <value>
         /// 	<c>true</c> if this instance is debug draw; otherwise, <c>false</c>.
         /// </value>
-        bool isDebugDraw { get; set; }
+        public bool isDebugDraw { get; set; }
 
         /// <summary>
         /// Gets the physic objects.
         /// </summary>
-        List<IPhysicObject> PhysicObjects { get; }
+        public abstract List<IPhysicObject> PhysicObjects { get; }
 
         /// <summary>
         /// Draw the physic world in debug mode.
@@ -55,13 +55,13 @@ namespace PloobsEngine.Physics
         /// Adds the object.
         /// </summary>
         /// <param name="obj">The obj.</param>
-        void AddObject(IPhysicObject obj);
+        public abstract void AddObject(IPhysicObject obj);
 
         /// <summary>
         /// Removes the object.
         /// </summary>
         /// <param name="obj">The obj.</param>
-        void RemoveObject(IPhysicObject obj);        
+        public abstract void RemoveObject(IPhysicObject obj);        
         
         /// <summary>
         /// Raycast
@@ -70,14 +70,14 @@ namespace PloobsEngine.Physics
         /// <param name="method">The method.</param>
         /// <param name="maxDistance">The max distance.</param>
         /// <returns></returns>
-        SegmentInterceptInfo SegmentIntersect(Ray raio,SegmentInterceptMethod method,float maxDistance);
+        public abstract SegmentInterceptInfo SegmentIntersect(Ray raio, Func<IPhysicObject,bool> filter, float maxDistance);
 
         /// <summary>
         /// Detects the collisions of a physic object
         /// </summary>
         /// <param name="po">The po.</param>
-        /// <returns></returns>
-        List<IPhysicObject> DetectCollisions(IPhysicObject po);
+        /// <param name="resp">The resp.</param>
+        public abstract void DetectCollisions(IPhysicObject po,List<IPhysicObject> resp);
 
         /// <summary>
         /// Get the objects near the object passed as parameter
@@ -85,36 +85,15 @@ namespace PloobsEngine.Physics
         /// <param name="po">The po.</param>
         /// <param name="distance">The distance.</param>
         /// <param name="CullerAvaliator">The culler avaliator.</param>
-        /// <returns></returns>
-        List<IPhysicObject> GetPhysicsObjectsInRange(IPhysicObject po, float distance,CullerConditionAvaliator<IPhysicObject, IObject> CullerAvaliator);
-        
-    }
+        /// <param name="resp">The resp.</param>
+        public abstract void GetPhysicsObjectsInRange(IPhysicObject po, float distance, CullerConditionAvaliator<IPhysicObject, IObject> CullerAvaliator,List<IPhysicObject> resp);
 
-    /// <summary>
-    /// RayCAst interceptor method
-    /// its a simple filter
-    /// </summary>
-    public enum SegmentInterceptMethod
-    {
-        /// <summary>
-        /// intercept will all objects
-        /// </summary>
-        ALL,
-        /// <summary>
-        /// Dont intercept with triangle meshes
-        /// </summary>
-        NO_TRINAGLEMESH,
-        /// <summary>
-        /// Intercepts only with mobiles objects
-        /// </summary>
-        ONLY_MOBILES,
-        /// <summary>
-        /// Only with not mobiles objects
-        /// </summary>
-        ONLY_STOPPEDS,
-        /// <summary>
-        /// Only with triangle mesh
-        /// </summary>
-        ONLY_TRIANGLEMESH
+
+        #region ISerializable Members
+
+        public abstract void GetObjectData(SerializationInfo info, StreamingContext context);
+        
+        #endregion
     }
+    
 }

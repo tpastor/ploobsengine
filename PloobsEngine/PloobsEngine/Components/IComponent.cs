@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Commands;
 using PloobsEngine.Entity;
+using PloobsEngine.Engine;
 
 namespace PloobsEngine.Components
 {
@@ -13,18 +14,26 @@ namespace PloobsEngine.Components
     /// Components can Recieve Commands and send messages
     /// Designed to be VERY low coupled
     /// </summary>
-    public interface IComponent : IReciever , IEntity 
+    public abstract class IComponent : IReciever , IEntity 
     {
         /// <summary>
         /// Initializes this instance.
         /// </summary>
-        void Initialize();
+        protected virtual void Initialize() { }
+        internal void iInitialize()
+        {
+            Initialize();
+        }
         /// <summary>
         /// Update
         /// Its called deppending of the ComponentType
         /// </summary>
         /// <param name="gt">The gt.</param>
-        void Update(GameTime gt);
+        protected virtual void Update(GameTime gt) { }
+        internal void iUpdate(GameTime gt)
+        {
+            Update(gt);
+        }
         /// <summary>
         /// Pres draw.
         /// Its called deppending of the ComponentType
@@ -32,7 +41,12 @@ namespace PloobsEngine.Components
         /// <param name="gt">The gt.</param>
         /// <param name="activeView">The active view.</param>
         /// <param name="activeProjection">The active projection.</param>
-        void PreDraw(GameTime gt, Matrix activeView, Matrix activeProjection);
+        protected virtual void PreDraw(GameTime gt, Matrix activeView, Matrix activeProjection) { }
+        internal void iPreDraw(GameTime gt, Matrix activeView, Matrix activeProjection)
+        {
+            iPreDraw(gt, activeView, activeProjection);
+        }
+
         /// <summary>
         /// Afters draw.
         /// Its called deppending of the ComponentType
@@ -40,12 +54,21 @@ namespace PloobsEngine.Components
         /// <param name="gt">The gt.</param>
         /// <param name="activeView">The active view.</param>
         /// <param name="activeProjection">The active projection.</param>
-        void AfterDraw(GameTime gt, Matrix activeView, Matrix activeProjection);
+        protected virtual void AfterDraw(GameTime gt, Matrix activeView, Matrix activeProjection) { }
+        internal void iAfterDraw(GameTime gt, Matrix activeView, Matrix activeProjection)
+        {
+            AfterDraw(gt, activeView, activeProjection);
+        }
+
         /// <summary>
         /// Loads the content.
         /// </summary>
         /// <param name="engine">The engine.</param>
-        void LoadContent();
+        protected virtual void LoadContent(ref GraphicInfo GraphicInfo) { }
+        internal void iLoadContent(ref GraphicInfo GraphicInfo)
+        {
+            LoadContent(ref GraphicInfo);
+        }
 
         /// <summary>
         /// Gets the type of the component type.
@@ -53,11 +76,41 @@ namespace PloobsEngine.Components
         /// <value>
         /// The type of the component.
         /// </value>
-        ComponentType ComponentType
+        public abstract ComponentType ComponentType
         {
             get;
         }
 
+        #region IEntity Members
+        private int id;
+        /// <summary>
+        /// return the entity id
+        /// </summary>
+        /// <returns>
+        /// the id
+        /// </returns>
+        public int GetId()
+        {
+            return id;
+        }
+
+        /// <summary>
+        /// sets the id
+        /// </summary>
+        /// <param name="id"></param>
+        public void SetId(int id)
+        {
+            this.id = id;
+        }
+
+        #endregion   
+
+    
+        #region IReciever Members
+
+        public abstract string getMyName();        
+
+        #endregion
     }
 
     /// <summary>

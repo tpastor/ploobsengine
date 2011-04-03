@@ -28,7 +28,7 @@ namespace PloobsEngine.Input
     /// <summary>
     /// Component responsible for processing Keyboard and Mouse 
     /// </summary>
-    public class InputAdvanced : BasicComponent
+    public class InputAdvanced : IComponent
     {
 
         private IDictionary<Keys, InputPlayableKeyBoard> _Mapper = new Dictionary<Keys, InputPlayableKeyBoard>();
@@ -91,7 +91,7 @@ namespace PloobsEngine.Input
         /// Updates the specified game time.
         /// </summary>
         /// <param name="gameTime">The game time.</param>
-        public override void Update(GameTime gameTime)
+        protected override void Update(GameTime gameTime)
         {
             float elapsedTime =
                 (float)(gameTime.ElapsedGameTime.TotalSeconds);

@@ -8,7 +8,7 @@ namespace PloobsEngine.MessageSystem
     /// <summary>
     /// Helper to create system messages
     /// </summary>
-    public class SystemMessageFactory
+    internal class SystemMessageFactory
     {
         /// <summary>
         /// Not found message.

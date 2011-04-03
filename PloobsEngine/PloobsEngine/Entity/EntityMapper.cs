@@ -59,16 +59,16 @@ namespace PloobsEngine.Entity
         public int AddEntity(IEntity Agente)
             {
                 int id;
-                if (Agente.getId() > 0)
+                if (Agente.GetId() > 0)
                 {                    
-                    if (ids.ContainsKey(Agente.getId()))
+                    if (ids.ContainsKey(Agente.GetId()))
                     {
                         id = getNextAvaliableId();
-                        Agente.setId(id);
+                        Agente.SetId(id);
                     }
                     else
                     {
-                        id = Agente.getId();
+                        id = Agente.GetId();
                         ids.Add(id, null);
                     }
                     IdEntity.Add(id, Agente);
@@ -80,7 +80,7 @@ namespace PloobsEngine.Entity
                 else
                 {
                     id = getNextAvaliableId();
-                    Agente.setId(id);
+                    Agente.SetId(id);
                     IdEntity.Add(id, Agente);
                     if (Agente is IRecieveMessageEntity)
                     {
@@ -131,7 +131,7 @@ namespace PloobsEngine.Entity
 
                 foreach (IRecieveMessageEntity item in Agente)
                 {
-                    if (!IdEntity.ContainsKey(item.getId()))
+                    if (!IdEntity.ContainsKey(item.GetId()))
                     {
                         throw new Exception("instancia ainda nao foi colocada no mapper " + item.ToString() );
                     }
@@ -190,7 +190,7 @@ namespace PloobsEngine.Entity
             /// <param name="Agente"></param>
             public void AddgrouptagRecieveEntity(string tag, IRecieveMessageEntity Agente)
             {
-                if (!IdEntity.ContainsKey(Agente.getId()))
+                if (!IdEntity.ContainsKey(Agente.GetId()))
                 {
                     throw new Exception("instancia ainda nao foi colocada no mapper " + Agente.ToString());
                 }
@@ -328,7 +328,7 @@ namespace PloobsEngine.Entity
             /// <param name="ent"></param>
             public void RemoveEntity(IEntity ent)
             {
-                int cod = ent.getId();
+                int cod = ent.GetId();
                 if (IdEntity.ContainsKey(cod))
                 {
                     IdEntity.Remove(cod);
@@ -354,7 +354,7 @@ namespace PloobsEngine.Entity
                 }
                 else
                 {                    
-                    Debug.WriteLine("Entidade nao encontrada Type: " + ent.GetType().AssemblyQualifiedName + " ID: " + ent.getId());
+                    Debug.WriteLine("Entidade nao encontrada Type: " + ent.GetType().AssemblyQualifiedName + " ID: " + ent.GetId());
                 }
             }
         }

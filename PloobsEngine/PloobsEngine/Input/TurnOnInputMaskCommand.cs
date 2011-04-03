@@ -29,7 +29,7 @@ namespace PloobsEngine.Input
         /// <summary>
         /// Executes the command Call.
         /// </summary>
-        public void execute()
+        protected override void execute()
         {
             ia.TurnOnInputMask(mask);
         }
@@ -38,7 +38,7 @@ namespace PloobsEngine.Input
         /// Sets the command target.
         /// </summary>
         /// <param name="obj">The obj.</param>
-        public void setTarget(object obj)
+        protected override void setTarget(object obj)
         {
             ia = (InputAdvanced)obj;
         }
@@ -53,7 +53,7 @@ namespace PloobsEngine.Input
         /// <value>
         /// The name of the target.
         /// </value>
-        public string TargetName
+        public override string TargetName
         {
             get { return InputAdvanced.MyName; }
         }

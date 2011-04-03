@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace PloobsEngine.Modelo
 {
@@ -39,7 +40,7 @@ namespace PloobsEngine.Modelo
         /// <param name="VertexDeclaration">The vertex declaration.</param>
         /// <param name="VertexStride">The vertex stride.</param>
         /// <param name="BatchType">Type of the batch.</param>
-        public BatchInformation(int BaseVertex, int NumVertices, int PrimitiveCount, int StartIndexOrVertex, int StreamOffset, VertexDeclaration VertexDeclaration, int VertexStride, BatchType BatchType)
+        public BatchInformation(int BaseVertex, int NumVertices, int PrimitiveCount, int StartIndexOrVertex, int StreamOffset, VertexDeclaration VertexDeclaration, int VertexStride, BatchType BatchType,PrimitiveType PrimitiveType = PrimitiveType.TriangleList)
         {
             this.BaseVertex = BaseVertex;
             this.NumVertices = NumVertices;
@@ -56,6 +57,7 @@ namespace PloobsEngine.Modelo
             {
                 this.StartVertex = StartIndexOrVertex;
             }
+            this.PrimitiveType = PrimitiveType;
         }
 
         /// <summary>
@@ -68,7 +70,8 @@ namespace PloobsEngine.Modelo
         /// <param name="StreamOffset">The stream offset.</param>
         /// <param name="VertexDeclaration">The vertex declaration.</param>
         /// <param name="VertexStride">The vertex stride.</param>
-        public BatchInformation(int BaseVertex,int NumVertices,int PrimitiveCount,int StartIndex,int StreamOffset,VertexDeclaration VertexDeclaration,int VertexStride)
+        /// <param name="PrimitiveType">Type of the primitive.</param>
+        public BatchInformation(int BaseVertex, int NumVertices, int PrimitiveCount, int StartIndex, int StreamOffset, VertexDeclaration VertexDeclaration, int VertexStride, PrimitiveType PrimitiveType = Microsoft.Xna.Framework.Graphics.PrimitiveType.TriangleList)
         {
             this.BaseVertex = BaseVertex;
             this.NumVertices = NumVertices;
@@ -77,8 +80,14 @@ namespace PloobsEngine.Modelo
             this.StreamOffset = StreamOffset;
             this.VertexDeclaration = VertexDeclaration;
             this.VertexStride = VertexStride;
+            this.PrimitiveType = PrimitiveType;
             this.BatchType = BatchType.INDEXED;
         }
+
+        /// <summary>
+        /// Primitive Type
+        /// </summary>
+        public PrimitiveType PrimitiveType; 
 
         /// <summary>
         /// Batch Type
@@ -124,6 +133,21 @@ namespace PloobsEngine.Modelo
         /// VertexStride
         /// </summary>
         public int VertexStride;
+
+        /// <summary>
+        /// VertexBuffer
+        /// </summary>
+        public VertexBuffer VertexBuffer;
+
+        /// <summary>
+        /// IndexBuffer
+        /// </summary>
+        public IndexBuffer IndexBuffer;
+
+        /// <summary>
+        /// Local Transformation
+        /// </summary>
+        public Matrix ModelLocalTransformation;
         
     }
 }

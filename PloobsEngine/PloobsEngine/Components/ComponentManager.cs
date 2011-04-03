@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using System.Reflection;
 using PloobsEngine.Commands;
+using PloobsEngine.Engine;
 
 namespace PloobsEngine.Components
 {
@@ -18,30 +19,21 @@ namespace PloobsEngine.Components
         private List<IComponent> _preDrawables = new List<IComponent>();
         private List<IComponent> _posDrawables = new List<IComponent>();
         private List<IComponent> updateAUX = new List<IComponent>();
+        private GraphicInfo GraphicInfo;
 
 
-        public ComponentManager()
-        {                 
 
-        }
-
-
-        /// <summary>
-        /// Initializes this instance.
-        /// </summary>
-        public void Initialize()
+        public ComponentManager(ref GraphicInfo GraphicInfo)
         {
-            foreach (IComponent item in _comps.Values)
-            {
-                item.Initialize();
-                CommandProcessor.getCommandProcessor().Register(item);
-            }
+            this.GraphicInfo = GraphicInfo;        
         }
+
+        
         /// <summary>
         /// Updates 
         /// </summary>
         /// <param name="gt">The gt.</param>
-        public void Update(GameTime gt)
+        internal void Update(GameTime gt)
         {   
             updateAUX.Clear();
             foreach (var item in _updateables)
@@ -52,7 +44,7 @@ namespace PloobsEngine.Components
             while (updateAUX.Count > 0)
             {
                 IComponent comp = updateAUX[updateAUX.Count - 1];
-                comp.Update(gt);                
+                comp.iUpdate(gt);                
                 updateAUX.Remove(comp);                
             }
                         
@@ -62,7 +54,7 @@ namespace PloobsEngine.Components
         /// Gets all the pre draw components.
         /// </summary>
         /// <returns></returns>
-        public IList<IComponent> GetPreDraw()
+        internal IList<IComponent> GetPreDraw()
         {
             return _preDrawables;
         }
@@ -71,7 +63,7 @@ namespace PloobsEngine.Components
         /// Gets all the pos draw components.
         /// </summary>
         /// <returns></returns>
-        public IList<IComponent> GetPosDraw()
+        internal IList<IComponent> GetPosDraw()
         {
             return _posDrawables;
         }
@@ -82,11 +74,11 @@ namespace PloobsEngine.Components
         /// <param name="gt">The gt.</param>
         /// <param name="activeView">The active view.</param>
         /// <param name="activeProjection">The active projection.</param>
-        public void PreDraw(GameTime gt, Matrix activeView, Matrix activeProjection)
+        internal void PreDraw(GameTime gt, Matrix activeView, Matrix activeProjection)
         {
             foreach (IComponent item in _preDrawables)
             {
-                item.PreDraw(gt,activeView,activeProjection);
+                item.iPreDraw(gt,activeView,activeProjection);
             }
         }
         /// <summary>
@@ -95,22 +87,22 @@ namespace PloobsEngine.Components
         /// <param name="gt">The gt.</param>
         /// <param name="activeView">The active view.</param>
         /// <param name="activeProjection">The active projection.</param>
-        public void AfterDraw(GameTime gt, Matrix activeView, Matrix activeProjection)
+        internal void AfterDraw(GameTime gt, Matrix activeView, Matrix activeProjection)
         {
             foreach (IComponent item in _posDrawables)
             {
-                item.AfterDraw(gt,activeView,activeProjection);
+                item.iAfterDraw(gt,activeView,activeProjection);
             }
         }
         /// <summary>
         /// Loads the content.
         /// </summary>
         /// <param name="engine">The engine.</param>
-        public void LoadContent()
+        internal void LoadContent(ref GraphicInfo GraphicInfo)
         {
             foreach (IComponent item in _comps.Values)
             {
-                item.LoadContent();
+                item.iLoadContent(ref GraphicInfo);
             }
         }
 
@@ -161,8 +153,8 @@ namespace PloobsEngine.Components
                             break;
                     }                                
                   _comps.Add(comp.getMyName(), comp);
-                  _comps[comp.getMyName()].Initialize();
-                  _comps[comp.getMyName()].LoadContent();
+                  _comps[comp.getMyName()].iInitialize();
+                  _comps[comp.getMyName()].iLoadContent(ref this.GraphicInfo);
                   CommandProcessor.getCommandProcessor().Register(_comps[comp.getMyName()]);
                   return true;
         }

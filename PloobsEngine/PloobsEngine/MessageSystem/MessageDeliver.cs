@@ -22,7 +22,7 @@ namespace PloobsEngine.MessageSystem
     /// USEI components (nassa arquitetura) pra ficar mais facil de "plugar"    
     /// </summary>
 
-    public class MessageDeliver :  BasicComponent
+    public class MessageDeliver :  IComponent
     {
         public MessageDeliver() {  }
         public MessageDeliver( int Num)  { numMessagerdeliveredByFrame = Num; }
@@ -47,7 +47,7 @@ namespace PloobsEngine.MessageSystem
         /// Deliver the messages
         /// </summary>
         /// <param name="gt"></param>
-        public override  void Update(GameTime gtt)
+        protected override void Update(GameTime gtt)
         {
             gt = gtt;
 
@@ -205,7 +205,7 @@ namespace PloobsEngine.MessageSystem
     /// <summary>
     /// Message Comparer
     /// </summary>
-    public class MessageComparer : IComparer<Message>
+    internal class MessageComparer : IComparer<Message>
     {
         /// <summary>
         /// Compares the messages
@@ -227,7 +227,7 @@ namespace PloobsEngine.MessageSystem
     /// <summary>
     /// Delay Comparer
     /// </summary>
-    public class DelayComparer : IComparer<Message>
+    internal class DelayComparer : IComparer<Message>
     {
         /// <summary>
         /// Compare the delays of the messages

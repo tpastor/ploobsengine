@@ -8,6 +8,7 @@ using PloobsEngine.SceneControl;
 using PloobsEngine.Cameras;
 using PloobsEngine.Modelo;
 using System.Runtime.Serialization;
+using PloobsEngine.Engine;
 
 
 namespace PloobsEngine.Material
@@ -17,9 +18,19 @@ namespace PloobsEngine.Material
     /// </summary>
     public interface IMaterial : ISerializable
     {
+
+        /// <summary>
+        /// Initializations the specified Material.
+        /// </summary>
+        /// <param name="ginfo">The ginfo.</param>
+        /// <param name="factory">The factory.</param>
+        /// <param name="obj">The obj.</param>
+        void Initialization(GraphicInfo ginfo, GraphicFactory factory, IObject obj);
         
+
         /// <summary>
         /// Pre drawn Function.
+        /// Called before all the objects are draw
         /// </summary>
         /// <param name="mundo">The mundo.</param>
         /// <param name="gt">The gt.</param>
@@ -27,25 +38,29 @@ namespace PloobsEngine.Material
         /// <param name="cam">The cam.</param>
         /// <param name="lights">The lights.</param>
         /// <param name="render">The render.</param>
-        void PreDrawnPhase(IWorld mundo, GameTime gt, IObject obj, ICamera cam, IList<ILight> lights, IRenderHelper render);
+        void PreDrawnPhase(GameTime gt, IWorld mundo, IObject obj, ICamera cam, IList<ILight> lights, RenderHelper render);
+        
         /// <summary>
-        /// Pos drawn Function.
+        /// Pos drawn Function.        
+        /// Called after all objects are Draw
         /// </summary>
         /// <param name="gt">The gt.</param>
         /// <param name="obj">The obj.</param>
         /// <param name="cam">The cam.</param>
         /// <param name="lights">The lights.</param>
         /// <param name="render">The render.</param>
-        void PosDrawnPhase(GameTime gt, IObject obj, ICamera cam, IList<ILight> lights, IRenderHelper render);
+        void PosDrawnPhase(GameTime gt, IObject obj, ICamera cam, IList<ILight> lights, RenderHelper render);
+        
         /// <summary>
-        /// Drawns Function.
+        /// Normal Drawn Function.
         /// </summary>
         /// <param name="gt">The gt.</param>
         /// <param name="obj">The obj.</param>
         /// <param name="cam">The cam.</param>
         /// <param name="lights">The lights.</param>
         /// <param name="render">The render.</param>
-        void Drawn(GameTime gt ,IObject obj, ICamera cam , IList<ILight> lights,IRenderHelper render);
+        void Drawn(GameTime gt  ,IObject obj, ICamera cam , IList<ILight> lights,RenderHelper render);
+        
         /// <summary>
         /// Update.
         /// </summary>
@@ -66,7 +81,7 @@ namespace PloobsEngine.Material
         /// <value>
         /// The type of the material.
         /// </value>
-        MaterialType MaterialType { get; set; }
+        MaterialType MaterialType { get; }
         /// <summary>
         /// Gets or sets a value indicating whether this material is [affected by shadow].
         /// </summary>
