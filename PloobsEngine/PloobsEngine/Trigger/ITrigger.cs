@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Physics;
+using PloobsEngine.Events;
 
 
 namespace PloobsEngine.Trigger
@@ -19,11 +20,11 @@ namespace PloobsEngine.Trigger
         /// <value>
         /// The event.
         /// </value>
-        //IEvent<ITrigger> Event
-        //{
-        //    get;
-        //    set;
-        //}
+        IEvent<ITrigger> Event
+        {
+            get;
+            set;
+        }
         /// <summary>
         /// Gets or sets the name of the trigger.
         /// </summary>

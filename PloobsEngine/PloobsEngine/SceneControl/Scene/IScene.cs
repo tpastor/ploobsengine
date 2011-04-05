@@ -20,8 +20,7 @@ namespace PloobsEngine.SceneControl
     {
         #region properties
         
-        private IRenderTechnic[] _renderTecnics = null;
-        private RenderHelper _render = null;
+        private IRenderTechnic[] _renderTecnics = null;        
         private bool _isFirstTimeTechnic = true;       
 
 
@@ -55,11 +54,11 @@ namespace PloobsEngine.SceneControl
         /// <summary>
         /// Function called After all the stuffs LoadContent is called
         /// </summary>
-        protected override void AfterLoadContent()
+        protected override void AfterLoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
         {
             foreach (IRenderTechnic item in RenderTechnics)
             {
-                item.iAfterLoadContent();
+                item.iAfterLoadContent(manager,ginfo,factory);
             }
         }
        
@@ -80,6 +79,7 @@ namespace PloobsEngine.SceneControl
         /// This is called when the screen should draw itself.
         /// </summary>
         /// <param name="gameTime"></param>
+        /// <param name="render"></param>
         protected override void Draw(Microsoft.Xna.Framework.GameTime gameTime,RenderHelper render)
         {
             if (_isFirstTimeTechnic == true)
@@ -99,16 +99,22 @@ namespace PloobsEngine.SceneControl
         }
 
         /// <summary>
-        /// Load content for the screen.
-        /// Here you create the Render Technic and the World
+        /// Load content for the screen.        
         /// </summary>
-        /// <param name="es"></param>
+        /// <param name="GraphicInfo"></param>
+        /// <param name="factory"></param>
+        /// <param name="contentManager"></param>
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory ,IContentManager contentManager)
         {
             base.LoadContent(GraphicInfo, factory,contentManager);
         }
 
-        protected override void InitScreen(GraphicInfo GraphicInfo, IContentManager contentManager)
+        /// <summary>
+        /// Init Screen
+        /// </summary>
+        /// <param name="GraphicInfo">The graphic info.</param>
+        /// <param name="engine"></param>
+        protected override void InitScreen(GraphicInfo GraphicInfo, EngineStuff engine)
         {
             SetWorldAndRenderTechnich(out _renderTecnics, out _world);
             if (_renderTecnics == null ||  _renderTecnics.Count() == 0)
@@ -127,9 +133,14 @@ namespace PloobsEngine.SceneControl
             this._world.GraphicsFactory = GraphicFactory;
             this._world.GraphicsInfo = GraphicInfo;
             this._world.ContentManager = screenManager.contentManager;                
-            base.InitScreen(GraphicInfo, contentManager);
+            base.InitScreen(GraphicInfo, engine);
         }
 
+        /// <summary>
+        /// Sets the world and render technich.
+        /// </summary>
+        /// <param name="renderTech">The render tech.</param>
+        /// <param name="world">The world.</param>
         protected abstract void SetWorldAndRenderTechnich(out IRenderTechnic[] renderTech, out IWorld world );
         
       

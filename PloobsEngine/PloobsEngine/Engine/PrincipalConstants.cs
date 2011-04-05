@@ -76,5 +76,6 @@ namespace PloobsEngine
         /// SHADER ID bigger than this value is Not affect by light
         /// </summary>
         public const float NotEffectByLightIdBiggerThan =0.9f;
+
     }
 }

@@ -47,7 +47,8 @@
     <NoStdLib>true</NoStdLib>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <PlatformTarget>x86</PlatformTarget>
-    <XnaCompressContent>false</XnaCompressContent>
+    <XnaCompressContent>True</XnaCompressContent>
+    <DocumentationFile>bin\x86\Debug\PloobsEngine.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DebugType>pdbonly</DebugType>
@@ -113,6 +114,9 @@
     <Reference Include="System.Net">
       <Private>False</Private>
     </Reference>
+    <Reference Include="XNAnimation">
+      <HintPath>Dlls\XNAnimation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Audio\ISoundEmitter3D.cs" />
@@ -125,6 +129,32 @@
     <Compile Include="Commands\IReciever.cs" />
     <Compile Include="Components\ComponentManager.cs" />
     <Compile Include="Components\IComponent.cs" />
+    <Compile Include="Engine\IntermediateTexture.cs" />
+    <Compile Include="Events\EventManager.cs" />
+    <Compile Include="Events\GroupedEvent.cs" />
+    <Compile Include="Events\IEvent.cs" />
+    <Compile Include="Events\IEventHandler.cs" />
+    <Compile Include="Events\IHaveEventManager.cs" />
+    <Compile Include="Events\SimpleEvent.cs" />
+    <Compile Include="Light\Deferred\DeferredLight.cs" />
+    <Compile Include="Light\Deferred\DirectionalLight.cs" />
+    <Compile Include="Light\Deferred\PointLight.cs" />
+    <Compile Include="Light\Deferred\SpotLight.cs" />
+    <Compile Include="Material\DeferredMaterial.cs" />
+    <Compile Include="Material\IShadder\DeferredShader\NormalDeferred.cs" />
+    <Compile Include="Physic\PhysicObjects\BepuObject\DetectorVolumeObject.cs" />
+    <Compile Include="SceneControl\Movie\MovieScreen.cs" />
+    <Compile Include="SceneControl\Scene\DefRender\DeferredRenderTechnic.cs" />
+    <Compile Include="SceneControl\Scene\DefRender\FinalCombination.cs" />
+    <Compile Include="SceneControl\Scene\DefRender\ForwardPass.cs" />
+    <Compile Include="SceneControl\Scene\DefRender\GBuffer.cs" />
+    <Compile Include="SceneControl\Scene\DefRender\IDeferredFinalCombination.cs" />
+    <Compile Include="SceneControl\Scene\DefRender\IDeferredGBuffer.cs" />
+    <Compile Include="SceneControl\Scene\DefRender\IDeferredLightMap.cs" />
+    <Compile Include="SceneControl\Scene\DefRender\IForwardPass.cs" />
+    <Compile Include="SceneControl\Scene\DefRender\LightMap.cs" />
+    <Compile Include="SceneControl\Scene\DefRender\RestoreDepth.cs" />
+    <Compile Include="SceneControl\Scene\IPostEffect.cs" />
     <Compile Include="SceneControl\Scene\Picking.cs" />
     <Compile Include="DataStructure\CircularList.cs" />
     <Compile Include="DataStructure\MergeSort.cs" />
@@ -158,7 +188,7 @@
     <Compile Include="Material\IDepthExtractor.cs" />
     <Compile Include="Material\IMaterial.cs" />
     <Compile Include="Material\IShadder\IShader.cs" />
-    <Compile Include="Material\IShadder\XNABasicShader.cs" />
+    <Compile Include="Material\IShadder\ForwardShader\XNABasicShader.cs" />
     <Compile Include="MessageSystem\IRecieveMessageEntity.cs" />
     <Compile Include="MessageSystem\Message.cs" />
     <Compile Include="MessageSystem\MessageDeliver.cs" />
@@ -204,12 +234,16 @@
     <Compile Include="SceneControl\Scene\IObject.cs" />
     <Compile Include="SceneControl\Scene\IObjectAtachtment.cs" />
     <Compile Include="SceneControl\Scene\RenderHelper.cs" />
-    <Compile Include="SceneControl\Scene\IRenderTechnic.cs" />
+    <Compile Include="SceneControl\Scene\RenderTechnic.cs" />
     <Compile Include="SceneControl\Scene\IWorld.cs" />
     <Compile Include="SceneControl\Scene\IScene.cs" />
     <Compile Include="SceneControl\Scene\QuadRender.cs" />
     <Compile Include="SceneControl\Scene\RenderTechnich\ForwardRenderTecnich.cs" />
+    <Compile Include="SceneControl\Scene\TextureCreator.cs" />
+    <Compile Include="Trigger\BepuTrigger.cs" />
+    <Compile Include="Trigger\GenericEventHandler.cs" />
     <Compile Include="Trigger\ITrigger.cs" />
+    <Compile Include="Trigger\TriggerEvent.cs" />
     <Compile Include="Utils\Curve3D.cs" />
     <Compile Include="Utils\FileUtils\BundleHandler.cs" />
     <Compile Include="Utils\FileUtils\InitConfiguration.cs" />
@@ -225,16 +259,8 @@
     <Compile Include="Utils\Math\Statistics\StatisticsUtils.cs" />
     <Compile Include="Utils\Math\VectorUtils.cs" />
     <Compile Include="Utils\PerlinNoise.cs" />
-    <Compile Include="Utils\RemoteLogger\ILogger.cs" />
-    <Compile Include="Utils\RemoteLogger\RemoteLogger.cs" />
     <Compile Include="Utils\Serializer\SerializerHelper.cs" />
     <Compile Include="Utils\TimePassed.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PloobsEngineContent\PloobsEngineContent.contentproj">
-      <Name>PloobsEngineContent</Name>
-      <XnaReferenceType>Content</XnaReferenceType>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
@@ -270,7 +296,111 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="SceneControl\Scene\DefRender\" />
+    <ProjectReference Include="..\PloobsEngineContent\PloobsEngineContent.contentproj">
+      <Project>{7ED0C250-A783-40B2-912E-4A4C222C4CE5}</Project>
+      <Name>PloobsEngineContent %28Content%29</Name>
+      <XnaReferenceType>Content</XnaReferenceType>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\AllBuffer.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\AnimatedBillboard.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\AntiAliasing.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\BlackWhite.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\BlinkGBuffer.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\blur.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\BumpGBuffer.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\cilBilboard.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\cilBilboardForward.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\ClearGBuffer.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\colorCorrection.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\Combine.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\CombineFinal.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\contrast.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\CopyToScreen.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\CuingDepth.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\DeferredAA.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\depth.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\DirectionalLight.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\DownScaling.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\Embossed.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\EMSHADER.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\Fog.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\FULLGPUBlur.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\gamma.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\gblur.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\gcpublur.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\glow.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\glowPost.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\GrassBillboard.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\HSV.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\InstanceRenderGBuffer.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\Inverse.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\LineDetection.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\Luminance.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\noise.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\opacity.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\PlanarOriented.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\PointLight.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\Posterize.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\RadialBlur.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\Reflection.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\RenderGBuffer.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\RenderGlowBuffer.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\RestoreDepth.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\Ripple.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\Saturate.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\saturation.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\Scatter.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\ShadowDepth.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\ShadowDirectional.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\ShadowMap.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\ShadowPoint.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\ShadowSpot.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\SimpleAlphaDraw.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\SpecularBumpBuffer.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\SpecularMapBuffer.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\SphericalBillboard.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\SpotLight.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\ssaoblur.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\SSAOBlur1.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\SSAOBlur2.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\ssaofinal.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\SSAOPOST.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\Sun.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\Terrain.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\Threshold.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\Tilling.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\ToBlack.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\ToneHdr.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\ToneMapping.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\toon1.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\TransparentEffect.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\Vidro.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\Water.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\WaterComplete.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\wiggle.xnb" />
+    <None Include="bin\x86\Debug\Content\Font\ConsoleFont.xnb" />
+    <None Include="bin\x86\Debug\Content\Models\block.xnb" />
+    <None Include="bin\x86\Debug\Content\Models\dome.xnb" />
+    <None Include="bin\x86\Debug\Content\Models\Dsphere.xnb" />
+    <None Include="bin\x86\Debug\Content\Models\sphere.xnb" />
+    <None Include="bin\x86\Debug\Content\Textures\checker.xnb" />
+    <None Include="bin\x86\Debug\Content\Textures\explosion.xnb" />
+    <None Include="bin\x86\Debug\Content\Textures\fire.xnb" />
+    <None Include="bin\x86\Debug\Content\Textures\flare.xnb" />
+    <None Include="bin\x86\Debug\Content\Textures\normal.xnb" />
+    <None Include="bin\x86\Debug\Content\Textures\random.xnb" />
+    <None Include="bin\x86\Debug\Content\Textures\RANDOMNORMAL.xnb" />
+    <None Include="bin\x86\Debug\Content\Textures\smoke.xnb" />
+    <None Include="bin\x86\Debug\Content\Textures\Sunset.xnb" />
+    <None Include="bin\x86\Debug\Content\Textures\teste.xnb" />
+    <None Include="bin\x86\Debug\Content\Textures\Toon.xnb" />
+    <None Include="bin\x86\Debug\Content\Textures\wave0.xnb" />
+    <None Include="bin\x86\Debug\Content\Textures\wave1.xnb" />
+    <None Include="bin\x86\Debug\Content\Textures\waves2.xnb" />
+    <None Include="bin\x86\Debug\Content\Textures\white.xnb" />
+    <None Include="Resources\ConsoleFont.spritefont" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />

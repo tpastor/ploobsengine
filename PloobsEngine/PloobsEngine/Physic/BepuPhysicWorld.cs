@@ -24,13 +24,34 @@ namespace PloobsEngine.Physics
         Space space;                
         private List<IPhysicObject> objs;
 
-        public BepuPhysicWorld(float gravity = -9.8f)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BepuPhysicWorld"/> class.
+        /// </summary>
+        /// <param name="gravity">The gravity.</param>
+        /// <param name="useRealElapsedTimeStep">if set to <c>true</c> [use real elapsed time step] in the simulation.</param>
+        /// <param name="PhysicElapsedTimeMultiplier">If useRealElapsedTimeStep is true, multiply the elapsedtime by this value.</param>
+        public BepuPhysicWorld(float gravity = -9.8f, bool useRealElapsedTimeStep = false, float PhysicElapsedTimeMultiplier = 1)
         {
             space = new Space();
             objs = new List<IPhysicObject>();
-            space.ForceUpdater.Gravity = new Vector3(0, gravity, 0);                        
+            space.ForceUpdater.Gravity = new Vector3(0, gravity, 0);
+            if(PhysicElapsedTimeMultiplier <= 0)            
+            {
+                ActiveLogger.LogMessage("PhysicElapesedTimeMultiplier must be bigger than zero, forced to default one", LogLevel.RecoverableError);
+            }
+            this.useRealElapsedTimeStep = useRealElapsedTimeStep;
+            this.PhysicElapesedTimeMultiplier = PhysicElapsedTimeMultiplier;
         }
 
+        bool useRealElapsedTimeStep ;
+        float PhysicElapesedTimeMultiplier;
+
+        /// <summary>
+        /// Gets or sets the space.
+        /// </summary>
+        /// <value>
+        /// The space.
+        /// </value>
         public Space Space
         {
             get { return space; }
@@ -38,14 +59,23 @@ namespace PloobsEngine.Physics
         }        
 
         #region IPhysicWorld Members
-               
 
+
+        /// <summary>
+        /// Updates
+        /// </summary>
+        /// <param name="gt">The gt.</param>
         protected override void Update(Microsoft.Xna.Framework.GameTime gt)
         {            
-            space.Update(gt.ElapsedGameTime.Milliseconds);
-        
+            if(useRealElapsedTimeStep)
+                space.Update(gt.ElapsedGameTime.Milliseconds * PhysicElapesedTimeMultiplier);
+            space.Update();        
         }
 
+        /// <summary>
+        /// Adds the object.
+        /// </summary>
+        /// <param name="obj">The obj.</param>
         public override void AddObject(IPhysicObject obj)
         {            
             if (obj.PhysicObjectTypes == PhysicObjectTypes.TRIANGLEMESHOBJECT)
@@ -73,8 +103,8 @@ namespace PloobsEngine.Physics
             }
             else if (obj.PhysicObjectTypes == PhysicObjectTypes.DETECTOROBJECT)
             {
-                //DetectorVolumeObject m = (DetectorVolumeObject)obj;
-                //space.Add(m.DetectorVolume);
+                DetectorVolumeObject m = (DetectorVolumeObject)obj;
+                space.Add(m.DetectorVolume);
             }
             else if (obj.PhysicObjectTypes == PhysicObjectTypes.CHARACTEROBJECT)
             {
@@ -110,6 +140,10 @@ namespace PloobsEngine.Physics
             
         }
 
+        /// <summary>
+        /// Removes the object.
+        /// </summary>
+        /// <param name="obj">The obj.</param>
         public override void RemoveObject(IPhysicObject obj)
         {
             if (obj.PhysicObjectTypes == PhysicObjectTypes.TRIANGLEMESHOBJECT)
@@ -130,8 +164,8 @@ namespace PloobsEngine.Physics
             }
             else if (obj.PhysicObjectTypes == PhysicObjectTypes.DETECTOROBJECT)
             {
-                //DetectorVolumeObject m = (DetectorVolumeObject)obj;
-                //space.Remove(m.DetectorVolume);
+                DetectorVolumeObject m = (DetectorVolumeObject)obj;
+                space.Remove(m.DetectorVolume);
             }
             else if (obj.PhysicObjectTypes == PhysicObjectTypes.TERRAIN)
             {
@@ -174,12 +208,24 @@ namespace PloobsEngine.Physics
          
         }
 
+        /// <summary>
+        /// Draw the physic world in debug mode.
+        /// </summary>
+        /// <param name="gt">The gt.</param>
+        /// <param name="cam">The cam.</param>
         protected override void DebugDrawn(GameTime gt, ICamera cam)
         {           
             
         }
 
 
+        /// <summary>
+        /// Raycast
+        /// </summary>
+        /// <param name="raio">The raio.</param>
+        /// <param name="filter"></param>
+        /// <param name="maxDistance">The max distance.</param>
+        /// <returns></returns>
         public override SegmentInterceptInfo SegmentIntersect(Ray raio, Func<IPhysicObject,bool> filter , float maxDistance)
         {
             RayCastResult result;
@@ -193,8 +239,13 @@ namespace PloobsEngine.Physics
                 return resp;
             }                       
             return null;            
-        }        
+        }
 
+        /// <summary>
+        /// Recovers from broad phase entry.
+        /// </summary>
+        /// <param name="entry">The entry.</param>
+        /// <returns></returns>
         internal static IPhysicObject RecoverFromBroadPhaseEntry(BroadPhaseEntry entry)
         {
             IPhysicObject phyObj = null;
@@ -206,6 +257,11 @@ namespace PloobsEngine.Physics
             return phyObj;
         }
 
+        /// <summary>
+        /// Recovers from collidable.
+        /// </summary>
+        /// <param name="entry">The entry.</param>
+        /// <returns></returns>
         internal static IPhysicObject RecoverFromCollidable(Collidable entry)
         {
                 IPhysicObject phyObj = null;
@@ -228,6 +284,13 @@ namespace PloobsEngine.Physics
 	        }                     
         }
 
+        /// <summary>
+        /// Gets the physics objects in range.
+        /// </summary>
+        /// <param name="po">The po.</param>
+        /// <param name="distance">The distance.</param>
+        /// <param name="condition">The condition.</param>
+        /// <param name="resp">The resp.</param>
         public override void GetPhysicsObjectsInRange(IPhysicObject po, float distance, CullerConditionAvaliator<IPhysicObject, IObject> condition,List<IPhysicObject> resp)
         {
             resp.Clear();
@@ -244,8 +307,14 @@ namespace PloobsEngine.Physics
                         }
                     }                
             }
-        }        
+        }
 
+        /// <summary>
+        /// Gets the Iobjects in range.
+        /// </summary>
+        /// <param name="frustrum">The frustrum.</param>
+        /// <param name="condition">The condition.</param>
+        /// <param name="resp">The resp.</param>
         public void GetIObjectsInRange(BoundingFrustum frustrum, CullerConditionAvaliator<IPhysicObject, IObject> condition,List<IObject> resp)
         {
             resp.Clear();
@@ -262,14 +331,22 @@ namespace PloobsEngine.Physics
                         }
                     }                
             }            
-        }        
-        
+        }
 
+
+        /// <summary>
+        /// Gets the physic objects.
+        /// </summary>
         public override List<IPhysicObject> PhysicObjects
         {
             get { return objs; }
         }
 
+        /// <summary>
+        /// Gets the object data.
+        /// </summary>
+        /// <param name="info">The info.</param>
+        /// <param name="context">The context.</param>
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
         {
             ActiveLogger.LogMessage("Serialization not implemented yet", LogLevel.RecoverableError);

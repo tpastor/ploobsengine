@@ -95,6 +95,9 @@ namespace PloobsEngine.SceneControl
 
         private GraphicInfo graphicInfo;
 
+        /// <summary>
+        /// Gets the graphic info.
+        /// </summary>
         public GraphicInfo GraphicInfo
         {
             get { return graphicInfo; }
@@ -102,6 +105,9 @@ namespace PloobsEngine.SceneControl
         }
         private GraphicFactory graphicFactory;
 
+        /// <summary>
+        /// Gets the graphic factory.
+        /// </summary>
         public GraphicFactory GraphicFactory
         {
             get { return graphicFactory; }
@@ -121,22 +127,22 @@ namespace PloobsEngine.SceneControl
         /// Init Screen
         /// </summary>
         /// <param name="GraphicInfo">The graphic info.</param>
-        /// <param name="contentManager">The content manager.</param>
-        protected virtual void InitScreen(GraphicInfo GraphicInfo, IContentManager contentManager) { }
-        internal void iInitScreen(GraphicInfo GraphicInfo, IContentManager contentManager)
+        /// <param name="engine">The engine.</param>
+        protected virtual void InitScreen(GraphicInfo GraphicInfo, EngineStuff engine) { }
+        internal void iInitScreen(GraphicInfo GraphicInfo, EngineStuff engine)
         {
-            InitScreen(GraphicInfo, contentManager);
+            InitScreen(GraphicInfo, engine);
         }
-        
 
-        internal void iAfterLoadContent()
+
+        internal void iAfterLoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
         {
-            AfterLoadContent();
+            AfterLoadContent(manager,ginfo,factory);
         }
         /// <summary>
         /// Called after all the screens LoadContent is called
         /// </summary>
-        protected virtual void AfterLoadContent() { }
+        protected virtual void AfterLoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory) { }
 
         
         internal void iUpdate(GameTime gameTime)
@@ -165,15 +171,19 @@ namespace PloobsEngine.SceneControl
         protected abstract void Draw(GameTime gameTime, RenderHelper render);
 
 
-        internal void RemoveThisScreen()
+        internal void RemoveThisScreen(EngineStuff engine)
         {
-            CleanUp();
+            CleanUp(engine);
         }        
         /// <summary>
         /// Cleans up resources that dont are exclusive of the screen        
         /// </summary>
-        protected virtual void CleanUp()
+        protected virtual void CleanUp(EngineStuff engine)
         {
+            foreach (var item in updateables)
+            {
+                item.iCleanUp();
+            }
         }        
 
     }

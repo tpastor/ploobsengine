@@ -28,16 +28,7 @@ namespace PloobsEngine
         {
             this.owner = owner;
             EntityMapper.getInstance().AddEntity(this);
-        }
-
-        /// <summary>
-        /// Releases unmanaged resources and performs other cleanup operations before the
-        /// <see cref="IScreenUpdateable"/> is reclaimed by garbage collection.
-        /// </summary>
-        ~IScreenUpdateable()
-        {
-            EntityMapper.getInstance().RemoveEntity(this);
-        }
+        }        
 
         /// <summary>
         /// Starts this instance.
@@ -78,6 +69,19 @@ namespace PloobsEngine
         {
             return this.id;
         }
+
+        /// <summary>
+        /// Cleans up.
+        /// </summary>
+        protected virtual void CleanUp() 
+        {
+            EntityMapper.getInstance().RemoveEntity(this);
+        }
+        internal void iCleanUp()
+        {
+            CleanUp();
+        }
+        
 
         /// <summary>
         /// sets the id

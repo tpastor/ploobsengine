@@ -21,7 +21,7 @@ namespace EngineTestes
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
 
             ForwardRenderTecnichDescription desc = new ForwardRenderTecnichDescription(Color.CornflowerBlue);
-            renderTech = new IRenderTechnic[] { new ForwardRenderTecnich(ref desc) };
+            renderTech = new IRenderTechnic[] { new ForwardRenderTecnich(desc) };
         }
 
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory ,IContentManager contentManager)
@@ -35,8 +35,7 @@ namespace EngineTestes
             IObject obj = new IObject(fmaterial,simpleModel,tmesh);
             this.World.AddObject(obj); 
 
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo.Viewport));                  
-            
+            this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo.Viewport));                              
         }
 
     }

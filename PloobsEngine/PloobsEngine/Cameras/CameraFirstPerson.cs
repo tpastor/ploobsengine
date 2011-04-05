@@ -57,7 +57,7 @@ namespace PloobsEngine.Cameras
 
         #region Fields
 
-
+        private Matrix viewProjection;
         private Vector3 _position = Vector3.Right;
         private bool useMouse = true;
         private Vector3 _target = Vector3.Zero;
@@ -259,6 +259,7 @@ namespace PloobsEngine.Cameras
         protected override void Update(Microsoft.Xna.Framework.GameTime gt)
         {
              UpdateCamera(Mouse.GetState(),Keyboard.GetState());
+             viewProjection = View * Projection;
         }
         
         private void UpdateCamera(MouseState currentMouseState, KeyboardState keyState)
@@ -323,6 +324,10 @@ namespace PloobsEngine.Cameras
             set { leftrightRot = value; }
         }
 
+        public override Matrix ViewProjection
+        {
+            get { return viewProjection; }
+        }
 
         public override Vector3 Target
         {

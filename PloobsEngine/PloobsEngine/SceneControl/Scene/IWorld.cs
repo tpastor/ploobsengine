@@ -269,7 +269,11 @@ namespace PloobsEngine.SceneControl
                 ActiveLogger.LogMessage("Trigger with no Name", LogLevel.Warning);
             }
 
-            Triggers.Add(trigger);
+            Triggers.Add(trigger);            
+
+            if (trigger.GhostObject != null)
+                PhysicWorld.AddObject(trigger.GhostObject);
+
         }
         /// <summary>
         /// Removes the trigger.
@@ -287,6 +291,9 @@ namespace PloobsEngine.SceneControl
             {
                 ActiveLogger.LogMessage("Trigger not found: " + trigger.Name, LogLevel.Warning);
             }
+
+            if (trigger.GhostObject != null)
+                PhysicWorld.RemoveObject(trigger.GhostObject);
         }
         /// <summary>
         /// Gets or sets the physic world.

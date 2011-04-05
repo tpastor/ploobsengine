@@ -25,16 +25,21 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         /// <param name="GraphicInfo">The graphic info.</param>
         /// <param name="factory">The factory.</param>
-        public ScreenManager(ref GraphicInfo GraphicInfo, GraphicFactory factory,IContentManager contentManager, RenderHelper render)
+        /// <param name="contentManager">The content manager.</param>
+        /// <param name="render">The render.</param>
+        /// <param name="engine">The engine.</param>
+        internal ScreenManager(ref GraphicInfo GraphicInfo, GraphicFactory factory,IContentManager contentManager, RenderHelper render,EngineStuff engine)
         {
             this.GraphicInfo = GraphicInfo;
             this.GraphicFactory = factory;
             this.contentManager = contentManager;
             this.render = render;
+            this.engine = engine;
         }
         
         #region Fields
 
+        EngineStuff engine;
         List<IScreen> screens = new List<IScreen>();
         List<IScreen> screensToUpdate = new List<IScreen>();
         internal GraphicInfo GraphicInfo;
@@ -106,9 +111,9 @@ namespace PloobsEngine.SceneControl
             screen.GraphicInfo = GraphicInfo;
 
 
-            screen.iInitScreen(GraphicInfo, contentManager);
+            screen.iInitScreen(GraphicInfo,engine);
             screen.iLoadContent(GraphicInfo,GraphicFactory,contentManager);
-            screen.iAfterLoadContent();        
+            screen.iAfterLoadContent(contentManager, GraphicInfo, GraphicFactory);        
 
             screens.Add(screen);
         }
@@ -127,7 +132,7 @@ namespace PloobsEngine.SceneControl
                 ActiveLogger.LogMessage("cant remove null screen", LogLevel.RecoverableError);                
             }
 
-            screen.RemoveThisScreen();
+            screen.RemoveThisScreen(engine);
             screens.Remove(screen);
             screensToUpdate.Remove(screen);
         }

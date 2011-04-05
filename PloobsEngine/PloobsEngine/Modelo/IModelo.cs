@@ -23,7 +23,15 @@ namespace PloobsEngine.Modelo
     public abstract class IModelo 
     {
         public IModelo(IContentManager contentManager, String modelName, String diffuseTextureName = null, String bumpTextureName = null, String specularTextureName = null, String glowTextureName = null)
+            : this(false,contentManager,modelName,diffuseTextureName,bumpTextureName,specularTextureName,glowTextureName)
         {
+                        
+        }
+
+        public IModelo(bool isinternal, IContentManager contentManager, String modelName, String diffuseTextureName = null, String bumpTextureName = null, String specularTextureName = null, String glowTextureName = null)
+        {
+            this.isInternal = isinternal;
+
             if (String.IsNullOrEmpty(modelName))
             {
                 ActiveLogger.LogMessage("ModelName Cannot Be null", LogLevel.FatalError);
@@ -46,6 +54,7 @@ namespace PloobsEngine.Modelo
             LoadModelo(contentManager);
         }
 
+        internal bool isInternal = false;            
         protected const string CUSTOM = "CUSTOM";
         String    modelName = null;
         protected string _paralaxName = null;
@@ -152,23 +161,23 @@ namespace PloobsEngine.Modelo
             this.contentManager = cmanager;
             if (!String.IsNullOrEmpty(_diffuseName) && _diffuseName != CUSTOM)
             {
-                this.diffuse = cmanager.GetAsset<Texture2D>(_diffuseName);
+                this.diffuse = cmanager.GetAsset<Texture2D>(_diffuseName, isInternal);
             }
             if (!String.IsNullOrEmpty(_bumpName) && _bumpName != CUSTOM)
             {
-                this.bump = cmanager.GetAsset<Texture2D>(_bumpName);
+                this.bump = cmanager.GetAsset<Texture2D>(_bumpName, isInternal);
             }
             if (!String.IsNullOrEmpty(_specularName) && _specularName != CUSTOM)
             {
-                this.specular = cmanager.GetAsset<Texture2D>(_specularName);
+                this.specular = cmanager.GetAsset<Texture2D>(_specularName, isInternal);
             }
             if (!String.IsNullOrEmpty(_glowName) && _glowName != CUSTOM)
             {
-                this.glow = cmanager.GetAsset<Texture2D>(_glowName);
+                this.glow = cmanager.GetAsset<Texture2D>(_glowName, isInternal);
             }
             if (!String.IsNullOrEmpty(_paralaxName) && _paralaxName != CUSTOM)
             {
-                this.paralax = cmanager.GetAsset<Texture2D>(_paralaxName);
+                this.paralax = cmanager.GetAsset<Texture2D>(_paralaxName, isInternal);
             }
 
             if(BatchInformations == null)

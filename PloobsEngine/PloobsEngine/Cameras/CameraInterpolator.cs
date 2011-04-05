@@ -210,7 +210,6 @@ namespace PloobsEngine.Cameras
     }
 
 
-
     internal class CameraInterpolator: ICamera
     {
         public delegate void InterpolationFinished(ICamera start, ICamera end);
@@ -391,6 +390,11 @@ namespace PloobsEngine.Cameras
         public override Matrix Projection
         {
             get { return _projection; }
+        }
+
+        public override Matrix ViewProjection
+        {
+            get { return View * Projection; }
         }
 
         public override BoundingFrustum BoundingFrustum

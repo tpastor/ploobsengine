@@ -16,12 +16,18 @@ namespace PloobsEngine.Modelo
 
         }
 
+        internal SimpleModel(IContentManager contentManager,String modelName, bool isInternal,String diffuseTextureName = null)
+            : base(isInternal,contentManager, modelName, diffuseTextureName, null, null, null)
+        {
+        }
+
+        
         private Model model;        
         private float modelRadius;
 
         protected override void LoadBatchInfo(SceneControl.IContentManager cmanager, out BatchInformation[][] BatchInformations)
         {
-            model = cmanager.GetAsset<Model>(this.Name);
+            model = cmanager.GetAsset<Model>(this.Name, isInternal);
             ModelBuilderHelper.Extract(model, out BatchInformations);
 
             if (diffuse == null)            

@@ -7,6 +7,7 @@ using PloobsEngine.Engine.Logger;
 using Microsoft.Xna.Framework.Graphics;
 using PloobsEngine.SceneControl;
 using PloobsEngine.Components;
+using PloobsEngine.Commands;
 
 namespace PloobsEngine.Engine
 {
@@ -25,6 +26,10 @@ namespace PloobsEngine.Engine
     /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
     public delegate void OnExit(object sender, EventArgs e);
 
+    /// <summary>
+    /// Delegate resposible to load the first screen
+    /// </summary>
+    /// <param name="ScreenManager">The screen manager.</param>
     public delegate void LoadScreen(ScreenManager ScreenManager);
 
     /// <summary>
@@ -32,6 +37,26 @@ namespace PloobsEngine.Engine
     /// </summary>
     public struct InitialEngineDescription
     {
+        /// <summary>
+        /// Defaults this instance.
+        /// </summary>
+        /// <returns></returns>
+        public static InitialEngineDescription Default()
+        {
+            return new InitialEngineDescription(800,600,false,GraphicsProfile.HiDef,false,false,true,null);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InitialEngineDescription"/> struct.
+        /// </summary>
+        /// <param name="BackBufferWidth">Width of the back buffer.</param>
+        /// <param name="BackBufferHeight">Height of the back buffer.</param>
+        /// <param name="isFullScreen">if set to <c>true</c> [is full screen].</param>
+        /// <param name="graphicsProfile">The graphics profile.</param>
+        /// <param name="useVerticalSyncronization">if set to <c>true</c> [use vertical syncronization].</param>
+        /// <param name="isMultiSampling">if set to <c>true</c> [is multi sampling].</param>
+        /// <param name="isFixedGameTime">if set to <c>true</c> [is fixed game time].</param>
+        /// <param name="logger">The logger.</param>
         public InitialEngineDescription(int BackBufferWidth = 800, int BackBufferHeight = 600, bool isFullScreen = false, GraphicsProfile graphicsProfile = GraphicsProfile.HiDef, bool useVerticalSyncronization = false, bool isMultiSampling = false,bool isFixedGameTime = false, ILogger logger = null)
         {
             this.UseVerticalSyncronization = useVerticalSyncronization;
@@ -231,6 +256,9 @@ namespace PloobsEngine.Engine
         }
 
 
+        /// <summary>
+        /// Load the content
+        /// </summary>
         protected override void LoadContent()
         {
             base.LoadContent();
@@ -243,11 +271,15 @@ namespace PloobsEngine.Engine
             contentManager = new EngineContentManager(this);
             GraphicInfo = new GraphicInfo(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel,GraphicsDevice);
             GraphicFactory = new Engine.GraphicFactory(GraphicInfo, GraphicsDevice, contentManager);
-            render = new RenderHelper(GraphicsDevice);
-
-            ComponentManager = new ComponentManager(ref GraphicInfo);            
+            ComponentManager = new ComponentManager(ref GraphicInfo);
             ComponentManager.LoadContent(ref GraphicInfo);            
-            ScreenManager = new ScreenManager(ref GraphicInfo, GraphicFactory, contentManager,render);            
+            render = new RenderHelper(GraphicsDevice, ComponentManager,contentManager);
+            render.PushBlendState(BlendState.Opaque);
+            render.PushDepthState(DepthStencilState.Default);
+            render.PushRasterizerState(RasterizerState.CullCounterClockwise);
+            render.PushRenderTarget(null);
+            
+            ScreenManager = new ScreenManager(ref GraphicInfo, GraphicFactory, contentManager,render,this);            
 
             LoadScreen(ScreenManager);
             if (ScreenManager.GetScreens().Count() == 0)
@@ -256,23 +288,91 @@ namespace PloobsEngine.Engine
                 System.Diagnostics.Debug.Assert(ScreenManager.GetScreens().Count() != 0);
                 Exit();
             }
-            
-            
         }
 
+        /// <summary>
+        /// Adds the component.
+        /// </summary>
+        /// <param name="component">The component.</param>
+        public void AddComponent(IComponent component)
+        {
+            if (component == null)
+                ActiveLogger.LogMessage("Cant add null Component", LogLevel.RecoverableError);
+
+            bool resp = ComponentManager.AddComponent(component);
+            if(!resp)
+                ActiveLogger.LogMessage("Component already added ", LogLevel.Warning);
+        }
+
+        /// <summary>
+        /// Removes the component by name
+        /// </summary>
+        /// <param name="componentName">Name of the component.</param>
+        public void RemoveComponent(String componentName)
+        {
+            if (String.IsNullOrEmpty(componentName))
+                ActiveLogger.LogMessage("Bad Component name", LogLevel.RecoverableError);
+            bool resp = ComponentManager.RemoveComponent(componentName);
+            if (!resp)
+                ActiveLogger.LogMessage("Component already Removed", LogLevel.Warning);
+        }
+
+        /// <summary>
+        /// Gets the component by name.
+        /// </summary>
+        /// <param name="componentName">Name of the component.</param>
+        /// <returns></returns>
+        public IComponent GetComponent(String componentName)
+        {
+            if (String.IsNullOrEmpty(componentName))
+                ActiveLogger.LogMessage("Bad Component name", LogLevel.RecoverableError);
+            IComponent comp = ComponentManager.GetComponent(componentName);
+            if(comp == null)
+                ActiveLogger.LogMessage("Component not found " + componentName, LogLevel.RecoverableError);
+            return comp;
+        }
+
+        /// <summary>
+        /// Determines whether the specified component name exist.
+        /// </summary>
+        /// <param name="componentName">Name of the component.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified component name has component; otherwise, <c>false</c>.
+        /// </returns>
+        public bool HasComponent(String componentName)
+        {
+            if (String.IsNullOrEmpty(componentName))
+                ActiveLogger.LogMessage("Bad Component name", LogLevel.RecoverableError);
+            return ComponentManager.HasComponent(componentName);
+        }
+
+        /// <summary>
+        /// This is used to display an error message if there is no suitable graphics device or sound card.
+        /// </summary>
+        /// <param name="exception">The exception to display.</param>
+        /// <returns></returns>
         protected override bool ShowMissingRequirementMessage(Exception exception)
         {
             ActiveLogger.LogMessage(exception.Message, LogLevel.FatalError);
             return base.ShowMissingRequirementMessage(exception);
-        }        
+        }
 
+        /// <summary>
+        /// Reference page contains links to related conceptual articles.
+        /// </summary>
+        /// <param name="gameTime">Time passed since the last call to Update.</param>
         protected override void Update(GameTime gameTime)
         {            
             ComponentManager.Update(gameTime);
-            ScreenManager.Update(gameTime);            
+            ScreenManager.Update(gameTime);
+            CommandProcessor.getCommandProcessor().ProcessCommands();
             base.Update(gameTime);
         }
 
+        /// <summary>
+        /// Reference page contains code sample.
+        /// </summary>
+        /// <param name="gameTime">Time passed since the last call to Draw.</param>
         protected override void Draw(GameTime gameTime)
         {            
             ScreenManager.Draw(gameTime);

@@ -88,6 +88,10 @@ namespace PloobsEngine.Cameras
         /// </summary>
         public abstract Matrix Projection { get; }
         /// <summary>
+        /// Gets the view projection.
+        /// </summary>
+        public abstract Matrix ViewProjection { get; }
+        /// <summary>
         /// Gets the bounding frustum.
         /// </summary>
         public abstract BoundingFrustum BoundingFrustum { get; }        

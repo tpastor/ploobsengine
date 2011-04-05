@@ -24,7 +24,8 @@ namespace PloobsEngine.SceneControl
             cmanagerExternal = game.Content;
         }
 
-        private static IDictionary<String, object> _modelDic = new Dictionary<String, object>();         
+        private static IDictionary<String, object> _modelDicInt = new Dictionary<String, object>();
+        private static IDictionary<String, object> _modelDicExt = new Dictionary<String, object>();         
 
         #region IContentManager Members
 
@@ -33,13 +34,13 @@ namespace PloobsEngine.SceneControl
             if (isInternal)
             {
                 T t = cmanagerInternal.Load<T>(path);
-                _modelDic.Add(path, t);
+                _modelDicInt.Add(path, t);
                 return t;
             }
             else
             {
                 T t = cmanagerExternal.Load<T>(path);
-                _modelDic.Add(path, t);
+                _modelDicExt.Add(path, t);
                 return t;
             }
         }
@@ -48,25 +49,38 @@ namespace PloobsEngine.SceneControl
 
         #region IContentManager Members
 
-        public T GetAsset<T>(string fileName)
-        {            
-
-            if (_modelDic.ContainsKey(fileName))
+        public T GetAsset<T>(string fileName, bool isInternal = false)
+        {
+            if (isInternal)
             {
-                return (T) _modelDic[fileName];
+                if (_modelDicInt.ContainsKey(fileName))
+                {
+                    return (T)_modelDicInt[fileName];
+                }
+                else
+                {
+                    return LoadAsset<T>(fileName, isInternal);
+                }
             }
             else
             {
-                return LoadAsset<T>(fileName);
+                if (_modelDicExt.ContainsKey(fileName))
+                {
+                    return (T)_modelDicExt[fileName];
+                }
+                else
+                {
+                    return LoadAsset<T>(fileName, isInternal);
+                }
             }
 
         }
 
         public ModelMesh GetModelParts(string fileName, int indexInModel)
         {
-            if (_modelDic.ContainsKey(fileName))
+            if (_modelDicExt.ContainsKey(fileName))
             {
-                Model m = (Model)_modelDic[fileName];
+                Model m = (Model)_modelDicExt[fileName];
                 return m.Meshes[indexInModel];
             }
             else
@@ -100,9 +114,9 @@ namespace PloobsEngine.SceneControl
 
         public Matrix[] GetTransformationMatrix(string fileName)
         {
-            if (_modelDic.ContainsKey(fileName))
+            if (_modelDicExt.ContainsKey(fileName))
             {
-                Model m = (Model)_modelDic[fileName];
+                Model m = (Model)_modelDicExt[fileName];
                 Matrix[] m2 = new Matrix[m.Bones.Count];
                 m.CopyAbsoluteBoneTransformsTo(m2);
                 return m2;                

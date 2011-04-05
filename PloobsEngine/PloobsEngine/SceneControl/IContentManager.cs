@@ -18,7 +18,7 @@ namespace PloobsEngine.SceneControl
         /// <typeparam name="T"></typeparam>
         /// <param name="fileName">Name of the file.</param>
         /// <returns></returns>
-        T GetAsset<T>(String fileName);                
+        T GetAsset<T>(String fileName, bool isInternal = false);                
     }
     
 }

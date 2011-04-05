@@ -18,7 +18,7 @@ namespace PloobsEngine.SceneControl
 
     public class ForwardRenderTecnich : IRenderTechnic
     {
-        public ForwardRenderTecnich(ref ForwardRenderTecnichDescription desc)
+        public ForwardRenderTecnich(ForwardRenderTecnichDescription desc)
         {
             this.desc = desc;
         }

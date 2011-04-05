@@ -53,8 +53,7 @@ namespace PloobsEngine.SceneControl
             this.PhysicObject = PhysicObject;
             Scale = Vector3.One;
             Rotation = Matrix.Identity;
-            Position = Vector3.Zero;
-            WorldMatrix = Matrix.Identity;
+            Position = Vector3.Zero;            
             IObjectAtachtment = new List<IObjectAtachtment>();
             Name = null;
         }
@@ -63,6 +62,7 @@ namespace PloobsEngine.SceneControl
         private IPhysicObject physicObject;
         private IModelo modelo;
         private IMaterial material;
+        private Matrix worldMatrix;
              
 
         /// <summary>
@@ -148,6 +148,7 @@ namespace PloobsEngine.SceneControl
         internal void iUpdateObject(GameTime gt, ICamera cam, IList<ILight> luzes)
         {
             UpdateObject(gt, cam, luzes);
+            worldMatrix = physicObject.WorldMatrix;
 
             if (lastFrameWorld != WorldMatrix)
             {
@@ -170,7 +171,16 @@ namespace PloobsEngine.SceneControl
         /// <summary>
         /// Gets the world matrix.
         /// </summary>
-        public virtual Matrix WorldMatrix { get; protected set; }
+        public virtual Matrix WorldMatrix {
+            get
+            {
+                return worldMatrix;
+            }
+            protected set
+            {
+                ActiveLogger.LogMessage("Operation not supported YET", LogLevel.RecoverableError);
+            }
+        }
         /// <summary>
         /// Gets or sets the position.
         /// </summary>
