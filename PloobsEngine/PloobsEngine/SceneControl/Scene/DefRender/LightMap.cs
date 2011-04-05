@@ -65,8 +65,8 @@ namespace PloobsEngine.SceneControl
 
                     PointLight pl = item as PointLight;
                     Matrix sphereWorldMatrix = Matrix.CreateScale(pl.LightRadius) * Matrix.CreateTranslation(pl.LightPosition);
-                    
-                    //if (cullPointLight == false || camera.BoundingFrustum.Contains(new BoundingSphere(sphereWorldMatrix.Translation, sphereModel.GetModelRadius()) ) != ContainmentType.Disjoint)
+
+                    if (cullPointLight == false || camera.BoundingFrustum.Contains(new BoundingSphere(pl.LightPosition, sphereModel.GetModelRadius() * pl.LightRadius)) != ContainmentType.Disjoint)
                     {
                         pointLightEffect.Parameters["World"].SetValue(sphereWorldMatrix);
                         pointLightEffect.Parameters["lightPosition"].SetValue(pl.LightPosition);
