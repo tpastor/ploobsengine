@@ -93,8 +93,9 @@
     <Reference Include="mscorlib">
       <Private>False</Private>
     </Reference>
-    <Reference Include="PloobsEngine">
-      <HintPath>..\..\..\port\PloobsEngine\PloobsEngine\bin\x86\Debug\PloobsEngine.dll</HintPath>
+    <Reference Include="PloobsEngine, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\PloobsEngine\PloobsEngine\bin\x86\Debug\PloobsEngine.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Private>False</Private>
@@ -118,6 +119,12 @@
     <Compile Include="Demo1 - BasicScreen\BasicScreenDeferredDemo.cs" />
     <Compile Include="Demo1 - BasicScreen\BasicScreenForwardDemo.cs" />
     <Compile Include="Demo2 - Input\KeyboardInputScreen.cs" />
+    <Compile Include="Demo3 - Lights\Helpers\PointLightCircularUpdater.cs" />
+    <Compile Include="Demo3 - Lights\Helpers\SpotLightCircularUpdater.cs" />
+    <Compile Include="Demo3 - Lights\Helpers\UnitLightInterpolator.cs" />
+    <Compile Include="Demo3 - Lights\LightInterpolationScreen.cs" />
+    <Compile Include="Demo3 - Lights\PointLightScreen.cs" />
+    <Compile Include="Demo3 - Lights\SpotLightScreen.cs" />
     <Compile Include="Demos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />

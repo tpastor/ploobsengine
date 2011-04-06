@@ -9,11 +9,13 @@ using PloobsEngine.Modelo;
 using PloobsEngine.SceneControl;
 using PloobsEngine.Cameras;
 using PloobsEngine.Modelo.Animation;
+using PloobsEngine.Engine.Logger;
+using PloobsEngine.Light;
 
 namespace PloobsEngine.Material
 {
     /// <summary>
-    /// Most Basic Shader
+    /// Most Basic Deferred Shader
     /// </summary>
     public class NormalDeferred : IShader
     {
@@ -30,6 +32,16 @@ namespace PloobsEngine.Material
         /// </summary>
         public NormalDeferred(float specularIntensity = 0, float specularPower = 0)
         {
+            if (specularPower < 0)
+            {
+                ActiveLogger.LogMessage("specularPower cannot be negative, setting to 0", LogLevel.RecoverableError);
+                specularPower = 0;
+            }
+            if (specularIntensity < 0)
+            {
+                ActiveLogger.LogMessage("specularIntensity cannot be negative, setting to 0", LogLevel.RecoverableError);
+                specularIntensity = 0;
+            }
             this.specularIntensity = specularIntensity;
             this.specularPower = specularPower;
         }
@@ -60,7 +72,14 @@ namespace PloobsEngine.Material
             set { specularPower = value; }
         }
 
-        public override void  Draw(GameTime gt, IObject obj, RenderHelper render, ICamera camera)
+        /// <summary>
+        /// Draw.
+        /// </summary>
+        /// <param name="gt">The gt.</param>
+        /// <param name="obj">The obj.</param>
+        /// <param name="render">The render.</param>
+        /// <param name="camera">The camera.</param>
+        public override void Draw(GameTime gt, IObject obj, RenderHelper render, ICamera camera, IList<ILight> lights)
         {            
                 IModelo modelo = obj.Modelo;           
                 IdParameter.SetValue(shaderId);
@@ -80,6 +99,12 @@ namespace PloobsEngine.Material
                 }
         }
 
+        /// <summary>
+        /// Initializes this instance.
+        /// </summary>
+        /// <param name="ginfo"></param>
+        /// <param name="factory"></param>
+        /// <param name="obj"></param>
         public override void Initialize(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, IObject obj)
         {                     
             this._shader = factory.CreateEffect("RenderGBuffer",true);            

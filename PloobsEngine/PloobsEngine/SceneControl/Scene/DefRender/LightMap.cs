@@ -9,6 +9,7 @@ using PloobsEngine.Light;
 using PloobsEngine.Cameras;
 using PloobsEngine.Modelo;
 using PloobsEngine.Engine;
+using PloobsEngine.Engine.Logger;
 
 namespace PloobsEngine.SceneControl
 {
@@ -36,7 +37,7 @@ namespace PloobsEngine.SceneControl
             {
                 if (item.LightType == LightType.Deferred_Directional)
                 {
-                    PloobsEngine.Light.DirectionalLight dl = item as PloobsEngine.Light.DirectionalLight;
+                    PloobsEngine.Light.DirectionalLightPE dl = item as PloobsEngine.Light.DirectionalLightPE;
 
                     directionalLightEffect.Parameters["lightDirection"].SetValue(dl.LightDirection);
                     directionalLightEffect.Parameters["Color"].SetValue(dl.Color.ToVector3());
@@ -56,14 +57,14 @@ namespace PloobsEngine.SceneControl
             pointLightEffect.Parameters["Projection"].SetValue(camera.Projection);
             pointLightEffect.Parameters["View"].SetValue(camera.View);
             pointLightEffect.Parameters["cameraPosition"].SetValue(camera.Position);
-            pointLightEffect.Parameters["InvertViewProjection"].SetValue(Matrix.Invert(camera.View * camera.Projection));            
+            pointLightEffect.Parameters["InvertViewProjection"].SetValue(Matrix.Invert(camera.ViewProjection));            
 
             foreach (ILight item in lights)
             {
                 if (item.LightType == LightType.Deferred_Point)
                 {
 
-                    PointLight pl = item as PointLight;
+                    PointLightPE pl = item as PointLightPE;
                     Matrix sphereWorldMatrix = Matrix.CreateScale(pl.LightRadius) * Matrix.CreateTranslation(pl.LightPosition);
 
                     if (cullPointLight == false || camera.BoundingFrustum.Contains(new BoundingSphere(pl.LightPosition, sphereModel.GetModelRadius() * pl.LightRadius)) != ContainmentType.Disjoint)
@@ -93,6 +94,7 @@ namespace PloobsEngine.SceneControl
         protected void DrawnSpotLight(ICamera camera, IList<ILight> lights, IDeferredGBuffer DeferredGBuffer,RenderHelper render)
         {
             render.PushRasterizerState(RasterizerState.CullNone);
+            render.PushDepthState(DepthStencilState.None);            
 
             spotLightEffect.Parameters["colorMap"].SetValue(DeferredGBuffer[GBufferTypes.COLOR]);
             spotLightEffect.Parameters["normalMap"].SetValue(DeferredGBuffer[GBufferTypes.NORMAL]);
@@ -107,7 +109,7 @@ namespace PloobsEngine.SceneControl
             {
                 if (item.LightType == LightType.Deferred_Spot)
                 {
-                    SpotLight sl = item as SpotLight;
+                    SpotLightPE sl = item as SpotLightPE;
                     spotLightEffect.Parameters["lightPosition"].SetValue(sl.Position);
                     spotLightEffect.Parameters["lightDirection"].SetValue(sl.Direction);
                     spotLightEffect.Parameters["lightRadius"].SetValue(sl.LightRadius);
@@ -120,6 +122,7 @@ namespace PloobsEngine.SceneControl
                 }
             }
 
+            render.PopDepthStencilState();
             render.PopRasterizerState();
         }       
 
@@ -136,15 +139,12 @@ namespace PloobsEngine.SceneControl
                     case DeferredLightMapType.LIGHTMAP:
                         return lightRT;
                     default:
+                        ActiveLogger.LogMessage("DeferredLightMapTypetype not present", LogLevel.FatalError);
                         throw new Exception("Type not present in this implementation");
                 }
                 
             
-            }
-            set
-            {
-                throw new Exception("Cant do this in this implementation");
-            }
+            }            
         }
 
         #endregion

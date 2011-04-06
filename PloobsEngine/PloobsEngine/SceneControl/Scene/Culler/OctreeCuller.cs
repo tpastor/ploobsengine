@@ -50,12 +50,12 @@ namespace PloobsEngine.SceneControl
         List<IObject> deferred = new List<IObject>();
         List<IObject> forward = new List<IObject>();
 
-        public override void StartFrame(ICamera cam)
+        public override void StartFrame(Matrix view, Matrix projection, BoundingFrustum frustrum)
         {
                 forward.Clear();
                 deferred.Clear();
                 List<IObject> obs = new List<IObject>();
-                oct.Draw(cam.View, cam.Projection, obs);
+                oct.Draw(view, projection, obs);
 
                 foreach (var item in obs)
                 {

@@ -16,6 +16,7 @@ namespace IntroductionDemo4._0
             desc.isFixedGameTime = true;            
             desc.Logger = new SimpleLogger();
             desc.UnhandledException_Handler = UnhandledException;
+
             using (EngineStuff engine = new EngineStuff(ref desc, LoadScreen))
             {
                 engine.Run();
@@ -27,7 +28,9 @@ namespace IntroductionDemo4._0
         {            
             //manager.AddScreen(new BasicScreenDeferredDemo());
             //manager.AddScreen(new BasicScreenForwardDemo());
-            manager.AddScreen(new KeyboardInputScreen());
+            //manager.AddScreen(new KeyboardInputScreen());
+            //manager.AddScreen(new PointLightScreen());
+            manager.AddScreen(new SpotLightScreen());
         }
 
         static void UnhandledException(object sender, UnhandledExceptionEventArgs e)

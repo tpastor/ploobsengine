@@ -21,17 +21,6 @@ namespace PloobsEngine.Material
     /// </summary>
     public abstract class IShader : ISerializable
     {
-
-        /// <summary>
-        /// List of the lights
-        /// </summary>
-        protected IList<ILight> lights;
-
-        /// <summary>
-        /// Object owned by this shader
-        /// </summary>
-        protected IObject obj;
-
         /// <summary>
         /// is fist time that this shader is updated
         /// </summary>
@@ -116,8 +105,7 @@ namespace PloobsEngine.Material
 
         /// <summary>
         /// Updates this shader
-        /// Called every frame once
-        /// This function MUST be called by all the subclasses        
+        /// Called every frame once        
         /// </summary>
         /// <param name="ent">The ent.</param>
         /// <param name="lights">The lights.</param>
@@ -127,11 +115,7 @@ namespace PloobsEngine.Material
             {             
                 PreUpdate(ent, lights);
                 firstTime = false;
-            }
-
-            this.obj = ent;
-            this.lights = lights;
-            
+            }            
         }
 
 
@@ -150,8 +134,7 @@ namespace PloobsEngine.Material
 
         /// <summary>
         /// Called after the draw phase.
-        /// In deferred its responsible for the Forward Pass
-        /// IF THE SHADER IS NOT SETTED TO BE FORWARD THIS WONT BE CALLED
+        /// In deferred its responsible for the Forward Pass, in forward its not called        
         /// </summary>
         /// <param name="modelo">The modelo.</param>
         /// <param name="render">The render.</param>
@@ -163,13 +146,12 @@ namespace PloobsEngine.Material
         }
 
         /// <summary>
-        /// Draws the specified modelo.
-        /// IF THE SHADER IS NOT DEFERRED THIS WONT BE CALLED
+        /// Draw
         /// </summary>
         /// <param name="modelo">The modelo.</param>
         /// <param name="render">The render.</param>
         /// <param name="cam">The cam.</param>
-        public virtual void Draw(GameTime gt , IObject obj, RenderHelper render, ICamera cam)
+        public virtual void Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<ILight> lights)
         {            
         }
 
@@ -178,6 +160,7 @@ namespace PloobsEngine.Material
         /// Called when Someone need to draw this object (NOT THE ENGINE)
         /// EX: Reflection effect need to draw all the scene in another point of view, he uses this function, not the normal
         /// draw
+        /// BY DEFAULT it call the DRAW, in deferred rendering you probably dont want this behavior
         /// </summary>
         /// <param name="gt">The gt.</param>
         /// <param name="obj">The obj.</param>
@@ -186,12 +169,9 @@ namespace PloobsEngine.Material
         /// <param name="render">The render.</param>
         public virtual void ExtraDraw(GameTime gt, IObject obj, ICamera cam, IList<ILight> lights, RenderHelper render)
         {
-
+            Draw(gt, obj, render, cam,lights);
         }
         
-
-
-
         #region ISerializable Members
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)

@@ -24,10 +24,11 @@ namespace PloobsEngine.SceneControl
         #region ICuller Members
         List<IObject> deferred = new List<IObject>();
         List<IObject> forward = new List<IObject>();
-        public override void StartFrame(ICamera cam)
+        public override void StartFrame(Matrix view, Matrix projection, BoundingFrustum frustrum)
         {
             forward.Clear();
-            deferred.Clear();            
+            deferred.Clear();
+            
             foreach (var item in world.Objects)
             {
                 if (item.Material.MaterialType == MaterialType.DEFERRED)
@@ -38,7 +39,7 @@ namespace PloobsEngine.SceneControl
                         continue;
                     }
 
-                    if (cam.BoundingFrustum.Contains(item.PhysicObject.BoundingBox) != Microsoft.Xna.Framework.ContainmentType.Disjoint)
+                    if (frustrum.Contains(item.PhysicObject.BoundingBox) != Microsoft.Xna.Framework.ContainmentType.Disjoint)
                     {
                         deferred.Add(item);
                     }

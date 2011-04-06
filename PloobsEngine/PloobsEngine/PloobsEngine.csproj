@@ -121,8 +121,13 @@
   <ItemGroup>
     <Compile Include="Audio\ISoundEmitter3D.cs" />
     <Compile Include="Cameras\CameraFirstPerson.cs" />
+    <Compile Include="Cameras\CameraFollowObject.cs" />
+    <Compile Include="Cameras\CameraFollowPath.cs" />
     <Compile Include="Cameras\CameraInterpolator.cs" />
     <Compile Include="Cameras\CameraManager.cs" />
+    <Compile Include="Cameras\CameraPathData.cs" />
+    <Compile Include="Cameras\CameraRecordPath.cs" />
+    <Compile Include="Cameras\CameraStatic.cs" />
     <Compile Include="Cameras\ICamera.cs" />
     <Compile Include="Commands\CommandProcessor.cs" />
     <Compile Include="Commands\ICommand.cs" />
@@ -137,12 +142,16 @@
     <Compile Include="Events\IHaveEventManager.cs" />
     <Compile Include="Events\SimpleEvent.cs" />
     <Compile Include="Light\Deferred\DeferredLight.cs" />
-    <Compile Include="Light\Deferred\DirectionalLight.cs" />
-    <Compile Include="Light\Deferred\PointLight.cs" />
-    <Compile Include="Light\Deferred\SpotLight.cs" />
+    <Compile Include="Light\Deferred\DirectionalLightPE.cs" />
+    <Compile Include="Light\Deferred\PointLightPE.cs" />
+    <Compile Include="Light\Deferred\SpotLightPE.cs" />
     <Compile Include="Material\DeferredMaterial.cs" />
     <Compile Include="Material\IShadder\DeferredShader\NormalDeferred.cs" />
+    <Compile Include="Physic\PhysicObjects\BepuObject\CapsuleObject.cs" />
+    <Compile Include="Physic\PhysicObjects\BepuObject\CylinderObject.cs" />
     <Compile Include="Physic\PhysicObjects\BepuObject\DetectorVolumeObject.cs" />
+    <Compile Include="Physic\PhysicObjects\BepuObject\GravitationFieldObject.cs" />
+    <Compile Include="Physic\PhysicObjects\BepuObject\ObjectMover.cs" />
     <Compile Include="SceneControl\Movie\MovieScreen.cs" />
     <Compile Include="SceneControl\Scene\DefRender\DeferredRenderTechnic.cs" />
     <Compile Include="SceneControl\Scene\DefRender\FinalCombination.cs" />

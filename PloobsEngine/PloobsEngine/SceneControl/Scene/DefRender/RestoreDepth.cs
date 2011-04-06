@@ -14,6 +14,7 @@ namespace PloobsEngine.SceneControl
     /// </summary>
     internal class RestoreDepth
     {
+        private bool usefloatBuffer;
         /// <summary>
         /// Initializes a new instance of the <see cref="RestoreDepth"/> class.
         /// </summary>
@@ -22,7 +23,8 @@ namespace PloobsEngine.SceneControl
         /// <param name="factory">The factory.</param>
         /// <param name="ginfo">The ginfo.</param>
         public RestoreDepth(bool useFloatBuffer,IContentManager manager,GraphicFactory factory, GraphicInfo ginfo)
-        {            
+        {
+            this.usefloatBuffer = useFloatBuffer;
             this.restore = manager.GetAsset<Effect>("RestoreDepth",true);
             this.restore.Parameters["halfPixel"].SetValue(ginfo.HalfPixel);                
             if (useFloatBuffer)
@@ -45,6 +47,14 @@ namespace PloobsEngine.SceneControl
             render.PushRenderTarget(target);                           
             restore.Parameters["DepthTexture"].SetValue(depth);                
             restore.Parameters["ColorTexture"].SetValue(combined);
+            if (usefloatBuffer)
+            {
+                render.SetSamplerState(SamplerState.PointClamp, 0);
+            }
+            else
+            {
+                render.SetSamplerState(SamplerState.AnisotropicClamp, 0);
+            }
             render.RenderFullScreenQuadVertexPixel(restore);
 
         }

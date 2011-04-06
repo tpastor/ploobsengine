@@ -13,9 +13,9 @@ namespace PloobsEngine.Cameras
     /// <summary>
     /// Specification of a camera
     /// </summary>
-    public abstract class ICamera : IEntity, ISerializable
+    public abstract class ICamera : ISerializable
     {
-        
+
         /// <summary>
         /// Gets a value indicating whether this <see cref="ICamera"/> has moved.
         /// </summary>
@@ -94,7 +94,7 @@ namespace PloobsEngine.Cameras
         /// <summary>
         /// Gets the bounding frustum.
         /// </summary>
-        public abstract BoundingFrustum BoundingFrustum { get; }        
+        public abstract BoundingFrustum BoundingFrustum { get; }
         /// <summary>
         /// Updates .
         /// </summary>
@@ -116,24 +116,10 @@ namespace PloobsEngine.Cameras
         #region ISerializable Members
 
         public abstract void GetObjectData(SerializationInfo info, StreamingContext context);
-        
-        #endregion
-        int id;
-        #region IEntity Members
-
-        public int GetId()
-        {
-            return id;
-        }
-
-        public void SetId(int id)
-        {
-            this.id = id;
-        }
 
         #endregion
+
     }
-
         
 }
 

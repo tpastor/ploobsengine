@@ -40,7 +40,7 @@ namespace PloobsEngine.SceneControl
         /// <param name="manager">The manager.</param>
         /// <param name="ginfo">The ginfo.</param>
         /// <param name="factory">The factory.</param>
-        void init(IContentManager manager, GraphicInfo ginfo, GraphicFactory factory);
+        void init(IContentManager manager, GraphicInfo ginfo, GraphicFactory factory,bool useFloatBuffer);
 
         /// <summary>
         /// Apply the post effect

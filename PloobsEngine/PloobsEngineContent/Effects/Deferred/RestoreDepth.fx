@@ -4,12 +4,7 @@ float2 halfPixel;
 
 sampler ColorSampler : register(s0) = sampler_state
 {
-    Texture = (ColorTexture);
-    MinFilter = POINT;
-    MagFilter = POINT;
-    MipFilter = POINT;
-    AddressU = CLAMP;
-    AddressV = CLAMP;
+    Texture = (ColorTexture);    
 };
 
 sampler DepthSampler : register(s1) = sampler_state

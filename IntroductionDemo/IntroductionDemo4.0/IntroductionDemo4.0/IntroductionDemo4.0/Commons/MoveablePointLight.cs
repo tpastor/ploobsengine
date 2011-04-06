@@ -9,7 +9,7 @@ using PloobsEngine.Physics;
 
 namespace IntroductionDemo4._0
 {
-    public class MoveablePointLight : PointLight
+    public class MoveablePointLight : PointLightPE
     {
 
         IPhysicObject ob;

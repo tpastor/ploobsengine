@@ -17,6 +17,7 @@ namespace PloobsEngine.SceneControl
         GraphicInfo ginfo;
         private Color ambientColor = Color.Black;
         private bool saveToTexture;
+        private bool useFloatBuffer;
 
         public Color AmbientColor
         {
@@ -64,12 +65,22 @@ namespace PloobsEngine.SceneControl
         public void DrawScene(GameTime gameTime, IWorld world, IDeferredGBuffer gbuffer, IDeferredLightMap lightmap, RenderHelper render)
         {
             render.PushDepthState(DepthStencilState.None);
+
+            if (useFloatBuffer)
+            {
+                render.SetSamplerState(SamplerState.PointClamp, 0);
+                finalCombineEffect.Parameters["halfPixel"].SetValue(ginfo.HalfPixel);
+            }
+            else
+            {
+                render.SetSamplerState(SamplerState.AnisotropicClamp, 0);
+                finalCombineEffect.Parameters["halfPixel"].SetValue(Vector2.Zero);
+            }
             
             finalCombineEffect.Parameters["EXTRA1"].SetValue(gbuffer[GBufferTypes.Extra1]);
             finalCombineEffect.Parameters["ambientColor"].SetValue(ambientColor.ToVector3());
             finalCombineEffect.Parameters["colorMap"].SetValue(gbuffer[GBufferTypes.COLOR]);
-            finalCombineEffect.Parameters["lightMap"].SetValue(lightmap[DeferredLightMapType.LIGHTMAP]);
-            finalCombineEffect.Parameters["halfPixel"].SetValue(ginfo.HalfPixel);
+            finalCombineEffect.Parameters["lightMap"].SetValue(lightmap[DeferredLightMapType.LIGHTMAP]);            
 
             render.RenderFullScreenQuadVertexPixel(finalCombineEffect);
 
@@ -89,6 +100,7 @@ namespace PloobsEngine.SceneControl
 
         public void LoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, bool useFloatBuffer, bool saveToTexture )
         {
+            this.useFloatBuffer = useFloatBuffer;
             this.ginfo = ginfo;
             this.saveToTexture = saveToTexture;
             finalCombineEffect = manager.GetAsset<Effect>("CombineFinal",true);

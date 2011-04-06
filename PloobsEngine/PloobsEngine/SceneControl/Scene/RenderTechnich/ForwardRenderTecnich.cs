@@ -31,7 +31,7 @@ namespace PloobsEngine.SceneControl
         {
             render.Clear(desc.BackGroundColor);
 
-            world.Culler.StartFrame(world.CameraManager.ActiveCamera);
+            world.Culler.StartFrame(world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection, world.CameraManager.ActiveCamera.BoundingFrustum);
             foreach (var item in world.Culler.GetNotCulledObjectsList(world.CameraManager.ActiveCamera, Material.MaterialType.FORWARD))
             {
                 ///critical code, no log

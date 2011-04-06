@@ -3,6 +3,12 @@ texture lightMap;
 texture EXTRA1;
 float3 ambientColor;
 
+sampler lightSampler = sampler_state
+{
+    Texture = (lightMap);
+};
+
+
 sampler extraSampler = sampler_state
 {
     Texture = (EXTRA1);
@@ -16,16 +22,6 @@ sampler extraSampler = sampler_state
 sampler colorSampler = sampler_state
 {
     Texture = (colorMap);
-    AddressU = CLAMP;
-    AddressV = CLAMP;
-    MagFilter = ANISOTROPIC;
-    MinFilter = ANISOTROPIC;
-    Mipfilter = LINEAR;
-};
-
-sampler lightSampler = sampler_state
-{
-    Texture = (lightMap);
     AddressU = CLAMP;
     AddressV = CLAMP;
     MagFilter = ANISOTROPIC;
@@ -50,7 +46,7 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 {
     VertexShaderOutput output;
     output.Position = float4(input.Position,1);
-    output.TexCoord = input.TexCoord;// - halfPixel;    
+    output.TexCoord = input.TexCoord - halfPixel;    
     return output;
 }
 

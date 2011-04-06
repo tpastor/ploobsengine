@@ -87,12 +87,12 @@ namespace PloobsEngine.Physics
             }
             else if (obj.PhysicObjectTypes == PhysicObjectTypes.SPECIALIZEDMOVER)
             {
-                //ObjectMover m = (ObjectMover)obj;
-                //space.Add(m.BepuEntityObject.Entity);
-                //m.BepuEntityObject.Entity.Tag = obj;
-                //space.Add(m.Mover);
-                //space.Add(m.Rotator);
-                //objs.Add(m.BepuEntityObject);
+                ObjectMover m = (ObjectMover)obj;
+                space.Add(m.BepuEntityObject.Entity);
+                m.BepuEntityObject.Entity.Tag = obj;
+                space.Add(m.Mover);
+                space.Add(m.Rotator);
+                objs.Add(m.BepuEntityObject);
             }
             else if (obj.PhysicObjectTypes == PhysicObjectTypes.TERRAIN)
             {
@@ -155,12 +155,12 @@ namespace PloobsEngine.Physics
             }
             else if (obj.PhysicObjectTypes == PhysicObjectTypes.SPECIALIZEDMOVER)
             {
-                //ObjectMover m = (ObjectMover)obj;
-                //space.Remove(m.BepuEntityObject.Entity);
-                //m.BepuEntityObject.Entity.Tag = null;
-                //space.Remove(m.Mover);
-                //space.Remove(m.Rotator);
-                //objs.Remove(m.BepuEntityObject);
+                ObjectMover m = (ObjectMover)obj;
+                space.Remove(m.BepuEntityObject.Entity);
+                m.BepuEntityObject.Entity.Tag = null;
+                space.Remove(m.Mover);
+                space.Remove(m.Rotator);
+                objs.Remove(m.BepuEntityObject);
             }
             else if (obj.PhysicObjectTypes == PhysicObjectTypes.DETECTOROBJECT)
             {

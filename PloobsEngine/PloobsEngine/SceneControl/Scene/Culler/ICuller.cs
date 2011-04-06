@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using PloobsEngine.Material;
 using PloobsEngine.Cameras;
+using Microsoft.Xna.Framework;
 
 namespace PloobsEngine.SceneControl
 {
@@ -26,7 +27,7 @@ namespace PloobsEngine.SceneControl
         /// Called by the engine Once in the start of each rendering pass
         /// </summary>
         /// <param name="world"></param>
-        public abstract void StartFrame(ICamera cam);
+        public abstract void StartFrame(Matrix view, Matrix projection,BoundingFrustum frustrum);
 
         /// <summary>
         /// Called when an object is added to the world

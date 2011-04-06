@@ -73,11 +73,11 @@ namespace IntroductionDemo4._0
             lt = new LightThrowBepu(this.World,factory,contentManager);
 
             #region NormalLight
-            DirectionalLight ld1 = new DirectionalLight(Vector3.Left, Color.White);
-            DirectionalLight ld2 = new DirectionalLight(Vector3.Right, Color.White);
-            DirectionalLight ld3 = new DirectionalLight(Vector3.Backward, Color.White);
-            DirectionalLight ld4 = new DirectionalLight(Vector3.Forward, Color.White);
-            DirectionalLight ld5 = new DirectionalLight(Vector3.Down, Color.White);
+            DirectionalLightPE ld1 = new DirectionalLightPE(Vector3.Left, Color.White);
+            DirectionalLightPE ld2 = new DirectionalLightPE(Vector3.Right, Color.White);
+            DirectionalLightPE ld3 = new DirectionalLightPE(Vector3.Backward, Color.White);
+            DirectionalLightPE ld4 = new DirectionalLightPE(Vector3.Forward, Color.White);
+            DirectionalLightPE ld5 = new DirectionalLightPE(Vector3.Down, Color.White);
             float li = 0.4f;
             ld1.LightIntensity = li;
             ld2.LightIntensity = li;

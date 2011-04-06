@@ -198,7 +198,7 @@ namespace PloobsEngine.SceneControl
         protected void Draw(GameTime gameTime, IWorld world, RenderHelper render)
         {         
             deferredGBuffer.PreDrawScene(gameTime, world, render);
-            world.Culler.StartFrame(world.CameraManager.ActiveCamera);
+            world.Culler.StartFrame(world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection, world.CameraManager.ActiveCamera.BoundingFrustum);
             deferredGBuffer.SetGBuffer(render);            
             deferredGBuffer.ClearGBuffer(render);                                    
             deferredGBuffer.DrawScene(gameTime, world,render);
@@ -316,7 +316,11 @@ namespace PloobsEngine.SceneControl
         
                 if (desc.DefferedDebug)
                 {
-                    render.RenderBegin(Matrix.Identity,null,SpriteSortMode.Immediate,null,BlendState.Opaque);
+                    if (desc.UseFloatingBufferForLightMap)
+                        render.RenderBegin(Matrix.Identity,null,SpriteSortMode.Immediate,SamplerState.PointClamp,BlendState.Opaque);
+                    else
+                        render.RenderBegin(Matrix.Identity, null, SpriteSortMode.Immediate, SamplerState.AnisotropicClamp, BlendState.Opaque);
+                    
                     render.RenderTexture(render[desc.RenderTargetsNameToDefferedDebug[0]] ,Color.White, new Rectangle(0, 0, halfWidth, halfHeight));
                     render.RenderTexture(render[desc.RenderTargetsNameToDefferedDebug[1]], Color.White, new Rectangle(0, halfHeight, halfWidth, halfHeight));
                     render.RenderTexture(render[desc.RenderTargetsNameToDefferedDebug[2]], Color.White, new Rectangle(halfWidth, 0, halfWidth, halfHeight));

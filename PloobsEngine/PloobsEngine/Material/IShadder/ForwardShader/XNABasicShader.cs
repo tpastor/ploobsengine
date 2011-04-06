@@ -7,12 +7,26 @@ using PloobsEngine.Engine;
 using PloobsEngine.Modelo;
 using PloobsEngine.SceneControl;
 using Microsoft.Xna.Framework;
+using XNAnimation.Effects;
 
 namespace PloobsEngine.Material
 {
 
+    /// <summary>
+    /// Description that helps building the XNABasicShader
+    /// </summary>
     public struct XNABasicShaderDescription
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XNABasicShaderDescription"/> struct.
+        /// </summary>
+        /// <param name="AmbientColor">Color of the ambient.</param>
+        /// <param name="EmissiveColor">Color of the emissive.</param>
+        /// <param name="SpecularColor">Color of the specular.</param>
+        /// <param name="specularPower">The specular power.</param>
+        /// <param name="alpha">The alpha.</param>
+        /// <param name="EnableLightning">if set to <c>true</c> [enable lightning].</param>
+        /// <param name="EnableTexture">if set to <c>true</c> [enable texture].</param>
         public XNABasicShaderDescription(Color AmbientColor, Color EmissiveColor, Color SpecularColor, float specularPower = 50, float alpha = 1, bool EnableLightning = true, bool EnableTexture = true)
         {
             this.AmbientColor = AmbientColor.ToVector3();
@@ -25,6 +39,10 @@ namespace PloobsEngine.Material
             DefaultLightning = false;
         }
 
+        /// <summary>
+        /// Defaults this instance.
+        /// </summary>
+        /// <returns></returns>
         public static XNABasicShaderDescription Default()
         {
             XNABasicShaderDescription desc = new XNABasicShaderDescription(Color.White, Color.Black, Color.White, 0, 1, false, true);
@@ -68,6 +86,12 @@ namespace PloobsEngine.Material
 
         private BasicEffect effect;
 
+        /// <summary>
+        /// Initializes this instance.
+        /// </summary>
+        /// <param name="ginfo"></param>
+        /// <param name="factory"></param>
+        /// <param name="obj"></param>
         public override void Initialize(GraphicInfo ginfo, GraphicFactory factory, IObject obj)
         {
             effect = factory.CreateBasicEffect();            
@@ -81,6 +105,10 @@ namespace PloobsEngine.Material
             return desc;
         }
 
+        /// <summary>
+        /// Sets the description.
+        /// </summary>
+        /// <param name="desc">The desc.</param>
         public void SetDescription(XNABasicShaderDescription desc)
         {
             this.desc = desc;
@@ -105,8 +133,17 @@ namespace PloobsEngine.Material
             
         }
 
-        public override void Draw(Microsoft.Xna.Framework.GameTime gt, SceneControl.IObject obj, RenderHelper render, Cameras.ICamera cam)
+        /// <summary>
+        /// Draw
+        /// </summary>
+        /// <param name="gt">gametime</param>
+        /// <param name="obj">the obj</param>
+        /// <param name="render">The render.</param>
+        /// <param name="cam">The cam.</param>
+        /// <param name="lights"></param>
+        public override void Draw(GameTime gt, IObject obj, RenderHelper render, Cameras.ICamera cam, IList<Light.ILight> lights)
         {
+            base.Draw(gt, obj, render, cam, lights);
             effect.Texture = obj.Modelo.getTexture(Modelo.TextureType.DIFFUSE);
             effect.View = cam.View;
             effect.Projection = cam.Projection;
@@ -121,8 +158,14 @@ namespace PloobsEngine.Material
                     render.RenderBatch(ref bi[j]);
                 }
             }
-        }        
+        }
 
+        /// <summary>
+        /// Gets the type of the material.
+        /// </summary>
+        /// <value>
+        /// The type of the material.
+        /// </value>
         public override MaterialType MaterialType
         {
             get { return Material.MaterialType.FORWARD; }

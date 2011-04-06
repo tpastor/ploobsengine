@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using PloobsEngine.Engine.Logger;
 
 namespace PloobsEngine.Commands
 {
@@ -144,6 +145,7 @@ namespace PloobsEngine.Commands
         {
             if (!_idToReciever.ContainsKey(recieverId))
             {
+                ActiveLogger.LogMessage("Reciver not found. Are you sure you add the " + command.TargetName + " component", LogLevel.FatalError);
                 throw new Exception("Reciever Id nao Encontrado : " + recieverId);
              
             }

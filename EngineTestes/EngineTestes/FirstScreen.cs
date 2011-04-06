@@ -20,7 +20,7 @@ namespace EngineTestes
         {
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
 
-            ForwardRenderTecnichDescription desc = new ForwardRenderTecnichDescription(Color.CornflowerBlue);
+            ForwardRenderTecnichDescription desc = new ForwardRenderTecnichDescription(Color.CornflowerBlue);            
             renderTech = new IRenderTechnic[] { new ForwardRenderTecnich(desc) };
         }
 

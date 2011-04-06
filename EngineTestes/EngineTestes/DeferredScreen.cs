@@ -21,8 +21,8 @@ namespace EngineTestes
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
-            desc.DefferedDebug = true;
-            desc.UseFloatingBufferForLightMap = false;
+            desc.DefferedDebug = false;
+            desc.UseFloatingBufferForLightMap = true;
             renderTech = new DeferredRenderTechnic[] { new DeferredRenderTechnic(desc) };
         }
 
@@ -38,11 +38,11 @@ namespace EngineTestes
             this.World.AddObject(obj);
 
             #region NormalLight
-            DirectionalLight ld1 = new DirectionalLight(Vector3.Left, Color.White);
-            DirectionalLight ld2 = new DirectionalLight(Vector3.Right, Color.White);
-            DirectionalLight ld3 = new DirectionalLight(Vector3.Backward, Color.White);
-            DirectionalLight ld4 = new DirectionalLight(Vector3.Forward, Color.White);
-            DirectionalLight ld5 = new DirectionalLight(Vector3.Down, Color.White);
+            DirectionalLightPE ld1 = new DirectionalLightPE(Vector3.Left, Color.White);
+            DirectionalLightPE ld2 = new DirectionalLightPE(Vector3.Right, Color.White);
+            DirectionalLightPE ld3 = new DirectionalLightPE(Vector3.Backward, Color.White);
+            DirectionalLightPE ld4 = new DirectionalLightPE(Vector3.Forward, Color.White);
+            DirectionalLightPE ld5 = new DirectionalLightPE(Vector3.Down, Color.White);
             float li = 0.4f;
             ld1.LightIntensity = li;
             ld2.LightIntensity = li;

@@ -56,7 +56,7 @@ namespace IntroductionDemo4._0
 
         public void mousebuttontesteRight(MouseState ms)
         {
-            PointLight pl = new PointLight(_mundo.CameraManager.ActiveCamera.Position, StaticRandom.RandomColor(), 100, 5);
+            PointLightPE pl = new PointLightPE(_mundo.CameraManager.ActiveCamera.Position, StaticRandom.RandomColor(), 100, 5);
             pl.UsePointLightQuadraticAttenuation = true;
             _mundo.AddLight(pl);
         }
