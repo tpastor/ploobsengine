@@ -592,9 +592,57 @@ namespace PloobsEngine.SceneControl
                 }
             }
         }
+
+        public void RenderSceneDepth(Effect effect,IWorld world, GameTime gt, List<IObject> objListException, Matrix view, Matrix projection, bool useCuller = false)
+        {            
+            IEnumerable<IObject> objs;
+            if (useCuller)
+            {
+                world.Culler.StartFrame(view, projection, new BoundingFrustum(view * projection));
+                objs = world.Culler.GetNotCulledObjectsList(null);
+            }
+            else
+            {
+                objs = world.Objects;
+            }
+
+            foreach (var obj in objs)
+            {
+                if (objListException != null && objListException.Contains(obj))
+                    continue;
+
+                obj.Material.Shadder.DepthExtractor(gt, obj, view,projection, this);                
+            }
+        }
+
+        public void RenderSceneBasic(Effect effect, IWorld world, GameTime gt, List<IObject> objListException, Matrix view, Matrix projection,bool drawComponentsPreDraw = true ,bool useCuller = false,Plane? clippingPlane = null,bool useAlphaBlend = false)
+        {
+            if (drawComponentsPreDraw)
+            {
+                componentManager.PreDraw(this, gt, view, projection);
+            }
+
+            IEnumerable<IObject> objs;
+            if (useCuller)
+            {
+                world.Culler.StartFrame(view, projection, new BoundingFrustum(view * projection));
+                objs = world.Culler.GetNotCulledObjectsList(null);
+            }
+            else
+            {
+                objs = world.Objects;
+            }
+
+            foreach (var obj in objs)
+            {
+                if (objListException != null && objListException.Contains(obj))
+                    continue;
+
+                obj.Material.Shadder.BasicDraw(gt, obj, view,projection, world.Lights, this, clippingPlane, useAlphaBlend);
+            }
+        }
        
     }
-
     public delegate void OnDrawingSceneCustomMaterial(ref Effect effect,IObject obj, ref BatchInformation bi,ref Matrix view,ref Matrix projection);
 
 }

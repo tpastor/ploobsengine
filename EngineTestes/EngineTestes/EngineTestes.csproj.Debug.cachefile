@@ -51,6 +51,7 @@ Content\Model\WeaponMachineGun.xnb
 Content\Textures\islandmap_0.xnb
 Content\Textures\sponza_floor_a_diff_0.xnb
 Content\Textures\sponza_column_b_diff_0.xnb
+Content\Model\ball.xnb
 Content\ModelInfos\shadow.xml
 Content\ModelInfos\sponza.xml
 Content\Textures\checker.xnb
@@ -154,9 +155,9 @@ Content\Effects\RoundLine.xnb
 Content\Effects\ShadowDirectionalCascade.xnb
 Content\Effects\ShadowMap.xnb
 Content\Effects\skybox.xnb
+Content\Effects\Deferred\clippingPlane.xnb
 Content\Font\ConsoleFont.xnb
 Content\Models\block.xnb
 Content\Models\dome.xnb
 Content\Models\Dsphere.xnb
 Content\Models\sphere.xnb
-Content\Effects\Deferred\clippingPlane.xnb

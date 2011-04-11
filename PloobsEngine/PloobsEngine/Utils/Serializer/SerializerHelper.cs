@@ -254,6 +254,12 @@ namespace PloobsEngine.Utils
             vec.Z = float.Parse(node[fieldName]["z"].InnerText, ni);
             return vec;
         }
+        /// <summary>
+        /// Deserializes the vector2.
+        /// </summary>
+        /// <param name="fieldName">Name of the field.</param>
+        /// <param name="node">The node.</param>
+        /// <returns></returns>
         public static Vector2 DeserializeVector2(String fieldName, System.Xml.XmlNode node)
         {
             Vector2 vec = new Vector2();

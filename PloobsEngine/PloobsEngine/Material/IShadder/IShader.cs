@@ -10,6 +10,7 @@ using PloobsEngine.Modelo.Animation;
 using System.Runtime.Serialization;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Engine;
+using Microsoft.Xna.Framework.Graphics;
 
 #endregion
 
@@ -26,6 +27,8 @@ namespace PloobsEngine.Material
         /// </summary>
         protected bool firstTime = true;
         protected bool isInitialized = false;
+        protected Effect basicDraw = null;
+        protected Effect getDepth = null;
         
         /// <summary>
         /// Shader ID that the object rendered by this shader will have        
@@ -70,6 +73,8 @@ namespace PloobsEngine.Material
         /// </summary>
         public virtual void Initialize(GraphicInfo ginfo, GraphicFactory factory, IObject obj)
         {
+            basicDraw = factory.GetEffect("clippingPlane", false, true);
+            getDepth = factory.GetEffect("ShadowDepth",false,true);
             isInitialized = true;    
         }
 
@@ -141,8 +146,20 @@ namespace PloobsEngine.Material
         /// <param name="cam">The cam.</param>
         /// <param name="lights">The lights.</param>
         /// <param name="render">The render.</param>
-        public virtual void DepthExtractor(GameTime gt, IObject obj, ICamera cam, IList<ILight> lights, RenderHelper render)
-        {            
+        public virtual void DepthExtractor(GameTime gt, IObject obj, Matrix View, Matrix projection, RenderHelper render)
+        {
+            Matrix wld = obj.WorldMatrix;            
+            for (int i = 0; i < obj.Modelo.MeshNumber; i++)
+            {
+                BatchInformation[] bi = obj.Modelo.GetBatchInformation(i);
+                for (int j = 0; j < bi.Count(); j++)
+                {
+                    Matrix w1 = Matrix.Multiply(wld, bi[j].ModelLocalTransformation);
+                    this.getDepth.Parameters["WVP"].SetValue(w1 * View * projection);
+
+                    render.RenderBatch(ref bi[j], getDepth);
+                }
+            }
         }
 
 
@@ -156,8 +173,38 @@ namespace PloobsEngine.Material
         /// <param name="lights">The lights.</param>
         /// <param name="render">The render.</param>
         /// <param name="clippingPlane">The clipping plane.</param>
-        public virtual void BasicDraw(GameTime gt, IObject obj, ICamera cam, IList<ILight> lights, RenderHelper render,Plane? clippingPlane)
+        public virtual void BasicDraw(GameTime gt, IObject obj, Matrix view, Matrix projection, IList<ILight> lights, RenderHelper render,Plane? clippingPlane, bool useAlphaBlending = false)
         {
+            Matrix wld = obj.WorldMatrix;
+            if (clippingPlane != null)
+            {
+                basicDraw.Parameters["clippingPlane"].SetValue(new Vector4(clippingPlane.Value.Normal, clippingPlane.Value.D));
+                basicDraw.Parameters["isClip"].SetValue(true);
+            }
+            else
+            {
+                basicDraw.Parameters["isClip"].SetValue(false);
+            }
+
+            basicDraw.Parameters["diffuse"].SetValue(obj.Modelo.getTexture(TextureType.DIFFUSE));
+
+            if(useAlphaBlending)
+                render.PushBlendState(BlendState.AlphaBlend);
+
+            for (int i = 0; i < obj.Modelo.MeshNumber; i++)
+            {
+                BatchInformation[] bi = obj.Modelo.GetBatchInformation(i);
+                for (int j = 0; j < bi.Count(); j++)
+                {
+                    Matrix w1 = Matrix.Multiply(wld, bi[j].ModelLocalTransformation);
+                    this.basicDraw.Parameters["WVP"].SetValue(w1 * view * projection);
+
+                    render.RenderBatch(ref bi[j], basicDraw);
+                }
+            }
+
+            if(useAlphaBlending)
+                render.PopBlendState();
         }
         
         #region ISerializable Members

@@ -1,14 +1,13 @@
-float4x4 World;
-float4x4 View;
-float4x4 Projection;
+float4x4 WVP;
 float4 clippingPlane; 
+bool isClip;
 
 Texture diffuse;
 sampler DiffuseSampler = sampler_state 
 { 
 	texture = <diffuse> ; 
-	magfilter = LINEAR; 
-	minfilter = LINEAR; 
+	magfilter = ANISOTROPIC; 
+	minfilter = ANISOTROPIC; 
 	mipfilter = LINEAR; 
 	AddressU = clamp; 
 	AddressV = clamp;
@@ -32,21 +31,18 @@ struct VertexShaderOutput
 VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 {
     VertexShaderOutput output;
-
-    float4 worldPosition = mul(float4(input.Position,1), World);
-    float4 viewPosition = mul(worldPosition, View);
-    output.Position = mul(viewPosition, Projection);
+    output.Position = mul(float4(input.Position,1), WVP);
 	output.texturecoord = input.texturecoord;
 	output.clipping = 0;	
-	float4 clp = output.Position;
-	//clp  /= clp.w;
+	float4 clp = output.Position;	
 	output.clipping.x = dot(clp,clippingPlane) ;
     return output;
 }
 
 float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 {
-    clip(input.clipping.x);
+	if(isClip)
+		clip(input.clipping.x);
 	    
     return tex2D(DiffuseSampler, input.texturecoord);
 }

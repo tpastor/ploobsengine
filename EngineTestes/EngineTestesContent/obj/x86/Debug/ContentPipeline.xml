@@ -11,7 +11,7 @@
       <Time>2011-04-03T00:19:06.4630399-03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Model\cenario_0.xml</Key>
-        <Value>2011-04-10T19:12:24.2377177-03:00</Value>
+        <Value>2011-04-11T16:05:47.2168304-03:00</Value>
       </Dependency>
       <Request>C:\Users\tpastor\Desktop\port\EngineTestes\EngineTestes\bin\x86\Debug\Content\Textures\islandmap_0.xnb</Request>
     </Item>
@@ -25,7 +25,7 @@
       <Time>2011-04-06T23:28:06.4412814-03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Model\block_0.xml</Key>
-        <Value>2011-04-10T19:12:26.8488671-03:00</Value>
+        <Value>2011-04-11T16:05:50.3510097-03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -38,7 +38,7 @@
       <Time>2011-04-09T14:52:24.4483037-03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Model\shadow_0.xml</Key>
-        <Value>2011-04-10T19:12:32.2011732-03:00</Value>
+        <Value>2011-04-11T16:05:56.5213626-03:00</Value>
       </Dependency>
       <Request>C:\Users\tpastor\Desktop\port\EngineTestes\EngineTestes\bin\x86\Debug\Content\Textures\sponza_floor_a_diff_0.xnb</Request>
       <Request>C:\Users\tpastor\Desktop\port\EngineTestes\EngineTestes\bin\x86\Debug\Content\Textures\sponza_column_b_diff_0.xnb</Request>
@@ -449,7 +449,7 @@
       <Time>2011-04-10T17:41:23.9734085-03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Model\EnemyBeast_0.xml</Key>
-        <Value>2011-04-10T19:14:52.1061753-03:00</Value>
+        <Value>2011-04-11T16:10:46.5309502-03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -465,7 +465,7 @@
       <Time>2011-04-10T17:41:24.140418-03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Model\PlayerMarine_0.xml</Key>
-        <Value>2011-04-10T19:14:57.4814828-03:00</Value>
+        <Value>2011-04-11T16:10:52.1282703-03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -478,7 +478,7 @@
       <Time>2011-04-10T17:41:24.1664195-03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Model\WeaponMachineGun_0.xml</Key>
-        <Value>2011-04-10T19:14:58.4615388-03:00</Value>
+        <Value>2011-04-11T16:10:53.2163326-03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -570,6 +570,26 @@
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Model\WeaponMachineGun_0.xml</Output>
       <Time>2011-04-10T17:41:24.1664195-03:00</Time>
+    </Item>
+    <Item>
+      <Source>Model\ball.X</Source>
+      <Name>Model\ball</Name>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\tpastor\Desktop\port\EngineTestes\EngineTestes\bin\x86\Debug\Content\Model\ball.xnb</Output>
+      <Time>2011-04-11T16:41:42.4441023-03:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Model\ball_0.xml</Key>
+        <Value>2011-04-11T16:41:52.666687-03:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>Model\ball.X</Source>
+      <Importer>XImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Model\ball_0.xml</Output>
+      <Time>2011-04-11T16:41:42.4441023-03:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

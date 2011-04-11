@@ -208,7 +208,7 @@ namespace PloobsEngine.Material
             clipper.Parameters["clippingPlane"].SetValue(new Vector4(refractionClipPlane.Normal, refractionClipPlane.D));
             render.PushRenderTarget(refractionRT);
             render.Clear(Color.Black);
-            render.RenderSceneWithCustomMaterial(clipper, OnDrawingSceneCustomMaterial, world, gt, new List<IObject>() { obj }, cam.View, cam.Projection, true, true);
+            render.RenderSceneBasic(clipper, world, gt, new List<IObject>() { obj }, cam.View, cam.Projection, true, true,refractionClipPlane);
             refractionMap = render.PopRenderTarget()[0].RenderTarget as Texture2D;            
 
             ///REFLEXAO
@@ -225,20 +225,12 @@ namespace PloobsEngine.Material
             render.PushRenderTarget(reflectionRT);
             render.Clear(Color.Black);
             render.PushRasterizerState(RasterizerState.CullClockwise);
-            render.RenderSceneWithCustomMaterial(clipper, OnDrawingSceneCustomMaterial, world, gt, new List<IObject>() { obj }, reflectiveViewMatrix, cam.Projection, true, true);
+            render.RenderSceneBasic(clipper, world, gt, new List<IObject>() { obj }, reflectiveViewMatrix, cam.Projection, true, true,reflectionClipPlane);
             render.PopRasterizerState();
             reflectionMap = render.PopRenderTarget()[0].RenderTarget as Texture2D;                                   
 
         }
-
-        private void OnDrawingSceneCustomMaterial(ref Effect effect, IObject obj, ref BatchInformation bi, ref Matrix view, ref Matrix projection)
-        {
-            effect.Parameters["World"].SetValue(Matrix.Multiply(obj.WorldMatrix,bi.ModelLocalTransformation));
-            effect.Parameters["View"].SetValue(view);
-            effect.Parameters["Projection"].SetValue(projection);
-            effect.Parameters["diffuse"].SetValue(obj.Modelo.getTexture(TextureType.DIFFUSE));
-        }
-
+        
         public override void  Draw(GameTime gt, IObject obj, RenderHelper render, ICamera camera, IList<Light.ILight> lights)
         {
                 float time = (float) gt.TotalGameTime.TotalMilliseconds / timeModulation;

@@ -43,7 +43,7 @@ namespace PloobsEngine.Engine
         /// <returns></returns>
         public static InitialEngineDescription Default()
         {
-            return new InitialEngineDescription(800,600,false,GraphicsProfile.HiDef,false,false,true,null);
+            return new InitialEngineDescription("PloobsEngine",800,600,false,GraphicsProfile.HiDef,false,false,true,null);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace PloobsEngine.Engine
         /// <param name="isMultiSampling">if set to <c>true</c> [is multi sampling].</param>
         /// <param name="isFixedGameTime">if set to <c>true</c> [is fixed game time].</param>
         /// <param name="logger">The logger.</param>
-        public InitialEngineDescription(int BackBufferWidth = 800, int BackBufferHeight = 600, bool isFullScreen = false, GraphicsProfile graphicsProfile = GraphicsProfile.HiDef, bool useVerticalSyncronization = false, bool isMultiSampling = false,bool isFixedGameTime = false, ILogger logger = null)
+        public InitialEngineDescription(String ScreenName = "PloobsEngine", int BackBufferWidth = 800, int BackBufferHeight = 600, bool isFullScreen = false, GraphicsProfile graphicsProfile = GraphicsProfile.HiDef, bool useVerticalSyncronization = false, bool isMultiSampling = false,bool isFixedGameTime = false, ILogger logger = null)
         {
             this.UseVerticalSyncronization = useVerticalSyncronization;
             this.BackBufferHeight = BackBufferHeight;
@@ -71,7 +71,13 @@ namespace PloobsEngine.Engine
             UnhandledExceptionEventHandler = null;
             OnExit = null;
             onExitHandler = null;
+            this.ScreenName = ScreenName;
         }
+
+        /// <summary>
+        /// Screen Name
+        /// </summary>
+        public String ScreenName;
 
         /// <summary>
         /// use V-Sync
@@ -181,6 +187,7 @@ namespace PloobsEngine.Engine
             }
                     
             Content.RootDirectory = "Content";
+            this.Window.Title = initialDescription.ScreenName;
 
             graphics = new GraphicsDeviceManager(this);
             graphics.GraphicsProfile = initialDescription.GraphicsProfile;
@@ -220,7 +227,8 @@ namespace PloobsEngine.Engine
             }
 
             this.initialDescription = initialDescription;
-            this.IsFixedTimeStep = initialDescription.isFixedGameTime;                        
+            this.IsFixedTimeStep = initialDescription.isFixedGameTime;
+            this.Window.Title = initialDescription.ScreenName;
 
             ActiveLogger.logger = initialDescription.Logger;            
             graphics = new GraphicsDeviceManager(this);

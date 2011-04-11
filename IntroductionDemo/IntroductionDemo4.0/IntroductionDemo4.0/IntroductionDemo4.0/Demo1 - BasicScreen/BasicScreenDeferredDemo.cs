@@ -40,7 +40,7 @@ namespace IntroductionDemo4._0
         {
             base.LoadContent(GraphicInfo, factory, contentManager);            
 
-            SimpleModel simpleModel = new SimpleModel(contentManager, "Model//cenario");
+            SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
             TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
             NormalDeferred shader = new NormalDeferred();
             DeferredMaterial fmaterial = new DeferredMaterial(shader);

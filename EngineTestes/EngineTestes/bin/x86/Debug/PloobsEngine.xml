@@ -908,12 +908,6 @@
             This parameter lets the object not be affect by light, or be recovered in a post proccess phase
             </remarks>
         </member>
-        <member name="F:PloobsEngine.Material.IShader.depthExtractor">
-            <summary>
-            instance of class that implements IDepthExtractor 
-            </summary>
-            <remarks> used By the shadow technic for example </remarks>
-        </member>
         <member name="M:PloobsEngine.Material.IShader.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:PloobsEngine.Material.IShader"/> class.
@@ -968,19 +962,27 @@
             <param name="render">The render.</param>
             <param name="cam">The cam.</param>
         </member>
-        <member name="M:PloobsEngine.Material.IShader.ExtraDraw(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IObject,PloobsEngine.Cameras.ICamera,System.Collections.Generic.IList{PloobsEngine.Light.ILight},PloobsEngine.SceneControl.RenderHelper)">
+        <member name="M:PloobsEngine.Material.IShader.DepthExtractor(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IObject,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix,PloobsEngine.SceneControl.RenderHelper)">
             <summary>
-            Extra draw.
-            Called when Someone need to draw this object (NOT THE ENGINE)
-            EX: Reflection effect need to draw all the scene in another point of view, he uses this function, not the normal
-            draw
-            BY DEFAULT it call the DRAW, in deferred rendering you probably dont want this behavior
+            Exctract the depth from an object
             </summary>
             <param name="gt">The gt.</param>
             <param name="obj">The obj.</param>
             <param name="cam">The cam.</param>
             <param name="lights">The lights.</param>
             <param name="render">The render.</param>
+        </member>
+        <member name="M:PloobsEngine.Material.IShader.BasicDraw(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IObject,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix,System.Collections.Generic.IList{PloobsEngine.Light.ILight},PloobsEngine.SceneControl.RenderHelper,System.Nullable{Microsoft.Xna.Framework.Plane},System.Boolean)">
+            <summary>
+            Draw the object in a simple way (WITH MINIMUM EFFECTS,....)
+            USED IN RELECTIONS, REFRACTION .....
+            </summary>
+            <param name="gt">The gt.</param>
+            <param name="obj">The obj.</param>
+            <param name="cam">The cam.</param>
+            <param name="lights">The lights.</param>
+            <param name="render">The render.</param>
+            <param name="clippingPlane">The clipping plane.</param>
         </member>
         <member name="P:PloobsEngine.Material.IShader.MaterialType">
             <summary>
@@ -996,14 +998,6 @@
             between 0 and 0.9f it will be illuminated, 
             bigger than 0.9 it wont be
             </summary>
-        </member>
-        <member name="P:PloobsEngine.Material.IShader.DepthExtractor">
-            <summary>
-            Gets or sets the depth extractor.
-            </summary>
-            <value>
-            The depth extractor.
-            </value>
         </member>
         <member name="M:PloobsEngine.Material.XNABasicShader.#ctor(PloobsEngine.Material.XNABasicShaderDescription)">
             <summary>
@@ -3444,7 +3438,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:PloobsEngine.Engine.InitialEngineDescription.#ctor(System.Int32,System.Int32,System.Boolean,Microsoft.Xna.Framework.Graphics.GraphicsProfile,System.Boolean,System.Boolean,System.Boolean,PloobsEngine.Engine.Logger.ILogger)">
+        <member name="M:PloobsEngine.Engine.InitialEngineDescription.#ctor(System.String,System.Int32,System.Int32,System.Boolean,Microsoft.Xna.Framework.Graphics.GraphicsProfile,System.Boolean,System.Boolean,System.Boolean,PloobsEngine.Engine.Logger.ILogger)">
             <summary>
             Initializes a new instance of the <see cref="T:PloobsEngine.Engine.InitialEngineDescription"/> struct.
             </summary>
@@ -3456,6 +3450,11 @@
             <param name="isMultiSampling">if set to <c>true</c> [is multi sampling].</param>
             <param name="isFixedGameTime">if set to <c>true</c> [is fixed game time].</param>
             <param name="logger">The logger.</param>
+        </member>
+        <member name="F:PloobsEngine.Engine.InitialEngineDescription.ScreenName">
+            <summary>
+            Screen Name
+            </summary>
         </member>
         <member name="F:PloobsEngine.Engine.InitialEngineDescription.UseVerticalSyncronization">
             <summary>
@@ -5865,6 +5864,14 @@
             <param name="node">The node.</param>
             <returns></returns>
         </member>
+        <member name="M:PloobsEngine.Utils.SerializerHelper.DeserializeVector2(System.String,System.Xml.XmlNode)">
+            <summary>
+            Deserializes the vector2.
+            </summary>
+            <param name="fieldName">Name of the field.</param>
+            <param name="node">The node.</param>
+            <returns></returns>
+        </member>
         <member name="M:PloobsEngine.Utils.SerializerHelper.DeserializeBaseType``1(System.String,System.Xml.XmlNode)">
             <summary>
             Parses a basic Type
@@ -5980,24 +5987,6 @@
             <param name="position">The position.</param>
             <param name="orientation">The orientation.</param>
             <param name="scale">The scale.</param>
-        </member>
-        <member name="T:PloobsEngine.Material.IDepthExtractor">
-            <summary>
-            Depth Extractor specification
-            Used to Create a Depth Map from the object    
-            Should be implemented by some kind of model like
-            Tree, Animation ...
-            Atach this to the correct IShader.
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.Material.IDepthExtractor.ExtractDepthFromObject(PloobsEngine.SceneControl.IObject,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix)">
-            <summary>
-            Extracts the depth from object.
-            The correct RenderTarget is already setted before this function is called
-            </summary>
-            <param name="obj">The obj.</param>
-            <param name="view">The view.</param>
-            <param name="proj">The proj.</param>
         </member>
         <member name="T:PloobsEngine.Material.DeferredMaterial">
             <summary>
@@ -7435,6 +7424,220 @@
             <value>
             The type of the material.
             </value>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.castingShape">
+            <summary>
+            Shape that will be used in a convex cast that finds supporting entities for the character or any entities blocking a step-up.
+            When the character is supported and looking for something to step on, this shape will be cast downward.
+            To verify that it is valid, it will then be cast upward from the character's head.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.feetCollisionPairCollector">
+            <summary>
+            A box positioned relative to the character's body used to identify collision pairs with nearby objects that could be possibly stood upon.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.feetCollisionPairCollectorPositionOffset">
+            <summary>
+            The displacement vector from the center of the character body cylinder to the center of the collision pair collector box entity.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.feetSupportFinderOffset">
+            <summary>
+            The displacement vector from the center of the character body cylinder to the starting position of the convex cast used to find entity supports below the character.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.headBlockageFinderOffset">
+            <summary>
+            The displacement vector from the center of the character body cylinder to the starting position of the convex cast used to find blockages above the character's head when stepping.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.headCollisionPairCollector">
+            <summary>
+            A box positioned relative to the character's body used to identify collision pairs with nearby objects that could hit the character's head if it stepped up on something.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.headCollisionPairCollectorPositionOffset">
+            <summary>
+            The displacement vector from the center of the character body cylinder to the center of the collision pair collector box entity.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.maximumStepHeight">
+            <summary>
+            The maximum distance up or down which the character is able to move without jumping or falling.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.supportMargin">
+            <summary>
+            The vertical distance between the ground and the outer collision margin of the character cylinder to maintain.
+            Should be some relatively small value; if the character cylinder (and its margin) are allowed to hit the ground before the support finder, 
+            the character may either lose support or become affected by extra frictional forces.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.Acceleration">
+            <summary>
+            Rate of increase in the character's speed in the movementDirection.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.AirborneAcceleration">
+            <summary>
+            Change in airborne speed per second.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.Body">
+            <summary>
+            The character's physical representation that handles iteractions with the environment.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.glueSpeed">
+            <summary>
+            If objects are moving away from each other vertically above this speed, the character will lose its grip on the ground.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.HasTraction">
+            <summary>
+            Whether or not the character is currently standing on anything that can be walked upon.
+            False if there exists no support or the support is too heavily sloped, otherwise true.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.IsSupported">
+            <summary>
+            Whether or not the character is currently standing on anything.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.JumpSpeed">
+            <summary>
+            Initial vertical speed when jumping.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.MaxSlope">
+            <summary>
+            The maximum slope under which walking forces can be applied.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.MaxSpeed">
+            <summary>
+            Maximum speed in the movementDirection that can be attained.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.MaximumAirborneSpeed">
+            <summary>
+            The maximum speed that the character can achieve by itself while airborne.
+            A character can exceed this by launching off the ground at a higher speed, but cannot force itself to accelerate faster than this using air control while airborne.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.MovementDirection">
+            <summary>
+            Normalized direction which the character tries to move.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.SlidingDeceleration">
+            <summary>
+            Deceleration applied to oppose horizontal movement when the character does not have a steady foothold on the ground (hasTraction == false).
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.TractionDeceleration">
+            <summary>
+            Deceleration applied to oppose uncontrolled horizontal movement when the character has a steady foothold on the ground (hasTraction == true).
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.#ctor(Microsoft.Xna.Framework.Vector3,System.Single,System.Single,System.Single,System.Single,Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Constructs a simple character controller.
+            </summary>
+            <param name="position">Location to initially place the character.</param>
+            <param name="characterHeight">The height of the character.</param>
+            <param name="characterWidth">The diameter of the character.</param>
+            <param name="mass">Total mass of the character.</param>
+            <param name="maximumStepHeight">Height that the character can climb up.</param>
+            <param name="scale">The scale -> scale.x * characterWidth and scale.y * characterHeight  .</param>
+        </member>
+        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.BEPUphysics#UpdateableSystems#IEndOfTimeStepUpdateable#Update(System.Single)">
+            <summary>
+            Handles the updating of the character.  Called by the owning space object when necessary.
+            </summary>
+            <param name="dt">Simulation seconds since the last update.</param>
+        </member>
+        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.FindSupport(BEPUphysics.Entities.Entity@,Microsoft.Xna.Framework.Vector3@,Microsoft.Xna.Framework.Vector3@,System.Single@,Microsoft.Xna.Framework.Vector3@)">
+            <summary>
+            Locates the closest support entity by performing a convex cast at collected candidates.
+            </summary>
+            <param name="supportEntity">The closest supporting entity.</param>
+            <param name="supportLocation">The support location which the character is standing on.</param>
+            <param name="supportNormal">The normal at the surface where the character is standing..</param>
+            <param name="supportDistance">Distance from the maximum step height on the character down to where the latest support location was found.</param>
+            <param name="supportLocationVelocity">Velocity of the support location on the support entity.</param>
+            <returns>Whether or not a support was located.</returns>
+        </member>
+        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.IsStepSafe(System.Single)">
+            <summary>
+            Performs a convex cast to determine if a step of a given height is valid.
+            This means that stepping up onto the new support wouldn't shove the character's head into a ceiling or other obstacle.
+            </summary>
+            <param name="hitDistance">Vertical distance from the convex cast start to the hit location.</param>
+            <returns>Whether or not the step is safe.</returns>
+        </member>
+        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.IsSupportSlopeWalkable(Microsoft.Xna.Framework.Vector3)">
+            <summary>
+            Determines if the ground supporting the character is sloped gently enough to allow for normal walking.
+            </summary>
+            <param name="supportNormal">Normal of the surface being stood upon.</param>
+            <returns>Whether or not the slope is walkable.</returns>
+        </member>
+        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.Support(Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Vector3,System.Single)">
+            <summary>
+            Maintains the position of the character's body above the ground.
+            </summary>
+            <param name="supportLocationVelocity">Velocity of the support point connected to the supportEntity.</param>
+            <param name="supportNormal">The normal at the surface where the ray hit the entity.</param>
+            <param name="supportDistance">Distance from the character to the support location.</param>
+        </member>
+        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.HandleHorizontalMotion(Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Vector3,System.Single)">
+            <summary>
+            Manages movement acceleration, deceleration, and sliding.
+            </summary>
+            <param name="supportLocationVelocity">Velocity of the support point connected to the supportEntity.</param>
+            <param name="supportNormal">The normal at the surface where the ray hit the entity.</param>
+            <param name="dt">Timestep of the simulation.</param>
+        </member>
+        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.HandleAirborneMotion(System.Single)">
+            <summary>
+            Manages the character's air control.
+            </summary>
+            <param name="dt">Timestep of the simulation.</param>
+        </member>
+        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.Jump">
+            <summary>
+            If the character has a support, it leaps into the air based on its jumpSpeed.
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.Activate">
+            <summary>
+            Activates the character, adding its components to the space. 
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.Deactivate">
+            <summary>
+            Deactivates the character, removing its components from the space.
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.OnAdditionToSpace(BEPUphysics.ISpace)">
+            <summary>
+            Called by the engine when the character is added to the space.
+            Activates the character.
+            </summary>
+            <param name="newSpace">Space to which the character was added.</param>
+        </member>
+        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.OnRemovalFromSpace(BEPUphysics.ISpace)">
+            <summary>
+            Called by the engine when the character is removed from the space.
+            Deactivates the character.
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.Physics.Bepu.CharacterController.Position">
+            <summary>
+            Gets and sets the position of the character.
+            </summary>
         </member>
     </members>
 </doc>

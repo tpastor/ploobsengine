@@ -1,6 +1,4 @@
-float4x4 xWorld;
-float4x4 xView;
-float4x4 xProjection;
+float4x4 WVP;
 
 struct VertexToPixel
 {
@@ -15,10 +13,8 @@ struct PixelToFrame
 //------- Technique: ShadowMap --------
 VertexToPixel MyVertexShader(half4 inPos: POSITION0)
 {
-	VertexToPixel Output = (VertexToPixel)0;	
-	float4x4 preViewProjection = mul(xView, xProjection);
-	float4x4 preWorldViewProjection = mul(xWorld, preViewProjection);
-	Output.Position = mul(inPos, preWorldViewProjection);			
+	VertexToPixel Output = (VertexToPixel)0;		
+	Output.Position = mul(inPos, WVP);			
 	Output.ScreenPos = Output.Position .zw;	
 	return Output;	
 	

@@ -165,6 +165,8 @@
     <Compile Include="Modelo\CustomModel.cs" />
     <Compile Include="Modelo\SpecificModels\WaterModel.cs" />
     <Compile Include="Physic\PhysicObjects\BepuObject\CapsuleObject.cs" />
+    <Compile Include="Physic\PhysicObjects\BepuObject\CharacterController.cs" />
+    <Compile Include="Physic\PhysicObjects\BepuObject\CharacterObject.cs" />
     <Compile Include="Physic\PhysicObjects\BepuObject\CylinderObject.cs" />
     <Compile Include="Physic\PhysicObjects\BepuObject\DetectorVolumeObject.cs" />
     <Compile Include="Physic\PhysicObjects\BepuObject\GravitationFieldObject.cs" />

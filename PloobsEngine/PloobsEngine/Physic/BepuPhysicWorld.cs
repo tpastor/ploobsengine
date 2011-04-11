@@ -89,7 +89,7 @@ namespace PloobsEngine.Physics
             {
                 ObjectMover m = (ObjectMover)obj;
                 space.Add(m.BepuEntityObject.Entity);
-                m.BepuEntityObject.Entity.Tag = obj;
+                m.BepuEntityObject.Entity.CollisionInformation.Tag = obj;
                 space.Add(m.Mover);
                 space.Add(m.Rotator);
                 objs.Add(m.BepuEntityObject);
@@ -108,10 +108,10 @@ namespace PloobsEngine.Physics
             }
             else if (obj.PhysicObjectTypes == PhysicObjectTypes.CHARACTEROBJECT)
             {
-                //CharacterController cc = (CharacterController)obj;
-                //cc.Body.Tag = obj;
-                //space.Add(cc);
-                //objs.Add(obj);
+                CharacterObject cc = (CharacterObject)obj;
+                cc.CharacterController.Body.CollisionInformation.Tag = obj;
+                space.Add(cc.CharacterController);
+                objs.Add(obj);
             }
             else if (obj.PhysicObjectTypes == PhysicObjectTypes.GHOST)
             {
@@ -157,7 +157,7 @@ namespace PloobsEngine.Physics
             {
                 ObjectMover m = (ObjectMover)obj;
                 space.Remove(m.BepuEntityObject.Entity);
-                m.BepuEntityObject.Entity.Tag = null;
+                m.BepuEntityObject.Entity.CollisionInformation.Tag = null;
                 space.Remove(m.Mover);
                 space.Remove(m.Rotator);
                 objs.Remove(m.BepuEntityObject);
@@ -176,10 +176,10 @@ namespace PloobsEngine.Physics
             }
             else if (obj.PhysicObjectTypes == PhysicObjectTypes.CHARACTEROBJECT)
             {
-                //CharacterController cc = (CharacterController)obj;
-                //cc.Body.Tag = null;
-                //space.Remove(cc);
-                //objs.Remove(obj);
+                CharacterObject cc = (CharacterObject)obj;
+                cc.CharacterController.Body.CollisionInformation.Tag = null;
+                space.Remove(cc.CharacterController);
+                objs.Remove(obj);
             }
             else if (obj.PhysicObjectTypes == PhysicObjectTypes.GHOST)
             {

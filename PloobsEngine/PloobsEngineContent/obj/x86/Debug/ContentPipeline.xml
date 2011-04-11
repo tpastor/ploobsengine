@@ -593,7 +593,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\ShadowDepth.xnb</Output>
-      <Time>2011-04-04T15:14:56.5987818-03:00</Time>
+      <Time>2011-04-11T11:39:53.9083533-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\ShadowDirectional.fx</Source>
@@ -911,6 +911,15 @@
       <Time>2011-04-08T22:48:44.2992291-03:00</Time>
     </Item>
     <Item>
+      <Source>Effects\Deferred\clippingPlane.fx</Source>
+      <Name>Effects\Deferred\clippingPlane</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\clippingPlane.xnb</Output>
+      <Time>2011-04-11T12:36:54.7860164-03:00</Time>
+    </Item>
+    <Item>
       <Source>Font\ConsoleFont.spritefont</Source>
       <Name>Font\ConsoleFont</Name>
       <Importer>FontDescriptionImporter</Importer>
@@ -929,7 +938,7 @@
       <Time>2011-04-04T15:14:57.1358125-03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\block_0.xml</Key>
-        <Value>2011-04-04T16:51:50.6543268-03:00</Value>
+        <Value>2011-04-11T16:05:43.0085897-03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -942,7 +951,7 @@
       <Time>2011-04-04T15:14:57.1938159-03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\dome_0.xml</Key>
-        <Value>2011-04-04T16:51:50.8423375-03:00</Value>
+        <Value>2011-04-11T16:05:43.3496092-03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -955,7 +964,7 @@
       <Time>2011-04-04T15:14:57.196816-03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\Dsphere_0.xml</Key>
-        <Value>2011-04-04T16:51:50.9853457-03:00</Value>
+        <Value>2011-04-11T16:05:43.4776165-03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -968,7 +977,7 @@
       <Time>2011-04-04T15:14:57.2088167-03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\sphere_0.xml</Key>
-        <Value>2011-04-04T16:51:51.0863515-03:00</Value>
+        <Value>2011-04-11T16:05:43.6906287-03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -998,15 +1007,6 @@
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\sphere_0.xml</Output>
       <Time>2011-04-04T15:14:57.2088167-03:00</Time>
-    </Item>
-    <Item>
-      <Source>Effects\Deferred\clippingPlane.fx</Source>
-      <Name>Effects\Deferred\clippingPlane</Name>
-      <Importer>EffectImporter</Importer>
-      <Processor>EffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\clippingPlane.xnb</Output>
-      <Time>2011-04-09T21:24:29.0819265-03:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
