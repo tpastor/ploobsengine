@@ -91,6 +91,75 @@ namespace PloobsEngine.Material
             this.WorldMatrix = ent.WorldMatrix;         
         }
 
+        public override void DepthExtractor(GameTime gt, IObject obj, Matrix View, Matrix projection, RenderHelper render)
+        {
+            AnimatedModel modelo = obj.Modelo as AnimatedModel;
+            foreach (ModelMesh modelMesh in modelo.GetAnimatedModel().Meshes)
+            {
+                foreach (ModelMeshPart meshPart in modelMesh.MeshParts)
+                {
+                    SkinnedModelBasicEffect basicEffect = (SkinnedModelBasicEffect)meshPart.Effect;                 
+                    basicEffect.CurrentTechnique = basicEffect.Techniques["DEPTH"];
+                    if (followBone)
+                    {
+                        basicEffect.World = Followed.GetBoneAbsoluteTransform(boneName) * Followobj.WorldMatrix;
+                        basicEffect.Bones = modelo.getBonesTransformation();
+                    }
+                    else
+                    {
+                        basicEffect.World = WorldMatrix;
+                        basicEffect.Bones = ac.GetBoneTransformations();
+                    }
+                    basicEffect.View = View;
+                    basicEffect.Projection = projection;
+                }
+
+                modelMesh.Draw();
+            }
+
+        }
+
+        public override void BasicDraw(GameTime gt, IObject obj, Matrix view, Matrix projection, IList<Light.ILight> lights, RenderHelper render, Plane? clippingPlane, bool useAlphaBlending = false)
+        {
+            AnimatedModel modelo = obj.Modelo as AnimatedModel;
+
+            foreach (ModelMesh modelMesh in modelo.GetAnimatedModel().Meshes)
+            {
+                foreach (ModelMeshPart meshPart in modelMesh.MeshParts)
+                {
+                    SkinnedModelBasicEffect basicEffect = (SkinnedModelBasicEffect)meshPart.Effect;
+                    if (clippingPlane != null)
+                    {
+                        basicEffect.Parameters["clipenabled"].SetValue(true);
+                        basicEffect.Parameters["plane"].SetValue(new Vector4(clippingPlane.Value.Normal, clippingPlane.Value.D));
+                    }
+                    else
+                    {
+                        basicEffect.Parameters["clipenabled"].SetValue(false);
+                    }
+                    basicEffect.DiffuseMapEnabled = true;
+                    basicEffect.CurrentTechnique = basicEffect.Techniques["FORWARDCLIP"];
+                    basicEffect.Parameters["diffuseMap0"].SetValue(modelo.getTexture(TextureType.DIFFUSE));
+                    basicEffect.Parameters["diffuseMapEnabled"].SetValue(true);
+                    if (followBone)
+                    {
+                        basicEffect.World = Followed.GetBoneAbsoluteTransform(boneName) * Followobj.WorldMatrix;
+                        basicEffect.Bones = modelo.getBonesTransformation();
+                    }
+                    else
+                    {
+                        basicEffect.World = WorldMatrix;
+                        basicEffect.Bones = ac.GetBoneTransformations();
+                    }
+                    basicEffect.View = view;
+                    basicEffect.Projection = projection;
+                }
+
+                modelMesh.Draw();
+            }
+        }
+
+
         public override void  Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<Light.ILight> lights)
  	    {
             AnimatedModel modelo = obj.Modelo as AnimatedModel;
@@ -99,7 +168,7 @@ namespace PloobsEngine.Material
                 foreach (ModelMeshPart meshPart in modelMesh.MeshParts)
                 {
                     SkinnedModelBasicEffect basicEffect = (SkinnedModelBasicEffect)meshPart.Effect;                    
-                    basicEffect.CurrentTechnique = basicEffect.Techniques["DEFERREDCUSTOM"];                   
+                    basicEffect.CurrentTechnique = basicEffect.Techniques["DEFERREDCUSTOM"];
 
                     basicEffect.Parameters["diffuseMap0"].SetValue(modelo.getTexture(TextureType.DIFFUSE));
                     basicEffect.Parameters["diffuseMapEnabled"].SetValue(true);
