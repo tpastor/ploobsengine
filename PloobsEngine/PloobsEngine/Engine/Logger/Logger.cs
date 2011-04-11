@@ -10,9 +10,23 @@ namespace PloobsEngine.Engine.Logger
         void Log(String Message, LogLevel logLevel);
     }
 
+    /// <summary>
+    /// Log Levels
+    /// </summary>
     public enum LogLevel
     {
-        FatalError,RecoverableError,Warning
+        /// <summary>
+        /// WHen a Fatal error occurrs, Normally the application also throw an exception when this happen
+        /// </summary>
+        FatalError,
+        /// <summary>
+        /// Errors that the engine can handle, but the user should correct
+        /// </summary>
+        RecoverableError,
+        /// <summary>
+        /// When something happens that can be an error
+        /// </summary>
+        Warning
     }
 
     public static class ActiveLogger
@@ -24,7 +38,7 @@ namespace PloobsEngine.Engine.Logger
 
             if (logger != null)
             {
-                if (level == LogLevel.Warning)
+                if (level == LogLevel.Warning )
                 {
 #if DEBUG
                     logger.Log(message, level);

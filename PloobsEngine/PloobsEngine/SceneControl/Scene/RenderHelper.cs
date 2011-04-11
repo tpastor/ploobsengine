@@ -15,7 +15,7 @@ namespace PloobsEngine.SceneControl
     /// </summary>
     public class RenderHelper
     {
-        private GraphicsDevice device;
+        internal GraphicsDevice device;
         private QuadRender qrender;
         private BasicEffect effect;
         private SpriteBatch spriteBatch;
@@ -52,7 +52,7 @@ namespace PloobsEngine.SceneControl
         /// <param name="projection">The projection.</param>
         public void RenderPreComponents(GameTime gametime, Matrix view, Matrix projection)
         {
-            componentManager.PreDraw(gametime, view, projection);
+            componentManager.PreDraw(this,gametime, view, projection);
         }
         /// <summary>
         /// Renders the pos components.
@@ -62,7 +62,7 @@ namespace PloobsEngine.SceneControl
         /// <param name="projection">The projection.</param>
         public void RenderPosComponents(GameTime gametime, Matrix view, Matrix projection)
         {
-            componentManager.AfterDraw(gametime, view, projection);
+            componentManager.AfterDraw(this,gametime, view, projection);
         }
 
         /// <summary>
@@ -495,27 +495,32 @@ namespace PloobsEngine.SceneControl
         /// <param name="objListException">The obj list exception.(objects in this list wont be rendered) - can be null</param>
         /// <param name="view">The view.</param>
         /// <param name="projection">The projection.</param>
-        /// <param name="componentManager">The component manager, can be NULL, if drawComponentsPreDraw is false.</param>
         /// <param name="drawComponentsPreDraw">if set to <c>true</c> [draw components with pre draw setting also].</param>
-        public void RenderSceneWithoutMaterial(IWorld world, GameTime gt, List<IObject> objListException, Matrix view, Matrix projection, ComponentManager componentManager, bool drawComponentsPreDraw = true)
+        /// <param name="useCuller">if set to <c>true</c> [use culler].</param>
+        public void RenderSceneWithBasicMaterial(IWorld world, GameTime gt, List<IObject> objListException, Matrix view, Matrix projection, bool drawComponentsPreDraw = true,bool useCuller = false)
         {
             if (drawComponentsPreDraw)
             {
-                if (componentManager == null)
-                {
-                    ActiveLogger.LogMessage("ComponentManager is null but, drawComponentsPreDraw is true -> inconsistency", LogLevel.RecoverableError);
-                }
-                else
-                {
-                    componentManager.PreDraw(gt, view, projection);
-                }
+                 componentManager.PreDraw(this,gt, view, projection);
+        
             }
             
             effect.Projection = projection;
             effect.View = view;
-            effect.EnableDefaultLighting();                        
+            effect.EnableDefaultLighting();
 
-            foreach (var obj in world.Objects)
+            IEnumerable<IObject> objs;
+            if (useCuller)
+            {
+                world.Culler.StartFrame(view, projection, new BoundingFrustum(view * projection));
+                objs = world.Culler.GetNotCulledObjectsList(null);                
+            }
+            else
+            {
+                objs = world.Objects;
+            }
+
+                foreach (var obj in objs)
             {
                 if (objListException != null && objListException.Contains(obj))
                     continue;                
@@ -537,7 +542,59 @@ namespace PloobsEngine.SceneControl
                 }
             }
         }
+
+        /// <summary>
+        /// Renders the scene with custom material.
+        /// </summary>
+        /// <param name="effect">The effect.</param>
+        /// <param name="setupShaderCallback">The setup shader callback.</param>
+        /// <param name="world">The world.</param>
+        /// <param name="gt">The gt.</param>
+        /// <param name="objListException">The obj list exception.</param>
+        /// <param name="view">The view.</param>
+        /// <param name="projection">The projection.</param>
+        /// <param name="drawComponentsPreDraw">if set to <c>true</c> [draw components pre draw].</param>
+        /// <param name="useCuller">if set to <c>true</c> [use culler].</param>
+        public void RenderSceneWithCustomMaterial(Effect effect,OnDrawingSceneCustomMaterial setupShaderCallback, IWorld world, GameTime gt, List<IObject> objListException, Matrix view, Matrix projection, bool drawComponentsPreDraw = true, bool useCuller = false)
+        {
+            if (drawComponentsPreDraw)
+            {
+                componentManager.PreDraw(this,gt, view, projection);             
+            }
+            
+            IEnumerable<IObject> objs;
+            if (useCuller)
+            {
+                world.Culler.StartFrame(view, projection, new BoundingFrustum(view * projection));
+                objs = world.Culler.GetNotCulledObjectsList(null);
+            }
+            else
+            {
+                objs = world.Objects;
+            }
+
+            foreach (var obj in objs)
+            {
+                if (objListException != null && objListException.Contains(obj))
+                    continue;
+
+                Matrix wld = obj.WorldMatrix;
+                for (int i = 0; i < obj.Modelo.MeshNumber; i++)
+                {
+                    BatchInformation[] bi = obj.Modelo.GetBatchInformation(i);
+
+                    for (int j = 0; j < bi.Count(); j++)
+                    {
+                        setupShaderCallback(ref effect,obj, ref bi[j], ref view, ref projection);
+                        this.RenderBatch(ref bi[j], effect);
+                        
+                    }
+                }
+            }
+        }
        
     }
+
+    public delegate void OnDrawingSceneCustomMaterial(ref Effect effect,IObject obj, ref BatchInformation bi,ref Matrix view,ref Matrix projection);
 
 }

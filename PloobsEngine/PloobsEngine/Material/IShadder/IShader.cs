@@ -24,7 +24,8 @@ namespace PloobsEngine.Material
         /// <summary>
         /// is fist time that this shader is updated
         /// </summary>
-        protected bool firstTime = true;        
+        protected bool firstTime = true;
+        protected bool isInitialized = false;
         
         /// <summary>
         /// Shader ID that the object rendered by this shader will have        
@@ -34,12 +35,7 @@ namespace PloobsEngine.Material
         /// </remarks>
         protected float shaderId = 0;
 
-        /// <summary>
-        /// instance of class that implements IDepthExtractor 
-        /// </summary>
-        /// <remarks> used By the shadow technic for example </remarks>
-        protected IDepthExtractor depthExtractor;
-
+        
         /// <summary>
         /// Gets the type of the material.
         /// </summary>
@@ -70,29 +66,11 @@ namespace PloobsEngine.Material
         }
 
         /// <summary>
-        /// Gets or sets the depth extractor.
-        /// </summary>
-        /// <value>
-        /// The depth extractor.
-        /// </value>
-        public IDepthExtractor DepthExtractor
-        {
-            get
-            {
-                return depthExtractor;
-            }
-            set
-            {
-                this.depthExtractor = value;
-            }
-        }
-
-        /// <summary>
         /// Initializes this instance.
         /// </summary>
         public virtual void Initialize(GraphicInfo ginfo, GraphicFactory factory, IObject obj)
-        {            
-            
+        {
+            isInitialized = true;    
         }
 
         /// <summary>
@@ -156,20 +134,30 @@ namespace PloobsEngine.Material
         }
 
         /// <summary>
-        /// Extra draw.
-        /// Called when Someone need to draw this object (NOT THE ENGINE)
-        /// EX: Reflection effect need to draw all the scene in another point of view, he uses this function, not the normal
-        /// draw
-        /// BY DEFAULT it call the DRAW, in deferred rendering you probably dont want this behavior
+        /// Exctract the depth from an object
         /// </summary>
         /// <param name="gt">The gt.</param>
         /// <param name="obj">The obj.</param>
         /// <param name="cam">The cam.</param>
         /// <param name="lights">The lights.</param>
         /// <param name="render">The render.</param>
-        public virtual void ExtraDraw(GameTime gt, IObject obj, ICamera cam, IList<ILight> lights, RenderHelper render)
+        public virtual void DepthExtractor(GameTime gt, IObject obj, ICamera cam, IList<ILight> lights, RenderHelper render)
+        {            
+        }
+
+
+        /// <summary>
+        /// Draw the object in a simple way (WITH MINIMUM EFFECTS,....)
+        /// USED IN RELECTIONS, REFRACTION .....
+        /// </summary>
+        /// <param name="gt">The gt.</param>
+        /// <param name="obj">The obj.</param>
+        /// <param name="cam">The cam.</param>
+        /// <param name="lights">The lights.</param>
+        /// <param name="render">The render.</param>
+        /// <param name="clippingPlane">The clipping plane.</param>
+        public virtual void BasicDraw(GameTime gt, IObject obj, ICamera cam, IList<ILight> lights, RenderHelper render,Plane? clippingPlane)
         {
-            Draw(gt, obj, render, cam,lights);
         }
         
         #region ISerializable Members

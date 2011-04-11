@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using PloobsEngine.Commands;
 using PloobsEngine.Entity;
 using PloobsEngine.Engine;
+using PloobsEngine.SceneControl;
 
 namespace PloobsEngine.Components
 {
@@ -41,10 +42,10 @@ namespace PloobsEngine.Components
         /// <param name="gt">The gt.</param>
         /// <param name="activeView">The active view.</param>
         /// <param name="activeProjection">The active projection.</param>
-        protected virtual void PreDraw(GameTime gt, Matrix activeView, Matrix activeProjection) { }
-        internal void iPreDraw(GameTime gt, Matrix activeView, Matrix activeProjection)
+        protected virtual void PreDraw(RenderHelper render,GameTime gt, Matrix activeView, Matrix activeProjection) { }
+        internal void iPreDraw(RenderHelper render,GameTime gt, Matrix activeView, Matrix activeProjection)
         {
-            iPreDraw(gt, activeView, activeProjection);
+            PreDraw(render, gt, activeView, activeProjection);
         }
 
         /// <summary>
@@ -54,20 +55,20 @@ namespace PloobsEngine.Components
         /// <param name="gt">The gt.</param>
         /// <param name="activeView">The active view.</param>
         /// <param name="activeProjection">The active projection.</param>
-        protected virtual void AfterDraw(GameTime gt, Matrix activeView, Matrix activeProjection) { }
-        internal void iAfterDraw(GameTime gt, Matrix activeView, Matrix activeProjection)
+        protected virtual void AfterDraw(RenderHelper render,GameTime gt, Matrix activeView, Matrix activeProjection) { }
+        internal void iAfterDraw(RenderHelper render,GameTime gt, Matrix activeView, Matrix activeProjection)
         {
-            AfterDraw(gt, activeView, activeProjection);
+            AfterDraw(render,gt, activeView, activeProjection);
         }
 
         /// <summary>
         /// Loads the content.
         /// </summary>
         /// <param name="engine">The engine.</param>
-        protected virtual void LoadContent(ref GraphicInfo GraphicInfo) { }
-        internal void iLoadContent(ref GraphicInfo GraphicInfo)
+        protected virtual void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory) { }
+        internal void iLoadContent(GraphicInfo GraphicInfo,GraphicFactory factory)
         {
-            LoadContent(ref GraphicInfo);
+            LoadContent(GraphicInfo, factory);
         }
 
         /// <summary>

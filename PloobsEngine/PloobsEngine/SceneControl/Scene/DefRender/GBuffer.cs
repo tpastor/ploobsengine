@@ -70,8 +70,8 @@ namespace PloobsEngine.SceneControl
         }
 
         public void PreDrawScene(GameTime gameTime, IWorld world, RenderHelper render)
-        {
-            foreach (IObject item in world.Culler.GetNotCulledObjectsList(world.CameraManager.ActiveCamera, MaterialType.DEFERRED))
+        {            
+            foreach (IObject item in world.Objects)
             {
                 item.Material.PreDrawnPhase(gameTime,world, item,world.CameraManager.ActiveCamera, world.Lights, render);
             }
@@ -84,7 +84,7 @@ namespace PloobsEngine.SceneControl
             System.Diagnostics.Debug.Assert(render.PeekDepthState() == DepthStencilState.Default);
             System.Diagnostics.Debug.Assert(render.PeekRasterizerState() == RasterizerState.CullCounterClockwise);
 
-            foreach (IObject item in world.Culler.GetNotCulledObjectsList(world.CameraManager.ActiveCamera, MaterialType.DEFERRED))
+            foreach (IObject item in world.Culler.GetNotCulledObjectsList(MaterialType.DEFERRED))
             {
                 item.Material.Drawn(gameTime,item, world.CameraManager.ActiveCamera, world.Lights, render);
             }           
@@ -94,7 +94,7 @@ namespace PloobsEngine.SceneControl
         public void LoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, Color BackGroundColor)
         {
             this.backGroundColor = BackGroundColor;
-            const int multisample = 0;
+            const int multisample = 1;
             colorRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, false, DepthFormat.Depth24Stencil8, multisample, RenderTargetUsage.DiscardContents);
             normalRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, false, DepthFormat.None, multisample, RenderTargetUsage.DiscardContents);
             depthRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Single, false, DepthFormat.None, multisample, RenderTargetUsage.DiscardContents);

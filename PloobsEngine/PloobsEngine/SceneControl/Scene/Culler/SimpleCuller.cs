@@ -61,11 +61,19 @@ namespace PloobsEngine.SceneControl
             num = forward.Count + deferred.Count;            
         }
 
-        public override IEnumerable<IObject> GetNotCulledObjectsList(ICamera cam, MaterialType Filter)
+        public override IEnumerable<IObject> GetNotCulledObjectsList(MaterialType? Filter)
         {
-            if (Filter == MaterialType.DEFERRED)
+            if (Filter == PloobsEngine.Material.MaterialType.DEFERRED)
                 return deferred;
-            return forward;
+            else if (Filter == PloobsEngine.Material.MaterialType.FORWARD)
+                return forward;
+            else
+            {
+                List<IObject> objs = new List<IObject>();
+                objs.AddRange(deferred);
+                objs.AddRange(forward);
+                return objs;
+            }
         }
 
         public override void onObjectAdded(IObject obj)

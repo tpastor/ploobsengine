@@ -144,6 +144,13 @@ namespace PloobsEngine {
             }
         }
         
+        internal static byte[] clippingPlane {
+            get {
+                object obj = ResourceManager.GetObject("clippingPlane", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
         internal static byte[] colorCorrection {
             get {
                 object obj = ResourceManager.GetObject("colorCorrection", resourceCulture);
@@ -518,6 +525,13 @@ namespace PloobsEngine {
         internal static byte[] SimpleAlphaDraw {
             get {
                 object obj = ResourceManager.GetObject("SimpleAlphaDraw", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        internal static byte[] skybox {
+            get {
+                object obj = ResourceManager.GetObject("skybox", resourceCulture);
                 return ((byte[])(obj));
             }
         }

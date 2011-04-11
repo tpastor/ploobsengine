@@ -94,10 +94,11 @@ namespace PloobsEngine.Material
         /// <param name="obj"></param>
         public override void Initialize(GraphicInfo ginfo, GraphicFactory factory, IObject obj)
         {
-            effect = factory.CreateBasicEffect();            
+            effect = factory.GetBasicEffect();            
             base.Initialize(ginfo,factory,obj);
             effect.PreferPerPixelLighting = true;
-            SetDescription(desc);            
+            SetDescription(desc);
+            base.Initialize(ginfo, factory, obj);
         }
 
         public XNABasicShaderDescription GetDescription()

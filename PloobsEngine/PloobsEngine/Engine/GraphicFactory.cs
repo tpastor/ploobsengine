@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using PloobsEngine.SceneControl;
 using PloobsEngine.Utils;
 using Microsoft.Xna.Framework;
+using XNAnimation;
 
 namespace PloobsEngine.Engine
 {
@@ -32,14 +33,14 @@ namespace PloobsEngine.Engine
             texCreator = new TextureCreator(ginfo, this);
         }
 
-        public BasicEffect CreateBasicEffect()
+        public BasicEffect GetBasicEffect()
         {
             return new BasicEffect(device);
         }
 
-        public Effect CreateEffect(String name, bool clone = false)
+        public Effect GetEffect(String name, bool clone = false, bool isInternal = false)
         {
-            Effect effect = contentManager.GetAsset<Effect>(name,true);
+            Effect effect = contentManager.GetAsset<Effect>(name, isInternal);
             if (clone)
                 return effect.Clone();
             return effect;
@@ -49,6 +50,15 @@ namespace PloobsEngine.Engine
         {
             return SpriteBatch;
         }
+        public Model GetModel(String name,bool isinternal = false)
+        {
+            return contentManager.GetAsset<Model>(name, isinternal);
+        }
+        public SkinnedModel GetAnimatedModel(String name, bool isinternal = false)
+        {
+            return contentManager.GetAsset<SkinnedModel>(name, isinternal);
+        }
+
         public RenderTarget2D CreateRenderTarget(int width, int height, SurfaceFormat SurfaceFormat = SurfaceFormat.Color, bool mipmap = false, DepthFormat DepthFormat = DepthFormat.Depth24Stencil8, int preferedMultisampleCount = 0, RenderTargetUsage RenderTargetUsage = RenderTargetUsage.PreserveContents)
         {
             return new RenderTarget2D(device, width, height, mipmap, SurfaceFormat, DepthFormat, preferedMultisampleCount, RenderTargetUsage);
@@ -63,6 +73,12 @@ namespace PloobsEngine.Engine
         {
             return contentManager.GetAsset<Texture2D>(textureName, isInternal);
         }
+
+        public TextureCube GetTextureCube(String textureName, bool isInternal = false)
+        {
+            return contentManager.GetAsset<TextureCube>(textureName, isInternal);
+        }
+
 
         public Texture2D CreateTexture2D(int width, int height,bool mipmap = false,SurfaceFormat format = SurfaceFormat.Color)
         {
@@ -85,6 +101,21 @@ namespace PloobsEngine.Engine
         public Texture2D CreateTexture2DPerlinNoise(int width, int height, float frequencia, float amplitude, float persistence, int octave, bool mipmap = false)
         {
             return texCreator.CreatePerlinNoiseTexture(width, height, frequencia,amplitude,persistence,octave,mipmap);
+        }
+
+        public IndexBuffer CreateIndexBuffer(IndexElementSize elementSize, int indexCount,BufferUsage usage)
+        {
+            return new IndexBuffer(device, elementSize, indexCount, usage);
+        }
+
+        public VertexBuffer CreateVertexBuffer(VertexDeclaration vertexDeclaration, int vertexCount, BufferUsage usage)
+        {
+            return new VertexBuffer(device, vertexDeclaration, vertexCount, usage);
+        }
+
+        public T GetAsset<T>(String assetName, bool isInternal = false)
+        {
+            return contentManager.GetAsset<T>(assetName, isInternal);
         }
 
     }

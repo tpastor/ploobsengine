@@ -18,10 +18,9 @@ namespace PloobsEngine.SceneControl
         /// <summary>
         /// Get all the objects that pass the culling phase
         /// </summary>
-        /// <param name="world"></param>
-        /// <param name="Filter">Or Filter</param>
+        /// <param name="Filter">Or Filter, null for all</param>
         /// <returns></returns>
-        public abstract IEnumerable<IObject> GetNotCulledObjectsList(ICamera cam, MaterialType Filter);
+        public abstract IEnumerable<IObject> GetNotCulledObjectsList(MaterialType? Filter);
 
         /// <summary>
         /// Called by the engine Once in the start of each rendering pass

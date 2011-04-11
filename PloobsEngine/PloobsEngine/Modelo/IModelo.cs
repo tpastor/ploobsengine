@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using PloobsEngine.Engine.Logger;
 using PloobsEngine.SceneControl;
+using PloobsEngine.Engine;
 
 
 namespace PloobsEngine.Modelo
@@ -22,13 +23,13 @@ namespace PloobsEngine.Modelo
     /// </summary>
     public abstract class IModelo 
     {
-        public IModelo(IContentManager contentManager, String modelName, String diffuseTextureName = null, String bumpTextureName = null, String specularTextureName = null, String glowTextureName = null)
-            : this(false,contentManager,modelName,diffuseTextureName,bumpTextureName,specularTextureName,glowTextureName)
+        public IModelo(GraphicFactory factory, String modelName, String diffuseTextureName = null, String bumpTextureName = null, String specularTextureName = null, String glowTextureName = null, bool callLoadContent = true)
+            : this(false,factory,modelName,diffuseTextureName,bumpTextureName,specularTextureName,glowTextureName,callLoadContent)
         {
                         
         }
 
-        public IModelo(bool isinternal, IContentManager contentManager, String modelName, String diffuseTextureName = null, String bumpTextureName = null, String specularTextureName = null, String glowTextureName = null)
+        public IModelo(bool isinternal, GraphicFactory factory, String modelName, String diffuseTextureName = null, String bumpTextureName = null, String specularTextureName = null, String glowTextureName = null, bool callLoadContent = true)
         {
             this.isInternal = isinternal;
 
@@ -39,9 +40,9 @@ namespace PloobsEngine.Modelo
                 throw new Exception("ModelName Cannot Be null");
             }
 
-            if (_diffuseName == null)
+            if (_diffuseName == null && callLoadContent == true)
             {
-                ActiveLogger.LogMessage("Diffuse Texture Name is null", LogLevel.Warning);
+                ActiveLogger.LogMessage("Diffuse Texture Name is null for the Model " + modelName, LogLevel.Warning);
             }
 
             this.modelName = modelName;
@@ -49,9 +50,10 @@ namespace PloobsEngine.Modelo
             this._specularName = specularTextureName;
             this._bumpName = bumpTextureName;
             this._glowName = glowTextureName;
-            this.contentManager = contentManager;
+            this.factory = factory;
 
-            LoadModelo(contentManager);
+            if(callLoadContent)
+                LoadModelo(factory);
         }
 
         internal bool isInternal = false;            
@@ -68,7 +70,7 @@ namespace PloobsEngine.Modelo
         protected Texture2D glow = null;
         protected Texture2D paralax = null;
         protected BatchInformation[][] BatchInformations = null;
-        protected IContentManager contentManager;        
+        protected GraphicFactory factory;        
 
         /// <summary>
         /// Gets or sets the tag.
@@ -148,7 +150,7 @@ namespace PloobsEngine.Modelo
                     return;
             }
 
-            LoadModelo(contentManager);
+            LoadModelo(factory);
             if (OnTextureChange != null)
                 OnTextureChange(type, this);
         }
@@ -156,36 +158,35 @@ namespace PloobsEngine.Modelo
         /// <summary>
         /// Load the model
         /// </summary>
-        internal void LoadModelo(IContentManager cmanager)
-        {
-            this.contentManager = cmanager;
+        internal void LoadModelo(GraphicFactory factory)
+        {            
             if (!String.IsNullOrEmpty(_diffuseName) && _diffuseName != CUSTOM)
             {
-                this.diffuse = cmanager.GetAsset<Texture2D>(_diffuseName, isInternal);
+                this.diffuse = factory.GetTexture2D(_diffuseName, isInternal);
             }
             if (!String.IsNullOrEmpty(_bumpName) && _bumpName != CUSTOM)
             {
-                this.bump = cmanager.GetAsset<Texture2D>(_bumpName, isInternal);
+                this.bump = factory.GetTexture2D(_bumpName, isInternal);
             }
             if (!String.IsNullOrEmpty(_specularName) && _specularName != CUSTOM)
             {
-                this.specular = cmanager.GetAsset<Texture2D>(_specularName, isInternal);
+                this.specular = factory.GetTexture2D(_specularName, isInternal);
             }
             if (!String.IsNullOrEmpty(_glowName) && _glowName != CUSTOM)
             {
-                this.glow = cmanager.GetAsset<Texture2D>(_glowName, isInternal);
+                this.glow = factory.GetTexture2D(_glowName, isInternal);
             }
             if (!String.IsNullOrEmpty(_paralaxName) && _paralaxName != CUSTOM)
             {
-                this.paralax = cmanager.GetAsset<Texture2D>(_paralaxName, isInternal);
+                this.paralax = factory.GetTexture2D(_paralaxName, isInternal);
             }
 
             if(BatchInformations == null)
-                LoadBatchInfo(cmanager, out BatchInformations);
+                LoadBatchInfo(factory, out BatchInformations);
             
         }
 
-        protected abstract void LoadBatchInfo(SceneControl.IContentManager cmanager, out BatchInformation[][] BatchInformations);
+        protected abstract void LoadBatchInfo(GraphicFactory factory, out BatchInformation[][] BatchInformations);
         
 
         /// <summary>

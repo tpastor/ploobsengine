@@ -67,7 +67,8 @@ namespace PloobsEngine.SceneControl
                     PointLightPE pl = item as PointLightPE;
                     Matrix sphereWorldMatrix = Matrix.CreateScale(pl.LightRadius) * Matrix.CreateTranslation(pl.LightPosition);
 
-                    if (cullPointLight == false || camera.BoundingFrustum.Contains(new BoundingSphere(pl.LightPosition, sphereModel.GetModelRadius() * pl.LightRadius)) != ContainmentType.Disjoint)
+                    ContainmentType ct = camera.BoundingFrustum.Contains(new BoundingSphere(pl.LightPosition, pl.LightRadius * 1.5f));
+                    if ( ct == ContainmentType.Intersects || ct == ContainmentType.Contains)
                     {
                         pointLightEffect.Parameters["World"].SetValue(sphereWorldMatrix);
                         pointLightEffect.Parameters["lightPosition"].SetValue(pl.LightPosition);
@@ -190,7 +191,7 @@ namespace PloobsEngine.SceneControl
 
             directionalLightEffect = manager.GetAsset<Effect>("DirectionalLight",true);
             pointLightEffect = manager.GetAsset<Effect>("PointLight",true);
-            sphereModel = new SimpleModel(manager, "Dsphere",true); 
+            sphereModel = new SimpleModel(factory, "Dsphere", true); 
             spotLightEffect = manager.GetAsset<Effect>("SpotLight",true);
             
             spotLightEffect.Parameters["halfPixel"].SetValue(ginfo.HalfPixel);

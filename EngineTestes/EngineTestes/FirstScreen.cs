@@ -26,9 +26,9 @@ namespace EngineTestes
 
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory ,IContentManager contentManager)
         {
-            base.LoadContent(GraphicInfo,factory, contentManager);            
+            base.LoadContent(GraphicInfo,factory, contentManager);
 
-            SimpleModel simpleModel = new SimpleModel(contentManager, "Model//cenario");
+            SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
             TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One,MaterialDescription.DefaultBepuMaterial());            
             XNABasicShader shader = new XNABasicShader(XNABasicShaderDescription.Default());            
             ForwardMaterial fmaterial = new ForwardMaterial(shader);            

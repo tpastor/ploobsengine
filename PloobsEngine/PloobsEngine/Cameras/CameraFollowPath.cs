@@ -82,7 +82,7 @@ namespace PloobsEngine.Cameras
             get { return _hasmoved; }
         }
 
-        public Microsoft.Xna.Framework.Vector3 Position
+        public override Vector3 Position
         {
             get
             {

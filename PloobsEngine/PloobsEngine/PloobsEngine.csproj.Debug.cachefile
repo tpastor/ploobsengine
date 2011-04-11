@@ -104,3 +104,4 @@ Content\Models\block.xnb
 Content\Models\dome.xnb
 Content\Models\Dsphere.xnb
 Content\Models\sphere.xnb
+Content\Effects\Deferred\clippingPlane.xnb

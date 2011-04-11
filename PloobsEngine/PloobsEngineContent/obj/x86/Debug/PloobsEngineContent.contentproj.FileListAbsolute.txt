@@ -1,0 +1,2 @@
+c:\users\tpastor\documents\visual studio 2010\Projects\PloobsEngine\PloobsEngine\PloobsEngineContent\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngineContent\obj\x86\Debug\ResolveAssemblyReference.cache

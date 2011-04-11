@@ -45,20 +45,18 @@ namespace PloobsEngine.Modelo
         /// <param name="BonesAbsoluteTransforms">The bones absolute transforms.</param>
         /// <param name="mesh">The mesh.</param>
         /// <param name="batchInformationS">The batch information S.</param>
-        public static void Extract(Matrix[] BonesAbsoluteTransforms, ModelMesh mesh, out BatchInformation[][] batchInformationS)
-        {            
-                batchInformationS = new BatchInformation[1][];                                        
-                
-                BatchInformation[] b = new BatchInformation[mesh.MeshParts.Count];
+        public static void Extract(Matrix[] BonesAbsoluteTransforms, ModelMesh mesh, out BatchInformation[] batchInformationS)
+        {
+                batchInformationS = new BatchInformation[mesh.MeshParts.Count];
                 for (int i = 0; i < mesh.MeshParts.Count; i++)
-                {                    
-                    b[i] = new BatchInformation(mesh.MeshParts[i].VertexOffset, mesh.MeshParts[i].NumVertices, mesh.MeshParts[i].PrimitiveCount, mesh.MeshParts[i].StartIndex, mesh.MeshParts[i].VertexOffset, mesh.MeshParts[i].VertexBuffer.VertexDeclaration, mesh.MeshParts[i].VertexBuffer.VertexDeclaration.VertexStride);
-                    b[i].IndexBuffer = mesh.MeshParts[i].IndexBuffer;
-                    b[i].VertexBuffer = mesh.MeshParts[i].VertexBuffer;
-                    b[i].ModelLocalTransformation = BonesAbsoluteTransforms[mesh.ParentBone.Index];
+                {
+                    batchInformationS[i] = new BatchInformation(mesh.MeshParts[i].VertexOffset, mesh.MeshParts[i].NumVertices, mesh.MeshParts[i].PrimitiveCount, mesh.MeshParts[i].StartIndex, mesh.MeshParts[i].VertexOffset, mesh.MeshParts[i].VertexBuffer.VertexDeclaration, mesh.MeshParts[i].VertexBuffer.VertexDeclaration.VertexStride);
+                    batchInformationS[i].IndexBuffer = mesh.MeshParts[i].IndexBuffer;
+                    batchInformationS[i].VertexBuffer = mesh.MeshParts[i].VertexBuffer;
+                    batchInformationS[i].ModelLocalTransformation = BonesAbsoluteTransforms[mesh.ParentBone.Index];
                 }
 
-                batchInformationS[0] = b;
+                
         }
 
 
@@ -154,6 +152,51 @@ namespace PloobsEngine.Modelo
                     indices.Add(s[k * 3 + 0] + offset);
                 }
             }                                    
+        }
+
+
+        public static void ExtractModelRadiusAndCenter(BatchInformation bi, out float radius, out Vector3 center)
+        {
+            // Read the format of the vertex buffer  
+            VertexDeclaration declaration = bi.VertexDeclaration;
+            VertexElement[] vertexElements = declaration.GetVertexElements();
+            // Find the element that holds the position  
+            VertexElement vertexPosition = new VertexElement();
+            foreach (VertexElement vert in vertexElements)
+            {
+                if (vert.VertexElementUsage == VertexElementUsage.Position &&
+                    vert.VertexElementFormat == VertexElementFormat.Vector3)
+                {
+                    vertexPosition = vert;
+                    // There should only be one  
+                    break;
+                }
+            }
+            // Check the position element found is valid  
+            if (vertexPosition == null ||
+                vertexPosition.VertexElementUsage != VertexElementUsage.Position ||
+                vertexPosition.VertexElementFormat != VertexElementFormat.Vector3)
+            {
+                throw new Exception("Model uses unsupported vertex format!");
+            }
+            // This where we store the vertices until transformed  
+            Vector3[] allVertex = new Vector3[bi.NumVertices];
+            // Read the vertices from the buffer in to the array  
+                bi.VertexBuffer.GetData<Vector3>(
+                bi.BaseVertex * declaration.VertexStride + vertexPosition.Offset,
+                allVertex,
+                0,
+                bi.NumVertices,
+                declaration.VertexStride);
+            // Transform them based on the relative bone location and the world if provided  
+            for (int i = 0; i != allVertex.Length; ++i)
+            {
+                Vector3.Transform(ref allVertex[i], ref bi.ModelLocalTransformation, out allVertex[i]);
+            }
+            BoundingSphere bs = BoundingSphere.CreateFromPoints(allVertex);
+            radius = bs.Radius;
+            center = bs.Center;            
         }  
+
     }
 }

@@ -283,12 +283,11 @@ PixelShaderOutput PS_Water( VSOUTPUT IN ) : COLOR0 {
 
 	PixelShaderOutput output ;
 	// Fetch the normal maps (with signed scaling)
-    float4 t0 = tex2D( s0, IN.vBump0 ) * 2.0f - 1.0f;
-    float4 t1 = tex2D( s0, IN.vBump1 ) * 2.0f - 1.0f;
-    float4 t2 = tex2D( s0, IN.vBump2 ) * 2.0f - 1.0f;
+    float4 t0 = tex2D( s0, IN.vBump0 ) ;
+    float4 t1 = tex2D( s0, IN.vBump1 ) ;//* 2.0f - 1.0f;
+    float4 t2 = tex2D( s0, IN.vBump2 ) ;//* 2.0f - 1.0f;
 
-    float3 vN = t0.xyz + t1.xyz + t2.xyz;   
-
+    float3 vN = t0.xyz + t1.xyz + t2.xyz;   	
 
 	// Compute the tangent to world matrix
     float3x3 matTanToWorld;

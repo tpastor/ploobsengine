@@ -107,6 +107,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DeferredAnimatedScreen.cs" />
+    <Compile Include="DeferredLoadScreen.cs" />
     <Compile Include="DeferredScreen.cs" />
     <Compile Include="FirstScreen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

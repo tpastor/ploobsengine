@@ -32,7 +32,7 @@ namespace PloobsEngine.SceneControl
             render.Clear(desc.BackGroundColor);
 
             world.Culler.StartFrame(world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection, world.CameraManager.ActiveCamera.BoundingFrustum);
-            foreach (var item in world.Culler.GetNotCulledObjectsList(world.CameraManager.ActiveCamera, Material.MaterialType.FORWARD))
+            foreach (var item in world.Culler.GetNotCulledObjectsList(Material.MaterialType.FORWARD))
             {
                 ///critical code, no log
                 System.Diagnostics.Debug.Assert(item.Material.MaterialType == Material.MaterialType.FORWARD, "This Technich is just for forward materials and shaders");

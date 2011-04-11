@@ -197,7 +197,7 @@ namespace PloobsEngine.SceneControl
         /// <param name="render">The render.</param>
         protected void Draw(GameTime gameTime, IWorld world, RenderHelper render)
         {         
-            deferredGBuffer.PreDrawScene(gameTime, world, render);
+            deferredGBuffer.PreDrawScene(gameTime, world, render);            
             world.Culler.StartFrame(world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection, world.CameraManager.ActiveCamera.BoundingFrustum);
             deferredGBuffer.SetGBuffer(render);            
             deferredGBuffer.ClearGBuffer(render);                                    

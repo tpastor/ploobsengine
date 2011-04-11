@@ -7,6 +7,7 @@ using PloobsEngine.SceneControl;
 using BEPUphysics.Collidables;
 using BEPUphysics.MathExtensions;
 using PloobsEngine.Engine.Logger;
+using System;
 
 namespace PloobsEngine.Physics.Bepu
 {
@@ -94,9 +95,38 @@ namespace PloobsEngine.Physics.Bepu
                     BatchInformation info = bi[j];
                     int offset = vertices.Count;
                     Vector3[] a = new Vector3[info.NumVertices];
-                    info.VertexBuffer.GetData<Vector3>(info.StreamOffset + info.BaseVertex * info.VertexStride,
-                        a, 0, info.NumVertices, info.VertexStride);
-                    //xform = xform * Matrix.CreateScale(this.scale);
+
+                    // Read the format of the vertex buffer  
+                    VertexDeclaration declaration = bi[j].VertexBuffer.VertexDeclaration;
+                    VertexElement[] vertexElements = declaration.GetVertexElements();
+                    // Find the element that holds the position  
+                    VertexElement vertexPosition = new VertexElement();
+                    foreach (VertexElement elem in vertexElements)
+                    {
+                        if (elem.VertexElementUsage == VertexElementUsage.Position &&
+                            elem.VertexElementFormat == VertexElementFormat.Vector3)
+                        {
+                            vertexPosition = elem;
+                            // There should only be one  
+                            break;
+                        }
+                    }
+                    // Check the position element found is valid  
+                    if (vertexPosition == null ||
+                        vertexPosition.VertexElementUsage != VertexElementUsage.Position ||
+                        vertexPosition.VertexElementFormat != VertexElementFormat.Vector3)
+                    {
+                        throw new Exception("Model uses unsupported vertex format!");
+                    }
+                    // This where we store the vertices until transformed                      
+                    // Read the vertices from the buffer in to the array  
+                    bi[j].VertexBuffer.GetData<Vector3>(
+                        bi[j].BaseVertex * declaration.VertexStride + vertexPosition.Offset,
+                        a,
+                        0,
+                        bi[j].NumVertices,
+                        declaration.VertexStride);
+
                     for (int k = 0; k != a.Length; ++k)
                     {
                         Vector3.Transform(ref a[k], ref info.ModelLocalTransformation, out a[k]);

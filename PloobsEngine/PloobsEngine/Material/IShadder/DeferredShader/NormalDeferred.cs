@@ -107,13 +107,14 @@ namespace PloobsEngine.Material
         /// <param name="obj"></param>
         public override void Initialize(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, IObject obj)
         {                     
-            this._shader = factory.CreateEffect("RenderGBuffer",true);            
+            this._shader = factory.GetEffect("RenderGBuffer",false,true);            
             ViewProjectionParameter = this._shader.Parameters["ViewProjection"];              
             TextureParameter = this._shader.Parameters["Texture"];
             IdParameter = this._shader.Parameters["id"];
             SpecularIntensityParameter = this._shader.Parameters["specularIntensity"];
             SpecularPowerParameter = this._shader.Parameters["specularPower"];  
-            WorldParameter = this._shader.Parameters["World"];  
+            WorldParameter = this._shader.Parameters["World"];
+            base.Initialize(ginfo, factory, obj);
         }
 
         /// <summary>

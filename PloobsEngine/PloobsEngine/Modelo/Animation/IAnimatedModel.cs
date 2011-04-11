@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using PloobsEngine.SceneControl;
+using PloobsEngine.Engine;
 
 namespace PloobsEngine.Modelo.Animation
 {
@@ -12,8 +13,8 @@ namespace PloobsEngine.Modelo.Animation
     /// </summary>
     public abstract class IAnimatedModel : IModelo
     {
-        public IAnimatedModel(IContentManager contentManager,String modelName, String diffuseTextureName, String bumpTextureName = null, String specularTextureName = null, String glowTextureName = null)
-            : base(contentManager,modelName, diffuseTextureName, bumpTextureName, specularTextureName, glowTextureName)
+        public IAnimatedModel(GraphicFactory factory, String modelName, String diffuseTextureName, String bumpTextureName = null, String specularTextureName = null, String glowTextureName = null)
+            : base(factory, modelName, diffuseTextureName, bumpTextureName, specularTextureName, glowTextureName)
         {
 
         }

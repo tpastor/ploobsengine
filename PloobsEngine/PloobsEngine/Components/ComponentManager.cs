@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using System.Reflection;
 using PloobsEngine.Commands;
 using PloobsEngine.Engine;
+using PloobsEngine.SceneControl;
 
 namespace PloobsEngine.Components
 {
@@ -20,12 +21,14 @@ namespace PloobsEngine.Components
         private List<IComponent> _posDrawables = new List<IComponent>();
         private List<IComponent> updateAUX = new List<IComponent>();
         private GraphicInfo GraphicInfo;
+        GraphicFactory factory;
 
 
 
-        public ComponentManager(ref GraphicInfo GraphicInfo)
+        public ComponentManager(GraphicInfo GraphicInfo, GraphicFactory factory)
         {
-            this.GraphicInfo = GraphicInfo;        
+            this.GraphicInfo = GraphicInfo;
+            this.factory = factory;
         }
 
         
@@ -74,11 +77,11 @@ namespace PloobsEngine.Components
         /// <param name="gt">The gt.</param>
         /// <param name="activeView">The active view.</param>
         /// <param name="activeProjection">The active projection.</param>
-        internal void PreDraw(GameTime gt, Matrix activeView, Matrix activeProjection)
+        internal void PreDraw(RenderHelper render,GameTime gt, Matrix activeView, Matrix activeProjection)
         {
             foreach (IComponent item in _preDrawables)
             {
-                item.iPreDraw(gt,activeView,activeProjection);
+                item.iPreDraw(render,gt,activeView,activeProjection);
             }
         }
         /// <summary>
@@ -87,11 +90,11 @@ namespace PloobsEngine.Components
         /// <param name="gt">The gt.</param>
         /// <param name="activeView">The active view.</param>
         /// <param name="activeProjection">The active projection.</param>
-        internal void AfterDraw(GameTime gt, Matrix activeView, Matrix activeProjection)
+        internal void AfterDraw(RenderHelper render,GameTime gt, Matrix activeView, Matrix activeProjection)
         {
             foreach (IComponent item in _posDrawables)
             {
-                item.iAfterDraw(gt,activeView,activeProjection);
+                item.iAfterDraw(render,gt,activeView,activeProjection);
             }
         }
         /// <summary>
@@ -102,7 +105,7 @@ namespace PloobsEngine.Components
         {
             foreach (IComponent item in _comps.Values)
             {
-                item.iLoadContent(ref GraphicInfo);
+                item.iLoadContent(GraphicInfo,factory);
             }
         }
 
@@ -154,7 +157,7 @@ namespace PloobsEngine.Components
                     }                                
                   _comps.Add(comp.getMyName(), comp);
                   _comps[comp.getMyName()].iInitialize();
-                  _comps[comp.getMyName()].iLoadContent(ref this.GraphicInfo);
+                  _comps[comp.getMyName()].iLoadContent(this.GraphicInfo,factory);
                   CommandProcessor.getCommandProcessor().Register(_comps[comp.getMyName()]);
                   return true;
         }

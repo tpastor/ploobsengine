@@ -134,6 +134,9 @@
     <Compile Include="Commands\IReciever.cs" />
     <Compile Include="Components\ComponentManager.cs" />
     <Compile Include="Components\IComponent.cs" />
+    <Compile Include="Components\SkyBox\SkyBoxEnableDisableCommand.cs" />
+    <Compile Include="Components\SkyBox\Skybox.cs" />
+    <Compile Include="Components\SkyBox\SkyBoxUpdateParametersCommand.cs" />
     <Compile Include="Engine\IntermediateTexture.cs" />
     <Compile Include="Events\EventManager.cs" />
     <Compile Include="Events\GroupedEvent.cs" />
@@ -145,8 +148,22 @@
     <Compile Include="Light\Deferred\DirectionalLightPE.cs" />
     <Compile Include="Light\Deferred\PointLightPE.cs" />
     <Compile Include="Light\Deferred\SpotLightPE.cs" />
+    <Compile Include="Loader\WorldLoader.cs" />
+    <Compile Include="Loader\ExtractXmlModelLoader.cs" />
+    <Compile Include="Loader\IModelLoader.cs" />
+    <Compile Include="Material\DeferredAnimatedMaterial.cs" />
     <Compile Include="Material\DeferredMaterial.cs" />
+    <Compile Include="Material\IShadder\DeferredShader\CustomAnimationShader.cs" />
+    <Compile Include="Material\IShadder\DeferredShader\CustomDeferred.cs" />
+    <Compile Include="Material\IShadder\DeferredShader\EMReflective.cs" />
     <Compile Include="Material\IShadder\DeferredShader\NormalDeferred.cs" />
+    <Compile Include="Material\IShadder\DeferredShader\SimpleAnimationShader.cs" />
+    <Compile Include="Material\IShadder\DeferredShader\WaterCompleteShader.cs" />
+    <Compile Include="Material\IShadder\DeferredShader\WaterShader.cs" />
+    <Compile Include="Modelo\Animation\AnimatedController.cs" />
+    <Compile Include="Modelo\Animation\AnimatedModel.cs" />
+    <Compile Include="Modelo\CustomModel.cs" />
+    <Compile Include="Modelo\SpecificModels\WaterModel.cs" />
     <Compile Include="Physic\PhysicObjects\BepuObject\CapsuleObject.cs" />
     <Compile Include="Physic\PhysicObjects\BepuObject\CylinderObject.cs" />
     <Compile Include="Physic\PhysicObjects\BepuObject\DetectorVolumeObject.cs" />
@@ -194,7 +211,6 @@
     <Compile Include="Input\TurnOnInputMaskCommand.cs" />
     <Compile Include="Light\ILight.cs" />
     <Compile Include="Material\ForwardMaterial.cs" />
-    <Compile Include="Material\IDepthExtractor.cs" />
     <Compile Include="Material\IMaterial.cs" />
     <Compile Include="Material\IShadder\IShader.cs" />
     <Compile Include="Material\IShadder\ForwardShader\XNABasicShader.cs" />
@@ -322,6 +338,7 @@
     <None Include="bin\x86\Debug\Content\Effects\Deferred\cilBilboard.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\cilBilboardForward.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\ClearGBuffer.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\clippingPlane.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\colorCorrection.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\Combine.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\CombineFinal.xnb" />
@@ -389,6 +406,7 @@
     <None Include="bin\x86\Debug\Content\Effects\Deferred\Water.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\WaterComplete.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\wiggle.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\skybox.xnb" />
     <None Include="bin\x86\Debug\Content\Font\ConsoleFont.xnb" />
     <None Include="bin\x86\Debug\Content\Models\block.xnb" />
     <None Include="bin\x86\Debug\Content\Models\dome.xnb" />

@@ -77,13 +77,9 @@ PixelShaderOutput PShader( PS_INPUT pin ) : COLOR0
 technique RenderScene
 {
 	pass p0
-	{
-		CullMode = None;
-		ZWriteEnable = false;
+	{	
 		VertexShader = compile vs_2_0 VShader();
-		PixelShader = compile ps_2_0 PShader();
-		ZWriteEnable = true;
-		CullMode = CCW;
+		PixelShader = compile ps_2_0 PShader();	
 	}
 }
 

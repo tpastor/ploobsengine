@@ -529,6 +529,11 @@
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
     </Compile>
+    <Compile Include="Effects\Deferred\clippingPlane.fx">
+      <Name>clippingPlane</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+    </Compile>
     <None Include="Effects\Water.fx">
       <Name>Water</Name>
       <Importer>EffectImporter</Importer>

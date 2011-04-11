@@ -271,7 +271,7 @@ namespace PloobsEngine.Engine
             contentManager = new EngineContentManager(this);
             GraphicInfo = new GraphicInfo(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel,GraphicsDevice);
             GraphicFactory = new Engine.GraphicFactory(GraphicInfo, GraphicsDevice, contentManager);
-            ComponentManager = new ComponentManager(ref GraphicInfo);
+            ComponentManager = new ComponentManager(GraphicInfo, GraphicFactory);
             ComponentManager.LoadContent(ref GraphicInfo);            
             render = new RenderHelper(GraphicsDevice, ComponentManager,contentManager);
             render.PushBlendState(BlendState.Opaque);

@@ -150,6 +150,8 @@ namespace PloobsEngine.SceneControl
             UpdateObject(gt, cam, luzes);
             worldMatrix = physicObject.WorldMatrix;
 
+            Material.Update(gt, this, luzes);
+
             if (lastFrameWorld != WorldMatrix)
             {
                 if(OnHasMoved!=null)

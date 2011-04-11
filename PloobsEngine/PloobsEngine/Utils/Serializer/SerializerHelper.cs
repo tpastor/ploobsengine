@@ -16,12 +16,12 @@ namespace PloobsEngine.Utils
 
         /// <summary>
         /// Sets the number format.
-        /// MUST BE CALLED ONCE IF YOUR SYSTEM USES "." for decimal separator
+        /// MUST BE CALLED ONCE IF YOUR SYSTEM USES "," for decimal separator
         /// </summary>
-        public static void ChangeDecimalSymbolToComma()
+        public static void ChangeDecimalSymbolToPoint()
         {
-            ni = (System.Globalization.NumberFormatInfo) ci.NumberFormat.Clone();
-            ni.NumberDecimalSeparator = ",";
+            ni = (System.Globalization.NumberFormatInfo)ci.NumberFormat.Clone();
+            ni.NumberDecimalSeparator = ".";
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace PloobsEngine.Utils
         /// </summary>
         public static void ChangeDecimalSymbolToSystemDefault()
         {
-            ni = (System.Globalization.NumberFormatInfo)ci.NumberFormat.Clone();            
+            ni = (System.Globalization.NumberFormatInfo)ci.NumberFormat.Clone();
         }
 
         /// <summary>
@@ -38,13 +38,13 @@ namespace PloobsEngine.Utils
         /// <param name="vector">vetor</param>
         /// <param name="fieldName">Field name</param>
         /// <param name="textWriter">textwriter</param>
-        public static void SerializeVector3(Vector3 vector,String fieldName ,System.Xml.XmlTextWriter textWriter)
+        public static void SerializeVector3(Vector3 vector, String fieldName, System.Xml.XmlTextWriter textWriter)
         {
             textWriter.WriteStartElement(fieldName, null);
-            textWriter.WriteElementString("x", Convert.ToString(vector.X));
-            textWriter.WriteElementString("y", Convert.ToString(vector.Y));
-            textWriter.WriteElementString("z", Convert.ToString(vector.Z));
-            textWriter.WriteEndElement();            
+            textWriter.WriteElementString("x", Convert.ToString(vector.X, ni));
+            textWriter.WriteElementString("y", Convert.ToString(vector.Y, ni));
+            textWriter.WriteElementString("z", Convert.ToString(vector.Z, ni));
+            textWriter.WriteEndElement();
         }
 
         /// <summary>
@@ -76,11 +76,11 @@ namespace PloobsEngine.Utils
         /// <param name="vector">The vector.</param>
         /// <param name="fieldName">Name of the field.</param>
         /// <param name="textWriter">The text writer.</param>
-        public static void SerializeVector2(Vector2 vector,String fieldName ,System.Xml.XmlTextWriter textWriter)
+        public static void SerializeVector2(Vector2 vector, String fieldName, System.Xml.XmlTextWriter textWriter)
         {
             textWriter.WriteStartElement(fieldName, null);
-            textWriter.WriteElementString("x", Convert.ToString(vector.X));
-            textWriter.WriteElementString("y", Convert.ToString(vector.Y));
+            textWriter.WriteElementString("x", Convert.ToString(vector.X, ni));
+            textWriter.WriteElementString("y", Convert.ToString(vector.Y, ni));
             textWriter.WriteEndElement();
         }
         /// <summary>
@@ -108,9 +108,9 @@ namespace PloobsEngine.Utils
         /// <param name="param">The param.</param>
         /// <param name="fieldName">Name of the field.</param>
         /// <param name="textWriter">The text writer.</param>
-        public static void SerializeBaseType<T>(T param,String fieldName ,System.Xml.XmlTextWriter textWriter)
-        {            
-            textWriter.WriteElementString(fieldName, Convert.ToString(param));
+        public static void SerializeBaseType<T>(T param, String fieldName, System.Xml.XmlTextWriter textWriter)
+        {
+            textWriter.WriteElementString(fieldName, Convert.ToString(param, ni));
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace PloobsEngine.Utils
         /// <param name="textWriter">The text writer.</param>
         public static void SerializeAttributeBaseType<T>(T param, String fieldName, System.Xml.XmlTextWriter textWriter)
         {
-            textWriter.WriteAttributeString(fieldName, Convert.ToString(param));
+            textWriter.WriteAttributeString(fieldName, Convert.ToString(param, ni));
         }
 
         /// <summary>
@@ -137,9 +137,9 @@ namespace PloobsEngine.Utils
             textWriter.WriteStartElement(fieldName, null);
             for (int i = 0; i < list.Count; i++)
             {
-                textWriter.WriteElementString("Item_" + i, Convert.ToString(list[i]));    
+                textWriter.WriteElementString("Item_" + i, Convert.ToString(list[i], ni));
             }
-            textWriter.WriteEndElement();            
+            textWriter.WriteEndElement();
         }
 
         /// <summary>
@@ -155,7 +155,7 @@ namespace PloobsEngine.Utils
             textWriter.WriteStartElement(fieldName, null);
             SerializeListbaseType<X>(dic.Keys.ToList<X>(), "Keys", textWriter);
             SerializeListbaseType<Y>(dic.Values.ToList<Y>(), "Values", textWriter);
-            textWriter.WriteEndElement();            
+            textWriter.WriteEndElement();
 
         }
         /// <summary>
@@ -169,7 +169,7 @@ namespace PloobsEngine.Utils
         public static IDictionary<X, Y> DeSerializeDictionary<X, Y>(String fieldName, System.Xml.XmlNode node)
         {
             IDictionary<X, Y> dic = new Dictionary<X, Y>();
-            IList<X> keys = DeserializeSerializeListbaseType<X>("Keys",node[fieldName]);
+            IList<X> keys = DeserializeSerializeListbaseType<X>("Keys", node[fieldName]);
             IList<Y> values = DeserializeSerializeListbaseType<Y>("Values", node[fieldName]);
             for (int i = 0; i < keys.Count; i++)
             {
@@ -188,11 +188,11 @@ namespace PloobsEngine.Utils
         public static IList<T> DeserializeSerializeListbaseType<T>(String fieldName, System.Xml.XmlNode node)
         {
             IList<T> list = new List<T>();
-            int num =  node[fieldName].ChildNodes.Count;            
+            int num = node[fieldName].ChildNodes.Count;
             for (int i = 0; i < num; i++)
             {
-               list.Add(SerializerHelper.DeserializeBaseType<T>("Item_" + i, node[fieldName]));                
-                
+                list.Add(SerializerHelper.DeserializeBaseType<T>("Item_" + i, node[fieldName]));
+
             }
             return list;
         }
@@ -207,23 +207,23 @@ namespace PloobsEngine.Utils
         public static void SerializeMatrix(Matrix matrix, String fieldName, System.Xml.XmlTextWriter textWriter)
         {
             textWriter.WriteStartElement(fieldName, null);
-            textWriter.WriteElementString("M11", Convert.ToString(matrix.M11));
-            textWriter.WriteElementString("M12", Convert.ToString(matrix.M12));
-            textWriter.WriteElementString("M13", Convert.ToString(matrix.M13));
-            textWriter.WriteElementString("M14", Convert.ToString(matrix.M14));
-            textWriter.WriteElementString("M21", Convert.ToString(matrix.M21));
-            textWriter.WriteElementString("M22", Convert.ToString(matrix.M22));
-            textWriter.WriteElementString("M23", Convert.ToString(matrix.M23));
-            textWriter.WriteElementString("M24", Convert.ToString(matrix.M24));
-            textWriter.WriteElementString("M31", Convert.ToString(matrix.M31));
-            textWriter.WriteElementString("M32", Convert.ToString(matrix.M32));
-            textWriter.WriteElementString("M33", Convert.ToString(matrix.M33));
-            textWriter.WriteElementString("M34", Convert.ToString(matrix.M34));
-            textWriter.WriteElementString("M41", Convert.ToString(matrix.M41));
-            textWriter.WriteElementString("M42", Convert.ToString(matrix.M42));
-            textWriter.WriteElementString("M43", Convert.ToString(matrix.M43));
-            textWriter.WriteElementString("M44", Convert.ToString(matrix.M44));
-            textWriter.WriteEndElement();            
+            textWriter.WriteElementString("M11", Convert.ToString(matrix.M11, ni));
+            textWriter.WriteElementString("M12", Convert.ToString(matrix.M12, ni));
+            textWriter.WriteElementString("M13", Convert.ToString(matrix.M13, ni));
+            textWriter.WriteElementString("M14", Convert.ToString(matrix.M14, ni));
+            textWriter.WriteElementString("M21", Convert.ToString(matrix.M21, ni));
+            textWriter.WriteElementString("M22", Convert.ToString(matrix.M22, ni));
+            textWriter.WriteElementString("M23", Convert.ToString(matrix.M23, ni));
+            textWriter.WriteElementString("M24", Convert.ToString(matrix.M24, ni));
+            textWriter.WriteElementString("M31", Convert.ToString(matrix.M31, ni));
+            textWriter.WriteElementString("M32", Convert.ToString(matrix.M32, ni));
+            textWriter.WriteElementString("M33", Convert.ToString(matrix.M33, ni));
+            textWriter.WriteElementString("M34", Convert.ToString(matrix.M34, ni));
+            textWriter.WriteElementString("M41", Convert.ToString(matrix.M41, ni));
+            textWriter.WriteElementString("M42", Convert.ToString(matrix.M42, ni));
+            textWriter.WriteElementString("M43", Convert.ToString(matrix.M43, ni));
+            textWriter.WriteElementString("M44", Convert.ToString(matrix.M44, ni));
+            textWriter.WriteEndElement();
         }
         /// <summary>
         /// Deserializes the vector3 nullable.
@@ -259,7 +259,7 @@ namespace PloobsEngine.Utils
             Vector2 vec = new Vector2();
             vec.X = float.Parse(node[fieldName]["x"].InnerText, ni);
             vec.Y = float.Parse(node[fieldName]["y"].InnerText, ni);
-          
+
             return vec;
         }
 
@@ -273,8 +273,8 @@ namespace PloobsEngine.Utils
         /// <param name="node">The node.</param>
         /// <returns></returns>
         public static T DeserializeBaseType<T>(String fieldName, System.Xml.XmlNode node)
-        {            
-            return (T) Convert.ChangeType(node[fieldName].InnerText,typeof(T),ni) ;
+        {
+            return (T)Convert.ChangeType(node[fieldName].InnerText, typeof(T), ni);
         }
 
         /// <summary>
@@ -285,8 +285,8 @@ namespace PloobsEngine.Utils
         /// <param name="node">The node.</param>
         /// <returns></returns>
         public static T DeserializeAttributeBaseType<T>(String fieldName, System.Xml.XmlNode node)
-        {            
-            return (T) Convert.ChangeType(node.Attributes[fieldName].InnerText,typeof(T),ni) ;
+        {
+            return (T)Convert.ChangeType(node.Attributes[fieldName].InnerText, typeof(T), ni);
         }
 
 
@@ -296,10 +296,10 @@ namespace PloobsEngine.Utils
         /// <param name="fieldName">Name of the field.</param>
         /// <param name="node">The node.</param>
         /// <returns></returns>
-        public static Matrix DeSerializeMatrix( String fieldName, System.Xml.XmlNode node)
+        public static Matrix DeSerializeMatrix(String fieldName, System.Xml.XmlNode node)
         {
-            
-            float m11 = Convert.ToSingle(node[fieldName]["M11"].InnerText,ni);
+
+            float m11 = Convert.ToSingle(node[fieldName]["M11"].InnerText, ni);
             float m12 = Convert.ToSingle(node[fieldName]["M12"].InnerText, ni);
             float m13 = Convert.ToSingle(node[fieldName]["M13"].InnerText, ni);
             float m14 = Convert.ToSingle(node[fieldName]["M14"].InnerText, ni);
@@ -319,9 +319,9 @@ namespace PloobsEngine.Utils
             float m43 = Convert.ToSingle(node[fieldName]["M43"].InnerText, ni);
             float m44 = Convert.ToSingle(node[fieldName]["M44"].InnerText, ni);
 
-            return  new Matrix(m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44);
+            return new Matrix(m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44);
 
         }
-        
+
     }
 }

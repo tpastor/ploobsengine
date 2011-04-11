@@ -409,4 +409,10 @@
   <data name="ConsoleFont" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>bin\x86\Debug\Content\Font\ConsoleFont.xnb;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="clippingPlane" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\x86\Debug\Content\Effects\Deferred\clippingPlane.xnb;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="skybox" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\x86\Debug\Content\Effects\skybox.xnb;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

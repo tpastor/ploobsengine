@@ -5,29 +5,28 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using PloobsEngine.SceneControl;
+using PloobsEngine.Engine;
 
 namespace PloobsEngine.Modelo
 {
     public class SimpleModel : IModelo
     {
-        public SimpleModel(IContentManager contentManager,String modelName, String diffuseTextureName = null, String bumpTextureName = null, String specularTextureName = null, String glowTextureName = null)
-            : base(contentManager,modelName, diffuseTextureName, bumpTextureName, specularTextureName, glowTextureName)
-        {
-
-        }
-
-        internal SimpleModel(IContentManager contentManager,String modelName, bool isInternal,String diffuseTextureName = null)
-            : base(isInternal,contentManager, modelName, diffuseTextureName, null, null, null)
+       public SimpleModel(GraphicFactory factory,String modelName, String diffuseTextureName = null, String bumpTextureName = null, String specularTextureName = null, String glowTextureName = null, bool CallLoadContent = true)
+            : base(factory, modelName, diffuseTextureName, bumpTextureName, specularTextureName, glowTextureName, CallLoadContent)
         {
         }
 
+        internal SimpleModel(GraphicFactory factory, String modelName, bool isInternal, String diffuseTextureName = null)
+            : base(isInternal,factory, modelName, diffuseTextureName, null, null, null)
+        {
+        }
         
         private Model model;        
         private float modelRadius;
 
-        protected override void LoadBatchInfo(SceneControl.IContentManager cmanager, out BatchInformation[][] BatchInformations)
+        protected override void LoadBatchInfo(GraphicFactory factory, out BatchInformation[][] BatchInformations)
         {
-            model = cmanager.GetAsset<Model>(this.Name, isInternal);
+            model = factory.GetModel(this.Name, isInternal);
             ModelBuilderHelper.Extract(model, out BatchInformations);
 
             if (diffuse == null)            
@@ -38,7 +37,6 @@ namespace PloobsEngine.Modelo
                     _diffuseName = CUSTOM;
                 }
             }
-
             
             BoundingSphere sphere = new BoundingSphere();
             foreach (var item in model.Meshes)

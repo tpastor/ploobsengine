@@ -44,9 +44,12 @@ namespace PloobsEngine.SceneControl
 
         public void Draw(GameTime gt, IWorld world,RenderHelper render)        
         {
-            IEnumerable<IObject> list = world.Culler.GetNotCulledObjectsList(world.CameraManager.ActiveCamera,MaterialType.FORWARD );            
-            if(sortByCameraDistance)
-                list.OrderBy((a) => a,c);
+            IEnumerable<IObject> list = world.Culler.GetNotCulledObjectsList(MaterialType.FORWARD );
+            if (sortByCameraDistance)
+            {
+                c.CameraPosition = world.CameraManager.ActiveCamera.Position;
+                list.OrderBy((a) => a, c);
+            }
             
             foreach (IObject item in list)
 	        {
