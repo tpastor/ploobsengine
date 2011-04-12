@@ -230,7 +230,7 @@ namespace PloobsEngine.SceneControl
                         world.PhysicWorld.iDebugDrawn(gameTime, world.CameraManager.ActiveCamera);
                     }
                     if(world.ParticleManager!= null)
-                        world.ParticleManager.Draw(render, gameTime, world.CameraManager.ActiveCamera);
+                        world.ParticleManager.iDraw(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection, render);
                     forwardPass.Draw(gameTime, world, render);
                     render.RenderPosComponents(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection);
                     render[PrincipalConstants.CurrentImage] = restoreDepth .EndForwardPass(render);
@@ -273,7 +273,7 @@ namespace PloobsEngine.SceneControl
                         world.PhysicWorld.iDebugDrawn(gameTime, world.CameraManager.ActiveCamera);
                     }
                     if (world.ParticleManager != null)
-                        world.ParticleManager.Draw(render, gameTime, world.CameraManager.ActiveCamera);
+                        world.ParticleManager.iDraw(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection, render);
                     forwardPass.Draw(gameTime, world, render);
                     render[PrincipalConstants.CurrentImage] = restoreDepth.EndForwardPass(render);
 

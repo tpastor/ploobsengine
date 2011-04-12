@@ -123,4 +123,6 @@ C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Mo
 C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Models\Dsphere.xnb
 C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Models\sphere.xnb
 C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\clippingPlane.xnb
+C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\DPSF.dll
+C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\DPSF.xml
 C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\PloobsEngine.XML

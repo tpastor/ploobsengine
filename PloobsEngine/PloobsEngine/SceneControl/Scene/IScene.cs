@@ -132,7 +132,8 @@ namespace PloobsEngine.SceneControl
             
             this._world.GraphicsFactory = GraphicFactory;
             this._world.GraphicsInfo = GraphicInfo;
-            this._world.ContentManager = screenManager.contentManager;                
+            this._world.ContentManager = screenManager.contentManager;
+            this._world.iInitWorld();
             base.InitScreen(GraphicInfo, engine);
         }
 

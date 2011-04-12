@@ -173,3 +173,5 @@ C:\Users\tpastor\Desktop\port\EngineTestes\EngineTestes\bin\x86\Debug\Content\Mo
 C:\Users\tpastor\Desktop\port\EngineTestes\EngineTestes\bin\x86\Debug\Content\Model\PlayerMarine.xnb
 C:\Users\tpastor\Desktop\port\EngineTestes\EngineTestes\bin\x86\Debug\Content\Model\WeaponMachineGun.xnb
 C:\Users\tpastor\Desktop\port\EngineTestes\EngineTestes\bin\x86\Debug\Content\Model\ball.xnb
+C:\Users\tpastor\Desktop\port\EngineTestes\EngineTestes\bin\x86\Debug\DPSF.dll
+C:\Users\tpastor\Desktop\port\EngineTestes\EngineTestes\bin\x86\Debug\DPSF.xml

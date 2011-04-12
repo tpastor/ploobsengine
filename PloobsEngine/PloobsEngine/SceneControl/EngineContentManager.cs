@@ -15,13 +15,11 @@ namespace PloobsEngine.SceneControl
     public class EngineContentManager : IContentManager
     {
         ContentManager cmanagerInternal;
-        ContentManager cmanagerExternal;
-
 
         public EngineContentManager(Game game)
         {
             cmanagerInternal = new ResourceContentManager(game.Services, Resources.ResourceManager);
-            cmanagerExternal = game.Content;
+            externalContentManager = game.Content;
         }
 
         private static IDictionary<String, object> _modelDicInt = new Dictionary<String, object>();
@@ -39,7 +37,7 @@ namespace PloobsEngine.SceneControl
             }
             else
             {
-                T t = cmanagerExternal.Load<T>(path);
+                T t = externalContentManager.Load<T>(path);
                 _modelDicExt.Add(path, t);
                 return t;
             }
@@ -49,7 +47,7 @@ namespace PloobsEngine.SceneControl
 
         #region IContentManager Members
 
-        public T GetAsset<T>(string fileName, bool isInternal = false)
+        public override T GetAsset<T>(string fileName, bool isInternal = false)
         {
             if (isInternal)
             {

@@ -69,6 +69,9 @@
     <Reference Include="BEPUphysics">
       <HintPath>Dlls\BEPUphysics.dll</HintPath>
     </Reference>
+    <Reference Include="DPSF">
+      <HintPath>Dlls\DPSF.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
       <Private>False</Private>
     </Reference>
@@ -164,6 +167,10 @@
     <Compile Include="Modelo\Animation\AnimatedModel.cs" />
     <Compile Include="Modelo\CustomModel.cs" />
     <Compile Include="Modelo\SpecificModels\WaterModel.cs" />
+    <Compile Include="Particles\DPFSParticleSystem.cs" />
+    <Compile Include="Particles\DPSFParticleManager.cs" />
+    <Compile Include="Particles\IParticleManager.cs" />
+    <Compile Include="Particles\IParticleSystem.cs" />
     <Compile Include="Physic\PhysicObjects\BepuObject\CapsuleObject.cs" />
     <Compile Include="Physic\PhysicObjects\BepuObject\CharacterController.cs" />
     <Compile Include="Physic\PhysicObjects\BepuObject\CharacterObject.cs" />
@@ -227,13 +234,6 @@
     <Compile Include="Modelo\IModelo.cs" />
     <Compile Include="Modelo\ModelBuilderHelper.cs" />
     <Compile Include="Modelo\SimpleModel.cs" />
-    <Compile Include="Particles\Emiters\GeneralEmiter.cs" />
-    <Compile Include="Particles\IEmiter.cs" />
-    <Compile Include="Particles\ParticleEmitter.cs" />
-    <Compile Include="Particles\ParticleManager.cs" />
-    <Compile Include="Particles\ParticleSettings.cs" />
-    <Compile Include="Particles\ParticleSystem.cs" />
-    <Compile Include="Particles\ParticleVertex.cs" />
     <Compile Include="Physic\BepuPhysicWorld.cs" />
     <Compile Include="Physic\IPhysicWorld.cs" />
     <Compile Include="Physic\PhysicObjects\BepuObject\BepuEntityObject.cs" />

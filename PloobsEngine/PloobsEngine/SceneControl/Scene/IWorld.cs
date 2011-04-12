@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using System.Xml;
-using PloobsEngine.Particle3D;
 using PloobsEngine.Light;
 using PloobsEngine.Cameras;
 using PloobsEngine.Trigger;
@@ -15,6 +14,7 @@ using System.Diagnostics;
 using PloobsEngine.Engine.Logger;
 using PloobsEngine.Entity;
 using PloobsEngine.Engine;
+using PloobsEngine.Particles;
 
 namespace PloobsEngine.SceneControl
 {
@@ -28,8 +28,8 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         /// <param name="PhysicWorld">The physic world.</param>
         /// <param name="Culler">The culler.</param>
-        /// <param name="ParticleManager">The particle manager.</param>
-        public IWorld(IPhysicWorld PhysicWorld, ICuller Culler, ParticleManager ParticleManager = null)
+        /// <param name="particleManager">The particle manager.</param>
+        public IWorld(IPhysicWorld PhysicWorld, ICuller Culler, IParticleManager particleManager = null)
         {
             if (PhysicWorld == null)
             {
@@ -43,8 +43,9 @@ namespace PloobsEngine.SceneControl
                 Debug.Assert(Culler != null);
                 throw new Exception("Culler cannot be null");
             }
-            this.PhysicWorld = PhysicWorld;
-            this.ParticleManager = ParticleManager;
+
+            this.particleManager = particleManager;            
+            this.PhysicWorld = PhysicWorld;            
             this.CameraManager = new CameraManager();            
             Dummies = new List<IDummy>();
             Lights = new List<ILight>();
@@ -69,6 +70,32 @@ namespace PloobsEngine.SceneControl
         protected GraphicInfo graphicsInfo;
         protected GraphicFactory graphicsFactory;
         protected IContentManager contentManager;
+        protected IParticleManager particleManager;
+
+        public IParticleManager ParticleManager
+        {
+            get {
+                if (particleManager == null)
+                {
+                    ActiveLogger.LogMessage("Cant use an Unitialized Particle Manager, use the right IWORLD Constructor", LogLevel.FatalError);
+                    throw new Exception("Cant use an Unitialized Particle Manager, use the right IWORLD Constructor");
+                }
+                return particleManager;
+            }            
+        }
+
+        protected virtual void InitWorld()
+        {
+            if (particleManager != null)
+            {
+                particleManager.GraphicInfo = graphicsInfo;
+                particleManager.GraphicFactory = graphicsFactory;
+            }
+        }
+        internal void iInitWorld()
+        {
+            InitWorld();
+        }
 
         public IContentManager ContentManager
         {
@@ -105,18 +132,8 @@ namespace PloobsEngine.SceneControl
             get { return graphicsFactory; }
             set { graphicsFactory = value; }
         }
+                
 
-
-
-
-        /// <summary>
-        /// Gets the particle manager instance.
-        /// </summary>
-        public ParticleManager ParticleManager
-        {
-            get;
-            internal set;
-        }
 
         /// <summary>
         /// Adds an object to the world.
@@ -197,7 +214,7 @@ namespace PloobsEngine.SceneControl
             }
 
             if(ParticleManager!= null)
-                ParticleManager.Update(gt);
+                ParticleManager.iUpdate(gt, CameraManager.ActiveCamera.View, CameraManager.ActiveCamera.Projection, CameraManager.ActiveCamera.Position);
 
             foreach (ISoundEmitter3D item in SoundEmiters3D)
             {

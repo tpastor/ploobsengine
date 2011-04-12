@@ -683,12 +683,6 @@
             Gets the physic objects.
             </summary>
         </member>
-        <member name="P:PloobsEngine.Particle3D.IEmiter.Toggle">
-            <summary>
-            Turn on or off
-            </summary>
-            <param name="ligar"></param>
-        </member>
         <member name="T:PloobsEngine.Modelo.OnTextureChange">
             <summary>
             Called when the texture change
@@ -3651,11 +3645,6 @@
             <param name="filename">file name</param>
             <returns>dic with the parse info</returns>
         </member>
-        <member name="T:PloobsEngine.Particle3D.ParticleVertex">
-            <summary>
-            Custom vertex structure for drawing point sprite particles.
-            </summary>
-        </member>
         <member name="T:PloobsEngine.Modelo.Animation.IAnimatedModel">
             <summary>
             New Kind of Model specific for Animations
@@ -4060,40 +4049,6 @@
             <param name="fileName">Name of the file.</param>
             <returns></returns>
         </member>
-        <member name="T:Particle3DSample.ParticleEmitter">
-            <summary>
-            Helper for objects that want to leave particles behind them as they
-            move around the world. This emitter implementation solves two related
-            problems:
-            
-            If an object wants to create particles very slowly, less than once per
-            frame, it can be a pain to keep track of which updates ought to create
-            a new particle versus which should not.
-            
-            If an object is moving quickly and is creating many particles per frame,
-            it will look ugly if these particles are all bunched up together. Much
-            better if they can be spread out along a line between where the object
-            is now and where it was on the previous frame. This is particularly
-            important for leaving trails behind fast moving objects such as rockets.
-            
-            This emitter class keeps track of a moving object, remembering its
-            previous position so it can calculate the velocity of the object. It
-            works out the perfect locations for creating particles at any frequency
-            you specify, regardless of whether this is faster or slower than the
-            game update rate.
-            </summary>
-        </member>
-        <member name="M:Particle3DSample.ParticleEmitter.#ctor(System.Single,Microsoft.Xna.Framework.Vector3)">
-            <summary>
-            Constructs a new particle emitter object.
-            </summary>
-        </member>
-        <member name="M:Particle3DSample.ParticleEmitter.Update(Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Vector3)">
-            <summary>
-            Updates the emitter, creating the appropriate number of particles
-            in the appropriate positions.
-            </summary>
-        </member>
         <member name="T:PloobsEngine.Input.TurnOnInputMaskCommand">
             <summary>
             Turn a Input Mask On
@@ -4205,13 +4160,13 @@
             Specification of a world
             </summary>
         </member>
-        <member name="M:PloobsEngine.SceneControl.IWorld.#ctor(PloobsEngine.Physics.IPhysicWorld,PloobsEngine.SceneControl.ICuller,PloobsEngine.Particle3D.ParticleManager)">
+        <member name="M:PloobsEngine.SceneControl.IWorld.#ctor(PloobsEngine.Physics.IPhysicWorld,PloobsEngine.SceneControl.ICuller,PloobsEngine.Particles.IParticleManager)">
             <summary>
             Initializes a new instance of the <see cref="T:PloobsEngine.SceneControl.IWorld"/> class.
             </summary>
             <param name="PhysicWorld">The physic world.</param>
             <param name="Culler">The culler.</param>
-            <param name="ParticleManager">The particle manager.</param>
+            <param name="particleManager">The particle manager.</param>
         </member>
         <member name="M:PloobsEngine.SceneControl.IWorld.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
             <summary>
@@ -4321,11 +4276,6 @@
             <value>
             The graphics factory.
             </value>
-        </member>
-        <member name="P:PloobsEngine.SceneControl.IWorld.ParticleManager">
-            <summary>
-            Gets the particle manager instance.
-            </summary>
         </member>
         <member name="P:PloobsEngine.SceneControl.IWorld.CameraManager">
             <summary>
@@ -6237,90 +6187,6 @@
             <summary>
             Content Manager, used to load stuffs like Model, Textures
             Cache the results
-            </summary>
-        </member>
-        <member name="T:PloobsEngine.Particle3D.ParticleSystem">
-            <summary>
-            The main component in charge of displaying particles.
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.Particle3D.ParticleSystem.InitializeSettings(PloobsEngine.Particle3D.ParticleSettings)">
-            <summary>
-            Derived particle system classes should override this method
-            and use it to initalize their tweakable settings.
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.Particle3D.ParticleSystem.LoadContent">
-            <summary>
-            Loads graphics for the particle system.
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.Particle3D.ParticleSystem.LoadParticleEffect">
-            <summary>
-            Helper for loading and initializing the particle effect.
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.Particle3D.ParticleSystem.Update(Microsoft.Xna.Framework.GameTime)">
-            <summary>
-            Updates the particle system.
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.Particle3D.ParticleSystem.RetireActiveParticles">
-            <summary>
-            Helper for checking when active particles have reached the end of
-            their life. It moves old particles from the active area of the queue
-            to the retired section.
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.Particle3D.ParticleSystem.FreeRetiredParticles">
-            <summary>
-            Helper for checking when retired particles have been kept around long
-            enough that we can be sure the GPU is no longer using them. It moves
-            old particles from the retired area of the queue to the free section.
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.Particle3D.ParticleSystem.Draw(PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime)">
-            <summary>
-            Draws the particle system.
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.Particle3D.ParticleSystem.AddNewParticlesToVertexBuffer">
-            <summary>
-            Helper for uploading new particles from our managed
-            array to the GPU vertex buffer.
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.Particle3D.ParticleSystem.SetCamera(Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix)">
-            <summary>
-            Sets the camera view and projection matrices
-            that will be used to draw this particle system.
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.Particle3D.ParticleSystem.AddParticle(Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Vector3)">
-            <summary>
-            Adds a new particle to the system.
-            </summary>
-        </member>
-        <member name="P:PloobsEngine.Particle3D.ParticleSystem.Name">
-            <summary>
-            Helper for setting the renderstates used to draw particles.
-            </summary>
-        </member>
-        <member name="T:PloobsEngine.Particle3D.ParticleSettings">
-            <summary>
-            Settings class describes all the tweakable options used
-            to control the appearance of a particle system.
-            </summary>
-        </member>
-        <member name="F:PloobsEngine.Particle3D.ParticleSettings.SoftParticleScale">
-            <summary>
-            Value that scales how soft the Particle is
-            default 800
-            </summary>
-        </member>
-        <member name="F:PloobsEngine.Particle3D.ParticleSettings.SoftParticleActive">
-            <summary>
-            Is Soft Particle Enabled        
             </summary>
         </member>
         <member name="T:PloobsEngine.DataStructure.Pool`1">

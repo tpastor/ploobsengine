@@ -15,10 +15,10 @@ namespace PloobsEngine.Engine
     /// </summary>
     public class GraphicFactory
     {
-        GraphicsDevice device;
-        GraphicInfo ginfo;
-        IContentManager contentManager;
-        SpriteBatch SpriteBatch;
+        internal GraphicsDevice device;
+        internal IContentManager contentManager;
+        internal SpriteBatch SpriteBatch;
+        GraphicInfo ginfo;        
         RenderTargetPool RenderTargetPool;
         TextureCreator texCreator;
              
