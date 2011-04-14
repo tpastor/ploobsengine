@@ -20,18 +20,18 @@ namespace PloobsEngine.SceneControl
     {
         #region properties
         
-        private IRenderTechnic[] _renderTecnics = null;        
+        private IRenderTechnic _renderTecnic = null;        
         private bool _isFirstTimeTechnic = true;       
 
 
         /// <summary>
         /// Gets the render technics.
         /// </summary>
-        public IRenderTechnic[] RenderTechnics
+        public IRenderTechnic RenderTechnic
         {
             get
             {
-                return _renderTecnics;
+                return _renderTecnic;
             }            
         }
         
@@ -56,10 +56,7 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         protected override void AfterLoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
         {
-            foreach (IRenderTechnic item in RenderTechnics)
-            {
-                item.iAfterLoadContent(manager,ginfo,factory);
-            }
+            _renderTecnic.iAfterLoadContent(manager, ginfo, factory);         
         }
        
 
@@ -83,18 +80,11 @@ namespace PloobsEngine.SceneControl
         protected override void Draw(Microsoft.Xna.Framework.GameTime gameTime,RenderHelper render)
         {
             if (_isFirstTimeTechnic == true)
-            {                
-                foreach (IRenderTechnic item in RenderTechnics)
-                {
-                    item.iBeforeFirstExecution(render, this.World);
-                }
+            {                                
+                _renderTecnic.iBeforeFirstExecution(render, this.World);                
                 _isFirstTimeTechnic = false;
             }
-
-            foreach (IRenderTechnic item in RenderTechnics)
-            {
-                item.iExecuteTechnic(gameTime, render, this.World);
-            }                 
+            _renderTecnic.iExecuteTechnic(gameTime, render, this.World);           
             
         }
 
@@ -116,8 +106,8 @@ namespace PloobsEngine.SceneControl
         /// <param name="engine"></param>
         protected override void InitScreen(GraphicInfo GraphicInfo, EngineStuff engine)
         {
-            SetWorldAndRenderTechnich(out _renderTecnics, out _world);
-            if (_renderTecnics == null ||  _renderTecnics.Count() == 0)
+            SetWorldAndRenderTechnich(out _renderTecnic, out _world);
+            if (_renderTecnic == null )
             {
                     ActiveLogger.LogMessage("IScene must have a renderTechnic", LogLevel.FatalError);
                     Debug.Fail("IScene must have a renderTechnic");
@@ -142,7 +132,7 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         /// <param name="renderTech">The render tech.</param>
         /// <param name="world">The world.</param>
-        protected abstract void SetWorldAndRenderTechnich(out IRenderTechnic[] renderTech, out IWorld world );
+        protected abstract void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world );
         
       
     }

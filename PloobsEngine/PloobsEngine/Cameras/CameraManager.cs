@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using PloobsEngine.Engine.Logger;
 
 namespace PloobsEngine.Cameras
 {
@@ -49,6 +50,12 @@ namespace PloobsEngine.Cameras
         /// <param name="name"></param>
         public void AddCamera(ICamera cam, String name)
         {
+            if (cam == null || String.IsNullOrEmpty(name))
+            {
+                ActiveLogger.LogMessage("Can add null camera or invalid name, Skipping adding this Camera", LogLevel.RecoverableError);
+                return;
+            }
+            
             CameraDescription cc;
             cc.cam = cam;
             cc.name = name;            
@@ -62,6 +69,12 @@ namespace PloobsEngine.Cameras
         /// <param name="cam"></param>
         public void AddCamera(ICamera cam)
         {
+            if (cam == null )
+            {
+                ActiveLogger.LogMessage("Can add null camera, Skipping adding this Camera", LogLevel.RecoverableError);
+                return;
+            }
+
             if (String.IsNullOrEmpty(cam.Name))
             {
                 AddCamera(cam, DEFAULTCAMERA);
@@ -126,7 +139,14 @@ namespace PloobsEngine.Cameras
         {
             activeCameraType = State.NORMAL;
             _activeCameraIndex = _cameras.FindIndex(delegate(CameraDescription t) { return t.name == name; });
-            _activeCam = _cameras[_activeCameraIndex].cam;            
+            if (_activeCameraIndex == -1)
+            {
+                ActiveLogger.LogMessage("Camera Name Not found, maybe you did not added it to the camera manager", LogLevel.RecoverableError);
+            }
+            else
+            {
+                _activeCam = _cameras[_activeCameraIndex].cam;
+            }
         }
         /// <summary>
         /// Seta uma camera ativa
@@ -140,6 +160,11 @@ namespace PloobsEngine.Cameras
             {
                 activeCameraType = State.INTERPOLATING;
                 int ind = _cameras.FindIndex(delegate(CameraDescription t) { return t.name == name; });
+                if (ind == -1)
+                {
+                    ActiveLogger.LogMessage("Camera Name Not found, maybe you did not added it to the camera manager", LogLevel.RecoverableError);
+                    return;
+                }
                 CameraInterpolator ci = new CameraInterpolator(_activeCam, _cameras[ind].cam, type, timeOrStep);               
 
                 ci.OnInterpolationFinished += new CameraInterpolator.InterpolationFinished(ci_OnInterpolationFinished);
@@ -155,6 +180,10 @@ namespace PloobsEngine.Cameras
             {
                 CameraInterpolator ac = (_activeCam as CameraInterpolator);                
                 int ind = _cameras.FindIndex(delegate(CameraDescription t) { return t.name == name; });
+                if (ind == -1)
+                {
+                    ActiveLogger.LogMessage("Camera Name Not found, maybe you did not added it to the camera manager", LogLevel.RecoverableError);
+                }
                 ac.Reset(_activeCam, _cameras[ind].cam);                
             }
         }
@@ -172,6 +201,11 @@ namespace PloobsEngine.Cameras
         /// <returns></returns>
         public String GetActiveCameraName()
         {
+            if (_activeCameraIndex == -1)
+            {
+                ActiveLogger.LogMessage("No camera has been added yet, can access any, returning null", LogLevel.RecoverableError);
+                return null;
+            }
             return _cameras[_activeCameraIndex].name;
         }
         
@@ -191,6 +225,12 @@ namespace PloobsEngine.Cameras
         public ICamera GetCamera(String name)
         {
             int camIndex = _cameras.FindIndex(delegate(CameraDescription t) { return t.name == name; });
+            if(camIndex  == -1)
+            {
+                ActiveLogger.LogMessage("Camera not found in Camera Manager, are you sure you added it ?!", LogLevel.RecoverableError);
+                return null;
+            }
+
             return _cameras[camIndex].cam;            
         }
 

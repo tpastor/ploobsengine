@@ -42,12 +42,22 @@ namespace PloobsEngine.SceneControl
     public delegate void OnHasMoved(IObject Reciever);
 
     /// <summary>
-    /// Object Specification
+    /// Basic Object 
     /// </summary>
     public class IObject : IRecieveMessageEntity, ISerializable
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IObject"/> class.
+        /// </summary>
+        /// <param name="Material">The material.</param>
+        /// <param name="Modelo">The modelo.</param>
+        /// <param name="PhysicObject">The physic object.</param>
         public IObject(IMaterial Material, IModelo Modelo, IPhysicObject PhysicObject)
         {
+            System.Diagnostics.Debug.Assert(Modelo != null);
+            System.Diagnostics.Debug.Assert(Material != null);
+            System.Diagnostics.Debug.Assert(PhysicObject != null);            
+
             this.Material = Material;
             this.Modelo = Modelo;
             this.PhysicObject = PhysicObject;
@@ -177,11 +187,7 @@ namespace PloobsEngine.SceneControl
             get
             {
                 return worldMatrix;
-            }
-            protected set
-            {
-                ActiveLogger.LogMessage("Operation not supported YET", LogLevel.RecoverableError);
-            }
+            }            
         }
         /// <summary>
         /// Gets or sets the position.
@@ -212,6 +218,12 @@ namespace PloobsEngine.SceneControl
         /// </value>
         public String Name { set; get; }
 
+        /// <summary>
+        /// Gets or sets the Iobject atachtment.
+        /// </summary>
+        /// <value>
+        /// The I object atachtment.
+        /// </value>
         public List<IObjectAtachtment> IObjectAtachtment
         {
             set;

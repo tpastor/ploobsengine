@@ -74,7 +74,9 @@ namespace PloobsEngine.SceneControl
             else
             {
                 render.SetSamplerState(SamplerState.AnisotropicClamp, 0);
-                finalCombineEffect.Parameters["halfPixel"].SetValue(Vector2.Zero);
+                render.SetSamplerState(SamplerState.AnisotropicClamp, 1);
+                render.SetSamplerState(SamplerState.AnisotropicClamp, 2);
+                finalCombineEffect.Parameters["halfPixel"].SetValue(ginfo.HalfPixel);
             }
             
             finalCombineEffect.Parameters["EXTRA1"].SetValue(gbuffer[GBufferTypes.Extra1]);

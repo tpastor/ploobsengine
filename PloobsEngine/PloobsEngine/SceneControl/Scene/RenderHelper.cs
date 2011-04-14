@@ -442,8 +442,7 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         /// <param name="effect">The effect.</param>
         public void RenderFullScreenQuadVertexPixel(Effect effect)
-        {
-            
+        {            
             qrender.DrawQuad(effect);
         }
 
@@ -452,18 +451,27 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         /// <param name="scene">The scene.</param>
         /// <param name="effect">The effect.</param>
-        public void RenderTextureToFullScreenSpriteBatch(Texture2D scene, Effect effect, Rectangle rectangle)
+        public void RenderTextureToFullScreenSpriteBatch(Texture2D scene, Effect effect, Rectangle rectangle, SamplerState samplerState = null, BlendState blenderState = null)
         {
             effect.CurrentTechnique.Passes[0].Apply();
-            spriteBatch.Begin(SpriteSortMode.Immediate,null,null,null,null,effect,Matrix.Identity);
+            spriteBatch.Begin(SpriteSortMode.Immediate, blenderState, samplerState, null, null, effect, Matrix.Identity);
 
             foreach (EffectPass pass in effect.CurrentTechnique.Passes)
             {
                 pass.Apply();
-                spriteBatch.Draw(scene, rectangle, Color.White);
-                
+                spriteBatch.Draw(scene, rectangle, Color.White);                
             }
             spriteBatch.End();            
+        }
+
+        public SamplerState GetRightSampler()
+        {
+            SurfaceFormat format = RenderStatesStack.Peek()[0].RenderTarget.Format;
+            if (format == SurfaceFormat.HdrBlendable || format == SurfaceFormat.Vector4 || format == SurfaceFormat.Single)
+            {
+                return SamplerState.PointClamp;
+            }
+            return SamplerState.AnisotropicClamp;
         }
 
         /// <summary>
@@ -471,11 +479,12 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         /// <param name="texture">The texture name (already in this class).</param>
         /// <param name="effect">The effect.</param>
-        public void RenderTextureToFullScreenSpriteBatch(String texture, Effect effect)
+        public void RenderTextureToFullScreenSpriteBatch(String texture, Effect effect, SamplerState samplerState = null, BlendState blenderState = null)
         {
-            System.Diagnostics.Debug.Assert(Scenes.ContainsKey(texture));
-            effect.CurrentTechnique.Passes[0].Apply();
-            spriteBatch.Begin(SpriteSortMode.Immediate, null, null, null, null, effect, Matrix.Identity);
+            System.Diagnostics.Debug.Assert(Scenes.ContainsKey(texture),"Texture not found in Render, make sure it exists");
+            effect.CurrentTechnique.Passes[0].Apply();           
+            
+            spriteBatch.Begin(SpriteSortMode.Immediate, blenderState, samplerState, null, null, effect, Matrix.Identity);
 
             foreach (EffectPass pass in effect.CurrentTechnique.Passes)
             {

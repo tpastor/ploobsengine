@@ -11,7 +11,9 @@ using XNAnimation;
 namespace PloobsEngine.Engine
 {
     /// <summary>
-    /// Creates everything related to Graphics
+    /// Creates everything related to Graphics.
+    /// FunctionNameConvention:
+    /// Use Get... To load something and Create... to create something
     /// </summary>
     public class GraphicFactory
     {
@@ -23,7 +25,7 @@ namespace PloobsEngine.Engine
         TextureCreator texCreator;
              
 
-        public GraphicFactory(GraphicInfo ginfo, GraphicsDevice device,IContentManager contentManager)
+        internal GraphicFactory(GraphicInfo ginfo, GraphicsDevice device,IContentManager contentManager)
         {
             this.device = device;
             this.ginfo = ginfo;
@@ -59,12 +61,12 @@ namespace PloobsEngine.Engine
             return contentManager.GetAsset<SkinnedModel>(name, isinternal);
         }
 
-        public RenderTarget2D CreateRenderTarget(int width, int height, SurfaceFormat SurfaceFormat = SurfaceFormat.Color, bool mipmap = false, DepthFormat DepthFormat = DepthFormat.Depth24Stencil8, int preferedMultisampleCount = 0, RenderTargetUsage RenderTargetUsage = RenderTargetUsage.PreserveContents)
+        public RenderTarget2D CreateRenderTarget(int width, int height, SurfaceFormat SurfaceFormat = SurfaceFormat.Color, bool mipmap = false, DepthFormat DepthFormat = DepthFormat.Depth24Stencil8, int preferedMultisampleCount = 0, RenderTargetUsage RenderTargetUsage = RenderTargetUsage.DiscardContents)
         {
             return new RenderTarget2D(device, width, height, mipmap, SurfaceFormat, DepthFormat, preferedMultisampleCount, RenderTargetUsage);
         }
 
-        public IntermediateRenderTarget GetRenderTargetFromPool(int width, int height, SurfaceFormat SurfaceFormat = SurfaceFormat.Color, bool mipmap = false, DepthFormat DepthFormat = DepthFormat.Depth24Stencil8, int preferedMultisampleCount = 0, RenderTargetUsage RenderTargetUsage = RenderTargetUsage.PreserveContents)
+        public IntermediateRenderTarget GetRenderTargetFromPool(int width, int height, SurfaceFormat SurfaceFormat = SurfaceFormat.Color, bool mipmap = false, DepthFormat DepthFormat = DepthFormat.Depth24Stencil8, int preferedMultisampleCount = 0, RenderTargetUsage RenderTargetUsage = RenderTargetUsage.DiscardContents)
         {
             return RenderTargetPool.GetIntermediateTexture(width, height, mipmap, SurfaceFormat, DepthFormat, preferedMultisampleCount, RenderTargetUsage);
         }

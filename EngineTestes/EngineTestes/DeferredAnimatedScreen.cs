@@ -22,14 +22,14 @@ namespace EngineTestes
 {
     public class DeferredAnimatedScreen : IScene
     {
-        protected override void SetWorldAndRenderTechnich(out IRenderTechnic[] renderTech, out IWorld world)
+        protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             world = new IWorld(new BepuPhysicWorld(-0.98f,true,1), new SimpleCuller());
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
             desc.DefferedDebug = false;
             desc.UseFloatingBufferForLightMap = true;
-            renderTech = new DeferredRenderTechnic[] { new DeferredRenderTechnic(desc) };
+            renderTech = new DeferredRenderTechnic(desc);
         }
 
         protected override void InitScreen(GraphicInfo GraphicInfo, EngineStuff engine)
@@ -63,7 +63,7 @@ namespace EngineTestes
                 ///Adiciona no mundo
                 this.World.AddObject(marine);
 
-                LightThrowBepu lt = new LightThrowBepu(this.World, factory, contentManager);
+                LightThrowBepu lt = new LightThrowBepu(this.World, factory);
             }
 
             {

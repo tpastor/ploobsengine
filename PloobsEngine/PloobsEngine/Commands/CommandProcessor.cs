@@ -45,6 +45,9 @@ namespace PloobsEngine.Commands
         /// <param name="recieverId">The reciever id.</param>
         public void SendCommandSyncronous(ICommand command, String recieverId)
         {
+            ///this is removed in Release version, critical code here
+            System.Diagnostics.Debug.Assert(command != null,"command cannot be null");
+            System.Diagnostics.Debug.Assert(!String.IsNullOrEmpty(recieverId), "reciver id cannot be null");
             SendCommand(command, recieverId);
         }
 
@@ -54,6 +57,8 @@ namespace PloobsEngine.Commands
         /// <param name="command">The command.</param>
         public void SendCommandSyncronous(ICommand command)
         {
+            System.Diagnostics.Debug.Assert(command != null, "command cannot be null");
+            System.Diagnostics.Debug.Assert(!String.IsNullOrEmpty(command.TargetName), "TargetName of the command cannot be null");
             SendCommand(command, command.TargetName);
         }
 
@@ -64,6 +69,9 @@ namespace PloobsEngine.Commands
         /// <param name="recieverId">The reciever id.</param>
         public void SendCommandAssyncronous(ICommand command, String recieverId)
         {
+            System.Diagnostics.Debug.Assert(command != null, "command cannot be null");
+            System.Diagnostics.Debug.Assert(!String.IsNullOrEmpty(recieverId), "Reciever id cannot be null");
+
             if (!processing)
             {
                 IList<ICommand> list;
@@ -93,6 +101,8 @@ namespace PloobsEngine.Commands
         /// <param name="command">The command.</param>
         public void SendCommandAssyncronous(ICommand command)
         {
+            System.Diagnostics.Debug.Assert(command != null, "command cannot be null");
+            System.Diagnostics.Debug.Assert(!String.IsNullOrEmpty(command.TargetName), "TargetName of the command cannot be null");
             this.SendCommandAssyncronous(command, command.TargetName);
         }
 
@@ -145,9 +155,9 @@ namespace PloobsEngine.Commands
         {
             if (!_idToReciever.ContainsKey(recieverId))
             {
-                ActiveLogger.LogMessage("Reciver not found. Are you sure you add the " + command.TargetName + " component", LogLevel.FatalError);
-                throw new Exception("Reciever Id nao Encontrado : " + recieverId);
-             
+                ActiveLogger.LogMessage("Reciver not found. Are you sure you add the " + command.TargetName + " component, If in releas, the program will continue and will discard the Command", LogLevel.FatalError);
+                System.Diagnostics.Debug.Assert(false, "Reciver not found. Are you sure you add the " + command.TargetName + " component");
+                return;             
             }
             Object obj = _idToReciever[recieverId];
             command.isetTarget(obj);

@@ -19,14 +19,14 @@ namespace EngineTestes
 {
     public class DeferredScreen : IScene
     {
-        protected override void SetWorldAndRenderTechnich(out IRenderTechnic[] renderTech, out IWorld world)
+        protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
             desc.DefferedDebug = false;
-            desc.UseFloatingBufferForLightMap = true;
-            renderTech = new DeferredRenderTechnic[] { new DeferredRenderTechnic(desc) };
+            desc.UseFloatingBufferForLightMap = false;            
+            renderTech = new DeferredRenderTechnic(desc);
         }
         OceanShader waterShader;
 
@@ -150,13 +150,13 @@ namespace EngineTestes
             //    this.World.AddObject(obj4);
             //}
 
-            
-            //SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
-            //TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
-            //NormalDeferred shader = new NormalDeferred();
-            //DeferredMaterial fmaterial = new DeferredMaterial(shader);
-            //IObject obj = new IObject(fmaterial, simpleModel, tmesh);
-            //this.World.AddObject(obj);
+
+            SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
+            TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
+            NormalDeferred shader = new NormalDeferred();
+            DeferredMaterial fmaterial = new DeferredMaterial(shader);
+            IObject obj = new IObject(fmaterial, simpleModel, tmesh);
+            this.World.AddObject(obj);
 
             //OceanModel wm = new OceanModel(factory, "WaterModel", Vector3.Zero, 256, 256);
             //GhostObject go = new GhostObject(Vector3.Zero, Matrix.Identity, Vector3.One * 2);
@@ -185,7 +185,7 @@ namespace EngineTestes
             this.World.AddLight(ld5);
             #endregion
 
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo.Viewport));
+            this.World.CameraManager.AddCamera(new CameraFirstPerson(true,GraphicInfo.Viewport));
 
             SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//cubemap");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);

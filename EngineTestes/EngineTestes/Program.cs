@@ -27,7 +27,8 @@ namespace EngineTestes
             //manager.AddScreen(new DeferredScreen());
             //manager.AddScreen(new DeferredLoadScreen());
             //manager.AddScreen(new DeferredAnimatedScreen());
-            manager.AddScreen(new SmokeScreen());
+            //manager.AddScreen(new ParticleScreen());
+            manager.AddScreen(new PostEffectScreen());
         }
     }
 #endif

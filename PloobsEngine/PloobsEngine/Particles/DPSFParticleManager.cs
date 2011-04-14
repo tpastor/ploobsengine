@@ -26,8 +26,10 @@ namespace PloobsEngine.Particles
         public readonly Dictionary<String, IParticleSystem> ParticleSystem = new Dictionary<string,IParticleSystem>();
                         
 
-        public override void AddParticleSystem(IParticleSystem particleSystem)
+        public override void AddAndInitializeParticleSystem(IParticleSystem particleSystem)
         {
+            System.Diagnostics.Debug.Assert(particleSystem != null, "Particle System cannot be null");            
+
             if(ParticleSystem.ContainsKey(particleSystem.Name))
                 ActiveLogger.LogMessage("Particle System already exist, overwriting", LogLevel.Warning);            
             ParticleSystem[particleSystem.Name] = particleSystem;
@@ -45,6 +47,7 @@ namespace PloobsEngine.Particles
 
         public override void RemoveParticleSystem(IParticleSystem particleSystem)
         {
+            System.Diagnostics.Debug.Assert(particleSystem != null, "Particle System cannot be null");            
             if (particleSystem is DPFSParticleSystem)
             {
                 if (ParticleSystem.ContainsKey(particleSystem.Name))

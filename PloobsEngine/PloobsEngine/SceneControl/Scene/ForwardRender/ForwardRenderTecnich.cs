@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using PloobsEngine.Engine.Logger;
 
 namespace PloobsEngine.SceneControl
 {    
@@ -18,13 +19,25 @@ namespace PloobsEngine.SceneControl
 
     public class ForwardRenderTecnich : IRenderTechnic
     {
-        public ForwardRenderTecnich(ForwardRenderTecnichDescription desc)
+        public ForwardRenderTecnich(ForwardRenderTecnichDescription desc) : base(PostEffectType.Forward)
         {
             this.desc = desc;
         }
 
         ForwardRenderTecnichDescription desc;
         #region IRenderTechnic Members
+
+        public override void AddPostEffect(IPostEffect postEffect)
+        {
+            ActiveLogger.LogMessage("PostEffects for Forward Render not supported yet, operation ignored", LogLevel.RecoverableError);
+            //base.AddPostEffect(postEffect);
+        }
+
+        public override void RemovePostEffect(IPostEffect postEffect)
+        {
+            ActiveLogger.LogMessage("PostEffects for Forward Render not supported yet, operation ignored", LogLevel.RecoverableError);
+            //base.RemovePostEffect(postEffect);
+        }
 
 
         protected override void ExecuteTechnic(GameTime gameTime, RenderHelper render, IWorld world)

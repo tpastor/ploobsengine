@@ -10,18 +10,19 @@ using PloobsEngine.Engine;
 using PloobsEngine.Physics.Bepu;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Cameras;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace EngineTestes
 {
     public class FirstScreen : IScene
     {
 
-        protected override void SetWorldAndRenderTechnich(out IRenderTechnic[] renderTech, out IWorld world)
+        protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
 
             ForwardRenderTecnichDescription desc = new ForwardRenderTecnichDescription(Color.CornflowerBlue);            
-            renderTech = new IRenderTechnic[] { new ForwardRenderTecnich(desc) };
+            renderTech = new ForwardRenderTecnich(desc);
         }
 
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory ,IContentManager contentManager)
@@ -35,7 +36,17 @@ namespace EngineTestes
             IObject obj = new IObject(fmaterial,simpleModel,tmesh);
             this.World.AddObject(obj); 
 
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo.Viewport));                              
+            this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo.Viewport));
+            rt = factory.CreateRenderTarget(800, 600);
+        }
+
+        RenderTarget2D rt;
+
+        protected override void Draw(GameTime gameTime, RenderHelper render)
+        {
+            render.PushRenderTarget(rt);
+            base.Draw(gameTime, render);
+            render.PopRenderTarget();
         }
 
     }

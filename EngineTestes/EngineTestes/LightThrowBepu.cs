@@ -23,8 +23,6 @@ namespace EngineTestes
         BindMouseCommand mm0 = null;
         BindMouseCommand mm1 = null;
         GraphicFactory factory;
-        IContentManager manager;
-
         
         public void CleanUp()
         {
@@ -35,9 +33,8 @@ namespace EngineTestes
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(mm1);
         }        
 
-        public LightThrowBepu(IWorld mundo,GraphicFactory factory,IContentManager manager)
-        {
-            this.manager = manager;
+        public LightThrowBepu(IWorld mundo,GraphicFactory factory)
+        {            
             this.factory = factory;
             _mundo = mundo;            
             {

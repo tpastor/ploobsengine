@@ -260,12 +260,13 @@
     <Compile Include="SceneControl\Scene\IDummy.cs" />
     <Compile Include="SceneControl\Scene\IObject.cs" />
     <Compile Include="SceneControl\Scene\IObjectAtachtment.cs" />
+    <Compile Include="SceneControl\Scene\PostEffects\BlackWhitePostEffect.cs" />
     <Compile Include="SceneControl\Scene\RenderHelper.cs" />
     <Compile Include="SceneControl\Scene\RenderTechnic.cs" />
     <Compile Include="SceneControl\Scene\IWorld.cs" />
     <Compile Include="SceneControl\Scene\IScene.cs" />
     <Compile Include="SceneControl\Scene\QuadRender.cs" />
-    <Compile Include="SceneControl\Scene\RenderTechnich\ForwardRenderTecnich.cs" />
+    <Compile Include="SceneControl\Scene\ForwardRender\ForwardRenderTecnich.cs" />
     <Compile Include="SceneControl\Scene\TextureCreator.cs" />
     <Compile Include="Trigger\BepuTrigger.cs" />
     <Compile Include="Trigger\GenericEventHandler.cs" />
@@ -431,6 +432,7 @@
     <None Include="bin\x86\Debug\Content\Textures\white.xnb" />
     <None Include="Resources\ConsoleFont.spritefont" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--

@@ -10,24 +10,46 @@ namespace PloobsEngine.SceneControl
     /// <summary>
     /// IPost Effect Specification
     /// </summary>
-    public interface IPostEffect
+    public abstract class IPostEffect
     {
+        public IPostEffect(PostEffectType PostEffectType)
+        {
+            this.PostEffectType = PostEffectType;
+            Priority = 0;
+            Enabled = true;
+        }
+
+        /// <summary>
+        /// Gets or sets the type of the post effect.
+        /// </summary>
+        /// <value>
+        /// The type of the post effect.
+        /// </value>
+        public PostEffectType PostEffectType
+        {
+            get;
+            protected set;
+        }
 
         /// <summary>
         /// Gets the priority in relation with others PostEffects        
+        /// Lower the number, first the effect will be applied
+        /// 0 By Default
         /// </summary>
-        int Priority
+        public float Priority
         {
-            get;            
+            get;
+            set;
         }
 
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="IPostEffect"/> is enabled.
+        /// Enabled by default
         /// </summary>
         /// <value>
         ///   <c>true</c> if enabled; otherwise, <c>false</c>.
         /// </value>
-        bool Enabled
+        public bool Enabled
         {
             get;
             set;
@@ -40,7 +62,7 @@ namespace PloobsEngine.SceneControl
         /// <param name="manager">The manager.</param>
         /// <param name="ginfo">The ginfo.</param>
         /// <param name="factory">The factory.</param>
-        void init(IContentManager manager, GraphicInfo ginfo, GraphicFactory factory,bool useFloatBuffer);
+        public abstract void init(IContentManager manager, GraphicInfo ginfo, GraphicFactory factory);
 
         /// <summary>
         /// Apply the post effect
@@ -49,9 +71,26 @@ namespace PloobsEngine.SceneControl
         /// <param name="gt">The gt.</param>
         /// <param name="GraphicInfo">The graphic info.</param>
         /// <param name="world">The world.</param>
-        void Draw(RenderHelper rHelper, GameTime gt, GraphicInfo GraphicInfo, IWorld world);
+        public abstract void Draw(RenderHelper rHelper, GameTime gt, GraphicInfo GraphicInfo, IWorld world,bool useFloatBuffer);
     }
 
-
+    /// <summary>
+    /// Defines in what render the post effect works
+    /// </summary>
+    public enum PostEffectType
+    {
+        /// <summary>
+        /// Only on Deferred
+        /// </summary>
+        Deferred,
+        /// <summary>
+        /// only on Forward
+        /// </summary>
+        Forward,
+        /// <summary>
+        /// Works in both renders
+        /// </summary>
+        All
+    }
 
 }

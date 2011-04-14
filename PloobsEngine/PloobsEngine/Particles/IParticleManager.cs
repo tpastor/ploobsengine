@@ -22,7 +22,7 @@ namespace PloobsEngine.Particles
             internal set;
         }
 
-        public abstract void AddParticleSystem(IParticleSystem particleSystem);
+        public abstract void AddAndInitializeParticleSystem(IParticleSystem particleSystem);
         public abstract void RemoveParticleSystem(IParticleSystem particleSystem);
 
         protected abstract void Update(GameTime gt, Matrix view, Matrix Projection, Vector3 camPosition);

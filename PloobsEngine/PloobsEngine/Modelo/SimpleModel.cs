@@ -9,8 +9,21 @@ using PloobsEngine.Engine;
 
 namespace PloobsEngine.Modelo
 {
+    /// <summary>
+    /// Implementation of the most simple Model in the engine
+    /// </summary>
     public class SimpleModel : IModelo
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SimpleModel"/> class.
+        /// </summary>
+        /// <param name="factory">The graphic factory.</param>
+        /// <param name="modelName">Name of the model.</param>
+        /// <param name="diffuseTextureName">Name of the diffuse texture.</param>
+        /// <param name="bumpTextureName">Name of the bump texture.</param>
+        /// <param name="specularTextureName">Name of the specular texture.</param>
+        /// <param name="glowTextureName">Name of the glow texture.</param>
+        /// <param name="CallLoadContent">if set to <c>true</c> [call load content].</param>
        public SimpleModel(GraphicFactory factory,String modelName, String diffuseTextureName = null, String bumpTextureName = null, String specularTextureName = null, String glowTextureName = null, bool CallLoadContent = true)
             : base(factory, modelName, diffuseTextureName, bumpTextureName, specularTextureName, glowTextureName, CallLoadContent)
         {

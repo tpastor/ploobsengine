@@ -115,14 +115,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CharacterControllerInput.cs" />
+    <Compile Include="PostEffectScreen.cs" />
     <Compile Include="DeferredAnimatedScreen.cs" />
     <Compile Include="DeferredLoadScreen.cs" />
     <Compile Include="DeferredScreen.cs" />
     <Compile Include="FirstScreen.cs" />
     <Compile Include="LightThrowBepu.cs" />
     <Compile Include="MoveablePointLight.cs" />
-    <Compile Include="ParticleSample\SmokeScreen.cs" />
+    <Compile Include="ParticleSample\ParticleScreen.cs" />
     <Compile Include="ParticleSample\SmokePS.cs" />
+    <Compile Include="ParticleSample\SnowPS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>
@@ -136,8 +138,9 @@
       <Name>PloobsEngine</Name>
     </ProjectReference>
     <ProjectReference Include="..\EngineTestesContent\EngineTestesContent.contentproj">
-      <Name>EngineTestesContent</Name>
+      <Name>EngineTestesContent %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>
+      <Project>{4DB11830-D1DC-4BD2-931D-11ADEAFA8BEA}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

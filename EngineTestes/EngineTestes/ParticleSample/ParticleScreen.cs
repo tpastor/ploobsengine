@@ -19,16 +19,16 @@ using DPSF.ParticleSystems;
 
 namespace EngineTestes
 {
-    public class SmokeScreen : IScene
+    public class ParticleScreen : IScene
     {
-        protected override void SetWorldAndRenderTechnich(out IRenderTechnic[] renderTech, out IWorld world)
+        protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller(),new DPSFParticleManager());
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
             desc.DefferedDebug = false;
             desc.UseFloatingBufferForLightMap = true;
-            renderTech = new DeferredRenderTechnic[] { new DeferredRenderTechnic(desc) };
+            renderTech = new DeferredRenderTechnic(desc);
         }   
 
         protected override void InitScreen(GraphicInfo GraphicInfo, EngineStuff engine)
@@ -43,16 +43,19 @@ namespace EngineTestes
         {
             base.LoadContent(GraphicInfo,factory, contentManager);
 
-            DPFSParticleSystem ps = new DPFSParticleSystem("smoke", new SmokeParticleSystem());            
-            this.World.ParticleManager.AddParticleSystem(ps);            
+            SnowParticleSystem snow = new SnowParticleSystem();            
+            DPFSParticleSystem ps = new DPFSParticleSystem("snow",snow );            
+            this.World.ParticleManager.AddAndInitializeParticleSystem(ps);
+
+            ///cant set emiter position before adding the particle
+            snow.Emitter.PositionData.Position = new Vector3(1000, 0, 0);            
 
             SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
             TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
             NormalDeferred shader = new NormalDeferred();
             DeferredMaterial fmaterial = new DeferredMaterial(shader);
             IObject obj = new IObject(fmaterial, simpleModel, tmesh);
-            this.World.AddObject(obj);
-            
+            this.World.AddObject(obj);            
 
             #region NormalLight
             DirectionalLightPE ld1 = new DirectionalLightPE(Vector3.Left, Color.White);

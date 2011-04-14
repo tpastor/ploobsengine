@@ -88,8 +88,7 @@ namespace PloobsEngine.SceneControl
     /// </summary>
     public class DeferredRenderTechnic : IRenderTechnic
     {
-
-        public DeferredRenderTechnic(DeferredRenderTechnicInitDescription desc)
+        public DeferredRenderTechnic(DeferredRenderTechnicInitDescription desc) : base(PostEffectType.Deferred)
         {
             this.desc = desc;        
             deferredGBuffer = desc.DeferredGBuffer;
@@ -122,9 +121,6 @@ namespace PloobsEngine.SceneControl
         private IDeferredLightMap deferredLightMap ;
         private IDeferredFinalCombination deferredFinalCombination ;
         private IForwardPass forwardPass ;
-
-        private PriorityQueueB<IPostEffect> PostEffects = new PriorityQueueB<IPostEffect>(new PostEffectComparer());                       
-        
         private RenderTarget2D target;        
         private RestoreDepth restoreDepth;
         private GraphicInfo ginfo;
@@ -137,7 +133,13 @@ namespace PloobsEngine.SceneControl
             deferredGBuffer.LoadContent(manager,ginfo,factory,desc.BackGroundColor);
             deferredLightMap.LoadContent(manager, ginfo, factory, desc.CullPointLight,desc.UseFloatingBufferForLightMap);
             deferredFinalCombination.LoadContent(manager, ginfo, factory, desc.UseFloatingBufferForLightMap, desc.ExtraForwardPass);
-            target = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
+
+
+            if(desc.UseFloatingBufferForLightMap)
+                target = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight,SurfaceFormat.HdrBlendable);
+            else
+                target = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
+
             halfWidth = ginfo.Viewport.Width / 2;
             halfHeight = ginfo.Viewport.Height / 2;
             restoreDepth = new RestoreDepth(desc.UseFloatingBufferForLightMap, manager, factory, ginfo);
@@ -209,7 +211,7 @@ namespace PloobsEngine.SceneControl
             deferredLightMap.ResolveLightMap(render);
 
             deferredFinalCombination.SetFinalCombination(render);
-            deferredFinalCombination.DrawScene(gameTime, world, deferredGBuffer, deferredLightMap,render);
+            deferredFinalCombination.DrawScene(gameTime, world, deferredGBuffer, deferredLightMap,render);            
 
             ///se nao for pra salvar em textura, nao tera debug nem post processing ... 
             if (desc.ExtraForwardPass)
@@ -239,21 +241,21 @@ namespace PloobsEngine.SceneControl
                     for (int i = 0; i < PostEffects.Count; i++)
                     {                        
                         render.PushRenderTarget(target);
-                        PostEffects[i].Draw(render, gameTime, ginfo, world);
-                        Texture2D tex = render.PopRenderTarget()[0].RenderTarget as Texture2D;
-                        System.Diagnostics.Debug.Assert(tex != null);
+                        render.Clear(Color.Transparent);
+                        PostEffects[i].Draw(render, gameTime, ginfo, world,desc.UseFloatingBufferForLightMap);
+                        Texture2D tex = render.PopRenderTarget()[0].RenderTarget as Texture2D;                        
                         render[PrincipalConstants.CurrentImage] = tex;
                     }
                                         
                     if (desc.UseFloatingBufferForLightMap)
-                    {
-                        render.Clear(Color.Transparent);
-                        render.RenderTextureComplete(render[PrincipalConstants.CurrentImage],Color.White,ginfo.FullScreenRectangle,Matrix.Identity,null,true,SpriteSortMode.Deferred,SamplerState.PointClamp);                                                
+                    {                        
+                        render.Clear(Color.Black);
+                        render.RenderTextureComplete(render[PrincipalConstants.CurrentImage], Color.White, ginfo.FullScreenRectangle, Matrix.Identity, null, true, SpriteSortMode.Deferred, SamplerState.PointClamp, BlendState.AlphaBlend);                     
                     }
                     else
-                    {
-                        render.Clear(Color.Transparent);
-                        render.RenderTextureComplete(render[PrincipalConstants.CurrentImage], Color.White, ginfo.FullScreenRectangle, Matrix.Identity, null, true,SpriteSortMode.Immediate,null,BlendState.Opaque);                            
+                    {                        
+                        render.Clear(Color.Black);                        
+                        render.RenderTextureComplete(render[PrincipalConstants.CurrentImage], Color.White, ginfo.FullScreenRectangle, Matrix.Identity,null,true,SpriteSortMode.Deferred,SamplerState.AnisotropicClamp,BlendState.AlphaBlend);                     
                     }
                 }
                 else if (desc.RestoreDepthOption == RestoreDepthOption.AFTER_POSTEFFECT)
@@ -261,9 +263,8 @@ namespace PloobsEngine.SceneControl
                     for (int i = 0; i < PostEffects.Count; i++)
                     {
                         render.PushRenderTarget(target);
-                        PostEffects[i].Draw(render, gameTime, ginfo, world);
-                        Texture2D tex = render.PopRenderTarget()[0].RenderTarget as Texture2D;
-                        System.Diagnostics.Debug.Assert(tex != null);
+                        PostEffects[i].Draw(render, gameTime, ginfo, world,desc.UseFloatingBufferForLightMap);
+                        Texture2D tex = render.PopRenderTarget()[0].RenderTarget as Texture2D;                        
                         render[PrincipalConstants.CurrentImage] = tex;
                     }
 
@@ -278,17 +279,16 @@ namespace PloobsEngine.SceneControl
                     render[PrincipalConstants.CurrentImage] = restoreDepth.EndForwardPass(render);
 
                     if (desc.UseFloatingBufferForLightMap)
-                    {
-                        render.Clear(Color.Transparent);
+                    {                        
                         System.Diagnostics.Debug.Assert(render.PeekBlendState() == BlendState.Opaque);
-                        render.RenderTextureComplete(render[PrincipalConstants.CurrentImage], Color.White, ginfo.FullScreenRectangle, Matrix.Identity, null, true, SpriteSortMode.Immediate);
+                        render.Clear(Color.Black);
+                        render.RenderTextureComplete(render[PrincipalConstants.CurrentImage], Color.White, ginfo.FullScreenRectangle, Matrix.Identity, null, true, SpriteSortMode.Deferred, SamplerState.PointClamp, BlendState.AlphaBlend);                     
                         System.Diagnostics.Debug.Assert(render.PeekBlendState() == BlendState.Opaque);
                     }
                     else
                     {
-                        render.Clear(Color.Transparent);
-                        render.RenderTextureComplete(render[PrincipalConstants.CurrentImage], Color.White, ginfo.FullScreenRectangle, Matrix.Identity, null, true,SpriteSortMode.Immediate);                            
-                        
+                        render.Clear(Color.Black);
+                        render.RenderTextureComplete(render[PrincipalConstants.CurrentImage], Color.White, ginfo.FullScreenRectangle, Matrix.Identity, null, true, SpriteSortMode.Deferred, SamplerState.AnisotropicClamp, BlendState.AlphaBlend);                                             
                     }
                 
                 }
@@ -297,18 +297,20 @@ namespace PloobsEngine.SceneControl
                     for (int i = 0; i < PostEffects.Count ; i++)
                     {
                         render.PushRenderTarget(target);
-                        PostEffects[i].Draw(render, gameTime, ginfo, world);
+                        PostEffects[i].Draw(render, gameTime, ginfo, world,desc.UseFloatingBufferForLightMap);
                         Texture2D tex = render.PopRenderTarget()[0].RenderTarget as Texture2D;
                         System.Diagnostics.Debug.Assert(tex != null);
                         render[PrincipalConstants.CurrentImage] = tex;
                     }
                     if (desc.UseFloatingBufferForLightMap)
                     {
-                        render.RenderTextureComplete(render[PrincipalConstants.CurrentImage], Color.White, ginfo.FullScreenRectangle, Matrix.Identity, null, true, SpriteSortMode.Deferred, SamplerState.PointClamp, BlendState.Opaque);
+                        render.Clear(Color.Black);
+                        render.RenderTextureComplete(render[PrincipalConstants.CurrentImage], Color.White, ginfo.FullScreenRectangle, Matrix.Identity, null, true, SpriteSortMode.Deferred, SamplerState.PointClamp, BlendState.AlphaBlend);                     
                     }
                     else
                     {
-                        render.RenderTextureComplete(render[PrincipalConstants.CurrentImage], Color.White, ginfo.FullScreenRectangle, Matrix.Identity, null, true, SpriteSortMode.Deferred, SamplerState.LinearClamp, BlendState.Opaque);
+                        render.Clear(Color.Black);
+                        render.RenderTextureComplete(render[PrincipalConstants.CurrentImage], Color.White, ginfo.FullScreenRectangle, Matrix.Identity, null, true, SpriteSortMode.Deferred, SamplerState.AnisotropicClamp, BlendState.AlphaBlend);                     
                     }
                 }                                
 
@@ -316,10 +318,11 @@ namespace PloobsEngine.SceneControl
         
                 if (desc.DefferedDebug)
                 {
+                    render.Clear(Color.Black);                    
                     if (desc.UseFloatingBufferForLightMap)
-                        render.RenderBegin(Matrix.Identity,null,SpriteSortMode.Immediate,SamplerState.PointClamp,BlendState.Opaque);
+                        render.RenderBegin(Matrix.Identity,null,SpriteSortMode.Immediate,SamplerState.PointClamp,BlendState.AlphaBlend);
                     else
-                        render.RenderBegin(Matrix.Identity, null, SpriteSortMode.Immediate, SamplerState.AnisotropicClamp, BlendState.Opaque);
+                        render.RenderBegin(Matrix.Identity, null, SpriteSortMode.Immediate, SamplerState.AnisotropicClamp, BlendState.AlphaBlend);
                     
                     render.RenderTexture(render[desc.RenderTargetsNameToDefferedDebug[0]] ,Color.White, new Rectangle(0, 0, halfWidth, halfHeight));
                     render.RenderTexture(render[desc.RenderTargetsNameToDefferedDebug[1]], Color.White, new Rectangle(0, halfHeight, halfWidth, halfHeight));

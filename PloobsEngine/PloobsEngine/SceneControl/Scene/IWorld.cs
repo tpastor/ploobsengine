@@ -74,12 +74,7 @@ namespace PloobsEngine.SceneControl
 
         public IParticleManager ParticleManager
         {
-            get {
-                if (particleManager == null)
-                {
-                    ActiveLogger.LogMessage("Cant use an Unitialized Particle Manager, use the right IWORLD Constructor", LogLevel.FatalError);
-                    throw new Exception("Cant use an Unitialized Particle Manager, use the right IWORLD Constructor");
-                }
+            get {                
                 return particleManager;
             }            
         }

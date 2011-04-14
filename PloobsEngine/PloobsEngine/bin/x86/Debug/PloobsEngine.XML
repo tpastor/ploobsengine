@@ -697,7 +697,7 @@
         </member>
         <member name="M:PloobsEngine.Modelo.IModelo.getTexture(PloobsEngine.Modelo.TextureType)">
             <summary>
-            Gets the texture.
+            Gets one texture of the model.
             </summary>
             <param name="textureType">Type of the texture.</param>
             <returns></returns>
@@ -713,6 +713,13 @@
             <summary>
             Load the model
             </summary>
+        </member>
+        <member name="M:PloobsEngine.Modelo.IModelo.LoadBatchInfo(PloobsEngine.Engine.GraphicFactory,PloobsEngine.Modelo.BatchInformation[][]@)">
+            <summary>
+            Loads the batch info, called by the constructor if callLoadContent is true
+            </summary>
+            <param name="factory">The factory.</param>
+            <param name="BatchInformations">The batch informations.</param>
         </member>
         <member name="M:PloobsEngine.Modelo.IModelo.SetTexture(Microsoft.Xna.Framework.Graphics.Texture2D,PloobsEngine.Modelo.TextureType)">
             <summary>
@@ -742,6 +749,11 @@
             The tag.
             </value>
             <returns></returns>
+        </member>
+        <member name="E:PloobsEngine.Modelo.IModelo.OnTextureChange">
+            <summary>
+            Occurs when [on texture change].
+            </summary>
         </member>
         <member name="P:PloobsEngine.Modelo.IModelo.MeshNumber">
             <summary>
@@ -2182,6 +2194,23 @@
             Specification of a Render Technic
             </summary>
         </member>
+        <member name="F:PloobsEngine.SceneControl.IRenderTechnic.PostEffects">
+            <summary>
+            List off all PostEffects
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.SceneControl.IRenderTechnic.AddPostEffect(PloobsEngine.SceneControl.IPostEffect)">
+            <summary>
+            Adds one post effect.
+            </summary>
+            <param name="postEffect">The post effect.</param>
+        </member>
+        <member name="M:PloobsEngine.SceneControl.IRenderTechnic.RemovePostEffect(PloobsEngine.SceneControl.IPostEffect)">
+            <summary>
+            Removes one post effect.
+            </summary>
+            <param name="postEffect">The post effect.</param>
+        </member>
         <member name="M:PloobsEngine.SceneControl.IRenderTechnic.BeforeFirstExecution(PloobsEngine.SceneControl.RenderHelper,PloobsEngine.SceneControl.IWorld)">
             <summary>
             Befores the first execution.
@@ -2505,7 +2534,7 @@
             IPost Effect Specification
             </summary>
         </member>
-        <member name="M:PloobsEngine.SceneControl.IPostEffect.init(PloobsEngine.SceneControl.IContentManager,PloobsEngine.Engine.GraphicInfo,PloobsEngine.Engine.GraphicFactory,System.Boolean)">
+        <member name="M:PloobsEngine.SceneControl.IPostEffect.init(PloobsEngine.SceneControl.IContentManager,PloobsEngine.Engine.GraphicInfo,PloobsEngine.Engine.GraphicFactory)">
             <summary>
             Initiates the specified Post Effect.
             Called by the engine
@@ -2514,7 +2543,7 @@
             <param name="ginfo">The ginfo.</param>
             <param name="factory">The factory.</param>
         </member>
-        <member name="M:PloobsEngine.SceneControl.IPostEffect.Draw(PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime,PloobsEngine.Engine.GraphicInfo,PloobsEngine.SceneControl.IWorld)">
+        <member name="M:PloobsEngine.SceneControl.IPostEffect.Draw(PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime,PloobsEngine.Engine.GraphicInfo,PloobsEngine.SceneControl.IWorld,System.Boolean)">
             <summary>
             Apply the post effect
             </summary>
@@ -2523,18 +2552,49 @@
             <param name="GraphicInfo">The graphic info.</param>
             <param name="world">The world.</param>
         </member>
+        <member name="P:PloobsEngine.SceneControl.IPostEffect.PostEffectType">
+            <summary>
+            Gets or sets the type of the post effect.
+            </summary>
+            <value>
+            The type of the post effect.
+            </value>
+        </member>
         <member name="P:PloobsEngine.SceneControl.IPostEffect.Priority">
             <summary>
             Gets the priority in relation with others PostEffects        
+            Lower the number, first the effect will be applied
+            0 By Default
             </summary>
         </member>
         <member name="P:PloobsEngine.SceneControl.IPostEffect.Enabled">
             <summary>
             Gets or sets a value indicating whether this <see cref="T:PloobsEngine.SceneControl.IPostEffect"/> is enabled.
+            Enabled by default
             </summary>
             <value>
               <c>true</c> if enabled; otherwise, <c>false</c>.
             </value>
+        </member>
+        <member name="T:PloobsEngine.SceneControl.PostEffectType">
+            <summary>
+            Defines in what render the post effect works
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.SceneControl.PostEffectType.Deferred">
+            <summary>
+            Only on Deferred
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.SceneControl.PostEffectType.Forward">
+            <summary>
+            only on Forward
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.SceneControl.PostEffectType.All">
+            <summary>
+            Works in both renders
+            </summary>
         </member>
         <member name="T:PloobsEngine.SceneControl.IForwardPass">
             <summary>
@@ -3645,6 +3705,23 @@
             <param name="filename">file name</param>
             <returns>dic with the parse info</returns>
         </member>
+        <member name="T:PloobsEngine.Modelo.SimpleModel">
+            <summary>
+            Implementation of the most simple Model in the engine
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Modelo.SimpleModel.#ctor(PloobsEngine.Engine.GraphicFactory,System.String,System.String,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Modelo.SimpleModel"/> class.
+            </summary>
+            <param name="factory">The graphic factory.</param>
+            <param name="modelName">Name of the model.</param>
+            <param name="diffuseTextureName">Name of the diffuse texture.</param>
+            <param name="bumpTextureName">Name of the bump texture.</param>
+            <param name="specularTextureName">Name of the specular texture.</param>
+            <param name="glowTextureName">Name of the glow texture.</param>
+            <param name="CallLoadContent">if set to <c>true</c> [call load content].</param>
+        </member>
         <member name="T:PloobsEngine.Modelo.Animation.IAnimatedModel">
             <summary>
             New Kind of Model specific for Animations
@@ -4016,14 +4093,14 @@
             <param name="GraphicInfo">The graphic info.</param>
             <param name="engine"></param>
         </member>
-        <member name="M:PloobsEngine.SceneControl.IScene.SetWorldAndRenderTechnich(PloobsEngine.SceneControl.IRenderTechnic[]@,PloobsEngine.SceneControl.IWorld@)">
+        <member name="M:PloobsEngine.SceneControl.IScene.SetWorldAndRenderTechnich(PloobsEngine.SceneControl.IRenderTechnic@,PloobsEngine.SceneControl.IWorld@)">
             <summary>
             Sets the world and render technich.
             </summary>
             <param name="renderTech">The render tech.</param>
             <param name="world">The world.</param>
         </member>
-        <member name="P:PloobsEngine.SceneControl.IScene.RenderTechnics">
+        <member name="P:PloobsEngine.SceneControl.IScene.RenderTechnic">
             <summary>
             Gets the render technics.
             </summary>
@@ -4612,7 +4689,7 @@
         </member>
         <member name="T:PloobsEngine.SceneControl.IObject">
             <summary>
-            Object Specification
+            Basic Object 
             </summary>
         </member>
         <member name="T:PloobsEngine.MessageSystem.IRecieveMessageEntity">
@@ -4632,6 +4709,14 @@
             Handles the message.
             </summary>
             <param name="mes">The mes.</param>
+        </member>
+        <member name="M:PloobsEngine.SceneControl.IObject.#ctor(PloobsEngine.Material.IMaterial,PloobsEngine.Modelo.IModelo,PloobsEngine.Physics.IPhysicObject)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.SceneControl.IObject"/> class.
+            </summary>
+            <param name="Material">The material.</param>
+            <param name="Modelo">The modelo.</param>
+            <param name="PhysicObject">The physic object.</param>
         </member>
         <member name="M:PloobsEngine.SceneControl.IObject.UpdateObject(Microsoft.Xna.Framework.GameTime,PloobsEngine.Cameras.ICamera,System.Collections.Generic.IList{PloobsEngine.Light.ILight})">
             <summary>
@@ -4761,6 +4846,14 @@
             </summary>
             <value>
             The name.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.SceneControl.IObject.IObjectAtachtment">
+            <summary>
+            Gets or sets the Iobject atachtment.
+            </summary>
+            <value>
+            The I object atachtment.
             </value>
         </member>
         <member name="T:PloobsEngine.Light.LightType">
@@ -5204,14 +5297,14 @@
             </summary>
             <param name="effect">The effect.</param>
         </member>
-        <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderTextureToFullScreenSpriteBatch(Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Graphics.Effect,Microsoft.Xna.Framework.Rectangle)">
+        <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderTextureToFullScreenSpriteBatch(Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Graphics.Effect,Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Graphics.SamplerState,Microsoft.Xna.Framework.Graphics.BlendState)">
             <summary>
             Renders the texture to full screen using sprite batch.
             </summary>
             <param name="scene">The scene.</param>
             <param name="effect">The effect.</param>
         </member>
-        <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderTextureToFullScreenSpriteBatch(System.String,Microsoft.Xna.Framework.Graphics.Effect)">
+        <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderTextureToFullScreenSpriteBatch(System.String,Microsoft.Xna.Framework.Graphics.Effect,Microsoft.Xna.Framework.Graphics.SamplerState,Microsoft.Xna.Framework.Graphics.BlendState)">
             <summary>
             Renders the texture to full screen using sprite batch.
             </summary>
@@ -5385,7 +5478,7 @@
         </member>
         <member name="T:PloobsEngine.Material.NormalDeferred">
             <summary>
-            Most Basic Deferred Shader
+            Most Basic Deferred Shader (uses only diffuse texture and specular power/intensity properties)
             </summary>
         </member>
         <member name="M:PloobsEngine.Material.NormalDeferred.#ctor(System.Single,System.Single)">
@@ -5445,6 +5538,47 @@
             </summary>
             <param name="position">Position</param>
             <param name="Target">Target Vector (Used to create the view matriz - LookAt method)</param>
+        </member>
+        <member name="T:PloobsEngine.Cameras.CameraFirstPerson">
+            <summary>
+            First Person Camera
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Cameras.CameraFirstPerson.#ctor(Microsoft.Xna.Framework.Graphics.Viewport)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Cameras.CameraFirstPerson"/> class.
+            </summary>
+            <param name="viewport">The viewport.</param>
+        </member>
+        <member name="M:PloobsEngine.Cameras.CameraFirstPerson.#ctor(System.Boolean,Microsoft.Xna.Framework.Graphics.Viewport)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Cameras.CameraFirstPerson"/> class.
+            </summary>
+            <param name="useMouse">if set to <c>true</c> [use mouse].</param>
+            <param name="viewport">The viewport.</param>
+        </member>
+        <member name="M:PloobsEngine.Cameras.CameraFirstPerson.#ctor(System.Boolean,Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Graphics.Viewport)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Cameras.CameraFirstPerson"/> class.
+            </summary>
+            <param name="useMouse">if set to <c>true</c> [use mouse].</param>
+            <param name="position">The position.</param>
+            <param name="viewport">The viewport.</param>
+        </member>
+        <member name="M:PloobsEngine.Cameras.CameraFirstPerson.EnableMouse(System.Boolean)">
+            <summary>
+            Enables the mouse control.
+            </summary>
+            <param name="status">if set to <c>true</c> [status].</param>
+        </member>
+        <member name="M:PloobsEngine.Cameras.CameraFirstPerson.#ctor(System.Single,System.Single,Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Graphics.Viewport)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Cameras.CameraFirstPerson"/> class.
+            </summary>
+            <param name="lrRot">The leftright rotation.</param>
+            <param name="udRot">The updown rotation.</param>
+            <param name="startingPos">The starting pos.</param>
+            <param name="viewport">The viewport.</param>
         </member>
         <member name="T:PloobsEngine.Utils.PerlinNoise">
             <summary>
@@ -5550,7 +5684,9 @@
         </member>
         <member name="T:PloobsEngine.Engine.GraphicFactory">
             <summary>
-            Creates everything related to Graphics
+            Creates everything related to Graphics.
+            FunctionNameConvention:
+            Use Get... To load something and Create... to create something
             </summary>
         </member>
         <member name="T:PloobsEngine.DataStructure.MergeSort">
@@ -6628,7 +6764,7 @@
         </member>
         <member name="T:PloobsEngine.Engine.GraphicInfo">
             <summary>
-            Contains Graphics Informations about the engine
+            Contains Graphics Informations about the current execution
             </summary>
         </member>
         <member name="F:PloobsEngine.Engine.GraphicInfo.BackBufferHeight">

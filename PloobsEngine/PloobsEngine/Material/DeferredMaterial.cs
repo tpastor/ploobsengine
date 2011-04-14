@@ -18,6 +18,7 @@ namespace PloobsEngine.Material
         /// <param name="shader">The shader.</param>
         public DeferredMaterial(IShader shader)
         {
+            System.Diagnostics.Debug.Assert(shader != null);            
             System.Diagnostics.Debug.Assert(shader.MaterialType == Material.MaterialType.DEFERRED);
             this.Shadder = shader;
         }

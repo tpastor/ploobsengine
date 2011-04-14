@@ -41,7 +41,10 @@ namespace PloobsEngine.Physics.Bepu
         /// <param name="scale">The scale.</param>
         /// <param name="materialDescription">The material description.</param>
         public TriangleMeshObject(IModelo model, Vector3 pos, Matrix rotation, Vector3 scale, MaterialDescription materialDescription)
-        {            
+        {
+            System.Diagnostics.Debug.Assert(model != null);
+            System.Diagnostics.Debug.Assert(scale != Vector3.Zero);
+
             this.rotation = rotation;
             this.scale = scale;
             this.position = pos;
@@ -62,7 +65,10 @@ namespace PloobsEngine.Physics.Bepu
         /// <param name="scale">The scale.</param>
         /// <param name="materialDescription">The material description.</param>
         public TriangleMeshObject(Model model, Vector3 pos, Matrix rotation, Vector3 scale, MaterialDescription materialDescription)
-        {            
+        {
+            System.Diagnostics.Debug.Assert(model != null);
+            System.Diagnostics.Debug.Assert(scale != Vector3.Zero);
+
             this.rotation = rotation;
             this.scale = scale;
             this.position = pos;

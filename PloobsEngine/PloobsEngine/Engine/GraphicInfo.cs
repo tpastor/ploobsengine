@@ -14,7 +14,7 @@ namespace PloobsEngine.Engine
     public delegate void OnGraphicInfoChange(GraphicInfo newGraphicInfo);
 
     /// <summary>
-    /// Contains Graphics Informations about the engine
+    /// Contains Graphics Informations about the current execution
     /// </summary>
     public class GraphicInfo
     {

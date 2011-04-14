@@ -8,20 +8,39 @@ using Microsoft.Xna.Framework.Graphics;
 using PloobsEngine.Utils;
 using PloobsEngine.MessageSystem;
 using PloobsEngine.SceneControl;
+using PloobsEngine.Engine.Logger;
 
 namespace PloobsEngine.Cameras
 {
+    /// <summary>
+    /// First Person Camera
+    /// </summary>
     public class CameraFirstPerson : ICamera
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CameraFirstPerson"/> class.
+        /// </summary>
+        /// <param name="viewport">The viewport.</param>
         public CameraFirstPerson(Viewport viewport)
             : this(0, 0, new Vector3(0, 100, 150), viewport)
         {            
         }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CameraFirstPerson"/> class.
+        /// </summary>
+        /// <param name="useMouse">if set to <c>true</c> [use mouse].</param>
+        /// <param name="viewport">The viewport.</param>
         public CameraFirstPerson(bool useMouse, Viewport viewport)
             : this(0, 0, new Vector3(0, 100, 150), viewport)
         {
             this.useMouse = useMouse;
         }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CameraFirstPerson"/> class.
+        /// </summary>
+        /// <param name="useMouse">if set to <c>true</c> [use mouse].</param>
+        /// <param name="position">The position.</param>
+        /// <param name="viewport">The viewport.</param>
         public CameraFirstPerson(bool useMouse, Vector3 position, Viewport viewport)
             : this(0, 0, position, viewport)
         {
@@ -29,12 +48,23 @@ namespace PloobsEngine.Cameras
         }
 
 
+        /// <summary>
+        /// Enables the mouse control.
+        /// </summary>
+        /// <param name="status">if set to <c>true</c> [status].</param>
         public void EnableMouse(bool status)
         {
             this.useMouse = status;
         }
 
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CameraFirstPerson"/> class.
+        /// </summary>
+        /// <param name="lrRot">The leftright rotation.</param>
+        /// <param name="udRot">The updown rotation.</param>
+        /// <param name="startingPos">The starting pos.</param>
+        /// <param name="viewport">The viewport.</param>
         public CameraFirstPerson(float lrRot, float udRot, Vector3 startingPos, Viewport viewport)
         {
             init(lrRot, udRot, startingPos,viewport);
@@ -49,8 +79,7 @@ namespace PloobsEngine.Cameras
             _aspectRatio = viewPort.AspectRatio;            
             UpdateViewMatrix();
             Mouse.SetPosition(viewPort.Width / 2, viewPort.Height / 2);
-            originalMouseState = Mouse.GetState();
-            //_view = Matrix.CreateLookAt(_position, _target, _up);
+            originalMouseState = Mouse.GetState();            
             _projection = Matrix.CreatePerspectiveFieldOfView(_fieldOdView, _aspectRatio, _nearPlane, _farPlane);
             this._frustrum = new BoundingFrustum(_view * _projection);            
         }
@@ -84,14 +113,30 @@ namespace PloobsEngine.Cameras
         public float MoveSpeed
         {
             get { return moveSpeed; }
-            set { moveSpeed = value; }
+            set {
+                if (value <= 0)
+                {
+                    ActiveLogger.LogMessage("CameraFirstPerson MoveSpeed cannot be <= 0, nothing changed", LogLevel.RecoverableError);
+                }
+                else
+                {
+                    moveSpeed = value;
+                }
+            }
         }
 
         public float RotationSpeed
         {
             set
             {
-                this.rotationSpeed = value;
+                if (value <= 0)
+                {
+                    ActiveLogger.LogMessage("CameraFirstPerson RotationSpeed cannot be <= 0, nothing changed", LogLevel.RecoverableError);                    
+                }
+                else
+                {
+                    this.rotationSpeed = value;
+                }
             }
             get
             {
@@ -105,7 +150,14 @@ namespace PloobsEngine.Cameras
         {
             set
             {
-                this.sensibility = value;
+                if (value <= 0)
+                {
+                    ActiveLogger.LogMessage("CameraFirstPerson Sensibility cannot be <= 0, nothing changed", LogLevel.RecoverableError);
+                }
+                else
+                {
+                    this.sensibility = value;
+                }
             }
             get
             {
@@ -158,7 +210,7 @@ namespace PloobsEngine.Cameras
             }
             set
             {
-                throw new NotImplementedException();
+                ActiveLogger.LogMessage("CameraFirstPerson Rotation cannot be setted directely, set lrRot or udRot instead", LogLevel.Warning);
             }
         }
 
@@ -170,8 +222,15 @@ namespace PloobsEngine.Cameras
             }
             set
             {
-                this._fieldOdView = value;
-                _projection = Matrix.CreatePerspectiveFieldOfView(_fieldOdView,_aspectRatio, _nearPlane, _farPlane);
+                if (value <= 0)
+                {
+                    ActiveLogger.LogMessage("CameraFirstPerson Field of view cannot be <= 0, nothing changed", LogLevel.RecoverableError);
+                }
+                else
+                {
+                    this._fieldOdView = value;
+                    _projection = Matrix.CreatePerspectiveFieldOfView(_fieldOdView, _aspectRatio, _nearPlane, _farPlane);
+                }
 
             }
         }
@@ -184,8 +243,15 @@ namespace PloobsEngine.Cameras
             }
             set
             {
-                this._aspectRatio = value;
-                _projection = Matrix.CreatePerspectiveFieldOfView(_fieldOdView, _aspectRatio, _nearPlane, _farPlane);
+                if (value <= 0)
+                {
+                    ActiveLogger.LogMessage("CameraFirstPerson AspectRation cannot be <= 0, nothing changed", LogLevel.RecoverableError);
+                }
+                else
+                {
+                    this._aspectRatio = value;
+                    _projection = Matrix.CreatePerspectiveFieldOfView(_fieldOdView, _aspectRatio, _nearPlane, _farPlane);
+                }
             }
         }
 
@@ -197,8 +263,15 @@ namespace PloobsEngine.Cameras
             }
             set
             {
-                this._nearPlane = value;
-                _projection = Matrix.CreatePerspectiveFieldOfView(_fieldOdView, _aspectRatio, _nearPlane, _farPlane);
+                if (value <= 0)
+                {
+                    ActiveLogger.LogMessage("CameraFirstPerson NearPlane cannot be <= 0, nothing changed", LogLevel.RecoverableError);
+                }
+                else
+                {
+                    this._nearPlane = value;
+                    _projection = Matrix.CreatePerspectiveFieldOfView(_fieldOdView, _aspectRatio, _nearPlane, _farPlane);
+                }
             }
         }
 
@@ -210,8 +283,15 @@ namespace PloobsEngine.Cameras
             }
             set
             {
-                this._farPlane = value;
-                _projection = Matrix.CreatePerspectiveFieldOfView(_fieldOdView, _aspectRatio, _nearPlane, _farPlane);
+                if (value <= 0)
+                {
+                    ActiveLogger.LogMessage("CameraFirstPerson FarPLane cannot be <= 0, nothing changed", LogLevel.RecoverableError);
+                }
+                else
+                {
+                    this._farPlane = value;
+                    _projection = Matrix.CreatePerspectiveFieldOfView(_fieldOdView, _aspectRatio, _nearPlane, _farPlane);
+                }
             }
         }
 
@@ -315,13 +395,31 @@ namespace PloobsEngine.Cameras
         public float UpDownRot
         {
             get { return updownRot; }
-            set { updownRot = value; }
+            set {
+                if (value <= 0)
+                {
+                    ActiveLogger.LogMessage("CameraFirstPerson UpDownRot cannot be <= 0, nothing changed", LogLevel.RecoverableError);
+                }
+                else
+                {
+                    updownRot = value;
+                }
+            }
         }
 
         public float LeftRightRot
         {
             get { return leftrightRot; }
-            set { leftrightRot = value; }
+            set {
+                if (value <= 0)
+                {
+                    ActiveLogger.LogMessage("CameraFirstPerson LeftRightRot cannot be <= 0, nothing changed", LogLevel.RecoverableError);
+                }
+                else
+                {
+                    leftrightRot = value;
+                }
+            }
         }
 
         public override Matrix ViewProjection
@@ -377,7 +475,7 @@ namespace PloobsEngine.Cameras
 
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
         {
-            
+            ActiveLogger.LogMessage("Serialization not implemented yet", LogLevel.RecoverableError);
         }
 
         #endregion

@@ -35,9 +35,14 @@ namespace PloobsEngine.Modelo
 
             if (String.IsNullOrEmpty(modelName))
             {
-                ActiveLogger.LogMessage("ModelName Cannot Be null", LogLevel.FatalError);
-                System.Diagnostics.Debug.Assert(!String.IsNullOrEmpty(modelName));
+                ActiveLogger.LogMessage("ModelName Cannot Be null", LogLevel.FatalError);                
                 throw new Exception("ModelName Cannot Be null");
+            }
+
+            if (factory == null)
+            {
+                ActiveLogger.LogMessage("Factory Cannot Be null", LogLevel.FatalError);
+                throw new Exception("Factory Cannot Be null");
             }
 
             if (_diffuseName == null && callLoadContent == true)
@@ -85,11 +90,14 @@ namespace PloobsEngine.Modelo
             get;
         }
 
+        /// <summary>
+        /// Occurs when [on texture change].
+        /// </summary>
         public event OnTextureChange OnTextureChange = null;
             
         
         /// <summary>
-        /// Gets the texture.
+        /// Gets one texture of the model.
         /// </summary>
         /// <param name="textureType">Type of the texture.</param>
         /// <returns></returns>
@@ -186,6 +194,11 @@ namespace PloobsEngine.Modelo
             
         }
 
+        /// <summary>
+        /// Loads the batch info, called by the constructor if callLoadContent is true
+        /// </summary>
+        /// <param name="factory">The factory.</param>
+        /// <param name="BatchInformations">The batch informations.</param>
         protected abstract void LoadBatchInfo(GraphicFactory factory, out BatchInformation[][] BatchInformations);
         
 

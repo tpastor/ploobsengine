@@ -20,14 +20,14 @@ namespace EngineTestes
 {
     public class DeferredLoadScreen : IScene
     {
-        protected override void SetWorldAndRenderTechnich(out IRenderTechnic[] renderTech, out IWorld world)
+        protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
             desc.DefferedDebug = false;
             desc.UseFloatingBufferForLightMap = true;
-            renderTech = new DeferredRenderTechnic[] { new DeferredRenderTechnic(desc) };
+            renderTech = new DeferredRenderTechnic(desc);
         }
 
         protected override void InitScreen(GraphicInfo GraphicInfo, EngineStuff engine)

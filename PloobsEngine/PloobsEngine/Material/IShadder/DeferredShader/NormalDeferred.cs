@@ -15,7 +15,7 @@ using PloobsEngine.Light;
 namespace PloobsEngine.Material
 {
     /// <summary>
-    /// Most Basic Deferred Shader
+    /// Most Basic Deferred Shader (uses only diffuse texture and specular power/intensity properties)
     /// </summary>
     public class NormalDeferred : IShader
     {

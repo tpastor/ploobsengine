@@ -7,7 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PloobsEngineContent", "Ploo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EngineTestes", "EngineTestes\EngineTestes\EngineTestes.csproj", "{D8E39357-DDD4-45A2-820C-32411E409A2A}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "EngineTestesContent", "EngineTestes\EngineTestesContent\EngineTestesContent.contentproj", "{4DB11830-D1DC-4BD2-931D-11ADEAFA8BEA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EngineTestesContent", "EngineTestes\EngineTestesContent\EngineTestesContent.contentproj", "{4DB11830-D1DC-4BD2-931D-11ADEAFA8BEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PloobsEngineIntegration", "WpfIntegration\PloobsEngineIntegration.csproj", "{B6919352-56FE-48AA-A319-0679D76C4059}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{D8E39357-DDD4-45A2-820C-32411E409A2A}.Release|x86.Build.0 = Release|x86
 		{4DB11830-D1DC-4BD2-931D-11ADEAFA8BEA}.Debug|x86.ActiveCfg = Debug|x86
 		{4DB11830-D1DC-4BD2-931D-11ADEAFA8BEA}.Release|x86.ActiveCfg = Release|x86
+		{B6919352-56FE-48AA-A319-0679D76C4059}.Debug|x86.ActiveCfg = Debug|x86
+		{B6919352-56FE-48AA-A319-0679D76C4059}.Debug|x86.Build.0 = Debug|x86
+		{B6919352-56FE-48AA-A319-0679D76C4059}.Release|x86.ActiveCfg = Release|x86
+		{B6919352-56FE-48AA-A319-0679D76C4059}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

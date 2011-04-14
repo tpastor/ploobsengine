@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Engine;
+using PloobsEngine.DataStructure;
+using PloobsEngine.Engine.Logger;
 
 namespace PloobsEngine.SceneControl
 {
@@ -12,6 +14,46 @@ namespace PloobsEngine.SceneControl
     /// </summary>
     public abstract class IRenderTechnic
     {
+        public IRenderTechnic(PostEffectType PostEffectType)
+        {
+            this.PostEffectType = PostEffectType;
+        }
+
+        protected PostEffectType PostEffectType;
+
+        /// <summary>
+        /// List off all PostEffects
+        /// </summary>
+        public readonly PriorityQueueB<IPostEffect> PostEffects = new PriorityQueueB<IPostEffect>(new PostEffectComparer());
+
+        /// <summary>
+        /// Adds one post effect.
+        /// </summary>
+        /// <param name="postEffect">The post effect.</param>
+        public virtual void AddPostEffect(IPostEffect postEffect)
+        {
+            if (postEffect.PostEffectType != SceneControl.PostEffectType.All && postEffect.PostEffectType != PostEffectType)
+            {
+                ActiveLogger.LogMessage("Trying to add a wrong post effect for this Render Technich, pls check if the PostEffectType of the IPostEffect is All or " + PostEffectType + ", The engine is ignoring this operation", LogLevel.RecoverableError);
+            }
+            else
+            {                
+                PostEffects.Push(postEffect);
+            }
+        }
+        /// <summary>
+        /// Removes one post effect.
+        /// </summary>
+        /// <param name="postEffect">The post effect.</param>
+        public virtual void RemovePostEffect(IPostEffect postEffect)
+        {
+            if (postEffect.PostEffectType != SceneControl.PostEffectType.All && postEffect.PostEffectType != PostEffectType)
+            {
+                ActiveLogger.LogMessage("Trying to remove a wrong post effect type for this Render Technich, pls check if the PostEffectType of the IPostEffect is All or " + PostEffectType + ", The engine is ignoring this operation", LogLevel.RecoverableError);
+            }
+            PostEffects.RemoveLocation(postEffect);
+        }
+
         /// <summary>
         /// Befores the first execution.
         /// </summary>
@@ -40,7 +82,12 @@ namespace PloobsEngine.SceneControl
         protected virtual void AfterLoadContent(IContentManager manager, GraphicInfo ginfo, GraphicFactory factory) { }
         internal void iAfterLoadContent(IContentManager manager, GraphicInfo ginfo, GraphicFactory factory)
         {
+            for (int i = 0; i < PostEffects.Count; i++)			
+            {
+                PostEffects[i].init(manager,ginfo,factory);
+            }
             AfterLoadContent(manager,ginfo,factory);
+            
         }
         /// <summary>
         /// Gets the name of the technic.
