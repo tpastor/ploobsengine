@@ -36,7 +36,7 @@ void PostProcessVS (	in float3 in_vPositionOS		: POSITION,
 {
 	out_vPositionCS = float4(in_vPositionOS, 1.0f);
 	float2 vOffset = 0.5f / g_vDestinationDimensions;
-	out_vTexCoord = in_vTexCoord.xy + vOffset;
+	out_vTexCoord = in_vTexCoord.xy - vOffset;
 }
 
 

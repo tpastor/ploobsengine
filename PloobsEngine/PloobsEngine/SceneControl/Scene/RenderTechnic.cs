@@ -32,6 +32,7 @@ namespace PloobsEngine.SceneControl
         /// <param name="postEffect">The post effect.</param>
         public virtual void AddPostEffect(IPostEffect postEffect)
         {
+            System.Diagnostics.Debug.Assert(postEffect != null);
             if (postEffect.PostEffectType != SceneControl.PostEffectType.All && postEffect.PostEffectType != PostEffectType)
             {
                 ActiveLogger.LogMessage("Trying to add a wrong post effect for this Render Technich, pls check if the PostEffectType of the IPostEffect is All or " + PostEffectType + ", The engine is ignoring this operation", LogLevel.RecoverableError);
@@ -47,11 +48,30 @@ namespace PloobsEngine.SceneControl
         /// <param name="postEffect">The post effect.</param>
         public virtual void RemovePostEffect(IPostEffect postEffect)
         {
+            System.Diagnostics.Debug.Assert(postEffect != null);
             if (postEffect.PostEffectType != SceneControl.PostEffectType.All && postEffect.PostEffectType != PostEffectType)
             {
                 ActiveLogger.LogMessage("Trying to remove a wrong post effect type for this Render Technich, pls check if the PostEffectType of the IPostEffect is All or " + PostEffectType + ", The engine is ignoring this operation", LogLevel.RecoverableError);
             }
             PostEffects.RemoveLocation(postEffect);
+        }
+
+        /// <summary>
+        /// Determines whether [contains post effect] [the specified post effect].
+        /// </summary>
+        /// <param name="postEffect">The post effect.</param>
+        /// <returns>
+        ///   <c>true</c> if [contains post effect] [the specified post effect]; otherwise, <c>false</c>.
+        /// </returns>
+        public bool ContainsPostEffect(IPostEffect postEffect)
+        {
+            System.Diagnostics.Debug.Assert(postEffect != null);
+            for (int i = 0; i < PostEffects.Count; i++)
+            {
+                if (PostEffects[i] == postEffect)
+                    return true;
+            }
+            return false;
         }
 
         /// <summary>
@@ -84,7 +104,7 @@ namespace PloobsEngine.SceneControl
         {
             for (int i = 0; i < PostEffects.Count; i++)			
             {
-                PostEffects[i].init(manager,ginfo,factory);
+                PostEffects[i].Init(ginfo,factory);
             }
             AfterLoadContent(manager,ginfo,factory);
             

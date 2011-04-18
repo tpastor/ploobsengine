@@ -6,6 +6,14 @@ float far;
 float near;
 float3 fcolor = {0.5, 0.5, 0.5};
 
+texture cena;
+sampler cenaSampler = sampler_state
+{
+   Texture = <cena>;   
+   AddressU  = Clamp;
+   AddressV  = Clamp;
+};
+
 texture depth;
 sampler depthSampler = sampler_state
 {
@@ -16,32 +24,18 @@ sampler depthSampler = sampler_state
    AddressU  = Clamp;
    AddressV  = Clamp;
 };
-
-
-texture cena;
-sampler cenaSampler = sampler_state
-{
-   Texture = <cena>;
-   MinFilter = LINEAR;
-   MagFilter = LINEAR;
-   MipFilter = LINEAR;   
-   AddressU  = Clamp;
-   AddressV  = Clamp;
-};
-
-
 struct VertexShaderOutput
 {
     float4 Position : POSITION0;
-    float2 TexCoord : TEXCOORD0;
-    float2 Pos : TEXCOORD1;    
+    float2 TexCoord : TEXCOORD0;  
 };
 VertexShaderOutput VShader( float4 Pos: POSITION, float2 Tex : TEXCOORD)
 {
 	VertexShaderOutput output;
-    output.Position = float4(Pos);
-    output.Pos = float4(Pos);
-    output.TexCoord = Tex - halfPixel;    
+	Pos.x =  Pos.x - 2*halfPixel.x;
+	Pos.y =  Pos.y + 2*halfPixel.y;
+    output.Position = float4(Pos);    
+    output.TexCoord = Tex;    
     return output;
 }
 
@@ -53,7 +47,7 @@ float4 Pshader(VertexShaderOutput input) : COLOR
     //compute screen-space position
     float4 position;
     position.x = input.TexCoord.x * 2.0f - 1.0f;
-    position.y = -(input.TexCoord.y * 2.0f - 1.0f);
+    position.y = -(input.TexCoord.x * 2.0f - 1.0f);
     position.z = depthVal;
     position.w = 1.0f;
     //transform to world space

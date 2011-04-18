@@ -30,7 +30,7 @@ namespace PloobsEngine.SceneControl
             directionalLightEffect.Parameters["normalMap"].SetValue(DeferredGBuffer[GBufferTypes.NORMAL]);
             directionalLightEffect.Parameters["depthMap"].SetValue(DeferredGBuffer[GBufferTypes.DEPH]);
             directionalLightEffect.Parameters["cameraPosition"].SetValue(camera.Position);
-            directionalLightEffect.Parameters["InvertViewProjection"].SetValue(Matrix.Invert(camera.View * camera.Projection));
+            directionalLightEffect.Parameters["InvertViewProjection"].SetValue(Matrix.Invert(camera.ViewProjection));
             directionalLightEffect.Parameters["halfPixel"].SetValue(ginfo.HalfPixel);
                         
             foreach (ILight item in lights)
@@ -66,9 +66,11 @@ namespace PloobsEngine.SceneControl
 
                     PointLightPE pl = item as PointLightPE;
                     Matrix sphereWorldMatrix = Matrix.CreateScale(pl.LightRadius) * Matrix.CreateTranslation(pl.LightPosition);
-
-                    ContainmentType ct = camera.BoundingFrustum.Contains(new BoundingSphere(pl.LightPosition, pl.LightRadius * 1.5f));
-                    if ( ct == ContainmentType.Intersects || ct == ContainmentType.Contains)
+                    
+                    ContainmentType ct = ContainmentType.Contains;
+                    if(cullPointLight)
+                        ct = camera.BoundingFrustum.Contains(new BoundingSphere(pl.LightPosition, pl.LightRadius * 1.5f));
+                    if (ct == ContainmentType.Contains || ct == ContainmentType.Intersects)
                     {
                         pointLightEffect.Parameters["World"].SetValue(sphereWorldMatrix);
                         pointLightEffect.Parameters["lightPosition"].SetValue(pl.LightPosition);
@@ -184,6 +186,7 @@ namespace PloobsEngine.SceneControl
         public void LoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, bool cullPointLight, bool useFloatingBufferForLightning)
         {
             this.ginfo = ginfo;
+            this.cullPointLight = cullPointLight;
             if (useFloatingBufferForLightning)
                 lightRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.HdrBlendable, false, DepthFormat.None, 0, RenderTargetUsage.DiscardContents);
             else

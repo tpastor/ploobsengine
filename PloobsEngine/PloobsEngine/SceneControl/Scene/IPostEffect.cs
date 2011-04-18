@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Engine;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace PloobsEngine.SceneControl
 {
@@ -62,16 +63,18 @@ namespace PloobsEngine.SceneControl
         /// <param name="manager">The manager.</param>
         /// <param name="ginfo">The ginfo.</param>
         /// <param name="factory">The factory.</param>
-        public abstract void init(IContentManager manager, GraphicInfo ginfo, GraphicFactory factory);
+        public abstract void Init(GraphicInfo ginfo, GraphicFactory factory);
 
         /// <summary>
         /// Apply the post effect
         /// </summary>
+        /// <param name="ImageToProcess">The image to process.</param>
         /// <param name="rHelper">The r helper.</param>
         /// <param name="gt">The gt.</param>
         /// <param name="GraphicInfo">The graphic info.</param>
         /// <param name="world">The world.</param>
-        public abstract void Draw(RenderHelper rHelper, GameTime gt, GraphicInfo GraphicInfo, IWorld world,bool useFloatBuffer);
+        /// <param name="useFloatBuffer">if set to <c>true</c> [use float buffer].</param>
+        public abstract void Draw(Texture2D ImageToProcess,RenderHelper rHelper, GameTime gt, GraphicInfo GraphicInfo, IWorld world,bool useFloatBuffer);
     }
 
     /// <summary>

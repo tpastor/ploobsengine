@@ -16,17 +16,17 @@ namespace PloobsEngine.SceneControl
 
         #region IPostEffect Members
                
-        Effect effect = null;   
+        Effect effect = null;
 
-        public override void  Draw(RenderHelper rHelper, GameTime gt, Engine.GraphicInfo GraphicInfo, IWorld world,bool useFloatingBuffer)
+        public override void Draw(Texture2D ImageToProcess, RenderHelper rHelper, GameTime gt, Engine.GraphicInfo GraphicInfo, IWorld world, bool useFloatingBuffer)
         {        
             if(useFloatingBuffer)
-                rHelper.RenderTextureToFullScreenSpriteBatch(rHelper[PrincipalConstants.CurrentImage], effect, GraphicInfo.FullScreenRectangle, SamplerState.PointClamp);
+                rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, effect, GraphicInfo.FullScreenRectangle, SamplerState.PointClamp);
             else
-                rHelper.RenderTextureToFullScreenSpriteBatch(rHelper[PrincipalConstants.CurrentImage], effect, GraphicInfo.FullScreenRectangle, SamplerState.AnisotropicClamp);            
+                rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, effect, GraphicInfo.FullScreenRectangle, SamplerState.LinearClamp);            
         }
 
-        public override void  init(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
+        public override void  Init(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
         {         
             effect = factory.GetEffect("BlackWhite",false,true);            
         }

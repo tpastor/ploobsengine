@@ -21,9 +21,9 @@ texture BlurScene;
 sampler BlurSceneSampler = sampler_state
 {
    Texture = <BlurScene>;
-   MinFilter = Linear;
-   MagFilter = Linear;
-   MipFilter = Linear;   
+   MinFilter = POINT;
+   MagFilter = POINT;
+   MipFilter = POINT;   
    AddressU  = Clamp;
    AddressV  = Clamp;
 };
@@ -40,8 +40,6 @@ float4 Pshader(float2 Tex: TEXCOORD0) : COLOR
 	// Get the depth texel
 	float  fDepth = tex2D(D1MSampler, Tex).r;
 	
-	// Invert the depth texel so the background is white and the nearest objects are black
-	//fDepth = 1 - fDepth;
 	
 	// Calculate the distance from the selected distance and range on our DoF effect, set from the application
 	float fSceneZ = ( -Near * Far ) / ( fDepth - Far);

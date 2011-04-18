@@ -94,7 +94,7 @@ namespace PloobsEngine.SceneControl
         public void LoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, Color BackGroundColor)
         {
             this.backGroundColor = BackGroundColor;
-            const int multisample = 1;
+            const int multisample = 0;
             colorRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, false, DepthFormat.Depth24Stencil8, multisample, RenderTargetUsage.DiscardContents);
             normalRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, false, DepthFormat.None, multisample, RenderTargetUsage.DiscardContents);
             depthRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Single, false, DepthFormat.None, multisample, RenderTargetUsage.DiscardContents);

@@ -5,6 +5,8 @@ float2 halfPixel;
 sampler ColorSampler : register(s0) = sampler_state
 {
     Texture = (ColorTexture);    
+	AddressU = CLAMP;
+    AddressV = CLAMP;
 };
 
 sampler DepthSampler : register(s1) = sampler_state
@@ -29,22 +31,11 @@ struct VertexShaderOutput
 VertexShaderOutput Vshader( float4 Pos: POSITION, float2 Tex : TEXCOORD)
 {
 	VertexShaderOutput output;
+	Pos.x =  Pos.x - 2*halfPixel.x;
+	Pos.y =  Pos.y + 2*halfPixel.y;
     output.Position = float4(Pos);        
-    output.TexCoord = Tex - halfPixel;
+    output.TexCoord = Tex ;
     return output;
-}
-
-
-void RestoreBuffersPixelShader(in float2 texCoord : TEXCOORD0, 
-								 out float4 color: COLOR0,
-								 out float depth : DEPTH)
-{
-	
-	//write the color
-	color = tex2D(ColorSampler, texCoord);
-	
-	//write the depth
-	depth = tex2D(DepthSampler, texCoord).r;
 }
 
 void RestoreBuffersPixelShader2(VertexShaderOutput input ,

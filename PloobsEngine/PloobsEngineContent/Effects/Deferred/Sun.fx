@@ -16,23 +16,24 @@ float3 lightPosition;
 float lightIntensity = 10.0f;
 float3 Color = float3(1,1,1);
 
-texture flare;
-sampler Flare = sampler_state
-{
-    Texture = (flare);
-    AddressU = CLAMP;
-    AddressV = CLAMP;
-};
-
 texture BackBufferTex;
 sampler BackBuffer = sampler_state
 {
     Texture = (BackBufferTex);
     AddressU = CLAMP;
     AddressV = CLAMP;
+};
+
+texture flare;
+sampler Flare = sampler_state
+{
+    Texture = (flare);
+    AddressU = CLAMP;
+    AddressV = CLAMP;
     MagFilter = LINEAR;
     MinFilter = LINEAR;
     Mipfilter = LINEAR;
+
 };
 
 
@@ -49,6 +50,9 @@ texture depthMap;
 sampler depthSampler = sampler_state
 {
     Texture = (depthMap);   
+	MagFilter = POINT;
+    MinFilter = POINT;
+    Mipfilter = POINT;
 };
 
 

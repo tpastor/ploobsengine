@@ -15,6 +15,7 @@ using Microsoft.Xna.Framework.Input;
 using PloobsEngine.Features;
 using PloobsEngine.Commands;
 using PloobsEngine.Loader;
+using PloobsEngine.Input;
 
 namespace EngineTestes
 {
@@ -25,8 +26,9 @@ namespace EngineTestes
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
-            desc.DefferedDebug = false;
+            desc.DefferedDebug = true;
             desc.UseFloatingBufferForLightMap = true;
+            desc.DeferredLightMap = new CSSShadowLightMap();
             renderTech = new DeferredRenderTechnic(desc);
         }
 
@@ -36,7 +38,11 @@ namespace EngineTestes
 
             SkyBox skybox = new SkyBox();
             engine.AddComponent(skybox);
-        }
+
+            InputAdvanced ia = new InputAdvanced();
+            engine.AddComponent(ia);
+
+        }        
 
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory ,IContentManager contentManager)
         {
@@ -63,6 +69,8 @@ namespace EngineTestes
                 IObject obj4 = new IObject(mat, sm, pi);
                 this.World.AddObject(obj4);
             }
+
+            LightThrowBepu lt = new LightThrowBepu(this.World, factory);
 
             #region NormalLight
             DirectionalLightPE ld1 = new DirectionalLightPE(Vector3.Left, Color.White);

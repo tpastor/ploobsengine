@@ -3,10 +3,7 @@ bool useLight;
 texture TexColor;
 sampler TexColorSampler = sampler_state
 {
-   Texture = <TexColor>;
-   MinFilter = Linear;
-   MagFilter = Linear;
-   MipFilter = Linear;   
+   Texture = <TexColor>;   
    AddressU  = Clamp;
    AddressV  = Clamp;
 };
@@ -16,9 +13,9 @@ texture ColorMap;
 sampler ColorMapSampler = sampler_state
 {
    Texture = <ColorMap>;
-   MinFilter = Linear;
-   MagFilter = Linear;
-   MipFilter = Linear;   
+   MinFilter = point;
+   MagFilter = point;
+   MipFilter = point;      
    AddressU  = Clamp;
    AddressV  = Clamp;
 };

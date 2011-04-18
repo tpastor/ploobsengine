@@ -35,18 +35,15 @@ namespace EngineTestes
             ForwardMaterial fmaterial = new ForwardMaterial(shader);            
             IObject obj = new IObject(fmaterial,simpleModel,tmesh);
             this.World.AddObject(obj); 
-
             this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo.Viewport));
-            rt = factory.CreateRenderTarget(800, 600);
+
+
+            this.RenderTechnic.AddPostEffect(new BlackWhitePostEffect());
         }
 
-        RenderTarget2D rt;
-
         protected override void Draw(GameTime gameTime, RenderHelper render)
-        {
-            render.PushRenderTarget(rt);
-            base.Draw(gameTime, render);
-            render.PopRenderTarget();
+        {        
+            base.Draw(gameTime, render);         
         }
 
     }

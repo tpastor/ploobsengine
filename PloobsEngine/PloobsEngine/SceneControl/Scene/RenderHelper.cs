@@ -221,6 +221,25 @@ namespace PloobsEngine.SceneControl
         }
 
         /// <summary>
+        /// Pops the render target.
+        /// </summary>
+        /// <returns></returns>
+        public RenderTarget2D PopRenderTargetAsSingleRenderTarget2D()
+        {
+            return PopRenderTarget()[0].RenderTarget as RenderTarget2D;
+        }
+
+        public void SetViewPort(Viewport viewPort)
+        {
+            device.Viewport = viewPort;
+        }
+
+        public Viewport GetViewPort()
+        {
+            return device.Viewport ;
+        }
+
+        /// <summary>
         /// Clears actual target.
         /// </summary>
         /// <param name="color">The color.</param>
@@ -441,8 +460,25 @@ namespace PloobsEngine.SceneControl
         /// Renders the texture to full screen using vertex and pixel shader .
         /// </summary>
         /// <param name="effect">The effect.</param>
+        public void RenderFullScreenQuadVertexPixel(Effect effect,params SamplerState[] samplerStates)
+        {
+
+            if (samplerStates != null)
+            {
+                for (int i = 0; i < samplerStates.Count(); i++)
+                {
+                    SetSamplerState(samplerStates[i], i);
+                }
+            }           
+            qrender.DrawQuad(effect);
+        }
+
+        /// <summary>
+        /// Renders the full screen quad vertex pixel.
+        /// </summary>
+        /// <param name="effect">The effect.</param>
         public void RenderFullScreenQuadVertexPixel(Effect effect)
-        {            
+        {
             qrender.DrawQuad(effect);
         }
 
@@ -451,7 +487,7 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         /// <param name="scene">The scene.</param>
         /// <param name="effect">The effect.</param>
-        public void RenderTextureToFullScreenSpriteBatch(Texture2D scene, Effect effect, Rectangle rectangle, SamplerState samplerState = null, BlendState blenderState = null)
+        public void RenderTextureToFullScreenSpriteBatch(Texture2D scene, Effect effect, Rectangle rectangle, SamplerState samplerState = null, BlendState blenderState = null, bool sync = true)
         {
             effect.CurrentTechnique.Passes[0].Apply();
             spriteBatch.Begin(SpriteSortMode.Immediate, blenderState, samplerState, null, null, effect, Matrix.Identity);
@@ -461,7 +497,10 @@ namespace PloobsEngine.SceneControl
                 pass.Apply();
                 spriteBatch.Draw(scene, rectangle, Color.White);                
             }
-            spriteBatch.End();            
+            spriteBatch.End();
+
+            if (sync)
+                ResyncStates();
         }
 
         public SamplerState GetRightSampler()
@@ -479,7 +518,7 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         /// <param name="texture">The texture name (already in this class).</param>
         /// <param name="effect">The effect.</param>
-        public void RenderTextureToFullScreenSpriteBatch(String texture, Effect effect, SamplerState samplerState = null, BlendState blenderState = null)
+        public void RenderTextureToFullScreenSpriteBatch(String texture, Effect effect, SamplerState samplerState = null, BlendState blenderState = null,bool sync = true)
         {
             System.Diagnostics.Debug.Assert(Scenes.ContainsKey(texture),"Texture not found in Render, make sure it exists");
             effect.CurrentTechnique.Passes[0].Apply();           
@@ -492,7 +531,10 @@ namespace PloobsEngine.SceneControl
                 spriteBatch.Draw(this[texture], Vector2.Zero, Color.White);
 
             }
-            spriteBatch.End();            
+            spriteBatch.End();
+
+            if (sync)
+                ResyncStates();
         }
 
         /// <summary>

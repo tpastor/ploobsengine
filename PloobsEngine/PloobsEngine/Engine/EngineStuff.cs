@@ -257,7 +257,7 @@ namespace PloobsEngine.Engine
             halfPixel.X = 0.5f / (float)GraphicsDevice.PresentationParameters.BackBufferWidth;
             halfPixel.Y = 0.5f / (float)GraphicsDevice.PresentationParameters.BackBufferHeight;
 
-            GraphicInfo ginfo = new GraphicInfo(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel,GraphicsDevice);
+            GraphicInfo ginfo = new GraphicInfo(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount,GraphicsDevice.PresentationParameters.DepthStencilFormat);
             GraphicInfo.FireEvent(ginfo);
             GraphicInfo = ginfo;
 
@@ -272,12 +272,15 @@ namespace PloobsEngine.Engine
             base.LoadContent();
 
             Rectangle fs = new Rectangle(0, 0, graphics.GraphicsDevice.Viewport.Width, graphics.GraphicsDevice.Viewport.Height);
-            Vector2 halfPixel;
-            halfPixel.X = 0.5f / (float)GraphicsDevice.PresentationParameters.BackBufferWidth;
-            halfPixel.Y = 0.5f / (float)GraphicsDevice.PresentationParameters.BackBufferHeight;
+            Vector2 halfPixel = new Vector2()
+            {
+                X = 0.5f / (float)GraphicsDevice.PresentationParameters.BackBufferWidth,
+                Y = 0.5f / (float)GraphicsDevice.PresentationParameters.BackBufferHeight
+            };
 
+            
             contentManager = new EngineContentManager(this);
-            GraphicInfo = new GraphicInfo(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel,GraphicsDevice);
+            GraphicInfo = new GraphicInfo(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount, GraphicsDevice.PresentationParameters.DepthStencilFormat);
             GraphicFactory = new Engine.GraphicFactory(GraphicInfo, GraphicsDevice, contentManager);
             ComponentManager = new ComponentManager(GraphicInfo, GraphicFactory);
             ComponentManager.LoadContent(ref GraphicInfo);            

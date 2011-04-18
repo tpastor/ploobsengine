@@ -501,9 +501,23 @@ namespace PloobsEngine {
             }
         }
         
+        internal static byte[] ShadowDirectionalCascade {
+            get {
+                object obj = ResourceManager.GetObject("ShadowDirectionalCascade", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
         internal static byte[] ShadowMap {
             get {
                 object obj = ResourceManager.GetObject("ShadowMap", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        internal static byte[] ShadowMap1 {
+            get {
+                object obj = ResourceManager.GetObject("ShadowMap1", resourceCulture);
                 return ((byte[])(obj));
             }
         }

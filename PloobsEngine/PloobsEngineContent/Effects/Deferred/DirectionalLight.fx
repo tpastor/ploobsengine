@@ -12,8 +12,8 @@ sampler colorSampler = sampler_state
     Texture = (colorMap);
     AddressU = CLAMP;
     AddressV = CLAMP;
-    MagFilter = ANISOTROPIC;
-    MinFilter = ANISOTROPIC;
+    MagFilter = LINEAR;
+    MinFilter = LINEAR;
     Mipfilter = LINEAR;
 };
 sampler depthSampler = sampler_state
@@ -30,8 +30,8 @@ sampler normalSampler = sampler_state
     Texture = (normalMap);
     AddressU = CLAMP;
     AddressV = CLAMP;
-    MagFilter = ANISOTROPIC;
-    MinFilter = ANISOTROPIC;
+    MagFilter = LINEAR;
+    MinFilter = LINEAR;
     Mipfilter = LINEAR;
 };
 
@@ -46,6 +46,7 @@ struct VertexShaderOutput
 {
     float4 Position : POSITION0;
     float2 TexCoord : TEXCOORD0;    
+	float2 TexCoord1 : TEXCOORD1;    
 };
 
 float2 halfPixel;
@@ -53,9 +54,13 @@ float2 halfPixel;
 VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 {    
 	VertexShaderOutput output;
+	input.Position.x =  input.Position.x - 2*halfPixel.x;
+	input.Position.y =  input.Position.y + 2*halfPixel.y;
     output.Position = float4(input.Position,1);
+
     //align texture coordinates
-    output.TexCoord = input.TexCoord - halfPixel;
+    output.TexCoord = input.TexCoord ;
+	output.TexCoord1 = input.TexCoord  - halfPixel;
     return output;
 }
 
@@ -75,8 +80,8 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 
     //compute screen-space position
     float4 position;
-    position.x = input.TexCoord.x * 2.0f - 1.0f;
-    position.y = -(input.TexCoord.x * 2.0f - 1.0f);
+    position.x = input.TexCoord1.x * 2.0f - 1.0f;
+    position.y = -(input.TexCoord1.x * 2.0f - 1.0f);
     position.z = depthVal;
     position.w = 1.0f;
     //transform to world space

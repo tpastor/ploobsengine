@@ -13,9 +13,9 @@ sampler2D DepthSampler =
 sampler_state
 {
 	Texture = <DepthBuffer>;
-	MinFilter = LINEAR;
-	MipFilter = NONE;
-	MagFilter = LINEAR;
+	MinFilter = POINT;
+	MipFilter = POINT;
+	MagFilter = POINT;
 	
 	AddressU = CLAMP;
 	AddressV = CLAMP;
@@ -26,7 +26,7 @@ sampler_state
 {
 	Texture = <NormalBuffer>;
 	MinFilter = POINT;
-	MipFilter = NONE;
+	MipFilter = POINT;
 	MagFilter = POINT;
 	
 	AddressU = CLAMP;

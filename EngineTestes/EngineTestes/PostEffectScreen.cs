@@ -16,6 +16,8 @@ using PloobsEngine.Features;
 using PloobsEngine.Commands;
 using PloobsEngine.Loader;
 using PloobsEngine.Input;
+using PloobsEngine.Physic.PhysicObjects.BepuObject;
+using BEPUphysics.UpdateableSystems.ForceFields;
 
 namespace EngineTestes
 {
@@ -27,7 +29,7 @@ namespace EngineTestes
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
             desc.DefferedDebug = false;
-            desc.UseFloatingBufferForLightMap = false;
+            desc.UseFloatingBufferForLightMap = true;
             renderTech = new DeferredRenderTechnic(desc);
         }
 
@@ -51,8 +53,9 @@ namespace EngineTestes
             NormalDeferred shader = new NormalDeferred();
             DeferredMaterial fmaterial = new DeferredMaterial(shader);
             IObject obj = new IObject(fmaterial, simpleModel, tmesh);
-            this.World.AddObject(obj);
+            this.World.AddObject(obj);             
             
+
             #region NormalLight
             DirectionalLightPE ld1 = new DirectionalLightPE(Vector3.Left, Color.White);
             DirectionalLightPE ld2 = new DirectionalLightPE(Vector3.Right, Color.White);
@@ -72,9 +75,42 @@ namespace EngineTestes
             this.World.AddLight(ld5);
             #endregion
 
-            BlackWhitePostEffect bwpe = new BlackWhitePostEffect();
-            this.RenderTechnic.AddPostEffect(bwpe);
+            //FogPostEffect fog = new FogPostEffect(1,1000);
+            //fog.FogColor = Color.Red;
+            //this.RenderTechnic.AddPostEffect(fog);
 
+            //BlackWhitePostEffect b = new BlackWhitePostEffect();
+            //this.RenderTechnic.AddPostEffect(b);
+
+            //AntiAliasingPostEffect aa = new AntiAliasingPostEffect();
+            //this.RenderTechnic.AddPostEffect(aa);
+
+            //DepthCueingPostEffect dc = new DepthCueingPostEffect();
+            //this.RenderTechnic.AddPostEffect(dc);
+
+            //GaussianBlurPostEffect gb = new GaussianBlurPostEffect();
+            //this.RenderTechnic.AddPostEffect(gb);
+
+            //BloomPostEffect bloomPostEffect = new BloomPostEffect();
+            //this.RenderTechnic.AddPostEffect(bloomPostEffect);
+
+            //DephtOfFieldPostEffect dof = new DephtOfFieldPostEffect();
+            //this.RenderTechnic.AddPostEffect(dof);
+
+            //HdrPostEffect hdr = new HdrPostEffect();
+            //this.RenderTechnic.AddPostEffect(hdr);
+
+            //SSAOPostEffect ssao = new SSAOPostEffect();
+            ////ssao.OutputONLYSSAOMAP = true;
+            //ssao.WhiteCorrection = 0.7f;
+            //ssao.Intensity = 5;
+            //ssao.Diffscale = 0.5f;            
+            //this.RenderTechnic.AddPostEffect(ssao);
+
+            SunPostEffect sun = new SunPostEffect();            
+            this.RenderTechnic.AddPostEffect(sun);
+
+            
             CameraFirstPerson cam = new CameraFirstPerson(GraphicInfo.Viewport);
             cam.MoveSpeed *= 5;
             this.World.CameraManager.AddCamera(cam);

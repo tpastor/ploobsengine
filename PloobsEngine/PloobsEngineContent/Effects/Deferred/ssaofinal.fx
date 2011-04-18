@@ -1,7 +1,15 @@
 const float2 halfPixel = 0.5f /float2(800,600);
 const float weight = 1;
 
-//sampler baseSampler : register(s0);
+texture SceneTexture;
+
+sampler2D baseSampler = sampler_state
+{
+	Texture = <SceneTexture>;
+    ADDRESSU = CLAMP;
+	ADDRESSV = CLAMP;	
+};
+
 texture SSAOTex;
 
 sampler2D SSAOSampler = sampler_state
@@ -9,21 +17,9 @@ sampler2D SSAOSampler = sampler_state
 	Texture = <SSAOTex>;
     ADDRESSU = CLAMP;
 	ADDRESSV = CLAMP;
-	MAGFILTER = LINEAR;
-	MINFILTER = LINEAR;
+	MAGFILTER = POINT;
+	MINFILTER = POINT;
 };
-
-texture SceneTexture;
-
-sampler2D baseSampler = sampler_state
-{
-	Texture = <SceneTexture>;
-    ADDRESSU = CLAMP;
-	ADDRESSV = CLAMP;
-	MAGFILTER = LINEAR;
-	MINFILTER = LINEAR;
-};
-
 
 void PostProcessVS (	in float3 in_vPositionOS		: POSITION,
 						in float3 in_vTexCoord			: TEXCOORD0,					
@@ -31,7 +27,7 @@ void PostProcessVS (	in float3 in_vPositionOS		: POSITION,
 						out float2 out_vTexCoord		: TEXCOORD0	)
 {
 	out_vPositionCS = float4(in_vPositionOS, 1.0f);	
-	out_vTexCoord = in_vTexCoord.xy + halfPixel;
+	out_vTexCoord = in_vTexCoord.xy - halfPixel;
 }	
 
 float4 PixelShaderFunction(float2 TexCoord :TEXCOORD0) : COLOR0

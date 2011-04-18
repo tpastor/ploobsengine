@@ -32,10 +32,7 @@ sampler colorSampler = sampler_state
 {
     Texture = (colorMap);
     AddressU = CLAMP;
-    AddressV = CLAMP;
-    MagFilter = LINEAR;
-    MinFilter = LINEAR;
-    Mipfilter = LINEAR;
+    AddressV = CLAMP;    
 };
 sampler depthSampler = sampler_state
 {
@@ -74,8 +71,10 @@ struct VertexShaderOutput
 VertexShaderOutput VertexShaderFunction(VertexShaderInput input)  
 {  
     VertexShaderOutput output;   
+	input.Position.x =  input.Position.x - 2*halfPixel.x;
+	input.Position.y =  input.Position.y + 2*halfPixel.y;
     output.Position = float4(input.Position,1);
-    output.TexCoord = input.TexCoord - halfPixel;
+    output.TexCoord = input.TexCoord;
     return output;
 }   
  
@@ -121,8 +120,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 	float specularLight = specularIntensity * pow( saturate(dot(reflectionVector, directionToCamera)), specularPower);
 
 	//output the two lights
-	return float4(diffuseLight.rgb * lightIntensity * shadowTerm, specularLight * shadowTerm );
-    
+	return float4(diffuseLight.rgb * lightIntensity * shadowTerm, specularLight * shadowTerm );    
 } 
 
 

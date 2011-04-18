@@ -18,7 +18,7 @@ namespace PloobsEngine.Engine
     /// </summary>
     public class GraphicInfo
     {
-        internal GraphicInfo(int BackBufferHeight, int BackBufferWidth, Rectangle FullScreenRectangle, Vector2 halfPixel,GraphicsDevice device)
+        internal GraphicInfo(int BackBufferHeight, int BackBufferWidth, Rectangle FullScreenRectangle, Vector2 halfPixel, GraphicsDevice device, int MultiSample, DepthFormat DepthFormat)
         {
             this.BackBufferHeight = BackBufferHeight;
             this.BackBufferWidth = BackBufferWidth;
@@ -27,6 +27,8 @@ namespace PloobsEngine.Engine
             OnGraphicInfoChange = null;
             this.device = device;
             Viewport = device.Viewport;
+            this.MultiSample = MultiSample;
+            this.DepthFormat = DepthFormat;
         }
 
         private GraphicsDevice device;
@@ -35,6 +37,16 @@ namespace PloobsEngine.Engine
         {
             OnGraphicInfoChange(gi);
         }
+
+        /// <summary>
+        /// BackBuffer Depth Format
+        /// </summary>
+        public readonly DepthFormat DepthFormat;
+
+        /// <summary>
+        /// BAck Buffer Multisample
+        /// </summary>
+        public readonly int MultiSample;
 
         /// <summary>
         /// Occurs when [on graphic info change].

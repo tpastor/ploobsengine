@@ -3,12 +3,13 @@ float2	g_vDestinationDimensions;
 float g_fDT;
 texture2D SourceTexture0;
 texture2D SourceTexture1;
+float fTau = 0.5f;
 
 sampler2D LinearSampler0 = sampler_state
 {
     Texture = <SourceTexture0>;
-    MinFilter = linear;
-    MagFilter = linear;
+    MinFilter = point;
+    MagFilter = point;
     MipFilter = point;
     MaxAnisotropy = 1;
     AddressU = CLAMP;
@@ -47,7 +48,7 @@ void PostProcessVS (	in float3 in_vPositionOS		: POSITION,
 {
 	out_vPositionCS = float4(in_vPositionOS, 1.0f);
 	float2 vOffset = 0.5f / g_vDestinationDimensions;
-	out_vTexCoord = in_vTexCoord.xy + vOffset;
+	out_vTexCoord = in_vTexCoord.xy - vOffset;
 }	
 
 float4 LuminancePS (	in float2 in_vTexCoord			: TEXCOORD0
@@ -63,7 +64,7 @@ float4 LuminancePS (	in float2 in_vTexCoord			: TEXCOORD0
     float fLogLuminace = log(1e-5 + fLuminance); 
         
     // Output the luminance to the render target
-    return float4(fLogLuminace, 1.0f, 0.0f, 0.0f);
+    return float4(fLogLuminace, fLuminance, fLuminance, fLuminance);
 }
 
 float4 CalcAdaptedLumPS (in float2 in_vTexCoord		: TEXCOORD0)	: COLOR0
@@ -71,8 +72,7 @@ float4 CalcAdaptedLumPS (in float2 in_vTexCoord		: TEXCOORD0)	: COLOR0
 	float fLastLum = tex2D(PointSampler1, float2(0.5f, 0.5f)).r;
     float fCurrentLum = tex2D(PointSampler0, float2(0.5f, 0.5f)).r;
     
-    // Adapt the luminance using Pattanaik's technique
-    const float fTau = 0.5f;
+    // Adapt the luminance using Pattanaik's technique    
     float fAdaptedLum = fLastLum + (fCurrentLum - fLastLum) * (1 - exp(-g_fDT * fTau));
     
     return float4(fAdaptedLum, 1.0f, 1.0f, 1.0f);
@@ -85,11 +85,6 @@ technique CalcAdaptedLuminance
     {
         VertexShader = compile vs_2_0 PostProcessVS();
         PixelShader = compile ps_2_0 CalcAdaptedLumPS();
-        
-        ZEnable = false;
-        ZWriteEnable = false;
-        AlphaBlendEnable = false;        
-        StencilEnable = false;
     }
 }
 
@@ -99,10 +94,7 @@ technique Luminance
     pass p0
     {
         VertexShader = compile vs_2_0 PostProcessVS();
-        PixelShader = compile ps_2_0 LuminancePS();        
-        ZEnable = false;
-        ZWriteEnable = false;                
-        StencilEnable = false;
+        PixelShader = compile ps_2_0 LuminancePS();                
     }
 
 }

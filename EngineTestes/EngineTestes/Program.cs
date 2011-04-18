@@ -12,7 +12,7 @@ namespace EngineTestes
         /// </summary>
         static void Main(string[] args)
         {
-            InitialEngineDescription desc = new InitialEngineDescription("PLoobsDemos",800, 600, false, Microsoft.Xna.Framework.Graphics.GraphicsProfile.HiDef, false, true, false);
+            InitialEngineDescription desc = new InitialEngineDescription("PLoobsDemos",800, 600, false, Microsoft.Xna.Framework.Graphics.GraphicsProfile.HiDef, false, false, false);
 
             using (EngineStuff engine = new EngineStuff(ref desc, LoadScreen))
             {
@@ -25,10 +25,10 @@ namespace EngineTestes
         {
             //manager.AddScreen(new FirstScreen());
             //manager.AddScreen(new DeferredScreen());
-            //manager.AddScreen(new DeferredLoadScreen());
+            manager.AddScreen(new DeferredLoadScreen());
             //manager.AddScreen(new DeferredAnimatedScreen());
             //manager.AddScreen(new ParticleScreen());
-            manager.AddScreen(new PostEffectScreen());
+            //manager.AddScreen(new PostEffectScreen());
         }
     }
 #endif

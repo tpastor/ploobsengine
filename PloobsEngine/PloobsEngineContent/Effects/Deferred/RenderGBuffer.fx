@@ -17,7 +17,7 @@ sampler diffuseSampler = sampler_state
 
 struct VertexShaderInput
 {
-    float4 Position : POSITION0;
+    float3 Position : POSITION0;
     float3 Normal : NORMAL0;
     float2 TexCoord : TEXCOORD0;
 };
@@ -33,7 +33,7 @@ struct VertexShaderOutput
 VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 {
     VertexShaderOutput output;    
-    float4 worldPosition = mul(input.Position, World);
+    float4 worldPosition = mul( float4(input.Position,1), World);
     output.Position  = mul(worldPosition, ViewProjection);    
     output.TexCoord = input.TexCoord;                             //pass the texture coordinates further
     output.Normal =mul(input.Normal,World);                       //get normal into world space    

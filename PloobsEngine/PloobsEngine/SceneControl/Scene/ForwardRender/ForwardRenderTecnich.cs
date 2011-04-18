@@ -4,16 +4,24 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Engine.Logger;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace PloobsEngine.SceneControl
 {    
 
     public struct ForwardRenderTecnichDescription
     {
-        public ForwardRenderTecnichDescription(Color BackGroundColor)
+        public static ForwardRenderTecnichDescription Default()
+        {
+            return new ForwardRenderTecnichDescription(Color.Black, true);
+        }
+        public ForwardRenderTecnichDescription(Color BackGroundColor,bool usePostEffect = true)
         {
             this.BackGroundColor = BackGroundColor;
+            this.usePostEffect = usePostEffect;
+            
         }
+        public bool usePostEffect;
         public Color BackGroundColor;
     }
 
@@ -25,31 +33,56 @@ namespace PloobsEngine.SceneControl
         }
 
         ForwardRenderTecnichDescription desc;
+        RenderTarget2D renderTarget;
+        RenderTarget2D postEffectTarget;
+        Engine.GraphicInfo ginfo;
         #region IRenderTechnic Members
 
-        public override void AddPostEffect(IPostEffect postEffect)
+        protected override void AfterLoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
         {
-            ActiveLogger.LogMessage("PostEffects for Forward Render not supported yet, operation ignored", LogLevel.RecoverableError);
-            //base.AddPostEffect(postEffect);
+            this.ginfo = ginfo;
+            if (desc.usePostEffect)
+            {
+                renderTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth,ginfo.BackBufferHeight,SurfaceFormat.Color,true,DepthFormat.Depth24Stencil8,ginfo.MultiSample,RenderTargetUsage.DiscardContents);
+                postEffectTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, true, DepthFormat.None, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
+            }            
+            base.AfterLoadContent(manager, ginfo, factory);
         }
-
-        public override void RemovePostEffect(IPostEffect postEffect)
-        {
-            ActiveLogger.LogMessage("PostEffects for Forward Render not supported yet, operation ignored", LogLevel.RecoverableError);
-            //base.RemovePostEffect(postEffect);
-        }
-
 
         protected override void ExecuteTechnic(GameTime gameTime, RenderHelper render, IWorld world)
-        {
-            render.Clear(desc.BackGroundColor);
+        {            
+            foreach (var item in world.Objects)
+            {
+                item.Material.PreDrawnPhase(gameTime, world, item, world.CameraManager.ActiveCamera, world.Lights, render);
+            }
 
+            if (desc.usePostEffect)
+            {
+                render.PushRenderTarget(renderTarget);                
+            }
+
+            render.Clear(desc.BackGroundColor);
             world.Culler.StartFrame(world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection, world.CameraManager.ActiveCamera.BoundingFrustum);
             foreach (var item in world.Culler.GetNotCulledObjectsList(Material.MaterialType.FORWARD))
             {
                 ///critical code, no log
                 System.Diagnostics.Debug.Assert(item.Material.MaterialType == Material.MaterialType.FORWARD, "This Technich is just for forward materials and shaders");
                 item.Material.Drawn(gameTime,item, world.CameraManager.ActiveCamera, world.Lights, render);                
+            }
+
+            if (desc.usePostEffect)
+            {
+                render[PrincipalConstants.CurrentImage] = render.PopRenderTarget()[0].RenderTarget as Texture2D;
+                render[PrincipalConstants.CombinedImage] = render[PrincipalConstants.CurrentImage];
+                for (int i = 0; i < PostEffects.Count; i++)
+                {
+                    render.PushRenderTarget(postEffectTarget);
+                    PostEffects[i].Draw(render[PrincipalConstants.CurrentImage],render, gameTime, ginfo, world, false);
+                    Texture2D tex = render.PopRenderTarget()[0].RenderTarget as Texture2D;
+                    render[PrincipalConstants.CurrentImage] = tex;
+                }
+                render.Clear(Color.Black);
+                render.RenderTextureComplete(render[PrincipalConstants.CurrentImage], Color.White, ginfo.FullScreenRectangle, Matrix.Identity, null, true, SpriteSortMode.Deferred, SamplerState.AnisotropicClamp, BlendState.AlphaBlend);                                             
             }
         }
 

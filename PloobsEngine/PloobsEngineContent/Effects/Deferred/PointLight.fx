@@ -33,8 +33,8 @@ sampler colorSampler = sampler_state
     Texture = (colorMap);
     AddressU = CLAMP;
     AddressV = CLAMP;
-    MagFilter = ANISOTROPIC;
-    MinFilter = ANISOTROPIC;
+    MagFilter = POINT;
+    MinFilter = POINT;
     Mipfilter = POINT;
 };
 sampler depthSampler = sampler_state
@@ -51,10 +51,11 @@ sampler normalSampler = sampler_state
     Texture = (normalMap);
     AddressU = CLAMP;
     AddressV = CLAMP;
-    MagFilter = ANISOTROPIC;
-    MinFilter = ANISOTROPIC;
+    MagFilter = POINT;
+    MinFilter = POINT;
     Mipfilter = POINT;
 };
+
 
 struct VertexShaderInput
 {
@@ -89,7 +90,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
     //the texture coordinates need to be in [0,1]*[0,1]
     float2 texCoord = 0.5f * (float2(input.ScreenPosition.x,-input.ScreenPosition.y) + 1);
     //allign texels to pixels
-    texCoord -=halfPixel;
+    texCoord +=halfPixel;
 
     //get normal data from the normalMap
     float4 normalData = tex2D(normalSampler,texCoord);

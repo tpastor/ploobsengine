@@ -47,7 +47,7 @@ float4 DownscalePS (	in float2 in_vTexCoord			: TEXCOORD0, uniform bool bDecodeL
 
 	vColor /= 16.0f;
 	if (bDecodeLuminance)
-		vColor = float4(exp(vColor.r), 1.0f, 1.0f, 1.0f);	
+		vColor = float4(exp(vColor.r), exp(vColor.r), exp(vColor.r), exp(vColor.r));	
 	return vColor;
 }
 
@@ -60,7 +60,7 @@ void PostProcessVS (	in float3 in_vPositionOS		: POSITION,
 {
 	out_vPositionCS = float4(in_vPositionOS, 1.0f);
 	float2 vOffset = 0.5f / g_vDestinationDimensions;
-	out_vTexCoord = in_vTexCoord.xy + vOffset;
+	out_vTexCoord = in_vTexCoord.xy - vOffset;
 }	
 
 // Upscales or downscales using hardware bilinear filtering

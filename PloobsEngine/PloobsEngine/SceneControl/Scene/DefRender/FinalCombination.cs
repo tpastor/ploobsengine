@@ -68,17 +68,16 @@ namespace PloobsEngine.SceneControl
 
             if (useFloatBuffer)
             {
-                render.SetSamplerState(SamplerState.PointClamp, 0);
-                finalCombineEffect.Parameters["halfPixel"].SetValue(ginfo.HalfPixel);
+                render.SetSamplerState(SamplerState.PointClamp, 0);            
             }
             else
             {
-                render.SetSamplerState(SamplerState.AnisotropicClamp, 0);
-                render.SetSamplerState(SamplerState.AnisotropicClamp, 1);
-                render.SetSamplerState(SamplerState.AnisotropicClamp, 2);
-                finalCombineEffect.Parameters["halfPixel"].SetValue(ginfo.HalfPixel);
+                render.SetSamplerState(SamplerState.LinearClamp, 0);
+                render.SetSamplerState(SamplerState.LinearClamp, 1);
+                render.SetSamplerState(SamplerState.LinearClamp, 2);                
             }
-            
+
+            finalCombineEffect.Parameters["halfPixel"].SetValue(ginfo.HalfPixel);
             finalCombineEffect.Parameters["EXTRA1"].SetValue(gbuffer[GBufferTypes.Extra1]);
             finalCombineEffect.Parameters["ambientColor"].SetValue(ambientColor.ToVector3());
             finalCombineEffect.Parameters["colorMap"].SetValue(gbuffer[GBufferTypes.COLOR]);

@@ -415,4 +415,10 @@
   <data name="skybox" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>bin\x86\Debug\Content\Effects\skybox.xnb;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="ShadowDirectionalCascade" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\x86\Debug\Content\Effects\ShadowDirectionalCascade.xnb;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ShadowMap1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\x86\Debug\Content\Effects\ShadowMap.xnb;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

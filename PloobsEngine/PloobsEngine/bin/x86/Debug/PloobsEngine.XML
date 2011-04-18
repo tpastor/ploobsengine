@@ -2211,6 +2211,15 @@
             </summary>
             <param name="postEffect">The post effect.</param>
         </member>
+        <member name="M:PloobsEngine.SceneControl.IRenderTechnic.ContainsPostEffect(PloobsEngine.SceneControl.IPostEffect)">
+            <summary>
+            Determines whether [contains post effect] [the specified post effect].
+            </summary>
+            <param name="postEffect">The post effect.</param>
+            <returns>
+              <c>true</c> if [contains post effect] [the specified post effect]; otherwise, <c>false</c>.
+            </returns>
+        </member>
         <member name="M:PloobsEngine.SceneControl.IRenderTechnic.BeforeFirstExecution(PloobsEngine.SceneControl.RenderHelper,PloobsEngine.SceneControl.IWorld)">
             <summary>
             Befores the first execution.
@@ -2534,7 +2543,7 @@
             IPost Effect Specification
             </summary>
         </member>
-        <member name="M:PloobsEngine.SceneControl.IPostEffect.init(PloobsEngine.SceneControl.IContentManager,PloobsEngine.Engine.GraphicInfo,PloobsEngine.Engine.GraphicFactory)">
+        <member name="M:PloobsEngine.SceneControl.IPostEffect.Init(PloobsEngine.Engine.GraphicInfo,PloobsEngine.Engine.GraphicFactory)">
             <summary>
             Initiates the specified Post Effect.
             Called by the engine
@@ -2543,14 +2552,16 @@
             <param name="ginfo">The ginfo.</param>
             <param name="factory">The factory.</param>
         </member>
-        <member name="M:PloobsEngine.SceneControl.IPostEffect.Draw(PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime,PloobsEngine.Engine.GraphicInfo,PloobsEngine.SceneControl.IWorld,System.Boolean)">
+        <member name="M:PloobsEngine.SceneControl.IPostEffect.Draw(Microsoft.Xna.Framework.Graphics.Texture2D,PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime,PloobsEngine.Engine.GraphicInfo,PloobsEngine.SceneControl.IWorld,System.Boolean)">
             <summary>
             Apply the post effect
             </summary>
+            <param name="ImageToProcess">The image to process.</param>
             <param name="rHelper">The r helper.</param>
             <param name="gt">The gt.</param>
             <param name="GraphicInfo">The graphic info.</param>
             <param name="world">The world.</param>
+            <param name="useFloatBuffer">if set to <c>true</c> [use float buffer].</param>
         </member>
         <member name="P:PloobsEngine.SceneControl.IPostEffect.PostEffectType">
             <summary>
@@ -5164,6 +5175,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:PloobsEngine.SceneControl.RenderHelper.PopRenderTargetAsSingleRenderTarget2D">
+            <summary>
+            Pops the render target.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:PloobsEngine.SceneControl.RenderHelper.Clear(Microsoft.Xna.Framework.Color,Microsoft.Xna.Framework.Graphics.ClearOptions,System.Single,System.Int32)">
             <summary>
             Clears actual target.
@@ -5291,20 +5308,26 @@
             THIS IS BECAUSE THE SPRITEBATCH KILL THE RENDER STATES, NO SAVE STATE. XNA DOCUMENTATION FAILS !!!!
             </summary>
         </member>
-        <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderFullScreenQuadVertexPixel(Microsoft.Xna.Framework.Graphics.Effect)">
+        <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderFullScreenQuadVertexPixel(Microsoft.Xna.Framework.Graphics.Effect,Microsoft.Xna.Framework.Graphics.SamplerState[])">
             <summary>
             Renders the texture to full screen using vertex and pixel shader .
             </summary>
             <param name="effect">The effect.</param>
         </member>
-        <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderTextureToFullScreenSpriteBatch(Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Graphics.Effect,Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Graphics.SamplerState,Microsoft.Xna.Framework.Graphics.BlendState)">
+        <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderFullScreenQuadVertexPixel(Microsoft.Xna.Framework.Graphics.Effect)">
+            <summary>
+            Renders the full screen quad vertex pixel.
+            </summary>
+            <param name="effect">The effect.</param>
+        </member>
+        <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderTextureToFullScreenSpriteBatch(Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Graphics.Effect,Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Graphics.SamplerState,Microsoft.Xna.Framework.Graphics.BlendState,System.Boolean)">
             <summary>
             Renders the texture to full screen using sprite batch.
             </summary>
             <param name="scene">The scene.</param>
             <param name="effect">The effect.</param>
         </member>
-        <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderTextureToFullScreenSpriteBatch(System.String,Microsoft.Xna.Framework.Graphics.Effect,Microsoft.Xna.Framework.Graphics.SamplerState,Microsoft.Xna.Framework.Graphics.BlendState)">
+        <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderTextureToFullScreenSpriteBatch(System.String,Microsoft.Xna.Framework.Graphics.Effect,Microsoft.Xna.Framework.Graphics.SamplerState,Microsoft.Xna.Framework.Graphics.BlendState,System.Boolean)">
             <summary>
             Renders the texture to full screen using sprite batch.
             </summary>
@@ -6767,6 +6790,16 @@
             Contains Graphics Informations about the current execution
             </summary>
         </member>
+        <member name="F:PloobsEngine.Engine.GraphicInfo.DepthFormat">
+            <summary>
+            BackBuffer Depth Format
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Engine.GraphicInfo.MultiSample">
+            <summary>
+            BAck Buffer Multisample
+            </summary>
+        </member>
         <member name="F:PloobsEngine.Engine.GraphicInfo.BackBufferHeight">
             <summary>
             BackBufferHeight
@@ -7061,27 +7094,6 @@
             </summary>
             <param name="render">The render.</param>
             <param name="world">The world.</param>
-        </member>
-        <member name="M:PloobsEngine.SceneControl.DeferredRenderTechnic.AddPostEffect(PloobsEngine.SceneControl.IPostEffect)">
-            <summary>
-            Adds the post effect.
-            </summary>
-            <param name="postEffect">The post effect.</param>
-        </member>
-        <member name="M:PloobsEngine.SceneControl.DeferredRenderTechnic.RemovePostEffect(PloobsEngine.SceneControl.IPostEffect)">
-            <summary>
-            Removes the post effect.
-            </summary>
-            <param name="postEffect">The post effect.</param>
-        </member>
-        <member name="M:PloobsEngine.SceneControl.DeferredRenderTechnic.ContainsPostEffect(PloobsEngine.SceneControl.IPostEffect)">
-            <summary>
-            Determines whether [contains post effect] [the specified post effect].
-            </summary>
-            <param name="postEffect">The post effect.</param>
-            <returns>
-              <c>true</c> if [contains post effect] [the specified post effect]; otherwise, <c>false</c>.
-            </returns>
         </member>
         <member name="M:PloobsEngine.SceneControl.DeferredRenderTechnic.Draw(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IWorld,PloobsEngine.SceneControl.RenderHelper)">
             <summary>
@@ -7639,6 +7651,228 @@
         <member name="P:PloobsEngine.Physics.Bepu.CharacterController.Position">
             <summary>
             Gets and sets the position of the character.
+            </summary>
+        </member>
+        <member name="T:PloobsEngine.SceneControl.FogType">
+            <summary>
+            Fog Attenuation types
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.SceneControl.FogType.LINEAR">
+            <summary>
+            Linear decaiment
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.SceneControl.FogType.EXPONENCIAL">
+            <summary>
+            Exponencial decaiment
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.SceneControl.FogType.EXPONENCIALSQUARED">
+            <summary>
+            Squared Exponencial decaiment
+            </summary>
+        </member>
+        <member name="T:PloobsEngine.SceneControl.FogPostEffect">
+            <summary>
+            Fog Post Effect
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.SceneControl.FogPostEffect.#ctor(System.Single,System.Single)">
+            <summary>
+            Create the Post Effect using Linear Fog
+            </summary>
+            <param name="nearPlane"></param>
+            <param name="farPlane"></param>
+        </member>
+        <member name="M:PloobsEngine.SceneControl.FogPostEffect.#ctor(System.Single,PloobsEngine.SceneControl.FogType)">
+            <summary>
+            Create the post effect for using Exponencial or Exponencial Squared
+            </summary>
+            <param name="density"></param>
+            <param name="type"></param>
+        </member>
+        <member name="M:PloobsEngine.SceneControl.FogPostEffect.#ctor(PloobsEngine.SceneControl.FogType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.SceneControl.FogPostEffect"/> class.
+            Set the density for Exponencial and Exponencial Squared and near/far plane for Linear
+            </summary>
+            <param name="type">The type.</param>
+        </member>
+        <member name="P:PloobsEngine.SceneControl.FogPostEffect.Density">
+            <summary>
+            Default 0.001f;
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.SceneControl.FogPostEffect.NearPlane">
+            <summary>
+            Gets or sets the near plane.
+            Default 1
+            </summary>
+            <value>
+            The near plane.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.SceneControl.FogPostEffect.FarPlane">
+            <summary>
+            Gets or sets the far plane.
+            Default 1000
+            </summary>
+            <value>
+            The far plane.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.SceneControl.AntiAliasingPostEffect.Weight">
+            <summary>
+            Default 2
+            Bigger value, bigger the effect
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.SceneControl.AntiAliasingPostEffect.PixelSizeMultiplier">
+            <summary>
+            Default 1
+            Change only if you Know what are you doing
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.SceneControl.SaturationPostEffect.#ctor(System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.SceneControl.SaturationPostEffect"/> class.
+            </summary>
+            <param name="saturation">The saturation.</param>
+        </member>
+        <member name="T:PloobsEngine.SceneControl.BloomPostEffect">
+            <summary>
+            Bloom Post Effect
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.SceneControl.BloomPostEffect.BloomThreshold">
+            <summary>
+            Bloom Parameter
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.SceneControl.ColorCorrectionPostEffect.#ctor(Microsoft.Xna.Framework.Color,System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.SceneControl.ColorCorrectionPostEffect"/> class.
+            </summary>
+            <param name="colorAdd">The color add.</param>
+            <param name="colorCorrect">The color correct.</param>
+        </member>
+        <member name="M:PloobsEngine.SceneControl.ContrastPostEffect.#ctor(System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.SceneControl.ContrastPostEffect"/> class.
+            </summary>
+            <param name="contrast">-1 a 1</param>
+        </member>
+        <member name="T:PloobsEngine.SceneControl.GammaCorrectionPostEffect">
+            <summary>
+            OLHAR http://mynameismjp.wordpress.com/2009/12/31/correcting-xnas-gamma-correction/
+            SOLUCAO MAIS ELEGANTE PARA PCS --  mudar o render state pelo effect apos o ultimo efeito aplicado
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.SceneControl.ScatterPostEffect.Density">
+            <summary>
+            Default 0.1
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.SceneControl.ScatterPostEffect.Weight">
+            <summary>
+            Defautl 0.1
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.SceneControl.ScatterPostEffect.Decay">
+            <summary>
+            Default 1;
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.SceneControl.ScatterPostEffect.Exposition">
+            <summary>
+            Default 0.5f
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.SceneControl.ScatterPostEffect.NumSamples">
+            <summary>
+            Default 64
+            </summary>
+        </member>
+        <member name="T:PloobsEngine.SceneControl.BlurMode">
+            <summary>
+            gaussian Blur Modes
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.SceneControl.SunPostEffect.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.SceneControl.SunPostEffect"/> class.
+            </summary>
+            <param name="flareTexture">The flare texture, null to use default.</param>
+        </member>
+        <member name="F:PloobsEngine.SceneControl.SunPostEffect.sunColor">
+            <summary>
+            default = Color.White
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.SceneControl.SunPostEffect.sunIntensity">
+            <summary>
+            default = 1
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.SceneControl.SunPostEffect.sunSunSize">
+            <summary>
+            default = 1500
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.SceneControl.SunPostEffect.sunPosition">
+            <summary>
+            default = Vector3(1000,1000,0)
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.SceneControl.ShadowRenderer.#ctor(System.Int32)">
+            <summary>
+            Creates the renderer
+            </summary>		
+        </member>
+        <member name="M:PloobsEngine.SceneControl.ShadowRenderer.Render(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.RenderHelper,PloobsEngine.Engine.GraphicInfo,PloobsEngine.Light.DirectionalLightPE,PloobsEngine.Cameras.ICamera,PloobsEngine.SceneControl.IWorld,PloobsEngine.SceneControl.IDeferredGBuffer)">
+            <summary>
+            Renders a list of models to the shadow map, and returns a surface
+            containing the shadow occlusion factor
+            </summary>
+            <param name="render">The render.</param>
+            <param name="light">The light for which the shadow is being calculated</param>
+            <param name="mainCamera">The camera viewing the scene containing the light</param>
+            <param name="world">The world.</param>
+            <param name="deferredGBuffer">The deferred G buffer.</param>
+            <returns>
+            The shadow occlusion texture
+            </returns>
+        </member>
+        <member name="M:PloobsEngine.SceneControl.ShadowRenderer.CalculateFrustum(PloobsEngine.Light.DirectionalLightPE,PloobsEngine.Cameras.ICamera,System.Single,System.Single,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@)">
+            <summary>
+            Determines the size of the frustum needed to cover the viewable area,
+            then creates an appropriate orthographic projection.
+            </summary>
+            <param name="light">The directional light to use</param>
+            <param name="mainCamera">The camera viewing the scene</param>
+        </member>
+        <member name="M:PloobsEngine.SceneControl.ShadowRenderer.RenderShadowMap(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.RenderHelper,System.Int32,PloobsEngine.SceneControl.IWorld)">
+            <summary>
+            Renders the shadow map using the orthographic camera created in
+            CalculateFrustum.
+            </summary>
+            <param name="modelList">The list of models to be rendered</param>        
+        </member>
+        <member name="M:PloobsEngine.SceneControl.ShadowRenderer.RenderShadowOcclusion(PloobsEngine.SceneControl.RenderHelper,PloobsEngine.Cameras.ICamera,PloobsEngine.Light.DirectionalLightPE,PloobsEngine.SceneControl.IDeferredGBuffer)">
+            <summary>
+            Renders a texture containing the final shadow occlusion
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.SceneControl.ShadowRenderer.ShadowMapSize">
+            <summary>
+            Default 512
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.SceneControl.ShadowRenderer.SplitConstant">
+            <summary>
+            Default 0.95
+            Tune the sizes of the splits (exponecial constant)
             </summary>
         </member>
     </members>
