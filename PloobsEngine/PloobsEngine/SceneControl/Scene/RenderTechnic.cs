@@ -40,6 +40,8 @@ namespace PloobsEngine.SceneControl
             else
             {                
                 PostEffects.Push(postEffect);
+                postEffect.tech = this;
+
             }
         }
         /// <summary>
@@ -54,6 +56,7 @@ namespace PloobsEngine.SceneControl
                 ActiveLogger.LogMessage("Trying to remove a wrong post effect type for this Render Technich, pls check if the PostEffectType of the IPostEffect is All or " + PostEffectType + ", The engine is ignoring this operation", LogLevel.RecoverableError);
             }
             PostEffects.RemoveLocation(postEffect);
+            postEffect.tech = null;
         }
 
         /// <summary>

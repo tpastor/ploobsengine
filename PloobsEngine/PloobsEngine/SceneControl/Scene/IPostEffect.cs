@@ -39,9 +39,21 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         public float Priority
         {
-            get;
-            set;
+            get { return priority; }
+            set
+            {
+                this.priority = value;
+                if (tech != null)
+                {
+                    tech.RemovePostEffect(this);
+                    tech.AddPostEffect(this);
+                }
+            }
         }
+        protected float priority;
+        internal IRenderTechnic tech = null;
+
+
 
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="IPostEffect"/> is enabled.

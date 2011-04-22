@@ -4,7 +4,8 @@
 //
 //		by MJP  (mpettineo@gmail.com)
 //		12/14/08      
-//
+//      Altered By Thiago Dias Pastor to fit in PloobsEngine (thiagodiaspastor@gmail.com)
+//      2011
 //========================================================================
 //
 //	File:		ShadowMap.fx
@@ -32,7 +33,7 @@ float3		g_vFrustumCornersVS [4];
 
 bool		g_bShowSplitColors = false;
 
-static const float BIAS = 0.006f;
+float BIAS = 0.006f;
 
 texture DepthTexture;
 sampler2D DepthTextureSampler = sampler_state

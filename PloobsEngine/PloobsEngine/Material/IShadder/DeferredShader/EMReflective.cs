@@ -125,7 +125,7 @@ namespace PloobsEngine.Material
                     for (int j = 0; j < bi.Count(); j++)
                     {                        
                         this._shader.Parameters["World"].SetValue(Matrix.Multiply(wld, bi[j].ModelLocalTransformation));
-                        render.RenderBatch(ref bi[j], _shader);
+                        render.RenderBatch(bi[j], _shader);
                     }         
             }
         }

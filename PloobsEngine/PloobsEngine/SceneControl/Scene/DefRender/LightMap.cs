@@ -86,7 +86,7 @@ namespace PloobsEngine.SceneControl
                         else
                             render.PushRasterizerState(RasterizerState.CullCounterClockwise);
                             
-                        render.RenderBatch(ref sphereModel.GetBatchInformation(0)[0],pointLightEffect);
+                        render.RenderBatch(sphereModel.GetBatchInformation(0)[0],pointLightEffect);
 
                         render.PopRasterizerState();
                     }

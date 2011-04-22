@@ -20,11 +20,11 @@ namespace PloobsEngine.SceneControl
         private BasicEffect effect;
         private SpriteBatch spriteBatch;
         SpriteFont defaultFont;
-        private static Stack<RenderTargetBinding[]> RenderStatesStack = new Stack<RenderTargetBinding[]>();
-        private static Stack<RasterizerState> RasterizerStateStack = new Stack<RasterizerState>();
-        private static Stack<BlendState> BlendStateStack = new Stack<BlendState>();
-        private static Stack<DepthStencilState> DepthStencilStateStack = new Stack<DepthStencilState>();        
-        private static Dictionary<String, Texture2D> Scenes = new Dictionary<string, Texture2D>();
+        private Stack<RenderTargetBinding[]> RenderStatesStack = new Stack<RenderTargetBinding[]>();
+        private Stack<RasterizerState> RasterizerStateStack = new Stack<RasterizerState>();
+        private Stack<BlendState> BlendStateStack = new Stack<BlendState>();
+        private Stack<DepthStencilState> DepthStencilStateStack = new Stack<DepthStencilState>();        
+        private Dictionary<String, Texture2D> Scenes = new Dictionary<string, Texture2D>();
         private ComponentManager componentManager;
 
 
@@ -256,17 +256,17 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         /// <param name="bi">The BatchInformation</param>
         /// <param name="effect">The effect.</param>
-        public void RenderBatch(ref BatchInformation bi, Effect effect)
+        public void RenderBatch(BatchInformation bi, Effect effect)
         {
             effect.CurrentTechnique.Passes[0].Apply();
-            RenderBatch(ref bi);
+            RenderBatch(bi);
         }
 
         /// <summary>
         /// Renders the batch.
         /// </summary>
         /// <param name="bi">The BatchInformation .</param>
-        public void RenderBatch(ref BatchInformation bi)
+        public void RenderBatch(BatchInformation bi)
         {
             switch ( bi.BatchType)
 	            {
@@ -636,8 +636,8 @@ namespace PloobsEngine.SceneControl
 
                     for (int j = 0; j < bi.Count(); j++)
                     {
-                        setupShaderCallback(ref effect,obj, ref bi[j], ref view, ref projection);
-                        this.RenderBatch(ref bi[j], effect);
+                        setupShaderCallback(effect,obj, bi[j], ref view, ref projection);
+                        this.RenderBatch(bi[j], effect);
                         
                     }
                 }
@@ -694,6 +694,6 @@ namespace PloobsEngine.SceneControl
         }
        
     }
-    public delegate void OnDrawingSceneCustomMaterial(ref Effect effect,IObject obj, ref BatchInformation bi,ref Matrix view,ref Matrix projection);
+    public delegate void OnDrawingSceneCustomMaterial(Effect effect,IObject obj, BatchInformation bi,ref Matrix view,ref Matrix projection);
 
 }

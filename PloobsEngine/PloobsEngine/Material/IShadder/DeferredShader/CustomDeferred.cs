@@ -217,7 +217,7 @@ namespace PloobsEngine.Material
                         this._shader.Parameters["World"].SetValue(w1);
                         this._shader.Parameters["WorldInverseTranspose"].SetValue(Matrix.Transpose(Matrix.Invert(w1))); 
 
-                        render.RenderBatch(ref bi[j],_shader);
+                        render.RenderBatch(bi[j],_shader);
                     }
                 }               
             }

@@ -156,7 +156,7 @@ namespace PloobsEngine.Material
                 {
                     effect.World = bi[j].ModelLocalTransformation * obj.WorldMatrix;
                     effect.CurrentTechnique.Passes[0].Apply();
-                    render.RenderBatch(ref bi[j]);
+                    render.RenderBatch(bi[j]);
                 }
             }
         }

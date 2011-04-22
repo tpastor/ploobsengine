@@ -14,10 +14,10 @@ namespace PloobsEngine.SceneControl
 {
     public enum ShadowFilter
     {
-        NONE, PCF2x2, PCF3x3, PCF2x2Variance, PCF3x3BLUR, PCF5x5BLUR
+        NONE, PCF3x3,PCF7x7SOFT
     }
 
-    public class CSSShadowLightMap : IDeferredLightMap
+    public class ShadowLightMap : IDeferredLightMap
     {
         GraphicInfo ginfo;
         private RenderTarget2D lightRT;
@@ -116,7 +116,7 @@ namespace PloobsEngine.SceneControl
                         else
                             render.PushRasterizerState(RasterizerState.CullCounterClockwise);
 
-                        render.RenderBatch(ref sphereModel.GetBatchInformation(0)[0], pointLightEffect);
+                        render.RenderBatch(sphereModel.GetBatchInformation(0)[0], pointLightEffect);
 
                         render.PopRasterizerState();
                     }
@@ -125,9 +125,12 @@ namespace PloobsEngine.SceneControl
 
         private void DrawnSpotLight(RenderHelper render, GraphicInfo ginfo, ICamera camera, SpotLightPE sl, IDeferredGBuffer DeferredGBuffer)
         {
+                    if(sl.CastShadown)
+                        spotLightEffect.Parameters["xShadowMap"].SetValue(shadowMap);
+                    else
+                        spotLightEffect.Parameters["xShadowMap"].SetValue(blank);
                     spotLightEffect.Parameters["shadowBufferSize"].SetValue(shadownBufferSize);
-                    spotLightEffect.Parameters["BIAS"].SetValue(sl.SHADOWBIAS);
-                    spotLightEffect.Parameters["xShadowMap"].SetValue(shadowMap);
+                    spotLightEffect.Parameters["BIAS"].SetValue(sl.SHADOWBIAS);                    
                     spotLightEffect.Parameters["colorMap"].SetValue(DeferredGBuffer[GBufferTypes.COLOR]);
                     spotLightEffect.Parameters["normalMap"].SetValue(DeferredGBuffer[GBufferTypes.NORMAL]);
                     spotLightEffect.Parameters["depthMap"].SetValue(DeferredGBuffer[GBufferTypes.DEPH]);            
@@ -148,7 +151,7 @@ namespace PloobsEngine.SceneControl
                     render.PushDepthState(DepthStencilState.None);     
                     render.RenderFullScreenQuadVertexPixel(spotLightEffect);
                     render.PopDepthStencilState();
-                }
+        }
 
 
         protected void DrawScene(GameTime gameTime, IWorld world, Matrix View, Matrix proj, RenderHelper render)
@@ -181,7 +184,7 @@ namespace PloobsEngine.SceneControl
                         shadowMap = shadow.Render(gameTime, render, ginfo, dl, world.CameraManager.ActiveCamera, world, deferredGBuffer);
 
                         render.PushBlendState(BlendState.AlphaBlend);
-                        DrawDirectionalLight(render, ginfo, world.CameraManager.ActiveCamera, dl, deferredGBuffer);
+                        //DrawDirectionalLight(render, ginfo, world.CameraManager.ActiveCamera, dl, deferredGBuffer);
                         render.PopBlendState();
 
                         break;
@@ -253,15 +256,12 @@ namespace PloobsEngine.SceneControl
             {
                 case ShadowFilter.NONE:
                     spotLightEffect.CurrentTechnique = spotLightEffect.Techniques["Technique1"];
-                    break;
-                case ShadowFilter.PCF2x2:
-                    spotLightEffect.CurrentTechnique = spotLightEffect.Techniques["Technique1"];
-                    break;
+                    break;                
                 case ShadowFilter.PCF3x3:
                     spotLightEffect.CurrentTechnique = spotLightEffect.Techniques["Technique2"];
-                    break;
-                case ShadowFilter.PCF2x2Variance:
-                    spotLightEffect.CurrentTechnique = spotLightEffect.Techniques["Technique1"];
+                    break;             
+                case ShadowFilter.PCF7x7SOFT:
+                    spotLightEffect.CurrentTechnique = spotLightEffect.Techniques["Technique3"];
                     break;
                 default:
                     break;

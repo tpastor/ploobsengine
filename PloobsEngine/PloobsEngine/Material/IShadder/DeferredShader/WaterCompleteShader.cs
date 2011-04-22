@@ -265,7 +265,7 @@ namespace PloobsEngine.Material
                     {
                         Matrix w1 = Matrix.Multiply(wld, bi[j].ModelLocalTransformation);
                         this._shader.Parameters["World"].SetValue(w1);
-                        render.RenderBatch(ref bi[j], _shader);
+                        render.RenderBatch(bi[j], _shader);
 
                     }
 

@@ -232,7 +232,7 @@ namespace PloobsEngine.Features
 
             render.PushDepthState(DepthStencilState.None);
             render.PushRasterizerState(RasterizerState.CullNone);
-            render.RenderBatch(ref bi, effect);
+            render.RenderBatch(bi, effect);
             render.PopRasterizerState();
             render.PopDepthStencilState();
 

@@ -203,12 +203,15 @@ namespace PloobsEngine.SceneControl
                     render[PrincipalConstants.CombinedImage] = render[PrincipalConstants.CurrentImage];
 
                     for (int i = 0; i < PostEffects.Count; i++)
-                    {                        
-                        render.PushRenderTarget(target);
-                        render.Clear(Color.Transparent);
-                        PostEffects[i].Draw(render[PrincipalConstants.CurrentImage], render, gameTime, ginfo, world,desc.UseFloatingBufferForLightMap);
-                        Texture2D tex = render.PopRenderTarget()[0].RenderTarget as Texture2D;                        
-                        render[PrincipalConstants.CurrentImage] = tex;                        
+                    {
+                        if (PostEffects[i].Enabled)
+                        {
+                            render.PushRenderTarget(target);
+                            render.Clear(Color.Transparent);
+                            PostEffects[i].Draw(render[PrincipalConstants.CurrentImage], render, gameTime, ginfo, world, desc.UseFloatingBufferForLightMap);
+                            Texture2D tex = render.PopRenderTarget()[0].RenderTarget as Texture2D;
+                            render[PrincipalConstants.CurrentImage] = tex;
+                        }
                     }
                                         
                     if (desc.UseFloatingBufferForLightMap)
@@ -227,10 +230,13 @@ namespace PloobsEngine.SceneControl
                 {
                     for (int i = 0; i < PostEffects.Count; i++)
                     {
-                        render.PushRenderTarget(target);
-                        PostEffects[i].Draw(render[PrincipalConstants.CurrentImage], render, gameTime, ginfo, world, desc.UseFloatingBufferForLightMap);
-                        Texture2D tex = render.PopRenderTarget()[0].RenderTarget as Texture2D;                        
-                        render[PrincipalConstants.CurrentImage] = tex;
+                        if (PostEffects[i].Enabled)
+                        {
+                            render.PushRenderTarget(target);
+                            PostEffects[i].Draw(render[PrincipalConstants.CurrentImage], render, gameTime, ginfo, world, desc.UseFloatingBufferForLightMap);
+                            Texture2D tex = render.PopRenderTarget()[0].RenderTarget as Texture2D;
+                            render[PrincipalConstants.CurrentImage] = tex;
+                        }
                     }
 
                     restoreDepth.PerformForwardPass(render[PrincipalConstants.CurrentImage], render[PrincipalConstants.dephRT], render);
@@ -261,11 +267,14 @@ namespace PloobsEngine.SceneControl
                 {
                     for (int i = 0; i < PostEffects.Count ; i++)
                     {
-                        render.PushRenderTarget(target);
-                        PostEffects[i].Draw(render[PrincipalConstants.CurrentImage], render, gameTime, ginfo, world, desc.UseFloatingBufferForLightMap);
-                        Texture2D tex = render.PopRenderTarget()[0].RenderTarget as Texture2D;
-                        System.Diagnostics.Debug.Assert(tex != null);
-                        render[PrincipalConstants.CurrentImage] = tex;
+                        if (PostEffects[i].Enabled)
+                        {
+                            render.PushRenderTarget(target);
+                            PostEffects[i].Draw(render[PrincipalConstants.CurrentImage], render, gameTime, ginfo, world, desc.UseFloatingBufferForLightMap);
+                            Texture2D tex = render.PopRenderTarget()[0].RenderTarget as Texture2D;
+                            System.Diagnostics.Debug.Assert(tex != null);
+                            render[PrincipalConstants.CurrentImage] = tex;
+                        }
                     }
                     if (desc.UseFloatingBufferForLightMap)
                     {
@@ -292,7 +301,8 @@ namespace PloobsEngine.SceneControl
                     render.RenderTexture(render[desc.RenderTargetsNameToDefferedDebug[0]] ,Color.White, new Rectangle(0, 0, halfWidth, halfHeight));
                     render.RenderTexture(render[desc.RenderTargetsNameToDefferedDebug[1]], Color.White, new Rectangle(0, halfHeight, halfWidth, halfHeight));
                     render.RenderTexture(render[desc.RenderTargetsNameToDefferedDebug[2]], Color.White, new Rectangle(halfWidth, 0, halfWidth, halfHeight));
-                    render.RenderTexture(render[desc.RenderTargetsNameToDefferedDebug[3]], Color.White, new Rectangle(halfWidth, halfHeight, halfWidth, halfHeight));
+                    render.RenderTexture(render[desc.RenderTargetsNameToDefferedDebug[3]], Color.White, new Rectangle(halfWidth, halfHeight, halfWidth, halfHeight));                    
+                    
                     render.RenderEnd();
                 }                
                 

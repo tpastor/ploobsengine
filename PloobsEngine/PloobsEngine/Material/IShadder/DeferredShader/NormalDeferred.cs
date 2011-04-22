@@ -94,7 +94,7 @@ namespace PloobsEngine.Material
                     for (int j = 0; j < bi.Count(); j++)
                     {
                         WorldParameter.SetValue(bi[j].ModelLocalTransformation * obj.WorldMatrix);
-                        render.RenderBatch(ref bi[j], _shader);                        
+                        render.RenderBatch(bi[j], _shader);                        
                     }
                 }
         }

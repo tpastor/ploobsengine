@@ -189,7 +189,7 @@
     <Compile Include="SceneControl\Scene\DefRender\IForwardPass.cs" />
     <Compile Include="SceneControl\Scene\DefRender\LightMap.cs" />
     <Compile Include="SceneControl\Scene\DefRender\RestoreDepth.cs" />
-    <Compile Include="SceneControl\Scene\DefRender\Shadow\CSSShadowLightMap.cs" />
+    <Compile Include="SceneControl\Scene\DefRender\Shadow\ShadowLightMap.cs" />
     <Compile Include="SceneControl\Scene\DefRender\Shadow\ShadowRenderer.cs" />
     <Compile Include="SceneControl\Scene\IPostEffect.cs" />
     <Compile Include="SceneControl\Scene\Picking.cs" />

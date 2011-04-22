@@ -264,6 +264,55 @@
             <param name="direction">The direction.</param>
             <returns></returns>
         </member>
+        <member name="T:PloobsEngine.SceneControl.IPostEffect">
+            <summary>
+            IPost Effect Specification
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.SceneControl.IPostEffect.Init(PloobsEngine.Engine.GraphicInfo,PloobsEngine.Engine.GraphicFactory)">
+            <summary>
+            Initiates the specified Post Effect.
+            Called by the engine
+            </summary>
+            <param name="manager">The manager.</param>
+            <param name="ginfo">The ginfo.</param>
+            <param name="factory">The factory.</param>
+        </member>
+        <member name="M:PloobsEngine.SceneControl.IPostEffect.Draw(Microsoft.Xna.Framework.Graphics.Texture2D,PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime,PloobsEngine.Engine.GraphicInfo,PloobsEngine.SceneControl.IWorld,System.Boolean)">
+            <summary>
+            Apply the post effect
+            </summary>
+            <param name="ImageToProcess">The image to process.</param>
+            <param name="rHelper">The r helper.</param>
+            <param name="gt">The gt.</param>
+            <param name="GraphicInfo">The graphic info.</param>
+            <param name="world">The world.</param>
+            <param name="useFloatBuffer">if set to <c>true</c> [use float buffer].</param>
+        </member>
+        <member name="P:PloobsEngine.SceneControl.IPostEffect.PostEffectType">
+            <summary>
+            Gets or sets the type of the post effect.
+            </summary>
+            <value>
+            The type of the post effect.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.SceneControl.IPostEffect.Priority">
+            <summary>
+            Gets the priority in relation with others PostEffects        
+            Lower the number, first the effect will be applied
+            0 By Default
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.SceneControl.IPostEffect.Enabled">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:PloobsEngine.SceneControl.IPostEffect"/> is enabled.
+            Enabled by default
+            </summary>
+            <value>
+              <c>true</c> if enabled; otherwise, <c>false</c>.
+            </value>
+        </member>
         <member name="T:PloobsEngine.SceneControl.SimpleCuller">
             <summary>
             Culler that uses the bepu scene control
@@ -1346,6 +1395,75 @@
             </summary>
             <param name="effect">The effect.</param>
         </member>
+        <member name="T:PloobsEngine.SceneControl.FogType">
+            <summary>
+            Fog Attenuation types
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.SceneControl.FogType.LINEAR">
+            <summary>
+            Linear decaiment
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.SceneControl.FogType.EXPONENCIAL">
+            <summary>
+            Exponencial decaiment
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.SceneControl.FogType.EXPONENCIALSQUARED">
+            <summary>
+            Squared Exponencial decaiment
+            </summary>
+        </member>
+        <member name="T:PloobsEngine.SceneControl.FogPostEffect">
+            <summary>
+            Fog Post Effect
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.SceneControl.FogPostEffect.#ctor(System.Single,System.Single)">
+            <summary>
+            Create the Post Effect using Linear Fog
+            </summary>
+            <param name="nearPlane"></param>
+            <param name="farPlane"></param>
+        </member>
+        <member name="M:PloobsEngine.SceneControl.FogPostEffect.#ctor(System.Single,PloobsEngine.SceneControl.FogType)">
+            <summary>
+            Create the post effect for using Exponencial or Exponencial Squared
+            </summary>
+            <param name="density"></param>
+            <param name="type"></param>
+        </member>
+        <member name="M:PloobsEngine.SceneControl.FogPostEffect.#ctor(PloobsEngine.SceneControl.FogType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.SceneControl.FogPostEffect"/> class.
+            Set the density for Exponencial and Exponencial Squared and near/far plane for Linear
+            </summary>
+            <param name="type">The type.</param>
+        </member>
+        <member name="P:PloobsEngine.SceneControl.FogPostEffect.Density">
+            <summary>
+            Default 0.001f;
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.SceneControl.FogPostEffect.NearPlane">
+            <summary>
+            Gets or sets the near plane.
+            Default 1
+            </summary>
+            <value>
+            The near plane.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.SceneControl.FogPostEffect.FarPlane">
+            <summary>
+            Gets or sets the far plane.
+            Default 1000
+            </summary>
+            <value>
+            The far plane.
+            </value>
+        </member>
         <member name="T:PloobsEngine.Resources">
             <summary>
               A strongly-typed resource class, for looking up localized strings, etc.
@@ -2247,6 +2365,24 @@
             The name of the technic.
             </value>
         </member>
+        <member name="T:PloobsEngine.SceneControl.GammaCorrectionPostEffect">
+            <summary>
+            OLHAR http://mynameismjp.wordpress.com/2009/12/31/correcting-xnas-gamma-correction/
+            SOLUCAO MAIS ELEGANTE PARA PCS --  mudar o render state pelo effect apos o ultimo efeito aplicado
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.SceneControl.AntiAliasingPostEffect.Weight">
+            <summary>
+            Default 2
+            Bigger value, bigger the effect
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.SceneControl.AntiAliasingPostEffect.PixelSizeMultiplier">
+            <summary>
+            Default 1
+            Change only if you Know what are you doing
+            </summary>
+        </member>
         <member name="T:PloobsEngine.SceneControl.IDummy">
             <summary>
             Specification of a Dummy
@@ -2536,55 +2672,6 @@
             </summary>
             <value>
               <c>true</c> if [affected by shadow]; otherwise, <c>false</c>.
-            </value>
-        </member>
-        <member name="T:PloobsEngine.SceneControl.IPostEffect">
-            <summary>
-            IPost Effect Specification
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.SceneControl.IPostEffect.Init(PloobsEngine.Engine.GraphicInfo,PloobsEngine.Engine.GraphicFactory)">
-            <summary>
-            Initiates the specified Post Effect.
-            Called by the engine
-            </summary>
-            <param name="manager">The manager.</param>
-            <param name="ginfo">The ginfo.</param>
-            <param name="factory">The factory.</param>
-        </member>
-        <member name="M:PloobsEngine.SceneControl.IPostEffect.Draw(Microsoft.Xna.Framework.Graphics.Texture2D,PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime,PloobsEngine.Engine.GraphicInfo,PloobsEngine.SceneControl.IWorld,System.Boolean)">
-            <summary>
-            Apply the post effect
-            </summary>
-            <param name="ImageToProcess">The image to process.</param>
-            <param name="rHelper">The r helper.</param>
-            <param name="gt">The gt.</param>
-            <param name="GraphicInfo">The graphic info.</param>
-            <param name="world">The world.</param>
-            <param name="useFloatBuffer">if set to <c>true</c> [use float buffer].</param>
-        </member>
-        <member name="P:PloobsEngine.SceneControl.IPostEffect.PostEffectType">
-            <summary>
-            Gets or sets the type of the post effect.
-            </summary>
-            <value>
-            The type of the post effect.
-            </value>
-        </member>
-        <member name="P:PloobsEngine.SceneControl.IPostEffect.Priority">
-            <summary>
-            Gets the priority in relation with others PostEffects        
-            Lower the number, first the effect will be applied
-            0 By Default
-            </summary>
-        </member>
-        <member name="P:PloobsEngine.SceneControl.IPostEffect.Enabled">
-            <summary>
-            Gets or sets a value indicating whether this <see cref="T:PloobsEngine.SceneControl.IPostEffect"/> is enabled.
-            Enabled by default
-            </summary>
-            <value>
-              <c>true</c> if enabled; otherwise, <c>false</c>.
             </value>
         </member>
         <member name="T:PloobsEngine.SceneControl.PostEffectType">
@@ -3303,6 +3390,220 @@
             </summary>
             <param name="id"></param>
         </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.castingShape">
+            <summary>
+            Shape that will be used in a convex cast that finds supporting entities for the character or any entities blocking a step-up.
+            When the character is supported and looking for something to step on, this shape will be cast downward.
+            To verify that it is valid, it will then be cast upward from the character's head.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.feetCollisionPairCollector">
+            <summary>
+            A box positioned relative to the character's body used to identify collision pairs with nearby objects that could be possibly stood upon.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.feetCollisionPairCollectorPositionOffset">
+            <summary>
+            The displacement vector from the center of the character body cylinder to the center of the collision pair collector box entity.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.feetSupportFinderOffset">
+            <summary>
+            The displacement vector from the center of the character body cylinder to the starting position of the convex cast used to find entity supports below the character.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.headBlockageFinderOffset">
+            <summary>
+            The displacement vector from the center of the character body cylinder to the starting position of the convex cast used to find blockages above the character's head when stepping.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.headCollisionPairCollector">
+            <summary>
+            A box positioned relative to the character's body used to identify collision pairs with nearby objects that could hit the character's head if it stepped up on something.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.headCollisionPairCollectorPositionOffset">
+            <summary>
+            The displacement vector from the center of the character body cylinder to the center of the collision pair collector box entity.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.maximumStepHeight">
+            <summary>
+            The maximum distance up or down which the character is able to move without jumping or falling.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.supportMargin">
+            <summary>
+            The vertical distance between the ground and the outer collision margin of the character cylinder to maintain.
+            Should be some relatively small value; if the character cylinder (and its margin) are allowed to hit the ground before the support finder, 
+            the character may either lose support or become affected by extra frictional forces.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.Acceleration">
+            <summary>
+            Rate of increase in the character's speed in the movementDirection.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.AirborneAcceleration">
+            <summary>
+            Change in airborne speed per second.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.Body">
+            <summary>
+            The character's physical representation that handles iteractions with the environment.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.glueSpeed">
+            <summary>
+            If objects are moving away from each other vertically above this speed, the character will lose its grip on the ground.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.HasTraction">
+            <summary>
+            Whether or not the character is currently standing on anything that can be walked upon.
+            False if there exists no support or the support is too heavily sloped, otherwise true.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.IsSupported">
+            <summary>
+            Whether or not the character is currently standing on anything.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.JumpSpeed">
+            <summary>
+            Initial vertical speed when jumping.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.MaxSlope">
+            <summary>
+            The maximum slope under which walking forces can be applied.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.MaxSpeed">
+            <summary>
+            Maximum speed in the movementDirection that can be attained.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.MaximumAirborneSpeed">
+            <summary>
+            The maximum speed that the character can achieve by itself while airborne.
+            A character can exceed this by launching off the ground at a higher speed, but cannot force itself to accelerate faster than this using air control while airborne.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.MovementDirection">
+            <summary>
+            Normalized direction which the character tries to move.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.SlidingDeceleration">
+            <summary>
+            Deceleration applied to oppose horizontal movement when the character does not have a steady foothold on the ground (hasTraction == false).
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.TractionDeceleration">
+            <summary>
+            Deceleration applied to oppose uncontrolled horizontal movement when the character has a steady foothold on the ground (hasTraction == true).
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.#ctor(Microsoft.Xna.Framework.Vector3,System.Single,System.Single,System.Single,System.Single,Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Constructs a simple character controller.
+            </summary>
+            <param name="position">Location to initially place the character.</param>
+            <param name="characterHeight">The height of the character.</param>
+            <param name="characterWidth">The diameter of the character.</param>
+            <param name="mass">Total mass of the character.</param>
+            <param name="maximumStepHeight">Height that the character can climb up.</param>
+            <param name="scale">The scale -> scale.x * characterWidth and scale.y * characterHeight  .</param>
+        </member>
+        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.BEPUphysics#UpdateableSystems#IEndOfTimeStepUpdateable#Update(System.Single)">
+            <summary>
+            Handles the updating of the character.  Called by the owning space object when necessary.
+            </summary>
+            <param name="dt">Simulation seconds since the last update.</param>
+        </member>
+        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.FindSupport(BEPUphysics.Entities.Entity@,Microsoft.Xna.Framework.Vector3@,Microsoft.Xna.Framework.Vector3@,System.Single@,Microsoft.Xna.Framework.Vector3@)">
+            <summary>
+            Locates the closest support entity by performing a convex cast at collected candidates.
+            </summary>
+            <param name="supportEntity">The closest supporting entity.</param>
+            <param name="supportLocation">The support location which the character is standing on.</param>
+            <param name="supportNormal">The normal at the surface where the character is standing..</param>
+            <param name="supportDistance">Distance from the maximum step height on the character down to where the latest support location was found.</param>
+            <param name="supportLocationVelocity">Velocity of the support location on the support entity.</param>
+            <returns>Whether or not a support was located.</returns>
+        </member>
+        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.IsStepSafe(System.Single)">
+            <summary>
+            Performs a convex cast to determine if a step of a given height is valid.
+            This means that stepping up onto the new support wouldn't shove the character's head into a ceiling or other obstacle.
+            </summary>
+            <param name="hitDistance">Vertical distance from the convex cast start to the hit location.</param>
+            <returns>Whether or not the step is safe.</returns>
+        </member>
+        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.IsSupportSlopeWalkable(Microsoft.Xna.Framework.Vector3)">
+            <summary>
+            Determines if the ground supporting the character is sloped gently enough to allow for normal walking.
+            </summary>
+            <param name="supportNormal">Normal of the surface being stood upon.</param>
+            <returns>Whether or not the slope is walkable.</returns>
+        </member>
+        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.Support(Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Vector3,System.Single)">
+            <summary>
+            Maintains the position of the character's body above the ground.
+            </summary>
+            <param name="supportLocationVelocity">Velocity of the support point connected to the supportEntity.</param>
+            <param name="supportNormal">The normal at the surface where the ray hit the entity.</param>
+            <param name="supportDistance">Distance from the character to the support location.</param>
+        </member>
+        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.HandleHorizontalMotion(Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Vector3,System.Single)">
+            <summary>
+            Manages movement acceleration, deceleration, and sliding.
+            </summary>
+            <param name="supportLocationVelocity">Velocity of the support point connected to the supportEntity.</param>
+            <param name="supportNormal">The normal at the surface where the ray hit the entity.</param>
+            <param name="dt">Timestep of the simulation.</param>
+        </member>
+        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.HandleAirborneMotion(System.Single)">
+            <summary>
+            Manages the character's air control.
+            </summary>
+            <param name="dt">Timestep of the simulation.</param>
+        </member>
+        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.Jump">
+            <summary>
+            If the character has a support, it leaps into the air based on its jumpSpeed.
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.Activate">
+            <summary>
+            Activates the character, adding its components to the space. 
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.Deactivate">
+            <summary>
+            Deactivates the character, removing its components from the space.
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.OnAdditionToSpace(BEPUphysics.ISpace)">
+            <summary>
+            Called by the engine when the character is added to the space.
+            Activates the character.
+            </summary>
+            <param name="newSpace">Space to which the character was added.</param>
+        </member>
+        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.OnRemovalFromSpace(BEPUphysics.ISpace)">
+            <summary>
+            Called by the engine when the character is removed from the space.
+            Deactivates the character.
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.Physics.Bepu.CharacterController.Position">
+            <summary>
+            Gets and sets the position of the character.
+            </summary>
+        </member>
         <member name="T:PloobsEngine.Utils.XmlContentLoader">
             <summary>
             XML content loader
@@ -3323,6 +3624,37 @@
             <param name="name">The name.</param>
             <param name="tipo">The type.</param>
             <returns>object</returns>
+        </member>
+        <member name="P:PloobsEngine.SceneControl.ScatterPostEffect.Density">
+            <summary>
+            Default 0.1
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.SceneControl.ScatterPostEffect.Weight">
+            <summary>
+            Defautl 0.1
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.SceneControl.ScatterPostEffect.Decay">
+            <summary>
+            Default 1;
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.SceneControl.ScatterPostEffect.Exposition">
+            <summary>
+            Default 0.5f
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.SceneControl.ScatterPostEffect.NumSamples">
+            <summary>
+            Default 64
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.SceneControl.SaturationPostEffect.#ctor(System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.SceneControl.SaturationPostEffect"/> class.
+            </summary>
+            <param name="saturation">The saturation.</param>
         </member>
         <member name="T:PloobsEngine.MessageSystem.SystemMessageFactory">
             <summary>
@@ -3698,6 +4030,45 @@
             Gets and sets SubNodes.
             </summary>
         </member>
+        <member name="T:PloobsEngine.Material.CustomAnimationShader">
+            <summary>
+            Animation Shader that supports advanced effects
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Material.CustomAnimationShader.#ctor">
+            <summary>
+            Serialization
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Material.CustomAnimationShader.#ctor(PloobsEngine.Modelo.Animation.IAnimatedController,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Material.CustomAnimationShader"/> class.
+            </summary>
+            <param name="ac">The ac.</param>
+            <param name="useBump">if set to <c>true</c> [use bump].</param>
+            <param name="useSpecular">if set to <c>true</c> [use specular].</param>
+            <param name="useGlow">if set to <c>true</c> [use glow].</param>
+        </member>
+        <member name="M:PloobsEngine.Material.CustomAnimationShader.#ctor(PloobsEngine.Modelo.Animation.IAnimatedController,System.Boolean,System.Boolean,System.Boolean,PloobsEngine.SceneControl.IObject,PloobsEngine.Modelo.Animation.IAnimatedController,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Material.CustomAnimationShader"/> class.
+            </summary>
+            <param name="ac">The ac.</param>
+            <param name="useBump">if set to <c>true</c> [use bump].</param>
+            <param name="useSpecular">if set to <c>true</c> [use specular].</param>
+            <param name="useGlow">if set to <c>true</c> [use glow].</param>
+            <param name="obj">The obj.</param>
+            <param name="Followed">The followed.</param>
+            <param name="boneName">Name of the bone.</param>
+        </member>
+        <member name="P:PloobsEngine.Material.CustomAnimationShader.MaterialType">
+            <summary>
+            Gets the type of the material.
+            </summary>
+            <value>
+            The type of the material.
+            </value>
+        </member>
         <member name="T:PloobsEngine.Events.SimpleEvent">
             <summary>
             Evento Simples com alvos simples
@@ -3715,6 +4086,32 @@
             </summary>
             <param name="filename">file name</param>
             <returns>dic with the parse info</returns>
+        </member>
+        <member name="M:PloobsEngine.SceneControl.SunPostEffect.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.SceneControl.SunPostEffect"/> class.
+            </summary>
+            <param name="flareTexture">The flare texture, null to use default.</param>
+        </member>
+        <member name="F:PloobsEngine.SceneControl.SunPostEffect.sunColor">
+            <summary>
+            default = Color.White
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.SceneControl.SunPostEffect.sunIntensity">
+            <summary>
+            default = 1
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.SceneControl.SunPostEffect.sunSunSize">
+            <summary>
+            default = 1500
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.SceneControl.SunPostEffect.sunPosition">
+            <summary>
+            default = Vector3(1000,1000,0)
+            </summary>
         </member>
         <member name="T:PloobsEngine.Modelo.SimpleModel">
             <summary>
@@ -3959,6 +4356,50 @@
             The type of the material.
             </value>
         </member>
+        <member name="T:PloobsEngine.Material.SimpleAnimationShader">
+            <summary>
+            Animation shader with simple effects
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Material.SimpleAnimationShader.#ctor">
+            <summary>
+            Serialization
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Material.SimpleAnimationShader.#ctor(PloobsEngine.Modelo.Animation.IAnimatedController)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Material.SimpleAnimationShader"/> class.
+            </summary>
+            <param name="ac">The ac.</param>
+        </member>
+        <member name="M:PloobsEngine.Material.SimpleAnimationShader.#ctor(PloobsEngine.Modelo.Animation.IAnimatedController,PloobsEngine.SceneControl.IObject,PloobsEngine.Modelo.Animation.IAnimatedController,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Material.SimpleAnimationShader"/> class.
+            THIS IS A SPECIAL CONSTRUCTOR, it is used to ATACH this shader to a external BONE
+            Can be used for example to put a gun in the hand of a character
+            </summary>
+            <param name="ac">The ac.</param>
+            <param name="obj">The obj.</param>
+            <param name="Followed">The followed.</param>
+            <param name="boneName">Name of the bone.</param>
+        </member>
+        <member name="M:PloobsEngine.Material.SimpleAnimationShader.Update(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IObject,System.Collections.Generic.IList{PloobsEngine.Light.ILight})">
+            <summary>
+            Updates this shader
+            Called every frame once
+            </summary>
+            <param name="gt"></param>
+            <param name="ent">The ent.</param>
+            <param name="lights">The lights.</param>
+        </member>
+        <member name="P:PloobsEngine.Material.SimpleAnimationShader.MaterialType">
+            <summary>
+            Gets the type of the material.
+            </summary>
+            <value>
+            The type of the material.
+            </value>
+        </member>
         <member name="T:PloobsEngine.Material.CustomDeferred">
             <summary>
             Shader that uses branching to use Glow,Bump, Specular and Paralax
@@ -4057,6 +4498,98 @@
             </summary>
             <value>
             The scale bias.
+            </value>
+        </member>
+        <member name="T:PloobsEngine.Material.DeferredAnimatedMaterial">
+            <summary>
+            Deferred Animated Material
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Material.DeferredAnimatedMaterial.#ctor(PloobsEngine.Modelo.Animation.IAnimatedController,PloobsEngine.Material.SimpleAnimationShader)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Material.ForwardMaterial"/> class.
+            </summary>
+            <param name="shader">The shader.</param>
+        </member>
+        <member name="M:PloobsEngine.Material.DeferredAnimatedMaterial.Initialization(PloobsEngine.Engine.GraphicInfo,PloobsEngine.Engine.GraphicFactory,PloobsEngine.SceneControl.IObject)">
+            <summary>
+            Initializations the specified Material.
+            </summary>
+            <param name="ginfo">The ginfo.</param>
+            <param name="factory">The factory.</param>
+            <param name="obj">The obj.</param>
+        </member>
+        <member name="M:PloobsEngine.Material.DeferredAnimatedMaterial.PreDrawnPhase(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IWorld,PloobsEngine.SceneControl.IObject,PloobsEngine.Cameras.ICamera,System.Collections.Generic.IList{PloobsEngine.Light.ILight},PloobsEngine.SceneControl.RenderHelper)">
+            <summary>
+            Pre drawn Function.
+            Called before all the objects are draw
+            </summary>
+            <param name="gt">The gt.</param>
+            <param name="mundo">The mundo.</param>
+            <param name="obj">The obj.</param>
+            <param name="cam">The cam.</param>
+            <param name="lights">The lights.</param>
+            <param name="render">The render.</param>
+        </member>
+        <member name="M:PloobsEngine.Material.DeferredAnimatedMaterial.PosDrawnPhase(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IObject,PloobsEngine.Cameras.ICamera,System.Collections.Generic.IList{PloobsEngine.Light.ILight},PloobsEngine.SceneControl.RenderHelper)">
+            <summary>
+            Pos drawn Function.
+            Called after all objects are Draw
+            </summary>
+            <param name="gt">The gt.</param>
+            <param name="obj">The obj.</param>
+            <param name="cam">The cam.</param>
+            <param name="lights">The lights.</param>
+            <param name="render">The render.</param>
+        </member>
+        <member name="M:PloobsEngine.Material.DeferredAnimatedMaterial.Drawn(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IObject,PloobsEngine.Cameras.ICamera,System.Collections.Generic.IList{PloobsEngine.Light.ILight},PloobsEngine.SceneControl.RenderHelper)">
+            <summary>
+            Normal Drawn Function.
+            </summary>
+            <param name="gt">The gt.</param>
+            <param name="obj">The obj.</param>
+            <param name="cam">The cam.</param>
+            <param name="lights">The lights.</param>
+            <param name="render">The render.</param>
+        </member>
+        <member name="M:PloobsEngine.Material.DeferredAnimatedMaterial.Update(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IObject,System.Collections.Generic.IList{PloobsEngine.Light.ILight})">
+            <summary>
+            Update.
+            </summary>
+            <param name="gametime">The gametime.</param>
+            <param name="obj">The obj.</param>
+            <param name="lights">The lights.</param>
+        </member>
+        <member name="M:PloobsEngine.Material.DeferredAnimatedMaterial.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Populates a <see cref="T:System.Runtime.Serialization.SerializationInfo"/> with the data needed to serialize the target object.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> to populate with data.</param>
+            <param name="context">The destination (see <see cref="T:System.Runtime.Serialization.StreamingContext"/>) for this serialization.</param>
+            <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
+        </member>
+        <member name="P:PloobsEngine.Material.DeferredAnimatedMaterial.Shadder">
+            <summary>
+            Gets or sets the shadder.
+            </summary>
+            <value>
+            The shadder.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.Material.DeferredAnimatedMaterial.MaterialType">
+            <summary>
+            Gets the type of the material.
+            </summary>
+            <value>
+            The type of the material.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.Material.DeferredAnimatedMaterial.AffectedByShadow">
+            <summary>
+            Gets or sets a value indicating whether this material is [affected by shadow].
+            </summary>
+            <value>
+              <c>true</c> if [affected by shadow]; otherwise, <c>false</c>.
             </value>
         </member>
         <member name="M:PloobsEngine.Cameras.CameraRecordPath.#ctor(PloobsEngine.SceneControl.IScreen,PloobsEngine.Cameras.ICamera,Microsoft.Xna.Framework.CurveLoopType)">
@@ -4166,6 +4699,41 @@
             <value>
             The name of the target.
             </value>
+        </member>
+        <member name="T:PloobsEngine.Modelo.Animation.AnimatedModel">
+            <summary>
+            Concrete Animated Model
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Modelo.Animation.AnimatedModel.#ctor(PloobsEngine.Engine.GraphicFactory,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Modelo.Animation.AnimatedModel"/> class.
+            </summary>
+            <param name="factory">The factory.</param>
+            <param name="modelName">Name of the model.</param>
+            <param name="diffuseTextureName">Name of the diffuse texture.</param>
+            <param name="bumpTextureName">Name of the bump texture.</param>
+            <param name="specularTextureName">Name of the specular texture.</param>
+            <param name="glowTextureName">Name of the glow texture.</param>
+        </member>
+        <member name="M:PloobsEngine.Modelo.Animation.AnimatedModel.GetAnimation">
+            <summary>
+            Gets the animation Information from Model
+            It can be for example the Bone hierarchy of the model
+            The result need to be casted (vary toooo much between animation APIs, better to keep as Object)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Modelo.Animation.AnimatedModel.getModelTag">
+            <summary>
+            Gets the model tag.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:PloobsEngine.Modelo.Animation.AnimatedModel.MeshNumber">
+            <summary>
+            Gets the mesh number.
+            </summary>
         </member>
         <member name="T:PloobsEngine.Utils.StaticRandom">
             <summary>
@@ -5190,14 +5758,14 @@
             <param name="depth">The depth.</param>
             <param name="stencil">The stencil.</param>
         </member>
-        <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderBatch(PloobsEngine.Modelo.BatchInformation@,Microsoft.Xna.Framework.Graphics.Effect)">
+        <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderBatch(PloobsEngine.Modelo.BatchInformation,Microsoft.Xna.Framework.Graphics.Effect)">
             <summary>
             Renders the batch.
             </summary>
             <param name="bi">The BatchInformation</param>
             <param name="effect">The effect.</param>
         </member>
-        <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderBatch(PloobsEngine.Modelo.BatchInformation@)">
+        <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderBatch(PloobsEngine.Modelo.BatchInformation)">
             <summary>
             Renders the batch.
             </summary>
@@ -5364,6 +5932,11 @@
         <member name="P:PloobsEngine.SceneControl.RenderHelper.Item(System.String)">
             <summary>
             Gets or sets a scene with the specified name.
+            </summary>
+        </member>
+        <member name="T:PloobsEngine.SceneControl.BlurMode">
+            <summary>
+            gaussian Blur Modes
             </summary>
         </member>
         <member name="T:PloobsEngine.Physics.Bepu.TriangleMeshObject">
@@ -6043,6 +6616,16 @@
             <param name="confName">confname</param>
             <returns>value</returns>
         </member>
+        <member name="T:PloobsEngine.SceneControl.BloomPostEffect">
+            <summary>
+            Bloom Post Effect
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.SceneControl.BloomPostEffect.BloomThreshold">
+            <summary>
+            Bloom Parameter
+            </summary>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:PloobsEngine.SceneControl.ScreenManager" -->
         <member name="M:PloobsEngine.SceneControl.ScreenManager.#ctor(PloobsEngine.Engine.GraphicInfo@,PloobsEngine.Engine.GraphicFactory,PloobsEngine.SceneControl.IContentManager,PloobsEngine.SceneControl.RenderHelper,PloobsEngine.Engine.EngineStuff)">
             <summary>
@@ -6403,6 +6986,58 @@
             <param name="index">The index of the valid object to get</param>
             <returns>A valid object found at the index</returns>
         </member>
+        <member name="M:PloobsEngine.SceneControl.ShadowRenderer.#ctor(System.Int32)">
+            <summary>
+            Creates the renderer
+            </summary>		
+        </member>
+        <member name="M:PloobsEngine.SceneControl.ShadowRenderer.Render(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.RenderHelper,PloobsEngine.Engine.GraphicInfo,PloobsEngine.Light.DirectionalLightPE,PloobsEngine.Cameras.ICamera,PloobsEngine.SceneControl.IWorld,PloobsEngine.SceneControl.IDeferredGBuffer)">
+            <summary>
+            Renders a list of models to the shadow map, and returns a surface
+            containing the shadow occlusion factor
+            </summary>
+            <param name="gameTime">The game time.</param>
+            <param name="render">The render.</param>
+            <param name="ginfo">The ginfo.</param>
+            <param name="light">The light for which the shadow is being calculated</param>
+            <param name="mainCamera">The camera viewing the scene containing the light</param>
+            <param name="world">The world.</param>
+            <param name="deferredGBuffer">The deferred G buffer.</param>
+            <returns>
+            The shadow occlusion texture
+            </returns>
+        </member>
+        <member name="M:PloobsEngine.SceneControl.ShadowRenderer.CalculateFrustum(PloobsEngine.Light.DirectionalLightPE,PloobsEngine.Cameras.ICamera,System.Single,System.Single,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@)">
+            <summary>
+            Determines the size of the frustum needed to cover the viewable area,
+            then creates an appropriate orthographic projection.
+            </summary>
+            <param name="light">The directional light to use</param>
+            <param name="mainCamera">The camera viewing the scene</param>
+        </member>
+        <member name="M:PloobsEngine.SceneControl.ShadowRenderer.RenderShadowMap(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.RenderHelper,System.Int32,PloobsEngine.SceneControl.IWorld)">
+            <summary>
+            Renders the shadow map using the orthographic camera created in
+            CalculateFrustum.
+            </summary>
+            <param name="modelList">The list of models to be rendered</param>        
+        </member>
+        <member name="M:PloobsEngine.SceneControl.ShadowRenderer.RenderShadowOcclusion(PloobsEngine.SceneControl.RenderHelper,PloobsEngine.Cameras.ICamera,PloobsEngine.Light.DirectionalLightPE,PloobsEngine.SceneControl.IDeferredGBuffer)">
+            <summary>
+            Renders a texture containing the final shadow occlusion
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.SceneControl.ShadowRenderer.ShadowMapSize">
+            <summary>
+            Default 512
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.SceneControl.ShadowRenderer.SplitConstant">
+            <summary>
+            Default 0.95
+            Tune the sizes of the splits (exponecial constant)
+            </summary>
+        </member>
         <member name="T:PloobsEngine.Modelo.VertexMultitextured">
             <summary>
             Vertex Struct used in the Water shader
@@ -6603,6 +7238,13 @@
             <param name="persistence">The persistence.</param>
             <param name="octave">The octave.</param>
             <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.SceneControl.ColorCorrectionPostEffect.#ctor(Microsoft.Xna.Framework.Color,System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.SceneControl.ColorCorrectionPostEffect"/> class.
+            </summary>
+            <param name="colorAdd">The color add.</param>
+            <param name="colorCorrect">The color correct.</param>
         </member>
         <member name="T:PloobsEngine.SceneControl.IObjectAtachtment">
             <summary>    
@@ -6875,6 +7517,91 @@
             </summary>
             <param name="writer">The <see cref="T:System.Xml.XmlWriter"/> stream to which the object is serialized.</param>
         </member>
+        <member name="T:PloobsEngine.Modelo.Animation.AnimatedController">
+            <summary>
+            Animated Controller concrete
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Modelo.Animation.AnimatedController.#ctor(PloobsEngine.Modelo.Animation.IAnimatedModel,System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Modelo.Animation.AnimatedController"/> class.
+            </summary>
+            <param name="model">The model.</param>
+            <param name="StartAnimationName">Start name of the animation.</param>
+            <param name="changeOnlyWhenDifferentAnimation">if set to <c>true</c> [change the current animationonly only when different animation is set].</param>
+        </member>
+        <member name="M:PloobsEngine.Modelo.Animation.AnimatedController.MappActionAnimation(System.String,System.String)">
+            <summary>
+            Mapps one action to animation.
+            When using behaviors for example
+            </summary>
+            <param name="actionName">Name of the action.</param>
+            <param name="animation">The animation.</param>
+        </member>
+        <member name="M:PloobsEngine.Modelo.Animation.AnimatedController.TransformBone(System.String,Microsoft.Xna.Framework.Quaternion)">
+            <summary>
+            Transforms the bone.
+            </summary>
+            <param name="boneName">Name of the bone.</param>
+            <param name="rot">The rot.</param>
+        </member>
+        <member name="M:PloobsEngine.Modelo.Animation.AnimatedController.GetBoneAbsoluteTransform(System.String)">
+            <summary>
+            Gets the bone absolute transform.
+            </summary>
+            <param name="boneName">Name of the bone.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Modelo.Animation.AnimatedController.ChangeAnimation(System.String,PloobsEngine.Modelo.Animation.AnimationChangeMode)">
+            <summary>
+            Changes the animation.
+            </summary>
+            <param name="animationName">Name of the animation.</param>
+            <param name="mode">The interpolation mode.</param>
+        </member>
+        <member name="M:PloobsEngine.Modelo.Animation.AnimatedController.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Updates the controller.
+            CAlled by the API
+            </summary>
+            <param name="gt">The gt.</param>
+        </member>
+        <member name="M:PloobsEngine.Modelo.Animation.AnimatedController.ChangeInterpolationMode(PloobsEngine.Modelo.Animation.AnimationInterpolationMode)">
+            <summary>
+            Changes the interpolation mode.
+            </summary>
+            <param name="im">The im.</param>
+        </member>
+        <member name="M:PloobsEngine.Modelo.Animation.AnimatedController.GetBoneTransformations">
+            <summary>
+            Gets the bone transformations.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:PloobsEngine.Modelo.Animation.AnimatedController.TransitionBetweenAnimationTimeInSeconds">
+            <summary>
+            Gets or sets the transition between animation time in seconds.
+            </summary>
+            <value>
+            The transition between animation time in seconds.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.Modelo.Animation.AnimatedController.Speed">
+            <summary>
+            Gets or sets the animation speed.
+            </summary>
+            <value>
+            The speed.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.Modelo.Animation.AnimatedController.isLoop">
+            <summary>
+            Gets or sets a value indicating whether this instance is in loop.
+            </summary>
+            <value>
+              <c>true</c> if this instance is loop; otherwise, <c>false</c>.
+            </value>
+        </member>
         <member name="T:PloobsEngine.Utils.MovingAverage">
             <summary>
             Moving Average class
@@ -6925,6 +7652,12 @@
             <summary>
             Get value
             </summary>
+        </member>
+        <member name="M:PloobsEngine.SceneControl.ContrastPostEffect.#ctor(System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.SceneControl.ContrastPostEffect"/> class.
+            </summary>
+            <param name="contrast">-1 a 1</param>
         </member>
         <member name="M:PloobsEngine.SceneControl.OctreeCuller.#ctor(System.Single,System.Single,System.Int32,Microsoft.Xna.Framework.Vector3,System.Boolean)">
             <summary>
@@ -7142,737 +7875,6 @@
         <member name="P:PloobsEngine.Physic.PhysicObjects.BepuObject.GravitationalFieldObject.Origin">
             <summary>
             Gets or sets the center of the field that entities will be pushed toward.
-            </summary>
-        </member>
-        <member name="T:PloobsEngine.Material.DeferredAnimatedMaterial">
-            <summary>
-            Deferred Animated Material
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.Material.DeferredAnimatedMaterial.#ctor(PloobsEngine.Modelo.Animation.IAnimatedController,PloobsEngine.Material.SimpleAnimationShader)">
-            <summary>
-            Initializes a new instance of the <see cref="T:PloobsEngine.Material.ForwardMaterial"/> class.
-            </summary>
-            <param name="shader">The shader.</param>
-        </member>
-        <member name="M:PloobsEngine.Material.DeferredAnimatedMaterial.Initialization(PloobsEngine.Engine.GraphicInfo,PloobsEngine.Engine.GraphicFactory,PloobsEngine.SceneControl.IObject)">
-            <summary>
-            Initializations the specified Material.
-            </summary>
-            <param name="ginfo">The ginfo.</param>
-            <param name="factory">The factory.</param>
-            <param name="obj">The obj.</param>
-        </member>
-        <member name="M:PloobsEngine.Material.DeferredAnimatedMaterial.PreDrawnPhase(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IWorld,PloobsEngine.SceneControl.IObject,PloobsEngine.Cameras.ICamera,System.Collections.Generic.IList{PloobsEngine.Light.ILight},PloobsEngine.SceneControl.RenderHelper)">
-            <summary>
-            Pre drawn Function.
-            Called before all the objects are draw
-            </summary>
-            <param name="gt">The gt.</param>
-            <param name="mundo">The mundo.</param>
-            <param name="obj">The obj.</param>
-            <param name="cam">The cam.</param>
-            <param name="lights">The lights.</param>
-            <param name="render">The render.</param>
-        </member>
-        <member name="M:PloobsEngine.Material.DeferredAnimatedMaterial.PosDrawnPhase(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IObject,PloobsEngine.Cameras.ICamera,System.Collections.Generic.IList{PloobsEngine.Light.ILight},PloobsEngine.SceneControl.RenderHelper)">
-            <summary>
-            Pos drawn Function.
-            Called after all objects are Draw
-            </summary>
-            <param name="gt">The gt.</param>
-            <param name="obj">The obj.</param>
-            <param name="cam">The cam.</param>
-            <param name="lights">The lights.</param>
-            <param name="render">The render.</param>
-        </member>
-        <member name="M:PloobsEngine.Material.DeferredAnimatedMaterial.Drawn(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IObject,PloobsEngine.Cameras.ICamera,System.Collections.Generic.IList{PloobsEngine.Light.ILight},PloobsEngine.SceneControl.RenderHelper)">
-            <summary>
-            Normal Drawn Function.
-            </summary>
-            <param name="gt">The gt.</param>
-            <param name="obj">The obj.</param>
-            <param name="cam">The cam.</param>
-            <param name="lights">The lights.</param>
-            <param name="render">The render.</param>
-        </member>
-        <member name="M:PloobsEngine.Material.DeferredAnimatedMaterial.Update(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IObject,System.Collections.Generic.IList{PloobsEngine.Light.ILight})">
-            <summary>
-            Update.
-            </summary>
-            <param name="gametime">The gametime.</param>
-            <param name="obj">The obj.</param>
-            <param name="lights">The lights.</param>
-        </member>
-        <member name="M:PloobsEngine.Material.DeferredAnimatedMaterial.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-            <summary>
-            Populates a <see cref="T:System.Runtime.Serialization.SerializationInfo"/> with the data needed to serialize the target object.
-            </summary>
-            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> to populate with data.</param>
-            <param name="context">The destination (see <see cref="T:System.Runtime.Serialization.StreamingContext"/>) for this serialization.</param>
-            <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
-        </member>
-        <member name="P:PloobsEngine.Material.DeferredAnimatedMaterial.Shadder">
-            <summary>
-            Gets or sets the shadder.
-            </summary>
-            <value>
-            The shadder.
-            </value>
-        </member>
-        <member name="P:PloobsEngine.Material.DeferredAnimatedMaterial.MaterialType">
-            <summary>
-            Gets the type of the material.
-            </summary>
-            <value>
-            The type of the material.
-            </value>
-        </member>
-        <member name="P:PloobsEngine.Material.DeferredAnimatedMaterial.AffectedByShadow">
-            <summary>
-            Gets or sets a value indicating whether this material is [affected by shadow].
-            </summary>
-            <value>
-              <c>true</c> if [affected by shadow]; otherwise, <c>false</c>.
-            </value>
-        </member>
-        <member name="T:PloobsEngine.Modelo.Animation.AnimatedModel">
-            <summary>
-            Concrete Animated Model
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.Modelo.Animation.AnimatedModel.#ctor(PloobsEngine.Engine.GraphicFactory,System.String,System.String,System.String,System.String,System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:PloobsEngine.Modelo.Animation.AnimatedModel"/> class.
-            </summary>
-            <param name="factory">The factory.</param>
-            <param name="modelName">Name of the model.</param>
-            <param name="diffuseTextureName">Name of the diffuse texture.</param>
-            <param name="bumpTextureName">Name of the bump texture.</param>
-            <param name="specularTextureName">Name of the specular texture.</param>
-            <param name="glowTextureName">Name of the glow texture.</param>
-        </member>
-        <member name="M:PloobsEngine.Modelo.Animation.AnimatedModel.GetAnimation">
-            <summary>
-            Gets the animation Information from Model
-            It can be for example the Bone hierarchy of the model
-            The result need to be casted (vary toooo much between animation APIs, better to keep as Object)
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:PloobsEngine.Modelo.Animation.AnimatedModel.getModelTag">
-            <summary>
-            Gets the model tag.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:PloobsEngine.Modelo.Animation.AnimatedModel.MeshNumber">
-            <summary>
-            Gets the mesh number.
-            </summary>
-        </member>
-        <member name="T:PloobsEngine.Modelo.Animation.AnimatedController">
-            <summary>
-            Animated Controller concrete
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.Modelo.Animation.AnimatedController.#ctor(PloobsEngine.Modelo.Animation.IAnimatedModel,System.String,System.Boolean)">
-            <summary>
-            Initializes a new instance of the <see cref="T:PloobsEngine.Modelo.Animation.AnimatedController"/> class.
-            </summary>
-            <param name="model">The model.</param>
-            <param name="StartAnimationName">Start name of the animation.</param>
-            <param name="changeOnlyWhenDifferentAnimation">if set to <c>true</c> [change the current animationonly only when different animation is set].</param>
-        </member>
-        <member name="M:PloobsEngine.Modelo.Animation.AnimatedController.MappActionAnimation(System.String,System.String)">
-            <summary>
-            Mapps one action to animation.
-            When using behaviors for example
-            </summary>
-            <param name="actionName">Name of the action.</param>
-            <param name="animation">The animation.</param>
-        </member>
-        <member name="M:PloobsEngine.Modelo.Animation.AnimatedController.TransformBone(System.String,Microsoft.Xna.Framework.Quaternion)">
-            <summary>
-            Transforms the bone.
-            </summary>
-            <param name="boneName">Name of the bone.</param>
-            <param name="rot">The rot.</param>
-        </member>
-        <member name="M:PloobsEngine.Modelo.Animation.AnimatedController.GetBoneAbsoluteTransform(System.String)">
-            <summary>
-            Gets the bone absolute transform.
-            </summary>
-            <param name="boneName">Name of the bone.</param>
-            <returns></returns>
-        </member>
-        <member name="M:PloobsEngine.Modelo.Animation.AnimatedController.ChangeAnimation(System.String,PloobsEngine.Modelo.Animation.AnimationChangeMode)">
-            <summary>
-            Changes the animation.
-            </summary>
-            <param name="animationName">Name of the animation.</param>
-            <param name="mode">The interpolation mode.</param>
-        </member>
-        <member name="M:PloobsEngine.Modelo.Animation.AnimatedController.Update(Microsoft.Xna.Framework.GameTime)">
-            <summary>
-            Updates the controller.
-            CAlled by the API
-            </summary>
-            <param name="gt">The gt.</param>
-        </member>
-        <member name="M:PloobsEngine.Modelo.Animation.AnimatedController.ChangeInterpolationMode(PloobsEngine.Modelo.Animation.AnimationInterpolationMode)">
-            <summary>
-            Changes the interpolation mode.
-            </summary>
-            <param name="im">The im.</param>
-        </member>
-        <member name="M:PloobsEngine.Modelo.Animation.AnimatedController.GetBoneTransformations">
-            <summary>
-            Gets the bone transformations.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:PloobsEngine.Modelo.Animation.AnimatedController.TransitionBetweenAnimationTimeInSeconds">
-            <summary>
-            Gets or sets the transition between animation time in seconds.
-            </summary>
-            <value>
-            The transition between animation time in seconds.
-            </value>
-        </member>
-        <member name="P:PloobsEngine.Modelo.Animation.AnimatedController.Speed">
-            <summary>
-            Gets or sets the animation speed.
-            </summary>
-            <value>
-            The speed.
-            </value>
-        </member>
-        <member name="P:PloobsEngine.Modelo.Animation.AnimatedController.isLoop">
-            <summary>
-            Gets or sets a value indicating whether this instance is in loop.
-            </summary>
-            <value>
-              <c>true</c> if this instance is loop; otherwise, <c>false</c>.
-            </value>
-        </member>
-        <member name="T:PloobsEngine.Material.CustomAnimationShader">
-            <summary>
-            Animation Shader that supports advanced effects
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.Material.CustomAnimationShader.#ctor">
-            <summary>
-            Serialization
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.Material.CustomAnimationShader.#ctor(PloobsEngine.Modelo.Animation.IAnimatedController,System.Boolean,System.Boolean,System.Boolean)">
-            <summary>
-            Initializes a new instance of the <see cref="T:PloobsEngine.Material.CustomAnimationShader"/> class.
-            </summary>
-            <param name="ac">The ac.</param>
-            <param name="useBump">if set to <c>true</c> [use bump].</param>
-            <param name="useSpecular">if set to <c>true</c> [use specular].</param>
-            <param name="useGlow">if set to <c>true</c> [use glow].</param>
-        </member>
-        <member name="M:PloobsEngine.Material.CustomAnimationShader.#ctor(PloobsEngine.Modelo.Animation.IAnimatedController,System.Boolean,System.Boolean,System.Boolean,PloobsEngine.SceneControl.IObject,PloobsEngine.Modelo.Animation.IAnimatedController,System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:PloobsEngine.Material.CustomAnimationShader"/> class.
-            </summary>
-            <param name="ac">The ac.</param>
-            <param name="useBump">if set to <c>true</c> [use bump].</param>
-            <param name="useSpecular">if set to <c>true</c> [use specular].</param>
-            <param name="useGlow">if set to <c>true</c> [use glow].</param>
-            <param name="obj">The obj.</param>
-            <param name="Followed">The followed.</param>
-            <param name="boneName">Name of the bone.</param>
-        </member>
-        <member name="P:PloobsEngine.Material.CustomAnimationShader.MaterialType">
-            <summary>
-            Gets the type of the material.
-            </summary>
-            <value>
-            The type of the material.
-            </value>
-        </member>
-        <member name="T:PloobsEngine.Material.SimpleAnimationShader">
-            <summary>
-            Animation shader with simple effects
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.Material.SimpleAnimationShader.#ctor">
-            <summary>
-            Serialization
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.Material.SimpleAnimationShader.#ctor(PloobsEngine.Modelo.Animation.IAnimatedController)">
-            <summary>
-            Initializes a new instance of the <see cref="T:PloobsEngine.Material.SimpleAnimationShader"/> class.
-            </summary>
-            <param name="ac">The ac.</param>
-        </member>
-        <member name="M:PloobsEngine.Material.SimpleAnimationShader.#ctor(PloobsEngine.Modelo.Animation.IAnimatedController,PloobsEngine.SceneControl.IObject,PloobsEngine.Modelo.Animation.IAnimatedController,System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:PloobsEngine.Material.SimpleAnimationShader"/> class.
-            THIS IS A SPECIAL CONSTRUCTOR, it is used to ATACH this shader to a external BONE
-            Can be used for example to put a gun in the hand of a character
-            </summary>
-            <param name="ac">The ac.</param>
-            <param name="obj">The obj.</param>
-            <param name="Followed">The followed.</param>
-            <param name="boneName">Name of the bone.</param>
-        </member>
-        <member name="M:PloobsEngine.Material.SimpleAnimationShader.Update(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IObject,System.Collections.Generic.IList{PloobsEngine.Light.ILight})">
-            <summary>
-            Updates this shader
-            Called every frame once
-            </summary>
-            <param name="gt"></param>
-            <param name="ent">The ent.</param>
-            <param name="lights">The lights.</param>
-        </member>
-        <member name="P:PloobsEngine.Material.SimpleAnimationShader.MaterialType">
-            <summary>
-            Gets the type of the material.
-            </summary>
-            <value>
-            The type of the material.
-            </value>
-        </member>
-        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.castingShape">
-            <summary>
-            Shape that will be used in a convex cast that finds supporting entities for the character or any entities blocking a step-up.
-            When the character is supported and looking for something to step on, this shape will be cast downward.
-            To verify that it is valid, it will then be cast upward from the character's head.
-            </summary>
-        </member>
-        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.feetCollisionPairCollector">
-            <summary>
-            A box positioned relative to the character's body used to identify collision pairs with nearby objects that could be possibly stood upon.
-            </summary>
-        </member>
-        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.feetCollisionPairCollectorPositionOffset">
-            <summary>
-            The displacement vector from the center of the character body cylinder to the center of the collision pair collector box entity.
-            </summary>
-        </member>
-        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.feetSupportFinderOffset">
-            <summary>
-            The displacement vector from the center of the character body cylinder to the starting position of the convex cast used to find entity supports below the character.
-            </summary>
-        </member>
-        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.headBlockageFinderOffset">
-            <summary>
-            The displacement vector from the center of the character body cylinder to the starting position of the convex cast used to find blockages above the character's head when stepping.
-            </summary>
-        </member>
-        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.headCollisionPairCollector">
-            <summary>
-            A box positioned relative to the character's body used to identify collision pairs with nearby objects that could hit the character's head if it stepped up on something.
-            </summary>
-        </member>
-        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.headCollisionPairCollectorPositionOffset">
-            <summary>
-            The displacement vector from the center of the character body cylinder to the center of the collision pair collector box entity.
-            </summary>
-        </member>
-        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.maximumStepHeight">
-            <summary>
-            The maximum distance up or down which the character is able to move without jumping or falling.
-            </summary>
-        </member>
-        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.supportMargin">
-            <summary>
-            The vertical distance between the ground and the outer collision margin of the character cylinder to maintain.
-            Should be some relatively small value; if the character cylinder (and its margin) are allowed to hit the ground before the support finder, 
-            the character may either lose support or become affected by extra frictional forces.
-            </summary>
-        </member>
-        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.Acceleration">
-            <summary>
-            Rate of increase in the character's speed in the movementDirection.
-            </summary>
-        </member>
-        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.AirborneAcceleration">
-            <summary>
-            Change in airborne speed per second.
-            </summary>
-        </member>
-        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.Body">
-            <summary>
-            The character's physical representation that handles iteractions with the environment.
-            </summary>
-        </member>
-        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.glueSpeed">
-            <summary>
-            If objects are moving away from each other vertically above this speed, the character will lose its grip on the ground.
-            </summary>
-        </member>
-        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.HasTraction">
-            <summary>
-            Whether or not the character is currently standing on anything that can be walked upon.
-            False if there exists no support or the support is too heavily sloped, otherwise true.
-            </summary>
-        </member>
-        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.IsSupported">
-            <summary>
-            Whether or not the character is currently standing on anything.
-            </summary>
-        </member>
-        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.JumpSpeed">
-            <summary>
-            Initial vertical speed when jumping.
-            </summary>
-        </member>
-        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.MaxSlope">
-            <summary>
-            The maximum slope under which walking forces can be applied.
-            </summary>
-        </member>
-        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.MaxSpeed">
-            <summary>
-            Maximum speed in the movementDirection that can be attained.
-            </summary>
-        </member>
-        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.MaximumAirborneSpeed">
-            <summary>
-            The maximum speed that the character can achieve by itself while airborne.
-            A character can exceed this by launching off the ground at a higher speed, but cannot force itself to accelerate faster than this using air control while airborne.
-            </summary>
-        </member>
-        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.MovementDirection">
-            <summary>
-            Normalized direction which the character tries to move.
-            </summary>
-        </member>
-        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.SlidingDeceleration">
-            <summary>
-            Deceleration applied to oppose horizontal movement when the character does not have a steady foothold on the ground (hasTraction == false).
-            </summary>
-        </member>
-        <member name="F:PloobsEngine.Physics.Bepu.CharacterController.TractionDeceleration">
-            <summary>
-            Deceleration applied to oppose uncontrolled horizontal movement when the character has a steady foothold on the ground (hasTraction == true).
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.#ctor(Microsoft.Xna.Framework.Vector3,System.Single,System.Single,System.Single,System.Single,Microsoft.Xna.Framework.Vector2)">
-            <summary>
-            Constructs a simple character controller.
-            </summary>
-            <param name="position">Location to initially place the character.</param>
-            <param name="characterHeight">The height of the character.</param>
-            <param name="characterWidth">The diameter of the character.</param>
-            <param name="mass">Total mass of the character.</param>
-            <param name="maximumStepHeight">Height that the character can climb up.</param>
-            <param name="scale">The scale -> scale.x * characterWidth and scale.y * characterHeight  .</param>
-        </member>
-        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.BEPUphysics#UpdateableSystems#IEndOfTimeStepUpdateable#Update(System.Single)">
-            <summary>
-            Handles the updating of the character.  Called by the owning space object when necessary.
-            </summary>
-            <param name="dt">Simulation seconds since the last update.</param>
-        </member>
-        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.FindSupport(BEPUphysics.Entities.Entity@,Microsoft.Xna.Framework.Vector3@,Microsoft.Xna.Framework.Vector3@,System.Single@,Microsoft.Xna.Framework.Vector3@)">
-            <summary>
-            Locates the closest support entity by performing a convex cast at collected candidates.
-            </summary>
-            <param name="supportEntity">The closest supporting entity.</param>
-            <param name="supportLocation">The support location which the character is standing on.</param>
-            <param name="supportNormal">The normal at the surface where the character is standing..</param>
-            <param name="supportDistance">Distance from the maximum step height on the character down to where the latest support location was found.</param>
-            <param name="supportLocationVelocity">Velocity of the support location on the support entity.</param>
-            <returns>Whether or not a support was located.</returns>
-        </member>
-        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.IsStepSafe(System.Single)">
-            <summary>
-            Performs a convex cast to determine if a step of a given height is valid.
-            This means that stepping up onto the new support wouldn't shove the character's head into a ceiling or other obstacle.
-            </summary>
-            <param name="hitDistance">Vertical distance from the convex cast start to the hit location.</param>
-            <returns>Whether or not the step is safe.</returns>
-        </member>
-        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.IsSupportSlopeWalkable(Microsoft.Xna.Framework.Vector3)">
-            <summary>
-            Determines if the ground supporting the character is sloped gently enough to allow for normal walking.
-            </summary>
-            <param name="supportNormal">Normal of the surface being stood upon.</param>
-            <returns>Whether or not the slope is walkable.</returns>
-        </member>
-        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.Support(Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Vector3,System.Single)">
-            <summary>
-            Maintains the position of the character's body above the ground.
-            </summary>
-            <param name="supportLocationVelocity">Velocity of the support point connected to the supportEntity.</param>
-            <param name="supportNormal">The normal at the surface where the ray hit the entity.</param>
-            <param name="supportDistance">Distance from the character to the support location.</param>
-        </member>
-        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.HandleHorizontalMotion(Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Vector3,System.Single)">
-            <summary>
-            Manages movement acceleration, deceleration, and sliding.
-            </summary>
-            <param name="supportLocationVelocity">Velocity of the support point connected to the supportEntity.</param>
-            <param name="supportNormal">The normal at the surface where the ray hit the entity.</param>
-            <param name="dt">Timestep of the simulation.</param>
-        </member>
-        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.HandleAirborneMotion(System.Single)">
-            <summary>
-            Manages the character's air control.
-            </summary>
-            <param name="dt">Timestep of the simulation.</param>
-        </member>
-        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.Jump">
-            <summary>
-            If the character has a support, it leaps into the air based on its jumpSpeed.
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.Activate">
-            <summary>
-            Activates the character, adding its components to the space. 
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.Deactivate">
-            <summary>
-            Deactivates the character, removing its components from the space.
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.OnAdditionToSpace(BEPUphysics.ISpace)">
-            <summary>
-            Called by the engine when the character is added to the space.
-            Activates the character.
-            </summary>
-            <param name="newSpace">Space to which the character was added.</param>
-        </member>
-        <member name="M:PloobsEngine.Physics.Bepu.CharacterController.OnRemovalFromSpace(BEPUphysics.ISpace)">
-            <summary>
-            Called by the engine when the character is removed from the space.
-            Deactivates the character.
-            </summary>
-        </member>
-        <member name="P:PloobsEngine.Physics.Bepu.CharacterController.Position">
-            <summary>
-            Gets and sets the position of the character.
-            </summary>
-        </member>
-        <member name="T:PloobsEngine.SceneControl.FogType">
-            <summary>
-            Fog Attenuation types
-            </summary>
-        </member>
-        <member name="F:PloobsEngine.SceneControl.FogType.LINEAR">
-            <summary>
-            Linear decaiment
-            </summary>
-        </member>
-        <member name="F:PloobsEngine.SceneControl.FogType.EXPONENCIAL">
-            <summary>
-            Exponencial decaiment
-            </summary>
-        </member>
-        <member name="F:PloobsEngine.SceneControl.FogType.EXPONENCIALSQUARED">
-            <summary>
-            Squared Exponencial decaiment
-            </summary>
-        </member>
-        <member name="T:PloobsEngine.SceneControl.FogPostEffect">
-            <summary>
-            Fog Post Effect
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.SceneControl.FogPostEffect.#ctor(System.Single,System.Single)">
-            <summary>
-            Create the Post Effect using Linear Fog
-            </summary>
-            <param name="nearPlane"></param>
-            <param name="farPlane"></param>
-        </member>
-        <member name="M:PloobsEngine.SceneControl.FogPostEffect.#ctor(System.Single,PloobsEngine.SceneControl.FogType)">
-            <summary>
-            Create the post effect for using Exponencial or Exponencial Squared
-            </summary>
-            <param name="density"></param>
-            <param name="type"></param>
-        </member>
-        <member name="M:PloobsEngine.SceneControl.FogPostEffect.#ctor(PloobsEngine.SceneControl.FogType)">
-            <summary>
-            Initializes a new instance of the <see cref="T:PloobsEngine.SceneControl.FogPostEffect"/> class.
-            Set the density for Exponencial and Exponencial Squared and near/far plane for Linear
-            </summary>
-            <param name="type">The type.</param>
-        </member>
-        <member name="P:PloobsEngine.SceneControl.FogPostEffect.Density">
-            <summary>
-            Default 0.001f;
-            </summary>
-        </member>
-        <member name="P:PloobsEngine.SceneControl.FogPostEffect.NearPlane">
-            <summary>
-            Gets or sets the near plane.
-            Default 1
-            </summary>
-            <value>
-            The near plane.
-            </value>
-        </member>
-        <member name="P:PloobsEngine.SceneControl.FogPostEffect.FarPlane">
-            <summary>
-            Gets or sets the far plane.
-            Default 1000
-            </summary>
-            <value>
-            The far plane.
-            </value>
-        </member>
-        <member name="P:PloobsEngine.SceneControl.AntiAliasingPostEffect.Weight">
-            <summary>
-            Default 2
-            Bigger value, bigger the effect
-            </summary>
-        </member>
-        <member name="P:PloobsEngine.SceneControl.AntiAliasingPostEffect.PixelSizeMultiplier">
-            <summary>
-            Default 1
-            Change only if you Know what are you doing
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.SceneControl.SaturationPostEffect.#ctor(System.Single)">
-            <summary>
-            Initializes a new instance of the <see cref="T:PloobsEngine.SceneControl.SaturationPostEffect"/> class.
-            </summary>
-            <param name="saturation">The saturation.</param>
-        </member>
-        <member name="T:PloobsEngine.SceneControl.BloomPostEffect">
-            <summary>
-            Bloom Post Effect
-            </summary>
-        </member>
-        <member name="P:PloobsEngine.SceneControl.BloomPostEffect.BloomThreshold">
-            <summary>
-            Bloom Parameter
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.SceneControl.ColorCorrectionPostEffect.#ctor(Microsoft.Xna.Framework.Color,System.Single)">
-            <summary>
-            Initializes a new instance of the <see cref="T:PloobsEngine.SceneControl.ColorCorrectionPostEffect"/> class.
-            </summary>
-            <param name="colorAdd">The color add.</param>
-            <param name="colorCorrect">The color correct.</param>
-        </member>
-        <member name="M:PloobsEngine.SceneControl.ContrastPostEffect.#ctor(System.Single)">
-            <summary>
-            Initializes a new instance of the <see cref="T:PloobsEngine.SceneControl.ContrastPostEffect"/> class.
-            </summary>
-            <param name="contrast">-1 a 1</param>
-        </member>
-        <member name="T:PloobsEngine.SceneControl.GammaCorrectionPostEffect">
-            <summary>
-            OLHAR http://mynameismjp.wordpress.com/2009/12/31/correcting-xnas-gamma-correction/
-            SOLUCAO MAIS ELEGANTE PARA PCS --  mudar o render state pelo effect apos o ultimo efeito aplicado
-            </summary>
-        </member>
-        <member name="P:PloobsEngine.SceneControl.ScatterPostEffect.Density">
-            <summary>
-            Default 0.1
-            </summary>
-        </member>
-        <member name="P:PloobsEngine.SceneControl.ScatterPostEffect.Weight">
-            <summary>
-            Defautl 0.1
-            </summary>
-        </member>
-        <member name="P:PloobsEngine.SceneControl.ScatterPostEffect.Decay">
-            <summary>
-            Default 1;
-            </summary>
-        </member>
-        <member name="P:PloobsEngine.SceneControl.ScatterPostEffect.Exposition">
-            <summary>
-            Default 0.5f
-            </summary>
-        </member>
-        <member name="P:PloobsEngine.SceneControl.ScatterPostEffect.NumSamples">
-            <summary>
-            Default 64
-            </summary>
-        </member>
-        <member name="T:PloobsEngine.SceneControl.BlurMode">
-            <summary>
-            gaussian Blur Modes
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.SceneControl.SunPostEffect.#ctor(System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:PloobsEngine.SceneControl.SunPostEffect"/> class.
-            </summary>
-            <param name="flareTexture">The flare texture, null to use default.</param>
-        </member>
-        <member name="F:PloobsEngine.SceneControl.SunPostEffect.sunColor">
-            <summary>
-            default = Color.White
-            </summary>
-        </member>
-        <member name="F:PloobsEngine.SceneControl.SunPostEffect.sunIntensity">
-            <summary>
-            default = 1
-            </summary>
-        </member>
-        <member name="F:PloobsEngine.SceneControl.SunPostEffect.sunSunSize">
-            <summary>
-            default = 1500
-            </summary>
-        </member>
-        <member name="F:PloobsEngine.SceneControl.SunPostEffect.sunPosition">
-            <summary>
-            default = Vector3(1000,1000,0)
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.SceneControl.ShadowRenderer.#ctor(System.Int32)">
-            <summary>
-            Creates the renderer
-            </summary>		
-        </member>
-        <member name="M:PloobsEngine.SceneControl.ShadowRenderer.Render(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.RenderHelper,PloobsEngine.Engine.GraphicInfo,PloobsEngine.Light.DirectionalLightPE,PloobsEngine.Cameras.ICamera,PloobsEngine.SceneControl.IWorld,PloobsEngine.SceneControl.IDeferredGBuffer)">
-            <summary>
-            Renders a list of models to the shadow map, and returns a surface
-            containing the shadow occlusion factor
-            </summary>
-            <param name="render">The render.</param>
-            <param name="light">The light for which the shadow is being calculated</param>
-            <param name="mainCamera">The camera viewing the scene containing the light</param>
-            <param name="world">The world.</param>
-            <param name="deferredGBuffer">The deferred G buffer.</param>
-            <returns>
-            The shadow occlusion texture
-            </returns>
-        </member>
-        <member name="M:PloobsEngine.SceneControl.ShadowRenderer.CalculateFrustum(PloobsEngine.Light.DirectionalLightPE,PloobsEngine.Cameras.ICamera,System.Single,System.Single,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@)">
-            <summary>
-            Determines the size of the frustum needed to cover the viewable area,
-            then creates an appropriate orthographic projection.
-            </summary>
-            <param name="light">The directional light to use</param>
-            <param name="mainCamera">The camera viewing the scene</param>
-        </member>
-        <member name="M:PloobsEngine.SceneControl.ShadowRenderer.RenderShadowMap(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.RenderHelper,System.Int32,PloobsEngine.SceneControl.IWorld)">
-            <summary>
-            Renders the shadow map using the orthographic camera created in
-            CalculateFrustum.
-            </summary>
-            <param name="modelList">The list of models to be rendered</param>        
-        </member>
-        <member name="M:PloobsEngine.SceneControl.ShadowRenderer.RenderShadowOcclusion(PloobsEngine.SceneControl.RenderHelper,PloobsEngine.Cameras.ICamera,PloobsEngine.Light.DirectionalLightPE,PloobsEngine.SceneControl.IDeferredGBuffer)">
-            <summary>
-            Renders a texture containing the final shadow occlusion
-            </summary>
-        </member>
-        <member name="P:PloobsEngine.SceneControl.ShadowRenderer.ShadowMapSize">
-            <summary>
-            Default 512
-            </summary>
-        </member>
-        <member name="P:PloobsEngine.SceneControl.ShadowRenderer.SplitConstant">
-            <summary>
-            Default 0.95
-            Tune the sizes of the splits (exponecial constant)
             </summary>
         </member>
     </members>

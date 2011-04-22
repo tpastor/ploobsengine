@@ -254,7 +254,7 @@ namespace PloobsEngine.Material
 
             
             BatchInformation[] bi = obj.Modelo.GetBatchInformation(0);                
-            render.RenderBatch(ref bi[0], effect);                            
+            render.RenderBatch(bi[0], effect);                            
 
         }        
         
