@@ -184,11 +184,12 @@ namespace PloobsEngine.SceneControl
                         shadowMap = shadow.Render(gameTime, render, ginfo, dl, world.CameraManager.ActiveCamera, world, deferredGBuffer);
 
                         render.PushBlendState(BlendState.AlphaBlend);
-                        //DrawDirectionalLight(render, ginfo, world.CameraManager.ActiveCamera, dl, deferredGBuffer);
+                        DrawDirectionalLight(render, ginfo, world.CameraManager.ActiveCamera, dl, deferredGBuffer);
                         render.PopBlendState();
 
                         break;
                     case LightType.Deferred_Point:
+                        System.Diagnostics.Debug.Fail("Point Light Shadow not supported yet, in production, no error will be sent, it just wont cast any shadow");
                         render.PushBlendState(BlendState.AlphaBlend);
                         DrawPointLight(render, ginfo, world.CameraManager.ActiveCamera, light as PointLightPE, deferredGBuffer, true);
                         render.PopBlendState();
