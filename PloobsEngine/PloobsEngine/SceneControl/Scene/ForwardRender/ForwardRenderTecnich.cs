@@ -70,6 +70,9 @@ namespace PloobsEngine.SceneControl
                 item.Material.Drawn(gameTime,item, world.CameraManager.ActiveCamera, world.Lights, render);                
             }
 
+            if (world.ParticleManager != null)
+                world.ParticleManager.iDraw(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection, render);
+
             if (desc.usePostEffect)
             {
                 render[PrincipalConstants.CurrentImage] = render.PopRenderTarget()[0].RenderTarget as Texture2D;
