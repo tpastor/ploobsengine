@@ -129,6 +129,7 @@
     <Compile Include="ParticleSample\SnowPS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="SoundSamples\SoundScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

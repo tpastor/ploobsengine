@@ -17,8 +17,21 @@ namespace PloobsEngine.SceneControl
         NONE, PCF3x3,PCF7x7SOFT
     }
 
+
     public class ShadowLightMap : IDeferredLightMap
     {
+        public ShadowLightMap(ShadowFilter SpotShadowFilter = ShadowFilter.PCF7x7SOFT, int SpotShadowBufferSize = 1024, DirectionalShadowFilteringType DirectionalFilteringType = DirectionalShadowFilteringType.PCF7x7, int DirectionalShadowMapSize = 512, float CascadeSplitConstant = 0.95f)
+        {
+            this.shadowFilterSpot = SpotShadowFilter;
+            this.shadownBufferSize = SpotShadowBufferSize;
+            this.filteringType = DirectionalFilteringType;
+            this.shadowMapSize = DirectionalShadowMapSize;
+            this.splitConstant = CascadeSplitConstant;
+        }
+
+        DirectionalShadowFilteringType filteringType = DirectionalShadowFilteringType.PCF7x7;
+        int shadowMapSize = 512;
+        float splitConstant = 0.95f;
         GraphicInfo ginfo;
         private RenderTarget2D lightRT;
         private RenderTarget2D shadowRT;
@@ -34,29 +47,9 @@ namespace PloobsEngine.SceneControl
         private ShadowFilter shadowFilterSpot = ShadowFilter.NONE;                
         RenderHelper rh;
         RenderTarget2D rt;
-        ShadowRenderer shadow = new ShadowRenderer();        
-
-
-        public ShadowRenderer DirectionalShadowRender
-        {
-            get { return shadow; }
-            set { shadow = value; }
-        }
+        DirectionalShadowRenderer shadow;
+        private int shadownBufferSize;
         
-        public ShadowFilter SpotShadowFilter
-        {
-            get { return shadowFilterSpot; }
-            set { shadowFilterSpot = value; }
-        }        
-        
-        private int shadownBufferSize ;
-        
-        public int SpotShadowBufferSize
-        {
-            get { return shadownBufferSize; }
-            set { shadownBufferSize = value; }
-        }
-
         #region IDeferredLightMap Members
 
         private void DrawDirectionalLight(RenderHelper render, GraphicInfo ginfo, ICamera camera, DirectionalLightPE dl, IDeferredGBuffer DeferredGBuffer)
@@ -122,7 +115,6 @@ namespace PloobsEngine.SceneControl
                     }
           }                    
 
-
         private void DrawnSpotLight(RenderHelper render, GraphicInfo ginfo, ICamera camera, SpotLightPE sl, IDeferredGBuffer DeferredGBuffer)
         {
                     if(sl.CastShadown)
@@ -153,7 +145,6 @@ namespace PloobsEngine.SceneControl
                     render.PopDepthStencilState();
         }
 
-
         protected void DrawScene(GameTime gameTime, IWorld world, Matrix View, Matrix proj, RenderHelper render)
         {
             world.Culler.StartFrame(View, proj, new BoundingFrustum(View * proj));
@@ -163,6 +154,7 @@ namespace PloobsEngine.SceneControl
                 item.Material.Shadder.DepthExtractor(gameTime, item, View, proj, render);
             }
         }
+        
         private void RenderShadowMap(GameTime gt, RenderHelper render, Matrix view, Matrix proj, IWorld world, IDeferredGBuffer deferredGBuffer)
         {
             render.PushRenderTarget(shadowRT);             
@@ -189,7 +181,7 @@ namespace PloobsEngine.SceneControl
 
                         break;
                     case LightType.Deferred_Point:
-                        System.Diagnostics.Debug.Fail("Point Light Shadow not supported yet, in production, no error will be sent, it just wont cast any shadow");
+                        System.Diagnostics.Debug.Fail("Point Light Shadow not supported, in production no error will be created, the light just wont cast any shadow");
                         render.PushBlendState(BlendState.AlphaBlend);
                         DrawPointLight(render, ginfo, world.CameraManager.ActiveCamera, light as PointLightPE, deferredGBuffer, true);
                         render.PopBlendState();
@@ -234,6 +226,11 @@ namespace PloobsEngine.SceneControl
         public void LoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, bool cullPointLight, bool useFloatingBufferForLightning)
         {
             this.ginfo = ginfo;
+            shadow = new DirectionalShadowRenderer();
+            shadow.ShadowFilteringType = filteringType;
+            shadow.ShadowMapSize = shadowMapSize;
+            shadow.SplitConstant = splitConstant;
+            
             shadownBufferSize = ginfo.BackBufferWidth;
             shadowRT = factory.CreateRenderTarget(shadownBufferSize, shadownBufferSize, SurfaceFormat.Single,true);
 

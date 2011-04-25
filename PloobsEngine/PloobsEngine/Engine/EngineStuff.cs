@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using PloobsEngine.SceneControl;
 using PloobsEngine.Components;
 using PloobsEngine.Commands;
+using Microsoft.Xna.Framework.Audio;
 
 namespace PloobsEngine.Engine
 {
@@ -142,12 +143,34 @@ namespace PloobsEngine.Engine
  
     }
 
+    /// <summary>
+    /// Sound Options Desciption
+    /// </summary>
+    public struct SoundMasterOptionDescription
+    {
+        public SoundMasterOptionDescription(float DistanceScale, float DoplerScale,float MasterVolume)
+        {
+            this.DistanceScale = DistanceScale;
+            this.DoplerScale = DoplerScale;
+            this.MasterVolume = MasterVolume;            
+        }
+
+        public static SoundMasterOptionDescription Default()
+        {            
+            return new SoundMasterOptionDescription(1,1,1);
+        }
+
+        public float DistanceScale;
+        public float DoplerScale;
+        public float MasterVolume;        
+    }
 
     /// <summary>
-    /// Engine Primary Interface
+    /// Engine Entry point
     /// </summary>
     public class EngineStuff : Game
-    {        
+    {
+        SoundMasterOptionDescription soundMasterOptionDescription = SoundMasterOptionDescription.Default();
         InitialEngineDescription initialDescription;
         GraphicsDeviceManager graphics;
         ScreenManager ScreenManager;
@@ -158,20 +181,18 @@ namespace PloobsEngine.Engine
         IContentManager contentManager;
         RenderHelper render;
 
-
-
         /// <summary>
         /// Initializes a new instance of the <see cref="EngineStuff"/> class.
         /// </summary>
         /// <param name="initialDescription">The initial description.</param>
         /// <param name="LoadScreen">The load screen function.</param>
         public EngineStuff(ref InitialEngineDescription initialDescription, LoadScreen LoadScreen)
-        {
+        {            
             System.Diagnostics.Debug.Assert(LoadScreen != null);
             this.LoadScreen = LoadScreen;
             this.initialDescription = initialDescription;
             this.IsFixedTimeStep = initialDescription.isFixedGameTime;
-            ActiveLogger.logger = initialDescription.Logger;            
+            ActiveLogger.logger = initialDescription.Logger;                        
                 
             if (this.initialDescription.OnExit != null)
             {
@@ -263,6 +284,18 @@ namespace PloobsEngine.Engine
 
         }
 
+        public SoundMasterOptionDescription GetSoundMasterOptionDescription()
+        {
+            return soundMasterOptionDescription;
+        }
+
+        public void SetSoundMasterOptionDescription(ref SoundMasterOptionDescription soundMasterOptionDescription)
+        {
+            this.soundMasterOptionDescription = soundMasterOptionDescription;
+            SoundEffect.DistanceScale = soundMasterOptionDescription.DistanceScale;
+            SoundEffect.DopplerScale = soundMasterOptionDescription.DoplerScale;
+            SoundEffect.MasterVolume = soundMasterOptionDescription.MasterVolume;
+        }
 
         /// <summary>
         /// Load the content

@@ -21,7 +21,7 @@ namespace PloobsEngine.SceneControl
         PCF7x7 = 3
     }
 
-	public class ShadowRenderer
+	internal class DirectionalShadowRenderer
 	{
         int shadowMapSize = 512;        
         const int NumSplits = 4;
@@ -80,14 +80,14 @@ namespace PloobsEngine.SceneControl
             set { showCascadeSplits = value; }
         }
 
-        public ShadowRenderer() 
+        public DirectionalShadowRenderer() 
         {
         }
 
 		/// <summary>
 		/// Creates the renderer
 		/// </summary>		
-		public ShadowRenderer(int ShadowMapSize )
+		public DirectionalShadowRenderer(int ShadowMapSize )
 		{
             this.ShadowMapSize = ShadowMapSize;         
 		}

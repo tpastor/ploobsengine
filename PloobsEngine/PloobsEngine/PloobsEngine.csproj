@@ -122,7 +122,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Audio\ISoundEmitter3D.cs" />
+    <Compile Include="Audio\2DSoundEffect\SoundAudioPlayer.cs" />
+    <Compile Include="Audio\2DSoundEffect\SimpleSoundEffect.cs" />
+    <Compile Include="Audio\3DSound\Static3DSound.cs" />
+    <Compile Include="Audio\3DSound\ISoundEmitter3D.cs" />
+    <Compile Include="Audio\3DSound\ObjectFollower3DSound.cs" />
+    <Compile Include="Audio\LocalMediaAudioPlayer.cs" />
     <Compile Include="Cameras\CameraFirstPerson.cs" />
     <Compile Include="Cameras\CameraFollowObject.cs" />
     <Compile Include="Cameras\CameraFollowPath.cs" />

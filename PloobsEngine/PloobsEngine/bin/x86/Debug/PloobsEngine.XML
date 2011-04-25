@@ -1102,54 +1102,6 @@
             Interface for an Input Processor
             </summary>
         </member>
-        <member name="T:PloobsEngine.Audio.ISoundEmitter3D">
-            <summary>
-            Generic Sound 3D Emiter 
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.Audio.ISoundEmitter3D.setEmitterPosition(Microsoft.Xna.Framework.Vector3)">
-            <summary>
-            Sets the emitter position.
-            </summary>
-            <param name="position">The position.</param>
-        </member>
-        <member name="M:PloobsEngine.Audio.ISoundEmitter3D.setListenerPosition(Microsoft.Xna.Framework.Vector3)">
-            <summary>
-            Sets the listener position.
-            </summary>
-            <param name="position">The position.</param>
-        </member>
-        <member name="M:PloobsEngine.Audio.ISoundEmitter3D.Update(Microsoft.Xna.Framework.GameTime,PloobsEngine.Cameras.ICamera)">
-            <summary>
-            Updates .
-            </summary>
-            <param name="gt">The gt.</param>
-        </member>
-        <member name="M:PloobsEngine.Audio.ISoundEmitter3D.Pause">
-            <summary>
-            Pauses the sound
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.Audio.ISoundEmitter3D.Resume">
-            <summary>
-            Resumes the sound
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.Audio.ISoundEmitter3D.Play">
-            <summary>
-            Plays the sound
-            </summary>
-        </member>
-        <member name="M:PloobsEngine.Audio.ISoundEmitter3D.Stop">
-            <summary>
-            Stops the sound
-            </summary>
-        </member>
-        <member name="P:PloobsEngine.Audio.ISoundEmitter3D.State">
-            <summary>
-            Gets the Sound state.
-            </summary>
-        </member>
         <member name="T:PloobsEngine.Utils.Spline.CubicSpline">
             <summary>
             N-dimensional cubic spline interpolator.
@@ -3899,9 +3851,14 @@
             handler Called when engine exit
             </summary>
         </member>
+        <member name="T:PloobsEngine.Engine.SoundMasterOptionDescription">
+            <summary>
+            Sound Options Desciption
+            </summary>
+        </member>
         <member name="T:PloobsEngine.Engine.EngineStuff">
             <summary>
-            Engine Primary Interface
+            Engine Entry point
             </summary>
         </member>
         <member name="M:PloobsEngine.Engine.EngineStuff.#ctor(PloobsEngine.Engine.InitialEngineDescription@,PloobsEngine.Engine.LoadScreen)">
@@ -4901,6 +4858,7 @@
             Adds the sound emitter.
             </summary>
             <param name="em">The em.</param>
+            <param name="play">if set to <c>true</c> [play].</param>
         </member>
         <member name="M:PloobsEngine.SceneControl.IWorld.RemoveSoundEmitter(PloobsEngine.Audio.ISoundEmitter3D)">
             <summary>
@@ -6986,12 +6944,12 @@
             <param name="index">The index of the valid object to get</param>
             <returns>A valid object found at the index</returns>
         </member>
-        <member name="M:PloobsEngine.SceneControl.ShadowRenderer.#ctor(System.Int32)">
+        <member name="M:PloobsEngine.SceneControl.DirectionalShadowRenderer.#ctor(System.Int32)">
             <summary>
             Creates the renderer
             </summary>		
         </member>
-        <member name="M:PloobsEngine.SceneControl.ShadowRenderer.Render(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.RenderHelper,PloobsEngine.Engine.GraphicInfo,PloobsEngine.Light.DirectionalLightPE,PloobsEngine.Cameras.ICamera,PloobsEngine.SceneControl.IWorld,PloobsEngine.SceneControl.IDeferredGBuffer)">
+        <member name="M:PloobsEngine.SceneControl.DirectionalShadowRenderer.Render(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.RenderHelper,PloobsEngine.Engine.GraphicInfo,PloobsEngine.Light.DirectionalLightPE,PloobsEngine.Cameras.ICamera,PloobsEngine.SceneControl.IWorld,PloobsEngine.SceneControl.IDeferredGBuffer)">
             <summary>
             Renders a list of models to the shadow map, and returns a surface
             containing the shadow occlusion factor
@@ -7007,7 +6965,7 @@
             The shadow occlusion texture
             </returns>
         </member>
-        <member name="M:PloobsEngine.SceneControl.ShadowRenderer.CalculateFrustum(PloobsEngine.Light.DirectionalLightPE,PloobsEngine.Cameras.ICamera,System.Single,System.Single,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@)">
+        <member name="M:PloobsEngine.SceneControl.DirectionalShadowRenderer.CalculateFrustum(PloobsEngine.Light.DirectionalLightPE,PloobsEngine.Cameras.ICamera,System.Single,System.Single,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@)">
             <summary>
             Determines the size of the frustum needed to cover the viewable area,
             then creates an appropriate orthographic projection.
@@ -7015,24 +6973,24 @@
             <param name="light">The directional light to use</param>
             <param name="mainCamera">The camera viewing the scene</param>
         </member>
-        <member name="M:PloobsEngine.SceneControl.ShadowRenderer.RenderShadowMap(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.RenderHelper,System.Int32,PloobsEngine.SceneControl.IWorld)">
+        <member name="M:PloobsEngine.SceneControl.DirectionalShadowRenderer.RenderShadowMap(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.RenderHelper,System.Int32,PloobsEngine.SceneControl.IWorld)">
             <summary>
             Renders the shadow map using the orthographic camera created in
             CalculateFrustum.
             </summary>
             <param name="modelList">The list of models to be rendered</param>        
         </member>
-        <member name="M:PloobsEngine.SceneControl.ShadowRenderer.RenderShadowOcclusion(PloobsEngine.SceneControl.RenderHelper,PloobsEngine.Cameras.ICamera,PloobsEngine.Light.DirectionalLightPE,PloobsEngine.SceneControl.IDeferredGBuffer)">
+        <member name="M:PloobsEngine.SceneControl.DirectionalShadowRenderer.RenderShadowOcclusion(PloobsEngine.SceneControl.RenderHelper,PloobsEngine.Cameras.ICamera,PloobsEngine.Light.DirectionalLightPE,PloobsEngine.SceneControl.IDeferredGBuffer)">
             <summary>
             Renders a texture containing the final shadow occlusion
             </summary>
         </member>
-        <member name="P:PloobsEngine.SceneControl.ShadowRenderer.ShadowMapSize">
+        <member name="P:PloobsEngine.SceneControl.DirectionalShadowRenderer.ShadowMapSize">
             <summary>
             Default 512
             </summary>
         </member>
-        <member name="P:PloobsEngine.SceneControl.ShadowRenderer.SplitConstant">
+        <member name="P:PloobsEngine.SceneControl.DirectionalShadowRenderer.SplitConstant">
             <summary>
             Default 0.95
             Tune the sizes of the splits (exponecial constant)
@@ -7875,6 +7833,205 @@
         <member name="P:PloobsEngine.Physic.PhysicObjects.BepuObject.GravitationalFieldObject.Origin">
             <summary>
             Gets or sets the center of the field that entities will be pushed toward.
+            </summary>
+        </member>
+        <member name="T:PloobsEngine.Audio.ISoundEmitter3D">
+            <summary>
+            Generic Sound 3D Emiter 
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Audio.ISoundEmitter3D.Update(Microsoft.Xna.Framework.GameTime,PloobsEngine.Cameras.ICamera)">
+            <summary>
+            Updates .
+            </summary>
+            <param name="gt">The gt.</param>
+            <param name="camera">The camera.</param>
+        </member>
+        <member name="M:PloobsEngine.Audio.ISoundEmitter3D.Pause">
+            <summary>
+            Pauses the sound
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Audio.ISoundEmitter3D.Resume">
+            <summary>
+            Resumes the sound
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Audio.ISoundEmitter3D.Play">
+            <summary>
+            Plays the sound
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Audio.ISoundEmitter3D.Stop(System.Boolean)">
+            <summary>
+            Stops the sound
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.Audio.ISoundEmitter3D.State">
+            <summary>
+            Gets the Sound state.
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Audio.SimpleSoundEffect.#ctor(PloobsEngine.SceneControl.IContentManager,System.String,System.Single,System.Single,System.Single,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Audio.SimpleSoundEffect"/> class.
+            </summary>
+            <param name="cmanager">The cmanager.</param>
+            <param name="name">The name.</param>
+            <param name="volume">The volume.</param>
+            <param name="pitch">The pitch(-1 to 1).</param>
+            <param name="pan">The pan (-1 to 1).</param>
+            <param name="isLooped">if set to <c>true</c> [is looped].</param>
+        </member>
+        <member name="T:PloobsEngine.Audio.SoundAudioPlayer">
+            <summary>
+            SoundPlayer
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Audio.SoundAudioPlayer.#ctor(PloobsEngine.SceneControl.IContentManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Audio.SoundAudioPlayer"/> class.
+            </summary>
+            <param name="cmanager">The cmanager.</param>
+        </member>
+        <member name="M:PloobsEngine.Audio.SoundAudioPlayer.PlaySoundEffect(System.String)">
+            <summary>
+            Plays the effect song.
+            </summary>
+            <param name="songName">Name of the song.</param>
+        </member>
+        <member name="M:PloobsEngine.Audio.SoundAudioPlayer.PauseSoundEffect(System.String)">
+            <summary>
+            Pauses the effect song.
+            </summary>
+            <param name="songName">Name of the song.</param>
+        </member>
+        <member name="M:PloobsEngine.Audio.SoundAudioPlayer.ResumeSoundEffect(System.String)">
+            <summary>
+            Resumes the specified song name.
+            </summary>
+            <param name="songName">Name of the song.</param>
+        </member>
+        <member name="M:PloobsEngine.Audio.SoundAudioPlayer.StopSoundEffect(System.String)">
+            <summary>
+            Stops the effect song.
+            </summary>
+            <param name="songName">Name of the song.</param>
+        </member>
+        <member name="M:PloobsEngine.Audio.SoundAudioPlayer.SoundState(System.String)">
+            <summary>
+            State of the parameter songName
+            </summary>
+            <param name="songName">Name of the song.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Audio.SoundAudioPlayer.AddSoundToRepository(System.String,System.String,System.Single,System.Single,System.Single,System.Boolean)">
+            <summary>
+            Add A Sound Effect to the Repo
+            </summary>
+            <param name="musicNamePath">filepath</param>
+            <param name="musicName">Name used to refer to this effect latter</param>
+            <param name="volume">between 0 - 1</param>
+            <param name="pitch">between -1 to 1 (octaves)</param>
+            <param name="pan">between -1 to 1 (left - right)</param>
+            <param name="isLooped">if set to <c>true</c> [is looped].</param>
+        </member>
+        <member name="M:PloobsEngine.Audio.SoundAudioPlayer.RemoveSoundFromRepository(System.String)">
+            <summary>
+            Removes the effect from repository.
+            </summary>
+            <param name="soundEffectName">Name of the sound effect.</param>
+        </member>
+        <member name="M:PloobsEngine.Audio.SoundAudioPlayer.HasSoundEffect(System.String)">
+            <summary>
+            Determines whether [This Audio Player has] [the specified sound effect name].
+            </summary>
+            <param name="soundEffectName">Name of the sound effect.</param>
+            <returns>
+              <c>true</c> if [has the specified sound effect] otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:PloobsEngine.Audio.SoundAudioPlayer.GetSoundEffectInstance(System.String)">
+            <summary>
+            Gets the sound effect instance.
+            The SimpleSoundEffect MUST BE ALREADY IN THE REPO !!!
+            TO CREATE A Non SHARED SIMPLESOUNDEFFECT, USE THE SIMPLESOUNDEFFECT CONSTRUTOR.
+            </summary>
+            <param name="soundEffectName">Name of the sound effect.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Audio.SoundAudioPlayer.RemoveAllSounds">
+            <summary>
+            Removes all sounds.
+            </summary>
+        </member>
+        <member name="T:PloobsEngine.Audio.LocalMediaAudioPlayer">
+            <summary>
+            MusicPlayer
+            IMPORTANT
+            On Windows, MediaLibrary can find songs only if the Windows Media Player previously found songs on the system.
+            This means that Windows Media Player first must search the system for music before any songs can be accessed through MediaLibrary.
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Audio.LocalMediaAudioPlayer.StartQueue">
+            <summary>
+            Starts the queue of songs
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Audio.LocalMediaAudioPlayer.PlayAlbum(Microsoft.Xna.Framework.Media.Album)">
+            <summary>
+            Plays the album.
+            </summary>
+            <param name="album">The album.</param>
+        </member>
+        <member name="M:PloobsEngine.Audio.LocalMediaAudioPlayer.PlaySpecificMusic(System.String)">
+            <summary>
+            Plays the specific music.
+            </summary>
+            <param name="name">The name.</param>
+        </member>
+        <member name="M:PloobsEngine.Audio.LocalMediaAudioPlayer.AdvanceOneMusicInQueue">
+            <summary>
+            Advances one music in queue.
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Audio.LocalMediaAudioPlayer.BackOneMusicInQueue">
+            <summary>
+            Backs one music in queue.
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Audio.LocalMediaAudioPlayer.CurrentMusicState">
+            <summary>
+            Current state of the current music.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Audio.LocalMediaAudioPlayer.PauseCurrentMusic">
+            <summary>
+            Pauses the current music.
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Audio.LocalMediaAudioPlayer.ResumeCurrentMusic">
+            <summary>
+            Resumes the current music.
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Audio.LocalMediaAudioPlayer.StopCurrentMusic">
+            <summary>
+            Stops the current music.
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.Audio.LocalMediaAudioPlayer.Loop">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="!:BackGroundAudioPlayer"/> is loop.
+            </summary>
+            <value>
+              <c>true</c> if loop; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.Audio.LocalMediaAudioPlayer.SongCollection">
+            <summary>
+            Gets the song collection.
             </summary>
         </member>
     </members>
