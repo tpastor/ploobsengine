@@ -45,9 +45,25 @@ namespace PloobsEngine.SceneControl
         /// <returns></returns>
         public static DeferredRenderTechnicInitDescription Default()
         {
-            return new DeferredRenderTechnicInitDescription(new GBuffer(),new LightMap(),new FinalCombination(Color.Transparent),new ForwardPass(false),Color.Black,false,false,false,true,true,true,new string[] { PrincipalConstants.CurrentImage,PrincipalConstants.colorRT,PrincipalConstants.normalRt,PrincipalConstants.lightRt  } ,RestoreDepthOption.BEFORE_POSTEFFECT);
+            return new DeferredRenderTechnicInitDescription(new GBuffer(),new LightMap(),new FinalCombination(Color.Transparent),new ForwardPass(ForwardPassDescription.Default()),Color.Black,false,false,false,true,true,true,new string[] { PrincipalConstants.CurrentImage,PrincipalConstants.colorRT,PrincipalConstants.normalRt,PrincipalConstants.lightRt  } ,RestoreDepthOption.BEFORE_POSTEFFECT);
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DeferredRenderTechnicInitDescription"/> struct.
+        /// </summary>
+        /// <param name="DeferredGBuffer">The deferred G buffer.</param>
+        /// <param name="DeferredLightMap">The deferred light map.</param>
+        /// <param name="DeferredFinalCombination">The deferred final combination.</param>
+        /// <param name="ForwardPass">The forward pass.</param>
+        /// <param name="BackGroundColor">Color of the back ground.</param>
+        /// <param name="PhysicDebug">if set to <c>true</c> [physic debug].</param>
+        /// <param name="LightDebug">if set to <c>true</c> [light debug].</param>
+        /// <param name="DefferedDebug">if set to <c>true</c> [deffered debug].</param>
+        /// <param name="UseFloatingBufferForLightMap">if set to <c>true</c> [use floating buffer for light map].</param>
+        /// <param name="CullPointLight">if set to <c>true</c> [cull point light].</param>
+        /// <param name="ExtraForwardPass">if set to <c>true</c> [extra forward pass].</param>
+        /// <param name="RenderTargetsNameToDefferedDebug">The render targets name to deffered debug.</param>
+        /// <param name="RestoreDepthOption">The restore depth option.</param>
         public DeferredRenderTechnicInitDescription(IDeferredGBuffer DeferredGBuffer, IDeferredLightMap DeferredLightMap, IDeferredFinalCombination DeferredFinalCombination,
             ForwardPass ForwardPass, Color BackGroundColor, bool PhysicDebug, bool LightDebug, bool DefferedDebug, bool UseFloatingBufferForLightMap,
             bool CullPointLight, bool ExtraForwardPass, String[] RenderTargetsNameToDefferedDebug, RestoreDepthOption RestoreDepthOption)
@@ -96,7 +112,7 @@ namespace PloobsEngine.SceneControl
             deferredFinalCombination  = desc.DeferredFinalCombination;
             forwardPass = desc.ForwardPass;
             if (desc.LightDebug)
-                ActiveLogger.LogMessage("LighDebug is not implemented yet", LogLevel.Warning);
+                ActiveLogger.LogMessage("LighDebug is not implemented yet, will be disabled", LogLevel.Warning);
 
             if (desc.DefferedDebug)
             {
@@ -104,7 +120,7 @@ namespace PloobsEngine.SceneControl
                 {
                     if (desc.RenderTargetsNameToDefferedDebug.Count() != 4)
                     {
-                        ActiveLogger.LogMessage("RenderTargetsNameToDefferedDebug must be 4, Deferred Degub Disabled", LogLevel.RecoverableError);
+                        ActiveLogger.LogMessage("RenderTargetsNameToDefferedDebug must be 4, Deferred Degug Disabled", LogLevel.RecoverableError);
                         desc.DefferedDebug = false;
                     }
                 }
@@ -148,6 +164,7 @@ namespace PloobsEngine.SceneControl
         /// <summary>
         /// Executes the technic.
         /// </summary>
+        /// <param name="gameTime"></param>
         /// <param name="render">The render.</param>
         /// <param name="world">The world.</param>
         protected override void ExecuteTechnic(GameTime gameTime, RenderHelper render, IWorld world)
@@ -197,6 +214,7 @@ namespace PloobsEngine.SceneControl
                     }
                     if (world.ParticleManager != null)
                         world.ParticleManager.iDraw(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection, render);
+
                     forwardPass.Draw(gameTime, world, render);
                     render.RenderPosComponents(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection);
                     render[PrincipalConstants.CurrentImage] = restoreDepth.EndForwardPass(render);
@@ -222,8 +240,7 @@ namespace PloobsEngine.SceneControl
                     else
                     {                        
                         render.Clear(Color.Black);                        
-                        render.RenderTextureComplete(render[PrincipalConstants.CurrentImage], Color.White, ginfo.FullScreenRectangle, Matrix.Identity,null,true,SpriteSortMode.Deferred,SamplerState.LinearClamp,BlendState.AlphaBlend);
-                        return;
+                        render.RenderTextureComplete(render[PrincipalConstants.CurrentImage], Color.White, ginfo.FullScreenRectangle, Matrix.Identity,null,true,SpriteSortMode.Deferred,SamplerState.LinearClamp,BlendState.AlphaBlend);                    
                     }
                 }
                 else if (desc.RestoreDepthOption == RestoreDepthOption.AFTER_POSTEFFECT)

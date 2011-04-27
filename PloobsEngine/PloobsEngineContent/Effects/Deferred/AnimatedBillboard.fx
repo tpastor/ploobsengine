@@ -5,10 +5,11 @@ float4x4 xView;
 float4x4 xProjection;
 float4x4 xWorld;
 float3 xAllowedRotDir = float3(0,1,0);
+float3 xCamPos;
 float scaleX = 1;
 float scaleY = 1;
 float4 atenuation = float4(1,1,1,1);
-bool applyLight;
+float alphaTest;
 float amplitude;
 float gTime;
 float timeScale = 5;
@@ -33,7 +34,7 @@ struct BBPixelToFrame
 };
 
 //------- Technique: CylBillboard --------
-BBVertexToPixel CylBillboardVS(float3 inPos: POSITION0, float2 inTexCoord: TEXCOORD0 , float3 normal : Normal0)
+BBVertexToPixel CylBillboardVS(float3 inPos: POSITION0, float2 inTexCoord: TEXCOORD0 )
 {
     BBVertexToPixel Output = (BBVertexToPixel)0;
 
@@ -42,10 +43,12 @@ BBVertexToPixel CylBillboardVS(float3 inPos: POSITION0, float2 inTexCoord: TEXCO
     float3 upVector = xAllowedRotDir;
     upVector = normalize(upVector);
     
-    float3 sideVector ;
+    float3 sideVector;
     if(cilindric)
-    {		
-		sideVector = normalize(normal);
+    {	
+		float3 eyeVector = center - xCamPos;
+		sideVector = cross(eyeVector,upVector);
+		sideVector = normalize(sideVector);
     }
     else    
     {
@@ -58,8 +61,8 @@ BBVertexToPixel CylBillboardVS(float3 inPos: POSITION0, float2 inTexCoord: TEXCO
     finalPosition += (1.5f-inTexCoord.y*1.5f)*upVector * scaleY;   
     
     ///o center eh pra dar um randomizada maior
-    //float sine = amplitude*sin(gTime/timeScale + center.x);		    
-	//finalPosition += sine*sideVector * (1 - inTexCoord.x);	
+    float sine = amplitude*sin(gTime/timeScale + center.x);		    
+	finalPosition += sine*sideVector * (1 - inTexCoord.y);	
 	
 	float4 finalPosition4 = float4(finalPosition, 1);
     
@@ -80,7 +83,14 @@ BBPixelToFrame BillboardPS(BBVertexToPixel PSIn)
 {
     BBPixelToFrame output = (BBPixelToFrame)0;
     
-    output.Color = tex2D(textureSampler, PSIn.TexCoord) * atenuation;        					        
+    output.Color = tex2D(textureSampler, PSIn.TexCoord) ;        					        
+
+	if(output.Color.a <= alphaTest)
+	{
+	   discard;
+	}
+
+	output.Color  = output.Color  * atenuation;
     
     float sine = amplitude*sin(gTime/100)/10;	
     output.Color.r = output.Color.r + 0.1f*sine;
@@ -89,18 +99,9 @@ BBPixelToFrame BillboardPS(BBVertexToPixel PSIn)
 
     output.Normal.rgb = 0.5f;                   
     output.Normal.a = 0;													       
-    output.Extra1.rgba =  0;  
-    if(applyLight == true)
-    {    
-		output.Depth = PSIn.Depth.x / PSIn.Depth.y;
-		output.Extra1.a =  1;		
-    }        
-    else
-    {
-		output.Color.a = 0;
-    }
-    
-    
+    output.Extra1.rgba =  0;      
+	output.Depth = PSIn.Depth.x / PSIn.Depth.y;
+	output.Extra1.a =  1;		
     return output;
 }
 

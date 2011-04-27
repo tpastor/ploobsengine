@@ -15,7 +15,7 @@ namespace PloobsEngine.Material
     /// Shader that uses branching to use Glow,Bump, Specular and Paralax
     /// Dont need to use all of them at once
     /// </summary>
-    public class CustomDeferred : IShader
+    public class DeferredCustomShader : IShader
     {
         private string effect;
         private Effect _shader;
@@ -111,7 +111,7 @@ namespace PloobsEngine.Material
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CustomDeferred"/> class.
+        /// Initializes a new instance of the <see cref="DeferredCustomShader"/> class.
         /// </summary>
         /// <param name="useGlow">if set to <c>true</c> [use glow].</param>
         /// <param name="useBump">if set to <c>true</c> [use bump].</param>
@@ -119,7 +119,7 @@ namespace PloobsEngine.Material
         /// <param name="useParalax">if set to <c>true</c> [use paralax].</param>
         /// <param name="specularIntensity">The specular intensity.</param>
         /// <param name="specularPower">The specular power.</param>
-        public CustomDeferred(bool useGlow,bool useBump,bool useSpecular,bool useParalax, float specularIntensity = 0, float specularPower = 0)
+        public DeferredCustomShader(bool useGlow,bool useBump,bool useSpecular,bool useParalax, float specularIntensity = 0, float specularPower = 0)
         {
             if (specularPower < 0)
             {

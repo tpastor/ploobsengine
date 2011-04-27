@@ -17,7 +17,7 @@ namespace PloobsEngine.Material
         /// Initializes a new instance of the <see cref="ForwardMaterial"/> class.
         /// </summary>
         /// <param name="shader">The shader.</param>
-        public DeferredAnimatedMaterial(IAnimatedController controller, SimpleAnimationShader shader)
+        public DeferredAnimatedMaterial(IAnimatedController controller, DeferredSimpleAnimationShader shader)
         {
             System.Diagnostics.Debug.Assert(shader.MaterialType == Material.MaterialType.DEFERRED);
             this.Shadder = shader;

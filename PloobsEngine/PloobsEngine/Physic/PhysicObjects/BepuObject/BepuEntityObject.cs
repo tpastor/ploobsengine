@@ -13,8 +13,6 @@ using PloobsEngine.Engine.Logger;
 namespace PloobsEngine.Physics.Bepu
 {
 
-
-
     /// <summary>
     /// Base class for Bepu entities
     /// </summary>

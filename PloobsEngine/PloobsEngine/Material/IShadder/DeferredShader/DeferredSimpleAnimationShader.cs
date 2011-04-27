@@ -16,26 +16,26 @@ namespace PloobsEngine.Material
     /// <summary>
     /// Animation shader with simple effects
     /// </summary>
-    public class SimpleAnimationShader : IShader
+    public class DeferredSimpleAnimationShader : IShader
     {
         /// <summary>
         /// Serialization
         /// </summary>
-        internal SimpleAnimationShader()
+        internal DeferredSimpleAnimationShader()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SimpleAnimationShader"/> class.
+        /// Initializes a new instance of the <see cref="DeferredSimpleAnimationShader"/> class.
         /// </summary>
         /// <param name="ac">The ac.</param>
-        public SimpleAnimationShader(IAnimatedController ac)
+        public DeferredSimpleAnimationShader(IAnimatedController ac)
         {
             this.ac = ac; 
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SimpleAnimationShader"/> class.
+        /// Initializes a new instance of the <see cref="DeferredSimpleAnimationShader"/> class.
         /// THIS IS A SPECIAL CONSTRUCTOR, it is used to ATACH this shader to a external BONE
         /// Can be used for example to put a gun in the hand of a character
         /// </summary>
@@ -43,7 +43,7 @@ namespace PloobsEngine.Material
         /// <param name="obj">The obj.</param>
         /// <param name="Followed">The followed.</param>
         /// <param name="boneName">Name of the bone.</param>
-        public SimpleAnimationShader(IAnimatedController ac,IObject obj, IAnimatedController Followed,String boneName)
+        public DeferredSimpleAnimationShader(IAnimatedController ac,IObject obj, IAnimatedController Followed,String boneName)
         {
             this.ac = ac;            
             this.Followed = Followed;

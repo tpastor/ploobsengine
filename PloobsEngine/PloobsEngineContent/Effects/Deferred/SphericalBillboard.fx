@@ -1,4 +1,5 @@
 //------- XNA interface --------
+float alphaTest;
 float3 camUp;
 float3 forward;
 float4x4 xView;
@@ -7,7 +8,6 @@ float4x4 xWorld;
 float scaleX = 1;
 float scaleY = 1;
 float4 atenuation = float4(1,1,1,1);
-bool applyLight;
 //------- Texture Samplers --------
 Texture xBillboardTexture;
 
@@ -59,26 +59,22 @@ BBVertexToPixel CylBillboardVS(float3 inPos: POSITION0, float2 inTexCoord: TEXCO
 BBPixelToFrame BillboardPS(BBVertexToPixel PSIn) 
 {
     BBPixelToFrame output = (BBPixelToFrame)0;
-    output.Color = tex2D(textureSampler, PSIn.TexCoord) * atenuation;        					        
+    output.Color = tex2D(textureSampler, PSIn.TexCoord) ;        					        
+	if(output.Color.a <= alphaTest)
+	{
+	   discard;
+	}
 
+	output.Color = output.Color  * atenuation;
     output.Normal.rgb = 0.5f;                   
     output.Normal.a = 0;													       
     output.Extra1.rgba =  0;  
-    if(applyLight == true)
-    {    
-		output.Depth = PSIn.Depth.x / PSIn.Depth.y;
-		output.Extra1.a =  1;		
-    }        
-    else
-    {
-		output.Color.a = 0;
-    }
-    
-    
+	output.Depth = PSIn.Depth.x / PSIn.Depth.y;
+	output.Extra1.a =  1;		        
     return output;
 }
 
-technique CylBillboard
+technique SpheBillboard
 {
     pass Pass0
     {        

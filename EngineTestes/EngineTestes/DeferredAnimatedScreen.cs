@@ -54,7 +54,7 @@ namespace EngineTestes
                 AnimatedController arobo = new AnimatedController(am, "Idle");
 
                 ///Cria o shader e o material animados 
-                SimpleAnimationShader sas = new SimpleAnimationShader(arobo);
+                DeferredSimpleAnimationShader sas = new DeferredSimpleAnimationShader(arobo);
                 DeferredAnimatedMaterial amat = new DeferredAnimatedMaterial(arobo, sas);
 
                 CharacterControllerInput gp = new CharacterControllerInput(this, new Vector3(100, 50, 1), 25, 10, 10, Vector2.One);
@@ -69,7 +69,7 @@ namespace EngineTestes
             {
                 SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
                 TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
-                NormalDeferred shader = new NormalDeferred();
+                DeferredNormalShader shader = new DeferredNormalShader();
                 DeferredMaterial fmaterial = new DeferredMaterial(shader);
                 IObject obj = new IObject(fmaterial, simpleModel, tmesh);
                 this.World.AddObject(obj);

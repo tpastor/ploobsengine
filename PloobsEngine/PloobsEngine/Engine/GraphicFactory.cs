@@ -110,9 +110,19 @@ namespace PloobsEngine.Engine
             return new IndexBuffer(device, elementSize, indexCount, usage);
         }
 
+        public DynamicIndexBuffer CreateDynamicIndexBuffer(IndexElementSize elementSize, int indexCount, BufferUsage usage)
+        {
+            return new DynamicIndexBuffer(device, elementSize, indexCount, usage);
+        }
+
         public VertexBuffer CreateVertexBuffer(VertexDeclaration vertexDeclaration, int vertexCount, BufferUsage usage)
         {
             return new VertexBuffer(device, vertexDeclaration, vertexCount, usage);
+        }
+
+        public DynamicVertexBuffer CreateDynamicVertexBuffer(VertexDeclaration vertexDeclaration, int vertexCount, BufferUsage usage)
+        {
+            return new DynamicVertexBuffer(device, vertexDeclaration, vertexCount, usage);
         }
 
         public T GetAsset<T>(String assetName, bool isInternal = false)

@@ -14,10 +14,10 @@ namespace PloobsEngine.Material
     /// <summary>
     /// Ocean Water
     /// </summary>
-    public class OceanShader : IShader
+    public class DeferredWaterShader : IShader
     {
 
-        public OceanShader(String texCubeName)
+        public DeferredWaterShader(String texCubeName)
         {
             TexureName = texCubeName;
         }

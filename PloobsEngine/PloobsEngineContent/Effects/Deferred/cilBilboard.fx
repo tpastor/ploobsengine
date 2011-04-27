@@ -1,4 +1,5 @@
 //------- XNA interface --------
+float alphaTest;
 float4x4 xView;
 float4x4 xProjection;
 float4x4 xWorld;
@@ -11,7 +12,15 @@ bool applyLight;
 //------- Texture Samplers --------
 Texture xBillboardTexture;
 
-sampler textureSampler = sampler_state { texture = <xBillboardTexture> ; magfilter = LINEAR; minfilter = LINEAR; mipfilter=LINEAR; AddressU = CLAMP; AddressV = CLAMP;};
+sampler textureSampler = sampler_state 
+{ 
+texture = <xBillboardTexture> ;
+ magfilter = LINEAR; 
+ minfilter = LINEAR; 
+ mipfilter =  LINEAR; 
+ AddressU = CLAMP; 
+ AddressV = CLAMP;
+};
 struct BBVertexToPixel
 {
     float4 Position : POSITION;
@@ -20,10 +29,10 @@ struct BBVertexToPixel
 };
 struct BBPixelToFrame
 {
-    half4 Color : COLOR0;
-    half4 Normal : COLOR1;
-    half4 Depth : COLOR2;
-    half4 Extra1 : COLOR3;
+    float4 Color : COLOR0;
+    float4 Normal : COLOR1;
+    float4 Depth : COLOR2;
+    float4 Extra1 : COLOR3;
 };
 
 //------- Technique: CylBillboard --------
@@ -36,6 +45,7 @@ BBVertexToPixel CylBillboardVS(float3 inPos: POSITION0, float2 inTexCoord: TEXCO
 
     float3 upVector = xAllowedRotDir;
     upVector = normalize(upVector);
+
     float3 sideVector = cross(eyeVector,upVector);
     sideVector = normalize(sideVector);
 
@@ -55,25 +65,24 @@ BBVertexToPixel CylBillboardVS(float3 inPos: POSITION0, float2 inTexCoord: TEXCO
 BBPixelToFrame BillboardPS(BBVertexToPixel PSIn) 
 {
     BBPixelToFrame output = (BBPixelToFrame)0;
-    output.Color = tex2D(textureSampler, PSIn.TexCoord) * atenuation;        					        
+    output.Color = tex2D(textureSampler, PSIn.TexCoord) ;        					        
+
+	if(output.Color.a <= alphaTest)
+	{
+	   discard;
+	}
+	
+	output.Color = output.Color * atenuation;
     output.Normal.rgb = 0.5f;                   
     output.Normal.a = 0;													       
-    output.Extra1.rgba =  0;  
-    if(applyLight == true)
-    {    
-		output.Depth = PSIn.Depth.x / PSIn.Depth.y;
-		output.Extra1.a =  1;		
-    }        
-    else
-    {
-		output.Color.a = 0;
-    }
-    
-    
+    output.Extra1.rgb =  0;      
+	output.Depth = PSIn.Depth.x / PSIn.Depth.y;
+	output.Extra1.a = 1;
+	output.Depth = PSIn.Depth.x / PSIn.Depth.y;	
     return output;
 }
 
-technique CylBillboard
+technique CylBillboardAlphaTest
 {
     pass Pass0
     {        
@@ -81,3 +90,4 @@ technique CylBillboard
         PixelShader = compile ps_2_0 BillboardPS();        
     }
 }
+

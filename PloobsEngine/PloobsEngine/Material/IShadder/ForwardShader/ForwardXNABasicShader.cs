@@ -15,10 +15,10 @@ namespace PloobsEngine.Material
     /// <summary>
     /// Description that helps building the XNABasicShader
     /// </summary>
-    public struct XNABasicShaderDescription
+    public struct ForwardXNABasicShaderDescription
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="XNABasicShaderDescription"/> struct.
+        /// Initializes a new instance of the <see cref="ForwardXNABasicShaderDescription"/> struct.
         /// </summary>
         /// <param name="AmbientColor">Color of the ambient.</param>
         /// <param name="EmissiveColor">Color of the emissive.</param>
@@ -27,7 +27,7 @@ namespace PloobsEngine.Material
         /// <param name="alpha">The alpha.</param>
         /// <param name="EnableLightning">if set to <c>true</c> [enable lightning].</param>
         /// <param name="EnableTexture">if set to <c>true</c> [enable texture].</param>
-        public XNABasicShaderDescription(Color AmbientColor, Color EmissiveColor, Color SpecularColor, float specularPower = 50, float alpha = 1, bool EnableLightning = true, bool EnableTexture = true)
+        public ForwardXNABasicShaderDescription(Color AmbientColor, Color EmissiveColor, Color SpecularColor, float specularPower = 50, float alpha = 1, bool EnableLightning = true, bool EnableTexture = true)
         {
             this.AmbientColor = AmbientColor.ToVector3();
             this.EmissiveColor = EmissiveColor.ToVector3();
@@ -43,9 +43,9 @@ namespace PloobsEngine.Material
         /// Defaults this instance.
         /// </summary>
         /// <returns></returns>
-        public static XNABasicShaderDescription Default()
+        public static ForwardXNABasicShaderDescription Default()
         {
-            XNABasicShaderDescription desc = new XNABasicShaderDescription(Color.White, Color.Black, Color.White, 0, 1, false, true);
+            ForwardXNABasicShaderDescription desc = new ForwardXNABasicShaderDescription(Color.White, Color.Black, Color.White, 0, 1, false, true);
             return desc;
         }
         
@@ -64,23 +64,23 @@ namespace PloobsEngine.Material
     /// XNA basic shader
     /// Wrapper to xna basic effect
     /// </summary>
-    public class XNABasicShader : IShader
+    public class ForwardXNABasicShader : IShader
     {
-        XNABasicShaderDescription desc;
+        ForwardXNABasicShaderDescription desc;
         /// <summary>
-        /// Initializes a new instance of the <see cref="XNABasicShader"/> class.
+        /// Initializes a new instance of the <see cref="ForwardXNABasicShader"/> class.
         /// </summary>
         /// <param name="desc">The desc.</param>
-        public XNABasicShader(XNABasicShaderDescription desc)
+        public ForwardXNABasicShader(ForwardXNABasicShaderDescription desc)
         {
             this.desc = desc;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="XNABasicShader"/> class.
+        /// Initializes a new instance of the <see cref="ForwardXNABasicShader"/> class.
         /// </summary>
-        public XNABasicShader()
-            : this(XNABasicShaderDescription.Default())
+        public ForwardXNABasicShader()
+            : this(ForwardXNABasicShaderDescription.Default())
         {            
         }
 
@@ -101,7 +101,7 @@ namespace PloobsEngine.Material
             base.Initialize(ginfo, factory, obj);
         }
 
-        public XNABasicShaderDescription GetDescription()
+        public ForwardXNABasicShaderDescription GetDescription()
         {
             return desc;
         }
@@ -110,7 +110,7 @@ namespace PloobsEngine.Material
         /// Sets the description.
         /// </summary>
         /// <param name="desc">The desc.</param>
-        public void SetDescription(XNABasicShaderDescription desc)
+        public void SetDescription(ForwardXNABasicShaderDescription desc)
         {
             this.desc = desc;
             if (desc.DefaultLightning)
@@ -145,6 +145,7 @@ namespace PloobsEngine.Material
         public override void Draw(GameTime gt, IObject obj, RenderHelper render, Cameras.ICamera cam, IList<Light.ILight> lights)
         {
             base.Draw(gt, obj, render, cam, lights);
+
             effect.Texture = obj.Modelo.getTexture(Modelo.TextureType.DIFFUSE);
             effect.View = cam.View;
             effect.Projection = cam.Projection;

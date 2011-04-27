@@ -16,7 +16,7 @@ namespace PloobsEngine.Material
     /// <summary>
     /// Water with Reflection, refraction and animation shader
     /// </summary>
-    public class WaterCompleteShader : IShader
+    public class DeferredWaterCompleteShader : IShader
     {
         
         private float specularIntensity = 0f;          
@@ -114,14 +114,14 @@ namespace PloobsEngine.Material
         }
         
         /// <summary>
-        /// Initializes a new instance of the <see cref="WaterCompleteShader"/> class.
+        /// Initializes a new instance of the <see cref="DeferredWaterCompleteShader"/> class.
         /// </summary>
         /// <param name="width">The width.</param>
         /// <param name="height">The height.</param>
         /// <param name="plane">The plane.</param>
         /// <param name="Height">The height.</param>
         /// <param name="affectedByLight">if set to <c>true</c> the watter is [affected by light].</param>
-        public WaterCompleteShader(int width, int height, Plane plane, float Height,bool affectedByLight = true)
+        public DeferredWaterCompleteShader(int width, int height, Plane plane, float Height,bool affectedByLight = true)
         {
             this.WIDTH = width;
             this.HEIGHT = height;

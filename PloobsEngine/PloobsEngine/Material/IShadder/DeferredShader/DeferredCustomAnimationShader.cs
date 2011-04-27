@@ -16,23 +16,23 @@ namespace PloobsEngine.Material
     /// <summary>
     /// Animation Shader that supports advanced effects
     /// </summary>
-    public class CustomAnimationShader : IShader
+    public class DeferredCustomAnimationShader : IShader
     {
         /// <summary>
         /// Serialization
         /// </summary>
-        internal CustomAnimationShader()
+        internal DeferredCustomAnimationShader()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CustomAnimationShader"/> class.
+        /// Initializes a new instance of the <see cref="DeferredCustomAnimationShader"/> class.
         /// </summary>
         /// <param name="ac">The ac.</param>
         /// <param name="useBump">if set to <c>true</c> [use bump].</param>
         /// <param name="useSpecular">if set to <c>true</c> [use specular].</param>
         /// <param name="useGlow">if set to <c>true</c> [use glow].</param>
-        public CustomAnimationShader(IAnimatedController ac , bool useBump, bool useSpecular, bool useGlow)
+        public DeferredCustomAnimationShader(IAnimatedController ac , bool useBump, bool useSpecular, bool useGlow)
         {
             this.ac = ac;
             this.useBump = useBump;
@@ -42,7 +42,7 @@ namespace PloobsEngine.Material
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CustomAnimationShader"/> class.
+        /// Initializes a new instance of the <see cref="DeferredCustomAnimationShader"/> class.
         /// </summary>
         /// <param name="ac">The ac.</param>
         /// <param name="useBump">if set to <c>true</c> [use bump].</param>
@@ -51,7 +51,7 @@ namespace PloobsEngine.Material
         /// <param name="obj">The obj.</param>
         /// <param name="Followed">The followed.</param>
         /// <param name="boneName">Name of the bone.</param>
-        public CustomAnimationShader(IAnimatedController ac, bool useBump, bool useSpecular, bool useGlow, IObject obj, IAnimatedController Followed,String boneName)
+        public DeferredCustomAnimationShader(IAnimatedController ac, bool useBump, bool useSpecular, bool useGlow, IObject obj, IAnimatedController Followed,String boneName)
         {
             this.ac = ac;
             this.useBump = useBump;

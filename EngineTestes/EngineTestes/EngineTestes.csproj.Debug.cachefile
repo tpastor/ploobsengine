@@ -57,6 +57,18 @@ Content\Textures\sponza_column_b_diff_0.xnb
 Content\Songs\alarm.xnb
 Content\Songs\bye.xnb
 Content\Songs\pianosong.xnb
+Content\Model\uzi.xnb
+Content\Textures\tree.xnb
+Content\Textures\uzi.xnb
+Content\Textures\uzi_0.xnb
+Content\Textures\grama1.xnb
+Content\Textures\wizard.xnb
+Content\Textures\rock.xnb
+Content\Textures\sand.xnb
+Content\Textures\snow.xnb
+Content\Textures\Untitled.xnb
+Content\Textures\grass.xnb
+Content\Textures\Terraingrass.xnb
 Content\ModelInfos\shadow.xml
 Content\ModelInfos\sponza.xml
 Content\Textures\checker.xnb
@@ -166,3 +178,4 @@ Content\Models\block.xnb
 Content\Models\dome.xnb
 Content\Models\Dsphere.xnb
 Content\Models\sphere.xnb
+Content\Effects\Deferred\InstancedBilboard.xnb

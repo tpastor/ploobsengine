@@ -17,7 +17,7 @@ namespace PloobsEngine.Material
     /// <summary>
     /// Most Basic Deferred Shader (uses only diffuse texture and specular power/intensity properties)
     /// </summary>
-    public class NormalDeferred : IShader
+    public class DeferredNormalShader : IShader
     {
         private Effect _shader;        
         EffectParameter ViewProjectionParameter;          
@@ -28,9 +28,9 @@ namespace PloobsEngine.Material
         EffectParameter WorldParameter;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NormalDeferred"/> class.
+        /// Initializes a new instance of the <see cref="DeferredNormalShader"/> class.
         /// </summary>
-        public NormalDeferred(float specularIntensity = 0, float specularPower = 0)
+        public DeferredNormalShader(float specularIntensity = 0, float specularPower = 0)
         {
             if (specularPower < 0)
             {

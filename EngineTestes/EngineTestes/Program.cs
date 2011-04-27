@@ -29,7 +29,11 @@ namespace EngineTestes
             //manager.AddScreen(new DeferredAnimatedScreen());
             //manager.AddScreen(new ParticleScreen());
             //manager.AddScreen(new PostEffectScreen());
-            manager.AddScreen(new SoundScreen());
+            //manager.AddScreen(new SoundScreen());
+            //manager.AddScreen(new TransparentForwardScreen());
+            //manager.AddScreen(new BilboardScreen());
+            //manager.AddScreen(new TerrainScreen());
+            manager.AddScreen(new TransparentDeferredScreen());
         }
     }
 #endif

@@ -50,7 +50,8 @@ namespace PloobsEngine.SceneControl
         }
 
         protected override void ExecuteTechnic(GameTime gameTime, RenderHelper render, IWorld world)
-        {            
+        {   
+
             foreach (var item in world.Objects)
             {
                 item.Material.PreDrawnPhase(gameTime, world, item, world.CameraManager.ActiveCamera, world.Lights, render);
@@ -62,12 +63,19 @@ namespace PloobsEngine.SceneControl
             }
 
             render.Clear(desc.BackGroundColor);
+            render.RenderPreComponents(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection);            
             world.Culler.StartFrame(world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection, world.CameraManager.ActiveCamera.BoundingFrustum);
-            foreach (var item in world.Culler.GetNotCulledObjectsList(Material.MaterialType.FORWARD))
+            IEnumerable<IObject> objList = world.Culler.GetNotCulledObjectsList(Material.MaterialType.FORWARD);
+            foreach (var item in objList)
             {
                 ///critical code, no log
                 System.Diagnostics.Debug.Assert(item.Material.MaterialType == Material.MaterialType.FORWARD, "This Technich is just for forward materials and shaders");
                 item.Material.Drawn(gameTime,item, world.CameraManager.ActiveCamera, world.Lights, render);                
+            }
+
+            foreach (var item in objList)
+            {             
+                item.Material.PosDrawnPhase(gameTime,item, world.CameraManager.ActiveCamera, world.Lights, render);                
             }
 
             if (world.ParticleManager != null)
@@ -90,6 +98,9 @@ namespace PloobsEngine.SceneControl
                 render.Clear(Color.Black);
                 render.RenderTextureComplete(render[PrincipalConstants.CurrentImage], Color.White, ginfo.FullScreenRectangle, Matrix.Identity, null, true, SpriteSortMode.Deferred, SamplerState.AnisotropicClamp, BlendState.AlphaBlend);                                             
             }
+
+            render.RenderPosComponents(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection);
+
         }
 
         

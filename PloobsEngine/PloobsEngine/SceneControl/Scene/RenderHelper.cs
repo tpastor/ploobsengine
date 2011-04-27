@@ -279,6 +279,13 @@ namespace PloobsEngine.SceneControl
                         device.SetVertexBuffer(bi.VertexBuffer);
                         device.DrawPrimitives(bi.PrimitiveType, bi.StartVertex, bi.PrimitiveCount);
                         break;
+                    case BatchType.INSTANCED:
+                        System.Diagnostics.Debug.Assert(bi.InstancedVertexBuffer != null);
+                        System.Diagnostics.Debug.Assert(bi.InstanceCount > 0);
+                        device.SetVertexBuffers(bi.VertexBuffer, new VertexBufferBinding(bi.InstancedVertexBuffer, 0, 1));                        
+                        device.Indices = bi.IndexBuffer;
+                        device.DrawInstancedPrimitives(PrimitiveType.TriangleList, bi.BaseVertex, 0, bi.NumVertices, bi.StartIndex, bi.PrimitiveCount, bi.InstanceCount);
+                        break;
                     default:
                         ActiveLogger.LogMessage("Batch Type not supported ", LogLevel.RecoverableError);
                         break;

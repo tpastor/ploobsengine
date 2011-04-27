@@ -96,10 +96,10 @@ namespace PloobsEngine.Physics
             }
             else if (obj.PhysicObjectTypes == PhysicObjectTypes.TERRAIN)
             {
-                //TerrainObject t = obj as TerrainObject;
-                //space.Add(t.Terrain);
-                //t.Terrain.Tag = obj;
-                //objs.Add(obj);
+                TerrainObject t = obj as TerrainObject;
+                space.Add(t.Terrain);
+                t.Terrain.Tag = obj;
+                objs.Add(obj);
             }
             else if (obj.PhysicObjectTypes == PhysicObjectTypes.DETECTOROBJECT)
             {
@@ -169,10 +169,10 @@ namespace PloobsEngine.Physics
             }
             else if (obj.PhysicObjectTypes == PhysicObjectTypes.TERRAIN)
             {
-                //TerrainObject t = obj as TerrainObject;
-                //space.Remove(t.Terrain);
-                //t.Terrain.Tag = null;
-                //objs.Remove(obj);
+                TerrainObject t = obj as TerrainObject;
+                space.Remove(t.Terrain);
+                t.Terrain.Tag = null;
+                objs.Remove(obj);
             }
             else if (obj.PhysicObjectTypes == PhysicObjectTypes.CHARACTEROBJECT)
             {

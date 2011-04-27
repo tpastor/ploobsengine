@@ -14,49 +14,47 @@ using PloobsEngine.Light;
 using Microsoft.Xna.Framework.Input;
 using PloobsEngine.Features;
 using PloobsEngine.Commands;
-using PloobsEngine.Particles;
-using DPSF.ParticleSystems;
+using PloobsEngine.Physic.PhysicObjects.BepuObject;
+using PloobsEngine.Input;
 
 namespace EngineTestes
 {
-    public class ParticleScreen : IScene
+    public class TerrainScreen : IScene
     {
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            world = new IWorld(new BepuPhysicWorld(), new SimpleCuller(),new DPSFParticleManager());
+            world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
-            desc.DefferedDebug = false;
-            desc.UseFloatingBufferForLightMap = true;
+            desc.DefferedDebug = true;
+            desc.UseFloatingBufferForLightMap = true;            
             renderTech = new DeferredRenderTechnic(desc);
-        }   
-
+        }
+ 
         protected override void InitScreen(GraphicInfo GraphicInfo, EngineStuff engine)
         {
             base.InitScreen(GraphicInfo, engine);
 
             SkyBox skybox = new SkyBox();
             engine.AddComponent(skybox);
+
+            InputAdvanced ia = new InputAdvanced();
+            engine.AddComponent(ia);
         }
 
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory ,IContentManager contentManager)
         {
             base.LoadContent(GraphicInfo,factory, contentManager);
 
-            SnowParticleSystem snow = new SnowParticleSystem();            
-            DPFSParticleSystem ps = new DPFSParticleSystem("snow",snow );            
-            this.World.ParticleManager.AddAndInitializeParticleSystem(ps);
+            TerrainObject to = new TerrainObject(factory,"..\\Content\\Textures\\Untitled",Vector3.Zero,Matrix.Identity,MaterialDescription.DefaultBepuMaterial(),2,1);
+            TerrainModel stm = new TerrainModel(factory, to,"TerrainName","..\\Content\\Textures\\Terraingrass", "..\\Content\\Textures\\rock", "..\\Content\\Textures\\sand", "..\\Content\\Textures\\snow");
+            DeferredTerrainShader shader = new DeferredTerrainShader(TerrainType.MULTITEXTURE);
+            DeferredMaterial mat = new DeferredMaterial(shader);
+            IObject obj3 = new IObject(mat, stm, to);
+            this.World.AddObject(obj3);
 
-            ///cant set emiter position before adding the particle
-            snow.Emitter.PositionData.Position = new Vector3(1000, 0, 0);            
-
-            SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
-            TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
-            NormalDeferred shader = new NormalDeferred();
-            DeferredMaterial fmaterial = new DeferredMaterial(shader);
-            IObject obj = new IObject(fmaterial, simpleModel, tmesh);
-            this.World.AddObject(obj);            
-
+            LightThrowBepu lt = new LightThrowBepu(this.World, factory);
+        
             #region NormalLight
             DirectionalLightPE ld1 = new DirectionalLightPE(Vector3.Left, Color.White);
             DirectionalLightPE ld2 = new DirectionalLightPE(Vector3.Right, Color.White);
@@ -76,7 +74,7 @@ namespace EngineTestes
             this.World.AddLight(ld5);
             #endregion
 
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo.Viewport));
+            this.World.CameraManager.AddCamera(new CameraFirstPerson(true,GraphicInfo.Viewport));
 
             SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//cubemap");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);

@@ -81,7 +81,7 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
     float4 worldPosition = mul(input.Position, World);    
     output.Position = mul(worldPosition, ViewProjection);
     output.TexCoord = input.TexCoord;                             //pass the texture coordinates further
-    output.Normal =mul(input.Normal,World);                       //get normal into world space    
+    output.Normal =mul(input.Normal,(float3x3)World);                       //get normal into world space    
     output.Depth.x = output.Position.z;
     output.Depth.y = output.Position.w;
     output.InPos = input.Position;
@@ -136,7 +136,7 @@ PixelShaderOutput PixelShaderFunctionMulti(VertexShaderOutput input)
     //output.Color = float4(color,0);											   //output Color
     output.Color.a = 0;														   //output SpecularIntensity
     output.Normal.rgb = 0.5f * (normalize(input.Normal) + 1.0f);                   //transform normal domain
-    output.Normal.a = 50;													       //output SpecularPower    
+    output.Normal.a = 0;													       //output SpecularPower    
     output.Extra1.rgb =  0;  
     output.Extra1.a =  id;  
     return output;
@@ -161,7 +161,7 @@ PixelShaderOutput PixelShaderFunction(VertexShaderOutput input)
     //output.Color = float4(color,0);											   //output Color
     output.Color.a = 0;														   //output SpecularIntensity
     output.Normal.rgb = 0.5f * (normalize(input.Normal) + 1.0f);                   //transform normal domain
-    output.Normal.a = 50;													       //output SpecularPower    
+    output.Normal.a = 0;													       //output SpecularPower    
     output.Extra1.rgb =  0;  
     output.Extra1.a =  id;  
     return output;

@@ -161,16 +161,26 @@
     <Compile Include="Loader\IModelLoader.cs" />
     <Compile Include="Material\DeferredAnimatedMaterial.cs" />
     <Compile Include="Material\DeferredMaterial.cs" />
-    <Compile Include="Material\IShadder\DeferredShader\CustomAnimationShader.cs" />
-    <Compile Include="Material\IShadder\DeferredShader\CustomDeferred.cs" />
-    <Compile Include="Material\IShadder\DeferredShader\EMReflective.cs" />
-    <Compile Include="Material\IShadder\DeferredShader\NormalDeferred.cs" />
-    <Compile Include="Material\IShadder\DeferredShader\SimpleAnimationShader.cs" />
-    <Compile Include="Material\IShadder\DeferredShader\WaterCompleteShader.cs" />
-    <Compile Include="Material\IShadder\DeferredShader\WaterShader.cs" />
+    <Compile Include="Material\IShadder\DeferredShader\DeferredInstancedBilboardShader.cs" />
+    <Compile Include="Material\IShadder\DeferredShader\DeferredAnimatedTextureShader.cs" />
+    <Compile Include="Material\IShadder\DeferredShader\DeferredCilindricGPUBilboardShader.cs" />
+    <Compile Include="Material\IShadder\DeferredShader\DeferredCustomAnimationShader.cs" />
+    <Compile Include="Material\IShadder\DeferredShader\DeferredCustomShader.cs" />
+    <Compile Include="Material\IShadder\DeferredShader\DeferredEMReflectiveShader.cs" />
+    <Compile Include="Material\IShadder\DeferredShader\DeferredNormalShader.cs" />
+    <Compile Include="Material\IShadder\DeferredShader\DeferredSimpleAnimationShader.cs" />
+    <Compile Include="Material\IShadder\DeferredShader\DeferredWaterCompleteShader.cs" />
+    <Compile Include="Material\IShadder\DeferredShader\DeferredWaterShader.cs" />
+    <Compile Include="Material\IShadder\DeferredShader\DeferredSphericalBilboardShader.cs" />
+    <Compile Include="Material\IShadder\DeferredShader\DeferredProceduralAnimatedBilboardShader.cs" />
+    <Compile Include="Material\IShadder\DeferredShader\DeferredTerrainShader.cs" />
+    <Compile Include="Material\IShadder\ForwardShader\ForwardTransparenteShader.cs" />
     <Compile Include="Modelo\Animation\AnimatedController.cs" />
     <Compile Include="Modelo\Animation\AnimatedModel.cs" />
     <Compile Include="Modelo\CustomModel.cs" />
+    <Compile Include="Modelo\SpecificModels\TerrainModel.cs" />
+    <Compile Include="Modelo\SpecificModels\InstancedBilboardModel.cs" />
+    <Compile Include="Modelo\SpecificModels\StaticBilboardModel.cs" />
     <Compile Include="Modelo\SpecificModels\WaterModel.cs" />
     <Compile Include="Particles\DPFSParticleSystem.cs" />
     <Compile Include="Particles\DPSFParticleManager.cs" />
@@ -183,6 +193,7 @@
     <Compile Include="Physic\PhysicObjects\BepuObject\DetectorVolumeObject.cs" />
     <Compile Include="Physic\PhysicObjects\BepuObject\GravitationFieldObject.cs" />
     <Compile Include="Physic\PhysicObjects\BepuObject\ObjectMover.cs" />
+    <Compile Include="Physic\PhysicObjects\BepuObject\TerrainObject.cs" />
     <Compile Include="SceneControl\Movie\MovieScreen.cs" />
     <Compile Include="SceneControl\Scene\DefRender\DeferredRenderTechnic.cs" />
     <Compile Include="SceneControl\Scene\DefRender\FinalCombination.cs" />
@@ -229,7 +240,7 @@
     <Compile Include="Material\ForwardMaterial.cs" />
     <Compile Include="Material\IMaterial.cs" />
     <Compile Include="Material\IShadder\IShader.cs" />
-    <Compile Include="Material\IShadder\ForwardShader\XNABasicShader.cs" />
+    <Compile Include="Material\IShadder\ForwardShader\ForwardXNABasicShader.cs" />
     <Compile Include="MessageSystem\IRecieveMessageEntity.cs" />
     <Compile Include="MessageSystem\Message.cs" />
     <Compile Include="MessageSystem\MessageDeliver.cs" />
@@ -395,6 +406,7 @@
     <None Include="bin\x86\Debug\Content\Effects\Deferred\glowPost.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\GrassBillboard.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\HSV.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\InstancedBilboard.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\InstanceRenderGBuffer.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\Inverse.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\LineDetection.xnb" />
@@ -466,7 +478,6 @@
     <None Include="bin\x86\Debug\Content\Textures\white.xnb" />
     <None Include="Resources\ConsoleFont.spritefont" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--

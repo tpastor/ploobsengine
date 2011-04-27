@@ -16,7 +16,7 @@ namespace PloobsEngine.Material
         PerfectMirror, ReflexiveSurface
     }
 
-    public class EMReflective : IShader
+    public class DeferredEMReflectiveShader : IShader
     {        
         private Effect _shader;  
         private float specularIntensity = 0f;
@@ -47,28 +47,28 @@ namespace PloobsEngine.Material
             set { texCube = value; }
         }
         
-        internal EMReflective()
+        internal DeferredEMReflectiveShader()
         {        
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EMReflective"/> class.
+        /// Initializes a new instance of the <see cref="DeferredEMReflectiveShader"/> class.
         /// </summary>
         /// <param name="texName">Name of the tex.</param>
         /// <param name="type">The type.</param>
-        public EMReflective(String texName , ReflectionType type  )
+        public DeferredEMReflectiveShader(String texName , ReflectionType type  )
         {            
             this.rType = type;
             this.texName = texName;            
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EMReflective"/> class.
+        /// Initializes a new instance of the <see cref="DeferredEMReflectiveShader"/> class.
         /// Reflexive Surface implicity
         /// </summary>
         /// <param name="texName">Name of the tex.</param>
         /// <param name="reflectionIndex">Index of the reflection.</param>
-        public EMReflective(String texName,float reflectionIndex)
+        public DeferredEMReflectiveShader(String texName,float reflectionIndex)
         {
             this.reflectionIndex = reflectionIndex;
             this.texName = texName;         
@@ -127,7 +127,7 @@ namespace PloobsEngine.Material
                         this._shader.Parameters["World"].SetValue(Matrix.Multiply(wld, bi[j].ModelLocalTransformation));
                         render.RenderBatch(bi[j], _shader);
                     }         
-            }
+                }
         }
 
         public override MaterialType MaterialType
