@@ -14,20 +14,20 @@ namespace IntroductionDemo4._0
     /// Basic Deferred Scene
     /// </summary>
     public class BasicScreenDeferredDemo : IScene
-    {        
+    {
         /// <summary>
         /// Sets the world and render technich.
         /// </summary>
         /// <param name="renderTech">The render tech.</param>
         /// <param name="world">The world.</param>
-        protected override void SetWorldAndRenderTechnich(out IRenderTechnic[] renderTech, out IWorld world)
+        protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
             desc.DefferedDebug = true;
             desc.UseFloatingBufferForLightMap = false;
-            renderTech = new DeferredRenderTechnic[] { new DeferredRenderTechnic(desc) };
+            renderTech = new DeferredRenderTechnic(desc);
         }
 
         /// <summary>
@@ -42,12 +42,12 @@ namespace IntroductionDemo4._0
 
             SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
             TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
-            NormalDeferred shader = new NormalDeferred();
+            DeferredNormalShader shader = new DeferredNormalShader();
             DeferredMaterial fmaterial = new DeferredMaterial(shader);
             IObject obj = new IObject(fmaterial, simpleModel, tmesh);
             this.World.AddObject(obj);
 
-            #region NormalLight
+            #region Lights
             DirectionalLightPE ld1 = new DirectionalLightPE(Vector3.Left, Color.White);
             DirectionalLightPE ld2 = new DirectionalLightPE(Vector3.Right, Color.White);
             DirectionalLightPE ld3 = new DirectionalLightPE(Vector3.Backward, Color.White);

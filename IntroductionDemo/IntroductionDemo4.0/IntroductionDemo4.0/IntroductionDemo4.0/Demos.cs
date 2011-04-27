@@ -26,11 +26,11 @@ namespace IntroductionDemo4._0
 
         static void LoadScreen(ScreenManager manager)
         {            
-            //manager.AddScreen(new BasicScreenDeferredDemo());
+            manager.AddScreen(new BasicScreenDeferredDemo());
             //manager.AddScreen(new BasicScreenForwardDemo());
             //manager.AddScreen(new KeyboardInputScreen());
             //manager.AddScreen(new PointLightScreen());
-            manager.AddScreen(new SpotLightScreen());
+            //manager.AddScreen(new SpotLightScreen());
         }
 
         static void UnhandledException(object sender, UnhandledExceptionEventArgs e)

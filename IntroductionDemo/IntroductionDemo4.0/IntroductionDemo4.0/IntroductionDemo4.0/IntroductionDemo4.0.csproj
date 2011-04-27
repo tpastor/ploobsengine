@@ -60,9 +60,6 @@
     <XnaCompressContent>true</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BEPUphysics">
-      <HintPath>..\Dll\BEPUphysics.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
       <Private>False</Private>
     </Reference>
@@ -93,9 +90,8 @@
     <Reference Include="mscorlib">
       <Private>False</Private>
     </Reference>
-    <Reference Include="PloobsEngine, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\PloobsEngine\PloobsEngine\bin\x86\Debug\PloobsEngine.dll</HintPath>
+    <Reference Include="PloobsEngineDebug">
+      <HintPath>..\Dll\PloobsEngineDebug.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Private>False</Private>

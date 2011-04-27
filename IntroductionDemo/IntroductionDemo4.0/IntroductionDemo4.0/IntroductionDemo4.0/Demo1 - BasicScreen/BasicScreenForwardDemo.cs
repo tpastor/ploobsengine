@@ -15,21 +15,21 @@ namespace IntroductionDemo4._0
 {
     public class BasicScreenForwardDemo : IScene
     {
-        protected override void SetWorldAndRenderTechnich(out IRenderTechnic[] renderTech, out IWorld world)
+        protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
 
             ForwardRenderTecnichDescription desc = new ForwardRenderTecnichDescription(Color.CornflowerBlue);
-            renderTech = new IRenderTechnic[] { new ForwardRenderTecnich(desc) };
+            renderTech = new ForwardRenderTecnich(desc);
         }
 
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory ,IContentManager contentManager)
         {
             base.LoadContent(GraphicInfo,factory, contentManager);            
 
-            SimpleModel simpleModel = new SimpleModel(contentManager, "Model//cenario");
+            SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
             TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One,MaterialDescription.DefaultBepuMaterial());            
-            XNABasicShader shader = new XNABasicShader(XNABasicShaderDescription.Default());            
+            ForwardXNABasicShader shader = new ForwardXNABasicShader();            
             ForwardMaterial fmaterial = new ForwardMaterial(shader);            
             IObject obj = new IObject(fmaterial,simpleModel,tmesh);
             this.World.AddObject(obj); 

@@ -102,9 +102,6 @@ namespace PloobsEngine.Trigger
 
         #endregion
 
-
-
-
         #region ITrigger Members
 
         /// <summary>
