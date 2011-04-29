@@ -16,7 +16,7 @@ namespace PloobsEngine.Loader
     /// By Now, It creates just pieces of a model, 
     /// IN THE NEXT RELEASE IT WILL CREATE THE FULL MODEL, RETURN AN IMODELO AND A TRANSFORMATION
     /// </summary>
-    public struct ModelInformation
+    public struct ObjectInformation
     {
         public string ModelName;
         public BatchInformation[] batchInformation;        
@@ -25,6 +25,13 @@ namespace PloobsEngine.Loader
         public Texture2D bump;
         public Texture2D glow;
         public Texture2D specular;
+
+
+        public string collisionType;
+        public float mass;
+        public float dinamicfriction;
+        public float staticfriction;
+        public float ellasticity;
 
         /// <summary>
         /// Determines whether this model has the specified texture type.
@@ -85,7 +92,7 @@ namespace PloobsEngine.Loader
     /// </summary>
     public class ModelLoaderData
     {
-        List<ModelInformation> modelMeshesInfo = new List<ModelInformation>();
+        List<ObjectInformation> modelMeshesInfo = new List<ObjectInformation>();
         List<ILight> lightInfo = new List<ILight>();
         List<CameraInfo> cameraInfo = new List<CameraInfo>();
         List<DummyInfo> dummyInfo = new List<DummyInfo>();
@@ -132,7 +139,7 @@ namespace PloobsEngine.Loader
         /// <value>
         /// The model meshes info.
         /// </value>
-        public List<ModelInformation> ModelMeshesInfo
+        public List<ObjectInformation> ModelMeshesInfo
         {
             get { return modelMeshesInfo; }
             set { modelMeshesInfo = value; }

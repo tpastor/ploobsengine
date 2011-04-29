@@ -17,7 +17,7 @@ namespace PloobsEngine.Physics.Bepu
         {
             this.scale = scale;
             entity = new Box(pos, xlen * scale.X, ylen* scale.Y, zlen* scale.Z, mass);
-            entity.WorldTransform = orientation;
+            entity.Orientation = Quaternion.CreateFromRotationMatrix(orientation);
             SetMaterialDescription(materialDescription);
         }        
         

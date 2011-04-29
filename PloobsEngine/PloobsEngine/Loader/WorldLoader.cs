@@ -18,17 +18,66 @@ using PloobsEngine.Material;
 
 namespace PloobsEngine.Loader
 {
-    public delegate IObject CreateIObject(IWorld world, GraphicFactory factory,GraphicInfo ginfo, ModelInformation mi);
+    public delegate IObject CreateIObject(IWorld world, GraphicFactory factory,GraphicInfo ginfo, ObjectInformation mi);
     public delegate ILight CreateILight(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ILight li);
     public delegate ICamera CreateICamera(IWorld world, GraphicFactory factory, GraphicInfo ginfo, CameraInfo cinfo);
     public delegate void ProcessDummies(IWorld world, DummyInfo dinfo);
 
     public class WorldLoader
     {
-        public static IObject CreateOBJ(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ModelInformation mi)
+        public static IObject CreateOBJ(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation mi)
         {
             IModelo model = new CustomModel(factory, mi.ModelName, mi.batchInformation, mi.difuse, mi.bump, mi.specular, mi.glow);
-            IPhysicObject po = new TriangleMeshObject(model, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
+            
+            MaterialDescription material = new MaterialDescription(mi.staticfriction,mi.dinamicfriction,mi.ellasticity);
+            
+            IPhysicObject po;
+
+
+            bool flag= false;
+            if (mi.mass == 0)
+            {
+                flag = true;
+                mi.mass = 1;
+            }
+            
+
+          
+
+            switch (mi.collisionType)
+            {
+
+                case "Sphere":
+
+
+                   
+                    
+                    Vector3 translation,scale;
+                    Quaternion rotation;
+
+                    model.GetBatchInformation(0)[0].ModelLocalTransformation.Decompose(out scale, out rotation,out translation);
+                    model.GetBatchInformation(0)[0].ModelLocalTransformation = Matrix.Identity;
+                    po = new SphereObject(translation, model.GetModelRadius(), mi.mass, scale.Length(), material);
+
+                    break;
+
+
+                case "Box":
+                   default:
+                    po = new TriangleMeshObject(model, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
+                    break;
+            }
+
+
+
+             po.isMotionLess = flag;
+            
+            
+            
+            
+            
+            
+            
             IShader shader = new CustomDeferred(mi.HasTexture(TextureType.GLOW), mi.HasTexture(TextureType.BUMP), mi.HasTexture(TextureType.SPECULAR), mi.HasTexture(TextureType.PARALAX));
             DeferredMaterial dm = new DeferredMaterial(shader);
             return new IObject(dm,model,po);

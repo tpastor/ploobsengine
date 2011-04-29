@@ -15,7 +15,7 @@ namespace PloobsEngine.Loader
 {
     internal struct XmlModelMeshInfo
     {
-        public XmlModelMeshInfo(string modeName, string collisionType, string difuseName, string bumpName, string specularName, string glowName)
+        public XmlModelMeshInfo(string modeName, string collisionType, float mass, float dinamicfriction, float staticfriction, float ellasticity, string difuseName, string bumpName, string specularName, string glowName)
         {
             this.modeName = modeName;
             this.collisionType = collisionType;
@@ -23,6 +23,15 @@ namespace PloobsEngine.Loader
             this.bumpName = bumpName;
             this.specularName = specularName;
             this.glowName = glowName;
+
+            this.mass = mass;
+            this.dinamicfriction = dinamicfriction;
+            this.staticfriction = staticfriction;
+            this.ellasticity = ellasticity;
+
+
+
+
         }
 
         public string collisionType;
@@ -30,7 +39,14 @@ namespace PloobsEngine.Loader
         public string difuseName;
         public string bumpName;
         public string specularName;
-        public string glowName;        
+        public string glowName;
+
+
+
+        public float mass;
+        public float dinamicfriction;
+        public float staticfriction;
+        public float ellasticity;
 
     }
 
@@ -103,6 +119,35 @@ namespace PloobsEngine.Loader
                 {
                     XmlModelMeshInfo info = new XmlModelMeshInfo();
                     info.modeName = SerializerHelper.DeserializeAttributeBaseType<String>("name", node);
+
+
+
+                    XmlElement mass = node["mass"];
+                    if (mass != null)
+                    {
+                        info.mass = SerializerHelper.DeserializeAttributeBaseType<float>("value", mass);
+                    }
+
+                    XmlElement dfric = node["dinamicfriction"];
+                    if (dfric != null)
+                    {
+                        info.dinamicfriction = SerializerHelper.DeserializeAttributeBaseType<float>("value", dfric);
+                    }
+
+                    XmlElement sfric = node["staticfriction"];
+                    if (sfric != null)
+                    {
+                        info.staticfriction = SerializerHelper.DeserializeAttributeBaseType<float>("value", sfric);
+                    }
+
+                    XmlElement ellas = node["ellasticity"];
+                    if (ellas != null)
+                    {
+                        info.ellasticity = SerializerHelper.DeserializeAttributeBaseType<float>("value", ellas);
+                    }
+                    
+                    
+                    
                     XmlElement collision = node["collision"];
                     if (collision != null)
                     {
@@ -249,8 +294,18 @@ namespace PloobsEngine.Loader
                     Quaternion ori;
                     tr.Decompose(out scale, out ori, out pos);
 
-                    ModelInformation mi = new ModelInformation();
+                    ObjectInformation mi = new ObjectInformation();
                     mi.ModelName = inf.modeName;
+
+
+                    mi.ellasticity = inf.ellasticity;
+                    mi.dinamicfriction = inf.dinamicfriction;
+                    mi.staticfriction = inf.staticfriction;
+                    mi.collisionType = inf.collisionType;
+                    mi.mass = inf.mass;
+
+
+
                     ModelBuilderHelper.Extract(m, model.Meshes[i], out mi.batchInformation);                    
                     
                     
