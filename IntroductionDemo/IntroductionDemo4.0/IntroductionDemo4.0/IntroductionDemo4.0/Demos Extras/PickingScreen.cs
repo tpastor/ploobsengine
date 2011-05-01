@@ -44,6 +44,8 @@ namespace IntroductionDemo4._0
             ///InputAdvanced is responsible for abstracting the xna input layer.            
             InputAdvanced inp = new InputAdvanced();
             engine.AddComponent(inp);
+
+            engine.IsMouseVisible = true;
         }
 
 
@@ -142,6 +144,7 @@ namespace IntroductionDemo4._0
             {                
                 objName = obj.Name;
                 shouldDraw = true;
+                this.ri = SegmentInterceptInfo;
             }
         }
 

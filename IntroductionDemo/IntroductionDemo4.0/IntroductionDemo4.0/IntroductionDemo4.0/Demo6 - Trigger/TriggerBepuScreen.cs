@@ -179,8 +179,7 @@ namespace IntroductionDemo4._0
         {
             ///Checa se eh a mensagem correta
             if (mes.SenderType == PloobsEngine.MessageSystem.SenderType.EVENT && mes.Tag == "TriggerEvent")
-            {
-                ///Limpa Buffer de desenho 2D e texto              
+            {         
                 BepuTrigger trigger = (BepuTrigger)mes.Content;
                 mesSend = mes;
                 triggerSend = trigger;

@@ -45,8 +45,10 @@ namespace IntroductionDemo4._0
             InputAdvanced inp = new InputAdvanced();
             engine.AddComponent(inp);
 
-            FPSCounter  fpsCounter = new FPSCounter();
-            engine.AddComponent(fpsCounter);
+            engine.AddComponent(new FPSCounter());
+
+            ///IF the component already exist, it wont be added, the safest way is to get if from here
+            FPSCounter fpsCounter = engine.GetComponent<FPSCounter>("FPSCounter");
 
             fpsCounter.CombinedFps += new FpsEvent(fpsCounter_CombinedFps);
             fpsCounter.DrawFps += new FpsEvent(fpsCounter_DrawFps);
@@ -148,6 +150,7 @@ namespace IntroductionDemo4._0
 
         protected override void CleanUp(EngineStuff engine)
         {
+            ///if you wont want to remove the component itself, you should at least remove the events
             engine.RemoveComponent("FPSCounter");
             
             lt.CleanUp();
