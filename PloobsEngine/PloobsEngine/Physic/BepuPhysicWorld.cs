@@ -12,6 +12,10 @@ using BEPUphysics.BroadPhaseSystems;
 using BEPUphysics.Collidables.MobileCollidables;
 using BEPUphysics.Collidables;
 using PloobsEngine.Engine.Logger;
+using BEPUphysics.Settings;
+using BEPUphysics.Constraints;
+using BEPUphysics.PositionUpdating;
+using BEPUphysics.CollisionTests.CollisionAlgorithms;
 
 namespace PloobsEngine.Physics
 {
@@ -30,17 +34,44 @@ namespace PloobsEngine.Physics
         /// <param name="gravity">The gravity.</param>
         /// <param name="useRealElapsedTimeStep">if set to <c>true</c> [use real elapsed time step] in the simulation.</param>
         /// <param name="PhysicElapsedTimeMultiplier">If useRealElapsedTimeStep is true, multiply the elapsedtime by this value.</param>
-        public BepuPhysicWorld(float gravity = -9.8f, bool useRealElapsedTimeStep = false, float PhysicElapsedTimeMultiplier = 1)
+        /// <param name="multiThread">if set to <c>true</c> [multi thread].</param>
+        public BepuPhysicWorld(float gravity = -9.8f, bool useRealElapsedTimeStep = false, float PhysicElapsedTimeMultiplier = 1, bool multiThread = false)
         {
             space = new Space();
             objs = new List<IPhysicObject>();
-            space.ForceUpdater.Gravity = new Vector3(0, gravity, 0);
+            space.ForceUpdater.Gravity = new Vector3(0, gravity, 0);            
+
             if(PhysicElapsedTimeMultiplier <= 0)            
             {
                 ActiveLogger.LogMessage("PhysicElapesedTimeMultiplier must be bigger than zero, forced to default one", LogLevel.RecoverableError);
             }
+
             this.useRealElapsedTimeStep = useRealElapsedTimeStep;
             this.PhysicElapesedTimeMultiplier = PhysicElapsedTimeMultiplier;
+            
+            space.ForceUpdater.AllowMultithreading = multiThread;
+
+            if (multiThread)
+            {
+#if XBOX360
+            //Note that not all four available hardware threads are used.
+            //Currently, BEPUphysics will allocate an equal amount of work to each thread on the xbox360.
+            //If two threads are put on one core, it will bottleneck the engine and run significantly slower than using 3 hardware threads.
+            Space.ThreadManager.AddThread(delegate { Thread.CurrentThread.SetProcessorAffinity(new[] { 1 }); }, null);
+            Space.ThreadManager.AddThread(delegate { Thread.CurrentThread.SetProcessorAffinity(new[] { 3 }); }, null);
+            Space.ThreadManager.AddThread(delegate { Thread.CurrentThread.SetProcessorAffinity(new[] { 5 }); }, null);
+
+#else
+                if (Environment.ProcessorCount > 1)
+                {
+                    for (int i = 0; i < Environment.ProcessorCount; i++)
+                    {
+                        Space.ThreadManager.AddThread();
+                    }
+                }
+#endif
+
+            }
         }
 
         bool useRealElapsedTimeStep ;
@@ -66,9 +97,10 @@ namespace PloobsEngine.Physics
         /// </summary>
         /// <param name="gt">The gt.</param>
         protected override void Update(Microsoft.Xna.Framework.GameTime gt)
-        {            
+        {
+            var dt = (float)gt.ElapsedGameTime.TotalSeconds;
             if(useRealElapsedTimeStep)
-                space.Update(gt.ElapsedGameTime.Milliseconds * PhysicElapesedTimeMultiplier);
+                space.Update(dt * PhysicElapesedTimeMultiplier);
             space.Update();        
         }
 
@@ -98,7 +130,7 @@ namespace PloobsEngine.Physics
             {
                 TerrainObject t = obj as TerrainObject;
                 space.Add(t.Terrain);
-                t.Terrain.Tag = obj;
+                t.Terrain.Tag = obj;                
                 objs.Add(obj);
             }
             else if (obj.PhysicObjectTypes == PhysicObjectTypes.DETECTOROBJECT)
@@ -229,46 +261,17 @@ namespace PloobsEngine.Physics
         public override SegmentInterceptInfo SegmentIntersect(Ray raio, Func<IPhysicObject,bool> filter , float maxDistance)
         {
             RayCastResult result;
-            if (space.RayCast(raio, maxDistance, (a) => { return filter(RecoverFromBroadPhaseEntry(a)); }, out result))
+            if (space.RayCast(raio, maxDistance, (a) => { return filter(BepuEntityObject.RecoverIPhysicObjectFromBroadPhase(a)); }, out result))
             {
                 SegmentInterceptInfo resp = new SegmentInterceptInfo();
                 resp.Distance = Vector3.Distance(result.HitData.Location, raio.Position);
                 resp.ImpactNormal = result.HitData.Normal;
                 resp.ImpactPosition = result.HitData.Location;
-                resp.PhysicObject = RecoverFromBroadPhaseEntry(result.HitObject);                
+                resp.PhysicObject = BepuEntityObject.RecoverIPhysicObjectFromBroadPhase(result.HitObject);                
                 return resp;
             }                       
             return null;            
-        }
-
-        /// <summary>
-        /// Recovers from broad phase entry.
-        /// </summary>
-        /// <param name="entry">The entry.</param>
-        /// <returns></returns>
-        internal static IPhysicObject RecoverFromBroadPhaseEntry(BroadPhaseEntry entry)
-        {
-            IPhysicObject phyObj = null;
-            if (entry is Collidable)
-            {         
-                Collidable collidable = (entry as Collidable);
-                phyObj = collidable.Tag as IPhysicObject;
-            }
-            return phyObj;
-        }
-
-        /// <summary>
-        /// Recovers from collidable.
-        /// </summary>
-        /// <param name="entry">The entry.</param>
-        /// <returns></returns>
-        internal static IPhysicObject RecoverFromCollidable(Collidable entry)
-        {
-                IPhysicObject phyObj = null;
-                Collidable collidable = (entry as Collidable);                
-                phyObj = collidable.Tag as IPhysicObject;                                                    
-                return phyObj;
-        }
+        }        
 
 
         public override void DetectCollisions(IPhysicObject po,List<IPhysicObject> col)
@@ -277,8 +280,8 @@ namespace PloobsEngine.Physics
             BepuEntityObject bo = (BepuEntityObject)po;            
             
             foreach (var item in bo.Entity.CollisionInformation.OverlappedCollidables) 
-	        {                
-                IPhysicObject candidate = RecoverFromCollidable(item);
+	        {
+                IPhysicObject candidate = BepuEntityObject.RecoverIPhysicObjectFromCollidable(item);
                 if(candidate!=null)
                      col.Add(candidate);         
 	        }                     
@@ -298,7 +301,7 @@ namespace PloobsEngine.Physics
             space.BroadPhase.QueryAccelerator.GetEntries(new BoundingSphere(po.Position, distance), ent);
             foreach (var item in ent)
             {
-                    IPhysicObject phyObj  = RecoverFromBroadPhaseEntry(item);                
+                    IPhysicObject phyObj  =BepuEntityObject.RecoverIPhysicObjectFromBroadPhase(item);                
                     if (phyObj != null)
                     {
                         if (condition(phyObj, phyObj.ObjectOwner))
@@ -322,7 +325,7 @@ namespace PloobsEngine.Physics
             space.BroadPhase.QueryAccelerator.GetEntries(frustrum, ent);            
             foreach (var item in ent)
             {
-                    IPhysicObject phyObj = RecoverFromBroadPhaseEntry(item);                
+                    IPhysicObject phyObj = BepuEntityObject.RecoverIPhysicObjectFromBroadPhase(item);                
                     if (phyObj != null)
                     {
                         if (condition(phyObj, phyObj.ObjectOwner))
@@ -350,6 +353,97 @@ namespace PloobsEngine.Physics
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
         {
             ActiveLogger.LogMessage("Serialization not implemented yet", LogLevel.RecoverableError);
+        }
+
+        /// <summary>
+        /// Applies the default settings to the space.
+        /// These values are what the engine starts with; they don't have to be applied unless you just want to get back to the defaults.
+        /// This doesn't cover every single tunable field in the entire engine, just the main ones that this helper class is messing with.
+        /// </summary>
+        /// <param name="space">Space to configure.</param>
+        public static void ApplyDefaultSettings(BepuPhysicWorld world)
+        {
+            MotionSettings.ConserveAngularMomentum = false;
+            MotionSettings.DefaultPositionUpdateMode = PositionUpdateMode.Discrete;
+            MotionSettings.UseRk4AngularIntegration = false;
+            SolverSettings.DefaultMinimumIterations = 1;
+            world.Space.Solver.IterationLimit = 10;
+            GeneralConvexPairTester.UseSimplexCaching = false;
+            MotionSettings.UseExtraExpansionForContinuousBoundingBoxes = false;
+        }
+
+        /// <summary>
+        /// Applies some rotation-related settings.
+        /// With these settings enabled, rotation generally behaves better with long shapes.
+        /// Angular motion is more realistic since the momentum is conserved.
+        /// However, these settings can also cause some instability to sneak into the simulation.
+        /// Try using these settings on the Saw Contraption demo to see an example of what can go
+        /// wrong when conservation is enabled.
+        /// </summary>
+        public static void ApplyRotationSettings()
+        {
+            MotionSettings.ConserveAngularMomentum = true;
+            MotionSettings.UseRk4AngularIntegration = true;
+        }
+
+        /// <summary>
+        /// Applies slightly higher speed settings.
+        /// The only change here is the default minimum iterations.
+        /// In many simulations, having a minimum iteration count of 0 works just fine.
+        /// It's a quick and still fairly robust way to get some extra performance.
+        /// An example of where this might introduce some issues is sphere stacking.
+        /// </summary>
+        public static void ApplySemiSpeedySettings()
+        {
+            SolverSettings.DefaultMinimumIterations = 0;
+        }
+
+        /// <summary>
+        /// Applies some low quality, high speed settings.
+        /// The main benefit comes from the very low iteration cap.
+        /// By enabling simplex caching, general convex collision detection
+        /// gets a nice chunk faster, but some curved shapes lose collision detection robustness.
+        /// </summary>
+        /// <param name="space">Space to configure.</param>
+        public static void ApplySuperSpeedySettings(BepuPhysicWorld world)
+        {
+            SolverSettings.DefaultMinimumIterations = 0;
+            world.Space.Solver.IterationLimit = 5;
+            GeneralConvexPairTester.UseSimplexCaching = true;
+
+        }
+
+        /// <summary>
+        /// Applies some higher quality settings.
+        /// By using universal continuous collision detection, missed collisions
+        /// will be much, much rarer.  This actually doesn't have a huge performance cost.
+        /// The increased iterations put this as a midpoint between the normal and high stability settings.
+        /// </summary>
+        /// <param name="space">Space to configure.</param>
+        public static void ApplyMediumHighStabilitySettings(BepuPhysicWorld world)
+        {
+            MotionSettings.DefaultPositionUpdateMode = PositionUpdateMode.Continuous;
+            SolverSettings.DefaultMinimumIterations = 2;
+            world.Space.Solver.IterationLimit = 15;
+
+        }
+
+        /// <summary>
+        /// Applies some high quality, low performance settings.
+        /// By using universal continuous collision detection, missed collisions
+        /// will be much, much rarer.  This actually doesn't have a huge performance cost.
+        /// However, increasing the iteration limit and the minimum iterations to 5x the default
+        /// will incur a pretty hefty overhead.
+        /// On the upside, pretty much every simulation will be rock-solid.
+        /// </summary>
+        /// <param name="space">Space to configure.</param>
+        public static void ApplyHighStabilitySettings(BepuPhysicWorld world)
+        {
+            MotionSettings.DefaultPositionUpdateMode = PositionUpdateMode.Continuous;
+            MotionSettings.UseExtraExpansionForContinuousBoundingBoxes = true;
+            SolverSettings.DefaultMinimumIterations = 5;
+            world.Space.Solver.IterationLimit = 50;
+
         }
 
         #endregion

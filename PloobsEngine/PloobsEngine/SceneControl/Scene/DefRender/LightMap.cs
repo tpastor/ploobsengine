@@ -188,9 +188,9 @@ namespace PloobsEngine.SceneControl
             this.ginfo = ginfo;
             this.cullPointLight = cullPointLight;
             if (useFloatingBufferForLightning)
-                lightRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.HdrBlendable, false, DepthFormat.None, 0, RenderTargetUsage.DiscardContents);
+                lightRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.HdrBlendable, false, DepthFormat.None, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
             else
-                lightRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, false, DepthFormat.None, 0, RenderTargetUsage.DiscardContents);
+                lightRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, false, DepthFormat.None, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
 
             directionalLightEffect = manager.GetAsset<Effect>("DirectionalLight",true);
             pointLightEffect = manager.GetAsset<Effect>("PointLight",true);

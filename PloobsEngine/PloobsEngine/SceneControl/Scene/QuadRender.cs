@@ -45,6 +45,7 @@ namespace PloobsEngine.SceneControl
 
              ib = new short[] { 0, 1, 2, 2, 3, 0 };
 
+
         }             
 
         /// <summary>

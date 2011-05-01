@@ -44,8 +44,7 @@ namespace PloobsEngine.SceneControl
         private Texture2D shadowMap;                
         private Texture2D content;
         private Texture2D blank;     
-        private ShadowFilter shadowFilterSpot = ShadowFilter.NONE;                
-        RenderHelper rh;
+        private ShadowFilter shadowFilterSpot = ShadowFilter.NONE;                        
         RenderTarget2D rt;
         DirectionalShadowRenderer shadow;
         private int shadownBufferSize;
@@ -79,6 +78,7 @@ namespace PloobsEngine.SceneControl
 
         private void DrawPointLight(RenderHelper render, GraphicInfo ginfo, ICamera camera, PointLightPE pl, IDeferredGBuffer DeferredGBuffer,bool cullPointLight)
         {
+            pointLightEffect.Parameters["halfPixel"].SetValue(ginfo.HalfPixel);
             pointLightEffect.Parameters["colorMap"].SetValue(DeferredGBuffer[GBufferTypes.COLOR]);
             pointLightEffect.Parameters["normalMap"].SetValue(DeferredGBuffer[GBufferTypes.NORMAL]);
             pointLightEffect.Parameters["depthMap"].SetValue(DeferredGBuffer[GBufferTypes.DEPH]);
@@ -235,9 +235,9 @@ namespace PloobsEngine.SceneControl
             shadowRT = factory.CreateRenderTarget(shadownBufferSize, shadownBufferSize, SurfaceFormat.Single,true);
 
             if (useFloatingBufferForLightning)
-                lightRT = factory.CreateRenderTarget(ginfo.BackBufferWidth,ginfo.BackBufferHeight, SurfaceFormat.HdrBlendable,false,DepthFormat.None,0,RenderTargetUsage.PreserveContents);
+                lightRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.HdrBlendable, false, DepthFormat.None, ginfo.MultiSample, RenderTargetUsage.PreserveContents);
             else
-                lightRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, false, DepthFormat.None, 0, RenderTargetUsage.PreserveContents);
+                lightRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, false, DepthFormat.None, ginfo.MultiSample, RenderTargetUsage.PreserveContents);
 
             Depth = factory.GetEffect("ShadowDepth",false,true);
             pointLightEffect = factory.GetEffect("PointLight",false,true);

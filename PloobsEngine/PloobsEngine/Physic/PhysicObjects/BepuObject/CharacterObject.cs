@@ -17,11 +17,11 @@ namespace PloobsEngine.Physics.Bepu
         float YAlignement;
         Matrix rotation;
 
-        public CharacterObject(Vector3 position, Matrix rotation,float characterHeight, float characterWidth, float mass, float maximumStepHeight, Vector2 scale, float YAlignement = 0)
+        public CharacterObject(Vector3 position, Matrix rotation, float characterHeight, float characterWidth, float mass, float supportHeight, Vector3 scale, float YAlignement = 0)
         {
             this.rotation = rotation;
-            this.YAlignement = YAlignement;
-            this.characterController = new CharacterController(position,characterHeight,characterWidth,mass,maximumStepHeight,scale);            
+            this.YAlignement = YAlignement * scale.Y;
+            this.characterController = new CharacterController(position, characterHeight, characterWidth, supportHeight,mass, scale);            
         }        
 
         public CharacterController CharacterController
@@ -110,7 +110,7 @@ namespace PloobsEngine.Physics.Bepu
         {
             get
             {
-                Vector3 pos = new Vector3(CharacterController.Position.X, CharacterController.Position.Y - CharacterController.Body.Height / 2 - this.YAlignement, CharacterController.Position.Z);
+                Vector3 pos = new Vector3(CharacterController.Position.X, CharacterController.Position.Y + this.YAlignement, CharacterController.Position.Z);
                 return Matrix.CreateScale(Scale) * Rotation * Matrix.CreateTranslation(pos);                
             }
         }

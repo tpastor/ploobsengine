@@ -98,7 +98,7 @@ namespace PloobsEngine.SceneControl
             shadowMapEffect = factory.GetEffect("ShadowMap",false,true);
 
             // Create the shadow map, using a 32-bit floating-point surface format
-            shadowMap = factory.CreateRenderTarget(ShadowMapSize * NumSplits, ShadowMapSize, SurfaceFormat.Single,true);
+            shadowMap = factory.CreateRenderTarget(ShadowMapSize * NumSplits, ShadowMapSize, SurfaceFormat.Single,true,DepthFormat.Depth24Stencil8,ginfo.MultiSample);
             
             // Create the shadow occlusion texture using the same dimensions as the backbuffer
             shadowOcclusion = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);

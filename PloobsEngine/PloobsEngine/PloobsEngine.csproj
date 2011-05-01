@@ -152,6 +152,7 @@
     <Compile Include="Events\IEventHandler.cs" />
     <Compile Include="Events\IHaveEventManager.cs" />
     <Compile Include="Events\SimpleEvent.cs" />
+    <Compile Include="Features\FPSCounter.cs" />
     <Compile Include="Light\Deferred\DeferredLight.cs" />
     <Compile Include="Light\Deferred\DirectionalLightPE.cs" />
     <Compile Include="Light\Deferred\PointLightPE.cs" />
@@ -279,6 +280,8 @@
     <Compile Include="SceneControl\Scene\IObject.cs" />
     <Compile Include="SceneControl\Scene\IObjectAtachtment.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\AntiAliasingPostEffect.cs" />
+    <Compile Include="SceneControl\Scene\PostEffects\AntiAliasingPostEffectStalker.cs" />
+    <Compile Include="SceneControl\Scene\PostEffects\AntiAliasingPostEffectTabula.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\BlackWhitePostEffect.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\BloomPostEffect.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\ColorCorrectionPostEffect.cs" />
@@ -377,6 +380,7 @@
     <None Include="bin\x86\Debug\Content\Effects\Deferred\AllBuffer.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\AnimatedBillboard.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\AntiAliasing.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\AntiAliasingtabulastalker.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\BlackWhite.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\BlinkGBuffer.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\blur.xnb" />

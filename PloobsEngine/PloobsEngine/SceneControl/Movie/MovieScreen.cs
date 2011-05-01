@@ -13,26 +13,25 @@ namespace PloobsEngine.SceneControl
 
     public  class MovieScreen : IScreen
     {
-
-        public MovieScreen(String location)
+        public MovieScreen(String location, Color backGoundColor)
         {
             this.location = location;
+            this.backGoundColor = backGoundColor;
         }
 
-        protected string location;
+        protected Color backGoundColor;
+        private string location;
         protected Video myVideoFile;
         protected VideoPlayer videoPlayer;        
         protected bool started = false;
-        protected bool play = true;
-        protected SpriteBatch sprite;
-        protected VideoEnded ve;
-        protected Viewport  Viewport;
+        protected bool play = true;        
+        private VideoEnded videoEnded;        
 
         public VideoEnded VideoEndedDelegate
         {
             set
             {
-                this.ve += value;
+                this.videoEnded += value;
             }
         }
 
@@ -41,8 +40,7 @@ namespace PloobsEngine.SceneControl
              base.LoadContent(GraphicInfo, factory, contentManager);            
              videoPlayer = new VideoPlayer();
              myVideoFile = contentManager.GetAsset<Video>(location);
-             videoPlayer.IsLooped = false;
-             this.Viewport = Viewport;
+             videoPlayer.IsLooped = false;            
 
         }
         public bool IsLooped
@@ -104,8 +102,8 @@ namespace PloobsEngine.SceneControl
 
             if (videoPlayer.State == MediaState.Stopped)
             {
-                if (ve != null)
-                    ve();
+                if (videoEnded != null)
+                    videoEnded();
                 VideoEnded();
             }
 
@@ -123,7 +121,7 @@ namespace PloobsEngine.SceneControl
 
         protected override void  Draw(GameTime gameTime, RenderHelper render)
         {
- 	       render.Clear(Color.Black);
+ 	       render.Clear(backGoundColor);
            Texture2D videoTexture = null;
            if (videoPlayer.State != MediaState.Stopped)
                videoTexture = videoPlayer.GetTexture();
@@ -131,7 +129,7 @@ namespace PloobsEngine.SceneControl
             // Draw the video, if we have a texture to draw.
             if (videoTexture != null)
             {
-                render.RenderTextureComplete(videoTexture);
+                render.RenderTextureComplete(videoTexture,Color.White,GraphicInfo.FullScreenRectangle,Matrix.Identity);
             }            
         }
 

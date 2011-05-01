@@ -8,12 +8,14 @@ namespace IntroductionDemo4._0
     
     public class Demos
     {
+
         public Demos()
         {
             InitialEngineDescription desc = InitialEngineDescription.Default();
             ///optional parameters, the default is good for most situations
             desc.UseVerticalSyncronization = true;
-            desc.isFixedGameTime = true;            
+            desc.isFixedGameTime = true;
+            desc.isMultiSampling = true;
             desc.Logger = new SimpleLogger();
             desc.UnhandledException_Handler = UnhandledException;
 
@@ -26,11 +28,7 @@ namespace IntroductionDemo4._0
 
         static void LoadScreen(ScreenManager manager)
         {            
-            manager.AddScreen(new BasicScreenDeferredDemo());
-            //manager.AddScreen(new BasicScreenForwardDemo());
-            //manager.AddScreen(new KeyboardInputScreen());
-            //manager.AddScreen(new PointLightScreen());
-            //manager.AddScreen(new SpotLightScreen());
+            manager.AddScreen(new TitleScreen());            
         }
 
         static void UnhandledException(object sender, UnhandledExceptionEventArgs e)

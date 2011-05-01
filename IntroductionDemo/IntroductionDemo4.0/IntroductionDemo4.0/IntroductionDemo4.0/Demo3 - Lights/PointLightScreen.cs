@@ -24,9 +24,8 @@ namespace IntroductionDemo4._0
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
-            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
-            desc.DefferedDebug = false;
-            desc.UseFloatingBufferForLightMap = false;
+            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
+            desc.UseFloatingBufferForLightMap = true;
             renderTech = new DeferredRenderTechnic(desc) ;   
         }
 
@@ -54,7 +53,7 @@ namespace IntroductionDemo4._0
             IObject obj4 = new IObject(mat, sm,pi);
             this.World.AddObject(obj4);
 
-            lt = new LightThrowBepu(this.World, factory,contentManager);  
+            lt = new LightThrowBepu(this.World, factory);  
 
             ///Create a FirstPerson Camera
             ///This is a special camera, used in the development
@@ -78,6 +77,7 @@ namespace IntroductionDemo4._0
             }
 
             lcu.Start();
+            this.RenderTechnic.AddPostEffect(new AntiAliasingPostEffect());
         }
 
         protected override void Draw(GameTime gameTime, RenderHelper render)

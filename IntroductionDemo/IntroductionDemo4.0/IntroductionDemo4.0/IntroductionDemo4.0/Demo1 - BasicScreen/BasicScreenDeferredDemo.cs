@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using PloobsEngine;
 using PloobsEngine.Cameras;
 using PloobsEngine.Light;
 using PloobsEngine.Material;
@@ -24,9 +23,9 @@ namespace IntroductionDemo4._0
         {
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
 
-            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
-            desc.DefferedDebug = true;
-            desc.UseFloatingBufferForLightMap = false;
+            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
+            desc.UseFloatingBufferForLightMap = true;
+            desc.BackGroundColor = Color.CornflowerBlue;
             renderTech = new DeferredRenderTechnic(desc);
         }
 
@@ -66,9 +65,16 @@ namespace IntroductionDemo4._0
             this.World.AddLight(ld5);
             #endregion
 
+            this.RenderTechnic.AddPostEffect(new AntiAliasingPostEffect());
+
             this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo.Viewport));                              
         }
 
+        /// <summary>
+        /// This is called when the screen should draw itself.
+        /// </summary>
+        /// <param name="gameTime"></param>
+        /// <param name="render"></param>
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);

@@ -28,9 +28,9 @@ namespace PloobsEngine.SceneControl
             this.restore = manager.GetAsset<Effect>("RestoreDepth",true);
             this.restore.Parameters["halfPixel"].SetValue(ginfo.HalfPixel);                
             if (useFloatBuffer)
-                target = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.HdrBlendable, false, DepthFormat.Depth24Stencil8, 0, RenderTargetUsage.DiscardContents);
+                target = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.HdrBlendable, false, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
             else
-                target = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, false, DepthFormat.Depth24Stencil8, 0, RenderTargetUsage.DiscardContents);
+                target = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, false, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
         }        
 
         private RenderTarget2D target;

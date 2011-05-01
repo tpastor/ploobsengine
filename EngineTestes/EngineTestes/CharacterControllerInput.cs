@@ -29,10 +29,10 @@ namespace EngineTestes
         Keys esquerda = Keys.H;
         Keys pulo = Keys.R;
         
-        public CharacterControllerInput(IScene scene, Vector3 position, float characterHeight, float characterWidth, float mass, Vector2 scale)
+        public CharacterControllerInput(IScene scene, Vector3 position, float characterHeight, float characterWidth, float mass, Vector3 scale,float Yalignement = 0)
             : base(scene)
         {
-            Characterobj = new CharacterObject(position,Matrix.Identity, characterHeight, characterWidth, mass, 1.04f, scale);
+            Characterobj = new CharacterObject(position, Matrix.Identity, characterHeight, characterWidth, mass, 1f, scale, Yalignement);
             this.Start();
             
         }

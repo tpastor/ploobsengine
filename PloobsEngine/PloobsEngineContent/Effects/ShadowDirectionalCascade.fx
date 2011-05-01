@@ -66,8 +66,6 @@ struct VertexShaderOutput
     float2 TexCoord : TEXCOORD0;    
 };
 
-
-
 VertexShaderOutput VertexShaderFunction(VertexShaderInput input)  
 {  
     VertexShaderOutput output;   
@@ -96,6 +94,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
     float4 position;
     position.x = input.TexCoord.x * 2.0f - 1.0f;
     position.y = -(input.TexCoord.y * 2.0f - 1.0f);
+	position.xy = position.xy - halfPixel;
     position.z = depthVal;
     position.w = 1.0f;
     //transform to world space

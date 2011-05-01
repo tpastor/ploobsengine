@@ -60,7 +60,10 @@ namespace PloobsEngine.SceneControl
             Combine.Parameters["halfPixel"].SetValue(GraphicInfo.HalfPixel);
             Combine.Parameters["base"].SetValue(ImageToProcess);
             Combine.Parameters["last"].SetValue(x);
-            rHelper.RenderFullScreenQuadVertexPixel(Combine);
+            if (useFloatingBuffer)
+                rHelper.RenderFullScreenQuadVertexPixel(Combine , SamplerState.PointClamp);
+            else
+                rHelper.RenderFullScreenQuadVertexPixel(Combine, SamplerState.LinearClamp);
         }
 
 

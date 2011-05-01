@@ -125,7 +125,7 @@ namespace PloobsEngine.SceneControl
         public override void Draw(Texture2D ImageToProcess, RenderHelper rHelper, GameTime gt, Engine.GraphicInfo GraphicInfo, IWorld world, bool useFloatingBuffer)
         {                                
                 effect.Parameters["dz"].SetValue(density);
-                effect.Parameters["depth"].SetValue(rHelper[PrincipalConstants.dephRT]);
+                effect.Parameters["depth"].SetValue(rHelper[PrincipalConstants.DephRT]);
                 effect.Parameters["cena"].SetValue(ImageToProcess);
                 effect.Parameters["InvertViewProjection"].SetValue(Matrix.Invert(world.CameraManager.ActiveCamera.ViewProjection));
                 effect.Parameters["halfPixel"].SetValue(GraphicInfo.HalfPixel);

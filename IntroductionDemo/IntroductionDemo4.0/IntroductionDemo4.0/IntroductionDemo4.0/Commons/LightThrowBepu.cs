@@ -23,8 +23,6 @@ namespace IntroductionDemo4._0
         BindMouseCommand mm0 = null;
         BindMouseCommand mm1 = null;
         GraphicFactory factory;
-        IContentManager manager;
-
         
         public void CleanUp()
         {
@@ -35,9 +33,8 @@ namespace IntroductionDemo4._0
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(mm1);
         }        
 
-        public LightThrowBepu(IWorld mundo,GraphicFactory factory,IContentManager manager)
-        {
-            this.manager = manager;
+        public LightThrowBepu(IWorld mundo,GraphicFactory factory)
+        {            
             this.factory = factory;
             _mundo = mundo;            
             {
@@ -66,7 +63,7 @@ namespace IntroductionDemo4._0
         {
             ///Create an object
             IObject physObj = SpawnPrimitive(_mundo.CameraManager.ActiveCamera.Position, Matrix.CreateRotationX(0.5f));
-            physObj.PhysicObject.Velocity = (_mundo.CameraManager.ActiveCamera.Target - _mundo.CameraManager.ActiveCamera.Position) * 50.0f;
+            physObj.PhysicObject.Velocity = (_mundo.CameraManager.ActiveCamera.Target - _mundo.CameraManager.ActiveCamera.Position) * 10.0f;
             
             ///Create a light that follow an object
             MoveablePointLight mvp = new MoveablePointLight(physObj.PhysicObject as SphereObject, new Color((float)rd.NextDouble(),(float) rd.NextDouble(),(float) rd.NextDouble()),25, 5);
@@ -90,7 +87,7 @@ namespace IntroductionDemo4._0
             sm2.SetTexture(factory.CreateTexture2DColor(1,1,Color.White,false), TextureType.DIFFUSE);
             DeferredNormalShader nd = new DeferredNormalShader();                        
             IMaterial m = new DeferredMaterial(nd);
-            SphereObject  pi2 = new SphereObject(pos, 1,1,1,MaterialDescription.DefaultBepuMaterial());
+            SphereObject  pi2 = new SphereObject(pos, 1,10,1,MaterialDescription.DefaultBepuMaterial());
             IObject o = new IObject(m,sm2,pi2);
             return o;
         }

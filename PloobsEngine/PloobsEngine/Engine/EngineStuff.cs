@@ -364,16 +364,17 @@ namespace PloobsEngine.Engine
         /// <summary>
         /// Gets the component by name.
         /// </summary>
+        /// <typeparam name="T">Component type</typeparam>
         /// <param name="componentName">Name of the component.</param>
         /// <returns></returns>
-        public IComponent GetComponent(String componentName)
+        public T GetComponent<T>(String componentName)  where T : IComponent
         {
             if (String.IsNullOrEmpty(componentName))
                 ActiveLogger.LogMessage("Bad Component name", LogLevel.RecoverableError);
             IComponent comp = ComponentManager.GetComponent(componentName);
             if(comp == null)
                 ActiveLogger.LogMessage("Component not found " + componentName, LogLevel.RecoverableError);
-            return comp;
+            return (T) comp;
         }
 
         /// <summary>

@@ -26,9 +26,8 @@ namespace IntroductionDemo4._0
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
-            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
-            desc.DefferedDebug = false;
-            desc.UseFloatingBufferForLightMap = false;
+            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
+            desc.UseFloatingBufferForLightMap = true;
             renderTech = new DeferredRenderTechnic(desc) ;
         }
 
@@ -61,7 +60,7 @@ namespace IntroductionDemo4._0
             cam.FarPlane = 2000;
 
             ///Atirador de bolas classico
-            lt = new LightThrowBepu(this.World,factory,contentManager);            
+            lt = new LightThrowBepu(this.World,factory);            
             
             ///Interpolador que ira variar a cor das luzes
             UnitLightInterpolator li = new UnitLightInterpolator(this, true);
@@ -97,7 +96,8 @@ namespace IntroductionDemo4._0
                 }
             }
 
-            this.World.CameraManager.AddCamera(cam);            
+            this.World.CameraManager.AddCamera(cam);
+            this.RenderTechnic.AddPostEffect(new AntiAliasingPostEffect());
         }
 
         protected override void  Draw(GameTime gameTime, RenderHelper render)

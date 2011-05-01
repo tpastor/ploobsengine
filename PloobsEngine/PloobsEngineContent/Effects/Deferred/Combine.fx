@@ -10,9 +10,7 @@ texture last;
 sampler2D baseSampler = 
 sampler_state
 {
-	Texture = <base>;
-	MinFilter = LINEAR;	
-	MagFilter = LINEAR;	
+	Texture = <base>;	
 	AddressU = CLAMP;
 	AddressV = CLAMP;
 };

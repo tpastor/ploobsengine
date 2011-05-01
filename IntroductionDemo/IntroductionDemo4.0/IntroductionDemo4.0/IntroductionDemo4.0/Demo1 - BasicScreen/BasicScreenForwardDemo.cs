@@ -13,8 +13,16 @@ using PloobsEngine.Cameras;
 
 namespace IntroductionDemo4._0
 {
+    /// <summary>
+    /// Basic Forward Screen
+    /// </summary>
     public class BasicScreenForwardDemo : IScene
     {
+        /// <summary>
+        /// Sets the world and render technich.
+        /// </summary>
+        /// <param name="renderTech">The render tech.</param>
+        /// <param name="world">The world.</param>
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
@@ -23,6 +31,12 @@ namespace IntroductionDemo4._0
             renderTech = new ForwardRenderTecnich(desc);
         }
 
+        /// <summary>
+        /// Load content for the screen.
+        /// </summary>
+        /// <param name="GraphicInfo"></param>
+        /// <param name="factory"></param>
+        /// <param name="contentManager"></param>
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory ,IContentManager contentManager)
         {
             base.LoadContent(GraphicInfo,factory, contentManager);            
@@ -37,6 +51,11 @@ namespace IntroductionDemo4._0
             this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo.Viewport));                              
         }
 
+        /// <summary>
+        /// This is called when the screen should draw itself.
+        /// </summary>
+        /// <param name="gameTime"></param>
+        /// <param name="render"></param>
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);

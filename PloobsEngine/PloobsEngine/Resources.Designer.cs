@@ -81,6 +81,13 @@ namespace PloobsEngine {
             }
         }
         
+        internal static byte[] AntiAliasingtabulastalker {
+            get {
+                object obj = ResourceManager.GetObject("AntiAliasingtabulastalker", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
         internal static byte[] BlackWhite {
             get {
                 object obj = ResourceManager.GetObject("BlackWhite", resourceCulture);

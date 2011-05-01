@@ -26,10 +26,10 @@ namespace PloobsEngine.Physics.Bepu
             set { detectorVolume = value; }
         }
 
-        public DetectorVolumeObject(TriangleMeshObject mesh) 
+        public DetectorVolumeObject(BepuPhysicWorld bepuPhysicWorld,TriangleMeshObject mesh) 
         {
-            this.mesh = mesh;            
-            detectorVolume = new DetectorVolume(mesh.StaticMesh.Mesh.Data, (mesh.StaticMesh.Space as Space).BroadPhase.QueryAccelerator);            
+            this.mesh = mesh;
+            detectorVolume = new DetectorVolume(mesh.StaticMesh.Mesh.Data, bepuPhysicWorld.Space.BroadPhase.QueryAccelerator);            
         }
 
         public override PhysicObjectTypes PhysicObjectTypes

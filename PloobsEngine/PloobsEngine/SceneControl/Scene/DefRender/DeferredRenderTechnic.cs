@@ -137,11 +137,21 @@ namespace PloobsEngine.SceneControl
         private IDeferredLightMap deferredLightMap ;
         private IDeferredFinalCombination deferredFinalCombination ;
         private IForwardPass forwardPass ;
-        private RenderTarget2D target;        
+        private RenderTarget2D target;
+        private RenderTarget2D target2; ///for ping pong with target       
+        private RenderTarget2D PostEffectTarget;                                       
         private RestoreDepth restoreDepth;
         private GraphicInfo ginfo;
         int halfWidth;
         int halfHeight;
+
+        private void SwapTargetBuffers()
+        {
+            if (PostEffectTarget == target)
+                PostEffectTarget = target2;
+            else
+            PostEffectTarget = target;
+        }
 
         protected override void  AfterLoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
         {
@@ -151,11 +161,18 @@ namespace PloobsEngine.SceneControl
             deferredFinalCombination.LoadContent(manager, ginfo, factory, desc.UseFloatingBufferForLightMap, desc.ExtraForwardPass);
 
 
-            if(desc.UseFloatingBufferForLightMap)
-                target = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight,SurfaceFormat.HdrBlendable);
+            if (desc.UseFloatingBufferForLightMap)
+            {
+                target = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.HdrBlendable);
+                target2 = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.HdrBlendable);
+            }
             else
+            {
                 target = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
+                target2 = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
+            }
 
+            PostEffectTarget = target;
             halfWidth = ginfo.Viewport.Width / 2;
             halfHeight = ginfo.Viewport.Height / 2;
             restoreDepth = new RestoreDepth(desc.UseFloatingBufferForLightMap, manager, factory, ginfo);
@@ -200,14 +217,14 @@ namespace PloobsEngine.SceneControl
                 render[PrincipalConstants.colorRT] = deferredGBuffer[GBufferTypes.COLOR];
                 render[PrincipalConstants.normalRt] = deferredGBuffer[GBufferTypes.NORMAL];
                 render[PrincipalConstants.lightRt] = deferredLightMap[DeferredLightMapType.LIGHTMAP];
-                render[PrincipalConstants.dephRT] = deferredGBuffer[GBufferTypes.DEPH];
+                render[PrincipalConstants.DephRT] = deferredGBuffer[GBufferTypes.DEPH];
                 render[PrincipalConstants.extra1RT] = deferredGBuffer[GBufferTypes.Extra1];
                 render[PrincipalConstants.CombinedImage] = deferredFinalCombination[GBufferTypes.FINALIMAGE];
                 render[PrincipalConstants.CurrentImage] = deferredFinalCombination[GBufferTypes.FINALIMAGE];
 
                 if (desc.RestoreDepthOption == RestoreDepthOption.BEFORE_POSTEFFECT)
                 {
-                    restoreDepth.PerformForwardPass(render[PrincipalConstants.CombinedImage], render[PrincipalConstants.dephRT], render);
+                    restoreDepth.PerformForwardPass(render[PrincipalConstants.CombinedImage], render[PrincipalConstants.DephRT], render);
                     if (desc.PhysicDebug)
                     {
                         world.PhysicWorld.iDebugDrawn(gameTime, world.CameraManager.ActiveCamera);
@@ -215,8 +232,7 @@ namespace PloobsEngine.SceneControl
                     if (world.ParticleManager != null)
                         world.ParticleManager.iDraw(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection, render);
 
-                    forwardPass.Draw(gameTime, world, render);
-                    render.RenderPosComponents(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection);
+                    forwardPass.Draw(gameTime, world, render);                    
                     render[PrincipalConstants.CurrentImage] = restoreDepth.EndForwardPass(render);
                     render[PrincipalConstants.CombinedImage] = render[PrincipalConstants.CurrentImage];
 
@@ -224,11 +240,12 @@ namespace PloobsEngine.SceneControl
                     {
                         if (PostEffects[i].Enabled)
                         {
-                            render.PushRenderTarget(target);
+                            render.PushRenderTarget(PostEffectTarget);
                             render.Clear(Color.Transparent);
                             PostEffects[i].Draw(render[PrincipalConstants.CurrentImage], render, gameTime, ginfo, world, desc.UseFloatingBufferForLightMap);
                             Texture2D tex = render.PopRenderTarget()[0].RenderTarget as Texture2D;
                             render[PrincipalConstants.CurrentImage] = tex;
+                            SwapTargetBuffers();
                         }
                     }
                                         
@@ -249,14 +266,16 @@ namespace PloobsEngine.SceneControl
                     {
                         if (PostEffects[i].Enabled)
                         {
-                            render.PushRenderTarget(target);
+                            render.PushRenderTarget(PostEffectTarget);
+                            render.Clear(Color.Transparent);
                             PostEffects[i].Draw(render[PrincipalConstants.CurrentImage], render, gameTime, ginfo, world, desc.UseFloatingBufferForLightMap);
                             Texture2D tex = render.PopRenderTarget()[0].RenderTarget as Texture2D;
                             render[PrincipalConstants.CurrentImage] = tex;
+                            SwapTargetBuffers();
                         }
                     }
 
-                    restoreDepth.PerformForwardPass(render[PrincipalConstants.CurrentImage], render[PrincipalConstants.dephRT], render);
+                    restoreDepth.PerformForwardPass(render[PrincipalConstants.CurrentImage], render[PrincipalConstants.DephRT], render);
                     if (desc.PhysicDebug)
                     {
                         world.PhysicWorld.iDebugDrawn(gameTime, world.CameraManager.ActiveCamera);
@@ -286,11 +305,13 @@ namespace PloobsEngine.SceneControl
                     {
                         if (PostEffects[i].Enabled)
                         {
-                            render.PushRenderTarget(target);
+                            render.PushRenderTarget(PostEffectTarget);
+                            render.Clear(Color.Transparent);
                             PostEffects[i].Draw(render[PrincipalConstants.CurrentImage], render, gameTime, ginfo, world, desc.UseFloatingBufferForLightMap);
                             Texture2D tex = render.PopRenderTarget()[0].RenderTarget as Texture2D;
                             System.Diagnostics.Debug.Assert(tex != null);
                             render[PrincipalConstants.CurrentImage] = tex;
+                            SwapTargetBuffers();
                         }
                     }
                     if (desc.UseFloatingBufferForLightMap)

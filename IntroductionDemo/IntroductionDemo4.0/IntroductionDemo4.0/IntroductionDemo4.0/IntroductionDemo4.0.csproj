@@ -112,6 +112,7 @@
   <ItemGroup>
     <Compile Include="Commons\LightThrowBepu.cs" />
     <Compile Include="Commons\MoveablePointLight.cs" />
+    <Compile Include="TitleScreen.cs" />
     <Compile Include="Demo1 - BasicScreen\BasicScreenDeferredDemo.cs" />
     <Compile Include="Demo1 - BasicScreen\BasicScreenForwardDemo.cs" />
     <Compile Include="Demo2 - Input\KeyboardInputScreen.cs" />
@@ -121,10 +122,20 @@
     <Compile Include="Demo3 - Lights\LightInterpolationScreen.cs" />
     <Compile Include="Demo3 - Lights\PointLightScreen.cs" />
     <Compile Include="Demo3 - Lights\SpotLightScreen.cs" />
+    <Compile Include="Demo4 - Physics\CollisionTypesBepuScreen.cs" />
+    <Compile Include="Demo4 - Physics\GravitationalBepuScreen.cs" />
+    <Compile Include="Demo4 - Physics\Helper\CharacterControllerInput.cs" />
+    <Compile Include="Demo4 - Physics\MovementScreen.cs" />
+    <Compile Include="Demo4 - Physics\StressBepuScreen.cs" />
+    <Compile Include="Demo5 - Cameras\CameraPathScreen.cs" />
+    <Compile Include="Demo5 - Cameras\CameraScreens.cs" />
+    <Compile Include="Demo6 - Trigger\TriggerBepuScreen.cs" />
+    <Compile Include="Demos Extras\ChangingMessagesScreen.cs" />
+    <Compile Include="Demos Extras\PickingScreen.cs" />
     <Compile Include="Demos.cs" />
+    <Compile Include="DemosHomeScreen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Game1.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

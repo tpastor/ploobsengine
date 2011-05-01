@@ -31,7 +31,7 @@ namespace IntroductionDemo4._0
 
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
+            world = new IWorld(new BepuPhysicWorld(-0.097f,true), new SimpleCuller());
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
             desc.DefferedDebug = false;
             desc.UseFloatingBufferForLightMap = false;                                    
@@ -70,7 +70,7 @@ namespace IntroductionDemo4._0
             cam = new CameraFirstPerson(GraphicInfo.Viewport);
             cam.FarPlane = 3000;
 
-            lt = new LightThrowBepu(this.World,factory,contentManager);
+            lt = new LightThrowBepu(this.World,factory);
 
             #region NormalLight
             DirectionalLightPE ld1 = new DirectionalLightPE(Vector3.Left, Color.White);
@@ -91,8 +91,7 @@ namespace IntroductionDemo4._0
             this.World.AddLight(ld5);
             #endregion
             
-            this.World.CameraManager.AddCamera(cam);
-            
+            this.World.CameraManager.AddCamera(cam);            
             
             SimpleConcreteKeyboardInputPlayable ik1 = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.T, g1, EntityType.TOOLS, InputMask.G1);
             bk1 = new BindKeyCommand(ik1, BindAction.ADD);
@@ -123,6 +122,8 @@ namespace IntroductionDemo4._0
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(tom);
 
             isAllActive = true;
+
+            this.RenderTechnic.AddPostEffect(new AntiAliasingPostEffect());
         }
 
         bool isAllActive;

@@ -57,7 +57,7 @@ namespace EngineTestes
                 DeferredSimpleAnimationShader sas = new DeferredSimpleAnimationShader(arobo);
                 DeferredAnimatedMaterial amat = new DeferredAnimatedMaterial(arobo, sas);
 
-                CharacterControllerInput gp = new CharacterControllerInput(this, new Vector3(100, 50, 1), 25, 10, 10, Vector2.One);
+                CharacterControllerInput gp = new CharacterControllerInput(this, new Vector3(100, 50, 1), 25, 10, 10, Vector3.One);
 
                 IObject marine = new IObject(amat, am, gp.Characterobj);
                 ///Adiciona no mundo

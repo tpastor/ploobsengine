@@ -1,4 +1,3 @@
-
 float weight;
 float2 pixel_size;
 

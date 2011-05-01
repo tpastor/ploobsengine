@@ -67,7 +67,7 @@ namespace PloobsEngine
         /// <summary>
         /// Depth Render target name
         /// </summary>
-        public const String dephRT = "DEPHRT";
+        public const String DephRT = "DEPHRT";
         /// <summary>
         /// Separator character used when parsing files
         /// </summary>

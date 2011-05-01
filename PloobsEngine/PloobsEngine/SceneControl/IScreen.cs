@@ -41,7 +41,7 @@ namespace PloobsEngine.SceneControl
     public abstract class IScreen
     {        
                 
-        private IList<IScreenUpdateable> updateables = new List<IScreenUpdateable>();
+        private List<IScreenUpdateable> updateables = new List<IScreenUpdateable>();
 
         /// <summary>
         /// Attach one IScreenUpdateable to this screen
@@ -154,10 +154,12 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         protected virtual void Update(GameTime gameTime)
         {
-            foreach (var item in updateables)
+            IScreenUpdateable[] updts = updateables.ToArray();
+
+            for (int i = 0; i < updts.Length; i++)
             {
-                item.iUpdate(gameTime);
-            }
+                updts[i].iUpdate(gameTime);
+            }            
             
         }
 
@@ -180,10 +182,12 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         protected virtual void CleanUp(EngineStuff engine)
         {
-            foreach (var item in updateables)
+            IScreenUpdateable[] updts = updateables.ToArray();
+
+            for (int i = 0; i < updts.Length; i++)
             {
-                item.iCleanUp();
-            }
+                updts[i].iCleanUp();
+            }            
         }        
 
     }
