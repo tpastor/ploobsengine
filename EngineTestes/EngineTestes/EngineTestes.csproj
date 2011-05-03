@@ -114,6 +114,10 @@
     <Reference Include="System.Net">
       <Private>False</Private>
     </Reference>
+    <Reference Include="TomShane.Neoforce.Controls, Version=0.7.2407.1915, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\NeoforceDll\bin\x86\Debug\TomShane.Neoforce.Controls.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AA\AAScreen.cs" />
@@ -123,6 +127,8 @@
     <Compile Include="BilboardsSamples\BilboardScreen.cs" />
     <Compile Include="CharacterControllerInput.cs" />
     <Compile Include="CharacterSample\CharacterScreen.cs" />
+    <Compile Include="GUI\FGUIScreen.cs" />
+    <Compile Include="GUI\GUIScreen.cs" />
     <Compile Include="PostEffectScreen.cs" />
     <Compile Include="DeferredAnimatedScreen.cs" />
     <Compile Include="DeferredLoadScreen.cs" />

@@ -117,6 +117,9 @@
     <Reference Include="System.Net">
       <Private>False</Private>
     </Reference>
+    <Reference Include="TomShane.Neoforce.Controls">
+      <HintPath>Dlls\NeoforceDll\bin\x86\Debug\TomShane.Neoforce.Controls.dll</HintPath>
+    </Reference>
     <Reference Include="XNAnimation">
       <HintPath>Dlls\XNAnimation.dll</HintPath>
     </Reference>
@@ -195,6 +198,8 @@
     <Compile Include="Physic\PhysicObjects\BepuObject\GravitationFieldObject.cs" />
     <Compile Include="Physic\PhysicObjects\BepuObject\ObjectMover.cs" />
     <Compile Include="Physic\PhysicObjects\BepuObject\TerrainObject.cs" />
+    <Compile Include="SceneControl\GUI\IGui.cs" />
+    <Compile Include="SceneControl\GUI\NeoforceGui.cs" />
     <Compile Include="SceneControl\Movie\MovieScreen.cs" />
     <Compile Include="SceneControl\Scene\DefRender\DeferredRenderTechnic.cs" />
     <Compile Include="SceneControl\Scene\DefRender\FinalCombination.cs" />

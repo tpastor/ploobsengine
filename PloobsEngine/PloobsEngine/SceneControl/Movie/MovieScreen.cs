@@ -13,7 +13,7 @@ namespace PloobsEngine.SceneControl
 
     public  class MovieScreen : IScreen
     {
-        public MovieScreen(String location, Color backGoundColor)
+        public MovieScreen(String location, Color backGoundColor) : base(null)
         {
             this.location = location;
             this.backGoundColor = backGoundColor;

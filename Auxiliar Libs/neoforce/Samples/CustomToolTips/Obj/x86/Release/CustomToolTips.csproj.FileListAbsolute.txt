@@ -1,0 +1,18 @@
+E:\source\_priv\Neoforce\Samples\Bin\TomShane.Neoforce.Samples.CustomToolTips.exe
+E:\source\_priv\Neoforce\Samples\Bin\TomShane.Neoforce.Samples.CustomToolTips.pdb
+E:\source\_priv\Neoforce\Samples\CustomToolTips\obj\x86\Release\ResolveAssemblyReference.cache
+E:\source\_priv\Neoforce\Samples\CustomToolTips\obj\x86\Release\Microsoft.Xna.Framework.RuntimeProfile.txt
+E:\source\_priv\Neoforce\Samples\CustomToolTips\obj\x86\Release\TomShane.Neoforce.Samples.CustomToolTips.exe
+E:\source\_priv\Neoforce\Samples\CustomToolTips\obj\x86\Release\TomShane.Neoforce.Samples.CustomToolTips.pdb
+G:\tom shane\projects\Neoforce\Samples\Bin\TomShane.Neoforce.Samples.CustomToolTips.exe
+G:\tom shane\projects\Neoforce\Samples\Bin\TomShane.Neoforce.Samples.CustomToolTips.pdb
+G:\tom shane\projects\Neoforce\Samples\CustomToolTips\obj\x86\Release\ResolveAssemblyReference.cache
+G:\tom shane\projects\Neoforce\Samples\CustomToolTips\obj\x86\Release\Microsoft.Xna.Framework.RuntimeProfile.txt
+G:\tom shane\projects\Neoforce\Samples\CustomToolTips\obj\x86\Release\TomShane.Neoforce.Samples.CustomToolTips.exe
+G:\tom shane\projects\Neoforce\Samples\CustomToolTips\obj\x86\Release\TomShane.Neoforce.Samples.CustomToolTips.pdb
+E:\tom shane\Neoforce\Samples\Bin\TomShane.Neoforce.Samples.CustomToolTips.exe
+E:\tom shane\Neoforce\Samples\Bin\TomShane.Neoforce.Samples.CustomToolTips.pdb
+E:\tom shane\Neoforce\Samples\CustomToolTips\obj\x86\Release\ResolveAssemblyReference.cache
+E:\tom shane\Neoforce\Samples\CustomToolTips\obj\x86\Release\Microsoft.Xna.Framework.RuntimeProfile.txt
+E:\tom shane\Neoforce\Samples\CustomToolTips\obj\x86\Release\TomShane.Neoforce.Samples.CustomToolTips.exe
+E:\tom shane\Neoforce\Samples\CustomToolTips\obj\x86\Release\TomShane.Neoforce.Samples.CustomToolTips.pdb

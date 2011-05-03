@@ -1,0 +1,285 @@
+////////////////////////////////////////////////////////////////
+    Date: 03/05/2011 08:49:31
+Assembly: TomShane.Neoforce.Controls.dll
+ Version: 0.7.2407.1915
+ Message: Unable to load skin file. Could not find a part of the path 'C:\Users\tpastor\Desktop\neofrce\Skins\Default\Skin.xml'.
+////////////////////////////////////////////////////////////////
+   at TomShane.Neoforce.Controls.Skin.LoadSkin(String addon) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Skin.cs:line 883
+   at TomShane.Neoforce.Controls.Skin..ctor(Manager manager, String name) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Skin.cs:line 580
+   at TomShane.Neoforce.Controls.Manager.SetSkin(String name) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Manager.cs:line 935
+   at TomShane.Neoforce.Controls.Manager.Initialize() in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Manager.cs:line 907
+   at TomShane.Neoforce.Controls.Application.Initialize() in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Application.cs:line 213
+   at TomShane.Neoforce.Central.Central.Initialize() in C:\Users\tpastor\Desktop\neofrce\Source\Central\Code\Central.cs:line 81
+   at Microsoft.Xna.Framework.Game.RunGame(Boolean useBlockingRun)
+   at Microsoft.Xna.Framework.Game.Run()
+   at TomShane.Neoforce.Controls.Application.Run() in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Application.cs:line 405
+   at TomShane.Neoforce.Central.Entry.Main(String[] args) in C:\Users\tpastor\Desktop\neofrce\Source\Central\Code\__Entry.cs:line 46
+////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////
+    Date: 03/05/2011 08:53:17
+Assembly: TomShane.Neoforce.Controls.dll
+ Version: 0.7.2407.1915
+ Message: Unable to load skin file. Could not find a part of the path 'C:\Users\tpastor\Desktop\neofrce\Source\Central\bin\x86\Debug\Skins\Default\Skin.xml'.
+////////////////////////////////////////////////////////////////
+   at TomShane.Neoforce.Controls.Skin.LoadSkin(String addon) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Skin.cs:line 883
+   at TomShane.Neoforce.Controls.Skin..ctor(Manager manager, String name) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Skin.cs:line 580
+   at TomShane.Neoforce.Controls.Manager.SetSkin(String name) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Manager.cs:line 935
+   at TomShane.Neoforce.Controls.Manager.Initialize() in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Manager.cs:line 907
+   at TomShane.Neoforce.Controls.Application.Initialize() in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Application.cs:line 213
+   at TomShane.Neoforce.Central.Central.Initialize() in C:\Users\tpastor\Desktop\neofrce\Source\Central\Code\Central.cs:line 81
+   at Microsoft.Xna.Framework.Game.RunGame(Boolean useBlockingRun)
+   at Microsoft.Xna.Framework.Game.Run()
+   at TomShane.Neoforce.Controls.Application.Run() in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Application.cs:line 405
+   at TomShane.Neoforce.Central.Entry.Main(String[] args) in C:\Users\tpastor\Desktop\neofrce\Source\Central\Code\__Entry.cs:line 46
+////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////
+    Date: 03/05/2011 08:55:04
+Assembly: TomShane.Neoforce.Controls.dll
+ Version: 0.7.2407.1915
+ Message: Unable to load skin file. Could not find a part of the path 'C:\Users\tpastor\Desktop\neofrce\Source\Central\bin\x86\Debug\Content\Skins\Green\Skin.xml'.
+////////////////////////////////////////////////////////////////
+   at TomShane.Neoforce.Controls.Skin.LoadSkin(String addon) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Skin.cs:line 883
+   at TomShane.Neoforce.Controls.Skin..ctor(Manager manager, String name) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Skin.cs:line 580
+   at TomShane.Neoforce.Controls.Manager.SetSkin(String name) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Manager.cs:line 935
+   at TomShane.Neoforce.Central.MainWindow.rdbGreen_Click(Object sender, EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Central\Code\Logic.cs:line 193
+   at TomShane.Neoforce.Controls.Control.OnClick(EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Control.cs:line 2773
+   at TomShane.Neoforce.Controls.ButtonBase.OnClick(EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\ButtonBase.cs:line 104
+   at TomShane.Neoforce.Controls.CheckBox.OnClick(EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\CheckBox.cs:line 143
+   at TomShane.Neoforce.Controls.RadioButton.OnClick(EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\RadioButton.cs:line 152
+   at TomShane.Neoforce.Controls.Control.ClickProcess(EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Control.cs:line 2372
+   at TomShane.Neoforce.Controls.Control.MessageProcess(Message message, EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Control.cs:line 2019
+   at TomShane.Neoforce.Controls.Control.SendMessage(Message message, EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Control.cs:line 2008
+   at TomShane.Neoforce.Controls.Manager.MouseUpProcess(Object sender, MouseEventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Manager.cs:line 1617
+   at TomShane.Neoforce.Controls.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at TomShane.Neoforce.Controls.InputSystem.UpdateButtons(MouseState state, GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\InputSystem.cs:line 706
+   at TomShane.Neoforce.Controls.InputSystem.UpdateMouse(MouseState state, GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\InputSystem.cs:line 659
+   at TomShane.Neoforce.Controls.InputSystem.Update(GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\InputSystem.cs:line 406
+   at TomShane.Neoforce.Controls.Manager.Update(GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Manager.cs:line 1071
+   at TomShane.Neoforce.Controls.Application.Update(GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Application.cs:line 242
+   at TomShane.Neoforce.Central.Central.Update(GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Central\Code\Central.cs:line 102
+   at Microsoft.Xna.Framework.Game.Tick()
+   at Microsoft.Xna.Framework.Game.HostIdle(Object sender, EventArgs e)
+   at Microsoft.Xna.Framework.GameHost.OnIdle()
+   at Microsoft.Xna.Framework.WindowsGameHost.RunOneFrame()
+   at Microsoft.Xna.Framework.WindowsGameHost.ApplicationIdle(Object sender, EventArgs e)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FDoIdle(Int32 grfidlef)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at Microsoft.Xna.Framework.WindowsGameHost.Run()
+   at Microsoft.Xna.Framework.Game.RunGame(Boolean useBlockingRun)
+   at Microsoft.Xna.Framework.Game.Run()
+   at TomShane.Neoforce.Controls.Application.Run() in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Application.cs:line 405
+   at TomShane.Neoforce.Central.Entry.Main(String[] args) in C:\Users\tpastor\Desktop\neofrce\Source\Central\Code\__Entry.cs:line 46
+////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////
+    Date: 03/05/2011 08:56:05
+Assembly: TomShane.Neoforce.Controls.dll
+ Version: 0.7.2407.1915
+ Message: Error loading "Window". File not found.
+////////////////////////////////////////////////////////////////
+   at Microsoft.Xna.Framework.Content.ContentManager.OpenStream(String assetName)
+   at Microsoft.Xna.Framework.Content.ContentManager.ReadAsset[T](String assetName, Action`1 recordDisposableObject)
+   at Microsoft.Xna.Framework.Content.ContentManager.Load[T](String assetName)
+   at TomShane.Neoforce.Controls.Layout.Load(Manager manager, String asset) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Layout.cs:line 90
+   at TomShane.Neoforce.Central.MainWindow.btnTask_Click(Object sender, EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Central\Code\Logic.cs:line 256
+   at TomShane.Neoforce.Controls.Control.OnClick(EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Control.cs:line 2773
+   at TomShane.Neoforce.Controls.ButtonBase.OnClick(EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\ButtonBase.cs:line 104
+   at TomShane.Neoforce.Controls.Button.OnClick(EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Button.cs:line 270
+   at TomShane.Neoforce.Controls.Control.ClickProcess(EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Control.cs:line 2372
+   at TomShane.Neoforce.Controls.Control.MessageProcess(Message message, EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Control.cs:line 2019
+   at TomShane.Neoforce.Controls.Control.SendMessage(Message message, EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Control.cs:line 2008
+   at TomShane.Neoforce.Controls.Manager.MouseUpProcess(Object sender, MouseEventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Manager.cs:line 1617
+   at TomShane.Neoforce.Controls.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at TomShane.Neoforce.Controls.InputSystem.UpdateButtons(MouseState state, GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\InputSystem.cs:line 706
+   at TomShane.Neoforce.Controls.InputSystem.UpdateMouse(MouseState state, GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\InputSystem.cs:line 659
+   at TomShane.Neoforce.Controls.InputSystem.Update(GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\InputSystem.cs:line 406
+   at TomShane.Neoforce.Controls.Manager.Update(GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Manager.cs:line 1071
+   at TomShane.Neoforce.Controls.Application.Update(GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Application.cs:line 242
+   at TomShane.Neoforce.Central.Central.Update(GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Central\Code\Central.cs:line 102
+   at Microsoft.Xna.Framework.Game.Tick()
+   at Microsoft.Xna.Framework.Game.HostIdle(Object sender, EventArgs e)
+   at Microsoft.Xna.Framework.GameHost.OnIdle()
+   at Microsoft.Xna.Framework.WindowsGameHost.RunOneFrame()
+   at Microsoft.Xna.Framework.WindowsGameHost.ApplicationIdle(Object sender, EventArgs e)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FDoIdle(Int32 grfidlef)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at Microsoft.Xna.Framework.WindowsGameHost.Run()
+   at Microsoft.Xna.Framework.Game.RunGame(Boolean useBlockingRun)
+   at Microsoft.Xna.Framework.Game.Run()
+   at TomShane.Neoforce.Controls.Application.Run() in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Application.cs:line 405
+   at TomShane.Neoforce.Central.Entry.Main(String[] args) in C:\Users\tpastor\Desktop\neofrce\Source\Central\Code\__Entry.cs:line 46
+////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////
+    Date: 03/05/2011 08:57:25
+Assembly: TomShane.Neoforce.Controls.dll
+ Version: 0.7.2407.1915
+ Message: Error loading "Content\\Layout\\Window". File not found.
+////////////////////////////////////////////////////////////////
+   at Microsoft.Xna.Framework.Content.ContentManager.OpenStream(String assetName)
+   at Microsoft.Xna.Framework.Content.ContentManager.ReadAsset[T](String assetName, Action`1 recordDisposableObject)
+   at Microsoft.Xna.Framework.Content.ContentManager.Load[T](String assetName)
+   at TomShane.Neoforce.Controls.Layout.Load(Manager manager, String asset) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Layout.cs:line 90
+   at TomShane.Neoforce.Central.MainWindow.btnTask_Click(Object sender, EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Central\Code\Logic.cs:line 256
+   at TomShane.Neoforce.Controls.Control.OnClick(EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Control.cs:line 2773
+   at TomShane.Neoforce.Controls.ButtonBase.OnClick(EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\ButtonBase.cs:line 104
+   at TomShane.Neoforce.Controls.Button.OnClick(EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Button.cs:line 270
+   at TomShane.Neoforce.Controls.Control.ClickProcess(EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Control.cs:line 2372
+   at TomShane.Neoforce.Controls.Control.MessageProcess(Message message, EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Control.cs:line 2019
+   at TomShane.Neoforce.Controls.Control.SendMessage(Message message, EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Control.cs:line 2008
+   at TomShane.Neoforce.Controls.Manager.MouseUpProcess(Object sender, MouseEventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Manager.cs:line 1617
+   at TomShane.Neoforce.Controls.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at TomShane.Neoforce.Controls.InputSystem.UpdateButtons(MouseState state, GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\InputSystem.cs:line 706
+   at TomShane.Neoforce.Controls.InputSystem.UpdateMouse(MouseState state, GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\InputSystem.cs:line 659
+   at TomShane.Neoforce.Controls.InputSystem.Update(GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\InputSystem.cs:line 406
+   at TomShane.Neoforce.Controls.Manager.Update(GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Manager.cs:line 1071
+   at TomShane.Neoforce.Controls.Application.Update(GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Application.cs:line 242
+   at TomShane.Neoforce.Central.Central.Update(GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Central\Code\Central.cs:line 102
+   at Microsoft.Xna.Framework.Game.Tick()
+   at Microsoft.Xna.Framework.Game.HostIdle(Object sender, EventArgs e)
+   at Microsoft.Xna.Framework.GameHost.OnIdle()
+   at Microsoft.Xna.Framework.WindowsGameHost.RunOneFrame()
+   at Microsoft.Xna.Framework.WindowsGameHost.ApplicationIdle(Object sender, EventArgs e)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FDoIdle(Int32 grfidlef)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at Microsoft.Xna.Framework.WindowsGameHost.Run()
+   at Microsoft.Xna.Framework.Game.RunGame(Boolean useBlockingRun)
+   at Microsoft.Xna.Framework.Game.Run()
+   at TomShane.Neoforce.Controls.Application.Run() in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Application.cs:line 405
+   at TomShane.Neoforce.Central.Entry.Main(String[] args) in C:\Users\tpastor\Desktop\neofrce\Source\Central\Code\__Entry.cs:line 46
+////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////
+    Date: 03/05/2011 08:57:44
+Assembly: TomShane.Neoforce.Controls.dll
+ Version: 0.7.2407.1915
+ Message: Error loading "Content\\Layout\\Window.xml". File not found.
+////////////////////////////////////////////////////////////////
+   at Microsoft.Xna.Framework.Content.ContentManager.OpenStream(String assetName)
+   at Microsoft.Xna.Framework.Content.ContentManager.ReadAsset[T](String assetName, Action`1 recordDisposableObject)
+   at Microsoft.Xna.Framework.Content.ContentManager.Load[T](String assetName)
+   at TomShane.Neoforce.Controls.Layout.Load(Manager manager, String asset) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Layout.cs:line 90
+   at TomShane.Neoforce.Central.MainWindow.btnTask_Click(Object sender, EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Central\Code\Logic.cs:line 256
+   at TomShane.Neoforce.Controls.Control.OnClick(EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Control.cs:line 2773
+   at TomShane.Neoforce.Controls.ButtonBase.OnClick(EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\ButtonBase.cs:line 104
+   at TomShane.Neoforce.Controls.Button.OnClick(EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Button.cs:line 270
+   at TomShane.Neoforce.Controls.Control.ClickProcess(EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Control.cs:line 2372
+   at TomShane.Neoforce.Controls.Control.MessageProcess(Message message, EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Control.cs:line 2019
+   at TomShane.Neoforce.Controls.Control.SendMessage(Message message, EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Control.cs:line 2008
+   at TomShane.Neoforce.Controls.Manager.MouseUpProcess(Object sender, MouseEventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Manager.cs:line 1617
+   at TomShane.Neoforce.Controls.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at TomShane.Neoforce.Controls.InputSystem.UpdateButtons(MouseState state, GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\InputSystem.cs:line 706
+   at TomShane.Neoforce.Controls.InputSystem.UpdateMouse(MouseState state, GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\InputSystem.cs:line 659
+   at TomShane.Neoforce.Controls.InputSystem.Update(GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\InputSystem.cs:line 406
+   at TomShane.Neoforce.Controls.Manager.Update(GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Manager.cs:line 1071
+   at TomShane.Neoforce.Controls.Application.Update(GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Application.cs:line 242
+   at TomShane.Neoforce.Central.Central.Update(GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Central\Code\Central.cs:line 102
+   at Microsoft.Xna.Framework.Game.Tick()
+   at Microsoft.Xna.Framework.Game.HostIdle(Object sender, EventArgs e)
+   at Microsoft.Xna.Framework.GameHost.OnIdle()
+   at Microsoft.Xna.Framework.WindowsGameHost.RunOneFrame()
+   at Microsoft.Xna.Framework.WindowsGameHost.ApplicationIdle(Object sender, EventArgs e)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FDoIdle(Int32 grfidlef)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at Microsoft.Xna.Framework.WindowsGameHost.Run()
+   at Microsoft.Xna.Framework.Game.RunGame(Boolean useBlockingRun)
+   at Microsoft.Xna.Framework.Game.Run()
+   at TomShane.Neoforce.Controls.Application.Run() in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Application.cs:line 405
+   at TomShane.Neoforce.Central.Entry.Main(String[] args) in C:\Users\tpastor\Desktop\neofrce\Source\Central\Code\__Entry.cs:line 46
+////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////
+    Date: 03/05/2011 08:58:39
+Assembly: TomShane.Neoforce.Controls.dll
+ Version: 0.7.2407.1915
+ Message: Error loading "Content\\Layout\\Window.xml". File not found.
+////////////////////////////////////////////////////////////////
+   at Microsoft.Xna.Framework.Content.ContentManager.OpenStream(String assetName)
+   at Microsoft.Xna.Framework.Content.ContentManager.ReadAsset[T](String assetName, Action`1 recordDisposableObject)
+   at Microsoft.Xna.Framework.Content.ContentManager.Load[T](String assetName)
+   at TomShane.Neoforce.Controls.Layout.Load(Manager manager, String asset) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Layout.cs:line 90
+   at TomShane.Neoforce.Central.MainWindow.btnTask_Click(Object sender, EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Central\Code\Logic.cs:line 256
+   at TomShane.Neoforce.Controls.Control.OnClick(EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Control.cs:line 2773
+   at TomShane.Neoforce.Controls.ButtonBase.OnClick(EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\ButtonBase.cs:line 104
+   at TomShane.Neoforce.Controls.Button.OnClick(EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Button.cs:line 270
+   at TomShane.Neoforce.Controls.Control.ClickProcess(EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Control.cs:line 2372
+   at TomShane.Neoforce.Controls.Control.MessageProcess(Message message, EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Control.cs:line 2019
+   at TomShane.Neoforce.Controls.Control.SendMessage(Message message, EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Control.cs:line 2008
+   at TomShane.Neoforce.Controls.Manager.MouseUpProcess(Object sender, MouseEventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Manager.cs:line 1617
+   at TomShane.Neoforce.Controls.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at TomShane.Neoforce.Controls.InputSystem.UpdateButtons(MouseState state, GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\InputSystem.cs:line 706
+   at TomShane.Neoforce.Controls.InputSystem.UpdateMouse(MouseState state, GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\InputSystem.cs:line 659
+   at TomShane.Neoforce.Controls.InputSystem.Update(GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\InputSystem.cs:line 406
+   at TomShane.Neoforce.Controls.Manager.Update(GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Manager.cs:line 1071
+   at TomShane.Neoforce.Controls.Application.Update(GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Application.cs:line 242
+   at TomShane.Neoforce.Central.Central.Update(GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Central\Code\Central.cs:line 102
+   at Microsoft.Xna.Framework.Game.Tick()
+   at Microsoft.Xna.Framework.Game.HostIdle(Object sender, EventArgs e)
+   at Microsoft.Xna.Framework.GameHost.OnIdle()
+   at Microsoft.Xna.Framework.WindowsGameHost.RunOneFrame()
+   at Microsoft.Xna.Framework.WindowsGameHost.ApplicationIdle(Object sender, EventArgs e)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FDoIdle(Int32 grfidlef)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at Microsoft.Xna.Framework.WindowsGameHost.Run()
+   at Microsoft.Xna.Framework.Game.RunGame(Boolean useBlockingRun)
+   at Microsoft.Xna.Framework.Game.Run()
+   at TomShane.Neoforce.Controls.Application.Run() in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Application.cs:line 405
+   at TomShane.Neoforce.Central.Entry.Main(String[] args) in C:\Users\tpastor\Desktop\neofrce\Source\Central\Code\__Entry.cs:line 46
+////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////
+    Date: 03/05/2011 09:00:20
+Assembly: TomShane.Neoforce.Controls.dll
+ Version: 0.7.2407.1915
+ Message: Object reference not set to an instance of an object.
+////////////////////////////////////////////////////////////////
+   at TomShane.Neoforce.Controls.Layout.Load(Manager manager, String asset) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Layout.cs:line 97
+   at TomShane.Neoforce.Central.MainWindow.btnTask_Click(Object sender, EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Central\Code\Logic.cs:line 256
+   at TomShane.Neoforce.Controls.Control.OnClick(EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Control.cs:line 2773
+   at TomShane.Neoforce.Controls.ButtonBase.OnClick(EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\ButtonBase.cs:line 104
+   at TomShane.Neoforce.Controls.Button.OnClick(EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Button.cs:line 270
+   at TomShane.Neoforce.Controls.Control.ClickProcess(EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Control.cs:line 2372
+   at TomShane.Neoforce.Controls.Control.MessageProcess(Message message, EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Control.cs:line 2019
+   at TomShane.Neoforce.Controls.Control.SendMessage(Message message, EventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Control.cs:line 2008
+   at TomShane.Neoforce.Controls.Manager.MouseUpProcess(Object sender, MouseEventArgs e) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Manager.cs:line 1617
+   at TomShane.Neoforce.Controls.MouseEventHandler.Invoke(Object sender, MouseEventArgs e)
+   at TomShane.Neoforce.Controls.InputSystem.UpdateButtons(MouseState state, GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\InputSystem.cs:line 706
+   at TomShane.Neoforce.Controls.InputSystem.UpdateMouse(MouseState state, GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\InputSystem.cs:line 659
+   at TomShane.Neoforce.Controls.InputSystem.Update(GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\InputSystem.cs:line 406
+   at TomShane.Neoforce.Controls.Manager.Update(GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Manager.cs:line 1071
+   at TomShane.Neoforce.Controls.Application.Update(GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Application.cs:line 242
+   at TomShane.Neoforce.Central.Central.Update(GameTime gameTime) in C:\Users\tpastor\Desktop\neofrce\Source\Central\Code\Central.cs:line 102
+   at Microsoft.Xna.Framework.Game.Tick()
+   at Microsoft.Xna.Framework.Game.HostIdle(Object sender, EventArgs e)
+   at Microsoft.Xna.Framework.GameHost.OnIdle()
+   at Microsoft.Xna.Framework.WindowsGameHost.RunOneFrame()
+   at Microsoft.Xna.Framework.WindowsGameHost.ApplicationIdle(Object sender, EventArgs e)
+   at System.Windows.Forms.Application.ThreadContext.System.Windows.Forms.UnsafeNativeMethods.IMsoComponent.FDoIdle(Int32 grfidlef)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at Microsoft.Xna.Framework.WindowsGameHost.Run()
+   at Microsoft.Xna.Framework.Game.RunGame(Boolean useBlockingRun)
+   at Microsoft.Xna.Framework.Game.Run()
+   at TomShane.Neoforce.Controls.Application.Run() in C:\Users\tpastor\Desktop\neofrce\Source\Controls\Code\Application.cs:line 405
+   at TomShane.Neoforce.Central.Entry.Main(String[] args) in C:\Users\tpastor\Desktop\neofrce\Source\Central\Code\__Entry.cs:line 46
+////////////////////////////////////////////////////////////////
+

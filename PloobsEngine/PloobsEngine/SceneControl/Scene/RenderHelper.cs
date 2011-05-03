@@ -445,6 +445,7 @@ namespace PloobsEngine.SceneControl
             device.BlendState = BlendStateStack.Peek();
             device.DepthStencilState = DepthStencilStateStack.Peek();
             device.RasterizerState = RasterizerStateStack.Peek();
+            device.SetRenderTargets(RenderStatesStack.Peek());            
         }
         
         /// <summary>
