@@ -110,11 +110,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Demo6 - BilboardsSamples\AnimatedBilboardScreen.cs" />
+    <Compile Include="Demo6 - BilboardsSamples\NormalBilboardScreen.cs" />
+    <Compile Include="Demo6 - BilboardsSamples\ProceduralAnimatedBilboardScreen.cs" />
     <Compile Include="Demo9 -  Noise Textures\ProceduralTextureScreen.cs" />
     <Compile Include="Demo9.2 Shadow\DeferredDirectionaldShadowScreen.cs" />
     <Compile Include="Demo9.1 Water and Ocean\OceanScreen.cs" />
     <Compile Include="Demo9.1 Water and Ocean\WaterCompleteScreen.cs" />
-    <Compile Include="Demo6 - BilboardsSamples\BilboardScreen.cs" />
+    <Compile Include="Demo6 - BilboardsSamples\InstancedBilboardScreen.cs" />
     <Compile Include="Commons\LightThrowBepu.cs" />
     <Compile Include="Commons\MoveablePointLight.cs" />
     <Compile Include="Demo1 - Specific Deferred\Demo1 Materials\BumpSpecularDemo.cs" />

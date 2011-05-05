@@ -17,7 +17,7 @@ using PloobsEngine.Commands;
 
 namespace AdvancedDemo4._0
 {
-    public class BilboardScreen : IScene
+    public class InstancedBilboardScreen : IScene
     {
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
