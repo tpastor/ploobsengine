@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PloobsEngine", "PloobsEngin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PloobsEngineContent", "PloobsEngine\PloobsEngineContent\PloobsEngineContent.contentproj", "{7ED0C250-A783-40B2-912E-4A4C222C4CE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EngineTestes", "EngineTestes\EngineTestes\EngineTestes.csproj", "{D8E39357-DDD4-45A2-820C-32411E409A2A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engine Tests", "EngineTestes\EngineTestes\Engine Tests.csproj", "{D8E39357-DDD4-45A2-820C-32411E409A2A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EngineTestesContent", "EngineTestes\EngineTestesContent\EngineTestesContent.contentproj", "{4DB11830-D1DC-4BD2-931D-11ADEAFA8BEA}"
 EndProject

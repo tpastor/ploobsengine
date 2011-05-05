@@ -29,7 +29,7 @@
       <Time>2011-04-05T12:13:36.2252916-03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Model\ball_0.xml</Key>
-        <Value>2011-04-27T17:34:21.7701713-03:00</Value>
+        <Value>2011-05-04T19:54:25.6711794-03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -42,7 +42,7 @@
       <Time>2011-04-05T12:13:36.2272918-03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Model\cenario_0.xml</Key>
-        <Value>2011-04-27T17:34:22.2381981-03:00</Value>
+        <Value>2011-05-04T19:54:25.8931921-03:00</Value>
       </Dependency>
       <Request>C:\Users\tpastor\Desktop\port\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\IntroductionDemo4.0\bin\x86\Debug\Content\Textures\islandmap_0.xnb</Request>
     </Item>
@@ -56,7 +56,7 @@
       <Time>2011-04-05T12:13:36.2292919-03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Model\cubo_0.xml</Key>
-        <Value>2011-04-27T17:34:26.7844581-03:00</Value>
+        <Value>2011-05-04T19:54:27.5462866-03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -69,9 +69,19 @@
       <Time>2011-04-05T12:13:36.2302919-03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Model\trash_0.xml</Key>
-        <Value>2011-04-27T17:34:26.8544621-03:00</Value>
+        <Value>2011-05-04T19:54:27.6102903-03:00</Value>
       </Dependency>
       <Request>C:\Users\tpastor\Desktop\port\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\IntroductionDemo4.0\bin\x86\Debug\Content\Textures\trash_can_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>opening.wmv</Source>
+      <Name>opening</Name>
+      <Importer>WmvImporter</Importer>
+      <Processor>VideoProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\tpastor\Desktop\port\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\IntroductionDemo4.0\bin\x86\Debug\Content\opening.xnb</Output>
+      <Extra>C:\Users\tpastor\Desktop\port\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\IntroductionDemo4.0\bin\x86\Debug\Content\opening.wmv</Extra>
+      <Time>2011-04-28T16:08:28.6985411-03:00</Time>
     </Item>
     <Item>
       <Source>Model\ball.X</Source>
@@ -133,16 +143,6 @@
       <Output>C:\Users\tpastor\Desktop\port\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\IntroductionDemo4.0\bin\x86\Debug\Content\Textures\trash_can_0.xnb</Output>
       <Time>2011-04-05T12:13:36.2232915-03:00</Time>
     </Item>
-    <Item>
-      <Source>opening.wmv</Source>
-      <Name>opening</Name>
-      <Importer>WmvImporter</Importer>
-      <Processor>VideoProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\tpastor\Desktop\port\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\IntroductionDemo4.0\bin\x86\Debug\Content\opening.xnb</Output>
-      <Extra>C:\Users\tpastor\Desktop\port\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\IntroductionDemo4.0\bin\x86\Debug\Content\opening.wmv</Extra>
-      <Time>2011-04-28T16:08:28.6985411-03:00</Time>
-    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
@@ -155,6 +155,10 @@
       <OutputDirectory>C:\Users\tpastor\Desktop\port\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\IntroductionDemo4.0\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
+      <Assembly>
+        <Key>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\PloobsEngineDebugPipeline.dll</Key>
+        <Value>2011-05-04T19:50:18.238027-03:00</Value>
+      </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
         <Value>2010-08-23T11:41:18-03:00</Value>

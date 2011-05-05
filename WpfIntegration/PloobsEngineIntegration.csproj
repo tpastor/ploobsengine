@@ -114,9 +114,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EngineTestes\EngineTestes\EngineTestes.csproj">
+    <ProjectReference Include="..\EngineTestes\EngineTestes\Engine Tests.csproj">
       <Project>{D8E39357-DDD4-45A2-820C-32411E409A2A}</Project>
-      <Name>EngineTestes</Name>
+      <Name>Engine Tests</Name>
     </ProjectReference>
     <ProjectReference Include="..\PloobsEngine\PloobsEngine\PloobsEngine.csproj">
       <Project>{1D050978-A350-47A8-B495-090DF10242B2}</Project>

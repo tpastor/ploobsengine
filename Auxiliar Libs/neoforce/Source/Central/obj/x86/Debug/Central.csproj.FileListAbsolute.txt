@@ -172,3 +172,4 @@ C:\Users\tpastor\Desktop\port\Auxiliar Libs\neoforce\Source\Central\obj\x86\Debu
 C:\Users\tpastor\Desktop\port\Auxiliar Libs\neoforce\Source\Central\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\tpastor\Desktop\port\Auxiliar Libs\neoforce\Source\Central\obj\x86\Debug\TomShane.Neoforce.Central.exe
 C:\Users\tpastor\Desktop\port\Auxiliar Libs\neoforce\Source\Central\obj\x86\Debug\TomShane.Neoforce.Central.pdb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\neoforce\Source\Central\bin\x86\Debug\TomShane.Neoforce.Controls.xml

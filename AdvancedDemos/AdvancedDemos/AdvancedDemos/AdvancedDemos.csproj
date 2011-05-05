@@ -90,6 +90,9 @@
     <Reference Include="mscorlib">
       <Private>False</Private>
     </Reference>
+    <Reference Include="PloobsEngineDebug">
+      <HintPath>..\Dll\PloobsEngineDebug.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
@@ -107,9 +110,36 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Demo9 -  Noise Textures\ProceduralTextureScreen.cs" />
+    <Compile Include="Demo9.2 Shadow\DeferredDirectionaldShadowScreen.cs" />
+    <Compile Include="Demo9.1 Water and Ocean\OceanScreen.cs" />
+    <Compile Include="Demo9.1 Water and Ocean\WaterCompleteScreen.cs" />
+    <Compile Include="Demo6 - BilboardsSamples\BilboardScreen.cs" />
+    <Compile Include="Commons\LightThrowBepu.cs" />
+    <Compile Include="Commons\MoveablePointLight.cs" />
+    <Compile Include="Demo1 - Specific Deferred\Demo1 Materials\BumpSpecularDemo.cs" />
+    <Compile Include="Demo1 - Specific Deferred\Demo1 Materials\EnvMapScreen.cs" />
+    <Compile Include="Demo1 - Specific Deferred\Demo1 Materials\ParalaxScreen.cs" />
+    <Compile Include="Demo1 - Specific Deferred\Demo1 Materials\TransparentScreen.cs" />
+    <Compile Include="Demo2 -  Loader\DeferredLoadScreen.cs" />
+    <Compile Include="Demo9 -  Noise Textures\NoiseScreen.cs" />
+    <Compile Include="Demo9 -  Noise Textures\PerlinNoiseScreen.cs" />
+    <Compile Include="Demo7 - AnimationSample\CharacterControllerInput.cs" />
+    <Compile Include="Demo7 - AnimationSample\DeferredAnimatedScreen.cs" />
+    <Compile Include="Demos.cs" />
+    <Compile Include="DemosHomeScreen.cs" />
+    <Compile Include="Demo5 - ParticleSamples\ParticleScreen.cs" />
+    <Compile Include="Demo5 - ParticleSamples\SmokePS.cs" />
+    <Compile Include="Demo5 - ParticleSamples\SnowPS.cs" />
+    <Compile Include="Demo8 - GUI\FGUIScreen.cs" />
+    <Compile Include="Demo8 - GUI\GUIScreen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Game1.cs" />
+    <Compile Include="Demo3 - Sound\SoundScreen.cs" />
+    <Compile Include="Template\Demo1 - BasicScreen\BasicScreenDeferredDemo.cs" />
+    <Compile Include="Template\Demo1 - BasicScreen\BasicScreenForwardDemo.cs" />
+    <Compile Include="Demo4 - Terrain\TerrainScreen.cs" />
+    <Compile Include="TitleScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

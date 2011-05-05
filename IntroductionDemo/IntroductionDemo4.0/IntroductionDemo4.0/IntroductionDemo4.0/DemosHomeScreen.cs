@@ -26,6 +26,10 @@ namespace IntroductionDemo4._0
 
     public class DemosHomeScreen : IScreen
     {        
+        public DemosHomeScreen() : base(null)
+        {
+        }
+
         int index = 0;
 
         static int totalDemos = 15;

@@ -40,7 +40,7 @@ namespace PloobsEngine.SceneControl
     /// </summary>
     public abstract class IScreen
     {
-        public IScreen(IGui gui)
+        public IScreen(IGui gui = null)
         {
             this.gui = gui;
         }

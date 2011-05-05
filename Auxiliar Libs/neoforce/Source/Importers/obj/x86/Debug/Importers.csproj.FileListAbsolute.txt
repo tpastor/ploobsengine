@@ -1,0 +1,6 @@
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\Debug\TomShane.Neoforce.Importers.XML
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\Debug\TomShane.Neoforce.Importers.dll
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\Debug\TomShane.Neoforce.Importers.pdb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\neoforce\Source\Importers\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\neoforce\Source\Importers\obj\x86\Debug\TomShane.Neoforce.Importers.dll
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\neoforce\Source\Importers\obj\x86\Debug\TomShane.Neoforce.Importers.pdb

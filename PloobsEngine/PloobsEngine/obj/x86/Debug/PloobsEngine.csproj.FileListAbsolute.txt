@@ -123,3 +123,4 @@ C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Ef
 C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\AntiAliasingtabulastalker.xnb
 C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\TomShane.Neoforce.Controls.dll
 C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\TomShane.Neoforce.Controls.pdb
+C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\PloobsEngine.XML
