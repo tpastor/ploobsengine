@@ -93,3 +93,16 @@ C:\Users\tpastor\Desktop\port\AdvancedDemos\AdvancedDemos\AdvancedDemos\bin\x86\
 C:\Users\tpastor\Desktop\port\AdvancedDemos\AdvancedDemos\AdvancedDemos\bin\x86\Debug\Content\Effects\perlin.xnb
 C:\Users\tpastor\Desktop\port\AdvancedDemos\AdvancedDemos\AdvancedDemos\bin\x86\Debug\Content\Songs\pianosong.wma
 C:\Users\tpastor\Desktop\port\AdvancedDemos\AdvancedDemos\AdvancedDemos\bin\x86\Debug\Content\Skins\Default\Skin.xml
+C:\Users\tpastor\Desktop\port\AdvancedDemos\AdvancedDemos\AdvancedDemos\bin\x86\Debug\Content\Textures\lion.xnb
+C:\Users\tpastor\Desktop\port\AdvancedDemos\AdvancedDemos\AdvancedDemos\bin\x86\Debug\Content\Textures\lion_ddn.xnb
+C:\Users\tpastor\Desktop\port\AdvancedDemos\AdvancedDemos\AdvancedDemos\bin\x86\Debug\Content\Textures\spnza_bricks_a_ddn.xnb
+C:\Users\tpastor\Desktop\port\AdvancedDemos\AdvancedDemos\AdvancedDemos\bin\x86\Debug\Content\Textures\spnza_bricks_a_diff.xnb
+C:\Users\tpastor\Desktop\port\AdvancedDemos\AdvancedDemos\AdvancedDemos\bin\x86\Debug\Content\Textures\spnza_bricks_a_spec.xnb
+C:\Users\tpastor\Desktop\port\AdvancedDemos\AdvancedDemos\AdvancedDemos\bin\x86\Debug\Content\Textures\sponza_ceiling_a_diff.xnb
+C:\Users\tpastor\Desktop\port\AdvancedDemos\AdvancedDemos\AdvancedDemos\bin\x86\Debug\Content\Textures\sponza_ceiling_a_spec.xnb
+C:\Users\tpastor\Desktop\port\AdvancedDemos\AdvancedDemos\AdvancedDemos\bin\x86\Debug\Content\Model\leonScene.xnb
+C:\Users\tpastor\Desktop\port\AdvancedDemos\AdvancedDemos\AdvancedDemos\bin\x86\Debug\Content\Textures\lion_0.xnb
+C:\Users\tpastor\Desktop\port\AdvancedDemos\AdvancedDemos\AdvancedDemos\bin\x86\Debug\Content\Textures\spnza_bricks_a_diff_0.xnb
+C:\Users\tpastor\Desktop\port\AdvancedDemos\AdvancedDemos\AdvancedDemos\bin\x86\Debug\Content\Textures\sponza_ceiling_a_diff_0.xnb
+C:\Users\tpastor\Desktop\port\AdvancedDemos\AdvancedDemos\AdvancedDemos\bin\x86\Debug\Content\ModelInfos\leonScene.xml
+C:\Users\tpastor\Desktop\port\AdvancedDemos\AdvancedDemos\AdvancedDemos\bin\x86\Debug\Content\Model\ball.xnb

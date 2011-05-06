@@ -286,3 +286,10 @@ C:\Users\tpastor\Desktop\port\EngineTestes\EngineTestes\obj\x86\Debug\ResolveAss
 C:\Users\tpastor\Desktop\port\EngineTestes\EngineTestes\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\tpastor\Desktop\port\EngineTestes\EngineTestes\obj\x86\Debug\EngineTestes.exe
 C:\Users\tpastor\Desktop\port\EngineTestes\EngineTestes\obj\x86\Debug\EngineTestes.pdb
+C:\Users\tpastor\Desktop\port\EngineTestes\EngineTestes\bin\x86\Debug\Content\Model\leonScene.xnb
+C:\Users\tpastor\Desktop\port\EngineTestes\EngineTestes\bin\x86\Debug\Content\Textures\lion.xnb
+C:\Users\tpastor\Desktop\port\EngineTestes\EngineTestes\bin\x86\Debug\Content\Textures\lion_ddn.xnb
+C:\Users\tpastor\Desktop\port\EngineTestes\EngineTestes\bin\x86\Debug\Content\Textures\lion_0.xnb
+C:\Users\tpastor\Desktop\port\EngineTestes\EngineTestes\bin\x86\Debug\Content\Textures\spnza_bricks_a_diff_0.xnb
+C:\Users\tpastor\Desktop\port\EngineTestes\EngineTestes\bin\x86\Debug\Content\Textures\sponza_ceiling_a_diff_0.xnb
+C:\Users\tpastor\Desktop\port\EngineTestes\EngineTestes\bin\x86\Debug\Content\ModelInfos\leonScene.xml

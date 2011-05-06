@@ -18,13 +18,16 @@ namespace PloobsEngine.Loader
     /// </summary>
     public struct ModelInformation
     {
-        public string ModelName;
-        public BatchInformation[] batchInformation;        
-        public ModelMesh modelMesh;
+        public string modelName;
+        public int modelPart;
+        public BatchInformation batchInformation;                
         public Texture2D difuse;
         public Texture2D bump;
         public Texture2D glow;
         public Texture2D specular;
+        public Vector3 position;
+        public Vector3 scale;
+        public Quaternion rotation;
 
         /// <summary>
         /// Determines whether this model has the specified texture type.

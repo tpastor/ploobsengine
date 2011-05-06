@@ -45,18 +45,11 @@ namespace PloobsEngine.Modelo
         /// <param name="BonesAbsoluteTransforms">The bones absolute transforms.</param>
         /// <param name="mesh">The mesh.</param>
         /// <param name="batchInformationS">The batch information S.</param>
-        public static void Extract(Matrix[] BonesAbsoluteTransforms, ModelMesh mesh, out BatchInformation[] batchInformationS)
+        public static void Extract(Matrix[] BonesAbsoluteTransforms, ModelMeshPart mesh, out BatchInformation batchInformationS)
         {
-                batchInformationS = new BatchInformation[mesh.MeshParts.Count];
-                for (int i = 0; i < mesh.MeshParts.Count; i++)
-                {
-                    batchInformationS[i] = new BatchInformation(mesh.MeshParts[i].VertexOffset, mesh.MeshParts[i].NumVertices, mesh.MeshParts[i].PrimitiveCount, mesh.MeshParts[i].StartIndex, mesh.MeshParts[i].VertexOffset, mesh.MeshParts[i].VertexBuffer.VertexDeclaration, mesh.MeshParts[i].VertexBuffer.VertexDeclaration.VertexStride);
-                    batchInformationS[i].IndexBuffer = mesh.MeshParts[i].IndexBuffer;
-                    batchInformationS[i].VertexBuffer = mesh.MeshParts[i].VertexBuffer;
-                    batchInformationS[i].ModelLocalTransformation = BonesAbsoluteTransforms[mesh.ParentBone.Index];
-                }
-
-                
+            batchInformationS = new BatchInformation(mesh.VertexOffset, mesh.NumVertices, mesh.PrimitiveCount, mesh.StartIndex, mesh.VertexOffset, mesh.VertexBuffer.VertexDeclaration, mesh.VertexBuffer.VertexDeclaration.VertexStride);
+            batchInformationS.IndexBuffer = mesh.IndexBuffer;
+            batchInformationS.VertexBuffer = mesh.VertexBuffer;                    
         }
 
 

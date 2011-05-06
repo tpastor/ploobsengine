@@ -30,7 +30,7 @@ namespace AdvancedDemo4._0
         static void LoadScreen(ScreenManager manager)
         {            
             ///add the title screen
-            manager.AddScreen(new TitleScreen());                        
+            manager.AddScreen(new DeferredLoadScreen());                        
         }
 
         static void UnhandledException(object sender, UnhandledExceptionEventArgs e)

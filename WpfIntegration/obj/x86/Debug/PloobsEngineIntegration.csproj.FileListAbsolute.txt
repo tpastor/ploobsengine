@@ -299,3 +299,10 @@ C:\Users\tpastor\Desktop\port\WpfIntegration\bin\Debug\Content\Skins\Default\Cur
 C:\Users\tpastor\Desktop\port\WpfIntegration\bin\Debug\Content\Skins\Default\Cursors\Vertical.xnb
 C:\Users\tpastor\Desktop\port\WpfIntegration\bin\Debug\Content\Skins\Default\Skin.xml
 C:\Users\tpastor\Desktop\port\WpfIntegration\bin\Debug\TomShane.Neoforce.Controls.pdb
+C:\Users\tpastor\Desktop\port\WpfIntegration\bin\Debug\Content\Model\leonScene.xnb
+C:\Users\tpastor\Desktop\port\WpfIntegration\bin\Debug\Content\Textures\lion.xnb
+C:\Users\tpastor\Desktop\port\WpfIntegration\bin\Debug\Content\Textures\lion_ddn.xnb
+C:\Users\tpastor\Desktop\port\WpfIntegration\bin\Debug\Content\Textures\lion_0.xnb
+C:\Users\tpastor\Desktop\port\WpfIntegration\bin\Debug\Content\Textures\spnza_bricks_a_diff_0.xnb
+C:\Users\tpastor\Desktop\port\WpfIntegration\bin\Debug\Content\Textures\sponza_ceiling_a_diff_0.xnb
+C:\Users\tpastor\Desktop\port\WpfIntegration\bin\Debug\Content\ModelInfos\leonScene.xml

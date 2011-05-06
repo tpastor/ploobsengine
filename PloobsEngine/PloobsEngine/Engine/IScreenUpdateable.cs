@@ -28,6 +28,7 @@ namespace PloobsEngine
         {
             this.owner = owner;
             EntityMapper.getInstance().AddEntity(this);
+            Enabled = false;
         }        
 
         /// <summary>
@@ -37,6 +38,7 @@ namespace PloobsEngine
         public void Start()
         {
             owner.AddScreenUpdateable(this);
+            Enabled = true;
         }
         /// <summary>
         /// Stops the updating method being called
@@ -44,6 +46,13 @@ namespace PloobsEngine
         public void Stop()
         {
             owner.RemoveScreenUpdateable(this);
+            Enabled = false;
+        }
+
+        public bool Enabled
+        {
+            get;
+            internal set;
         }
 
         /// <summary>

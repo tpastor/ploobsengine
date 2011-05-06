@@ -238,36 +238,44 @@ namespace PloobsEngine.Loader
             for (int i = 0; i < model.Meshes.Count; i++)
             {
                 String name = model.Meshes[i].Name.Substring(5);
-                if (infos.ContainsKey(name))
+                if (infos.ContainsKey(name)) 
                 {
 
-                    XmlModelMeshInfo inf = infos[name];                    
-                    Matrix tr = m[model.Meshes[i].ParentBone.Index];                    
-                    
-                    Vector3 scale;
-                    Vector3 pos;
-                    Quaternion ori;
-                    tr.Decompose(out scale, out ori, out pos);
+                    for (int j = 0; j < model.Meshes[i].MeshParts.Count; j++)
+                    {
+                        XmlModelMeshInfo inf = infos[name];
+                        Matrix tr = m[model.Meshes[i].ParentBone.Index];
 
-                    ModelInformation mi = new ModelInformation();
-                    mi.ModelName = inf.modeName;
-                    ModelBuilderHelper.Extract(m, model.Meshes[i], out mi.batchInformation);                    
-                    
-                    
-                    mi.modelMesh = model.Meshes[i];
-                    if(inf.difuseName!=null)
-                        mi.difuse = factory.GetTexture2D(texturePath + inf.difuseName);
+                        Vector3 scale;
+                        Vector3 pos;
+                        Quaternion ori;
+                        tr.Decompose(out scale, out ori, out pos);
 
-                    if (inf.glowName != null)
-                        mi.glow = factory.GetTexture2D(texturePath + inf.glowName);
+                        ModelInformation mi = new ModelInformation();
+                        mi.modelName = inf.modeName;
+                        mi.modelPart = j;
+                        mi.position = pos;
+                        mi.scale = scale;
+                        mi.rotation = ori;
 
-                    if (inf.specularName != null)
-                        mi.specular = factory.GetTexture2D(texturePath + inf.specularName);
+                        ModelBuilderHelper.Extract(m, model.Meshes[i].MeshParts[j], out mi.batchInformation);
 
-                    if (inf.bumpName != null)
-                        mi.bump = factory.GetTexture2D(texturePath + inf.bumpName);
+                        mi.batchInformation.ModelLocalTransformation = m[model.Meshes[i].ParentBone.Index];                    
+                                                
+                        if (inf.difuseName != null)
+                            mi.difuse = factory.GetTexture2D(texturePath + inf.difuseName);
 
-                    elements.ModelMeshesInfo.Add(mi);
+                        if (inf.glowName != null)
+                            mi.glow = factory.GetTexture2D(texturePath + inf.glowName);
+
+                        if (inf.specularName != null)
+                            mi.specular = factory.GetTexture2D(texturePath + inf.specularName);
+
+                        if (inf.bumpName != null)
+                            mi.bump = factory.GetTexture2D(texturePath + inf.bumpName);
+
+                        elements.ModelMeshesInfo.Add(mi);
+                    }
                 }
             }
 

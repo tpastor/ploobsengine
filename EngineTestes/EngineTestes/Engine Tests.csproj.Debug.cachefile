@@ -158,9 +158,16 @@ Content\Textures\uzi_0.xnb
 Content\Textures\asphalt_0.xnb
 Content\Textures\Concrete_0.xnb
 Content\Textures\meiofio_0.xnb
+Content\Model\leonScene.xnb
+Content\Textures\lion.xnb
+Content\Textures\lion_ddn.xnb
+Content\Textures\lion_0.xnb
+Content\Textures\spnza_bricks_a_diff_0.xnb
+Content\Textures\sponza_ceiling_a_diff_0.xnb
 Content\ModelInfos\shadow.xml
 Content\ModelInfos\sponza.xml
 Content\Skins\Default\Skin.xml
+Content\ModelInfos\leonScene.xml
 Content\ModelInfos\techdemo.xml
 Content\Textures\checker.xnb
 Content\Textures\explosion.xnb

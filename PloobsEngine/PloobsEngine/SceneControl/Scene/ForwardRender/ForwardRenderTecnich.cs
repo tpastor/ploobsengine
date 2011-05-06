@@ -15,6 +15,7 @@ namespace PloobsEngine.SceneControl
         {
             return new ForwardRenderTecnichDescription(Color.Black, true);
         }
+
         public ForwardRenderTecnichDescription(Color BackGroundColor,bool usePostEffect = true)
         {
             this.BackGroundColor = BackGroundColor;

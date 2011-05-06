@@ -27,7 +27,7 @@ namespace PloobsEngine.Loader
     {
         public static IObject CreateOBJ(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ModelInformation mi)
         {
-            IModelo model = new CustomModel(factory, mi.ModelName, mi.batchInformation, mi.difuse, mi.bump, mi.specular, mi.glow);
+            IModelo model = new CustomModel(factory, mi.modelName, new BatchInformation[] { mi.batchInformation}, mi.difuse, mi.bump, mi.specular, mi.glow);
             IPhysicObject po = new TriangleMeshObject(model, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
             IShader shader = new DeferredCustomShader(mi.HasTexture(TextureType.GLOW), mi.HasTexture(TextureType.BUMP), mi.HasTexture(TextureType.SPECULAR), mi.HasTexture(TextureType.PARALAX));            
             DeferredMaterial dm = new DeferredMaterial(shader);
