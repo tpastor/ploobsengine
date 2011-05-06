@@ -15,16 +15,23 @@ using PloobsEngine.Cameras;
 using PloobsEngine.Physics;
 using PloobsEngine.Physics.Bepu;
 using PloobsEngine.Material;
+using PloobsEngine.Physic.Constraints;
+using PloobsEngine.Physic.Constraints.BepuConstraint;
 
 namespace PloobsEngine.Loader
 {
     public delegate IObject CreateIObject(IWorld world, GraphicFactory factory,GraphicInfo ginfo, ObjectInformation mi);
     public delegate ILight CreateILight(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ILight li);
     public delegate ICamera CreateICamera(IWorld world, GraphicFactory factory, GraphicInfo ginfo, CameraInfo cinfo);
+    public delegate IPhysicConstraint CreateConstraint(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ConstraintInfo cinfo,IObject o1, IObject o2);
     public delegate void ProcessDummies(IWorld world, DummyInfo dinfo);
 
     public class WorldLoader
     {
+
+
+        private Dictionary<String, IObject> objects = new Dictionary<string, IObject>();
+
         public static IObject CreateOBJ(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation mi)
         {
             IModelo model = new CustomModel(factory, mi.ModelName, mi.batchInformation, mi.difuse, mi.bump, mi.specular, mi.glow);
@@ -40,31 +47,52 @@ namespace PloobsEngine.Loader
                 flag = true;
                 mi.mass = 1;
             }
-            
 
-          
+
+            Vector3 translation, scale;
+            Quaternion rotation;
+            BatchInformation binf = model.GetBatchInformation(0)[0];
+
+           binf.ModelLocalTransformation.Decompose(out scale, out rotation, out translation);
+
+           BoundingBox bb;
 
             switch (mi.collisionType)
             {
 
-                case "Sphere":
 
+                case "Cylinder":
 
-                   
+                    binf.ModelLocalTransformation = Matrix.Identity;
+                   bb = ModelBuilderHelper.CreateBoundingBoxFromModel(binf, model);
+                   Vector3 len = bb.Max - bb.Min;
                     
-                    Vector3 translation,scale;
-                    Quaternion rotation;
+                    po = new CylinderObject(translation,len.Y,len.X/2, mi.mass, material);
+                    po.Rotation = Matrix.CreateFromQuaternion(rotation);
+                    break;
 
-                    model.GetBatchInformation(0)[0].ModelLocalTransformation.Decompose(out scale, out rotation,out translation);
-                    model.GetBatchInformation(0)[0].ModelLocalTransformation = Matrix.Identity;
-                    po = new SphereObject(translation, model.GetModelRadius(), mi.mass, scale.Length(), material);
+
+                case "Sphere":
+                    binf.ModelLocalTransformation = Matrix.Identity;
+                    po = new SphereObject(translation, model.GetModelRadius(), mi.mass,1 /*scale.X*/, material);
+                    po.Rotation = Matrix.CreateFromQuaternion(rotation);
+
+
 
                     break;
 
 
                 case "Box":
+
+                    bb = ModelBuilderHelper.CreateBoundingBoxFromModel(binf, model);
+
+                    len = bb.Max - bb.Min;
+
+                    po = new BoxObject(translation, len.X, len.Y, len.Z, mi.mass, scale, Matrix.CreateFromQuaternion(rotation), material);
+
+                    break;
                    default:
-                    po = new TriangleMeshObject(model, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
+                    po = new TriangleMeshObject(model, Vector3.Zero, Matrix.Identity,new Vector3(1), MaterialDescription.DefaultBepuMaterial());
                     break;
             }
 
@@ -80,7 +108,21 @@ namespace PloobsEngine.Loader
             
             IShader shader = new CustomDeferred(mi.HasTexture(TextureType.GLOW), mi.HasTexture(TextureType.BUMP), mi.HasTexture(TextureType.SPECULAR), mi.HasTexture(TextureType.PARALAX));
             DeferredMaterial dm = new DeferredMaterial(shader);
-            return new IObject(dm,model,po);
+            IObject ob = new IObject(dm,model,po);
+
+            ob.Name = mi.ModelName;
+
+            return ob;
+        }
+
+
+        public static IPhysicConstraint CreateConstraint(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ConstraintInfo cinfo, IObject o1, IObject o2)
+        {
+
+            PointPointConstraint con = new PointPointConstraint(cinfo.Position, o1.PhysicObject, o2.PhysicObject); 
+                    
+            return con;
+        
         }
 
         public static ICamera CreateCamera(IWorld world, GraphicFactory factory, GraphicInfo ginfo, CameraInfo cinfo)
@@ -93,10 +135,15 @@ namespace PloobsEngine.Loader
         public event CreateIObject OnCreateIObject = null;
         public event CreateILight OnCreateILight = null;
         public event CreateICamera OnCreateICamera = null;
+        public event CreateConstraint OnCreateConstraint = null;
         public event ProcessDummies OnProcessDummies = null;
 
         public void LoadWorld(GraphicFactory factory, GraphicInfo ginfo, IWorld world, ModelLoaderData worldData)
         {
+
+           
+
+            
             foreach (var item in worldData.ModelMeshesInfo)
 	        {
                 if (OnCreateIObject != null)
@@ -109,10 +156,45 @@ namespace PloobsEngine.Loader
                 }
                 else
                 {
-                    world.AddObject(WorldLoader.CreateOBJ(world, factory, ginfo, item));
+                    IObject ob1 = WorldLoader.CreateOBJ(world, factory, ginfo, item);
+
+                    world.AddObject(ob1);
+
+
+                    
                 }
 
 	        }
+
+
+            foreach (var item in worldData.ConstraintInfo)
+            {
+
+                List<IObject> obb = world.Objects.ToList();
+
+                IObject o1 = obb.Find(delegate(IObject o) { return o.Name == item.bodyA; });
+                IObject o2 = obb.Find(delegate(IObject o) { return o.Name == item.bodyB; });
+
+
+
+                if (o1.PhysicObject.PhysicObjectTypes != PhysicObjectTypes.TRIANGLEMESHOBJECT && o2.PhysicObject.PhysicObjectTypes != PhysicObjectTypes.TRIANGLEMESHOBJECT)
+                {
+                    if (OnCreateConstraint != null)
+                    {
+                        IPhysicConstraint constr = OnCreateConstraint(world, factory, ginfo, item, o1, o2);
+                        if (constr != null)
+                            world.AddConstraint(constr);
+
+                    }
+                    else
+                    {
+                        IPhysicConstraint constr = WorldLoader.CreateConstraint(world, factory, ginfo, item, o1, o2);                       
+                            world.AddConstraint(constr); 
+                        
+
+                    }
+                }
+            }
 
             foreach (var item in worldData.LightsInfo)
             {

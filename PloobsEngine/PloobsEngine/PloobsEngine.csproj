@@ -171,6 +171,8 @@
     <Compile Include="Particles\DPSFParticleManager.cs" />
     <Compile Include="Particles\IParticleManager.cs" />
     <Compile Include="Particles\IParticleSystem.cs" />
+    <Compile Include="Physic\Constraints\BepuConstraint\PointPointConstraint.cs" />
+    <Compile Include="Physic\Constraints\IPhysicConstraint.cs" />
     <Compile Include="Physic\PhysicObjects\BepuObject\CapsuleObject.cs" />
     <Compile Include="Physic\PhysicObjects\BepuObject\CharacterController.cs" />
     <Compile Include="Physic\PhysicObjects\BepuObject\CharacterObject.cs" />

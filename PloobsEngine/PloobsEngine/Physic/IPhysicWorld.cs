@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using PloobsEngine.Cameras;
 using PloobsEngine.SceneControl;
 using System.Runtime.Serialization;
+using PloobsEngine.Physic.Constraints;
 
 namespace PloobsEngine.Physics
 {
@@ -24,6 +25,10 @@ namespace PloobsEngine.Physics
         /// </value>
         public bool isDebugDraw { get; set; }
 
+
+
+
+        public abstract List<IPhysicConstraint> PhysicConstraints { get; }
         /// <summary>
         /// Gets the physic objects.
         /// </summary>
@@ -50,6 +55,15 @@ namespace PloobsEngine.Physics
         {
             Update(gt);
         }
+
+        /// <summary>
+        ///  Adds the constraint
+        /// </summary>
+        /// <param name="ctn"></param>
+        public abstract void AddConstraint(IPhysicConstraint ctn);
+
+
+
 
         /// <summary>
         /// Adds the object.

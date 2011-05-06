@@ -67,6 +67,16 @@ namespace PloobsEngine.Loader
         public bool castShadow;
     }
 
+    internal struct ConstraintInformation
+    {
+        public String name;
+        public String type;
+        public Vector3 pos;
+        public String bodyA;
+        public String bodyB;
+        public bool breakable;
+    }
+
 
     public class ExtractXmlModelLoader : IModelLoader
     {
@@ -106,6 +116,7 @@ namespace PloobsEngine.Loader
             Dictionary<String, XmlModelMeshInfo> infos = new Dictionary<string, XmlModelMeshInfo>();
             Dictionary<String, targetInfo> targets = new Dictionary<string, targetInfo>();            
             Dictionary<String, SpotLightInformation> spotLights = new Dictionary<string, SpotLightInformation>();
+            //Dictionary<String, ConstraintInformation> constraints = new Dictionary<string, ConstraintInformation>();
             Dictionary<String, CameraInfo> cameras = new Dictionary<string, CameraInfo>();
 
             SerializerHelper.ChangeDecimalSymbolToPoint();
@@ -115,6 +126,51 @@ namespace PloobsEngine.Loader
 
             foreach (XmlNode node in worldNode)
             {
+
+
+                if (node.Name == "Constraint")
+                {
+                    //ConstraintInformation info = new ConstraintInformation();
+
+                    ConstraintInfo cinfo = new ConstraintInfo();
+
+
+                    cinfo.Name = SerializerHelper.DeserializeAttributeBaseType<String>("name", node);
+                    XmlElement type = node["type"];
+                    if (type != null)
+                    {
+                        cinfo.type = SerializerHelper.DeserializeAttributeBaseType<String>("value", type);
+                    }
+
+                    XmlElement child = node["child"];
+                    if (child != null)
+                    {
+                        cinfo.bodyA = SerializerHelper.DeserializeAttributeBaseType<String>("name", child);
+                    }
+
+                    XmlElement parent = node["parent"];
+                    if (parent != null)
+                    {
+                        cinfo.bodyB = SerializerHelper.DeserializeAttributeBaseType<String>("name", parent);
+                    }
+
+                    XmlElement breakable = node["isBreakable"];
+                    if (breakable != null)
+                    {
+                        
+                        cinfo.breakable = SerializerHelper.DeserializeAttributeBaseType<bool>("value", breakable);
+                        
+                    }
+
+
+                    
+                    Vector3 pos = SerializerHelper.DeserializeVector3("position", node);
+                     cinfo.Position = new Vector3(pos.X, -pos.Y, -pos.Z);
+
+
+                    elements.ConstraintInfo.Add(cinfo);
+                    
+                }
                 if (node.Name == "body")
                 {
                     XmlModelMeshInfo info = new XmlModelMeshInfo();
@@ -325,6 +381,8 @@ namespace PloobsEngine.Loader
                     elements.ModelMeshesInfo.Add(mi);
                 }
             }
+
+            
 
             SerializerHelper.ChangeDecimalSymbolToSystemDefault();
             ///Clear Stuffs
