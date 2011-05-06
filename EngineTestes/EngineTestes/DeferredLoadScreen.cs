@@ -100,7 +100,7 @@ namespace EngineTestes
 
         }
 
-        IObject wl_OnCreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ModelInformation mi)
+        IObject wl_OnCreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation mi)
         {
             foreach (var item in mi.batchInformation)
             {

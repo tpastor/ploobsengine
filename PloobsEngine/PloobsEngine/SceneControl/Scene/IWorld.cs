@@ -15,6 +15,7 @@ using PloobsEngine.Engine.Logger;
 using PloobsEngine.Entity;
 using PloobsEngine.Engine;
 using PloobsEngine.Particles;
+using PloobsEngine.Physic.Constraints;
 
 namespace PloobsEngine.SceneControl
 {
@@ -51,6 +52,7 @@ namespace PloobsEngine.SceneControl
             Lights = new List<ILight>();
             Objects = new List<IObject>();
             Triggers = new List<ITrigger>();
+            Constraints = new List<IPhysicConstraint>();
             SoundEmiters3D = new List<ISoundEmitter3D>();
             this.Culler = Culler;
             this.culler.world = this;
@@ -127,7 +129,27 @@ namespace PloobsEngine.SceneControl
             get { return graphicsFactory; }
             set { graphicsFactory = value; }
         }
-                
+
+
+        public IList<IPhysicConstraint> Constraints
+        {
+            internal set;
+            get;
+        }
+        public virtual void AddConstraint(IPhysicConstraint ctn)
+        {
+
+            if (ctn == null)
+            {
+                ActiveLogger.LogMessage("Cant add null constraints", LogLevel.RecoverableError);
+                return;
+            }
+
+            PhysicWorld.AddConstraint(ctn);
+            Constraints.Add(ctn);
+        
+        }
+
 
 
         /// <summary>

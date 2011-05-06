@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using PloobsEngine.Light;
 using PloobsEngine.Modelo;
 using PloobsEngine.Engine;
+using PloobsEngine.Physics;
 
 namespace PloobsEngine.Loader
 {
@@ -86,6 +87,16 @@ namespace PloobsEngine.Loader
         public Vector3 Position;
     }
 
+    public struct ConstraintInfo
+    {
+        public String Name;
+        public String type;
+        public String bodyA;
+        public String bodyB;
+        public bool breakable;
+        public Vector3 Position;
+    
+    }
 
     /// <summary>
     /// Data that represents a Model Loaded
@@ -96,6 +107,7 @@ namespace PloobsEngine.Loader
         List<ILight> lightInfo = new List<ILight>();
         List<CameraInfo> cameraInfo = new List<CameraInfo>();
         List<DummyInfo> dummyInfo = new List<DummyInfo>();
+        List<ConstraintInfo> constraintInfo = new List<ConstraintInfo>();
 
         /// <summary>
         /// Gets or sets the dummyinfo list.
@@ -108,6 +120,17 @@ namespace PloobsEngine.Loader
             get { return dummyInfo; }
             set { dummyInfo = value; }
         }
+
+
+
+        public List<ConstraintInfo> ConstraintInfo
+        {
+            get { return constraintInfo; }
+            set { constraintInfo = value; }
+
+        
+        }
+
 
         /// <summary>
         /// Gets or sets the camera info list.

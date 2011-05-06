@@ -51,9 +51,9 @@ Content\Textures\Smoke.xnb
 Content\Model\EnemyBeast.xnb
 Content\Model\PlayerMarine.xnb
 Content\Model\WeaponMachineGun.xnb
-Content\Textures\islandmap_0.xnb
 Content\Textures\sponza_floor_a_diff_0.xnb
 Content\Textures\sponza_column_b_diff_0.xnb
+Content\Textures\islandmap_0.xnb
 Content\ModelInfos\shadow.xml
 Content\ModelInfos\sponza.xml
 Content\Textures\checker.xnb

@@ -2827,6 +2827,24 @@
             The name of the technic.
             </value>
         </member>
+        <member name="T:PloobsEngine.Physic.Constraints.IPhysicConstraint">
+            <summary>
+            Specification of a physic Constraint
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.Physic.Constraints.IPhysicConstraint.Position">
+            <summary>
+            Gets or sets the position.
+            </summary>
+            <value>
+            The position.
+            </value>
+        </member>
+        <member name="T:PloobsEngine.Physic.Constraints.PhysicConstraintTypes">
+            <summary>
+            Physic Types allowed
+            </summary>
+        </member>
         <member name="T:PloobsEngine.Material.CustomDeferred">
             <summary>
             Shader that uses branching to use Glow,Bump, Specular and Paralax
@@ -3130,6 +3148,12 @@
             Updates 
             </summary>
             <param name="gt">The gt.</param>
+        </member>
+        <member name="M:PloobsEngine.Physics.IPhysicWorld.AddConstraint(PloobsEngine.Physic.Constraints.IPhysicConstraint)">
+            <summary>
+             Adds the constraint
+            </summary>
+            <param name="ctn"></param>
         </member>
         <member name="M:PloobsEngine.Physics.IPhysicWorld.AddObject(PloobsEngine.Physics.IPhysicObject)">
             <summary>
@@ -4916,6 +4940,12 @@
             Updates
             </summary>
             <param name="gt">The gt.</param>
+        </member>
+        <member name="M:PloobsEngine.Physics.BepuPhysicWorld.AddConstraint(PloobsEngine.Physic.Constraints.IPhysicConstraint)">
+            <summary>
+            Adds the constraint
+            </summary>
+            <param name="ctn"></param>
         </member>
         <member name="M:PloobsEngine.Physics.BepuPhysicWorld.AddObject(PloobsEngine.Physics.IPhysicObject)">
             <summary>
