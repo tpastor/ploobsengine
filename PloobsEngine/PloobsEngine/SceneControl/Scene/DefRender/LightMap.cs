@@ -22,6 +22,7 @@ namespace PloobsEngine.SceneControl
         private SimpleModel sphereModel;        
         private bool cullPointLight = true;
         GraphicInfo ginfo;
+        SamplerState samplerState;
         
         #region IDeferredLightMap Members        
         protected void DrawDirectionalLight(ICamera camera, IList<ILight> lights, IDeferredGBuffer DeferredGBuffer,RenderHelper render)
@@ -173,7 +174,8 @@ namespace PloobsEngine.SceneControl
         {
             render.Clear(Color.Transparent,ClearOptions.Target);
             render.PushBlendState(BlendState.AlphaBlend);
-            render.PushDepthState(DepthStencilState.None);           
+            render.PushDepthState(DepthStencilState.None);
+            render.SetSamplerState(samplerState, 0);
 
             DrawDirectionalLight(world.CameraManager.ActiveCamera, world.Lights, deferredGBuffer,render);
             DrawPointLight(world.CameraManager.ActiveCamera, world.Lights, deferredGBuffer,render);
@@ -188,9 +190,15 @@ namespace PloobsEngine.SceneControl
             this.ginfo = ginfo;
             this.cullPointLight = cullPointLight;
             if (useFloatingBufferForLightning)
+            {
                 lightRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.HdrBlendable, false, DepthFormat.None, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
+                samplerState = SamplerState.PointClamp;
+            }
             else
+            {
                 lightRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, false, DepthFormat.None, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
+                samplerState = SamplerState.AnisotropicClamp;
+            }
 
             directionalLightEffect = manager.GetAsset<Effect>("DirectionalLight",true);
             pointLightEffect = manager.GetAsset<Effect>("PointLight",true);

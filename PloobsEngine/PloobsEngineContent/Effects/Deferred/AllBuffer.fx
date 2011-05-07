@@ -22,8 +22,8 @@ sampler2D heightSampler = sampler_state
 	Texture = <HeightMap>;
     ADDRESSU = WRAP;
 	ADDRESSV = WRAP;
-	MAGFILTER = LINEAR;
-	MINFILTER = LINEAR;
+	MAGFILTER = ANISOTROPIC;
+	MINFILTER = ANISOTROPIC;
 	MIPFILTER = LINEAR;
 };
 
@@ -32,8 +32,8 @@ texture glow;
 sampler glowSampler = sampler_state
 {
     Texture = (glow);
-    MAGFILTER = LINEAR;
-    MINFILTER = LINEAR;
+    MAGFILTER = ANISOTROPIC;
+    MINFILTER = ANISOTROPIC;
     MIPFILTER = LINEAR;
     AddressU = Wrap;
     AddressV = Wrap;
@@ -44,8 +44,8 @@ texture Texture;
 sampler diffuseSampler = sampler_state
 {
     Texture = (Texture);
-    MAGFILTER = LINEAR;
-    MINFILTER = LINEAR;
+    MAGFILTER = ANISOTROPIC;
+    MINFILTER = ANISOTROPIC;
     MIPFILTER = LINEAR;
     AddressU = Wrap;
     AddressV = Wrap;
@@ -56,8 +56,8 @@ texture SpecularMap;
 sampler specularSampler = sampler_state
 {
     Texture = (SpecularMap);
-    MagFilter = LINEAR;
-    MinFilter = LINEAR;
+    MagFilter = ANISOTROPIC;
+    MinFilter = ANISOTROPIC;
     Mipfilter = LINEAR;
     AddressU = Wrap;
     AddressV = Wrap;
@@ -68,8 +68,8 @@ texture NormalMap;
 sampler normalSampler = sampler_state
 {
     Texture = (NormalMap);
-    MagFilter = LINEAR;
-    MinFilter = LINEAR;
+    MagFilter = ANISOTROPIC;
+    MinFilter = ANISOTROPIC;
     Mipfilter = LINEAR;
     AddressU = Wrap;
     AddressV = Wrap;

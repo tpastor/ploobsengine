@@ -810,10 +810,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\AdvancedDemos\AdvancedDemos\AdvancedDemos\bin\x86\Debug\Content\Model\leonScene.xnb</Output>
-      <Time>2011-05-06T18:24:47.53862-03:00</Time>
+      <Time>2011-05-07T09:48:08.3400706-03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Model\leonScene_0.xml</Key>
-        <Value>2011-05-06T23:26:52.0842847-03:00</Value>
+        <Value>2011-05-07T10:08:47.263933-03:00</Value>
       </Dependency>
       <Request>C:\Users\tpastor\Desktop\port\AdvancedDemos\AdvancedDemos\AdvancedDemos\bin\x86\Debug\Content\Textures\lion_0.xnb</Request>
       <Request>C:\Users\tpastor\Desktop\port\AdvancedDemos\AdvancedDemos\AdvancedDemos\bin\x86\Debug\Content\Textures\spnza_bricks_a_diff_0.xnb</Request>
@@ -829,7 +829,7 @@
       <Time>2011-05-06T18:24:47.522619-03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Model\ball_0.xml</Key>
-        <Value>2011-05-06T23:26:54.7234356-03:00</Value>
+        <Value>2011-05-07T10:08:49.7650761-03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -855,7 +855,7 @@
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Model\leonScene_0.xml</Output>
-      <Time>2011-05-06T18:24:47.53862-03:00</Time>
+      <Time>2011-05-07T09:48:08.3400706-03:00</Time>
     </Item>
     <Item>
       <Source>Textures\lion.tga</Source>
@@ -926,7 +926,7 @@
     <Assemblies>
       <Assembly>
         <Key>C:\Users\tpastor\Desktop\port\AdvancedDemos\AdvancedDemos\Dll\PloobsEnginePipelineDebug.dll</Key>
-        <Value>2011-05-06T23:17:38.2026045-03:00</Value>
+        <Value>2011-05-07T10:07:22.3310751-03:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>

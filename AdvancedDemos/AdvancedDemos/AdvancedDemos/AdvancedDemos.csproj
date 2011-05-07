@@ -120,11 +120,11 @@
     <Compile Include="Demo6 - BilboardsSamples\InstancedBilboardScreen.cs" />
     <Compile Include="Commons\LightThrowBepu.cs" />
     <Compile Include="Commons\MoveablePointLight.cs" />
-    <Compile Include="Demo1 - Specific Deferred\Demo1 Materials\BumpSpecularDemo.cs" />
-    <Compile Include="Demo1 - Specific Deferred\Demo1 Materials\EnvMapScreen.cs" />
-    <Compile Include="Demo1 - Specific Deferred\Demo1 Materials\ParalaxScreen.cs" />
-    <Compile Include="Demo1 - Specific Deferred\Demo1 Materials\TransparentScreen.cs" />
-    <Compile Include="Demo2 -  Loader\DeferredLoadScreen.cs" />
+    <Compile Include="Demo2 - Specific Deferred\Demo1 Materials\BumpSpecularDemo.cs" />
+    <Compile Include="Demo2 - Specific Deferred\Demo1 Materials\EnvMapScreen.cs" />
+    <Compile Include="Demo2 - Specific Deferred\Demo1 Materials\ParalaxScreen.cs" />
+    <Compile Include="Demo2 - Specific Deferred\Demo1 Materials\TransparentScreen.cs" />
+    <Compile Include="Demo1 -  Loader\DeferredLoadScreen.cs" />
     <Compile Include="Demo9 -  Noise Textures\NoiseScreen.cs" />
     <Compile Include="Demo9 -  Noise Textures\PerlinNoiseScreen.cs" />
     <Compile Include="Demo7 - AnimationSample\CharacterControllerInput.cs" />

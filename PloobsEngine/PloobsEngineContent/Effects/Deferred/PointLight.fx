@@ -32,10 +32,7 @@ sampler colorSampler = sampler_state
 {
     Texture = (colorMap);
     AddressU = CLAMP;
-    AddressV = CLAMP;
-    MagFilter = POINT;
-    MinFilter = POINT;
-    Mipfilter = POINT;
+    AddressV = CLAMP;    
 };
 sampler depthSampler = sampler_state
 {
@@ -51,8 +48,8 @@ sampler normalSampler = sampler_state
     Texture = (normalMap);
     AddressU = CLAMP;
     AddressV = CLAMP;
-    MagFilter = POINT;
-    MinFilter = POINT;
+    MagFilter = ANISOTROPIC;
+    MinFilter = ANISOTROPIC;
     Mipfilter = POINT;
 };
 

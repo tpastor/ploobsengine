@@ -23,7 +23,8 @@ namespace AdvancedDemo4._0
         BindMouseCommand mm0 = null;
         BindMouseCommand mm1 = null;
         GraphicFactory factory;
-        
+        float lightsize ;
+        float lightintensity;
         public void CleanUp()
         {
             mm0.BindAction = BindAction.REMOVE;
@@ -33,8 +34,12 @@ namespace AdvancedDemo4._0
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(mm1);
         }        
 
-        public LightThrowBepu(IWorld mundo,GraphicFactory factory)
-        {            
+
+
+        public LightThrowBepu(IWorld mundo,GraphicFactory factory,float lightsize = 25, float lightintensity = 5)
+        {
+            this.lightintensity = lightintensity;
+            this.lightsize = lightsize;
             this.factory = factory;
             _mundo = mundo;            
             {
@@ -53,7 +58,7 @@ namespace AdvancedDemo4._0
 
         public void mousebuttontesteRight(MouseState ms)
         {
-            PointLightPE pl = new PointLightPE(_mundo.CameraManager.ActiveCamera.Position, StaticRandom.RandomColor(), 100, 5);
+            PointLightPE pl = new PointLightPE(_mundo.CameraManager.ActiveCamera.Position, StaticRandom.RandomColor(), lightsize, lightintensity);
             pl.UsePointLightQuadraticAttenuation = true;
             _mundo.AddLight(pl);
         }
@@ -66,7 +71,7 @@ namespace AdvancedDemo4._0
             physObj.PhysicObject.Velocity = (_mundo.CameraManager.ActiveCamera.Target - _mundo.CameraManager.ActiveCamera.Position) * 10.0f;
             
             ///Create a light that follow an object
-            MoveablePointLight mvp = new MoveablePointLight(physObj.PhysicObject as SphereObject, new Color((float)rd.NextDouble(),(float) rd.NextDouble(),(float) rd.NextDouble()),25, 5);
+            MoveablePointLight mvp = new MoveablePointLight(physObj.PhysicObject as SphereObject, new Color((float)rd.NextDouble(),(float) rd.NextDouble(),(float) rd.NextDouble()),lightsize, lightintensity);
             mvp.UsePointLightQuadraticAttenuation = true;                        
             ///Add them to the world
             _mundo.AddLight(mvp);

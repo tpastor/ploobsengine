@@ -152,7 +152,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\AllBuffer.xnb</Output>
-      <Time>2011-05-06T23:12:38.561466-03:00</Time>
+      <Time>2011-05-07T10:38:46.4258392-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\AnimatedBillboard.fx</Source>
@@ -314,7 +314,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\DirectionalLight.xnb</Output>
-      <Time>2011-05-06T18:26:29.5254533-03:00</Time>
+      <Time>2011-05-07T10:40:13.874841-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\DownScaling.fx</Source>
@@ -494,7 +494,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\PointLight.xnb</Output>
-      <Time>2011-05-06T18:26:29.6574608-03:00</Time>
+      <Time>2011-05-07T10:38:46.4068381-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\Posterize.fx</Source>
@@ -530,7 +530,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\RenderGBuffer.xnb</Output>
-      <Time>2011-05-06T18:26:29.6974631-03:00</Time>
+      <Time>2011-05-07T10:52:45.5818362-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\RenderGlowBuffer.fx</Source>
@@ -674,7 +674,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\SpotLight.xnb</Output>
-      <Time>2011-05-06T18:26:29.887474-03:00</Time>
+      <Time>2011-05-07T10:40:02.161171-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\ssaoblur.fx</Source>

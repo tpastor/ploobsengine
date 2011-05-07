@@ -53,7 +53,7 @@ namespace PloobsEngine.SceneControl
             }
             else
             {
-                render.SetSamplerState(SamplerState.LinearClamp, 0);
+                render.SetSamplerState(SamplerState.AnisotropicClamp, 0);
             }
             render.RenderFullScreenQuadVertexPixel(restore);
 

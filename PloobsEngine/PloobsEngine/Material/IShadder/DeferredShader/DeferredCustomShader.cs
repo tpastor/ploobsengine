@@ -138,8 +138,8 @@ namespace PloobsEngine.Material
             this.useSpecular = useSpecular;
             this.useBump = useBump;
             this.useParalax = useParalax;
-            SpecularPowerMapScale = 1;
-            specularIntensity = 1;
+            specularPowerMapScale = 1;
+            specularIntensityMapScale = 1;
             if (useParalax == true && useBump == false)
             {
                 ActiveLogger.LogMessage("Are you sure you will use only Paralax without BUMP, the paralax expects bump", LogLevel.Warning);                
@@ -161,15 +161,30 @@ namespace PloobsEngine.Material
             set { scaleBias = value; }
         }
 
+        private float specularPowerMapScale;
         public float SpecularPowerMapScale
         {
-            get;
-            set;
+            get
+            {
+                return specularPowerMapScale;
+            }
+            set
+            {
+                this.specularPowerMapScale = value;
+            }
         }
+
+        private float specularIntensityMapScale;
         public float SpecularIntensityMapScale
         {
-            get;
-            set;
+            get
+            {
+                return specularIntensityMapScale;
+            }
+            set
+            {
+                this.specularIntensityMapScale = value;
+            }
         }
 
         /// <summary>

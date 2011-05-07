@@ -30,12 +30,13 @@ namespace AdvancedDemo4._0
         static void LoadScreen(ScreenManager manager)
         {            
             ///add the title screen
-            manager.AddScreen(new DeferredLoadScreen());                        
+            //manager.AddScreen(new DeferredLoadScreen());
+            manager.AddScreen(new BumpSpecularDemo());                        
         }
 
         static void UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            ///handle unhandled excetption here (log, send to a server ....)
+            ///handle unhandled exception here (log, send to a server ....)
             Console.WriteLine("Exception: " + e.ToString());
         }
     }
