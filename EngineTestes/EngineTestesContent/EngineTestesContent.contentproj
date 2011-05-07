@@ -904,7 +904,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Model\leonScene.X">
+    <Compile Include="Model\leonScene.x">
       <Name>leonScene</Name>
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>

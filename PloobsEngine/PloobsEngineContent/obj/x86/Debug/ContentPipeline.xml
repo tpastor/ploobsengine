@@ -8,7 +8,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Textures\checker.xnb</Output>
-      <Time>2011-04-04T15:14:55.7117311-03:00</Time>
+      <Time>2011-05-06T18:26:32.2456089-03:00</Time>
     </Item>
     <Item>
       <Source>Textures\explosion.png</Source>
@@ -17,7 +17,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Textures\explosion.xnb</Output>
-      <Time>2011-04-04T15:14:55.7337323-03:00</Time>
+      <Time>2011-05-06T18:26:32.3226133-03:00</Time>
     </Item>
     <Item>
       <Source>Textures\fire.png</Source>
@@ -26,7 +26,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Textures\fire.xnb</Output>
-      <Time>2011-04-04T15:14:55.7467331-03:00</Time>
+      <Time>2011-05-06T18:26:32.4726218-03:00</Time>
     </Item>
     <Item>
       <Source>Textures\flare.png</Source>
@@ -35,7 +35,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Textures\flare.xnb</Output>
-      <Time>2011-04-04T15:14:55.7507333-03:00</Time>
+      <Time>2011-05-06T18:26:32.509624-03:00</Time>
     </Item>
     <Item>
       <Source>Textures\normal.jpg</Source>
@@ -44,7 +44,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Textures\normal.xnb</Output>
-      <Time>2011-04-04T15:14:55.7647341-03:00</Time>
+      <Time>2011-05-06T18:26:32.5336253-03:00</Time>
     </Item>
     <Item>
       <Source>Textures\random.png</Source>
@@ -53,7 +53,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Textures\random.xnb</Output>
-      <Time>2011-04-04T15:14:55.7847353-03:00</Time>
+      <Time>2011-05-06T18:26:32.5476261-03:00</Time>
     </Item>
     <Item>
       <Source>Textures\RANDOMNORMAL.png</Source>
@@ -62,7 +62,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Textures\RANDOMNORMAL.xnb</Output>
-      <Time>2011-04-04T15:14:55.7987361-03:00</Time>
+      <Time>2011-05-06T18:26:31.8675872-03:00</Time>
     </Item>
     <Item>
       <Source>Textures\smoke.png</Source>
@@ -71,7 +71,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Textures\smoke.xnb</Output>
-      <Time>2011-04-04T15:14:55.8247376-03:00</Time>
+      <Time>2011-05-06T18:26:32.5526264-03:00</Time>
     </Item>
     <Item>
       <Source>Textures\Sunset.png</Source>
@@ -80,7 +80,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Textures\Sunset.xnb</Output>
-      <Time>2011-04-04T15:14:55.8277377-03:00</Time>
+      <Time>2011-05-06T18:26:31.9835939-03:00</Time>
     </Item>
     <Item>
       <Source>Textures\Toon.bmp</Source>
@@ -89,7 +89,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Textures\Toon.xnb</Output>
-      <Time>2011-04-04T15:14:55.8337381-03:00</Time>
+      <Time>2011-05-06T18:26:32.1416029-03:00</Time>
     </Item>
     <Item>
       <Source>Textures\white.jpg</Source>
@@ -98,7 +98,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Textures\white.xnb</Output>
-      <Time>2011-04-04T15:14:55.9327437-03:00</Time>
+      <Time>2011-05-06T18:26:33.1376599-03:00</Time>
     </Item>
     <Item>
       <Source>Textures\teste.dds</Source>
@@ -107,7 +107,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Textures\teste.xnb</Output>
-      <Time>2011-04-04T15:14:55.8297378-03:00</Time>
+      <Time>2011-05-06T18:26:32.5856283-03:00</Time>
     </Item>
     <Item>
       <Source>Textures\wave0.dds</Source>
@@ -116,7 +116,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Textures\wave0.xnb</Output>
-      <Time>2011-04-04T15:14:55.86774-03:00</Time>
+      <Time>2011-05-06T18:26:32.7656386-03:00</Time>
     </Item>
     <Item>
       <Source>Textures\wave1.dds</Source>
@@ -125,7 +125,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Textures\wave1.xnb</Output>
-      <Time>2011-04-04T15:14:55.9037421-03:00</Time>
+      <Time>2011-05-06T18:26:32.8616441-03:00</Time>
     </Item>
     <Item>
       <Source>Textures\waves2.dds</Source>
@@ -134,7 +134,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Textures\waves2.xnb</Output>
-      <Time>2011-04-06T21:34:52.3329488-03:00</Time>
+      <Time>2011-05-06T18:26:33.1316595-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\ByPassEffect.fx</Source>
@@ -143,7 +143,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\ByPassEffect.xnb</Output>
-      <Time>2011-04-04T15:14:55.9477446-03:00</Time>
+      <Time>2011-05-06T18:26:29.3474431-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\AllBuffer.fx</Source>
@@ -152,7 +152,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\AllBuffer.xnb</Output>
-      <Time>2011-04-30T17:50:25.100444-03:00</Time>
+      <Time>2011-05-06T23:12:38.561466-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\AnimatedBillboard.fx</Source>
@@ -161,7 +161,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\AnimatedBillboard.xnb</Output>
-      <Time>2011-04-26T16:18:58.0423679-03:00</Time>
+      <Time>2011-05-06T18:26:29.3824451-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\AntiAliasing.fx</Source>
@@ -170,7 +170,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\AntiAliasing.xnb</Output>
-      <Time>2011-04-30T13:22:49.4311123-03:00</Time>
+      <Time>2011-05-06T18:26:29.4104467-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\BlackWhite.fx</Source>
@@ -179,7 +179,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\BlackWhite.xnb</Output>
-      <Time>2011-04-04T15:14:56.0217488-03:00</Time>
+      <Time>2011-05-06T18:26:29.4384483-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\BlinkGBuffer.fx</Source>
@@ -188,7 +188,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\BlinkGBuffer.xnb</Output>
-      <Time>2011-04-04T15:14:56.0397499-03:00</Time>
+      <Time>2011-05-06T18:26:29.4574494-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\blur.fx</Source>
@@ -197,7 +197,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\blur.xnb</Output>
-      <Time>2011-04-04T15:17:53.3138894-03:00</Time>
+      <Time>2011-05-06T18:26:29.9954802-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\BumpGBuffer.fx</Source>
@@ -206,7 +206,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\BumpGBuffer.xnb</Output>
-      <Time>2011-04-04T15:14:56.0697516-03:00</Time>
+      <Time>2011-05-06T18:26:29.4624497-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\cilBilboard.fx</Source>
@@ -215,7 +215,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\cilBilboard.xnb</Output>
-      <Time>2011-04-26T16:18:57.9833645-03:00</Time>
+      <Time>2011-05-06T18:26:30.0074808-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\cilBilboardForward.fx</Source>
@@ -224,7 +224,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\cilBilboardForward.xnb</Output>
-      <Time>2011-04-04T15:14:56.0927529-03:00</Time>
+      <Time>2011-05-06T18:26:30.010481-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\ClearGBuffer.fx</Source>
@@ -233,7 +233,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\ClearGBuffer.xnb</Output>
-      <Time>2011-04-14T23:21:17.095115-03:00</Time>
+      <Time>2011-05-06T18:26:29.4724502-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\colorCorrection.fx</Source>
@@ -242,7 +242,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\colorCorrection.xnb</Output>
-      <Time>2011-04-04T15:14:56.1027535-03:00</Time>
+      <Time>2011-05-06T18:26:30.0464831-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\Combine.fx</Source>
@@ -251,7 +251,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\Combine.xnb</Output>
-      <Time>2011-04-29T18:37:09.1901618-03:00</Time>
+      <Time>2011-05-06T18:26:29.4824508-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\CombineFinal.fx</Source>
@@ -260,7 +260,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\CombineFinal.xnb</Output>
-      <Time>2011-04-14T23:37:36.4501309-03:00</Time>
+      <Time>2011-05-06T18:26:29.486451-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\contrast.fx</Source>
@@ -269,7 +269,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\contrast.xnb</Output>
-      <Time>2011-04-04T15:14:56.1287549-03:00</Time>
+      <Time>2011-05-06T18:26:30.0534835-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\CopyToScreen.fx</Source>
@@ -278,7 +278,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\CopyToScreen.xnb</Output>
-      <Time>2011-04-04T15:18:23.2366008-03:00</Time>
+      <Time>2011-05-06T18:26:29.4894512-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\CuingDepth.fx</Source>
@@ -287,7 +287,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\CuingDepth.xnb</Output>
-      <Time>2011-04-04T15:14:56.1497561-03:00</Time>
+      <Time>2011-05-06T18:26:29.4974517-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\DeferredAA.fx</Source>
@@ -296,7 +296,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\DeferredAA.xnb</Output>
-      <Time>2011-04-04T15:14:56.1517563-03:00</Time>
+      <Time>2011-05-06T18:26:29.5084523-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\depth.fx</Source>
@@ -305,7 +305,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\depth.xnb</Output>
-      <Time>2011-04-15T18:10:53.8006375-03:00</Time>
+      <Time>2011-05-06T18:26:30.0854853-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\DirectionalLight.fx</Source>
@@ -314,7 +314,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\DirectionalLight.xnb</Output>
-      <Time>2011-04-22T16:47:24.077974-03:00</Time>
+      <Time>2011-05-06T18:26:29.5254533-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\DownScaling.fx</Source>
@@ -323,7 +323,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\DownScaling.xnb</Output>
-      <Time>2011-04-15T22:45:26.9296161-03:00</Time>
+      <Time>2011-05-06T18:26:29.5284534-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\Embossed.fx</Source>
@@ -332,7 +332,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\Embossed.xnb</Output>
-      <Time>2011-04-04T15:14:56.2407613-03:00</Time>
+      <Time>2011-05-06T18:26:29.538454-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\EMSHADER.fx</Source>
@@ -341,7 +341,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\EMSHADER.xnb</Output>
-      <Time>2011-04-04T15:14:56.2537621-03:00</Time>
+      <Time>2011-05-06T18:26:29.5354538-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\Fog.fx</Source>
@@ -350,7 +350,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\Fog.xnb</Output>
-      <Time>2011-04-14T23:46:30.1066543-03:00</Time>
+      <Time>2011-05-06T18:26:29.5544549-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\FULLGPUBlur.fx</Source>
@@ -359,7 +359,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\FULLGPUBlur.xnb</Output>
-      <Time>2011-04-15T22:50:18.2672796-03:00</Time>
+      <Time>2011-05-06T18:26:29.5504547-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\gamma.fx</Source>
@@ -368,7 +368,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\gamma.xnb</Output>
-      <Time>2011-04-04T15:14:56.3057651-03:00</Time>
+      <Time>2011-05-06T18:26:30.0884855-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\gblur.fx</Source>
@@ -377,7 +377,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\gblur.xnb</Output>
-      <Time>2011-04-04T15:14:56.3087652-03:00</Time>
+      <Time>2011-05-06T18:26:30.0894855-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\gcpublur.fx</Source>
@@ -386,7 +386,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\gcpublur.xnb</Output>
-      <Time>2011-04-04T15:14:56.3117654-03:00</Time>
+      <Time>2011-05-06T18:26:30.0914857-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\glow.fx</Source>
@@ -395,7 +395,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\glow.xnb</Output>
-      <Time>2011-04-04T15:28:22.7368903-03:00</Time>
+      <Time>2011-05-06T18:26:30.2874969-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\glowPost.fx</Source>
@@ -404,7 +404,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\glowPost.xnb</Output>
-      <Time>2011-04-04T15:14:56.3187658-03:00</Time>
+      <Time>2011-05-06T18:26:30.290497-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\GrassBillboard.fx</Source>
@@ -413,7 +413,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\GrassBillboard.xnb</Output>
-      <Time>2011-04-26T15:53:03.7144654-03:00</Time>
+      <Time>2011-05-06T18:26:29.5704559-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\HSV.fx</Source>
@@ -422,7 +422,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\HSV.xnb</Output>
-      <Time>2011-04-04T15:28:40.4379027-03:00</Time>
+      <Time>2011-05-06T18:26:29.572456-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\InstanceRenderGBuffer.fx</Source>
@@ -431,7 +431,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\InstanceRenderGBuffer.xnb</Output>
-      <Time>2011-04-04T15:14:56.3857696-03:00</Time>
+      <Time>2011-05-06T18:26:29.5854567-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\Inverse.fx</Source>
@@ -440,7 +440,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\Inverse.xnb</Output>
-      <Time>2011-04-04T15:14:56.3877698-03:00</Time>
+      <Time>2011-05-06T18:26:29.5994575-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\LineDetection.fx</Source>
@@ -449,7 +449,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\LineDetection.xnb</Output>
-      <Time>2011-04-04T15:28:50.6284856-03:00</Time>
+      <Time>2011-05-06T18:26:29.6124583-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\Luminance.fx</Source>
@@ -458,7 +458,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\Luminance.xnb</Output>
-      <Time>2011-04-15T23:03:49.0506538-03:00</Time>
+      <Time>2011-05-06T18:26:29.6204587-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\noise.fx</Source>
@@ -467,7 +467,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\noise.xnb</Output>
-      <Time>2011-04-04T15:29:31.0998004-03:00</Time>
+      <Time>2011-05-06T18:26:30.2934972-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\opacity.fx</Source>
@@ -476,7 +476,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\opacity.xnb</Output>
-      <Time>2011-04-04T15:14:56.4007705-03:00</Time>
+      <Time>2011-05-06T18:26:30.2954973-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\PlanarOriented.fx</Source>
@@ -485,7 +485,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\PlanarOriented.xnb</Output>
-      <Time>2011-04-04T15:14:56.4297722-03:00</Time>
+      <Time>2011-05-06T18:26:29.6244589-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\PointLight.fx</Source>
@@ -494,7 +494,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\PointLight.xnb</Output>
-      <Time>2011-04-15T23:01:32.4638415-03:00</Time>
+      <Time>2011-05-06T18:26:29.6574608-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\Posterize.fx</Source>
@@ -503,7 +503,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\Posterize.xnb</Output>
-      <Time>2011-04-04T15:29:38.6252309-03:00</Time>
+      <Time>2011-05-06T18:26:29.6634612-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\RadialBlur.fx</Source>
@@ -512,7 +512,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\RadialBlur.xnb</Output>
-      <Time>2011-04-04T15:29:46.8647021-03:00</Time>
+      <Time>2011-05-06T18:26:29.6734617-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\Reflection.fx</Source>
@@ -521,7 +521,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\Reflection.xnb</Output>
-      <Time>2011-04-04T15:14:56.478775-03:00</Time>
+      <Time>2011-05-06T18:26:29.6814622-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\RenderGBuffer.fx</Source>
@@ -530,7 +530,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\RenderGBuffer.xnb</Output>
-      <Time>2011-04-14T23:03:45.6819776-03:00</Time>
+      <Time>2011-05-06T18:26:29.6974631-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\RenderGlowBuffer.fx</Source>
@@ -539,7 +539,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\RenderGlowBuffer.xnb</Output>
-      <Time>2011-04-04T15:14:56.5027763-03:00</Time>
+      <Time>2011-05-06T18:26:29.7074637-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\RestoreDepth.fx</Source>
@@ -548,7 +548,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\RestoreDepth.xnb</Output>
-      <Time>2011-04-14T23:42:41.4145738-03:00</Time>
+      <Time>2011-05-06T18:26:29.7154641-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\Ripple.fx</Source>
@@ -557,7 +557,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\Ripple.xnb</Output>
-      <Time>2011-04-04T15:30:29.0261136-03:00</Time>
+      <Time>2011-05-06T18:26:29.7234646-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\Saturate.fx</Source>
@@ -566,7 +566,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\Saturate.xnb</Output>
-      <Time>2011-04-29T18:36:04.4254575-03:00</Time>
+      <Time>2011-05-06T18:26:29.7974688-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\saturation.fx</Source>
@@ -575,7 +575,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\saturation.xnb</Output>
-      <Time>2011-04-04T15:14:56.5567794-03:00</Time>
+      <Time>2011-05-06T18:26:30.4165042-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\Scatter.fx</Source>
@@ -584,7 +584,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\Scatter.xnb</Output>
-      <Time>2011-04-04T15:31:10.8515059-03:00</Time>
+      <Time>2011-05-06T18:26:29.800469-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\ShadowDepth.fx</Source>
@@ -593,7 +593,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\ShadowDepth.xnb</Output>
-      <Time>2011-04-11T11:39:53.9083533-03:00</Time>
+      <Time>2011-05-06T18:26:29.8194701-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\ShadowDirectional.fx</Source>
@@ -602,7 +602,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\ShadowDirectional.xnb</Output>
-      <Time>2011-04-04T15:32:21.2445321-03:00</Time>
+      <Time>2011-05-06T18:26:29.8454716-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\ShadowMap.fx</Source>
@@ -611,7 +611,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\ShadowMap.xnb</Output>
-      <Time>2011-04-30T19:26:34.2904228-03:00</Time>
+      <Time>2011-05-06T18:26:29.8474717-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\ShadowPoint.fx</Source>
@@ -620,7 +620,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\ShadowPoint.xnb</Output>
-      <Time>2011-04-04T15:14:56.654785-03:00</Time>
+      <Time>2011-05-06T18:26:29.8654727-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\ShadowSpot.fx</Source>
@@ -629,7 +629,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\ShadowSpot.xnb</Output>
-      <Time>2011-04-22T20:31:41.9727215-03:00</Time>
+      <Time>2011-05-06T18:26:29.8684729-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\SimpleAlphaDraw.fx</Source>
@@ -638,7 +638,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\SimpleAlphaDraw.xnb</Output>
-      <Time>2011-04-04T15:37:24.8808992-03:00</Time>
+      <Time>2011-05-06T18:26:29.8714731-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\SpecularBumpBuffer.fx</Source>
@@ -647,7 +647,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\SpecularBumpBuffer.xnb</Output>
-      <Time>2011-04-04T15:14:56.6997876-03:00</Time>
+      <Time>2011-05-06T18:26:29.8734732-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\SpecularMapBuffer.fx</Source>
@@ -656,7 +656,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\SpecularMapBuffer.xnb</Output>
-      <Time>2011-04-04T15:14:56.7037878-03:00</Time>
+      <Time>2011-05-06T18:26:29.8774734-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\SphericalBillboard.fx</Source>
@@ -665,7 +665,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\SphericalBillboard.xnb</Output>
-      <Time>2011-04-26T15:37:21.2215579-03:00</Time>
+      <Time>2011-05-06T18:26:29.8844738-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\SpotLight.fx</Source>
@@ -674,7 +674,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\SpotLight.xnb</Output>
-      <Time>2011-04-04T15:37:31.0402514-03:00</Time>
+      <Time>2011-05-06T18:26:29.887474-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\ssaoblur.fx</Source>
@@ -683,7 +683,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\ssaoblur.xnb</Output>
-      <Time>2011-04-04T15:14:56.7387898-03:00</Time>
+      <Time>2011-05-06T18:26:30.500509-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\SSAOBlur1.fx</Source>
@@ -692,7 +692,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\SSAOBlur1.xnb</Output>
-      <Time>2011-04-04T15:38:40.5872293-03:00</Time>
+      <Time>2011-05-06T18:26:29.7364653-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\SSAOBlur2.fx</Source>
@@ -701,7 +701,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\SSAOBlur2.xnb</Output>
-      <Time>2011-04-04T15:38:50.2477819-03:00</Time>
+      <Time>2011-05-06T18:26:29.7394655-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\ssaofinal.fx</Source>
@@ -710,7 +710,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\ssaofinal.xnb</Output>
-      <Time>2011-04-16T12:19:43.1775246-03:00</Time>
+      <Time>2011-05-06T18:26:30.5585124-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\SSAOPOST.fx</Source>
@@ -719,7 +719,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\SSAOPOST.xnb</Output>
-      <Time>2011-04-16T12:18:01.0836851-03:00</Time>
+      <Time>2011-05-06T18:26:29.7754676-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\Sun.fx</Source>
@@ -728,7 +728,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\Sun.xnb</Output>
-      <Time>2011-04-16T13:03:33.2689572-03:00</Time>
+      <Time>2011-05-06T18:26:29.8974746-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\Terrain.fx</Source>
@@ -737,7 +737,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\Terrain.xnb</Output>
-      <Time>2011-04-26T21:12:58.0866626-03:00</Time>
+      <Time>2011-05-06T18:26:29.9004747-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\Threshold.fx</Source>
@@ -746,7 +746,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\Threshold.xnb</Output>
-      <Time>2011-04-15T22:42:53.702852-03:00</Time>
+      <Time>2011-05-06T18:26:29.9144755-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\Tilling.fx</Source>
@@ -755,7 +755,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\Tilling.xnb</Output>
-      <Time>2011-04-04T15:39:23.7356973-03:00</Time>
+      <Time>2011-05-06T18:26:29.9304764-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\ToBlack.fx</Source>
@@ -764,7 +764,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\ToBlack.xnb</Output>
-      <Time>2011-04-04T15:39:37.2484701-03:00</Time>
+      <Time>2011-05-06T18:26:29.9334766-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\ToneHdr.fx</Source>
@@ -773,7 +773,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\ToneHdr.xnb</Output>
-      <Time>2011-04-15T22:47:52.9639688-03:00</Time>
+      <Time>2011-05-06T18:26:29.9484775-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\ToneMapping.fx</Source>
@@ -782,7 +782,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\ToneMapping.xnb</Output>
-      <Time>2011-04-04T15:14:56.8967989-03:00</Time>
+      <Time>2011-05-06T18:26:29.9504776-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\toon1.fx</Source>
@@ -791,7 +791,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\toon1.xnb</Output>
-      <Time>2011-04-16T15:51:35.7446418-03:00</Time>
+      <Time>2011-05-06T18:26:30.6405171-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\TransparentEffect.fx</Source>
@@ -800,7 +800,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\TransparentEffect.xnb</Output>
-      <Time>2011-04-25T22:44:30.5180977-03:00</Time>
+      <Time>2011-05-06T18:26:29.9654784-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\Vidro.fx</Source>
@@ -809,7 +809,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\Vidro.xnb</Output>
-      <Time>2011-04-04T15:14:56.9398013-03:00</Time>
+      <Time>2011-05-06T18:26:29.9824794-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\Water.fx</Source>
@@ -818,7 +818,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\Water.xnb</Output>
-      <Time>2011-04-06T21:40:34.1504996-03:00</Time>
+      <Time>2011-05-06T18:26:29.9864796-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\WaterComplete.fx</Source>
@@ -827,7 +827,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\WaterComplete.xnb</Output>
-      <Time>2011-04-09T18:11:51.0807559-03:00</Time>
+      <Time>2011-05-06T18:26:29.99348-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\wiggle.fx</Source>
@@ -836,7 +836,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\wiggle.xnb</Output>
-      <Time>2011-04-04T15:41:45.766821-03:00</Time>
+      <Time>2011-05-06T18:26:31.1395456-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Depth.fx</Source>
@@ -845,7 +845,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Depth.xnb</Output>
-      <Time>2011-04-04T15:14:57.0098053-03:00</Time>
+      <Time>2011-05-06T18:26:31.1425458-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\GaussianBlur.fx</Source>
@@ -854,7 +854,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\GaussianBlur.xnb</Output>
-      <Time>2011-04-04T15:41:53.5882683-03:00</Time>
+      <Time>2011-05-06T18:26:31.1445459-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\ParticleEffect.fx</Source>
@@ -863,7 +863,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\ParticleEffect.xnb</Output>
-      <Time>2011-04-04T15:42:27.4702063-03:00</Time>
+      <Time>2011-05-06T18:26:31.1805479-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\particles.fx</Source>
@@ -872,7 +872,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\particles.xnb</Output>
-      <Time>2011-04-04T15:42:43.7091351-03:00</Time>
+      <Time>2011-05-06T18:26:31.2805537-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\RoundLine.fx</Source>
@@ -881,7 +881,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\RoundLine.xnb</Output>
-      <Time>2011-04-04T15:14:57.0828095-03:00</Time>
+      <Time>2011-05-06T18:26:31.2045493-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\ShadowDirectionalCascade.fx</Source>
@@ -890,7 +890,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\ShadowDirectionalCascade.xnb</Output>
-      <Time>2011-04-30T19:10:11.3962045-03:00</Time>
+      <Time>2011-05-06T18:26:31.2245505-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\ShadowMap.fx</Source>
@@ -899,7 +899,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\ShadowMap.xnb</Output>
-      <Time>2011-04-04T15:14:57.1148113-03:00</Time>
+      <Time>2011-05-06T18:26:31.2375512-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\skybox.fx</Source>
@@ -908,7 +908,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\skybox.xnb</Output>
-      <Time>2011-04-08T22:48:44.2992291-03:00</Time>
+      <Time>2011-05-06T18:26:31.2855539-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\clippingPlane.fx</Source>
@@ -917,7 +917,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\clippingPlane.xnb</Output>
-      <Time>2011-04-11T12:36:54.7860164-03:00</Time>
+      <Time>2011-05-06T18:26:30.0344824-03:00</Time>
     </Item>
     <Item>
       <Source>Font\ConsoleFont.spritefont</Source>
@@ -926,7 +926,7 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Font\ConsoleFont.xnb</Output>
-      <Time>2011-04-04T15:14:57.1308123-03:00</Time>
+      <Time>2011-05-06T18:26:31.2905542-03:00</Time>
     </Item>
     <Item>
       <Source>Models\block.X</Source>
@@ -935,10 +935,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Models\block.xnb</Output>
-      <Time>2011-04-04T15:14:57.1358125-03:00</Time>
+      <Time>2011-05-06T18:26:31.3345568-03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\block_0.xml</Key>
-        <Value>2011-04-13T09:13:19.0399693-03:00</Value>
+        <Value>2011-05-06T22:02:33.5399525-03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -948,10 +948,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Models\dome.xnb</Output>
-      <Time>2011-04-04T15:14:57.1938159-03:00</Time>
+      <Time>2011-05-06T18:26:31.355558-03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\dome_0.xml</Key>
-        <Value>2011-04-13T09:13:19.1799773-03:00</Value>
+        <Value>2011-05-06T22:02:33.6919612-03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -961,10 +961,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Models\Dsphere.xnb</Output>
-      <Time>2011-04-04T15:14:57.196816-03:00</Time>
+      <Time>2011-05-06T18:26:31.3155557-03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\Dsphere_0.xml</Key>
-        <Value>2011-04-13T09:13:19.3029844-03:00</Value>
+        <Value>2011-05-06T22:02:33.8469701-03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -974,10 +974,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Models\sphere.xnb</Output>
-      <Time>2011-04-04T15:14:57.2088167-03:00</Time>
+      <Time>2011-05-06T18:26:31.5605697-03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Models\sphere_0.xml</Key>
-        <Value>2011-04-13T09:13:19.4509928-03:00</Value>
+        <Value>2011-05-06T22:02:34.0179798-03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -985,28 +985,28 @@
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\block_0.xml</Output>
-      <Time>2011-04-04T15:14:57.1358125-03:00</Time>
+      <Time>2011-05-06T18:26:31.3345568-03:00</Time>
     </Item>
     <Item>
       <Source>Models\dome.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\dome_0.xml</Output>
-      <Time>2011-04-04T15:14:57.1938159-03:00</Time>
+      <Time>2011-05-06T18:26:31.355558-03:00</Time>
     </Item>
     <Item>
       <Source>Models\Dsphere.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\Dsphere_0.xml</Output>
-      <Time>2011-04-04T15:14:57.196816-03:00</Time>
+      <Time>2011-05-06T18:26:31.3155557-03:00</Time>
     </Item>
     <Item>
       <Source>Models\sphere.X</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Models\sphere_0.xml</Output>
-      <Time>2011-04-04T15:14:57.2088167-03:00</Time>
+      <Time>2011-05-06T18:26:31.5605697-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\InstancedBilboard.fx</Source>
@@ -1015,7 +1015,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\InstancedBilboard.xnb</Output>
-      <Time>2011-04-26T17:42:26.3321676-03:00</Time>
+      <Time>2011-05-06T18:26:29.5974574-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\AntiAliasingtabulastalker.fx</Source>
@@ -1024,7 +1024,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\AntiAliasingtabulastalker.xnb</Output>
-      <Time>2011-05-01T12:45:03.3967452-03:00</Time>
+      <Time>2011-05-06T18:26:29.4364482-03:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

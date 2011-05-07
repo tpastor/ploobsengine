@@ -3345,7 +3345,7 @@
       <param name="model">The model.</param>
       <param name="batchInformationS">The batch information S.</param>
     </member>
-    <member name="M:PloobsEngine.Modelo.ModelBuilderHelper.Extract(Microsoft.Xna.Framework.Matrix[],Microsoft.Xna.Framework.Graphics.ModelMesh,PloobsEngine.Modelo.BatchInformation[]@)">
+    <member name="M:PloobsEngine.Modelo.ModelBuilderHelper.Extract(Microsoft.Xna.Framework.Matrix[],Microsoft.Xna.Framework.Graphics.ModelMeshPart,PloobsEngine.Modelo.BatchInformation@)">
       <summary>
             Creates a BatchInformation from a XNA ModelMesh
             </summary>

@@ -92,10 +92,9 @@ namespace AdvancedDemo4._0
 
         IObject wl_OnCreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ModelInformation mi)
         {
-            foreach (var item in mi.batchInformation)
-            {
-                item.ModelLocalTransformation = item.ModelLocalTransformation * Matrix.CreateScale(0.5f);
-            }
+
+            mi.batchInformation.ModelLocalTransformation = mi.batchInformation.ModelLocalTransformation * Matrix.CreateScale(0.5f);
+            
             return WorldLoader.CreateOBJ(world, factory, ginfo, mi);
         }
 

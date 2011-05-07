@@ -4,6 +4,8 @@ float4x4 View;
 float4x4 Projection;
 float specularIntensity;
 float specularPower ; 
+float specularIntensityScale;
+float specularPowerScale ; 
 float id;
 
 float2 scaleBias;
@@ -116,6 +118,7 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 		output.tangentToWorld[1] = mul(input.Binormal, WorldInverseTranspose);
 		output.tangentToWorld[2] = mul(input.Normal, WorldInverseTranspose );    
 		output.Normal = 0; 
+
 		
 		if(useParalax)
 		{	
@@ -176,9 +179,9 @@ PixelShaderOutput PixelShaderFunction(VertexShaderOutput input)
 	{
 	    float4 specularAttributes = tex2D(specularSampler, input.TexCoord);  
 		//specular Intensity
-		output.Color.a = specularAttributes.r;
+		output.Color.a = specularAttributes.r * specularIntensityScale;
 		//specular Power
-		output.Normal.a = specularAttributes.a;  
+		output.Normal.a = specularAttributes.a * specularPowerScale;  
     }
     else
     {
