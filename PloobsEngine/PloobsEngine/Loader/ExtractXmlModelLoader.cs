@@ -15,7 +15,7 @@ namespace PloobsEngine.Loader
 {
     internal struct XmlModelMeshInfo
     {
-        public XmlModelMeshInfo(string modeName, string collisionType, string difuseName, string bumpName, string specularName, string glowName)
+        public XmlModelMeshInfo(string modeName, string collisionType, float mass, float dinamicfriction, float staticfriction, float ellasticity, string difuseName, string bumpName, string specularName, string glowName)
         {
             this.modeName = modeName;
             this.collisionType = collisionType;
@@ -23,6 +23,15 @@ namespace PloobsEngine.Loader
             this.bumpName = bumpName;
             this.specularName = specularName;
             this.glowName = glowName;
+
+            this.mass = mass;
+            this.dinamicfriction = dinamicfriction;
+            this.staticfriction = staticfriction;
+            this.ellasticity = ellasticity;
+
+
+
+
         }
 
         public string collisionType;
@@ -30,7 +39,14 @@ namespace PloobsEngine.Loader
         public string difuseName;
         public string bumpName;
         public string specularName;
-        public string glowName;        
+        public string glowName;
+
+
+
+        public float mass;
+        public float dinamicfriction;
+        public float staticfriction;
+        public float ellasticity;
 
     }
 
@@ -49,6 +65,16 @@ namespace PloobsEngine.Loader
         public float angle;        
         public String name;
         public bool castShadow;
+    }
+
+    internal struct ConstraintInformation
+    {
+        public String name;
+        public String type;
+        public Vector3 pos;
+        public String bodyA;
+        public String bodyB;
+        public bool breakable;
     }
 
 
@@ -90,6 +116,7 @@ namespace PloobsEngine.Loader
             Dictionary<String, XmlModelMeshInfo> infos = new Dictionary<string, XmlModelMeshInfo>();
             Dictionary<String, targetInfo> targets = new Dictionary<string, targetInfo>();            
             Dictionary<String, SpotLightInformation> spotLights = new Dictionary<string, SpotLightInformation>();
+            //Dictionary<String, ConstraintInformation> constraints = new Dictionary<string, ConstraintInformation>();
             Dictionary<String, CameraInfo> cameras = new Dictionary<string, CameraInfo>();
 
             SerializerHelper.ChangeDecimalSymbolToPoint();
@@ -99,10 +126,84 @@ namespace PloobsEngine.Loader
 
             foreach (XmlNode node in worldNode)
             {
+
+
+                if (node.Name == "Constraint")
+                {
+                    //ConstraintInformation info = new ConstraintInformation();
+
+                    ConstraintInfo cinfo = new ConstraintInfo();
+
+
+                    cinfo.Name = SerializerHelper.DeserializeAttributeBaseType<String>("name", node);
+                    XmlElement type = node["type"];
+                    if (type != null)
+                    {
+                        cinfo.type = SerializerHelper.DeserializeAttributeBaseType<String>("value", type);
+                    }
+
+                    XmlElement child = node["child"];
+                    if (child != null)
+                    {
+                        cinfo.bodyA = SerializerHelper.DeserializeAttributeBaseType<String>("name", child);
+                    }
+
+                    XmlElement parent = node["parent"];
+                    if (parent != null)
+                    {
+                        cinfo.bodyB = SerializerHelper.DeserializeAttributeBaseType<String>("name", parent);
+                    }
+
+                    XmlElement breakable = node["isBreakable"];
+                    if (breakable != null)
+                    {
+                        
+                        cinfo.breakable = SerializerHelper.DeserializeAttributeBaseType<bool>("value", breakable);
+                        
+                    }
+
+
+                    
+                    Vector3 pos = SerializerHelper.DeserializeVector3("position", node);
+                     cinfo.Position = new Vector3(pos.X, -pos.Y, -pos.Z);
+
+
+                    elements.ConstraintInfo.Add(cinfo);
+                    
+                }
                 if (node.Name == "body")
                 {
                     XmlModelMeshInfo info = new XmlModelMeshInfo();
                     info.modeName = SerializerHelper.DeserializeAttributeBaseType<String>("name", node);
+
+
+
+                    XmlElement mass = node["mass"];
+                    if (mass != null)
+                    {
+                        info.mass = SerializerHelper.DeserializeAttributeBaseType<float>("value", mass);
+                    }
+
+                    XmlElement dfric = node["dinamicfriction"];
+                    if (dfric != null)
+                    {
+                        info.dinamicfriction = SerializerHelper.DeserializeAttributeBaseType<float>("value", dfric);
+                    }
+
+                    XmlElement sfric = node["staticfriction"];
+                    if (sfric != null)
+                    {
+                        info.staticfriction = SerializerHelper.DeserializeAttributeBaseType<float>("value", sfric);
+                    }
+
+                    XmlElement ellas = node["ellasticity"];
+                    if (ellas != null)
+                    {
+                        info.ellasticity = SerializerHelper.DeserializeAttributeBaseType<float>("value", ellas);
+                    }
+                    
+                    
+                    
                     XmlElement collision = node["collision"];
                     if (collision != null)
                     {
@@ -251,7 +352,7 @@ namespace PloobsEngine.Loader
                         Quaternion ori;
                         tr.Decompose(out scale, out ori, out pos);
 
-                        ModelInformation mi = new ModelInformation();
+                        ObjectInformation mi = new ObjectInformation();
                         mi.modelName = inf.modeName;
                         mi.modelPart = j;
                         mi.position = pos;
@@ -259,6 +360,15 @@ namespace PloobsEngine.Loader
                         mi.rotation = ori;
 
                         ModelBuilderHelper.Extract(m, model.Meshes[i].MeshParts[j], out mi.batchInformation);
+                    mi.ellasticity = inf.ellasticity;
+                    mi.dinamicfriction = inf.dinamicfriction;
+                    mi.staticfriction = inf.staticfriction;
+                    mi.collisionType = inf.collisionType;
+                    mi.mass = inf.mass;
+
+
+
+
 
                         mi.batchInformation.ModelLocalTransformation = m[model.Meshes[i].ParentBone.Index];                    
                                                 
@@ -278,6 +388,8 @@ namespace PloobsEngine.Loader
                     }
                 }
             }
+
+            
 
             SerializerHelper.ChangeDecimalSymbolToSystemDefault();
             ///Clear Stuffs

@@ -147,6 +147,39 @@ namespace PloobsEngine.Modelo
             }                                    
         }
 
+        public static BoundingBox CreateBoundingBoxFromModel(BatchInformation bi, IModelo model)
+        {
+
+            bi.ModelLocalTransformation = Matrix.Identity;
+            // Read the format of the vertex buffer  
+            VertexDeclaration declaration = bi.VertexBuffer.VertexDeclaration;
+            VertexElement[] vertexElements = declaration.GetVertexElements();
+            // Find the element that holds the position  
+            VertexElement vertexPosition = new VertexElement();
+
+            Vector3[] vertices = new Vector3[bi.VertexBuffer.VertexCount];
+
+            bi.VertexBuffer.GetData<Vector3>(vertices);
+
+
+
+            // This where we store the vertices until transformed  
+            Vector3[] allVertex = new Vector3[bi.VertexBuffer.VertexCount];
+            // Read the vertices from the buffer in to the array  
+            bi.VertexBuffer.GetData<Vector3>(
+                bi.BaseVertex * declaration.VertexStride + vertexPosition.Offset,
+                allVertex,
+                0,
+                bi.NumVertices,
+                declaration.VertexStride);
+
+
+            return BoundingBox.CreateFromPoints(allVertex);
+        
+        
+        
+        }
+
 
         public static void ExtractModelRadiusAndCenter(BatchInformation bi, out float radius, out Vector3 center)
         {

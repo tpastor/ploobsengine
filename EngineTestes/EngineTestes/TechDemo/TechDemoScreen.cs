@@ -107,7 +107,7 @@ namespace EngineTestes
             return null;
         }        
 
-        IObject wl_OnCreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ModelInformation mi)
+        IObject wl_OnCreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation mi)
         {
             if (!mi.HasTexture(TextureType.DIFFUSE))
             {

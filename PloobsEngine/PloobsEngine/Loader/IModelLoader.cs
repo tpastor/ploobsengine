@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using PloobsEngine.Light;
 using PloobsEngine.Modelo;
 using PloobsEngine.Engine;
+using PloobsEngine.Physics;
 
 namespace PloobsEngine.Loader
 {
@@ -16,7 +17,7 @@ namespace PloobsEngine.Loader
     /// By Now, It creates just pieces of a model, 
     /// IN THE NEXT RELEASE IT WILL CREATE THE FULL MODEL, RETURN AN IMODELO AND A TRANSFORMATION
     /// </summary>
-    public struct ModelInformation
+    public struct ObjectInformation
     {
         public string modelName;
         public int modelPart;
@@ -28,6 +29,12 @@ namespace PloobsEngine.Loader
         public Vector3 position;
         public Vector3 scale;
         public Quaternion rotation;
+        public float mass;
+        public float dinamicfriction;
+        public float staticfriction;
+        public float ellasticity;
+
+        public String collisionType;
 
         /// <summary>
         /// Determines whether this model has the specified texture type.
@@ -82,16 +89,27 @@ namespace PloobsEngine.Loader
         public Vector3 Position;
     }
 
+    public struct ConstraintInfo
+    {
+        public String Name;
+        public String type;
+        public String bodyA;
+        public String bodyB;
+        public bool breakable;
+        public Vector3 Position;
+    
+    }
 
     /// <summary>
     /// Data that represents a Model Loaded
     /// </summary>
     public class ModelLoaderData
     {
-        List<ModelInformation> modelMeshesInfo = new List<ModelInformation>();
+        List<ObjectInformation> modelMeshesInfo = new List<ObjectInformation>();
         List<ILight> lightInfo = new List<ILight>();
         List<CameraInfo> cameraInfo = new List<CameraInfo>();
         List<DummyInfo> dummyInfo = new List<DummyInfo>();
+        List<ConstraintInfo> constraintInfo = new List<ConstraintInfo>();
 
         /// <summary>
         /// Gets or sets the dummyinfo list.
@@ -104,6 +122,17 @@ namespace PloobsEngine.Loader
             get { return dummyInfo; }
             set { dummyInfo = value; }
         }
+
+
+
+        public List<ConstraintInfo> ConstraintInfo
+        {
+            get { return constraintInfo; }
+            set { constraintInfo = value; }
+
+        
+        }
+
 
         /// <summary>
         /// Gets or sets the camera info list.
@@ -135,7 +164,7 @@ namespace PloobsEngine.Loader
         /// <value>
         /// The model meshes info.
         /// </value>
-        public List<ModelInformation> ModelMeshesInfo
+        public List<ObjectInformation> ModelMeshesInfo
         {
             get { return modelMeshesInfo; }
             set { modelMeshesInfo = value; }

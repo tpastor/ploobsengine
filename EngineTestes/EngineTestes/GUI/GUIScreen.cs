@@ -21,8 +21,14 @@ namespace EngineTestes
 {
     public class GUIScreen : IScene
     {
-        public GUIScreen() : base(new NeoforceGui()) { }
 
+        private ScreenManager man;
+        public GUIScreen(ScreenManager manager) : base(new NeoforceGui()) {
+            man = manager;
+        }
+
+
+        
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
@@ -74,6 +80,7 @@ namespace EngineTestes
             button.Top = window.ClientHeight - button.Height - 8;
             button.Anchor = Anchors.Bottom;
             button.Parent = window;
+            button.Click += new TomShane.Neoforce.Controls.EventHandler(button_Click);
 
             // Add the window control to the manager processing queue.
             guiManager.Manager.Add(window);
@@ -99,11 +106,17 @@ namespace EngineTestes
             this.World.AddLight(ld5);
             #endregion
 
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(true,GraphicInfo.Viewport));
+            this.World.CameraManager.AddCamera(new CameraFirstPerson(false,GraphicInfo.Viewport));
 
             SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//cubemap");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
 
+        }
+
+        void button_Click(object sender, TomShane.Neoforce.Controls.EventArgs e)
+        {
+            man.AddScreen(new ForwardLoadScreen());
+            
         }
 
     }
