@@ -9,12 +9,15 @@ namespace PloobsEngine.SceneControl
 {
     public class AntiAliasingPostEffect : IPostEffect 
     {
-        public AntiAliasingPostEffect() : base(PostEffectType.Deferred) { }
+        public AntiAliasingPostEffect() : base(PostEffectType.Deferred) 
+        {
+            this.priority = float.MaxValue;
+        }
 
-        private float weight = 2;
+        private float weight = 1;
 
         /// <summary>
-        /// Default 2
+        /// Default 1
         /// Bigger value, bigger the effect
         /// </summary>
         public float Weight
@@ -43,9 +46,9 @@ namespace PloobsEngine.SceneControl
                 effect.Parameters["normal"].SetValue(rHelper[PrincipalConstants.normalRt]);
                 
                 if (useFloatingBuffer)
-                    rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, effect, GraphicInfo.FullScreenRectangle,SamplerState.PointClamp);
+                    rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, effect, GraphicInfo.FullScreenRectangle,SamplerState.PointClamp,BlendState.Opaque);
                 else
-                    rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, effect, GraphicInfo.FullScreenRectangle, SamplerState.LinearClamp);
+                    rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, effect, GraphicInfo.FullScreenRectangle, SamplerState.LinearClamp, BlendState.Opaque);
         }
 
         public override void Init(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)

@@ -23,13 +23,12 @@ namespace IntroductionDemo4._0
     {
         LightThrowBepu lt;
 
-        protected override void SetWorldAndRenderTechnich(out IRenderTechnic[] renderTech, out IWorld world)
+        protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
-            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
-            desc.DefferedDebug = false;
-            desc.UseFloatingBufferForLightMap = false;
-            renderTech = new DeferredRenderTechnic[] { new DeferredRenderTechnic(desc) };
+            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
+            desc.UseFloatingBufferForLightMap = true;
+            renderTech = new DeferredRenderTechnic(desc) ;
         }
 
         protected override void InitScreen(PloobsEngine.Engine.GraphicInfo GraphicInfo, PloobsEngine.Engine.EngineStuff engine)
@@ -46,9 +45,9 @@ namespace IntroductionDemo4._0
             #region Models
             ///Cenario
             {
-                SimpleModel sm = new SimpleModel(contentManager, "..\\Content\\Model\\cenario");                
+                SimpleModel sm = new SimpleModel(factory, "..\\Content\\Model\\cenario");                
                 IPhysicObject pi = new TriangleMeshObject(sm,Vector3.Zero,Matrix.Identity,Vector3.One,MaterialDescription.DefaultBepuMaterial());
-                NormalDeferred shader = new NormalDeferred(0.05f,50);                            
+                DeferredNormalShader shader = new DeferredNormalShader(0.05f, 50);                            
                 IMaterial mat = new DeferredMaterial(shader);
                 IObject obj3 = new IObject(mat, sm, pi);
                 this.World.AddObject(obj3);
@@ -61,7 +60,7 @@ namespace IntroductionDemo4._0
             cam.FarPlane = 2000;
 
             ///Atirador de bolas classico
-            lt = new LightThrowBepu(this.World,factory,contentManager);            
+            lt = new LightThrowBepu(this.World,factory);            
             
             ///Interpolador que ira variar a cor das luzes
             UnitLightInterpolator li = new UnitLightInterpolator(this, true);
@@ -97,7 +96,8 @@ namespace IntroductionDemo4._0
                 }
             }
 
-            this.World.CameraManager.AddCamera(cam);            
+            this.World.CameraManager.AddCamera(cam);
+            this.RenderTechnic.AddPostEffect(new AntiAliasingPostEffect());
         }
 
         protected override void  Draw(GameTime gameTime, RenderHelper render)

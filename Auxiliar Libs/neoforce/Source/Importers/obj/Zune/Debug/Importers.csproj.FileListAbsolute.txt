@@ -1,0 +1,12 @@
+C:\Users\tpastor\Desktop\Billiards\bin\Debug\TomShane.Neoforce.Importers.dll
+C:\Users\tpastor\Desktop\Billiards\bin\Debug\TomShane.Neoforce.Importers.pdb
+C:\Users\tpastor\Desktop\neofrce\Source\Importers\obj\Zune\Debug\ResolveAssemblyReference.cache
+C:\Users\tpastor\Desktop\neofrce\Source\Importers\obj\Zune\Debug\TomShane.Neoforce.Importers.dll
+C:\Users\tpastor\Desktop\neofrce\Source\Importers\obj\Zune\Debug\TomShane.Neoforce.Importers.pdb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\Debug\TomShane.Neoforce.Importers.dll
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\Debug\TomShane.Neoforce.Importers.pdb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\neoforce\Source\Importers\obj\Zune\Debug\ResolveAssemblyReference.cache
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\neoforce\Source\Importers\obj\Zune\Debug\TomShane.Neoforce.Importers.dll
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\neoforce\Source\Importers\obj\Zune\Debug\TomShane.Neoforce.Importers.pdb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\Debug\TomShane.Neoforce.Importers.dll
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\Debug\TomShane.Neoforce.Importers.pdb

@@ -48,7 +48,7 @@ namespace PloobsEngine.Utils
             Color[] cor = new Color[sizex * sizey];
             for (int i = 0; i < sizex; i++)
             {
-                for (int j = 0; j < sizex; j++)
+                for (int j = 0; j < sizey; j++)
                 {
                     cor[i + j * sizex] = texCor;
                 }

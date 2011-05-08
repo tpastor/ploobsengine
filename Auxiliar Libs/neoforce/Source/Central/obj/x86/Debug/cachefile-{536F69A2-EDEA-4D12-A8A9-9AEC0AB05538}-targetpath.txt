@@ -1,0 +1,4 @@
+Content\Images\Caption.xnb
+Content\Images\Default.xnb
+Content\Images\Green.xnb
+Content\Layout\Window.xml

@@ -9,6 +9,7 @@ using PloobsEngine.Entity;
 using PloobsEngine.Engine;
 using PloobsEngine.Engine.Logger;
 using System.Diagnostics;
+using PloobsEngine.SceneControl.GUI;
 
 namespace PloobsEngine.SceneControl
 {
@@ -18,6 +19,8 @@ namespace PloobsEngine.SceneControl
     /// 
     public abstract class IScene : IScreen
     {
+        public IScene(IGui gui = null) : base(gui) { }
+
         #region properties
         
         private IRenderTechnic _renderTecnic = null;        

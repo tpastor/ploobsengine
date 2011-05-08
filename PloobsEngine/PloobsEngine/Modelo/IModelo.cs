@@ -8,7 +8,6 @@ using PloobsEngine.Engine.Logger;
 using PloobsEngine.SceneControl;
 using PloobsEngine.Engine;
 
-
 namespace PloobsEngine.Modelo
 {
     /// <summary>
@@ -45,7 +44,7 @@ namespace PloobsEngine.Modelo
                 throw new Exception("Factory Cannot Be null");
             }
 
-            if (_diffuseName == null && callLoadContent == true)
+            if (_diffuseName == null && callLoadContent == false)
             {
                 ActiveLogger.LogMessage("Diffuse Texture Name is null for the Model " + modelName, LogLevel.Warning);
             }
@@ -69,11 +68,21 @@ namespace PloobsEngine.Modelo
         protected string _diffuseName = null;
         protected string _bumpName = null;
         protected string _specularName = null;
+        protected string _mult1 = null;
+        protected string _mult2 = null;
+        protected string _mult3 = null;
+        protected string _mult4 = null;
+        protected string _heightMap = null;
         protected Texture2D diffuse = null;
         protected Texture2D bump = null;
         protected Texture2D specular = null;
         protected Texture2D glow = null;
         protected Texture2D paralax = null;
+        protected Texture2D multitexture1 = null;
+        protected Texture2D multitexture2 = null;
+        protected Texture2D multitexture3 = null;
+        protected Texture2D multitexture4 = null;
+        protected Texture2D heightMap = null;
         protected BatchInformation[][] BatchInformations = null;
         protected GraphicFactory factory;        
 
@@ -94,12 +103,12 @@ namespace PloobsEngine.Modelo
         /// Occurs when [on texture change].
         /// </summary>
         public event OnTextureChange OnTextureChange = null;
-            
-        
+
+
         /// <summary>
         /// Gets one texture of the model.
         /// </summary>
-        /// <param name="textureType">Type of the texture.</param>
+        /// <param name="type">The type.</param>
         /// <returns></returns>
         public Texture2D getTexture(TextureType type)
         {
@@ -122,6 +131,26 @@ namespace PloobsEngine.Modelo
             else if (type == TextureType.PARALAX)
             {
                 return this.paralax;
+            }
+            else if (type == TextureType.HEIGHTMAP)
+            {
+                return this.heightMap;
+            }
+            else if (type == TextureType.MULTITEX1)
+            {
+                return this.multitexture1;
+            }
+            else if (type == TextureType.MULTITEX2)
+            {
+                return this.multitexture2;
+            }
+            else if (type == TextureType.MULTITEX3)
+            {
+                return this.multitexture3;
+            }
+            else if (type == TextureType.MULTITEX4)
+            {
+                return this.multitexture4;
             }
             else
             {
@@ -153,6 +182,21 @@ namespace PloobsEngine.Modelo
                 case TextureType.PARALAX:
                     this._paralaxName = textureName;
                     break;
+                case TextureType.MULTITEX1:
+                    this._mult1 = textureName;
+                    break;
+                case TextureType.MULTITEX2:
+                    this._mult2 = textureName;
+                    break;
+                case TextureType.MULTITEX3:
+                    this._mult3 = textureName;
+                    break;
+                case TextureType.MULTITEX4:
+                    this._mult4 = textureName;
+                    break;
+                case TextureType.HEIGHTMAP:
+                    this._heightMap = textureName;
+                    break;
                 default:
                     ActiveLogger.LogMessage("Setting Invalid Type of Texture: " + textureName, LogLevel.RecoverableError);
                     return;
@@ -166,6 +210,7 @@ namespace PloobsEngine.Modelo
         /// <summary>
         /// Load the model
         /// </summary>
+        /// <param name="factory">The factory.</param>
         internal void LoadModelo(GraphicFactory factory)
         {            
             if (!String.IsNullOrEmpty(_diffuseName) && _diffuseName != CUSTOM)
@@ -188,6 +233,26 @@ namespace PloobsEngine.Modelo
             {
                 this.paralax = factory.GetTexture2D(_paralaxName, isInternal);
             }
+            if (!String.IsNullOrEmpty(_mult1) && _mult1 != CUSTOM)
+            {
+                this.multitexture1 = factory.GetTexture2D(_mult1, isInternal);
+            }
+            if (!String.IsNullOrEmpty(_mult2) && _mult2 != CUSTOM)
+            {
+                this.multitexture2 = factory.GetTexture2D(_mult2, isInternal);
+            }
+            if (!String.IsNullOrEmpty(_mult3) && _mult3 != CUSTOM)
+            {
+                this.multitexture3 = factory.GetTexture2D(_mult3, isInternal);
+            }
+            if (!String.IsNullOrEmpty(_mult4) && _mult4 != CUSTOM)
+            {
+                this.multitexture4 = factory.GetTexture2D(_mult4, isInternal);
+            }
+            if (!String.IsNullOrEmpty(_heightMap) && _heightMap != CUSTOM)
+            {
+                this.heightMap = factory.GetTexture2D(_heightMap, isInternal);
+            }            
 
             if(BatchInformations == null)
                 LoadBatchInfo(factory, out BatchInformations);
@@ -200,10 +265,10 @@ namespace PloobsEngine.Modelo
         /// <param name="factory">The factory.</param>
         /// <param name="BatchInformations">The batch informations.</param>
         protected abstract void LoadBatchInfo(GraphicFactory factory, out BatchInformation[][] BatchInformations);
-        
+
 
         /// <summary>
-        /// Sets the texture.        
+        /// Sets the texture.
         /// </summary>
         /// <param name="tex">The tex.</param>
         /// <param name="type">The type.</param>
@@ -230,6 +295,26 @@ namespace PloobsEngine.Modelo
                 case TextureType.PARALAX:
                     this._paralaxName = "CUSTOM";
                     this.paralax = tex;
+                    break;
+                case TextureType.MULTITEX1:
+                    this._mult1 = "CUSTOM";
+                    this.multitexture1 = tex;
+                    break;
+                case TextureType.MULTITEX2:
+                    this._mult2 = "CUSTOM";
+                    this.multitexture2 = tex;
+                    break;
+                case TextureType.MULTITEX3:
+                    this._mult3 = "CUSTOM";
+                    this.multitexture3 = tex;
+                    break;
+                case TextureType.MULTITEX4:
+                    this._mult4 = "CUSTOM";
+                    this.multitexture4 = tex;
+                    break;
+                case TextureType.HEIGHTMAP:
+                    this._heightMap = "CUSTOM";
+                    this.heightMap = tex;
                     break;
                 default:
                     ActiveLogger.LogMessage("Setting Invalid Type of Texture", LogLevel.RecoverableError);
@@ -330,7 +415,101 @@ namespace PloobsEngine.Modelo
         {
             get { return _diffuseName; }
             set { _diffuseName = value; }
-        }      
+        }
+
+
+        /// <summary>
+        /// Gets or sets the name of the multi texture1 map.
+        /// </summary>
+        /// <value>
+        /// The name of the multi texture1 map.
+        /// </value>
+        public String MultiTexture1MapName
+        {
+            get
+            {
+                return _mult1;
+            }
+            set
+            {
+                this._mult1 = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the name of the multi texture2 map.
+        /// </summary>
+        /// <value>
+        /// The name of the multi texture2 map.
+        /// </value>
+        public String MultiTexture2MapName
+        {
+            get
+            {
+                return _mult2;
+            }
+            set
+            {
+                this._mult2 = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the name of the multi texture3 map.
+        /// </summary>
+        /// <value>
+        /// The name of the multi texture3 map.
+        /// </value>
+        public String MultiTexture3MapName
+        {
+            get
+            {
+                return _mult3;
+            }
+            set
+            {
+                this._mult3 = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the name of the multi texture4 map.
+        /// </summary>
+        /// <value>
+        /// The name of the multi texture4 map.
+        /// </value>
+        public String MultiTexture4MapName
+        {
+            get
+            {
+                return _mult4;
+            }
+            set
+            {
+                this._mult4 = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the name of the height map.
+        /// </summary>
+        /// <value>
+        /// The name of the height map.
+        /// </value>
+        public String HeightMapName
+        {
+            get
+            {
+                return _heightMap;
+            }
+            set
+            {
+                this._heightMap = value;
+            }
+        }
+
+
+
     }
     /// <summary>
     /// Textures Types avaliable
@@ -380,7 +559,13 @@ namespace PloobsEngine.Modelo
         /// Multitex used in terrain
         /// can be used anywhere
         /// </summary>
-        MULTITEX4
+        MULTITEX4,
+        /// <summary>
+        /// HEIGHTMAP, can used anywhere
+        /// </summary>
+        HEIGHTMAP
+
+
     }
 
     

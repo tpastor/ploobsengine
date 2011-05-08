@@ -15,6 +15,7 @@ namespace PloobsEngine.SceneControl
         {
             return new ForwardRenderTecnichDescription(Color.Black, true);
         }
+
         public ForwardRenderTecnichDescription(Color BackGroundColor,bool usePostEffect = true)
         {
             this.BackGroundColor = BackGroundColor;
@@ -44,13 +45,14 @@ namespace PloobsEngine.SceneControl
             if (desc.usePostEffect)
             {
                 renderTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth,ginfo.BackBufferHeight,SurfaceFormat.Color,true,DepthFormat.Depth24Stencil8,ginfo.MultiSample,RenderTargetUsage.DiscardContents);
-                postEffectTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, true, DepthFormat.None, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
+                postEffectTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, true, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
             }            
             base.AfterLoadContent(manager, ginfo, factory);
         }
 
         protected override void ExecuteTechnic(GameTime gameTime, RenderHelper render, IWorld world)
-        {            
+        {   
+
             foreach (var item in world.Objects)
             {
                 item.Material.PreDrawnPhase(gameTime, world, item, world.CameraManager.ActiveCamera, world.Lights, render);
@@ -62,28 +64,44 @@ namespace PloobsEngine.SceneControl
             }
 
             render.Clear(desc.BackGroundColor);
+            render.RenderPreComponents(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection);            
             world.Culler.StartFrame(world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection, world.CameraManager.ActiveCamera.BoundingFrustum);
-            foreach (var item in world.Culler.GetNotCulledObjectsList(Material.MaterialType.FORWARD))
+            IEnumerable<IObject> objList = world.Culler.GetNotCulledObjectsList(Material.MaterialType.FORWARD);
+            foreach (var item in objList)
             {
                 ///critical code, no log
                 System.Diagnostics.Debug.Assert(item.Material.MaterialType == Material.MaterialType.FORWARD, "This Technich is just for forward materials and shaders");
                 item.Material.Drawn(gameTime,item, world.CameraManager.ActiveCamera, world.Lights, render);                
             }
 
+            foreach (var item in objList)
+            {             
+                item.Material.PosDrawnPhase(gameTime,item, world.CameraManager.ActiveCamera, world.Lights, render);                
+            }
+
+            if (world.ParticleManager != null)
+                world.ParticleManager.iDraw(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection, render);
+
             if (desc.usePostEffect)
             {
                 render[PrincipalConstants.CurrentImage] = render.PopRenderTarget()[0].RenderTarget as Texture2D;
                 render[PrincipalConstants.CombinedImage] = render[PrincipalConstants.CurrentImage];
                 for (int i = 0; i < PostEffects.Count; i++)
-                {
-                    render.PushRenderTarget(postEffectTarget);
-                    PostEffects[i].Draw(render[PrincipalConstants.CurrentImage],render, gameTime, ginfo, world, false);
-                    Texture2D tex = render.PopRenderTarget()[0].RenderTarget as Texture2D;
-                    render[PrincipalConstants.CurrentImage] = tex;
+                {                    
+                    if (PostEffects[i].Enabled)
+                    {
+                        render.PushRenderTarget(postEffectTarget);
+                        PostEffects[i].Draw(render[PrincipalConstants.CurrentImage], render, gameTime, ginfo, world, false);
+                        Texture2D tex = render.PopRenderTarget()[0].RenderTarget as Texture2D;
+                        render[PrincipalConstants.CurrentImage] = tex;
+                    }
                 }
                 render.Clear(Color.Black);
                 render.RenderTextureComplete(render[PrincipalConstants.CurrentImage], Color.White, ginfo.FullScreenRectangle, Matrix.Identity, null, true, SpriteSortMode.Deferred, SamplerState.AnisotropicClamp, BlendState.AlphaBlend);                                             
             }
+
+            render.RenderPosComponents(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection);
+
         }
 
         

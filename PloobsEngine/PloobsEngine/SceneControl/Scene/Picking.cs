@@ -41,16 +41,18 @@ namespace PloobsEngine.SceneControl
 
             {
                 SimpleConcreteMouseBottomInputPlayable pbLeft = new SimpleConcreteMouseBottomInputPlayable(StateKey.PRESS, EntityType.COMPONENT, MouseButtons.LeftButton, MouseBottomLeft, InputMask.GPICKING);
-                BindMouseCommand bmc = new BindMouseCommand(pbLeft, BindAction.ADD);
-                CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bmc);
+                bmc1 = new BindMouseCommand(pbLeft, BindAction.ADD);
+                CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bmc1);
             }
 
             {
                 SimpleConcreteMouseBottomInputPlayable pbRight = new SimpleConcreteMouseBottomInputPlayable(StateKey.PRESS, EntityType.COMPONENT, MouseButtons.RightButton, MouseBottomRight, InputMask.GPICKING);
-                BindMouseCommand bmc = new BindMouseCommand(pbRight, BindAction.ADD);
-                CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bmc);
+                bmc2 = new BindMouseCommand(pbRight, BindAction.ADD);
+                CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bmc2);
             }
         }
+        BindMouseCommand bmc1;
+        BindMouseCommand bmc2;
         private GraphicInfo info;
         private IWorld world;
         private Ray ray;
@@ -160,6 +162,16 @@ namespace PloobsEngine.SceneControl
                     OnPickedRighttButton(rti);
             }
 
+        }
+
+        protected override void CleanUp()
+        {
+            bmc1.BindAction = BindAction.REMOVE;
+            CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bmc1);
+
+            bmc2.BindAction = BindAction.REMOVE;
+            CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bmc2);
+            base.CleanUp();
         }
     }
 }

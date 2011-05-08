@@ -1,4 +1,3 @@
-///based on the XNA DEMO Screen Managment
 #region Using Statements
 using System;
 using Microsoft.Xna.Framework;
@@ -7,6 +6,7 @@ using System.Collections.Generic;
 using PloobsEngine.Audio;
 using PloobsEngine.Entity;
 using PloobsEngine.Engine;
+using PloobsEngine.SceneControl.GUI;
 #endregion
 
 namespace PloobsEngine.SceneControl
@@ -39,9 +39,23 @@ namespace PloobsEngine.SceneControl
     /// IScreen, base class fot all screens
     /// </summary>
     public abstract class IScreen
-    {        
+    {
+        public IScreen(IGui gui = null)
+        {
+            this.gui = gui;
+        }
+
+        private IGui gui = null;
+
+        protected IGui Gui
+        {
+            get {
+                System.Diagnostics.Debug.Assert(gui != null, "To use the Gui You must specify a implementation in the the IScreen Constructor");
+                return gui; 
+            }            
+        }
                 
-        private IList<IScreenUpdateable> updateables = new List<IScreenUpdateable>();
+        private List<IScreenUpdateable> updateables = new List<IScreenUpdateable>();
 
         /// <summary>
         /// Attach one IScreenUpdateable to this screen
@@ -131,6 +145,9 @@ namespace PloobsEngine.SceneControl
         protected virtual void InitScreen(GraphicInfo GraphicInfo, EngineStuff engine) { }
         internal void iInitScreen(GraphicInfo GraphicInfo, EngineStuff engine)
         {
+            if (gui != null)
+                gui.iInitialize(engine, GraphicFactory, GraphicInfo);
+
             InitScreen(GraphicInfo, engine);
         }
 
@@ -154,16 +171,27 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         protected virtual void Update(GameTime gameTime)
         {
-            foreach (var item in updateables)
+            if (gui != null)
+                gui.iUpdate(gameTime);
+
+            IScreenUpdateable[] updts = updateables.ToArray();
+
+            for (int i = 0; i < updts.Length; i++)
             {
-                item.iUpdate(gameTime);
-            }
+                updts[i].iUpdate(gameTime);
+            }            
             
         }
 
         internal void iDraw(GameTime gameTime, RenderHelper render)
         {
+            if (gui != null)
+                gui.iBeginDraw(gameTime, render, graphicInfo);
+
             Draw(gameTime,render);
+
+            if (gui != null)
+                gui.iEndDraw(gameTime,render,graphicInfo);
         }
         /// <summary>
         /// This is called when the screen should draw itself.
@@ -180,10 +208,15 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         protected virtual void CleanUp(EngineStuff engine)
         {
-            foreach (var item in updateables)
+            IScreenUpdateable[] updts = updateables.ToArray();
+
+            for (int i = 0; i < updts.Length; i++)
             {
-                item.iCleanUp();
+                updts[i].iCleanUp();
             }
+
+            if (gui != null)
+                gui.iDispose();
         }        
 
     }

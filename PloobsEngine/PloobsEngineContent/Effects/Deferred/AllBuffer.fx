@@ -2,8 +2,8 @@ float4x4 World;
 float4x4 WorldInverseTranspose;
 float4x4 View;
 float4x4 Projection;
-float specularIntensity = 0.8f;
-float specularPower = 0.5f; 
+float specularIntensity;
+float specularPower ; 
 float id;
 
 float2 scaleBias;

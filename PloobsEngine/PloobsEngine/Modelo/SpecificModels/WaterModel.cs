@@ -20,9 +20,8 @@ namespace PloobsEngine.Modelo
             this.basePosition = basePosition;
 
             LoadBatchInfo(factory, out BatchInformations);
-        }        
+        }                
         
-        String textCubeName;
         private float modelRadius;
         int myWidth = 128;
         int myHeight = 128;

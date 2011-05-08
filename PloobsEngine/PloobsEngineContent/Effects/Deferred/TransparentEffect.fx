@@ -44,7 +44,7 @@ float4 PixelShaderFunctionNormal(VertexShaderOutput input) : COLOR0
 	else
 	{
     float4 cor = tex2D(colorSampler,input.TexCoord).rgba;
-	cor.a = 0.4f;
+	cor.a = alpha;
 	return cor;
     }
 }

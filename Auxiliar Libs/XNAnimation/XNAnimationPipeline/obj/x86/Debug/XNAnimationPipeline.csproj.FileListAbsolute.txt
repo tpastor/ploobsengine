@@ -1,0 +1,8 @@
+C:\Users\tpastor\Desktop\XNAnimation\4.0\XNAnimation\XNAnimationPipeline\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\tpastor\Desktop\XNAnimation\4.0\XNAnimation\XNAnimationPipeline\bin\x86\Debug\XNAnimationPipeline.dll
+C:\Users\tpastor\Desktop\XNAnimation\4.0\XNAnimation\XNAnimationPipeline\bin\x86\Debug\XNAnimationPipeline.pdb
+C:\Users\tpastor\Desktop\XNAnimation\4.0\XNAnimation\XNAnimationPipeline\bin\x86\Debug\XNAnimation.dll
+C:\Users\tpastor\Desktop\XNAnimation\4.0\XNAnimation\XNAnimationPipeline\bin\x86\Debug\XNAnimation.pdb
+C:\Users\tpastor\Desktop\XNAnimation\4.0\XNAnimation\XNAnimationPipeline\obj\x86\Debug\XNAnimationPipeline.dll
+C:\Users\tpastor\Desktop\XNAnimation\4.0\XNAnimation\XNAnimationPipeline\obj\x86\Debug\XNAnimationPipeline.pdb
+C:\Users\tpastor\Desktop\XNAnimation\4.0\XNAnimation\XNAnimationPipeline\bin\x86\Debug\Content\SkinnedModelEffect.xnb

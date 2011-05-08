@@ -21,13 +21,12 @@ namespace IntroductionDemo4._0
     {                                  
         LightThrowBepu lt;        
 
-        protected override void SetWorldAndRenderTechnich(out IRenderTechnic[] renderTech, out IWorld world)
+        protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
-            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
-            desc.DefferedDebug = false;
-            desc.UseFloatingBufferForLightMap = false;
-            renderTech = new DeferredRenderTechnic[] { new DeferredRenderTechnic(desc) };   
+            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
+            desc.UseFloatingBufferForLightMap = true;
+            renderTech = new DeferredRenderTechnic(desc) ;   
         }
 
         protected override void InitScreen(PloobsEngine.Engine.GraphicInfo GraphicInfo, PloobsEngine.Engine.EngineStuff engine)
@@ -42,19 +41,19 @@ namespace IntroductionDemo4._0
  	        base.LoadContent(GraphicInfo, factory, contentManager);     
 
             ///Create a Simple Model
-            IModelo sm = new SimpleModel(contentManager, "..\\Content\\Model\\cenario");            
+            IModelo sm = new SimpleModel(factory, "..\\Content\\Model\\cenario");            
             ///Create a Physic Object
             IPhysicObject pi = new TriangleMeshObject(sm, Vector3.Zero, Matrix.Identity, Vector3.One,MaterialDescription.DefaultBepuMaterial());
             pi.isMotionLess = true;
             ///Create a shader 
-            IShader shader = new NormalDeferred();            
+            IShader shader = new DeferredNormalShader();            
             ///Create a Material
             IMaterial mat = new DeferredMaterial(shader);
             ///Create a an Object that englobs everything and add it to the world
             IObject obj4 = new IObject(mat, sm,pi);
             this.World.AddObject(obj4);
 
-            lt = new LightThrowBepu(this.World, factory,contentManager);  
+            lt = new LightThrowBepu(this.World, factory);  
 
             ///Create a FirstPerson Camera
             ///This is a special camera, used in the development
@@ -78,6 +77,7 @@ namespace IntroductionDemo4._0
             }
 
             lcu.Start();
+            this.RenderTechnic.AddPostEffect(new AntiAliasingPostEffect());
         }
 
         protected override void Draw(GameTime gameTime, RenderHelper render)

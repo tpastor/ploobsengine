@@ -1,0 +1,240 @@
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Cursors\Busy.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Cursors\Cross.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Cursors\Default.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Cursors\DiagonalLeft.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Cursors\DiagonalRight.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Cursors\Horizontal.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Cursors\Move.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Cursors\Text.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Cursors\Vertical.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Fonts\Default.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Button.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\CheckBox.Checked.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\CheckBox.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ComboBox.Button.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ComboBox.ListBox.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ComboBox.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ContextMenu.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ContextMenu.Selection.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Control.Outline.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Control.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\GroupBox.Flat.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\GroupBox.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\GroupPanel.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Icon.Error.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Icon.Information.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Icon.Question.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Icon.Warning.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ListBox.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ListBox.Selection.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\MainMenu.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\MainMenu.Selection.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ProgressBar.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ProgressBar.Scale.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\RadioButton.Checked.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\RadioButton.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ScrollBar.ButtonHorz.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ScrollBar.ButtonVert.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ScrollBar.GlyphHorz.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ScrollBar.GlyphVert.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ScrollBar.RailHorz.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ScrollBar.RailVert.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Shared.ArrowDown.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Shared.ArrowLeft.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Shared.ArrowRight.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Shared.ArrowUp.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Shared.End.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Shared.Glyph.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Shared.Home.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Shared.PageDown.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Shared.PageUp.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Sidebar.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\SidebarPanel.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\SpinBox.Button.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\SpinBox.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\StatusBar.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\TabControl.Header.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\TabControl.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\TextBox.Cursor.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\TextBox.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ToolBar.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ToolBarButton.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ToolBarPanel.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ToolTip.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\TrackBar.Button.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\TrackBar.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Window.Caption.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Window.CloseButton.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Window.FrameBottom.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Window.FrameLeft.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Window.FrameRight.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Window.FrameTop.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Window.Icon.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Window.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Window.Shadow.xnb
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\Content\Skins\Default\Skin.xml
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\TomShane.Neoforce.Controls.dll
+C:\Users\tpastor\Desktop\Billiards\bin\x86\Debug\TomShane.Neoforce.Controls.pdb
+C:\Users\tpastor\Desktop\neofrce\Source\Controls\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\tpastor\Desktop\neofrce\Source\Controls\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\tpastor\Desktop\neofrce\Source\Controls\obj\x86\Debug\TomShane.Neoforce.Controls.dll
+C:\Users\tpastor\Desktop\neofrce\Source\Controls\obj\x86\Debug\TomShane.Neoforce.Controls.pdb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Cursors\Busy.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Cursors\Cross.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Cursors\Default.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Cursors\DiagonalLeft.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Cursors\DiagonalRight.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Cursors\Horizontal.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Cursors\Move.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Cursors\Text.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Cursors\Vertical.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Fonts\Default.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Button.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\CheckBox.Checked.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\CheckBox.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ComboBox.Button.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ComboBox.ListBox.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ComboBox.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ContextMenu.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ContextMenu.Selection.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Control.Outline.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Control.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\GroupBox.Flat.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\GroupBox.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\GroupPanel.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Icon.Error.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Icon.Information.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Icon.Question.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Icon.Warning.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ListBox.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ListBox.Selection.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\MainMenu.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\MainMenu.Selection.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ProgressBar.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ProgressBar.Scale.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\RadioButton.Checked.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\RadioButton.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ScrollBar.ButtonHorz.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ScrollBar.ButtonVert.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ScrollBar.GlyphHorz.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ScrollBar.GlyphVert.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ScrollBar.RailHorz.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ScrollBar.RailVert.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Shared.ArrowDown.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Shared.ArrowLeft.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Shared.ArrowRight.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Shared.ArrowUp.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Shared.End.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Shared.Glyph.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Shared.Home.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Shared.PageDown.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Shared.PageUp.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Sidebar.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\SidebarPanel.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\SpinBox.Button.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\SpinBox.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\StatusBar.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\TabControl.Header.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\TabControl.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\TextBox.Cursor.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\TextBox.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ToolBar.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ToolBarButton.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ToolBarPanel.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\ToolTip.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\TrackBar.Button.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\TrackBar.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Window.Caption.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Window.CloseButton.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Window.FrameBottom.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Window.FrameLeft.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Window.FrameRight.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Window.FrameTop.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Window.Icon.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Window.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Images\Window.Shadow.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\Content\Skins\Default\Skin.xml
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\TomShane.Neoforce.Controls.dll
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\Billiards\bin\x86\Debug\TomShane.Neoforce.Controls.pdb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\neoforce\Source\Controls\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\neoforce\Source\Controls\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\neoforce\Source\Controls\obj\x86\Debug\TomShane.Neoforce.Controls.dll
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\neoforce\Source\Controls\obj\x86\Debug\TomShane.Neoforce.Controls.pdb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Cursors\Busy.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Cursors\Cross.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Cursors\Default.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Cursors\DiagonalLeft.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Cursors\DiagonalRight.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Cursors\Horizontal.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Cursors\Move.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Cursors\Text.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Cursors\Vertical.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Fonts\Default.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\Button.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\CheckBox.Checked.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\CheckBox.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\ComboBox.Button.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\ComboBox.ListBox.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\ComboBox.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\ContextMenu.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\ContextMenu.Selection.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\Control.Outline.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\Control.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\GroupBox.Flat.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\GroupBox.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\GroupPanel.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\Icon.Error.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\Icon.Information.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\Icon.Question.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\Icon.Warning.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\ListBox.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\ListBox.Selection.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\MainMenu.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\MainMenu.Selection.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\ProgressBar.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\ProgressBar.Scale.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\RadioButton.Checked.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\RadioButton.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\ScrollBar.ButtonHorz.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\ScrollBar.ButtonVert.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\ScrollBar.GlyphHorz.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\ScrollBar.GlyphVert.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\ScrollBar.RailHorz.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\ScrollBar.RailVert.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\Shared.ArrowDown.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\Shared.ArrowLeft.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\Shared.ArrowRight.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\Shared.ArrowUp.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\Shared.End.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\Shared.Glyph.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\Shared.Home.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\Shared.PageDown.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\Shared.PageUp.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\Sidebar.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\SidebarPanel.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\SpinBox.Button.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\SpinBox.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\StatusBar.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\TabControl.Header.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\TabControl.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\TextBox.Cursor.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\TextBox.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\ToolBar.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\ToolBarButton.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\ToolBarPanel.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\ToolTip.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\TrackBar.Button.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\TrackBar.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\Window.Caption.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\Window.CloseButton.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\Window.FrameBottom.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\Window.FrameLeft.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\Window.FrameRight.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\Window.FrameTop.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\Window.Icon.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\Window.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Images\Window.Shadow.xnb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\Content\Skins\Default\Skin.xml
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\TomShane.Neoforce.Controls.dll
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\TomShane.Neoforce.Controls.pdb
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\NeoforceDLL\bin\x86\Debug\TomShane.Neoforce.Controls.XML

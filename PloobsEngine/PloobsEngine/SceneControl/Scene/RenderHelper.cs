@@ -20,11 +20,11 @@ namespace PloobsEngine.SceneControl
         private BasicEffect effect;
         private SpriteBatch spriteBatch;
         SpriteFont defaultFont;
-        private static Stack<RenderTargetBinding[]> RenderStatesStack = new Stack<RenderTargetBinding[]>();
-        private static Stack<RasterizerState> RasterizerStateStack = new Stack<RasterizerState>();
-        private static Stack<BlendState> BlendStateStack = new Stack<BlendState>();
-        private static Stack<DepthStencilState> DepthStencilStateStack = new Stack<DepthStencilState>();        
-        private static Dictionary<String, Texture2D> Scenes = new Dictionary<string, Texture2D>();
+        private Stack<RenderTargetBinding[]> RenderStatesStack = new Stack<RenderTargetBinding[]>();
+        private Stack<RasterizerState> RasterizerStateStack = new Stack<RasterizerState>();
+        private Stack<BlendState> BlendStateStack = new Stack<BlendState>();
+        private Stack<DepthStencilState> DepthStencilStateStack = new Stack<DepthStencilState>();        
+        private Dictionary<String, Texture2D> Scenes = new Dictionary<string, Texture2D>();
         private ComponentManager componentManager;
 
 
@@ -256,17 +256,17 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         /// <param name="bi">The BatchInformation</param>
         /// <param name="effect">The effect.</param>
-        public void RenderBatch(ref BatchInformation bi, Effect effect)
+        public void RenderBatch(BatchInformation bi, Effect effect)
         {
             effect.CurrentTechnique.Passes[0].Apply();
-            RenderBatch(ref bi);
+            RenderBatch(bi);
         }
 
         /// <summary>
         /// Renders the batch.
         /// </summary>
         /// <param name="bi">The BatchInformation .</param>
-        public void RenderBatch(ref BatchInformation bi)
+        public void RenderBatch(BatchInformation bi)
         {
             switch ( bi.BatchType)
 	            {
@@ -278,6 +278,13 @@ namespace PloobsEngine.SceneControl
                     case BatchType.NORMAL:
                         device.SetVertexBuffer(bi.VertexBuffer);
                         device.DrawPrimitives(bi.PrimitiveType, bi.StartVertex, bi.PrimitiveCount);
+                        break;
+                    case BatchType.INSTANCED:
+                        System.Diagnostics.Debug.Assert(bi.InstancedVertexBuffer != null);
+                        System.Diagnostics.Debug.Assert(bi.InstanceCount > 0);
+                        device.SetVertexBuffers(bi.VertexBuffer, new VertexBufferBinding(bi.InstancedVertexBuffer, 0, 1));                        
+                        device.Indices = bi.IndexBuffer;
+                        device.DrawInstancedPrimitives(PrimitiveType.TriangleList, bi.BaseVertex, 0, bi.NumVertices, bi.StartIndex, bi.PrimitiveCount, bi.InstanceCount);
                         break;
                     default:
                         ActiveLogger.LogMessage("Batch Type not supported ", LogLevel.RecoverableError);
@@ -438,6 +445,7 @@ namespace PloobsEngine.SceneControl
             device.BlendState = BlendStateStack.Peek();
             device.DepthStencilState = DepthStencilStateStack.Peek();
             device.RasterizerState = RasterizerStateStack.Peek();
+            device.SetRenderTargets(RenderStatesStack.Peek());            
         }
         
         /// <summary>
@@ -636,8 +644,8 @@ namespace PloobsEngine.SceneControl
 
                     for (int j = 0; j < bi.Count(); j++)
                     {
-                        setupShaderCallback(ref effect,obj, ref bi[j], ref view, ref projection);
-                        this.RenderBatch(ref bi[j], effect);
+                        setupShaderCallback(effect,obj, bi[j], ref view, ref projection);
+                        this.RenderBatch(bi[j], effect);
                         
                     }
                 }
@@ -694,6 +702,6 @@ namespace PloobsEngine.SceneControl
         }
        
     }
-    public delegate void OnDrawingSceneCustomMaterial(ref Effect effect,IObject obj, ref BatchInformation bi,ref Matrix view,ref Matrix projection);
+    public delegate void OnDrawingSceneCustomMaterial(Effect effect,IObject obj, BatchInformation bi,ref Matrix view,ref Matrix projection);
 
 }

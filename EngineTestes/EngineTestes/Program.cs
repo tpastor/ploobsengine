@@ -4,7 +4,6 @@ using PloobsEngine.SceneControl;
 
 namespace EngineTestes
 {
-#if WINDOWS || XBOX
     static class Program
     {
         /// <summary>
@@ -25,12 +24,27 @@ namespace EngineTestes
         {
             //manager.AddScreen(new FirstScreen());
             //manager.AddScreen(new DeferredScreen());
-            manager.AddScreen(new DeferredLoadScreen());
+            //manager.AddScreen(new DeferredLoadScreen());
             //manager.AddScreen(new DeferredAnimatedScreen());
+            //manager.AddScreen(new CharacterScreen());
             //manager.AddScreen(new ParticleScreen());
             //manager.AddScreen(new PostEffectScreen());
+            //manager.AddScreen(new SoundScreen());
+            //manager.AddScreen(new TransparentForwardScreen());
+            //manager.AddScreen(new BilboardScreen());
+            //manager.AddScreen(new TerrainScreen());
+            //manager.AddScreen(new TransparentDeferredScreen());
+            //manager.AddScreen(new AAScreen());
+            //manager.AddScreen(new TechDemoScreen());
+            //manager.AddScreen(new TechDemoScreenModel());
+            manager.AddScreen(new GUIScreen(manager));
+            //manager.AddScreen(new FGUIScreen());
+            //manager.AddScreen(new ForwardLoadScreen());
+            
+
+            
         }
     }
-#endif
+
 }
 

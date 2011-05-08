@@ -20,10 +20,10 @@ using PloobsEngine.Physic.Constraints.BepuConstraint;
 
 namespace PloobsEngine.Loader
 {
-    public delegate IObject CreateIObject(IWorld world, GraphicFactory factory,GraphicInfo ginfo, ObjectInformation mi);
+    public delegate IObject CreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation mi);
     public delegate ILight CreateILight(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ILight li);
     public delegate ICamera CreateICamera(IWorld world, GraphicFactory factory, GraphicInfo ginfo, CameraInfo cinfo);
-    public delegate IPhysicConstraint CreateConstraint(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ConstraintInfo cinfo,IObject o1, IObject o2);
+    public delegate IPhysicConstraint CreateConstraint(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ConstraintInfo cinfo, IObject o1, IObject o2);
     public delegate void ProcessDummies(IWorld world, DummyInfo dinfo);
 
     public class WorldLoader
@@ -34,14 +34,16 @@ namespace PloobsEngine.Loader
 
         public static IObject CreateOBJ(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation mi)
         {
-            IModelo model = new CustomModel(factory, mi.ModelName, mi.batchInformation, mi.difuse, mi.bump, mi.specular, mi.glow);
+            //IModelo model = new CustomModel(factory, mi.modelName, mi.batchInformation, mi.difuse, mi.bump, mi.specular, mi.glow);
+            IModelo model = new SimpleModel(factory, mi.modelName, mi.difuse.Name, mi.bump.Name, mi.specular.Name, mi.glow.Name,true);
             
-            MaterialDescription material = new MaterialDescription(mi.staticfriction,mi.dinamicfriction,mi.ellasticity);
-            
+
+            MaterialDescription material = new MaterialDescription(mi.staticfriction, mi.dinamicfriction, mi.ellasticity);
+
             IPhysicObject po;
 
 
-            bool flag= false;
+            bool flag = false;
             if (mi.mass == 0)
             {
                 flag = true;
@@ -53,9 +55,9 @@ namespace PloobsEngine.Loader
             Quaternion rotation;
             BatchInformation binf = model.GetBatchInformation(0)[0];
 
-           binf.ModelLocalTransformation.Decompose(out scale, out rotation, out translation);
+            binf.ModelLocalTransformation.Decompose(out scale, out rotation, out translation);
 
-           BoundingBox bb;
+            BoundingBox bb;
 
             switch (mi.collisionType)
             {
@@ -64,17 +66,17 @@ namespace PloobsEngine.Loader
                 case "Cylinder":
 
                     binf.ModelLocalTransformation = Matrix.Identity;
-                   bb = ModelBuilderHelper.CreateBoundingBoxFromModel(binf, model);
-                   Vector3 len = bb.Max - bb.Min;
+                    bb = ModelBuilderHelper.CreateBoundingBoxFromModel(binf, model);
+                    Vector3 len = bb.Max - bb.Min;
+
+                    po = new CylinderObject(translation, len.Y, len.X / 2, mi.mass,Matrix.CreateFromQuaternion(rotation), material);
                     
-                    po = new CylinderObject(translation,len.Y,len.X/2, mi.mass, material);
-                    po.Rotation = Matrix.CreateFromQuaternion(rotation);
                     break;
 
 
                 case "Sphere":
                     binf.ModelLocalTransformation = Matrix.Identity;
-                    po = new SphereObject(translation, model.GetModelRadius(), mi.mass,1 /*scale.X*/, material);
+                    po = new SphereObject(translation, model.GetModelRadius(), mi.mass, 1 /*scale.X*/, material);
                     po.Rotation = Matrix.CreateFromQuaternion(rotation);
 
 
@@ -91,26 +93,26 @@ namespace PloobsEngine.Loader
                     po = new BoxObject(translation, len.X, len.Y, len.Z, mi.mass, scale, Matrix.CreateFromQuaternion(rotation), material);
 
                     break;
-                   default:
-                    po = new TriangleMeshObject(model, Vector3.Zero, Matrix.Identity,new Vector3(1), MaterialDescription.DefaultBepuMaterial());
+                default:
+                    po = new TriangleMeshObject(model, Vector3.Zero, Matrix.Identity, new Vector3(1), MaterialDescription.DefaultBepuMaterial());
                     break;
             }
 
 
 
-             po.isMotionLess = flag;
-            
-            
-            
-            
-            
-            
-            
-            IShader shader = new CustomDeferred(mi.HasTexture(TextureType.GLOW), mi.HasTexture(TextureType.BUMP), mi.HasTexture(TextureType.SPECULAR), mi.HasTexture(TextureType.PARALAX));
-            DeferredMaterial dm = new DeferredMaterial(shader);
-            IObject ob = new IObject(dm,model,po);
+            po.isMotionLess = flag;
 
-            ob.Name = mi.ModelName;
+
+
+
+
+
+
+            IShader shader = new DeferredCustomShader(mi.HasTexture(TextureType.GLOW), mi.HasTexture(TextureType.BUMP), mi.HasTexture(TextureType.SPECULAR), mi.HasTexture(TextureType.PARALAX));
+            DeferredMaterial dm = new DeferredMaterial(shader);
+            IObject ob = new IObject(dm, model, po);
+
+            ob.Name = mi.modelName;
 
             return ob;
         }
@@ -119,10 +121,10 @@ namespace PloobsEngine.Loader
         public static IPhysicConstraint CreateConstraint(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ConstraintInfo cinfo, IObject o1, IObject o2)
         {
 
-            PointPointConstraint con = new PointPointConstraint(cinfo.Position, o1.PhysicObject, o2.PhysicObject); 
-                    
+            PointPointConstraint con = new PointPointConstraint(cinfo.Position, o1.PhysicObject, o2.PhysicObject);
+
             return con;
-        
+
         }
 
         public static ICamera CreateCamera(IWorld world, GraphicFactory factory, GraphicInfo ginfo, CameraInfo cinfo)
@@ -141,11 +143,11 @@ namespace PloobsEngine.Loader
         public void LoadWorld(GraphicFactory factory, GraphicInfo ginfo, IWorld world, ModelLoaderData worldData)
         {
 
-           
 
-            
+
+
             foreach (var item in worldData.ModelMeshesInfo)
-	        {
+            {
                 if (OnCreateIObject != null)
                 {
                     IObject obj = OnCreateIObject(world, factory, ginfo, item);
@@ -161,10 +163,10 @@ namespace PloobsEngine.Loader
                     world.AddObject(ob1);
 
 
-                    
+
                 }
 
-	        }
+            }
 
 
             foreach (var item in worldData.ConstraintInfo)
@@ -188,9 +190,9 @@ namespace PloobsEngine.Loader
                     }
                     else
                     {
-                        IPhysicConstraint constr = WorldLoader.CreateConstraint(world, factory, ginfo, item, o1, o2);                       
-                            world.AddConstraint(constr); 
-                        
+                        IPhysicConstraint constr = WorldLoader.CreateConstraint(world, factory, ginfo, item, o1, o2);
+                        world.AddConstraint(constr);
+
 
                     }
                 }
@@ -231,5 +233,5 @@ namespace PloobsEngine.Loader
             }
         }
     }
-        
+
 }

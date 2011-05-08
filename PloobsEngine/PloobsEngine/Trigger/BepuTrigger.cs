@@ -28,15 +28,16 @@ namespace PloobsEngine.Trigger
         /// <summary>
         /// Trigger creation
         /// </summary>
+        /// <param name="physicWorld">The physic world.</param>
         /// <param name="triangleMesh">Triangle mesh representing the Volume of the Trigger</param>
         /// <param name="evt">Event to be fired</param>
         /// <param name="fireBeginsTouching">if set to <c>true</c> [fire begins touching].</param>
         /// <param name="fireEndsTouching">if set to <c>true</c> [fire ends touching].</param>
         /// <param name="fireBeginsContaining">if set to <c>true</c> [fire begins containing].</param>
-        /// <param name="fireEndsContaining">if set to <c>true</c> [fire ends containing].</param>        
-        public BepuTrigger(TriangleMeshObject triangleMesh, TriggerEvent evt, bool fireBeginsTouching, bool fireEndsTouching, bool fireBeginsContaining, bool fireEndsContaining)
+        /// <param name="fireEndsContaining">if set to <c>true</c> [fire ends containing].</param>
+        public BepuTrigger(BepuPhysicWorld physicWorld, TriangleMeshObject triangleMesh, TriggerEvent evt, bool fireBeginsTouching, bool fireEndsTouching, bool fireBeginsContaining, bool fireEndsContaining)
         {
-            this.volumeobject = new DetectorVolumeObject(triangleMesh);
+            this.volumeobject = new DetectorVolumeObject(physicWorld,triangleMesh);
             DetectorVolume detectorVolume = this.volumeobject.DetectorVolume;
             if(fireBeginsTouching)
                 detectorVolume.EntityBeginsTouching += new EntityBeginsTouchingVolumeEventHandler(detectorVolume_EntityBeginsTouching);
@@ -51,28 +52,28 @@ namespace PloobsEngine.Trigger
 
         void detectorVolume_VolumeStopsContainingEntity(DetectorVolume volume, BEPUphysics.Entities.Entity entity)
         {
-            contactEntity = (entity.Tag as IPhysicObject).ObjectOwner;
+            contactEntity = BepuEntityObject.RecoverObjectFromEntity(entity);
             evt.Code = FireEndsContaining;            
             evt.FireEvent(this);
         }
 
         void detectorVolume_VolumeBeginsContainingEntity(DetectorVolume volume, BEPUphysics.Entities.Entity entity)
         {
-            contactEntity = (entity.Tag as IPhysicObject).ObjectOwner;
+            contactEntity = BepuEntityObject.RecoverObjectFromEntity(entity);
             evt.Code = FireBeginsContaining;
             evt.FireEvent(this);
         }
 
         void detectorVolume_EntityStopsTouching(BEPUphysics.Entities.Entity toucher, DetectorVolume volume)
         {
-            contactEntity = (toucher.Tag as IPhysicObject).ObjectOwner;
+            contactEntity = BepuEntityObject.RecoverObjectFromEntity(toucher);
             evt.Code = FireEndsTouching;
             evt.FireEvent(this);
         }
 
         void detectorVolume_EntityBeginsTouching(BEPUphysics.Entities.Entity toucher, DetectorVolume volume)
         {
-            contactEntity = (toucher.Tag as IPhysicObject).ObjectOwner;
+            contactEntity = BepuEntityObject.RecoverObjectFromEntity(toucher);
             evt.Code = FireBeginsTouching;
             evt.FireEvent(this);
         }
@@ -101,9 +102,6 @@ namespace PloobsEngine.Trigger
         }
 
         #endregion
-
-
-
 
         #region ITrigger Members
 

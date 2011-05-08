@@ -50,7 +50,6 @@ struct VertexShaderOutput
 };
 
 float2 halfPixel;
-
 VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 {    
 	VertexShaderOutput output;

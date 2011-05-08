@@ -4,7 +4,8 @@
 //
 //		by MJP  (mpettineo@gmail.com)
 //		12/14/08      
-//
+//      Altered By Thiago Dias Pastor to fit in PloobsEngine (thiagodiaspastor@gmail.com)
+//      2011
 //========================================================================
 //
 //	File:		ShadowMap.fx
@@ -32,7 +33,7 @@ float3		g_vFrustumCornersVS [4];
 
 bool		g_bShowSplitColors = false;
 
-static const float BIAS = 0.006f;
+float BIAS = 0.006f;
 
 texture DepthTexture;
 sampler2D DepthTextureSampler = sampler_state
@@ -84,8 +85,8 @@ void ShadowTermVS (	in float3 in_vPositionOS				: POSITION,
 					out float3 out_vFrustumCornerVS			: TEXCOORD1	)
 {
 	// Offset the position by half a pixel to correctly align texels to pixels
-	out_vPositionCS.x = in_vPositionOS.x - (1.0f / g_vOcclusionTextureSize.x);
-	out_vPositionCS.y = in_vPositionOS.y + (1.0f / g_vOcclusionTextureSize.y);
+	out_vPositionCS.x = in_vPositionOS.x - (1 / g_vOcclusionTextureSize.x);
+	out_vPositionCS.y = in_vPositionOS.y + (1 / g_vOcclusionTextureSize.y);
 	out_vPositionCS.z = in_vPositionOS.z;
 	out_vPositionCS.w = 1.0f;
 	

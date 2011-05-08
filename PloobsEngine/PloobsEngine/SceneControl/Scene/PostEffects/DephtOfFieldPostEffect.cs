@@ -56,7 +56,7 @@ namespace PloobsEngine.SceneControl
             be.Draw(ImageToProcess, rHelper,  gt, GraphicInfo, world,useFloatingBuffer);                                    
             depht.Parameters["BlurScene"].SetValue(rHelper.PopRenderTargetAsSingleRenderTarget2D());
             depht.Parameters["FarPlane"].SetValue(world.CameraManager.ActiveCamera.FarPlane);
-            depht.Parameters["D1M"].SetValue(rHelper[PrincipalConstants.dephRT]);
+            depht.Parameters["D1M"].SetValue(rHelper[PrincipalConstants.DephRT]);
 
             rHelper.Clear(Color.Black);
             SetShaderParameters(distance, range, world.CameraManager.ActiveCamera.NearPlane, world.CameraManager.ActiveCamera.FarPlane);

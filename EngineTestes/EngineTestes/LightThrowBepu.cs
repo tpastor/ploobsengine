@@ -85,7 +85,7 @@ namespace EngineTestes
             ///Load a Model with a custom texture
             SimpleModel sm2 = new SimpleModel(factory,"Model\\ball");
             sm2.SetTexture(factory.CreateTexture2DColor(1,1,Color.White,false), TextureType.DIFFUSE);            
-            NormalDeferred nd = new NormalDeferred();                        
+            DeferredNormalShader nd = new DeferredNormalShader();                        
             IMaterial m = new DeferredMaterial(nd);
             SphereObject  pi2 = new SphereObject(pos, 1,0.5f,1,MaterialDescription.DefaultBepuMaterial());
             IObject o = new IObject(m,sm2,pi2);

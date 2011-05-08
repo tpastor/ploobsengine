@@ -19,8 +19,14 @@ namespace PloobsEngine.Modelo
         /// <summary>
         /// Draw without index
         /// </summary>
-        NORMAL
+        NORMAL,
+
+        /// <summary>
+        /// Draw Instanced Geometry
+        /// </summary>
+        INSTANCED,
     }
+
 
 
     /// <summary>
@@ -31,6 +37,8 @@ namespace PloobsEngine.Modelo
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="BatchInformation"/> class.
+        /// Indexed or Normal
+        /// Use OTHER constructor to created INSTANCED
         /// </summary>
         /// <param name="BaseVertex">The base vertex.</param>
         /// <param name="NumVertices">The num vertices.</param>
@@ -40,6 +48,7 @@ namespace PloobsEngine.Modelo
         /// <param name="VertexDeclaration">The vertex declaration.</param>
         /// <param name="VertexStride">The vertex stride.</param>
         /// <param name="BatchType">Type of the batch.</param>
+        /// <param name="PrimitiveType">Type of the primitive.</param>
         public BatchInformation(int BaseVertex, int NumVertices, int PrimitiveCount, int StartIndexOrVertex, int StreamOffset, VertexDeclaration VertexDeclaration, int VertexStride, BatchType BatchType,PrimitiveType PrimitiveType = PrimitiveType.TriangleList)
         {
             this.BaseVertex = BaseVertex;
@@ -62,6 +71,7 @@ namespace PloobsEngine.Modelo
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BatchInformation"/> class.
+        /// Indexed
         /// </summary>
         /// <param name="BaseVertex">The base vertex.</param>
         /// <param name="NumVertices">The num vertices.</param>
@@ -83,6 +93,38 @@ namespace PloobsEngine.Modelo
             this.PrimitiveType = PrimitiveType;
             this.BatchType = BatchType.INDEXED;
         }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BatchInformation"/> class.
+        /// INSTACED CONSTRUCTOR
+        /// </summary>
+        /// <param name="BaseVertex">The base vertex.</param>
+        /// <param name="NumVertices">The num vertices.</param>
+        /// <param name="PrimitiveCount">The primitive count.</param>
+        /// <param name="StartIndex">The start index.</param>
+        /// <param name="StreamOffset">The stream offset.</param>
+        /// <param name="VertexDeclaration">The vertex declaration.</param>
+        /// <param name="VertexStride">The vertex stride.</param>
+        /// <param name="instanceCount">The instance count.</param>
+        /// <param name="PrimitiveType">Type of the primitive.</param>
+        public BatchInformation(int BaseVertex, int NumVertices, int PrimitiveCount, int StartIndex, int StreamOffset, VertexDeclaration VertexDeclaration, int VertexStride, int instanceCount ,PrimitiveType PrimitiveType = Microsoft.Xna.Framework.Graphics.PrimitiveType.TriangleList)
+        {
+            this.BaseVertex = BaseVertex;
+            this.NumVertices = NumVertices;
+            this.PrimitiveCount = PrimitiveCount;
+            this.StartIndex = StartIndex;
+            this.StreamOffset = StreamOffset;
+            this.VertexDeclaration = VertexDeclaration;
+            this.VertexStride = VertexStride;
+            this.PrimitiveType = PrimitiveType;            
+            this.InstanceCount = instanceCount;
+            this.BatchType = BatchType.INSTANCED;
+        }
+
+        /// <summary>
+        /// For Instancing, the number of objects
+        /// </summary>
+        public int InstanceCount;
 
         /// <summary>
         /// Primitive Type
@@ -138,6 +180,11 @@ namespace PloobsEngine.Modelo
         /// VertexBuffer
         /// </summary>
         public VertexBuffer VertexBuffer;
+
+        /// <summary>
+        /// VertexBuffer
+        /// </summary>
+        public VertexBuffer InstancedVertexBuffer = null;
 
         /// <summary>
         /// IndexBuffer

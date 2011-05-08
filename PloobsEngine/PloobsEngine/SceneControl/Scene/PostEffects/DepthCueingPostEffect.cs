@@ -21,7 +21,7 @@ namespace PloobsEngine.SceneControl
         {
              effect.Parameters["Z_Near"].SetValue(world.CameraManager.ActiveCamera.NearPlane);
              effect.Parameters["Z_Far"].SetValue(world.CameraManager.ActiveCamera.FarPlane);
-             effect.Parameters["depth"].SetValue(rHelper[PrincipalConstants.dephRT]);
+             effect.Parameters["depth"].SetValue(rHelper[PrincipalConstants.DephRT]);
              effect.Parameters["color"].SetValue(ImageToProcess);
              effect.Parameters["InvertViewProjection"].SetValue(Matrix.Invert(world.CameraManager.ActiveCamera.View * world.CameraManager.ActiveCamera.Projection));
              effect.Parameters["halfPixel"].SetValue(GraphicInfo.HalfPixel);

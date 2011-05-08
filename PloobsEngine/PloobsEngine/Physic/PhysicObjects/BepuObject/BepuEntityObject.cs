@@ -9,31 +9,17 @@ using PloobsEngine.SceneControl;
 using PloobsEngine.Modelo;
 using BEPUphysics.MathExtensions;
 using PloobsEngine.Engine.Logger;
+using BEPUphysics.BroadPhaseSystems;
+using BEPUphysics.Collidables;
 
 namespace PloobsEngine.Physics.Bepu
 {
-
-
 
     /// <summary>
     /// Base class for Bepu entities
     /// </summary>
     public abstract class BepuEntityObject : IPhysicObject
-    {        
-
-        /// <summary>
-        /// [Utility] Recovers the object from entity.
-        /// </summary>
-        /// <param name="entity">The entity.</param>
-        /// <returns></returns>
-        public static IObject RecoverObjectFromEntity(BEPUphysics.Entities.Entity entity)
-        {
-            IPhysicObject phy = (entity.Tag as IPhysicObject);
-            if (phy != null)
-                return phy.ObjectOwner;
-            return null;
-        }
-
+    {   
         /// <summary>
         /// Sets the material description.
         /// </summary>
@@ -60,8 +46,81 @@ namespace PloobsEngine.Physics.Bepu
         /// <returns></returns>
         public static IPhysicObject RecoverIPhysicObjectFromEntity(BEPUphysics.Entities.Entity entity)
         {
-            return (entity.Tag as IPhysicObject);
+            return (entity.CollisionInformation.Tag as IPhysicObject);
         }
+
+        /// <summary>
+        /// [Utility] Recovers the object from entity.
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        /// <returns></returns>
+        public static IObject RecoverObjectFromEntity(BEPUphysics.Entities.Entity entity)
+        {
+            IPhysicObject phy = (entity.CollisionInformation.Tag as IPhysicObject);
+            if (phy != null)
+                return phy.ObjectOwner;
+            return null;
+        }
+
+        /// <summary>
+        /// [Utility] Recovers the object from collidable.
+        /// </summary>
+        /// <param name="collidable">The collidable.</param>
+        /// <returns></returns>
+        public static IObject RecoverObjectFromCollidable(BEPUphysics.Collidables.Collidable collidable)
+        {
+            IPhysicObject phy = (collidable.Tag as IPhysicObject);
+            if (phy != null)
+                return phy.ObjectOwner;
+            return null;
+        }
+
+        public static IPhysicObject RecoverIPhysicObjectFromCollidable(BEPUphysics.Collidables.Collidable collidable)
+        {
+            IPhysicObject phy = (collidable.Tag as IPhysicObject);
+            if (phy != null)
+                return phy;
+            return null;
+        }
+
+
+        /// <summary>
+        /// Recovers iobject from broad phase entry.
+        /// </summary>
+        /// <param name="entry">The entry.</param>
+        /// <returns></returns>
+        public static IObject RecoverObjectFromBroadPhase(BroadPhaseEntry entry)
+        {
+            IPhysicObject phyObj = null;
+            if (entry is Collidable)
+            {
+                Collidable collidable = (entry as Collidable);
+                phyObj = collidable.Tag as IPhysicObject;
+                return phyObj.ObjectOwner;
+            }
+            else
+            {
+                return null;
+            }
+            
+        }
+
+        /// <summary>
+        /// Recovers physicobject from broad phase entry.
+        /// </summary>
+        /// <param name="entry">The entry.</param>
+        /// <returns></returns>
+        public static IPhysicObject RecoverIPhysicObjectFromBroadPhase(BroadPhaseEntry entry)
+        {
+            IPhysicObject phyObj = null;
+            if (entry is Collidable)
+            {
+                Collidable collidable = (entry as Collidable);
+                phyObj = collidable.Tag as IPhysicObject;
+            }
+            return phyObj;
+        }      
+        
 
 
         /// <summary>
@@ -111,12 +170,24 @@ namespace PloobsEngine.Physics.Bepu
             entity.LocalInertiaTensorInverse = m;
         }
 
+        /// <summary>
+        /// Gets or sets the entity.
+        /// </summary>
+        /// <value>
+        /// The entity.
+        /// </value>
         public BEPUphysics.Entities.Entity Entity
         {
             get { return entity; }
             set { entity = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the position.
+        /// </summary>
+        /// <value>
+        /// The position.
+        /// </value>
         public override Vector3 Position
         {
             get
@@ -148,6 +219,12 @@ namespace PloobsEngine.Physics.Bepu
             }
         }
 
+        /// <summary>
+        /// Gets or sets the rotation.
+        /// </summary>
+        /// <value>
+        /// The rotation.
+        /// </value>
         public override Matrix Rotation
         {
             get
@@ -160,6 +237,9 @@ namespace PloobsEngine.Physics.Bepu
             }
         }
 
+        /// <summary>
+        /// Vector pointing to the front
+        /// </summary>
         public override Vector3 FaceVector
         {
             get {
@@ -167,6 +247,9 @@ namespace PloobsEngine.Physics.Bepu
             }
         }
 
+        /// <summary>
+        /// Gets the world matrix.
+        /// </summary>
         public override Matrix WorldMatrix
         {
             get 
@@ -175,6 +258,12 @@ namespace PloobsEngine.Physics.Bepu
             }
         }
 
+        /// <summary>
+        /// Gets or sets the velocity.
+        /// </summary>
+        /// <value>
+        /// The velocity.
+        /// </value>
         public override Vector3 Velocity
         {
             get
@@ -202,6 +291,12 @@ namespace PloobsEngine.Physics.Bepu
             }
         }
 
+        /// <summary>
+        /// Gets or sets the IObject owner.
+        /// </summary>
+        /// <value>
+        /// The IObject owner.
+        /// </value>
         public override IObject ObjectOwner
         {
             get
@@ -237,6 +332,9 @@ namespace PloobsEngine.Physics.Bepu
             entity.ApplyImpulse(position, force);
         }
 
+        /// <summary>
+        /// Gets the bounding box IN WORLD COORDINATES
+        /// </summary>
         public override BoundingBox BoundingBox
         {
             get { return entity.CollisionInformation.BoundingBox; }

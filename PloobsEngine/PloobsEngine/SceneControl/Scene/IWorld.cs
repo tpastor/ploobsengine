@@ -445,6 +445,7 @@ namespace PloobsEngine.SceneControl
         /// Adds the sound emitter.
         /// </summary>
         /// <param name="em">The em.</param>
+        /// <param name="play">if set to <c>true</c> [play].</param>
         public virtual void AddSoundEmitter(ISoundEmitter3D em, bool play = false)
         {
             if (em == null)
@@ -452,9 +453,9 @@ namespace PloobsEngine.SceneControl
                 ActiveLogger.LogMessage("Emitter is Null " + em.ToString(), LogLevel.RecoverableError);
                 return;
             }
-
-            em.setListenerPosition(CameraManager.ActiveCamera.Position);
+            
             SoundEmiters3D.Add(em);
+            em.Apply3D();
             if(play)
                 em.Play();
         }

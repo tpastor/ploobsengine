@@ -157,7 +157,7 @@ namespace PloobsEngine.Material
                     Matrix w1 = Matrix.Multiply(wld, bi[j].ModelLocalTransformation);
                     this.getDepth.Parameters["WVP"].SetValue(w1 * View * projection);
 
-                    render.RenderBatch(ref bi[j], getDepth);
+                    render.RenderBatch(bi[j], getDepth);
                 }
             }
         }
@@ -199,7 +199,7 @@ namespace PloobsEngine.Material
                     Matrix w1 = Matrix.Multiply(wld, bi[j].ModelLocalTransformation);
                     this.basicDraw.Parameters["WVP"].SetValue(w1 * view * projection);
 
-                    render.RenderBatch(ref bi[j], basicDraw);
+                    render.RenderBatch(bi[j], basicDraw);
                 }
             }
 

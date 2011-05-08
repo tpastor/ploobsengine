@@ -30,6 +30,18 @@ namespace PloobsEngine.Physics.Bepu
          this.scale = scale;         
      }
 
+     /// <summary>
+     /// Initializes a new instance of the <see cref="GhostObject"/> class.
+     /// DEfault Object in 0,0,0 identity rotation and 1,1,1 scale
+     /// </summary>
+     public GhostObject()
+         : base(MaterialDescription.DefaultBepuMaterial(), 0)
+     {
+         this.pos = Vector3.Zero;
+         this.ori = Matrix.Identity;
+         this.scale = Vector3.One;
+     }
+
      bool internalMatrix = false;
      private Vector3 pos;
      private Matrix ori;

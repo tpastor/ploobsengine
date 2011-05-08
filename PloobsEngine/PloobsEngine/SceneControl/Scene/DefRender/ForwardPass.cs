@@ -32,29 +32,92 @@ namespace PloobsEngine.SceneControl
         #endregion
     }
 
-    public class ForwardPass : IForwardPass
+    public struct ForwardPassDescription
     {
-        public ForwardPass(bool sortByCameraDistance = false)
+        public ForwardPassDescription(bool ForwardDrawPass, bool ForwarPosDrawPass, bool DeferredPosDrawPass,bool sortByCameraDistance)
         {
-            this.sortByCameraDistance = sortByCameraDistance;
+            this.ForwardDrawPass = ForwardDrawPass;
+            this.ForwarPosDrawPass = ForwarPosDrawPass;
+            this.DeferredPosDrawPass = DeferredPosDrawPass;
+            this.SortByCameraDistance = sortByCameraDistance;
         }
 
-        bool sortByCameraDistance = false;
+        public static ForwardPassDescription Default()
+        {
+            return new ForwardPassDescription(true, true, true,false);            
+        }
+
+        public bool ForwardDrawPass;
+        public bool ForwarPosDrawPass;
+        public bool DeferredPosDrawPass;
+        public bool SortByCameraDistance;
+    }
+
+
+    public class ForwardPass : IForwardPass
+    {
+        ForwardPassDescription ForwardPassDescription;
+
+        public ForwardPassDescription GetForwardPassDescription()
+        {
+            return ForwardPassDescription;
+        }
+
+        public void ApplyForwardPassDescription(ForwardPassDescription desc)
+        {
+            this.ForwardPassDescription = desc;
+        }
+
+        public ForwardPass(ForwardPassDescription ForwardPassDescription)
+        {
+            this.ForwardPassDescription = ForwardPassDescription;
+        }
+        
         comparer c = new comparer();
 
         public void Draw(GameTime gt, IWorld world,RenderHelper render)        
         {
-            IEnumerable<IObject> list = world.Culler.GetNotCulledObjectsList(MaterialType.FORWARD );
-            if (sortByCameraDistance)
+            IEnumerable<IObject> list;
+            if (ForwardPassDescription.DeferredPosDrawPass)
             {
-                c.CameraPosition = world.CameraManager.ActiveCamera.Position;
-                list.OrderBy((a) => a, c);
+                list = world.Culler.GetNotCulledObjectsList(MaterialType.DEFERRED);
+                if (ForwardPassDescription.SortByCameraDistance)
+                {
+                    c.CameraPosition = world.CameraManager.ActiveCamera.Position;
+                    list.OrderBy((a) => a, c);
+                }
+
+                foreach (IObject item in list)
+                {
+                    item.Material.PosDrawnPhase(gt, item, world.CameraManager.ActiveCamera, world.Lights, render);
+                }
             }
-            
-            foreach (IObject item in list)
-	        {
-                    item.Material.PosDrawnPhase(gt, item,world.CameraManager.ActiveCamera, world.Lights, render);
-	        } 
+
+            if (ForwardPassDescription.ForwardDrawPass || ForwardPassDescription.ForwarPosDrawPass)
+            {
+                list = world.Culler.GetNotCulledObjectsList(MaterialType.FORWARD);
+                if (ForwardPassDescription.SortByCameraDistance)
+                {
+                    c.CameraPosition = world.CameraManager.ActiveCamera.Position;
+                    list.OrderBy((a) => a, c);
+                }
+
+                if (ForwardPassDescription.ForwardDrawPass)
+                {
+                    foreach (IObject item in list)
+                    {
+                        item.Material.Drawn(gt, item, world.CameraManager.ActiveCamera, world.Lights, render);
+                    }
+                }
+
+                if (ForwardPassDescription.ForwarPosDrawPass)
+                {
+                    foreach (IObject item in list)
+                    {
+                        item.Material.PosDrawnPhase(gt, item, world.CameraManager.ActiveCamera, world.Lights, render);
+                    }
+                }
+            }
 
         }
         

@@ -14,7 +14,7 @@ namespace PloobsEngine.Input
         private EntityType type;
         private InputMask mask;
 
-        public SimpleConcreteKeyboardInputPlayable(StateKey state , Keys key ,KeyStateChange callback , EntityType type )
+        public SimpleConcreteKeyboardInputPlayable(StateKey state , Keys key ,KeyStateChange callback , EntityType type = Input.EntityType.TOOLS )
         {
             this.state = state;
             this.key = new Keys[1];

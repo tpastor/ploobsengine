@@ -1,10 +1,12 @@
 //------- XNA interface --------
+float alphaTest;
 float4x4 xView;
 float4x4 xProjection;
 float4x4 xWorld;
 float3 xAllowedRotDir = float3(0,1,0);
 float scaleX = 1;
 float scaleY = 1;
+float3 xCamPos;
 float4 atenuation = float4(1,1,1,1);
 bool applyLight;
 float amplitude;
@@ -34,10 +36,12 @@ BBVertexToPixel CylBillboardVS(float3 inPos: POSITION0, float2 inTexCoord: TEXCO
     BBVertexToPixel Output = (BBVertexToPixel)0;
 
     float3 center = mul(inPos, xWorld);    
+    
+    float3 eyeVector = center - xCamPos;
 
     float3 upVector = xAllowedRotDir;
     upVector = normalize(upVector);
-    float3 sideVector = normal;
+    float3 sideVector = cross(eyeVector,upVector);
     sideVector = normalize(sideVector);
 
     float3 finalPosition = center;
@@ -46,7 +50,7 @@ BBVertexToPixel CylBillboardVS(float3 inPos: POSITION0, float2 inTexCoord: TEXCO
     
     ///o center eh pra dar um randomizada maior
     float sine = amplitude*sin(gTime/timeScale + center.x);		    
-	finalPosition += sine*sideVector * (1 - inTexCoord.x);	
+	finalPosition += sine*sideVector * (1 - inTexCoord.y);	
 	
 	float4 finalPosition4 = float4(finalPosition, 1);
     
@@ -62,7 +66,14 @@ BBVertexToPixel CylBillboardVS(float3 inPos: POSITION0, float2 inTexCoord: TEXCO
 BBPixelToFrame BillboardPS(BBVertexToPixel PSIn) 
 {
     BBPixelToFrame output = (BBPixelToFrame)0;
-    output.Color = tex2D(textureSampler, PSIn.TexCoord) * atenuation;        					        
+    output.Color = tex2D(textureSampler, PSIn.TexCoord) ;        					        
+
+	if(output.Color.a <= alphaTest)
+	{
+	   discard;
+	}
+
+	output.Color  = output.Color  * atenuation;
     
     float sine = amplitude*sin(gTime/100)/10;	
     output.Color.r = output.Color.r + 0.1f*sine;
@@ -72,16 +83,8 @@ BBPixelToFrame BillboardPS(BBVertexToPixel PSIn)
     output.Normal.rgb = 0.5f;                   
     output.Normal.a = 0;													       
     output.Extra1.rgba =  0;  
-    if(applyLight == true)
-    {    
-		output.Depth = PSIn.Depth.x / PSIn.Depth.y;
-		output.Extra1.a =  1;		
-    }        
-    else
-    {
-		output.Color.a = 0;
-    }
-    
+	output.Depth = PSIn.Depth.x / PSIn.Depth.y;
+	output.Extra1.a =  1;		
     
     return output;
 }

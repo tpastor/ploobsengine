@@ -21,7 +21,7 @@ namespace PloobsEngine.SceneControl
         PCF7x7 = 3
     }
 
-	public class ShadowRenderer
+	internal class DirectionalShadowRenderer
 	{
         int shadowMapSize = 512;        
         const int NumSplits = 4;
@@ -36,7 +36,8 @@ namespace PloobsEngine.SceneControl
         Vector3[] frustumCornersWS = new Vector3[8];
         Vector3[] frustumCornersLS = new Vector3[8];
         Vector3[] farFrustumCornersVS = new Vector3[4];
-        Vector3[] splitFrustumCornersVS = new Vector3[8];                
+        Vector3[] splitFrustumCornersVS = new Vector3[8];
+        Matrix[] lightViewProjectionMatrices = new Matrix[NumSplits];
         Matrix[] lightProjectionMatrices = new Matrix[NumSplits];
         Matrix[] lightViewMatrices = new Matrix[NumSplits];
         Vector2[] lightClipPlanes = new Vector2[NumSplits];
@@ -79,14 +80,14 @@ namespace PloobsEngine.SceneControl
             set { showCascadeSplits = value; }
         }
 
-        public ShadowRenderer() 
+        public DirectionalShadowRenderer() 
         {
         }
 
 		/// <summary>
 		/// Creates the renderer
 		/// </summary>		
-		public ShadowRenderer(int ShadowMapSize )
+		public DirectionalShadowRenderer(int ShadowMapSize )
 		{
             this.ShadowMapSize = ShadowMapSize;         
 		}
@@ -97,7 +98,7 @@ namespace PloobsEngine.SceneControl
             shadowMapEffect = factory.GetEffect("ShadowMap",false,true);
 
             // Create the shadow map, using a 32-bit floating-point surface format
-            shadowMap = factory.CreateRenderTarget(ShadowMapSize * NumSplits, ShadowMapSize, SurfaceFormat.Single,true);
+            shadowMap = factory.CreateRenderTarget(ShadowMapSize * NumSplits, ShadowMapSize, SurfaceFormat.Single,true,DepthFormat.Depth24Stencil8,ginfo.MultiSample);
             
             // Create the shadow occlusion texture using the same dimensions as the backbuffer
             shadowOcclusion = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
@@ -161,7 +162,7 @@ namespace PloobsEngine.SceneControl
                     float minZ = splitDepths[i];
                     float maxZ = splitDepths[i + 1];
 
-                    CalculateFrustum(light, mainCamera, minZ, maxZ, out lightProjectionMatrices[i], out lightViewMatrices[i]);                    
+                    CalculateFrustum(light, mainCamera, minZ, maxZ, out lightProjectionMatrices[i], out lightViewMatrices[i],out lightViewProjectionMatrices[i]);                    
 
                     RenderShadowMap(gameTime,render, i,world);
                 }
@@ -169,7 +170,7 @@ namespace PloobsEngine.SceneControl
                 render.PopRenderTargetAsSingleRenderTarget2D();
 
                 render.SetViewPort(ginfo.Viewport);
-				RenderShadowOcclusion(render,mainCamera,light,deferredGBuffer);
+				RenderShadowOcclusion(render,mainCamera,light,deferredGBuffer);                
 				return shadowOcclusion;						
 			
 		}        
@@ -180,7 +181,7 @@ namespace PloobsEngine.SceneControl
 		/// </summary>
 		/// <param name="light">The directional light to use</param>
 		/// <param name="mainCamera">The camera viewing the scene</param>
-        protected void CalculateFrustum(DirectionalLightPE light, ICamera mainCamera, float minZ, float maxZ, out Matrix Projection, out Matrix view)
+        protected void CalculateFrustum(DirectionalLightPE light, ICamera mainCamera, float minZ, float maxZ, out Matrix Projection, out Matrix view, out Matrix ViewProjection)
 		{
             // Shorten the view frustum according to the shadow view distance
             Matrix cameraMatrix = Matrix.Invert(mainCamera.View);            
@@ -229,6 +230,7 @@ namespace PloobsEngine.SceneControl
 
             // Create an orthographic camera for use as a shadow caster            
             Projection = Matrix.CreateOrthographicOffCenter(mins.X, maxes.X, mins.Y, maxes.Y, -maxes.Z - light.NearClipOffset, -mins.Z);
+            ViewProjection = view * Projection;
             
 		}       
 
@@ -279,7 +281,7 @@ namespace PloobsEngine.SceneControl
 			// Setup the Effect
 			shadowMapEffect.CurrentTechnique = shadowOcclusionTechniques[(int)filteringType];
 			shadowMapEffect.Parameters["g_matInvView"].SetValue(cameraTransform);
-            shadowMapEffect.Parameters["g_matLightViewProj"].SetValue(lightProjectionMatrices);
+            shadowMapEffect.Parameters["g_matLightViewProj"].SetValue(lightViewProjectionMatrices);
 			shadowMapEffect.Parameters["g_vFrustumCornersVS"].SetValue(farFrustumCornersVS);
             shadowMapEffect.Parameters["g_vClipPlanes"].SetValue(lightClipPlanes);
 			shadowMapEffect.Parameters["ShadowMap"].SetValue(shadowMap);

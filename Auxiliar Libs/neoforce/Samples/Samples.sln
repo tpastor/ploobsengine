@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GettingStarted", "GettingStarted\GettingStarted.csproj", "{3E37D74B-6248-4097-959B-5E7D83137CCC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddonControls", "AddonControls\AddonControls.csproj", "{B97D15B2-4904-401A-AEB4-876E79CCF956}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScrollBars", "ScrollBars\ScrollBars.csproj", "{714231E6-70AA-4398-855D-EBF08CE86E41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomToolTips", "CustomToolTips\CustomToolTips.csproj", "{6C3F68BA-26A6-4FD5-B772-954A39494D57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GettingStartedContent", "GettingStarted\Content\GettingStartedContent.contentproj", "{C236CCB6-5D2E-4D7C-AB9D-A0A22A5E5690}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddonControlsContent", "AddonControls\Content\AddonControlsContent.contentproj", "{D22793C2-7C73-4B42-A94A-1828A72DA3B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScrollBarsContent", "ScrollBars\Content\ScrollBarsContent.contentproj", "{A509DEE1-FBF9-469C-A8EC-6AF1DF57AD6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomToolTipsContent", "CustomToolTips\Content\CustomToolTipsContent.contentproj", "{41DB3A7A-E584-4259-B615-4053E9105F4E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3E37D74B-6248-4097-959B-5E7D83137CCC}.Debug|x86.ActiveCfg = Debug|x86
+		{3E37D74B-6248-4097-959B-5E7D83137CCC}.Debug|x86.Build.0 = Debug|x86
+		{3E37D74B-6248-4097-959B-5E7D83137CCC}.Release|x86.ActiveCfg = Release|x86
+		{3E37D74B-6248-4097-959B-5E7D83137CCC}.Release|x86.Build.0 = Release|x86
+		{B97D15B2-4904-401A-AEB4-876E79CCF956}.Debug|x86.ActiveCfg = Debug|x86
+		{B97D15B2-4904-401A-AEB4-876E79CCF956}.Debug|x86.Build.0 = Debug|x86
+		{B97D15B2-4904-401A-AEB4-876E79CCF956}.Release|x86.ActiveCfg = Release|x86
+		{B97D15B2-4904-401A-AEB4-876E79CCF956}.Release|x86.Build.0 = Release|x86
+		{714231E6-70AA-4398-855D-EBF08CE86E41}.Debug|x86.ActiveCfg = Debug|x86
+		{714231E6-70AA-4398-855D-EBF08CE86E41}.Debug|x86.Build.0 = Debug|x86
+		{714231E6-70AA-4398-855D-EBF08CE86E41}.Release|x86.ActiveCfg = Release|x86
+		{714231E6-70AA-4398-855D-EBF08CE86E41}.Release|x86.Build.0 = Release|x86
+		{6C3F68BA-26A6-4FD5-B772-954A39494D57}.Debug|x86.ActiveCfg = Debug|x86
+		{6C3F68BA-26A6-4FD5-B772-954A39494D57}.Debug|x86.Build.0 = Debug|x86
+		{6C3F68BA-26A6-4FD5-B772-954A39494D57}.Release|x86.ActiveCfg = Release|x86
+		{6C3F68BA-26A6-4FD5-B772-954A39494D57}.Release|x86.Build.0 = Release|x86
+		{C236CCB6-5D2E-4D7C-AB9D-A0A22A5E5690}.Debug|x86.ActiveCfg = Debug|x86
+		{C236CCB6-5D2E-4D7C-AB9D-A0A22A5E5690}.Release|x86.ActiveCfg = Release|x86
+		{D22793C2-7C73-4B42-A94A-1828A72DA3B4}.Debug|x86.ActiveCfg = Debug|x86
+		{D22793C2-7C73-4B42-A94A-1828A72DA3B4}.Release|x86.ActiveCfg = Release|x86
+		{A509DEE1-FBF9-469C-A8EC-6AF1DF57AD6C}.Debug|x86.ActiveCfg = Debug|x86
+		{A509DEE1-FBF9-469C-A8EC-6AF1DF57AD6C}.Release|x86.ActiveCfg = Release|x86
+		{41DB3A7A-E584-4259-B615-4053E9105F4E}.Debug|x86.ActiveCfg = Debug|x86
+		{41DB3A7A-E584-4259-B615-4053E9105F4E}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

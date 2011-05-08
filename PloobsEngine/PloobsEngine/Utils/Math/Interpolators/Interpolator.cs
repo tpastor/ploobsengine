@@ -128,9 +128,8 @@ namespace PloobsEngine.Utils
         /// </summary>
         public virtual void Reset()
         {
-            IsActive = false;
-            currentDuration = 0.0;
-            totalDuration = 0.0;
+            IsActive = true;
+            currentDuration = 0.0;            
         }
 
         /// <summary>

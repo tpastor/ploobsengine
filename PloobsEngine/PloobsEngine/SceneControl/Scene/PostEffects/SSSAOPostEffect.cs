@@ -78,7 +78,7 @@ namespace PloobsEngine.SceneControl
         {
 
              effect.Parameters["Params"].SetValue(new Vector4(GraphicInfo.BackBufferWidth, GraphicInfo.BackBufferHeight, world.CameraManager.ActiveCamera.FarPlane, intensity));
-             effect.Parameters["DepthBuffer"].SetValue(rHelper[PrincipalConstants.dephRT]);
+             effect.Parameters["DepthBuffer"].SetValue(rHelper[PrincipalConstants.DephRT]);
              effect.Parameters["NormalBuffer"].SetValue(rHelper[PrincipalConstants.normalRt]);
              effect.Parameters["RandomTexture"].SetValue(RandomTexture);
              effect.Parameters["InvProj"].SetValue(Matrix.Transpose( Matrix.Invert(world.CameraManager.ActiveCamera.Projection)));

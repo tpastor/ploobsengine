@@ -5,8 +5,6 @@ sampler2D currentSampler =
 sampler_state
 {
 	Texture = <current>;
-	MinFilter = LINEAR;	
-	MagFilter = LINEAR;	
 	AddressU = CLAMP;
 	AddressV = CLAMP;
 };
