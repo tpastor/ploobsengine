@@ -19,18 +19,30 @@ using PloobsEngine.Input;
 
 namespace AdvancedDemo4._0
 {
+    /// <summary>
+    /// Deferred Transparent Screen
+    /// </summary>
     public class TransparentDeferredScreen : IScene
     {
+        /// <summary>
+        /// Sets the world and render technich.
+        /// </summary>
+        /// <param name="renderTech">The render tech.</param>
+        /// <param name="world">The world.</param>
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
+            world = new IWorld(new BepuPhysicWorld(-0.97f,true), new SimpleCuller());
 
-            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
-            desc.DefferedDebug = true;
+            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
             desc.UseFloatingBufferForLightMap = true;
             renderTech = new DeferredRenderTechnic(desc);
         }
 
+        /// <summary>
+        /// Init Screen
+        /// </summary>
+        /// <param name="GraphicInfo">The graphic info.</param>
+        /// <param name="engine"></param>
         protected override void InitScreen(GraphicInfo GraphicInfo, EngineStuff engine)
         {
             base.InitScreen(GraphicInfo, engine);
@@ -42,10 +54,17 @@ namespace AdvancedDemo4._0
             engine.AddComponent(ia);
         }
 
+        /// <summary>
+        /// Load content for the screen.
+        /// </summary>
+        /// <param name="GraphicInfo"></param>
+        /// <param name="factory"></param>
+        /// <param name="contentManager"></param>
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory, IContentManager contentManager)
         {
             base.LoadContent(GraphicInfo, factory, contentManager);
 
+            ///Classic Island
             SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
             TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
             DeferredNormalShader shader = new DeferredNormalShader();
@@ -68,7 +87,10 @@ namespace AdvancedDemo4._0
                     ///Transparent objects are NOT affected by lights
                     ///It is a forward shader in the deferred engine (applied after all deferreed processing)
                     ForwardTransparenteShader s = new ForwardTransparenteShader();
+                    ///If the texture does not have Alpha, you can create an alpha for all the model
                     s.TransparencyLevel = 0.3f;
+                    ///THIS MODEL is DRAW AFTER all the Deferred ones (remember:light wont afect it)
+                    ///You can use all the forward material the same way we are using this
                     ForwardMaterial mat = new ForwardMaterial(s);
                     IObject obj4 = new IObject(mat, sm, pi);
                     this.World.AddObject(obj4);
@@ -99,7 +121,7 @@ namespace AdvancedDemo4._0
 
             this.World.CameraManager.AddCamera(new CameraFirstPerson(true, GraphicInfo.Viewport));
 
-            SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//cubemap");
+            SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grassCUBE");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
 
         }

@@ -19,17 +19,34 @@ using Microsoft.Xna.Framework.Media;
 
 namespace AdvancedDemo4._0
 {
+    /// <summary>
+    /// SoundScreen
+    /// Mess of Sounds =P    
+    /// </summary>
     public class SoundScreen : IScene
     {
+        /// <summary>
+        /// Sets the world and render technich.
+        /// </summary>
+        /// <param name="renderTech">The render tech.</param>
+        /// <param name="world">The world.</param>
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
+            world = new IWorld(new BepuPhysicWorld(-0.97f,true), new SimpleCuller());
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
+            ///lights wont saturate, try to add lots of light in the same place, it wont be all white 
+            ///This option save processing time, but make thinks a little ugly (if you will use lots of lights)
+            ///Also when turn of, will wont be able to use hdr post effect correctely
             desc.UseFloatingBufferForLightMap = false;            
             renderTech = new DeferredRenderTechnic(desc);
         }
-    
+
+        /// <summary>
+        /// Init Screen
+        /// </summary>
+        /// <param name="GraphicInfo">The graphic info.</param>
+        /// <param name="engine"></param>
         protected override void InitScreen(GraphicInfo GraphicInfo, EngineStuff engine)
         {
             base.InitScreen(GraphicInfo, engine);
@@ -37,8 +54,12 @@ namespace AdvancedDemo4._0
             SkyBox skybox = new SkyBox();
             engine.AddComponent(skybox);
 
+            ///Controls some master option of the engine sound player
             SoundMasterOptionDescription sod = engine.GetSoundMasterOptionDescription();
+            ///between 0 and 1
             sod.MasterVolume = 0.9f;
+            ///varies according to your game scale
+            ///Used in 3D sounds
             sod.DistanceScale = 200;
             engine.SetSoundMasterOptionDescription(ref sod);
         }
@@ -47,6 +68,12 @@ namespace AdvancedDemo4._0
         SimpleSoundEffect se;
         Static3DSound sound;
 
+        /// <summary>
+        /// Load content for the screen.
+        /// </summary>
+        /// <param name="GraphicInfo"></param>
+        /// <param name="factory"></param>
+        /// <param name="contentManager"></param>
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory ,IContentManager contentManager)
         {
             base.LoadContent(GraphicInfo,factory, contentManager);
@@ -57,20 +84,24 @@ namespace AdvancedDemo4._0
             DeferredMaterial fmaterial = new DeferredMaterial(shader);
             IObject obj = new IObject(fmaterial, simpleModel, tmesh);
             this.World.AddObject(obj);            
-            
+
+
+            ///Create and add a sound to the SoundAudioPlayer
             ap = new SoundAudioPlayer(contentManager);
             ap.AddSoundToRepository("Songs/bye", "bye");
 
+            ///Create a sound effect without the SoundAudioPlayer (internaly the SoundAudioPlayer is a container of SimpleSoundEffect -- and some stuffs more)
             se = new SimpleSoundEffect(contentManager, "Songs/alarm");
 
+            ///Load the Sounds that you hear in your Microsoft Media Player
+            ///Just loading the first album found =P
             LocalMediaAudioPlayer lm = new LocalMediaAudioPlayer();
             AlbumCollection ac = lm.MediaLibrary.Albums;
             lm.PlayAlbum(ac[0]);
             
-            sound = new Static3DSound(contentManager, "Songs/pianosong", Vector3.Zero);
+            ///Creating a static 3D sound in the 0,0,0 (Bellow the island tree, go there and hear the sound getting louder)
+            sound = new Static3DSound(contentManager, "Songs/pianosong", Vector3.Zero);            
             this.World.AddSoundEmitter(sound, true);
-
-            //ObjectFollower3DSound sound2 = new ObjectFollower3DSound(contentManager, "Songs/pianosong", obj);
 
             #region NormalLight
             DirectionalLightPE ld1 = new DirectionalLightPE(Vector3.Left, Color.White);
@@ -93,7 +124,7 @@ namespace AdvancedDemo4._0
 
             this.World.CameraManager.AddCamera(new CameraFirstPerson(true,GraphicInfo.Viewport));
 
-            SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//cubemap");
+            SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grassCube");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
 
         }
@@ -121,10 +152,18 @@ namespace AdvancedDemo4._0
             if (Keyboard.GetState().IsKeyDown(Keys.RightControl))
             {
                 sound.Stop(true);
-            }
-            
+            }           
 
             base.Update(gameTime);
+        }
+
+        protected override void Draw(GameTime gameTime, RenderHelper render)
+        {
+            base.Draw(gameTime, render);
+
+            render.RenderTextComplete("Space/Enter to Play/Pause the Sound Effect", new Vector2(10, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("RightAlt/RightShif to Play/Stop the AudioPlayer Bye effect", new Vector2(10, 35), Color.White, Matrix.Identity);
+            render.RenderTextComplete("RightControl to Stop the 3D sound", new Vector2(10, 55), Color.White, Matrix.Identity);
         }
 
     }

@@ -20,14 +20,16 @@ using PloobsEngine.Input;
 
 namespace AdvancedDemo4._0
 {
+    /// <summary>
+    /// Animation Screen
+    /// </summary>
     public class DeferredAnimatedScreen : IScene
     {
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             world = new IWorld(new BepuPhysicWorld(-0.98f,true,1), new SimpleCuller());
 
-            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
-            desc.DefferedDebug = false;
+            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
             desc.UseFloatingBufferForLightMap = true;
             renderTech = new DeferredRenderTechnic(desc);
         }
@@ -75,8 +77,6 @@ namespace AdvancedDemo4._0
                 this.World.AddObject(obj);
             }
 
-
-
             #region NormalLight
             DirectionalLightPE ld1 = new DirectionalLightPE(Vector3.Left, Color.White);
             DirectionalLightPE ld2 = new DirectionalLightPE(Vector3.Right, Color.White);
@@ -102,8 +102,19 @@ namespace AdvancedDemo4._0
 
             SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grasscube");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
+        }
 
-        }       
+        protected override void CleanUp(EngineStuff engine)
+        {
+            engine.RemoveComponent("SkyBox");
+            base.CleanUp(engine);
+        }
+
+        protected override void Draw(GameTime gameTime, RenderHelper render)
+        {
+            base.Draw(gameTime, render);
+            render.RenderTextComplete("Animation Sample", new Vector2(10, 15), Color.White, Matrix.Identity);
+        }
 
     }
 }

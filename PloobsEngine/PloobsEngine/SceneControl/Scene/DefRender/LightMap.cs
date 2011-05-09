@@ -191,12 +191,12 @@ namespace PloobsEngine.SceneControl
             this.cullPointLight = cullPointLight;
             if (useFloatingBufferForLightning)
             {
-                lightRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.HdrBlendable, false, DepthFormat.None, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
+                lightRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.HdrBlendable, ginfo.UseMipMap, DepthFormat.None, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
                 samplerState = SamplerState.PointClamp;
             }
             else
             {
-                lightRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, false, DepthFormat.None, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
+                lightRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.None, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
                 samplerState = SamplerState.AnisotropicClamp;
             }
 

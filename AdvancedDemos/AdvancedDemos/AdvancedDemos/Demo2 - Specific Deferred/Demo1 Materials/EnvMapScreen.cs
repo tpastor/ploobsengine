@@ -15,6 +15,7 @@ using PloobsEngine.MessageSystem;
 using PloobsEngine.Utils;
 using PloobsEngine.Engine;
 using PloobsEngine.Features;
+using PloobsEngine.Commands;
 
 namespace AdvancedDemo4._0
 {   
@@ -25,10 +26,9 @@ namespace AdvancedDemo4._0
     {
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
+            world = new IWorld(new BepuPhysicWorld(-0.97f,true), new SimpleCuller());
 
-            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
-            desc.DefferedDebug = true;
+            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
             desc.UseFloatingBufferForLightMap = true;
             renderTech = new DeferredRenderTechnic(desc);
         }
@@ -42,6 +42,9 @@ namespace AdvancedDemo4._0
         {
             base.InitScreen(GraphicInfo, engine);
 
+            SkyBox sb = new SkyBox();
+            engine.AddComponent(sb);
+
             InputAdvanced ia = new InputAdvanced();
             engine.AddComponent(ia);
         }
@@ -53,20 +56,23 @@ namespace AdvancedDemo4._0
             #region Models
             {
                 SimpleModel simpleModel = new SimpleModel(factory, "..\\Content\\Model\\cilos");
-                simpleModel.SetTexture(factory.CreateTexture2DColor(1,1, Color.White), TextureType.DIFFUSE);
+                simpleModel.SetTexture(factory.CreateTexture2DColor(1,1, Color.Red), TextureType.DIFFUSE);
                 TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
-                ///Environment Map Shader
-                DeferredEMReflectiveShader shader = new DeferredEMReflectiveShader("Textures\\cubeMap", ReflectionType.PerfectMirror);
+                ///Environment Map Shader, there are 2 options, the first is a fully reflective surface (dont use the object texture) and the second
+                ///is a mix of the object texture and the environment texture
+                ///Used to fake ambient reflection, give metal appearence to an object ....
+                DeferredEMReflectiveShader shader = new DeferredEMReflectiveShader("Textures\\grassCUBE", 0.9f);
                 DeferredMaterial fmaterial = new DeferredMaterial(shader);
                 IObject obj = new IObject(fmaterial, simpleModel, tmesh);
                 this.World.AddObject(obj);                
                 
             }
 
-
             {
-                SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
-                TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
+                SimpleModel simpleModel = new SimpleModel(factory, "Model//block");
+                simpleModel.SetTexture(factory.CreateTexture2DColor(1, 1, Color.White), TextureType.DIFFUSE);
+                BoxObject tmesh = new BoxObject(new Vector3(0,-5,100), 1, 1, 1, 10, new Vector3(200, 1, 200), Matrix.Identity, MaterialDescription.DefaultBepuMaterial());
+                tmesh.isMotionLess = true;
                 DeferredNormalShader shader = new DeferredNormalShader();
                 DeferredMaterial fmaterial = new DeferredMaterial(shader);
                 IObject obj = new IObject(fmaterial, simpleModel, tmesh);
@@ -97,7 +103,14 @@ namespace AdvancedDemo4._0
             this.World.AddLight(ld5);
             #endregion
 
+            SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grassCUBE");
+            CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
+
             this.World.CameraManager.AddCamera(new CameraFirstPerson(true, GraphicInfo.Viewport));
+
+            AntiAliasingPostEffectTabula aa = new AntiAliasingPostEffectTabula();
+            aa.Weights = 2;
+            this.RenderTechnic.AddPostEffect(aa);
         }
     }
 

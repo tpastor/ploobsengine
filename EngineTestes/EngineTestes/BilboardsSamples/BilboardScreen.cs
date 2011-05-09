@@ -23,8 +23,7 @@ namespace EngineTestes
         {
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
 
-            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
-            desc.DefferedDebug = true;
+            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
             desc.UseFloatingBufferForLightMap = false;            
             renderTech = new DeferredRenderTechnic(desc);
         }
@@ -107,31 +106,8 @@ namespace EngineTestes
             //    this.World.AddObject(obj2);
             //}
 
-            //{
-            //    List<Vector3> poss = new List<Vector3>();
-            //    for (int i = 0; i < 10; i++)
-            //    {
-            //        for (int j = 0; j < 10; j++)
-            //        {
-            //            float x, y;
-            //            x = i * 100;
-            //            y = j * 100;
-            //            poss.Add(new Vector3(x, 5, y));
-            //        }
-            //    }
-            //    StaticBilboardModel bm = new StaticBilboardModel(factory, "Bilbs", "Textures\\wizard", poss);
-            //    DeferredAnimatedTextureShader cb = new DeferredAnimatedTextureShader(3, 100, BilboardType.Cilindric);
-            //    cb.Amplitude = 0f;
-            //    cb.Scale = new Vector2(50, 50);
-            //    cb.Atenuation = new Vector4(0.4f, 0.4f, 0.4f, 1);
-            //    DeferredMaterial matfor = new DeferredMaterial(cb);
-            //    GhostObject go = new GhostObject();
-            //    IObject obj2 = new IObject(matfor, bm, go);
-            //    this.World.AddObject(obj2);
-            //}
-
             {
-                List<BilboardInstance> poss = new List<BilboardInstance>();
+                List<Vector3> poss = new List<Vector3>();
                 for (int i = 0; i < 10; i++)
                 {
                     for (int j = 0; j < 10; j++)
@@ -139,20 +115,43 @@ namespace EngineTestes
                         float x, y;
                         x = i * 100;
                         y = j * 100;
-                        BilboardInstance bi = new BilboardInstance();
-                        bi.Scale = new Vector2(100, 100);
-                        bi.Position = new Vector3(x, 5, y);
-                        poss.Add(bi);
+                        poss.Add(new Vector3(x, 5, y));
                     }
                 }
-
-                InstancedBilboardModel bm = new InstancedBilboardModel(factory, "Bilbs", "..\\Content\\Textures\\tree",poss.ToArray());
-                DeferredInstancedBilboardShader cb = new DeferredInstancedBilboardShader(BilboardType.Cilindric);
+                StaticBilboardModel bm = new StaticBilboardModel(factory, "Bilbs", "Textures\\wizard", poss);
+                DeferredAnimatedTextureShader cb = new DeferredAnimatedTextureShader(3, 100, BilboardType.Cilindric);
+                cb.Amplitude = 0f;
+                cb.Scale = new Vector2(50, 50);
+                cb.Atenuation = new Vector4(0.4f, 0.4f, 0.4f, 1);
                 DeferredMaterial matfor = new DeferredMaterial(cb);
-                GhostObject go = new GhostObject();
+                GhostObject go = new GhostObject(new Vector3(0, 10, 0), Matrix.Identity, Vector3.One);                
                 IObject obj2 = new IObject(matfor, bm, go);
                 this.World.AddObject(obj2);
             }
+
+            //{
+            //    List<BilboardInstance> poss = new List<BilboardInstance>();
+            //    for (int i = 0; i < 10; i++)
+            //    {
+            //        for (int j = 0; j < 10; j++)
+            //        {
+            //            float x, y;
+            //            x = i * 100;
+            //            y = j * 100;
+            //            BilboardInstance bi = new BilboardInstance();
+            //            bi.Scale = new Vector2(100, 100);
+            //            bi.Position = new Vector3(x, 5, y);
+            //            poss.Add(bi);
+            //        }
+            //    }
+
+            //    InstancedBilboardModel bm = new InstancedBilboardModel(factory, "Bilbs", "..\\Content\\Textures\\tree",poss.ToArray());
+            //    DeferredInstancedBilboardShader cb = new DeferredInstancedBilboardShader(BilboardType.Cilindric);
+            //    DeferredMaterial matfor = new DeferredMaterial(cb);
+            //    GhostObject go = new GhostObject();
+            //    IObject obj2 = new IObject(matfor, bm, go);
+            //    this.World.AddObject(obj2);
+            //}
 
 
             #region NormalLight

@@ -100,9 +100,20 @@ namespace AdvancedDemo4._0
 
             this.World.CameraManager.AddCamera(new CameraFirstPerson(true,GraphicInfo.Viewport));
 
-            SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//cubemap");
+            SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grassCube");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
+        }
 
+        protected override void CleanUp(EngineStuff engine)
+        {
+            engine.RemoveComponent("SkyBox");
+            base.CleanUp(engine);
+        }
+
+        protected override void Draw(GameTime gameTime, RenderHelper render)
+        {
+            base.Draw(gameTime, render);
+            render.RenderTextComplete("Gui Forward Sample", new Vector2(10, 15), Color.White, Matrix.Identity);
         }
 
     }

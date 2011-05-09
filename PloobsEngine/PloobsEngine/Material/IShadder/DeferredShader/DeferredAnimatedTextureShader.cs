@@ -184,10 +184,16 @@ namespace PloobsEngine.Material
         {
             this._shader = factory.GetEffect("AnimatedBillboard",true,true);
             this.aniTex = obj.Modelo.getTexture(TextureType.DIFFUSE);
+            obj.Modelo.OnTextureChange += new OnTextureChange(Modelo_OnTextureChange);
             totalwidth = aniTex.Width;
             this.width = aniTex.Width / numberOfFrames;
             this.height = aniTex.Height;
             size = width / totalwidth;
+        }
+
+        void Modelo_OnTextureChange(TextureType type, IModelo model)
+        {
+            this.aniTex = model.getTexture(TextureType.DIFFUSE);
         }
 
 

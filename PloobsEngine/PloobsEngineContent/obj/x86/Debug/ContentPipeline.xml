@@ -161,7 +161,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\AnimatedBillboard.xnb</Output>
-      <Time>2011-05-06T18:26:29.3824451-03:00</Time>
+      <Time>2011-05-07T17:15:12.6873355-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\AntiAliasing.fx</Source>
@@ -215,7 +215,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\cilBilboard.xnb</Output>
-      <Time>2011-05-06T18:26:30.0074808-03:00</Time>
+      <Time>2011-05-07T17:17:11.5371334-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\cilBilboardForward.fx</Source>
@@ -224,7 +224,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\cilBilboardForward.xnb</Output>
-      <Time>2011-05-06T18:26:30.010481-03:00</Time>
+      <Time>2011-05-07T17:17:11.5231326-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\ClearGBuffer.fx</Source>
@@ -413,7 +413,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\GrassBillboard.xnb</Output>
-      <Time>2011-05-06T18:26:29.5704559-03:00</Time>
+      <Time>2011-05-07T17:17:11.5061316-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\HSV.fx</Source>
@@ -485,7 +485,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\PlanarOriented.xnb</Output>
-      <Time>2011-05-06T18:26:29.6244589-03:00</Time>
+      <Time>2011-05-07T17:17:11.4801301-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\PointLight.fx</Source>
@@ -530,7 +530,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\RenderGBuffer.xnb</Output>
-      <Time>2011-05-07T10:52:45.5818362-03:00</Time>
+      <Time>2011-05-07T10:52:55.5424059-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\RenderGlowBuffer.fx</Source>
@@ -665,7 +665,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\SphericalBillboard.xnb</Output>
-      <Time>2011-05-06T18:26:29.8844738-03:00</Time>
+      <Time>2011-05-07T17:17:11.4571288-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\SpotLight.fx</Source>
@@ -1015,7 +1015,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\bin\x86\Debug\Content\Effects\Deferred\InstancedBilboard.xnb</Output>
-      <Time>2011-05-06T18:26:29.5974574-03:00</Time>
+      <Time>2011-05-07T17:17:11.4921308-03:00</Time>
     </Item>
     <Item>
       <Source>Effects\Deferred\AntiAliasingtabulastalker.fx</Source>

@@ -1,1 +1,2 @@
 C:\Users\tpastor\Desktop\XNAnimation\4.0\XNAnimation\Content\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\tpastor\Desktop\port\Auxiliar Libs\XNAnimation\Content\obj\x86\Debug\ResolveAssemblyReference.cache

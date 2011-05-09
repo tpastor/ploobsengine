@@ -7,8 +7,8 @@
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\tpastor\Desktop\XNAnimation\4.0\XNAnimation\XNAnimation\bin\x86\Debug\Content\SkinnedModelEffect.xnb</Output>
-      <Time>2011-04-03T19:09:45.5154263-03:00</Time>
+      <Output>C:\Users\tpastor\Desktop\port\Auxiliar Libs\XNAnimation\XNAnimation\bin\x86\Debug\Content\SkinnedModelEffect.xnb</Output>
+      <Time>2011-05-06T18:24:48.9967034-03:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -16,10 +16,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\tpastor\Desktop\XNAnimation\4.0\XNAnimation\Content\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\tpastor\Desktop\XNAnimation\4.0\XNAnimation\XNAnimation\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\tpastor\Desktop\XNAnimation\4.0\XNAnimation\Content\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\tpastor\Desktop\XNAnimation\4.0\XNAnimation\XNAnimation\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\tpastor\Desktop\port\Auxiliar Libs\XNAnimation\Content\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\tpastor\Desktop\port\Auxiliar Libs\XNAnimation\XNAnimation\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\tpastor\Desktop\port\Auxiliar Libs\XNAnimation\Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\tpastor\Desktop\port\Auxiliar Libs\XNAnimation\XNAnimation\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>

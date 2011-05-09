@@ -17,17 +17,30 @@ using PloobsEngine.Commands;
 
 namespace AdvancedDemo4._0
 {
+    /// <summary>
+    /// Instanced Bilboards
+    /// The technich presented lets you add looooooots (yeah, looooooots) of bilboards in a scene
+    /// </summary>
     public class InstancedBilboardScreen : IScene
     {
+        /// <summary>
+        /// Sets the world and render technich.
+        /// </summary>
+        /// <param name="renderTech">The render tech.</param>
+        /// <param name="world">The world.</param>
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
-
-            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
-            desc.DefferedDebug = true;
+            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
             desc.UseFloatingBufferForLightMap = false;            
             renderTech = new DeferredRenderTechnic(desc);
         }
+
+        /// <summary>
+        /// Init Screen
+        /// </summary>
+        /// <param name="GraphicInfo">The graphic info.</param>
+        /// <param name="engine"></param>
         protected override void InitScreen(GraphicInfo GraphicInfo, EngineStuff engine)
         {
             base.InitScreen(GraphicInfo, engine);
@@ -45,96 +58,14 @@ namespace AdvancedDemo4._0
             DeferredNormalShader shader = new DeferredNormalShader();
             DeferredMaterial fmaterial = new DeferredMaterial(shader);
             IObject obj = new IObject(fmaterial, simpleModel, tmesh);
-            this.World.AddObject(obj);
+            this.World.AddObject(obj);            
 
-            //{
-            //    List<Vector3> poss = new List<Vector3>();
-            //    for (int i = 0; i < 10; i++)
-            //    {
-            //        for (int j = 0; j < 10; j++)
-            //        {
-            //            float x, y;
-            //            x = i * 100;
-            //            y = j * 100;
-            //            poss.Add(new Vector3(x, 5, y));
-            //        }
-            //    }
-            //    StaticBilboardModel bm = new StaticBilboardModel(factory, "Bilbs", "..\\Content\\Textures\\tree", poss);
-            //    DeferredCilindricGPUBilboardShader cb = new DeferredCilindricGPUBilboardShader();
-            //    DeferredMaterial matfor = new DeferredMaterial(cb);
-            //    GhostObject go = new GhostObject();
-            //    IObject obj2 = new IObject(matfor, bm, go);
-            //    this.World.AddObject(obj2);
-            //}
-
-            //{
-            //    List<Vector3> poss = new List<Vector3>();
-            //    for (int i = 0; i < 10; i++)
-            //    {
-            //        for (int j = 0; j < 10; j++)
-            //        {
-            //            float x, y;
-            //            x = i * 100;
-            //            y = j * 100;
-            //            poss.Add(new Vector3(x, 5, y));
-            //        }
-            //    }
-            //    StaticBilboardModel bm = new StaticBilboardModel(factory, "Bilbs", "..\\Content\\Textures\\tree", poss);
-            //    DeferredSphericalBilboardShader cb = new DeferredSphericalBilboardShader();
-            //    DeferredMaterial matfor = new DeferredMaterial(cb);
-            //    GhostObject go = new GhostObject();
-            //    IObject obj2 = new IObject(matfor, bm, go);
-            //    this.World.AddObject(obj2);
-            //}
-
-            //            {
-            //    List<Vector3> poss = new List<Vector3>();
-            //    for (int i = 0; i < 10; i++)
-            //    {
-            //        for (int j = 0; j < 10; j++)
-            //        {
-            //            float x, y;
-            //            x = i * 100;
-            //            y = j * 100;
-            //            poss.Add(new Vector3(x, 5, y));
-            //        }
-            //    }
-            //    StaticBilboardModel bm = new StaticBilboardModel(factory, "Bilbs", "Textures\\grama1", poss);
-            //    DeferredProceduralAnimatedcilindricBilboardShader cb = new DeferredProceduralAnimatedcilindricBilboardShader();
-            //    DeferredMaterial matfor = new DeferredMaterial(cb);
-            //    GhostObject go = new GhostObject();
-            //    IObject obj2 = new IObject(matfor, bm, go);
-            //    this.World.AddObject(obj2);
-            //}
-
-            //{
-            //    List<Vector3> poss = new List<Vector3>();
-            //    for (int i = 0; i < 10; i++)
-            //    {
-            //        for (int j = 0; j < 10; j++)
-            //        {
-            //            float x, y;
-            //            x = i * 100;
-            //            y = j * 100;
-            //            poss.Add(new Vector3(x, 5, y));
-            //        }
-            //    }
-            //    StaticBilboardModel bm = new StaticBilboardModel(factory, "Bilbs", "Textures\\wizard", poss);
-            //    DeferredAnimatedTextureShader cb = new DeferredAnimatedTextureShader(3, 100, BilboardType.Cilindric);
-            //    cb.Amplitude = 0f;
-            //    cb.Scale = new Vector2(50, 50);
-            //    cb.Atenuation = new Vector4(0.4f, 0.4f, 0.4f, 1);
-            //    DeferredMaterial matfor = new DeferredMaterial(cb);
-            //    GhostObject go = new GhostObject();
-            //    IObject obj2 = new IObject(matfor, bm, go);
-            //    this.World.AddObject(obj2);
-            //}
-
+            ///same as before
             {
                 List<BilboardInstance> poss = new List<BilboardInstance>();
-                for (int i = 0; i < 10; i++)
+                for (int i = -10 ; i < 10; i++)
                 {
-                    for (int j = 0; j < 10; j++)
+                    for (int j = -10; j < 10; j++)
                     {
                         float x, y;
                         x = i * 100;
@@ -146,8 +77,12 @@ namespace AdvancedDemo4._0
                     }
                 }
 
-                InstancedBilboardModel bm = new InstancedBilboardModel(factory, "Bilbs", "..\\Content\\Textures\\tree",poss.ToArray());
-                DeferredInstancedBilboardShader cb = new DeferredInstancedBilboardShader(BilboardType.Cilindric);
+                ///same as before, just the name of the class change
+                ///You can change the position of a individual bilboard using bm.GetBilboardInstances(), updating the structure recieved and 
+                ///using bm.SetBilboardInstances(). Dont do this every frame pls =P
+                ///You can change lots of parameters of the DeferredInstancedBilboardShader, check it
+                InstancedBilboardModel bm = new InstancedBilboardModel(factory, "Bilbs", "..\\Content\\Textures\\tree",poss.ToArray());                
+                DeferredInstancedBilboardShader cb = new DeferredInstancedBilboardShader(BilboardType.Cilindric);                
                 DeferredMaterial matfor = new DeferredMaterial(cb);
                 GhostObject go = new GhostObject();
                 IObject obj2 = new IObject(matfor, bm, go);
@@ -176,9 +111,22 @@ namespace AdvancedDemo4._0
 
             this.World.CameraManager.AddCamera(new CameraFirstPerson(true,GraphicInfo.Viewport));
 
-            SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//cubemap");
+            SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grassCube");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
 
+        }
+
+
+        protected override void CleanUp(EngineStuff engine)
+        {
+            engine.RemoveComponent("SkyBox");
+            base.CleanUp(engine);
+        }
+
+        protected override void Draw(GameTime gameTime, RenderHelper render)
+        {
+            base.Draw(gameTime, render);
+            render.RenderTextComplete("Instanced Bilboard Sample", new Vector2(10, 15), Color.White, Matrix.Identity);
         }
 
     }

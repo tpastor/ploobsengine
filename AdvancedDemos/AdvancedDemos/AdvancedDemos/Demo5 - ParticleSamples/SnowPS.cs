@@ -12,6 +12,7 @@ namespace AdvancedDemo4._0
 	/// <summary>
 	/// Create a new Particle System class that inherits from a
 	/// Default DPSF Particle System
+    /// JUST A Copy/PAST from the DPSF DEMO, WE PASS NULL TO THE BASE CONSTRUCTOR ALWAYS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	/// </summary>
 #if (WINDOWS)
 	[Serializable]

@@ -21,16 +21,25 @@ namespace AdvancedDemo4._0
     /// </summary>
     public class ParalaxScreen : IScene
     {
+        /// <summary>
+        /// Sets the world and render technich.
+        /// </summary>
+        /// <param name="renderTech">The render tech.</param>
+        /// <param name="world">The world.</param>
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
+            world = new IWorld(new BepuPhysicWorld(-0.97f,true), new SimpleCuller());
 
-            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
-            desc.DefferedDebug = true;
+            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
             desc.UseFloatingBufferForLightMap = true;
             renderTech = new DeferredRenderTechnic(desc);
         }
 
+        /// <summary>
+        /// Init Screen
+        /// </summary>
+        /// <param name="GraphicInfo">The graphic info.</param>
+        /// <param name="engine"></param>
         protected override void InitScreen(GraphicInfo GraphicInfo, EngineStuff engine)
         {
             base.InitScreen(GraphicInfo, engine);
@@ -44,6 +53,12 @@ namespace AdvancedDemo4._0
 
         DeferredCustomShader paralax;
 
+        /// <summary>
+        /// Load content for the screen.
+        /// </summary>
+        /// <param name="GraphicInfo"></param>
+        /// <param name="factory"></param>
+        /// <param name="contentManager"></param>
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory, IContentManager contentManager)
         {
             base.LoadContent(GraphicInfo, factory, contentManager);
@@ -56,8 +71,9 @@ namespace AdvancedDemo4._0
                 SimpleModel sm = new SimpleModel(factory,"..\\Content\\Model\\cubo", "..\\Content\\Textures\\color_map");
                 sm.SetTexture("Textures\\normal_map", TextureType.BUMP);
                 sm.SetTexture("Textures\\height_map", TextureType.PARALAX);                
+
                 BoxObject pi = new BoxObject(new Vector3(200, 110, 0),1,1 ,1, 5, new Vector3(100, 100, 100),Matrix.Identity,MaterialDescription.DefaultBepuMaterial());
-                ///Enable paralax and Normal;
+                ///Enable paralax and Normal Mapping;
                 paralax = new DeferredCustomShader(false, true, false, true);
                 paralax.SpecularIntensity = 0.2f;
                 paralax.SpecularPower = 30;                
@@ -76,10 +92,9 @@ namespace AdvancedDemo4._0
                 this.World.AddObject(obj);
             }
 
-
             #endregion
 
-            LightThrowBepu lt = new LightThrowBepu(this.World, factory);
+            LightThrowBepu lt = new LightThrowBepu(this.World, factory,75,5);
 
             #region NormalLight
             DirectionalLightPE ld1 = new DirectionalLightPE(Vector3.Left, Color.White);
@@ -101,7 +116,6 @@ namespace AdvancedDemo4._0
             #endregion
 
             this.World.CameraManager.AddCamera(new CameraFirstPerson(true, GraphicInfo.Viewport));
-
 
             {
                 SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.DOWN, Keys.H, aumentaScale, EntityType.TOOLS);
@@ -174,7 +188,8 @@ namespace AdvancedDemo4._0
             ///Draw some text to the screen
             render.RenderTextComplete("Paralax " + paralax.UseParalax, new Vector2(20, 20), Color.White, Matrix.Identity);
             render.RenderTextComplete("Paralax ScaleBias " + paralax.ScaleBias, new Vector2(20, 40), Color.White, Matrix.Identity);
-            render.RenderTextComplete("Bump " + paralax.UseBump, new Vector2(20, 60), Color.White, Matrix.Identity);            
+            render.RenderTextComplete("Bump " + paralax.UseBump, new Vector2(20, 60), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Use H/G Y/T to control Paralax Bias and J/K to Disable/Enable Paralax/Bump", new Vector2(20, 80), Color.White, Matrix.Identity);      
         }
 
     }

@@ -4058,6 +4058,11 @@
             Use Multisampling ?
             </summary>
     </member>
+    <member name="F:PloobsEngine.Engine.InitialEngineDescription.useMipMapWhenPossible">
+      <summary>
+            Use MipMap When creating the Render Targets
+            </summary>
+    </member>
     <member name="F:PloobsEngine.Engine.InitialEngineDescription.isFullScreen">
       <summary>
             FullScreen Mode ?
@@ -4085,7 +4090,7 @@
       <returns>
       </returns>
     </member>
-    <member name="M:PloobsEngine.Engine.InitialEngineDescription.#ctor(System.String,System.Int32,System.Int32,System.Boolean,Microsoft.Xna.Framework.Graphics.GraphicsProfile,System.Boolean,System.Boolean,System.Boolean,PloobsEngine.Engine.Logger.ILogger)">
+    <member name="M:PloobsEngine.Engine.InitialEngineDescription.#ctor(System.String,System.Int32,System.Int32,System.Boolean,Microsoft.Xna.Framework.Graphics.GraphicsProfile,System.Boolean,System.Boolean,System.Boolean,PloobsEngine.Engine.Logger.ILogger,System.Boolean)">
       <summary>
             Initializes a new instance of the <see cref="T:PloobsEngine.Engine.InitialEngineDescription" /> struct.
             </summary>

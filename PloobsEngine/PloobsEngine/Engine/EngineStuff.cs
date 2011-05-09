@@ -44,7 +44,7 @@ namespace PloobsEngine.Engine
         /// <returns></returns>
         public static InitialEngineDescription Default()
         {
-            return new InitialEngineDescription("PloobsEngine",800,600,false,GraphicsProfile.HiDef,false,false,true,null);
+            return new InitialEngineDescription("PloobsEngine",800,600,false,GraphicsProfile.HiDef,false,false,true,null,false);
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace PloobsEngine.Engine
         /// <param name="isMultiSampling">if set to <c>true</c> [is multi sampling].</param>
         /// <param name="isFixedGameTime">if set to <c>true</c> [is fixed game time].</param>
         /// <param name="logger">The logger.</param>
-        public InitialEngineDescription(String ScreenName = "PloobsEngine", int BackBufferWidth = 800, int BackBufferHeight = 600, bool isFullScreen = false, GraphicsProfile graphicsProfile = GraphicsProfile.HiDef, bool useVerticalSyncronization = false, bool isMultiSampling = false,bool isFixedGameTime = false, ILogger logger = null)
+        public InitialEngineDescription(String ScreenName = "PloobsEngine", int BackBufferWidth = 800, int BackBufferHeight = 600, bool isFullScreen = false, GraphicsProfile graphicsProfile = GraphicsProfile.HiDef, bool useVerticalSyncronization = false, bool isMultiSampling = false,bool isFixedGameTime = false, ILogger logger = null,bool useMipMapWhenPossible = false)
         {
             this.UseVerticalSyncronization = useVerticalSyncronization;
             this.BackBufferHeight = BackBufferHeight;
@@ -73,6 +73,7 @@ namespace PloobsEngine.Engine
             OnExit = null;
             onExitHandler = null;
             this.ScreenName = ScreenName;
+            this.useMipMapWhenPossible = useMipMapWhenPossible;
         }
 
         /// <summary>
@@ -101,6 +102,11 @@ namespace PloobsEngine.Engine
         /// Use Multisampling ?
         /// </summary>
         public bool isMultiSampling;
+
+        /// <summary>
+        /// Use MipMap When creating the Render Targets
+        /// </summary>
+        public bool useMipMapWhenPossible;
 
         /// <summary>        
         //     Identifies the set of supported devices for the game based on device capabilities.
@@ -217,7 +223,7 @@ namespace PloobsEngine.Engine
             graphics.PreferMultiSampling = initialDescription.isMultiSampling;
             graphics.PreferredBackBufferHeight = initialDescription.BackBufferHeight;
             graphics.PreferredBackBufferWidth = initialDescription.BackBufferWidth;
-            graphics.PreferredDepthStencilFormat = DepthFormat.Depth24Stencil8;            
+            graphics.PreferredDepthStencilFormat = DepthFormat.Depth24Stencil8;                                    
             
         }        
         
@@ -278,7 +284,7 @@ namespace PloobsEngine.Engine
             halfPixel.X = 0.5f / (float)GraphicsDevice.PresentationParameters.BackBufferWidth;
             halfPixel.Y = 0.5f / (float)GraphicsDevice.PresentationParameters.BackBufferHeight;
 
-            GraphicInfo ginfo = new GraphicInfo(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount,GraphicsDevice.PresentationParameters.DepthStencilFormat);
+            GraphicInfo ginfo = new GraphicInfo(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount,GraphicsDevice.PresentationParameters.DepthStencilFormat,initialDescription.useMipMapWhenPossible);
             GraphicInfo.FireEvent(ginfo);
             GraphicInfo = ginfo;
 
@@ -313,7 +319,7 @@ namespace PloobsEngine.Engine
 
             
             contentManager = new EngineContentManager(this);
-            GraphicInfo = new GraphicInfo(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount, GraphicsDevice.PresentationParameters.DepthStencilFormat);
+            GraphicInfo = new GraphicInfo(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount, GraphicsDevice.PresentationParameters.DepthStencilFormat,initialDescription.useMipMapWhenPossible);
             GraphicFactory = new Engine.GraphicFactory(GraphicInfo, GraphicsDevice, contentManager);
             ComponentManager = new ComponentManager(GraphicInfo, GraphicFactory);
             ComponentManager.LoadContent(ref GraphicInfo);            

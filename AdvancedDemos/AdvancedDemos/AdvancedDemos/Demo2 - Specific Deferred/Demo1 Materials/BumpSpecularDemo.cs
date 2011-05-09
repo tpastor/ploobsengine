@@ -16,7 +16,7 @@ using Microsoft.Xna.Framework.Input;
 namespace AdvancedDemo4._0
 {
     /// <summary>
-    /// BumpSpecular Deferred Scene
+    /// BumpSpecular Deferred Scene Demo
     /// </summary>
     public class BumpSpecularDemo : IScene
     {
