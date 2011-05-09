@@ -25,6 +25,8 @@ namespace AdvancedDemo4._0
     /// </summary>
     public class DeferredAnimatedScreen : IScene
     {
+        LightThrowBepu lt;
+
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             world = new IWorld(new BepuPhysicWorld(-0.98f,true,1), new SimpleCuller());
@@ -65,7 +67,7 @@ namespace AdvancedDemo4._0
                 ///Adiciona no mundo
                 this.World.AddObject(marine);
 
-                LightThrowBepu lt = new LightThrowBepu(this.World, factory);
+                lt = new LightThrowBepu(this.World, factory);
             }
 
             {
@@ -106,6 +108,7 @@ namespace AdvancedDemo4._0
 
         protected override void CleanUp(EngineStuff engine)
         {
+            lt.CleanUp();
             engine.RemoveComponent("SkyBox");
             base.CleanUp(engine);
         }
@@ -113,7 +116,11 @@ namespace AdvancedDemo4._0
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);
-            render.RenderTextComplete("Animation Sample", new Vector2(10, 15), Color.White, Matrix.Identity);
+
+            render.RenderTextComplete("Animation Sample - Not Sync with the Walk cycle", new Vector2(10, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Use TFGH to control the character", new Vector2(10, 35), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Space To Shoot", new Vector2(10, 55), Color.White, Matrix.Identity);
+            render.RenderTextComplete("R to jump", new Vector2(10, 75), Color.White, Matrix.Identity);
         }
 
     }

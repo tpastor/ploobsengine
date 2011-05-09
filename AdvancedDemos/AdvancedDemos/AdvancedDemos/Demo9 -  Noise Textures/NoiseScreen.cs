@@ -16,8 +16,7 @@ namespace AdvancedDemo4._0
         Effect effect;
         RenderTarget2D target;
         Texture2D staticRandomTex;
-        Texture2D perlinNoise;
-        RenderHelper render;
+        Texture2D perlinNoise;        
 
         bool firstTime = true;
 
@@ -37,8 +36,8 @@ namespace AdvancedDemo4._0
                 //firstTime = false; ///uncomment to create only one
             }
 
-            render.RenderTextureComplete(perlinNoise);            
-
+            render.RenderTextureComplete(perlinNoise);
+            render.RenderTextComplete("Perlin Noise Texture generated in Shader", new Vector2(10, 15), Color.White, Matrix.Identity);
         }
 
         protected override void  LoadContent(PloobsEngine.Engine.GraphicInfo GraphicInfo, PloobsEngine.Engine.GraphicFactory factory, IContentManager contentManager)

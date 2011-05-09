@@ -136,7 +136,7 @@
     <Compile Include="Demo5 - ParticleSamples\SmokePS.cs" />
     <Compile Include="Demo5 - ParticleSamples\SnowPS.cs" />
     <Compile Include="Demo8 - GUI\FGUIScreen.cs" />
-    <Compile Include="Demo8 - GUI\GUIScreen.cs" />
+    <Compile Include="Demo8 - GUI\DGUIScreen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Demo3 - Sound\SoundScreen.cs" />

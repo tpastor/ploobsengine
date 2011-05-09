@@ -44,7 +44,14 @@ namespace AdvancedDemo4._0
             //manager.AddScreen(new NormalBilboardScreen());                        
             //manager.AddScreen(new ProceduralAnimatedBilboardScreen());            
             //manager.AddScreen(new DeferredAnimatedScreen());            
-            manager.AddScreen(new FGUIScreen());            
+            //manager.AddScreen(new FGUIScreen());            
+            //manager.AddScreen(new DGUIScreen());            
+            //manager.AddScreen(new NoiseScreen());            
+            //manager.AddScreen(new PerlinNoiseScreen());            
+            //manager.AddScreen(new ProceduralTextureScreen());            
+            //manager.AddScreen(new OceanScreen());            
+            //manager.AddScreen(new WaterCompleteScreen());            
+            manager.AddScreen(new DeferredDirectionaldShadowScreen());            
             
             
         }

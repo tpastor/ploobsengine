@@ -32,6 +32,7 @@ namespace AdvancedDemo4._0
         protected override void  Draw(GameTime gameTime, RenderHelper render)
         {
             render.RenderTextureComplete(texture);
+            render.RenderTextComplete("Random Texture generated Precedurally on CPU", new Vector2(10, 15), Color.White, Matrix.Identity);
         }        
     }
         

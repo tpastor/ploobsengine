@@ -19,8 +19,16 @@ using TomShane.Neoforce.Controls;
 
 namespace AdvancedDemo4._0
 {
+    /// <summary>
+    /// GUI on forward rendering
+    /// </summary>
     public class FGUIScreen : IScene
     {
+        bool okClicked = false;
+
+        /// <summary>
+        /// /// NEED TO PASS THE GUI IMPLEMENTATION TO THE BASE CLASS
+        /// </summary>
         public FGUIScreen() : base(new NeoforceGui()) { }
 
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
@@ -36,6 +44,8 @@ namespace AdvancedDemo4._0
 
             SkyBox skybox = new SkyBox();
             engine.AddComponent(skybox);
+
+            engine.IsMouseVisible = true;
         }
 
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory ,IContentManager contentManager)
@@ -73,35 +83,22 @@ namespace AdvancedDemo4._0
             button.Top = window.ClientHeight - button.Height - 8;
             button.Anchor = Anchors.Bottom;
             button.Parent = window;
+            button.Click += new TomShane.Neoforce.Controls.EventHandler(button_Click);
 
             // Add the window control to the manager processing queue.
-            guiManager.Manager.Add(window);
+            guiManager.Manager.Add(window);         
 
-
-
-            #region NormalLight
-            DirectionalLightPE ld1 = new DirectionalLightPE(Vector3.Left, Color.White);
-            DirectionalLightPE ld2 = new DirectionalLightPE(Vector3.Right, Color.White);
-            DirectionalLightPE ld3 = new DirectionalLightPE(Vector3.Backward, Color.White);
-            DirectionalLightPE ld4 = new DirectionalLightPE(Vector3.Forward, Color.White);
-            DirectionalLightPE ld5 = new DirectionalLightPE(Vector3.Down, Color.White);
-            float li = 0.5f;
-            ld1.LightIntensity = li;
-            ld2.LightIntensity = li;
-            ld3.LightIntensity = li;
-            ld4.LightIntensity = li;
-            ld5.LightIntensity = li;
-            this.World.AddLight(ld1);
-            this.World.AddLight(ld2);
-            this.World.AddLight(ld3);
-            this.World.AddLight(ld4);
-            this.World.AddLight(ld5);
-            #endregion
-
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(true,GraphicInfo.Viewport));
+            this.World.CameraManager.AddCamera(new CameraFirstPerson(false,GraphicInfo.Viewport));
 
             SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grassCube");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
+        }        
+
+        void button_Click(object sender, TomShane.Neoforce.Controls.EventArgs e)
+        {
+            Button b = (Button)sender;       
+            ///use it ....
+            okClicked = true;
         }
 
         protected override void CleanUp(EngineStuff engine)
@@ -113,7 +110,9 @@ namespace AdvancedDemo4._0
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);
-            render.RenderTextComplete("Gui Forward Sample", new Vector2(10, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Gui Forward Sample", new Vector2(10, 15), Color.White, Matrix.Identity);            
+            if(okClicked)
+                render.RenderTextComplete("Ok Clicked", new Vector2(10, 35), Color.White, Matrix.Identity);
         }
 
     }
