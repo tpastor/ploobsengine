@@ -21,6 +21,8 @@ namespace AdvancedDemo4._0
     /// </summary>
     public class ParalaxScreen : IScene
     {
+        LightThrowBepu lt;
+
         /// <summary>
         /// Sets the world and render technich.
         /// </summary>
@@ -46,9 +48,6 @@ namespace AdvancedDemo4._0
 
             SkyBox skybox = new SkyBox();
             engine.AddComponent(skybox);
-
-            InputAdvanced ia = new InputAdvanced();
-            engine.AddComponent(ia);
         }
 
         DeferredCustomShader paralax;
@@ -94,7 +93,7 @@ namespace AdvancedDemo4._0
 
             #endregion
 
-            LightThrowBepu lt = new LightThrowBepu(this.World, factory,75,5);
+            lt = new LightThrowBepu(this.World, factory,75,5);
 
             #region NormalLight
             DirectionalLightPE ld1 = new DirectionalLightPE(Vector3.Left, Color.White);
@@ -118,35 +117,29 @@ namespace AdvancedDemo4._0
             this.World.CameraManager.AddCamera(new CameraFirstPerson(true, GraphicInfo.Viewport));
 
             {
-                SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.DOWN, Keys.H, aumentaScale, EntityType.TOOLS);
-                BindKeyCommand bk = new BindKeyCommand(ik, BindAction.ADD);
-                CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bk);
+                SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.DOWN, Keys.H, aumentaScale);
+                this.BindInput(ik);
             }
             {
-                SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.DOWN , Keys.G, diminuiScale, EntityType.TOOLS);
-                BindKeyCommand bk = new BindKeyCommand(ik, BindAction.ADD);
-                CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bk);
+                SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.DOWN , Keys.G, diminuiScale);
+                this.BindInput(ik);
             }
             {
-                SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.DOWN, Keys.Y, aumentaBias, EntityType.TOOLS);
-                BindKeyCommand bk = new BindKeyCommand(ik, BindAction.ADD);
-                CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bk);
+                SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.DOWN, Keys.Y, aumentaBias);
+                this.BindInput(ik);
             }
             {
-                SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.DOWN, Keys.T, diminuiBias, EntityType.TOOLS);
-                BindKeyCommand bk = new BindKeyCommand(ik, BindAction.ADD);
-                CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bk);
+                SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.DOWN, Keys.T, diminuiBias);
+                this.BindInput(ik);
             }
 
             {
-                SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.J, EnableDisableParalax, EntityType.TOOLS);
-                BindKeyCommand bk = new BindKeyCommand(ik, BindAction.ADD);
-                CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bk);
+                SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.J, EnableDisableParalax);
+                this.BindInput(ik);
             }
             {
-                SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.K, EnableDisableBump, EntityType.TOOLS);
-                BindKeyCommand bk = new BindKeyCommand(ik, BindAction.ADD);
-                CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bk);
+                SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.K, EnableDisableBump);
+                this.BindInput(ik);
             }
         }
 
@@ -186,10 +179,16 @@ namespace AdvancedDemo4._0
             base.Draw(gameTime, render);
 
             ///Draw some text to the screen
-            render.RenderTextComplete("Paralax " + paralax.UseParalax, new Vector2(20, 20), Color.White, Matrix.Identity);
-            render.RenderTextComplete("Paralax ScaleBias " + paralax.ScaleBias, new Vector2(20, 40), Color.White, Matrix.Identity);
-            render.RenderTextComplete("Bump " + paralax.UseBump, new Vector2(20, 60), Color.White, Matrix.Identity);
-            render.RenderTextComplete("Use H/G Y/T to control Paralax Bias and J/K to Disable/Enable Paralax/Bump", new Vector2(20, 80), Color.White, Matrix.Identity);      
+            render.RenderTextComplete("Demo Paralax effect, look at the brick box", new Vector2(20, 20), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Paralax " + paralax.UseParalax, new Vector2(20, 40), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Paralax ScaleBias " + paralax.ScaleBias, new Vector2(20, 60), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Bump " + paralax.UseBump, new Vector2(20, 80), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Use H/G Y/T to control Paralax Bias and J/K to Disable/Enable Paralax/Bump", new Vector2(20, 100), Color.White, Matrix.Identity);      
+        }
+        protected override void CleanUp(EngineStuff engine)
+        {
+            base.CleanUp(engine);
+            lt.CleanUp();
         }
 
     }

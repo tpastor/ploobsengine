@@ -18,16 +18,8 @@ namespace IntroductionDemo4._0
     /// </summary>
     public class KeyboardInputScreen: IScene
     {        
-        ICamera cam;
-        BindKeyCommand bk1;
-        BindKeyCommand bk2;
-        BindKeyCommand bk3;
-        BindKeyCommand bk4;
+        ICamera cam;        
         LightThrowBepu lt;        
-
-        public KeyboardInputScreen()
-        {            
-        }
 
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
@@ -37,16 +29,6 @@ namespace IntroductionDemo4._0
             desc.UseFloatingBufferForLightMap = false;                                    
             renderTech = new DeferredRenderTechnic(desc) ;
         }
-
-        protected override void InitScreen(PloobsEngine.Engine.GraphicInfo GraphicInfo, PloobsEngine.Engine.EngineStuff engine)
-        {
-            base.InitScreen(GraphicInfo, engine);
-
-            ///MUST BE ADDED TO USE THE INPUT COMPONENT
-            InputAdvanced inp = new InputAdvanced();
-            engine.AddComponent(inp);
-        }
-
         protected override void  LoadContent(PloobsEngine.Engine.GraphicInfo GraphicInfo, PloobsEngine.Engine.GraphicFactory factory, IContentManager contentManager)
         {
             base.LoadContent(GraphicInfo, factory, contentManager);
@@ -93,18 +75,17 @@ namespace IntroductionDemo4._0
             
             this.World.CameraManager.AddCamera(cam);            
             
-            SimpleConcreteKeyboardInputPlayable ik1 = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.T, g1, EntityType.TOOLS, InputMask.G1);
-            bk1 = new BindKeyCommand(ik1, BindAction.ADD);
-            CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bk1);            
+            SimpleConcreteKeyboardInputPlayable ik1 = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.T, g1, InputMask.G1);
+            ///Ao usar o metodo Bind da Screen, o evento sera de tecla sera enviado enquanto a screen estiver Ativa (adicionada ao Screen manager)
+            ///Para criar um metodo global (mesmo q a screen tenha sido removida, ele continua chamando os eventos), veja DemosHomeScreen.cs
+            this.BindInput(ik1);            
            
-            SimpleConcreteKeyboardInputPlayable ik2 = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.Y, g2, EntityType.TOOLS, InputMask.G2);
-            bk2 = new BindKeyCommand(ik2, BindAction.ADD);
-            CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bk2); 
+            SimpleConcreteKeyboardInputPlayable ik2 = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.Y, g2,InputMask.G2);
+            this.BindInput(ik2);
             
-            ///MASCARA SYSTEM ESTA SEMPRE LIGADA, nao quantos TurnOffs forem usados
-            SimpleConcreteKeyboardInputPlayable ik3 = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.Space, ChangeGroup, EntityType.TOOLS,InputMask.GSYSTEM);
-            bk3 = new BindKeyCommand(ik3, BindAction.ADD);
-            CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bk3);
+            ///MASCARA SYSTEM ESTA SEMPRE LIGADA, nao importa quantos TurnOffs forem usados
+            SimpleConcreteKeyboardInputPlayable ik3 = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.Space, ChangeGroup,InputMask.GSYSTEM);
+            this.BindInput(ik3);
             
             ///AO nao especificar a mascara
             ///A mascara GSYSTEM sera aplicada (sempre ativada, NAO HA COMO DESATIVA-LA USANDO O TURNOFF)
@@ -112,11 +93,9 @@ namespace IntroductionDemo4._0
             ///StateKey.DOWN eh a todo frame enquanto a tecla estiver apertada (vale o mesmo para o UP)
             ///StateKey.PRESS eh disparado uma unica vez ao pressionar uma tecla (vale o mesmo para o RELEASE)
             ///Com combo, melhor utilizar o DOWN para capturar o evento
-            ///O CAMPO EntityType eh utilizado apenas para fins estatisticos
-            ///O BindKeyCommand serve para cadastrar o KeyboardInputPlayable (pode-se descadastrar um KeyboardInputPlayable -- a funcao callback nao sera mais chamada)
-            SimpleConcreteKeyboardInputPlayable ik4 = new SimpleConcreteKeyboardInputPlayable(StateKey.DOWN, new Keys[] { Keys.LeftControl, Keys.U }, Multiple, EntityType.TOOLS);
-            bk4 = new BindKeyCommand(ik4, BindAction.ADD);
-            CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bk4); 
+            ///O CAMPO EntityType eh utilizado apenas para fins estatisticos            
+            SimpleConcreteKeyboardInputPlayable ik4 = new SimpleConcreteKeyboardInputPlayable(StateKey.DOWN, new Keys[] { Keys.LeftControl, Keys.U }, Multiple);
+            this.BindInput(ik4);
 
             TurnOnInputMaskCommand tom = new TurnOnInputMaskCommand(InputMask.GALL);
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(tom);
@@ -199,19 +178,8 @@ namespace IntroductionDemo4._0
 
         protected override void CleanUp(PloobsEngine.Engine.EngineStuff engine)
         {
-            lt.CleanUp();
-
-            bk1.BindAction = BindAction.REMOVE;
-            CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bk1);
-
-            bk2.BindAction = BindAction.REMOVE;
-            CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bk2);
-
-            bk3.BindAction = BindAction.REMOVE;
-            CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bk3);
-
-            bk4.BindAction = BindAction.REMOVE;
-            CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bk4);
+            base.CleanUp(engine);
+            lt.CleanUp();            
         }        
     }
 }

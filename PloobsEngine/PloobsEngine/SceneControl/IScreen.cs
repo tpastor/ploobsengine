@@ -7,6 +7,8 @@ using PloobsEngine.Audio;
 using PloobsEngine.Entity;
 using PloobsEngine.Engine;
 using PloobsEngine.SceneControl.GUI;
+using PloobsEngine.Input;
+using PloobsEngine.Commands;
 #endregion
 
 namespace PloobsEngine.SceneControl
@@ -34,19 +36,111 @@ namespace PloobsEngine.SceneControl
         Inactive
     }
 
-
     /// <summary>
-    /// IScreen, base class fot all screens
+    /// IScreen, base class for all screens
     /// </summary>
     public abstract class IScreen
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IScreen"/> class.
+        /// </summary>
+        /// <param name="gui">The GUI Component, if null you cant use GUI in this screen.</param>
         public IScreen(IGui gui = null)
         {
             this.gui = gui;
         }
 
+        private Dictionary<IInput, BindKeyCommand> KeyBinds = new Dictionary<IInput, BindKeyCommand>();
+        private Dictionary<IInput, BindMouseCommand> MouseBinds = new Dictionary<IInput, BindMouseCommand>();
+
+        /// <summary>
+        /// Binds the KeyBoard input.
+        /// </summary>
+        /// <param name="ipk">The InputPlayableKeyBoard.</param>
+        protected void BindInput(InputPlayableKeyBoard ipk)
+        {
+            System.Diagnostics.Debug.Assert(ipk != null);
+            BindKeyCommand bkc = new BindKeyCommand(ipk, BindAction.ADD);
+            KeyBinds.Add(ipk,bkc);
+            CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bkc);
+        }
+
+        /// <summary>
+        /// Binds the MouseBottom input.
+        /// </summary>
+        /// <param name="ipk">The InputPlaybleMouseBottom.</param>
+        protected void BindInput(InputPlaybleMouseBottom ipk)
+        {
+            System.Diagnostics.Debug.Assert(ipk != null);
+            BindMouseCommand bkc = new BindMouseCommand(ipk, BindAction.ADD);
+            MouseBinds.Add(ipk, bkc);
+            CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bkc);
+        }
+
+        /// <summary>
+        /// Binds the MousePosition input.
+        /// </summary>
+        /// <param name="ipk">The InputPlaybleMousePosition.</param>
+        protected void BindInput(InputPlaybleMousePosition ipk)
+        {
+            System.Diagnostics.Debug.Assert(ipk != null);
+            BindMouseCommand bkc = new BindMouseCommand(ipk, BindAction.ADD);
+            MouseBinds.Add(ipk, bkc);
+            CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bkc);
+        }
+
+        /// <summary>
+        /// Removes the KeyBoard binding.
+        /// </summary>
+        /// <param name="ipk">The InputPlayableKeyBoard.</param>
+        protected void RemoveInputBinding(InputPlayableKeyBoard ipk)
+        {
+            System.Diagnostics.Debug.Assert(ipk != null);
+            BindKeyCommand bc = KeyBinds[ipk];
+            if (bc != null)
+            {
+                bc.BindAction = BindAction.REMOVE;
+                CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bc);
+            }
+        }
+
+        /// <summary>
+        /// Removes the MouseBottom binding.
+        /// </summary>
+        /// <param name="ipk">The InputPlaybleMouseBottom.</param>
+        protected void RemoveInputBinding(InputPlaybleMouseBottom ipk)
+        {
+            System.Diagnostics.Debug.Assert(ipk != null);
+            BindMouseCommand bc = MouseBinds[ipk];
+            if (bc != null)
+            {
+                bc.BindAction = BindAction.REMOVE;
+                CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bc);
+            }
+        }
+
+        /// <summary>
+        /// Removes the MousePosition bindings.
+        /// </summary>
+        /// <param name="ipk">The InputPlaybleMousePosition.</param>
+        protected void RemoveInputBinding(InputPlaybleMousePosition ipk)
+        {
+            System.Diagnostics.Debug.Assert(ipk != null);
+            BindMouseCommand bc = MouseBinds[ipk];
+            if (bc != null)
+            {
+                bc.BindAction = BindAction.REMOVE;
+                CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bc);
+            }
+        }
+
+
         private IGui gui = null;
 
+        /// <summary>
+        /// Gets the GUI interface.
+        /// REMEMBER, you need to provide an implementation in the Screen Constructor, if you dont, you cant access this property
+        /// </summary>
         protected IGui Gui
         {
             get {
@@ -107,25 +201,23 @@ namespace PloobsEngine.SceneControl
 
         #endregion
 
-        private GraphicInfo graphicInfo;
+        internal GraphicInfo graphicInfo;
 
         /// <summary>
         /// Gets the graphic info.
         /// </summary>
         public GraphicInfo GraphicInfo
         {
-            get { return graphicInfo; }
-            internal set { graphicInfo = value; }
+            get { return graphicInfo; }           
         }
-        private GraphicFactory graphicFactory;
+        internal GraphicFactory graphicFactory;
 
         /// <summary>
         /// Gets the graphic factory.
         /// </summary>
-        public GraphicFactory GraphicFactory
+        protected GraphicFactory GraphicFactory
         {
-            get { return graphicFactory; }
-            internal set { graphicFactory = value; }
+            get { return graphicFactory; }            
         }
 
         /// <summary>
@@ -207,7 +299,18 @@ namespace PloobsEngine.SceneControl
         /// Cleans up resources that dont are exclusive of the screen        
         /// </summary>
         protected virtual void CleanUp(EngineStuff engine)
-        {
+        {            
+            foreach (var item in KeyBinds.Values)
+	        {
+                item.BindAction = BindAction.REMOVE;
+                CommandProcessor.getCommandProcessor().SendCommandAssyncronous(item);
+	        }
+            foreach (var item in MouseBinds.Values)
+            {
+                item.BindAction = BindAction.REMOVE;
+                CommandProcessor.getCommandProcessor().SendCommandAssyncronous(item);
+            }
+
             IScreenUpdateable[] updts = updateables.ToArray();
 
             for (int i = 0; i < updts.Length; i++)

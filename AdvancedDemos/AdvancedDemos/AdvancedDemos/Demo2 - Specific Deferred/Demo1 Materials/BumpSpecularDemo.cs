@@ -36,7 +36,7 @@ namespace AdvancedDemo4._0
         {
             ///create the world using bepu as physic api and a simple culler implementation
             ///IT DOES NOT USE PARTICLE SYSTEMS (see the complete constructor, see the ParticleDemo to know how to add particle support)
-            world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
+            world = new IWorld(new BepuPhysicWorld(-0.097f,true), new SimpleCuller());
 
             ///Create the deferred description
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
@@ -49,27 +49,12 @@ namespace AdvancedDemo4._0
         }
 
         /// <summary>
-        /// Init Screen
-        /// </summary>
-        /// <param name="GraphicInfo">The graphic info.</param>
-        /// <param name="engine"></param>
-        protected override void InitScreen(GraphicInfo GraphicInfo, EngineStuff engine)
-        {
-            base.InitScreen(GraphicInfo, engine);
-
-            InputAdvanced ia = new InputAdvanced();
-            engine.AddComponent(ia);
-
-        }
-
-        /// <summary>
         /// Cleans up resources that arent exclusive of the screen
         /// </summary>
         /// <param name="engine"></param>
         protected override void CleanUp(EngineStuff engine)
         {
-            lt.CleanUp();
-            engine.RemoveComponent("InputAdvanced");
+            lt.CleanUp();        
             base.CleanUp(engine);
         }
 
@@ -129,14 +114,12 @@ namespace AdvancedDemo4._0
             this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo.Viewport));
 
             {
-                SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.B, bumpChange, EntityType.TOOLS);
-                BindKeyCommand bk = new BindKeyCommand(ik, BindAction.ADD);
-                CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bk);
+                SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.B, bumpChange);
+                this.BindInput(ik);
             }
             {
-                SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.V, specularChange, EntityType.TOOLS);
-                BindKeyCommand bk = new BindKeyCommand(ik, BindAction.ADD);
-                CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bk);
+                SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.V, specularChange);
+                this.BindInput(ik);
             }
 
             lt = new LightThrowBepu(this.World, factory);
@@ -177,10 +160,12 @@ namespace AdvancedDemo4._0
             base.Draw(gameTime, render);
 
             ///Draw some text to the screen
-            render.RenderTextComplete("Demo: Bump And Specular", new Vector2(GraphicInfo.Viewport.Width - 315, 15), Color.White, Matrix.Identity);
-            render.RenderTextComplete("Use V and B to Enable/Disable Bump and Specular", new Vector2(GraphicInfo.Viewport.Width - 315, 15), Color.White, Matrix.Identity);
-            render.RenderTextComplete("Bump Enabled: " + bump, new Vector2(GraphicInfo.Viewport.Width - 315, 55), Color.White, Matrix.Identity);
-            render.RenderTextComplete("Specular Enabled: " + specular, new Vector2(GraphicInfo.Viewport.Width - 315, 75), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Demo: Bump And Specular", new Vector2(20, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Use V and B to Enable/Disable Bump and Specular", new Vector2(20, 35), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Bump Enabled: " + bump, new Vector2(20, 55), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Specular Enabled: " + specular, new Vector2(20, 75), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Use Left mouse buttom to throw a light ", new Vector2(20, 95), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Use Right mouse buttom to put a light in the camera actual position", new Vector2(20, 115), Color.White, Matrix.Identity);            
         }
 
 

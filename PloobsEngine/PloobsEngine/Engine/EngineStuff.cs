@@ -9,6 +9,7 @@ using PloobsEngine.SceneControl;
 using PloobsEngine.Components;
 using PloobsEngine.Commands;
 using Microsoft.Xna.Framework.Audio;
+using PloobsEngine.Input;
 
 namespace PloobsEngine.Engine
 {
@@ -338,6 +339,9 @@ namespace PloobsEngine.Engine
                 System.Diagnostics.Debug.Assert(ScreenManager.GetScreens().Count() != 0);
                 Exit();
             }
+
+            ///THE ONLY COMPONENT ADDED BY DEFAULT
+            ComponentManager.AddComponent(new InputAdvanced());
         }
 
         /// <summary>

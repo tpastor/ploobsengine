@@ -19,11 +19,14 @@ using PloobsEngine.Commands;
 
 namespace AdvancedDemo4._0
 {   
+
     /// <summary>
     /// Env Map Screen    
     /// </summary>
     public class EnvMapScreen : IScene
     {
+        LightThrowBepu lt;
+
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             world = new IWorld(new BepuPhysicWorld(-0.97f,true), new SimpleCuller());
@@ -44,9 +47,13 @@ namespace AdvancedDemo4._0
 
             SkyBox sb = new SkyBox();
             engine.AddComponent(sb);
+        }
 
-            InputAdvanced ia = new InputAdvanced();
-            engine.AddComponent(ia);
+        protected override void CleanUp(EngineStuff engine)
+        {
+            lt.CleanUp();
+            engine.RemoveComponent("SkyBox");
+            base.CleanUp(engine);
         }
 
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory, IContentManager contentManager)
@@ -82,7 +89,7 @@ namespace AdvancedDemo4._0
 
             #endregion
 
-            LightThrowBepu lt = new LightThrowBepu(this.World, factory);
+            lt = new LightThrowBepu(this.World, factory);
 
             #region NormalLight
             DirectionalLightPE ld1 = new DirectionalLightPE(Vector3.Left, Color.White);
@@ -112,6 +119,18 @@ namespace AdvancedDemo4._0
             aa.Weights = 2;
             this.RenderTechnic.AddPostEffect(aa);
         }
+
+        protected override void Draw(GameTime gameTime, RenderHelper render)
+        {
+            ///must be called before
+            base.Draw(gameTime, render);
+
+            ///Draw some text to the screen
+            render.RenderTextComplete("Demo: Environment Mapping", new Vector2(20, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Used to fake ambient reflection, give metal appearence to an object ....", new Vector2(20, 35), Color.White, Matrix.Identity);            
+        }
+
+
     }
 
     

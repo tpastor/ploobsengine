@@ -39,12 +39,7 @@ namespace IntroductionDemo4._0
         protected override void InitScreen(PloobsEngine.Engine.GraphicInfo GraphicInfo, PloobsEngine.Engine.EngineStuff engine)
         {
             base.InitScreen(GraphicInfo, engine);
-
-            ///Add the Input Component
-            ///InputAdvanced is responsible for abstracting the xna input layer.            
-            InputAdvanced inp = new InputAdvanced();
-            engine.AddComponent(inp);
-
+                        
             engine.AddComponent(new FPSCounter());
 
             ///IF the component already exist, it wont be added, the safest way is to get if from here

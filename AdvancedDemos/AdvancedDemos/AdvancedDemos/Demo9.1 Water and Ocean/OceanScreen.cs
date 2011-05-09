@@ -31,6 +31,7 @@ namespace AdvancedDemo4._0
 
         protected override void Update(GameTime gameTime)
         {
+            ///Could use the InputAdvanced, but we choose not this time
             if (Keyboard.GetState().IsKeyDown(Keys.D1))
             {
                 waterShader.WaterAmount = 0;

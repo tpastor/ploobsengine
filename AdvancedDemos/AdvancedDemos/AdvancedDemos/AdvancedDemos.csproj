@@ -124,7 +124,7 @@
     <Compile Include="Demo2 - Specific Deferred\Demo1 Materials\BumpSpecularDemo.cs" />
     <Compile Include="Demo2 - Specific Deferred\Demo1 Materials\EnvMapScreen.cs" />
     <Compile Include="Demo2 - Specific Deferred\Demo1 Materials\ParalaxScreen.cs" />
-    <Compile Include="Demo2 - Specific Deferred\Demo1 Materials\TransparentScreen.cs" />
+    <Compile Include="Demo2 - Specific Deferred\Demo1 Materials\TransparentDeferredScreen.cs" />
     <Compile Include="Demo1 -  Loader\DeferredLoadScreen.cs" />
     <Compile Include="Demo9 -  Noise Textures\NoiseScreen.cs" />
     <Compile Include="Demo9 -  Noise Textures\PerlinNoiseScreen.cs" />
@@ -140,8 +140,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Demo3 - Sound\SoundScreen.cs" />
-    <Compile Include="Template\Demo1 - BasicScreen\BasicScreenDeferredDemo.cs" />
-    <Compile Include="Template\Demo1 - BasicScreen\BasicScreenForwardDemo.cs" />
     <Compile Include="Demo4 - Terrain\TerrainScreen.cs" />
     <Compile Include="TitleScreen.cs" />
   </ItemGroup>

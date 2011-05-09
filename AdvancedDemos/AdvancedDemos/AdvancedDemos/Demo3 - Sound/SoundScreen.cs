@@ -67,6 +67,7 @@ namespace AdvancedDemo4._0
         SoundAudioPlayer ap;
         SimpleSoundEffect se;
         Static3DSound sound;
+        LocalMediaAudioPlayer lm;
 
         /// <summary>
         /// Load content for the screen.
@@ -95,7 +96,7 @@ namespace AdvancedDemo4._0
 
             ///Load the Sounds that you hear in your Microsoft Media Player
             ///Just loading the first album found =P
-            LocalMediaAudioPlayer lm = new LocalMediaAudioPlayer();
+            lm = new LocalMediaAudioPlayer();
             AlbumCollection ac = lm.MediaLibrary.Albums;
             lm.PlayAlbum(ac[0]);
             
@@ -131,6 +132,8 @@ namespace AdvancedDemo4._0
 
         protected override void Update(GameTime gameTime)
         {
+            ///WE COULD USE THE INPUTADVANCED, but we did not.
+            ///Sometimes the state of a key remains down more than one frame
             if (Keyboard.GetState().IsKeyDown(Keys.Space))
             {
                 se.Play();
@@ -161,9 +164,22 @@ namespace AdvancedDemo4._0
         {
             base.Draw(gameTime, render);
 
-            render.RenderTextComplete("Space/Enter to Play/Pause the Sound Effect", new Vector2(10, 15), Color.White, Matrix.Identity);
-            render.RenderTextComplete("RightAlt/RightShif to Play/Stop the AudioPlayer Bye effect", new Vector2(10, 35), Color.White, Matrix.Identity);
-            render.RenderTextComplete("RightControl to Stop the 3D sound", new Vector2(10, 55), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Demo: Sound Mess, lots of sounds together ", new Vector2(10, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Space/Enter to Play/Pause the Sound Effect", new Vector2(10, 35), Color.White, Matrix.Identity);
+            render.RenderTextComplete("RightAlt/RightShif to Play/Stop the AudioPlayer Bye effect", new Vector2(10, 55), Color.White, Matrix.Identity);
+            render.RenderTextComplete("RightControl to Stop the 3D sound (Source is bellow the tree)", new Vector2(10, 75), Color.White, Matrix.Identity);
+        }
+
+        protected override void CleanUp(EngineStuff engine)
+        {
+            se.Stop();            
+            ap.StopSoundEffect("bye");
+            ap.RemoveAllSounds();
+            sound.Stop();
+            lm.StopCurrentMusic();            
+
+            engine.RemoveComponent("SkyBox");
+            base.CleanUp(engine);
         }
 
     }

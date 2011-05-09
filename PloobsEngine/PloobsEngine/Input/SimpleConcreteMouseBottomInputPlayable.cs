@@ -5,18 +5,21 @@ using System.Text;
 
 namespace PloobsEngine.Input
 {
+    /// <summary>
+    /// InputPlaybleMousePosition Implementation for mouse position
+    /// </summary>
     public class SimpleConcreteMousePositionInputPlayable : InputPlaybleMousePosition
     {
-        private InputMask mask; 
+        private InputMask mask;
 
-        public SimpleConcreteMousePositionInputPlayable(EntityType et, MouseStateChangeComplete mst)
-        {                        
-            this.mst = mst;
-            this.et = et;
-            this.mask = InputMask.GSYSTEM;
-        }
 
-        public SimpleConcreteMousePositionInputPlayable(EntityType et, MouseStateChangeComplete mst,InputMask mask)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SimpleConcreteMousePositionInputPlayable"/> class.
+        /// </summary>
+        /// <param name="mst">The MST.</param>
+        /// <param name="mask">The mask.</param>
+        /// <param name="et">The et.</param>
+        public SimpleConcreteMousePositionInputPlayable(MouseStateChangeComplete mst = null, InputMask mask = InputMask.GSYSTEM, EntityType et = Input.EntityType.TOOLS)
         {
             this.mst = mst;
             this.et = et;
@@ -29,27 +32,13 @@ namespace PloobsEngine.Input
         private EntityType et;
         private MouseStateChangeComplete mst;
 
-        
-        #endregion
-
-        #region InputPlaybleMousePosition Members
-
-        EntityType InputPlaybleMousePosition.EntityType
+        public override EntityType EntityType
         {
             get { return et; }
         }
 
-        MouseStateChangeComplete InputPlaybleMousePosition.KeyStateChange
-        {
-            get { return mst; }
-        }
 
-        #endregion
-
-        #region InputPlaybleMousePosition Members
-
-
-        public InputMask InputMask
+        public override InputMask InputMask
         {
             get { return mask; }
         }

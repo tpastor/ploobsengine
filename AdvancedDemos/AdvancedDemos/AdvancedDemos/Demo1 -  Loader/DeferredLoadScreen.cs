@@ -25,6 +25,7 @@ namespace AdvancedDemo4._0
     /// </summary>
     public class DeferredLoadScreen : IScene
     {
+        LightThrowBepu lt;
         /// <summary>
         /// Sets the world and render technich.
         /// </summary>
@@ -33,26 +34,12 @@ namespace AdvancedDemo4._0
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             ///create the world
-            world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
+            world = new IWorld(new BepuPhysicWorld(-0.097f,true), new SimpleCuller());
 
             ///Create the render technich
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
             desc.UseFloatingBufferForLightMap = true;
             renderTech = new DeferredRenderTechnic(desc);
-        }
-
-        /// <summary>
-        /// Init Screen
-        /// </summary>
-        /// <param name="GraphicInfo">The graphic info.</param>
-        /// <param name="engine"></param>
-        protected override void InitScreen(GraphicInfo GraphicInfo, EngineStuff engine)
-        {
-            base.InitScreen(GraphicInfo, engine);
-
-            InputAdvanced ia = new InputAdvanced();
-            engine.AddComponent(ia);
-
         }
 
         /// <summary>
@@ -84,7 +71,7 @@ namespace AdvancedDemo4._0
             wl.LoadWorld(factory, GraphicInfo, World, data);
 
             ///the classical light throw
-            LightThrowBepu lt = new LightThrowBepu(this.World, factory);
+            lt = new LightThrowBepu(this.World, factory);
 
             ///Classical lights
             #region NormalLight
@@ -146,6 +133,7 @@ namespace AdvancedDemo4._0
 
         /// <summary>
         /// Called when an object is found
+        ///Return the object, return null to not add this object
         /// </summary>
         /// <param name="world">The world.</param>
         /// <param name="factory">The factory.</param>
@@ -155,13 +143,21 @@ namespace AdvancedDemo4._0
         IObject wl_OnCreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ModelInformation mi)
         {            
 
-            ///DO what default would do.
+            ///Do what default would do.
             IObject obj =  WorldLoader.CreateOBJ(world, factory, ginfo, mi);
             ///Change object property here !!!
-            ///If you want, create them on your own, without using the World Loader, it is just a helper 
-            ///Return the object, return null to not add this object
-            ///
-            /// THIS IS WHAT WorldLoader.CreateOBJ DOES
+            DeferredCustomShader cd = (obj.Material.Shadder as DeferredCustomShader); ///the world loader uses deferredCustomShader for all objects
+            System.Diagnostics.Debug.Assert(cd != null);
+            ///if the obj does not use specular map
+            if (!cd.UseSpecular)
+            {
+                ///set a constant specular for all the object
+                cd.SpecularIntensity = 0.3f;
+                cd.SpecularPower = 150;
+            }
+            
+            ///If you want, create the object on your own, without using the World Loader,                          
+            ///THIS IS WHAT WorldLoader.CreateOBJ DOES
             //IModelo model = new CustomModel(factory, mi.modelName, new BatchInformation[] { mi.batchInformation}, mi.difuse, mi.bump, mi.specular, mi.glow);
             //IPhysicObject po = new TriangleMeshObject(model, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
             //IShader shader = new DeferredCustomShader(mi.HasTexture(TextureType.GLOW), mi.HasTexture(TextureType.BUMP), mi.HasTexture(TextureType.SPECULAR), mi.HasTexture(TextureType.PARALAX));
@@ -169,6 +165,30 @@ namespace AdvancedDemo4._0
             //return new IObject(dm, model, po);
 
             return obj;
+        }
+
+        /// <summary>
+        /// Cleans up resources that arent exclusive of the screen
+        /// </summary>
+        /// <param name="engine"></param>
+        protected override void CleanUp(EngineStuff engine)
+        {
+            lt.CleanUp();
+            ///MUST CALL THE BASE FUNCTION !!!!!!!!!!!!!!!!!!!
+            base.CleanUp(engine);
+        }
+
+        protected override void Draw(GameTime gameTime, RenderHelper render)
+        {
+            ///must be called before
+            base.Draw(gameTime, render);
+
+            ///Draw some text to the screen
+            render.RenderTextComplete("Demo: Scene Loaded from our XML 3DS Max Exporter Plugin", new Vector2(20, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Use mouse and ASDW to move the camera", new Vector2(20, 35), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Use Left mouse buttom to throw a light ", new Vector2(20, 55), Color.White, Matrix.Identity);            
+            render.RenderTextComplete("Use Right mouse buttom to put a light in the camera actual position", new Vector2(20, 75), Color.White, Matrix.Identity);            
+            
         }
 
     }

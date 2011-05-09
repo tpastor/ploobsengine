@@ -26,6 +26,7 @@ namespace AdvancedDemo4._0
     public class FollowerObjectSoundScreen : IScene
     {
         LightThrowBepu lt;
+        ObjectFollower3DSound sound2;
 
         /// <summary>
         /// Sets the world and render technich.
@@ -46,6 +47,8 @@ namespace AdvancedDemo4._0
 
         protected override void CleanUp(EngineStuff engine)
         {
+            sound2.Stop();
+            engine.RemoveComponent("SkyBox");
             lt.CleanUp();
             base.CleanUp(engine);
         }
@@ -66,9 +69,6 @@ namespace AdvancedDemo4._0
             sod.MasterVolume = 0.9f;
             sod.DistanceScale = 100;
             engine.SetSoundMasterOptionDescription(ref sod);
-
-            InputAdvanced ia = new InputAdvanced();
-            engine.AddComponent(ia);
         }
         
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory ,IContentManager contentManager)
@@ -93,7 +93,7 @@ namespace AdvancedDemo4._0
                 IObject o = new IObject(m, sm2, pi2);
                 this.World.AddObject(o);
 
-                ObjectFollower3DSound sound2 = new ObjectFollower3DSound(contentManager, "Songs/pianosong", o);                
+                sound2 = new ObjectFollower3DSound(contentManager, "Songs/pianosong", o);                
                 this.World.AddSoundEmitter(sound2,true);                
             }
 
@@ -129,8 +129,9 @@ namespace AdvancedDemo4._0
         {
             base.Draw(gameTime, render);
 
-            render.RenderTextComplete("The Red Ball emits Sound =P", new Vector2(10, 15), Color.White, Matrix.Identity);
-            render.RenderTextComplete("Throw a ball at it", new Vector2(10, 35), Color.White, Matrix.Identity);            
+            render.RenderTextComplete("Demo: 3D Sound Attached to an Object ", new Vector2(10, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("The Red Ball emits Sound =P", new Vector2(10, 35), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Throw a ball at it", new Vector2(10, 55), Color.White, Matrix.Identity);            
         }
 
     }

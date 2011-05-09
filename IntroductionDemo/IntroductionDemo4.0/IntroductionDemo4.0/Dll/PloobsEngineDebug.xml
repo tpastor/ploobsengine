@@ -1221,9 +1221,20 @@
             The type of the material.
             </value>
     </member>
+    <member name="T:PloobsEngine.Input.KeyStateChange">
+      <summary>
+            Called when a key event is fired
+            </summary>
+      <param name="ipk">The ipk.</param>
+    </member>
     <member name="T:PloobsEngine.Input.IInput">
       <summary>
             Interface for an Input Processor
+            </summary>
+    </member>
+    <member name="T:PloobsEngine.Input.InputPlayableKeyBoard">
+      <summary>
+            keyboard Input Binding interface
             </summary>
     </member>
     <member name="T:PloobsEngine.Material.DeferredAnimatedTextureShader">
@@ -2052,8 +2063,50 @@
     </member>
     <member name="T:PloobsEngine.SceneControl.IScreen">
       <summary>
-            IScreen, base class fot all screens
+            IScreen, base class for all screens
             </summary>
+    </member>
+    <member name="M:PloobsEngine.SceneControl.IScreen.#ctor(PloobsEngine.SceneControl.GUI.IGui)">
+      <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.SceneControl.IScreen" /> class.
+            </summary>
+      <param name="gui">The GUI Component, if null you cant use GUI in this screen.</param>
+    </member>
+    <member name="M:PloobsEngine.SceneControl.IScreen.BindInput(PloobsEngine.Input.InputPlayableKeyBoard)">
+      <summary>
+            Binds the KeyBoard input.
+            </summary>
+      <param name="ipk">The InputPlayableKeyBoard.</param>
+    </member>
+    <member name="M:PloobsEngine.SceneControl.IScreen.BindInput(PloobsEngine.Input.InputPlaybleMouseBottom)">
+      <summary>
+            Binds the MouseBottom input.
+            </summary>
+      <param name="ipk">The InputPlaybleMouseBottom.</param>
+    </member>
+    <member name="M:PloobsEngine.SceneControl.IScreen.BindInput(PloobsEngine.Input.InputPlaybleMousePosition)">
+      <summary>
+            Binds the MousePosition input.
+            </summary>
+      <param name="ipk">The InputPlaybleMousePosition.</param>
+    </member>
+    <member name="M:PloobsEngine.SceneControl.IScreen.RemoveInputBinding(PloobsEngine.Input.InputPlayableKeyBoard)">
+      <summary>
+            Removes the KeyBoard binding.
+            </summary>
+      <param name="ipk">The InputPlayableKeyBoard.</param>
+    </member>
+    <member name="M:PloobsEngine.SceneControl.IScreen.RemoveInputBinding(PloobsEngine.Input.InputPlaybleMouseBottom)">
+      <summary>
+            Removes the MouseBottom binding.
+            </summary>
+      <param name="ipk">The InputPlaybleMouseBottom.</param>
+    </member>
+    <member name="M:PloobsEngine.SceneControl.IScreen.RemoveInputBinding(PloobsEngine.Input.InputPlaybleMousePosition)">
+      <summary>
+            Removes the MousePosition bindings.
+            </summary>
+      <param name="ipk">The InputPlaybleMousePosition.</param>
     </member>
     <member name="M:PloobsEngine.SceneControl.IScreen.AddScreenUpdateable(PloobsEngine.IScreenUpdateable)">
       <summary>
@@ -2097,6 +2150,12 @@
     <member name="M:PloobsEngine.SceneControl.IScreen.CleanUp(PloobsEngine.Engine.EngineStuff)">
       <summary>
             Cleans up resources that dont are exclusive of the screen        
+            </summary>
+    </member>
+    <member name="P:PloobsEngine.SceneControl.IScreen.Gui">
+      <summary>
+            Gets the GUI interface.
+            REMEMBER, you need to provide an implementation in the Screen Constructor, if you dont, you cant access this property
             </summary>
     </member>
     <member name="P:PloobsEngine.SceneControl.IScreen.ScreenState">
@@ -3345,7 +3404,7 @@
       <param name="model">The model.</param>
       <param name="batchInformationS">The batch information S.</param>
     </member>
-    <member name="M:PloobsEngine.Modelo.ModelBuilderHelper.Extract(Microsoft.Xna.Framework.Matrix[],Microsoft.Xna.Framework.Graphics.ModelMesh,PloobsEngine.Modelo.BatchInformation[]@)">
+    <member name="M:PloobsEngine.Modelo.ModelBuilderHelper.Extract(Microsoft.Xna.Framework.Matrix[],Microsoft.Xna.Framework.Graphics.ModelMeshPart,PloobsEngine.Modelo.BatchInformation@)">
       <summary>
             Creates a BatchInformation from a XNA ModelMesh
             </summary>
@@ -4058,6 +4117,11 @@
             Use Multisampling ?
             </summary>
     </member>
+    <member name="F:PloobsEngine.Engine.InitialEngineDescription.useMipMapWhenPossible">
+      <summary>
+            Use MipMap When creating the Render Targets
+            </summary>
+    </member>
     <member name="F:PloobsEngine.Engine.InitialEngineDescription.isFullScreen">
       <summary>
             FullScreen Mode ?
@@ -4085,7 +4149,7 @@
       <returns>
       </returns>
     </member>
-    <member name="M:PloobsEngine.Engine.InitialEngineDescription.#ctor(System.String,System.Int32,System.Int32,System.Boolean,Microsoft.Xna.Framework.Graphics.GraphicsProfile,System.Boolean,System.Boolean,System.Boolean,PloobsEngine.Engine.Logger.ILogger)">
+    <member name="M:PloobsEngine.Engine.InitialEngineDescription.#ctor(System.String,System.Int32,System.Int32,System.Boolean,Microsoft.Xna.Framework.Graphics.GraphicsProfile,System.Boolean,System.Boolean,System.Boolean,PloobsEngine.Engine.Logger.ILogger,System.Boolean)">
       <summary>
             Initializes a new instance of the <see cref="T:PloobsEngine.Engine.InitialEngineDescription" /> struct.
             </summary>
@@ -4624,6 +4688,19 @@
       <summary>
             Spherical
             </summary>
+    </member>
+    <member name="T:PloobsEngine.Input.SimpleConcreteMousePositionInputPlayable">
+      <summary>
+            InputPlaybleMousePosition Implementation for mouse position
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.Input.SimpleConcreteMousePositionInputPlayable.#ctor(PloobsEngine.Input.MouseStateChangeComplete,PloobsEngine.Input.InputMask,PloobsEngine.Input.EntityType)">
+      <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Input.SimpleConcreteMousePositionInputPlayable" /> class.
+            </summary>
+      <param name="mst">The MST.</param>
+      <param name="mask">The mask.</param>
+      <param name="et">The et.</param>
     </member>
     <member name="T:PloobsEngine.SceneControl.OnPicked">
       <summary>
@@ -8130,35 +8207,27 @@
             draw and update not called
             </summary>
     </member>
-    <member name="M:PloobsEngine.Input.SimpleConcreteKeyboardInputPlayable.#ctor(PloobsEngine.Input.StateKey,Microsoft.Xna.Framework.Input.Keys[],PloobsEngine.Input.KeyStateChange,PloobsEngine.Input.EntityType,PloobsEngine.Input.InputMask)">
+    <member name="M:PloobsEngine.Input.SimpleConcreteKeyboardInputPlayable.#ctor(PloobsEngine.Input.StateKey,Microsoft.Xna.Framework.Input.Keys,PloobsEngine.Input.KeyStateChange,PloobsEngine.Input.InputMask,PloobsEngine.Input.EntityType)">
       <summary>
-            For Combo
+            Initializes a new instance of the <see cref="T:PloobsEngine.Input.SimpleConcreteKeyboardInputPlayable" /> class.
+            
             </summary>
-      <param name="state">
-      </param>
-      <param name="key">
-      </param>
-      <param name="callback">
-      </param>
-      <param name="type">
-      </param>
-      <param name="mask">
-      </param>
+      <param name="state">The state.</param>
+      <param name="key">The key.</param>
+      <param name="callback">The callback.</param>
+      <param name="mask">The mask.</param>
+      <param name="type">The type.</param>
     </member>
-    <member name="M:PloobsEngine.Input.SimpleConcreteKeyboardInputPlayable.#ctor(PloobsEngine.Input.StateKey,Microsoft.Xna.Framework.Input.Keys[],PloobsEngine.Input.KeyStateChange,PloobsEngine.Input.EntityType)">
+    <member name="M:PloobsEngine.Input.SimpleConcreteKeyboardInputPlayable.#ctor(PloobsEngine.Input.StateKey,Microsoft.Xna.Framework.Input.Keys[],PloobsEngine.Input.KeyStateChange,PloobsEngine.Input.InputMask,PloobsEngine.Input.EntityType)">
       <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Input.SimpleConcreteKeyboardInputPlayable" /> class.
             For Combo
             </summary>
-      <param name="state">
-      </param>
-      <param name="key">
-      </param>
-      <param name="callback">
-      </param>
-      <param name="type">
-      </param>
-      <param name="mask">
-      </param>
+      <param name="state">The state.</param>
+      <param name="key">The key.</param>
+      <param name="callback">The callback.</param>
+      <param name="mask">The mask.</param>
+      <param name="type">The type.</param>
     </member>
     <member name="T:PloobsEngine.Engine.OnGraphicInfoChange">
       <summary>

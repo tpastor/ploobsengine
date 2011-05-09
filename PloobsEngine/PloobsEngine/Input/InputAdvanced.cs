@@ -466,7 +466,7 @@ namespace PloobsEngine.Input
                 if (this.IsMouseButtonDown(ip.MouseButtons))
                 { 
                     if(processMask(ip.InputMask))
-                    ip.KeyStateChange(currentMouseState);
+                    ip.FireEvent(currentMouseState);
                     
                 }
             }
@@ -475,7 +475,7 @@ namespace PloobsEngine.Input
                 if (this.IsMouseButtonPress(ip.MouseButtons))
                 {
                     if (processMask(ip.InputMask))
-                    ip.KeyStateChange(currentMouseState);
+                        ip.FireEvent(currentMouseState);
                     
                 }
             }
@@ -484,7 +484,7 @@ namespace PloobsEngine.Input
                 if (this.IsMouseButtonRelease(ip.MouseButtons))
                 {
                     if (processMask(ip.InputMask))
-                    ip.KeyStateChange(currentMouseState);
+                        ip.FireEvent(currentMouseState);
                     
                 }
             }
@@ -493,15 +493,14 @@ namespace PloobsEngine.Input
                 if (this.IsMouseButtonUp(ip.MouseButtons))
                 {
                     if (processMask(ip.InputMask))
-                    ip.KeyStateChange(currentMouseState);
+                        ip.FireEvent(currentMouseState);
                     
                 }
             }
             foreach (InputPlaybleMousePosition ip in _mouseMapperPosition)
             {
                 if (processMask(ip.InputMask))
-                ip.KeyStateChange(currentMouseState);
-             
+                ip.FireEvent(currentMouseState);             
             }
 
         }
@@ -536,7 +535,7 @@ namespace PloobsEngine.Input
 
                 if (allOk)
                     {                        
-                        ip.KeyStateChange(ip);
+                        ip.FireEvent();
                     }
             }
             foreach (InputPlayableKeyBoard ip in _keysMapperPress)
@@ -556,7 +555,7 @@ namespace PloobsEngine.Input
 
                 if (allOk)
                 {
-                    ip.KeyStateChange(ip);
+                    ip.FireEvent();
                 }
             }
             foreach (InputPlayableKeyBoard ip in _keysMapperRelease)
@@ -576,7 +575,7 @@ namespace PloobsEngine.Input
 
                 if (allOk)
                 {
-                    ip.KeyStateChange(ip);
+                    ip.FireEvent();
                 }                
             }
             foreach (InputPlayableKeyBoard ip in _keysMapperUp)
@@ -596,7 +595,7 @@ namespace PloobsEngine.Input
 
                 if (allOk)
                 {
-                    ip.KeyStateChange(ip);
+                    ip.FireEvent();
                 }                
                
             }  

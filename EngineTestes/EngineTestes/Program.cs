@@ -31,7 +31,7 @@ namespace EngineTestes
             //manager.AddScreen(new PostEffectScreen());
             //manager.AddScreen(new SoundScreen());
             //manager.AddScreen(new TransparentForwardScreen());
-            manager.AddScreen(new BilboardScreen());
+            //manager.AddScreen(new BilboardScreen());
             //manager.AddScreen(new TerrainScreen());
             //manager.AddScreen(new TransparentDeferredScreen());
             //manager.AddScreen(new AAScreen());
@@ -39,7 +39,7 @@ namespace EngineTestes
             //manager.AddScreen(new TechDemoScreenModel());
             //manager.AddScreen(new GUIScreen());
             //manager.AddScreen(new FGUIScreen());
-            //manager.AddScreen(new ForwardLoadScreen());
+            manager.AddScreen(new ForwardLoadScreen());
             
 
             

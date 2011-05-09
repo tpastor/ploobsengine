@@ -11,7 +11,7 @@
       <Time>2011-05-06T18:25:39.9066152-03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Model\cenario_0.xml</Key>
-        <Value>2011-05-06T22:02:44.5095799-03:00</Value>
+        <Value>2011-05-09T13:49:56.2717535-03:00</Value>
       </Dependency>
       <Request>C:\Users\tpastor\Desktop\port\EngineTestes\EngineTestes\bin\x86\Debug\Content\Textures\islandmap_0.xnb</Request>
     </Item>
@@ -25,7 +25,7 @@
       <Time>2011-05-06T18:25:39.8786136-03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Model\block_0.xml</Key>
-        <Value>2011-05-06T22:02:47.6607602-03:00</Value>
+        <Value>2011-05-09T13:49:59.4249338-03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -38,7 +38,7 @@
       <Time>2011-05-06T18:25:40.4986491-03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Model\shadow_0.xml</Key>
-        <Value>2011-05-06T22:02:54.5181524-03:00</Value>
+        <Value>2011-05-09T13:50:05.5802859-03:00</Value>
       </Dependency>
       <Request>C:\Users\tpastor\Desktop\port\EngineTestes\EngineTestes\bin\x86\Debug\Content\Textures\sponza_floor_a_diff_0.xnb</Request>
       <Request>C:\Users\tpastor\Desktop\port\EngineTestes\EngineTestes\bin\x86\Debug\Content\Textures\sponza_column_b_diff_0.xnb</Request>
@@ -53,7 +53,7 @@
       <Time>2011-05-06T18:25:39.8746134-03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Model\ball_0.xml</Key>
-        <Value>2011-05-06T22:03:00.6085007-03:00</Value>
+        <Value>2011-05-09T13:50:12.1306606-03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -66,7 +66,7 @@
       <Time>2011-05-06T18:25:41.1336854-03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Model\uzi_0.xml</Key>
-        <Value>2011-05-06T22:03:00.7835107-03:00</Value>
+        <Value>2011-05-09T13:50:12.2766689-03:00</Value>
       </Dependency>
       <Request>C:\Users\tpastor\Desktop\port\EngineTestes\EngineTestes\bin\x86\Debug\Content\Textures\uzi_0.xnb</Request>
     </Item>
@@ -80,7 +80,7 @@
       <Time>2011-05-06T18:25:41.0126785-03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Model\techdemo_0.xml</Key>
-        <Value>2011-05-06T22:03:01.9995803-03:00</Value>
+        <Value>2011-05-09T13:50:13.2717258-03:00</Value>
       </Dependency>
       <Request>C:\Users\tpastor\Desktop\port\EngineTestes\EngineTestes\bin\x86\Debug\Content\Textures\asphalt_0.xnb</Request>
       <Request>C:\Users\tpastor\Desktop\port\EngineTestes\EngineTestes\bin\x86\Debug\Content\Textures\Concrete_0.xnb</Request>
@@ -96,7 +96,7 @@
       <Time>2011-05-06T22:01:43.3230803-03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Model\leonScene_0.xml</Key>
-        <Value>2011-05-06T22:03:15.0433263-03:00</Value>
+        <Value>2011-05-09T13:50:27.0445136-03:00</Value>
       </Dependency>
       <Request>C:\Users\tpastor\Desktop\port\EngineTestes\EngineTestes\bin\x86\Debug\Content\Textures\lion_0.xnb</Request>
       <Request>C:\Users\tpastor\Desktop\port\EngineTestes\EngineTestes\bin\x86\Debug\Content\Textures\spnza_bricks_a_diff_0.xnb</Request>
@@ -1315,7 +1315,7 @@
       <Time>2011-05-06T18:25:39.2235762-03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Model\EnemyBeast_0.xml</Key>
-        <Value>2011-05-06T22:06:31.5895682-03:00</Value>
+        <Value>2011-05-09T13:53:45.698876-03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -1331,7 +1331,7 @@
       <Time>2011-05-06T18:25:39.4105869-03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Model\PlayerMarine_0.xml</Key>
-        <Value>2011-05-06T22:06:37.7099182-03:00</Value>
+        <Value>2011-05-09T13:53:51.8242263-03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -1344,7 +1344,7 @@
       <Time>2011-05-06T18:25:39.8346111-03:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Model\WeaponMachineGun_0.xml</Key>
-        <Value>2011-05-06T22:06:39.402015-03:00</Value>
+        <Value>2011-05-09T13:53:53.008294-03:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -1699,11 +1699,11 @@
     <Assemblies>
       <Assembly>
         <Key>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\Dlls\XNAnimationPipeline.dll</Key>
-        <Value>2011-05-06T18:26:14.0415676-03:00</Value>
+        <Value>2011-05-07T20:19:05.6593854-03:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\Dlls\NeoforceDll\bin\Debug\TomShane.Neoforce.Importers.dll</Key>
-        <Value>2011-05-06T18:26:11.9274467-03:00</Value>
+        <Value>2011-05-09T11:49:51.4196595-03:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>

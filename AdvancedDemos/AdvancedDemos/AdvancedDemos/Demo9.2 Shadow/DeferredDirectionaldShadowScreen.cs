@@ -44,9 +44,6 @@ namespace AdvancedDemo4._0
 
             SkyBox skybox = new SkyBox();
             engine.AddComponent(skybox);
-
-            InputAdvanced ia = new InputAdvanced();
-            engine.AddComponent(ia);
         }
 
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory, IContentManager contentManager)
