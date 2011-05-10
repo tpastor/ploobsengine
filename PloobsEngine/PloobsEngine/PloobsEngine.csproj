@@ -190,8 +190,7 @@
     <Compile Include="Particles\DPSFParticleManager.cs" />
     <Compile Include="Particles\IParticleManager.cs" />
     <Compile Include="Particles\IParticleSystem.cs" />
-    <Compile Include="Physic\Constraints\BepuConstraint\PointPointConstraint.cs" />
-    <Compile Include="Physic\Constraints\IPhysicConstraint.cs" />
+    <Compile Include="Physic\IPhysicWorld.cs" />
     <Compile Include="Physic\PhysicObjects\BepuObject\CapsuleObject.cs" />
     <Compile Include="Physic\PhysicObjects\BepuObject\CharacterController.cs" />
     <Compile Include="Physic\PhysicObjects\BepuObject\CharacterObject.cs" />
@@ -261,7 +260,6 @@
     <Compile Include="Modelo\ModelBuilderHelper.cs" />
     <Compile Include="Modelo\SimpleModel.cs" />
     <Compile Include="Physic\BepuPhysicWorld.cs" />
-    <Compile Include="Physic\IPhysicWorld.cs" />
     <Compile Include="Physic\PhysicObjects\BepuObject\BepuEntityObject.cs" />
     <Compile Include="Physic\PhysicObjects\BepuObject\BoxObject.cs" />
     <Compile Include="Physic\PhysicObjects\BepuObject\GhostObject.cs" />

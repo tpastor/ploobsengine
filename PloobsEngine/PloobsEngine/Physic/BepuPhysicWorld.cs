@@ -16,8 +16,6 @@ using BEPUphysics.Settings;
 using BEPUphysics.Constraints;
 using BEPUphysics.PositionUpdating;
 using BEPUphysics.CollisionTests.CollisionAlgorithms;
-using PloobsEngine.Physic.Constraints;
-using PloobsEngine.Physic.Constraints.BepuConstraint;
 
 namespace PloobsEngine.Physics
 {
@@ -29,9 +27,6 @@ namespace PloobsEngine.Physics
     {
         Space space;                
         private List<IPhysicObject> objs;
-        private List<IPhysicConstraint> constraints;
-
-
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BepuPhysicWorld"/> class.
@@ -44,8 +39,6 @@ namespace PloobsEngine.Physics
         {
             space = new Space();
             objs = new List<IPhysicObject>();
-            constraints = new List<IPhysicConstraint>();
-
 
             space.ForceUpdater.Gravity = new Vector3(0, gravity, 0);            
 
@@ -112,27 +105,7 @@ namespace PloobsEngine.Physics
             space.Update();        
         }
 
-        /// <summary>
-        /// Adds the constraint
-        /// </summary>
-        /// <param name="ctn"></param>
-        public override void AddConstraint(IPhysicConstraint ctn)
-        {
-
-            if (ctn.PhysicConstraintType == PhysicConstraintTypes.POINTPOINT)
-            {
-                PointPointConstraint co = (PointPointConstraint)ctn;
-
-                if (co != null)
-                {
-                    space.Add(co.Joint);
-                    constraints.Add(co); 
-                }
-            }
-
-        }
-
-
+        
 
         /// <summary>
         /// Adds the object.
@@ -375,11 +348,6 @@ namespace PloobsEngine.Physics
             get { return objs; }
         }
 
-
-        public override List<IPhysicConstraint> PhysicConstraints
-        {
-            get { return constraints; }
-        }
 
         /// <summary>
         /// Gets the object data.
