@@ -15,15 +15,13 @@ using PloobsEngine.Cameras;
 using PloobsEngine.Physics;
 using PloobsEngine.Physics.Bepu;
 using PloobsEngine.Material;
-using PloobsEngine.Physic.Constraints;
-using PloobsEngine.Physic.Constraints.BepuConstraint;
+
 
 namespace PloobsEngine.Loader
 {
     public delegate IObject CreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation mi);
     public delegate ILight CreateILight(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ILight li);
-    public delegate ICamera CreateICamera(IWorld world, GraphicFactory factory, GraphicInfo ginfo, CameraInfo cinfo);
-    public delegate IPhysicConstraint CreateConstraint(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ConstraintInfo cinfo, IObject o1, IObject o2);
+    public delegate ICamera CreateICamera(IWorld world, GraphicFactory factory, GraphicInfo ginfo, CameraInfo cinfo);    
     public delegate void ProcessDummies(IWorld world, DummyInfo dinfo);
 
     public class WorldLoader
@@ -118,14 +116,14 @@ namespace PloobsEngine.Loader
         }
 
 
-        public static IPhysicConstraint CreateConstraint(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ConstraintInfo cinfo, IObject o1, IObject o2)
-        {
+        //public static IPhysicConstraint CreateConstraint(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ConstraintInfo cinfo, IObject o1, IObject o2)
+        //{
 
-            PointPointConstraint con = new PointPointConstraint(cinfo.Position, o1.PhysicObject, o2.PhysicObject);
+        //    PointPointConstraint con = new PointPointConstraint(cinfo.Position, o1.PhysicObject, o2.PhysicObject);
 
-            return con;
+        //    return con;
 
-        }
+        //}
 
         public static ICamera CreateCamera(IWorld world, GraphicFactory factory, GraphicInfo ginfo, CameraInfo cinfo)
         {
@@ -136,8 +134,7 @@ namespace PloobsEngine.Loader
 
         public event CreateIObject OnCreateIObject = null;
         public event CreateILight OnCreateILight = null;
-        public event CreateICamera OnCreateICamera = null;
-        public event CreateConstraint OnCreateConstraint = null;
+        public event CreateICamera OnCreateICamera = null;        
         public event ProcessDummies OnProcessDummies = null;
 
         public void LoadWorld(GraphicFactory factory, GraphicInfo ginfo, IWorld world, ModelLoaderData worldData)
@@ -179,23 +176,23 @@ namespace PloobsEngine.Loader
 
 
 
-                if (o1.PhysicObject.PhysicObjectTypes != PhysicObjectTypes.TRIANGLEMESHOBJECT && o2.PhysicObject.PhysicObjectTypes != PhysicObjectTypes.TRIANGLEMESHOBJECT)
-                {
-                    if (OnCreateConstraint != null)
-                    {
-                        IPhysicConstraint constr = OnCreateConstraint(world, factory, ginfo, item, o1, o2);
-                        if (constr != null)
-                            world.AddConstraint(constr);
+                //if (o1.PhysicObject.PhysicObjectTypes != PhysicObjectTypes.TRIANGLEMESHOBJECT && o2.PhysicObject.PhysicObjectTypes != PhysicObjectTypes.TRIANGLEMESHOBJECT)
+                //{
+                //    if (OnCreateConstraint != null)
+                //    {
+                //        IPhysicConstraint constr = OnCreateConstraint(world, factory, ginfo, item, o1, o2);
+                //        if (constr != null)
+                //            world.AddConstraint(constr);
 
-                    }
-                    else
-                    {
-                        IPhysicConstraint constr = WorldLoader.CreateConstraint(world, factory, ginfo, item, o1, o2);
-                        world.AddConstraint(constr);
+                //    }
+                //    else
+                //    {
+                //        IPhysicConstraint constr = WorldLoader.CreateConstraint(world, factory, ginfo, item, o1, o2);
+                //        world.AddConstraint(constr);
 
 
-                    }
-                }
+                //    }
+                //}
             }
 
             foreach (var item in worldData.LightsInfo)
