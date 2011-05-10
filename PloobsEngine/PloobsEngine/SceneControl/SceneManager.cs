@@ -107,8 +107,8 @@ namespace PloobsEngine.SceneControl
         {
             screen.screenManager = this;            
 
-            screen.GraphicFactory = GraphicFactory;
-            screen.GraphicInfo = GraphicInfo;
+            screen.graphicFactory = GraphicFactory;
+            screen.graphicInfo = GraphicInfo;
 
 
             screen.iInitScreen(GraphicInfo,engine);

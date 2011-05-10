@@ -23,6 +23,7 @@ namespace AdvancedDemo4._0
     public class DeferredDirectionaldShadowScreen : IScene
     {
 
+        LightThrowBepu lt;
         Vec3Interpolator inter = new Vec3Interpolator();
         DirectionalLightPE ld1;
 
@@ -30,8 +31,7 @@ namespace AdvancedDemo4._0
         {
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
 
-            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
-            desc.DefferedDebug = false;
+            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
             desc.UseFloatingBufferForLightMap = true;
             ShadowLightMap css = new ShadowLightMap(ShadowFilter.PCF7x7SOFT, 2048);
             desc.DeferredLightMap = css;
@@ -44,10 +44,6 @@ namespace AdvancedDemo4._0
 
             SkyBox skybox = new SkyBox();
             engine.AddComponent(skybox);
-
-            InputAdvanced ia = new InputAdvanced();
-            engine.AddComponent(ia);
-
         }
 
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory, IContentManager contentManager)
@@ -61,7 +57,7 @@ namespace AdvancedDemo4._0
             wl.OnCreateILight += new CreateILight(wl_OnCreateILight);
             wl.LoadWorld(factory, GraphicInfo, World, data);
         
-            LightThrowBepu lt = new LightThrowBepu(this.World, factory);
+            lt = new LightThrowBepu(this.World, factory);
 
             #region NormalLight            
             ld1 = new DirectionalLightPE(new Vector3(0.2f, -1, 0.2f), Color.White);
@@ -92,10 +88,9 @@ namespace AdvancedDemo4._0
 
         IObject wl_OnCreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ModelInformation mi)
         {
-            foreach (var item in mi.batchInformation)
-            {
-                item.ModelLocalTransformation = item.ModelLocalTransformation * Matrix.CreateScale(0.5f);
-            }
+
+            mi.batchInformation.ModelLocalTransformation = mi.batchInformation.ModelLocalTransformation * Matrix.CreateScale(0.5f);
+            
             return WorldLoader.CreateOBJ(world, factory, ginfo, mi);
         }
 
@@ -105,6 +100,22 @@ namespace AdvancedDemo4._0
             ld1.LightDirection = inter.CurrentValue;
 
             base.Update(gameTime);
+        }
+
+
+        protected override void CleanUp(EngineStuff engine)
+        {
+            lt.CleanUp();
+            engine.RemoveComponent("SkyBox");
+            base.CleanUp(engine);
+        }
+
+        protected override void Draw(GameTime gameTime, RenderHelper render)
+        {
+            base.Draw(gameTime, render);
+            render.RenderTextComplete("Directional Shadow Sample using cascade Shadow Mapping", new Vector2(10, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("This sample uses PCF7x7 filter with soft edges, it is heavy", new Vector2(10, 35), Color.White, Matrix.Identity);
+            render.RenderTextComplete("The Shadow Map resolution is 2048X2048 --big ", new Vector2(10, 55), Color.White, Matrix.Identity);
         }
 
     }

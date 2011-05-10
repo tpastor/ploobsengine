@@ -17,8 +17,7 @@ using PloobsEngine.Engine;
 namespace IntroductionDemo4._0
 {
     /// <summary>
-    /// Screen showing some of the Bepu collision Skins 
-    /// Same as JigLibX, only the constructor order of the physics objects chances (intentionaly !!!)
+    /// Screen showing some of the Bepu collision Skins     
     /// </summary>
     public class CollisionTypesBepuScreen : IScene
     {        
@@ -28,22 +27,15 @@ namespace IntroductionDemo4._0
 
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            world = new IWorld(new BepuPhysicWorld(-0.98f,true,1,true), new SimpleCuller());
+            BepuPhysicWorld bepuWorld = new BepuPhysicWorld(-0.98f,true,1,true);
+            world = new IWorld(bepuWorld, new SimpleCuller());
+
+            BepuPhysicWorld.ApplyHighStabilitySettings(bepuWorld);
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
             desc.UseFloatingBufferForLightMap = true;
             desc.BackGroundColor = Color.CornflowerBlue;
             renderTech = new DeferredRenderTechnic(desc);
-        }
-
-        protected override void InitScreen(PloobsEngine.Engine.GraphicInfo GraphicInfo, PloobsEngine.Engine.EngineStuff engine)
-        {
-            base.InitScreen(GraphicInfo, engine);
-
-            ///Add the Input Component
-            ///InputAdvanced is responsible for abstracting the xna input layer.            
-            InputAdvanced inp = new InputAdvanced();
-            engine.AddComponent(inp);
         }
 
         protected override void LoadContent(PloobsEngine.Engine.GraphicInfo GraphicInfo, PloobsEngine.Engine.GraphicFactory factory, IContentManager contentManager)
@@ -119,7 +111,9 @@ namespace IntroductionDemo4._0
             }
 
             ///Call the function releaseObjects when Space key is pressed
-            InputPlayableKeyBoard ip1 = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Microsoft.Xna.Framework.Input.Keys.Space, releaseObjects, EntityType.TOOLS);
+            InputPlayableKeyBoard ip1 = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Microsoft.Xna.Framework.Input.Keys.Space, releaseObjects);
+            ///Using the Global Method, need to release when screen is cleaned
+            ///Check the KeyboardInputScreen for how to use it locally
             mm = new BindKeyCommand(ip1, BindAction.ADD);
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(mm);
 

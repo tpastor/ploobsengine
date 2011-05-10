@@ -46,11 +46,7 @@ namespace EngineTestes
                 this.World.AddObject(obj); 
             }
 
-
-
-
             this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo.Viewport));
-
 
             this.RenderTechnic.AddPostEffect(new BlackWhitePostEffect());
         }

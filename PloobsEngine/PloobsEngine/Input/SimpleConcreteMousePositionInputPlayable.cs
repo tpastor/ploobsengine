@@ -9,23 +9,15 @@ namespace PloobsEngine.Input
     {
         private InputMask mask;
 
-        public SimpleConcreteMouseBottomInputPlayable(StateKey sk , EntityType et, MouseButtons mb , MouseStateChangeComplete mst)
+        public SimpleConcreteMouseBottomInputPlayable(StateKey sk, EntityType et, MouseButtons mb, MouseStateChangeComplete mst = null, InputMask mask = Input.InputMask.GSYSTEM)
         {
             this.sk = sk;
             this.mb = mb;
-            this.mst = mst;
-            this.et = et;
-            this.mask = InputMask.GSYSTEM;
-        }
-        public SimpleConcreteMouseBottomInputPlayable(StateKey sk, EntityType et, MouseButtons mb, MouseStateChangeComplete mst, InputMask mask)
-        {
-            this.sk = sk;
-            this.mb = mb;
-            this.mst = mst;
+            this.KeyStateChange += mst;
             this.et = et;
             this.mask = mask;
         }
-        public InputMask InputMask
+        public  override InputMask InputMask
         {
             get { return mask; }
         }
@@ -35,32 +27,24 @@ namespace PloobsEngine.Input
 
         private StateKey sk;
         private EntityType et;
-        private MouseButtons mb;
-        private MouseStateChangeComplete mst;
+        private MouseButtons mb;        
 
-        public StateKey StateKey
+        public override StateKey StateKey
         {
             get { return sk; }
         }
 
-        public MouseButtons MouseButtons
+        public override MouseButtons MouseButtons
         {
             get { return mb; }
         }
 
-        public EntityType EntityType
+        public override EntityType EntityType
         {
             get { return et; }
         }
 
-        public MouseStateChangeComplete KeyStateChange
-        {
-            get {
-
-                return mst;
-            }
-        }
-
+        
         #endregion
     }
 }

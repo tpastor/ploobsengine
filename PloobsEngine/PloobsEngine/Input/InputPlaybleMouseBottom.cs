@@ -8,25 +8,31 @@ namespace PloobsEngine.Input
 {
     public delegate void MouseStateChangeComplete(MouseState ms);
 
-    public interface InputPlaybleMouseBottom : IInput
+    public abstract class InputPlaybleMouseBottom : IInput
     {
-        StateKey StateKey
+        public abstract StateKey StateKey
         {
             get;
         }
-        MouseButtons MouseButtons
+        public abstract MouseButtons MouseButtons
         {
             get;
         }
-        EntityType EntityType
+        public abstract EntityType EntityType
         {
             get;
         }
-        MouseStateChangeComplete KeyStateChange
+
+        public event MouseStateChangeComplete KeyStateChange = null;
+
+        internal void FireEvent(MouseState ms)
         {
-            get;
+            if (KeyStateChange != null)
+                KeyStateChange(ms);
+
         }
-        InputMask InputMask
+        
+        public abstract InputMask InputMask
         {
             get;
         }

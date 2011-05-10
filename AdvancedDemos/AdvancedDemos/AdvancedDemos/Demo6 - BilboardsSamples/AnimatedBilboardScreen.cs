@@ -17,14 +17,21 @@ using PloobsEngine.Commands;
 
 namespace AdvancedDemo4._0
 {
+    /// <summary>
+    /// Animated Bilboard Sample
+    /// </summary>
     public class AnimatedBilboardScreen : IScene
     {
+        /// <summary>
+        /// Sets the world and render technich.
+        /// </summary>
+        /// <param name="renderTech">The render tech.</param>
+        /// <param name="world">The world.</param>
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
 
-            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
-            desc.DefferedDebug = true;
+            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();        
             desc.UseFloatingBufferForLightMap = false;            
             renderTech = new DeferredRenderTechnic(desc);
         }
@@ -40,6 +47,7 @@ namespace AdvancedDemo4._0
         {
             base.LoadContent(GraphicInfo,factory, contentManager);
          
+            ///Classic island
             SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
             TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
             DeferredNormalShader shader = new DeferredNormalShader();
@@ -47,7 +55,10 @@ namespace AdvancedDemo4._0
             IObject obj = new IObject(fmaterial, simpleModel, tmesh);
             this.World.AddObject(obj);
 
+
+            ///The Animated Bilboard
             {
+                ///A lits with all the bilboards positions
                 List<Vector3> poss = new List<Vector3>();
                 for (int i = 0; i < 10; i++)
                 {
@@ -59,13 +70,23 @@ namespace AdvancedDemo4._0
                         poss.Add(new Vector3(x, 5, y));
                     }
                 }
+
+                ///Create the Bilboard Model
+                ///the Textures\\wizard Texture is a Horizontal animated texture (very simple with 3 frames only)
                 StaticBilboardModel bm = new StaticBilboardModel(factory, "Bilbs", "Textures\\wizard", poss);
+                ///The shader that will render it, pass the number of frames, the time to wait between frames and the type of the bilboard
+                ///Spherical ALWAYS face the camera
+                ///Cilindric has a axis that the bilboard can rotate around, to face the camera
                 DeferredAnimatedTextureShader cb = new DeferredAnimatedTextureShader(3, 100, BilboardType.Cilindric);
+                ///We can animated the two up vertices of the bilboard quad (useful in grass for example)
                 cb.Amplitude = 0f;
+                ///Auad Scale 
                 cb.Scale = new Vector2(50, 50);
+                ///Color atenuation, this will multiply the Texture colors
                 cb.Atenuation = new Vector4(0.4f, 0.4f, 0.4f, 1);
                 DeferredMaterial matfor = new DeferredMaterial(cb);
-                GhostObject go = new GhostObject();
+                ///no physical representation (REMEMBER; all bilboards are the SAME OBJECT)
+                GhostObject go = new GhostObject(new Vector3(70,0,0),Matrix.Identity,Vector3.One);                
                 IObject obj2 = new IObject(matfor, bm, go);
                 this.World.AddObject(obj2);
             }           
@@ -92,9 +113,22 @@ namespace AdvancedDemo4._0
 
             this.World.CameraManager.AddCamera(new CameraFirstPerson(true,GraphicInfo.Viewport));
 
-            SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//cubemap");
+            SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grassCube");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
 
+        }
+
+
+        protected override void CleanUp(EngineStuff engine)
+        {
+            engine.RemoveComponent("SkyBox");
+            base.CleanUp(engine);
+        }
+
+        protected override void Draw(GameTime gameTime, RenderHelper render)
+        {
+            base.Draw(gameTime, render);
+            render.RenderTextComplete("Animated Bilboard Sample, putting animated textures on Quads", new Vector2(10, 15), Color.White, Matrix.Identity);
         }
 
     }

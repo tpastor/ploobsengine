@@ -17,17 +17,29 @@ using PloobsEngine.Commands;
 
 namespace AdvancedDemo4._0
 {
+    /// <summary>
+    /// Procedural Animated Bilboard
+    /// </summary>
     public class ProceduralAnimatedBilboardScreen : IScene
     {
+        /// <summary>
+        /// Sets the world and render technich.
+        /// </summary>
+        /// <param name="renderTech">The render tech.</param>
+        /// <param name="world">The world.</param>
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
 
-            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
-            desc.DefferedDebug = true;
+            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
             desc.UseFloatingBufferForLightMap = false;            
             renderTech = new DeferredRenderTechnic(desc);
         }
+        /// <summary>
+        /// Init Screen
+        /// </summary>
+        /// <param name="GraphicInfo">The graphic info.</param>
+        /// <param name="engine"></param>
         protected override void InitScreen(GraphicInfo GraphicInfo, EngineStuff engine)
         {
             base.InitScreen(GraphicInfo, engine);
@@ -36,6 +48,12 @@ namespace AdvancedDemo4._0
             engine.AddComponent(skybox);
         }
 
+        /// <summary>
+        /// Load content for the screen.
+        /// </summary>
+        /// <param name="GraphicInfo"></param>
+        /// <param name="factory"></param>
+        /// <param name="contentManager"></param>
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory ,IContentManager contentManager)
         {
             base.LoadContent(GraphicInfo,factory, contentManager);
@@ -54,18 +72,29 @@ namespace AdvancedDemo4._0
                     for (int j = 0; j < 10; j++)
                     {
                         float x, y;
-                        x = i * 100;
-                        y = j * 100;
+                        x = i * 15;
+                        y = j * 15;
                         poss.Add(new Vector3(x, 5, y));
                     }
                 }
-                StaticBilboardModel bm = new StaticBilboardModel(factory, "Bilbs", "Textures\\grama1", poss);
+
+                ///The Bilboard Model
+                StaticBilboardModel bm = new StaticBilboardModel(factory, "Bilbs", "Textures\\grama2", poss);
+                ///The Procedural Animated BilboardShader
                 DeferredProceduralAnimatedcilindricBilboardShader cb = new DeferredProceduralAnimatedcilindricBilboardShader();
+                ///You can change parameters like Amplitude and Speed to control the movement                
+                cb.MovimentSpeedControl = 1000;
+                
                 DeferredMaterial matfor = new DeferredMaterial(cb);
                 GhostObject go = new GhostObject();
+                go.Position = new Vector3(70, 0, 0);
                 IObject obj2 = new IObject(matfor, bm, go);
                 this.World.AddObject(obj2);
+
             }
+
+
+
 
 
             #region NormalLight
@@ -89,10 +118,23 @@ namespace AdvancedDemo4._0
 
             this.World.CameraManager.AddCamera(new CameraFirstPerson(true,GraphicInfo.Viewport));
 
-            SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//cubemap");
+            SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grassCube");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
-
         }
+
+        protected override void CleanUp(EngineStuff engine)
+        {
+            engine.RemoveComponent("SkyBox");
+            base.CleanUp(engine);
+        }
+
+        protected override void Draw(GameTime gameTime, RenderHelper render)
+        {
+            base.Draw(gameTime, render);
+            render.RenderTextComplete("Procedural Animated Bilboard Sample", new Vector2(10, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("The Top Quad Vertices are Animated, good for Grass simulation =P", new Vector2(10, 35), Color.White, Matrix.Identity);
+        }
+
 
     }
 }

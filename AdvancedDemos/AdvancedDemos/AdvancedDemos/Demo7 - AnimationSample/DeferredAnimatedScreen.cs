@@ -20,14 +20,18 @@ using PloobsEngine.Input;
 
 namespace AdvancedDemo4._0
 {
+    /// <summary>
+    /// Animation Screen
+    /// </summary>
     public class DeferredAnimatedScreen : IScene
     {
+        LightThrowBepu lt;
+
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             world = new IWorld(new BepuPhysicWorld(-0.98f,true,1), new SimpleCuller());
 
-            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
-            desc.DefferedDebug = false;
+            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
             desc.UseFloatingBufferForLightMap = true;
             renderTech = new DeferredRenderTechnic(desc);
         }
@@ -38,9 +42,6 @@ namespace AdvancedDemo4._0
 
             SkyBox skybox = new SkyBox();
             engine.AddComponent(skybox);
-
-            InputAdvanced ia = new InputAdvanced();
-            engine.AddComponent(ia);
         }
 
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory ,IContentManager contentManager)
@@ -63,7 +64,7 @@ namespace AdvancedDemo4._0
                 ///Adiciona no mundo
                 this.World.AddObject(marine);
 
-                LightThrowBepu lt = new LightThrowBepu(this.World, factory);
+                lt = new LightThrowBepu(this.World, factory);
             }
 
             {
@@ -74,8 +75,6 @@ namespace AdvancedDemo4._0
                 IObject obj = new IObject(fmaterial, simpleModel, tmesh);
                 this.World.AddObject(obj);
             }
-
-
 
             #region NormalLight
             DirectionalLightPE ld1 = new DirectionalLightPE(Vector3.Left, Color.White);
@@ -102,8 +101,24 @@ namespace AdvancedDemo4._0
 
             SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grasscube");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
+        }
 
-        }       
+        protected override void CleanUp(EngineStuff engine)
+        {
+            lt.CleanUp();
+            engine.RemoveComponent("SkyBox");
+            base.CleanUp(engine);
+        }
+
+        protected override void Draw(GameTime gameTime, RenderHelper render)
+        {
+            base.Draw(gameTime, render);
+
+            render.RenderTextComplete("Animation Sample - Not Sync with the Walk cycle", new Vector2(10, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Use TFGH to control the character", new Vector2(10, 35), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Space To Shoot", new Vector2(10, 55), Color.White, Matrix.Identity);
+            render.RenderTextComplete("R to jump", new Vector2(10, 75), Color.White, Matrix.Identity);
+        }
 
     }
 }

@@ -24,13 +24,14 @@ namespace AdvancedDemo4._0
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
-            desc.UseFloatingBufferForLightMap = false;
+            desc.UseFloatingBufferForLightMap = true;
             renderTech = new DeferredRenderTechnic(desc);
         }
         DeferredWaterShader waterShader;
 
         protected override void Update(GameTime gameTime)
         {
+            ///Could use the InputAdvanced, but we choose not this time
             if (Keyboard.GetState().IsKeyDown(Keys.D1))
             {
                 waterShader.WaterAmount = 0;
@@ -133,7 +134,7 @@ namespace AdvancedDemo4._0
 
             OceanModel wm = new OceanModel(factory, "WaterModel", Vector3.Zero, 256, 256);
             GhostObject go = new GhostObject(Vector3.Zero, Matrix.Identity, Vector3.One * 2);
-            waterShader = new DeferredWaterShader("Textures/cubemap");
+            waterShader = new DeferredWaterShader("Textures/grassCube");
             waterShader.SetDefault();
             DeferredMaterial wmaterial = new DeferredMaterial(waterShader);
             IObject obj = new IObject(wmaterial, wm, go);
@@ -145,7 +146,7 @@ namespace AdvancedDemo4._0
             DirectionalLightPE ld3 = new DirectionalLightPE(Vector3.Backward, Color.White);
             DirectionalLightPE ld4 = new DirectionalLightPE(Vector3.Forward, Color.White);
             DirectionalLightPE ld5 = new DirectionalLightPE(Vector3.Down, Color.White);
-            float li = 0.5f;
+            float li = 0.4f;
             ld1.LightIntensity = li;
             ld2.LightIntensity = li;
             ld3.LightIntensity = li;
@@ -158,11 +159,27 @@ namespace AdvancedDemo4._0
             this.World.AddLight(ld5);
             #endregion
 
+            this.RenderTechnic.AddPostEffect(new AntiAliasingPostEffectStalker());
+
             this.World.CameraManager.AddCamera(new CameraFirstPerson(true, GraphicInfo.Viewport));
 
-            SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//cubemap");
+            SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grassCube");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
 
+        }
+
+        protected override void Draw(GameTime gameTime, RenderHelper render)
+        {
+            base.Draw(gameTime, render);
+            render.RenderTextComplete("Procedural Ocean Sample", new Vector2(10, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Press Keys 1 to 9 to change water parameters", new Vector2(10, 35), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Experiment changing some parameters on the code", new Vector2(10, 55), Color.White, Matrix.Identity);
+        }
+
+        protected override void CleanUp(EngineStuff engine)
+        {
+            engine.RemoveComponent("SkyBox");
+            base.CleanUp(engine);
         }
 
     }

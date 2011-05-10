@@ -40,18 +40,7 @@ namespace IntroductionDemo4._0
             desc.BackGroundColor = Color.CornflowerBlue;
             renderTech = new DeferredRenderTechnic(desc);
         }
-
-        protected override void InitScreen(PloobsEngine.Engine.GraphicInfo GraphicInfo, PloobsEngine.Engine.EngineStuff engine)
-        {
-            base.InitScreen(GraphicInfo, engine);
-
-            ///Add the Input Component
-            ///InputAdvanced is responsible for abstracting the xna input layer.            
-            InputAdvanced inp = new InputAdvanced();
-            engine.AddComponent(inp);
-        }
-
-
+        
         protected override void LoadContent(PloobsEngine.Engine.GraphicInfo GraphicInfo, PloobsEngine.Engine.GraphicFactory factory, IContentManager contentManager)
         {
             base.LoadContent(GraphicInfo, factory, contentManager);                                          

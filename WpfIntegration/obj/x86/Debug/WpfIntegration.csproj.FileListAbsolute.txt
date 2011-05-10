@@ -1,5 +1,0 @@
-C:\Users\tpastor\Desktop\port\WpfIntegration\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\tpastor\Desktop\port\WpfIntegration\obj\x86\Debug\MainWindow.baml
-C:\Users\tpastor\Desktop\port\WpfIntegration\obj\x86\Debug\MainWindow.g.cs
-C:\Users\tpastor\Desktop\port\WpfIntegration\obj\x86\Debug\App.g.cs
-C:\Users\tpastor\Desktop\port\WpfIntegration\obj\x86\Debug\WpfIntegration_MarkupCompile.cache

@@ -27,7 +27,7 @@ struct BBPixelToFrame
 };
 
 //------- Technique: CylBillboard --------
-BBVertexToPixel CylBillboardVS(float3 inPos: POSITION0, float2 inTexCoord: TEXCOORD0 , float3 normal : Normal0)
+BBVertexToPixel CylBillboardVS(float4 inPos: POSITION0, float2 inTexCoord: TEXCOORD0 , float3 normal : Normal0)
 {
     BBVertexToPixel Output = (BBVertexToPixel)0;
 

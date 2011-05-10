@@ -29,12 +29,6 @@ namespace IntroductionDemo4._0
             renderTech = new DeferredRenderTechnic(desc) ;   
         }
 
-        protected override void InitScreen(PloobsEngine.Engine.GraphicInfo GraphicInfo, PloobsEngine.Engine.EngineStuff engine)
-        {
-            InputAdvanced ia = new InputAdvanced();
-            engine.AddComponent(ia);
-            base.InitScreen(GraphicInfo, engine);
-        }
 
         protected override void  LoadContent(PloobsEngine.Engine.GraphicInfo GraphicInfo, PloobsEngine.Engine.GraphicFactory factory, IContentManager contentManager)
         {

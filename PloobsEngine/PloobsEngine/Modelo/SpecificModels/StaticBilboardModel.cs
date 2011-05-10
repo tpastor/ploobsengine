@@ -40,7 +40,7 @@ namespace PloobsEngine.Modelo
             }
 
 
-            VertexBuffer vertexBufferS = factory.CreateVertexBuffer(VertexPositionTexture.VertexDeclaration, billboardVertices.Count(), BufferUsage.None);
+            VertexBuffer vertexBufferS = factory.CreateVertexBuffer(VertexPositionTexture.VertexDeclaration, billboardVertices.Count(), BufferUsage.WriteOnly);
             vertexBufferS.SetData(billboardVertices);
             int noVertices = billboardVertices.Count();
             int noTriangles = noVertices / 3;
