@@ -40,16 +40,6 @@ namespace IntroductionDemo4._0
             renderTech = new DeferredRenderTechnic(desc);
         }
 
-        protected override void InitScreen(PloobsEngine.Engine.GraphicInfo GraphicInfo, PloobsEngine.Engine.EngineStuff engine)
-        {
-            base.InitScreen(GraphicInfo, engine);
-
-            ///Add the Input Component
-            ///InputAdvanced is responsible for abstracting the xna input layer.            
-            InputAdvanced inp = new InputAdvanced();
-            engine.AddComponent(inp);
-        }
-
 
         protected override void LoadContent(PloobsEngine.Engine.GraphicInfo GraphicInfo, PloobsEngine.Engine.GraphicFactory factory, IContentManager contentManager)
         {
@@ -79,15 +69,15 @@ namespace IntroductionDemo4._0
 
             ///Associando callbacks com eventos do teclado
             {
-                InputPlayableKeyBoard ipp = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.R, Start, EntityType.TOOLS);
+                InputPlayableKeyBoard ipp = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.R, Start);
                 bkk0 = new BindKeyCommand(ipp, BindAction.ADD);                
                 CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bkk0);
 
-                InputPlayableKeyBoard ipp2 = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.T, Stop, EntityType.TOOLS);
+                InputPlayableKeyBoard ipp2 = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.T, Stop);
                 bkk1 = new BindKeyCommand(ipp2, BindAction.ADD);
                 CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bkk1);
 
-                InputPlayableKeyBoard ipp3 = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.Y, Load, EntityType.TOOLS);
+                InputPlayableKeyBoard ipp3 = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.Y, Load);
                 bkk2 = new BindKeyCommand(ipp3, BindAction.ADD);
                 CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bkk2);
             }

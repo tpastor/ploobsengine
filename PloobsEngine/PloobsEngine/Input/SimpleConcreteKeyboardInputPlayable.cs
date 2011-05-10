@@ -9,72 +9,53 @@ namespace PloobsEngine.Input
     public class SimpleConcreteKeyboardInputPlayable : InputPlayableKeyBoard
     {
         private StateKey state;
-        private Keys[] key;
-        private KeyStateChange callback;
+        private Keys[] key;        
         private EntityType type;
         private InputMask mask;
 
-        public SimpleConcreteKeyboardInputPlayable(StateKey state , Keys key ,KeyStateChange callback , EntityType type = Input.EntityType.TOOLS )
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SimpleConcreteKeyboardInputPlayable"/> class.
+        /// 
+        /// </summary>
+        /// <param name="state">The state.</param>
+        /// <param name="key">The key.</param>
+        /// <param name="callback">The callback.</param>
+        /// <param name="mask">The mask.</param>
+        /// <param name="type">The type.</param>
+        public SimpleConcreteKeyboardInputPlayable(StateKey state, Keys key, KeyStateChange callback = null, InputMask mask = InputMask.GSYSTEM, EntityType type = Input.EntityType.TOOLS)
         {
             this.state = state;
             this.key = new Keys[1];
             this.key[0] = key;
-            this.callback = callback;
-            this.type = type;
-            this.mask = InputMask.GSYSTEM;
-
-        }
-
-        public SimpleConcreteKeyboardInputPlayable(StateKey state, Keys key, KeyStateChange callback, EntityType type, InputMask mask)
-        {
-            this.state = state;
-            this.key = new Keys[1];
-            this.key[0] = key;
-            this.callback = callback;
+            if (callback != null)
+                this.KeyStateChange += callback;
             this.type = type;
             this.mask = mask;
-
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="SimpleConcreteKeyboardInputPlayable"/> class.
         /// For Combo
         /// </summary>
-        /// <param name="state"></param>
-        /// <param name="key"></param>
-        /// <param name="callback"></param>
-        /// <param name="type"></param>
-        /// <param name="mask"></param>
-        public SimpleConcreteKeyboardInputPlayable(StateKey state, Keys[] key, KeyStateChange callback, EntityType type, InputMask mask)
+        /// <param name="state">The state.</param>
+        /// <param name="key">The key.</param>
+        /// <param name="callback">The callback.</param>
+        /// <param name="mask">The mask.</param>
+        /// <param name="type">The type.</param>
+        public SimpleConcreteKeyboardInputPlayable(StateKey state, Keys[] key, KeyStateChange callback = null, InputMask mask = InputMask.GSYSTEM, EntityType type = Input.EntityType.TOOLS)
         {
             this.state = state;
             this.key = key;
-            this.callback = callback;
+            if(callback != null)
+                this.KeyStateChange += callback;
             this.type = type;
             this.mask = mask;
-
         }
-
-        /// <summary>
-        /// For Combo
-        /// </summary>
-        /// <param name="state"></param>
-        /// <param name="key"></param>
-        /// <param name="callback"></param>
-        /// <param name="type"></param>
-        /// <param name="mask"></param>
-        public SimpleConcreteKeyboardInputPlayable(StateKey state, Keys[] key, KeyStateChange callback, EntityType type)
-        {
-            this.state = state;
-            this.key = key;            
-            this.callback = callback;
-            this.type = type;
-            this.mask = InputMask.GSYSTEM;
-
-        }
+        
 
         #region InputPlayable Members
 
-        public StateKey StateKey
+        public override StateKey StateKey
         {
             get
             {
@@ -83,22 +64,17 @@ namespace PloobsEngine.Input
             
         }
 
-        public Microsoft.Xna.Framework.Input.Keys[] Keys
+        public override Microsoft.Xna.Framework.Input.Keys[] Keys
         {
             get { return key; }
         }
 
-        public KeyStateChange KeyStateChange
-        {
-            get { return callback; }
-        }
-
         #endregion
 
-        #region InputPlayable Members
+        #region  InputPlayable Members
 
 
-        public EntityType EntityType
+        public override EntityType EntityType
         {
             get { return type; }
         }
@@ -108,10 +84,12 @@ namespace PloobsEngine.Input
         #region InputPlayableKeyBoard Members
 
 
-        public InputMask InputMask
+        public override InputMask InputMask
         {
             get { return mask; }
         }
+
+
 
         #endregion
     }

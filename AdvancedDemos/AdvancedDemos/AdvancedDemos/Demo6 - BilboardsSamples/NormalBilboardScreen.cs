@@ -17,14 +17,16 @@ using PloobsEngine.Commands;
 
 namespace AdvancedDemo4._0
 {
+    /// <summary>
+    /// Simplest Bilboard Sample
+    /// </summary>
     public class NormalBilboardScreen : IScene
     {
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
 
-            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
-            desc.DefferedDebug = true;
+            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
             desc.UseFloatingBufferForLightMap = false;            
             renderTech = new DeferredRenderTechnic(desc);
         }
@@ -59,10 +61,16 @@ namespace AdvancedDemo4._0
                         poss.Add(new Vector3(x, 5, y));
                     }
                 }
+                ///Bilboard Model
                 StaticBilboardModel bm = new StaticBilboardModel(factory, "Bilbs", "..\\Content\\Textures\\tree", poss);
+                ///Bilboard Shader, this one is otimized for Cilindrical Bilboard only
                 DeferredCilindricGPUBilboardShader cb = new DeferredCilindricGPUBilboardShader();
+                cb.Atenuation = new Vector4(0.8f, 0.8f, 0.8f, 1);
                 DeferredMaterial matfor = new DeferredMaterial(cb);
+                ///You can Change Parameters (position, scale ...) of ALL bilboards changing the World Matrix of the physical Object
+                ///for Ghost Object we can use go.setInternalWorldMatrix.
                 GhostObject go = new GhostObject();
+                go.Position = new Vector3(200, -10f, 0);
                 IObject obj2 = new IObject(matfor, bm, go);
                 this.World.AddObject(obj2);
             }
@@ -89,10 +97,22 @@ namespace AdvancedDemo4._0
 
             this.World.CameraManager.AddCamera(new CameraFirstPerson(true,GraphicInfo.Viewport));
 
-            SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//cubemap");
+            SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grassCube");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
-
         }
+
+        protected override void CleanUp(EngineStuff engine)
+        {
+            engine.RemoveComponent("SkyBox");
+            base.CleanUp(engine);
+        }
+
+        protected override void Draw(GameTime gameTime, RenderHelper render)
+        {
+            base.Draw(gameTime, render);
+            render.RenderTextComplete("Normal Bilboard Sample, otimized Cilindrical bilboard", new Vector2(10, 15), Color.White, Matrix.Identity);
+        }
+
 
     }
 }

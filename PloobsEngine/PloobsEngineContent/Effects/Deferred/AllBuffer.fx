@@ -4,6 +4,8 @@ float4x4 View;
 float4x4 Projection;
 float specularIntensity;
 float specularPower ; 
+float specularIntensityScale;
+float specularPowerScale ; 
 float id;
 
 float2 scaleBias;
@@ -20,8 +22,8 @@ sampler2D heightSampler = sampler_state
 	Texture = <HeightMap>;
     ADDRESSU = WRAP;
 	ADDRESSV = WRAP;
-	MAGFILTER = LINEAR;
-	MINFILTER = LINEAR;
+	MAGFILTER = ANISOTROPIC;
+	MINFILTER = ANISOTROPIC;
 	MIPFILTER = LINEAR;
 };
 
@@ -30,8 +32,8 @@ texture glow;
 sampler glowSampler = sampler_state
 {
     Texture = (glow);
-    MAGFILTER = LINEAR;
-    MINFILTER = LINEAR;
+    MAGFILTER = ANISOTROPIC;
+    MINFILTER = ANISOTROPIC;
     MIPFILTER = LINEAR;
     AddressU = Wrap;
     AddressV = Wrap;
@@ -42,8 +44,8 @@ texture Texture;
 sampler diffuseSampler = sampler_state
 {
     Texture = (Texture);
-    MAGFILTER = LINEAR;
-    MINFILTER = LINEAR;
+    MAGFILTER = ANISOTROPIC;
+    MINFILTER = ANISOTROPIC;
     MIPFILTER = LINEAR;
     AddressU = Wrap;
     AddressV = Wrap;
@@ -54,8 +56,8 @@ texture SpecularMap;
 sampler specularSampler = sampler_state
 {
     Texture = (SpecularMap);
-    MagFilter = LINEAR;
-    MinFilter = LINEAR;
+    MagFilter = ANISOTROPIC;
+    MinFilter = ANISOTROPIC;
     Mipfilter = LINEAR;
     AddressU = Wrap;
     AddressV = Wrap;
@@ -66,8 +68,8 @@ texture NormalMap;
 sampler normalSampler = sampler_state
 {
     Texture = (NormalMap);
-    MagFilter = LINEAR;
-    MinFilter = LINEAR;
+    MagFilter = ANISOTROPIC;
+    MinFilter = ANISOTROPIC;
     Mipfilter = LINEAR;
     AddressU = Wrap;
     AddressV = Wrap;
@@ -116,6 +118,7 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 		output.tangentToWorld[1] = mul(input.Binormal, WorldInverseTranspose);
 		output.tangentToWorld[2] = mul(input.Normal, WorldInverseTranspose );    
 		output.Normal = 0; 
+
 		
 		if(useParalax)
 		{	
@@ -176,9 +179,9 @@ PixelShaderOutput PixelShaderFunction(VertexShaderOutput input)
 	{
 	    float4 specularAttributes = tex2D(specularSampler, input.TexCoord);  
 		//specular Intensity
-		output.Color.a = specularAttributes.r;
+		output.Color.a = specularAttributes.r * specularIntensityScale;
 		//specular Power
-		output.Normal.a = specularAttributes.a;  
+		output.Normal.a = specularAttributes.a * specularPowerScale;  
     }
     else
     {

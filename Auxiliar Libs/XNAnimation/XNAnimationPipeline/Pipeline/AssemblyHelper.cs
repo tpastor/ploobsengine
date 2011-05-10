@@ -34,10 +34,18 @@ namespace XNAnimationPipeline.Pipeline
             // Assembly name tokenized
             string fullAssemblyName = type.Assembly.FullName;
             string[] assemblyTokens = fullAssemblyName.Split(assemblySplitter, StringSplitOptions.None);
-
+#if DEBUG
             return
-                typeFullName + ", " + assemblyTokens[0] + ", " + assemblyTokens[1] + ", " +
+                //typeFullName + ", " + assemblyTokens[0] + ", " + assemblyTokens[1] + ", " +
+                //    assemblyTokens[2] + ", " + GetAssemblyPublicKey(targetPlatform);
+                typeFullName + ", " + "PloobsEngineDebug" + ", " + assemblyTokens[1] + ", " +
                     assemblyTokens[2] + ", " + GetAssemblyPublicKey(targetPlatform);
+#else                  
+                typeFullName + ", " + "PloobsEngine" + ", " + assemblyTokens[1] + ", " +
+                    assemblyTokens[2] + ", " + GetAssemblyPublicKey(targetPlatform);
+
+#endif
+
         }
 
         internal static string GetAssemblyPublicKey(TargetPlatform targetPlatform)

@@ -9,6 +9,9 @@ using PloobsEngine.Physics;
 
 namespace AdvancedDemo4._0
 {
+    /// <summary>
+    /// Point light that follow an object
+    /// </summary>
     public class MoveablePointLight : PointLightPE
     {
 

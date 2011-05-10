@@ -8,6 +8,7 @@ using PloobsEngine.MessageSystem;
 using Microsoft.Xna.Framework.Audio;
 using PloobsEngine.SceneControl;
 using PloobsEngine.Cameras;
+using PloobsEngine.Engine.Logger;
 
 namespace PloobsEngine.Audio
 {
@@ -28,8 +29,15 @@ namespace PloobsEngine.Audio
             emiter = new AudioEmitter();
         }
 
+#if DEBUG
+        bool isAdded = false;
+#endif
         internal void Apply3D()
         {
+#if DEBUG
+            isAdded = true;
+#endif
+
             soundEngineInstance.Apply3D(listener, emiter);
         }
 
@@ -79,6 +87,14 @@ namespace PloobsEngine.Audio
         /// </summary>
         public virtual void Pause()
         {
+#if DEBUG
+            if (!isAdded)
+            {
+                ActiveLogger.LogMessage("Cant Play/Stop/Pause/Resume a 3D Sound before adding it to the world, Action ignored", LogLevel.RecoverableError);
+                return;
+            }
+#endif
+
             soundEngineInstance.Pause();
         }
         /// <summary>
@@ -86,6 +102,14 @@ namespace PloobsEngine.Audio
         /// </summary>
         public virtual void Resume()
         {
+#if DEBUG
+            if (!isAdded)
+            {
+                ActiveLogger.LogMessage("Cant Play/Stop/Pause/Resume a 3D Sound before adding it to the world, Action ignored", LogLevel.RecoverableError);
+                return;
+            }
+#endif
+
             soundEngineInstance.Resume();
         }
         /// <summary>
@@ -93,6 +117,14 @@ namespace PloobsEngine.Audio
         /// </summary>
         public virtual void Play()
         {
+#if DEBUG
+            if (!isAdded)
+            {
+                ActiveLogger.LogMessage("Cant Play/Stop/Pause/Resume a 3D Sound before adding it to the world, Action ignored", LogLevel.RecoverableError);
+                return;
+            }
+#endif
+
             soundEngineInstance.Play();
         }
         /// <summary>
@@ -100,6 +132,14 @@ namespace PloobsEngine.Audio
         /// </summary>
         public virtual void Stop(bool imediately = true)
         {
+#if DEBUG
+            if (!isAdded)
+            {
+                ActiveLogger.LogMessage("Cant Play/Stop/Pause/Resume a 3D Sound before adding it to the world, Action ignored", LogLevel.RecoverableError);
+                return;
+            }
+#endif
+
             soundEngineInstance.Stop(imediately);
         }
         /// <summary>

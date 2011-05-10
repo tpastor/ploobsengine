@@ -29,46 +29,59 @@ namespace AdvancedDemo4._0
         public DemosHomeScreen() : base(null) { }
 
         int index = 0;
-
-        static int totalDemos = 15;
+        
         EngineStuff engine;
 
-        private int[] screenList = new int[totalDemos];
+        private int[] screenList = new int[22];
 
         private IScreen GetScreen(int screenNumber)
         {
             switch (screenNumber)
             {
-                //case 0:
-                //    return new BasicScreenDeferredDemo();
-                //case 1:
-                //    return new BasicScreenForwardDemo();
-                //case 2:
-                //    return new KeyboardInputScreen();
-                //case 3:
-                //    return new LightInterpolationScreen();
-                //case 4:
-                //    return new PointLightScreen();
-                //case 5:
-                //    return new SpotLightScreen();
-                //case 6:
-                //    return new CollisionTypesBepuScreen();
-                //case 7:
-                //    return new GravitationalBepuScreen();
-                //case 8:
-                //    return new MovementScreen();
-                //case 9:
-                //    return new StressBepuScreen();
-                //case 10:
-                //    return new CameraPathScreen();
-                //case 11:
-                //    return new CameraScreens();                
-                //case 12:
-                //    return new TriggerBepuScreen();                    
-                //case 13:
-                //    return new PickingScreen();                    
-                //case 14:                    
-                //    return new ChangingMessagesScreen();
+                case 0:
+                    return new DeferredLoadScreen();
+                case 1:
+                    return new BumpSpecularDemo();
+                case 2:
+                    return new EnvMapScreen();
+                case 3:
+                    return new ParalaxScreen();
+                case 4:
+                    return new TransparentDeferredScreen();
+                case 5:
+                    return new SoundScreen();
+                case 6:
+                    return new FollowerObjectSoundScreen();
+                case 7:
+                    return new TerrainScreen();
+                case 8:
+                    return new ParticleScreen();
+                case 9:
+                    return new AnimatedBilboardScreen();
+                case 10:
+                    return new InstancedBilboardScreen();
+                case 11:
+                    return new NormalBilboardScreen();
+                case 12:
+                    return new ProceduralAnimatedBilboardScreen();
+                case 13:
+                    return new DeferredAnimatedScreen();
+                case 14:
+                    return new DGUIScreen();
+                case 15:
+                    return new FGUIScreen();
+                case 16:
+                    return new NoiseScreen();
+                case 17:
+                    return new PerlinNoiseScreen();
+                case 18:
+                    return new ProceduralTextureScreen();
+                case 19:
+                    return new OceanScreen();
+                case 20:
+                    return new WaterCompleteScreen();
+                case 21:
+                    return new DeferredDirectionaldShadowScreen();                
                 default:
                     break;
             }
@@ -92,18 +105,18 @@ namespace AdvancedDemo4._0
         {
  	        base.LoadContent(GraphicInfo, factory, contentManager);
              
-            for (int i = 0; i < totalDemos; i++)
+            for (int i = 0; i < screenList.Length; i++)
             {
                 screenList.SetValue(i, i);
             }
 
             {
-                SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.F1, ChangeDemo, EntityType.TOOLS, InputMask.GSYSTEM);
+                SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.F1, ChangeDemo);
                 BindKeyCommand bk = new BindKeyCommand(ik, BindAction.ADD);
                 CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bk);
             }
             {
-                SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.Escape, LeaveGame, EntityType.TOOLS, InputMask.GSYSTEM);
+                SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.Escape, LeaveGame);
                 BindKeyCommand bk = new BindKeyCommand(ik, BindAction.ADD);
                 CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bk);
             }

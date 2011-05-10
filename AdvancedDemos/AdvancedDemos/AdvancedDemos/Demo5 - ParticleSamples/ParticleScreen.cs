@@ -18,14 +18,25 @@ using PloobsEngine.Particles;
 
 namespace AdvancedDemo4._0
 {
+    /// <summary>
+    /// Particle System Screen
+    /// We use http://www.xnaparticles.com/ for the particles
+    /// I STRONGLY suggets that everyone download their package of samples and see what this gooooood APi can Do
+    /// The integration is VERY simple, just copy and past those samples here and it is working
+    /// We showed how to do it for 2 samples, the Smoke and the Snow =P
+    /// </summary>
     public class ParticleScreen : IScene
     {
+        /// <summary>
+        /// Sets the world and render technich.
+        /// </summary>
+        /// <param name="renderTech">The render tech.</param>
+        /// <param name="world">The world.</param>
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller(),new DPSFParticleManager());
 
-            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
-            desc.DefferedDebug = false;
+            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
             desc.UseFloatingBufferForLightMap = true;
             renderTech = new DeferredRenderTechnic(desc);
         }   
@@ -40,21 +51,36 @@ namespace AdvancedDemo4._0
 
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory ,IContentManager contentManager)
         {
-            base.LoadContent(GraphicInfo,factory, contentManager);
+            base.LoadContent(GraphicInfo, factory, contentManager);
 
-            SnowParticleSystem snow = new SnowParticleSystem();            
-            DPFSParticleSystem ps = new DPFSParticleSystem("snow",snow );            
-            this.World.ParticleManager.AddAndInitializeParticleSystem(ps);
+            {
+                SnowParticleSystem snow = new SnowParticleSystem();
+                DPFSParticleSystem ps = new DPFSParticleSystem("snow", snow);
+                this.World.ParticleManager.AddAndInitializeParticleSystem(ps);
 
-            ///cant set emiter position before adding the particle
-            snow.Emitter.PositionData.Position = new Vector3(1000, 0, 0);            
+                ///cant set emiter position before adding the particle
+                ///IF YOU DO SO, IT WILL NOT WORK
+                snow.Emitter.PositionData.Position = new Vector3(1000, 0, 0);
+            }
 
+            {
+                SmokeParticleSystem smoke = new SmokeParticleSystem();
+                DPFSParticleSystem ps = new DPFSParticleSystem("smoke", smoke);
+                this.World.ParticleManager.AddAndInitializeParticleSystem(ps);
+
+                ///cant set emiter position before adding the particle                
+                ///IF YOU DO SO, IT WILL NOT WORK
+                smoke.Emitter.PositionData.Position = new Vector3(50, 0, 0);
+            }
+
+
+            ///OUR Classic Model
             SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
             TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
             DeferredNormalShader shader = new DeferredNormalShader();
             DeferredMaterial fmaterial = new DeferredMaterial(shader);
             IObject obj = new IObject(fmaterial, simpleModel, tmesh);
-            this.World.AddObject(obj);            
+            this.World.AddObject(obj);
 
             #region NormalLight
             DirectionalLightPE ld1 = new DirectionalLightPE(Vector3.Left, Color.White);
@@ -77,9 +103,21 @@ namespace AdvancedDemo4._0
 
             this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo.Viewport));
 
-            SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//cubemap");
+            SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grassCube");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
 
+        }
+
+        protected override void CleanUp(EngineStuff engine)
+        {
+            engine.RemoveComponent("SkyBox");
+            base.CleanUp(engine);
+        }
+
+        protected override void Draw(GameTime gameTime, RenderHelper render)
+        {
+            base.Draw(gameTime, render);
+            render.RenderTextComplete("Particle System Integration; Snow and Smoke, check DPFS SAMPLES", new Vector2(10, 15), Color.White, Matrix.Identity);
         }
 
     }

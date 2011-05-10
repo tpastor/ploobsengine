@@ -42,14 +42,8 @@ namespace IntroductionDemo4._0
         {
             base.InitScreen(GraphicInfo, engine);
 
-            ///Add the Input Component
-            ///InputAdvanced is responsible for abstracting the xna input layer.            
-            InputAdvanced inp = new InputAdvanced();
-            engine.AddComponent(inp);
-
             MessageDeliver md = new MessageDeliver();
             engine.AddComponent(md);
-
         }
 
 
@@ -62,7 +56,7 @@ namespace IntroductionDemo4._0
             {
                 SimpleModel sm = new SimpleModel(factory, "..\\Content\\Model\\cubo");
                 sm.SetTexture(factory.CreateTexture2DColor(1,1, Color.White), TextureType.DIFFUSE);                
-                BoxObject pi = new BoxObject(new Vector3(100, 20, 0), 1,1,1, 5,new Vector3(100, 5, 100),Matrix.Identity,MaterialDescription.DefaultBepuMaterial());                
+                BoxObject pi = new BoxObject(new Vector3(100, 40, 0), 1,1,1, 25,new Vector3(100, 10, 100),Matrix.Identity,MaterialDescription.DefaultBepuMaterial());                
                 ///Adiciona um handler que sera chamada quando uma colisao acontecer
                 pi.Entity.CollisionInformation.Events.InitialCollisionDetected += new BEPUphysics.Collidables.Events.InitialCollisionDetectedEventHandler<BEPUphysics.Collidables.MobileCollidables.EntityCollidable>(Events_InitialCollisionDetected);
                 DeferredNormalShader shader = new DeferredNormalShader();                                
@@ -98,7 +92,7 @@ namespace IntroductionDemo4._0
             {
                 SimpleModel sm = new SimpleModel(factory, "..\\Content\\Model\\cubo");
                 sm.SetTexture(factory.CreateTexture2DColor(1,1,Color.Red), TextureType.DIFFUSE);                
-                BoxObject pi = new BoxObject(new Vector3(100, 50, 50), 1,1,1, 5, new Vector3(15),Matrix.Identity,MaterialDescription.DefaultBepuMaterial());
+                BoxObject pi = new BoxObject(new Vector3(100, 50, 50), 1,1,1, 50, new Vector3(15),Matrix.Identity,MaterialDescription.DefaultBepuMaterial());
                 pi.isMotionLess = true;
                 DeferredNormalShader shader = new DeferredNormalShader();
                 IMaterial mat = new DeferredMaterial(shader);
@@ -236,6 +230,8 @@ namespace IntroductionDemo4._0
         
         protected override void CleanUp(EngineStuff engine)
         {
+            base.CleanUp(engine);
+
             engine.RemoveComponent("MessageDeliver");
 
             lt.CleanUp();

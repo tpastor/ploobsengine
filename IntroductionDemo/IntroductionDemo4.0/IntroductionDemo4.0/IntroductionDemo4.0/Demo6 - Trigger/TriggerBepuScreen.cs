@@ -41,11 +41,6 @@ namespace IntroductionDemo4._0
         {
             base.InitScreen(GraphicInfo, engine);
 
-            ///Add the Input Component
-            ///InputAdvanced is responsible for abstracting the xna input layer.            
-            InputAdvanced inp = new InputAdvanced();
-            engine.AddComponent(inp);
-
             ///Adicionando Componente de Mensagens 
             ///Utilizado pelo Trigger
             MessageDeliver md = new MessageDeliver();

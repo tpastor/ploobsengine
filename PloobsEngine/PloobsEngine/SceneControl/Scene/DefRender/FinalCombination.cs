@@ -72,9 +72,9 @@ namespace PloobsEngine.SceneControl
             }
             else
             {
-                render.SetSamplerState(SamplerState.LinearClamp, 0);
-                render.SetSamplerState(SamplerState.LinearClamp, 1);
-                render.SetSamplerState(SamplerState.LinearClamp, 2);                
+                render.SetSamplerState(SamplerState.AnisotropicClamp, 0);
+                render.SetSamplerState(SamplerState.AnisotropicClamp, 1);
+                render.SetSamplerState(SamplerState.AnisotropicClamp, 2);                
             }
 
             finalCombineEffect.Parameters["halfPixel"].SetValue(ginfo.HalfPixel);
@@ -108,9 +108,9 @@ namespace PloobsEngine.SceneControl
             if (saveToTexture)
             {
                 if (useFloatBuffer)
-                    target = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.HdrBlendable, false, DepthFormat.None, 0, RenderTargetUsage.DiscardContents);
+                    target = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.HdrBlendable, ginfo.UseMipMap, DepthFormat.None, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
                 else
-                    target = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, false, DepthFormat.None, 0, RenderTargetUsage.DiscardContents);
+                    target = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.None, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
             }                        
         }
 

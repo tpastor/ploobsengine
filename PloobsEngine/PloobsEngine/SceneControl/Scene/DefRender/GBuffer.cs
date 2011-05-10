@@ -87,18 +87,17 @@ namespace PloobsEngine.SceneControl
             foreach (IObject item in world.Culler.GetNotCulledObjectsList(MaterialType.DEFERRED))
             {
                 item.Material.Drawn(gameTime,item, world.CameraManager.ActiveCamera, world.Lights, render);
-            }           
-         
+            }                    
         }
 
         public void LoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, Color BackGroundColor)
         {
             this.backGroundColor = BackGroundColor;
-            const int multisample = 0;
-            colorRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, false, DepthFormat.Depth24Stencil8, multisample, RenderTargetUsage.DiscardContents);
-            normalRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, false, DepthFormat.None, multisample, RenderTargetUsage.DiscardContents);
-            depthRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Single, false, DepthFormat.None, multisample, RenderTargetUsage.DiscardContents);
-            lightOclusionRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, false, DepthFormat.None, multisample, RenderTargetUsage.DiscardContents);            
+            const int multisample = 1;
+            colorRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, multisample, RenderTargetUsage.DiscardContents);
+            normalRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.None, multisample, RenderTargetUsage.DiscardContents);
+            depthRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Single, ginfo.UseMipMap, DepthFormat.None, multisample, RenderTargetUsage.DiscardContents);
+            lightOclusionRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.None, multisample, RenderTargetUsage.DiscardContents);            
             clearBufferEffect = manager.GetAsset<Effect>("ClearGBuffer",true);
         }
 

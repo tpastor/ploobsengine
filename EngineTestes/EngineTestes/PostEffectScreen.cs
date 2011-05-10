@@ -47,13 +47,25 @@ namespace EngineTestes
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory ,IContentManager contentManager)
         {
             base.LoadContent(GraphicInfo,factory, contentManager);
+            {
+                SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
+                TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
+                DeferredNormalShader shader = new DeferredNormalShader();
+                DeferredMaterial fmaterial = new DeferredMaterial(shader);
+                IObject obj = new IObject(fmaterial, simpleModel, tmesh);
+                this.World.AddObject(obj);
+            }
 
-            SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
-            TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
-            DeferredNormalShader shader = new DeferredNormalShader();
-            DeferredMaterial fmaterial = new DeferredMaterial(shader);
-            IObject obj = new IObject(fmaterial, simpleModel, tmesh);
-            this.World.AddObject(obj);             
+            {
+                SimpleModel sm = new SimpleModel(factory, "..\\Content\\Model\\block");
+                sm.SetTexture(factory.CreateTexture2DColor(1, 1, Color.White), TextureType.DIFFUSE);
+                BoxObject pi = new BoxObject(new Vector3(100, 40, 0), 1, 1, 1, 25, new Vector3(100, 10, 100), Matrix.Identity, MaterialDescription.DefaultBepuMaterial());
+                DeferredNormalShader shader = new DeferredNormalShader();
+                IMaterial mat = new DeferredMaterial(shader);
+                IObject obj3 = new IObject(mat, sm, pi);
+                this.World.AddObject(obj3);
+            }
+
             
 
             #region NormalLight
@@ -107,8 +119,8 @@ namespace EngineTestes
             //ssao.Diffscale = 0.5f;            
             //this.RenderTechnic.AddPostEffect(ssao);
 
-            SunPostEffect sun = new SunPostEffect();            
-            this.RenderTechnic.AddPostEffect(sun);
+            //SunPostEffect sun = new SunPostEffect();            
+            //this.RenderTechnic.AddPostEffect(sun);
 
             
             CameraFirstPerson cam = new CameraFirstPerson(GraphicInfo.Viewport);

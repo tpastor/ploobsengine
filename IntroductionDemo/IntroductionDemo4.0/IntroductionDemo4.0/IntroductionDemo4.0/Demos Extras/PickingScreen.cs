@@ -38,13 +38,7 @@ namespace IntroductionDemo4._0
 
         protected override void InitScreen(PloobsEngine.Engine.GraphicInfo GraphicInfo, PloobsEngine.Engine.EngineStuff engine)
         {
-            base.InitScreen(GraphicInfo, engine);
-
-            ///Add the Input Component
-            ///InputAdvanced is responsible for abstracting the xna input layer.            
-            InputAdvanced inp = new InputAdvanced();
-            engine.AddComponent(inp);
-
+            base.InitScreen(GraphicInfo, engine);            
             engine.IsMouseVisible = true;
         }
 

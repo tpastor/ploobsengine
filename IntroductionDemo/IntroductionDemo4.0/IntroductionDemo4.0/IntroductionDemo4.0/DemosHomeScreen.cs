@@ -82,12 +82,7 @@ namespace IntroductionDemo4._0
         protected override void InitScreen(PloobsEngine.Engine.GraphicInfo GraphicInfo, PloobsEngine.Engine.EngineStuff engine)
         {
             base.InitScreen(GraphicInfo, engine);
-
             this.engine = engine;
-
-            InputAdvanced inp = new InputAdvanced();
-            engine.AddComponent(inp);
-
         }
 
         protected override void  LoadContent(PloobsEngine.Engine.GraphicInfo GraphicInfo, PloobsEngine.Engine.GraphicFactory factory, IContentManager contentManager)
@@ -100,12 +95,12 @@ namespace IntroductionDemo4._0
             }
 
             {
-                SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.F1, ChangeDemo, EntityType.TOOLS, InputMask.GSYSTEM);
+                SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.F1, ChangeDemo);
                 BindKeyCommand bk = new BindKeyCommand(ik, BindAction.ADD);
                 CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bk);
             }
             {
-                SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.Escape, LeaveGame, EntityType.TOOLS, InputMask.GSYSTEM);
+                SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.Escape, LeaveGame);
                 BindKeyCommand bk = new BindKeyCommand(ik, BindAction.ADD);
                 CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bk);
             }

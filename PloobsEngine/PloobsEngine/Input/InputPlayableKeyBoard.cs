@@ -6,29 +6,40 @@ using Microsoft.Xna.Framework.Input;
 
 namespace PloobsEngine.Input
 {
+    /// <summary>
+    /// Called when a key event is fired
+    /// </summary>
+    /// <param name="ipk">The ipk.</param>
     public delegate void KeyStateChange(InputPlayableKeyBoard ipk);
-    
-    public interface InputPlayableKeyBoard : IInput
+
+    /// <summary>
+    /// keyboard Input Binding interface
+    /// </summary>
+    public abstract class InputPlayableKeyBoard : IInput
     {
-        StateKey StateKey
-        {
-         
+        public abstract StateKey StateKey
+        {         
             get;
         }
-        Keys[] Keys
-        {
-            get;
-        }
-        KeyStateChange KeyStateChange
-        {
-            get;
-            
-        }
-        EntityType EntityType
+        public abstract Keys[] Keys
         {
             get;
         }
-        InputMask InputMask
+
+        public event KeyStateChange KeyStateChange = null;
+
+        internal void FireEvent()
+        {
+            if (KeyStateChange != null)
+                KeyStateChange(this);
+        }
+        
+        public abstract EntityType EntityType
+        {
+            get;
+        }
+
+        public abstract InputMask InputMask
         {
             get;
         }

@@ -21,12 +21,6 @@ namespace IntroductionDemo4._0
     {        
         LightThrowBepu lt;
 
-        protected override void InitScreen(PloobsEngine.Engine.GraphicInfo GraphicInfo, PloobsEngine.Engine.EngineStuff engine)
-        {
-            InputAdvanced ia = new InputAdvanced();
-            engine.AddComponent(ia);
-            base.InitScreen(GraphicInfo, engine);
-        }
 
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {

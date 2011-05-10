@@ -93,7 +93,11 @@ namespace TomShane.Neoforce.Importers
 		////////////////////////////////////////////////////////////////////////////    
 		public override string GetRuntimeReader(TargetPlatform targetPlatform)
 		{
-			return "TomShane.Neoforce.Controls.CursorReader, TomShane.Neoforce.Controls";
+#if DEBUG
+			return "TomShane.Neoforce.Controls.CursorReader, PloobsEngineDebug";
+#else
+         return "TomShane.Neoforce.Controls.CursorReader, PloobsEngine";
+#endif
 		}
 		////////////////////////////////////////////////////////////////////////////
 
