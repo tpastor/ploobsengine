@@ -2,27 +2,22 @@
 
 phistype = "Box"
 
-rollout MainRollout "Basic Characteristic" width:184 height:336
+rollout MainRollout "Basic Characteristic" width:184 height:358
 (
 	dropdownList ptype "Physics Type" pos:[8,16] width:168 height:40 items:#("Box", "Sphere", "TriangleMesh")
-	button btn1 "OK" pos:[35,296] width:104 height:32
-	dropdownList mtype "Material" pos:[11,98] width:165 height:40 enabled:true items:#("Wood", "Metal", "Rubber") selection:2
 
-	label lbl2 "dinamic friction" pos:[14,223] width:76 height:24
-	spinner spn2 "" pos:[98,223] width:66 height:16 range:[0,100,0]
-	label lbl3 "static friction" pos:[13,252] width:72 height:24
-	spinner spn3 "" pos:[97,252] width:66 height:16 range:[0,100,0]
+	button btn1 "OK" pos:[37,289] width:104 height:32
+	dropdownList mtype "Material" pos:[11,98] width:165 height:40 enabled:true items:#("Wood", "Metal", "Rubber") selection:2
+	label lbl2 "dinamic friction" pos:[14,189] width:76 height:24
+	spinner spn2 "" pos:[98,189] width:66 height:16 range:[0,100,0]
+	label lbl3 "static friction" pos:[13,218] width:72 height:24
+	spinner spn3 "" pos:[97,218] width:66 height:16 range:[0,100,0]
 	label lbl7 "Mass" pos:[14,66] width:58 height:24
 	spinner spn7 "" pos:[99,68] width:66 height:16 range:[0,100,0]
 	label lbl24 "ellasticity" pos:[13,164] width:58 height:24
 	spinner spn24 "" pos:[97,164] width:66 height:16 range:[0,100,0]
-	button AddConstraint "Add Constraints" 
-
-
-
-
-
-
+	button AddConstraint "Add Constraints" pos:[45,256] width:90 height:21 
+	
 	on btn1 pressed do
 	(
 		
@@ -78,21 +73,20 @@ rollout MainRollout "Basic Characteristic" width:184 height:336
 			)
 		
 	)
-	
-		on AddConstraint pressed  do
-		(
-			a = selection[1]
-			 for b in selection do
-			 (
-			   if (a == b) do continue
-			   d = dummy();
-			   d.pos = (a.pos + b.pos)/2  
-			   setUserProp d "Constraint" "Point2Point"
-			   setUserProp d "BodyA" a.name
-			   setUserProp d "BodyB" b.name
-			   scale d [0.1,0.1,0.1]
-			   a = b
-			 )
-		)	
+	on AddConstraint pressed do
+	(
+		a = selection[1]
+		 for b in selection do
+		 (
+		   if (a == b) do continue
+		   d = dummy();
+		   d.pos = (a.pos + b.pos)/2  
+		   setUserProp d "Constraint" "Point2Point"
+		   setUserProp d "BodyA" a.name
+		   setUserProp d "BodyB" b.name
+		   scale d [0.1,0.1,0.1]
+		   a = b
+		 )
+	)
 )
 CreateDialog MainRollout

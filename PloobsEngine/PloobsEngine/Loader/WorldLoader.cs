@@ -15,25 +15,31 @@ using PloobsEngine.Cameras;
 using PloobsEngine.Physics;
 using PloobsEngine.Physics.Bepu;
 using PloobsEngine.Material;
+using PloobsEngine.Physic.Constraints;
+using PloobsEngine.Physic.Constraints.BepuConstraint;
 
 
 namespace PloobsEngine.Loader
 {
     public delegate IObject CreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation mi);
     public delegate ILight CreateILight(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ILight li);
-    public delegate ICamera CreateICamera(IWorld world, GraphicFactory factory, GraphicInfo ginfo, CameraInfo cinfo);    
+    public delegate ICamera CreateICamera(IWorld world, GraphicFactory factory, GraphicInfo ginfo, CameraInfo cinfo);
+    public delegate IPhysicConstraint CreateIConstraint(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ConstraintInfo cinfo, IObject o1, IObject o2);
     public delegate void ProcessDummies(IWorld world, DummyInfo dinfo);
 
     public class WorldLoader
     {
 
-
+        /// <summary>
+        /// Used to retrieve objects to
+        /// </summary>
         private Dictionary<String, IObject> objects = new Dictionary<string, IObject>();
 
         public static IObject CreateOBJ(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation mi)
         {
-            //IModelo model = new CustomModel(factory, mi.modelName, mi.batchInformation, mi.difuse, mi.bump, mi.specular, mi.glow);
-            IModelo model = new SimpleModel(factory, mi.modelName, mi.difuse.Name, mi.bump.Name, mi.specular.Name, mi.glow.Name,true);
+            BatchInformation[] bi = { mi.batchInformation};
+            IModelo model = new CustomModel(factory, mi.modelName, bi , mi.difuse, mi.bump, mi.specular, mi.glow);
+            //IModelo model = new SimpleModel(factory, mi.modelName, mi.difuse.Name, mi.bump.Name, mi.specular.Name, mi.glow.Name,true);
             
 
             MaterialDescription material = new MaterialDescription(mi.staticfriction, mi.dinamicfriction, mi.ellasticity);
@@ -45,7 +51,7 @@ namespace PloobsEngine.Loader
             if (mi.mass == 0)
             {
                 flag = true;
-                mi.mass = 1;
+                mi.mass = 0.5f;
             }
 
 
@@ -116,14 +122,14 @@ namespace PloobsEngine.Loader
         }
 
 
-        //public static IPhysicConstraint CreateConstraint(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ConstraintInfo cinfo, IObject o1, IObject o2)
-        //{
+        public static IPhysicConstraint CreateConstraint(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ConstraintInfo cinfo, IObject o1, IObject o2)
+        {
 
-        //    PointPointConstraint con = new PointPointConstraint(cinfo.Position, o1.PhysicObject, o2.PhysicObject);
+            PointPointConstraint con = new PointPointConstraint(cinfo.Position, o1.PhysicObject, o2.PhysicObject);
 
-        //    return con;
+            return con;
 
-        //}
+        }
 
         public static ICamera CreateCamera(IWorld world, GraphicFactory factory, GraphicInfo ginfo, CameraInfo cinfo)
         {
@@ -134,7 +140,8 @@ namespace PloobsEngine.Loader
 
         public event CreateIObject OnCreateIObject = null;
         public event CreateILight OnCreateILight = null;
-        public event CreateICamera OnCreateICamera = null;        
+        public event CreateICamera OnCreateICamera = null;
+        public event CreateIConstraint OnCreateIConstraint = null;
         public event ProcessDummies OnProcessDummies = null;
 
         public void LoadWorld(GraphicFactory factory, GraphicInfo ginfo, IWorld world, ModelLoaderData worldData)
@@ -176,23 +183,23 @@ namespace PloobsEngine.Loader
 
 
 
-                //if (o1.PhysicObject.PhysicObjectTypes != PhysicObjectTypes.TRIANGLEMESHOBJECT && o2.PhysicObject.PhysicObjectTypes != PhysicObjectTypes.TRIANGLEMESHOBJECT)
-                //{
-                //    if (OnCreateConstraint != null)
-                //    {
-                //        IPhysicConstraint constr = OnCreateConstraint(world, factory, ginfo, item, o1, o2);
-                //        if (constr != null)
-                //            world.AddConstraint(constr);
+                if (o1.PhysicObject.PhysicObjectTypes != PhysicObjectTypes.TRIANGLEMESHOBJECT && o2.PhysicObject.PhysicObjectTypes != PhysicObjectTypes.TRIANGLEMESHOBJECT)
+                {
+                    if (OnCreateIConstraint != null)
+                    {
+                        IPhysicConstraint constr = OnCreateIConstraint(world, factory, ginfo, item, o1, o2);
+                        if (constr != null)
+                            world.PhysicWorld.AddConstraint(constr);
 
-                //    }
-                //    else
-                //    {
-                //        IPhysicConstraint constr = WorldLoader.CreateConstraint(world, factory, ginfo, item, o1, o2);
-                //        world.AddConstraint(constr);
+                    }
+                    else
+                    {
+                        IPhysicConstraint constr = WorldLoader.CreateConstraint(world, factory, ginfo, item, o1, o2);
+                        world.PhysicWorld.AddConstraint(constr);
 
 
-                //    }
-                //}
+                    }
+                }
             }
 
             foreach (var item in worldData.LightsInfo)

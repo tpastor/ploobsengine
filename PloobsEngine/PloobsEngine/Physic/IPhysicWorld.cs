@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using PloobsEngine.Cameras;
 using PloobsEngine.SceneControl;
 using System.Runtime.Serialization;
+using PloobsEngine.Physic.Constraints;
 
 namespace PloobsEngine.Physics
 {
@@ -28,6 +29,11 @@ namespace PloobsEngine.Physics
         /// Gets the physic objects.
         /// </summary>
         public abstract List<IPhysicObject> PhysicObjects { get; }
+
+        /// <summary>
+        /// Gets the physic constraints.
+        /// </summary>
+        public abstract List<IPhysicConstraint> PhysicConstraints { get; }
 
         /// <summary>
         /// Draw the physic world in debug mode.
@@ -61,7 +67,23 @@ namespace PloobsEngine.Physics
         /// Removes the object.
         /// </summary>
         /// <param name="obj">The obj.</param>
-        public abstract void RemoveObject(IPhysicObject obj);        
+        public abstract void RemoveObject(IPhysicObject obj);
+
+
+        /// <summary>
+        ///  Adds the constraint
+        /// </summary>
+        /// <param name="ctn"></param>
+        public abstract void AddConstraint(IPhysicConstraint ctn);
+
+        /// <summary>
+        /// Removes the constraints
+        /// </summary>
+        /// <param name="ctn"></param>
+        public abstract void RemoveConstraint(IPhysicConstraint ctn);
+
+
+
         
         /// <summary>
         /// Raycast
