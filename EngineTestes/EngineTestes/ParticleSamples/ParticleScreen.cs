@@ -43,13 +43,20 @@ namespace EngineTestes
         {
             base.LoadContent(GraphicInfo,factory, contentManager);
 
-            SnowParticleSystem snow = new SnowParticleSystem();            
-            DPFSParticleSystem ps = new DPFSParticleSystem("snow",snow );            
+            //SnowParticleSystem snow = new SnowParticleSystem();            
+            //DPFSParticleSystem ps = new DPFSParticleSystem("snow",snow );            
+            //this.World.ParticleManager.AddAndInitializeParticleSystem(ps);
+
+            /////cant set emiter position before adding the particle
+            //snow.Emitter.PositionData.Position = new Vector3(1000, 0, 0);            
+
+            SmokeParticleSystem smoke = new SmokeParticleSystem();
+            DPFSParticleSystem ps = new DPFSParticleSystem("smoke", smoke);
             this.World.ParticleManager.AddAndInitializeParticleSystem(ps);
-
-            ///cant set emiter position before adding the particle
-            snow.Emitter.PositionData.Position = new Vector3(1000, 0, 0);            
-
+            smoke.Emitter.PositionData.Position = new Vector3(1000, 0, 0);
+            
+            
+            
             SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
             TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
             DeferredNormalShader shader = new DeferredNormalShader();

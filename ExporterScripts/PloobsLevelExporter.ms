@@ -206,16 +206,23 @@ rollout main "Level Exporter"
 								)
 								else if(shape == Point_Point) then
 								(
+								
+									dpos = body.parentBody.position
+									cpos = body.childBody.position
+									npos = (dpos + cpos)/2  
+									
 									type = "Point_Point"
 									format "\t<Constraint name=\"%\">\n" body.name to:currentFile	
 									format "\t\t<type value=\"%\" />\n" type to:currentFile
 									format "\t\t<position>\n" to:currentFile
-									format "\t\t\t<x> % </x>\n" body.position[1]  to:currentFile
-									format "\t\t\t<y> % </y>\n" -body.position[3]  to:currentFile
-									format "\t\t\t<z> % </z>\n" body.position[2]  to:currentFile								
+									format "\t\t\t<x> % </x>\n" npos[1]  to:currentFile
+									format "\t\t\t<y> % </y>\n" npos[3]  to:currentFile
+									format "\t\t\t<z> % </z>\n" npos[2]  to:currentFile								
 									format "\t\t</position>\n" to:currentFile								
 									format "\t\t<child name=\"%\" />\n" body.childBody.name to:currentFile
 									
+									--replacing the position
+									body.position = dpos
 									
 									if( body.hasParent ==  true) do
 									(

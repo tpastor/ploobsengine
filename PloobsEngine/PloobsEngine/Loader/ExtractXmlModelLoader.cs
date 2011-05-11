@@ -130,8 +130,7 @@ namespace PloobsEngine.Loader
 
                 if (node.Name == "Constraint")
                 {
-                    //ConstraintInformation info = new ConstraintInformation();
-
+                    
                     ConstraintInfo cinfo = new ConstraintInfo();
 
 
@@ -165,7 +164,7 @@ namespace PloobsEngine.Loader
 
                     
                     Vector3 pos = SerializerHelper.DeserializeVector3("position", node);
-                     cinfo.Position = new Vector3(pos.X, -pos.Y, -pos.Z);
+                     cinfo.Position = new Vector3(pos.X, pos.Y, pos.Z);
 
 
                     elements.ConstraintInfo.Add(cinfo);
