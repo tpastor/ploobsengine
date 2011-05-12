@@ -109,7 +109,7 @@ namespace IntroductionDemo4._0
             ///O PICKING FUNCIONA APENAS COM OBJETOS QUE TENHAM CORPO FISICO REAL !!!
             ///OS GHOST E OS DUMMY NUNCA SERAO SELECIONADOS
             ///Para ser informado a todo frame sobre as colisoes do raio, basta utilizar o outro construtor
-            picking.OnPickedLeftButton += new OnPicked(prc_redirectPicking);            
+            picking.OnPickedLeftButton += new OnPicked(onPick);            
         }
 
         protected override void Draw(GameTime gameTime, RenderHelper render)
@@ -120,7 +120,7 @@ namespace IntroductionDemo4._0
 
             if (shouldDraw)
             {
-                render.RenderTextComplete("Selecionado -> " + objName, new Vector2(20, 20), Color.White, Matrix.Identity);
+                render.RenderTextComplete("Selected -> " + objName, new Vector2(20, 20), Color.White, Matrix.Identity);
                 render.RenderTextComplete("Position " + ri.ImpactPosition, new Vector2(20, 40), Color.White, Matrix.Identity);
                 render.RenderTextComplete("Normal " + ri.ImpactNormal, new Vector2(20, 60), Color.White, Matrix.Identity);
             }            
@@ -130,7 +130,12 @@ namespace IntroductionDemo4._0
         string objName;
         bool shouldDraw;
 
-        void prc_redirectPicking(SegmentInterceptInfo SegmentInterceptInfo)
+
+        /// <summary>
+        /// Called when picking happens
+        /// </summary>
+        /// <param name="SegmentInterceptInfo">The segment intercept info.</param>
+        void onPick(SegmentInterceptInfo SegmentInterceptInfo)
         {
             
             IObject obj = SegmentInterceptInfo.PhysicObject.ObjectOwner;
@@ -142,9 +147,6 @@ namespace IntroductionDemo4._0
             }
         }
 
-        protected override void CleanUp(EngineStuff engine)
-        {            
-        }
     }
 }
 

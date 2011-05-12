@@ -619,6 +619,20 @@
             </summary>
       <param name="obj">The obj.</param>
     </member>
+    <member name="M:PloobsEngine.Physics.IPhysicWorld.AddConstraint(PloobsEngine.Physic.Constraints.IPhysicConstraint)">
+      <summary>
+             Adds the constraint
+            </summary>
+      <param name="ctn">
+      </param>
+    </member>
+    <member name="M:PloobsEngine.Physics.IPhysicWorld.RemoveConstraint(PloobsEngine.Physic.Constraints.IPhysicConstraint)">
+      <summary>
+            Removes the constraints
+            </summary>
+      <param name="ctn">
+      </param>
+    </member>
     <member name="M:PloobsEngine.Physics.IPhysicWorld.SegmentIntersect(Microsoft.Xna.Framework.Ray,System.Func{PloobsEngine.Physics.IPhysicObject,System.Boolean},System.Single)">
       <summary>
             Raycast
@@ -656,6 +670,11 @@
     <member name="P:PloobsEngine.Physics.IPhysicWorld.PhysicObjects">
       <summary>
             Gets the physic objects.
+            </summary>
+    </member>
+    <member name="P:PloobsEngine.Physics.IPhysicWorld.PhysicConstraints">
+      <summary>
+            Gets the physic constraints.
             </summary>
     </member>
     <member name="T:PloobsEngine.Physics.BepuPhysicWorld">
@@ -799,6 +818,11 @@
     <member name="P:PloobsEngine.Physics.BepuPhysicWorld.PhysicObjects">
       <summary>
             Gets the physic objects.
+            </summary>
+    </member>
+    <member name="P:PloobsEngine.Physics.BepuPhysicWorld.PhysicConstraints">
+      <summary>
+            Gets the constraint objects.
             </summary>
     </member>
     <member name="T:PloobsEngine.Modelo.OnTextureChange">
@@ -1235,6 +1259,24 @@
     <member name="T:PloobsEngine.Input.InputPlayableKeyBoard">
       <summary>
             keyboard Input Binding interface
+            </summary>
+    </member>
+    <member name="T:PloobsEngine.Physic.Constraints.IPhysicConstraint">
+      <summary>
+            Specification of a physic Constraint
+            </summary>
+    </member>
+    <member name="P:PloobsEngine.Physic.Constraints.IPhysicConstraint.Position">
+      <summary>
+            Gets or sets the position.
+            </summary>
+      <value>
+            The position.
+            </value>
+    </member>
+    <member name="T:PloobsEngine.Physic.Constraints.PhysicConstraintTypes">
+      <summary>
+            Physic Types allowed
             </summary>
     </member>
     <member name="T:PloobsEngine.Material.DeferredAnimatedTextureShader">
@@ -5118,6 +5160,11 @@
       <param name="texName">Name of the tex.</param>
       <param name="reflectionIndex">Index of the reflection.</param>
     </member>
+    <member name="F:PloobsEngine.Loader.WorldLoader.objects">
+      <summary>
+            Used to retrieve objects to
+            </summary>
+    </member>
     <member name="T:PloobsEngine.Audio.LocalMediaAudioPlayer">
       <summary>
             MusicPlayer
@@ -6054,14 +6101,14 @@
             Specialized Object Proper to Movimentation
             </summary>
     </member>
-    <member name="T:PloobsEngine.Loader.ModelInformation">
+    <member name="T:PloobsEngine.Loader.ObjectInformation">
       <summary>
             Struct that represents a Model
             By Now, It creates just pieces of a model, 
             IN THE NEXT RELEASE IT WILL CREATE THE FULL MODEL, RETURN AN IMODELO AND A TRANSFORMATION
             </summary>
     </member>
-    <member name="M:PloobsEngine.Loader.ModelInformation.HasTexture(PloobsEngine.Modelo.TextureType)">
+    <member name="M:PloobsEngine.Loader.ObjectInformation.HasTexture(PloobsEngine.Modelo.TextureType)">
       <summary>
             Determines whether this model has the specified texture type.
             </summary>
@@ -8240,37 +8287,37 @@
             Contains Graphics Informations about the current execution
             </summary>
     </member>
-    <member name="F:PloobsEngine.Engine.GraphicInfo.DepthFormat">
+    <member name="F:PloobsEngine.Engine.GraphicInfo.depthFormat">
       <summary>
             BackBuffer Depth Format
             </summary>
     </member>
-    <member name="F:PloobsEngine.Engine.GraphicInfo.MultiSample">
+    <member name="F:PloobsEngine.Engine.GraphicInfo.multiSample">
       <summary>
             BAck Buffer Multisample
             </summary>
     </member>
-    <member name="F:PloobsEngine.Engine.GraphicInfo.BackBufferHeight">
+    <member name="F:PloobsEngine.Engine.GraphicInfo.backBufferHeight">
       <summary>
             BackBufferHeight
             </summary>
     </member>
-    <member name="F:PloobsEngine.Engine.GraphicInfo.BackBufferWidth">
+    <member name="F:PloobsEngine.Engine.GraphicInfo.backBufferWidth">
       <summary>
             BackBufferWidth
             </summary>
     </member>
-    <member name="F:PloobsEngine.Engine.GraphicInfo.FullScreenRectangle">
+    <member name="F:PloobsEngine.Engine.GraphicInfo.fullScreenRectangle">
       <summary>
             FullScreenRectangle
             </summary>
     </member>
-    <member name="F:PloobsEngine.Engine.GraphicInfo.HalfPixel">
+    <member name="F:PloobsEngine.Engine.GraphicInfo.halfPixel">
       <summary>
             HalfPixel (used in DX 9 shaders)
             </summary>
     </member>
-    <member name="F:PloobsEngine.Engine.GraphicInfo.Viewport">
+    <member name="F:PloobsEngine.Engine.GraphicInfo.viewport">
       <summary>
             Viewport
             </summary>

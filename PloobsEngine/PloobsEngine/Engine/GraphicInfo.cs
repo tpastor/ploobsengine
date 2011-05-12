@@ -32,6 +32,20 @@ namespace PloobsEngine.Engine
             this.UseMipMap = useMipMap;
         }
 
+        internal void ChangeProps(int BackBufferHeight, int BackBufferWidth, Rectangle FullScreenRectangle, Vector2 halfPixel, GraphicsDevice device, int MultiSample, DepthFormat DepthFormat, bool useMipMap)
+        {
+            this.BackBufferHeight = BackBufferHeight;
+            this.BackBufferWidth = BackBufferWidth;
+            this.FullScreenRectangle = FullScreenRectangle;
+            this.HalfPixel = halfPixel;            
+            this.device = device;
+            Viewport = device.Viewport;
+            this.MultiSample = MultiSample;
+            this.DepthFormat = DepthFormat;
+            this.UseMipMap = useMipMap;
+        }
+
+
         private GraphicsDevice device;
 
         internal void FireEvent(GraphicInfo gi)
@@ -39,17 +53,35 @@ namespace PloobsEngine.Engine
             OnGraphicInfoChange(gi);
         }
 
-        public readonly bool UseMipMap;
+        private bool useMipMap;
+
+        public bool UseMipMap
+        {
+            get { return useMipMap; }
+            internal set { useMipMap = value; }
+        }
 
         /// <summary>
         /// BackBuffer Depth Format
         /// </summary>
-        public readonly DepthFormat DepthFormat;
+        private DepthFormat depthFormat;
+
+        public DepthFormat DepthFormat
+        {
+            get { return depthFormat; }
+            internal set { depthFormat = value; }
+        }
 
         /// <summary>
         /// BAck Buffer Multisample
         /// </summary>
-        public readonly int MultiSample;
+        private int multiSample;
+
+        public int MultiSample
+        {
+            get { return multiSample; }
+            internal set { multiSample = value; }
+        }
 
         /// <summary>
         /// Occurs when [on graphic info change].
@@ -59,23 +91,52 @@ namespace PloobsEngine.Engine
         /// <summary>
         /// BackBufferHeight
         /// </summary>
-        public readonly int BackBufferHeight;
+        private int backBufferHeight;
+
+        public int BackBufferHeight
+        {
+            get { return backBufferHeight; }
+            internal set { backBufferHeight = value; }
+        }
         /// <summary>
         /// BackBufferWidth
         /// </summary>
-        public readonly int BackBufferWidth;
+        private int backBufferWidth;
+
+        public int BackBufferWidth
+        {
+            get { return backBufferWidth; }
+            internal set { backBufferWidth = value; }
+        }
         /// <summary>
         /// FullScreenRectangle
         /// </summary>
-        public readonly Rectangle FullScreenRectangle;
+        private Rectangle fullScreenRectangle;
+
+        public Rectangle FullScreenRectangle
+        {
+            get { return fullScreenRectangle; }
+            internal set { fullScreenRectangle = value; }
+        }
         /// <summary>
         /// HalfPixel (used in DX 9 shaders)
         /// </summary>
-        public readonly Vector2 HalfPixel;
+        private Vector2 halfPixel;
 
+        public Vector2 HalfPixel
+        {
+            get { return halfPixel; }
+            internal set { halfPixel = value; }
+        }
         /// <summary>
         /// Viewport
         /// </summary>
-        public readonly Viewport Viewport;
+        private Viewport viewport;
+
+        public Viewport Viewport
+        {
+            get { return viewport; }
+            internal set { viewport = value; }
+        }
     }
 }

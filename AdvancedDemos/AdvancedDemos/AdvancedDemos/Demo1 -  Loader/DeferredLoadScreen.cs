@@ -140,7 +140,7 @@ namespace AdvancedDemo4._0
         /// <param name="ginfo">The ginfo.</param>
         /// <param name="mi">The mi.</param>
         /// <returns></returns>
-        IObject wl_OnCreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ModelInformation mi)
+        IObject wl_OnCreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation mi)
         {            
 
             ///Do what default would do.
