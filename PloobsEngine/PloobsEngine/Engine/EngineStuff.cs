@@ -257,7 +257,7 @@ namespace PloobsEngine.Engine
             this.initialDescription = initialDescription;
             this.IsFixedTimeStep = initialDescription.isFixedGameTime;
             this.Window.Title = initialDescription.ScreenName;
-
+            
             ActiveLogger.logger = initialDescription.Logger;            
             graphics = new GraphicsDeviceManager(this);
             graphics.GraphicsProfile = initialDescription.GraphicsProfile;
@@ -265,7 +265,8 @@ namespace PloobsEngine.Engine
             graphics.SynchronizeWithVerticalRetrace = initialDescription.UseVerticalSyncronization;
             graphics.PreferMultiSampling = initialDescription.isMultiSampling;
             graphics.PreferredBackBufferHeight = initialDescription.BackBufferHeight;
-            graphics.PreferredBackBufferWidth = initialDescription.BackBufferWidth;            
+            graphics.PreferredBackBufferWidth = initialDescription.BackBufferWidth;
+            graphics.ApplyChanges();
 
             if (this.initialDescription.OnExit != null)
             {
@@ -285,10 +286,8 @@ namespace PloobsEngine.Engine
             halfPixel.X = 0.5f / (float)GraphicsDevice.PresentationParameters.BackBufferWidth;
             halfPixel.Y = 0.5f / (float)GraphicsDevice.PresentationParameters.BackBufferHeight;
 
-            GraphicInfo ginfo = new GraphicInfo(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount,GraphicsDevice.PresentationParameters.DepthStencilFormat,initialDescription.useMipMapWhenPossible);
-            GraphicInfo.FireEvent(ginfo);
-            GraphicInfo = ginfo;
-
+            GraphicInfo.ChangeProps(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount, GraphicsDevice.PresentationParameters.DepthStencilFormat, initialDescription.useMipMapWhenPossible);
+            GraphicInfo.FireEvent(GraphicInfo);
         }
 
         public SoundMasterOptionDescription GetSoundMasterOptionDescription()

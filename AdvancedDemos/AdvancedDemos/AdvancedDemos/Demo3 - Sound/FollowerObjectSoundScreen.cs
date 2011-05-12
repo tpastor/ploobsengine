@@ -89,7 +89,7 @@ namespace AdvancedDemo4._0
                 sm2.SetTexture(factory.CreateTexture2DColor(1, 1, Color.Red, false), TextureType.DIFFUSE);
                 DeferredNormalShader nd = new DeferredNormalShader();
                 IMaterial m = new DeferredMaterial(nd);
-                SphereObject pi2 = new SphereObject(new Vector3(100,50,0), 1, 10, 1, MaterialDescription.DefaultBepuMaterial());
+                SphereObject pi2 = new SphereObject(new Vector3(100,50,0), 1, 10, 10, MaterialDescription.DefaultBepuMaterial());
                 IObject o = new IObject(m, sm2, pi2);
                 this.World.AddObject(o);
 
@@ -130,7 +130,7 @@ namespace AdvancedDemo4._0
             base.Draw(gameTime, render);
 
             render.RenderTextComplete("Demo: 3D Sound Attached to an Object ", new Vector2(10, 15), Color.White, Matrix.Identity);
-            render.RenderTextComplete("The Red Ball emits Sound =P", new Vector2(10, 35), Color.White, Matrix.Identity);
+            render.RenderTextComplete("The Red Ball emits Sound =P, go near it and far from it", new Vector2(10, 35), Color.White, Matrix.Identity);
             render.RenderTextComplete("Throw a ball at it", new Vector2(10, 55), Color.White, Matrix.Identity);            
         }
 

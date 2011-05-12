@@ -205,7 +205,7 @@ namespace AdvancedDemo4._0
         /// <param name="ginfo">The ginfo.</param>
         /// <param name="mi">The mi.</param>
         /// <returns></returns>
-        IObject wl_OnCreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ModelInformation mi)
+        IObject wl_OnCreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation mi)
         {            
             IModelo model = new CustomModel(factory, mi.modelName, new BatchInformation[] { mi.batchInformation }, mi.difuse, mi.bump, mi.specular, mi.glow);
             IPhysicObject po = new TriangleMeshObject(model, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
