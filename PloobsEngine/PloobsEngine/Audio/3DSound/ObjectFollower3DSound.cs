@@ -19,8 +19,8 @@ namespace PloobsEngine.Audio
         IObject follower;
 
         protected override void Update(Microsoft.Xna.Framework.GameTime gt, Cameras.ICamera camera)
-        {            
-            Emiter.Position = follower.Position;
+        {
+            Emiter.Position = follower.PhysicObject.Position;
             Emiter.Velocity = follower.PhysicObject.Velocity;
             Emiter.Forward = follower.PhysicObject.FaceVector;
             

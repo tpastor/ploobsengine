@@ -102,7 +102,7 @@ namespace PloobsEngine.SceneControl
                 return;
             }
 
-            var octAdd = oct.Add(obj, obj.Position, obj.Modelo.GetModelRadius());
+            var octAdd = oct.Add(obj, obj.PhysicObject.Position, obj.Modelo.GetModelRadius());
             if (octAdd == null)
             {
                 return;
@@ -116,7 +116,7 @@ namespace PloobsEngine.SceneControl
             if (!objOctree.ContainsKey(obj))
                 return;
 
-            if (objOctree[obj].StillInside(obj, obj.Position, obj.Modelo.GetModelRadius()))
+            if (objOctree[obj].StillInside(obj, obj.PhysicObject.Position, obj.Modelo.GetModelRadius()))
             {
                 return;
             }
@@ -124,7 +124,7 @@ namespace PloobsEngine.SceneControl
             {
                 objOctree[obj].Remove(obj);
                 objOctree.Remove(obj);
-                var octAdd = oct.Add(obj, obj.Position, obj.Modelo.GetModelRadius());
+                var octAdd = oct.Add(obj, obj.PhysicObject.Position, obj.Modelo.GetModelRadius());
                 if (octAdd == null)
                 {
                     return;

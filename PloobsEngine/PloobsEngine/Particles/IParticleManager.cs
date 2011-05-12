@@ -24,6 +24,7 @@ namespace PloobsEngine.Particles
 
         public abstract void AddAndInitializeParticleSystem(IParticleSystem particleSystem);
         public abstract void RemoveParticleSystem(IParticleSystem particleSystem);
+        public abstract IParticleSystem GetParticleSystem(String particleSystemName);
 
         protected abstract void Update(GameTime gt, Matrix view, Matrix Projection, Vector3 camPosition);
         internal void iUpdate(GameTime gt, Matrix view, Matrix Projection, Vector3 camPosition)

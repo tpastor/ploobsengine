@@ -57,7 +57,7 @@ namespace PloobsEngine.SceneControl
         /// Binds the KeyBoard input.
         /// </summary>
         /// <param name="ipk">The InputPlayableKeyBoard.</param>
-        protected void BindInput(InputPlayableKeyBoard ipk)
+        public void BindInput(InputPlayableKeyBoard ipk)
         {
             System.Diagnostics.Debug.Assert(ipk != null);
             BindKeyCommand bkc = new BindKeyCommand(ipk, BindAction.ADD);
@@ -69,7 +69,7 @@ namespace PloobsEngine.SceneControl
         /// Binds the MouseBottom input.
         /// </summary>
         /// <param name="ipk">The InputPlaybleMouseBottom.</param>
-        protected void BindInput(InputPlaybleMouseBottom ipk)
+        public void BindInput(InputPlaybleMouseBottom ipk)
         {
             System.Diagnostics.Debug.Assert(ipk != null);
             BindMouseCommand bkc = new BindMouseCommand(ipk, BindAction.ADD);
@@ -81,7 +81,7 @@ namespace PloobsEngine.SceneControl
         /// Binds the MousePosition input.
         /// </summary>
         /// <param name="ipk">The InputPlaybleMousePosition.</param>
-        protected void BindInput(InputPlaybleMousePosition ipk)
+        public void BindInput(InputPlaybleMousePosition ipk)
         {
             System.Diagnostics.Debug.Assert(ipk != null);
             BindMouseCommand bkc = new BindMouseCommand(ipk, BindAction.ADD);
@@ -93,7 +93,7 @@ namespace PloobsEngine.SceneControl
         /// Removes the KeyBoard binding.
         /// </summary>
         /// <param name="ipk">The InputPlayableKeyBoard.</param>
-        protected void RemoveInputBinding(InputPlayableKeyBoard ipk)
+        public void RemoveInputBinding(InputPlayableKeyBoard ipk)
         {
             System.Diagnostics.Debug.Assert(ipk != null);
             BindKeyCommand bc = KeyBinds[ipk];
@@ -108,7 +108,7 @@ namespace PloobsEngine.SceneControl
         /// Removes the MouseBottom binding.
         /// </summary>
         /// <param name="ipk">The InputPlaybleMouseBottom.</param>
-        protected void RemoveInputBinding(InputPlaybleMouseBottom ipk)
+        public void RemoveInputBinding(InputPlaybleMouseBottom ipk)
         {
             System.Diagnostics.Debug.Assert(ipk != null);
             BindMouseCommand bc = MouseBinds[ipk];
@@ -123,7 +123,7 @@ namespace PloobsEngine.SceneControl
         /// Removes the MousePosition bindings.
         /// </summary>
         /// <param name="ipk">The InputPlaybleMousePosition.</param>
-        protected void RemoveInputBinding(InputPlaybleMousePosition ipk)
+        public void RemoveInputBinding(InputPlaybleMousePosition ipk)
         {
             System.Diagnostics.Debug.Assert(ipk != null);
             BindMouseCommand bc = MouseBinds[ipk];
@@ -192,7 +192,7 @@ namespace PloobsEngine.SceneControl
         /// <summary>
         /// Gets the manager that this screen belongs to.
         /// </summary>
-        protected ScreenManager ScreenManager
+        public ScreenManager ScreenManager
         {
             get { return screenManager; }            
         }
@@ -210,12 +210,13 @@ namespace PloobsEngine.SceneControl
         {
             get { return graphicInfo; }           
         }
+
         internal GraphicFactory graphicFactory;
 
         /// <summary>
         /// Gets the graphic factory.
         /// </summary>
-        protected GraphicFactory GraphicFactory
+        public GraphicFactory GraphicFactory
         {
             get { return graphicFactory; }            
         }

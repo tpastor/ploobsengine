@@ -60,10 +60,7 @@ namespace PloobsEngine.SceneControl
 
             this.Material = Material;
             this.Modelo = Modelo;
-            this.PhysicObject = PhysicObject;
-            Scale = Vector3.One;
-            Rotation = Matrix.Identity;
-            Position = Vector3.Zero;            
+            this.PhysicObject = PhysicObject;            
             IObjectAtachtment = new List<IObjectAtachtment>();
             Name = null;
         }
@@ -188,28 +185,7 @@ namespace PloobsEngine.SceneControl
             {
                 return worldMatrix;
             }            
-        }
-        /// <summary>
-        /// Gets or sets the position.
-        /// </summary>
-        /// <value>
-        /// The position.
-        /// </value>
-        public virtual Vector3 Position { set; get; }
-        /// <summary>
-        /// Gets or sets the rotation.
-        /// </summary>
-        /// <value>
-        /// The rotation.
-        /// </value>
-        public virtual Matrix Rotation { set; get; }
-        /// <summary>
-        /// Gets or sets the scale.
-        /// </summary>
-        /// <value>
-        /// The scale.
-        /// </value>
-        public virtual Vector3 Scale { set; get; }
+        }        
         /// <summary>
         /// Gets or sets the name of the object.
         /// </summary>

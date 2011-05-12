@@ -51,13 +51,18 @@ namespace PloobsEngine.SceneControl
             effect.Parameters["weight"].SetValue(weights);
             effect.Parameters["pixel_size"].SetValue(GraphicInfo.HalfPixel);            
             effect.Parameters["depthTex"].SetValue(rHelper[PrincipalConstants.DephRT]);
-            effect.Parameters["normalTex"].SetValue(rHelper[PrincipalConstants.normalRt]);                        
+            effect.Parameters["normalTex"].SetValue(rHelper[PrincipalConstants.normalRt]);
+            effect.Parameters["image"].SetValue(ImageToProcess);                                    
+
             //if (Keyboard.GetState().IsKeyDown(Keys.Space))
             //{
             //    rHelper.RenderTextureComplete(ImageToProcess);
             //    return;
             //}
-            rHelper.RenderFullScreenQuadVertexPixel(effect);
+            if(useFloatingBuffer)
+                rHelper.RenderFullScreenQuadVertexPixel(effect,SamplerState.PointClamp);
+            else
+                rHelper.RenderFullScreenQuadVertexPixel(effect,SamplerState.AnisotropicClamp);
         }
 
         public override void Init(GraphicInfo ginfo, GraphicFactory factory)

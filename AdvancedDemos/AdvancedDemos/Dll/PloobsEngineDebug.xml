@@ -5904,30 +5904,6 @@
             Gets the world matrix.
             </summary>
     </member>
-    <member name="P:PloobsEngine.SceneControl.IObject.Position">
-      <summary>
-            Gets or sets the position.
-            </summary>
-      <value>
-            The position.
-            </value>
-    </member>
-    <member name="P:PloobsEngine.SceneControl.IObject.Rotation">
-      <summary>
-            Gets or sets the rotation.
-            </summary>
-      <value>
-            The rotation.
-            </value>
-    </member>
-    <member name="P:PloobsEngine.SceneControl.IObject.Scale">
-      <summary>
-            Gets or sets the scale.
-            </summary>
-      <value>
-            The scale.
-            </value>
-    </member>
     <member name="P:PloobsEngine.SceneControl.IObject.Name">
       <summary>
             Gets or sets the name of the object.

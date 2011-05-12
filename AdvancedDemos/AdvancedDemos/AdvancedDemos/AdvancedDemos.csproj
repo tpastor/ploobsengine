@@ -111,6 +111,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Demo3 - Sound\FollowerObjectSoundScreen.cs" />
+    <Compile Include="Demo5 - ParticleSamples\Helpers\ObjectThrowSmokeParticle.cs" />
+    <Compile Include="Demo5 - ParticleSamples\Helpers\ThrowParticlesObject.cs" />
     <Compile Include="Demo6 - BilboardsSamples\AnimatedBilboardScreen.cs" />
     <Compile Include="Demo6 - BilboardsSamples\NormalBilboardScreen.cs" />
     <Compile Include="Demo6 - BilboardsSamples\ProceduralAnimatedBilboardScreen.cs" />

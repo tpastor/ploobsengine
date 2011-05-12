@@ -16,8 +16,8 @@ namespace PloobsEngine.SceneControl
 
         public int Compare(IObject x, IObject y)
         {
-            float d1 = Vector3.Distance(CameraPosition, x.Position);
-            float d2 = Vector3.Distance(CameraPosition, y.Position);
+            float d1 = Vector3.Distance(CameraPosition, x.PhysicObject.Position);
+            float d2 = Vector3.Distance(CameraPosition, y.PhysicObject.Position);
             
             if (d1 > d2)
             {

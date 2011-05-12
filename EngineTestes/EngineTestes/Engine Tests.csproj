@@ -121,9 +121,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AA\AAScreen.cs" />
-    <Compile Include="AA\AntiAliasingPostEffectTabula.cs" />
     <Compile Include="AA\MLAntiAliasingPostEffect.cs" />
-    <Compile Include="AA\AntiAliasingPostEffectStalker.cs" />
     <Compile Include="BilboardsSamples\BilboardScreen.cs" />
     <Compile Include="CharacterControllerInput.cs" />
     <Compile Include="CharacterSample\CharacterScreen.cs" />

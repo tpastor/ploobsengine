@@ -55,6 +55,7 @@ namespace AdvancedDemo4._0
 													UpdateVertexProperties, "Textures/Smoke");
 			LoadSmokeEvents();
 			Emitter.ParticlesPerSecond = 100;
+            Emitter.EmitParticlesAutomatically = true;
 			Name = "Smoke";
 		}
 

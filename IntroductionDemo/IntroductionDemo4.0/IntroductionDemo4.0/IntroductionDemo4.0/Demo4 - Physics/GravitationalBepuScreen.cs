@@ -59,7 +59,7 @@ namespace IntroductionDemo4._0
                 BepuPhysicWorld physicWorld;
                 physicWorld = this.World.PhysicWorld as BepuPhysicWorld;
                 System.Diagnostics.Debug.Assert(physicWorld != null);                
-                var field = new GravitationalFieldObject(new InfiniteForceFieldShape(), obj3.Position, 66730 / 2f, 10000, physicWorld);
+                var field = new GravitationalFieldObject(new InfiniteForceFieldShape(), obj3.PhysicObject.Position, 66730 / 2f, 10000, physicWorld);
                 ///This Method is from BepuPhysicWorld not from th IPhysicObject
                 ///You can use everithing from Bepu using this object instead of the interface
                 ///but take care, the engine dont know about THIS !!! it does not manage these things

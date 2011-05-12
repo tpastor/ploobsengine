@@ -92,5 +92,18 @@ namespace PloobsEngine.Particles
         {
             manager.DrawAllParticleSystems();
         }
+
+        public override IParticleSystem GetParticleSystem(string particleSystemName)
+        {
+            if (ParticleSystem.ContainsKey(particleSystemName))
+            {
+                return ParticleSystem[particleSystemName];
+            }
+            else
+            {
+                ActiveLogger.LogMessage("ParticleMessage: " + particleSystemName + " Not Found, returning NULL", LogLevel.Warning);
+                return null;
+            }
+        }
     }
 }
