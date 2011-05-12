@@ -212,14 +212,16 @@ namespace AdvancedDemo4._0
             DeferredCustomShader shader = new DeferredCustomShader(mi.HasTexture(TextureType.GLOW), mi.HasTexture(TextureType.BUMP), mi.HasTexture(TextureType.SPECULAR), mi.HasTexture(TextureType.PARALAX));
             DeferredMaterial dm = new DeferredMaterial(shader);
             IObject obj = new  IObject(dm, model, po);
+            
             if (mi.HasTexture(TextureType.BUMP))
             {
                 withBump.Add(obj);
             }
+
             if (mi.HasTexture(TextureType.SPECULAR))
             {
                 shader.SpecularPowerMapScale = 2f;
-                shader.SpecularIntensityMapScale = 0.2f;            
+                shader.SpecularIntensityMapScale = 0.1f;            
                 withSpecular.Add(obj);
             }
 

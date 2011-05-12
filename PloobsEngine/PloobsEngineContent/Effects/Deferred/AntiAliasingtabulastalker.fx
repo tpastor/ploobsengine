@@ -3,10 +3,13 @@
 float weight;
 float2 pixel_size;
 
-sampler TextureSampler : register(s0);
-
+texture image;
 texture depthTex;
 texture normalTex;
+
+sampler2D TextureSampler  {
+    Texture = <image>;    
+};
 
 sampler2D depthMap {
     Texture = <depthTex>;

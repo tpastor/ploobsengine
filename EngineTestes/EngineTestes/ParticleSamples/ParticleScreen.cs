@@ -88,6 +88,9 @@ namespace EngineTestes
             SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//cubemap");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
 
+            //this.RenderTechnic.AddPostEffect(new AntiAliasingPostEffectTabula());
+            this.RenderTechnic.AddPostEffect(new AntiAliasingPostEffectStalker());
+
         }
 
     }

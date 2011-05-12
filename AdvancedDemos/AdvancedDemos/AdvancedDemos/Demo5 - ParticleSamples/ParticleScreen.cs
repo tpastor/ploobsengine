@@ -34,7 +34,7 @@ namespace AdvancedDemo4._0
         /// <param name="world">The world.</param>
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            world = new IWorld(new BepuPhysicWorld(), new SimpleCuller(),new DPSFParticleManager());
+            world = new IWorld(new BepuPhysicWorld(-0.097f,true), new SimpleCuller(),new DPSFParticleManager());
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
             desc.UseFloatingBufferForLightMap = true;
@@ -61,17 +61,10 @@ namespace AdvancedDemo4._0
                 ///cant set emiter position before adding the particle
                 ///IF YOU DO SO, IT WILL NOT WORK
                 snow.Emitter.PositionData.Position = new Vector3(1000, 0, 0);
-            }
+            }            
 
-            {
-                SmokeParticleSystem smoke = new SmokeParticleSystem();
-                DPFSParticleSystem ps = new DPFSParticleSystem("smoke", smoke);
-                this.World.ParticleManager.AddAndInitializeParticleSystem(ps);
-
-                ///cant set emiter position before adding the particle                
-                ///IF YOU DO SO, IT WILL NOT WORK
-                smoke.Emitter.PositionData.Position = new Vector3(50, 0, 0);
-            }
+            ObjectThrowSmokeParticle ot = new ObjectThrowSmokeParticle(this);
+            this.AddScreenUpdateable(ot);
 
 
             ///OUR Classic Model
@@ -105,6 +98,8 @@ namespace AdvancedDemo4._0
 
             SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grassCube");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
+
+            this.RenderTechnic.AddPostEffect(new AntiAliasingPostEffectStalker());
 
         }
 
