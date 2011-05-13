@@ -10,6 +10,7 @@ using PloobsEngine.Components;
 using PloobsEngine.Commands;
 using Microsoft.Xna.Framework.Audio;
 using PloobsEngine.Input;
+using PloobsEngine.Features;
 
 namespace PloobsEngine.Engine
 {
@@ -258,8 +259,7 @@ namespace PloobsEngine.Engine
             this.IsFixedTimeStep = initialDescription.isFixedGameTime;
             this.Window.Title = initialDescription.ScreenName;
             
-            ActiveLogger.logger = initialDescription.Logger;            
-            graphics = new GraphicsDeviceManager(this);
+            ActiveLogger.logger = initialDescription.Logger;                        
             graphics.GraphicsProfile = initialDescription.GraphicsProfile;
             graphics.IsFullScreen = initialDescription.isFullScreen;
             graphics.SynchronizeWithVerticalRetrace = initialDescription.UseVerticalSyncronization;
@@ -341,6 +341,7 @@ namespace PloobsEngine.Engine
 
             ///THE ONLY COMPONENT ADDED BY DEFAULT
             ComponentManager.AddComponent(new InputAdvanced());
+            ComponentManager.AddComponent(new TaskProcessor());
         }
 
         /// <summary>

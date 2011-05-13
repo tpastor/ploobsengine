@@ -1,6 +1,7 @@
 using System;
 using PloobsEngine.Engine;
 using PloobsEngine.SceneControl;
+using EngineTestes.LoadingScreen;
 
 namespace EngineTestes
 {
@@ -27,7 +28,7 @@ namespace EngineTestes
             //manager.AddScreen(new DeferredLoadScreen());
             //manager.AddScreen(new DeferredAnimatedScreen());
             //manager.AddScreen(new CharacterScreen());
-            manager.AddScreen(new ParticleScreen());
+            //manager.AddScreen(new ParticleScreen());
             //manager.AddScreen(new PostEffectScreen());
             //manager.AddScreen(new SoundScreen());
             //manager.AddScreen(new TransparentForwardScreen());
@@ -38,8 +39,10 @@ namespace EngineTestes
             //manager.AddScreen(new TechDemoScreen());
             //manager.AddScreen(new TechDemoScreenModel());
             //manager.AddScreen(new GUIScreen());
-            //manager.AddScreen(new FGUIScreen());
+            manager.AddScreen(new FGUIScreen());
             //manager.AddScreen(new ForwardLoadScreen());
+            //manager.AddScreen(new DeferredLoadScreen(),new LoadScene());
+            
             
 
             

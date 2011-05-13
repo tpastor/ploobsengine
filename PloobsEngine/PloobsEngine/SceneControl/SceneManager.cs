@@ -8,6 +8,9 @@ using Microsoft.Xna.Framework.Graphics;
 using System.Text;
 using PloobsEngine.Engine;
 using PloobsEngine.Engine.Logger;
+using System.Threading;
+using PloobsEngine.Features;
+using PloobsEngine.Commands;
 #endregion
 
 namespace PloobsEngine.SceneControl
@@ -99,25 +102,41 @@ namespace PloobsEngine.SceneControl
 
 
         #region Public Methods
-
+        
         /// <summary>
         /// Adds a new screen to the screen manager.
         /// </summary>
-        public void AddScreen(IScreen screen)
+        /// <param name="definitiveScreen">The definitive screen.</param>
+        /// <param name="LoadingScreen">The loading screen.</param>
+        public void AddScreen(IScreen definitiveScreen, IScreen LoadingScreen = null)
         {
-            screen.screenManager = this;            
+            if (LoadingScreen != null)
+            {
+                LoadingScreen.screenManager = this;
+                LoadingScreen.graphicFactory = GraphicFactory;
+                LoadingScreen.graphicInfo = GraphicInfo;
+                LoadingScreen.iInitScreen(GraphicInfo, engine);
+                LoadingScreen.iLoadContent(GraphicInfo, GraphicFactory, contentManager);
+                LoadingScreen.iAfterLoadContent(contentManager, GraphicInfo, GraphicFactory);
+                screens.Add(LoadingScreen);
 
-            screen.graphicFactory = GraphicFactory;
-            screen.graphicInfo = GraphicInfo;
-
-
-            screen.iInitScreen(GraphicInfo,engine);
-            screen.iLoadContent(GraphicInfo,GraphicFactory,contentManager);
-            screen.iAfterLoadContent(contentManager, GraphicInfo, GraphicFactory);        
-
-            screens.Add(screen);
+                definitiveScreen.screenManager = this;
+                definitiveScreen.graphicFactory = GraphicFactory;
+                definitiveScreen.graphicInfo = GraphicInfo;
+                TaskCommand tc = new TaskCommand(new LoadingScreenTask(definitiveScreen, contentManager, engine, LoadingScreen));
+                CommandProcessor.getCommandProcessor().SendCommandAssyncronous(tc);
+            }
+            else
+            {
+                definitiveScreen.screenManager = this;
+                definitiveScreen.graphicFactory = GraphicFactory;
+                definitiveScreen.graphicInfo = GraphicInfo;
+                definitiveScreen.iInitScreen(GraphicInfo, engine);
+                definitiveScreen.iLoadContent(GraphicInfo, GraphicFactory, contentManager);
+                definitiveScreen.iAfterLoadContent(contentManager, GraphicInfo, GraphicFactory);
+                screens.Add(definitiveScreen);
+            }
         }
-
 
         /// <summary>
         /// Removes a screen from the screen manager. You should normally

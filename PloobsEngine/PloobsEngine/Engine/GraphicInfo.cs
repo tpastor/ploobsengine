@@ -50,7 +50,8 @@ namespace PloobsEngine.Engine
 
         internal void FireEvent(GraphicInfo gi)
         {
-            OnGraphicInfoChange(gi);
+            if(OnGraphicInfoChange!= null)
+                OnGraphicInfoChange(gi);
         }
 
         private bool useMipMap;

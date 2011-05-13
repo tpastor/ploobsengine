@@ -128,6 +128,7 @@
     <Compile Include="GUI\FGUIScreen.cs" />
     <Compile Include="GUI\GUIScreen.cs" />
     <Compile Include="Loader\ForwardLoadScreen.cs" />
+    <Compile Include="LoadingScreen\LoadScene.cs" />
     <Compile Include="PostEffectScreen.cs" />
     <Compile Include="DeferredAnimatedScreen.cs" />
     <Compile Include="Loader\DeferredLoadScreen.cs" />

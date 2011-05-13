@@ -5904,30 +5904,6 @@
             Gets the world matrix.
             </summary>
     </member>
-    <member name="P:PloobsEngine.SceneControl.IObject.Position">
-      <summary>
-            Gets or sets the position.
-            </summary>
-      <value>
-            The position.
-            </value>
-    </member>
-    <member name="P:PloobsEngine.SceneControl.IObject.Rotation">
-      <summary>
-            Gets or sets the rotation.
-            </summary>
-      <value>
-            The rotation.
-            </value>
-    </member>
-    <member name="P:PloobsEngine.SceneControl.IObject.Scale">
-      <summary>
-            Gets or sets the scale.
-            </summary>
-      <value>
-            The scale.
-            </value>
-    </member>
     <member name="P:PloobsEngine.SceneControl.IObject.Name">
       <summary>
             Gets or sets the name of the object.
@@ -7362,10 +7338,12 @@
             Tells each screen to draw itself.
             </summary>
     </member>
-    <member name="M:PloobsEngine.SceneControl.ScreenManager.AddScreen(PloobsEngine.SceneControl.IScreen)">
+    <member name="M:PloobsEngine.SceneControl.ScreenManager.AddScreen(PloobsEngine.SceneControl.IScreen,PloobsEngine.SceneControl.IScreen)">
       <summary>
             Adds a new screen to the screen manager.
             </summary>
+      <param name="definitiveScreen">The definitive screen.</param>
+      <param name="LoadingScreen">The loading screen.</param>
     </member>
     <member name="M:PloobsEngine.SceneControl.ScreenManager.RemoveScreen(PloobsEngine.SceneControl.IScreen)">
       <summary>
@@ -8856,6 +8834,90 @@
       <summary>
             Default Vector4.One
             </summary>
+    </member>
+    <member name="T:PloobsEngine.Features.TaskCommand">
+      <summary>
+            Command that encapsulates a task
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.Features.TaskCommand.#ctor(PloobsEngine.Features.ITask)">
+      <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Features.TaskCommand" /> class.
+            </summary>
+      <param name="task">The task.</param>
+    </member>
+    <member name="M:PloobsEngine.Features.TaskCommand.execute">
+      <summary>
+            Executes the command Call.
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.Features.TaskCommand.setTarget(System.Object)">
+      <summary>
+            Sets the command target.
+            </summary>
+      <param name="obj">The obj.</param>
+    </member>
+    <member name="P:PloobsEngine.Features.TaskCommand.TargetName">
+      <summary>
+            Gets the name of the command target.
+            </summary>
+      <value>
+            The name of the target.
+            </value>
+    </member>
+    <member name="T:PloobsEngine.Features.ITask">
+      <summary>
+            Specification of a task
+            Task is a class that operates in ANOTHER THREAD    
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.Features.ITask.Result(System.IAsyncResult)">
+      <summary>
+            Called when the task ends
+            </summary>
+      <param name="result">The result.</param>
+    </member>
+    <member name="M:PloobsEngine.Features.ITask.Process">
+      <summary>
+            Processes the task.
+            </summary>
+    </member>
+    <member name="T:PloobsEngine.Features.TaskEndType">
+      <summary>
+            Quando a funcao result sera chamada, qd o process terminar
+            </summary>
+    </member>
+    <member name="T:PloobsEngine.Features.TaskProcessor">
+      <summary>
+            Task Command Executor
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Features.TaskProcessor.MyName">
+      <summary>
+            The Name of the Component
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.Features.TaskProcessor.StartTask(PloobsEngine.Features.ITask)">
+      <summary>
+            Starts the task.
+            </summary>
+      <param name="task">The task.</param>
+    </member>
+    <member name="M:PloobsEngine.Features.TaskProcessor.getMyName">
+      <summary>
+            The name of the reciever
+            MUST BE UNIQUE
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="P:PloobsEngine.Features.TaskProcessor.ComponentType">
+      <summary>
+            Gets the type of the component type.
+            </summary>
+      <value>
+            The type of the component.
+            </value>
     </member>
     <member name="T:BEPUphysics.DeactivationManagement.ISimulationIslandConnection">
       <summary>

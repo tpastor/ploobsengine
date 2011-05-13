@@ -57,8 +57,6 @@ namespace AdvancedDemo4._0
             //manager.AddScreen(new OceanScreen());            
             //manager.AddScreen(new WaterCompleteScreen());            
             //manager.AddScreen(new DeferredDirectionaldShadowScreen());            
-            
-            
         }
 
         static void UnhandledException(object sender, UnhandledExceptionEventArgs e)
