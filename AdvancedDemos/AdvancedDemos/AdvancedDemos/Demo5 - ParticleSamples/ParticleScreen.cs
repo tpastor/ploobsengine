@@ -113,6 +113,7 @@ namespace AdvancedDemo4._0
         {
             base.Draw(gameTime, render);
             render.RenderTextComplete("Demo 9-22:Particle System Integration; Snow and Smoke, check DPFS SAMPLES", new Vector2(10, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Left Mouse Buttom to throw balls that emits smoke", new Vector2(10, 35), Color.White, Matrix.Identity);
         }
 
     }

@@ -1,39 +1,23 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using PloobsEngine;
-using PloobsEngine.Cameras;
-using PloobsEngine.Entity;
-using PloobsEngine.Input;
-using PloobsEngine.Light;
-using PloobsEngine.Material;
-using PloobsEngine.MessageSystem;
-using PloobsEngine.Modelo;
-using PloobsEngine.Physics;
-using PloobsEngine.Physics.Bepu;
-using PloobsEngine.SceneControl;
-using PloobsEngine.Utils;
 using Microsoft.Xna.Framework.Input;
-using PloobsEngine.Components;
 using PloobsEngine.Commands;
-using PloobsEngine.DataStructure;
-using System;
 using PloobsEngine.Engine;
+using PloobsEngine.Input;
+using PloobsEngine.SceneControl;
 using PloobsEngine.SceneControl.GUI;
 using TomShane.Neoforce.Controls;
+using AdvancedDemos;
 
 namespace AdvancedDemo4._0
 {
-
     public class DemosHomeScreen : IScreen
     {
         public DemosHomeScreen() : base(new NeoforceGui()) {
 
             Height = 600;
             Width = 800;
-            fullscreen = multisampling = verticalsync = false;
-        
+            fullscreen = multisampling = verticalsync = false;        
         }
 
         int index = 0;
@@ -153,11 +137,7 @@ namespace AdvancedDemo4._0
 
 
         private void ConfigMenu()
-        {
-
-
-
-            
+        {            
             
             NeoforceGui guiManager = this.Gui as NeoforceGui;
             System.Diagnostics.Debug.Assert(guiManager != null);
@@ -179,8 +159,6 @@ namespace AdvancedDemo4._0
             lab1.Left = 20;
             lab1.Parent = window;
 
-
-
             string[] colors = new string[] { "800x600", "1024x768" };
 
             lb1 = new ComboBox(guiManager.Manager);
@@ -198,13 +176,7 @@ namespace AdvancedDemo4._0
             lb1.Items.AddRange(colors);
 
             lb1.Text = "800x600";
-            lb1.SelectionStart = 0;
-            
-
-
-
-            
-          
+            lb1.SelectionStart = 0;            
 
 
 
@@ -249,15 +221,11 @@ namespace AdvancedDemo4._0
             vsy.Parent = window;
             vsy.Click += new TomShane.Neoforce.Controls.EventHandler(vsy_Click);
             vsy.Left = lb1.Left;
-            vsy.Width = vsy.Text.Length * 10;
-
-            
+            vsy.Width = vsy.Text.Length * 10;           
 
 
             // Add the window control to the manager processing queue.
             guiManager.Manager.Add(window);
-        
-        
         
         }
 
@@ -275,10 +243,14 @@ namespace AdvancedDemo4._0
 
         void button_Click(object sender, TomShane.Neoforce.Controls.EventArgs e)
         {
-
-            InitialEngineDescription ini = new InitialEngineDescription("teste", Width, Height, fullscreen, GraphicsProfile.HiDef, verticalsync, multisampling, true, null, false);
-
-            //engine.ApplyEngineDescription(ref ini);
+            InitialEngineDescription ini = engine.GetEngineDescription();
+            ini.BackBufferWidth = Width;
+            ini.BackBufferHeight= Height;
+            ini.isFullScreen = fullscreen;
+            ini.UseVerticalSyncronization  =verticalsync;
+            ini.isMultiSampling = multisampling;
+            ini.useMipMapWhenPossible = true;
+            engine.ApplyEngineDescription(ref ini);
 
         }
 
@@ -300,15 +272,16 @@ namespace AdvancedDemo4._0
         }
 
 
-
         public void ChangeDemo(InputPlayableKeyBoard ipk)
         {
             if(this.ScreenState == PloobsEngine.SceneControl.ScreenState.Active)
-                this.ScreenState = ScreenState.Hidden;
+                this.ScreenState = ScreenState.Hidden; 
+
             if (active != null)
                 ScreenManager.RemoveScreen(active);
+
             active = GetScreen(screenList[index % screenList.GetLength(0)]);
-            ScreenManager.AddScreen(active);
+            ScreenManager.AddScreen(active,new LoadingScreen());
             index++;
         }
 

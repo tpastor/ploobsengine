@@ -148,6 +148,7 @@
     <Compile Include="Components\SkyBox\SkyBoxEnableDisableCommand.cs" />
     <Compile Include="Components\SkyBox\Skybox.cs" />
     <Compile Include="Components\SkyBox\SkyBoxUpdateParametersCommand.cs" />
+    <Compile Include="Engine\LoadingScreenTask.cs" />
     <Compile Include="Engine\IntermediateTexture.cs" />
     <Compile Include="Events\EventManager.cs" />
     <Compile Include="Events\GroupedEvent.cs" />
@@ -156,6 +157,9 @@
     <Compile Include="Events\IHaveEventManager.cs" />
     <Compile Include="Events\SimpleEvent.cs" />
     <Compile Include="Features\FPSCounter.cs" />
+    <Compile Include="Features\Tasks\ITask.cs" />
+    <Compile Include="Features\Tasks\TaskCommand.cs" />
+    <Compile Include="Features\Tasks\TaskProcessor.cs" />
     <Compile Include="Light\Deferred\DeferredLight.cs" />
     <Compile Include="Light\Deferred\DirectionalLightPE.cs" />
     <Compile Include="Light\Deferred\PointLightPE.cs" />

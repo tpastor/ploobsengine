@@ -110,6 +110,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LoadingScreen.cs" />
     <Compile Include="Demo SSAO\SSAOScreen.cs" />
     <Compile Include="Demo3 - Sound\FollowerObjectSoundScreen.cs" />
     <Compile Include="Demo5 - ParticleSamples\Helpers\ObjectThrowSmokeParticle.cs" />

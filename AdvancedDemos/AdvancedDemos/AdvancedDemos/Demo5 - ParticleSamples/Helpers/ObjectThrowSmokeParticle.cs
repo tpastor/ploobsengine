@@ -13,7 +13,6 @@ using PloobsEngine.Material;
 using PloobsEngine.Physics.Bepu;
 using PloobsEngine.Physics;
 using PloobsEngine.Engine;
-using AdvancedDemo4._0;
 using PloobsEngine.Particles;
 using DPSF;
 
