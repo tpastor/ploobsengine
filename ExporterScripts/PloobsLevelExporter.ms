@@ -283,46 +283,62 @@ rollout main "Level Exporter"
 								fric = getUserProp body "StaticFriction"
 								format "\t\t<staticfriction value=\"%\" />\n" fric to:currentFile								
 								)
-														
+								
+								if(classOf body.material == RaytraceMaterial)do
+								(
+								mat = classOf body.material
+								format "\t\t<material name=\"%\">\n" mat to:currentFile
+								if(body.material.environmentMap != undefined) do
+									(
+									a = getFileName body.material.environmentMap.filename
+									format "\t\t\t<environment name =\"%\" />\n" a  to:currentFile
+									)
+								
+									
+								format "\t\t</material>\n" to:currentFile
+								
+								)
 								
 								
 								
 								if(classOf body.material ==  Standardmaterial) do
 								(
-								format "\t\t<material>\n" to:currentFile
-                                
-																
-								format "\t\t\t<SpecularIntensity>\n" to:currentFile
-								format "\t\t\t%\n" body.material.Glossiness  to:currentFile
-								format "\t\t\t</SpecularIntensity>\n" to:currentFile
 								
-								format "\t\t\t<SpecularPower>\n" to:currentFile
-								format "\t\t\t%\n" body.material.specularLevel  to:currentFile
-								format "\t\t\t</SpecularPower>\n" to:currentFile
-								
-								
-								
-								if(body.material.diffusemap != undefined) do
-								(
-								a = getFileName body.material.diffusemap.filename
-								format "\t\t\t<diffuse name =\"%\" />\n" a  to:currentFile
-								)
-								if(body.material.bumpmap != undefined) do
-								(
-								a =getFileName body.material.bumpmap.filename
-								format "\t\t\t<bump name =\"%\" />\n" a to:currentFile
-								)
-								if(body.material.specularlevelmap != undefined) do
-								(
-								a = getFileName body.material.specularlevelmap.filename
-								format "\t\t\t<specular name =\"%\" />\n" a to:currentFile
-								)
-								if(body.material.selfillummap != undefined) do
-								(
-								a = getFileName body.material.selfillummap.filename
-								format "\t\t\t<glow name =\"%\" />\n" a to:currentFile													
-								)
-								format "\t\t</material>\n" to:currentFile
+									mat = classOf body.material
+								format "\t\t<material name=\"%\">\n" mat to:currentFile
+									
+																	
+									format "\t\t\t<SpecularIntensity>\n" to:currentFile
+									format "\t\t\t%\n" body.material.Glossiness  to:currentFile
+									format "\t\t\t</SpecularIntensity>\n" to:currentFile
+									
+									format "\t\t\t<SpecularPower>\n" to:currentFile
+									format "\t\t\t%\n" body.material.specularLevel  to:currentFile
+									format "\t\t\t</SpecularPower>\n" to:currentFile
+									
+									
+									
+									if(body.material.diffusemap != undefined) do
+									(
+									a = getFileName body.material.diffusemap.filename
+									format "\t\t\t<diffuse name =\"%\" />\n" a  to:currentFile
+									)
+									if(body.material.bumpmap != undefined) do
+									(
+									a =getFileName body.material.bumpmap.filename
+									format "\t\t\t<bump name =\"%\" />\n" a to:currentFile
+									)
+									if(body.material.specularlevelmap != undefined) do
+									(
+									a = getFileName body.material.specularlevelmap.filename
+									format "\t\t\t<specular name =\"%\" />\n" a to:currentFile
+									)
+									if(body.material.selfillummap != undefined) do
+									(
+									a = getFileName body.material.selfillummap.filename
+									format "\t\t\t<glow name =\"%\" />\n" a to:currentFile													
+									)
+									format "\t\t</material>\n" to:currentFile
 							
 								)
 								

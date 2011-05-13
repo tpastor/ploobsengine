@@ -155,6 +155,10 @@ namespace AdvancedDemo4._0
                 cd.SpecularIntensity = 0.3f;
                 cd.SpecularPower = 150;
             }
+            else
+            {
+                
+            }
             
             ///If you want, create the object on your own, without using the World Loader,                          
             ///THIS IS WHAT WorldLoader.CreateOBJ DOES
@@ -184,7 +188,7 @@ namespace AdvancedDemo4._0
             base.Draw(gameTime, render);
 
             ///Draw some text to the screen
-            render.RenderTextComplete("Demo: Scene Loaded from our XML 3DS Max Exporter Plugin", new Vector2(20, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Demo 1-22: Scene Loaded from our XML 3DS Max Exporter Plugin", new Vector2(20, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("Use mouse and ASDW to move the camera", new Vector2(20, 35), Color.White, Matrix.Identity);
             render.RenderTextComplete("Use Left mouse buttom to throw a light ", new Vector2(20, 55), Color.White, Matrix.Identity);            
             render.RenderTextComplete("Use Right mouse buttom to put a light in the camera actual position", new Vector2(20, 75), Color.White, Matrix.Identity);            

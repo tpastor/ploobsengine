@@ -13,6 +13,9 @@ namespace AdvancedDemo4._0
         public Demos()
         {
             InitialEngineDescription desc = InitialEngineDescription.Default();
+
+
+            
             ///optional parameters, the default is good for most situations
             //desc.UseVerticalSyncronization = true;
             //desc.isFixedGameTime = true;

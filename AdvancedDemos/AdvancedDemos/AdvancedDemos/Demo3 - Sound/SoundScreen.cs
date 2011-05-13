@@ -164,7 +164,7 @@ namespace AdvancedDemo4._0
         {
             base.Draw(gameTime, render);
 
-            render.RenderTextComplete("Demo: Sound Mess, lots of sounds together ", new Vector2(10, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Demo 6-22: Sound Mess, lots of sounds together ", new Vector2(10, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("Space/Enter to Play/Pause the Sound Effect: " + se.State, new Vector2(10, 35), Color.White, Matrix.Identity);
             render.RenderTextComplete("RightAlt/RightShif to Play/Stop the AudioPlayer Bye effect: " + ap.SoundState("bye"), new Vector2(10, 55), Color.White, Matrix.Identity);
             render.RenderTextComplete("RightControl to Stop the 3D sound (Source is bellow the tree, go near there):" + sound.State, new Vector2(10, 75), Color.White, Matrix.Identity);

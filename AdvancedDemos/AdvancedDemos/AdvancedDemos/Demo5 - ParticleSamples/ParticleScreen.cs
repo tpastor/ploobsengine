@@ -112,7 +112,7 @@ namespace AdvancedDemo4._0
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);
-            render.RenderTextComplete("Particle System Integration; Snow and Smoke, check DPFS SAMPLES", new Vector2(10, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Demo 9-22:Particle System Integration; Snow and Smoke, check DPFS SAMPLES", new Vector2(10, 15), Color.White, Matrix.Identity);
         }
 
     }
