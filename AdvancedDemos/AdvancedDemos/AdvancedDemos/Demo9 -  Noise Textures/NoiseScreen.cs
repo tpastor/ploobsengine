@@ -37,7 +37,7 @@ namespace AdvancedDemo4._0
             }
 
             render.RenderTextureComplete(perlinNoise);
-            render.RenderTextComplete("Perlin Noise Texture generated in Shader", new Vector2(10, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Demo 17-22:Perlin Noise Texture generated in Shader", new Vector2(10, 15), Color.White, Matrix.Identity);
         }
 
         protected override void  LoadContent(PloobsEngine.Engine.GraphicInfo GraphicInfo, PloobsEngine.Engine.GraphicFactory factory, IContentManager contentManager)

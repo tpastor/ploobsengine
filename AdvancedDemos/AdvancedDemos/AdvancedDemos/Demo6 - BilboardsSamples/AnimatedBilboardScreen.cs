@@ -128,7 +128,7 @@ namespace AdvancedDemo4._0
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);
-            render.RenderTextComplete("Animated Bilboard Sample, putting animated textures on Quads", new Vector2(10, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Demo 10-22:Animated Bilboard Sample, putting animated textures on Quads", new Vector2(10, 15), Color.White, Matrix.Identity);
         }
 
     }

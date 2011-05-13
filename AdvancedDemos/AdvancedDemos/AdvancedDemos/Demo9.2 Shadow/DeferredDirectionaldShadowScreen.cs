@@ -113,7 +113,7 @@ namespace AdvancedDemo4._0
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);
-            render.RenderTextComplete("Directional Shadow Sample using cascade Shadow Mapping", new Vector2(10, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Demo 22-22:Directional Shadow Sample using cascade Shadow Mapping", new Vector2(10, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("This sample uses PCF7x7 filter with soft edges, it is heavy", new Vector2(10, 35), Color.White, Matrix.Identity);
             render.RenderTextComplete("The Shadow Map resolution is 2048X2048 --big ", new Vector2(10, 55), Color.White, Matrix.Identity);
         }

@@ -179,7 +179,7 @@ namespace AdvancedDemo4._0
             base.Draw(gameTime, render);
 
             ///Draw some text to the screen
-            render.RenderTextComplete("Demo Paralax effect, look at the brick box", new Vector2(20, 20), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Demo 4-22: Paralax effect, look at the brick box", new Vector2(20, 20), Color.White, Matrix.Identity);
             render.RenderTextComplete("Paralax " + paralax.UseParalax, new Vector2(20, 40), Color.White, Matrix.Identity);
             render.RenderTextComplete("Paralax ScaleBias " + paralax.ScaleBias, new Vector2(20, 60), Color.White, Matrix.Identity);
             render.RenderTextComplete("Bump " + paralax.UseBump, new Vector2(20, 80), Color.White, Matrix.Identity);

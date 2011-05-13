@@ -88,6 +88,7 @@ namespace AdvancedDemo4._0
             // Add the window control to the manager processing queue.
             guiManager.Manager.Add(window);
 
+            
 
 
             #region NormalLight
@@ -134,7 +135,7 @@ namespace AdvancedDemo4._0
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);
-            render.RenderTextComplete("Gui Deferred Sample", new Vector2(10, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Demo 15-22:Gui Deferred Sample", new Vector2(10, 15), Color.White, Matrix.Identity);
             if (okClicked)
                 render.RenderTextComplete("Ok Clicked", new Vector2(10, 35), Color.White, Matrix.Identity);
         }
