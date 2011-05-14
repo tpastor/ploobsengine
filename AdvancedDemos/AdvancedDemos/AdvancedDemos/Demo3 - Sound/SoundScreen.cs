@@ -176,7 +176,7 @@ namespace AdvancedDemo4._0
             ap.StopSoundEffect("bye");
             ap.RemoveAllSounds();
             sound.Stop(true);
-            lm.StopCurrentMusic();           
+            lm.StopCurrentMusic();            
 
             engine.RemoveComponent("SkyBox");
             base.CleanUp(engine);

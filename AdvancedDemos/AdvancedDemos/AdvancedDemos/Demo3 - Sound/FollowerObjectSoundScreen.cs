@@ -67,7 +67,7 @@ namespace AdvancedDemo4._0
 
             SoundMasterOptionDescription sod = engine.GetSoundMasterOptionDescription();
             sod.MasterVolume = 0.9f;
-            sod.DistanceScale = 200;
+            sod.DistanceScale = 100;
             engine.SetSoundMasterOptionDescription(ref sod);
         }
         

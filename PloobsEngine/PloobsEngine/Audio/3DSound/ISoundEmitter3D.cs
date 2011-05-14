@@ -21,8 +21,10 @@ namespace PloobsEngine.Audio
         {
             System.Diagnostics.Debug.Assert(cmanager != null);
             System.Diagnostics.Debug.Assert(!String.IsNullOrEmpty(SoundName));
-            SoundEffect se = cmanager.GetAsset<SoundEffect>(SoundName);
+            
+            SoundEffect se = cmanager.GetAsset<SoundEffect>(SoundName);                        
             soundEngineInstance = se.CreateInstance();
+
             Name = se.Name;
             Duration = se.Duration;
             listener = new AudioListener();

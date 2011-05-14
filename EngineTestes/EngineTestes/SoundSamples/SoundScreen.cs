@@ -44,13 +44,15 @@ namespace EngineTestes
             engine.SetSoundMasterOptionDescription(ref sod);
         }
 
-        SoundAudioPlayer ap;
-        SimpleSoundEffect se;
+        //SoundAudioPlayer ap;
+        //SimpleSoundEffect se;
         Static3DSound sound;
+        IContentManager contentManager;
 
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory ,IContentManager contentManager)
         {
             base.LoadContent(GraphicInfo,factory, contentManager);
+            this.contentManager = contentManager;
     
             SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
             TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
@@ -59,14 +61,14 @@ namespace EngineTestes
             IObject obj = new IObject(fmaterial, simpleModel, tmesh);
             this.World.AddObject(obj);            
             
-            ap = new SoundAudioPlayer(contentManager);
-            ap.AddSoundToRepository("Songs/bye", "bye");
+            //ap = new SoundAudioPlayer(contentManager);
+            //ap.AddSoundToRepository("Songs/bye", "bye");
 
-            se = new SimpleSoundEffect(contentManager, "Songs/alarm");
+            //se = new SimpleSoundEffect(contentManager, "Songs/alarm");
 
-            LocalMediaAudioPlayer lm = new LocalMediaAudioPlayer();
-            AlbumCollection ac = lm.MediaLibrary.Albums;
-            lm.PlayAlbum(ac[0]);
+            //LocalMediaAudioPlayer lm = new LocalMediaAudioPlayer();
+            //AlbumCollection ac = lm.MediaLibrary.Albums;
+            //lm.PlayAlbum(ac[0]);
             
             sound = new Static3DSound(contentManager, "Songs/pianosong", Vector3.Zero);
             this.World.AddSoundEmitter(sound, true);
@@ -101,23 +103,32 @@ namespace EngineTestes
 
         protected override void Update(GameTime gameTime)
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.Space))
-            {
-                se.Play();
-            }
+            //if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            //{
+            //    se.Play();
+            //}
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Enter))
-            {
-                se.Pause();
-            }
+            //if (Keyboard.GetState().IsKeyDown(Keys.Enter))
+            //{
+            //    se.Pause();
+            //}
 
-            if (Keyboard.GetState().IsKeyDown(Keys.RightAlt))
+            //if (Keyboard.GetState().IsKeyDown(Keys.RightAlt))
+            //{
+            //    ap.PlaySoundEffect("bye");
+            //}
+            //if (Keyboard.GetState().IsKeyDown(Keys.RightShift))
+            //{
+            //    ap.StopSoundEffect("bye");
+            //}
+
+            if (Keyboard.GetState().IsKeyDown(Keys.LeftControl))
             {
-                ap.PlaySoundEffect("bye");
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.RightShift))
-            {
-                ap.StopSoundEffect("bye");
+                this.World.RemoveSoundEmitter(sound);
+                sound = new Static3DSound(contentManager, "Songs/pianosong", Vector3.Zero);
+                this.World.AddSoundEmitter(sound, true);
+                
+                sound.Play();
             }
             if (Keyboard.GetState().IsKeyDown(Keys.RightControl))
             {

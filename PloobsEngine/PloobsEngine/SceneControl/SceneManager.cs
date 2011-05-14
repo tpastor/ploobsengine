@@ -108,17 +108,20 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         /// <param name="definitiveScreen">The definitive screen.</param>
         /// <param name="LoadingScreen">The loading screen.</param>
-        public void AddScreen(IScreen definitiveScreen, IScreen LoadingScreen = null)
+        public void AddScreen(IScreen definitiveScreen, IScreen LoadingScreen = null, bool loadAndInitScreen = true)
         {
             if (LoadingScreen != null)
             {
                 LoadingScreen.screenManager = this;
                 LoadingScreen.graphicFactory = GraphicFactory;
                 LoadingScreen.graphicInfo = GraphicInfo;
-                LoadingScreen.iInitScreen(GraphicInfo, engine);
-                LoadingScreen.iLoadContent(GraphicInfo, GraphicFactory, contentManager);
-                LoadingScreen.iAfterLoadContent(contentManager, GraphicInfo, GraphicFactory);
-                LoadingScreen.IsLoaded = true;
+                if (loadAndInitScreen)
+                {
+                    LoadingScreen.iInitScreen(GraphicInfo, engine);
+                    LoadingScreen.iLoadContent(GraphicInfo, GraphicFactory, contentManager);
+                    LoadingScreen.iAfterLoadContent(contentManager, GraphicInfo, GraphicFactory);
+                    LoadingScreen.IsLoaded = true;
+                }
                 screens.Add(LoadingScreen);
 
                 definitiveScreen.screenManager = this;
@@ -132,9 +135,12 @@ namespace PloobsEngine.SceneControl
                 definitiveScreen.screenManager = this;
                 definitiveScreen.graphicFactory = GraphicFactory;
                 definitiveScreen.graphicInfo = GraphicInfo;
-                definitiveScreen.iInitScreen(GraphicInfo, engine);
-                definitiveScreen.iLoadContent(GraphicInfo, GraphicFactory, contentManager);
-                definitiveScreen.iAfterLoadContent(contentManager, GraphicInfo, GraphicFactory);
+                if (loadAndInitScreen)
+                {
+                    definitiveScreen.iInitScreen(GraphicInfo, engine);
+                    definitiveScreen.iLoadContent(GraphicInfo, GraphicFactory, contentManager);
+                    definitiveScreen.iAfterLoadContent(contentManager, GraphicInfo, GraphicFactory);
+                }
                 screens.Add(definitiveScreen);
             }
         }
