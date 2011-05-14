@@ -115,9 +115,8 @@ namespace AdvancedDemo4._0
             base.Draw(gameTime, render);
 
             render.RenderTextComplete("Demo 14-22:Animation Sample - Not Sync with the Walk cycle", new Vector2(10, 15), Color.White, Matrix.Identity);
-            render.RenderTextComplete("Use TFGH to control the character", new Vector2(10, 35), Color.White, Matrix.Identity);
-            render.RenderTextComplete("Space To Shoot", new Vector2(10, 55), Color.White, Matrix.Identity);
-            render.RenderTextComplete("R to jump", new Vector2(10, 75), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Use TFGH to control the character", new Vector2(10, 35), Color.White, Matrix.Identity);            
+            render.RenderTextComplete("R to jump", new Vector2(10, 55), Color.White, Matrix.Identity);
         }
 
     }

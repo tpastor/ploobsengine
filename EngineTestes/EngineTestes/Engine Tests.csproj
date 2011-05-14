@@ -62,13 +62,6 @@
     <XnaCompressContent>true</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BEPUphysics">
-      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\BEPUphysics.dll</HintPath>
-    </Reference>
-    <Reference Include="DPSF, Version=2.0.1.0, Culture=neutral, PublicKeyToken=32c832bfa7326ee2, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\DPSF.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
       <Private>False</Private>
     </Reference>
@@ -99,6 +92,10 @@
     <Reference Include="mscorlib">
       <Private>False</Private>
     </Reference>
+    <Reference Include="PloobsEngineDebug, Version=0.0.0.1, Culture=neutral, PublicKeyToken=0c21691816f8c6d0, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\PloobsEngine\PloobsEngine\bin\x86\Debug\PloobsEngineDebug.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
@@ -113,10 +110,6 @@
     </Reference>
     <Reference Include="System.Net">
       <Private>False</Private>
-    </Reference>
-    <Reference Include="TomShane.Neoforce.Controls, Version=0.7.2407.1915, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\NeoforceDll\bin\x86\Debug\TomShane.Neoforce.Controls.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -153,10 +146,6 @@
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\PloobsEngine\PloobsEngine\PloobsEngine.csproj">
-      <Project>{1D050978-A350-47A8-B495-090DF10242B2}</Project>
-      <Name>PloobsEngine</Name>
-    </ProjectReference>
     <ProjectReference Include="..\EngineTestesContent\EngineTestesContent.contentproj">
       <Name>EngineTestesContent %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>

@@ -18,7 +18,7 @@ namespace PloobsEngine.Engine
     /// </summary>
     public class GraphicInfo
     {
-        internal GraphicInfo(int BackBufferHeight, int BackBufferWidth, Rectangle FullScreenRectangle, Vector2 halfPixel, GraphicsDevice device, int MultiSample, DepthFormat DepthFormat,bool useMipMap)
+        internal GraphicInfo(int BackBufferHeight, int BackBufferWidth, Rectangle FullScreenRectangle, Vector2 halfPixel, GraphicsDevice device, int MultiSample, DepthFormat DepthFormat,bool useMipMap,EngineStuff engine)
         {
             this.BackBufferHeight = BackBufferHeight;
             this.BackBufferWidth = BackBufferWidth;
@@ -30,6 +30,9 @@ namespace PloobsEngine.Engine
             this.MultiSample = MultiSample;
             this.DepthFormat = DepthFormat;
             this.UseMipMap = useMipMap;
+#if !XBOX
+            this.window = (System.Windows.Forms.Form) System.Windows.Forms.Form.FromHandle(engine.Window.Handle);
+#endif
         }
 
         internal void ChangeProps(int BackBufferHeight, int BackBufferWidth, Rectangle FullScreenRectangle, Vector2 halfPixel, GraphicsDevice device, int MultiSample, DepthFormat DepthFormat, bool useMipMap)
@@ -139,5 +142,17 @@ namespace PloobsEngine.Engine
             get { return viewport; }
             internal set { viewport = value; }
         }
+
+#if !XBOX
+        private System.Windows.Forms.Form window = null;
+
+        public System.Windows.Forms.Form Window
+        {
+            get { return window; }
+            internal set { window = value; }
+        }
+#endif
+    
+
     }
 }

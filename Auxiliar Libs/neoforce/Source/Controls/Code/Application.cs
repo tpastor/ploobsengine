@@ -178,7 +178,7 @@ namespace TomShane.Neoforce.Controls
 			IsFixedTimeStep = false;
 			IsMouseVisible = true;
 
-			manager = new Manager(this, graphics, skin);
+            manager = new Manager(this, graphics, skin, (Form)Form.FromHandle(this.Window.Handle));
 			manager.AutoCreateRenderTarget = false;
 			manager.TargetFrames = 60;
 			manager.WindowClosing += new WindowClosingEventHandler(Manager_WindowClosing);

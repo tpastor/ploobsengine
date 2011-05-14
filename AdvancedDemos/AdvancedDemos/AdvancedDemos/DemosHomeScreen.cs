@@ -7,7 +7,6 @@ using PloobsEngine.Input;
 using PloobsEngine.SceneControl;
 using PloobsEngine.SceneControl.GUI;
 using TomShane.Neoforce.Controls;
-using AdvancedDemos;
 
 namespace AdvancedDemo4._0
 {

@@ -7338,7 +7338,7 @@
             Tells each screen to draw itself.
             </summary>
     </member>
-    <member name="M:PloobsEngine.SceneControl.ScreenManager.AddScreen(PloobsEngine.SceneControl.IScreen,PloobsEngine.SceneControl.IScreen)">
+    <member name="M:PloobsEngine.SceneControl.ScreenManager.AddScreen(PloobsEngine.SceneControl.IScreen,PloobsEngine.SceneControl.IScreen,System.Boolean)">
       <summary>
             Adds a new screen to the screen manager.
             </summary>

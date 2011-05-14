@@ -55,11 +55,8 @@
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.VideoImporters, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL">
       <Private>False</Private>
     </Reference>
-    <Reference Include="TomShane.Neoforce.Importers">
-      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\NeoforceDll\bin\Debug\TomShane.Neoforce.Importers.dll</HintPath>
-    </Reference>
-    <Reference Include="XNAnimationPipeline">
-      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\XNAnimationPipeline.dll</HintPath>
+    <Reference Include="PloobsEnginePipelineDebug">
+      <HintPath>..\..\PloobsEngine\PloobsEngine\bin\x86\Debug\PloobsEnginePipelineDebug.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -44,6 +44,9 @@
     <Reference Include="Microsoft.Xna.Framework.Storage, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Xna.Framework.Video, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Xna.Framework.Xact, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
+    <Reference Include="PloobsEngineDebug">
+      <HintPath>..\PloobsEngine\PloobsEngine\bin\x86\Debug\PloobsEngineDebug.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -117,10 +120,6 @@
     <ProjectReference Include="..\EngineTestes\EngineTestes\Engine Tests.csproj">
       <Project>{D8E39357-DDD4-45A2-820C-32411E409A2A}</Project>
       <Name>Engine Tests</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PloobsEngine\PloobsEngine\PloobsEngine.csproj">
-      <Project>{1D050978-A350-47A8-B495-090DF10242B2}</Project>
-      <Name>PloobsEngine</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

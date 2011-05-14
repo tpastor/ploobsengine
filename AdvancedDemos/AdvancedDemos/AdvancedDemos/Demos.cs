@@ -49,8 +49,8 @@ namespace AdvancedDemo4._0
             //manager.AddScreen(new NormalBilboardScreen());                        
             //manager.AddScreen(new ProceduralAnimatedBilboardScreen());            
             //manager.AddScreen(new DeferredAnimatedScreen());            
-            //manager.AddScreen(new FGUIScreen());            
-            //manager.AddScreen(new DGUIScreen());            
+            //manager.AddScreen(new FGUIScreen(),new LoadingScreen());            
+            //manager.AddScreen(new DGUIScreen());              
             //manager.AddScreen(new NoiseScreen());            
             //manager.AddScreen(new PerlinNoiseScreen());            
             //manager.AddScreen(new ProceduralTextureScreen());            

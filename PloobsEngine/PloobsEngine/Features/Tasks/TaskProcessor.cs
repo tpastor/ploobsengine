@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Components;
 using System.IO;
+using PloobsEngine.Engine.Logger;
 
 namespace PloobsEngine.Features
 {
@@ -51,6 +52,12 @@ namespace PloobsEngine.Features
 
         private void onfinished(IAsyncResult ar)
         {
+            if (ar.IsCompleted == false)
+            {
+                ActiveLogger.LogMessage("Thread finished with errors " + ar.ToString(), LogLevel.RecoverableError);
+                return;
+            }
+
             ITask task = ar.AsyncState as ITask;
             System.Diagnostics.Debug.Assert(task != null);
 
