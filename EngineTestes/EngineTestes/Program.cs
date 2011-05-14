@@ -39,7 +39,7 @@ namespace EngineTestes
             //manager.AddScreen(new TechDemoScreen());
             //manager.AddScreen(new TechDemoScreenModel());
             //manager.AddScreen(new GUIScreen());
-            manager.AddScreen(new FGUIScreen());
+            //manager.AddScreen(new FGUIScreen());
             //manager.AddScreen(new ForwardLoadScreen());
             //manager.AddScreen(new DeferredLoadScreen(),new LoadScene());
             

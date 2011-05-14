@@ -47,7 +47,7 @@ namespace AdvancedDemo4._0
 
         protected override void CleanUp(EngineStuff engine)
         {
-            sound2.Stop();
+            sound2.Stop(true);
             engine.RemoveComponent("SkyBox");
             lt.CleanUp();
             base.CleanUp(engine);
@@ -67,7 +67,7 @@ namespace AdvancedDemo4._0
 
             SoundMasterOptionDescription sod = engine.GetSoundMasterOptionDescription();
             sod.MasterVolume = 0.9f;
-            sod.DistanceScale = 100;
+            sod.DistanceScale = 200;
             engine.SetSoundMasterOptionDescription(ref sod);
         }
         

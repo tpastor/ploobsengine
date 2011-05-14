@@ -36,8 +36,7 @@ namespace AdvancedDemo4._0
             switch (screenNumber)
             {
                 case 0:
-                    return new DeferredLoadScreen();
-         
+                    return new DeferredLoadScreen();         
                 case 1:
                     return new BumpSpecularDemo();
                 case 2:
@@ -251,10 +250,7 @@ namespace AdvancedDemo4._0
             ini.isMultiSampling = multisampling;
             ini.useMipMapWhenPossible = true;
             engine.ApplyEngineDescription(ref ini);
-
-        }
-
-        
+        }        
 
         void vsy_Click(object sender, TomShane.Neoforce.Controls.EventArgs e)
         {
@@ -274,6 +270,10 @@ namespace AdvancedDemo4._0
 
         public void ChangeDemo(InputPlayableKeyBoard ipk)
         {
+            if (active is LoadingScreen || (active != null && active.IsLoaded == false))
+                return;        
+    
+
             if(this.ScreenState == PloobsEngine.SceneControl.ScreenState.Active)
                 this.ScreenState = ScreenState.Hidden; 
 
@@ -282,7 +282,7 @@ namespace AdvancedDemo4._0
 
             active = GetScreen(screenList[index % screenList.GetLength(0)]);
             ScreenManager.AddScreen(active,new LoadingScreen());
-            index++;
+            index++;            
         }
 
         public void LeaveGame(InputPlayableKeyBoard ipk)

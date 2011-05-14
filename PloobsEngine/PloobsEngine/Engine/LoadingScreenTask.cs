@@ -11,7 +11,7 @@ using PloobsEngine.Features;
 
 namespace PloobsEngine.Engine
 {    
-    public class LoadingScreenTask : ITask
+    internal class LoadingScreenTask : ITask
     {
 
         IScreen LoadingScreen;
@@ -38,7 +38,8 @@ namespace PloobsEngine.Engine
         {
             ToLoadScreen.iInitScreen(ToLoadScreen.GraphicInfo, engine);
             ToLoadScreen.iLoadContent(ToLoadScreen.GraphicInfo, ToLoadScreen.GraphicFactory, contentManager);
-            ToLoadScreen.iAfterLoadContent(contentManager, ToLoadScreen.GraphicInfo, ToLoadScreen.GraphicFactory);            
+            ToLoadScreen.iAfterLoadContent(contentManager, ToLoadScreen.GraphicInfo, ToLoadScreen.GraphicFactory);
+            ToLoadScreen.IsLoaded = true;
         }
 
         public TaskEndType TaskEndType
