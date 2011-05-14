@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using TomShane.Neoforce.Controls;
 using Microsoft.Xna.Framework.Graphics;
+using System.Windows.Forms;
 
 namespace PloobsEngine.SceneControl.GUI
 {
@@ -29,10 +30,20 @@ namespace PloobsEngine.SceneControl.GUI
 
         protected override void Initialize(Engine.EngineStuff engine, Engine.GraphicFactory factory, Engine.GraphicInfo ginfo)
         {
+
+#if !XBOX
             if(skin != null)
-                manager = new Manager(engine, skin);     
+                manager = new Manager(engine, skin,ginfo.Window );     
             else
-                manager = new Manager(engine);     
+                manager = new Manager(engine, ginfo.Window);     
+#else
+
+            if(skin != null)
+                manager = new Manager(engine, skin,null );     
+            else
+                manager = new Manager(engine,null);     
+#endif
+
             if(skin!= null)
                 Manager.SkinDirectory = @"Content\";       
             else

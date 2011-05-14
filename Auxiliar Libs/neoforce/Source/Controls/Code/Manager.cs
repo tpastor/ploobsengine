@@ -35,6 +35,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Text;
 using System.Media;
+using System.Threading;
 #endif
 ////////////////////////////////////////////////////////////////////////////
 
@@ -601,72 +602,69 @@ namespace TomShane.Neoforce.Controls
 
 		#endregion
 
-		#region //// Constructors //////
+		#region //// Constructors //////        
 
 		////////////////////////////////////////////////////////////////////////////
-		/// <summary>
-		/// Initializes a new instance of the Manager class.
-		/// </summary>
-		/// <param name="game">
-		/// The Game class.
-		/// </param>
-		/// <param name="graphics">
-		/// The GraphicsDeviceManager class provided by the Game class.
-		/// </param>
-		/// <param name="skin">
-		/// The name of the skin being loaded at the start.
-		/// </param>
-		public Manager(Game game, GraphicsDeviceManager graphics, string skin)
-			: base(game)
-		{
-			disposing = false;			
+        /// <summary>
+        /// Initializes a new instance of the Manager class.
+        /// </summary>
+        /// <param name="game">The Game class.</param>
+        /// <param name="graphics">The GraphicsDeviceManager class provided by the Game class.</param>
+        /// <param name="skin">The name of the skin being loaded at the start.</param>
+        /// <param name="window">The window -- in xbox set to null.</param>
+        public Manager(Game game, GraphicsDeviceManager graphics, string skin, Form window)
+            : base(game)
+        {            
+                disposing = false;
 
 #if (!XBOX && !XBOX_FAKE)
-			menuDelay = SystemInformation.MenuShowDelay;
-			doubleClickTime = SystemInformation.DoubleClickTime;
+                menuDelay = SystemInformation.MenuShowDelay;
+                doubleClickTime = SystemInformation.DoubleClickTime;
 #endif
 
 #if (!XBOX && !XBOX_FAKE)
-			window = (Form)Form.FromHandle(Game.Window.Handle);
-			window.FormClosing += new FormClosingEventHandler(Window_FormClosing);
+
+                this.window = window;
+                window.FormClosing += new FormClosingEventHandler(Window_FormClosing);
 #endif
 
-			content = new ContentManager(Game.Services);
-			input = new InputSystem(this, new InputOffset(0, 0, 1f, 1f));
-			components = new List<Component>();
-			controls = new ControlsList();
-			orderList = new ControlsList();
+                content = new ContentManager(Game.Services);
+                input = new InputSystem(this, new InputOffset(0, 0, 1f, 1f));
+                components = new List<Component>();
+                controls = new ControlsList();
+                orderList = new ControlsList();
 
-			this.graphics = graphics;
-			graphics.PreparingDeviceSettings += new EventHandler<PreparingDeviceSettingsEventArgs>(PrepareGraphicsDevice);
+                this.graphics = graphics;
+                graphics.PreparingDeviceSettings += new EventHandler<PreparingDeviceSettingsEventArgs>(PrepareGraphicsDevice);
 
-			skinName = skin;
+                skinName = skin;
 
 #if (XBOX_FAKE)
         game.Window.Title += " (XBOX_FAKE)";
 #endif
 
-			states.Buttons = new Control[32];
-			states.Click = -1;
-			states.Over = null;
+                states.Buttons = new Control[32];
+                states.Click = -1;
+                states.Over = null;
 
-			input.MouseDown += new MouseEventHandler(MouseDownProcess);
-			input.MouseUp += new MouseEventHandler(MouseUpProcess);
-			input.MousePress += new MouseEventHandler(MousePressProcess);
-			input.MouseMove += new MouseEventHandler(MouseMoveProcess);
+                input.MouseDown += new MouseEventHandler(MouseDownProcess);
+                input.MouseUp += new MouseEventHandler(MouseUpProcess);
+                input.MousePress += new MouseEventHandler(MousePressProcess);
+                input.MouseMove += new MouseEventHandler(MouseMoveProcess);
 
-			input.GamePadDown += new GamePadEventHandler(GamePadDownProcess);
-			input.GamePadUp += new GamePadEventHandler(GamePadUpProcess);
-			input.GamePadPress += new GamePadEventHandler(GamePadPressProcess);
+                input.GamePadDown += new GamePadEventHandler(GamePadDownProcess);
+                input.GamePadUp += new GamePadEventHandler(GamePadUpProcess);
+                input.GamePadPress += new GamePadEventHandler(GamePadPressProcess);
 
-			input.KeyDown += new KeyEventHandler(KeyDownProcess);
-			input.KeyUp += new KeyEventHandler(KeyUpProcess);
-			input.KeyPress += new KeyEventHandler(KeyPressProcess);
+                input.KeyDown += new KeyEventHandler(KeyDownProcess);
+                input.KeyUp += new KeyEventHandler(KeyUpProcess);
+                input.KeyPress += new KeyEventHandler(KeyPressProcess);
 
-			keyboardLayouts.Add(new KeyboardLayout());
-			keyboardLayouts.Add(new CzechKeyboardLayout());
-			keyboardLayouts.Add(new GermanKeyboardLayout());
-		}
+                keyboardLayouts.Add(new KeyboardLayout());
+                keyboardLayouts.Add(new CzechKeyboardLayout());
+                keyboardLayouts.Add(new GermanKeyboardLayout());
+            
+        }
 		////////////////////////////////////////////////////////////////////////////                   
 
 #if (!XBOX && !XBOX_FAKE)
@@ -688,17 +686,27 @@ namespace TomShane.Neoforce.Controls
 #endif
 
 		////////////////////////////////////////////////////////////////////////////
-		/// <summary>
-		/// Initializes a new instance of the Manager class.
-		/// </summary>
-		/// <param name="game">
-		/// The Game class.
-		/// </param>   
-		/// <param name="skin">
-		/// The name of the skin being loaded at the start.
-		/// </param>
-		public Manager(Game game, string skin)
-			: this(game, game.Services.GetService(typeof(IGraphicsDeviceManager)) as GraphicsDeviceManager, skin)
+        /// <summary>
+        /// Initializes a new instance of the Manager class.
+        /// </summary>
+        /// <param name="game">The Game class.</param>
+        /// <param name="skin">The name of the skin being loaded at the start.</param>
+        /// <param name="window">The window.</param>
+        public Manager(Game game, string skin, Form window)
+            : this(game, game.Services.GetService(typeof(IGraphicsDeviceManager)) as GraphicsDeviceManager, skin, window)
+		{
+		}
+		////////////////////////////////////////////////////////////////////////////
+
+		////////////////////////////////////////////////////////////////////////////
+        /// <summary>
+        /// Initializes a new instance of the Manager class, loads the default skin and registers manager in the game class automatically.
+        /// </summary>
+        /// <param name="game">The Game class.</param>
+        /// <param name="graphics">The GraphicsDeviceManager class provided by the Game class.</param>
+        /// <param name="window">The window.</param>
+		public Manager(Game game, GraphicsDeviceManager graphics,Form window)
+			: this(game, graphics, _DefaultSkin,window)
 		{
 		}
 		////////////////////////////////////////////////////////////////////////////
@@ -710,24 +718,8 @@ namespace TomShane.Neoforce.Controls
 		/// <param name="game">
 		/// The Game class.
 		/// </param>
-		/// <param name="graphics">
-		/// The GraphicsDeviceManager class provided by the Game class.
-		/// </param>
-		public Manager(Game game, GraphicsDeviceManager graphics)
-			: this(game, graphics, _DefaultSkin)
-		{
-		}
-		////////////////////////////////////////////////////////////////////////////
-
-		////////////////////////////////////////////////////////////////////////////
-		/// <summary>
-		/// Initializes a new instance of the Manager class, loads the default skin and registers manager in the game class automatically.
-		/// </summary>
-		/// <param name="game">
-		/// The Game class.
-		/// </param>
-		public Manager(Game game)
-			: this(game, game.Services.GetService(typeof(IGraphicsDeviceManager)) as GraphicsDeviceManager, _DefaultSkin)
+		public Manager(Game game,Form form)
+            : this(game, game.Services.GetService(typeof(IGraphicsDeviceManager)) as GraphicsDeviceManager, _DefaultSkin, form)
 		{
 		}
 		////////////////////////////////////////////////////////////////////////////
@@ -789,11 +781,21 @@ namespace TomShane.Neoforce.Controls
 
 		#region //// Methods ///////////
 
+        private delegate void setcursordelegate(Cursor cursor);
+
 		////////////////////////////////////////////////////////////////////////////
 #if (!XBOX && !XBOX_FAKE)
 		private void SetCursor(Cursor cursor)
 		{
-			window.Cursor = cursor;
+            if (window.InvokeRequired)
+            {
+                window.Invoke(new setcursordelegate(SetCursor), cursor);
+            }
+            else
+            {
+                window.Cursor = cursor;
+            }
+            
 		}
 #endif
 		////////////////////////////////////////////////////////////////////////////

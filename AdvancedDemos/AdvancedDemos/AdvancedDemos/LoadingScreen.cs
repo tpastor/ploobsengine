@@ -6,7 +6,7 @@ using PloobsEngine.SceneControl;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace AdvancedDemos
+namespace AdvancedDemo4._0
 {
     public class LoadingScreen : IScreen
     {
