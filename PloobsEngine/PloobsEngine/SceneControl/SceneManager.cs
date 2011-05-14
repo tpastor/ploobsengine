@@ -118,6 +118,7 @@ namespace PloobsEngine.SceneControl
                 LoadingScreen.iInitScreen(GraphicInfo, engine);
                 LoadingScreen.iLoadContent(GraphicInfo, GraphicFactory, contentManager);
                 LoadingScreen.iAfterLoadContent(contentManager, GraphicInfo, GraphicFactory);
+                LoadingScreen.IsLoaded = true;
                 screens.Add(LoadingScreen);
 
                 definitiveScreen.screenManager = this;

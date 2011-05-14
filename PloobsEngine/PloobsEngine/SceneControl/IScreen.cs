@@ -48,7 +48,9 @@ namespace PloobsEngine.SceneControl
         public IScreen(IGui gui = null)
         {
             this.gui = gui;
+            IsLoaded = false;
         }
+               
 
         private Dictionary<IInput, BindKeyCommand> KeyBinds = new Dictionary<IInput, BindKeyCommand>();
         private Dictionary<IInput, BindMouseCommand> MouseBinds = new Dictionary<IInput, BindMouseCommand>();
@@ -134,6 +136,11 @@ namespace PloobsEngine.SceneControl
             }
         }
 
+        public bool IsLoaded
+        {
+            get;
+            internal set;
+        }
 
         private IGui gui = null;
 
