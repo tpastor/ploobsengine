@@ -31,7 +31,7 @@ namespace PloobsEngine.Engine
         public void Result(IAsyncResult result)
         {
             LoadingScreen.ScreenManager.RemoveScreen(LoadingScreen);
-            LoadingScreen.ScreenManager.AddScreen(ToLoadScreen);            
+            LoadingScreen.ScreenManager.AddScreen(ToLoadScreen,null,false);            
         }
 
         public void Process()
