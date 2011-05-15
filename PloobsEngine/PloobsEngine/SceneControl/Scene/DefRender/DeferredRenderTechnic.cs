@@ -235,7 +235,10 @@ namespace PloobsEngine.SceneControl
                         render.ResyncStates();
                     }
 
-                    forwardPass.Draw(gameTime, world, render);                    
+                    forwardPass.Draw(gameTime, world, render);
+
+                    render.RenderPosWithDepthComponents(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection);
+
                     render[PrincipalConstants.CurrentImage] = restoreDepth.EndForwardPass(render);
                     render[PrincipalConstants.CombinedImage] = render[PrincipalConstants.CurrentImage];
 
@@ -289,6 +292,7 @@ namespace PloobsEngine.SceneControl
                         render.ResyncStates();
                     }
                     forwardPass.Draw(gameTime, world, render);
+                    render.RenderPosWithDepthComponents(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection);
                     render[PrincipalConstants.CurrentImage] = restoreDepth.EndForwardPass(render);
 
                     if (desc.UseFloatingBufferForLightMap)

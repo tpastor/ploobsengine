@@ -20,11 +20,10 @@ namespace PloobsEngine.Modelo
         /// Draw without index
         /// </summary>
         NORMAL,
-
         /// <summary>
         /// Draw Instanced Geometry
         /// </summary>
-        INSTANCED,
+        INSTANCED,        
     }
 
 
@@ -32,6 +31,7 @@ namespace PloobsEngine.Modelo
     /// <summary>
     /// Batch Information
     /// Contains Draw data from a model (vertices, indexes) and info about how to draw them
+    /// The use should just use the Constructor to change Data, dont use the accessor public methods
     /// </summary>
     public class BatchInformation
     {
@@ -51,6 +51,9 @@ namespace PloobsEngine.Modelo
         /// <param name="PrimitiveType">Type of the primitive.</param>
         public BatchInformation(int BaseVertex, int NumVertices, int PrimitiveCount, int StartIndexOrVertex, int StreamOffset, VertexDeclaration VertexDeclaration, int VertexStride, BatchType BatchType,PrimitiveType PrimitiveType = PrimitiveType.TriangleList)
         {
+            if (BatchType == BatchType.INSTANCED)
+                throw new Exception("This constructor cannot be used to creat instanced BatchInformation, use the other one");
+
             this.BaseVertex = BaseVertex;
             this.NumVertices = NumVertices;
             this.PrimitiveCount = PrimitiveCount;            
@@ -129,52 +132,52 @@ namespace PloobsEngine.Modelo
         /// <summary>
         /// Primitive Type
         /// </summary>
-        public PrimitiveType PrimitiveType; 
+        public readonly PrimitiveType PrimitiveType; 
 
         /// <summary>
         /// Batch Type
         /// </summary>
-        public BatchType BatchType;
+        public readonly BatchType BatchType;
 
         /// <summary>
         /// Base Verter
         /// </summary>
-        public int BaseVertex;
+        public readonly int BaseVertex;
 
         /// <summary>
         /// Num Vertices
         /// </summary>
-        public int NumVertices;
+        public readonly int NumVertices;
 
         /// <summary>
         /// Primitive COunt
         /// </summary>
-        public int PrimitiveCount;
+        public readonly int PrimitiveCount;
 
         /// <summary>
         /// Start Index
         /// </summary>
-        public int StartIndex;
+        public readonly int StartIndex;
 
         /// <summary>
         /// Start Vertex
         /// </summary>
-        public int StartVertex;
+        public readonly int StartVertex;
 
         /// <summary>
         /// Stream Offset
         /// </summary>
-        public int StreamOffset;
+        public readonly int StreamOffset;
 
         /// <summary>
         /// Vertex Declaration
         /// </summary>
-        public VertexDeclaration VertexDeclaration;
+        public readonly VertexDeclaration VertexDeclaration;
 
         /// <summary>
         /// VertexStride
         /// </summary>
-        public int VertexStride;
+        public readonly int VertexStride;
 
         /// <summary>
         /// VertexBuffer
@@ -182,7 +185,7 @@ namespace PloobsEngine.Modelo
         public VertexBuffer VertexBuffer;
 
         /// <summary>
-        /// VertexBuffer
+        /// Instanced VertexBuffer
         /// </summary>
         public VertexBuffer InstancedVertexBuffer = null;
 

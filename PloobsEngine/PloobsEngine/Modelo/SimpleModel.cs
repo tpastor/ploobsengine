@@ -54,7 +54,7 @@ namespace PloobsEngine.Modelo
             BoundingSphere sphere = new BoundingSphere();
             foreach (var item in model.Meshes)
             {
-                BoundingSphere.CreateMerged(sphere, item.BoundingSphere);
+                sphere = BoundingSphere.CreateMerged(sphere, item.BoundingSphere);
             }
             modelRadius = sphere.Radius;         
         }

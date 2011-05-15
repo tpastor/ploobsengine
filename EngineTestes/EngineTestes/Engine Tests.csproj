@@ -118,10 +118,12 @@
     <Compile Include="BilboardsSamples\BilboardScreen.cs" />
     <Compile Include="CharacterControllerInput.cs" />
     <Compile Include="CharacterSample\CharacterScreen.cs" />
+    <Compile Include="DebugDrawer\DebugDrawScreen.cs" />
     <Compile Include="GUI\FGUIScreen.cs" />
     <Compile Include="GUI\GUIScreen.cs" />
     <Compile Include="Loader\ForwardLoadScreen.cs" />
     <Compile Include="LoadingScreen\LoadScene.cs" />
+    <Compile Include="OctreeScreen\OctreeScreen.cs" />
     <Compile Include="PostEffectScreen.cs" />
     <Compile Include="DeferredAnimatedScreen.cs" />
     <Compile Include="Loader\DeferredLoadScreen.cs" />

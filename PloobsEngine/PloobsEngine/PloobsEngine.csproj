@@ -158,6 +158,11 @@
     <Compile Include="Events\IEventHandler.cs" />
     <Compile Include="Events\IHaveEventManager.cs" />
     <Compile Include="Events\SimpleEvent.cs" />
+    <Compile Include="Features\DebugDraw\DebugBox.cs" />
+    <Compile Include="Features\DebugDraw\DebugDraw.cs" />
+    <Compile Include="Features\DebugDraw\DebugShapesDrawer.cs" />
+    <Compile Include="Features\DebugDraw\IDebugDrawShape.cs" />
+    <Compile Include="Features\DebugDraw\RegisterDebugDrawCommand.cs" />
     <Compile Include="Features\FPSCounter.cs" />
     <Compile Include="Features\Tasks\ITask.cs" />
     <Compile Include="Features\Tasks\TaskCommand.cs" />

@@ -66,6 +66,17 @@ namespace PloobsEngine.SceneControl
         }
 
         /// <summary>
+        /// Renders the pos with depth components.
+        /// </summary>
+        /// <param name="gametime">The gametime.</param>
+        /// <param name="view">The view.</param>
+        /// <param name="projection">The projection.</param>
+        public void RenderPosWithDepthComponents(GameTime gametime, Matrix view, Matrix projection)
+        {
+            componentManager.PosWithDepthDraw(this, gametime, view, projection);
+        }
+
+        /// <summary>
         /// Pushes the state of the rasterizer.
         /// </summary>
         /// <param name="state">The state.</param>
@@ -277,7 +288,7 @@ namespace PloobsEngine.SceneControl
                         break;
                     case BatchType.NORMAL:
                         device.SetVertexBuffer(bi.VertexBuffer);
-                        device.DrawPrimitives(bi.PrimitiveType, bi.StartVertex, bi.PrimitiveCount);
+                        device.DrawPrimitives(bi.PrimitiveType, bi.StartVertex, bi.PrimitiveCount);                                            
                         break;
                     case BatchType.INSTANCED:
                         System.Diagnostics.Debug.Assert(bi.InstancedVertexBuffer != null);
@@ -511,7 +522,7 @@ namespace PloobsEngine.SceneControl
                 ResyncStates();
         }
 
-        public SamplerState GetRightSampler()
+        public SamplerState GetRecomendedSamplerForTheActualRenderTarget()
         {
             SurfaceFormat format = RenderStatesStack.Peek()[0].RenderTarget.Format;
             if (format == SurfaceFormat.HdrBlendable || format == SurfaceFormat.Vector4 || format == SurfaceFormat.Single)

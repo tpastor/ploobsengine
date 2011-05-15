@@ -7,41 +7,33 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using PloobsEngine;
 using PloobsEngine.Cameras;
+using PloobsEngine.Features.DebugDraw;
 
 namespace PloobsEngine.SceneControl
 {
     public class OctreeCuller : ICuller
     {
 
-        public OctreeCuller(float worldSize, float loose, int maxDepth , Vector3 center)
-        {
-            oct = new Octree<IObject>(worldSize, loose, maxDepth, center);            
-        }
-
         /// <summary>
-        /// Enable Debug
+        /// Initializes a new instance of the <see cref="OctreeCuller"/> class.
         /// </summary>
-        /// <param name="worldSize"></param>
-        /// <param name="loose"></param>
-        /// <param name="maxDepth"></param>
-        /// <param name="center"></param>
-        /// <param name="mundo"></param>
-        /// <param name="engine"></param>
-        public OctreeCuller(float worldSize, float loose, int maxDepth, Vector3 center, bool debug)
+        /// <param name="worldSize">Size of the world.</param>
+        /// <param name="loose">The loose.</param>
+        /// <param name="maxDepth">The max depth.</param>
+        /// <param name="center">The center.</param>
+        /// <param name="DebugDrawer">The debug drawer. We strong recomend you to DONT JUST this DebugDrawer for nothing anymore, if you need, create another</param>
+        public OctreeCuller(float worldSize, float loose, int maxDepth, Vector3 center, DebugShapesDrawer DebugDrawer = null)
         {
             oct = new Octree<IObject>(worldSize, loose, maxDepth, center);
-            oct.IsDebug = debug;
-            this.debug = debug;            
-        }
+            if (DebugDrawer != null)
+            {
+                DebugDrawer.DrawAllShapesEachFrame = false;
+                oct.DebugDraw = DebugDrawer;                
+            }            
+        }        
 
-        public bool isDebug
-        {
-            get { return debug; }
-            set { debug = value; }
-        }
-
-        #region ICuller Members
-        bool debug = false;        
+        
+        #region ICuller Members        
         private Octree<IObject> oct;
         private Dictionary<IObject, Octree<IObject>> objOctree = new Dictionary<IObject, Octree<IObject>>();                
 
@@ -68,12 +60,7 @@ namespace PloobsEngine.SceneControl
                 deferred.AddRange(ghostDeferred);
                 forward.AddRange(ghostForward);
 
-                num = deferred.Count + forward.Count;
-                if (debug)
-                {
-                    //Drawing.Draw2dTextAt2dLocation("Deferred " + deferred.Count, new Vector2(20, 60), Color.White);
-                    //Drawing.Draw2dTextAt2dLocation("Forward " + forward.Count, new Vector2(20, 80), Color.White);
-                }
+                num = deferred.Count + forward.Count;                
         }
 
         public override IEnumerable<IObject> GetNotCulledObjectsList(PloobsEngine.Material.MaterialType? Filter)

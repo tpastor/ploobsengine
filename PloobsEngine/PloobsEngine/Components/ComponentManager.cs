@@ -19,6 +19,7 @@ namespace PloobsEngine.Components
         private List<IComponent> _updateables = new List<IComponent>();        
         private List<IComponent> _preDrawables = new List<IComponent>();
         private List<IComponent> _posDrawables = new List<IComponent>();
+        private List<IComponent> _posWithDepthDrawables = new List<IComponent>();
         private List<IComponent> updateAUX = new List<IComponent>();
         private GraphicInfo GraphicInfo;
         GraphicFactory factory;
@@ -72,6 +73,16 @@ namespace PloobsEngine.Components
         }
 
         /// <summary>
+        /// Gets the pos with Depth draw.
+        /// </summary>
+        /// <returns></returns>
+        internal IList<IComponent> GetPosWithDepthDraw()
+        {
+            return _posWithDepthDrawables;
+        }
+        
+
+        /// <summary>
         /// Draw the Pre Draw components
         /// </summary>
         /// <param name="gt">The gt.</param>
@@ -97,6 +108,22 @@ namespace PloobsEngine.Components
                 item.iAfterDraw(render,gt,activeView,activeProjection);
             }
         }
+
+        /// <summary>
+        /// Draw the Afters with depth draw.
+        /// </summary>
+        /// <param name="render">The render.</param>
+        /// <param name="gt">The gt.</param>
+        /// <param name="activeView">The active view.</param>
+        /// <param name="activeProjection">The active projection.</param>
+        internal void PosWithDepthDraw(RenderHelper render, GameTime gt, Matrix activeView, Matrix activeProjection)
+        {
+            foreach (IComponent item in _posWithDepthDrawables)
+            {
+                item.iPosWithDepthDraw(render, gt, activeView, activeProjection);
+            }
+        }
+
         /// <summary>
         /// Loads the content.
         /// </summary>
@@ -150,6 +177,13 @@ namespace PloobsEngine.Components
                             _posDrawables.Add(comp);
                             _updateables.Add(comp);
                             break;
+                        case ComponentType.POS_WITHDEPTH_DRAWABLE:
+                            _posWithDepthDrawables.Add(comp);
+                            break;
+                        case ComponentType.POS_WITHDEPTH_DRAWABLE_AND_UPDATEABLE:
+                            _posWithDepthDrawables.Add(comp);
+                            _updateables.Add(comp);
+                            break;
                         case ComponentType.NONE:
                             break;
                         default:
@@ -200,6 +234,13 @@ namespace PloobsEngine.Components
                     break;
                 case ComponentType.POS_DRAWABLE_AND_UPDATEABLE:
                     _posDrawables.Remove(_comps[name]);
+                    _updateables.Remove(_comps[name]);
+                    break;
+                case ComponentType.POS_WITHDEPTH_DRAWABLE:
+                    _posWithDepthDrawables.Remove(_comps[name]);
+                    break;
+                case ComponentType.POS_WITHDEPTH_DRAWABLE_AND_UPDATEABLE:
+                    _posWithDepthDrawables.Remove(_comps[name]);
                     _updateables.Remove(_comps[name]);
                     break;
                 case ComponentType.NONE:

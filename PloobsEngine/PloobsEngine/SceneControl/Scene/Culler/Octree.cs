@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-//using PloobsEngine.Draw;
+using PloobsEngine.Features.DebugDraw;
 
 namespace PloobsEngine.SceneControl
 {
@@ -26,12 +26,12 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         private int depth = 0;
 
-        private static bool isDebug = false;
+        private static DebugShapesDrawer debugDraw = null;
 
-        public bool IsDebug
+        public DebugShapesDrawer DebugDraw
         {
-            get { return isDebug; }
-            set { isDebug = value; }
+            get { return debugDraw; }
+            set { debugDraw = value; }
         }
 
         /// <summary>
@@ -243,9 +243,9 @@ namespace PloobsEngine.SceneControl
             {
                 // Draw the octree's bounds if there are objects in the octree.
                 if (this.objects.Count > 0)
-                {
-                    if (isDebug)
-                        //Drawing.Draw3dBoxWireFrame(Color.White, center, length / 2);
+                {                    
+                    if (DebugDraw != null)
+                        DebugDraw.AddShape(new Box(this.bounds,Color.White));
                     objects.AddRange(this.objects);
                     count++;
                 }

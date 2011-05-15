@@ -48,6 +48,20 @@ namespace PloobsEngine.Components
             PreDraw(render, gt, activeView, activeProjection);
         }
 
+
+        /// <summary>
+        /// Pos With Depth draw.
+        /// Its called deppending of the ComponentType
+        /// </summary>
+        /// <param name="gt">The gt.</param>
+        /// <param name="activeView">The active view.</param>
+        /// <param name="activeProjection">The active projection.</param>
+        protected virtual void PosWithDepthDraw(RenderHelper render, GameTime gt, Matrix activeView, Matrix activeProjection) { }
+        internal void iPosWithDepthDraw(RenderHelper render, GameTime gt, Matrix activeView, Matrix activeProjection)
+        {
+            PosWithDepthDraw(render, gt, activeView, activeProjection);
+        }
+
         /// <summary>
         /// Afters draw.
         /// Its called deppending of the ComponentType
@@ -140,6 +154,14 @@ namespace PloobsEngine.Components
         /// Only the Pos Draw and Update will be called
         /// </summary>
         POS_DRAWABLE_AND_UPDATEABLE,
+        /// <summary>
+        /// Only the Pos With Depth Draw and Update will be called
+        /// </summary>
+        POS_WITHDEPTH_DRAWABLE_AND_UPDATEABLE,
+        /// <summary>
+        /// Only the Pos With Depth Draw will be called
+        /// </summary>
+        POS_WITHDEPTH_DRAWABLE,
         /// <summary>
         /// None of the methods will be called
         /// </summary>
