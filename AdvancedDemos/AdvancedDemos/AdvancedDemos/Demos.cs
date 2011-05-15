@@ -37,7 +37,7 @@ namespace AdvancedDemo4._0
             //manager.AddScreen(new TitleScreen());
             //manager.AddScreen(new DeferredLoadScreen());
             //manager.AddScreen(new BumpSpecularDemo());                        
-            //manager.AddScreen(new EnvMapScreen());                        
+            manager.AddScreen(new EnvMapScreen());                        
             //manager.AddScreen(new ParalaxScreen());                        
             //manager.AddScreen(new TransparentDeferredScreen());                        
             //manager.AddScreen(new SoundScreen());
@@ -57,7 +57,7 @@ namespace AdvancedDemo4._0
             //manager.AddScreen(new OceanScreen());            
             //manager.AddScreen(new WaterCompleteScreen());            
             //manager.AddScreen(new DeferredDirectionaldShadowScreen());            
-            manager.AddScreen(new SSAOScreen());
+            //manager.AddScreen(new SSAOScreen());
             //manager.AddScreen(new DemosHomeScreen());
         }
 
