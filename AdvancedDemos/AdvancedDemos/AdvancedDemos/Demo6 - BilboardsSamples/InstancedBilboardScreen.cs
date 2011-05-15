@@ -109,7 +109,9 @@ namespace AdvancedDemo4._0
             this.World.AddLight(ld5);
             #endregion
 
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(true,GraphicInfo.Viewport));
+
+            CameraFirstPerson cam = new CameraFirstPerson(MathHelper.ToRadians(-50), MathHelper.ToRadians(-15), new Vector3(-200, 300, 250), GraphicInfo.Viewport);
+            this.World.CameraManager.AddCamera(cam);
 
             SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grassCube");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);

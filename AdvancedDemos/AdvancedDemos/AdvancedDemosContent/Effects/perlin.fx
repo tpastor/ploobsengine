@@ -10,7 +10,7 @@ sampler TextureSampler = sampler_state { texture = <xTexture> ; magfilter = LINE
  {    
      float4 Position         : POSITION;
      float2 TextureCoords    : TEXCOORD0;
- };
+};
  
  struct PNPixelToFrame
  {

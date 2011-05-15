@@ -190,6 +190,17 @@ namespace PloobsEngine.Physics.Bepu
             get { return Matrix.Identity; }
         }
 
+
+
+        public override Vector3 AngularVelocity
+        {
+            get { return Vector3.Zero; }
+            set
+            {
+                ActiveLogger.LogMessage("Cant Set Terrain Velocity", LogLevel.RecoverableError);
+            }
+        }
+       
         public override Vector3 Velocity
         {
             get

@@ -251,6 +251,22 @@ namespace PloobsEngine.Physics.Bepu
             get { return triangleGroup.WorldTransform.Matrix; }
         }
 
+
+        /// <summary>
+        /// Gets or sets the angular velocity.
+        /// </summary>
+        /// <value>
+        /// The angular velocity.
+        /// </value>
+        public override Vector3 AngularVelocity
+        {
+            get { return Vector3.Zero; }
+            set
+            {
+                ActiveLogger.LogMessage("Cant Set Terrain Velocity", LogLevel.RecoverableError);
+            }
+        }
+
         /// <summary>
         /// Gets velocity. Always Zero cause this object is static
         /// </summary>
