@@ -111,7 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LoadingScreen.cs" />
-    <Compile Include="Demo SSAO\SSAOScreen.cs" />
+    <Compile Include="Demo9.3 SSAO\SSAOScreen.cs" />
     <Compile Include="Demo3 - Sound\FollowerObjectSoundScreen.cs" />
     <Compile Include="Demo5 - ParticleSamples\Helpers\ObjectThrowSmokeParticle.cs" />
     <Compile Include="Demo5 - ParticleSamples\Helpers\ThrowParticlesObject.cs" />

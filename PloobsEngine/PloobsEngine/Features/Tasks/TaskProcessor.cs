@@ -21,18 +21,7 @@ namespace PloobsEngine.Features
         public static readonly String MyName = "TaskProcessor";
 
         private List<ITask> finished = new List<ITask>();
-
-        protected List<ITask> Finished
-        {
-            get {
-                lock (finished)
-                {
-                    return finished;
-                }                
-            }
-            
-        }
-
+        
         /// <summary>
         /// Starts the task.
         /// </summary>
@@ -61,19 +50,26 @@ namespace PloobsEngine.Features
             ITask task = ar.AsyncState as ITask;
             System.Diagnostics.Debug.Assert(task != null);
 
-            Finished.Add(task);
+            lock (finished)
+            {
+                finished.Add(task);
+            }
         }
 
         protected override void Update(GameTime gt)
         {
             base.Update(gt);
-            if (Finished.Count != 0)
+
+            lock (finished)
             {
-                foreach (var item in Finished)
+                if (finished.Count != 0)
                 {
-                    item.Result(null);
+                    foreach (var item in finished)
+                    {
+                        item.Result(null);
+                    }
+                    finished.Clear();
                 }
-                Finished.Clear();
             }
         }
 

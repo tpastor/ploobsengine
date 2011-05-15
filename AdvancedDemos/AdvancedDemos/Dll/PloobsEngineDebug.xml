@@ -7344,14 +7344,17 @@
             </summary>
       <param name="definitiveScreen">The definitive screen.</param>
       <param name="LoadingScreen">The loading screen.</param>
+      <param name="loadAndInitScreen">if set to <c>true</c> [load and init definitiveScreen].</param>
     </member>
-    <member name="M:PloobsEngine.SceneControl.ScreenManager.RemoveScreen(PloobsEngine.SceneControl.IScreen)">
+    <member name="M:PloobsEngine.SceneControl.ScreenManager.RemoveScreen(PloobsEngine.SceneControl.IScreen,System.Boolean)">
       <summary>
             Removes a screen from the screen manager. You should normally
             use GameScreen.ExitScreen instead of calling this directly, so
             the screen can gradually transition off rather than just being
             instantly removed.
             </summary>
+      <param name="screen">The screen.</param>
+      <param name="cleanUp">if set to <c>true</c> [clean up the screen].</param>
     </member>
     <member name="M:PloobsEngine.SceneControl.ScreenManager.GetScreens">
       <summary>

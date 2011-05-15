@@ -16,10 +16,8 @@ namespace AdvancedDemo4._0
     /// Basic Deferred Scene
     /// </summary>
     public class SSAOScreen : IScene
-    {
-
-        bool activated = true;
-        SSAOPostEffect ssao = new SSAOPostEffect();
+    {                 
+        SSAOPostEffect ssao;
         /// <summary>
         /// Sets the world and render technich.
         /// </summary>
@@ -87,22 +85,37 @@ namespace AdvancedDemo4._0
             this.World.AddLight(ld4);
             this.World.AddLight(ld5);
             #endregion
-
-
-
+                        
             {
+                ///har way
                 SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.Enter,Active);
-                BindKeyCommand bk = new BindKeyCommand(ik, BindAction.ADD);
-                CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bk);
+                this.BindInput(ik);
             }
 
-            SSAOPostEffect ssao = new SSAOPostEffect();
+            {
+                ///easy way
+                SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.Space);
+                ik.KeyStateChange += new KeyStateChange(ik_KeyStateChange);
+                this.BindInput(ik);
+            }
+
+            ssao = new SSAOPostEffect();
+            //ssao.OutputONLYSSAOMAP = true;
+            ssao.WhiteCorrection = 0.7f;
+            ssao.Intensity = 5;
+            ssao.Diffscale = 0.5f;            
 
             ///Add a AA post effect
             this.RenderTechnic.AddPostEffect(ssao);
 
             ///add a camera
             this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo.Viewport));
+        }
+
+        void ik_KeyStateChange(InputPlayableKeyBoard ipk)
+        {
+            if(ssao.Enabled)
+                ssao.OutputONLYSSAOMAP = !ssao.OutputONLYSSAOMAP;
         }
 
 
@@ -154,12 +167,9 @@ namespace AdvancedDemo4._0
             ///if the obj does not use specular map
             if (!cd.UseSpecular)
             {
-                ///set a constant specular for all the object
-                cd.SpecularIntensity = 0.3f;
-                cd.SpecularPower = 150;
-            }
-
-           
+                ///No Specular this time
+                cd.SpecularIntensity = 0f;                
+            }          
 
             return obj;
         }
@@ -171,22 +181,19 @@ namespace AdvancedDemo4._0
         /// <param name="gameTime"></param>
         /// <param name="render"></param>
         protected override void Draw(GameTime gameTime, RenderHelper render)
-        {
+        {            
             ///must be called before
             base.Draw(gameTime, render);
 
             ///Draw some text to the screen
-            render.RenderTextComplete("Demo 1-22: SSAO", new Vector2(20, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Demo 21-22: SSAO", new Vector2(20, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Hit Enter to enable/disable SSAO: " + ssao.Enabled, new Vector2(20, 35), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Hit Space to see the SSAO Map: " + ssao.OutputONLYSSAOMAP, new Vector2(20, 55), Color.White, Matrix.Identity);
         }
 
         public void Active(InputPlayableKeyBoard ipk)
         {
-
-            activated = !activated;
-            ssao.Enabled = activated;
-            
-            
-           
+            ssao.Enabled = !ssao.Enabled;
         }
     }
 }

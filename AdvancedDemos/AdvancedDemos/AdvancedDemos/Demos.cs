@@ -34,7 +34,7 @@ namespace AdvancedDemo4._0
         static void LoadScreen(ScreenManager manager)
         {            
             ///add the title screen
-            manager.AddScreen(new TitleScreen());
+            //manager.AddScreen(new TitleScreen());
             //manager.AddScreen(new DeferredLoadScreen());
             //manager.AddScreen(new BumpSpecularDemo());                        
             //manager.AddScreen(new EnvMapScreen());                        
@@ -57,6 +57,7 @@ namespace AdvancedDemo4._0
             //manager.AddScreen(new OceanScreen());            
             //manager.AddScreen(new WaterCompleteScreen());            
             //manager.AddScreen(new DeferredDirectionaldShadowScreen());            
+            manager.AddScreen(new SSAOScreen());
         }
 
         static void UnhandledException(object sender, UnhandledExceptionEventArgs e)
