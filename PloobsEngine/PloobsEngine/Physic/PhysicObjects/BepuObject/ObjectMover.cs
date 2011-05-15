@@ -129,6 +129,12 @@ namespace PloobsEngine.Physics.Bepu
             get { return this.bepuEntityObject.WorldMatrix; }
         }
 
+        public override Vector3 AngularVelocity
+        {
+            get { return this.bepuEntityObject.AngularVelocity; }
+            set { this.bepuEntityObject.AngularVelocity = value; }
+        }
+
         public override Vector3 Velocity
         {
             get

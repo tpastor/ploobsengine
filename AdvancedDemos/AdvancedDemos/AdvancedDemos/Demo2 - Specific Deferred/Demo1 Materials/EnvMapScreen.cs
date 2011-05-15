@@ -56,13 +56,15 @@ namespace AdvancedDemo4._0
             base.CleanUp(engine);
         }
 
+        private IObject tea;
+
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory, IContentManager contentManager)
         {
             base.LoadContent(GraphicInfo, factory, contentManager);
 
             #region Models
             {
-                SimpleModel simpleModel = new SimpleModel(factory, "..\\Content\\Model\\cilos");
+                SimpleModel simpleModel = new SimpleModel(factory, "..\\Content\\Model\\teapot");
                 simpleModel.SetTexture(factory.CreateTexture2DColor(1,1, Color.Red), TextureType.DIFFUSE);
                 TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
                 ///Environment Map Shader, there are 2 options, the first is a fully reflective surface (dont use the object texture) and the second
@@ -70,21 +72,21 @@ namespace AdvancedDemo4._0
                 ///Used to fake ambient reflection, give metal appearence to an object ....
                 DeferredEMReflectiveShader shader = new DeferredEMReflectiveShader("Textures\\grassCUBE", 0.9f);
                 DeferredMaterial fmaterial = new DeferredMaterial(shader);
-                IObject obj = new IObject(fmaterial, simpleModel, tmesh);
-                this.World.AddObject(obj);                
+                tea = new IObject(fmaterial, simpleModel, tmesh);
+                this.World.AddObject(tea);                
                 
             }
 
-            {
-                SimpleModel simpleModel = new SimpleModel(factory, "Model//block");
-                simpleModel.SetTexture(factory.CreateTexture2DColor(1, 1, Color.White), TextureType.DIFFUSE);
-                BoxObject tmesh = new BoxObject(new Vector3(0,-5,100), 1, 1, 1, 10, new Vector3(200, 1, 200), Matrix.Identity, MaterialDescription.DefaultBepuMaterial());
-                tmesh.isMotionLess = true;
-                DeferredNormalShader shader = new DeferredNormalShader();
-                DeferredMaterial fmaterial = new DeferredMaterial(shader);
-                IObject obj = new IObject(fmaterial, simpleModel, tmesh);
-                this.World.AddObject(obj);
-            }
+            //{
+            //    SimpleModel simpleModel = new SimpleModel(factory, "Model//block");
+            //    simpleModel.SetTexture(factory.CreateTexture2DColor(1, 1, Color.White), TextureType.DIFFUSE);
+            //    BoxObject tmesh = new BoxObject(new Vector3(0,-20,0), 1, 1, 1, 10, new Vector3(200, 1, 200), Matrix.Identity, MaterialDescription.DefaultBepuMaterial());
+            //    tmesh.isMotionLess = true;
+            //    DeferredNormalShader shader = new DeferredNormalShader();
+            //    DeferredMaterial fmaterial = new DeferredMaterial(shader);
+            //    IObject obj = new IObject(fmaterial, simpleModel, tmesh);
+            //    this.World.AddObject(obj);
+            //}
 
 
             #endregion
@@ -113,7 +115,8 @@ namespace AdvancedDemo4._0
             SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grassCUBE");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
 
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(true, GraphicInfo.Viewport));
+            CameraFirstPerson cam = new CameraFirstPerson(MathHelper.ToRadians(30), MathHelper.ToRadians(-30), new Vector3(50, 50, 75), GraphicInfo.Viewport);
+            this.World.CameraManager.AddCamera(cam);
 
             AntiAliasingPostEffectTabula aa = new AntiAliasingPostEffectTabula();
             aa.Weights = 2;

@@ -58,6 +58,7 @@ namespace AdvancedDemo4._0
             //manager.AddScreen(new WaterCompleteScreen());            
             //manager.AddScreen(new DeferredDirectionaldShadowScreen());            
             manager.AddScreen(new SSAOScreen());
+            //manager.AddScreen(new DemosHomeScreen());
         }
 
         static void UnhandledException(object sender, UnhandledExceptionEventArgs e)

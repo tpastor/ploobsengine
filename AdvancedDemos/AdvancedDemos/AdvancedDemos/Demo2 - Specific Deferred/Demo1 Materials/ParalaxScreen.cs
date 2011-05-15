@@ -114,7 +114,8 @@ namespace AdvancedDemo4._0
             this.World.AddLight(ld5);
             #endregion
 
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(true, GraphicInfo.Viewport));
+            CameraFirstPerson cam = new CameraFirstPerson(MathHelper.ToRadians(10), MathHelper.ToRadians(-10), new Vector3(200, 150, 250), GraphicInfo.Viewport);
+            this.World.CameraManager.AddCamera(cam);
 
             {
                 SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.DOWN, Keys.H, aumentaScale);

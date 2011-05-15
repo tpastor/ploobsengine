@@ -108,8 +108,10 @@ namespace AdvancedDemo4._0
             ///Add a AA post effect
             this.RenderTechnic.AddPostEffect(ssao);
 
+
+            CameraFirstPerson cam = new CameraFirstPerson(MathHelper.ToRadians(0), MathHelper.ToRadians(-10), new Vector3(0,100, 150), GraphicInfo.Viewport);
             ///add a camera
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo.Viewport));
+            this.World.CameraManager.AddCamera(cam);
         }
 
         void ik_KeyStateChange(InputPlayableKeyBoard ipk)

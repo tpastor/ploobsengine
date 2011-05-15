@@ -507,6 +507,11 @@
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
+    <Compile Include="Model\teapot.X">
+      <Name>teapot</Name>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
     <None Include="Skins\Default\Skin.xml">
       <Name>Skin</Name>
       <Importer>XmlImporter</Importer>

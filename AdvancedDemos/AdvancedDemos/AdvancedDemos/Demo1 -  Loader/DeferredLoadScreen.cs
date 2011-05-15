@@ -94,8 +94,17 @@ namespace AdvancedDemo4._0
             #endregion
 
             ///Classic Camera =P
-            CameraFirstPerson cam = new CameraFirstPerson(GraphicInfo.Viewport);
+            
+            CameraFirstPerson cam = new CameraFirstPerson(MathHelper.ToRadians(30), MathHelper.ToRadians(-30), new Vector3(50,50,75), GraphicInfo.Viewport);
+            
             cam.MoveSpeed *= 2;
+
+
+            
+
+
+            
+            
             this.World.CameraManager.AddCamera(cam);            
 
             ///Some basic AA
