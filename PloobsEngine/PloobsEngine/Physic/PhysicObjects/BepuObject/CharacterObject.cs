@@ -115,6 +115,15 @@ namespace PloobsEngine.Physics.Bepu
             }
         }
 
+        public override Vector3 AngularVelocity
+        {
+            get { return characterController.Body.AngularVelocity; }
+            set
+            {
+                ActiveLogger.LogMessage("cant Set Velocity in Character Object", LogLevel.Warning);
+            }
+        }
+
         public override Vector3 Velocity
         {
             get

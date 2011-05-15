@@ -111,7 +111,8 @@ namespace AdvancedDemo4._0
             this.RenderTechnic.AddPostEffect(new AntiAliasingPostEffectStalker());
 
             ///add a camera
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo.Viewport));
+            CameraFirstPerson cam = new CameraFirstPerson(MathHelper.ToRadians(30), MathHelper.ToRadians(-30), new Vector3(50,50,75), GraphicInfo.Viewport);
+            this.World.CameraManager.AddCamera(cam);
 
             {
                 SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.B, bumpChange);

@@ -161,7 +161,9 @@ namespace AdvancedDemo4._0
 
             this.RenderTechnic.AddPostEffect(new AntiAliasingPostEffectStalker());
 
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(true, GraphicInfo.Viewport));
+
+            CameraFirstPerson cam = new CameraFirstPerson(MathHelper.ToRadians(-120), MathHelper.ToRadians(-5), new Vector3(-70, 70, 90), GraphicInfo.Viewport);
+            this.World.CameraManager.AddCamera(cam);
 
             SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grassCube");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);

@@ -56,35 +56,41 @@ namespace AdvancedDemo4._0
             base.CleanUp(engine);
         }
 
+        private IObject tea;
+
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory, IContentManager contentManager)
         {
             base.LoadContent(GraphicInfo, factory, contentManager);
 
             #region Models
             {
-                SimpleModel simpleModel = new SimpleModel(factory, "..\\Content\\Model\\cilos");
+                SimpleModel simpleModel = new SimpleModel(factory, "..\\Content\\Model\\teapot");
                 simpleModel.SetTexture(factory.CreateTexture2DColor(1,1, Color.Red), TextureType.DIFFUSE);
-                TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
+                //TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
+
+                GhostObject tmesh = new GhostObject(Vector3.Zero, Matrix.Identity, Vector3.One);
                 ///Environment Map Shader, there are 2 options, the first is a fully reflective surface (dont use the object texture) and the second
                 ///is a mix of the object texture and the environment texture
                 ///Used to fake ambient reflection, give metal appearence to an object ....
                 DeferredEMReflectiveShader shader = new DeferredEMReflectiveShader("Textures\\grassCUBE", 0.9f);
                 DeferredMaterial fmaterial = new DeferredMaterial(shader);
-                IObject obj = new IObject(fmaterial, simpleModel, tmesh);
-                this.World.AddObject(obj);                
+                tea = new IObject(fmaterial, simpleModel, tmesh);
+
+                tea.OnUpdate += new OnUpdate(tea_OnUpdate);
+                this.World.AddObject(tea);                
                 
             }
 
-            {
-                SimpleModel simpleModel = new SimpleModel(factory, "Model//block");
-                simpleModel.SetTexture(factory.CreateTexture2DColor(1, 1, Color.White), TextureType.DIFFUSE);
-                BoxObject tmesh = new BoxObject(new Vector3(0,-5,100), 1, 1, 1, 10, new Vector3(200, 1, 200), Matrix.Identity, MaterialDescription.DefaultBepuMaterial());
-                tmesh.isMotionLess = true;
-                DeferredNormalShader shader = new DeferredNormalShader();
-                DeferredMaterial fmaterial = new DeferredMaterial(shader);
-                IObject obj = new IObject(fmaterial, simpleModel, tmesh);
-                this.World.AddObject(obj);
-            }
+            //{
+            //    SimpleModel simpleModel = new SimpleModel(factory, "Model//block");
+            //    simpleModel.SetTexture(factory.CreateTexture2DColor(1, 1, Color.White), TextureType.DIFFUSE);
+            //    BoxObject tmesh = new BoxObject(new Vector3(0,-20,0), 1, 1, 1, 10, new Vector3(200, 1, 200), Matrix.Identity, MaterialDescription.DefaultBepuMaterial());
+            //    tmesh.isMotionLess = true;
+            //    DeferredNormalShader shader = new DeferredNormalShader();
+            //    DeferredMaterial fmaterial = new DeferredMaterial(shader);
+            //    IObject obj = new IObject(fmaterial, simpleModel, tmesh);
+            //    this.World.AddObject(obj);
+            //}
 
 
             #endregion
@@ -113,11 +119,19 @@ namespace AdvancedDemo4._0
             SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grassCUBE");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
 
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(true, GraphicInfo.Viewport));
+            CameraFirstPerson cam = new CameraFirstPerson(MathHelper.ToRadians(30), MathHelper.ToRadians(-30), new Vector3(30, 30, 50), GraphicInfo.Viewport);
+            this.World.CameraManager.AddCamera(cam);
 
             AntiAliasingPostEffectTabula aa = new AntiAliasingPostEffectTabula();
             aa.Weights = 2;
             this.RenderTechnic.AddPostEffect(aa);
+        }
+
+        void tea_OnUpdate(IObject obj, GameTime gt, ICamera cam)
+        {
+            tea.PhysicObject.Rotation *= Matrix.CreateRotationY(0.02f);
+            tea.PhysicObject.Rotation *= Matrix.CreateRotationZ(0.02f);
+
         }
 
         protected override void Draw(GameTime gameTime, RenderHelper render)

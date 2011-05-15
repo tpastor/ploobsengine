@@ -73,11 +73,11 @@ namespace AdvancedDemo4._0
 
                 ///Create the Bilboard Model
                 ///the Textures\\wizard Texture is a Horizontal animated texture (very simple with 3 frames only)
-                StaticBilboardModel bm = new StaticBilboardModel(factory, "Bilbs", "Textures\\wizard", poss);
+                StaticBilboardModel bm = new StaticBilboardModel(factory, "Bilbs", "Textures\\coin", poss);
                 ///The shader that will render it, pass the number of frames, the time to wait between frames and the type of the bilboard
                 ///Spherical ALWAYS face the camera
                 ///Cilindric has a axis that the bilboard can rotate around, to face the camera
-                DeferredAnimatedTextureShader cb = new DeferredAnimatedTextureShader(3, 100, BilboardType.Cilindric);
+                DeferredAnimatedTextureShader cb = new DeferredAnimatedTextureShader(6, 100, BilboardType.Cilindric);
                 ///We can animated the two up vertices of the bilboard quad (useful in grass for example)
                 cb.Amplitude = 0f;
                 ///Auad Scale 
@@ -111,7 +111,9 @@ namespace AdvancedDemo4._0
             this.World.AddLight(ld5);
             #endregion
 
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(true,GraphicInfo.Viewport));
+
+            CameraFirstPerson cam = new CameraFirstPerson(MathHelper.ToRadians(-60), MathHelper.ToRadians(-10), new Vector3(-200, 150, 250), GraphicInfo.Viewport);
+            this.World.CameraManager.AddCamera(cam);
 
             SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grassCube");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
