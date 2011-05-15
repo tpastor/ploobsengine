@@ -102,19 +102,21 @@ namespace PloobsEngine.SceneControl
 
 
         #region Public Methods
-        
+
         /// <summary>
         /// Adds a new screen to the screen manager.
         /// </summary>
         /// <param name="definitiveScreen">The definitive screen.</param>
         /// <param name="LoadingScreen">The loading screen.</param>
+        /// <param name="loadAndInitScreen">if set to <c>true</c> [load and init definitiveScreen].</param>
         public void AddScreen(IScreen definitiveScreen, IScreen LoadingScreen = null, bool loadAndInitScreen = true)
         {
+            System.Diagnostics.Debug.Assert(definitiveScreen != null);
             if (LoadingScreen != null)
             {
                 LoadingScreen.screenManager = this;
                 LoadingScreen.graphicFactory = GraphicFactory;
-                LoadingScreen.graphicInfo = GraphicInfo;
+                LoadingScreen.graphicInfo = GraphicInfo;                
                 if (loadAndInitScreen)
                 {
                     LoadingScreen.iInitScreen(GraphicInfo, engine);
@@ -123,6 +125,7 @@ namespace PloobsEngine.SceneControl
                     LoadingScreen.IsLoaded = true;
                 }
                 screens.Add(LoadingScreen);
+                LoadingScreen.ScreenState = ScreenState.Active;
 
                 definitiveScreen.screenManager = this;
                 definitiveScreen.graphicFactory = GraphicFactory;
@@ -142,6 +145,7 @@ namespace PloobsEngine.SceneControl
                     definitiveScreen.iAfterLoadContent(contentManager, GraphicInfo, GraphicFactory);
                 }
                 screens.Add(definitiveScreen);
+                definitiveScreen.ScreenState = ScreenState.Active;
             }
         }
 
@@ -151,16 +155,18 @@ namespace PloobsEngine.SceneControl
         /// the screen can gradually transition off rather than just being
         /// instantly removed.
         /// </summary>
-        public void RemoveScreen(IScreen screen)
+        /// <param name="screen">The screen.</param>
+        /// <param name="cleanUp">if set to <c>true</c> [clean up the screen].</param>
+        public void RemoveScreen(IScreen screen, bool cleanUp = true)
         {
-            if (screen == null)
-            {
-                ActiveLogger.LogMessage("cant remove null screen", LogLevel.RecoverableError);                
-            }
+            System.Diagnostics.Debug.Assert(screen != null);
 
-            screen.RemoveThisScreen(engine);
+            if(cleanUp)
+                screen.RemoveThisScreen(engine);
+            screen.ScreenState = ScreenState.Inactive;
             screens.Remove(screen);
             screensToUpdate.Remove(screen);
+            
         }
 
 

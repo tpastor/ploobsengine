@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using PloobsEngine;
 using PloobsEngine.SceneControl;
 using PloobsEngine.Utils;
+using Microsoft.Xna.Framework.Input;
 
 namespace AdvancedDemo4._0
 {
@@ -32,8 +33,20 @@ namespace AdvancedDemo4._0
         protected override void  Draw(GameTime gameTime, RenderHelper render)
         {
             render.RenderTextureComplete(texture);
-            render.RenderTextComplete("Demo 19-22:Random Texture generated Precedurally on CPU", new Vector2(10, 15), Color.White, Matrix.Identity);
-        }        
+            render.RenderTextComplete("Demo 17-22:Texture Generates On the fly ", new Vector2(10, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Random Texture generated Procedurally on CPU", new Vector2(10, 35), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Hit Space to change the texture", new Vector2(10, 55), Color.White, Matrix.Identity);
+        }
+
+        protected override void Update(GameTime gameTime)
+        {
+            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
+                ScreenManager.RemoveScreen(this);
+                ScreenManager.AddScreen(new NoiseScreen());
+            }
+            base.Update(gameTime);
+        }
     }
         
 }

@@ -13,6 +13,8 @@ using PloobsEngine.Commands;
 
 namespace PloobsEngine.SceneControl
 {
+    public delegate void OnScreenChangeState(IScreen screen);
+
     /// <summary>
     /// Enum describes the screen transition state.
     /// </summary>
@@ -54,6 +56,7 @@ namespace PloobsEngine.SceneControl
 
         private Dictionary<IInput, BindKeyCommand> KeyBinds = new Dictionary<IInput, BindKeyCommand>();
         private Dictionary<IInput, BindMouseCommand> MouseBinds = new Dictionary<IInput, BindMouseCommand>();
+        public OnScreenChangeState OnScreenChangeState = null;
 
         /// <summary>
         /// Binds the KeyBoard input.
@@ -164,6 +167,7 @@ namespace PloobsEngine.SceneControl
         /// <param name="updateable">The updateable.</param>
         public void AddScreenUpdateable(IScreenUpdateable updateable)
         {
+            System.Diagnostics.Debug.Assert(updateable != null);
             updateables.Add(updateable);
         }
         
@@ -174,6 +178,7 @@ namespace PloobsEngine.SceneControl
         /// <param name="updateable">The updateable.</param>
         public void RemoveScreenUpdateable(IScreenUpdateable updateable)
         {
+            System.Diagnostics.Debug.Assert(updateable != null);
             updateables.Remove(updateable);
         }
 
@@ -190,11 +195,20 @@ namespace PloobsEngine.SceneControl
         public ScreenState ScreenState
         {
             get { return screenState; }
-            set { screenState = value; }
+            set {
+                if (OnScreenChangeState != null && value != screenState)
+                {
+                    screenState = value;
+                    OnScreenChangeState(this);
+                }
+                else
+                {
+                    screenState = value;
+                }
+            }
         }
 
-       private ScreenState screenState = ScreenState.Active;
-       
+       private ScreenState screenState = ScreenState.Inactive;       
 
         /// <summary>
         /// Gets the manager that this screen belongs to.

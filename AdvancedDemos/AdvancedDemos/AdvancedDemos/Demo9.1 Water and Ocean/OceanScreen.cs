@@ -171,7 +171,7 @@ namespace AdvancedDemo4._0
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);
-            render.RenderTextComplete("Demo 20-22:Procedural Ocean Sample", new Vector2(10, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Demo 18-22:Procedural Ocean Sample", new Vector2(10, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("Press Keys 1 to 9 to change water parameters", new Vector2(10, 35), Color.White, Matrix.Identity);
             render.RenderTextComplete("Experiment changing some parameters on the code", new Vector2(10, 55), Color.White, Matrix.Identity);
         }

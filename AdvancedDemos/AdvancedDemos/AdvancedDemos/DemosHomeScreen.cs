@@ -28,7 +28,7 @@ namespace AdvancedDemo4._0
 
         EngineStuff engine;
 
-        private int[] screenList = new int[22];
+        private int[] screenList = new int[21];
 
         private IScreen GetScreen(int screenNumber)
         {
@@ -69,15 +69,14 @@ namespace AdvancedDemo4._0
                 case 16:
                     return new NoiseScreen();
                 case 17:
-                    return new PerlinNoiseScreen();
-                case 18:
-                    return new ProceduralTextureScreen();
-                case 19:
                     return new OceanScreen();
-                case 20:
+                case 18:
                     return new WaterCompleteScreen();
-                case 21:
+                case 19:
                     return new DeferredDirectionaldShadowScreen();                
+                case 20:
+                    return new SSAOScreen();
+                case 21:                    
                 default:
                     break;
             }
