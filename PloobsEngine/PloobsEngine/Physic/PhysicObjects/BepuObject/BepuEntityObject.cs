@@ -276,6 +276,19 @@ namespace PloobsEngine.Physics.Bepu
             }
         }
 
+
+
+        public override Vector3 AngularVelocity
+        {
+            
+            get { return entity.AngularVelocity; }
+            set { this.entity.AngularVelocity = value; }
+
+
+        }
+
+
+
         public override bool isMotionLess
         {
             get
@@ -326,6 +339,8 @@ namespace PloobsEngine.Physics.Bepu
         {
             entity.IsActive = false;
         }
+
+        
 
         public override void ApplyImpulse(Vector3 position, Vector3 force)
         {

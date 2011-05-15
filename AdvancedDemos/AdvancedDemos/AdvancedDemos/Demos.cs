@@ -44,7 +44,7 @@ namespace AdvancedDemo4._0
             //manager.AddScreen(new FollowerObjectSoundScreen());                        
             //manager.AddScreen(new TerrainScreen());                        
             //manager.AddScreen(new ParticleScreen());                        
-            //manager.AddScreen(new AnimatedBilboardScreen());                        
+            manager.AddScreen(new AnimatedBilboardScreen());                        
             //manager.AddScreen(new InstancedBilboardScreen());                        
             //manager.AddScreen(new NormalBilboardScreen());                        
             //manager.AddScreen(new ProceduralAnimatedBilboardScreen());            
@@ -57,7 +57,8 @@ namespace AdvancedDemo4._0
             //manager.AddScreen(new OceanScreen());            
             //manager.AddScreen(new WaterCompleteScreen());            
             //manager.AddScreen(new DeferredDirectionaldShadowScreen());            
-            manager.AddScreen(new SSAOScreen());
+            //manager.AddScreen(new SSAOScreen());
+            //manager.AddScreen(new DemosHomeScreen());
         }
 
         static void UnhandledException(object sender, UnhandledExceptionEventArgs e)

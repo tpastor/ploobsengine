@@ -95,7 +95,9 @@ namespace AdvancedDemo4._0
             this.World.AddLight(ld5);
             #endregion
 
-            CameraFirstPerson cam = new CameraFirstPerson(GraphicInfo.Viewport);
+            
+
+            CameraFirstPerson cam = new CameraFirstPerson(MathHelper.ToRadians(-60), MathHelper.ToRadians(-20), new Vector3(30, 50, 50), GraphicInfo.Viewport);
             cam.MoveSpeed *= 5;
             this.World.CameraManager.AddCamera(cam);
 

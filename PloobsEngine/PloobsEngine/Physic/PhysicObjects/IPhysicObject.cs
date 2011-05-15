@@ -110,6 +110,13 @@ namespace PloobsEngine.Physics
             get;
         }
 
+        /// <summary>
+        /// Gets or sets the angular velocity.
+        /// </summary>
+        /// <value>
+        /// The angular velocity.
+        /// </value>
+        public abstract Vector3 AngularVelocity { get; set; }
 
         #region ISerializable Members
 
