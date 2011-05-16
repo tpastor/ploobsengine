@@ -132,8 +132,7 @@ namespace AdvancedDemo4._0
             base.Draw(gameTime, render);
 
             render.RenderTextComplete("Demo 7-22: 3D Sound Attached to an Object ", new Vector2(10, 15), Color.White, Matrix.Identity);
-            render.RenderTextComplete("The Red Ball emits Sound =P, go near it and far from it", new Vector2(10, 35), Color.White, Matrix.Identity);
-            render.RenderTextComplete("Throw a ball at it", new Vector2(10, 55), Color.White, Matrix.Identity);            
+            render.RenderTextComplete("The Red Ball emits Sound =P, go near it and far from it", new Vector2(10, 35), Color.White, Matrix.Identity);            
         }
 
     }

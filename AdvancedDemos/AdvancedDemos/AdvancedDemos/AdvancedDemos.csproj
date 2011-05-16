@@ -110,6 +110,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Demo9.4 Octree Culling\OctreeScreen.cs" />
     <Compile Include="LoadingScreen.cs" />
     <Compile Include="Demo9.3 SSAO\SSAOScreen.cs" />
     <Compile Include="Demo3 - Sound\FollowerObjectSoundScreen.cs" />

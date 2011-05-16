@@ -20,7 +20,7 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         /// <param name="Filter">Or Filter, null for all</param>
         /// <returns></returns>
-        public abstract IEnumerable<IObject> GetNotCulledObjectsList(MaterialType? Filter);
+        public abstract List<IObject> GetNotCulledObjectsList(MaterialType? Filter);
 
         /// <summary>
         /// Called by the engine Once in the start of each rendering pass

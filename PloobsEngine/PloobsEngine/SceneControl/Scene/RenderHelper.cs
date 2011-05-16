@@ -273,6 +273,52 @@ namespace PloobsEngine.SceneControl
             RenderBatch(bi);
         }
 
+
+        /// <summary>
+        /// Renders user primitive.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="PrimitiveType">Type of the primitive.</param>
+        /// <param name="verts">The verts.</param>
+        /// <param name="vertexOffset">The vertex offset.</param>
+        /// <param name="primitiveCount">The primitive count.</param>
+        public void RenderUserPrimitive<T>(PrimitiveType PrimitiveType, T[] verts, int vertexOffset, int primitiveCount) where T : struct, IVertexType
+        {
+            device.DrawUserPrimitives<T>(PrimitiveType, verts, vertexOffset, primitiveCount);
+        }
+
+        /// <summary>
+        /// Renders user indexed primitive. 16 bits indices
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="PrimitiveType">Type of the primitive.</param>
+        /// <param name="verts">The verts.</param>
+        /// <param name="vertexOffset">The vertex offset.</param>
+        /// <param name="vertesCount">The vertes count.</param>
+        /// <param name="indices">The indices.</param>
+        /// <param name="indexOffset">The index offset.</param>
+        /// <param name="primitiveCount">The primitive count.</param>
+        public void RenderUserIndexedPrimitive<T>(PrimitiveType PrimitiveType, T[] verts, int vertexOffset, int vertesCount, short[] indices, int indexOffset, int primitiveCount) where T : struct, IVertexType
+        {
+            device.DrawUserIndexedPrimitives<T>(PrimitiveType, verts, vertexOffset, vertesCount, indices, indexOffset, primitiveCount);
+        }
+
+        /// <summary>
+        /// Renders user indexed primitive. 32 bits indices
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="PrimitiveType">Type of the primitive.</param>
+        /// <param name="verts">The verts.</param>
+        /// <param name="vertexOffset">The vertex offset.</param>
+        /// <param name="vertesCount">The vertes count.</param>
+        /// <param name="indices">The indices.</param>
+        /// <param name="indexOffset">The index offset.</param>
+        /// <param name="primitiveCount">The primitive count.</param>
+        public void RenderUserIndexedPrimitive<T>(PrimitiveType PrimitiveType, T[] verts, int vertexOffset, int vertesCount, int[] indices, int indexOffset, int primitiveCount) where T : struct, IVertexType
+        {
+            device.DrawUserIndexedPrimitives<T>(PrimitiveType, verts, vertexOffset, vertesCount, indices, indexOffset, primitiveCount);
+        }
+
         /// <summary>
         /// Renders the batch.
         /// </summary>

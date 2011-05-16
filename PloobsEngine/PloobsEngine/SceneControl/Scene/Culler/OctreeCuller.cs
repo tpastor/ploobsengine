@@ -63,7 +63,7 @@ namespace PloobsEngine.SceneControl
                 num = deferred.Count + forward.Count;                
         }
 
-        public override IEnumerable<IObject> GetNotCulledObjectsList(PloobsEngine.Material.MaterialType? Filter)
+        public override List<IObject> GetNotCulledObjectsList(PloobsEngine.Material.MaterialType? Filter)
         {
             if (Filter == PloobsEngine.Material.MaterialType.DEFERRED)
                 return deferred;

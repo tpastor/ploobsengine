@@ -16,12 +16,16 @@ namespace PloobsEngine.SceneControl
 
         public int Compare(IObject x, IObject y)
         {
-            float d1 = Vector3.Distance(CameraPosition, x.PhysicObject.Position);
-            float d2 = Vector3.Distance(CameraPosition, y.PhysicObject.Position);
+            float d1 = Vector3.DistanceSquared(CameraPosition, x.PhysicObject.Position);
+            float d2 = Vector3.DistanceSquared(CameraPosition, y.PhysicObject.Position);
             
             if (d1 > d2)
             {
                 return 1;
+            }
+            else if (d1 == d2)
+            {
+                return 0;
             }
             else
             {
@@ -77,14 +81,14 @@ namespace PloobsEngine.SceneControl
 
         public void Draw(GameTime gt, IWorld world,RenderHelper render)        
         {
-            IEnumerable<IObject> list;
+            List<IObject> list;
             if (ForwardPassDescription.DeferredPosDrawPass)
             {
                 list = world.Culler.GetNotCulledObjectsList(MaterialType.DEFERRED);
                 if (ForwardPassDescription.SortByCameraDistance)
                 {
                     c.CameraPosition = world.CameraManager.ActiveCamera.Position;
-                    list.OrderBy((a) => a, c);
+                    list.Sort(c);
                 }
 
                 foreach (IObject item in list)
@@ -99,7 +103,7 @@ namespace PloobsEngine.SceneControl
                 if (ForwardPassDescription.SortByCameraDistance)
                 {
                     c.CameraPosition = world.CameraManager.ActiveCamera.Position;
-                    list.OrderBy((a) => a, c);
+                    list.Sort(c);
                 }
 
                 if (ForwardPassDescription.ForwardDrawPass)

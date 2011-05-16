@@ -28,7 +28,7 @@ namespace AdvancedDemo4._0
 
         EngineStuff engine;
 
-        private int[] screenList = new int[21];
+        private int[] screenList = new int[22];
 
         private IScreen GetScreen(int screenNumber)
         {
@@ -76,7 +76,8 @@ namespace AdvancedDemo4._0
                     return new DeferredDirectionaldShadowScreen();                
                 case 20:
                     return new SSAOScreen();
-                case 21:                    
+                case 21:
+                    return new OctreeScreen();
                 default:
                     break;
             }
@@ -156,7 +157,7 @@ namespace AdvancedDemo4._0
             lab1.Left = 20;
             lab1.Parent = window;
 
-            string[] colors = new string[] { "800x600", "1024x768" };
+            string[] colors = new string[] { "800x600", "1024x768","1920x1080" };
 
             lb1 = new ComboBox(guiManager.Manager);
             lb1.Init();
@@ -269,14 +270,17 @@ namespace AdvancedDemo4._0
         public void ChangeDemo(InputPlayableKeyBoard ipk)
         {
             if (active is LoadingScreen || (active != null && active.IsLoaded == false))
-                return;        
-    
+                return;            
 
             if(this.ScreenState == PloobsEngine.SceneControl.ScreenState.Active)
-                this.ScreenState = ScreenState.Hidden; 
+                this.ScreenState = ScreenState.Hidden;
 
-            if (active != null)
-                ScreenManager.RemoveScreen(active);
+
+            foreach (var item in ScreenManager.GetScreens())
+            {
+                ScreenManager.RemoveScreen(item);
+            }
+                
 
             active = GetScreen(screenList[index % screenList.GetLength(0)]);
             ScreenManager.AddScreen(active,new LoadingScreen());
