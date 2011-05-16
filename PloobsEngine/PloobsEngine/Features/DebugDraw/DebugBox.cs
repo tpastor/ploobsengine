@@ -79,9 +79,8 @@ namespace PloobsEngine.Features.DebugDraw
                     verts[i].Position = corners[i];
                     verts[i].Color = Color;
                 }
-
-                Box.effect.CurrentTechnique.Passes[0].Apply();                                
-                render.RenderUserIndexedPrimitive<VertexPositionColor>(PrimitiveType.LineList, verts, 0, verts.Count(), indices, 0, indices.Count() / 2);
+                                                               
+                render.RenderUserIndexedPrimitive<VertexPositionColor>(effect,PrimitiveType.LineList, verts, 0, verts.Count(), indices, 0, indices.Count() / 2);
                 
             }
         }

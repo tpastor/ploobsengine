@@ -88,6 +88,8 @@ namespace AdvancedDemo4._0
 
             SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grassCube");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
+
+            this.RenderTechnic.AddPostEffect(new AntiAliasingPostEffectStalker());
         }
 
         protected override void CleanUp(EngineStuff engine)

@@ -127,9 +127,11 @@ namespace AdvancedDemo4._0
         {            
             render.Clear(Color.Black);
 
-            render.RenderTextComplete("Welcome to the Ploobs Game Engine Introduction Demos", new Vector2(40, 30), Color.White,Matrix.Identity);
-            render.RenderTextComplete("(Press F1 to cycle through demos)", new Vector2(40, 55), Color.White, Matrix.Identity);
-            render.RenderTextComplete("(Press Escape to exit)", new Vector2(40, 80), Color.White, Matrix.Identity);           
+            render.RenderTextComplete("Welcome to the Ploobs Game Engine Advanced Demos", new Vector2(40, 30), Color.White,Matrix.Identity);
+            render.RenderTextComplete("The Focus here were in the funcionalities, not in the visual", new Vector2(40, 50), Color.Red, Matrix.Identity);
+            render.RenderTextComplete("As you will see, we need Modelers =P Join us =P", new Vector2(40, 70), Color.Red, Matrix.Identity);
+            render.RenderTextComplete("(Press F1 to cycle through demos)", new Vector2(40, 95), Color.White, Matrix.Identity);
+            render.RenderTextComplete("(Press Escape to exit)", new Vector2(40, 115), Color.White, Matrix.Identity);           
 
         }
 
@@ -157,7 +159,7 @@ namespace AdvancedDemo4._0
             lab1.Left = 20;
             lab1.Parent = window;
 
-            string[] colors = new string[] { "800x600", "1024x768","1920x1080" };
+            string[] colors = new string[] { "800x600", "1024x768","1280x800","1920x1080" };
 
             lb1 = new ComboBox(guiManager.Manager);
             lb1.Init();
@@ -209,8 +211,6 @@ namespace AdvancedDemo4._0
             ms1.Click += new TomShane.Neoforce.Controls.EventHandler(ms1_Click);
             ms1.Left = lb1.Left;
             ms1.Width = ms1.Text.Length * 10;
-
-
 
              CheckBox vsy = new CheckBox(guiManager.Manager);
             vsy.Text = "Vertical Sincronization";

@@ -13,11 +13,13 @@ namespace IntroductionDemo4._0
         public Demos()
         {
             InitialEngineDescription desc = InitialEngineDescription.Default();
+            ///We are using the simplest parameters to work in all computers
+            ///Check the Advanced Demos to know how to change those
             ///optional parameters, the default is good for most situations
             //desc.UseVerticalSyncronization = true;
             //desc.isFixedGameTime = true;
-            //desc.isMultiSampling = true;
-            desc.useMipMapWhenPossible = true;
+            //desc.isMultiSampling = true; ///Only works on forward rendering
+            //desc.useMipMapWhenPossible = true;
             desc.Logger = new SimpleLogger();
             desc.UnhandledException_Handler = UnhandledException;
             ///start the engine

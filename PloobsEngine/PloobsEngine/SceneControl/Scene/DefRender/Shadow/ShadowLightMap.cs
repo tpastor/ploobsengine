@@ -232,12 +232,12 @@ namespace PloobsEngine.SceneControl
             shadow.SplitConstant = splitConstant;
             
             shadownBufferSize = ginfo.BackBufferWidth;
-            shadowRT = factory.CreateRenderTarget(shadownBufferSize, shadownBufferSize, SurfaceFormat.Single,true);
+            shadowRT = factory.CreateRenderTarget(shadownBufferSize, shadownBufferSize, SurfaceFormat.Single, ginfo.UseMipMap,DepthFormat.Depth24Stencil8,ginfo.MultiSample);
 
             if (useFloatingBufferForLightning)
-                lightRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.HdrBlendable, false, DepthFormat.None, ginfo.MultiSample, RenderTargetUsage.PreserveContents);
+                lightRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.HdrBlendable, ginfo.UseMipMap, DepthFormat.None, ginfo.MultiSample, RenderTargetUsage.PreserveContents);
             else
-                lightRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, false, DepthFormat.None, ginfo.MultiSample, RenderTargetUsage.PreserveContents);
+                lightRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.None, ginfo.MultiSample, RenderTargetUsage.PreserveContents);
 
             Depth = factory.GetEffect("ShadowDepth",false,true);
             pointLightEffect = factory.GetEffect("PointLight",false,true);
@@ -246,8 +246,8 @@ namespace PloobsEngine.SceneControl
             sphereModel = new SimpleModel(factory, "Dsphere", true);
             blank = factory.CreateTexture2DColor(1, 1, Color.White);
 
-            rt = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
-            deferredRT = factory.CreateRenderTarget(shadownBufferSize, shadownBufferSize,SurfaceFormat.Single);
+            rt = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight,SurfaceFormat.Color,ginfo.UseMipMap,DepthFormat.Depth24Stencil8,ginfo.MultiSample);
+            deferredRT = factory.CreateRenderTarget(shadownBufferSize, shadownBufferSize, SurfaceFormat.Single,ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample);
             shadow.Load(factory,ginfo);
 
             switch (shadowFilterSpot)

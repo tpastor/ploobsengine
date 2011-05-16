@@ -14,6 +14,7 @@ using PloobsEngine.Light;
 using Microsoft.Xna.Framework.Input;
 using PloobsEngine.Features;
 using PloobsEngine.Commands;
+using PloobsEngine.Loader;
 
 namespace AdvancedDemo4._0
 {
@@ -45,15 +46,7 @@ namespace AdvancedDemo4._0
 
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory ,IContentManager contentManager)
         {
-            base.LoadContent(GraphicInfo,factory, contentManager);
-         
-            ///Classic island
-            SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
-            TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
-            DeferredNormalShader shader = new DeferredNormalShader();
-            DeferredMaterial fmaterial = new DeferredMaterial(shader);
-            IObject obj = new IObject(fmaterial, simpleModel, tmesh);
-            this.World.AddObject(obj);
+            base.LoadContent(GraphicInfo,factory, contentManager);        
 
 
             ///The Animated Bilboard

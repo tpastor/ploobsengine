@@ -43,6 +43,7 @@ namespace IntroductionDemo4._0
 
             ///Adicionando Componente de Mensagens 
             ///Utilizado pelo Trigger
+            ///Triggers uses this component
             MessageDeliver md = new MessageDeliver();
             engine.AddComponent(md);         
         }
@@ -54,30 +55,42 @@ namespace IntroductionDemo4._0
 
             #region Trigger
             ///Criacao de um Trigger
+            ///Create a trigger
             {
                 ///Modelo cujo formato sera utilizado para disparar o trigger
+                ///Model used as base the for the trigger
                 SimpleModel sm = new SimpleModel(factory,"..\\Content\\Model\\cubo" );
                 sm.SetTexture(factory.CreateTexture2DColor(1,1, Color.Red), TextureType.DIFFUSE); ///VERMELHO
                 
                 ///Criacao do Triangle Mesh
+                ///Create the triangle mesh from the model
                 TriangleMeshObject tm = new TriangleMeshObject(sm,new Vector3(200, 5, 0),Matrix.Identity,Vector3.One * 10,MaterialDescription.DefaultBepuMaterial());
                 ///Criacao do Evento q sera disparado qd o trigger for acionado
                 ///Pode-se criar outros tipos de eventos, basta extender a classe  IEvent
                 ///O parametro passado eh o canal em que o trigger enviara suas mensagens
                 ///Qualquer Entidade que extende IRecieveMessageEntity pode receber mensagens
+                ///Create the eventr that the trigger will fire
+                ///TriggerEvent is the name of the CHANNEL (SEE CHANGINGMESSAGESSCREEN.CS) where the trigger will send the messages. (you can change the name at your will, change also the channel that the other objects are listening)
                 TriggerEvent te = new TriggerEvent("TriggerEvent","TriggerTest1");
                 ///Criacao do Trigger
+                ///Creating and adding the trigger to the physic world
                 BepuPhysicWorld physicWorld = this.World.PhysicWorld as BepuPhysicWorld;
                 System.Diagnostics.Debug.Assert(physicWorld != null);
+                ///Setting triggers configuration, IT RECIEVES A TRIANGLE MESH
+                ///TRIGGERS ARE ALWAYS TRIANGLE MESHES !!!!
                 BepuTrigger bt = new BepuTrigger(physicWorld, tm, te, true, true, true, true);
                 ///Adiciona o trigger ao mundo
                 this.World.AddTrigger(bt);
 
                 ///Adicona um objeto na posicao do trigger (Objeto FANTASMA, nao sera detectado pelo trigger)
-                ///Facilita na localizacao do Trigger (cilos brancos)
+                ///Facilita na localizacao do Trigger 
+                ///CREATE A VISUAL OBJECT FOR THE TRIGGER (SO WE CAN SEE IT)
+                ///GHOST OBJECT (NO COLLISION)
                 GhostObject ghost = new GhostObject(new Vector3(200, 5, 0), Matrix.Identity,Vector3.One * 10);
+                ///material and shader
                 DeferredNormalShader shader = new DeferredNormalShader();
                 IMaterial mat = new DeferredMaterial(shader);
+                /// add the visual object (DONT NEED, WE ADDED JUST TO SEE THE TRIGGER)
                 IObject obj3 = new IObject(mat, sm, ghost);
                 this.World.AddObject(obj3);      
             }
@@ -86,6 +99,7 @@ namespace IntroductionDemo4._0
             #endregion
 
             ///Criacao de um Objeto q recebera mensagens do trigger
+            ///THIS OBJECT THAT WILL RECIEVE MESSAGE FROM the trigger
             #region Models
             {
                 SimpleModel sm = new SimpleModel(factory,"..\\Content\\Model\\cubo");
@@ -96,9 +110,11 @@ namespace IntroductionDemo4._0
                 IObject obj3 = new IObject(mat, sm, pi);
                 ///Cadastra uma funcao para tratar das mensagens recebidas
                 ///existem outras maneiras de fazer isso, como Extender a classe IObject e sobrescrever o metodo HandleMessage
+                ///MESSAGE HANDLER
                 obj3.OnRecieveMessage += new OnRecieveMessage(obj3_OnRecieveMessage);
                 this.World.AddObject(obj3);
                 ///Adiciona o Objeto criado ao grupo "TriggerEvent" que recebera as mensagens do trigger
+                ///Register to recieve TriggerEvent Messages (registering to the channel)
                 EntityMapper.getInstance().AddgrouptagRecieveEntity("TriggerEvent", obj3);
             }
 
@@ -118,6 +134,8 @@ namespace IntroductionDemo4._0
     
             ///Demonstracao de que qualquer entidade pode receber mensagens
             ///Olhar a implementacao desta classe, esta no fim deste arquivo
+            ///Creating an entity to recieve the trigger message also
+            ///JUST to show that everyone can recieve messages
             rmessage = new ReciveMessage();
 
             cam = new CameraFirstPerson(GraphicInfo.Viewport);            
@@ -152,13 +170,13 @@ namespace IntroductionDemo4._0
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);
-            render.RenderTextComplete("Demo: Trigger (BEPU)", new Vector2(GraphicInfo.Viewport.Width - 315, 15), Color.White, Matrix.Identity);
-            render.RenderTextComplete("Launch balls at the red box", new Vector2(GraphicInfo.Viewport.Width - 315, 40), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Demo: Trigger (BEPU)", new Vector2(GraphicInfo.Viewport.Width - 515, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Launch balls (Left Mouse buttom) at the red box", new Vector2(GraphicInfo.Viewport.Width - 515, 40), Color.White, Matrix.Identity);
             
             if (shouldDraw)
             {
-                render.RenderTextComplete("Objeto: Trigger acionado " + mesSend.Cod + " Objeto " + triggerSend.ContactEntity.Name, new Vector2(20, 40), Color.White, Matrix.Identity);
-                render.RenderTextComplete("RecieveMessage: Trigger acionado " + rmessage.mesRec.Cod + " Objeto " + triggerSend.ContactEntity.Name, new Vector2(20, 65), Color.White, Matrix.Identity);
+                render.RenderTextComplete("Object: Trigger Activated " + mesSend.Cod + " Objeto " + triggerSend.ContactEntity.Name, new Vector2(20, 60), Color.White, Matrix.Identity);
+                render.RenderTextComplete("RecieveMessage: Trigger Artivated " + rmessage.mesRec.Cod + " Objeto " + triggerSend.ContactEntity.Name, new Vector2(20, 85), Color.White, Matrix.Identity);
             }            
         }
 
@@ -167,6 +185,7 @@ namespace IntroductionDemo4._0
         BepuTrigger triggerSend = null;
         /// <summary>
         /// Chamado qd uma mensagem chega
+        /// Handle message
         /// </summary>
         /// <param name="Reciever"></param>
         /// <param name="mes"></param>
@@ -184,27 +203,34 @@ namespace IntroductionDemo4._0
 
         protected override void CleanUp(EngineStuff engine)
         {
+            EntityMapper.getInstance().ClearAllEntries();
             engine.RemoveComponent("MessageDeliver");
-
             lt.CleanUp();
         }
     }
 
-    
+
+    /// <summary>
+    /// Entity that recieves message
+    /// NEED TO EXTEND IRecieveMessageEntity
+    /// </summary>
     public class ReciveMessage : IRecieveMessageEntity
     {
         public ReciveMessage()
         {
             ///Registra esta entidade
+            ///REGISTER THE ENTITY
             EntityMapper.getInstance().AddEntity(this);
             ///Insere esta entidade em um canal (passara a receber mensagens deste canal)
             ///PARA ADICIONAR UMA ENTIDADE EM UM CANAL DEVE-SE ANTES REGISTRAR A ENTIDADE
+            ///ADD TO THE TRIGGER CHANNEL
             EntityMapper.getInstance().AddgrouptagRecieveEntity("TriggerEvent",this);
         }
         ~ReciveMessage()
         {
             ///DESREGISTRAR QD ENTIDADE DEIXA DE EXISTIR
             ///este metodo remove a entidade de todos os canais
+            ///Remove this entity registration.
             EntityMapper.getInstance().RemoveEntity(this);            
         }
 
@@ -216,6 +242,10 @@ namespace IntroductionDemo4._0
         }
 
         public Message mesRec = null;
+        /// <summary>
+        /// handle the message
+        /// </summary>
+        /// <param name="mes"></param>
         public void HandleMessage(Message mes)
         {
             if (mes.SenderType == PloobsEngine.MessageSystem.SenderType.EVENT && mes.Tag == "TriggerEvent")

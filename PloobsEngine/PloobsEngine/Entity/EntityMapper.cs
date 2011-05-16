@@ -315,6 +315,8 @@ namespace PloobsEngine.Entity
             /// </summary>
             public void ClearAllEntries()
             {
+                a = 1000;
+                ids.Clear();
                 IdEntity.Clear();
                 IdRecieveEntity.Clear();
                 recieveEntityTag.Clear();

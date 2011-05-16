@@ -16,6 +16,7 @@ using PloobsEngine.Features;
 using PloobsEngine.Commands;
 using PloobsEngine.Physic.PhysicObjects.BepuObject;
 using PloobsEngine.Input;
+using PloobsEngine.Loader;
 
 namespace AdvancedDemo4._0
 {
@@ -37,9 +38,11 @@ namespace AdvancedDemo4._0
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
             desc.UseFloatingBufferForLightMap = true;
-            ///For transparency working right
+            ///For transparency works right, we need to order the objects
+            ///by distance from the camera
+            ///this is not perfect, but works on most situations
             ForwardPassDescription fpd =  desc.ForwardPass.GetForwardPassDescription();
-            fpd.SortByCameraDistance = true;
+            fpd.SortByCameraDistance = true;///defalu is false
             desc.ForwardPass.ApplyForwardPassDescription(fpd);
             renderTech = new DeferredRenderTechnic(desc);
         }
@@ -67,16 +70,20 @@ namespace AdvancedDemo4._0
         {
             base.LoadContent(GraphicInfo, factory, contentManager);
 
-            ///Classic Island
-            SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
-            TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
-            DeferredNormalShader shader = new DeferredNormalShader();
-            DeferredMaterial fmaterial = new DeferredMaterial(shader);
-            IObject obj = new IObject(fmaterial, simpleModel, tmesh);
-            this.World.AddObject(obj);
+            {
+                ///Create the xml file model extractor
+                ///Loads a XML file that was export by our 3DS MAX plugin
+                ExtractXmlModelLoader ext = new ExtractXmlModelLoader("Content//ModelInfos//", "Model//", "Textures//");
+                ///Extract all the XML info (Model,Cameras, ...)
+                ModelLoaderData data = ext.Load(factory, GraphicInfo, "ilha");
+                ///Create the WOrld Loader
+                ///Convert the ModelLoaderData in World Entities
+                WorldLoader wl = new WorldLoader(); ///all default                
+                wl.LoadWorld(factory, GraphicInfo, World, data);
+            }
 
             {
-                ///Procedural yellow diffuse texture
+                ///Procedural diffuse texture
                 SimpleModel sm = new SimpleModel(factory, "Model\\block");
                 sm.SetTexture(factory.CreateTexture2DColor(1, 1, Color.BlueViolet), TextureType.DIFFUSE);
                 ///physic Ghost object(no collision)
@@ -146,7 +153,9 @@ namespace AdvancedDemo4._0
             this.World.AddLight(ld5);
             #endregion
 
-            CameraFirstPerson cam = new CameraFirstPerson(MathHelper.ToRadians(30), MathHelper.ToRadians(-10), new Vector3(200, 150, 250), GraphicInfo.Viewport);
+            this.RenderTechnic.AddPostEffect(new AntiAliasingPostEffectStalker());
+
+            CameraFirstPerson cam = new CameraFirstPerson(MathHelper.ToRadians(30), MathHelper.ToRadians(-10), new Vector3(150, 150, 200), GraphicInfo.Viewport);
 
             this.World.CameraManager.AddCamera(cam);
 

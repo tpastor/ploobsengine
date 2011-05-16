@@ -15,6 +15,7 @@ using Microsoft.Xna.Framework.Input;
 using PloobsEngine.Features;
 using PloobsEngine.Commands;
 using PloobsEngine.Particles;
+using PloobsEngine.Loader;
 
 namespace AdvancedDemo4._0
 {
@@ -60,7 +61,7 @@ namespace AdvancedDemo4._0
 
                 ///cant set emiter position before adding the particle
                 ///IF YOU DO SO, IT WILL NOT WORK
-                snow.Emitter.PositionData.Position = new Vector3(1000, 0, 0);
+                snow.Emitter.PositionData.Position = new Vector3(500, 0, 0);
             }            
 
             ObjectThrowSmokeParticle ot = new ObjectThrowSmokeParticle(this);
@@ -68,12 +69,17 @@ namespace AdvancedDemo4._0
 
 
             ///OUR Classic Model
-            SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
-            TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
-            DeferredNormalShader shader = new DeferredNormalShader();
-            DeferredMaterial fmaterial = new DeferredMaterial(shader);
-            IObject obj = new IObject(fmaterial, simpleModel, tmesh);
-            this.World.AddObject(obj);
+            {
+                ///Create the xml file model extractor
+                ///Loads a XML file that was export by our 3DS MAX plugin
+                ExtractXmlModelLoader ext = new ExtractXmlModelLoader("Content//ModelInfos//", "Model//", "Textures//");
+                ///Extract all the XML info (Model,Cameras, ...)
+                ModelLoaderData data = ext.Load(factory, GraphicInfo, "ilha");
+                ///Create the WOrld Loader
+                ///Convert the ModelLoaderData in World Entities
+                WorldLoader wl = new WorldLoader(); ///all default                
+                wl.LoadWorld(factory, GraphicInfo, World, data);
+            }
 
             #region NormalLight
             DirectionalLightPE ld1 = new DirectionalLightPE(Vector3.Left, Color.White);
