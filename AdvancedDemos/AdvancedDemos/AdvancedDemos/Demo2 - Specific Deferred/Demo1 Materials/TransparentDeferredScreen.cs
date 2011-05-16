@@ -24,6 +24,8 @@ namespace AdvancedDemo4._0
     /// </summary>
     public class TransparentDeferredScreen : IScene
     {
+
+        LightThrowBepu lt; 
         /// <summary>
         /// Sets the world and render technich.
         /// </summary>
@@ -35,6 +37,10 @@ namespace AdvancedDemo4._0
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
             desc.UseFloatingBufferForLightMap = true;
+            ///For transparency working right
+            ForwardPassDescription fpd =  desc.ForwardPass.GetForwardPassDescription();
+            fpd.SortByCameraDistance = true;
+            desc.ForwardPass.ApplyForwardPassDescription(fpd);
             renderTech = new DeferredRenderTechnic(desc);
         }
 
@@ -69,18 +75,39 @@ namespace AdvancedDemo4._0
             IObject obj = new IObject(fmaterial, simpleModel, tmesh);
             this.World.AddObject(obj);
 
-            ///Transparent blocks
-            for (int k = 0; k < 10; k++)
             {
-                for (int i = 0; i < 10; i++)
+                ///Procedural yellow diffuse texture
+                SimpleModel sm = new SimpleModel(factory, "Model\\block");
+                sm.SetTexture(factory.CreateTexture2DColor(1, 1, Color.BlueViolet), TextureType.DIFFUSE);
+                ///physic Ghost object(no collision)
+                GhostObject pi = new GhostObject(new Vector3(0, 0, 0), Matrix.Identity, new Vector3(500, 500, 500));
+                pi.isMotionLess = true;
+                ///Transparency shader                    
+                ///Transparent objects are NOT affected by lights
+                ///It is a forward shader in the deferred engine (applied after all deferreed processing)
+                ForwardTransparenteShader s = new ForwardTransparenteShader();
+                ///If the texture does not have Alpha, you can create an alpha for all the model
+                s.TransparencyLevel = 0.3f;
+                ///THIS MODEL is DRAW AFTER all the Deferred ones (remember:light wont afect it)
+                ///You can use all the forward material the same way we are using this
+                ForwardMaterial mat = new ForwardMaterial(s);
+                IObject obj4 = new IObject(mat, sm, pi);
+                this.World.AddObject(obj4);
+            }
+
+
+            ///Transparent blocks
+            for (int k = 0; k < 5; k++)
+            {
+                for (int i = 0; i < 5; i++)
                 {
-                    for (int j = 0; j < 10; j++)
+                    for (int j = 0; j < 5; j++)
                     {
                         ///Procedural yellow diffuse texture
                         SimpleModel sm = new SimpleModel(factory, "Model\\block");
                         sm.SetTexture(factory.CreateTexture2DColor(1, 1, Color.Yellow), TextureType.DIFFUSE);
                         ///physic Ghost object(no collision)
-                        GhostObject pi = new GhostObject(new Vector3(i * 10, 50 + k*10, j * 10), Matrix.Identity, new Vector3(5));
+                        GhostObject pi = new GhostObject(new Vector3(i * 10 + 100, 50 + k*10, j * 10), Matrix.Identity, new Vector3(5));
                         pi.isMotionLess = true;
                         ///Transparency shader                    
                         ///Transparent objects are NOT affected by lights
@@ -98,7 +125,7 @@ namespace AdvancedDemo4._0
                 } 
             }
 
-            LightThrowBepu lt = new LightThrowBepu(this.World, factory);
+            lt = new LightThrowBepu(this.World, factory);
 
             #region NormalLight
             DirectionalLightPE ld1 = new DirectionalLightPE(Vector3.Left, Color.White);
@@ -129,6 +156,7 @@ namespace AdvancedDemo4._0
 
         protected override void CleanUp(EngineStuff engine)
         {
+            lt.CleanUp();
             engine.RemoveComponent("SkyBox");
             base.CleanUp(engine);
         }

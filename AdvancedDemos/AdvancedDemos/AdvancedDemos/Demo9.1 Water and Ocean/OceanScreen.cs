@@ -133,8 +133,8 @@ namespace AdvancedDemo4._0
             base.LoadContent(GraphicInfo, factory, contentManager);
 
             OceanModel wm = new OceanModel(factory, "WaterModel", Vector3.Zero, 256, 256);
-            GhostObject go = new GhostObject(Vector3.Zero, Matrix.Identity, Vector3.One * 2);
-            waterShader = new DeferredWaterShader("Textures/grassCube");
+            GhostObject go = new GhostObject(new Vector3(-300,0,-300), Matrix.Identity, Vector3.One * 2);
+            waterShader = new DeferredWaterShader("Textures/cubemap");
             waterShader.SetDefault();
             DeferredMaterial wmaterial = new DeferredMaterial(waterShader);
             IObject obj = new IObject(wmaterial, wm, go);
@@ -165,7 +165,7 @@ namespace AdvancedDemo4._0
             CameraFirstPerson cam = new CameraFirstPerson(MathHelper.ToRadians(-120), MathHelper.ToRadians(-5), new Vector3(-70, 70, 90), GraphicInfo.Viewport);
             this.World.CameraManager.AddCamera(cam);
 
-            SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grassCube");
+            SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//cubemap");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
 
         }

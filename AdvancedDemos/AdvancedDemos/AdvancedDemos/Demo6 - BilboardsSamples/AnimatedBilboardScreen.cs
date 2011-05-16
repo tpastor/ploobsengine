@@ -72,7 +72,7 @@ namespace AdvancedDemo4._0
                 }
 
                 ///Create the Bilboard Model
-                ///the Textures\\wizard Texture is a Horizontal animated texture (very simple with 3 frames only)
+                ///the Textures\\coin Texture is a Horizontal animated texture
                 StaticBilboardModel bm = new StaticBilboardModel(factory, "Bilbs", "Textures\\coin", poss);
                 ///The shader that will render it, pass the number of frames, the time to wait between frames and the type of the bilboard
                 ///Spherical ALWAYS face the camera
@@ -80,7 +80,7 @@ namespace AdvancedDemo4._0
                 DeferredAnimatedTextureShader cb = new DeferredAnimatedTextureShader(6, 100, BilboardType.Cilindric);
                 ///We can animated the two up vertices of the bilboard quad (useful in grass for example)
                 cb.Amplitude = 0f;
-                ///Auad Scale 
+                ///Quad Scale 
                 cb.Scale = new Vector2(50, 50);
                 ///Color atenuation, this will multiply the Texture colors
                 cb.Atenuation = new Vector4(0.4f, 0.4f, 0.4f, 1);

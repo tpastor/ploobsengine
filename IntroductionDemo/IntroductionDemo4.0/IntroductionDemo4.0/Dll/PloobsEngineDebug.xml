@@ -503,6 +503,14 @@
             Gets the bounding box IN WORLD COORDINATES
             </summary>
     </member>
+    <member name="P:PloobsEngine.Physics.IPhysicObject.AngularVelocity">
+      <summary>
+            Gets or sets the angular velocity.
+            </summary>
+      <value>
+            The angular velocity.
+            </value>
+    </member>
     <member name="T:PloobsEngine.Physics.PhysicObjectTypes">
       <summary>
             Physic Types allowed
@@ -2340,6 +2348,78 @@
         <c>true</c> if [cast shadown]; otherwise, <c>false</c>.
             </value>
     </member>
+    <member name="T:PloobsEngine.Commands.ICommand">
+      <summary>
+            Command Pattern
+            Its a Class that encapsulates a function call
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.Commands.ICommand.execute">
+      <summary>
+            Executes the command Call.
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.Commands.ICommand.setTarget(System.Object)">
+      <summary>
+            Sets the command target.
+            </summary>
+      <param name="obj">The obj.</param>
+    </member>
+    <member name="P:PloobsEngine.Commands.ICommand.TargetName">
+      <summary>
+            Gets the name of the command target.
+            </summary>
+      <value>
+            The name of the target.
+            </value>
+    </member>
+    <member name="T:PloobsEngine.Features.TaskCommand">
+      <summary>
+            Command that encapsulates a task
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.Features.TaskCommand.#ctor(PloobsEngine.Features.ITask)">
+      <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Features.TaskCommand" /> class.
+            </summary>
+      <param name="task">The task.</param>
+    </member>
+    <member name="M:PloobsEngine.Features.TaskCommand.execute">
+      <summary>
+            Executes the command Call.
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.Features.TaskCommand.setTarget(System.Object)">
+      <summary>
+            Sets the command target.
+            </summary>
+      <param name="obj">The obj.</param>
+    </member>
+    <member name="P:PloobsEngine.Features.TaskCommand.TargetName">
+      <summary>
+            Gets the name of the command target.
+            </summary>
+      <value>
+            The name of the target.
+            </value>
+    </member>
+    <member name="T:PloobsEngine.Features.ITask">
+      <summary>
+            Specification of a task
+            Task is a class that operates in ANOTHER THREAD    
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.Features.ITask.Result(System.IAsyncResult)">
+      <summary>
+            Called when the task ends
+            </summary>
+      <param name="result">The result.</param>
+    </member>
+    <member name="M:PloobsEngine.Features.ITask.Process">
+      <summary>
+            Processes the task.
+            </summary>
+    </member>
     <member name="T:PloobsEngine.Commands.CommandProcessor">
       <summary>
             Reponsible for sending Commands
@@ -2574,6 +2654,7 @@
       <summary>
             Batch Information
             Contains Draw data from a model (vertices, indexes) and info about how to draw them
+            The use should just use the Constructor to change Data, dont use the accessor public methods
             </summary>
     </member>
     <member name="F:PloobsEngine.Modelo.BatchInformation.InstanceCount">
@@ -2638,7 +2719,7 @@
     </member>
     <member name="F:PloobsEngine.Modelo.BatchInformation.InstancedVertexBuffer">
       <summary>
-            VertexBuffer
+            Instanced VertexBuffer
             </summary>
     </member>
     <member name="F:PloobsEngine.Modelo.BatchInformation.IndexBuffer">
@@ -3114,30 +3195,10 @@
             Default 5
             </summary>
     </member>
-    <member name="T:PloobsEngine.Commands.ICommand">
+    <member name="T:PloobsEngine.Features.TaskEndType">
       <summary>
-            Command Pattern
-            Its a Class that encapsulates a function call
+            Quando a funcao result sera chamada, qd o process terminar
             </summary>
-    </member>
-    <member name="M:PloobsEngine.Commands.ICommand.execute">
-      <summary>
-            Executes the command Call.
-            </summary>
-    </member>
-    <member name="M:PloobsEngine.Commands.ICommand.setTarget(System.Object)">
-      <summary>
-            Sets the command target.
-            </summary>
-      <param name="obj">The obj.</param>
-    </member>
-    <member name="P:PloobsEngine.Commands.ICommand.TargetName">
-      <summary>
-            Gets the name of the command target.
-            </summary>
-      <value>
-            The name of the target.
-            </value>
     </member>
     <member name="T:PloobsEngine.Material.MaterialType">
       <summary>
@@ -3230,6 +3291,13 @@
       <returns>
       </returns>
     </member>
+    <member name="M:PloobsEngine.Components.ComponentManager.GetPosWithDepthDraw">
+      <summary>
+            Gets the pos with Depth draw.
+            </summary>
+      <returns>
+      </returns>
+    </member>
     <member name="M:PloobsEngine.Components.ComponentManager.PreDraw(PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix)">
       <summary>
             Draw the Pre Draw components
@@ -3242,6 +3310,15 @@
       <summary>
             Draw the Afters draw.
             </summary>
+      <param name="gt">The gt.</param>
+      <param name="activeView">The active view.</param>
+      <param name="activeProjection">The active projection.</param>
+    </member>
+    <member name="M:PloobsEngine.Components.ComponentManager.PosWithDepthDraw(PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix)">
+      <summary>
+            Draw the Afters with depth draw.
+            </summary>
+      <param name="render">The render.</param>
       <param name="gt">The gt.</param>
       <param name="activeView">The active view.</param>
       <param name="activeProjection">The active projection.</param>
@@ -3516,6 +3593,15 @@
     <member name="M:PloobsEngine.Components.IComponent.PreDraw(PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix)">
       <summary>
             Pres draw.
+            Its called deppending of the ComponentType
+            </summary>
+      <param name="gt">The gt.</param>
+      <param name="activeView">The active view.</param>
+      <param name="activeProjection">The active projection.</param>
+    </member>
+    <member name="M:PloobsEngine.Components.IComponent.PosWithDepthDraw(PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix)">
+      <summary>
+            Pos With Depth draw.
             Its called deppending of the ComponentType
             </summary>
       <param name="gt">The gt.</param>
@@ -5596,6 +5682,38 @@
             The type of the light.
             </value>
     </member>
+    <member name="T:PloobsEngine.Features.TaskProcessor">
+      <summary>
+            Task Command Executor
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Features.TaskProcessor.MyName">
+      <summary>
+            The Name of the Component
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.Features.TaskProcessor.StartTask(PloobsEngine.Features.ITask)">
+      <summary>
+            Starts the task.
+            </summary>
+      <param name="task">The task.</param>
+    </member>
+    <member name="M:PloobsEngine.Features.TaskProcessor.getMyName">
+      <summary>
+            The name of the reciever
+            MUST BE UNIQUE
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="P:PloobsEngine.Features.TaskProcessor.ComponentType">
+      <summary>
+            Gets the type of the component type.
+            </summary>
+      <value>
+            The type of the component.
+            </value>
+    </member>
     <member name="T:PloobsEngine.Features.SkyBox">
       <summary>
             SkyBox Component
@@ -6169,6 +6287,14 @@
       <param name="view">The view.</param>
       <param name="projection">The projection.</param>
     </member>
+    <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderPosWithDepthComponents(Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix)">
+      <summary>
+            Renders the pos with depth components.
+            </summary>
+      <param name="gametime">The gametime.</param>
+      <param name="view">The view.</param>
+      <param name="projection">The projection.</param>
+    </member>
     <member name="M:PloobsEngine.SceneControl.RenderHelper.PushRasterizerState(Microsoft.Xna.Framework.Graphics.RasterizerState)">
       <summary>
             Pushes the state of the rasterizer.
@@ -6558,6 +6684,14 @@
       <summary>
             Gets the world matrix.
             </summary>
+    </member>
+    <member name="P:PloobsEngine.Physics.Bepu.TriangleMeshObject.AngularVelocity">
+      <summary>
+            Gets or sets the angular velocity.
+            </summary>
+      <value>
+            The angular velocity.
+            </value>
     </member>
     <member name="P:PloobsEngine.Physics.Bepu.TriangleMeshObject.Velocity">
       <summary>
@@ -7012,6 +7146,16 @@
     <member name="F:PloobsEngine.Components.ComponentType.POS_DRAWABLE_AND_UPDATEABLE">
       <summary>
             Only the Pos Draw and Update will be called
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Components.ComponentType.POS_WITHDEPTH_DRAWABLE_AND_UPDATEABLE">
+      <summary>
+            Only the Pos With Depth Draw and Update will be called
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Components.ComponentType.POS_WITHDEPTH_DRAWABLE">
+      <summary>
+            Only the Pos With Depth Draw will be called
             </summary>
     </member>
     <member name="F:PloobsEngine.Components.ComponentType.NONE">
@@ -8515,6 +8659,26 @@
             The type of the material.
             </value>
     </member>
+    <member name="F:PloobsEngine.Features.DebugDraw.Box.effect">
+      <summary>
+            The basic effect used to draw boxes.
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.Features.DebugDraw.Box.#ctor(Microsoft.Xna.Framework.BoundingBox,Microsoft.Xna.Framework.Color)">
+      <summary>
+            Creates a new box.
+            Visible by default
+            </summary>
+      <param name="BoundingBox">The bounding box.</param>
+      <param name="color">The box's color.</param>
+    </member>
+    <member name="M:PloobsEngine.Features.DebugDraw.Box.Draw(PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix)">
+      <summary>
+            Draws the box.
+            </summary>
+      <param name="view">The viewing matrix.</param>
+      <param name="projection">The projection matrix.</param>
+    </member>
     <member name="T:PloobsEngine.Utils.MovingAverage">
       <summary>
             Moving Average class
@@ -8572,22 +8736,15 @@
             </summary>
       <param name="contrast">-1 a 1</param>
     </member>
-    <member name="M:PloobsEngine.SceneControl.OctreeCuller.#ctor(System.Single,System.Single,System.Int32,Microsoft.Xna.Framework.Vector3,System.Boolean)">
+    <member name="M:PloobsEngine.SceneControl.OctreeCuller.#ctor(System.Single,System.Single,System.Int32,Microsoft.Xna.Framework.Vector3,PloobsEngine.Features.DebugDraw.DebugShapesDrawer)">
       <summary>
-            Enable Debug
+            Initializes a new instance of the <see cref="T:PloobsEngine.SceneControl.OctreeCuller" /> class.
             </summary>
-      <param name="worldSize">
-      </param>
-      <param name="loose">
-      </param>
-      <param name="maxDepth">
-      </param>
-      <param name="center">
-      </param>
-      <param name="mundo">
-      </param>
-      <param name="engine">
-      </param>
+      <param name="worldSize">Size of the world.</param>
+      <param name="loose">The loose.</param>
+      <param name="maxDepth">The max depth.</param>
+      <param name="center">The center.</param>
+      <param name="DebugDrawer">The debug drawer. We strong recomend you to DONT JUST this DebugDrawer for nothing anymore, if you need, create another</param>
     </member>
     <member name="M:PloobsEngine.Physics.Bepu.SphereObject.#ctor(Microsoft.Xna.Framework.Vector3,System.Single,System.Single,System.Single,PloobsEngine.Physics.MaterialDescription)">
       <summary>
@@ -8837,90 +8994,6 @@
       <summary>
             Default Vector4.One
             </summary>
-    </member>
-    <member name="T:PloobsEngine.Features.TaskCommand">
-      <summary>
-            Command that encapsulates a task
-            </summary>
-    </member>
-    <member name="M:PloobsEngine.Features.TaskCommand.#ctor(PloobsEngine.Features.ITask)">
-      <summary>
-            Initializes a new instance of the <see cref="T:PloobsEngine.Features.TaskCommand" /> class.
-            </summary>
-      <param name="task">The task.</param>
-    </member>
-    <member name="M:PloobsEngine.Features.TaskCommand.execute">
-      <summary>
-            Executes the command Call.
-            </summary>
-    </member>
-    <member name="M:PloobsEngine.Features.TaskCommand.setTarget(System.Object)">
-      <summary>
-            Sets the command target.
-            </summary>
-      <param name="obj">The obj.</param>
-    </member>
-    <member name="P:PloobsEngine.Features.TaskCommand.TargetName">
-      <summary>
-            Gets the name of the command target.
-            </summary>
-      <value>
-            The name of the target.
-            </value>
-    </member>
-    <member name="T:PloobsEngine.Features.ITask">
-      <summary>
-            Specification of a task
-            Task is a class that operates in ANOTHER THREAD    
-            </summary>
-    </member>
-    <member name="M:PloobsEngine.Features.ITask.Result(System.IAsyncResult)">
-      <summary>
-            Called when the task ends
-            </summary>
-      <param name="result">The result.</param>
-    </member>
-    <member name="M:PloobsEngine.Features.ITask.Process">
-      <summary>
-            Processes the task.
-            </summary>
-    </member>
-    <member name="T:PloobsEngine.Features.TaskEndType">
-      <summary>
-            Quando a funcao result sera chamada, qd o process terminar
-            </summary>
-    </member>
-    <member name="T:PloobsEngine.Features.TaskProcessor">
-      <summary>
-            Task Command Executor
-            </summary>
-    </member>
-    <member name="F:PloobsEngine.Features.TaskProcessor.MyName">
-      <summary>
-            The Name of the Component
-            </summary>
-    </member>
-    <member name="M:PloobsEngine.Features.TaskProcessor.StartTask(PloobsEngine.Features.ITask)">
-      <summary>
-            Starts the task.
-            </summary>
-      <param name="task">The task.</param>
-    </member>
-    <member name="M:PloobsEngine.Features.TaskProcessor.getMyName">
-      <summary>
-            The name of the reciever
-            MUST BE UNIQUE
-            </summary>
-      <returns>
-      </returns>
-    </member>
-    <member name="P:PloobsEngine.Features.TaskProcessor.ComponentType">
-      <summary>
-            Gets the type of the component type.
-            </summary>
-      <value>
-            The type of the component.
-            </value>
     </member>
     <member name="T:BEPUphysics.DeactivationManagement.ISimulationIslandConnection">
       <summary>
