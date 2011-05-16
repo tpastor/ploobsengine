@@ -10,7 +10,7 @@ using PloobsEngine.SceneControl;
 namespace IntroductionDemo4._0
 {
     /// <summary>
-    /// Basic Deferred Scene
+    /// Basic Deferred Scene    
     /// </summary>
     public class BasicScreenDeferredDemo : IScene
     {
@@ -51,7 +51,7 @@ namespace IntroductionDemo4._0
             SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
             ///Physic info (postion, rotation and scale are set here)
             TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
-            ///Shader info (must be a deferred type)
+            ///Shader info (must be a deferred type -- BECAUSE OF THE RENDER TECHNICH)
             DeferredNormalShader shader = new DeferredNormalShader();
             ///Material info (must be a deferred type also)
             DeferredMaterial fmaterial = new DeferredMaterial(shader);
@@ -99,6 +99,17 @@ namespace IntroductionDemo4._0
 
             ///Draw some text to the screen
             render.RenderTextComplete("Demo: Basic Screen Deferred", new Vector2(GraphicInfo.Viewport.Width - 315, 15), Color.White, Matrix.Identity);
+        }
+
+        /// <summary>
+        /// Clean up the resources you used
+        /// Just CLEAN the global resources (those that are global but you dont want to share, like Entity mapper, MessageSystem,Skybox)
+        /// You will see how they work in the examples
+        /// </summary>
+        /// <param name="engine"></param>
+        protected override void CleanUp(PloobsEngine.Engine.EngineStuff engine)
+        {
+            base.CleanUp(engine);
         }
     }
 }

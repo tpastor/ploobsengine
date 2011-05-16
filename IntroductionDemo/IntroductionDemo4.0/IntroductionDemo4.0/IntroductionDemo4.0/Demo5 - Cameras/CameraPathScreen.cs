@@ -95,7 +95,8 @@ namespace IntroductionDemo4._0
             base.Draw(gameTime, render);
 
             render.RenderTextComplete("Demo: Recording Camera Path", new Vector2(GraphicInfo.Viewport.Width - 315, 15), Color.White, Matrix.Identity);
-            render.RenderTextComplete("R = Record, T = Stop, Y = Load", new Vector2(GraphicInfo.Viewport.Width - 315, 40), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Record a Path and Play it after", new Vector2(GraphicInfo.Viewport.Width - 315, 40), Color.White, Matrix.Identity);
+            render.RenderTextComplete("R = Record, T = Stop, Y = Load", new Vector2(GraphicInfo.Viewport.Width - 315, 60), Color.White, Matrix.Identity);
 
             if(isRecording)
                 render.RenderTextComplete("Recording", new Vector2(20, 20), Color.White, Matrix.Identity);

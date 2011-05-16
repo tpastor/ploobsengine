@@ -17,6 +17,7 @@ using PloobsEngine.Commands;
 using PloobsEngine.Audio;
 using Microsoft.Xna.Framework.Media;
 using PloobsEngine.Input;
+using PloobsEngine.Loader;
 
 namespace AdvancedDemo4._0
 {
@@ -76,12 +77,17 @@ namespace AdvancedDemo4._0
             base.LoadContent(GraphicInfo, factory, contentManager);
 
             {
-                SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
-                TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
-                DeferredNormalShader shader = new DeferredNormalShader();
-                DeferredMaterial fmaterial = new DeferredMaterial(shader);
-                IObject obj = new IObject(fmaterial, simpleModel, tmesh);
-                this.World.AddObject(obj);
+                {
+                    ///Create the xml file model extractor
+                    ///Loads a XML file that was export by our 3DS MAX plugin
+                    ExtractXmlModelLoader ext = new ExtractXmlModelLoader("Content//ModelInfos//", "Model//", "Textures//");
+                    ///Extract all the XML info (Model,Cameras, ...)
+                    ModelLoaderData data = ext.Load(factory, GraphicInfo, "ilha");
+                    ///Create the WOrld Loader
+                    ///Convert the ModelLoaderData in World Entities
+                    WorldLoader wl = new WorldLoader(); ///all default                
+                    wl.LoadWorld(factory, GraphicInfo, World, data);
+                }
             }
 
             {

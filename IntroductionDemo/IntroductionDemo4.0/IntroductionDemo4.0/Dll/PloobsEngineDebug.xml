@@ -6406,6 +6406,48 @@
       <param name="bi">The BatchInformation</param>
       <param name="effect">The effect.</param>
     </member>
+    <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderUserPrimitive``1(Microsoft.Xna.Framework.Graphics.Effect,Microsoft.Xna.Framework.Graphics.PrimitiveType,``0[],System.Int32,System.Int32)">
+      <summary>
+            Renders user primitive.
+            </summary>
+      <typeparam name="T">
+      </typeparam>
+      <param name="effect">The effect.</param>
+      <param name="PrimitiveType">Type of the primitive.</param>
+      <param name="verts">The verts.</param>
+      <param name="vertexOffset">The vertex offset.</param>
+      <param name="primitiveCount">The primitive count.</param>
+    </member>
+    <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderUserIndexedPrimitive``1(Microsoft.Xna.Framework.Graphics.Effect,Microsoft.Xna.Framework.Graphics.PrimitiveType,``0[],System.Int32,System.Int32,System.Int16[],System.Int32,System.Int32)">
+      <summary>
+            Renders user indexed primitive. 16 bits indices
+            </summary>
+      <typeparam name="T">
+      </typeparam>
+      <param name="effect">The effect.</param>
+      <param name="PrimitiveType">Type of the primitive.</param>
+      <param name="verts">The verts.</param>
+      <param name="vertexOffset">The vertex offset.</param>
+      <param name="vertesCount">The vertes count.</param>
+      <param name="indices">The indices.</param>
+      <param name="indexOffset">The index offset.</param>
+      <param name="primitiveCount">The primitive count.</param>
+    </member>
+    <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderUserIndexedPrimitive``1(Microsoft.Xna.Framework.Graphics.Effect,Microsoft.Xna.Framework.Graphics.PrimitiveType,``0[],System.Int32,System.Int32,System.Int32[],System.Int32,System.Int32)">
+      <summary>
+            Renders user indexed primitive. 32 bits indices
+            </summary>
+      <typeparam name="T">
+      </typeparam>
+      <param name="effect">The effect.</param>
+      <param name="PrimitiveType">Type of the primitive.</param>
+      <param name="verts">The verts.</param>
+      <param name="vertexOffset">The vertex offset.</param>
+      <param name="vertesCount">The vertes count.</param>
+      <param name="indices">The indices.</param>
+      <param name="indexOffset">The index offset.</param>
+      <param name="primitiveCount">The primitive count.</param>
+    </member>
     <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderBatch(PloobsEngine.Modelo.BatchInformation)">
       <summary>
             Renders the batch.

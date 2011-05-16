@@ -278,12 +278,14 @@ namespace PloobsEngine.SceneControl
         /// Renders user primitive.
         /// </summary>
         /// <typeparam name="T"></typeparam>
+        /// <param name="effect">The effect.</param>
         /// <param name="PrimitiveType">Type of the primitive.</param>
         /// <param name="verts">The verts.</param>
         /// <param name="vertexOffset">The vertex offset.</param>
         /// <param name="primitiveCount">The primitive count.</param>
-        public void RenderUserPrimitive<T>(PrimitiveType PrimitiveType, T[] verts, int vertexOffset, int primitiveCount) where T : struct, IVertexType
+        public void RenderUserPrimitive<T>(Effect effect,PrimitiveType PrimitiveType, T[] verts, int vertexOffset, int primitiveCount) where T : struct, IVertexType
         {
+            effect.CurrentTechnique.Passes[0].Apply(); 
             device.DrawUserPrimitives<T>(PrimitiveType, verts, vertexOffset, primitiveCount);
         }
 
@@ -291,6 +293,7 @@ namespace PloobsEngine.SceneControl
         /// Renders user indexed primitive. 16 bits indices
         /// </summary>
         /// <typeparam name="T"></typeparam>
+        /// <param name="effect">The effect.</param>
         /// <param name="PrimitiveType">Type of the primitive.</param>
         /// <param name="verts">The verts.</param>
         /// <param name="vertexOffset">The vertex offset.</param>
@@ -298,8 +301,9 @@ namespace PloobsEngine.SceneControl
         /// <param name="indices">The indices.</param>
         /// <param name="indexOffset">The index offset.</param>
         /// <param name="primitiveCount">The primitive count.</param>
-        public void RenderUserIndexedPrimitive<T>(PrimitiveType PrimitiveType, T[] verts, int vertexOffset, int vertesCount, short[] indices, int indexOffset, int primitiveCount) where T : struct, IVertexType
+        public void RenderUserIndexedPrimitive<T>(Effect effect, PrimitiveType PrimitiveType, T[] verts, int vertexOffset, int vertesCount, short[] indices, int indexOffset, int primitiveCount) where T : struct, IVertexType
         {
+            effect.CurrentTechnique.Passes[0].Apply(); 
             device.DrawUserIndexedPrimitives<T>(PrimitiveType, verts, vertexOffset, vertesCount, indices, indexOffset, primitiveCount);
         }
 
@@ -307,6 +311,7 @@ namespace PloobsEngine.SceneControl
         /// Renders user indexed primitive. 32 bits indices
         /// </summary>
         /// <typeparam name="T"></typeparam>
+        /// <param name="effect">The effect.</param>
         /// <param name="PrimitiveType">Type of the primitive.</param>
         /// <param name="verts">The verts.</param>
         /// <param name="vertexOffset">The vertex offset.</param>
@@ -314,8 +319,9 @@ namespace PloobsEngine.SceneControl
         /// <param name="indices">The indices.</param>
         /// <param name="indexOffset">The index offset.</param>
         /// <param name="primitiveCount">The primitive count.</param>
-        public void RenderUserIndexedPrimitive<T>(PrimitiveType PrimitiveType, T[] verts, int vertexOffset, int vertesCount, int[] indices, int indexOffset, int primitiveCount) where T : struct, IVertexType
+        public void RenderUserIndexedPrimitive<T>(Effect effect,PrimitiveType PrimitiveType, T[] verts, int vertexOffset, int vertesCount, int[] indices, int indexOffset, int primitiveCount) where T : struct, IVertexType
         {
+            effect.CurrentTechnique.Passes[0].Apply(); 
             device.DrawUserIndexedPrimitives<T>(PrimitiveType, verts, vertexOffset, vertesCount, indices, indexOffset, primitiveCount);
         }
 
@@ -323,7 +329,7 @@ namespace PloobsEngine.SceneControl
         /// Renders the batch.
         /// </summary>
         /// <param name="bi">The BatchInformation .</param>
-        public void RenderBatch(BatchInformation bi)
+        private void RenderBatch(BatchInformation bi)
         {
             switch ( bi.BatchType)
 	            {

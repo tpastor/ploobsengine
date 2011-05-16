@@ -27,6 +27,10 @@ namespace IntroductionDemo4._0
         {
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
 
+            ///Create a Forward Render Technich
+            ///Most of our technich like illumination, shadow ... are NOT implemented in FORWARD. Use this for simple stuffs and
+            ///for W7
+            ///You cant use light is this Technich (We will release the Forward Lights implementation soon showing how to expand the PloobsEngine)
             ForwardRenderTecnichDescription desc = new ForwardRenderTecnichDescription(Color.CornflowerBlue);
             renderTech = new ForwardRenderTecnich(desc);
         }
@@ -41,13 +45,21 @@ namespace IntroductionDemo4._0
         {
             base.LoadContent(GraphicInfo,factory, contentManager);            
 
+            ///Create the model
             SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
+            ///create the physic object
             TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One,MaterialDescription.DefaultBepuMaterial());            
-            ForwardXNABasicShader shader = new ForwardXNABasicShader();            
+            /// BECAUSE OF THE RENDER TECHNICH, the Shader must be forward
+            ForwardXNABasicShader shader = new ForwardXNABasicShader();
+            /// BECAUSE OF THE RENDER TECHNICH, the Material must be forward
             ForwardMaterial fmaterial = new ForwardMaterial(shader);            
+            ///create the object
             IObject obj = new IObject(fmaterial,simpleModel,tmesh);
+            ///add to the world
             this.World.AddObject(obj); 
 
+
+            ///add a camera
             this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo.Viewport));                              
         }
 

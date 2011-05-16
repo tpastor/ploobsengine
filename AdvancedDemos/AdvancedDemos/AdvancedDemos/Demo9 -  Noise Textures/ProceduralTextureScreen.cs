@@ -32,7 +32,7 @@ namespace AdvancedDemo4._0
 
         protected override void  Draw(GameTime gameTime, RenderHelper render)
         {
-            render.RenderTextureComplete(texture);
+            render.RenderTextureComplete(texture, Color.White, GraphicInfo.FullScreenRectangle, Matrix.Identity);
             render.RenderTextComplete("Demo 17-22:Texture Generates On the fly ", new Vector2(10, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("Random Texture generated Procedurally on CPU", new Vector2(10, 35), Color.White, Matrix.Identity);
             render.RenderTextComplete("Hit Space to change the texture", new Vector2(10, 55), Color.White, Matrix.Identity);

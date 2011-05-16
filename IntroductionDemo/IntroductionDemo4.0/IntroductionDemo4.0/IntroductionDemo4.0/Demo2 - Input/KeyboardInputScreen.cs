@@ -75,28 +75,28 @@ namespace IntroductionDemo4._0
             
             this.World.CameraManager.AddCamera(cam);            
             
+
+            ///Bind a Key event (combination of Key + state(pressed, Released ...) + inputMask ) to a function
             SimpleConcreteKeyboardInputPlayable ik1 = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.T, g1, InputMask.G1);
-            ///Ao usar o metodo Bind da Screen, o evento sera de tecla sera enviado enquanto a screen estiver Ativa (adicionada ao Screen manager)
-            ///Para criar um metodo global (mesmo q a screen tenha sido removida, ele continua chamando os eventos), veja DemosHomeScreen.cs
+            ///When you use the method Bind of a IScreen, The key event will be sent by the engine while this screen remains added in the ScreenManager.
+            ///TO create a Gloal Input (Keep working even if the screen goes away), see the DemosHomeScreen.cs
             this.BindInput(ik1);            
            
             SimpleConcreteKeyboardInputPlayable ik2 = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.Y, g2,InputMask.G2);
             this.BindInput(ik2);
             
-            ///MASCARA SYSTEM ESTA SEMPRE LIGADA, nao importa quantos TurnOffs forem usados
+            ///The SYSTEM Mask is Always On (cant be turned off)
             SimpleConcreteKeyboardInputPlayable ik3 = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.Space, ChangeGroup,InputMask.GSYSTEM);
-            this.BindInput(ik3);
+            this.BindInput(ik3);            
             
-            ///AO nao especificar a mascara
-            ///A mascara GSYSTEM sera aplicada (sempre ativada, NAO HA COMO DESATIVA-LA USANDO O TURNOFF)
-            
-            ///StateKey.DOWN eh a todo frame enquanto a tecla estiver apertada (vale o mesmo para o UP)
-            ///StateKey.PRESS eh disparado uma unica vez ao pressionar uma tecla (vale o mesmo para o RELEASE)
-            ///Com combo, melhor utilizar o DOWN para capturar o evento
-            ///O CAMPO EntityType eh utilizado apenas para fins estatisticos            
+            ///StateKey.DOWN mean when the key is down the event will be fired --looooots of times(samae as UP)
+            ///StateKey.PRESS is fired ONCE when the key is pressed (same as RELEASE)
+            ///WHEN USING COMBOS, use DOWN AND UP (better for precision)
+            ///The parameter EntityType is not used internaly 
             SimpleConcreteKeyboardInputPlayable ik4 = new SimpleConcreteKeyboardInputPlayable(StateKey.DOWN, new Keys[] { Keys.LeftControl, Keys.U }, Multiple);
             this.BindInput(ik4);
 
+            ///Send a command (design pattern) to the InputSystem to change the InputMask            
             TurnOnInputMaskCommand tom = new TurnOnInputMaskCommand(InputMask.GALL);
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(tom);
 
@@ -116,8 +116,11 @@ namespace IntroductionDemo4._0
  	        base.Draw(gameTime, render);
 
             render.RenderBegin(Matrix.Identity);
-            render.RenderText("Demo: Keyboard Input", new Vector2(GraphicInfo.Viewport.Width - 315, 15),Vector2.One ,Color.White);
-            render.RenderText("T, Y, Space, Ctrl+U = Activate masks", new Vector2(GraphicInfo.Viewport.Width - 315, 40), Vector2.One, Color.White);
+            render.RenderText("Demo: Keyboard Input", new Vector2(GraphicInfo.Viewport.Width - 515, 15),Vector2.One ,Color.White);
+            render.RenderText("Press Space to change the Active Input Mask (G1 or G2)", new Vector2(GraphicInfo.Viewport.Width - 515, 40), Vector2.One, Color.White);
+            render.RenderText("Press T to use a G1 InputMask Input", new Vector2(GraphicInfo.Viewport.Width - 515, 60), Vector2.One, Color.White);
+            render.RenderText("Press Y to use a G2 InputMask Input", new Vector2(GraphicInfo.Viewport.Width - 515, 80), Vector2.One, Color.White);
+            render.RenderText("Press Ctrl + U TO use a Combo (Registered in all Masks)", new Vector2(GraphicInfo.Viewport.Width - 515, 100), Vector2.One, Color.White);
             if(isAllActive)
                 render.RenderText("Group ALL Active", new Vector2(20, 40),Vector2.One, Color.White);
             if (isGroup1)
@@ -125,7 +128,7 @@ namespace IntroductionDemo4._0
             if(isGroup2)
                 render.RenderText("Group2", new Vector2(100, 20),Vector2.One, Color.White);
             if(isChangeGroup)
-                render.RenderText("ChangeGroup " + Groups[index], new Vector2(20, 40),Vector2.One, Color.White);
+                render.RenderText("Active InputMask " + Groups[index], new Vector2(20, 40),Vector2.One, Color.White);
             if(isComboPressed)
                 render.RenderText("Combo Pressed", new Vector2(20, 60),Vector2.One, Color.White);
             render.RenderEnd();
@@ -152,13 +155,13 @@ namespace IntroductionDemo4._0
         {
             index = (index + 1) % 3;
 
-            ///Inicialmente desligar TODAS as mascaras
+            ///Turn Off all Masks (we cant turn the GSYSTEM MASK, even if we try ....)
             TurnOffInputMaskCommand tof = new TurnOffInputMaskCommand(InputMask.GALL);
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(tof);
 
-            ///Ligar apenas a mascara correta
-            ///As mascaras sao campos Bit Field, sendo possivel realizar operacoes como InputMask.GALL | InputMask.G1
-            ///O TurnOnInputMaskCommand apenas combina a mascara atual com a mandada no parametro, ELE NAO DESATIVA AS QUE JA ESTIVEREM ATIVAS (porisso q foi mandado um turnoff antes)
+            ///Turn only the right mask
+            ///Masks are Bit Field, You can turn more than one using InputMask.GALL | InputMask.G1 for example
+            ///The TurnOnInputMaskCommand Just combine its actual mask with the mask provided, It does not TURN OFFthe active masks (this is the reason why i sent a turn off mask before)
             TurnOnInputMaskCommand tom = new TurnOnInputMaskCommand(Im[index] | InputMask.GNONE);            
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(tom);
 

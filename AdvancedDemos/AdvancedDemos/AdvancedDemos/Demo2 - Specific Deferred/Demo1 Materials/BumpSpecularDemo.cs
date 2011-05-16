@@ -108,10 +108,13 @@ namespace AdvancedDemo4._0
             #endregion
 
             ///Add a post effect
-            this.RenderTechnic.AddPostEffect(new AntiAliasingPostEffectStalker());
+            this.RenderTechnic.AddPostEffect(new AntiAliasingPostEffect());
 
             ///add a camera
             CameraFirstPerson cam = new CameraFirstPerson(MathHelper.ToRadians(30), MathHelper.ToRadians(-30), new Vector3(50,50,75), GraphicInfo.Viewport);
+            cam.FarPlane = 500;
+            cam.NearPlane = 1;
+
             this.World.CameraManager.AddCamera(cam);
 
             {

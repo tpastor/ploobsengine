@@ -14,6 +14,7 @@ using PloobsEngine.Light;
 using Microsoft.Xna.Framework.Input;
 using PloobsEngine.Features;
 using PloobsEngine.Commands;
+using PloobsEngine.Loader;
 
 namespace AdvancedDemo4._0
 {
@@ -41,14 +42,16 @@ namespace AdvancedDemo4._0
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory ,IContentManager contentManager)
         {
             base.LoadContent(GraphicInfo,factory, contentManager);
-         
-            SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
-            TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
+
+            SimpleModel simpleModel = new SimpleModel(factory, "Model//block");
+            simpleModel.SetTexture(factory.CreateTexture2DColor(1, 1, Color.White), TextureType.DIFFUSE);
+            BoxObject tmesh = new BoxObject(new Vector3(0, 10, 0), 1, 1, 1, 50, new Vector3(5000, 1, 5000), Matrix.Identity, MaterialDescription.DefaultBepuMaterial());
+            tmesh.isMotionLess = true;
             DeferredNormalShader shader = new DeferredNormalShader();
             DeferredMaterial fmaterial = new DeferredMaterial(shader);
             IObject obj = new IObject(fmaterial, simpleModel, tmesh);
-            this.World.AddObject(obj);
-
+            this.World.AddObject(obj);            
+            
             {
                 List<Vector3> poss = new List<Vector3>();
                 for (int i = 0; i < 10; i++)

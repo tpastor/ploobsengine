@@ -110,9 +110,10 @@ namespace IntroductionDemo4._0
         {            
             render.Clear(Color.Black);
 
-            render.RenderTextComplete("Welcome to the Ploobs Game Engine Introduction Demos", new Vector2(40, 30), Color.White,Matrix.Identity);
-            render.RenderTextComplete("(Press F1 to cycle through demos)", new Vector2(40, 55), Color.White, Matrix.Identity);
-            render.RenderTextComplete("(Press Escape to exit)", new Vector2(40, 80), Color.White, Matrix.Identity);           
+            render.RenderTextComplete("Welcome to the Ploobs Game Engine Funcionality Introduction Demos", new Vector2(40, 30), Color.White, Matrix.Identity);
+            render.RenderTextComplete("The focus here is not in the visual, it is in the funcionalities (Check the Source Code =P)", new Vector2(40, 50), Color.Red, Matrix.Identity);            
+            render.RenderTextComplete("(Press F1 to cycle through demos)", new Vector2(40, 75), Color.White, Matrix.Identity);
+            render.RenderTextComplete("(Press Escape to exit)", new Vector2(40, 95), Color.White, Matrix.Identity);           
 
         }
 

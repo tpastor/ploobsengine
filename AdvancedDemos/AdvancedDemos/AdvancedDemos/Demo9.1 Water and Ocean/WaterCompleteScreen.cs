@@ -20,14 +20,14 @@ namespace AdvancedDemo4._0
 {
     public class WaterCompleteScreen : IScene
     {
+        LightThrowBepu lt;
 
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
 
-            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
-            desc.DefferedDebug = false;
-            desc.UseFloatingBufferForLightMap = false;
+            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
+            desc.UseFloatingBufferForLightMap = true;
             renderTech = new DeferredRenderTechnic(desc);
         }
 
@@ -97,6 +97,8 @@ namespace AdvancedDemo4._0
             SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grassCube");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
 
+            lt = new LightThrowBepu(this.World, factory,100);
+
         }
 
         ILight wl_OnCreateILight(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ILight li)
@@ -108,10 +110,10 @@ namespace AdvancedDemo4._0
             return WorldLoader.CreateOBJ(world, factory, ginfo, mi);
         }
 
-
         protected override void CleanUp(EngineStuff engine)
         {
             engine.RemoveComponent("SkyBox");
+            lt.CleanUp();
             base.CleanUp(engine);
         }
 

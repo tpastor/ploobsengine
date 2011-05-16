@@ -55,7 +55,7 @@ namespace EngineTestes
             base.LoadContent(GraphicInfo,factory, contentManager);
 
             ExtractXmlModelLoader ext = new ExtractXmlModelLoader("Content//ModelInfos//", "Model//", "Textures//");
-            ModelLoaderData data = ext.Load(factory, GraphicInfo, "shadow");
+            ModelLoaderData data = ext.Load(factory, GraphicInfo, "ilha");
             WorldLoader wl = new WorldLoader();
             wl.OnCreateIObject += new CreateIObject(wl_OnCreateIObject);
             wl.OnCreateILight += new CreateILight(wl_OnCreateILight);            
