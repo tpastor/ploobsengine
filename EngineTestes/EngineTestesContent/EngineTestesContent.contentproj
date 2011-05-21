@@ -152,6 +152,11 @@
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
     </Compile>
+    <Compile Include="Effects\hibe.fx">
+      <Name>hibe</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+    </Compile>
     <None Include="ModelInfos\shadow.xml">
       <Name>shadow</Name>
       <Importer>XmlImporter</Importer>

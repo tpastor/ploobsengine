@@ -148,7 +148,17 @@ namespace PloobsEngine.SceneControl
         /// <param name="index">The index.</param>
         public void SetSamplerState(SamplerState SamplerState, int index)
         {
-            device.SamplerStates[index] = SamplerState;        
+            device.SamplerStates[index] = SamplerState;                    
+        }
+
+        /// <summary>
+        /// Sets the vertex sampler states.
+        /// </summary>
+        /// <param name="SamplerState">State of the sampler.</param>
+        /// <param name="index">The index.</param>
+        public void SetVertexSamplerStates(SamplerState SamplerState, int index)
+        {
+            device.VertexSamplerStates[index] = SamplerState;
         }
 
         /// <summary>
@@ -165,7 +175,7 @@ namespace PloobsEngine.SceneControl
         /// Pushes the DepthState.
         /// </summary>
         /// <param name="state">The state.</param>
-        public void PushDepthState(DepthStencilState state)
+        public void PushDepthStencilState(DepthStencilState state)
         {
             device.DepthStencilState = state;
             DepthStencilStateStack.Push(state);

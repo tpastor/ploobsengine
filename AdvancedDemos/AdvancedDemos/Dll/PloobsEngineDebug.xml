@@ -3237,7 +3237,7 @@
             Clears the G buffer.
             </summary>
     </member>
-    <member name="M:PloobsEngine.SceneControl.IDeferredGBuffer.PreDrawScene(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IWorld,PloobsEngine.SceneControl.RenderHelper)">
+    <member name="M:PloobsEngine.SceneControl.IDeferredGBuffer.PreDrawScene(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IWorld,PloobsEngine.SceneControl.RenderHelper,PloobsEngine.Engine.GraphicInfo)">
       <summary>
             Pre Draw the scene.
             Responsible to the PreDraw phase
@@ -3245,7 +3245,7 @@
       <param name="gameTime">The game time.</param>
       <param name="world">The world.</param>
     </member>
-    <member name="M:PloobsEngine.SceneControl.IDeferredGBuffer.DrawScene(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IWorld,PloobsEngine.SceneControl.RenderHelper)">
+    <member name="M:PloobsEngine.SceneControl.IDeferredGBuffer.DrawScene(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IWorld,PloobsEngine.SceneControl.RenderHelper,PloobsEngine.Engine.GraphicInfo)">
       <summary>
             Draws.
             Generate the GBuffer
@@ -4215,6 +4215,11 @@
             InitialEngineDescription
             </summary>
     </member>
+    <member name="F:PloobsEngine.Engine.InitialEngineDescription.UseAnisotropicFiltering">
+      <summary>
+            Use Anisotropic Filtering when possible
+            </summary>
+    </member>
     <member name="F:PloobsEngine.Engine.InitialEngineDescription.ScreenName">
       <summary>
             Screen Name
@@ -4277,10 +4282,11 @@
       <returns>
       </returns>
     </member>
-    <member name="M:PloobsEngine.Engine.InitialEngineDescription.#ctor(System.String,System.Int32,System.Int32,System.Boolean,Microsoft.Xna.Framework.Graphics.GraphicsProfile,System.Boolean,System.Boolean,System.Boolean,PloobsEngine.Engine.Logger.ILogger,System.Boolean)">
+    <member name="M:PloobsEngine.Engine.InitialEngineDescription.#ctor(System.String,System.Int32,System.Int32,System.Boolean,Microsoft.Xna.Framework.Graphics.GraphicsProfile,System.Boolean,System.Boolean,System.Boolean,PloobsEngine.Engine.Logger.ILogger,System.Boolean,System.Boolean)">
       <summary>
             Initializes a new instance of the <see cref="T:PloobsEngine.Engine.InitialEngineDescription" /> struct.
             </summary>
+      <param name="ScreenName">Name of the screen.</param>
       <param name="BackBufferWidth">Width of the back buffer.</param>
       <param name="BackBufferHeight">Height of the back buffer.</param>
       <param name="isFullScreen">if set to <c>true</c> [is full screen].</param>
@@ -4289,6 +4295,8 @@
       <param name="isMultiSampling">if set to <c>true</c> [is multi sampling].</param>
       <param name="isFixedGameTime">if set to <c>true</c> [is fixed game time].</param>
       <param name="logger">The logger.</param>
+      <param name="useMipMapWhenPossible">if set to <c>true</c> [use mip map when possible].</param>
+      <param name="UseAnisotropicFiltering">if set to <c>true</c> [use anisotropic filtering].</param>
     </member>
     <member name="T:PloobsEngine.Engine.SoundMasterOptionDescription">
       <summary>
@@ -4319,6 +4327,19 @@
             Applies the engine description.
             </summary>
       <param name="initialDescription">The initial description.</param>
+    </member>
+    <member name="M:PloobsEngine.Engine.EngineStuff.GetSoundMasterOptionDescription">
+      <summary>
+            Gets the sound master option description.
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:PloobsEngine.Engine.EngineStuff.SetSoundMasterOptionDescription(PloobsEngine.Engine.SoundMasterOptionDescription@)">
+      <summary>
+            Sets the sound master option description.
+            </summary>
+      <param name="soundMasterOptionDescription">The sound master option description.</param>
     </member>
     <member name="M:PloobsEngine.Engine.EngineStuff.LoadContent">
       <summary>
@@ -4365,7 +4386,7 @@
     </member>
     <member name="M:PloobsEngine.Engine.EngineStuff.Update(Microsoft.Xna.Framework.GameTime)">
       <summary>
-            Reference page contains links to related conceptual articles.
+            Updates the engine, called by XNA
             </summary>
       <param name="gameTime">Time passed since the last call to Update.</param>
     </member>
@@ -6338,6 +6359,13 @@
     <member name="M:PloobsEngine.SceneControl.RenderHelper.SetSamplerState(Microsoft.Xna.Framework.Graphics.SamplerState,System.Int32)">
       <summary>
             Sets the state of the sampler.
+            </summary>
+      <param name="SamplerState">State of the sampler.</param>
+      <param name="index">The index.</param>
+    </member>
+    <member name="M:PloobsEngine.SceneControl.RenderHelper.SetVertexSamplerStates(Microsoft.Xna.Framework.Graphics.SamplerState,System.Int32)">
+      <summary>
+            Sets the vertex sampler states.
             </summary>
       <param name="SamplerState">State of the sampler.</param>
       <param name="index">The index.</param>
@@ -8454,39 +8482,101 @@
             Contains Graphics Informations about the current execution
             </summary>
     </member>
-    <member name="F:PloobsEngine.Engine.GraphicInfo.depthFormat">
+    <member name="M:PloobsEngine.Engine.GraphicInfo.CheckIfRenderTargetFormatIsSupported(Microsoft.Xna.Framework.Graphics.SurfaceFormat,Microsoft.Xna.Framework.Graphics.DepthFormat,System.Boolean,System.Int32,Microsoft.Xna.Framework.Graphics.GraphicsProfile)">
+      <summary>
+            Checks if render target properties combination is supported.
+            </summary>
+      <param name="format">The format.</param>
+      <param name="depthFormat">The depth format.</param>
+      <param name="useMipMap">if set to <c>true</c> [use mip map].</param>
+      <param name="multisample">The multisample.</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:PloobsEngine.Engine.GraphicInfo.GetRenderTargetSupportedFormat(Microsoft.Xna.Framework.Graphics.SurfaceFormat@,Microsoft.Xna.Framework.Graphics.DepthFormat@,System.Boolean@,System.Int32@,Microsoft.Xna.Framework.Graphics.GraphicsProfile)">
+      <summary>
+            Gets the render target supported format.
+            </summary>
+      <param name="format">The format.</param>
+      <param name="depthFormat">The depth format.</param>
+      <param name="useMipMap">if set to <c>true</c> [use mip map].</param>
+      <param name="multisample">The multisample.</param>
+      <param name="GraphicsProfile">The graphics profile.</param>
+    </member>
+    <member name="M:PloobsEngine.Engine.GraphicInfo.GetBackBufferSupportedFormat(Microsoft.Xna.Framework.Graphics.SurfaceFormat@,Microsoft.Xna.Framework.Graphics.DepthFormat@,System.Boolean@,System.Int32@,Microsoft.Xna.Framework.Graphics.GraphicsProfile)">
+      <summary>
+            Gets the back buffer supported format.
+            </summary>
+      <param name="format">The format.</param>
+      <param name="depthFormat">The depth format.</param>
+      <param name="useMipMap">if set to <c>true</c> [use mip map].</param>
+      <param name="multisample">The multisample.</param>
+      <param name="GraphicsProfile">The graphics profile.</param>
+    </member>
+    <member name="P:PloobsEngine.Engine.GraphicInfo.GraphicsAdapter">
+      <summary>
+            Graphic Adapter
+            </summary>
+    </member>
+    <member name="P:PloobsEngine.Engine.GraphicInfo.UseAnisotropicFiltering">
+      <summary>
+            Gets a value indicating whether [use anisotropic filtering].
+            </summary>
+      <value>
+        <c>true</c> if [use anisotropic filtering]; otherwise, <c>false</c>.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Engine.GraphicInfo.SamplerState">
+      <summary>
+            Sampler to be used when possible
+            </summary>
+    </member>
+    <member name="P:PloobsEngine.Engine.GraphicInfo.UseMipMap">
+      <summary>
+            Gets a value indicating whether [use mip map].
+            </summary>
+      <value>
+        <c>true</c> if [use mip map]; otherwise, <c>false</c>.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Engine.GraphicInfo.DepthFormat">
       <summary>
             BackBuffer Depth Format
             </summary>
     </member>
-    <member name="F:PloobsEngine.Engine.GraphicInfo.multiSample">
+    <member name="P:PloobsEngine.Engine.GraphicInfo.MultiSample">
       <summary>
-            BAck Buffer Multisample
+            Back Buffer Multisample
             </summary>
     </member>
-    <member name="F:PloobsEngine.Engine.GraphicInfo.backBufferHeight">
+    <member name="P:PloobsEngine.Engine.GraphicInfo.BackBufferHeight">
       <summary>
             BackBufferHeight
             </summary>
     </member>
-    <member name="F:PloobsEngine.Engine.GraphicInfo.backBufferWidth">
+    <member name="P:PloobsEngine.Engine.GraphicInfo.BackBufferWidth">
       <summary>
             BackBufferWidth
             </summary>
     </member>
-    <member name="F:PloobsEngine.Engine.GraphicInfo.fullScreenRectangle">
+    <member name="P:PloobsEngine.Engine.GraphicInfo.FullScreenRectangle">
       <summary>
             FullScreenRectangle
             </summary>
     </member>
-    <member name="F:PloobsEngine.Engine.GraphicInfo.halfPixel">
+    <member name="P:PloobsEngine.Engine.GraphicInfo.HalfPixel">
       <summary>
             HalfPixel (used in DX 9 shaders)
             </summary>
     </member>
-    <member name="F:PloobsEngine.Engine.GraphicInfo.viewport">
+    <member name="P:PloobsEngine.Engine.GraphicInfo.Viewport">
       <summary>
             Viewport
+            </summary>
+    </member>
+    <member name="P:PloobsEngine.Engine.GraphicInfo.Window">
+      <summary>
+            Game Window.
             </summary>
     </member>
     <member name="E:PloobsEngine.Engine.GraphicInfo.OnGraphicInfoChange">
@@ -8887,7 +8977,7 @@
       <param name="factory">The factory.</param>
       <param name="ginfo">The ginfo.</param>
     </member>
-    <member name="M:PloobsEngine.SceneControl.RestoreDepth.PerformForwardPass(Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Graphics.Texture2D,PloobsEngine.SceneControl.RenderHelper)">
+    <member name="M:PloobsEngine.SceneControl.RestoreDepth.PerformForwardPass(Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Graphics.Texture2D,PloobsEngine.SceneControl.RenderHelper,PloobsEngine.Engine.GraphicInfo)">
       <summary>
             Performs the forward pass.
             </summary>

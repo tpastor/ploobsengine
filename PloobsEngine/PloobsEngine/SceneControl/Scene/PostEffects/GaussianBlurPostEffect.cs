@@ -84,13 +84,13 @@ namespace PloobsEngine.SceneControl
         public override void Draw(Texture2D ImageToProcess, RenderHelper rHelper, GameTime gt, Engine.GraphicInfo GraphicInfo, IWorld world, bool useFloatingBuffer)
         {   
             rHelper.PushRenderTarget(target);
-            rHelper.Clear(Color.Black);
+            rHelper.Clear(Color.Black,ClearOptions.Target);
 
             SetParameters(GaussianBlurDirection.Horizontal);
             if (useFloatingBuffer)
                 rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, gblur, GraphicInfo.FullScreenRectangle, SamplerState.PointClamp);
             else
-                rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, gblur, GraphicInfo.FullScreenRectangle, SamplerState.LinearClamp);            
+                rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, gblur, GraphicInfo.FullScreenRectangle, GraphicInfo.SamplerState);            
             
 
             intermediateTex  = rHelper.PopRenderTargetAsSingleRenderTarget2D();
@@ -107,7 +107,7 @@ namespace PloobsEngine.SceneControl
         public override void Init(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
         {
             gblur = factory.GetEffect("gblur",true,true);            
-            target = factory.CreateRenderTarget(ginfo.BackBufferWidth,ginfo.BackBufferHeight);
+            target = factory.CreateRenderTarget(ginfo.BackBufferWidth,ginfo.BackBufferHeight,SurfaceFormat.Color,ginfo.UseMipMap,DepthFormat.None,ginfo.MultiSample);
 
             Vector2 texelSize = new Vector2(1f / ginfo.BackBufferWidth, 1f / ginfo.BackBufferHeight);
             SetBlurParameters(texelSize.X, 0, ref sampleOffsetsH, ref sampleWeightsH);

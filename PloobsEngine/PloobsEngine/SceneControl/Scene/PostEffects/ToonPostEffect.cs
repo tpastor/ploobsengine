@@ -50,7 +50,7 @@ namespace PloobsEngine.SceneControl
             this.toon = factory.GetEffect("toon1",false,true);
             this.line = factory.GetEffect("LineDetection",false,true);
             this.cell = factory.GetTexture2D("Toon",true);            
-            target = factory.CreateRenderTarget(ginfo.BackBufferWidth,ginfo.BackBufferHeight);
+            target = factory.CreateRenderTarget(ginfo.BackBufferWidth,ginfo.BackBufferHeight,SurfaceFormat.Color,ginfo.UseMipMap,DepthFormat.None,ginfo.MultiSample);
         }
 
         public override void Draw(Texture2D ImageToProcess, RenderHelper rHelper, GameTime gt, Engine.GraphicInfo GraphicInfo, IWorld world, bool useFloatingBuffer)
@@ -68,7 +68,7 @@ namespace PloobsEngine.SceneControl
                 if (useFloatingBuffer)
                     rHelper.RenderFullScreenQuadVertexPixel(toon, SamplerState.PointClamp);
                 else
-                    rHelper.RenderFullScreenQuadVertexPixel(toon, SamplerState.LinearClamp);              
+                    rHelper.RenderFullScreenQuadVertexPixel(toon, GraphicInfo.SamplerState);              
 
                 ImageToProcess = rHelper.PopRenderTargetAsSingleRenderTarget2D();
             }
@@ -78,7 +78,7 @@ namespace PloobsEngine.SceneControl
                 if (useFloatingBuffer)
                     rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, line, GraphicInfo.FullScreenRectangle, SamplerState.PointClamp);
             else
-                    rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, line, GraphicInfo.FullScreenRectangle, SamplerState.LinearClamp);
+                    rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, line, GraphicInfo.FullScreenRectangle, GraphicInfo.SamplerState);
             
         }
 

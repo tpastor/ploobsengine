@@ -45,7 +45,8 @@ namespace PloobsEngine.SceneControl
         public override void Init(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
         {           
             depht = factory.GetEffect("depth",false,true);
-            target = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
+            target = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight,SurfaceFormat.Color,
+                ginfo.UseMipMap,DepthFormat.None,ginfo.MultiSample);
             be= new GaussianBlurPostEffect();
             be.Init(ginfo, factory); 
         }
@@ -58,12 +59,12 @@ namespace PloobsEngine.SceneControl
             depht.Parameters["FarPlane"].SetValue(world.CameraManager.ActiveCamera.FarPlane);
             depht.Parameters["D1M"].SetValue(rHelper[PrincipalConstants.DephRT]);
 
-            rHelper.Clear(Color.Black);
+            rHelper.Clear(Color.Black,ClearOptions.Target);
             SetShaderParameters(distance, range, world.CameraManager.ActiveCamera.NearPlane, world.CameraManager.ActiveCamera.FarPlane);
             if (useFloatingBuffer)
                 rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, depht, GraphicInfo.FullScreenRectangle, SamplerState.PointClamp);
             else
-                rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, depht, GraphicInfo.FullScreenRectangle, SamplerState.LinearClamp);            
+                rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, depht, GraphicInfo.FullScreenRectangle, GraphicInfo.SamplerState);            
             
         }
 

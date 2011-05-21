@@ -230,7 +230,7 @@ namespace PloobsEngine.Features
             effect.Parameters["WorldViewProjection"].SetValue(Matrix.CreateTranslation(camPos) * activeView * activeProjection);
             effect.Parameters["textureDiffuse"].SetValue(texture);
 
-            render.PushDepthState(DepthStencilState.None);
+            render.PushDepthStencilState(DepthStencilState.None);
             render.PushRasterizerState(RasterizerState.CullNone);
             render.RenderBatch(bi, effect);
             render.PopRasterizerState();

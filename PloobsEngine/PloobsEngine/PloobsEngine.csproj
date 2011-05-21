@@ -127,6 +127,31 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AI\FSM\IState.cs" />
+    <Compile Include="AI\FSM\StateMachine.cs" />
+    <Compile Include="AI\GeneticAlgoritms\GA.cs" />
+    <Compile Include="AI\GeneticAlgoritms\Genome.cs" />
+    <Compile Include="AI\GeneticAlgoritms\GenomeComparer.cs" />
+    <Compile Include="AI\IMap.cs" />
+    <Compile Include="AI\NeuralNetwork\ActivationFunctions.cs" />
+    <Compile Include="AI\NeuralNetwork\Layer.cs" />
+    <Compile Include="AI\NeuralNetwork\LearningAlgorithms.cs" />
+    <Compile Include="AI\NeuralNetwork\NeuralNetwork.cs" />
+    <Compile Include="AI\NeuralNetwork\Neuron.cs" />
+    <Compile Include="AI\PathFind\AStar.cs" />
+    <Compile Include="AI\PathFind\IANodeComparer.cs" />
+    <Compile Include="AI\PathFind\IAPathfinderNode.cs" />
+    <Compile Include="AI\PathFind\IPathFinder.cs" />
+    <Compile Include="AI\SimpleMap.cs" />
+    <Compile Include="AI\Waypoint.cs" />
+    <Compile Include="AI\Waypoints\ClosestWaypointConnector.cs" />
+    <Compile Include="AI\Waypoints\IWaypointConnector.cs" />
+    <Compile Include="AI\Waypoints\SequenceIdWaypointConnection.cs" />
+    <Compile Include="AI\Waypoints\VisibilityWaypointConnector.cs" />
+    <Compile Include="AI\Waypoints\Waypoint.cs" />
+    <Compile Include="AI\Waypoints\WaypointHandler.cs" />
+    <Compile Include="AI\Waypoints\WaypointManager.cs" />
+    <Compile Include="AI\Waypoints\WaypointsCollection.cs" />
     <Compile Include="Audio\2DSoundEffect\SoundAudioPlayer.cs" />
     <Compile Include="Audio\2DSoundEffect\SimpleSoundEffect.cs" />
     <Compile Include="Audio\3DSound\Static3DSound.cs" />

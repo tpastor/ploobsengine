@@ -36,7 +36,7 @@ namespace AdvancedDemo4._0
         {
             world = new IWorld(new BepuPhysicWorld(-0.97f,true), new SimpleCuller());
 
-            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
+            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
             desc.UseFloatingBufferForLightMap = true;
             ///For transparency works right, we need to order the objects
             ///by distance from the camera

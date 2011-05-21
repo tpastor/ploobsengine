@@ -27,6 +27,12 @@ sampler colorSampler = sampler_state
     AddressU = CLAMP;
     AddressV = CLAMP;    
 };
+
+sampler normalSampler = sampler_state
+{
+    Texture = (normalMap);    
+};
+
 sampler depthSampler = sampler_state
 {
     Texture = (depthMap);
@@ -36,15 +42,7 @@ sampler depthSampler = sampler_state
     MinFilter = POINT;
     Mipfilter = POINT;
 };
-sampler normalSampler = sampler_state
-{
-    Texture = (normalMap);
-    AddressU = CLAMP;
-    AddressV = CLAMP;
-    MagFilter = ANISOTROPIC;
-    MinFilter = ANISOTROPIC;
-    Mipfilter = POINT;
-};
+
 
 
 struct VertexShaderInput

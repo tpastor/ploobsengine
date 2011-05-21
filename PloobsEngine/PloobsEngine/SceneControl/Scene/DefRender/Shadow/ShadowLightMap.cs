@@ -71,7 +71,7 @@ namespace PloobsEngine.SceneControl
             directionalLightEffect.Parameters["lightDirection"].SetValue(dl.LightDirection);
             directionalLightEffect.Parameters["Color"].SetValue(dl.Color.ToVector3());
             directionalLightEffect.Parameters["lightIntensity"].SetValue(dl.LightIntensity);            
-            render.PushDepthState(DepthStencilState.None);
+            render.PushDepthStencilState(DepthStencilState.None);
             render.RenderFullScreenQuadVertexPixel(directionalLightEffect);
             render.PopDepthStencilState();
            }
@@ -140,7 +140,7 @@ namespace PloobsEngine.SceneControl
                     spotLightEffect.Parameters["Color"].SetValue(sl.Color.ToVector3());
                     spotLightEffect.Parameters["lightAngleCosine"].SetValue(sl.LightAngleCosine);
                     spotLightEffect.Parameters["lightIntensity"].SetValue(sl.LightIntensity);
-                    render.PushDepthState(DepthStencilState.None);     
+                    render.PushDepthStencilState(DepthStencilState.None);     
                     render.RenderFullScreenQuadVertexPixel(spotLightEffect);
                     render.PopDepthStencilState();
         }

@@ -64,7 +64,7 @@ namespace PloobsEngine.SceneControl
 
         public void DrawScene(GameTime gameTime, IWorld world, IDeferredGBuffer gbuffer, IDeferredLightMap lightmap, RenderHelper render)
         {
-            render.PushDepthState(DepthStencilState.None);
+            render.PushDepthStencilState(DepthStencilState.None);
 
             if (useFloatBuffer)
             {
@@ -72,9 +72,9 @@ namespace PloobsEngine.SceneControl
             }
             else
             {
-                render.SetSamplerState(SamplerState.AnisotropicClamp, 0);
-                render.SetSamplerState(SamplerState.AnisotropicClamp, 1);
-                render.SetSamplerState(SamplerState.AnisotropicClamp, 2);                
+                render.SetSamplerState(ginfo.SamplerState, 0);
+                render.SetSamplerState(ginfo.SamplerState, 1);
+                render.SetSamplerState(ginfo.SamplerState, 2);                
             }
 
             finalCombineEffect.Parameters["halfPixel"].SetValue(ginfo.HalfPixel);

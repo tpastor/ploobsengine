@@ -7,6 +7,7 @@ using PloobsEngine.Input;
 using PloobsEngine.SceneControl;
 using PloobsEngine.SceneControl.GUI;
 using TomShane.Neoforce.Controls;
+using System.Collections.Generic;
 
 namespace AdvancedDemo4._0
 {
@@ -16,14 +17,14 @@ namespace AdvancedDemo4._0
 
             Height = 600;
             Width = 800;
-            fullscreen = multisampling = verticalsync = false;        
+            mipmap = anisotropic = fullscreen = multisampling = verticalsync = false;        
         }
 
         int index = 0;
 
         ComboBox lb1;
         int Height, Width;
-        bool fullscreen,multisampling, verticalsync;
+        bool fullscreen,multisampling, verticalsync,anisotropic,mipmap;
 
 
         EngineStuff engine;
@@ -152,14 +153,21 @@ namespace AdvancedDemo4._0
             window.Visible = true;
 
 
-
             Label lab1 = new Label(guiManager.Manager);
             lab1.Text = "Resolução";
             lab1.Top = 20;
             lab1.Left = 20;
             lab1.Parent = window;
 
-            string[] colors = new string[] { "800x600", "1024x768","1280x800","1920x1080" };
+            List<string> colors = new List<string>();
+
+            foreach (var item in GraphicInfo.GraphicsAdapter.SupportedDisplayModes)
+            {
+                if (item.Format == Microsoft.Xna.Framework.Graphics.SurfaceFormat.Color)
+                {
+                    colors.Add(item.Width + "x" + item.Height);
+                }
+            }
 
             lb1 = new ComboBox(guiManager.Manager);
             lb1.Init();
@@ -212,19 +220,47 @@ namespace AdvancedDemo4._0
             ms1.Left = lb1.Left;
             ms1.Width = ms1.Text.Length * 10;
 
-             CheckBox vsy = new CheckBox(guiManager.Manager);
+            CheckBox vsy = new CheckBox(guiManager.Manager);
             vsy.Text = "Vertical Sincronization";
             vsy.Checked = false;
             vsy.Top = ms1.Top + ms1.Height + 10;
             vsy.Parent = window;
             vsy.Click += new TomShane.Neoforce.Controls.EventHandler(vsy_Click);
             vsy.Left = lb1.Left;
-            vsy.Width = vsy.Text.Length * 10;           
+            vsy.Width = vsy.Text.Length * 10;
+
+            CheckBox mip = new CheckBox(guiManager.Manager);
+            mip.Text = "Use MipMap";
+            mip.Checked = false;
+            mip.Top = vsy.Top + vsy.Height + 10;
+            mip.Parent = window;
+            mip.Click += new TomShane.Neoforce.Controls.EventHandler(mip_Click);
+            mip.Left = lb1.Left;
+            mip.Width = mip.Text.Length * 10;
+
+            CheckBox ans = new CheckBox(guiManager.Manager);
+            ans.Text = "Use Anisotropic Filtering";
+            ans.Checked = false;
+            ans.Top = mip.Top + mip.Height + 10;
+            ans.Parent = window;
+            ans.Click += new TomShane.Neoforce.Controls.EventHandler(ans_Click); 
+            ans.Left = lb1.Left;
+            ans.Width = ans.Text.Length * 10;           
 
 
             // Add the window control to the manager processing queue.
             guiManager.Manager.Add(window);
         
+        }
+
+        void ans_Click(object sender, TomShane.Neoforce.Controls.EventArgs e)
+        {
+            anisotropic = !anisotropic;
+        }
+
+        void mip_Click(object sender, TomShane.Neoforce.Controls.EventArgs e)
+        {
+            mipmap = !mipmap;
         }
 
         void lb1_ItemIndexChanged(object sender, TomShane.Neoforce.Controls.EventArgs e)
@@ -245,9 +281,10 @@ namespace AdvancedDemo4._0
             ini.BackBufferWidth = Width;
             ini.BackBufferHeight= Height;
             ini.isFullScreen = fullscreen;
-            ini.UseVerticalSyncronization  =verticalsync;
+            ini.UseVerticalSyncronization  = verticalsync;
             ini.isMultiSampling = multisampling;
-            ini.useMipMapWhenPossible = true;
+            ini.useMipMapWhenPossible = mipmap;
+            ini.UseAnisotropicFiltering = anisotropic;
             engine.ApplyEngineDescription(ref ini);
         }        
 

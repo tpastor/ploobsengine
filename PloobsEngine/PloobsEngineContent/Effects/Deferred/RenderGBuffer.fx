@@ -7,12 +7,7 @@ float id;
 texture Texture;
 sampler diffuseSampler = sampler_state
 {
-    Texture = (Texture);
-    MAGFILTER = ANISOTROPIC;
-    MINFILTER = ANISOTROPIC;
-    MIPFILTER = LINEAR;
-    AddressU = Wrap;
-    AddressV = Wrap;
+    Texture = (Texture);    
 };
 
 struct VertexShaderInput

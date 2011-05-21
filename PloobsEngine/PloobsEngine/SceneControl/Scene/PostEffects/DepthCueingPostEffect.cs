@@ -30,7 +30,7 @@ namespace PloobsEngine.SceneControl
              if (useFloatingBuffer)
                  rHelper.RenderFullScreenQuadVertexPixel(effect, SamplerState.PointClamp);
              else
-                 rHelper.RenderFullScreenQuadVertexPixel(effect, SamplerState.AnisotropicClamp);        
+                 rHelper.RenderFullScreenQuadVertexPixel(effect, GraphicInfo.SamplerState);        
          
         }
 

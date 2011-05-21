@@ -96,7 +96,7 @@ namespace PloobsEngine.SceneControl
              if (useFloatingBuffer)
                  rHelper.RenderFullScreenQuadVertexPixel(effect, SamplerState.PointClamp);
              else
-                 rHelper.RenderFullScreenQuadVertexPixel(effect, SamplerState.LinearClamp);              
+                 rHelper.RenderFullScreenQuadVertexPixel(effect, GraphicInfo.SamplerState);              
         }
 
         public override void Init(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
@@ -104,7 +104,7 @@ namespace PloobsEngine.SceneControl
             effect = factory.GetEffect("Scatter",false,true);            
             to = new ToBlackPostEffect();
             to.Init(ginfo, factory);
-            tr2d = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
+            tr2d = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight,SurfaceFormat.Color,ginfo.UseMipMap,DepthFormat.None,ginfo.MultiSample);
             
 
         }

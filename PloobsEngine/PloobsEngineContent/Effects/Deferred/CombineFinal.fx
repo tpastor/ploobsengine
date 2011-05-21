@@ -7,7 +7,7 @@ sampler lightSampler = sampler_state
 {
     Texture = (lightMap);
 	AddressU = CLAMP;
-    AddressV = CLAMP;
+    AddressV = CLAMP;	
 };
 
 sampler extraSampler = sampler_state
@@ -39,7 +39,7 @@ struct VertexShaderInput
 struct VertexShaderOutput
 {
     float4 Position : POSITION0;
-    float2 TexCoord : TEXCOORD0;
+    float2 TexCoord : TEXCOORD0_centroid;
 };
 
 float2 halfPixel;

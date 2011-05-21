@@ -29,7 +29,7 @@ namespace PloobsEngine.SceneControl
             if (useFloatingBuffer)
                 rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, noise, GraphicInfo.FullScreenRectangle, SamplerState.PointClamp);
             else
-                rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, noise, GraphicInfo.FullScreenRectangle, SamplerState.LinearClamp);            
+                rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, noise, GraphicInfo.FullScreenRectangle, GraphicInfo.SamplerState);            
             
         }
 

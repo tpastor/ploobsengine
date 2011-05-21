@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.Xna.Framework;
 using PloobsEngine.SceneControl;
+using PloobsEngine.Events;
 
 namespace PloobsEngine.IA
 {
-    public interface IAgent  
-    {        
-        void Update(GameTime gt);
-        IObject Obj
+    public interface IState
+    {
+        void Init(IObject obj );
+        String NextState();
+        void UpdateState();
+        void Finish();
+        IEventHandler EventHandler
         {
             get;
             set;
-
         }
+        
     }
 }
