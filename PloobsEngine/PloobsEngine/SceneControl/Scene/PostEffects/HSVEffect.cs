@@ -45,7 +45,7 @@ namespace PloobsEngine.SceneControl
            if (useFloatingBuffer)
                rHelper.RenderFullScreenQuadVertexPixel(hsv, SamplerState.PointClamp);
            else
-               rHelper.RenderFullScreenQuadVertexPixel(hsv, SamplerState.AnisotropicClamp);        
+               rHelper.RenderFullScreenQuadVertexPixel(hsv, GraphicInfo.SamplerState);        
         }
 
         #endregion

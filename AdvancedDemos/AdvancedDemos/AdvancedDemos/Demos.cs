@@ -17,7 +17,8 @@ namespace AdvancedDemo4._0
             //desc.UseVerticalSyncronization = true;
             //desc.isFixedGameTime = true;
             //desc.isMultiSampling = true;
-            desc.useMipMapWhenPossible = true;
+            desc.useMipMapWhenPossible = false;
+            desc.UseAnisotropicFiltering = false;
             desc.Logger = new SimpleLogger();
             desc.UnhandledException_Handler = UnhandledException;
             ///start the engine

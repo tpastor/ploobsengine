@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using PloobsEngine.Material;
 using PloobsEngine.Engine.Logger;
 using System.IO;
+using PloobsEngine.Engine;
 
 namespace PloobsEngine.SceneControl
 {
@@ -63,26 +64,30 @@ namespace PloobsEngine.SceneControl
 
         public void ClearGBuffer(RenderHelper render)
         {
-            render.PushDepthState(DepthStencilState.None);
+            render.PushDepthStencilState(DepthStencilState.None);
             clearBufferEffect.Parameters["BackColor"].SetValue(backGroundColor.ToVector3());
             render.RenderFullScreenQuadVertexPixel(clearBufferEffect);
-            render.PushDepthState(DepthStencilState.Default);
+            render.PopDepthStencilState();
         }
 
-        public void PreDrawScene(GameTime gameTime, IWorld world, RenderHelper render)
-        {            
+        public void PreDrawScene(GameTime gameTime, IWorld world, RenderHelper render, GraphicInfo ginfo)
+        {
+            render.SetSamplerState(ginfo.SamplerState, 0);            
+
             foreach (IObject item in world.Objects)
             {
                 item.Material.PreDrawnPhase(gameTime,world, item,world.CameraManager.ActiveCamera, world.Lights, render);
             }
         }
 
-        public void DrawScene(GameTime gameTime, IWorld world, RenderHelper render)
+        public void DrawScene(GameTime gameTime, IWorld world, RenderHelper render,GraphicInfo ginfo)
         {            
             render.RenderPreComponents(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection);
             System.Diagnostics.Debug.Assert(render.PeekBlendState() == BlendState.Opaque);
             System.Diagnostics.Debug.Assert(render.PeekDepthState() == DepthStencilState.Default);
             System.Diagnostics.Debug.Assert(render.PeekRasterizerState() == RasterizerState.CullCounterClockwise);
+                        
+            render.SetSamplerState(ginfo.SamplerState, 0);            
 
             foreach (IObject item in world.Culler.GetNotCulledObjectsList(MaterialType.DEFERRED))
             {
@@ -93,7 +98,7 @@ namespace PloobsEngine.SceneControl
         public void LoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, Color BackGroundColor)
         {
             this.backGroundColor = BackGroundColor;
-            const int multisample = 1;
+            const int multisample = 0;
             colorRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, multisample, RenderTargetUsage.DiscardContents);
             normalRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.None, multisample, RenderTargetUsage.DiscardContents);
             depthRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Single, ginfo.UseMipMap, DepthFormat.None, multisample, RenderTargetUsage.DiscardContents);

@@ -98,7 +98,7 @@ namespace PloobsEngine.SceneControl
         protected void DrawnSpotLight(ICamera camera, IList<ILight> lights, IDeferredGBuffer DeferredGBuffer,RenderHelper render)
         {
             render.PushRasterizerState(RasterizerState.CullNone);
-            render.PushDepthState(DepthStencilState.None);            
+            render.PushDepthStencilState(DepthStencilState.None);            
 
             spotLightEffect.Parameters["colorMap"].SetValue(DeferredGBuffer[GBufferTypes.COLOR]);
             spotLightEffect.Parameters["normalMap"].SetValue(DeferredGBuffer[GBufferTypes.NORMAL]);
@@ -174,8 +174,10 @@ namespace PloobsEngine.SceneControl
         {
             render.Clear(Color.Transparent,ClearOptions.Target);
             render.PushBlendState(BlendState.AlphaBlend);
-            render.PushDepthState(DepthStencilState.None);
+            render.PushDepthStencilState(DepthStencilState.None);
+
             render.SetSamplerState(samplerState, 0);
+            render.SetSamplerState(samplerState, 1);
 
             DrawDirectionalLight(world.CameraManager.ActiveCamera, world.Lights, deferredGBuffer,render);
             DrawPointLight(world.CameraManager.ActiveCamera, world.Lights, deferredGBuffer,render);
@@ -197,7 +199,7 @@ namespace PloobsEngine.SceneControl
             else
             {
                 lightRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.None, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
-                samplerState = SamplerState.AnisotropicClamp;
+                samplerState = ginfo.SamplerState;
             }
 
             directionalLightEffect = manager.GetAsset<Effect>("DirectionalLight",true);

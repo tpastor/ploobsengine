@@ -63,7 +63,7 @@ namespace PloobsEngine.SceneControl
             if (useFloatingBuffer)
                 rHelper.RenderFullScreenQuadVertexPixel(Combine , SamplerState.PointClamp);
             else
-                rHelper.RenderFullScreenQuadVertexPixel(Combine, SamplerState.LinearClamp);
+                rHelper.RenderFullScreenQuadVertexPixel(Combine, GraphicInfo.SamplerState);
         }
 
 
@@ -74,8 +74,8 @@ namespace PloobsEngine.SceneControl
             Saturate.Parameters["BloomThreshold"].SetValue(bloomThreshold);
             Combine = factory.GetEffect("Combine",false,true);
 
-            renderTarget0 = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
-            renderTarget1 = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
+            renderTarget0 = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight,SurfaceFormat.Color,ginfo.UseMipMap,DepthFormat.None,ginfo.MultiSample);
+            renderTarget1 = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.None, ginfo.MultiSample);
             
             gaussian = new GaussianBlurPostEffect();            
             gaussian.Init(ginfo,factory); 

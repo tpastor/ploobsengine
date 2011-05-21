@@ -13,6 +13,12 @@ sampler colorSampler = sampler_state
     AddressU = CLAMP;
     AddressV = CLAMP;    
 };
+
+sampler normalSampler = sampler_state
+{
+    Texture = (normalMap);    
+};
+
 sampler depthSampler = sampler_state
 {
     Texture = (depthMap);
@@ -22,16 +28,6 @@ sampler depthSampler = sampler_state
     MinFilter = POINT;
     Mipfilter = POINT;
 };
-sampler normalSampler = sampler_state
-{
-    Texture = (normalMap);
-    AddressU = CLAMP;
-    AddressV = CLAMP;
-    MagFilter = ANISOTROPIC;
-    MinFilter = ANISOTROPIC;
-    Mipfilter = LINEAR;
-};
-
 
 struct VertexShaderInput
 {
@@ -77,7 +73,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
     //compute screen-space position
     float4 position;
     position.x = input.TexCoord1.x * 2.0f - 1.0f;
-    position.y = -(input.TexCoord1.x * 2.0f - 1.0f);
+    position.y = -(input.TexCoord1.y * 2.0f - 1.0f);
     position.z = depthVal;
     position.w = 1.0f;
     //transform to world space

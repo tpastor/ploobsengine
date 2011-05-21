@@ -123,14 +123,14 @@ namespace PloobsEngine.SceneControl
              if (useFloatingBuffer)
                  rHelper.RenderFullScreenQuadVertexPixel(ssaofinal, SamplerState.PointClamp);
              else
-                 rHelper.RenderFullScreenQuadVertexPixel(ssaofinal, SamplerState.LinearClamp);              
+                 rHelper.RenderFullScreenQuadVertexPixel(ssaofinal, GraphicInfo.SamplerState);              
         }
 
         public override void Init(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
         {
-            target = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color);
+            target = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color,ginfo.UseMipMap,DepthFormat.None,ginfo.MultiSample);
 
-            target2 = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color);
+            target2 = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.None, ginfo.MultiSample);
             
             effect = factory.GetEffect("SSAOPOST",false,true);
             ssaofinal = factory.GetEffect("ssaofinal",false,true);

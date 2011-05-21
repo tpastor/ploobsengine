@@ -16,63 +16,46 @@ const uniform bool useGlow;
 const uniform bool useBump;
 const uniform bool useSpecular;
 
+texture Texture;
+sampler diffuseSampler = sampler_state
+{
+    Texture = (Texture);
+	ADDRESSU = WRAP;
+	ADDRESSV = WRAP;	  
+};
+
 texture HeightMap;
 sampler2D heightSampler = sampler_state
 {
 	Texture = <HeightMap>;
     ADDRESSU = WRAP;
-	ADDRESSV = WRAP;
-	MAGFILTER = ANISOTROPIC;
-	MINFILTER = ANISOTROPIC;
-	MIPFILTER = LINEAR;
+	ADDRESSV = WRAP;	
 };
 
 
 texture glow;
 sampler glowSampler = sampler_state
 {
-    Texture = (glow);
-    MAGFILTER = ANISOTROPIC;
-    MINFILTER = ANISOTROPIC;
-    MIPFILTER = LINEAR;
-    AddressU = Wrap;
-    AddressV = Wrap;
+    Texture = (glow);   
+	ADDRESSU = WRAP;
+	ADDRESSV = WRAP;	     
 };
-
-
-texture Texture;
-sampler diffuseSampler = sampler_state
-{
-    Texture = (Texture);
-    MAGFILTER = ANISOTROPIC;
-    MINFILTER = ANISOTROPIC;
-    MIPFILTER = LINEAR;
-    AddressU = Wrap;
-    AddressV = Wrap;
-};
-
 
 texture SpecularMap;
 sampler specularSampler = sampler_state
 {
-    Texture = (SpecularMap);
-    MagFilter = ANISOTROPIC;
-    MinFilter = ANISOTROPIC;
-    Mipfilter = LINEAR;
-    AddressU = Wrap;
-    AddressV = Wrap;
+    Texture = (SpecularMap);    
+	ADDRESSU = WRAP;
+	ADDRESSV = WRAP;	
 };
 
 
 texture NormalMap;
 sampler normalSampler = sampler_state
 {
-    Texture = (NormalMap);
-    MagFilter = ANISOTROPIC;
-    MinFilter = ANISOTROPIC;
-    Mipfilter = LINEAR;
-    AddressU = Wrap;
-    AddressV = Wrap;
+    Texture = (NormalMap);    
+	ADDRESSU = WRAP;
+	ADDRESSV = WRAP;	
 };
 
 

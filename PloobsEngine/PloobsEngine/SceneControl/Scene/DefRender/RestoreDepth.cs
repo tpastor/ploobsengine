@@ -42,7 +42,7 @@ namespace PloobsEngine.SceneControl
         /// <param name="combined">The combined.</param>
         /// <param name="depth">The depth.</param>
         /// <param name="render">The render.</param>
-        public void PerformForwardPass(Texture2D combined, Texture2D depth, RenderHelper render)
+        public void PerformForwardPass(Texture2D combined, Texture2D depth, RenderHelper render,GraphicInfo ginfo)
         {
             render.PushRenderTarget(target);                           
             restore.Parameters["DepthTexture"].SetValue(depth);                
@@ -53,7 +53,7 @@ namespace PloobsEngine.SceneControl
             }
             else
             {
-                render.SetSamplerState(SamplerState.AnisotropicClamp, 0);
+                render.SetSamplerState(ginfo.SamplerState, 0);
             }
             render.RenderFullScreenQuadVertexPixel(restore);
 

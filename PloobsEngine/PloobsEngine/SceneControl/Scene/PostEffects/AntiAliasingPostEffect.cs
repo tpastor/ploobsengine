@@ -48,7 +48,7 @@ namespace PloobsEngine.SceneControl
                 if (useFloatingBuffer)
                     rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, effect, GraphicInfo.FullScreenRectangle,SamplerState.PointClamp,BlendState.Opaque);
                 else
-                    rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, effect, GraphicInfo.FullScreenRectangle, SamplerState.LinearClamp, BlendState.Opaque);
+                    rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, effect, GraphicInfo.FullScreenRectangle, GraphicInfo.SamplerState, BlendState.Opaque);
         }
 
         public override void Init(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
