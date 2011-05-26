@@ -40,6 +40,26 @@ namespace PloobsEngine.Engine
             return new BasicEffect(device);
         }
 
+        public AlphaTestEffect GetAlphaTestEffect()
+        {
+            return new AlphaTestEffect(device);
+        }
+
+        public SkinnedEffect GetSkinnedEffect()
+        {
+            return new SkinnedEffect(device);
+        }
+
+        public EnvironmentMapEffect GetEnvironmentMapEffect()
+        {
+            return new EnvironmentMapEffect(device);
+        }
+
+        public DualTextureEffect GetDualTextureEffect()
+        {
+            return new DualTextureEffect(device);
+        }
+
         public Effect GetEffect(String name, bool clone = false, bool isInternal = false)
         {
             Effect effect = contentManager.GetAsset<Effect>(name, isInternal);
