@@ -170,15 +170,18 @@ namespace PloobsEngine.SceneControl
             System.Diagnostics.Debug.Assert(updateable != null);
             updateables.Add(updateable);
         }
-        
+
 
         /// <summary>
         /// Removes the IScreenUpdateable.
         /// </summary>
         /// <param name="updateable">The updateable.</param>
-        public void RemoveScreenUpdateable(IScreenUpdateable updateable)
+        /// <param name="callCleanUp">if set to <c>true</c> [call clean up].</param>
+        public void RemoveScreenUpdateable(IScreenUpdateable updateable, bool callCleanUp = false)
         {
             System.Diagnostics.Debug.Assert(updateable != null);
+            if(callCleanUp)
+                updateable.iCleanUp();
             updateables.Remove(updateable);
         }
 

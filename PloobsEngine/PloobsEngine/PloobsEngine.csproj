@@ -72,6 +72,10 @@
     <Reference Include="DPSF">
       <HintPath>Dlls\DPSF.dll</HintPath>
     </Reference>
+    <Reference Include="Library, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dlls\Library.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
       <Private>False</Private>
     </Reference>
@@ -209,18 +213,22 @@
     <Compile Include="Material\IShadder\DeferredShader\DeferredEMReflectiveShader.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredNormalShader.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredSimpleAnimationShader.cs" />
+    <Compile Include="Material\IShadder\DeferredShader\DeferredTreeShader.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredWaterCompleteShader.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredWaterShader.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredSphericalBilboardShader.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredProceduralAnimatedBilboardShader.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredTerrainShader.cs" />
     <Compile Include="Material\IShadder\ForwardShader\ForwardTransparenteShader.cs" />
+    <Compile Include="Material\IShadder\ForwardShader\ForwardTreeShader.cs" />
+    <Compile Include="Material\TreeMaterial.cs" />
     <Compile Include="Modelo\Animation\AnimatedController.cs" />
     <Compile Include="Modelo\Animation\AnimatedModel.cs" />
     <Compile Include="Modelo\CustomModel.cs" />
     <Compile Include="Modelo\SpecificModels\TerrainModel.cs" />
     <Compile Include="Modelo\SpecificModels\InstancedBilboardModel.cs" />
     <Compile Include="Modelo\SpecificModels\StaticBilboardModel.cs" />
+    <Compile Include="Modelo\SpecificModels\TreeModel.cs" />
     <Compile Include="Modelo\SpecificModels\WaterModel.cs" />
     <Compile Include="Particles\DPFSParticleSystem.cs" />
     <Compile Include="Particles\DPSFParticleManager.cs" />

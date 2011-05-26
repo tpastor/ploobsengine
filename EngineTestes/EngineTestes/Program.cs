@@ -2,6 +2,7 @@ using System;
 using PloobsEngine.Engine;
 using PloobsEngine.SceneControl;
 using EngineTestes.LoadingScreen;
+using ProjectTemplate;
 
 namespace EngineTestes
 {
@@ -44,11 +45,10 @@ namespace EngineTestes
             //manager.AddScreen(new ForwardLoadScreen());
             //manager.AddScreen(new DeferredLoadScreen(),new LoadScene());
             //manager.AddScreen(new DebugDrawScreen());
-            manager.AddScreen(new OctreeScreen());
+            //manager.AddScreen(new OctreeScreen());
             //manager.AddScreen(new HybridDeferred());
-            
-
-            
+            manager.AddScreen(new VegetationForwardScreen());
+            //manager.AddScreen(new VegetationDeferredScreen());            
         }
     }
 

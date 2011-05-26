@@ -435,6 +435,46 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="Textures\newgrass.tga">
+      <Name>newgrass</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\newtree.tga">
+      <Name>newtree</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Trees\Birch.ltree">
+      <Name>Birch</Name>
+      <Importer>TreeGeneratorImporter</Importer>
+      <Processor>TreeProfileProcessor</Processor>
+    </Compile>
+    <Compile Include="Trees\Gardenwood.ltree">
+      <Name>Gardenwood</Name>
+      <Importer>TreeGeneratorImporter</Importer>
+      <Processor>TreeProfileProcessor</Processor>
+    </Compile>
+    <Compile Include="Trees\Graywood.ltree">
+      <Name>Graywood</Name>
+      <Importer>TreeGeneratorImporter</Importer>
+      <Processor>TreeProfileProcessor</Processor>
+    </Compile>
+    <Compile Include="Trees\Pine.ltree">
+      <Name>Pine</Name>
+      <Importer>TreeGeneratorImporter</Importer>
+      <Processor>TreeProfileProcessor</Processor>
+    </Compile>
+    <Compile Include="Trees\Rug.ltree">
+      <Name>Rug</Name>
+      <Importer>TreeGeneratorImporter</Importer>
+      <Processor>TreeProfileProcessor</Processor>
+    </Compile>
+    <Compile Include="Trees\Willow.ltree">
+      <Name>Willow</Name>
+      <Importer>TreeGeneratorImporter</Importer>
+      <Processor>TreeProfileProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\EnemyBeastDiffuse.jpg">
@@ -965,6 +1005,58 @@
       <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\beil2.jpg">
+      <Name>beil2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\BirchBark.png">
+      <Name>BirchBark</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\BirchLeaf.png">
+      <Name>BirchLeaf</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\GrayBark.JPG">
+      <Name>GrayBark</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\GraywoodLeaf.png">
+      <Name>GraywoodLeaf</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\OakLeaf.png">
+      <Name>OakLeaf</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\PineBark.png">
+      <Name>PineBark</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\PineLeaf.png">
+      <Name>PineLeaf</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\WillowLeaf.png">
+      <Name>WillowLeaf</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\wood_dark.jpg">
+      <Name>wood_dark</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 

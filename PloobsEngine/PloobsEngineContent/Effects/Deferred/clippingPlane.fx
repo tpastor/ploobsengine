@@ -9,8 +9,8 @@ sampler DiffuseSampler = sampler_state
 	magfilter = ANISOTROPIC; 
 	minfilter = ANISOTROPIC; 
 	mipfilter = LINEAR; 
-	AddressU = clamp; 
-	AddressV = clamp;
+	AddressU = wrap; 
+	AddressV = wrap;
 };
 
 
