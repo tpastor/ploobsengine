@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using PloobsEngine.Components;
 using System.IO;
 using PloobsEngine.Engine.Logger;
+using System.Threading;
 
 namespace PloobsEngine.Features
 {
@@ -31,7 +32,7 @@ namespace PloobsEngine.Features
             Task t = new Task(task.Process);
             if (task.TaskEndType == TaskEndType.INSTANT)
             {                
-                t.BeginInvoke(new AsyncCallback(task.Result), null);
+                t.BeginInvoke(new AsyncCallback(task.Result), null);                
             }
             else if (task.TaskEndType == TaskEndType.ON_NEXT_UPDATE)
             {                
