@@ -139,6 +139,7 @@
     <Compile Include="ParticleSamples\SnowPS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="ReflectionMix\MixReflection.cs" />
     <Compile Include="SoundSamples\SoundScreen.cs" />
     <Compile Include="TechDemo\TechDemoScreenModel.cs" />
     <Compile Include="TechDemo\TechDemoScreen.cs" />

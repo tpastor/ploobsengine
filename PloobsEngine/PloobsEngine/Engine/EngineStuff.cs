@@ -338,10 +338,10 @@ namespace PloobsEngine.Engine
                 X = 0.5f / (float)GraphicsDevice.PresentationParameters.BackBufferWidth,
                 Y = 0.5f / (float)GraphicsDevice.PresentationParameters.BackBufferHeight
             };
-
             
             contentManager = new EngineContentManager(this);
             GraphicInfo = new GraphicInfo(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount, GraphicsDevice.PresentationParameters.DepthStencilFormat,initialDescription.useMipMapWhenPossible,this,initialDescription.UseAnisotropicFiltering);
+            this.GraphicsDevice.DeviceReset += new EventHandler<EventArgs>(GraphicsDevice_DeviceReset);
             GraphicFactory = new Engine.GraphicFactory(GraphicInfo, GraphicsDevice, contentManager);
             ComponentManager = new ComponentManager(GraphicInfo, GraphicFactory);
             ComponentManager.LoadContent(ref GraphicInfo);            
@@ -366,6 +366,11 @@ namespace PloobsEngine.Engine
             ComponentManager.AddComponent(new TaskProcessor());
         }
 
+        void GraphicsDevice_DeviceReset(object sender, EventArgs e)
+        {
+            GraphicInfo.FireResetEvent(sender, e);
+        }
+        
         /// <summary>
         /// Adds the component.
         /// </summary>
@@ -439,20 +444,27 @@ namespace PloobsEngine.Engine
         /// </summary>
         /// <param name="gameTime">Time passed since the last call to Update.</param>
         protected override void Update(GameTime gameTime)
-        {            
-            ComponentManager.Update(gameTime);
-            ScreenManager.Update(gameTime);
-            CommandProcessor.getCommandProcessor().ProcessCommands();
+        {
+            if ( (initialDescription.isFullScreen == true && this.IsActive) || initialDescription.isFullScreen == false)
+            {
+                ComponentManager.Update(gameTime);
+                ScreenManager.Update(gameTime);
+                CommandProcessor.getCommandProcessor().ProcessCommands();
+            }
             base.Update(gameTime);
         }
 
+        
         /// <summary>
         /// Reference page contains code sample.
         /// </summary>
         /// <param name="gameTime">Time passed since the last call to Draw.</param>
         protected override void Draw(GameTime gameTime)
-        {            
-            ScreenManager.Draw(gameTime);
+        {
+            if ((initialDescription.isFullScreen == true && this.IsActive) || initialDescription.isFullScreen == false)
+            {
+                ScreenManager.Draw(gameTime);             
+            }
             base.Draw(gameTime);
         }        
         

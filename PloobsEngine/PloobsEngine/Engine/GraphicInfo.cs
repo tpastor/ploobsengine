@@ -13,7 +13,7 @@ namespace PloobsEngine.Engine
     /// </summary>
     /// <param name="newGraphicInfo">The new graphic info.</param>
     public delegate void OnGraphicInfoChange(GraphicInfo newGraphicInfo);
-
+    
     /// <summary>
     /// Contains Graphics Informations about the current execution
     /// </summary>
@@ -63,10 +63,16 @@ namespace PloobsEngine.Engine
 
             UseAnisotropicFiltering = useAnisotropicFiltering;
         }
-                
+
+        internal void FireResetEvent(object obj, EventArgs args)
+        {
+            if(DeviceReset!=null)
+                DeviceReset(obj, args);
+        }
+
         private GraphicsAdapter graphicsAdapter;
 
-        /// <summary>
+                /// <summary>
         /// Graphic Adapter
         /// </summary>
         public GraphicsAdapter GraphicsAdapter
@@ -149,6 +155,11 @@ namespace PloobsEngine.Engine
         /// Occurs when [on graphic info change].
         /// </summary>
         public event OnGraphicInfoChange OnGraphicInfoChange;
+
+        /// <summary>
+        /// Occurs when [device reset].
+        /// </summary>
+        public event EventHandler<EventArgs> DeviceReset = null;
 
         
         private int backBufferHeight;
