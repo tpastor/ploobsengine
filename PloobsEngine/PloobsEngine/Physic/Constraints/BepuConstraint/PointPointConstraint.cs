@@ -12,7 +12,6 @@ namespace PloobsEngine.Physic.Constraints.BepuConstraint
     public class PointPointConstraint : IPhysicConstraint
     {
 
-
         Joint joint;
 
         public Joint Joint
@@ -23,22 +22,16 @@ namespace PloobsEngine.Physic.Constraints.BepuConstraint
 
         public PointPointConstraint(Vector3 position, IPhysicObject obA, IPhysicObject obB)
         {
-
             BepuEntityObject objA,objB;
 
             if (obA.PhysicObjectTypes != PhysicObjectTypes.TRIANGLEMESHOBJECT && obB.PhysicObjectTypes != PhysicObjectTypes.TRIANGLEMESHOBJECT)
             {
                 objA = (BepuEntityObject)obA;
                 objB = (BepuEntityObject)obB;
-                joint = new BallSocketJoint(objA.Entity, objB.Entity, position);    
+                joint = new BallSocketJoint(objA.Entity, objB.Entity, position);                
             }
             
-        
-            
-            
-        
         }
-
 
 
         public override Microsoft.Xna.Framework.Vector3 Position

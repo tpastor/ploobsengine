@@ -245,7 +245,7 @@ namespace PloobsEngine.SceneControl
                 if (this.objects.Count > 0)
                 {                    
                     if (DebugDraw != null)
-                        DebugDraw.AddShape(new Box(this.bounds,Color.White));
+                        DebugDraw.AddShape(new DebugBox(this.bounds,Color.White));
                     objects.AddRange(this.objects);
                     count++;
                 }
