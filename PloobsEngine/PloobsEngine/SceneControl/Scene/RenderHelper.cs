@@ -725,7 +725,7 @@ namespace PloobsEngine.SceneControl
             }
         }
 
-        public void RenderSceneDepth(Effect effect,IWorld world, GameTime gt, List<IObject> objListException, Matrix view, Matrix projection, bool useCuller = false)
+        public void RenderSceneDepth(IWorld world, GameTime gt, List<IObject> objListException, Matrix view, Matrix projection, bool useCuller = false)
         {            
             IEnumerable<IObject> objs;
             if (useCuller)
@@ -742,12 +742,34 @@ namespace PloobsEngine.SceneControl
             {
                 if (objListException != null && objListException.Contains(obj))
                     continue;
-
-                obj.Material.Shadder.DepthExtractor(gt, obj, view,projection, this);                
+                             
+                if(obj.Material.CanCreateShadow)
+                    obj.Material.Shadder.DepthExtractor(gt, obj, view,projection, this);                
             }
         }
 
-        public void RenderSceneBasic(Effect effect, IWorld world, GameTime gt, List<IObject> objListException, Matrix view, Matrix projection,bool drawComponentsPreDraw = true ,bool useCuller = false,Plane? clippingPlane = null,bool useAlphaBlend = false)
+        public void RenderSceneDepth(IWorld world, GameTime gt, Matrix view, Matrix projection, bool useCuller = false)
+        {
+            IEnumerable<IObject> objs;
+            if (useCuller)
+            {
+                world.Culler.StartFrame(view, projection, new BoundingFrustum(view * projection));
+                objs = world.Culler.GetNotCulledObjectsList(null);
+            }
+            else
+            {
+                objs = world.Objects;
+            }
+
+            foreach (var obj in objs)
+            {
+
+                if (obj.Material.CanCreateShadow)
+                    obj.Material.Shadder.DepthExtractor(gt, obj, view, projection, this);
+            }
+        }
+
+        public void RenderSceneReflectionRefration(IWorld world, GameTime gt, List<IObject> objListException, Matrix view, Matrix projection,bool drawComponentsPreDraw = true ,bool useCuller = false,Plane? clippingPlane = null,bool useAlphaBlend = false)
         {
             if (drawComponentsPreDraw)
             {
@@ -770,7 +792,8 @@ namespace PloobsEngine.SceneControl
                 if (objListException != null && objListException.Contains(obj))
                     continue;
 
-                obj.Material.Shadder.BasicDraw(gt, obj, view,projection, world.Lights, this, clippingPlane, useAlphaBlend);
+                if(obj.Material.CanAppearOfReflectionRefraction)
+                    obj.Material.Shadder.BasicDraw(gt, obj, view,projection, world.Lights, this, clippingPlane, useAlphaBlend);
             }
         }
        

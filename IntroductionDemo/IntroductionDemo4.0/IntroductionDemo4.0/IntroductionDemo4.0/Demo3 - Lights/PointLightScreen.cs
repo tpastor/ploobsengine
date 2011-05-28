@@ -58,7 +58,7 @@ namespace IntroductionDemo4._0
             PointLightCircularUpdater lcu = new PointLightCircularUpdater(this);
 
             ///Create 100 moving point lights and add to the world
-            ///IF the radius of the point light is TOO big like 250, it will make the game slower (remember, a light almost igual a ball geometry, alost the same cost)
+            ///IF the radius of the point light is TOO big like 250, it will make the game slower
             for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 10; j++)

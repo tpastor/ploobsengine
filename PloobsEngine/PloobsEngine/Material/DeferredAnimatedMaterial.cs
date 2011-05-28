@@ -22,9 +22,10 @@ namespace PloobsEngine.Material
             System.Diagnostics.Debug.Assert(shader.MaterialType == Material.MaterialType.DEFERRED);
             this.Shadder = shader;
             this.controller = controller;
+            CanAppearOfReflectionRefraction = true;
+            CanCreateShadow = true;
         }
-
-        bool affectedByShadow = false;
+        
         IShader shader = null;
         private IAnimatedController controller;
 
@@ -138,16 +139,10 @@ namespace PloobsEngine.Material
         /// <value>
         ///   <c>true</c> if [affected by shadow]; otherwise, <c>false</c>.
         /// </value>
-        public bool AffectedByShadow
+        public bool CanCreateShadow
         {
-            get
-            {
-                return affectedByShadow;          
-            }
-            set
-            {
-                this.affectedByShadow = value;
-            }
+            get;
+            set;
         }
 
         #endregion
@@ -167,6 +162,12 @@ namespace PloobsEngine.Material
 
         #endregion
 
-        
+
+        public bool CanAppearOfReflectionRefraction
+        {
+            get;
+            set;
+        }
+
     }
 }

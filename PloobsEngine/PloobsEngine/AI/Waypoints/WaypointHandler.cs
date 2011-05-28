@@ -223,23 +223,23 @@ namespace PloobsEngine.IA
             return col;
         }
 
-        public void DebugDrawWaypointsVector()
-        {
-            foreach (Waypoint item in col.GetWaypointsList())
-            {
-                //Drawing.Draw3dLine(item.WorldPos, item.WorldPos + Vector3.Up * 30, Color.Yellow);                
-                if (item.NeightBorWaypointsId != null)
-                {
-                    foreach (int viz in item.NeightBorWaypointsId)
-                    {
+        //public void DebugDrawWaypointsVector()
+        //{
+        //    foreach (Waypoint item in col.GetWaypointsList())
+        //    {
+        //        //Drawing.Draw3dLine(item.WorldPos, item.WorldPos + Vector3.Up * 30, Color.Yellow);                
+        //        if (item.NeightBorWaypointsId != null)
+        //        {
+        //            foreach (int viz in item.NeightBorWaypointsId)
+        //            {
 
-                        Vector3 dir = col.IdWaypoint[viz].WorldPos - item.WorldPos;                        
-                        //Drawing.Draw3dLine(item.WorldPos, item.WorldPos + dir, Color.Red);                        
-                    }
-                }
+        //                Vector3 dir = col.IdWaypoint[viz].WorldPos - item.WorldPos;                        
+        //                //Drawing.Draw3dLine(item.WorldPos, item.WorldPos + dir, Color.Red);                        
+        //            }
+        //        }
 
-            }
-        }
+        //    }
+        //}
 
     }
 

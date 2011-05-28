@@ -47,6 +47,8 @@ namespace PloobsEngine.Material
             wsource = new WindStrengthSin();
             this.animator = new TreeWindAnimator(wsource);
             this.shader = shader;
+            CanAppearOfReflectionRefraction = true;
+            CanCreateShadow = true;
         }
 
         /// <summary>
@@ -58,6 +60,8 @@ namespace PloobsEngine.Material
             wsource = new WindStrengthSin();
             this.animator = new TreeWindAnimator(wsource);
             this.shader = shader;
+            CanAppearOfReflectionRefraction = true;
+            CanCreateShadow = true;
         }
 
         /// <summary>
@@ -70,6 +74,8 @@ namespace PloobsEngine.Material
             this.wsource = wsource;
             this.shader = shader;
             this.animator = new TreeWindAnimator(wsource);
+            CanAppearOfReflectionRefraction = true;
+            CanCreateShadow = true;
         }
 
         /// <summary>
@@ -82,12 +88,14 @@ namespace PloobsEngine.Material
             this.wsource = wsource;
             this.shader = shader;
             this.animator = new TreeWindAnimator(wsource);
+            CanAppearOfReflectionRefraction = true;
+            CanCreateShadow = true;
         }
 
         IShader shader;
         #region IMaterial Members
 
-        public bool AffectedByShadow
+        public bool CanCreateShadow
         {
             get;
             set;
@@ -145,6 +153,17 @@ namespace PloobsEngine.Material
         public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
         {
             
+        }
+
+        #endregion
+
+        #region IMaterial Members
+
+
+        public bool CanAppearOfReflectionRefraction
+        {
+            get;
+            set;
         }
 
         #endregion

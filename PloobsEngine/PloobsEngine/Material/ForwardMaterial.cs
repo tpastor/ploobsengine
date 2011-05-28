@@ -20,9 +20,16 @@ namespace PloobsEngine.Material
         {
             System.Diagnostics.Debug.Assert(shader.MaterialType == Material.MaterialType.FORWARD);
             this.Shadder = shader;
+            CanAppearOfReflectionRefraction = true;
+            CanCreateShadow = true;
         }
 
-        bool affectedByShadow = false;
+        public bool CanAppearOfReflectionRefraction
+        {
+            get;
+            set;
+        }
+
         IShader shader = null;        
 
         #region IMaterial Members
@@ -132,16 +139,10 @@ namespace PloobsEngine.Material
         /// <value>
         ///   <c>true</c> if [affected by shadow]; otherwise, <c>false</c>.
         /// </value>
-        public bool AffectedByShadow
+        public bool CanCreateShadow
         {
-            get
-            {
-                return affectedByShadow;          
-            }
-            set
-            {
-                this.affectedByShadow = value;
-            }
+            get;
+            set;
         }
 
         #endregion

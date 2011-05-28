@@ -154,7 +154,6 @@
     <Compile Include="AI\Waypoints\VisibilityWaypointConnector.cs" />
     <Compile Include="AI\Waypoints\Waypoint.cs" />
     <Compile Include="AI\Waypoints\WaypointHandler.cs" />
-    <Compile Include="AI\Waypoints\WaypointManager.cs" />
     <Compile Include="AI\Waypoints\WaypointsCollection.cs" />
     <Compile Include="Audio\2DSoundEffect\SoundAudioPlayer.cs" />
     <Compile Include="Audio\2DSoundEffect\SimpleSoundEffect.cs" />
