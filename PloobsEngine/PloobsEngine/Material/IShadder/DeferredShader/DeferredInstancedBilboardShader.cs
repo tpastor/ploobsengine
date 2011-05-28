@@ -145,6 +145,15 @@ namespace PloobsEngine.Material
         }
 
 
+        public override void BasicDraw(GameTime gt, IObject obj, Matrix view, Matrix projection, IList<ILight> lights, RenderHelper render, Plane? clippingPlane, bool useAlphaBlending = false)
+        {
+            ///no reflection refraction
+        }
+
+        public override void DepthExtractor(GameTime gt, IObject obj, Matrix View, Matrix projection, RenderHelper render)
+        {
+            ///no shadow
+        }
     
 
 

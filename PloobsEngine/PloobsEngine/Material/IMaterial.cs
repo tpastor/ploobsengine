@@ -83,12 +83,20 @@ namespace PloobsEngine.Material
         /// </value>
         MaterialType MaterialType { get; }
         /// <summary>
-        /// Gets or sets a value indicating whether this material is [affected by shadow].
+        /// Gets or sets a value indicating whether this material is [Create shadow on others objects].
         /// </summary>
         /// <value>
         ///   <c>true</c> if [affected by shadow]; otherwise, <c>false</c>.
         /// </value>
-        bool AffectedByShadow { set; get; }                
+        bool CanCreateShadow { set; get; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance can appear of reflection and refraction.
+        /// </summary>
+        /// <value>
+        /// 	<c>true</c> if this instance can appear of reflection/refraction; otherwise, <c>false</c>.
+        /// </value>
+        bool CanAppearOfReflectionRefraction { set; get; }                
     }
 
     /// <summary>

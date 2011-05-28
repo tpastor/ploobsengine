@@ -3,6 +3,10 @@ using PloobsEngine.Cameras;
 using PloobsEngine.Light;
 using PloobsEngine.Physics;
 using PloobsEngine.SceneControl;
+using PloobsEngine.Modelo;
+using PloobsEngine.Physics.Bepu;
+using PloobsEngine.Material;
+using System.Collections.Generic;
 
 namespace ProjectTemplate
 {
@@ -43,20 +47,43 @@ namespace ProjectTemplate
             ///must be called before all
             base.LoadContent(GraphicInfo, factory, contentManager);
 
-            ///Uncoment to Add an object
-            /////Create a simple object
-            /////Geomtric Info and textures (this model automaticaly loads the texture)
-            //SimpleModel simpleModel = new SimpleModel(factory, "Model FILEPATH GOES HERE", "Diffuse Texture FILEPATH GOES HERE -- Use only if it is not embeded in the Model file");            
-            /////Physic info (position, rotation and scale are set here)
-            //TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
-            /////Shader info (must be a deferred type)
-            //DeferredNormalShader shader = new DeferredNormalShader();
-            /////Material info (must be a deferred type also)
-            //DeferredMaterial fmaterial = new DeferredMaterial(shader);
-            /////The object itself
-            //IObject obj = new IObject(fmaterial, simpleModel, tmesh);
-            /////Add to the world
-            //this.World.AddObject(obj);
+            {
+                IModelo sm = new SimpleModel(factory, "Model\\block");
+                Matrix trans = Matrix.CreateTranslation(new Vector3(100, 50, 0));
+                Plane plano = Plane.Transform(new Plane(0, 1, 0, 0), trans);
+                IPhysicObject pi = new BoxObject(Vector3.Zero, 1, 1, 1, 5, new Vector3(1300, 0.1f, 1300), trans, MaterialDescription.DefaultBepuMaterial());
+                pi.isMotionLess = true;
+                ///Water shader, will refract and reflect according to the plano passed in the parameter
+                ///Using default Parameters, there are lots of things that can be changed. See WaterCompleteShader 
+                DeferredWaterCompleteShader shader = new DeferredWaterCompleteShader(800, 600, plano, 0);
+                shader.SpecularIntensity = 0.01f;
+                shader.SpecularPower = 50;
+                IMaterial mat = new DeferredMaterial(shader);
+                IObject obj4 = new IObject(mat, sm, pi);
+                this.World.AddObject(obj4);
+            }
+
+            {
+                List<Vector3> poss = new List<Vector3>();
+                for (int i = 0; i < 10; i++)
+                {
+                    for (int j = 0; j < 10; j++)
+                    {
+                        float x, y;
+                        x = i * 100;
+                        y = j * 100;
+                        poss.Add(new Vector3(x, 100, y));
+                    }
+                }
+                StaticBilboardModel bm = new StaticBilboardModel(factory, "Bilbs", "..\\Content\\Textures\\tree", poss);
+                DeferredCilindricGPUBilboardShader cb = new DeferredCilindricGPUBilboardShader();
+                DeferredMaterial matfor = new DeferredMaterial(cb);
+                GhostObject go = new GhostObject();
+                IObject obj2 = new IObject(matfor, bm, go);
+                this.World.AddObject(obj2);
+            }
+
+
 
             ///Add some directional lights to completely iluminate the world
             #region Lights

@@ -25,6 +25,7 @@ namespace AdvancedDemo4._0
         GraphicFactory factory;
         float lightsize ;
         float lightintensity;
+
         public void CleanUp()
         {
             mm0.BindAction = BindAction.REMOVE;

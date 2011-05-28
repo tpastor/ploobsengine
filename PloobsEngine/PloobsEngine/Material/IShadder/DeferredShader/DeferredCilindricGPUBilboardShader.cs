@@ -68,6 +68,16 @@ namespace PloobsEngine.Material
             
         }
 
+        public override void BasicDraw(GameTime gt, IObject obj, Matrix view, Matrix projection, IList<ILight> lights, RenderHelper render, Plane? clippingPlane, bool useAlphaBlending = false)
+        {
+            ///no reflection refraction
+        }
+
+        public override void DepthExtractor(GameTime gt, IObject obj, Matrix View, Matrix projection, RenderHelper render)
+        {
+            ///no shadow =P
+        }
+
         private float alphaTestLimit = 200.0f / 256.0f;
 
         public float AlphaTestLimit
@@ -78,7 +88,8 @@ namespace PloobsEngine.Material
 
         public override void Initialize(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, IObject obj)        
         {
-            this._shader = factory.GetEffect("cilBilboard",false,true);            
+            this._shader = factory.GetEffect("cilBilboard",false,true);
+            base.Initialize(ginfo, factory, obj);
         }
 
 

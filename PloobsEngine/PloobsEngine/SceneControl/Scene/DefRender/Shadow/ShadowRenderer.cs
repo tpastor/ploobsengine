@@ -255,8 +255,8 @@ namespace PloobsEngine.SceneControl
             //shadowMapEffect.CurrentTechnique = shadowMapEffect.Techniques["GenerateShadowMap"];            
             //shadowMapEffect.Parameters["g_matViewProj"].SetValue(lightViewProjectionMatrices[splitIndex]);
                         
-            // Draw the models
-            DrawScene(gameTime, world,lightViewMatrices[splitIndex],lightProjectionMatrices[splitIndex],render);
+            // Draw the models            
+            render.RenderSceneDepth(world, gameTime, lightViewMatrices[splitIndex], lightProjectionMatrices[splitIndex], true);
 		}
 
 		/// <summary>
@@ -300,17 +300,6 @@ namespace PloobsEngine.SceneControl
             //DeferredRenderTechnic.DebugImages.Add(dir2);
 
 		}
-
-        protected void DrawScene(GameTime gameTime, IWorld world,Matrix View,Matrix proj,RenderHelper render)
-        {            
-            world.Culler.StartFrame(View,proj,new BoundingFrustum(View * proj));            
-
-            foreach (IObject item in world.Culler.GetNotCulledObjectsList(null))
-            {
-                item.Material.Shadder.DepthExtractor(gameTime, item, View, proj, render);                
-            }
-        }
-
 	}
 
 }

@@ -32,8 +32,7 @@ namespace PloobsEngine.Material
         private int HEIGHT;
         private Plane plane;        
         private Matrix reflectiveViewMatrix;                
-        private float timeModulation = 100;
-        Effect clipper;
+        private float timeModulation = 100;        
 
         /// <summary>
         /// Default 100
@@ -203,12 +202,10 @@ namespace PloobsEngine.Material
             else
             {
                 refractionClipPlane = CreateReflectionPlane(plane.D, plane.Normal, cam.View, cam.Projection, false);
-            }
-
-            clipper.Parameters["clippingPlane"].SetValue(new Vector4(refractionClipPlane.Normal, refractionClipPlane.D));
+            }            
             render.PushRenderTarget(refractionRT);
             render.Clear(Color.Black);
-            render.RenderSceneBasic(clipper, world, gt, new List<IObject>() { obj }, cam.View, cam.Projection, true, true,refractionClipPlane);
+            render.RenderSceneReflectionRefration(world, gt, new List<IObject>() { obj }, cam.View, cam.Projection, true, true,refractionClipPlane);
             refractionMap = render.PopRenderTarget()[0].RenderTarget as Texture2D;            
 
             ///REFLEXAO
@@ -221,11 +218,10 @@ namespace PloobsEngine.Material
             up = Vector3.Transform(cam.Up, m);
             reflectiveViewMatrix = Matrix.CreateLookAt(pos, target, up);
             Plane reflectionClipPlane = CreateReflectionPlane(plane.D, plane.Normal, reflectiveViewMatrix, cam.Projection, false);
-            clipper.Parameters["clippingPlane"].SetValue(new Vector4(reflectionClipPlane.Normal, reflectionClipPlane.D));
             render.PushRenderTarget(reflectionRT);
             render.Clear(Color.Black);
             render.PushRasterizerState(RasterizerState.CullClockwise);
-            render.RenderSceneBasic(clipper, world, gt, new List<IObject>() { obj }, reflectiveViewMatrix, cam.Projection, true, true,reflectionClipPlane);
+            render.RenderSceneReflectionRefration(world, gt, new List<IObject>() { obj }, reflectiveViewMatrix, cam.Projection, true, true,reflectionClipPlane);
             render.PopRasterizerState();
             reflectionMap = render.PopRenderTarget()[0].RenderTarget as Texture2D;                                   
 
@@ -277,13 +273,12 @@ namespace PloobsEngine.Material
         public override void  Initialize(PloobsEngine.Engine.GraphicInfo ginfo, PloobsEngine.Engine.GraphicFactory factory, PloobsEngine.SceneControl.IObject obj)
         {
  	        base.Initialize(ginfo, factory, obj);
-            this._shader = factory.GetEffect("WaterComplete",true,true);
-            clipper = factory.GetEffect("clippingPlane", true, true);
+            this._shader = factory.GetEffect("WaterComplete",true,true);         
             refractionRT = factory.CreateRenderTarget(WIDTH,HEIGHT);
             reflectionRT = factory.CreateRenderTarget(WIDTH, HEIGHT);
             normal0 = factory.GetTexture2D("wave0", true);
             normal1 = factory.GetTexture2D("wave1", true);                                    
-        }
+        }        
 
         /// <summary>
         /// Gets the type of the material.

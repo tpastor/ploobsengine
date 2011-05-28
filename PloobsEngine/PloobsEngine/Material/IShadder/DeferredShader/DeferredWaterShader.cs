@@ -288,7 +288,7 @@ namespace PloobsEngine.Material
         public override MaterialType MaterialType
         {
             get { return MaterialType.DEFERRED; }
-        }
+        }       
 
     }
 

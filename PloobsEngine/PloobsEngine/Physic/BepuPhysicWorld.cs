@@ -267,7 +267,16 @@ namespace PloobsEngine.Physics
 
         public override void RemoveConstraint(IPhysicConstraint ctn)
         {
-            ctns.Remove(ctn);
+            if (ctn.PhysicConstraintType == PhysicConstraintTypes.POINTPOINT)
+            {
+                PointPointConstraint co = (PointPointConstraint)ctn;
+
+                if (co != null)
+                {
+                    space.Remove(co.Joint);
+                    ctns.Remove(ctn);
+                }
+            }
         }
 
         /// <summary>
@@ -301,9 +310,14 @@ namespace PloobsEngine.Physics
                 return resp;
             }                       
             return null;            
-        }        
+        }
 
 
+        /// <summary>
+        /// Detects the collisions.
+        /// </summary>
+        /// <param name="po">The po.</param>
+        /// <param name="col">The col.</param>
         public override void DetectCollisions(IPhysicObject po,List<IPhysicObject> col)
         {
             col.Clear();
@@ -399,7 +413,7 @@ namespace PloobsEngine.Physics
         /// These values are what the engine starts with; they don't have to be applied unless you just want to get back to the defaults.
         /// This doesn't cover every single tunable field in the entire engine, just the main ones that this helper class is messing with.
         /// </summary>
-        /// <param name="space">Space to configure.</param>
+        /// <param name="world">The world.</param>
         public static void ApplyDefaultSettings(BepuPhysicWorld world)
         {
             MotionSettings.ConserveAngularMomentum = false;
@@ -443,7 +457,7 @@ namespace PloobsEngine.Physics
         /// By enabling simplex caching, general convex collision detection
         /// gets a nice chunk faster, but some curved shapes lose collision detection robustness.
         /// </summary>
-        /// <param name="space">Space to configure.</param>
+        /// <param name="world">The world.</param>
         public static void ApplySuperSpeedySettings(BepuPhysicWorld world)
         {
             SolverSettings.DefaultMinimumIterations = 0;

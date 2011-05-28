@@ -145,21 +145,11 @@ namespace PloobsEngine.SceneControl
                     render.PopDepthStencilState();
         }
 
-        protected void DrawScene(GameTime gameTime, IWorld world, Matrix View, Matrix proj, RenderHelper render)
-        {
-            world.Culler.StartFrame(View, proj, new BoundingFrustum(View * proj));
-
-            foreach (IObject item in world.Culler.GetNotCulledObjectsList(null))
-            {
-                item.Material.Shadder.DepthExtractor(gameTime, item, View, proj, render);
-            }
-        }
-        
         private void RenderShadowMap(GameTime gt, RenderHelper render, Matrix view, Matrix proj, IWorld world, IDeferredGBuffer deferredGBuffer)
         {
             render.PushRenderTarget(shadowRT);             
-            render.Clear(Color.Transparent,ClearOptions.Target | ClearOptions.DepthBuffer,1,0);            
-            DrawScene(gt,world,view,proj,render);
+            render.Clear(Color.Transparent,ClearOptions.Target | ClearOptions.DepthBuffer,1,0);
+            render.RenderSceneDepth(world, gt, view, proj, true);
             shadowMap = render.PopRenderTargetAsSingleRenderTarget2D();
         }
 
