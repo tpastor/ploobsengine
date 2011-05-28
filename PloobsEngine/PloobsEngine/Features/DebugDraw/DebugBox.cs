@@ -9,7 +9,7 @@ using PloobsEngine.Modelo;
 
 namespace PloobsEngine.Features.DebugDraw
 {
-    public class Box : IDebugDrawShape
+    public class DebugBox : IDebugDrawShape
     {
         static VertexPositionColor[] verts = new VertexPositionColor[8];
         static short[] indices = new short[]
@@ -39,7 +39,7 @@ namespace PloobsEngine.Features.DebugDraw
         /// </summary>
         /// <param name="BoundingBox">The bounding box.</param>
         /// <param name="color">The box's color.</param>
-        public Box(BoundingBox BoundingBox, Color color)
+        public DebugBox(BoundingBox BoundingBox, Color color)
         {            
             this.Color = color;
             this.BoundingBox = BoundingBox;
@@ -48,21 +48,22 @@ namespace PloobsEngine.Features.DebugDraw
          
         public void  Initialize(Engine.GraphicFactory factory, Engine.GraphicInfo ginfo)
         {
-            if (Box.effect == null)
+            if (DebugBox.effect == null)
             {
-                Box.effect = factory.GetBasicEffect();
-                Box.effect.VertexColorEnabled = true;
-                Box.effect.LightingEnabled = false;
-                Box.effect.TextureEnabled = false;                
+                DebugBox.effect = factory.GetBasicEffect();
+                DebugBox.effect.VertexColorEnabled = true;
+                DebugBox.effect.LightingEnabled = false;
+                DebugBox.effect.TextureEnabled = false;                
             }        
         }
 
         public BoundingBox BoundingBox;
-        public Color Color;        
+        public Color Color;
 
         /// <summary>
         /// Draws the box.
         /// </summary>
+        /// <param name="render">The render.</param>
         /// <param name="view">The viewing matrix.</param>
         /// <param name="projection">The projection matrix.</param>
         public void Draw(RenderHelper render, Matrix view, Matrix projection)
@@ -70,8 +71,8 @@ namespace PloobsEngine.Features.DebugDraw
             if (Visible)
             {                
                 //// Setup the effect.                
-                Box.effect.View = view;
-                Box.effect.Projection = projection;
+                DebugBox.effect.View = view;
+                DebugBox.effect.Projection = projection;
 
                 Vector3[] corners = BoundingBox.GetCorners();
                 for (int i = 0; i < 8; i++)

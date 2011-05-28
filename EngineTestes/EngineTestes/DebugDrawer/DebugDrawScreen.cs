@@ -16,7 +16,7 @@ namespace EngineTestes
     /// </summary>
     public class DebugDrawScreen : IScene
     {
-        DebugShapesDrawer ddrawer = new DebugShapesDrawer();
+        DebugShapesDrawer ddrawer = new DebugShapesDrawer(true);
 
         /// <summary>
         /// Sets the world and render technich.
@@ -59,8 +59,16 @@ namespace EngineTestes
             RegisterDebugDrawCommand rc = new RegisterDebugDrawCommand(ddrawer);
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(rc);
 
-            ddrawer.AddShape(new Box(new BoundingBox(new Vector3(-50),new Vector3(50)),Color.Red));
+            ddrawer.AddShape(new DebugBox(new BoundingBox(new Vector3(-50),new Vector3(50)),Color.Red));
 
+            DebugLine dl = new DebugLine(Vector3.Zero, new Vector3(1000, 1000, 1000), Color.Red);
+            ddrawer.AddShape(dl);
+
+            DebugLines dls = new DebugLines();
+            ddrawer.AddShape(dls);
+
+            dls.AddLine(Vector3.Zero, new Vector3(-1000, 1000, -1000), Color.Green);
+            dls.AddLine(Vector3.Zero, new Vector3(-1000, 1000, 1000), Color.Pink);
 
             SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
             TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());

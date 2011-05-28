@@ -43,12 +43,12 @@ namespace EngineTestes
             //manager.AddScreen(new FGUIScreen());
             //manager.AddScreen(new ForwardLoadScreen());
             //manager.AddScreen(new DeferredLoadScreen(),new LoadScene());
-            //manager.AddScreen(new DebugDrawScreen());
+            manager.AddScreen(new DebugDrawScreen());
             //manager.AddScreen(new OctreeScreen());
             //manager.AddScreen(new HybridDeferred());
             //manager.AddScreen(new VegetationForwardScreen());
             //manager.AddScreen(new VegetationDeferredScreen());            
-            manager.AddScreen(new MixReflection());                        
+            //manager.AddScreen(new MixReflection());                        
         }
     }
 
