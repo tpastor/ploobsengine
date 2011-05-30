@@ -48,7 +48,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <PlatformTarget>x86</PlatformTarget>
     <XnaCompressContent>True</XnaCompressContent>
-    <DocumentationFile>bin\x86\Debug\PloobsEngine.XML</DocumentationFile>
+    <DocumentationFile>bin\x86\Debug\PloobsEngine.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DebugType>pdbonly</DebugType>
@@ -186,7 +186,6 @@
     <Compile Include="Events\IEventHandler.cs" />
     <Compile Include="Events\IHaveEventManager.cs" />
     <Compile Include="Events\SimpleEvent.cs" />
-    <Compile Include="Features\DebugDraw\DebugSphere.cs" />
     <Compile Include="Features\DebugDraw\DebugLines.cs" />
     <Compile Include="Features\DebugDraw\DebugLine.cs" />
     <Compile Include="Features\DebugDraw\DebugBox.cs" />
@@ -236,6 +235,7 @@
     <Compile Include="Particles\DPSFParticleManager.cs" />
     <Compile Include="Particles\IParticleManager.cs" />
     <Compile Include="Particles\IParticleSystem.cs" />
+    <Compile Include="Physic\Constraints\BepuConstraint\BepuPhysicConstraint.cs" />
     <Compile Include="Physic\Constraints\BepuConstraint\PointPointConstraint.cs" />
     <Compile Include="Physic\Constraints\IPhysicConstraint.cs" />
     <Compile Include="Physic\IPhysicWorld.cs" />
@@ -533,6 +533,7 @@
     <None Include="bin\x86\Debug\Content\Textures\wave1.xnb" />
     <None Include="bin\x86\Debug\Content\Textures\waves2.xnb" />
     <None Include="bin\x86\Debug\Content\Textures\white.xnb" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="Resources\ConsoleFont.spritefont" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
