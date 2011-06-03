@@ -7,7 +7,6 @@ using PloobsEngine.Engine;
 using PloobsEngine.Modelo;
 using PloobsEngine.SceneControl;
 using Microsoft.Xna.Framework;
-using XNAnimation.Effects;
 
 namespace PloobsEngine.Material
 {

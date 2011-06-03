@@ -4,7 +4,9 @@ using System.Text;
 
 namespace PloobsEngine.IA
 {
+    #if !WINDOWS_PHONE
     [Serializable]
+#endif
     public class IAPathfinderNode
     {
         public float F;

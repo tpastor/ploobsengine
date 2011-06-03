@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿#if !WINDOWS_PHONE
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using PloobsEngine.Cameras;
@@ -98,3 +99,4 @@ namespace PloobsEngine.Material
 
     }
 }
+#endif

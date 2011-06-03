@@ -6,7 +6,9 @@ using Microsoft.Xna.Framework;
 
 namespace PloobsEngine.IA
 {
+    #if !WINDOWS_PHONE
     [Serializable]
+#endif
     public class Waypoint
     {
         public Waypoint()
@@ -63,7 +65,9 @@ namespace PloobsEngine.IA
     /// <summary>
     /// EXEMPLOS DE TIPOS DE WAYPONIT
     /// </summary>
+    #if !WINDOWS_PHONE
     [Serializable]
+    #endif
     public enum WAYPOINTTYPE
     {
         NORMAL, NOTWALKABLE, HARDTOWALK, SPECIAL_1, SPECIAL_2, SPECIAL_3, SPECIAL_4, SPECIAL_5

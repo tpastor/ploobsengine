@@ -75,9 +75,11 @@ namespace PloobsEngine.Physic.Constraints.BepuConstraint
             get { return PhysicConstraintTypes.POINTPOINT; }
         }
 
+        #if !WINDOWS_PHONE
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
         {
             throw new NotImplementedException();
         }
+#endif
     }
 }

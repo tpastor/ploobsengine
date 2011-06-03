@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !WINDOWS_PHONE
+using System;
  
 namespace PloobsEngine.Utils.Spline
 {
@@ -317,3 +318,5 @@ namespace PloobsEngine.Utils.Spline
         }
     }
 }
+
+#endif

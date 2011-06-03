@@ -32,6 +32,7 @@ namespace PloobsEngine.Physics
 
         private List<IPhysicConstraint> ctns;
 
+        #if !WINDOWS_PHONE
         /// <summary>
         /// Initializes a new instance of the <see cref="BepuPhysicWorld"/> class.
         /// </summary>
@@ -80,6 +81,25 @@ namespace PloobsEngine.Physics
 
             }
         }
+#else
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BepuPhysicWorld"/> class.
+        /// </summary>
+        /// <param name="gravity">The gravity.</param>
+        public BepuPhysicWorld(float gravity)
+        {
+            space = new Space();
+            objs = new List<IPhysicObject>();
+            ctns = new List<IPhysicConstraint>();
+            space.ForceUpdater.Gravity = new Vector3(0, gravity, 0);
+            useRealElapsedTimeStep = false;
+            space.TimeStepSettings.TimeStepDuration = 1 / 30f;
+            PhysicElapesedTimeMultiplier = 1;
+        }
+
+
+#endif
+
 
         bool useRealElapsedTimeStep ;
         float PhysicElapesedTimeMultiplier;
@@ -97,8 +117,7 @@ namespace PloobsEngine.Physics
         }        
 
         #region IPhysicWorld Members
-
-
+        
         /// <summary>
         /// Updates
         /// </summary>
@@ -108,7 +127,8 @@ namespace PloobsEngine.Physics
             var dt = (float)gt.ElapsedGameTime.TotalSeconds;
             if(useRealElapsedTimeStep)
                 space.Update(dt * PhysicElapesedTimeMultiplier);
-            space.Update();        
+            else
+                space.Update();        
         }
 
         
@@ -135,6 +155,7 @@ namespace PloobsEngine.Physics
                 space.Add(m.Rotator);
                 objs.Add(m.BepuEntityObject);
             }
+            #if !WINDOWS_PHONE
             else if (obj.PhysicObjectTypes == PhysicObjectTypes.TERRAIN)
             {
                 TerrainObject t = obj as TerrainObject;
@@ -142,6 +163,7 @@ namespace PloobsEngine.Physics
                 t.Terrain.Tag = obj;                
                 objs.Add(obj);
             }
+            #endif
             else if (obj.PhysicObjectTypes == PhysicObjectTypes.DETECTOROBJECT)
             {
                 DetectorVolumeObject m = (DetectorVolumeObject)obj;
@@ -208,6 +230,7 @@ namespace PloobsEngine.Physics
                 DetectorVolumeObject m = (DetectorVolumeObject)obj;
                 space.Remove(m.DetectorVolume);
             }
+            #if !WINDOWS_PHONE
             else if (obj.PhysicObjectTypes == PhysicObjectTypes.TERRAIN)
             {
                 TerrainObject t = obj as TerrainObject;
@@ -215,6 +238,7 @@ namespace PloobsEngine.Physics
                 t.Terrain.Tag = null;
                 objs.Remove(obj);
             }
+            #endif
             else if (obj.PhysicObjectTypes == PhysicObjectTypes.CHARACTEROBJECT)
             {
                 CharacterObject cc = (CharacterObject)obj;
@@ -398,7 +422,8 @@ namespace PloobsEngine.Physics
         }
 
 
-        /// <summary>
+#if !WINDOWS_PHONE
+	    /// <summary>
         /// Gets the object data.
         /// </summary>
         /// <param name="info">The info.</param>
@@ -407,6 +432,7 @@ namespace PloobsEngine.Physics
         {
             ActiveLogger.LogMessage("Serialization not implemented yet", LogLevel.RecoverableError);
         }
+#endif
 
         /// <summary>
         /// Applies the default settings to the space.

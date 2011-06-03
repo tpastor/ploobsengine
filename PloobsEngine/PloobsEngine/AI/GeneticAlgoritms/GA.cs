@@ -21,6 +21,7 @@
 using System;
 using System.Collections;
 using System.IO;
+using System.Collections.Generic;
 
 namespace PloobsEngine.IA.Genetic
 {
@@ -81,9 +82,9 @@ namespace PloobsEngine.IA.Genetic
 				throw new IndexOutOfRangeException("Genome size not set");
 
 			//  Create the fitness table.
-			m_fitnessTable = new ArrayList();
-			m_thisGeneration = new ArrayList(m_generationSize);
-			m_nextGeneration = new ArrayList(m_generationSize);
+			m_fitnessTable = new List<double>();
+			m_thisGeneration = new List<Genome>(m_generationSize);
+			m_nextGeneration = new List<Genome>(m_generationSize);
 			Genome.MutationRate = m_mutationRate;
 
 
@@ -233,10 +234,10 @@ namespace PloobsEngine.IA.Genetic
 		private double m_totalFitness;
 		private string m_strFitness;
 		private bool m_elitism;
-		
-		private ArrayList m_thisGeneration;
-		private ArrayList m_nextGeneration;
-		private ArrayList m_fitnessTable;
+
+        private List<Genome> m_thisGeneration;
+		private List<Genome> m_nextGeneration;
+		private List<double> m_fitnessTable;
 		
 		static Random m_random = new Random();
 

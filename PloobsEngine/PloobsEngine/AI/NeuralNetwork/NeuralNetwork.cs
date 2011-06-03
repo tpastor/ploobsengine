@@ -8,7 +8,9 @@
 using System;
 using System.IO;
 using System.Runtime.Serialization;
+#if !WINDOWS_PHONE
 using System.Runtime.Serialization.Formatters.Binary;
+#endif
 
 
 namespace PloobsEngine.IA.NeuralNetwork
@@ -34,7 +36,9 @@ namespace PloobsEngine.IA.NeuralNetwork
 	/// learn using couples (INPUT, EXPECTED OUTPUT)
 	/// and a learnig algorithm.
 	/// </remarks>
+    #if !WINDOWS_PHONE
 	[Serializable]
+    #endif
 	public class NeuralNetwork
 	{
 
@@ -250,6 +254,7 @@ namespace PloobsEngine.IA.NeuralNetwork
 		#endregion
 
 		#region PERSISTANCE IMPLEMENTATION
+        #if !WINDOWS_PHONE
 		/// <summary>
 		/// Save the Neural Network in a binary formated file
 		/// </summary>
@@ -261,6 +266,7 @@ namespace PloobsEngine.IA.NeuralNetwork
 			binFmt.Serialize(s, this);
 			s.Close();
 		}
+
 		/// <summary>
 		/// Load a neural network from a binary formated file
 		/// </summary>
@@ -282,6 +288,8 @@ namespace PloobsEngine.IA.NeuralNetwork
 			}
 			return result;
 		}
+#endif
 		#endregion
+
 	}
 }

@@ -7,6 +7,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace PloobsEngine.IA.NeuralNetwork
 {
@@ -14,7 +15,9 @@ namespace PloobsEngine.IA.NeuralNetwork
 	/// The abstract class describing a learning
 	/// algorithm for a neural network
 	/// </summary>
+    #if !WINDOWS_PHONE
 	[Serializable]
+    #endif
 	public abstract class LearningAlgorithm
 	{
 
@@ -156,7 +159,9 @@ namespace PloobsEngine.IA.NeuralNetwork
 	/// is back-propaged after every learning case. There is another version
 	/// of this algorithm which works on global error.
 	/// </remarks>
-	[Serializable]
+	#if !WINDOWS_PHONE
+    [Serializable]
+    #endif
 	public class BackPropagationLearningAlgorithm : LearningAlgorithm
 	{
 
@@ -322,7 +327,9 @@ namespace PloobsEngine.IA.NeuralNetwork
 	///	  Until error > error_threshold  	   
 	/// </code>
 	///</remarks>
+    #if !WINDOWS_PHONE
 	[Serializable]
+    #endif
 	public class GeneticLearningAlgorithm : LearningAlgorithm 
 	{
 
@@ -350,7 +357,7 @@ namespace PloobsEngine.IA.NeuralNetwork
 		/// <summary>
 		/// The population of GeneticNeuralNetwork
 		/// </summary>
-		protected ArrayList population;
+        protected List<GeneticNeuralNetwork> population;
 
 		#endregion
 
@@ -364,7 +371,7 @@ namespace PloobsEngine.IA.NeuralNetwork
 			get {return POPULATION_SIZE;}
 			set {
 				
-				ArrayList newPop = new ArrayList();
+				List<GeneticNeuralNetwork> newPop = new List<GeneticNeuralNetwork>();
 				int index = 0;
 				population.Sort();
 				while (index<value && index<population.Count) 
@@ -477,7 +484,7 @@ namespace PloobsEngine.IA.NeuralNetwork
 		/// </summary>
 		protected void makeNewGeneration() 
 		{
-			ArrayList result = new ArrayList();
+			List<GeneticNeuralNetwork> result = new List<GeneticNeuralNetwork>();
 			population.Sort();
 			result.Add(population[0]);
 			int index = 1;
@@ -526,7 +533,7 @@ namespace PloobsEngine.IA.NeuralNetwork
 		/// <param name="nn">The neural network to train</param>
 		public GeneticLearningAlgorithm(NeuralNetwork nn) : base(nn) 
 		{
-			population = new ArrayList();
+			population = new List<GeneticNeuralNetwork>();
 			for(int i=0; i<POPULATION_SIZE; i++)
 				population.Add(Muted_NeuralNetwork);
 		}
@@ -573,7 +580,9 @@ namespace PloobsEngine.IA.NeuralNetwork
 		/// <summary>
 		/// Representation of a neural network for the genetic algorithm
 		/// </summary>
+        #if !WINDOWS_PHONE
 		[Serializable]
+        #endif
 		protected class GeneticNeuralNetwork : IComparable
 		{
 			/// <summary>

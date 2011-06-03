@@ -15,7 +15,11 @@ namespace PloobsEngine.Physics
     /// <summary>
     /// Physic Object Specification
     /// </summary>
+    #if !WINDOWS_PHONE
     public abstract class IPhysicWorld : ISerializable
+    #else
+    public abstract class IPhysicWorld 
+    #endif
     {        
         /// <summary>
         /// Gets or sets a value indicating whether this instance is debug draw.
@@ -113,7 +117,9 @@ namespace PloobsEngine.Physics
 
         #region ISerializable Members
 
-        public abstract void GetObjectData(SerializationInfo info, StreamingContext context);
+#if !WINDOWS_PHONE
+	    public abstract void GetObjectData(SerializationInfo info, StreamingContext context);
+#endif
         
         #endregion
     }

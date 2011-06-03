@@ -22,7 +22,9 @@ namespace PloobsEngine.IA.NeuralNetwork
 	///
 	/// </code>
 	///</remarks>
-	[Serializable]
+	#if !WINDOWS_PHONE
+    [Serializable]
+#endif
 	public class Neuron
 	{
 		

@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !WINDOWS_PHONE
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -120,7 +121,7 @@ namespace PloobsEngine.SceneControl
             Matrix projectionInverse = Matrix.Invert(world.CameraManager.ActiveCamera.Projection);
             Matrix viewProjectionInverse = projectionInverse * viewInverse;
 
-            Vector3 v;
+            Vector3 v = new Vector3();
             v.X = (((2.0f * ms.X) / info.Viewport.Width) - 1);
             v.Y = -(((2.0f * ms.Y) / info.Viewport.Height) - 1);
             v.Z = 0.0f;
@@ -175,3 +176,4 @@ namespace PloobsEngine.SceneControl
         }
     }
 }
+#endif

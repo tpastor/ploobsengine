@@ -9,6 +9,9 @@ using PloobsEngine.Utils;
 using PloobsEngine.MessageSystem;
 using PloobsEngine.SceneControl;
 using PloobsEngine.Engine.Logger;
+#if WINDOWS_PHONE
+using Microsoft.Xna.Framework.Input.Touch;
+#endif
 
 namespace PloobsEngine.Cameras
 {
@@ -68,7 +71,78 @@ namespace PloobsEngine.Cameras
         public CameraFirstPerson(float lrRot, float udRot, Vector3 startingPos, Viewport viewport)
         {
             init(lrRot, udRot, startingPos,viewport);
+
+#if WINDOWS_PHONE
+        accelSensor = new Microsoft.Devices.Sensors.Accelerometer();
+        // Start the accelerometer
+        try
+        {
+            accelSensor.Start();
+            accelActive = true;
         }
+        catch (Microsoft.Devices.Sensors.AccelerometerFailedException e)
+        {
+            // the accelerometer couldn't be started.  No fun!
+            accelActive = false;
+        }
+        catch (UnauthorizedAccessException e)
+        {
+            // This exception is thrown in the emulator-which doesn't support an accelerometer.
+            accelActive = false;
+        }
+        accelSensor.ReadingChanged += new EventHandler<Microsoft.Devices.Sensors.AccelerometerReadingEventArgs>(accelSensor_ReadingChanged);
+#endif
+
+        }
+
+#if WINDOWS_PHONE
+        void accelSensor_ReadingChanged(object sender, Microsoft.Devices.Sensors.AccelerometerReadingEventArgs e)
+        {
+            speedAcel.X = (float)e.X;
+            speedAcel.Y = (float)e.Y;
+            speedAcel.Z = (float)e.Z;
+        }
+
+        bool accelActive = false;        
+        public void StartAcelerometer()
+        {
+            if (accelActive == true)
+                return;
+
+            try
+            {
+                accelSensor.Start();
+                accelActive = true;
+            }
+            catch (Microsoft.Devices.Sensors.AccelerometerFailedException e)
+            {
+                // the accelerometer couldn't be started.  No fun!
+                accelActive = false;
+            }
+            catch (UnauthorizedAccessException e)
+            {
+                // This exception is thrown in the emulator-which doesn't support an accelerometer.
+                accelActive = false;
+            }
+        }   
+
+        public void StopAcelerometer()
+        {
+            // Stop the accelerometer if it's active.
+            if (accelActive)
+            {
+                try
+                {
+                    accelSensor.Stop();
+                }
+                catch (Microsoft.Devices.Sensors.AccelerometerFailedException e)
+                {
+                    // the accelerometer couldn't be stopped now.
+                }
+            }
+        }
+
+#endif
 
         private void init(float lrRot, float udRot, Vector3 startingPos, Viewport viewport)
         {
@@ -107,6 +181,10 @@ namespace PloobsEngine.Cameras
         private MouseState originalMouseState;
         private Viewport viewPort;
         private float moveSpeed = 1f;
+#if WINDOWS_PHONE
+        Microsoft.Devices.Sensors.Accelerometer accelSensor;
+        Vector3 speedAcel = new Vector3();
+#endif
 
         #endregion
 
@@ -345,6 +423,7 @@ namespace PloobsEngine.Cameras
         private void UpdateCamera(MouseState currentMouseState, KeyboardState keyState)
         {
             _hasmoved = false;
+            #if !WINDOWS_PHONE
             if (currentMouseState != originalMouseState && useMouse == true)
             {
                 float xDifference = currentMouseState.X - originalMouseState.X;
@@ -360,7 +439,7 @@ namespace PloobsEngine.Cameras
             {
                 AddToCameraPosition(new Vector3(0, 0, -sensibility));
                 _hasmoved = true;
-            }
+            } 
             if (keyState.IsKeyDown(Keys.Down) || keyState.IsKeyDown(Keys.S))    //Backward
             {
                 AddToCameraPosition(new Vector3(0, 0, sensibility));
@@ -386,11 +465,42 @@ namespace PloobsEngine.Cameras
                 AddToCameraPosition(new Vector3(0, -sensibility, 0));
                 _hasmoved = true;
             }
+        #else            
+            TouchCollection tc = TouchPanel.GetState();
+            if (tc.Count > 0)
+            {
+                if (tc[0].State == TouchLocationState.Moved)
+                {
+                    if (tcpressed.Count != 0)
+                    {
+                        Vector2 Difference = tc[0].Position - tcpressed[0].Position;
+                        leftrightRot -= rotationSpeed * Difference.X;
+                        updownRot -= rotationSpeed * Difference.Y;
+                        UpdateViewMatrix();
+                    }
+                    _hasmoved = true;                    
+                    tcpressed = tc;
+                }                
+            }
+
+            if (accelActive)
+            {
+                if (speedAcel != Vector3.Zero)
+                {
+                    AddToCameraPosition(speedAcel);
+                    _hasmoved = true;     
+                }
+            }
+
+        #endif
 
         }
 
         #endregion       
-                
+              
+        #if WINDOWS_PHONE
+        TouchCollection tcpressed;        
+        #endif
 
         public float UpDownRot
         {
@@ -472,11 +582,13 @@ namespace PloobsEngine.Cameras
 
 
         #region ISerializable Members
-
+#if !WINDOWS_PHONE
+	
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
         {
             ActiveLogger.LogMessage("Serialization not implemented yet", LogLevel.RecoverableError);
         }
+#endif
 
         #endregion
     }

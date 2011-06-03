@@ -13,7 +13,11 @@ namespace PloobsEngine.Modelo.Animation
     /// Animation Controler Interface
     /// User interact with animated model by this controller
     /// </summary>
+    #if !WINDOWS_PHONE
     public interface IAnimatedController : ISerializable
+#else
+    public interface IAnimatedController 
+#endif
     {
         /// <summary>
         /// Changes the animation.

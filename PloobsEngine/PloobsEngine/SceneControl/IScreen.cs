@@ -53,11 +53,13 @@ namespace PloobsEngine.SceneControl
             IsLoaded = false;
         }
                
-
+        #if !WINDOWS_PHONE
         private Dictionary<IInput, BindKeyCommand> KeyBinds = new Dictionary<IInput, BindKeyCommand>();
         private Dictionary<IInput, BindMouseCommand> MouseBinds = new Dictionary<IInput, BindMouseCommand>();
+        #endif
         public OnScreenChangeState OnScreenChangeState = null;
 
+        #if !WINDOWS_PHONE
         /// <summary>
         /// Binds the KeyBoard input.
         /// </summary>
@@ -138,6 +140,7 @@ namespace PloobsEngine.SceneControl
                 CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bc);
             }
         }
+        #endif
 
         public bool IsLoaded
         {
@@ -324,7 +327,8 @@ namespace PloobsEngine.SceneControl
         /// Cleans up resources that dont are exclusive of the screen        
         /// </summary>
         protected virtual void CleanUp(EngineStuff engine)
-        {            
+        {    
+            #if !WINDOWS_PHONE
             foreach (var item in KeyBinds.Values)
 	        {
                 item.BindAction = BindAction.REMOVE;
@@ -335,6 +339,7 @@ namespace PloobsEngine.SceneControl
                 item.BindAction = BindAction.REMOVE;
                 CommandProcessor.getCommandProcessor().SendCommandAssyncronous(item);
             }
+            #endif
 
             IScreenUpdateable[] updts = updateables.ToArray();
 

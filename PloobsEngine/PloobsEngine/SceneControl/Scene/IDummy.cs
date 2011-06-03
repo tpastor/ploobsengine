@@ -13,7 +13,11 @@ namespace PloobsEngine.SceneControl
     /// Usefull to pass information from an editor to the game, cause dummies
     /// are serializable
     /// </summary>
+    #if !WINDOWS_PHONE
     public interface IDummy : ISerializable
+#else
+    public interface IDummy 
+#endif
     {
         String Name { get; set; }        
     }

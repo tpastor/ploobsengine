@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !WINDOWS_PHONE
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,18 +10,18 @@ using PloobsEngine.Components;
 namespace PloobsEngine.Input
 {
 
-#if !XBOX360
+#if !XBOX360 && !WINDOWS_PHONE
     /// <summary>
     /// Mouse Buttoms
     /// </summary>
     public enum MouseButtons
     {
-        LeftButton,
-        MiddleButton,
-        RightButton,
-        XButton1,
-        XButton2,    
-        None
+        LeftButton = 0,
+        MiddleButton = 1,
+        RightButton = 2,
+        XButton1 = 3,
+        XButton2 = 4,    
+        None = 5
     }
 #endif
 
@@ -37,7 +38,7 @@ namespace PloobsEngine.Input
         private Dictionary<Buttons, float>[] buttonCache;
         private GamePadState[] currentPadState;
         private GamePadState[] previousPadState;
-#else
+#else 
         public static readonly String MyName = "InputAdvanced";
         private Dictionary<Keys, float> keyCache;
         private KeyboardState currentKeyState;
@@ -55,8 +56,7 @@ namespace PloobsEngine.Input
         /// <param name="es">The es.</param>
         public InputAdvanced()
             
-        {        
-            
+        {                    
 
 #if XBOX360
             buttonCache = new Dictionary<Buttons, float>[4]
@@ -663,3 +663,4 @@ namespace PloobsEngine.Input
         GSYSTEM = 0x0100000000000
     }
 }
+#endif

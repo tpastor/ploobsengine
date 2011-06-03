@@ -11,24 +11,38 @@ namespace PloobsEngine.SceneControl
 
     public struct ForwardRenderTecnichDescription
     {
+        #if !WINDOWS_PHONE
         public static ForwardRenderTecnichDescription Default()
         {
             return new ForwardRenderTecnichDescription(Color.Black, true);
         }
+        #else
+        public static ForwardRenderTecnichDescription Default()
+        {
+            return new ForwardRenderTecnichDescription(Color.Black);
+        }
+        #endif
 
-        public ForwardRenderTecnichDescription(Color BackGroundColor,bool usePostEffect = true)
+        internal ForwardRenderTecnichDescription(Color BackGroundColor,bool usePostEffect = true)
         {
             this.BackGroundColor = BackGroundColor;
+            #if !WINDOWS_PHONE
             this.usePostEffect = usePostEffect;
+            #endif
             
         }
+        #if !WINDOWS_PHONE
         public bool usePostEffect;
+        #endif
         public Color BackGroundColor;
     }
 
     public class ForwardRenderTecnich : IRenderTechnic
     {
-        public ForwardRenderTecnich(ForwardRenderTecnichDescription desc) : base(PostEffectType.Forward)
+        public ForwardRenderTecnich(ForwardRenderTecnichDescription desc) 
+            #if !WINDOWS_PHONE
+            : base(PostEffectType.Forward)
+            #endif
         {
             this.desc = desc;
         }
@@ -42,11 +56,13 @@ namespace PloobsEngine.SceneControl
         protected override void AfterLoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
         {
             this.ginfo = ginfo;
+            #if !WINDOWS_PHONE
             if (desc.usePostEffect)
             {
                 renderTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth,ginfo.BackBufferHeight,SurfaceFormat.Color,ginfo.UseMipMap,DepthFormat.Depth24Stencil8,ginfo.MultiSample,RenderTargetUsage.DiscardContents);
                 postEffectTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
             }            
+            #endif
             base.AfterLoadContent(manager, ginfo, factory);
         }
 
@@ -58,10 +74,12 @@ namespace PloobsEngine.SceneControl
                 item.Material.PreDrawnPhase(gameTime, world, item, world.CameraManager.ActiveCamera, world.Lights, render);
             }
 
+            #if !WINDOWS_PHONE
             if (desc.usePostEffect)
             {
                 render.PushRenderTarget(renderTarget);                
             }
+            #endif
 
             render.Clear(desc.BackGroundColor);
             render.RenderPreComponents(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection);            
@@ -84,6 +102,7 @@ namespace PloobsEngine.SceneControl
 
             render.RenderPosWithDepthComponents(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection);
 
+            #if !WINDOWS_PHONE
             if (desc.usePostEffect)
             {
                 render[PrincipalConstants.CurrentImage] = render.PopRenderTarget()[0].RenderTarget as Texture2D;
@@ -101,7 +120,7 @@ namespace PloobsEngine.SceneControl
                 render.Clear(Color.Black);
                 render.RenderTextureComplete(render[PrincipalConstants.CurrentImage], Color.White, ginfo.FullScreenRectangle, Matrix.Identity, null, true, SpriteSortMode.Deferred, SamplerState.AnisotropicClamp, BlendState.AlphaBlend);                                             
             }           
-
+            #endif
             render.RenderPosComponents(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection);
 
         }

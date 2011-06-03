@@ -11,7 +11,11 @@ namespace PloobsEngine.Light
     /// <summary>
     /// Specification of a Light
     /// </summary>
+    #if !WINDOWS_PHONE
     public interface ILight : ISerializable
+    #else
+    public interface ILight 
+    #endif
     {
         /// <summary>
         /// Gets or sets a value indicating whether [cast shadown].

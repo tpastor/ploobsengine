@@ -20,6 +20,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 
 namespace PloobsEngine.IA.Genetic
@@ -27,19 +28,16 @@ namespace PloobsEngine.IA.Genetic
 	/// <summary>
 	/// Compares genomes by fitness
 	/// </summary>
-	public sealed class GenomeComparer : IComparer
+	public sealed class GenomeComparer : IComparer<Genome>
 	{
 		public GenomeComparer()
 		{
 		}
-		public int Compare( object x, object y)
-		{
-			if ( !(x is Genome) || !(y is Genome))
-				throw new ArgumentException("Not of type Genome");
-
-			if (((Genome) x).Fitness > ((Genome) y).Fitness)
+        public int Compare(Genome x, Genome y)
+		{			
+			if (( x).Fitness > (y).Fitness)
 				return 1;
-			else if (((Genome) x).Fitness == ((Genome) y).Fitness)
+			else if (( x).Fitness == (y).Fitness)
 				return 0;
 			else
 				return -1;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !WINDOWS_PHONE
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -102,15 +103,7 @@ namespace PloobsEngine.Loader
                     break;
             }
 
-
-
             po.isMotionLess = flag;
-
-
-
-
-
-
 
             IShader shader = new DeferredCustomShader(mi.HasTexture(TextureType.GLOW), mi.HasTexture(TextureType.BUMP), mi.HasTexture(TextureType.SPECULAR), mi.HasTexture(TextureType.PARALAX));
             DeferredMaterial dm = new DeferredMaterial(shader);
@@ -177,6 +170,7 @@ namespace PloobsEngine.Loader
             {
 
                 List<IObject> obb = world.Objects.ToList();
+                
 
                 IObject o1 = obb.Find(delegate(IObject o) { return o.Name == item.bodyA; });
                 IObject o2 = obb.Find(delegate(IObject o) { return o.Name == item.bodyB; });
@@ -239,3 +233,4 @@ namespace PloobsEngine.Loader
     }
 
 }
+#endif

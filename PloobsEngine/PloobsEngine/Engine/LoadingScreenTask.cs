@@ -6,7 +6,6 @@ using Microsoft.Xna.Framework.Graphics;
 using PloobsEngine.SceneControl;
 using PloobsEngine.Utils;
 using Microsoft.Xna.Framework;
-using XNAnimation;
 using PloobsEngine.Features;
 
 namespace PloobsEngine.Engine
