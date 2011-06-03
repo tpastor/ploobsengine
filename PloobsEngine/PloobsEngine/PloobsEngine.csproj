@@ -186,7 +186,6 @@
     <Compile Include="Events\IEventHandler.cs" />
     <Compile Include="Events\IHaveEventManager.cs" />
     <Compile Include="Events\SimpleEvent.cs" />
-    <Compile Include="Features\DebugDraw\DebugSphere.cs" />
     <Compile Include="Features\DebugDraw\DebugLines.cs" />
     <Compile Include="Features\DebugDraw\DebugLine.cs" />
     <Compile Include="Features\DebugDraw\DebugBox.cs" />
