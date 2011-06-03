@@ -1,0 +1,85 @@
+<!-- Comments: -->
+<SCENE>
+	<body 	 name="Lion" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="lion.tga" />
+			<bump name ="lion_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="Box01" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="spnza_bricks_a_diff.tga" />
+			<bump name ="spnza_bricks_a_ddn.tga" />
+			<specular name ="spnza_bricks_a_spec.tga" />
+		</material>
+	</body> 
+	<body 	 name="Cylinder01" >
+		<collision type="Editable_mesh"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_ceiling_a_diff.tga" />
+			<specular name ="sponza_ceiling_a_spec.tga" />
+		</material>
+	</body> 
+	<body 	 name="Object01" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="spnza_bricks_a_diff.tga" />
+			<bump name ="spnza_bricks_a_ddn.tga" />
+			<specular name ="spnza_bricks_a_spec.tga" />
+		</material>
+	</body> 
+	<body 	 name="Object02" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="spnza_bricks_a_diff.tga" />
+			<bump name ="spnza_bricks_a_ddn.tga" />
+			<specular name ="spnza_bricks_a_spec.tga" />
+		</material>
+	</body> 
+	<body 	 name="Object03" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="spnza_bricks_a_diff.tga" />
+			<bump name ="spnza_bricks_a_ddn.tga" />
+			<specular name ="spnza_bricks_a_spec.tga" />
+		</material>
+	</body> 
+</SCENE>

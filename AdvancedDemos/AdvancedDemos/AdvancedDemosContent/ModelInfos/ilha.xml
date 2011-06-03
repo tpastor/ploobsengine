@@ -1,0 +1,148 @@
+<!-- Comments: -->
+<SCENE>
+	<body name="Plane01" >
+		<material name="Standardmaterial">
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="chao.psd" />
+			<bump name ="chaobump.jpg" />
+		</material>
+	</body> 
+	<body name="tronco" >
+		<material name="Standardmaterial">
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="treedifuse.jpg" />
+			<bump name ="treebump.jpg" />
+		</material>
+	</body> 
+	<body name="Plane04" >
+		<material name="Standardmaterial">
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="folha.jpg" />
+		</material>
+	</body> 
+	<body name="f1" >
+		<material name="Standardmaterial">
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="folha.jpg" />
+		</material>
+	</body> 
+	<body name="f2" >
+		<material name="Standardmaterial">
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="folha.jpg" />
+		</material>
+	</body> 
+	<body name="f3" >
+		<material name="Standardmaterial">
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="folha.jpg" />
+		</material>
+	</body> 
+	<body name="f5" >
+		<material name="Standardmaterial">
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="folha.jpg" />
+		</material>
+	</body> 
+	<body name="f6" >
+		<material name="Standardmaterial">
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="folha.jpg" />
+		</material>
+	</body> 
+	<body name="f7" >
+		<material name="Standardmaterial">
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="folha.jpg" />
+		</material>
+	</body> 
+	<body name="f8" >
+		<material name="Standardmaterial">
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="folha.jpg" />
+		</material>
+	</body> 
+	<body name="f9" >
+		<material name="Standardmaterial">
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="folha.jpg" />
+		</material>
+	</body> 
+	<body name="f10" >
+		<material name="Standardmaterial">
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="folha.jpg" />
+		</material>
+	</body> 
+	<body name="f11" >
+		<material name="Standardmaterial">
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="folha.jpg" />
+		</material>
+	</body> 
+</SCENE>

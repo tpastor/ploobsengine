@@ -1,0 +1,56 @@
+using System;
+using PloobsEngine.Engine;
+using PloobsEngine.SceneControl;
+using EngineTestes.LoadingScreen;
+using ProjectTemplate;
+
+namespace EngineTestes
+{
+    static class Program
+    {
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        static void Main(string[] args)
+        {
+            InitialEngineDescription desc = new InitialEngineDescription("PLoobsDemos",800, 600, false, Microsoft.Xna.Framework.Graphics.GraphicsProfile.HiDef, false, false, false,null,false);            
+
+            using (EngineStuff engine = new EngineStuff(ref desc, LoadScreen))
+            {
+                engine.Run();
+            }
+
+        }
+
+        static void LoadScreen(ScreenManager manager)
+        {
+            //manager.AddScreen(new FirstScreen());
+            //manager.AddScreen(new DeferredScreen());
+            //manager.AddScreen(new DeferredLoadScreen());
+            //manager.AddScreen(new DeferredAnimatedScreen());
+            //manager.AddScreen(new CharacterScreen());
+            //manager.AddScreen(new ParticleScreen());
+            //manager.AddScreen(new PostEffectScreen());
+            //manager.AddScreen(new SoundScreen());
+            //manager.AddScreen(new TransparentForwardScreen());
+            //manager.AddScreen(new BilboardScreen());
+            //manager.AddScreen(new TerrainScreen());
+            //manager.AddScreen(new TransparentDeferredScreen());
+            //manager.AddScreen(new AAScreen());
+            //manager.AddScreen(new TechDemoScreen());
+            //manager.AddScreen(new TechDemoScreenModel());
+            //manager.AddScreen(new GUIScreen());
+            //manager.AddScreen(new FGUIScreen());
+            //manager.AddScreen(new ForwardLoadScreen());
+            //manager.AddScreen(new DeferredLoadScreen(),new LoadScene());
+            manager.AddScreen(new DebugDrawScreen());
+            //manager.AddScreen(new OctreeScreen());
+            //manager.AddScreen(new HybridDeferred());
+            //manager.AddScreen(new VegetationForwardScreen());
+            //manager.AddScreen(new VegetationDeferredScreen());            
+            //manager.AddScreen(new MixReflection());                        
+        }
+    }
+
+}
+
