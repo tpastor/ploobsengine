@@ -31,7 +31,7 @@ namespace PloobsEngine.Engine
             this.MultiSample = MultiSample;
             this.DepthFormat = DepthFormat;
             this.UseMipMap = useMipMap;
-#if !XBOX
+#if !XBOX && !WINDOWS_PHONE
             this.window = (System.Windows.Forms.Form) System.Windows.Forms.Form.FromHandle(engine.Window.Handle);
 #endif
 
@@ -41,8 +41,11 @@ namespace PloobsEngine.Engine
                 SamplerState = SamplerState.LinearClamp;
 
             UseAnisotropicFiltering = useAnisotropicFiltering;
-
+#if !WINDOWS_PHONE
             GraphicsAdapter = engine.GraphicsDevice.Adapter;
+#else
+            GraphicsAdapter = engine.game.GraphicsDevice.Adapter;
+#endif
         }
 
         internal void ChangeProps(int BackBufferHeight, int BackBufferWidth, Rectangle FullScreenRectangle, Vector2 halfPixel, GraphicsDevice device, int MultiSample, DepthFormat DepthFormat, bool useMipMap,bool useAnisotropicFiltering = true)
@@ -216,7 +219,7 @@ namespace PloobsEngine.Engine
             internal set { viewport = value; }
         }
 
-#if !XBOX
+#if !XBOX && !WINDOWS_PHONE
         private System.Windows.Forms.Form window = null;
 
         /// <summary>

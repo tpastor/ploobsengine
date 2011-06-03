@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Utils;
+using System.Xml.Serialization;
 
 namespace PloobsEngine.Cameras
 {
+#if !WINDOWS_PHONE
     [Serializable]
+#endif
     public class CameraPathData
     {
         public CameraPathData(CurveLoopType CurveLoopType)

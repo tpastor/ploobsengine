@@ -148,7 +148,7 @@ namespace PloobsEngine.Material
         #endregion
 
         #region ISerializable Members
-
+        #if !WINDOWS_PHONE
         /// <summary>
         /// Populates a <see cref="T:System.Runtime.Serialization.SerializationInfo"/> with the data needed to serialize the target object.
         /// </summary>
@@ -158,7 +158,7 @@ namespace PloobsEngine.Material
         public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
         {            
         }
-
+        #endif
         #endregion
 
         

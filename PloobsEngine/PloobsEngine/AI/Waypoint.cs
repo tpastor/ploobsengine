@@ -6,7 +6,9 @@ using Microsoft.Xna.Framework;
 
 namespace Engine.IA
 {
+    #if !WINDOWS_PHONE
     [Serializable]
+    #endif
     public struct Waypoint
     {
         public int Id;

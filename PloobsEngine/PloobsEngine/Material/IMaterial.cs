@@ -16,7 +16,11 @@ namespace PloobsEngine.Material
     /// <summary>
     /// Material Specification
     /// </summary>
+    #if !WINDOWS_PHONE
     public interface IMaterial : ISerializable
+#else
+    public interface IMaterial 
+#endif
     {
 
         /// <summary>

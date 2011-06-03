@@ -243,7 +243,10 @@ namespace PloobsEngine.IA
 
     }
 
+    #if !WINDOWS_PHONE
     [Serializable]
+    #endif
+
     public enum WaypointsState
     {
         Connected,UnConnected,Empty

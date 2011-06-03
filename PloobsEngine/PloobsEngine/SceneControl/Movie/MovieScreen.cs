@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !WINDOWS_PHONE
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,7 +40,7 @@ namespace PloobsEngine.SceneControl
         {
              base.LoadContent(GraphicInfo, factory, contentManager);            
              videoPlayer = new VideoPlayer();
-             myVideoFile = contentManager.GetAsset<Video>(location);
+             myVideoFile = contentManager.GetAsset<Video>(location);            
              videoPlayer.IsLooped = false;            
 
         }
@@ -135,3 +136,4 @@ namespace PloobsEngine.SceneControl
 
     }
 }
+#endif

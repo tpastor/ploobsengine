@@ -12,7 +12,9 @@ namespace PloobsEngine.Utils
     /// Represents a Curve3D 
     /// using one XNA Curve for each axis
     /// </summary>
+    #if !WINDOWS_PHONE
     [Serializable]
+#endif
     public class Curve3D
     {
         public Curve curveX = new Curve();

@@ -21,7 +21,11 @@ namespace PloobsEngine.SceneControl
     /// <summary>
     /// Specification of a world
     /// </summary>
+    #if !WINDOWS_PHONE
     public class IWorld : ISerializable
+#else
+    public class IWorld 
+#endif
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="IWorld"/> class.
@@ -56,6 +60,7 @@ namespace PloobsEngine.SceneControl
             this.culler.world = this;
         }
 
+        #if !WINDOWS_PHONE
         /// <summary>
         /// Initializes a new instance of the <see cref="IWorld"/> class.
         /// Desserialization
@@ -65,6 +70,7 @@ namespace PloobsEngine.SceneControl
         internal IWorld(SerializationInfo info, StreamingContext context)
         {
         }
+        #endif
 
         protected ICuller culler;
         protected GraphicInfo graphicsInfo;
@@ -459,7 +465,7 @@ namespace PloobsEngine.SceneControl
         }
 
         #region ISerializable Members
-
+        #if !WINDOWS_PHONE
         /// <summary>
         /// TODO
         /// Populates a <see cref="T:System.Runtime.Serialization.SerializationInfo"/> with the data needed to serialize the target object.
@@ -478,6 +484,7 @@ namespace PloobsEngine.SceneControl
             //info.AddValue("PhysicWorld", PhysicWorld, PhysicWorld.GetType());
         }        
 
+        #endif
         #endregion
     }
 }

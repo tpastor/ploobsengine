@@ -41,7 +41,11 @@ namespace PloobsEngine.SceneControl
             effect = new BasicEffect(device);
             qrender = new QuadRender(device);
             this.componentManager = componentManager;
+            #if !WINDOWS_PHONE
             defaultFont = cmanager.GetAsset<Microsoft.Xna.Framework.Graphics.SpriteFont>("ConsoleFont", true);
+            #else
+            defaultFont = cmanager.GetAsset<Microsoft.Xna.Framework.Graphics.SpriteFont>("ConsoleFont1", true);
+            #endif
         }
 
         /// <summary>
@@ -203,7 +207,7 @@ namespace PloobsEngine.SceneControl
             device.DepthStencilState = rt2;
             return rt;
         }
-
+        #if !WINDOWS_PHONE
         /// <summary>
         /// Pushes the render target.
         /// </summary>
@@ -249,7 +253,7 @@ namespace PloobsEngine.SceneControl
         {
             return PopRenderTarget()[0].RenderTarget as RenderTarget2D;
         }
-
+#endif
         public void SetViewPort(Viewport viewPort)
         {
             device.Viewport = viewPort;
@@ -272,6 +276,7 @@ namespace PloobsEngine.SceneControl
             device.Clear(options, color, depth, stencil);
         }
 
+        
         /// <summary>
         /// Renders the batch.
         /// </summary>
@@ -282,7 +287,6 @@ namespace PloobsEngine.SceneControl
             effect.CurrentTechnique.Passes[0].Apply();
             RenderBatch(bi);
         }
-
 
         /// <summary>
         /// Renders user primitive.
@@ -335,6 +339,7 @@ namespace PloobsEngine.SceneControl
             device.DrawUserIndexedPrimitives<T>(PrimitiveType, verts, vertexOffset, vertesCount, indices, indexOffset, primitiveCount);
         }
 
+        
         /// <summary>
         /// Renders the batch.
         /// </summary>
@@ -518,7 +523,9 @@ namespace PloobsEngine.SceneControl
             device.BlendState = BlendStateStack.Peek();
             device.DepthStencilState = DepthStencilStateStack.Peek();
             device.RasterizerState = RasterizerStateStack.Peek();
+            #if !WINDOWS_PHONE
             device.SetRenderTargets(RenderStatesStack.Peek());            
+            #endif
         }
         
         /// <summary>
@@ -536,7 +543,7 @@ namespace PloobsEngine.SceneControl
             }
         }
 
-
+        #if !WINDOWS_PHONE
         /// <summary>
         /// Renders the texture to full screen using vertex and pixel shader .
         /// </summary>
@@ -562,7 +569,7 @@ namespace PloobsEngine.SceneControl
         {
             qrender.DrawQuad(effect);
         }
-
+#endif
         /// <summary>
         /// Renders the texture to full screen using sprite batch.
         /// </summary>
@@ -584,6 +591,7 @@ namespace PloobsEngine.SceneControl
                 ResyncStates();
         }
 
+        #if !WINDOWS_PHONE
         public SamplerState GetRecomendedSamplerForTheActualRenderTarget()
         {
             SurfaceFormat format = RenderStatesStack.Peek()[0].RenderTarget.Format;
@@ -593,7 +601,7 @@ namespace PloobsEngine.SceneControl
             }
             return SamplerState.AnisotropicClamp;
         }
-
+#endif
         /// <summary>
         /// Renders the texture to full screen using sprite batch.
         /// </summary>
@@ -617,6 +625,7 @@ namespace PloobsEngine.SceneControl
             if (sync)
                 ResyncStates();
         }
+
 
         /// <summary>
         /// Renders the scene without material.
@@ -675,6 +684,7 @@ namespace PloobsEngine.SceneControl
             }
         }
 
+        #if !WINDOWS_PHONE
         /// <summary>
         /// Renders the scene with custom material.
         /// </summary>
@@ -796,8 +806,9 @@ namespace PloobsEngine.SceneControl
                     obj.Material.Shadder.BasicDraw(gt, obj, view,projection, world.Lights, this, clippingPlane, useAlphaBlend);
             }
         }
-       
+    #endif
     }
+    
     public delegate void OnDrawingSceneCustomMaterial(Effect effect,IObject obj, BatchInformation bi,ref Matrix view,ref Matrix projection);
 
 }

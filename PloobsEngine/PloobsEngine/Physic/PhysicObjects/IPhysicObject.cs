@@ -33,7 +33,11 @@ namespace PloobsEngine.Physics
     /// <summary>
     /// Specification of a physic Object
     /// </summary>
+    #if !WINDOWS_PHONE
     public abstract class IPhysicObject : ISerializable
+#else
+    public abstract class IPhysicObject 
+#endif
     {
         /// <summary>
         /// Gets or sets the position.
@@ -120,7 +124,11 @@ namespace PloobsEngine.Physics
 
         #region ISerializable Members
 
+#if !WINDOWS_PHONE
+
         public abstract void GetObjectData(SerializationInfo info, StreamingContext context);
+#endif
+
         
         #endregion
     }

@@ -23,7 +23,9 @@ namespace PloobsEngine.IA.NeuralNetwork
 	/// itself.
 	/// </remarks>
 	/// 
+    #if !WINDOWS_PHONE
 	[Serializable]
+    #endif
 	public class Layer
 	{
 		

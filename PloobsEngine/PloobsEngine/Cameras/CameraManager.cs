@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Engine.Logger;
+#if WINDOWS_PHONE
+using PloobsEngine.Utils;
+#endif
 
 namespace PloobsEngine.Cameras
 {
@@ -96,7 +99,7 @@ namespace PloobsEngine.Cameras
         /// <param name="name">nome da camera</param>
         public void RemoveCamera(String name)
         {
-            CameraDescription a = _cameras.Find(delegate(CameraDescription t) { return t.name == name; });
+            CameraDescription a = _cameras.First(delegate(CameraDescription t) { return t.name == name; });            
 
             if (a.cam == _activeCam)
             {                
@@ -224,6 +227,7 @@ namespace PloobsEngine.Cameras
 
         public ICamera GetCamera(String name)
         {
+            
             int camIndex = _cameras.FindIndex(delegate(CameraDescription t) { return t.name == name; });
             if(camIndex  == -1)
             {
@@ -233,6 +237,5 @@ namespace PloobsEngine.Cameras
 
             return _cameras[camIndex].cam;            
         }
-
     }
 }

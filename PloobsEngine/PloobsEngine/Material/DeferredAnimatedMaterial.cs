@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !WINDOWS_PHONE
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -149,6 +150,7 @@ namespace PloobsEngine.Material
 
         #region ISerializable Members
 
+#if !WINDOWS_PHONE
         /// <summary>
         /// Populates a <see cref="T:System.Runtime.Serialization.SerializationInfo"/> with the data needed to serialize the target object.
         /// </summary>
@@ -159,9 +161,9 @@ namespace PloobsEngine.Material
         {
             ActiveLogger.LogMessage("Serialization not implemented", LogLevel.Warning);
         }
-
+#endif
         #endregion
-
+        
 
         public bool CanAppearOfReflectionRefraction
         {
@@ -171,3 +173,4 @@ namespace PloobsEngine.Material
 
     }
 }
+#endif

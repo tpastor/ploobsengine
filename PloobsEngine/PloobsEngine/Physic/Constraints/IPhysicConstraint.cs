@@ -11,7 +11,11 @@ namespace PloobsEngine.Physic.Constraints
       /// <summary>
     /// Specification of a physic Constraint
     /// </summary>
+    #if !WINDOWS_PHONE
     public abstract class IPhysicConstraint : ISerializable
+    #else
+    public abstract class IPhysicConstraint 
+#endif
     {
         /// <summary>
         /// Gets or sets the position.
@@ -27,8 +31,9 @@ namespace PloobsEngine.Physic.Constraints
 
 
         #region ISerializable Members
-
+        #if !WINDOWS_PHONE
         public abstract void GetObjectData(SerializationInfo info, StreamingContext context);
+        #endif
 
         #endregion
     }

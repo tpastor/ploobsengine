@@ -42,7 +42,9 @@ namespace PloobsEngine.IA.NeuralNetwork
 	/// f'(x) = beta * f(x) * ( 1 - f(x) )   
 	/// </code>     
 	/// </remarks>
+#if !WINDOWS_PHONE
 	[Serializable]
+#endif
 	public class SigmoidActivationFunction : ActivationFunction
 	{
 		/// <summary>
@@ -106,9 +108,12 @@ namespace PloobsEngine.IA.NeuralNetwork
 		/// 
 		///             A > 0      
 		/// </code>
-		/// </remarks>
+    /// </remarks>
+
+#if !WINDOWS_PHONE
 	[Serializable]
-	public class LinearActivationFunction : ActivationFunction
+#endif
+    public class LinearActivationFunction : ActivationFunction
 	{
 		/// <summary>
 		/// The A parameter of the linear function
@@ -173,9 +178,11 @@ namespace PloobsEngine.IA.NeuralNetwork
 	/// f(x) = 0 if 0>x
 	/// f(x) = 1 if x>0
 	/// </code>   
-	/// </remarks>
+    /// </remarks>
+#if !WINDOWS_PHONE
 	[Serializable]
-	public class HeavisideActivationFunction : ActivationFunction
+#endif
+    public class HeavisideActivationFunction : ActivationFunction
 	{	
 		/// <summary>
 		/// Get the name of the activation function
@@ -226,9 +233,11 @@ namespace PloobsEngine.IA.NeuralNetwork
 	/// C = 1/sqrt(2 * pi * sigma)
 	/// K = 1/(2 * sigma^2)
 	/// </code>
-	/// </remarks>
+    /// </remarks>
+#if !WINDOWS_PHONE
 	[Serializable]
-	public class GaussianActivationFunction : ActivationFunction
+#endif
+    public class GaussianActivationFunction : ActivationFunction
 	{
 		/// <summary>
 		/// The sigma parameter of the gaussian

@@ -186,6 +186,13 @@ namespace PloobsEngine {
             }
         }
         
+        internal static byte[] ConsoleFont1 {
+            get {
+                object obj = ResourceManager.GetObject("ConsoleFont1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
         internal static byte[] contrast {
             get {
                 object obj = ResourceManager.GetObject("contrast", resourceCulture);

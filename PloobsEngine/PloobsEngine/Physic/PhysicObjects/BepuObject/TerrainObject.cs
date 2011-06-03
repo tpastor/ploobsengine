@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !WINDOWS_PHONE
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -265,9 +266,11 @@ namespace PloobsEngine.Physics.Bepu
             ActiveLogger.LogMessage("Cant apply force in terrain", LogLevel.RecoverableError);
         }
 
+
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
         {
             ActiveLogger.LogMessage("Serialization not implemented yet", LogLevel.RecoverableError);
         }
     }
 }
+#endif

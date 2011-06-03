@@ -6,7 +6,9 @@ using Microsoft.Xna.Framework.Graphics;
 using PloobsEngine.SceneControl;
 using PloobsEngine.Utils;
 using Microsoft.Xna.Framework;
+#if !WINDOWS_PHONE
 using XNAnimation;
+#endif
 
 namespace PloobsEngine.Engine
 {
@@ -76,10 +78,12 @@ namespace PloobsEngine.Engine
         {
             return contentManager.GetAsset<Model>(name, isinternal);
         }
+        #if !WINDOWS_PHONE
         public SkinnedModel GetAnimatedModel(String name, bool isinternal = false)
         {
             return contentManager.GetAsset<SkinnedModel>(name, isinternal);
         }
+        #endif
 
         public RenderTarget2D CreateRenderTarget(int width, int height, SurfaceFormat SurfaceFormat = SurfaceFormat.Color, bool mipmap = false, DepthFormat DepthFormat = DepthFormat.Depth24Stencil8, int preferedMultisampleCount = 0, RenderTargetUsage RenderTargetUsage = RenderTargetUsage.DiscardContents)
         {

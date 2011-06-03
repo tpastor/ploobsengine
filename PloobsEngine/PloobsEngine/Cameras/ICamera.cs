@@ -13,7 +13,11 @@ namespace PloobsEngine.Cameras
     /// <summary>
     /// Specification of a camera
     /// </summary>
+    #if !WINDOWS_PHONE
     public abstract class ICamera : ISerializable
+#else
+    public abstract class ICamera 
+#endif
     {
 
         /// <summary>
@@ -115,8 +119,9 @@ namespace PloobsEngine.Cameras
 
         #region ISerializable Members
 
+#if !WINDOWS_PHONE	
         public abstract void GetObjectData(SerializationInfo info, StreamingContext context);
-
+#endif
         #endregion
 
     }
