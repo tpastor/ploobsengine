@@ -41,14 +41,14 @@ namespace PloobsEngine.SceneControl
     {
         public ForwardRenderTecnich(ForwardRenderTecnichDescription desc) 
             #if !WINDOWS_PHONE
-            : base(PostEffectType.Forward)
+            : base(PostEffectType.Forward3D)
             #endif
         {
             this.desc = desc;
         }
 
         ForwardRenderTecnichDescription desc;
-           #if !WINDOWS_PHONE
+        #if !WINDOWS_PHONE
         RenderTarget2D renderTarget;
         RenderTarget2D postEffectTarget;
         #endif

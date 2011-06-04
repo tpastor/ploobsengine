@@ -46,7 +46,7 @@ namespace PloobsEngine.SceneControl
             ///Load the asset
             effect = factory.GetEffect("contrast",false,true);            
         }
-
+        
         #endregion
 
     }

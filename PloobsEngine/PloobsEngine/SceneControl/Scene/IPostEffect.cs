@@ -94,20 +94,25 @@ namespace PloobsEngine.SceneControl
     /// <summary>
     /// Defines in what render the post effect works
     /// </summary>
-    public enum PostEffectType
+    public enum PostEffectType : ulong
     {
         /// <summary>
         /// Only on Deferred
         /// </summary>
-        Deferred,
+        Deferred = 0x0001,
         /// <summary>
         /// only on Forward
         /// </summary>
-        Forward,
+        Forward3D = 0x0010,
+
+        /// <summary>
+        /// Works in 2D Also
+        /// </summary>
+        Forward2D = 0x0100,
         /// <summary>
         /// Works in both renders
         /// </summary>
-        All
+        All = 0x1111
     }
 
 }

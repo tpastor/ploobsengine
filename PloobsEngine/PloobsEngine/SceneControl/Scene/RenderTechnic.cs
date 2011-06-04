@@ -34,7 +34,7 @@ namespace PloobsEngine.SceneControl
         public virtual void AddPostEffect(IPostEffect postEffect)
         {
             System.Diagnostics.Debug.Assert(postEffect != null);
-            if (postEffect.PostEffectType != SceneControl.PostEffectType.All && postEffect.PostEffectType != PostEffectType)
+            if ((postEffect.PostEffectType & PostEffectType) != PostEffectType)            
             {
                 ActiveLogger.LogMessage("Trying to add a wrong post effect for this Render Technich, pls check if the PostEffectType of the IPostEffect is All or " + PostEffectType + ", The engine is ignoring this operation", LogLevel.RecoverableError);
             }
@@ -52,7 +52,7 @@ namespace PloobsEngine.SceneControl
         public virtual void RemovePostEffect(IPostEffect postEffect)
         {
             System.Diagnostics.Debug.Assert(postEffect != null);
-            if (postEffect.PostEffectType != SceneControl.PostEffectType.All && postEffect.PostEffectType != PostEffectType)
+            if ((postEffect.PostEffectType & PostEffectType) != PostEffectType)            
             {
                 ActiveLogger.LogMessage("Trying to remove a wrong post effect type for this Render Technich, pls check if the PostEffectType of the IPostEffect is All or " + PostEffectType + ", The engine is ignoring this operation", LogLevel.RecoverableError);
             }
