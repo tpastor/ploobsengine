@@ -44,14 +44,25 @@ namespace EngineTestes._2DSamples
 
             ///from texture
             {
-                Texture2D tex = factory.GetTexture2D("Textures//goo");
+                Texture2D tex = factory.GetTexture2D("Textures//goo");                
                 IModelo2D model = new SpriteFarseer(tex);
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
                 FarseerObject fs = new FarseerObject(fworld, tex);                
                 I2DObject o = new I2DObject(fs, mat,model);
                 o.OnHasMoved += new PloobsEngine.SceneControl._2DScene.OnHasMoved(o_OnHasMoved);
                 this.World.AddObject(o);
-            }            
+            }
+
+            ///from texture, scale usage sample
+            {
+                Texture2D tex = factory.GetTexture2D("Textures//goo");
+                tex = factory.GetScaledTexture(tex, new Vector2(2));
+                IModelo2D model = new SpriteFarseer(tex);
+                Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
+                FarseerObject fs = new FarseerObject(fworld, tex);
+                I2DObject o = new I2DObject(fs, mat, model);                
+                this.World.AddObject(o);
+            }         
 
             ///rectangle
             Vertices verts = PolygonTools.CreateRectangle(5, 5);            

@@ -43,6 +43,10 @@ namespace PloobsEngine.Physics2D.Farseer
                 ob.Body.UserData = obj;
                 ob.Body.Enabled = true;                
             }
+            else if (obj is GhostObject)
+            {
+                obj.Enabled = true;
+            }
         }
 
         public override void RemoveObject(I2DPhysicObject obj)
@@ -51,6 +55,10 @@ namespace PloobsEngine.Physics2D.Farseer
             {
                 FarseerObject ob = obj as FarseerObject;
                 world.RemoveBody(ob.Body);
+            }
+            else if (obj is GhostObject)
+            {
+                obj.Enabled = false;
             }
         }
     }

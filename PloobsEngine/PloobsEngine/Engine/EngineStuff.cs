@@ -342,10 +342,10 @@ namespace PloobsEngine.Engine
             contentManager = new EngineContentManager(this);
             GraphicInfo = new GraphicInfo(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount, GraphicsDevice.PresentationParameters.DepthStencilFormat,initialDescription.useMipMapWhenPossible,this,initialDescription.UseAnisotropicFiltering);
             this.GraphicsDevice.DeviceReset += new EventHandler<EventArgs>(GraphicsDevice_DeviceReset);
-            GraphicFactory = new Engine.GraphicFactory(GraphicInfo, GraphicsDevice, contentManager);
+            render = new RenderHelper(GraphicsDevice, ComponentManager, contentManager);
+            GraphicFactory = new Engine.GraphicFactory(GraphicInfo, GraphicsDevice, contentManager,render);
             ComponentManager = new ComponentManager(GraphicInfo, GraphicFactory);
             ComponentManager.LoadContent(ref GraphicInfo);            
-            render = new RenderHelper(GraphicsDevice, ComponentManager,contentManager);
             render.PushBlendState(BlendState.Opaque);
             render.PushDepthStencilState(DepthStencilState.Default);
             render.PushRasterizerState(RasterizerState.CullCounterClockwise);
@@ -793,10 +793,11 @@ namespace PloobsEngine.Engine
             contentManager = new EngineContentManager(game);
             GraphicInfo = new GraphicInfo(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, game.GraphicsDevice, game.GraphicsDevice.PresentationParameters.MultiSampleCount, game.GraphicsDevice.PresentationParameters.DepthStencilFormat, initialDescription.useMipMapWhenPossible, this, initialDescription.UseAnisotropicFiltering);
             game.GraphicsDevice.DeviceReset += new EventHandler<EventArgs>(GraphicsDevice_DeviceReset);
-            GraphicFactory = new Engine.GraphicFactory(GraphicInfo, game.GraphicsDevice, contentManager);
+            render = new RenderHelper(game.GraphicsDevice, ComponentManager, contentManager);
+            GraphicFactory = new Engine.GraphicFactory(GraphicInfo, game.GraphicsDevice, contentManager,render);
             ComponentManager = new ComponentManager(GraphicInfo, GraphicFactory);
             ComponentManager.LoadContent(ref GraphicInfo);
-            render = new RenderHelper(game.GraphicsDevice, ComponentManager, contentManager);
+            
             render.PushBlendState(BlendState.Opaque);
             render.PushDepthStencilState(DepthStencilState.Default);
             render.PushRasterizerState(RasterizerState.CullCounterClockwise);            

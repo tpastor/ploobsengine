@@ -25,15 +25,17 @@ namespace PloobsEngine.Engine
         GraphicInfo ginfo;        
         RenderTargetPool RenderTargetPool;
         TextureCreator texCreator;
+        RenderHelper render;
 
-        internal GraphicFactory(GraphicInfo ginfo, GraphicsDevice device,IContentManager contentManager)
+        internal GraphicFactory(GraphicInfo ginfo, GraphicsDevice device,IContentManager contentManager,RenderHelper render)
         {
             this.device = device;
             this.ginfo = ginfo;
             this.contentManager = contentManager;
             SpriteBatch = new SpriteBatch(device);
             RenderTargetPool = new RenderTargetPool(device);
-            texCreator = new TextureCreator(ginfo, this);            
+            texCreator = new TextureCreator(ginfo, this);
+            this.render = render;
         }
 
         public BasicEffect GetBasicEffect()
@@ -151,6 +153,22 @@ namespace PloobsEngine.Engine
         public T GetAsset<T>(String assetName, bool isInternal = false)
         {
             return contentManager.GetAsset<T>(assetName, isInternal);
+        }
+
+        public Texture2D GetScaledTexture(Texture2D texture,Vector2 Scale)
+        {   
+            int width = (int) (texture.Width * Scale.X);
+            int height = (int)(texture.Height * Scale.Y);
+            return GetScaledTexture(texture, width, height);
+        }
+
+        public Texture2D GetScaledTexture(Texture2D texture, int width, int height)
+        {
+            RenderTarget2D cNewRenderTarget = CreateRenderTarget(width, height, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.None, ginfo.MultiSample);
+            render.PushRenderTarget(cNewRenderTarget);
+            render.Clear(Color.Transparent, ClearOptions.Target);
+            render.RenderTextureComplete(texture,Color.White,new Rectangle(0,0,width, height),Matrix.Identity,null, true,SpriteSortMode.Deferred,SamplerState.AnisotropicClamp);
+            return render.PopRenderTargetAsSingleRenderTarget2D();
         }
 
 

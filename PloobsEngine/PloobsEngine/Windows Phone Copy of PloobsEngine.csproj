@@ -201,6 +201,7 @@
     <Compile Include="Physic3D\PhysicObjects\BepuObject\TriangleMeshObject.cs" />
     <Compile Include="Physic3D\PhysicObjects\IPhysicObject.cs" />
     <Compile Include="Physic3D\SegmentInterceptInfo.cs" />
+    <Compile Include="Physics2D\Farseer\GhostObject.cs" />
     <Compile Include="Utils\Asset2DCreator.cs" />
     <Compile Include="Physics2D\ConvertUtils.cs" />
     <Compile Include="Physics2D\Farseer\FarseerWorld.cs" />

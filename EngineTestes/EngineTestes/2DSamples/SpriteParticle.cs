@@ -325,9 +325,9 @@ namespace DPSF.ParticleSystems
             {
                 cParticle.Velocity.X *= -0.75f;
 
-                if (-miScreenWidth / 2 < 0)
+                if (fLeft < - miScreenWidth / 2 )
                 {
-                    cParticle.Position.X = (cParticle.Width / 2);
+                    cParticle.Position.X = -miScreenWidth / 2 + (cParticle.Width / 2);
                 }
                 else
                 {

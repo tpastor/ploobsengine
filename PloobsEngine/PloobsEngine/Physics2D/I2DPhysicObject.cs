@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 namespace PloobsEngine.Physics2D
 {
     public abstract class I2DPhysicObject
-    {
+    {       
         Vector2 origin;
 
         public Vector2 Origin
