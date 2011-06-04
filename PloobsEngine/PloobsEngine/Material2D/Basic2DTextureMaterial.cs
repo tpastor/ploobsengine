@@ -22,7 +22,7 @@ namespace PloobsEngine.Material2D
         /// <param name="render">The render.</param>
         public override void Draw(Microsoft.Xna.Framework.GameTime gt, SceneControl._2DScene.I2DObject obj, SceneControl.RenderHelper render)
         {
-            render.RenderTexture(obj.Modelo.Texture, ConvertUnits.ToDisplayUnits(obj.PhysicObject.Position), Color.White, obj.PhysicObject.Rotation, obj.PhysicObject.Origin + obj.Modelo.Origin, 1);
+            render.RenderTexture(obj.Modelo.Texture, ConvertUnits.ToDisplayUnits(obj.PhysicObject.Position), Color.White, obj.PhysicObject.Rotation, obj.Modelo.Origin + obj.PhysicObject.Origin, 1);
         }
         #endregion        
     }

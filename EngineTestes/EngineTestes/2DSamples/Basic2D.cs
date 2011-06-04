@@ -74,7 +74,7 @@ namespace EngineTestes._2DSamples
             ///camera
             this.World.Camera2D = new Camera2D(GraphicInfo);
 
-            ///add a post effect
+            ///add a post effect =P
             //this.RenderTechnic.AddPostEffect(new WigglePostEffect());
 
             ///updateable

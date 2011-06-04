@@ -58,7 +58,7 @@ namespace PloobsEngine.Modelo2D
             : base(ModelType.Texture)
         {
             Texture = texture;
-            Origin = new Vector2(Texture.Width / 2f, Texture.Height / 2f);
+            Origin = Vector2.Zero;
         }
     }
 }

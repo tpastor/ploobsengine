@@ -226,8 +226,7 @@ namespace PloobsEngine.Cameras
         }
 
         public ICamera GetCamera(String name)
-        {
-            
+        {            
             int camIndex = _cameras.FindIndex(delegate(CameraDescription t) { return t.name == name; });
             if(camIndex  == -1)
             {
