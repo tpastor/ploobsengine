@@ -26,7 +26,8 @@ namespace PloobsEngine.Physic.Constraints
         public abstract Vector3 Position { set; get; }
         public abstract IPhysicObject BodyA { set; get; }
         public abstract IPhysicObject BodyB { set; get; }
-        public abstract PhysicConstraintTypes PhysicConstraintType { get;}
+
+        public abstract PhysicConstraintTypes PhysicConstraintType { set; get; }
 
 
 
