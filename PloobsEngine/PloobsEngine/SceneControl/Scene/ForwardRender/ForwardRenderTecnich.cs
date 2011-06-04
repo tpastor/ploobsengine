@@ -48,8 +48,10 @@ namespace PloobsEngine.SceneControl
         }
 
         ForwardRenderTecnichDescription desc;
+           #if !WINDOWS_PHONE
         RenderTarget2D renderTarget;
         RenderTarget2D postEffectTarget;
+        #endif
         Engine.GraphicInfo ginfo;
         #region IRenderTechnic Members
 

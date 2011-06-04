@@ -72,6 +72,9 @@
     <Reference Include="DPSF">
       <HintPath>Dlls\DPSF.dll</HintPath>
     </Reference>
+    <Reference Include="FarseerPhysicsXNA">
+      <HintPath>Dlls\FarseerPhysicsXNA.dll</HintPath>
+    </Reference>
     <Reference Include="Library, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Dlls\Library.dll</HintPath>
@@ -204,6 +207,8 @@
     <Compile Include="Loader\WorldLoader.cs" />
     <Compile Include="Loader\ExtractXmlModelLoader.cs" />
     <Compile Include="Loader\IModelLoader.cs" />
+    <Compile Include="Material2D\Basic2DTextureMaterial.cs" />
+    <Compile Include="Material2D\I2DMaterial.cs" />
     <Compile Include="Material\DeferredAnimatedMaterial.cs" />
     <Compile Include="Material\DeferredMaterial.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredInstancedBilboardShader.cs" />
@@ -223,6 +228,8 @@
     <Compile Include="Material\IShadder\ForwardShader\ForwardTransparenteShader.cs" />
     <Compile Include="Material\IShadder\ForwardShader\ForwardTreeShader.cs" />
     <Compile Include="Material\TreeMaterial.cs" />
+    <Compile Include="Modelo2D\IModelo2D.cs" />
+    <Compile Include="Modelo2D\SpriteFarseer.cs" />
     <Compile Include="Modelo\Animation\AnimatedController.cs" />
     <Compile Include="Modelo\Animation\AnimatedModel.cs" />
     <Compile Include="Modelo\CustomModel.cs" />
@@ -235,17 +242,40 @@
     <Compile Include="Particles\DPSFParticleManager.cs" />
     <Compile Include="Particles\IParticleManager.cs" />
     <Compile Include="Particles\IParticleSystem.cs" />
-    <Compile Include="Physic\Constraints\BepuConstraint\PointPointConstraint.cs" />
-    <Compile Include="Physic\Constraints\IPhysicConstraint.cs" />
-    <Compile Include="Physic\IPhysicWorld.cs" />
-    <Compile Include="Physic\PhysicObjects\BepuObject\CapsuleObject.cs" />
-    <Compile Include="Physic\PhysicObjects\BepuObject\CharacterController.cs" />
-    <Compile Include="Physic\PhysicObjects\BepuObject\CharacterObject.cs" />
-    <Compile Include="Physic\PhysicObjects\BepuObject\CylinderObject.cs" />
-    <Compile Include="Physic\PhysicObjects\BepuObject\DetectorVolumeObject.cs" />
-    <Compile Include="Physic\PhysicObjects\BepuObject\GravitationFieldObject.cs" />
-    <Compile Include="Physic\PhysicObjects\BepuObject\ObjectMover.cs" />
-    <Compile Include="Physic\PhysicObjects\BepuObject\TerrainObject.cs" />
+    <Compile Include="Physic3D\BepuPhysicWorld.cs" />
+    <Compile Include="Physic3D\Constraints\BepuConstraint\PointPointConstraint.cs" />
+    <Compile Include="Physic3D\Constraints\IPhysicConstraint.cs" />
+    <Compile Include="Physic3D\IPhysicWorld.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\BepuEntityObject.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\BoxObject.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\CapsuleObject.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\CharacterController.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\CharacterObject.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\CylinderObject.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\DetectorVolumeObject.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\GhostObject.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\GravitationFieldObject.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\ObjectMover.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\SphereObject.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\TerrainObject.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\TriangleMeshObject.cs" />
+    <Compile Include="Physic3D\PhysicObjects\IPhysicObject.cs" />
+    <Compile Include="Physic3D\SegmentInterceptInfo.cs" />
+    <Compile Include="Utils\Asset2DCreator.cs" />
+    <Compile Include="Physics2D\ConvertUtils.cs" />
+    <Compile Include="Physics2D\Farseer\FarseerWorld.cs" />
+    <Compile Include="Physics2D\Farseer\FarseerObject.cs" />
+    <Compile Include="Physics2D\I2DPhysicObject.cs" />
+    <Compile Include="Physics2D\I2DPhysicWorld.cs" />
+    <Compile Include="SceneControl\2DScene\Basic2DRenderTechnich.cs" />
+    <Compile Include="SceneControl\2DScene\Camera2D.cs" />
+    <Compile Include="SceneControl\2DScene\I2DObject.cs" />
+    <Compile Include="SceneControl\2DScene\I2DScene.cs" />
+    <Compile Include="SceneControl\2DScene\I2DWorld.cs" />
+    <Compile Include="SceneControl\2DScene\ICamera2D.cs" />
+    <Compile Include="SceneControl\2DScene\IObject2DAtachtment.cs" />
+    <Compile Include="SceneControl\2DScene\PrimitiveBatch.cs" />
+    <Compile Include="SceneControl\2DScene\RenderTechnich2D.cs" />
     <Compile Include="SceneControl\GUI\IGui.cs" />
     <Compile Include="SceneControl\GUI\NeoforceGui.cs" />
     <Compile Include="SceneControl\Movie\MovieScreen.cs" />
@@ -261,6 +291,7 @@
     <Compile Include="SceneControl\Scene\DefRender\RestoreDepth.cs" />
     <Compile Include="SceneControl\Scene\DefRender\Shadow\ShadowLightMap.cs" />
     <Compile Include="SceneControl\Scene\DefRender\Shadow\ShadowRenderer.cs" />
+    <Compile Include="SceneControl\Scene\IIRenderTechnic.cs" />
     <Compile Include="SceneControl\Scene\IPostEffect.cs" />
     <Compile Include="SceneControl\Scene\Picking.cs" />
     <Compile Include="DataStructure\CircularList.cs" />
@@ -306,14 +337,6 @@
     <Compile Include="Modelo\IModelo.cs" />
     <Compile Include="Modelo\ModelBuilderHelper.cs" />
     <Compile Include="Modelo\SimpleModel.cs" />
-    <Compile Include="Physic\BepuPhysicWorld.cs" />
-    <Compile Include="Physic\PhysicObjects\BepuObject\BepuEntityObject.cs" />
-    <Compile Include="Physic\PhysicObjects\BepuObject\BoxObject.cs" />
-    <Compile Include="Physic\PhysicObjects\BepuObject\GhostObject.cs" />
-    <Compile Include="Physic\PhysicObjects\BepuObject\SphereObject.cs" />
-    <Compile Include="Physic\PhysicObjects\BepuObject\TriangleMeshObject.cs" />
-    <Compile Include="Physic\PhysicObjects\IPhysicObject.cs" />
-    <Compile Include="Physic\SegmentInterceptInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -365,7 +388,7 @@
     <Compile Include="SceneControl\Scene\IScene.cs" />
     <Compile Include="SceneControl\Scene\QuadRender.cs" />
     <Compile Include="SceneControl\Scene\ForwardRender\ForwardRenderTecnich.cs" />
-    <Compile Include="SceneControl\Scene\TextureCreator.cs" />
+    <Compile Include="Utils\TextureCreator.cs" />
     <Compile Include="Trigger\BepuTrigger.cs" />
     <Compile Include="Trigger\GenericEventHandler.cs" />
     <Compile Include="Trigger\ITrigger.cs" />
@@ -533,6 +556,10 @@
     <None Include="bin\x86\Debug\Content\Textures\waves2.xnb" />
     <None Include="bin\x86\Debug\Content\Textures\white.xnb" />
     <None Include="Resources\ConsoleFont.spritefont" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Physic\Constraints\BepuConstraint\" />
+    <Folder Include="Physic\PhysicObjects\BepuObject\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />

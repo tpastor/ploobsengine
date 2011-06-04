@@ -176,17 +176,19 @@
     <Compile Include="Particles\DPSFParticleManager.cs" />
     <Compile Include="Particles\IParticleManager.cs" />
     <Compile Include="Particles\IParticleSystem.cs" />
-    <Compile Include="Physic\Constraints\BepuConstraint\PointPointConstraint.cs" />
-    <Compile Include="Physic\Constraints\IPhysicConstraint.cs" />
-    <Compile Include="Physic\IPhysicWorld.cs" />
-    <Compile Include="Physic\PhysicObjects\BepuObject\CapsuleObject.cs" />
-    <Compile Include="Physic\PhysicObjects\BepuObject\CharacterController.cs" />
-    <Compile Include="Physic\PhysicObjects\BepuObject\CharacterObject.cs" />
-    <Compile Include="Physic\PhysicObjects\BepuObject\CylinderObject.cs" />
-    <Compile Include="Physic\PhysicObjects\BepuObject\DetectorVolumeObject.cs" />
-    <Compile Include="Physic\PhysicObjects\BepuObject\GravitationFieldObject.cs" />
-    <Compile Include="Physic\PhysicObjects\BepuObject\ObjectMover.cs" />
-    <Compile Include="Physic\PhysicObjects\BepuObject\TerrainObject.cs" />
+    <Compile Include="Physic3D\Constraints\BepuConstraint\PointPointConstraint.cs" />
+    <Compile Include="Physic3D\Constraints\IPhysicConstraint.cs" />
+    <Compile Include="Physic3D\IPhysicWorld.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\CapsuleObject.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\CharacterController.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\CharacterObject.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\CylinderObject.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\DetectorVolumeObject.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\GravitationFieldObject.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\ObjectMover.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\TerrainObject.cs" />
+    <Compile Include="SceneControl\2DScene\I2DObject.cs" />
+    <Compile Include="SceneControl\2DScene\I2DScene.cs" />
     <Compile Include="SceneControl\GUI\IGui.cs" />
     <Compile Include="SceneControl\GUI\NeoforceGui.cs" />
     <Compile Include="SceneControl\Movie\MovieScreen.cs" />
@@ -247,14 +249,14 @@
     <Compile Include="Modelo\IModelo.cs" />
     <Compile Include="Modelo\ModelBuilderHelper.cs" />
     <Compile Include="Modelo\SimpleModel.cs" />
-    <Compile Include="Physic\BepuPhysicWorld.cs" />
-    <Compile Include="Physic\PhysicObjects\BepuObject\BepuEntityObject.cs" />
-    <Compile Include="Physic\PhysicObjects\BepuObject\BoxObject.cs" />
-    <Compile Include="Physic\PhysicObjects\BepuObject\GhostObject.cs" />
-    <Compile Include="Physic\PhysicObjects\BepuObject\SphereObject.cs" />
-    <Compile Include="Physic\PhysicObjects\BepuObject\TriangleMeshObject.cs" />
-    <Compile Include="Physic\PhysicObjects\IPhysicObject.cs" />
-    <Compile Include="Physic\SegmentInterceptInfo.cs" />
+    <Compile Include="Physic3D\BepuPhysicWorld.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\BepuEntityObject.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\BoxObject.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\GhostObject.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\SphereObject.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\TriangleMeshObject.cs" />
+    <Compile Include="Physic3D\PhysicObjects\IPhysicObject.cs" />
+    <Compile Include="Physic3D\SegmentInterceptInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -393,6 +395,9 @@
     </Reference>
     <Reference Include="DPSFPhone">
       <HintPath>Dlls\Phone7\DPSFPhone.dll</HintPath>
+    </Reference>
+    <Reference Include="FarseerPhysicsXNA">
+      <HintPath>Dlls\Phone7\FarseerPhysicsXNA.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Devices.Sensors, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Xna.Framework" />

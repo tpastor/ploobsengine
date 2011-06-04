@@ -19,7 +19,11 @@ namespace PloobsEngine.SceneControl
     /// 
     public abstract class IScene : IScreen
     {
+#if !WINDOWS_PHONE
         public IScene(IGui gui = null) : base(gui) { }
+#else
+        public IScene() : base() { }
+#endif
 
         #region properties
         

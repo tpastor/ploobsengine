@@ -303,6 +303,11 @@ namespace PloobsEngine.SceneControl
             device.DrawUserPrimitives<T>(PrimitiveType, verts, vertexOffset, primitiveCount);
         }
 
+        public void RenderUserPrimitive<T>(PrimitiveType PrimitiveType, T[] verts, int vertexOffset, int primitiveCount) where T : struct, IVertexType
+        {            
+            device.DrawUserPrimitives<T>(PrimitiveType, verts, vertexOffset, primitiveCount);
+        }
+
         /// <summary>
         /// Renders user indexed primitive. 16 bits indices
         /// </summary>
@@ -321,6 +326,11 @@ namespace PloobsEngine.SceneControl
             device.DrawUserIndexedPrimitives<T>(PrimitiveType, verts, vertexOffset, vertesCount, indices, indexOffset, primitiveCount);
         }
 
+        public void RenderUserIndexedPrimitive<T>(PrimitiveType PrimitiveType, T[] verts, int vertexOffset, int vertesCount, short[] indices, int indexOffset, int primitiveCount) where T : struct, IVertexType
+        {         
+            device.DrawUserIndexedPrimitives<T>(PrimitiveType, verts, vertexOffset, vertesCount, indices, indexOffset, primitiveCount);
+        }
+
         /// <summary>
         /// Renders user indexed primitive. 32 bits indices
         /// </summary>
@@ -336,6 +346,11 @@ namespace PloobsEngine.SceneControl
         public void RenderUserIndexedPrimitive<T>(Effect effect,PrimitiveType PrimitiveType, T[] verts, int vertexOffset, int vertesCount, int[] indices, int indexOffset, int primitiveCount) where T : struct, IVertexType
         {
             effect.CurrentTechnique.Passes[0].Apply(); 
+            device.DrawUserIndexedPrimitives<T>(PrimitiveType, verts, vertexOffset, vertesCount, indices, indexOffset, primitiveCount);
+        }
+
+        public void RenderUserIndexedPrimitive<T>(PrimitiveType PrimitiveType, T[] verts, int vertexOffset, int vertesCount, int[] indices, int indexOffset, int primitiveCount) where T : struct, IVertexType
+        {            
             device.DrawUserIndexedPrimitives<T>(PrimitiveType, verts, vertexOffset, vertesCount, indices, indexOffset, primitiveCount);
         }
 
@@ -464,6 +479,24 @@ namespace PloobsEngine.SceneControl
         {
             spriteBatch.Draw(texture, destination, source, color);
         }
+
+        /// <summary>
+        /// Renders the texture.
+        /// CALL THIS ONLY AFTER RenderBegin
+        /// AFTER DRAWING ALL THE TEXTURES CALL RenderEnd
+        /// </summary>
+        /// <param name="texture">The texture.</param>
+        /// <param name="position">The position.</param>
+        /// <param name="color">The color.</param>
+        /// <param name="rotation">The rotation.</param>
+        /// <param name="origin">The origin.</param>
+        /// <param name="scale">The scale.</param>
+        public void RenderTexture(Texture2D texture,Vector2 position,Color color, float rotation, Vector2
+              origin, float scale)
+        {
+            spriteBatch.Draw(texture, position, null, color, rotation, origin, 1f, SpriteEffects.None, 0f);
+        }
+             
 
         /// <summary>
         /// End Rendering the texture

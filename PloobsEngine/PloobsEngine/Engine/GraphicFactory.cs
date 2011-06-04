@@ -25,7 +25,6 @@ namespace PloobsEngine.Engine
         GraphicInfo ginfo;        
         RenderTargetPool RenderTargetPool;
         TextureCreator texCreator;
-             
 
         internal GraphicFactory(GraphicInfo ginfo, GraphicsDevice device,IContentManager contentManager)
         {
@@ -34,7 +33,7 @@ namespace PloobsEngine.Engine
             this.contentManager = contentManager;
             SpriteBatch = new SpriteBatch(device);
             RenderTargetPool = new RenderTargetPool(device);
-            texCreator = new TextureCreator(ginfo, this);
+            texCreator = new TextureCreator(ginfo, this);            
         }
 
         public BasicEffect GetBasicEffect()
@@ -153,6 +152,7 @@ namespace PloobsEngine.Engine
         {
             return contentManager.GetAsset<T>(assetName, isInternal);
         }
+
 
     }
 

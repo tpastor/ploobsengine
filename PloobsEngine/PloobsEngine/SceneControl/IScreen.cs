@@ -47,11 +47,19 @@ namespace PloobsEngine.SceneControl
         /// Initializes a new instance of the <see cref="IScreen"/> class.
         /// </summary>
         /// <param name="gui">The GUI Component, if null you cant use GUI in this screen.</param>
+        #if !WINDOWS_PHONE
         public IScreen(IGui gui = null)
         {
             this.gui = gui;
             IsLoaded = false;
         }
+        #else
+public IScreen()
+        {
+            this.gui = null;
+            IsLoaded = false;
+        }
+#endif
                
         #if !WINDOWS_PHONE
         private Dictionary<IInput, BindKeyCommand> KeyBinds = new Dictionary<IInput, BindKeyCommand>();
