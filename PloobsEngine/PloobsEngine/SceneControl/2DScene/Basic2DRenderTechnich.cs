@@ -19,13 +19,17 @@ namespace PloobsEngine.SceneControl._2DScene
         RenderTarget2D postEffectTarget;
         bool usePostProcessing = true;
         Engine.GraphicInfo ginfo;
-#endif
-        
 
         public Basic2DRenderTechnich() : base(PostEffectType.Forward2D)
         {
             MaterialProcessors.Add(typeof(Basic2DTextureMaterial), new Basic2DTextureMaterialProcessor());
         }
+#else
+        public Basic2DRenderTechnich()         
+        {
+            MaterialProcessors.Add(typeof(Basic2DTextureMaterial), new Basic2DTextureMaterialProcessor());
+        }
+#endif
 
         protected override void AfterLoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
         {            

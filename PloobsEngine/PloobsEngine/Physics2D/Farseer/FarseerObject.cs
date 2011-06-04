@@ -36,15 +36,7 @@ namespace PloobsEngine.Physics2D.Farseer
             body.BodyType = BodyType;
             body.CreateFixture(shape);
             body.Enabled = false;
-        }
-
-        Vector2 origin;
-
-        public Vector2 Origin
-        {
-            get { return origin; }
-            set { origin = value; }
-        }
+        }       
         
 
         public FarseerObject(FarseerWorld world, Texture2D texture, BodyType BodyType = BodyType.Dynamic)
@@ -66,7 +58,7 @@ namespace PloobsEngine.Physics2D.Farseer
             textureVertices.Translate(ref centroid);
 
             //2. To draw the texture the correct place.
-            origin = -centroid;
+            Origin = -centroid;
 
             //We simplify the vertices found in the texture.
             textureVertices = SimplifyTools.ReduceByDistance(textureVertices, 4f);

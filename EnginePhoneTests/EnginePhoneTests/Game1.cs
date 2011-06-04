@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework.Media;
 using PloobsEngine.Engine;
 using PloobsEngine.SceneControl;
 using EngineTestes;
+using EngineTestes._2DSamples;
 
 namespace EnginePhoneTests
 {
@@ -35,7 +36,8 @@ namespace EnginePhoneTests
 
         void LoadScreen(ScreenManager manager)
         {
-            manager.AddScreen(new FirstScreen());
+            //manager.AddScreen(new FirstScreen());
+            manager.AddScreen(new Basic2D());
         }
         
         /// <summary>

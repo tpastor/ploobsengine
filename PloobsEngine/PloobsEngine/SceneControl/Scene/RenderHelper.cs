@@ -206,8 +206,7 @@ namespace PloobsEngine.SceneControl
             DepthStencilState rt2 = DepthStencilStateStack.Peek();
             device.DepthStencilState = rt2;
             return rt;
-        }
-        #if !WINDOWS_PHONE
+        }        
         /// <summary>
         /// Pushes the render target.
         /// </summary>
@@ -253,7 +252,7 @@ namespace PloobsEngine.SceneControl
         {
             return PopRenderTarget()[0].RenderTarget as RenderTarget2D;
         }
-#endif
+
         public void SetViewPort(Viewport viewPort)
         {
             device.Viewport = viewPort;
@@ -555,10 +554,8 @@ namespace PloobsEngine.SceneControl
         {
             device.BlendState = BlendStateStack.Peek();
             device.DepthStencilState = DepthStencilStateStack.Peek();
-            device.RasterizerState = RasterizerStateStack.Peek();
-            #if !WINDOWS_PHONE
-            device.SetRenderTargets(RenderStatesStack.Peek());            
-            #endif
+            device.RasterizerState = RasterizerStateStack.Peek();            
+            device.SetRenderTargets(RenderStatesStack.Peek());                        
         }
         
         /// <summary>
