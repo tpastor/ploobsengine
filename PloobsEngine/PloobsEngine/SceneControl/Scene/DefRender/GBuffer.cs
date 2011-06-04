@@ -66,6 +66,7 @@ namespace PloobsEngine.SceneControl
         public void ClearGBuffer(RenderHelper render)
         {
             render.PushDepthStencilState(DepthStencilState.None);
+            render.SetSamplerState(SamplerState.PointWrap, 0);
             clearBufferEffect.Parameters["BackColor"].SetValue(backGroundColor.ToVector3());
             render.RenderFullScreenQuadVertexPixel(clearBufferEffect);
             render.PopDepthStencilState();
