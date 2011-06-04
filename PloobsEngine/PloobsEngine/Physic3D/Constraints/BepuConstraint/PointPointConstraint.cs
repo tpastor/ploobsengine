@@ -11,9 +11,7 @@ using PloobsEngine.Engine.Logger;
 namespace PloobsEngine.Physic.Constraints.BepuConstraint
 {
     public class PointPointConstraint : BepuPhysicConstraint
-    {
-
-        
+    {        
 
         public PointPointConstraint(Vector3 position, IPhysicObject obA, IPhysicObject obB)
         {
