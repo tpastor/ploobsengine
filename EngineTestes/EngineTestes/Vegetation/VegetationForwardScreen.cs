@@ -30,7 +30,8 @@ namespace ProjectTemplate
             world = new IWorld(new BepuPhysicWorld(-0.97f, true, 1), new SimpleCuller());
 
             ///Create the deferred technich
-            ForwardRenderTecnichDescription desc = new ForwardRenderTecnichDescription(Color.CornflowerBlue);
+            ForwardRenderTecnichDescription desc = ForwardRenderTecnichDescription.Default();
+            desc.BackGroundColor = Color.CornflowerBlue;
             renderTech = new ForwardRenderTecnich(desc);
         }
 

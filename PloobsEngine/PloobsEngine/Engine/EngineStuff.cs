@@ -799,10 +799,8 @@ namespace PloobsEngine.Engine
             render = new RenderHelper(game.GraphicsDevice, ComponentManager, contentManager);
             render.PushBlendState(BlendState.Opaque);
             render.PushDepthStencilState(DepthStencilState.Default);
-            render.PushRasterizerState(RasterizerState.CullCounterClockwise);
-            #if !WINDOWS_PHONE
-            render.PushRenderTarget(null);
-            #endif
+            render.PushRasterizerState(RasterizerState.CullCounterClockwise);            
+            render.PushRenderTarget(null);            
             
             ScreenManager = new ScreenManager(ref GraphicInfo, GraphicFactory, contentManager,render,this);            
 
@@ -814,10 +812,7 @@ namespace PloobsEngine.Engine
                 game.Exit();
             }
 
-            ///THE ONLY COMPONENTS ADDED BY DEFAULT
-            #if !WINDOWS_PHONE
-            ComponentManager.AddComponent(new InputAdvanced());
-            #endif
+            ///THE ONLY COMPONENTS ADDED BY DEFAULT                        
             ComponentManager.AddComponent(new TaskProcessor());
         }
 

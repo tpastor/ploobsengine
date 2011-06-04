@@ -27,7 +27,8 @@ namespace EngineTestes
         {
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
 
-            ForwardRenderTecnichDescription desc = new ForwardRenderTecnichDescription(Color.CornflowerBlue);
+            ForwardRenderTecnichDescription desc = ForwardRenderTecnichDescription.Default();
+            desc.BackGroundColor = Color.CornflowerBlue;
             renderTech = new ForwardRenderTecnich(desc);
         }
         protected override void InitScreen(GraphicInfo GraphicInfo, EngineStuff engine)

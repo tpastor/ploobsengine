@@ -6,6 +6,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Engine;
 using Microsoft.Xna.Framework.Graphics;
+using PloobsEngine.SceneControl.Scene;
 
 namespace PloobsEngine.SceneControl
 {
@@ -52,7 +53,7 @@ namespace PloobsEngine.SceneControl
             }
         }
         protected float priority;
-        internal IRenderTechnic tech = null;
+        internal IIRenderTechnic tech = null;
 
 
 

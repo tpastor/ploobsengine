@@ -3,6 +3,7 @@ using PloobsEngine.Engine;
 using PloobsEngine.SceneControl;
 using EngineTestes.LoadingScreen;
 using ProjectTemplate;
+using EngineTestes._2DSamples;
 
 namespace EngineTestes
 {
@@ -13,7 +14,7 @@ namespace EngineTestes
         /// </summary>
         static void Main(string[] args)
         {
-            InitialEngineDescription desc = new InitialEngineDescription("PLoobsDemos",800, 600, false, Microsoft.Xna.Framework.Graphics.GraphicsProfile.HiDef, false, false, false,null,false);            
+            InitialEngineDescription desc = InitialEngineDescription.Default();
 
             using (EngineStuff engine = new EngineStuff(ref desc, LoadScreen))
             {
@@ -43,12 +44,14 @@ namespace EngineTestes
             //manager.AddScreen(new FGUIScreen());
             //manager.AddScreen(new ForwardLoadScreen());
             //manager.AddScreen(new DeferredLoadScreen(),new LoadScene());
-            manager.AddScreen(new DebugDrawScreen());
+            //manager.AddScreen(new DebugDrawScreen());
             //manager.AddScreen(new OctreeScreen());
             //manager.AddScreen(new HybridDeferred());
             //manager.AddScreen(new VegetationForwardScreen());
             //manager.AddScreen(new VegetationDeferredScreen());            
             //manager.AddScreen(new MixReflection());                        
+            manager.AddScreen(new Basic2D());
+
         }
     }
 

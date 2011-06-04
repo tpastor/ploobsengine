@@ -12,7 +12,7 @@ namespace PloobsEngine.SceneControl
     /// <summary>
     /// Specification of a Render Technic
     /// </summary>
-    public abstract class IRenderTechnic
+    public abstract class IRenderTechnic : PloobsEngine.SceneControl.Scene.IIRenderTechnic
     {
         #if !WINDOWS_PHONE
         public IRenderTechnic(PostEffectType PostEffectType)
