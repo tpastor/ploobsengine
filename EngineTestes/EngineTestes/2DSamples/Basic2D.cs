@@ -14,6 +14,8 @@ using FarseerPhysics.Collision.Shapes;
 using FarseerPhysics.Common;
 using PloobsEngine.Modelo2D;
 using PloobsEngine.SceneControl;
+using PloobsEngine.Particles;
+using DPSF.ParticleSystems;
 
 namespace EngineTestes._2DSamples
 {
@@ -30,7 +32,7 @@ namespace EngineTestes._2DSamples
         protected override void SetWorldAndRenderTechnich(out RenderTechnich2D renderTech, out I2DWorld world)
         {
             renderTech = new Basic2DRenderTechnich();
-            world = new I2DWorld(new FarseerWorld(new Vector2(0, 9.8f)));
+            world = new I2DWorld(new FarseerWorld(new Vector2(0, 9.8f)),new DPSFParticleManager());
         }
 
         protected override void LoadContent(PloobsEngine.Engine.GraphicInfo GraphicInfo, PloobsEngine.Engine.GraphicFactory factory, PloobsEngine.SceneControl.IContentManager contentManager)
@@ -47,6 +49,7 @@ namespace EngineTestes._2DSamples
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
                 FarseerObject fs = new FarseerObject(fworld, tex);                
                 I2DObject o = new I2DObject(fs, mat,model);
+                o.OnHasMoved += new PloobsEngine.SceneControl._2DScene.OnHasMoved(o_OnHasMoved);
                 this.World.AddObject(o);
             }            
 
@@ -74,6 +77,9 @@ namespace EngineTestes._2DSamples
             ///camera
             this.World.Camera2D = new Camera2D(GraphicInfo);
 
+            DPFSParticleSystem ps = new DPFSParticleSystem("TESTE", new SpriteParticleSystem(null));
+            this.World.ParticleManager.AddAndInitializeParticleSystem(ps);            
+            
             ///add a post effect =P
             //this.RenderTechnic.AddPostEffect(new WigglePostEffect());
 
@@ -81,6 +87,16 @@ namespace EngineTestes._2DSamples
             JointUpdateable ju = new JointUpdateable(this, fworld, this.World.Camera2D);
 
             base.LoadContent(GraphicInfo, factory, contentManager);
+        }
+
+        void o_OnHasMoved(I2DObject Reciever)
+        {
+            DPSFParticleManager DPSFParticleManager = this.World.ParticleManager as DPSFParticleManager;
+            DPFSParticleSystem ParticleSystem = DPSFParticleManager.GetParticleSystem("TESTE") as DPFSParticleSystem;
+            SpriteParticleSystem SpriteParticleSystem = ParticleSystem.IDPSFParticleSystem as SpriteParticleSystem;
+            Vector2 v = Reciever.PhysicObject.Position; ///simulation position
+            v = ConvertUnits.ToDisplayUnits(v);         ///screen position
+            SpriteParticleSystem.AttractorPosition = new Vector3(v,0);
         }
 
         protected override void Update(GameTime gameTime)
