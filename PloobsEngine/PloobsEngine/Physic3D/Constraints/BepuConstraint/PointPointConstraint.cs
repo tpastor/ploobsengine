@@ -6,19 +6,14 @@ using BEPUphysics.Constraints.TwoEntity.Joints;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Physics;
 using PloobsEngine.Physics.Bepu;
+using PloobsEngine.Engine.Logger;
 
 namespace PloobsEngine.Physic.Constraints.BepuConstraint
 {
-    public class PointPointConstraint : IPhysicConstraint
+    public class PointPointConstraint : BepuPhysicConstraint
     {
 
-        Joint joint;
-
-        public Joint Joint
-        {
-            get { return joint; }
-            set { joint = value; }
-        }
+        
 
         public PointPointConstraint(Vector3 position, IPhysicObject obA, IPhysicObject obB)
         {
@@ -34,41 +29,7 @@ namespace PloobsEngine.Physic.Constraints.BepuConstraint
         }
 
 
-        public override Microsoft.Xna.Framework.Vector3 Position
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public override Physics.IPhysicObject BodyA
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public override Physics.IPhysicObject BodyB
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+       
 
         public override PhysicConstraintTypes PhysicConstraintType
         {
@@ -78,7 +39,7 @@ namespace PloobsEngine.Physic.Constraints.BepuConstraint
         #if !WINDOWS_PHONE
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
         {
-            throw new NotImplementedException();
+            ActiveLogger.LogMessage("Serialization not implemented yet", LogLevel.RecoverableError);
         }
 #endif
     }

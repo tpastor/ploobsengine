@@ -289,19 +289,16 @@ namespace PloobsEngine.Physics
             
         }
 
+        /// <summary>
+        /// Removes the constraint.
+        /// </summary>
+        /// <param name="ctn">The CTN.</param>
         public override void RemoveConstraint(IPhysicConstraint ctn)
         {
-            if (ctn.PhysicConstraintType == PhysicConstraintTypes.POINTPOINT)
-            {
-                PointPointConstraint co = (PointPointConstraint)ctn;
-
-                if (co != null)
-                {
-                    space.Remove(co.Joint);
-                    ctns.Remove(ctn);
-                }
-            }
-        }
+            BepuPhysicConstraint bctn = ctn as BepuPhysicConstraint;
+            space.Remove(bctn.Joint);
+            ctns.Remove(bctn);
+         }
 
         /// <summary>
         /// Draw the physic world in debug mode.

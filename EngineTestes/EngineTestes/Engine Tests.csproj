@@ -121,6 +121,7 @@
     <Compile Include="BilboardsSamples\BilboardScreen.cs" />
     <Compile Include="CharacterControllerInput.cs" />
     <Compile Include="CharacterSample\CharacterScreen.cs" />
+    <Compile Include="Constraint\ConstraintScreen.cs" />
     <Compile Include="DebugDrawer\DebugDrawScreen.cs" />
     <Compile Include="GUI\FGUIScreen.cs" />
     <Compile Include="GUI\GUIScreen.cs" />
