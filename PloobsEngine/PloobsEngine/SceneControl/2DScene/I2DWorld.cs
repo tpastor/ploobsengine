@@ -31,7 +31,8 @@ namespace PloobsEngine.SceneControl._2DScene
             this.particleManager = particleManager;            
             this.PhysicWorld = PhysicWorld;                        
             Dummies = new List<IDummy>();            
-            Objects = new List<I2DObject>();                                                
+            Objects = new List<I2DObject>();
+            MaterialSortedObjects = new Dictionary<Type, List<I2DObject>>();                               
         }
         
         protected GraphicInfo graphicsInfo;
@@ -122,9 +123,16 @@ namespace PloobsEngine.SceneControl._2DScene
             }
 
             EntityMapper.getInstance().AddEntity(obj);
+            obj.Material.Initialization(GraphicsInfo, GraphicsFactory, obj);
             PhysicWorld.AddObject(obj.PhysicObject);
             obj.PhysicObject.Owner = obj;
-            Objects.Add(obj);                        
+            Objects.Add(obj);
+
+            if (!MaterialSortedObjects.ContainsKey(obj.Material.GetType()))
+            {
+                MaterialSortedObjects[obj.Material.GetType()] = new List<I2DObject>();
+            }
+            MaterialSortedObjects[obj.Material.GetType()].Add(obj);
         }
 
         /// <summary>
@@ -161,7 +169,11 @@ namespace PloobsEngine.SceneControl._2DScene
             if (!resp)
             {
                 ActiveLogger.LogMessage("Cant remove (not found) obj: " + obj.Name, LogLevel.RecoverableError);
-            }           
+            }
+            else
+            {
+                MaterialSortedObjects[obj.Material.GetType()].Remove(obj);
+            }
 
         }
 
@@ -250,6 +262,12 @@ namespace PloobsEngine.SceneControl._2DScene
         /// Gets the objects.
         /// </summary>
         public IList<I2DObject> Objects
+        {
+            get;
+            protected set;
+        }
+
+        public Dictionary<Type, List<I2DObject>> MaterialSortedObjects
         {
             get;
             protected set;

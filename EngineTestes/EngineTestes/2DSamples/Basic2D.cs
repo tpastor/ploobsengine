@@ -13,6 +13,7 @@ using FarseerPhysics.Dynamics;
 using FarseerPhysics.Collision.Shapes;
 using FarseerPhysics.Common;
 using PloobsEngine.Modelo2D;
+using PloobsEngine.SceneControl;
 
 namespace EngineTestes._2DSamples
 {
@@ -72,6 +73,9 @@ namespace EngineTestes._2DSamples
             
             ///camera
             this.World.Camera2D = new Camera2D(GraphicInfo);
+
+            ///add a post effect
+            //this.RenderTechnic.AddPostEffect(new WigglePostEffect());
 
             ///updateable
             JointUpdateable ju = new JointUpdateable(this, fworld, this.World.Camera2D);
