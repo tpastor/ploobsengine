@@ -11,7 +11,8 @@ namespace PloobsEngine.SceneControl._2DScene
     public class Basic2DRenderTechnich : RenderTechnich2D
     {
         public Color BackGroundColor = Color.CornflowerBlue;
-        public bool usePreDrawPhase = false;
+        public bool  UsePreDrawPhase = false;
+        public bool  DrawComponents = false;
         public Dictionary<Type, IMaterialProcessor> MaterialProcessors = new Dictionary<Type, IMaterialProcessor>();
 
 #if !WINDOWS_PHONE
@@ -46,7 +47,7 @@ namespace PloobsEngine.SceneControl._2DScene
 
         protected override void ExecuteTechnic(Microsoft.Xna.Framework.GameTime gameTime, RenderHelper render, I2DWorld world)
         {
-            if (usePreDrawPhase)
+            if (UsePreDrawPhase)
             {
                 render.Clear(BackGroundColor);
                 foreach (var item in world.MaterialSortedObjects.Keys)
@@ -79,7 +80,8 @@ namespace PloobsEngine.SceneControl._2DScene
 #endif
 
             render.Clear(BackGroundColor);
-            render.RenderPreComponents(gameTime, world.Camera2D.View, world.Camera2D.SimProjection);            
+            if(DrawComponents)
+                render.RenderPreComponents(gameTime, world.Camera2D.View, world.Camera2D.SimProjection);            
             foreach (var item in world.MaterialSortedObjects.Keys)
             {
                 IMaterialProcessor MaterialProcessor = MaterialProcessors[item];
@@ -99,7 +101,11 @@ namespace PloobsEngine.SceneControl._2DScene
                     }                    
                 }
             }
-            render.RenderPosWithDepthComponents(gameTime, world.Camera2D.View, world.Camera2D.SimProjection);            
+            if (DrawComponents)
+                render.RenderPosWithDepthComponents(gameTime, world.Camera2D.View, world.Camera2D.SimProjection);
+
+            if (world.ParticleManager != null)
+                world.ParticleManager.iDraw(gameTime, world.Camera2D.View, world.Camera2D.SimProjection, render);
 
 #if !WINDOWS_PHONE
             if (usePostProcessing)
@@ -120,8 +126,8 @@ namespace PloobsEngine.SceneControl._2DScene
                 render.RenderTextureComplete(render[PrincipalConstants.CurrentImage], Color.White, ginfo.FullScreenRectangle, Matrix.Identity, null, true, SpriteSortMode.Deferred, SamplerState.AnisotropicClamp, BlendState.AlphaBlend);
             }
 #endif
-
-            render.RenderPosComponents(gameTime, world.Camera2D.View, world.Camera2D.SimProjection);            
+            if (DrawComponents)
+                render.RenderPosComponents(gameTime, world.Camera2D.View, world.Camera2D.SimProjection);            
         }
 
         public override string TechnicName

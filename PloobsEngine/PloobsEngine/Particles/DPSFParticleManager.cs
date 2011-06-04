@@ -76,13 +76,24 @@ namespace PloobsEngine.Particles
             }
         }
 
-        protected override void Update(GameTime gt, Matrix view, Matrix Projection, Vector3 camPosition)
+        protected override void Update3D(GameTime gt, Matrix view, Matrix Projection, Vector3 camPosition)
         {
             // Set the World, View, and Projection Matrices for the Particle Systems before Drawing them
             manager.SetWorldViewProjectionMatricesForAllParticleSystems(Matrix.Identity, view, Projection);
 
-            // Let all of the particle systems know of the Camera's current position
+            // Let all of the particle systems know of the Camera's current position            
             manager.SetCameraPositionForAllParticleSystems(camPosition);
+
+            // Update all of the Particle Systems
+            manager.UpdateAllParticleSystems((float)gt.ElapsedGameTime.TotalSeconds);
+        }
+
+        protected override void Update2D(GameTime gt, Matrix view, Matrix Projection)
+        {
+            // Set the World, View, and Projection Matrices for the Particle Systems before Drawing them
+            manager.SetWorldViewProjectionMatricesForAllParticleSystems(Matrix.Identity, view, Projection);
+
+            manager.SetTransformationMatrixForAllSpriteParticleSystems(view);
 
             // Update all of the Particle Systems
             manager.UpdateAllParticleSystems((float)gt.ElapsedGameTime.TotalSeconds);

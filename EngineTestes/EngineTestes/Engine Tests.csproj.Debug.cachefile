@@ -193,6 +193,10 @@ Content\Textures\chao_0.xnb
 Content\Textures\treedifuse_0.xnb
 Content\Textures\folha_0.xnb
 Content\Textures\goo.xnb
+Content\Textures\Fire.xnb
+Content\Textures\Bubble.xnb
+Content\Textures\WhiteSquare.xnb
+Content\Textures\Particle.xnb
 Content\ModelInfos\shadow.xml
 Content\ModelInfos\sponza.xml
 Content\Skins\Default\Skin.xml

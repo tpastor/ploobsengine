@@ -194,8 +194,8 @@ namespace PloobsEngine.SceneControl._2DScene
                 toPass[i].iUpdateObject(gt);                
             }
 
-            //if(ParticleManager!= null)
-                //ParticleManager.iUpdate(gt, CameraManager.ActiveCamera.View, CameraManager.ActiveCamera.Projection, CameraManager.ActiveCamera.Position);
+            if(ParticleManager!= null)
+                ParticleManager.iUpdate2D(gt, camera2D.View, camera2D.SimProjection);
         }
         internal void iUpdateWorld(GameTime gt)
         {

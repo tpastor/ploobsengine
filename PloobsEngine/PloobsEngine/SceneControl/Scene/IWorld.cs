@@ -215,7 +215,7 @@ namespace PloobsEngine.SceneControl
             }
 
             if(ParticleManager!= null)
-                ParticleManager.iUpdate(gt, CameraManager.ActiveCamera.View, CameraManager.ActiveCamera.Projection, CameraManager.ActiveCamera.Position);
+                ParticleManager.iUpdate3D(gt, CameraManager.ActiveCamera.View, CameraManager.ActiveCamera.Projection, CameraManager.ActiveCamera.Position);
 
             foreach (ISoundEmitter3D item in SoundEmiters3D)
             {
