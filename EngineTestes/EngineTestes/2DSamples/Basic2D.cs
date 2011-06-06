@@ -16,11 +16,15 @@ using PloobsEngine.Modelo2D;
 using PloobsEngine.SceneControl;
 using PloobsEngine.Particles;
 using DPSF.ParticleSystems;
+using PloobsEngine.Light2D;
+using PloobsEngine.Engine;
 
 namespace EngineTestes._2DSamples
 {
     public  class Basic2D : I2DScene
     {
+
+        Texture2D tile;
 
         protected override void InitScreen(PloobsEngine.Engine.GraphicInfo GraphicInfo, PloobsEngine.Engine.EngineStuff engine)
         {
@@ -31,24 +35,39 @@ namespace EngineTestes._2DSamples
         Border border;
         protected override void SetWorldAndRenderTechnich(out RenderTechnich2D renderTech, out I2DWorld world)
         {
-            renderTech = new Basic2DRenderTechnich();
-            world = new I2DWorld(new FarseerWorld(new Vector2(0, 9.8f)),new DPSFParticleManager());
+            Basic2DRenderTechnich rt = new Basic2DRenderTechnich();
+            rt.UsePostProcessing = false;
+            rt.RenderBackGround += new RenderBackGround(rt_RenderBackGround);
+            renderTech = rt;
+
+            world = new I2DWorld(new FarseerWorld(new Vector2(0, 9.8f)),new DPSFParticleManager());            
+        }
+
+        void rt_RenderBackGround(GraphicInfo ginfo,RenderHelper render)
+        {
+            Rectangle source = new Rectangle(0, 0, ginfo.Viewport.Width, ginfo.Viewport.Height);
+            render.RenderBegin(Matrix.Identity, null, SpriteSortMode.Deferred, SamplerState.LinearWrap, BlendState.Opaque, RasterizerState.CullNone,DepthStencilState.Default);
+            render.RenderTexture(tile, Vector2.Zero, source, Color.White, 0, Vector2.Zero, 1.0f, SpriteEffects.None, 1.0f);
+            render.RenderEnd();            
         }
 
         protected override void LoadContent(PloobsEngine.Engine.GraphicInfo GraphicInfo, PloobsEngine.Engine.GraphicFactory factory, PloobsEngine.SceneControl.IContentManager contentManager)
         {
-            FarseerWorld fworld = this.World.PhysicWorld as FarseerWorld;            
+            tile = factory.GetTexture2D("Textures/tile");
+
+
+            FarseerWorld fworld = this.World.PhysicWorld as FarseerWorld;
 
             ///border
             border = new Border(fworld, factory, GraphicInfo, factory.CreateTexture2DColor(1, 1, Color.Red));
 
             ///from texture
             {
-                Texture2D tex = factory.GetTexture2D("Textures//goo");                
+                Texture2D tex = factory.GetTexture2D("Textures//goo");
                 IModelo2D model = new SpriteFarseer(tex);
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
-                FarseerObject fs = new FarseerObject(fworld, tex);                
-                I2DObject o = new I2DObject(fs, mat,model);
+                FarseerObject fs = new FarseerObject(fworld, tex);
+                I2DObject o = new I2DObject(fs, mat, model);
                 o.OnHasMoved += new PloobsEngine.SceneControl._2DScene.OnHasMoved(o_OnHasMoved);
                 this.World.AddObject(o);
             }
@@ -60,37 +79,46 @@ namespace EngineTestes._2DSamples
                 IModelo2D model = new SpriteFarseer(tex);
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
                 FarseerObject fs = new FarseerObject(fworld, tex);
-                I2DObject o = new I2DObject(fs, mat, model);                
+                I2DObject o = new I2DObject(fs, mat, model);
                 this.World.AddObject(o);
-            }         
+            }
 
             ///rectangle
-            Vertices verts = PolygonTools.CreateRectangle(5, 5);            
+            Vertices verts = PolygonTools.CreateRectangle(5, 5);
             {
-                IModelo2D model = new SpriteFarseer(factory,verts,Color.Orange);
+                IModelo2D model = new SpriteFarseer(factory, verts, Color.Orange);
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
-                FarseerObject fs = new FarseerObject(fworld,verts);                
-                I2DObject o = new I2DObject(fs, mat,model);
+                FarseerObject fs = new FarseerObject(fworld, verts);
+                I2DObject o = new I2DObject(fs, mat, model);
                 this.World.AddObject(o);
             }
-
 
             ///circle
-            CircleShape circle = new CircleShape(5,1);
-            {   
+            CircleShape circle = new CircleShape(5, 1);
+            {
                 IModelo2D model = new SpriteFarseer(factory, circle, Color.Orange);
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();                
-                FarseerObject fs = new FarseerObject(fworld,circle);
-                I2DObject o = new I2DObject(fs, mat,model);
+                FarseerObject fs = new FarseerObject(fworld, circle);
+                I2DObject o = new I2DObject(fs, mat, model);
                 this.World.AddObject(o);
             }
-            
+
+            {
+                PointLight2D l = new PointLight2D(new Vector2(-GraphicInfo.BackBufferWidth / 4, -GraphicInfo.BackBufferWidth / 4), Color.Red,1);
+                this.World.AddLight(l);
+            }
+
+            {
+                SpotLight2D l = new SpotLight2D(new Vector2(+GraphicInfo.BackBufferWidth / 4, -GraphicInfo.BackBufferWidth / 4), Color.Blue, new Vector2(0,1),MathHelper.ToRadians(45));
+                this.World.AddLight(l);
+            }
+
             ///camera
             this.World.Camera2D = new Camera2D(GraphicInfo);
 
             DPFSParticleSystem ps = new DPFSParticleSystem("TESTE", new SpriteParticleSystem(null));
-            this.World.ParticleManager.AddAndInitializeParticleSystem(ps);            
-            
+            this.World.ParticleManager.AddAndInitializeParticleSystem(ps);
+
             ///add a post effect =P
             //this.RenderTechnic.AddPostEffect(new WigglePostEffect());
 
@@ -105,8 +133,7 @@ namespace EngineTestes._2DSamples
             DPSFParticleManager DPSFParticleManager = this.World.ParticleManager as DPSFParticleManager;
             DPFSParticleSystem ParticleSystem = DPSFParticleManager.GetParticleSystem("TESTE") as DPFSParticleSystem;
             SpriteParticleSystem SpriteParticleSystem = ParticleSystem.IDPSFParticleSystem as SpriteParticleSystem;
-            Vector2 v = Reciever.PhysicObject.Position; ///simulation position
-            v = ConvertUnits.ToDisplayUnits(v);         ///screen position
+            Vector2 v = Reciever.PhysicObject.Position; ///simulation position            
             SpriteParticleSystem.AttractorPosition = new Vector3(v,0);
         }
 

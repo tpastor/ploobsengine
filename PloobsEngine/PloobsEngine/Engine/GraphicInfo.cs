@@ -31,6 +31,7 @@ namespace PloobsEngine.Engine
             this.MultiSample = MultiSample;
             this.DepthFormat = DepthFormat;
             this.UseMipMap = useMipMap;
+            this.EngineStuff = engine;
 #if !XBOX && !WINDOWS_PHONE
             this.window = (System.Windows.Forms.Form) System.Windows.Forms.Form.FromHandle(engine.Window.Handle);
 #endif
@@ -72,6 +73,8 @@ namespace PloobsEngine.Engine
             if(DeviceReset!=null)
                 DeviceReset(obj, args);
         }
+
+        internal EngineStuff EngineStuff;
 
         private GraphicsAdapter graphicsAdapter;
 

@@ -200,10 +200,14 @@
     <Compile Include="Features\Tasks\ITask.cs" />
     <Compile Include="Features\Tasks\TaskCommand.cs" />
     <Compile Include="Features\Tasks\TaskProcessor.cs" />
-    <Compile Include="Light\Deferred\DeferredLight.cs" />
-    <Compile Include="Light\Deferred\DirectionalLightPE.cs" />
-    <Compile Include="Light\Deferred\PointLightPE.cs" />
-    <Compile Include="Light\Deferred\SpotLightPE.cs" />
+    <Compile Include="Light2D\Light2D.cs" />
+    <Compile Include="Light2D\PointLight2D.cs" />
+    <Compile Include="Light2D\ShadowmapResolver.cs" />
+    <Compile Include="Light2D\SpotLight2D.cs" />
+    <Compile Include="Light3D\Deferred\DeferredLight.cs" />
+    <Compile Include="Light3D\Deferred\DirectionalLightPE.cs" />
+    <Compile Include="Light3D\Deferred\PointLightPE.cs" />
+    <Compile Include="Light3D\Deferred\SpotLightPE.cs" />
     <Compile Include="Loader\WorldLoader.cs" />
     <Compile Include="Loader\ExtractXmlModelLoader.cs" />
     <Compile Include="Loader\IModelLoader.cs" />
@@ -324,7 +328,7 @@
     <Compile Include="Input\SimpleConcreteMousePositionInputPlayable.cs" />
     <Compile Include="Input\TurnOffInputMaskCommand.cs" />
     <Compile Include="Input\TurnOnInputMaskCommand.cs" />
-    <Compile Include="Light\ILight.cs" />
+    <Compile Include="Light3D\ILight.cs" />
     <Compile Include="Material\ForwardMaterial.cs" />
     <Compile Include="Material\IMaterial.cs" />
     <Compile Include="Material\IShadder\IShader.cs" />
@@ -535,6 +539,9 @@
     <None Include="bin\x86\Debug\Content\Effects\Deferred\Water.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\WaterComplete.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\wiggle.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\KryptonEffect.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\reductionEffect.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\resolveShadowsEffect.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\ShadowDirectionalCascade.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\ShadowMap.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\skybox.xnb" />

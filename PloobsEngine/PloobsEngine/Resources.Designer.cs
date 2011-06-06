@@ -452,6 +452,13 @@ namespace PloobsEngine {
             }
         }
         
+        internal static byte[] reductionEffect {
+            get {
+                object obj = ResourceManager.GetObject("reductionEffect", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
         internal static byte[] Reflection {
             get {
                 object obj = ResourceManager.GetObject("Reflection", resourceCulture);
@@ -469,6 +476,13 @@ namespace PloobsEngine {
         internal static byte[] RenderGlowBuffer {
             get {
                 object obj = ResourceManager.GetObject("RenderGlowBuffer", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        internal static byte[] resolveShadowsEffect {
+            get {
+                object obj = ResourceManager.GetObject("resolveShadowsEffect", resourceCulture);
                 return ((byte[])(obj));
             }
         }

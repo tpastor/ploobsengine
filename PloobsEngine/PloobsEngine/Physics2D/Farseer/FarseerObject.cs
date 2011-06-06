@@ -115,11 +115,11 @@ namespace PloobsEngine.Physics2D.Farseer
         {
             get
             {
-                return body.Position;
+                return ConvertUnits.ToDisplayUnits(body.Position);
             }
             set
             {
-                body.Position = value;
+                body.Position = ConvertUnits.ToSimUnits(value);
             }
         }
 

@@ -138,10 +138,20 @@
     <Compile Include="Features\Tasks\ITask.cs" />
     <Compile Include="Features\Tasks\TaskCommand.cs" />
     <Compile Include="Features\Tasks\TaskProcessor.cs" />
-    <Compile Include="Light\Deferred\DeferredLight.cs" />
-    <Compile Include="Light\Deferred\DirectionalLightPE.cs" />
-    <Compile Include="Light\Deferred\PointLightPE.cs" />
-    <Compile Include="Light\Deferred\SpotLightPE.cs" />
+    <Compile Include="Light2D\Common\BoundingRect.cs" />
+    <Compile Include="Light2D\KryptonEngine.cs" />
+    <Compile Include="Light2D\KryptonRenderHelper.cs" />
+    <Compile Include="Light2D\Lights\ILight2D.cs" />
+    <Compile Include="Light2D\Lights\Light2D.cs" />
+    <Compile Include="Light2D\LightTextureBuilder.cs" />
+    <Compile Include="Light2D\ShadowHull.cs" />
+    <Compile Include="Light2D\ShadowHullPoint.cs" />
+    <Compile Include="Light2D\ShadowHullVertex.cs" />
+    <Compile Include="Light3D\Deferred\DeferredLight.cs" />
+    <Compile Include="Light3D\Deferred\DirectionalLightPE.cs" />
+    <Compile Include="Light3D\Deferred\PointLightPE.cs" />
+    <Compile Include="Light3D\Deferred\SpotLightPE.cs" />
+    <Compile Include="Light3D\ILight.cs" />
     <Compile Include="Loader\WorldLoader.cs" />
     <Compile Include="Loader\ExtractXmlModelLoader.cs" />
     <Compile Include="Loader\IModelLoader.cs" />
@@ -262,7 +272,6 @@
     <Compile Include="Input\SimpleConcreteMousePositionInputPlayable.cs" />
     <Compile Include="Input\TurnOffInputMaskCommand.cs" />
     <Compile Include="Input\TurnOnInputMaskCommand.cs" />
-    <Compile Include="Light\ILight.cs" />
     <Compile Include="Material\ForwardMaterial.cs" />
     <Compile Include="Material\IMaterial.cs" />
     <Compile Include="Material\IShadder\IShader.cs" />
@@ -398,6 +407,7 @@
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
     </None>
     <None Include="bin\Windows Phone\Debug\EnginePhoneContent\Font\ConsoleFont.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\KryptonEffect.xnb" />
     <None Include="bin\x86\Debug\Content\Font\ConsoleFont.xnb" />
     <None Include="PhoneGameThumb.png">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
@@ -434,6 +444,9 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml.Serialization, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Light\Deferred\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />

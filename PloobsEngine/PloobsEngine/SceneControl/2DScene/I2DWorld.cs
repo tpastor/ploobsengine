@@ -32,7 +32,12 @@ namespace PloobsEngine.SceneControl._2DScene
             this.PhysicWorld = PhysicWorld;                        
             Dummies = new List<IDummy>();            
             Objects = new List<I2DObject>();
-            MaterialSortedObjects = new Dictionary<Type, List<I2DObject>>();                               
+            MaterialSortedObjects = new Dictionary<Type, List<I2DObject>>();
+            
+#if !WINDOWS_PHONE
+            Lights2D = new List<PloobsEngine.Light2D.Light2D>();
+#endif
+
         }
         
         protected GraphicInfo graphicsInfo;
@@ -66,6 +71,28 @@ namespace PloobsEngine.SceneControl._2DScene
                 camera2D = new Camera2D(graphicsInfo);
             }
         }
+#if !WINDOWS_PHONE
+
+        public void AddLight(PloobsEngine.Light2D.Light2D Light)
+        {
+            Light.RenderTarget = graphicsFactory.CreateRenderTarget(Light.baseSize, Light.baseSize);
+            Lights2D.Add(Light);
+        }
+
+        public void Remove(PloobsEngine.Light2D.Light2D Light)
+        {
+            Light.RenderTarget = null;
+            Lights2D.Remove(Light);
+        }
+
+        public List<PloobsEngine.Light2D.Light2D> Lights2D
+        {
+            get;
+            internal set;
+        }
+#endif
+
+
         internal void iInitWorld()
         {
             InitWorld();
