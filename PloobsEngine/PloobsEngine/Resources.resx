@@ -430,4 +430,10 @@
   <data name="ConsoleFont1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>bin\Windows Phone\Debug\EnginePhoneContent\Font\ConsoleFont.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
   </data>
+  <data name="reductionEffect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\x86\Debug\Content\Effects\reductionEffect.xnb;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="resolveShadowsEffect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\x86\Debug\Content\Effects\resolveShadowsEffect.xnb;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

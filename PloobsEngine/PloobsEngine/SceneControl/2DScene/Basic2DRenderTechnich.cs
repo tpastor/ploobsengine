@@ -5,21 +5,58 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Material2D;
 using Microsoft.Xna.Framework.Graphics;
+using PloobsEngine.Engine;
 
 namespace PloobsEngine.SceneControl._2DScene
 {
+    public delegate void RenderBackGround(GraphicInfo ginfo, RenderHelper render);
+    public delegate void BeforeDraw(GraphicInfo ginfo, RenderHelper render);
+    public delegate void AfterDrawBeforePostEffects(GraphicInfo ginfo, RenderHelper render);
+     
+
     public class Basic2DRenderTechnich : RenderTechnich2D
     {
-        public Color BackGroundColor = Color.CornflowerBlue;
+        public event RenderBackGround RenderBackGround = null;
+        public event BeforeDraw BeforeDraw = null;
+        public event AfterDrawBeforePostEffects AfterDrawBeforePostEffects = null;
+        
+        /// <summary>
+        /// Default false
+        /// </summary>
         public bool  UsePreDrawPhase = false;
+        /// <summary>
+        /// Default false
+        /// </summary>
         public bool  DrawComponents = false;
-        public Dictionary<Type, IMaterialProcessor> MaterialProcessors = new Dictionary<Type, IMaterialProcessor>();
+        public Dictionary<Type, IMaterialProcessor> MaterialProcessors = new Dictionary<Type, IMaterialProcessor>();        
 
 #if !WINDOWS_PHONE
+
+        /// <summary>
+        /// Default
+        /// Color.FromNonPremultiplied(10, 10, 10, 255)
+        /// WHEN NOT USING LIGHTS, this is the background color
+        /// </summary>
+        public Color AmbientColor = Color.FromNonPremultiplied(10, 10, 10, 255);
+        /// <summary>
+        /// Default
+        /// Color.Gray
+        /// </summary>
+        public Color LightMaskAttenuation = Color.Gray;
+        /// <summary>
+        /// Default true
+        /// </summary>
+        public bool UseLights = true;
+        BlendState blendState;
+        RenderTarget2D screenShadows;
         RenderTarget2D renderTarget;
         RenderTarget2D postEffectTarget;
-        bool usePostProcessing = true;
+        /// <summary>
+        /// Default true
+        /// </summary>
+        public bool UsePostProcessing = true;
         Engine.GraphicInfo ginfo;
+        PloobsEngine.Light2D.ShadowmapResolver shadowmapResolver;
 
         public Basic2DRenderTechnich() : base(PostEffectType.Forward2D)
         {
@@ -35,8 +72,13 @@ namespace PloobsEngine.SceneControl._2DScene
         protected override void AfterLoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
         {            
 #if !WINDOWS_PHONE
+            blendState = new BlendState();
+            blendState.ColorSourceBlend = Blend.DestinationColor;
+            blendState.ColorDestinationBlend = Blend.SourceColor;
             this.ginfo = ginfo;
-            if (usePostProcessing)
+            shadowmapResolver = new PloobsEngine.Light2D.ShadowmapResolver(factory,new QuadRender(factory.device), PloobsEngine.Light2D.ShadowmapSize.Size512, PloobsEngine.Light2D.ShadowmapSize.Size512);
+            screenShadows = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);            
+            if (UsePostProcessing)
             {
                 renderTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
                 postEffectTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
@@ -48,8 +90,7 @@ namespace PloobsEngine.SceneControl._2DScene
         protected override void ExecuteTechnic(Microsoft.Xna.Framework.GameTime gameTime, RenderHelper render, I2DWorld world)
         {
             if (UsePreDrawPhase)
-            {
-                render.Clear(BackGroundColor);
+            {                
                 foreach (var item in world.MaterialSortedObjects.Keys)
                 {
                     IMaterialProcessor MaterialProcessor = MaterialProcessors[item];
@@ -73,15 +114,84 @@ namespace PloobsEngine.SceneControl._2DScene
 
 
 #if !WINDOWS_PHONE
-            if (usePostProcessing)
+            if (UsePostProcessing)
             {
                 render.PushRenderTarget(renderTarget);
             }
+
+            if (UseLights)
+            {
+                foreach (var item in world.Lights2D)
+                {
+                    item.BeginDrawingShadowCasters(render);
+                    item.UpdateLight(world.Camera2D.View);
+
+                    foreach (var item2 in world.MaterialSortedObjects.Keys)
+                    {
+                        IMaterialProcessor MaterialProcessor = MaterialProcessors[item2];
+
+                        if (MaterialProcessor != null)
+                        {
+                            MaterialProcessor.ProcessLightDraw(gameTime, render, world.Camera2D, world.MaterialSortedObjects[item2], Color.Black, item);
+                        }
+                        else
+                        {
+                            foreach (var iobj in world.MaterialSortedObjects[item2])
+                            {
+                                if (iobj.PhysicObject.Enabled == true)
+                                {
+                                    iobj.Material.LightDraw(gameTime, iobj, render, Color.Black, item);
+                                }
+                            }
+                        }
+                    }
+
+                    item.EndDrawingShadowCasters(render);   
+                    shadowmapResolver.ResolveShadows(item);
+
+                }
+
+                render.PushRenderTarget(screenShadows);
+                render.Clear(AmbientColor);
+
+                if (RenderBackGround != null)
+                    RenderBackGround(ginfo, render);
+
+                render.RenderBegin(Matrix.Identity, null, SpriteSortMode.Deferred, SamplerState.LinearClamp, BlendState.Additive);
+
+                foreach (var item in world.Lights2D)
+                {
+                    render.RenderTexture(item.RenderTarget, item.LightPosition - item.LightAreaSize * 0.5f, item.Color, 0, Vector2.Zero, 1);
+                }
+                render.RenderEnd();                                                
+
+                render.PopRenderTarget();
+
+                render.Clear(LightMaskAttenuation);
+
+                render.RenderBegin(Matrix.Identity, null, SpriteSortMode.Immediate, SamplerState.LinearClamp, blendState);
+                render.RenderTexture(screenShadows, Vector2.Zero, Color.White, 0, Vector2.Zero, 1);
+                render.RenderEnd();
+            }
+            else
+            {
+                render.Clear(AmbientColor);
+                if (RenderBackGround != null)
+                    RenderBackGround(ginfo, render);
+            }
+            
+#else
+            render.Clear(BackGroundColor);
+            if(RenderBackGround!=null)
+                RenderBackGround(render);
 #endif
 
-            render.Clear(BackGroundColor);
-            if(DrawComponents)
-                render.RenderPreComponents(gameTime, world.Camera2D.View, world.Camera2D.SimProjection);            
+            if (DrawComponents)
+                render.RenderPreComponents(gameTime, world.Camera2D.View, world.Camera2D.SimProjection);
+
+            if (BeforeDraw != null)
+                BeforeDraw(ginfo, render);
+
             foreach (var item in world.MaterialSortedObjects.Keys)
             {
                 IMaterialProcessor MaterialProcessor = MaterialProcessors[item];
@@ -107,8 +217,11 @@ namespace PloobsEngine.SceneControl._2DScene
             if (world.ParticleManager != null)
                 world.ParticleManager.iDraw(gameTime, world.Camera2D.View, world.Camera2D.SimProjection, render);
 
+            if (AfterDrawBeforePostEffects != null)
+                BeforeDraw(ginfo, render);
+
 #if !WINDOWS_PHONE
-            if (usePostProcessing)
+            if (UsePostProcessing)
             {
                 render[PrincipalConstants.CurrentImage] = render.PopRenderTarget()[0].RenderTarget as Texture2D;
                 render[PrincipalConstants.CombinedImage] = render[PrincipalConstants.CurrentImage];

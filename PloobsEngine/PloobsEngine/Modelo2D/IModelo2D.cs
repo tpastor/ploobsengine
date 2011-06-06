@@ -18,6 +18,7 @@ namespace PloobsEngine.Modelo2D
         public IModelo2D(ModelType ModelType)
         {
             this.ModelType = ModelType;
+            LayerDepth = 0;
         }
 
         public ModelType ModelType
@@ -36,6 +37,12 @@ namespace PloobsEngine.Modelo2D
         {
             get;
             set;
+        }
+
+        public float LayerDepth
+        {
+            set;
+            get;
         }
     }
 }

@@ -11,20 +11,38 @@ using PloobsEngine.Engine;
 namespace PloobsEngine.Material2D
 {
     public class Basic2DTextureMaterial : I2DMaterial
-    {   
-        #region IMaterial2D Members        
+    {
+
+        public Basic2DTextureMaterial()
+        {
+            CastShadow = true;
+
+        }
 
         /// <summary>
-        /// Draws 
+        /// Gets or sets a value indicating whether [cast shadow].
+        /// Default true
         /// </summary>
-        /// <param name="gt">The gt.</param>
-        /// <param name="obj">The obj.</param>
-        /// <param name="render">The render.</param>
-        public override void Draw(Microsoft.Xna.Framework.GameTime gt, SceneControl._2DScene.I2DObject obj, SceneControl.RenderHelper render)
+        /// <value>
+        ///   <c>true</c> if [cast shadow]; otherwise, <c>false</c>.
+        /// </value>
+        public bool CastShadow
         {
-            render.RenderTexture(obj.Modelo.Texture, ConvertUnits.ToDisplayUnits(obj.PhysicObject.Position), Color.White, obj.PhysicObject.Rotation, obj.Modelo.Origin + obj.PhysicObject.Origin, 1);
+            set;
+            get;
         }
-        #endregion        
+
+
+        public override void Draw(GameTime gt, SceneControl._2DScene.I2DObject obj, SceneControl.RenderHelper render)
+        {
+            render.RenderTexture(obj.Modelo.Texture, obj.PhysicObject.Position, Color.White, obj.PhysicObject.Rotation, obj.Modelo.Origin + obj.PhysicObject.Origin, 1,SpriteEffects.None,obj.Modelo.LayerDepth);
+        }
+        
+        public override void LightDraw(GameTime gt, SceneControl._2DScene.I2DObject obj, SceneControl.RenderHelper render, Color color, PloobsEngine.Light2D.Light2D light)
+        {
+            if(CastShadow)
+                render.RenderTexture(obj.Modelo.Texture, light.ToRelativePosition(obj.PhysicObject.Position), color, obj.PhysicObject.Rotation, obj.Modelo.Origin + obj.PhysicObject.Origin, 1);
+        }
     }
 
     public class Basic2DTextureMaterialProcessor : IMaterialProcessor
@@ -52,6 +70,19 @@ namespace PloobsEngine.Material2D
                 if (iobj.PhysicObject.Enabled == true)
                 {
                     iobj.Material.PreDrawnPhase(gameTime, world,iobj, render);
+                }
+            }
+            render.RenderEnd();
+        }
+
+        public void ProcessLightDraw(GameTime gameTime, SceneControl.RenderHelper render, SceneControl._2DScene.ICamera2D camera, List<SceneControl._2DScene.I2DObject> objects, Color color, PloobsEngine.Light2D.Light2D light)
+        {
+            render.RenderBegin(camera.View, null);
+            foreach (var iobj in objects)
+            {
+                if (iobj.PhysicObject.Enabled == true)
+                {
+                    iobj.Material.LightDraw(gameTime, iobj, render, color, light);
                 }
             }
             render.RenderEnd();

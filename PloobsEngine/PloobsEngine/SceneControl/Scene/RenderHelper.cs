@@ -490,12 +490,33 @@ namespace PloobsEngine.SceneControl
         /// <param name="rotation">The rotation.</param>
         /// <param name="origin">The origin.</param>
         /// <param name="scale">The scale.</param>
+        /// <param name="SpriteEffects">The sprite effects.</param>
+        /// <param name="layerdepth">The layerdepth.</param>
         public void RenderTexture(Texture2D texture,Vector2 position,Color color, float rotation, Vector2
-              origin, float scale)
+              origin, float scale = 1,SpriteEffects SpriteEffects = SpriteEffects.None,float layerdepth = 0)
         {
-            spriteBatch.Draw(texture, position, null, color, rotation, origin, 1f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(texture, position, null, color, rotation, origin, scale, SpriteEffects, layerdepth);
         }
-             
+
+        /// <summary>
+        /// Renders the texture.
+        /// CALL THIS ONLY AFTER RenderBegin
+        /// AFTER DRAWING ALL THE TEXTURES CALL RenderEnd
+        /// </summary>
+        /// <param name="texture">The texture.</param>
+        /// <param name="position">The position.</param>
+        /// <param name="sourceRectangle">The source rectangle.</param>
+        /// <param name="color">The color.</param>
+        /// <param name="rotation">The rotation.</param>
+        /// <param name="origin">The origin.</param>
+        /// <param name="scale">The scale.</param>
+        /// <param name="SpriteEffects">The sprite effects.</param>
+        /// <param name="layerdepth">The layerdepth.</param>
+        public void RenderTexture(Texture2D texture, Vector2 position,Rectangle? sourceRectangle, Color color, float rotation, Vector2
+              origin, float scale = 1, SpriteEffects SpriteEffects = SpriteEffects.None, float layerdepth = 0)
+        {
+            spriteBatch.Draw(texture, position, sourceRectangle, color, rotation, origin, scale, SpriteEffects, layerdepth);
+        }
 
         /// <summary>
         /// End Rendering the texture

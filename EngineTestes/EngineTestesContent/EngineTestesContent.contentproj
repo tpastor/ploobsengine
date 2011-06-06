@@ -157,6 +157,11 @@
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
     </Compile>
+    <Compile Include="Effects\AdvancedRadialBlur.fx">
+      <Name>AdvancedRadialBlur</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+    </Compile>
     <None Include="ModelInfos\shadow.xml">
       <Name>shadow</Name>
       <Importer>XmlImporter</Importer>
@@ -1087,6 +1092,13 @@
   <ItemGroup>
     <Compile Include="Textures\Particle.bmp">
       <Name>Particle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\tile.JPG">
+      <Name>tile</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
