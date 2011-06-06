@@ -27,10 +27,8 @@ namespace PloobsEngine.SceneControl._2DScene
         /// <summary>
         /// Default false
         /// </summary>
-        public bool  DrawComponents = false;
-        public Dictionary<Type, IMaterialProcessor> MaterialProcessors = new Dictionary<Type, IMaterialProcessor>();        
-
-#if !WINDOWS_PHONE
+        public bool  UseDrawComponents = false;
+        public Dictionary<Type, IMaterialProcessor> MaterialProcessors = new Dictionary<Type, IMaterialProcessor>();
 
         /// <summary>
         /// Default
@@ -38,6 +36,9 @@ namespace PloobsEngine.SceneControl._2DScene
         /// WHEN NOT USING LIGHTS, this is the background color
         /// </summary>
         public Color AmbientColor = Color.FromNonPremultiplied(10, 10, 10, 255);
+
+        Engine.GraphicInfo ginfo;
+#if !WINDOWS_PHONE        
         /// <summary>
         /// Default
         /// Color.Gray
@@ -54,8 +55,7 @@ namespace PloobsEngine.SceneControl._2DScene
         /// <summary>
         /// Default true
         /// </summary>
-        public bool UsePostProcessing = true;
-        Engine.GraphicInfo ginfo;
+        public bool UsePostProcessing = true;        
         PloobsEngine.Light2D.ShadowmapResolver shadowmapResolver;
 
         public Basic2DRenderTechnich() : base(PostEffectType.Forward2D)
@@ -70,12 +70,12 @@ namespace PloobsEngine.SceneControl._2DScene
 #endif
 
         protected override void AfterLoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
-        {            
+        {
+            this.ginfo = ginfo;
 #if !WINDOWS_PHONE
             blendState = new BlendState();
             blendState.ColorSourceBlend = Blend.DestinationColor;
-            blendState.ColorDestinationBlend = Blend.SourceColor;
-            this.ginfo = ginfo;
+            blendState.ColorDestinationBlend = Blend.SourceColor;            
             shadowmapResolver = new PloobsEngine.Light2D.ShadowmapResolver(factory,new QuadRender(factory.device), PloobsEngine.Light2D.ShadowmapSize.Size512, PloobsEngine.Light2D.ShadowmapSize.Size512);
             screenShadows = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);            
             if (UsePostProcessing)
@@ -181,12 +181,12 @@ namespace PloobsEngine.SceneControl._2DScene
             }
             
 #else
-            render.Clear(BackGroundColor);
+            render.Clear(AmbientColor);
             if(RenderBackGround!=null)
-                RenderBackGround(render);
+                RenderBackGround(ginfo,render);
 #endif
 
-            if (DrawComponents)
+            if (UseDrawComponents)
                 render.RenderPreComponents(gameTime, world.Camera2D.View, world.Camera2D.SimProjection);
 
             if (BeforeDraw != null)
@@ -211,7 +211,7 @@ namespace PloobsEngine.SceneControl._2DScene
                     }                    
                 }
             }
-            if (DrawComponents)
+            if (UseDrawComponents)
                 render.RenderPosWithDepthComponents(gameTime, world.Camera2D.View, world.Camera2D.SimProjection);
 
             if (world.ParticleManager != null)
@@ -239,7 +239,7 @@ namespace PloobsEngine.SceneControl._2DScene
                 render.RenderTextureComplete(render[PrincipalConstants.CurrentImage], Color.White, ginfo.FullScreenRectangle, Matrix.Identity, null, true, SpriteSortMode.Deferred, SamplerState.AnisotropicClamp, BlendState.AlphaBlend);
             }
 #endif
-            if (DrawComponents)
+            if (UseDrawComponents)
                 render.RenderPosComponents(gameTime, world.Camera2D.View, world.Camera2D.SimProjection);            
         }
 
