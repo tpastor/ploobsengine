@@ -114,6 +114,7 @@
   <ItemGroup>
     <Compile Include="2DSamples\Basic2D.cs" />
     <Compile Include="2DSamples\Border.cs" />
+    <Compile Include="2DSamples\Template2D.cs" />
     <Compile Include="2DSamples\SpriteParticle.cs" />
     <Compile Include="2DSamples\JointUpdateable.cs" />
     <Compile Include="AA\AAScreen.cs" />

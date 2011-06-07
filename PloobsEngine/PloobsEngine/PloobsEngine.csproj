@@ -233,6 +233,7 @@
     <Compile Include="Material\IShadder\ForwardShader\ForwardTransparenteShader.cs" />
     <Compile Include="Material\IShadder\ForwardShader\ForwardTreeShader.cs" />
     <Compile Include="Material\TreeMaterial.cs" />
+    <Compile Include="Modelo2D\Animation.cs" />
     <Compile Include="Modelo2D\IModelo2D.cs" />
     <Compile Include="Modelo2D\SpriteFarseer.cs" />
     <Compile Include="Modelo\Animation\AnimatedController.cs" />
