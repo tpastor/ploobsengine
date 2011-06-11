@@ -148,9 +148,7 @@
     <Compile Include="AI\PathFind\AStar.cs" />
     <Compile Include="AI\PathFind\IANodeComparer.cs" />
     <Compile Include="AI\PathFind\IAPathfinderNode.cs" />
-    <Compile Include="AI\PathFind\IPathFinder.cs" />
     <Compile Include="AI\SimpleMap.cs" />
-    <Compile Include="AI\Waypoint.cs" />
     <Compile Include="AI\Waypoints\ClosestWaypointConnector.cs" />
     <Compile Include="AI\Waypoints\IWaypointConnector.cs" />
     <Compile Include="AI\Waypoints\SequenceIdWaypointConnection.cs" />
@@ -233,6 +231,7 @@
     <Compile Include="Material\IShadder\ForwardShader\ForwardTransparenteShader.cs" />
     <Compile Include="Material\IShadder\ForwardShader\ForwardTreeShader.cs" />
     <Compile Include="Material\TreeMaterial.cs" />
+    <Compile Include="Modelo2D\Animation.cs" />
     <Compile Include="Modelo2D\IModelo2D.cs" />
     <Compile Include="Modelo2D\SpriteFarseer.cs" />
     <Compile Include="Modelo\Animation\AnimatedController.cs" />
@@ -268,6 +267,34 @@
     <Compile Include="Physic3D\PhysicObjects\IPhysicObject.cs" />
     <Compile Include="Physic3D\SegmentInterceptInfo.cs" />
     <Compile Include="Physics2D\Farseer\GhostObject.cs" />
+    <Compile Include="SteeringSharperIa\AbstractVehicle.cs" />
+    <Compile Include="SteeringSharperIa\AnnotationService.cs" />
+    <Compile Include="SteeringSharperIa\BruteForceProximityDatabase.cs" />
+    <Compile Include="SteeringSharperIa\Camera.cs" />
+    <Compile Include="SteeringSharperIa\Clock.cs" />
+    <Compile Include="SteeringSharperIa\IAnnotationService.cs" />
+    <Compile Include="SteeringSharperIa\IDraw.cs" />
+    <Compile Include="SteeringSharperIa\ILocalSpace.cs" />
+    <Compile Include="SteeringSharperIa\IPlugIn.cs" />
+    <Compile Include="SteeringSharperIa\IProximityDatabase.cs" />
+    <Compile Include="SteeringSharperIa\ITokenForProximityDatabase.cs" />
+    <Compile Include="SteeringSharperIa\IVehicle.cs" />
+    <Compile Include="SteeringSharperIa\LocalSpace.cs" />
+    <Compile Include="SteeringSharperIa\LQDatabase.cs" />
+    <Compile Include="SteeringSharperIa\LQProximityDatabase.cs" />
+    <Compile Include="SteeringSharperIa\Obstacle.cs" />
+    <Compile Include="SteeringSharperIa\Path.cs" />
+    <Compile Include="SteeringSharperIa\Pathway.cs" />
+    <Compile Include="SteeringSharperIa\PolylinePathway.cs" />
+    <Compile Include="SteeringSharperIa\SimpleVehicle.cs" />
+    <Compile Include="SteeringSharperIa\SphericalObstacle.cs" />
+    <Compile Include="SteeringSharperIa\SteerLibrary.cs" />
+    <Compile Include="SteeringSharperIa\Trail.cs" />
+    <Compile Include="Utils\Debug 2D Primitives\I2DPrimitive.cs" />
+    <Compile Include="Utils\Debug 2D Primitives\Lines.cs" />
+    <Compile Include="Utils\Debug 2D Primitives\PrimitiveBatch.cs" />
+    <Compile Include="Utils\Debug 2D Primitives\Triangles.cs" />
+    <Compile Include="Utils\Debug 2D Primitives\TrianglesStrip.cs" />
     <Compile Include="Utils\Asset2DCreator.cs" />
     <Compile Include="Physics2D\ConvertUtils.cs" />
     <Compile Include="Physics2D\Farseer\FarseerWorld.cs" />
@@ -575,7 +602,8 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <PropertyGroup>
-    <PostBuildEvent>merge.bat</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!--
       To modify your build process, add your task inside one of the targets below and uncomment it. 

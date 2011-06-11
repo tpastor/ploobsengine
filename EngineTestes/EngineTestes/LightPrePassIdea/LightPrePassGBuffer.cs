@@ -82,15 +82,15 @@ namespace PloobsEngine.SceneControl
             render.PopDepthStencilState();
         }
 
-        public void PreDrawScene(GameTime gameTime, IWorld world, RenderHelper render, GraphicInfo ginfo)
+        public void PreDrawScene(GameTime gameTime, IWorld world, RenderHelper render, GraphicInfo ginfo,List<IObject> objs)
         {
-            foreach (IObject item in world.Objects)
+            foreach (IObject item in objs)
             {
                 item.Material.PreDrawnPhase(gameTime,world, item,world.CameraManager.ActiveCamera, world.Lights, render);
             }
         }
 
-        public void DrawScene(GameTime gameTime, IWorld world, RenderHelper render,GraphicInfo ginfo)
+        public void DrawScene(GameTime gameTime, IWorld world, RenderHelper render, GraphicInfo ginfo, List<IObject> objs)
         {
             render.PushRenderTarget(colorRT, normalRT, depthRT, lightOclusionRT);
             
@@ -99,9 +99,9 @@ namespace PloobsEngine.SceneControl
             System.Diagnostics.Debug.Assert(render.PeekDepthState() == DepthStencilState.Default);
             System.Diagnostics.Debug.Assert(render.PeekRasterizerState() == RasterizerState.CullCounterClockwise);
                         
-            render.SetSamplerState(ginfo.SamplerState, 0);            
+            render.SetSamplerState(ginfo.SamplerState, 0);
 
-            foreach (IObject item in world.Culler.GetNotCulledObjectsList(MaterialType.DEFERRED))
+            foreach (IObject item in objs)
             {
                 item.Material.Drawn(gameTime,item, world.CameraManager.ActiveCamera, world.Lights, render);
             }

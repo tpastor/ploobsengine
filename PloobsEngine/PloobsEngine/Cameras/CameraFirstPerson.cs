@@ -20,6 +20,27 @@ namespace PloobsEngine.Cameras
     /// </summary>
     public class CameraFirstPerson : ICamera
     {
+#if WINDOWS_PHONE
+        bool useAcelerometer = false;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether [use acelerometer].
+        /// Is true is passed, the acelerometer is also started
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [use acelerometer]; otherwise, <c>false</c>.
+        /// </value>
+        public bool UseAcelerometer
+        {
+          get { return useAcelerometer; }
+          set { 
+              useAcelerometer = value;
+              if (useAcelerometer)
+                  StartAcelerometer();
+          }
+        }
+#endif
+
         /// <summary>
         /// Initializes a new instance of the <see cref="CameraFirstPerson"/> class.
         /// </summary>
@@ -73,24 +94,27 @@ namespace PloobsEngine.Cameras
             init(lrRot, udRot, startingPos,viewport);
 
 #if WINDOWS_PHONE
-        accelSensor = new Microsoft.Devices.Sensors.Accelerometer();
-        // Start the accelerometer
-        try
-        {
-            accelSensor.Start();
-            accelActive = true;
-        }
-        catch (Microsoft.Devices.Sensors.AccelerometerFailedException e)
-        {
-            // the accelerometer couldn't be started.  No fun!
-            accelActive = false;
-        }
-        catch (UnauthorizedAccessException e)
-        {
-            // This exception is thrown in the emulator-which doesn't support an accelerometer.
-            accelActive = false;
-        }
-        accelSensor.ReadingChanged += new EventHandler<Microsoft.Devices.Sensors.AccelerometerReadingEventArgs>(accelSensor_ReadingChanged);
+            if (useAcelerometer)
+            {
+                accelSensor = new Microsoft.Devices.Sensors.Accelerometer();
+                // Start the accelerometer
+                try
+                {
+                    accelSensor.Start();
+                    accelActive = true;
+                }
+                catch (Microsoft.Devices.Sensors.AccelerometerFailedException e)
+                {
+                    // the accelerometer couldn't be started.  No fun!
+                    accelActive = false;
+                }
+                catch (UnauthorizedAccessException e)
+                {
+                    // This exception is thrown in the emulator-which doesn't support an accelerometer.
+                    accelActive = false;
+                }
+                accelSensor.ReadingChanged += new EventHandler<Microsoft.Devices.Sensors.AccelerometerReadingEventArgs>(accelSensor_ReadingChanged);
+            }
 #endif
 
         }
@@ -106,38 +130,48 @@ namespace PloobsEngine.Cameras
         bool accelActive = false;        
         public void StartAcelerometer()
         {
-            if (accelActive == true)
-                return;
+            if (useAcelerometer)
+            {
+                if (accelActive == true)
+                    return;
 
-            try
-            {
-                accelSensor.Start();
-                accelActive = true;
+                try
+                {
+                    accelSensor.Start();
+                    accelActive = true;
+                }
+                catch (Microsoft.Devices.Sensors.AccelerometerFailedException e)
+                {
+                    // the accelerometer couldn't be started.  No fun!
+                    accelActive = false;
+                }
+                catch (UnauthorizedAccessException e)
+                {
+                    // This exception is thrown in the emulator-which doesn't support an accelerometer.
+                    accelActive = false;
+                }
             }
-            catch (Microsoft.Devices.Sensors.AccelerometerFailedException e)
+            else
             {
-                // the accelerometer couldn't be started.  No fun!
-                accelActive = false;
-            }
-            catch (UnauthorizedAccessException e)
-            {
-                // This exception is thrown in the emulator-which doesn't support an accelerometer.
-                accelActive = false;
+                ActiveLogger.LogMessage("need to enable acelerometer before trying to start it on the camerafirstperson", LogLevel.RecoverableError);
             }
         }   
 
         public void StopAcelerometer()
         {
-            // Stop the accelerometer if it's active.
-            if (accelActive)
+            if (useAcelerometer)
             {
-                try
+                // Stop the accelerometer if it's active.
+                if (accelActive)
                 {
-                    accelSensor.Stop();
-                }
-                catch (Microsoft.Devices.Sensors.AccelerometerFailedException e)
-                {
-                    // the accelerometer couldn't be stopped now.
+                    try
+                    {
+                        accelSensor.Stop();
+                    }
+                    catch (Microsoft.Devices.Sensors.AccelerometerFailedException e)
+                    {
+                        // the accelerometer couldn't be stopped now.
+                    }
                 }
             }
         }

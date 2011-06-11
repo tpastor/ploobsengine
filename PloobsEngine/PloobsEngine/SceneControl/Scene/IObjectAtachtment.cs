@@ -11,7 +11,7 @@ namespace PloobsEngine.SceneControl
     /// The IObjectAtachtment method Update will be called everytime 
     /// the method Update of the object is called
     /// </summary>
-    public abstract class IObjectAtachtment
+    public abstract class IObjectAttachment
     {
         /// <summary>
         /// Updates the atachment.

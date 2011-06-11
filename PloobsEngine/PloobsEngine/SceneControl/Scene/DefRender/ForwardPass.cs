@@ -38,23 +38,26 @@ namespace PloobsEngine.SceneControl
 
     public struct ForwardPassDescription
     {
-        public ForwardPassDescription(bool ForwardDrawPass, bool ForwarPosDrawPass, bool DeferredPosDrawPass,bool sortByCameraDistance)
+        public ForwardPassDescription(bool ForwardDrawPass, bool ForwarPosDrawPass, bool DeferredPosDrawPass, bool DeferredSortByCameraDistance, bool ForwardSortByCameraDistance)
         {
             this.ForwardDrawPass = ForwardDrawPass;
             this.ForwarPosDrawPass = ForwarPosDrawPass;
             this.DeferredPosDrawPass = DeferredPosDrawPass;
-            this.SortByCameraDistance = sortByCameraDistance;
+            this.ForwardSortByCameraDistance = ForwardSortByCameraDistance;
+            this.DeferredSortByCameraDistance = DeferredSortByCameraDistance;
         }
 
         public static ForwardPassDescription Default()
         {
-            return new ForwardPassDescription(true, true, true,false);            
+            return new ForwardPassDescription(true, true, true,false,false);            
         }
 
         public bool ForwardDrawPass;
         public bool ForwarPosDrawPass;
         public bool DeferredPosDrawPass;
-        public bool SortByCameraDistance;
+        public bool ForwardSortByCameraDistance;
+        public bool DeferredSortByCameraDistance;
+
     }
 
 
@@ -79,36 +82,35 @@ namespace PloobsEngine.SceneControl
         
         comparer c = new comparer();
 
-        public void Draw(GameTime gt, IWorld world,RenderHelper render)        
-        {
-            List<IObject> list;
+        public void Draw(GameTime gt, IWorld world, RenderHelper render, List<IObject> deferred, List<IObject> forward)        
+        {            
             if (ForwardPassDescription.DeferredPosDrawPass)
             {
-                list = world.Culler.GetNotCulledObjectsList(MaterialType.DEFERRED);
-                if (ForwardPassDescription.SortByCameraDistance)
+                
+                if (ForwardPassDescription.DeferredSortByCameraDistance)
                 {
                     c.CameraPosition = world.CameraManager.ActiveCamera.Position;
-                    list.Sort(c);
+                    deferred.Sort(c);
                 }
 
-                foreach (IObject item in list)
+                foreach (IObject item in deferred)
                 {
-                    item.Material.PosDrawnPhase(gt, item, world.CameraManager.ActiveCamera, world.Lights, render);
+                    if(item.Material.IsVisible)
+                        item.Material.PosDrawnPhase(gt, item, world.CameraManager.ActiveCamera, world.Lights, render);
                 }
             }
 
             if (ForwardPassDescription.ForwardDrawPass || ForwardPassDescription.ForwarPosDrawPass)
-            {
-                list = world.Culler.GetNotCulledObjectsList(MaterialType.FORWARD);
-                if (ForwardPassDescription.SortByCameraDistance)
+            {                
+                if (ForwardPassDescription.ForwardSortByCameraDistance)
                 {
                     c.CameraPosition = world.CameraManager.ActiveCamera.Position;
-                    list.Sort(c);
+                    forward.Sort(c);
                 }
 
                 if (ForwardPassDescription.ForwardDrawPass)
                 {
-                    foreach (IObject item in list)
+                    foreach (IObject item in forward)
                     {
                         item.Material.Drawn(gt, item, world.CameraManager.ActiveCamera, world.Lights, render);
                     }
@@ -116,7 +118,7 @@ namespace PloobsEngine.SceneControl
 
                 if (ForwardPassDescription.ForwarPosDrawPass)
                 {
-                    foreach (IObject item in list)
+                    foreach (IObject item in forward)
                     {
                         item.Material.PosDrawnPhase(gt, item, world.CameraManager.ActiveCamera, world.Lights, render);
                     }

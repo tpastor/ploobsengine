@@ -13,41 +13,28 @@ namespace PloobsEngine.IA
     public class WaypointHandler
     {
         static int id = 0;
-        WaypointsCollection col;
-        string FileName = null;
+        WaypointsCollection col;       
 
         /// <summary>
         /// ReInicia a Instancia do handler
         /// </summary>
-        /// <param name="MapName"></param>
-        /// <param name="FileName"></param>
-        public void Init(String MapName, String FileName)
+        public void Clear()
         {
-            col = new WaypointsCollection();
-            col.MapName = MapName;
-            this.FileName = FileName;
+            col = new WaypointsCollection();        
         }
 
-        public WaypointHandler()
-        {
-            col = new WaypointsCollection();
-            col.MapName = null;
-        }
-
-        public WaypointHandler(String mapName)
+        public WaypointHandler(String mapName = null)
         {
             col = new WaypointsCollection();
             col.MapName = mapName;
-        }
-
+        }        
 
         private int getId()
         {
             return id++;
         }
 
-
-        public void AddWaypoint(Vector3 worldPos,WAYPOINTTYPE type)
+        public void AddDefaultWaypointUnconnected(Vector3 worldPos,WAYPOINTTYPE type)
         {
             Waypoint w = new Waypoint();
             w.Id = getId();
@@ -58,32 +45,28 @@ namespace PloobsEngine.IA
             col.State = WaypointsState.UnConnected;
         }
 
+        public void AddWaypointUnconnected(Waypoint waypoint)
+        {
+            if (waypoint == null)
+                throw new NullReferenceException("waypoint cannot be null");
+            waypoint.Id = getId();
+            waypoint.NeightBorWaypointsId = null;
+            col.IdWaypoint.Add(waypoint.Id, waypoint);
+            col.State = WaypointsState.UnConnected;
+        }
+
         public void RemoveWaypoint(int id)
         {
             col.IdWaypoint.Remove(id);
-        }
-
-        public void SaveUnconnectedWaypoints()
-        {
-            if (FileName == null)
-            {
-                throw new Exception("MapName cannot be null");
-            }
-            this.SaveUnconnectedWaypoints(FileName);
-        }
-
-        public void SaveConnectedWaypoints()
-        {
-            this.SaveConnectedWaypoints("_"+FileName );
-        }
-
+        }        
+        
         public void SaveConnectedWaypoints(String fileName)
         {
             if (col.State != WaypointsState.Connected)
             {
                 throw new Exception("Waypoints are already Connected");
             }
-            else if (string.IsNullOrEmpty(col.MapName))
+            else if (string.IsNullOrEmpty(fileName))
             {
                 throw new Exception("MapName cannot be null or empty");
             }
@@ -96,21 +79,14 @@ namespace PloobsEngine.IA
             {
                 throw new Exception("Waypoints are already Connected");
             }
-            else if (string.IsNullOrEmpty(col.MapName))
+            else if (string.IsNullOrEmpty(fileName))
             {
                 throw new Exception("MapName cannot be null or empty");
             }
+
             XmlContentLoader.SaveXmlContent(col, col.GetType(), fileName);
         }
 
-        public void LoadUnconnectedWaypoints()
-        {
-            if (FileName == null)
-            {
-                throw new Exception("MapName cannot be null");
-            }                        
-            this.LoadUnconnectedWaypoints(FileName);
-        }
 
         public void LoadConnectedWaypoints(String FileName)        
         {
@@ -127,13 +103,15 @@ namespace PloobsEngine.IA
                     id = item.Id + 1;
                 }
             }
+            col.State = WaypointsState.Connected;
 
         }
 
         /// <summary>
-        /// Carrega waypoints e os Desconecta (se estiverem conectados)
+        /// Loads the unconnected waypoints.
+        /// If it is connected, it will be unconnected
         /// </summary>
-        /// <param name="FileName"></param>
+        /// <param name="FileName">Name of the file.</param>
         public void LoadUnconnectedWaypoints(String FileName)
         {
             if (FileName == null)
@@ -144,15 +122,9 @@ namespace PloobsEngine.IA
             if(col.State == WaypointsState.Connected)
             Unconnect();
 
-        }
-
+        }        
         
-        /// <summary>
-        /// Carreaga diversos Wapoints Conectados e os Connecta entre si.
-        /// </summary>
-        /// <param name="waypoints"></param>
-        /// <param name="connector"></param>
-        public void LoadConnectedWaypoints(String[] waypoints , IWaypointConnector connector)
+        public void LoadConnectedWaypointsIslands(String[] waypoints , IWaypointConnector connector)
         {
             if (waypoints==null || waypoints.Length == 0 )
             {
@@ -182,9 +154,6 @@ namespace PloobsEngine.IA
 
         }
 
-        /// <summary>
-        /// Desconecta todos os Waypoints
-        /// </summary>
         public void Unconnect()
         {
             col.State = WaypointsState.UnConnected;
@@ -198,18 +167,16 @@ namespace PloobsEngine.IA
                 }
             }
         }
-
-        /// <summary>
-        /// Conecta Waypoints Desconectados
-        /// </summary>
-        /// <param name="connector"></param>
+        
         public void ConnectWaypoints(IWaypointConnector connector)
         {
+            if (connector == null)
+                throw new NullReferenceException("connector cannot be null");
+
             if (connector.ConnectorType != ConnectorType.BETWEEN_WAYPOINTS_UNCONNECTED)
             {
                 throw new Exception("Wrong Type of Connector");
             }
-
 
             if (col.State == WaypointsState.UnConnected)
             {
@@ -218,29 +185,13 @@ namespace PloobsEngine.IA
             }            
         }
 
-        public WaypointsCollection GetWaypoints()
+        public WaypointsCollection CurrentWaypointsCollection
         {
-            return col;
+            get
+            {
+                return col;
+            }
         }
-
-        //public void DebugDrawWaypointsVector()
-        //{
-        //    foreach (Waypoint item in col.GetWaypointsList())
-        //    {
-        //        //Drawing.Draw3dLine(item.WorldPos, item.WorldPos + Vector3.Up * 30, Color.Yellow);                
-        //        if (item.NeightBorWaypointsId != null)
-        //        {
-        //            foreach (int viz in item.NeightBorWaypointsId)
-        //            {
-
-        //                Vector3 dir = col.IdWaypoint[viz].WorldPos - item.WorldPos;                        
-        //                //Drawing.Draw3dLine(item.WorldPos, item.WorldPos + dir, Color.Red);                        
-        //            }
-        //        }
-
-        //    }
-        //}
-
     }
 
     #if !WINDOWS_PHONE

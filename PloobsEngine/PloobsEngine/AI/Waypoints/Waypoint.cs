@@ -19,7 +19,7 @@ namespace PloobsEngine.IA
         private Vector3 worldPos;
         private WAYPOINTTYPE wayType;
         private List<int> neightBorWaypointsId;
-        private float aditionalInfo;
+        private object aditionalInfo;
         private IAPathfinderNode node;
 
         public IAPathfinderNode Node
@@ -55,7 +55,7 @@ namespace PloobsEngine.IA
             set { neightBorWaypointsId = value; }
         }
 
-        public float AditionalInfo
+        public object AditionalInfo
         {
             get { return aditionalInfo; }
             set { aditionalInfo = value; }

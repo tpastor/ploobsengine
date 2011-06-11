@@ -20,7 +20,7 @@ namespace PloobsEngine.SceneControl._2DScene
         #region properties
 
         private RenderTechnich2D _renderTecnic = null;        
-        private bool _isFirstTimeTechnic = true;       
+        private bool _isFirstTimeTechnic = true;              
 
 
         /// <summary>
@@ -83,8 +83,7 @@ namespace PloobsEngine.SceneControl._2DScene
                 _renderTecnic.iBeforeFirstExecution(render, this.World);                
                 _isFirstTimeTechnic = false;
             }
-            _renderTecnic.iExecuteTechnic(gameTime, render, this.World);           
-            
+            _renderTecnic.iExecuteTechnic(gameTime, render, this.World);            
         }
 
         /// <summary>

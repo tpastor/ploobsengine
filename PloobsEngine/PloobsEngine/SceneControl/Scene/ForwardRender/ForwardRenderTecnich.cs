@@ -27,14 +27,18 @@ namespace PloobsEngine.SceneControl
         {
             this.BackGroundColor = BackGroundColor;
             #if !WINDOWS_PHONE
-            this.usePostEffect = usePostEffect;
+            this.UsePostEffect = usePostEffect;
             #endif
+            UsePreDrawPhase = false;
+            UsePostDrawPhase = false;
             
         }
         #if !WINDOWS_PHONE
-        public bool usePostEffect;
+        public bool UsePostEffect;
         #endif
         public Color BackGroundColor;
+        public bool UsePreDrawPhase ;
+        public bool UsePostDrawPhase;
     }
 
     public class ForwardRenderTecnich : IRenderTechnic
@@ -59,7 +63,7 @@ namespace PloobsEngine.SceneControl
         {
             this.ginfo = ginfo;
             #if !WINDOWS_PHONE
-            if (desc.usePostEffect)
+            if (desc.UsePostEffect)
             {
                 renderTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth,ginfo.BackBufferHeight,SurfaceFormat.Color,ginfo.UseMipMap,DepthFormat.Depth24Stencil8,ginfo.MultiSample,RenderTargetUsage.DiscardContents);
                 postEffectTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
@@ -69,34 +73,41 @@ namespace PloobsEngine.SceneControl
         }
 
         protected override void ExecuteTechnic(GameTime gameTime, RenderHelper render, IWorld world)
-        {   
+        {
+            world.Culler.StartFrame(world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection, world.CameraManager.ActiveCamera.BoundingFrustum);
+            IEnumerable<IObject> objList = world.Culler.GetNotCulledObjectsList(Material.MaterialType.FORWARD);
 
-            foreach (var item in world.Objects)
+            if (desc.UsePreDrawPhase)
             {
-                item.Material.PreDrawnPhase(gameTime, world, item, world.CameraManager.ActiveCamera, world.Lights, render);
+                foreach (var item in objList)
+                {
+                    item.Material.PreDrawnPhase(gameTime, world, item, world.CameraManager.ActiveCamera, world.Lights, render);
+                }
             }
 
             #if !WINDOWS_PHONE
-            if (desc.usePostEffect)
+            if (desc.UsePostEffect)
             {
                 render.PushRenderTarget(renderTarget);                
             }
             #endif
 
             render.Clear(desc.BackGroundColor);
-            render.RenderPreComponents(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection);            
-            world.Culler.StartFrame(world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection, world.CameraManager.ActiveCamera.BoundingFrustum);
-            IEnumerable<IObject> objList = world.Culler.GetNotCulledObjectsList(Material.MaterialType.FORWARD);
+            render.RenderPreComponents(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection);                        
             foreach (var item in objList)
             {
                 ///critical code, no log
                 System.Diagnostics.Debug.Assert(item.Material.MaterialType == Material.MaterialType.FORWARD, "This Technich is just for forward materials and shaders");
-                item.Material.Drawn(gameTime,item, world.CameraManager.ActiveCamera, world.Lights, render);                
+                if(item.Material.IsVisible)
+                    item.Material.Drawn(gameTime,item, world.CameraManager.ActiveCamera, world.Lights, render);                
             }
 
-            foreach (var item in objList)
-            {             
-                item.Material.PosDrawnPhase(gameTime,item, world.CameraManager.ActiveCamera, world.Lights, render);                
+            if (desc.UsePostDrawPhase)
+            {
+                foreach (var item in objList)
+                {
+                    item.Material.PosDrawnPhase(gameTime, item, world.CameraManager.ActiveCamera, world.Lights, render);
+                }
             }
 
             if (world.ParticleManager != null)
@@ -105,7 +116,7 @@ namespace PloobsEngine.SceneControl
             render.RenderPosWithDepthComponents(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection);
 
             #if !WINDOWS_PHONE
-            if (desc.usePostEffect)
+            if (desc.UsePostEffect)
             {
                 render[PrincipalConstants.CurrentImage] = render.PopRenderTarget()[0].RenderTarget as Texture2D;
                 render[PrincipalConstants.CombinedImage] = render[PrincipalConstants.CurrentImage];

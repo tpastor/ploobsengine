@@ -62,6 +62,18 @@
     <XnaCompressContent>true</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BEPUphysics">
+      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\BEPUphysics.dll</HintPath>
+    </Reference>
+    <Reference Include="DPSF">
+      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\DPSF.dll</HintPath>
+    </Reference>
+    <Reference Include="FarseerPhysicsXNA">
+      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\FarseerPhysicsXNA.dll</HintPath>
+    </Reference>
+    <Reference Include="Library">
+      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\Library.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
       <Private>False</Private>
     </Reference>
@@ -92,9 +104,6 @@
     <Reference Include="mscorlib">
       <Private>False</Private>
     </Reference>
-    <Reference Include="PloobsEngineDebug">
-      <HintPath>..\..\PloobsEngine\PloobsEngine\bin\x86\Debug\PloobsEngineDebug.dll</HintPath>
-    </Reference>
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
@@ -110,14 +119,29 @@
     <Reference Include="System.Net">
       <Private>False</Private>
     </Reference>
+    <Reference Include="TomShane.Neoforce.Controls">
+      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\NeoforceDll\bin\x86\Debug\TomShane.Neoforce.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="XNAnimation">
+      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\XNAnimation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="2DSamples\Basic2D.cs" />
     <Compile Include="2DSamples\Border.cs" />
+    <Compile Include="2DSamples\Template2D.cs" />
     <Compile Include="2DSamples\SpriteParticle.cs" />
     <Compile Include="2DSamples\JointUpdateable.cs" />
     <Compile Include="AA\AAScreen.cs" />
     <Compile Include="AA\MLAntiAliasingPostEffect.cs" />
+    <Compile Include="AI\Pathfinding and Waypoints\IaPathFinding.cs" />
+    <Compile Include="AI\Pathfinding and Waypoints\IaWaypoints.cs" />
+    <Compile Include="AI\Pathfinding and Waypoints\moverAtachment.cs" />
+    <Compile Include="AI\Steering\Globals.cs" />
+    <Compile Include="AI\Steering\SteerAtachment.cs" />
+    <Compile Include="AI\Steering\Pedestrian.cs" />
+    <Compile Include="AI\Steering\PedestrianPlugIn.cs" />
+    <Compile Include="AI\Steering\SteerScreen.cs" />
     <Compile Include="BilboardsSamples\BilboardScreen.cs" />
     <Compile Include="CharacterControllerInput.cs" />
     <Compile Include="CharacterSample\CharacterScreen.cs" />
@@ -157,6 +181,10 @@
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\PloobsEngine\PloobsEngine\PloobsEngine.csproj">
+      <Project>{1D050978-A350-47A8-B495-090DF10242B2}</Project>
+      <Name>PloobsEngine</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EngineTestesContent\EngineTestesContent.contentproj">
       <Name>EngineTestesContent %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>
@@ -191,7 +219,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AI\" />
     <Folder Include="Constraint\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

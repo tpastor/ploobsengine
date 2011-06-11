@@ -72,28 +72,30 @@ namespace PloobsEngine.SceneControl
             render.PopDepthStencilState();
         }
 
-        public void PreDrawScene(GameTime gameTime, IWorld world, RenderHelper render, GraphicInfo ginfo)
+        public void PreDrawScene(GameTime gameTime, IWorld world, RenderHelper render, GraphicInfo ginfo, List<IObject> objectsToPreDraw)
         {
-            render.SetSamplerState(ginfo.SamplerState, 0);            
+            render.SetSamplerState(ginfo.SamplerState, 0);
 
-            foreach (IObject item in world.Objects)
+            foreach (IObject item in objectsToPreDraw)
             {
-                item.Material.PreDrawnPhase(gameTime,world, item,world.CameraManager.ActiveCamera, world.Lights, render);
+                if(item.Material.IsVisible)
+                    item.Material.PreDrawnPhase(gameTime,world, item,world.CameraManager.ActiveCamera, world.Lights, render);
             }
         }
 
-        public void DrawScene(GameTime gameTime, IWorld world, RenderHelper render,GraphicInfo ginfo)
+        public void DrawScene(GameTime gameTime, IWorld world, RenderHelper render, GraphicInfo ginfo, List<IObject> objectsToDraw)
         {            
             render.RenderPreComponents(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection);
             System.Diagnostics.Debug.Assert(render.PeekBlendState() == BlendState.Opaque);
             System.Diagnostics.Debug.Assert(render.PeekDepthState() == DepthStencilState.Default);
             System.Diagnostics.Debug.Assert(render.PeekRasterizerState() == RasterizerState.CullCounterClockwise);
                         
-            render.SetSamplerState(ginfo.SamplerState, 0);            
+            render.SetSamplerState(ginfo.SamplerState, 0);
 
-            foreach (IObject item in world.Culler.GetNotCulledObjectsList(MaterialType.DEFERRED))
+            foreach (IObject item in objectsToDraw)
             {
-                item.Material.Drawn(gameTime,item, world.CameraManager.ActiveCamera, world.Lights, render);
+                if(item.Material.IsVisible)
+                    item.Material.Drawn(gameTime,item, world.CameraManager.ActiveCamera, world.Lights, render);
             }                    
         }
 

@@ -25,17 +25,16 @@ namespace PloobsEngine.Engine
         GraphicInfo ginfo;        
         RenderTargetPool RenderTargetPool;
         TextureCreator texCreator;
-        RenderHelper render;
+        internal RenderHelper render;
 
-        internal GraphicFactory(GraphicInfo ginfo, GraphicsDevice device,IContentManager contentManager,RenderHelper render)
+        internal GraphicFactory(GraphicInfo ginfo, GraphicsDevice device,IContentManager contentManager)
         {
             this.device = device;
             this.ginfo = ginfo;
             this.contentManager = contentManager;
             SpriteBatch = new SpriteBatch(device);
             RenderTargetPool = new RenderTargetPool(device);
-            texCreator = new TextureCreator(ginfo, this);
-            this.render = render;
+            texCreator = new TextureCreator(ginfo, this);            
         }
 
         public BasicEffect GetBasicEffect()

@@ -65,7 +65,7 @@ namespace PloobsEngine.SceneControl
             this.Material = Material;
             this.Modelo = Modelo;
             this.PhysicObject = PhysicObject;            
-            IObjectAtachtment = new List<IObjectAtachtment>();
+            IObjectAttachment = new List<IObjectAttachment>();
             Name = null;
         }
 
@@ -171,7 +171,7 @@ namespace PloobsEngine.SceneControl
                 lastFrameWorld = WorldMatrix;
             }
 
-            foreach (var item in IObjectAtachtment)
+            foreach (var item in IObjectAttachment)
             {
                 item.IUpdate(this, gt);
             }
@@ -204,7 +204,7 @@ namespace PloobsEngine.SceneControl
         /// <value>
         /// The I object atachtment.
         /// </value>
-        public List<IObjectAtachtment> IObjectAtachtment
+        public List<IObjectAttachment> IObjectAttachment
         {
             set;
             get;

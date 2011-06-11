@@ -22,6 +22,7 @@ namespace PloobsEngine.Material
             this.Shadder = shader;
             CanAppearOfReflectionRefraction = true;
             CanCreateShadow = true;
+            IsVisible = true;
         }
 
         public bool CanAppearOfReflectionRefraction
@@ -161,6 +162,17 @@ namespace PloobsEngine.Material
         #endif
         #endregion
 
-        
+
+
+        #region IMaterial Members
+
+
+        public bool IsVisible
+        {
+            get;
+            set;
+        }
+
+        #endregion
     }
 }

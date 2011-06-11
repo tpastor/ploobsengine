@@ -32,7 +32,7 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         /// <param name="gameTime">The game time.</param>
         /// <param name="world">The world.</param>
-        void PreDrawScene(GameTime gameTime, IWorld world, RenderHelper render, GraphicInfo ginfo);
+        void PreDrawScene(GameTime gameTime, IWorld world, RenderHelper render, GraphicInfo ginfo, List<IObject> objectsToPreDraw);
 
         /// <summary>
         /// Draws.
@@ -40,7 +40,7 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         /// <param name="gameTime">The game time.</param>
         /// <param name="world">The world.</param>
-        void DrawScene(GameTime gameTime, IWorld world, RenderHelper render, GraphicInfo ginfo);
+        void DrawScene(GameTime gameTime, IWorld world, RenderHelper render, GraphicInfo ginfo, List<IObject> objectsToPreDraw);
         /// <summary>
         /// Loads the content.
         /// </summary>

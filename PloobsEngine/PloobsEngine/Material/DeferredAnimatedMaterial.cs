@@ -25,6 +25,7 @@ namespace PloobsEngine.Material
             this.controller = controller;
             CanAppearOfReflectionRefraction = true;
             CanCreateShadow = true;
+            IsVisible = true;
         }
         
         IShader shader = null;
@@ -171,6 +172,17 @@ namespace PloobsEngine.Material
             set;
         }
 
+
+        #region IMaterial Members
+
+
+        public bool IsVisible
+        {
+            get;
+            set;
+        }
+
+        #endregion
     }
 }
 #endif

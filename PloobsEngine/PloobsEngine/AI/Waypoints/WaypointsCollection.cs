@@ -16,6 +16,7 @@ namespace PloobsEngine.IA
             : this("")
             {
             }
+
         public WaypointsCollection(String mapName)
         {
             idWaypoint = new SerializableDictionary<int, Waypoint>();
@@ -30,18 +31,7 @@ namespace PloobsEngine.IA
         public List<Waypoint> GetWaypointsList()
         {
             return idWaypoint.Values.ToList<Waypoint>();
-        }
-
-        public List<Vector3> GetWorldWayPointsList()
-        {
-            List<Vector3> resp = new List<Vector3>();
-            foreach (Waypoint way in idWaypoint.Values.ToList<Waypoint>())
-            {
-                resp.Add(way.WorldPos);
-            }
-            return resp;
-        }
-
+        }       
 
         public SerializableDictionary<int, Waypoint> IdWaypoint
         {

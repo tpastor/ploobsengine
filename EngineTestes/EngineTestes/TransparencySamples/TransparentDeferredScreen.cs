@@ -37,7 +37,7 @@ namespace EngineTestes
             desc.UseFloatingBufferForLightMap = true;
             ///For transparency working right
             ForwardPassDescription fpd = desc.ForwardPass.GetForwardPassDescription();
-            fpd.SortByCameraDistance = true;
+            fpd.DeferredSortByCameraDistance = true;
             desc.ForwardPass.ApplyForwardPassDescription(fpd);
             renderTech = new DeferredRenderTechnic(desc);
         }

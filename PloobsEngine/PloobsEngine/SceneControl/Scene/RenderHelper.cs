@@ -712,10 +712,13 @@ namespace PloobsEngine.SceneControl
                 objs = world.Objects;
             }
 
-                foreach (var obj in objs)
+            foreach (var obj in objs)
             {
                 if (objListException != null && objListException.Contains(obj))
-                    continue;                
+                    continue;
+
+                if (!obj.Material.IsVisible)
+                    continue;
                 
                 Matrix wld = obj.WorldMatrix;
                 for (int i = 0; i < obj.Modelo.MeshNumber; i++)
@@ -824,8 +827,7 @@ namespace PloobsEngine.SceneControl
 
             foreach (var obj in objs)
             {
-
-                if (obj.Material.CanCreateShadow)
+                if (obj.Material.CanCreateShadow && obj.Material.IsVisible)
                     obj.Material.Shadder.DepthExtractor(gt, obj, view, projection, this);
             }
         }
@@ -853,7 +855,7 @@ namespace PloobsEngine.SceneControl
                 if (objListException != null && objListException.Contains(obj))
                     continue;
 
-                if(obj.Material.CanAppearOfReflectionRefraction)
+                if(obj.Material.CanAppearOfReflectionRefraction && obj.Material.IsVisible)
                     obj.Material.Shadder.BasicDraw(gt, obj, view,projection, world.Lights, this, clippingPlane, useAlphaBlend);
             }
         }

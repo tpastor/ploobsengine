@@ -40,8 +40,10 @@ namespace EngineTestes
                 IObject obj = new IObject(fmaterial, simpleModel, tmesh);
                 this.World.AddObject(obj);
             }
-            
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo.Viewport));            
+
+            var newCameraFirstPerson = new CameraFirstPerson(GraphicInfo.Viewport);
+            //newCameraFirstPerson.UseAcelerometer = true;
+            this.World.CameraManager.AddCamera(newCameraFirstPerson);            
         }
 
         protected override void Draw(GameTime gameTime, RenderHelper render)

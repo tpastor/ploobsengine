@@ -86,9 +86,7 @@
     <Compile Include="AI\PathFind\AStar.cs" />
     <Compile Include="AI\PathFind\IANodeComparer.cs" />
     <Compile Include="AI\PathFind\IAPathfinderNode.cs" />
-    <Compile Include="AI\PathFind\IPathFinder.cs" />
     <Compile Include="AI\SimpleMap.cs" />
-    <Compile Include="AI\Waypoint.cs" />
     <Compile Include="AI\Waypoints\ClosestWaypointConnector.cs" />
     <Compile Include="AI\Waypoints\IWaypointConnector.cs" />
     <Compile Include="AI\Waypoints\SequenceIdWaypointConnection.cs" />

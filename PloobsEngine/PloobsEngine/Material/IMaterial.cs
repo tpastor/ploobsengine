@@ -100,7 +100,15 @@ namespace PloobsEngine.Material
         /// <value>
         /// 	<c>true</c> if this instance can appear of reflection/refraction; otherwise, <c>false</c>.
         /// </value>
-        bool CanAppearOfReflectionRefraction { set; get; }                
+        bool CanAppearOfReflectionRefraction { set; get; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance is visible.
+        /// </summary>
+        /// <value>
+        /// 	<c>true</c> if this instance is visible; otherwise, <c>false</c>.
+        /// </value>
+        bool IsVisible { set; get; }                
     }
 
     /// <summary>

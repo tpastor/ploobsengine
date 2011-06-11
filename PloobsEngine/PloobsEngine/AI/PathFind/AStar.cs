@@ -7,16 +7,31 @@ using PloobsEngine.DataStructure;
 
 namespace PloobsEngine.IA
 {
-    public class AStar : IPathFinder
+    public delegate float CostToCross(WAYPOINTTYPE type);
+
+    public class AStar 
     {
         private PriorityQueueB<Waypoint> openQueue;
         private List<Waypoint> closeList;
         private Waypoint parentNode;
-        private IMap map;        
-        private float heuristicEstimateValue;
+        private IMap map;
+        private float heuristicEstimateValue = 1;
+        public event CostToCross CostToCross = null;
+        private bool ended = false;
+        public bool Ended
+        {
+            get { return ended; }            
+        }
+        
+
+        public float HeuristicEstimateValue
+        {
+            get { return heuristicEstimateValue; }
+            set { heuristicEstimateValue = value; }
+        }        
 
         public AStar(IMap map)
-        {
+        {            
             this.map = map;
             foreach (Waypoint way in map.Waypoints.GetWaypointsList())
             {
@@ -24,12 +39,11 @@ namespace PloobsEngine.IA
             }
             openQueue = new PriorityQueueB<Waypoint>( new IANodeComparer());
             closeList = new List<Waypoint>();
-
         }
 
         #region IPathFinder Members
 
-        protected virtual float CostToCross(WAYPOINTTYPE type)
+        private float CostToCrossImplementation(WAYPOINTTYPE type)
         {
             switch (type)
             {
@@ -44,7 +58,12 @@ namespace PloobsEngine.IA
             }
         }
 
-        public LinkedList<Waypoint> GetPath(AIWorkType type, Waypoint Start, Waypoint End)
+        public LinkedList<Waypoint> GetPath(Vector3 Start, Vector3 End, float iterations = float.MaxValue)
+        {
+            return GetPath(map.GetClosestWaypoint(Start), map.GetClosestWaypoint(End), iterations);
+        }
+
+        public LinkedList<Waypoint> GetPath(Waypoint Start, Waypoint End,float iterations = float.MaxValue)
         {
 
             parentNode = Start;
@@ -66,9 +85,10 @@ namespace PloobsEngine.IA
 
             openQueue.Push(parentNode);
             bool found = false;
-
-            while (openQueue.Count > 0)
+            int iter = 0;
+            while (openQueue.Count > 0 || iter < iterations)
             {
+                iter++;
                 parentNode = openQueue.Pop();
 
                 if (parentNode.Id == End.Id)
@@ -84,8 +104,14 @@ namespace PloobsEngine.IA
 
                     if (closeList.Contains(way))
                         continue;
-
-                    float newG = parentNode.Node.G + Vector3.Distance(way.WorldPos, parentNode.WorldPos) * CostToCross(way.WayType);
+                           
+                    float costToCross;
+                    if (CostToCross != null)
+                        costToCross = CostToCross(way.WayType);
+                    else
+                        costToCross = CostToCrossImplementation(way.WayType);
+                    float newG = parentNode.Node.G + Vector3.Distance(way.WorldPos, parentNode.WorldPos) * costToCross;
+                    
 
                     if (newG == parentNode.Node.G)
                     {
@@ -135,12 +161,13 @@ namespace PloobsEngine.IA
 
             if (found)
             {
+                ended = true;
                 Waypoint fNode = closeList[closeList.Count - 1]; //objetivo
 
                 //limpa a lista
                 for (int i = closeList.Count - 1; i >= 0; i--)
                 {
-                    if ((fNode.Node.PZ == closeList[i].Node.Z && fNode.Node.PX ==closeList[i].Node.X && fNode.Node.PY == closeList[i].Node.Y) || i == closeList.Count - 1)
+                    if ((fNode.Node.PZ == closeList[i].Node.Z && fNode.Node.PX == closeList[i].Node.X && fNode.Node.PY == closeList[i].Node.Y) || i == closeList.Count - 1)
                     {
                         fNode = closeList[i];
                     }
@@ -168,13 +195,33 @@ namespace PloobsEngine.IA
                     }
 
                 }
-                return w; 
-                
+                return w;
+
             }
+            else
+            {
+                ended = false;
+                Waypoint fNode = closeList[closeList.Count - 1]; //objetivo
+                Waypoint ww;
+                LinkedList<Waypoint> w = new LinkedList<Waypoint>();
+                w.AddFirst(End);
+                ww = map.Waypoints.IdWaypoint[End.Node.parentId];
+                while (true)
+                {
+                    if (ww.Equals(Start))
+                    {
+                        w.AddFirst(ww);
+                        break;
+                    }
+                    else
+                    {
+                        w.AddFirst(ww);
+                        ww = map.Waypoints.IdWaypoint[ww.Node.parentId];
+                    }
 
-            return null;
-
-
+                }
+                return w;
+            }            
         }
 
         public IMap Map

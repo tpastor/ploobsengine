@@ -50,6 +50,7 @@ namespace PloobsEngine.Material
             this.shader = shader;
             CanAppearOfReflectionRefraction = true;
             CanCreateShadow = true;
+            IsVisible = true;
         }
 
         /// <summary>
@@ -63,6 +64,7 @@ namespace PloobsEngine.Material
             this.shader = shader;
             CanAppearOfReflectionRefraction = true;
             CanCreateShadow = true;
+            IsVisible = true;
         }
 
         /// <summary>
@@ -77,6 +79,7 @@ namespace PloobsEngine.Material
             this.animator = new TreeWindAnimator(wsource);
             CanAppearOfReflectionRefraction = true;
             CanCreateShadow = true;
+            IsVisible = true;
         }
 
         /// <summary>
@@ -91,6 +94,7 @@ namespace PloobsEngine.Material
             this.animator = new TreeWindAnimator(wsource);
             CanAppearOfReflectionRefraction = true;
             CanCreateShadow = true;
+            IsVisible = true;
         }
 
         IShader shader;
@@ -162,6 +166,23 @@ namespace PloobsEngine.Material
 
 
         public bool CanAppearOfReflectionRefraction
+        {
+            get;
+            set;
+        }
+
+        #endregion
+
+        #region IMaterial Members
+
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance is visible.
+        /// </summary>
+        /// <value>
+        /// 	<c>true</c> if this instance is visible; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsVisible
         {
             get;
             set;

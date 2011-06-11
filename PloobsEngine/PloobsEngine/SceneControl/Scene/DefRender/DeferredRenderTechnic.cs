@@ -10,6 +10,7 @@ using PloobsEngine.Light;
 using PloobsEngine.DataStructure;
 using PloobsEngine.Engine;
 using PloobsEngine.Engine.Logger;
+using PloobsEngine.Material;
 
 namespace PloobsEngine.SceneControl
 {
@@ -223,12 +224,17 @@ namespace PloobsEngine.SceneControl
         /// <param name="world">The world.</param>
         /// <param name="render">The render.</param>
         protected void Draw(GameTime gameTime, IWorld world, RenderHelper render)
-        {         
-            deferredGBuffer.PreDrawScene(gameTime, world, render,ginfo);            
+        {
             world.Culler.StartFrame(world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection, world.CameraManager.ActiveCamera.BoundingFrustum);
+            List<IObject> AllnotCulledObjectsList = world.Culler.GetNotCulledObjectsList(null);
+            List<IObject> DeferrednotCulledObjectsList = world.Culler.GetNotCulledObjectsList(MaterialType.DEFERRED);
+            List<IObject> ForwardnotCulledObjectsList = world.Culler.GetNotCulledObjectsList(MaterialType.FORWARD);
+
+
+            deferredGBuffer.PreDrawScene(gameTime, world, render, ginfo, AllnotCulledObjectsList);                        
             deferredGBuffer.SetGBuffer(render);            
-            deferredGBuffer.ClearGBuffer(render);                                    
-            deferredGBuffer.DrawScene(gameTime, world,render,ginfo);
+            deferredGBuffer.ClearGBuffer(render);
+            deferredGBuffer.DrawScene(gameTime, world, render, ginfo, DeferrednotCulledObjectsList);
             deferredGBuffer.ResolveGBuffer(render);
             
             deferredLightMap.SetLightMap(render);
@@ -261,7 +267,7 @@ namespace PloobsEngine.SceneControl
                         render.ResyncStates();
                     }
 
-                    forwardPass.Draw(gameTime, world, render);
+                    forwardPass.Draw(gameTime, world, render,DeferrednotCulledObjectsList,ForwardnotCulledObjectsList);
 
                     render.RenderPosWithDepthComponents(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection);
 
@@ -317,7 +323,7 @@ namespace PloobsEngine.SceneControl
                         world.ParticleManager.iDraw(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection, render);
                         render.ResyncStates();
                     }
-                    forwardPass.Draw(gameTime, world, render);
+                    forwardPass.Draw(gameTime, world, render,DeferrednotCulledObjectsList,ForwardnotCulledObjectsList);
                     render.RenderPosWithDepthComponents(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection);
                     render[PrincipalConstants.CurrentImage] = restoreDepth.EndForwardPass(render);
 
