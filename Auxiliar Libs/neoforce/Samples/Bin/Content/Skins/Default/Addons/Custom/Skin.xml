@@ -1,0 +1,58 @@
+﻿<Skin Name="Custom" Version="0.7">
+  <Info>
+    <Name>Customized Neoforce Default</Name>
+    <Description>Customized Default skin for Neoforce Controls.></Description>
+    <Author>Tom Shane</Author>
+    <Version>0.7></Version>
+  </Info>  
+
+  <Controls>
+
+    //// Custom.Button /////////////////////////////////////////////////////////    
+    <Control Name="Custom.Button" Inherits="Control">
+      <DefaultSize Width="72" Height="24"/>
+      <Layers>
+        <Layer Name="Control" Image="Custom.Button" Width="64" Height="24">
+          <SizingMargins Left="4" Top="4" Right="4" Bottom="4"/>
+          <ContentMargins Left="4" Top="4" Right="4" Bottom="4"/>
+          <States>
+            <Enabled Index="0"/>
+            <Hovered Index="1"/>
+            <Pressed Index="2"/>
+            <Focused Index="3"/>
+            <Disabled Index="4"/>
+          </States>
+          <Text Font="Custom.Font" Alignment="MiddleCenter" OffsetX="0" OffsetY="0">
+            <Colors>
+              <Enabled Color="255;255;255;192"/>
+              <Focused Color="255;255;255;192"/>
+              <Pressed Color="255;255;255;192"/>
+              <Hovered Color="255;255;255;240"/>
+              <Disabled Color="128;128;128;192"/>
+            </Colors>
+          </Text>
+        </Layer>
+      </Layers>
+    </Control>
+    ////////////////////////////////////////////////////////////////////////////
+    
+  </Controls>
+
+  //// Fonts /////////////////////////////////////////////////////////////////
+  <Fonts>
+    <Font Name="Custom.Font" Asset="Custom.Font"></Font>    
+  </Fonts>
+  ////////////////////////////////////////////////////////////////////////////
+
+  //// Cursors ///////////////////////////////////////////////////////////////
+  <Cursors>
+    <Cursor Name="Custom.Cursor" Asset="Custom.Cursor"></Cursor>
+  </Cursors>
+  ////////////////////////////////////////////////////////////////////////////
+
+  //// Images ////////////////////////////////////////////////////////////////
+  <Images>    
+    <Image Name="Custom.Button" Asset="Custom.Button"></Image>
+  </Images>
+  ////////////////////////////////////////////////////////////////////////////
+</Skin>
