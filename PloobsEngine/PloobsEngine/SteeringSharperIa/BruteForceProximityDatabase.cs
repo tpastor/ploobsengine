@@ -47,7 +47,8 @@ namespace Bnoerj.AI.Steering
 				if (obj != null)
 				{
 					// remove this token from the database's vector
-					bfpd.group.Find(delegate(TokenType item) { return item == this; });
+                    ///DANGEROUS LINE !!!
+					bfpd.group.Remove(this);
 					obj = null;
 				}
 			}
