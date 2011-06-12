@@ -145,6 +145,7 @@
     <Compile Include="BilboardsSamples\BilboardScreen.cs" />
     <Compile Include="CharacterControllerInput.cs" />
     <Compile Include="CharacterSample\CharacterScreen.cs" />
+    <Compile Include="Constraint\ConstraintScreen.cs" />
     <Compile Include="DebugDrawer\DebugDrawScreen.cs" />
     <Compile Include="GUI\FGUIScreen.cs" />
     <Compile Include="GUI\GUIScreen.cs" />
@@ -220,7 +221,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AI\FSM\" />
-    <Folder Include="Constraint\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />

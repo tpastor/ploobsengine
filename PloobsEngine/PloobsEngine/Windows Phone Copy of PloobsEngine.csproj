@@ -169,8 +169,10 @@
     <Compile Include="Material\IShadder\ForwardShader\ForwardTransparenteShader.cs" />
     <Compile Include="Material\IShadder\ForwardShader\ForwardTreeShader.cs" />
     <Compile Include="Material\TreeMaterial.cs" />
+    <Compile Include="Modelo2D\Animation\AnimationClass.cs" />
     <Compile Include="Modelo2D\IModelo2D.cs" />
     <Compile Include="Modelo2D\SpriteFarseer.cs" />
+    <Compile Include="Modelo2D\Animation\SpriteAnimated.cs" />
     <Compile Include="Modelo\Animation\AnimatedController.cs" />
     <Compile Include="Modelo\Animation\AnimatedModel.cs" />
     <Compile Include="Modelo\CustomModel.cs" />
@@ -204,6 +206,34 @@
     <Compile Include="Physic3D\PhysicObjects\IPhysicObject.cs" />
     <Compile Include="Physic3D\SegmentInterceptInfo.cs" />
     <Compile Include="Physics2D\Farseer\GhostObject.cs" />
+    <Compile Include="SteeringSharperIa\AbstractVehicle.cs" />
+    <Compile Include="SteeringSharperIa\AnnotationService.cs" />
+    <Compile Include="SteeringSharperIa\BruteForceProximityDatabase.cs" />
+    <Compile Include="SteeringSharperIa\Camera.cs" />
+    <Compile Include="SteeringSharperIa\Clock.cs" />
+    <Compile Include="SteeringSharperIa\IAnnotationService.cs" />
+    <Compile Include="SteeringSharperIa\IDraw.cs" />
+    <Compile Include="SteeringSharperIa\ILocalSpace.cs" />
+    <Compile Include="SteeringSharperIa\IPlugIn.cs" />
+    <Compile Include="SteeringSharperIa\IProximityDatabase.cs" />
+    <Compile Include="SteeringSharperIa\ITokenForProximityDatabase.cs" />
+    <Compile Include="SteeringSharperIa\IVehicle.cs" />
+    <Compile Include="SteeringSharperIa\LocalSpace.cs" />
+    <Compile Include="SteeringSharperIa\LQDatabase.cs" />
+    <Compile Include="SteeringSharperIa\LQProximityDatabase.cs" />
+    <Compile Include="SteeringSharperIa\Obstacle.cs" />
+    <Compile Include="SteeringSharperIa\Path.cs" />
+    <Compile Include="SteeringSharperIa\Pathway.cs" />
+    <Compile Include="SteeringSharperIa\PolylinePathway.cs" />
+    <Compile Include="SteeringSharperIa\SimpleVehicle.cs" />
+    <Compile Include="SteeringSharperIa\SphericalObstacle.cs" />
+    <Compile Include="SteeringSharperIa\SteerLibrary.cs" />
+    <Compile Include="SteeringSharperIa\Trail.cs" />
+    <Compile Include="Utils\Debug 2D Primitives\I2DPrimitive.cs" />
+    <Compile Include="Utils\Debug 2D Primitives\Lines.cs" />
+    <Compile Include="Utils\Debug 2D Primitives\PrimitiveBatch.cs" />
+    <Compile Include="Utils\Debug 2D Primitives\Triangles.cs" />
+    <Compile Include="Utils\Debug 2D Primitives\TrianglesStrip.cs" />
     <Compile Include="Utils\Asset2DCreator.cs" />
     <Compile Include="Physics2D\ConvertUtils.cs" />
     <Compile Include="Physics2D\Farseer\FarseerWorld.cs" />
@@ -422,6 +452,7 @@
       <HintPath>Dlls\Phone7\FarseerPhysicsXNA.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Devices.Sensors, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Phone, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Xna.Framework" />
     <Reference Include="Microsoft.Xna.Framework.Avatar" />
     <Reference Include="Microsoft.Xna.Framework.Game" />

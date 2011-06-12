@@ -9,7 +9,7 @@ namespace PloobsEngine.IA
 {
     public interface IState
     {
-        void Init(IObject obj );
+        void Init(IObject obj);
         String NextState();
         void UpdateState();
         void Finish();                
