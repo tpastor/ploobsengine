@@ -49,10 +49,12 @@ namespace Bnoerj.AI.Steering
         Vector3 acceleration;
 
 		// constructor
-		public SimpleVehicle()
+		public SimpleVehicle(bool reset = true)
+            : base(reset)
 		{
 			// set inital state
-			Reset();
+            if(reset)
+			    Reset();
 
 			// maintain unique serial numbers
 			SerialNumber = serialNumberCounter++;

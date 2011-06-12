@@ -24,7 +24,7 @@ namespace Bnoerj.AI.Steering.Pedestrian
 
         Path hpath;
 		// constructor
-        public Pedestrian(ProximityDatabase pd, Path hpath )
+        public Pedestrian(ProximityDatabase pd, Path hpath ) : base(false)
 		{
             this.hpath = hpath;            
 			// allocate a token for this boid in the proximity database
@@ -50,7 +50,7 @@ namespace Bnoerj.AI.Steering.Pedestrian
 
 			// size of bounding sphere, for obstacle avoidance, etc.
 			Radius = 0.5f; // width = 0.7, add 0.3 margin, take half
-
+            
             // set initial position
 			// (random point on path + random horizontal offset)
             float d = hpath.PolyPath.TotalPathLength * StaticRandom.Random();
