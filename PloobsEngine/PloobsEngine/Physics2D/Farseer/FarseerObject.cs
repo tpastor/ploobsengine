@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework;
 using FarseerPhysics.Common.Decomposition;
 using FarseerPhysics.Factories;
 using FarseerPhysics.Common.PolygonManipulation;
+using PloobsEngine.Modelo2D;
 
 namespace PloobsEngine.Physics2D.Farseer
 {
@@ -36,10 +37,9 @@ namespace PloobsEngine.Physics2D.Farseer
             body.BodyType = BodyType;
             body.CreateFixture(shape);
             body.Enabled = false;
-        }       
-        
+        }
 
-        public FarseerObject(FarseerWorld world, Texture2D texture, BodyType BodyType = BodyType.Dynamic)
+        public FarseerObject(FarseerWorld world, Texture2D texture,float density = 1, BodyType BodyType = BodyType.Dynamic, float colapseDistance = 4)
         {            
              //Create an array to hold the data from the texture
             uint[] data = new uint[texture.Width * texture.Height];
@@ -58,31 +58,23 @@ namespace PloobsEngine.Physics2D.Farseer
             textureVertices.Translate(ref centroid);
 
             //2. To draw the texture the correct place.
-            Origin = -centroid;
+            Origin = -centroid - new Vector2(texture.Width / 2, texture.Height/ 2); ;
 
             //We simplify the vertices found in the texture.
-            textureVertices = SimplifyTools.ReduceByDistance(textureVertices, 4f);
+            textureVertices = SimplifyTools.ReduceByDistance(textureVertices, colapseDistance);
 
             //Since it is a concave polygon, we need to partition it into several smaller convex polygons
             List<Vertices> list = BayazitDecomposer.ConvexPartition(textureVertices);
-
-            //Adjust the scale of the object for WP7's lower resolution
-            float _scale;
-#if WINDOWS_PHONE
-            _scale = 0.6f;
-#else
-            _scale = 1f;
-#endif
-
+                        
             //scale the vertices from graphics space to sim space
-            Vector2 vertScale = new Vector2(ConvertUnits.ToSimUnits(1)) * _scale;
+            Vector2 vertScale = new Vector2(ConvertUnits.ToSimUnits(1));
             foreach (Vertices vertices in list)
             {
                 vertices.Scale(ref vertScale);
             }
 
             //Create a single body with multiple fixtures
-            body = BodyFactory.CreateCompoundPolygon(world.World, list, 1f, BodyType.Dynamic);
+            body = BodyFactory.CreateCompoundPolygon(world.World, list, density, BodyType.Dynamic);
             body.BodyType = BodyType;
             body.CollisionCategories = Category.All;
             body.CollidesWith = Category.All;

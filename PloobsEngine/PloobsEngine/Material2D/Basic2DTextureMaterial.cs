@@ -35,13 +35,13 @@ namespace PloobsEngine.Material2D
 
         public override void Draw(GameTime gt, SceneControl._2DScene.I2DObject obj, SceneControl.RenderHelper render)
         {
-            render.RenderTexture(obj.Modelo.Texture, obj.PhysicObject.Position, Color.White, obj.PhysicObject.Rotation, obj.Modelo.Origin + obj.PhysicObject.Origin, 1,SpriteEffects.None,obj.Modelo.LayerDepth);
+            render.RenderTexture(obj.Modelo.Texture, obj.PhysicObject.Position, obj.Modelo.SourceRectangle, Color.White, obj.PhysicObject.Rotation + obj.Modelo.Rotation, obj.Modelo.Origin + obj.PhysicObject.Origin, 1, SpriteEffects.None, obj.Modelo.LayerDepth);
         }
         
         public override void LightDraw(GameTime gt, SceneControl._2DScene.I2DObject obj, SceneControl.RenderHelper render, Color color, PloobsEngine.Light2D.Light2D light)
         {
             if(CastShadow)
-                render.RenderTexture(obj.Modelo.Texture, light.ToRelativePosition(obj.PhysicObject.Position), color, obj.PhysicObject.Rotation, obj.Modelo.Origin + obj.PhysicObject.Origin, 1);
+                render.RenderTexture(obj.Modelo.Texture, light.ToRelativePosition(obj.PhysicObject.Position), obj.Modelo.SourceRectangle, color, obj.PhysicObject.Rotation + obj.Modelo.Rotation, obj.Modelo.Origin + obj.PhysicObject.Origin, 1);
         }
     }
 

@@ -210,7 +210,6 @@ namespace PloobsEngine.SceneControl._2DScene
         /// <param name="gt">The gt.</param>
         protected virtual void UpdateWorld(GameTime gt)
         {
-
             camera2D.Update(gt);
 
             PhysicWorld.iUpdate(gt);
