@@ -23,10 +23,11 @@ namespace Bnoerj.AI.Steering
 		public static IAnnotationService annotation = new Annotation();
 
 		// Constructor: initializes state
-		public SteerLibrary()
+		public SteerLibrary(bool reset = true)
 		{
 			// set inital state
-			Reset();
+            if(reset)
+			    Reset();
 		}
 
 		// reset state

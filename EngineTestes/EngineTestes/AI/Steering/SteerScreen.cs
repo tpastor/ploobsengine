@@ -54,7 +54,7 @@ namespace ProjectTemplate
                     SimpleModel simpleModel = new SimpleModel(factory, "Model//block");
                     simpleModel.SetTexture(factory.CreateTexture2DColor(1, 1, Color.Green), TextureType.DIFFUSE);
                     ///Physic info (position, rotation and scale are set here)
-                    BoxObject tmesh = new BoxObject(Vector3.Zero, 1, 1, 1, 10, new Vector3(5), Matrix.Identity, MaterialDescription.DefaultBepuMaterial());
+                    GhostObject tmesh = new GhostObject();
                     ///Forward Shader (look at this shader construction for more info)
                     ForwardXNABasicShader shader = new ForwardXNABasicShader();
                     ///Deferred material
@@ -72,6 +72,7 @@ namespace ProjectTemplate
                 simpleModel.SetTexture(factory.CreateTexture2DColor(1, 1, Color.White), TextureType.DIFFUSE);
                 ///Physic info (position, rotation and scale are set here)
                 BoxObject tmesh = new BoxObject(Vector3.Zero, 1, 1, 1, 10, new Vector3(1000, 1, 1000), Matrix.Identity, MaterialDescription.DefaultBepuMaterial());
+                tmesh.isMotionLess = true;
                 ///Forward Shader (look at this shader construction for more info)
                 ForwardXNABasicShader shader = new ForwardXNABasicShader();
                 ///Deferred material
