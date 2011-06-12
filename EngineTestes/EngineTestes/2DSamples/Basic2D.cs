@@ -18,13 +18,14 @@ using PloobsEngine.Particles;
 using DPSF.ParticleSystems;
 using PloobsEngine.Light2D;
 using PloobsEngine.Engine;
+using PloobsEngine.Input;
 
 namespace EngineTestes._2DSamples
 {
     public  class Basic2D : I2DScene
     {
-
         Texture2D tile;
+        I2DObject sheet;
 
         protected override void InitScreen(PloobsEngine.Engine.GraphicInfo GraphicInfo, PloobsEngine.Engine.EngineStuff engine)
         {
@@ -67,8 +68,7 @@ namespace EngineTestes._2DSamples
                 IModelo2D model = new SpriteFarseer(tex);
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
                 FarseerObject fs = new FarseerObject(fworld, tex);
-                I2DObject o = new I2DObject(fs, mat, model);
-                o.OnHasMoved += new PloobsEngine.SceneControl._2DScene.OnHasMoved(o_OnHasMoved);
+                I2DObject o = new I2DObject(fs, mat, model);                
                 this.World.AddObject(o);
             }
 
@@ -80,6 +80,7 @@ namespace EngineTestes._2DSamples
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
                 FarseerObject fs = new FarseerObject(fworld, tex);
                 I2DObject o = new I2DObject(fs, mat, model);
+                o.OnHasMoved += new PloobsEngine.SceneControl._2DScene.OnHasMoved(o_OnHasMoved);
                 this.World.AddObject(o);
             }
 
@@ -97,20 +98,43 @@ namespace EngineTestes._2DSamples
             CircleShape circle = new CircleShape(5, 1);
             {
                 IModelo2D model = new SpriteFarseer(factory, circle, Color.Orange);
-                Basic2DTextureMaterial mat = new Basic2DTextureMaterial();                
+                Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
                 FarseerObject fs = new FarseerObject(fworld, circle);
                 I2DObject o = new I2DObject(fs, mat, model);
                 this.World.AddObject(o);
             }
 
+            ///animated sprite
             {
-                PointLight2D l = new PointLight2D(new Vector2(-GraphicInfo.BackBufferWidth / 4, -GraphicInfo.BackBufferWidth / 4), Color.Red,1);
+                Texture2D tex = factory.GetTexture2D("Textures//DudeSheet");
+                SpriteAnimated sa = new SpriteAnimated(tex, 8, 2);                
+                sa.AddAnimation("ANIM1", 1, 8,0);
+                sa.AddAnimation("ANIM2", 2, 4, MathHelper.PiOver2);
+                
+                Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
+                Texture2D frame = factory.GetTexturePart(tex,sa.GetFrameRectangle("ANIM1",0));
+                FarseerObject fs = new FarseerObject(fworld, frame);
+
+                //GhostObject fs = new GhostObject(Vector2.Zero);
+                sheet = new I2DObject(fs, mat, sa);
+                this.World.AddObject(sheet);
+
+            }
+
+            {
+                PointLight2D l = new PointLight2D(new Vector2(-GraphicInfo.BackBufferWidth / 4, -GraphicInfo.BackBufferWidth / 4), Color.Red, 1);
                 this.World.AddLight(l);
             }
 
             {
-                SpotLight2D l = new SpotLight2D(new Vector2(+GraphicInfo.BackBufferWidth / 4, -GraphicInfo.BackBufferWidth / 4), Color.Blue, new Vector2(0,1),MathHelper.ToRadians(45));
+                SpotLight2D l = new SpotLight2D(new Vector2(+GraphicInfo.BackBufferWidth / 4, -GraphicInfo.BackBufferWidth / 4), Color.Blue, new Vector2(0, 1), MathHelper.ToRadians(45));
                 this.World.AddLight(l);
+            }
+            
+            {
+            SimpleConcreteKeyboardInputPlayable sc = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS,Keys.Space);
+            sc.KeyStateChange+=new KeyStateChange(sc_KeyStateChange);
+            this.BindInput(sc);
             }
 
             ///camera
@@ -126,6 +150,15 @@ namespace EngineTestes._2DSamples
             JointUpdateable ju = new JointUpdateable(this, fworld, this.World.Camera2D);
 
             base.LoadContent(GraphicInfo, factory, contentManager);
+        }
+
+        void sc_KeyStateChange(InputPlayableKeyBoard ipk)
+        {
+            SpriteAnimated sa = sheet.Modelo as SpriteAnimated;
+            if (sa.Animation == "ANIM1")
+                sa.Animation = "ANIM2";
+            else
+                sa.Animation = "ANIM1";
         }
 
         void o_OnHasMoved(I2DObject Reciever)

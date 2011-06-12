@@ -10,8 +10,7 @@ namespace PloobsEngine.Modelo2D
     public enum ModelType
     {
         Texture,Vertices
-    }
-     
+    }     
 
     public abstract class IModelo2D
     {
@@ -19,12 +18,26 @@ namespace PloobsEngine.Modelo2D
         {
             this.ModelType = ModelType;
             LayerDepth = 0;
+            SourceRectangle = null;
+            Rotation = 0;
+        }
+
+        public Rectangle? SourceRectangle
+        {
+            get;
+            set;
         }
 
         public ModelType ModelType
         {
             get;
             internal set;
+        }
+
+        public float Rotation
+        {
+            get;
+            set;
         }
 
         public Texture2D Texture
@@ -43,6 +56,10 @@ namespace PloobsEngine.Modelo2D
         {
             set;
             get;
+        }
+
+        public virtual void Update(GameTime gameTime)
+        {
         }
     }
 }

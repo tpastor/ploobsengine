@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework;
 using PloobsEngine.Cameras;
 using Bnoerj.AI.Steering;
 using Bnoerj.AI.Steering.Pedestrian;
+using EngineTestes.AI;
 
 namespace ProjectTemplate
 {
@@ -59,7 +60,9 @@ namespace ProjectTemplate
                     ///Deferred material
                     ForwardMaterial fmaterial = new ForwardMaterial(shader);
                     ///The object itself
-                    return new IObject(fmaterial, simpleModel, tmesh);
+                    IObject obj = new IObject(fmaterial, simpleModel, tmesh);
+                    obj.IObjectAttachment.Add(new SteerAtachment(pd));
+                    return obj;
                 });
 
             PlugIn.Init();

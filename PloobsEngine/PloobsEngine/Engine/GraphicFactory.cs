@@ -170,6 +170,15 @@ namespace PloobsEngine.Engine
             return render.PopRenderTargetAsSingleRenderTarget2D();
         }
 
+        public Texture2D GetTexturePart(Texture2D texture, Rectangle rectangle)
+        {
+            RenderTarget2D cNewRenderTarget = CreateRenderTarget(rectangle.Width, rectangle.Height, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.None, ginfo.MultiSample);
+            render.PushRenderTarget(cNewRenderTarget);
+            render.Clear(Color.Transparent, ClearOptions.Target);
+            render.RenderTextureComplete(texture, Color.White, new Rectangle(0, 0, rectangle.Width, rectangle.Height), Matrix.Identity, rectangle, true, SpriteSortMode.Deferred, SamplerState.AnisotropicClamp);
+            return render.PopRenderTargetAsSingleRenderTarget2D();
+        }
+
 
     }
 

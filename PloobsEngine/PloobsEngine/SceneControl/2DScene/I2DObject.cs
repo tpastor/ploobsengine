@@ -126,7 +126,10 @@ namespace PloobsEngine.SceneControl._2DScene
         protected virtual void UpdateObject(GameTime gt) { }
         internal void iUpdateObject(GameTime gt)
         {
-            UpdateObject(gt);                        
+            UpdateObject(gt);
+
+            this.Material.Update(gt, this);
+            this.Modelo.Update(gt);
             
             if (physicObject.HasMoved())
             {

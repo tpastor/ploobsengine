@@ -15,6 +15,6 @@ namespace PloobsEngine.Material2D
         public virtual void PreDrawnPhase(GameTime gt, I2DWorld mundo, I2DObject obj, RenderHelper render) { }
         public abstract void Draw(GameTime gt, I2DObject obj, RenderHelper render);
         public abstract void LightDraw(GameTime gt, I2DObject obj, RenderHelper render, Color color,PloobsEngine.Light2D.Light2D light);
-        public virtual void Update(GameTime gameTime, IObject obj) { }             
+        public virtual void Update(GameTime gameTime, I2DObject obj) { }             
     }
 }
