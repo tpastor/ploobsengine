@@ -12,12 +12,6 @@ namespace PloobsEngine.IA
         void Init(IObject obj );
         String NextState();
         void UpdateState();
-        void Finish();
-        IEventHandler EventHandler
-        {
-            get;
-            set;
-        }
-        
+        void Finish();                
     }
 }

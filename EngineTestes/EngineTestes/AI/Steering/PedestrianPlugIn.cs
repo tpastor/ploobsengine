@@ -56,6 +56,7 @@ namespace Bnoerj.AI.Steering.Pedestrian
 		public void Update()
 		{
             clock.Update();
+
 			// update each Pedestrian
 			for (int i = 0; i < crowd.Count; i++)
 			{

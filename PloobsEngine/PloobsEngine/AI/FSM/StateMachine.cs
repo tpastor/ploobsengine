@@ -30,7 +30,6 @@ namespace PloobsEngine.IA
 
         public void UpdateFSM()
         {
-
             if (newInState)
             {
                 _states[currentState].Init(obj);
