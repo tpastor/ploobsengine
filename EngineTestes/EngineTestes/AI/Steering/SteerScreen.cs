@@ -13,6 +13,8 @@ using PloobsEngine.Cameras;
 using Bnoerj.AI.Steering;
 using Bnoerj.AI.Steering.Pedestrian;
 using EngineTestes.AI;
+using PloobsEngine.Features.DebugDraw;
+using PloobsEngine.Commands;
 
 namespace ProjectTemplate
 {
@@ -23,6 +25,7 @@ namespace ProjectTemplate
     {
         IPlugIn PlugIn;
         Path path = new Path(new List<Vector3>() { new Vector3(50, 50, 50), new Vector3(50, 50, 0), new Vector3(0, 50, 0) }, 5);
+        DebugShapesDrawer ddrawer = new DebugShapesDrawer(true);        
         
         /// <summary>
         /// Sets the world and render technich.
@@ -39,6 +42,14 @@ namespace ProjectTemplate
             renderTech = new ForwardRenderTecnich(desc);
         }
 
+        protected override void InitScreen(PloobsEngine.Engine.GraphicInfo GraphicInfo, PloobsEngine.Engine.EngineStuff engine)
+        {
+            base.InitScreen(GraphicInfo, engine);
+            engine.AddComponent(new DebugDraw());
+            engine.IsMouseVisible = true;
+        }        
+
+
         /// <summary>
         /// Load content for the screen.
         /// </summary>
@@ -47,7 +58,27 @@ namespace ProjectTemplate
         /// <param name="contentManager"></param>
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory, IContentManager contentManager)
         {
-            base.LoadContent(GraphicInfo, factory, contentManager);            
+            base.LoadContent(GraphicInfo, factory, contentManager);
+
+            RegisterDebugDrawCommand rc = new RegisterDebugDrawCommand(ddrawer);
+            CommandProcessor.getCommandProcessor().SendCommandAssyncronous(rc);
+
+            foreach (var item in path.Obstacles)
+            {
+                SphericalObstacle SphericalObstacle = item as SphericalObstacle;
+                DebugSphere s = new DebugSphere(SphericalObstacle.Center, SphericalObstacle.Radius,Color.Blue);
+                ddrawer.AddShape(s);                
+            }
+
+            DebugLines dls = new DebugLines();
+            ddrawer.AddShape(dls);
+            for (int i = 0; i < path.PolyPath.pointCount - 1; i++)
+			{
+                dls.AddLine(path.PolyPath.points[i], path.PolyPath.points[i ] + Vector3.Up * 200, Color.Brown);
+                dls.AddLine(path.PolyPath.points[i], path.PolyPath.points[i + 1], Color.Red);
+			}
+            dls.AddLine(path.PolyPath.points[path.PolyPath.pointCount - 1], path.PolyPath.points[path.PolyPath.pointCount - 1] + Vector3.Up * 200, Color.Brown);
+
             PlugIn = new PedestrianPlugIn(this.World, path,
                 (pd) =>
                 {
@@ -97,7 +128,7 @@ namespace ProjectTemplate
         /// <param name="render"></param>
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
-            base.Draw(gameTime, render);
+            base.Draw(gameTime, render); 
 
             ///Draw some text on the screen
             render.RenderTextComplete("Demo: Basic Screen Forward", new Vector2(GraphicInfo.Viewport.Width - 315, 15), Color.White, Matrix.Identity);

@@ -134,6 +134,8 @@
     <Compile Include="2DSamples\JointUpdateable.cs" />
     <Compile Include="AA\AAScreen.cs" />
     <Compile Include="AA\MLAntiAliasingPostEffect.cs" />
+    <Compile Include="AI\FSM\FSMScreen.cs" />
+    <Compile Include="AI\FSM\StateSample.cs" />
     <Compile Include="AI\Pathfinding and Waypoints\IaPathFinding.cs" />
     <Compile Include="AI\Pathfinding and Waypoints\IaWaypoints.cs" />
     <Compile Include="AI\Pathfinding and Waypoints\moverAtachment.cs" />
@@ -219,9 +221,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="AI\FSM\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--

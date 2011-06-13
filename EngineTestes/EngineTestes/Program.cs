@@ -55,6 +55,7 @@ namespace EngineTestes
             //manager.AddScreen(new IaWaypoints());
             //manager.AddScreen(new IaPathFinding());
             manager.AddScreen(new SteerScreen());
+            //manager.AddScreen(new FSMScreen());
 
         }
     }

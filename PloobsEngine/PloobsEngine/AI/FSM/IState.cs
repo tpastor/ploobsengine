@@ -4,14 +4,19 @@ using System.Linq;
 using System.Text;
 using PloobsEngine.SceneControl;
 using PloobsEngine.Events;
+using Microsoft.Xna.Framework;
 
 namespace PloobsEngine.IA
 {
     public interface IState
     {
-        void Init(IObject obj);
+        void Init();
         String NextState();
-        void UpdateState();
-        void Finish();                
+        void UpdateState(GameTime gameTime);
+        void Finish();
+        String Name
+        {
+            get;
+        }
     }
 }
