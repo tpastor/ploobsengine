@@ -7,7 +7,7 @@ using PloobsEngine.DataStructure;
 
 namespace PloobsEngine.IA
 {
-    public delegate float CostToCross(WAYPOINTTYPE type);
+    public delegate float CostToCross<T>(T type);
 
     public class AStar 
     {
@@ -16,7 +16,7 @@ namespace PloobsEngine.IA
         private Waypoint parentNode;
         private IMap map;
         private float heuristicEstimateValue = 1;
-        public event CostToCross CostToCross = null;
+        public CostToCross<WAYPOINTTYPE> CostToCross = null;
         private bool ended = false;
         public bool Ended
         {
@@ -198,7 +198,7 @@ namespace PloobsEngine.IA
                 return w;
 
             }
-            else
+            else if (iterations != float.MaxValue)
             {
                 ended = false;
                 Waypoint fNode = closeList[closeList.Count - 1]; //objetivo
@@ -221,7 +221,12 @@ namespace PloobsEngine.IA
 
                 }
                 return w;
-            }            
+            }
+            else
+            {
+                ended = false;
+                return null;
+            }
         }
 
         public IMap Map

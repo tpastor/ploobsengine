@@ -10,11 +10,11 @@ using FarseerPhysics.Common.Decomposition;
 using PloobsEngine.Physics2D.Farseer;
 using PloobsEngine.Engine;
 
-namespace PloobsEngine.Utils
+namespace PloobsEngine.Physics2D.Farseer
 {
-    public class Asset2DCreator
+    public class FarseerAsset2DCreator
     {
-        public Asset2DCreator(GraphicFactory GraphicFactory)
+        public FarseerAsset2DCreator(GraphicFactory GraphicFactory)
         {
             _device = GraphicFactory.device;
             _effect = new BasicEffect(_device);

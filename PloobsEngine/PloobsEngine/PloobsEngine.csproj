@@ -176,9 +176,9 @@
     <Compile Include="Commands\IReciever.cs" />
     <Compile Include="Components\ComponentManager.cs" />
     <Compile Include="Components\IComponent.cs" />
-    <Compile Include="Components\SkyBox\SkyBoxEnableDisableCommand.cs" />
-    <Compile Include="Components\SkyBox\Skybox.cs" />
-    <Compile Include="Components\SkyBox\SkyBoxUpdateParametersCommand.cs" />
+    <Compile Include="Features\SkyBox\SkyBoxEnableDisableCommand.cs" />
+    <Compile Include="Features\SkyBox\Skybox.cs" />
+    <Compile Include="Features\SkyBox\SkyBoxUpdateParametersCommand.cs" />
     <Compile Include="Engine\LoadingScreenTask.cs" />
     <Compile Include="Engine\IntermediateTexture.cs" />
     <Compile Include="Events\EventManager.cs" />
@@ -297,7 +297,7 @@
     <Compile Include="Utils\Debug 2D Primitives\PrimitiveBatch.cs" />
     <Compile Include="Utils\Debug 2D Primitives\Triangles.cs" />
     <Compile Include="Utils\Debug 2D Primitives\TrianglesStrip.cs" />
-    <Compile Include="Utils\Asset2DCreator.cs" />
+    <Compile Include="Physics2D\Farseer\Asset2DCreator.cs" />
     <Compile Include="Physics2D\ConvertUtils.cs" />
     <Compile Include="Physics2D\Farseer\FarseerWorld.cs" />
     <Compile Include="Physics2D\Farseer\FarseerObject.cs" />
