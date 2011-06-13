@@ -154,6 +154,7 @@
     <Compile Include="LightPrePassIdea\HybridDeferred.cs" />
     <Compile Include="LightPrePassIdea\LightPrePassCombination.cs" />
     <Compile Include="LightPrePassIdea\LightPrePassGBuffer.cs" />
+    <Compile Include="Loader\ForwardMeshesFromModelLoadScreen.cs" />
     <Compile Include="Loader\ForwardLoadScreen.cs" />
     <Compile Include="LoadingScreen\LoadScene.cs" />
     <Compile Include="OctreeScreen\OctreeScreen.cs" />

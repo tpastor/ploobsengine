@@ -57,31 +57,8 @@ namespace EngineTestes
             //GhostObject po = new GhostObject();
             //IShader shader = new ForwardXNABasicShader();
             //ForwardMaterial dm = new ForwardMaterial(shader);
-            //this.World.AddObject(new IObject(dm, model, po));
-        
-            LightThrowBepu lt = new LightThrowBepu(this.World, factory);
-
-            #region NormalLight
-            DirectionalLightPE ld1 = new DirectionalLightPE(Vector3.Left, Color.White);
-            DirectionalLightPE ld2 = new DirectionalLightPE(Vector3.Right, Color.White);
-            DirectionalLightPE ld3 = new DirectionalLightPE(Vector3.Backward, Color.White);
-            DirectionalLightPE ld4 = new DirectionalLightPE(Vector3.Forward, Color.White);
-            DirectionalLightPE ld5 = new DirectionalLightPE(Vector3.Down, Color.White);
-            float li = 0.5f;
-            ld1.LightIntensity = li;
-            ld2.LightIntensity = li;
-            ld3.LightIntensity = li;
-            ld4.LightIntensity = li;
-            ld5.LightIntensity = li;
-            this.World.AddLight(ld1);
-            this.World.AddLight(ld2);
-            this.World.AddLight(ld3);
-            this.World.AddLight(ld4);
-            this.World.AddLight(ld5);
-
+            //this.World.AddObject(new IObject(dm, model, po));        
             
-            #endregion
-
             CameraFirstPerson cam = new CameraFirstPerson(GraphicInfo.Viewport);
             cam.MoveSpeed *= 5;
             this.World.CameraManager.AddCamera(cam);

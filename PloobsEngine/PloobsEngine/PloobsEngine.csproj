@@ -207,6 +207,7 @@
     <Compile Include="Light3D\Deferred\DirectionalLightPE.cs" />
     <Compile Include="Light3D\Deferred\PointLightPE.cs" />
     <Compile Include="Light3D\Deferred\SpotLightPE.cs" />
+    <Compile Include="Loader\ExtractMeshesFromMoldelLoader.cs" />
     <Compile Include="Loader\WorldLoader.cs" />
     <Compile Include="Loader\ExtractXmlModelLoader.cs" />
     <Compile Include="Loader\IModelLoader.cs" />
