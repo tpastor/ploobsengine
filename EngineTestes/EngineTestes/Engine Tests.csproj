@@ -74,6 +74,9 @@
     <Reference Include="Library">
       <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\Library.dll</HintPath>
     </Reference>
+    <Reference Include="MataliPhysics">
+      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\MataliPhysics.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
       <Private>False</Private>
     </Reference>
@@ -157,6 +160,7 @@
     <Compile Include="Loader\ForwardMeshesFromModelLoadScreen.cs" />
     <Compile Include="Loader\ForwardLoadScreen.cs" />
     <Compile Include="LoadingScreen\LoadScene.cs" />
+    <Compile Include="Matali\Matalitests.cs" />
     <Compile Include="OctreeScreen\OctreeScreen.cs" />
     <Compile Include="PostEffectScreen.cs" />
     <Compile Include="DeferredAnimatedScreen.cs" />
