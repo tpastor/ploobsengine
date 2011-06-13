@@ -187,6 +187,7 @@
     <Compile Include="Events\IEventHandler.cs" />
     <Compile Include="Events\IHaveEventManager.cs" />
     <Compile Include="Events\SimpleEvent.cs" />
+    <Compile Include="Features\DebugDraw\DebugSphere.cs" />
     <Compile Include="Features\DebugDraw\DebugLines.cs" />
     <Compile Include="Features\DebugDraw\DebugLine.cs" />
     <Compile Include="Features\DebugDraw\DebugBox.cs" />
@@ -488,6 +489,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="bin\Windows Phone\Debug\EnginePhoneContent\Models\block.xnb" />
+    <None Include="bin\Windows Phone\Debug\EnginePhoneContent\Models\dome.xnb" />
+    <None Include="bin\Windows Phone\Debug\EnginePhoneContent\Models\Dsphere.xnb" />
+    <None Include="bin\Windows Phone\Debug\EnginePhoneContent\Models\sphere.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\AllBuffer.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\AnimatedBillboard.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\AntiAliasing.xnb" />

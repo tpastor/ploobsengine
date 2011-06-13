@@ -109,6 +109,13 @@ namespace PloobsEngine {
             }
         }
         
+        internal static byte[] block1 {
+            get {
+                object obj = ResourceManager.GetObject("block1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
         internal static byte[] blur {
             get {
                 object obj = ResourceManager.GetObject("blur", resourceCulture);
@@ -242,6 +249,13 @@ namespace PloobsEngine {
             }
         }
         
+        internal static byte[] dome1 {
+            get {
+                object obj = ResourceManager.GetObject("dome1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
         internal static byte[] DownScaling {
             get {
                 object obj = ResourceManager.GetObject("DownScaling", resourceCulture);
@@ -252,6 +266,13 @@ namespace PloobsEngine {
         internal static byte[] Dsphere {
             get {
                 object obj = ResourceManager.GetObject("Dsphere", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        internal static byte[] Dsphere1 {
+            get {
+                object obj = ResourceManager.GetObject("Dsphere1", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -609,6 +630,13 @@ namespace PloobsEngine {
         internal static byte[] sphere {
             get {
                 object obj = ResourceManager.GetObject("sphere", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        internal static byte[] sphere1 {
+            get {
+                object obj = ResourceManager.GetObject("sphere1", resourceCulture);
                 return ((byte[])(obj));
             }
         }
