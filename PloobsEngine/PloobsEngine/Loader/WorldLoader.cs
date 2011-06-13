@@ -39,7 +39,7 @@ namespace PloobsEngine.Loader
         public static IObject CreateOBJ(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation mi)
         {
             BatchInformation[] bi = { mi.batchInformation};
-            IModelo model = new CustomModel(factory, mi.modelName, bi , mi.difuse, mi.bump, mi.specular, mi.glow);            
+            IModelo model = new CustomModel(factory, mi.modelName, bi , mi.difuse, mi.bump, mi.specular, mi.glow,mi.modelPart);            
 
             MaterialDescription material;
             if (mi.staticfriction == -1 || mi.dinamicfriction == -1 || mi.ellasticity == -1)
@@ -153,6 +153,7 @@ namespace PloobsEngine.Loader
 
             foreach (var item in worldData.ConstraintInfo)
             {
+
                 List<IObject> obb = world.Objects.ToList();                
 
                 IObject o1 = obb.Find(delegate(IObject o) { return o.Name == item.bodyA; });

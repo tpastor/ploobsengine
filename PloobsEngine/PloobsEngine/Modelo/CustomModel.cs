@@ -12,9 +12,10 @@ namespace PloobsEngine.Modelo
 {
     public class CustomModel : IModelo
     {
-       public CustomModel(GraphicFactory factory, String modelName, BatchInformation[] binfo,Texture2D diffuse = null, Texture2D bump = null, Texture2D specular = null, Texture2D glow= null)
+       public CustomModel(GraphicFactory factory, String modelName, BatchInformation[] binfo,Texture2D diffuse = null, Texture2D bump = null, Texture2D specular = null, Texture2D glow= null, int meshpartIndex = 0)
            : base(factory, modelName, CUSTOM, CUSTOM, CUSTOM, CUSTOM, false)
        {
+           this.meshpartIndex = meshpartIndex;
            BatchInformations = new BatchInformation[1][];
            BatchInformations[0] = binfo;
                       
@@ -31,11 +32,10 @@ namespace PloobsEngine.Modelo
            SetTexture(diffuse, TextureType.DIFFUSE);
            SetTexture(bump, TextureType.BUMP);
            SetTexture(specular, TextureType.SPECULAR);
-           SetTexture(glow, TextureType.GLOW);
-           
+           SetTexture(glow, TextureType.GLOW);           
        }
      
-        
+        private int meshpartIndex = 0;
         private Model model;        
         private float modelRadius;
 
@@ -46,9 +46,10 @@ namespace PloobsEngine.Modelo
 
             if (diffuse == null)            
             {
-                if (model.Meshes[0].Effects[0] is BasicEffect)
+                BasicEffect newVariable = model.Meshes[0].MeshParts[meshpartIndex].Effect as BasicEffect;
+                if (newVariable != null)
                 {
-                    diffuse = (model.Meshes[0].Effects[0] as BasicEffect).Texture;
+                    diffuse = newVariable.Texture;
                     _diffuseName = CUSTOM;
                 }
             }
