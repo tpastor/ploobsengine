@@ -21,9 +21,7 @@ namespace PloobsEngine.Loader
                         
             for (int i = 0; i < model.Meshes.Count; i++)
             {
-                String name = model.Meshes[i].Name.Substring(5);
-                Effect effect = model.Meshes[i].Effects[0];
-                BasicEffect BasicEffect = effect as BasicEffect;                
+                String name = model.Meshes[i].Name.Substring(5);                
 
                 for (int j = 0; j < model.Meshes[i].MeshParts.Count; j++)
                 {                        
@@ -49,7 +47,10 @@ namespace PloobsEngine.Loader
 
                         ModelBuilderHelper.Extract(m, model.Meshes[i].MeshParts[j], out mi.batchInformation);                        
                         mi.batchInformation.ModelLocalTransformation = m[model.Meshes[i].ParentBone.Index];
-                        if(BasicEffect!= null)
+
+                        Effect effect = model.Meshes[i].MeshParts[j].Effect;                
+                        BasicEffect BasicEffect = effect as BasicEffect;
+                        if(BasicEffect != null)
                             mi.difuse = BasicEffect.Texture;
                         ModelLoaderData.ModelMeshesInfo.Add(mi);                    
                 }
