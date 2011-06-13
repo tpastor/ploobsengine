@@ -21,7 +21,8 @@ using PloobsEngine.Utils;
 namespace EngineTestes
 {
     public class ForwardMeshesFromModelLoadScreen : IScene
-    {                
+    {
+                
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
@@ -45,7 +46,10 @@ namespace EngineTestes
             WorldLoader wl = new WorldLoader();
             wl.OnCreateIObject += new CreateIObject(wl_OnCreateIObject);            
             wl.LoadWorld(factory, GraphicInfo, World, data);
-                        
+            
+            LightThrowBepu lt = new LightThrowBepu(this.World, factory);
+
+            
             CameraFirstPerson cam = new CameraFirstPerson(GraphicInfo.Viewport);
             cam.MoveSpeed *= 5;
             this.World.CameraManager.AddCamera(cam);
@@ -55,7 +59,7 @@ namespace EngineTestes
 
         IObject wl_OnCreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation mi)
         {            
-            IModelo model = new CustomModel(factory, mi.modelName, new BatchInformation[] { mi.batchInformation}, mi.difuse, mi.bump, mi.specular, mi.glow);
+            IModelo model = new CustomModel(factory, mi.modelName, new BatchInformation[] { mi.batchInformation}, mi.difuse, mi.bump, mi.specular, mi.glow,mi.modelPart);
             IPhysicObject po = new TriangleMeshObject(model, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());            
             IShader shader = new ForwardXNABasicShader();
             ForwardMaterial dm = new ForwardMaterial(shader);
