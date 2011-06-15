@@ -107,20 +107,23 @@ namespace EngineTestes
             return null;
         }        
 
-        IObject wl_OnCreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation mi)
+        IObject[] wl_OnCreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation[] oi)
         {
-            if (!mi.HasTexture(TextureType.DIFFUSE))
+            foreach (var mi in oi)
             {
-                mi.difuse = factory.CreateTexture2DColor(1,1,Color.Red);
-            }
+                if (!mi.HasTexture(TextureType.DIFFUSE))
+                {
+                    mi.textureInformation.SetTexture(factory.CreateTexture2DColor(1, 1, Color.Red), TextureType.DIFFUSE);
+                }
 
-            if (!mi.HasTexture(TextureType.BUMP))
-            {
-                mi.bump = null;
-            }
+                if (mi.HasTexture(TextureType.BUMP))
+                {
+                    mi.textureInformation.SetNullTexture(TextureType.BUMP);
+                }    
+            }           
 
             
-            return WorldLoader.CreateOBJ(world, factory, ginfo, mi);
+            return WorldLoader.CreateOBJ(world, factory, ginfo, oi);
         }
 
 

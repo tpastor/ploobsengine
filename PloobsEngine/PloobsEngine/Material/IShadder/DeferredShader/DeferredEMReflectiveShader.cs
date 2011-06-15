@@ -102,17 +102,14 @@ namespace PloobsEngine.Material
             else if (rType == ReflectionType.ReflexiveSurface)
                 this._shader.CurrentTechnique = this._shader.Techniques["ReflexiveSurface"];           
 
-            this._shader.Parameters["reflectionIndex"].SetValue(reflectionIndex);
-            if (rType == ReflectionType.ReflexiveSurface)
-                this._shader.Parameters["Texture"].SetValue(ent.Modelo.getTexture(TextureType.DIFFUSE));
-
+            this._shader.Parameters["reflectionIndex"].SetValue(reflectionIndex);            
             this._shader.Parameters["specularIntensity"].SetValue(specularIntensity);
             this._shader.Parameters["specularPower"].SetValue(specularPower);
 
         }
        
         public override void  Draw(GameTime gt, IObject obj, RenderHelper render, ICamera camera, IList<ILight> lights)
-        {                        
+        {                
                 this._shader.Parameters["View"].SetValue(camera.View);
                 this._shader.Parameters["Projection"].SetValue(camera.Projection);
                 this._shader.Parameters["Cubemap"].SetValue(texCube);
@@ -124,7 +121,9 @@ namespace PloobsEngine.Material
                 {
                     BatchInformation[] bi = obj.Modelo.GetBatchInformation(i);                    
                     for (int j = 0; j < bi.Count(); j++)
-                    {                        
+                    {
+                        if (rType == ReflectionType.ReflexiveSurface)
+                            this._shader.Parameters["Texture"].SetValue(obj.Modelo.getTexture(TextureType.DIFFUSE, i, j));
                         this._shader.Parameters["World"].SetValue(Matrix.Multiply(wld, bi[j].ModelLocalTransformation));
                         render.RenderBatch(bi[j], _shader);
                     }         
@@ -139,17 +138,9 @@ namespace PloobsEngine.Material
         public override void  Initialize(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, IObject obj)        
  	    {
             this._shader = factory.GetEffect("EMSHADER",true,true);            
-            texCube = factory.GetTextureCube(texName,false);
-            obj.Modelo.OnTextureChange += new OnTextureChange(Modelo_OnTextureChange);
+            texCube = factory.GetTextureCube(texName,false);            
             base.Initialize(ginfo, factory, obj);
         }
-
-        void Modelo_OnTextureChange(TextureType type, IModelo model)
-        {
-            if (rType == ReflectionType.ReflexiveSurface)
-                this._shader.Parameters["Texture"].SetValue(model.getTexture(TextureType.DIFFUSE));
-        }
-
 
         public override void BasicDraw(GameTime gt, IObject obj, Matrix view, Matrix projection, IList<ILight> lights, RenderHelper render, Plane? clippingPlane, bool useAlphaBlending = false)
         {

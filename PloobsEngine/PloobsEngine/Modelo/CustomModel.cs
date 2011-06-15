@@ -7,65 +7,132 @@ using Microsoft.Xna.Framework;
 using PloobsEngine.SceneControl;
 using PloobsEngine.Engine;
 using PloobsEngine.Engine.Logger;
+using PloobsEngine.Loader;
 
 namespace PloobsEngine.Modelo
 {
     public class CustomModel : IModelo
     {
-       public CustomModel(GraphicFactory factory, String modelName, BatchInformation[] binfo,Texture2D diffuse = null, Texture2D bump = null, Texture2D specular = null, Texture2D glow= null, int meshpartIndex = 0)
-           : base(factory, modelName, CUSTOM, CUSTOM, CUSTOM, CUSTOM, false)
-       {
-           this.meshpartIndex = meshpartIndex;
+
+        public CustomModel(GraphicFactory factory, String modelName, int meshindex, BatchInformation[] binfo, Texture2D diffuse = null)
+            : base(factory, modelName,false)
+        {            
+            BatchInformations = new BatchInformation[1][];
+            BatchInformations[0] = binfo;
+
+            BoundingSphere bs = new BoundingSphere();
+            for (int i = 0; i < binfo.Count(); i++)
+            {
+                float radius;
+                Vector3 center;
+                ModelBuilderHelper.ExtractModelRadiusAndCenter(binfo[i], out radius, out center);
+                bs = BoundingSphere.CreateMerged(bs, new BoundingSphere(center, radius));
+            }
+            modelRadius = bs.Radius;
+
+            TextureInformations = new TextureInformation[1][];
+            TextureInformations[0] = new TextureInformation[binfo.Count()];
+            
+            for (int j = 0; j < TextureInformations[0].Count(); j++)
+            {
+                TextureInformations[0][j] = new TextureInformation(isInternal, factory);
+                TextureInformations[0][j].LoadTexture();
+                if (diffuse == null)
+                {
+            
+                        BasicEffect effect = model.Meshes[meshindex].MeshParts[j].Effect as BasicEffect;
+                        if (effect != null)
+                        {
+                            TextureInformations[0][j].SetTexture(effect.Texture, TextureType.DIFFUSE);
+                        }
+                }
+                else
+                {
+                       SetTexture(diffuse, TextureType.DIFFUSE,meshindex,j);
+                }            
+            }
+        }
+
+        public CustomModel(GraphicFactory factory, ObjectInformation[] loader)
+            : base(factory, loader[0].modelName, false)
+        {
+            System.Diagnostics.Debug.Assert(loader!= null);
+            System.Diagnostics.Debug.Assert(loader.Count() != 0);
+            BatchInformations = new BatchInformation[1][];
+            BatchInformations[0] = new BatchInformation[loader.Count()];
+
+            TextureInformations = new TextureInformation[1][];
+            TextureInformations[0] = new TextureInformation[loader.Count()];
+
+            BoundingSphere bs = new BoundingSphere();
+            for (int i = 0; i < loader.Count(); i++)
+            {
+                BatchInformations[0][i] = loader[i].batchInformation;
+                TextureInformations[0][i] = loader[i].textureInformation;
+
+                float radius;
+                Vector3 center;
+                ModelBuilderHelper.ExtractModelRadiusAndCenter(BatchInformations[0][i], out radius, out center);
+                bs = BoundingSphere.CreateMerged(bs, new BoundingSphere(center, radius));
+            }            
+            modelRadius = bs.Radius;
+        }        
+
+        public CustomModel(GraphicFactory factory, String modelName, BatchInformation BatchInformation, TextureInformation TextureInformation, int meshindex = 0, int meshpartIndex = 0)        
+            : base(factory, modelName, false)
+       {           
            BatchInformations = new BatchInformation[1][];
-           BatchInformations[0] = binfo;
+           BatchInformations[0] = new BatchInformation[1];
+           BatchInformations[0][0] = BatchInformation;
                       
-           BoundingSphere bs = new BoundingSphere();
-           for (int i = 0; i < binfo.Count(); i++)
+           BoundingSphere bs = new BoundingSphere();           
            {
                float radius;
                Vector3 center;
-               ModelBuilderHelper.ExtractModelRadiusAndCenter(binfo[i], out radius, out center);                
+               ModelBuilderHelper.ExtractModelRadiusAndCenter(BatchInformation, out radius, out center);                
                bs = BoundingSphere.CreateMerged(bs,new BoundingSphere(center,radius));
            }
            modelRadius = bs.Radius;
 
-           SetTexture(diffuse, TextureType.DIFFUSE);
-           SetTexture(bump, TextureType.BUMP);
-           SetTexture(specular, TextureType.SPECULAR);
-           SetTexture(glow, TextureType.GLOW);           
-       }
-     
-        private int meshpartIndex = 0;
+           TextureInformations = new TextureInformation[1][];
+           TextureInformations[0] = new TextureInformation[1];
+           TextureInformations[0][0] = TextureInformation;
+
+           if (TextureInformation.getTexture(TextureType.DIFFUSE) == null)
+           {
+                   BasicEffect effect = model.Meshes[meshindex].MeshParts[meshpartIndex].Effect as BasicEffect;
+                   if (effect != null)
+                   {
+                       TextureInformations[0][0].SetTexture(effect.Texture, TextureType.DIFFUSE);
+                   }               
+           }           
+       }         
+        
         private Model model;        
         private float modelRadius;
 
-        protected override void LoadBatchInfo(GraphicFactory factory, out BatchInformation[][] BatchInformations)
+        protected override void LoadModel(GraphicFactory factory, out BatchInformation[][] BatchInformations, out TextureInformation[][] TextureInformations)
         {
+            ///code not called
             model = factory.GetModel(this.Name, isInternal);
             ModelBuilderHelper.Extract(model, out BatchInformations);
-
-            if (diffuse == null)            
-            {
-                BasicEffect newVariable = model.Meshes[0].MeshParts[meshpartIndex].Effect as BasicEffect;
-                if (newVariable != null)
-                {
-                    diffuse = newVariable.Texture;
-                    _diffuseName = CUSTOM;
-                }
-            }
-
             
             BoundingSphere sphere = new BoundingSphere();
             foreach (var item in model.Meshes)
             {
                 BoundingSphere.CreateMerged(sphere, item.BoundingSphere);
             }
-            modelRadius = sphere.Radius;         
+            modelRadius = sphere.Radius;
+
+            TextureInformations = new TextureInformation[1][];
+            TextureInformations[0] = new TextureInformation[1];
+            TextureInformations[0][0] = new TextureInformation(isInternal, factory);
+            TextureInformations[0][0].LoadTexture();
         }
 
         public override int MeshNumber
         {
-            get { return 1; }
+            get { return BatchInformations.Count(); }
         }
 
         public override float GetModelRadius()
@@ -73,13 +140,5 @@ namespace PloobsEngine.Modelo
             return modelRadius;
         }
 
-        public override BatchInformation[] GetBatchInformation(int meshNumber)
-        {
-            if (meshNumber != 0)
-            {
-                ActiveLogger.LogMessage("This Model has only one BatchInformation " + Name, LogLevel.RecoverableError);
-            }
-            return BatchInformations[0];   
-        }
     }
 }

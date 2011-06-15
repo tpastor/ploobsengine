@@ -85,8 +85,7 @@ namespace PloobsEngine.Material
                 IModelo modelo = obj.Modelo;           
                 IdParameter.SetValue(shaderId);
                 SpecularIntensityParameter.SetValue(specularIntensity);
-                SpecularPowerParameter.SetValue(specularPower);
-                TextureParameter.SetValue(modelo.getTexture(TextureType.DIFFUSE));
+                SpecularPowerParameter.SetValue(specularPower);                
                 ViewProjectionParameter.SetValue(camera.ViewProjection);
 
                 for (int i = 0; i < modelo.MeshNumber; i++)
@@ -94,6 +93,7 @@ namespace PloobsEngine.Material
                     BatchInformation[] bi = modelo.GetBatchInformation(i);                                        
                     for (int j = 0; j < bi.Count(); j++)
                     {
+                        TextureParameter.SetValue(modelo.getTexture(TextureType.DIFFUSE,i,j));
                         WorldParameter.SetValue(bi[j].ModelLocalTransformation * obj.WorldMatrix);
                         render.RenderBatch(bi[j], _shader);                        
                     }

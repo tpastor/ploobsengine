@@ -86,12 +86,13 @@ namespace AdvancedDemo4._0
             return null;
         }
 
-        IObject wl_OnCreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation mi)
+        IObject[] wl_OnCreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation[] oi)
         {
-
-            mi.batchInformation.ModelLocalTransformation = mi.batchInformation.ModelLocalTransformation * Matrix.CreateScale(0.5f);
-            
-            return WorldLoader.CreateOBJ(world, factory, ginfo, mi);
+            foreach (var mi in oi)
+            {
+                mi.batchInformation.ModelLocalTransformation = mi.batchInformation.ModelLocalTransformation * Matrix.CreateScale(0.5f);
+            }            
+            return WorldLoader.CreateOBJ(world, factory, ginfo, oi);
         }
 
         protected override void Update(GameTime gameTime)

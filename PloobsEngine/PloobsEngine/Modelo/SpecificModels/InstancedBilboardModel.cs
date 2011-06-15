@@ -29,13 +29,15 @@ namespace PloobsEngine.Modelo
         /// <param name="BilboardsName">Name of the bilboards.</param>
         /// <param name="diffuseTextuteName">Name of the diffuse textute.</param>
         /// <param name="instances">The instances.</param>
-        public InstancedBilboardModel(GraphicFactory factory, String BilboardsName, String diffuseTextuteName, BilboardInstance[] instances)
-            : base(factory, BilboardsName, diffuseTextuteName, null, null, null, false)
+        public InstancedBilboardModel(GraphicFactory factory, String BilboardsName, String diffuseTextureName, BilboardInstance[] instances)
+            : base(factory, BilboardsName  ,false)
         {
             this.instances = instances;
+            this.diffuseTextureName = diffuseTextureName;
             LoadModelo(factory);            
-        }                
-     
+        }
+
+        string diffuseTextureName;
         private float modelRadius = -1;
         BilboardInstance[] instances;
 
@@ -70,7 +72,7 @@ namespace PloobsEngine.Modelo
         }
 
         VertexDeclaration vd;
-        protected override void LoadBatchInfo(GraphicFactory factory, out BatchInformation[][] BatchInformations)
+        protected override void LoadModel(GraphicFactory factory, out BatchInformation[][] BatchInformations, out TextureInformation[][] TextureInformations)
         {
             VertexPositionTexture[] billboardVertices = new VertexPositionTexture[4];
             int i = 0;
@@ -102,7 +104,12 @@ namespace PloobsEngine.Modelo
             b[0].VertexBuffer = vertexBufferS;
             b[0].IndexBuffer = indexBufferS;
             b[0].InstancedVertexBuffer = InstancedvertexBufferS;
-            BatchInformations[0] = b;                        
+            BatchInformations[0] = b;
+
+            TextureInformations = new TextureInformation[1][];
+            TextureInformations[0] = new TextureInformation[1];
+            TextureInformations[0][0] = new TextureInformation(isInternal, factory, diffuseTextureName, null, null, null);
+            TextureInformations[0][0].LoadTexture();
         }
         
 
@@ -114,12 +121,6 @@ namespace PloobsEngine.Modelo
         public override float GetModelRadius()
         {
             return modelRadius;
-        }
-
-        public override BatchInformation[] GetBatchInformation(int meshNumber)
-        {
-            System.Diagnostics.Debug.Assert(meshNumber == 0);
-            return BatchInformations[0];   
         }
     }
     

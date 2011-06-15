@@ -13,13 +13,13 @@ namespace PloobsEngine.Modelo
     public class OceanModel : IModelo
     {
         public OceanModel(GraphicFactory factory,String WaterName,Vector3 basePosition, int width = 128, int height = 128)
-            : base(factory, WaterName,null,null,null,null,false)
+            : base(factory, WaterName,false)
         {                        
             this.myWidth = width;
             this.myHeight = height;
             this.basePosition = basePosition;
 
-            LoadBatchInfo(factory, out BatchInformations);
+            LoadModel(factory, out BatchInformations,out TextureInformations);
         }                
         
         private float modelRadius;
@@ -27,7 +27,7 @@ namespace PloobsEngine.Modelo
         int myHeight = 128;
         Vector3 basePosition;
 
-        protected override void LoadBatchInfo(GraphicFactory factory, out BatchInformation[][] BatchInformations)
+        protected override void LoadModel(GraphicFactory factory, out BatchInformation[][] BatchInformations, out TextureInformation[][] TextureInformations)
         {
             Vector3 myPosition = new Vector3(basePosition.X - (myWidth / 2), basePosition.Y, basePosition.Z - (myHeight / 2));
             
@@ -99,6 +99,11 @@ namespace PloobsEngine.Modelo
             b[0].VertexBuffer = vb;
             b[0].IndexBuffer = ib;
             BatchInformations[0] = b;
+
+            TextureInformations = new TextureInformation[1][];
+            TextureInformations[0] = new TextureInformation[1];
+            TextureInformations[0][0] = new TextureInformation(isInternal, factory, null, null, null, null);
+            TextureInformations[0][0].LoadTexture();
         }
 
         public override int MeshNumber
@@ -109,12 +114,6 @@ namespace PloobsEngine.Modelo
         public override float GetModelRadius()
         {
             return modelRadius;
-        }
-
-        public override BatchInformation[] GetBatchInformation(int meshNumber)
-        {
-            System.Diagnostics.Debug.Assert(meshNumber == 0);
-            return BatchInformations[0];   
         }
     }
 

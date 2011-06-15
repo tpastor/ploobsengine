@@ -132,6 +132,7 @@ namespace PloobsEngine.Material
                 ActiveLogger.LogMessage("specularIntensity cannot be negative, setting to 0", LogLevel.RecoverableError);
                 specularIntensity = 0;
             }
+
             this.effect = "AllBuffer";
             this.specularIntensity = specularIntensity;
             this.specularPower = specularPower;
@@ -199,37 +200,10 @@ namespace PloobsEngine.Material
         public override void  Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<Light.ILight> lights)
         {                 
                 this._shader.Parameters["id"].SetValue(shaderId);
-                this._shader.Parameters["useParalax"].SetValue(useParalax);
-                this._shader.Parameters["useGlow"].SetValue(useGlow);
-                this._shader.Parameters["useBump"].SetValue(useBump);
-                this._shader.Parameters["useSpecular"].SetValue(useSpecular);            
-                this._shader.Parameters["Texture"].SetValue(obj.Modelo.getTexture(TextureType.DIFFUSE));
-                if (useBump)
-                {
-                    if (useParalax)
-                    {
-                        this._shader.Parameters["HeightMap"].SetValue(obj.Modelo.getTexture(TextureType.PARALAX));
-                        this._shader.Parameters["scaleBias"].SetValue(scaleBias);                        
-                    }
-
-                    this._shader.Parameters["NormalMap"].SetValue(obj.Modelo.getTexture(TextureType.BUMP));
-
-                }
-                if (useSpecular)
-                {
-                    this._shader.Parameters["SpecularMap"].SetValue(obj.Modelo.getTexture(TextureType.SPECULAR));
-                }
-                else
-                {
-                    this._shader.Parameters["specularIntensity"].SetValue(specularIntensity);
-                    this._shader.Parameters["specularPower"].SetValue(specularPower);
-                    this._shader.Parameters["specularIntensityScale"].SetValue(SpecularIntensityMapScale);
-                    this._shader.Parameters["specularPowerScale"].SetValue(SpecularPowerMapScale);
-                }
-
-                if (useGlow)
-                    this._shader.Parameters["glow"].SetValue(obj.Modelo.getTexture(TextureType.GLOW));
-                                        
+               this._shader.Parameters["useParalax"].SetValue(useParalax);
+               this._shader.Parameters["useGlow"].SetValue(useGlow);
+               this._shader.Parameters["useBump"].SetValue(useBump);
+               this._shader.Parameters["useSpecular"].SetValue(useSpecular);                                                   
                this._shader.Parameters["View"].SetValue(cam.View);
                this._shader.Parameters["Projection"].SetValue(cam.Projection);
 
@@ -243,6 +217,34 @@ namespace PloobsEngine.Material
                     BatchInformation[] bi = obj.Modelo.GetBatchInformation(i);                    
                     for (int j = 0; j < bi.Count(); j++)
                     {
+                        this._shader.Parameters["Texture"].SetValue(obj.Modelo.getTexture(TextureType.DIFFUSE,i,j));
+                        if (useBump)
+                        {
+                            if (useParalax)
+                            {
+                                this._shader.Parameters["HeightMap"].SetValue(obj.Modelo.getTexture(TextureType.PARALAX,i,j));
+                                this._shader.Parameters["scaleBias"].SetValue(scaleBias);
+                            }
+
+                            this._shader.Parameters["NormalMap"].SetValue(obj.Modelo.getTexture(TextureType.BUMP,i,j));
+
+                        }
+                        if (useSpecular)
+                        {
+                            this._shader.Parameters["SpecularMap"].SetValue(obj.Modelo.getTexture(TextureType.SPECULAR, i, j));
+                        }
+                        else
+                        {
+                            this._shader.Parameters["specularIntensity"].SetValue(specularIntensity);
+                            this._shader.Parameters["specularPower"].SetValue(specularPower);
+                            this._shader.Parameters["specularIntensityScale"].SetValue(SpecularIntensityMapScale);
+                            this._shader.Parameters["specularPowerScale"].SetValue(SpecularPowerMapScale);
+                        }
+
+                        if (useGlow)
+                            this._shader.Parameters["glow"].SetValue(obj.Modelo.getTexture(TextureType.GLOW, i, j));
+                 
+
                         Matrix w1 = Matrix.Multiply(wld, bi[j].ModelLocalTransformation);                    
                         this._shader.Parameters["World"].SetValue(w1);
                         this._shader.Parameters["WorldInverseTranspose"].SetValue(Matrix.Transpose(Matrix.Invert(w1))); 

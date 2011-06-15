@@ -191,9 +191,7 @@ namespace PloobsEngine.Material
             else
             {
                 basicDraw.Parameters["isClip"].SetValue(false);
-            }
-
-            basicDraw.Parameters["diffuse"].SetValue(obj.Modelo.getTexture(TextureType.DIFFUSE));
+            }            
 
             if(useAlphaBlending)
                 render.PushBlendState(BlendState.AlphaBlend);
@@ -203,6 +201,7 @@ namespace PloobsEngine.Material
                 BatchInformation[] bi = obj.Modelo.GetBatchInformation(i);
                 for (int j = 0; j < bi.Count(); j++)
                 {
+                    basicDraw.Parameters["diffuse"].SetValue(obj.Modelo.getTexture(TextureType.DIFFUSE,i,j));
                     Matrix w1 = Matrix.Multiply(wld, bi[j].ModelLocalTransformation);
                     this.basicDraw.Parameters["WVP"].SetValue(w1 * view * projection);
 

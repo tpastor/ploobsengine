@@ -170,7 +170,7 @@ namespace PloobsEngine.Material
         {
                 System.Diagnostics.Debug.Assert(obj.Modelo is TerrainModel, "This shader expects a TerrainModel");
                 this._shader.Parameters["id"].SetValue(shaderId);                
-                this._shader.Parameters["BaseTexture"].SetValue(obj.Modelo.getTexture(TextureType.MULTITEX1));
+                this._shader.Parameters["BaseTexture"].SetValue(obj.Modelo.getTexture(TextureType.MULTITEX1,0,0));
                 this._shader.Parameters["blendDistance"].SetValue(blendDistance);
                 this._shader.Parameters["blendWidth"].SetValue(blendWidth);
                 this._shader.Parameters["nearTextureEspalhamento"].SetValue(nearTextureEspalhamento);
@@ -180,9 +180,9 @@ namespace PloobsEngine.Material
 
                 if (terrainType == TerrainType.MULTITEXTURE)
                 {
-                    this._shader.Parameters["NivelAlto"].SetValue(obj.Modelo.getTexture(TextureType.MULTITEX3));
-                    this._shader.Parameters["NivelMedio"].SetValue(obj.Modelo.getTexture(TextureType.MULTITEX2));
-                    this._shader.Parameters["NivelBaixo"].SetValue(obj.Modelo.getTexture(TextureType.MULTITEX1));
+                    this._shader.Parameters["NivelAlto"].SetValue(obj.Modelo.getTexture(TextureType.MULTITEX4, 0, 0));
+                    this._shader.Parameters["NivelMedio"].SetValue(obj.Modelo.getTexture(TextureType.MULTITEX3, 0, 0));
+                    this._shader.Parameters["NivelBaixo"].SetValue(obj.Modelo.getTexture(TextureType.MULTITEX2, 0, 0));
 
                     this._shader.Parameters["nivelBaixoAltura"].SetValue(nivelBaixoAltura);
                     this._shader.Parameters["nivelBaixoEspalhamento"].SetValue(nivelBaixoEspalhamento);

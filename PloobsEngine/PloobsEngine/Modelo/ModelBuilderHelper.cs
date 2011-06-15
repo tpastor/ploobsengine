@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using PloobsEngine.Engine;
 
 namespace PloobsEngine.Modelo
 {
@@ -37,6 +38,53 @@ namespace PloobsEngine.Modelo
                     b[i].ModelLocalTransformation = boneabsolute[mesh.ParentBone.Index];
                 }
                 batchInformationS[j] = b;
+            }
+        }
+
+        public static void Extract(GraphicFactory factory, out BatchInformation[][] batchInformationS, out TextureInformation[][] textureInformationS, string modelName, String diffuseName = null, String bumpName = null, string specularName = null, String glowName = null, bool isinternal = false)
+        {
+            Model model = factory.GetModel(modelName, isinternal);
+            Extract(factory, out batchInformationS, out textureInformationS, model, diffuseName, bumpName, specularName, glowName, isinternal);
+        }
+
+        public static void Extract(GraphicFactory factory,out BatchInformation[][] batchInformationS, out TextureInformation[][] textureInformationS, Model model,String diffuseName = null,String bumpName = null,string specularName = null,String glowName = null , bool isinternal = false)
+        {            
+            batchInformationS = new BatchInformation[model.Meshes.Count][];
+            textureInformationS = new TextureInformation[model.Meshes.Count][];
+            Matrix[] boneabsolute = new Matrix[model.Bones.Count];
+            model.CopyAbsoluteBoneTransformsTo(boneabsolute);
+
+            for (int j = 0; j < model.Meshes.Count; j++)
+            {
+                ModelMesh mesh = model.Meshes[j];
+
+                BatchInformation[] b = new BatchInformation[mesh.MeshParts.Count];
+                TextureInformation[] t = new TextureInformation[mesh.MeshParts.Count];
+                for (int i = 0; i < mesh.MeshParts.Count; i++)
+                {
+                    b[i] = new BatchInformation(mesh.MeshParts[i].VertexOffset, mesh.MeshParts[i].NumVertices, mesh.MeshParts[i].PrimitiveCount, mesh.MeshParts[i].StartIndex, mesh.MeshParts[i].VertexOffset, mesh.MeshParts[i].VertexBuffer.VertexDeclaration, mesh.MeshParts[i].VertexBuffer.VertexDeclaration.VertexStride);
+                    b[i].IndexBuffer = mesh.MeshParts[i].IndexBuffer;
+                    b[i].VertexBuffer = mesh.MeshParts[i].VertexBuffer;
+                    b[i].ModelLocalTransformation = boneabsolute[mesh.ParentBone.Index];
+                    t[i] = new TextureInformation(isinternal, factory, diffuseName, bumpName, specularName, glowName);
+                    t[i].LoadTexture();
+
+                    if (diffuseName == null)
+                    {
+                        BasicEffect BasicEffect = mesh.MeshParts[i].Effect as BasicEffect;
+                        if (BasicEffect != null)
+                        {
+                            t[i].SetTexture(BasicEffect.Texture, TextureType.DIFFUSE);
+                        }
+                        else if (mesh.MeshParts[i].Effect is SkinnedEffect)
+                        {
+                            t[i].SetTexture((mesh.MeshParts[i].Effect as SkinnedEffect).Texture, TextureType.DIFFUSE);
+                        }
+                    }                    
+
+                }
+                batchInformationS[j] = b;
+                textureInformationS[j] = t;
             }
         }
         /// <summary>

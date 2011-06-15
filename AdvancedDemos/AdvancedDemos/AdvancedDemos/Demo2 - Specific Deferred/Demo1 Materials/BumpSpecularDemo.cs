@@ -209,27 +209,32 @@ namespace AdvancedDemo4._0
         /// <param name="ginfo">The ginfo.</param>
         /// <param name="mi">The mi.</param>
         /// <returns></returns>
-        IObject wl_OnCreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation mi)
-        {            
-            IModelo model = new CustomModel(factory, mi.modelName, new BatchInformation[] { mi.batchInformation }, mi.difuse, mi.bump, mi.specular, mi.glow);
-            IPhysicObject po = new TriangleMeshObject(model, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
-            DeferredCustomShader shader = new DeferredCustomShader(mi.HasTexture(TextureType.GLOW), mi.HasTexture(TextureType.BUMP), mi.HasTexture(TextureType.SPECULAR), mi.HasTexture(TextureType.PARALAX));
-            DeferredMaterial dm = new DeferredMaterial(shader);
-            IObject obj = new  IObject(dm, model, po);
-            
-            if (mi.HasTexture(TextureType.BUMP))
+        IObject[] wl_OnCreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation[] mi)
+        {
+            IObject[] objs = new IObject[mi.Length];
+            for (int i = 0; i < mi.Length; i++)
             {
-                withBump.Add(obj);
+                IModelo model = new CustomModel(factory, mi[i].modelName, mi[i].batchInformation, mi[i].textureInformation);
+                IPhysicObject po = new TriangleMeshObject(model, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
+                DeferredCustomShader shader = new DeferredCustomShader(mi[i].HasTexture(TextureType.GLOW), mi[i].HasTexture(TextureType.BUMP), mi[i].HasTexture(TextureType.SPECULAR), mi[i].HasTexture(TextureType.PARALAX));
+                DeferredMaterial dm = new DeferredMaterial(shader);
+                IObject obj = new IObject(dm, model, po);
+
+                if (mi[i].HasTexture(TextureType.BUMP))
+                {
+                    withBump.Add(obj);
+                }
+
+                if (mi[i].HasTexture(TextureType.SPECULAR))
+                {
+                    shader.SpecularPowerMapScale = 2f;
+                    shader.SpecularIntensityMapScale = 0.1f;
+                    withSpecular.Add(obj);
+                }
+                objs[i] = obj;
             }
 
-            if (mi.HasTexture(TextureType.SPECULAR))
-            {
-                shader.SpecularPowerMapScale = 2f;
-                shader.SpecularIntensityMapScale = 0.1f;            
-                withSpecular.Add(obj);
-            }
-
-            return obj;
+            return objs;
 
         }
 

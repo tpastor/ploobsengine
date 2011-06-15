@@ -15,24 +15,23 @@ namespace PloobsEngine.Modelo
     public class TerrainModel : IModelo
     {
         public TerrainModel(GraphicFactory factory, TerrainObject terrainObject, String TerrainName, String BaseTexture, String NivelBaixo = null, String NivelMedio = null, String NivelAlto = null)
-            : base(factory, TerrainName, null, null, null, null, false)
+            : base(factory, TerrainName,false)
         {   
             this.terrainObject = terrainObject;
 
-            this._mult1 = BaseTexture;
-            this._mult2 = NivelBaixo;
-            this._mult3 = NivelMedio;
-            this._mult4 = NivelAlto;
-
             LoadModelo(factory);
 
-            this.SetTexture(terrainObject.HeightMap, TextureType.HEIGHTMAP);            
+            TextureInformations[0][0].SetTexture(BaseTexture, TextureType.MULTITEX1);
+            TextureInformations[0][0].SetTexture(NivelBaixo, TextureType.MULTITEX2);
+            TextureInformations[0][0].SetTexture(NivelMedio, TextureType.MULTITEX3);
+            TextureInformations[0][0].SetTexture(NivelAlto, TextureType.MULTITEX4);
+            TextureInformations[0][0].SetTexture(terrainObject.HeightMap, TextureType.HEIGHTMAP);                        
         }
 
         TerrainObject terrainObject;
-        private float modelRadius;                
+        private float modelRadius;
 
-        protected override void LoadBatchInfo(GraphicFactory factory, out BatchInformation[][] BatchInformations)
+        protected override void LoadModel(GraphicFactory factory, out BatchInformation[][] BatchInformations, out TextureInformation[][] TextureInformations)
         {
             List<VertexPositionNormalTexture> vertexList = new List<VertexPositionNormalTexture>();
             List<int> indexList = new List<int>();
@@ -57,6 +56,11 @@ namespace PloobsEngine.Modelo
             b[0].VertexBuffer = vertexBufferS;
             b[0].IndexBuffer = indexBufferS;
             BatchInformations[0] = b;
+
+            TextureInformations = new TextureInformation[1][];
+            TextureInformations[0] = new TextureInformation[1];
+            TextureInformations[0][0] = new TextureInformation(isInternal, factory, null, null, null, null);
+            TextureInformations[0][0].LoadTexture();
         }
 
         private void GetVertexData(List<VertexPositionNormalTexture> vertices, List<int> indices, TerrainObject to)
@@ -169,12 +173,6 @@ namespace PloobsEngine.Modelo
         public override float GetModelRadius()
         {
             return modelRadius;
-        }
-
-        public override BatchInformation[] GetBatchInformation(int meshNumber)
-        {
-            System.Diagnostics.Debug.Assert(meshNumber == 0);
-            return BatchInformations[0];   
         }
     }   
 

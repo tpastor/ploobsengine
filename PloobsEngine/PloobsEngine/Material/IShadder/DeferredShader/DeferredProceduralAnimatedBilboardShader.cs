@@ -98,7 +98,7 @@ namespace PloobsEngine.Material
             _shader.Parameters["xWorld"].SetValue(obj.PhysicObject.WorldMatrix);
             _shader.Parameters["xView"].SetValue(cam.View);
             _shader.Parameters["xProjection"].SetValue(cam.Projection);                        
-            _shader.Parameters["xBillboardTexture"].SetValue(obj.Modelo.getTexture(TextureType.DIFFUSE));
+            _shader.Parameters["xBillboardTexture"].SetValue(obj.Modelo.getTexture(TextureType.DIFFUSE,0,0));
             _shader.Parameters["atenuation"].SetValue(atenuation);
             _shader.Parameters["xAllowedRotDir"].SetValue(allowRotDir);
 

@@ -145,24 +145,23 @@ namespace AdvancedDemo4._0
         /// <param name="ginfo">The ginfo.</param>
         /// <param name="mi">The mi.</param>
         /// <returns></returns>
-        IObject wl_OnCreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation mi)
+        IObject[] wl_OnCreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation[] mi)
         {            
 
             ///Do what default would do.
-            IObject obj =  WorldLoader.CreateOBJ(world, factory, ginfo, mi);
+            IObject[] objs =  WorldLoader.CreateOBJ(world, factory, ginfo, mi);
             ///Change object property here !!!
-            DeferredCustomShader cd = (obj.Material.Shadder as DeferredCustomShader); ///the world loader uses deferredCustomShader for all objects
-            System.Diagnostics.Debug.Assert(cd != null);
-            ///if the obj does not use specular map
-            if (!cd.UseSpecular)
+            foreach (var obj in objs)
             {
-                ///set a constant specular for all the object
-                cd.SpecularIntensity = 0.3f;
-                cd.SpecularPower = 150;
-            }
-            else
-            {
-                
+                DeferredCustomShader cd = (obj.Material.Shadder as DeferredCustomShader); ///the world loader uses deferredCustomShader for all objects
+                System.Diagnostics.Debug.Assert(cd != null);
+                ///if the obj does not use specular map
+                if (!cd.UseSpecular)
+                {
+                    ///set a constant specular for all the object
+                    cd.SpecularIntensity = 0.3f;
+                    cd.SpecularPower = 150;
+                }
             }
             
             ///If you want, create the object on your own, without using the World Loader,                          
@@ -173,7 +172,7 @@ namespace AdvancedDemo4._0
             //DeferredMaterial dm = new DeferredMaterial(shader);
             //return new IObject(dm, model, po);
 
-            return obj;
+            return objs;
         }
 
         /// <summary>

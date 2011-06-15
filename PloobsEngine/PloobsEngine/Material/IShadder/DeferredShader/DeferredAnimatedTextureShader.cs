@@ -184,15 +184,15 @@ namespace PloobsEngine.Material
         public override void Initialize(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, IObject obj)        
         {
             this._shader = factory.GetEffect("AnimatedBillboard",false,true);
-            this.aniTex = obj.Modelo.getTexture(TextureType.DIFFUSE);
-            obj.Modelo.OnTextureChange += new OnTextureChange(Modelo_OnTextureChange);
+            this.aniTex = obj.Modelo.getTexture(TextureType.DIFFUSE,0,0);
+            obj.Modelo.GetTextureInformation(0)[0].OnTextureChange += new OnTextureChange(Modelo_OnTextureChange);
             totalwidth = aniTex.Width;
             this.width = aniTex.Width / numberOfFrames;
             this.height = aniTex.Height;
             size = width / totalwidth;
         }
 
-        void Modelo_OnTextureChange(TextureType type, IModelo model)
+        void Modelo_OnTextureChange(TextureType type, TextureInformation model)
         {
             this.aniTex = model.getTexture(TextureType.DIFFUSE);
             totalwidth = aniTex.Width;

@@ -77,8 +77,7 @@ namespace PloobsEngine.Material
         }
 
         public override void  PosDrawPhase(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<ILight> lights)
- 	    {
-                _shader.Parameters["colorMap"].SetValue(obj.Modelo.getTexture(TextureType.DIFFUSE));                                
+ 	    {              
               render.PushRasterizerState(cullMode);
               render.PushBlendState(BlendState.NonPremultiplied);                                                                        
 
@@ -87,7 +86,8 @@ namespace PloobsEngine.Material
                     BatchInformation[] bi = obj.Modelo.GetBatchInformation(i);                    
                     
                     for (int j = 0; j < bi.Count(); j++)
-                    {                      
+                    {
+                        _shader.Parameters["colorMap"].SetValue(obj.Modelo.getTexture(TextureType.DIFFUSE,i,j));                                
                         Matrix w1 = Matrix.Multiply(obj.WorldMatrix, bi[j].ModelLocalTransformation);
                         _shader.Parameters["wvp"].SetValue(w1 * cam.ViewProjection);                
 

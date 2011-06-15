@@ -105,7 +105,7 @@ namespace AdvancedDemo4._0
         {
             return null;
         }
-        IObject wl_OnCreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation mi)
+        IObject[] wl_OnCreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation[] mi)
         {            
             return WorldLoader.CreateOBJ(world, factory, ginfo, mi);
         }

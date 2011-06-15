@@ -158,22 +158,25 @@ namespace AdvancedDemo4._0
         /// <param name="ginfo">The ginfo.</param>
         /// <param name="mi">The mi.</param>
         /// <returns></returns>
-        IObject wl_OnCreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation mi)
+        IObject[] wl_OnCreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation[] mi)
         {
 
             ///Do what default would do.
-            IObject obj = WorldLoader.CreateOBJ(world, factory, ginfo, mi);
+            IObject[] objs = WorldLoader.CreateOBJ(world, factory, ginfo, mi);
             ///Change object property here !!!
-            DeferredCustomShader cd = (obj.Material.Shadder as DeferredCustomShader); ///the world loader uses deferredCustomShader for all objects
-            System.Diagnostics.Debug.Assert(cd != null);
-            ///if the obj does not use specular map
-            if (!cd.UseSpecular)
-            {
-                ///No Specular this time
-                cd.SpecularIntensity = 0f;                
-            }          
 
-            return obj;
+            foreach (var obj in objs)
+            {
+                DeferredCustomShader cd = (obj.Material.Shadder as DeferredCustomShader); ///the world loader uses deferredCustomShader for all objects
+                System.Diagnostics.Debug.Assert(cd != null);
+                ///if the obj does not use specular map
+                if (!cd.UseSpecular)
+                {
+                    ///No Specular this time
+                    cd.SpecularIntensity = 0f;
+                }
+            }
+            return objs;
         }
 
        

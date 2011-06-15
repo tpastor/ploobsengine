@@ -35,7 +35,8 @@ namespace AdvancedDemo4._0
         {
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
 
-            ForwardRenderTecnichDescription desc = new ForwardRenderTecnichDescription(Color.CornflowerBlue);
+            ForwardRenderTecnichDescription desc = new ForwardRenderTecnichDescription();
+            desc.BackGroundColor = Color.CornflowerBlue;
             renderTech = new ForwardRenderTecnich(desc);
         }
         protected override void InitScreen(GraphicInfo GraphicInfo, EngineStuff engine)
