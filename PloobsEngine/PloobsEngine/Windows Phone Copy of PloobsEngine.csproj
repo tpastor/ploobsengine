@@ -183,6 +183,7 @@
     <Compile Include="Modelo\SpecificModels\StaticBilboardModel.cs" />
     <Compile Include="Modelo\SpecificModels\TreeModel.cs" />
     <Compile Include="Modelo\SpecificModels\WaterModel.cs" />
+    <Compile Include="Modelo\TextureInformation.cs" />
     <Compile Include="Particles\DPFSParticleSystem.cs" />
     <Compile Include="Particles\DPSFParticleManager.cs" />
     <Compile Include="Particles\IParticleManager.cs" />
