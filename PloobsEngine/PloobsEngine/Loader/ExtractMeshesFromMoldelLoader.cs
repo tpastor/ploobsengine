@@ -34,7 +34,8 @@ namespace PloobsEngine.Loader
 
                         ObjectInformation mi = new ObjectInformation();
                         mi.modelName = name;
-                        mi.modelPart = j;
+                        mi.meshPartIndex = j;
+                        mi.meshIndex = i;
                         mi.position = pos;
                         mi.scale = scale;
                         mi.rotation = ori;
@@ -48,10 +49,13 @@ namespace PloobsEngine.Loader
                         ModelBuilderHelper.Extract(m, model.Meshes[i].MeshParts[j], out mi.batchInformation);                        
                         mi.batchInformation.ModelLocalTransformation = m[model.Meshes[i].ParentBone.Index];
 
+                        mi.textureInformation = new Modelo.TextureInformation(false, factory, null, null, null, null);
+                        mi.textureInformation.LoadTexture();
+
                         Effect effect = model.Meshes[i].MeshParts[j].Effect;                
                         BasicEffect BasicEffect = effect as BasicEffect;
                         if(BasicEffect != null)
-                            mi.difuse = BasicEffect.Texture;
+                            mi.textureInformation.SetTexture(BasicEffect.Texture, TextureType.DIFFUSE);
                         ModelLoaderData.ModelMeshesInfo.Add(mi);                    
                 }
             }

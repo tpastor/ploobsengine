@@ -144,8 +144,7 @@ namespace PloobsEngine.Material
         public override void Draw(GameTime gt, IObject obj, RenderHelper render, Cameras.ICamera cam, IList<Light.ILight> lights)
         {
             base.Draw(gt, obj, render, cam, lights);
-
-            effect.Texture = obj.Modelo.getTexture(Modelo.TextureType.DIFFUSE);
+            
             effect.View = cam.View;
             effect.Projection = cam.Projection;
 
@@ -154,6 +153,7 @@ namespace PloobsEngine.Material
                 BatchInformation[] bi = obj.Modelo.GetBatchInformation(i);
                 for (int j = 0; j < bi.Count(); j++)
                 {
+                    effect.Texture = obj.Modelo.getTexture(Modelo.TextureType.DIFFUSE,i,j);
                     effect.World = bi[j].ModelLocalTransformation * obj.WorldMatrix;
                     render.RenderBatch(bi[j],effect);
                 }

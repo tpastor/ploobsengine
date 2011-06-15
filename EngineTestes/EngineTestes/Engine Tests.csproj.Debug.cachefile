@@ -1,5 +1,3 @@
-Content\Model\cenario.xnb
-Content\Model\block.xnb
 Content\Model\shadow.xnb
 Content\Model\ball.xnb
 Content\Model\uzi.xnb
@@ -159,6 +157,7 @@ Content\Textures\Fire.xnb
 Content\Textures\WhiteSquare.xnb
 Content\Textures\Particle.xnb
 Content\Textures\tile.xnb
+Content\Textures\DudeSheet.xnb
 Content\Effects\mlaa.xnb
 Content\Effects\Effect1.xnb
 Content\Effects\AntiAliasingtabulastalker.xnb
@@ -199,7 +198,10 @@ Content\Textures\sponza_ceiling_a_diff_0.xnb
 Content\Textures\chao_0.xnb
 Content\Textures\treedifuse_0.xnb
 Content\Textures\folha_0.xnb
-Content\Textures\DudeSheet.xnb
+Content\Textures\height_map.xnb
+Content\Textures\normal_map.xnb
+Content\Model\block.xnb
+Content\Model\cenario.xnb
 Content\ModelInfos\shadow.xml
 Content\ModelInfos\sponza.xml
 Content\Skins\Default\Skin.xml
@@ -317,3 +319,4 @@ Content\Models\Dsphere.xnb
 Content\Models\sphere.xnb
 Content\Effects\reductionEffect.xnb
 Content\Effects\resolveShadowsEffect.xnb
+Content\Textures\color_map.xnb

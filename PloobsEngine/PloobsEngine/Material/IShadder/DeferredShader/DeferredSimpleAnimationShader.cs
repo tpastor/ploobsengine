@@ -117,11 +117,12 @@ namespace PloobsEngine.Material
         {
             AnimatedModel modelo = obj.Modelo as AnimatedModel;
 
-            foreach (ModelMesh modelMesh in modelo.GetAnimatedModel().Meshes)
+            for (int i = 0; i < modelo.GetAnimatedModel().Meshes.Count; i++)
             {
-                foreach (ModelMeshPart meshPart in modelMesh.MeshParts)
+                ModelMesh modelMesh = modelo.GetAnimatedModel().Meshes[i];
+                for (int j = 0; j < modelMesh.MeshParts.Count; j++)
                 {
-                    SkinnedModelBasicEffect basicEffect = (SkinnedModelBasicEffect)meshPart.Effect;
+                    SkinnedModelBasicEffect basicEffect = (SkinnedModelBasicEffect)modelMesh.MeshParts[j].Effect;
                     if (clippingPlane != null)
                     {
                         basicEffect.Parameters["clipenabled"].SetValue(true);
@@ -133,7 +134,7 @@ namespace PloobsEngine.Material
                     }
                     basicEffect.DiffuseMapEnabled = true;
                     basicEffect.CurrentTechnique = basicEffect.Techniques["FORWARDCLIP"];
-                    basicEffect.Parameters["diffuseMap0"].SetValue(modelo.getTexture(TextureType.DIFFUSE));
+                    basicEffect.Parameters["diffuseMap0"].SetValue(modelo.getTexture(TextureType.DIFFUSE,i,j));
                     basicEffect.Parameters["diffuseMapEnabled"].SetValue(true);
                     if (followBone)
                     {
@@ -156,15 +157,16 @@ namespace PloobsEngine.Material
         public override void  Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<Light.ILight> lights)        
  	    {
             AnimatedModel modelo = obj.Modelo as AnimatedModel;
-            
-            foreach (ModelMesh modelMesh in modelo.GetAnimatedModel().Meshes)
+
+            for (int i = 0; i < modelo.GetAnimatedModel().Meshes.Count; i++)
             {
-                foreach (ModelMeshPart meshPart in modelMesh.MeshParts)
+                ModelMesh modelMesh = modelo.GetAnimatedModel().Meshes[i];
+                for (int j = 0; j < modelMesh.MeshParts.Count; j++)
                 {
-                    SkinnedModelBasicEffect basicEffect = (SkinnedModelBasicEffect)meshPart.Effect;                    
+                    SkinnedModelBasicEffect basicEffect = (SkinnedModelBasicEffect)modelMesh.MeshParts[j].Effect;                    
                     basicEffect.DiffuseMapEnabled = true;
                     basicEffect.CurrentTechnique = basicEffect.Techniques["DEFERRED"];
-                    basicEffect.Parameters["diffuseMap0"].SetValue(modelo.getTexture(TextureType.DIFFUSE));
+                    basicEffect.Parameters["diffuseMap0"].SetValue(modelo.getTexture(TextureType.DIFFUSE,i,j));
                     basicEffect.Parameters["diffuseMapEnabled"].SetValue(true);
                     if (followBone)
                     {

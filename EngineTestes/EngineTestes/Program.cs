@@ -43,7 +43,7 @@ namespace EngineTestes
             //manager.AddScreen(new GUIScreen());
             //manager.AddScreen(new FGUIScreen());
             //manager.AddScreen(new ForwardLoadScreen());
-            manager.AddScreen(new ForwardMeshesFromModelLoadScreen());
+            //manager.AddScreen(new ForwardMeshesFromModelLoadScreen());
             //manager.AddScreen(new DeferredLoadScreen(),new LoadScene());
             //manager.AddScreen(new DebugDrawScreen());
             //manager.AddScreen(new OctreeScreen());
@@ -57,6 +57,8 @@ namespace EngineTestes
             //manager.AddScreen(new IaPathFinding());
             //manager.AddScreen(new SteerScreen());
             //manager.AddScreen(new FSMScreen());
+
+            manager.AddScreen(new ParalaxScreen());
 
         }
     }

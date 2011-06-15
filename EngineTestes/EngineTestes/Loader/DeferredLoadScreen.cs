@@ -128,10 +128,12 @@ namespace EngineTestes
             return null;
         }
 
-        IObject wl_OnCreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation mi)
+        IObject[] wl_OnCreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation[] mi)
         {
-            
-            mi.batchInformation.ModelLocalTransformation = mi.batchInformation.ModelLocalTransformation * Matrix.CreateScale(0.5f);
+            foreach (var i in mi)
+            {
+                i.batchInformation.ModelLocalTransformation = i.batchInformation.ModelLocalTransformation * Matrix.CreateScale(0.5f);    
+            }            
             
             return WorldLoader.CreateOBJ(world, factory, ginfo, mi);
         }

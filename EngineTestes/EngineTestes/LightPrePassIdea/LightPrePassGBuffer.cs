@@ -116,13 +116,13 @@ namespace PloobsEngine.SceneControl
             {
 
                 foreach (IObject item in world.Culler.GetNotCulledObjectsList(MaterialType.DEFERRED))
-                {
-                    effect.Parameters["Texture"].SetValue(item.Modelo.getTexture(TextureType.DIFFUSE));                    
+                {                    
                     for (int i = 0; i < item.Modelo.MeshNumber; i++)
                     {
                         BatchInformation[] bi = item.Modelo.GetBatchInformation(i);
                         for (int j = 0; j < bi.Count(); j++)
                         {
+                            effect.Parameters["Texture"].SetValue(item.Modelo.getTexture(TextureType.DIFFUSE,i,j));                    
                             effect.Parameters["World"].SetValue(bi[j].ModelLocalTransformation * item.WorldMatrix);
                             render.RenderBatch(bi[j], effect);
                         }

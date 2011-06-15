@@ -72,15 +72,23 @@ namespace EngineTestes
             return null;
         }
 
-        IObject wl_OnCreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation mi)
+        IObject[] wl_OnCreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation[] oi)
         {
-            mi.batchInformation.ModelLocalTransformation = Matrix.Identity;
-            IModelo model = new CustomModel(factory, mi.modelName, new BatchInformation[] { mi.batchInformation}, mi.difuse, mi.bump, mi.specular, mi.glow);
-            //IPhysicObject po = new TriangleMeshObject(model, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
-            GhostObject po = new GhostObject(mi.position, Matrix.CreateFromQuaternion(mi.rotation), mi.scale);
-            IShader shader = new ForwardXNABasicShader();
-            ForwardMaterial dm = new ForwardMaterial(shader);
-            return new IObject(dm, model, po);
+            IObject[] objs = new IObject[oi.Count()];
+            int i = 0;
+            foreach (var mi in oi)
+            {
+                mi.batchInformation.ModelLocalTransformation = Matrix.Identity;
+                IModelo model = new CustomModel(factory, mi.modelName, mi.batchInformation, mi.textureInformation, mi.meshIndex, mi.meshPartIndex);
+                //IPhysicObject po = new TriangleMeshObject(model, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
+                GhostObject po = new GhostObject(mi.position, Matrix.CreateFromQuaternion(mi.rotation), mi.scale);
+                IShader shader = new ForwardXNABasicShader();
+                ForwardMaterial dm = new ForwardMaterial(shader);
+                IObject obj = new IObject(dm, model, po);
+                objs[i++] = obj;
+            }
+
+            return objs;
         }
 
     }

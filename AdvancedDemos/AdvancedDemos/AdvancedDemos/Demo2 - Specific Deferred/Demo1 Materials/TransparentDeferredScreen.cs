@@ -42,7 +42,7 @@ namespace AdvancedDemo4._0
             ///by distance from the camera
             ///this is not perfect, but works on most situations
             ForwardPassDescription fpd =  desc.ForwardPass.GetForwardPassDescription();
-            fpd.SortByCameraDistance = true;///defalu is false
+            fpd.ForwardSortByCameraDistance = true; ///defalut is false
             desc.ForwardPass.ApplyForwardPassDescription(fpd);
             renderTech = new DeferredRenderTechnic(desc);
         }

@@ -27,21 +27,19 @@ namespace PloobsEngine.Modelo.Animation
         /// <param name="glowTextureName">Name of the glow texture.</param>
         public AnimatedModel(GraphicFactory factory, String modelName, String diffuseTextureName = null, String bumpTextureName = null, String specularTextureName = null, String glowTextureName = null) :
             base(factory,modelName,diffuseTextureName,bumpTextureName,specularTextureName,glowTextureName)
-        {           
-         
-        }
-
-     
+        {
+            LoadModel(factory, out BatchInformations, out TextureInformations);
+        }     
 
         #region IModelo Members
 
         private float modelRadius;
         private SkinnedModel skinnedModel;
 
-        protected override void  LoadBatchInfo(GraphicFactory factory, out BatchInformation[][] BatchInformations)
+        protected override void LoadModel(GraphicFactory factory, out BatchInformation[][] BatchInformations, out TextureInformation[][] TextureInformations)
         {
             skinnedModel = factory.GetAnimatedModel(Name);
-            ModelBuilderHelper.Extract(skinnedModel.Model, out BatchInformations);
+            ModelBuilderHelper.Extract(factory, out BatchInformations, out TextureInformations, skinnedModel.Model,_diffuseName,_bumpName,_specularName,_glowName,isInternal);
             BoundingSphere sphere = new BoundingSphere();
             foreach (var item in skinnedModel.Model.Meshes)
             {
@@ -54,12 +52,7 @@ namespace PloobsEngine.Modelo.Animation
         {
             return modelRadius;
         }
-
-        public override BatchInformation[] GetBatchInformation(int meshNumber)
-        {
-            return BatchInformations[meshNumber];
-        }
-
+        
         public Model GetAnimatedModel()
         {
             return skinnedModel.Model;

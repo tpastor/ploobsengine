@@ -22,7 +22,7 @@ using PloobsEngine.Physic.Constraints.BepuConstraint;
 
 namespace PloobsEngine.Loader
 {
-    public delegate IObject CreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation mi);
+    public delegate IObject[] CreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation[] mi);
     public delegate ILight CreateILight(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ILight li);
     public delegate ICamera CreateICamera(IWorld world, GraphicFactory factory, GraphicInfo ginfo, CameraInfo cinfo);
     public delegate IPhysicConstraint CreateIConstraint(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ConstraintInfo cinfo, IObject o1, IObject o2);
@@ -30,59 +30,56 @@ namespace PloobsEngine.Loader
 
     public class WorldLoader
     {
-
         /// <summary>
         /// Used to retrieve objects to
         /// </summary>
         private Dictionary<String, IObject> objects = new Dictionary<string, IObject>();
 
-        public static IObject CreateOBJ(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation mi)
-        {
-            BatchInformation[] bi = { mi.batchInformation};
-            IModelo model = new CustomModel(factory, mi.modelName, bi , mi.difuse, mi.bump, mi.specular, mi.glow,mi.modelPart);            
+        public static IObject[] CreateOBJ(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation[] mi)
+        {            
+
+            IModelo model = new CustomModel(factory, mi);            
 
             MaterialDescription material;
-            if (mi.staticfriction == -1 || mi.dinamicfriction == -1 || mi.ellasticity == -1)
+            if (mi[0].staticfriction == -1 || mi[0].dinamicfriction == -1 || mi[0].ellasticity == -1)
             {
                 material = MaterialDescription.DefaultBepuMaterial();
             }
             else
             {
-                material = new MaterialDescription(mi.staticfriction, mi.dinamicfriction, mi.ellasticity);
+                material = new MaterialDescription(mi[0].staticfriction, mi[0].dinamicfriction, mi[0].ellasticity);
             }
 
             IPhysicObject po;
 
             bool massflag = false;
-            if (mi.mass == 0)
+            if (mi[0].mass == 0)
             {
                 massflag = true;
-                mi.mass = 0.5f;
+                mi[0].mass = 0.5f;
             }
 
             BatchInformation binf = model.GetBatchInformation(0)[0];            
 
             BoundingBox bb;
 
-            switch (mi.collisionType)
+            switch (mi[0].collisionType)
             {
-
-
                 case "Cylinder":
 
                     binf.ModelLocalTransformation = Matrix.Identity;
                     bb = ModelBuilderHelper.CreateBoundingBoxFromModel(binf, model);
                     Vector3 len = bb.Max - bb.Min;
 
-                    po = new CylinderObject(mi.position, len.Y, len.X / 2, mi.mass,Matrix.CreateFromQuaternion(mi.rotation), material);
+                    po = new CylinderObject(mi[0].position, len.Y, len.X / 2, mi[0].mass, Matrix.CreateFromQuaternion(mi[0].rotation), material);
                     
                     break;
 
 
                 case "Sphere":
                     binf.ModelLocalTransformation = Matrix.Identity;
-                    po = new SphereObject(mi.position, model.GetModelRadius(), mi.mass, mi.scale.X, material);
-                    po.Rotation = Matrix.CreateFromQuaternion(mi.rotation);
+                    po = new SphereObject(mi[0].position, model.GetModelRadius(), mi[0].mass, mi[0].scale.X, material);
+                    po.Rotation = Matrix.CreateFromQuaternion(mi[0].rotation);
 
                     break;
 
@@ -93,7 +90,7 @@ namespace PloobsEngine.Loader
 
                     len = bb.Max - bb.Min;
 
-                    po = new BoxObject(mi.position, len.X, len.Y, len.Z, mi.mass, mi.scale, Matrix.CreateFromQuaternion(mi.rotation), material);
+                    po = new BoxObject(mi[0].position, len.X, len.Y, len.Z, mi[0].mass, mi[0].scale, Matrix.CreateFromQuaternion(mi[0].rotation), material);
 
                     break;
                 default:
@@ -103,13 +100,13 @@ namespace PloobsEngine.Loader
 
             po.isMotionLess = massflag;
 
-            IShader shader = new DeferredCustomShader(mi.HasTexture(TextureType.GLOW), mi.HasTexture(TextureType.BUMP), mi.HasTexture(TextureType.SPECULAR), mi.HasTexture(TextureType.PARALAX));
+            IShader shader = new DeferredCustomShader(mi[0].HasTexture(TextureType.GLOW), mi[0].HasTexture(TextureType.BUMP), mi[0].HasTexture(TextureType.SPECULAR), mi[0].HasTexture(TextureType.PARALAX));
             DeferredMaterial dm = new DeferredMaterial(shader);
             IObject ob = new IObject(dm, model, po);
 
-            ob.Name = mi.modelName;
+            ob.Name = mi[0].modelName;
 
-            return ob;
+            return new IObject[] { ob };
         }
 
 
@@ -132,22 +129,44 @@ namespace PloobsEngine.Loader
         public event CreateIConstraint OnCreateIConstraint = null;
         public event ProcessDummies OnProcessDummies = null;
 
+        Dictionary<String, List<ObjectInformation>> objinfos = new Dictionary<string, List<ObjectInformation>>();
+
         public void LoadWorld(GraphicFactory factory, GraphicInfo ginfo, IWorld world, ModelLoaderData worldData)
         {
+            objinfos.Clear();
             foreach (var item in worldData.ModelMeshesInfo)
+            {
+                if(objinfos.ContainsKey(item.modelName + item.meshIndex))
+                {
+                    objinfos[item.modelName + item.meshIndex].Add(item);
+                }
+                else
+                {
+                    objinfos[item.modelName + item.meshIndex] = new List<ObjectInformation>();
+                    objinfos[item.modelName + item.meshIndex].Add(item);
+                }
+            }
+
+            foreach (var item in objinfos.Keys)
             {
                 if (OnCreateIObject != null)
                 {
-                    IObject obj = OnCreateIObject(world, factory, ginfo, item);
+                    IObject[] obj = OnCreateIObject(world, factory, ginfo, objinfos[item].ToArray());
                     if (obj != null)
                     {
-                        world.AddObject(obj);
+                        foreach (var ob in obj)
+	                    {
+		                    world.AddObject(ob);
+	                    }                        
                     }
                 }
                 else
                 {
-                    IObject ob1 = WorldLoader.CreateOBJ(world, factory, ginfo, item);
-                    world.AddObject(ob1);
+                    foreach (var obj in WorldLoader.CreateOBJ(world, factory, ginfo, objinfos[item].ToArray()))
+                    {
+                        world.AddObject(obj);    
+                    }
+                    
                 }
             }
 

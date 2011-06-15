@@ -14,10 +14,18 @@ namespace PloobsEngine.Modelo.Animation
     public abstract class IAnimatedModel : IModelo
     {
         public IAnimatedModel(GraphicFactory factory, String modelName, String diffuseTextureName, String bumpTextureName = null, String specularTextureName = null, String glowTextureName = null)
-            : base(factory, modelName, diffuseTextureName, bumpTextureName, specularTextureName, glowTextureName)
+            : base(factory, modelName,false)
         {
-
+            this._diffuseName = diffuseTextureName;
+            this._bumpName = bumpTextureName;
+            this._glowName = glowTextureName;
+            this._specularName = specularTextureName;
         }
+
+        protected string _glowName = null;
+        protected string _diffuseName = null;
+        protected string _bumpName = null;
+        protected string _specularName = null;
 
         /// <summary>
         /// Gets the animation Information from Model

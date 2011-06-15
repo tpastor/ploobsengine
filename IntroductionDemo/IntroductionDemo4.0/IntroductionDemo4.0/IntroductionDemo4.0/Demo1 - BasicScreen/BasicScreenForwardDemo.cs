@@ -31,7 +31,8 @@ namespace IntroductionDemo4._0
             ///Most of our technich like illumination, shadow ... are NOT implemented in FORWARD. Use this for simple stuffs and
             ///for W7
             ///You cant use light is this Technich (We will release the Forward Lights implementation soon showing how to expand the PloobsEngine)
-            ForwardRenderTecnichDescription desc = new ForwardRenderTecnichDescription(Color.CornflowerBlue);
+            ForwardRenderTecnichDescription desc = new ForwardRenderTecnichDescription();
+            desc.BackGroundColor = Color.CornflowerBlue;
             renderTech = new ForwardRenderTecnich(desc);
         }
 

@@ -57,13 +57,13 @@ namespace EngineTestes
             this.RenderTechnic.AddPostEffect(new AntiAliasingPostEffectStalker());
         }
 
-        IObject wl_OnCreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation mi)
+        IObject[] wl_OnCreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation[] mi)
         {            
-            IModelo model = new CustomModel(factory, mi.modelName, new BatchInformation[] { mi.batchInformation}, mi.difuse, mi.bump, mi.specular, mi.glow,mi.modelPart);
+            IModelo model = new CustomModel(factory, mi);
             IPhysicObject po = new TriangleMeshObject(model, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());            
             IShader shader = new ForwardXNABasicShader();
             ForwardMaterial dm = new ForwardMaterial(shader);
-            return new IObject(dm, model, po);
+            return new IObject[] {new IObject(dm, model, po)};
         }
 
     }

@@ -23,16 +23,16 @@ namespace PloobsEngine.Modelo
         /// <param name="profileName">Name of the profile (LTREE content pipeline processed file).</param>
         /// <param name="trunktextureName">Name of the trunktexture.</param>
         /// <param name="LeaftextureName">Name of the leaftexture.</param>
-        public TreeModel(GraphicFactory factory, String profileName,String trunktextureName, String LeaftextureName) :base(factory,profileName,null,null,null,null,false)
+        public TreeModel(GraphicFactory factory, String profileName,String trunktextureName, String LeaftextureName) :base(factory,profileName,false)
         {
             this.trunktextureName = trunktextureName;
             this.LeaftextureName = LeaftextureName;
             this.profileName = profileName;
-            LoadBatchInfo(factory, out BatchInformations);
+            LoadModel(factory,out BatchInformations,out TextureInformations);
 
         }
 
-        protected override void LoadBatchInfo(GraphicFactory factory, out BatchInformation[][] BatchInformations)
+        protected override void LoadModel(GraphicFactory factory, out BatchInformation[][] BatchInformations, out TextureInformation[][] TextureInformations)
         {
             TreeProfile t = factory.GetAsset<TreeProfile>(profileName);
             if (!String.IsNullOrEmpty(LeaftextureName))
@@ -58,7 +58,17 @@ namespace PloobsEngine.Modelo
             vertexBufferS[1] = tree.LeafCloud.Vbuffer;
             BatchInformation bi1 = new BatchInformation(0, tree.LeafCloud.Numleaves * 4, tree.LeafCloud.Numleaves * 2, 0, 0, tree.LeafCloud.Vdeclaration, LeafVertex.SizeInBytes);
             BatchInformations[1] = new BatchInformation[1];
-            BatchInformations[1][0] = bi1; 
+            BatchInformations[1][0] = bi1;
+
+            TextureInformations = new TextureInformation[1][];
+            TextureInformations[0] = new TextureInformation[2];
+            TextureInformations[0][0] = new TextureInformation(isInternal, factory, null, null, null, null);
+            TextureInformations[0][1] = new TextureInformation(isInternal, factory, null, null, null, null);
+            TextureInformations[0][0].LoadTexture();
+            TextureInformations[0][1].LoadTexture();
+            TextureInformations[0][0].SetTexture(tree.TrunkTexture, TextureType.DIFFUSE);
+            TextureInformations[0][1].SetTexture(tree.LeafTexture, TextureType.DIFFUSE);
+
         }
         
         VertexBuffer[] vertexBufferS = null;
@@ -95,16 +105,6 @@ namespace PloobsEngine.Modelo
             get { return 2; }
         }
 
-        
-        /// <summary>
-        /// Gets the batch information.
-        /// </summary>
-        /// <param name="meshNumber">The mesh number.</param>
-        /// <returns></returns>
-        public override BatchInformation[] GetBatchInformation(int meshNumber)
-        {
-            return BatchInformations[meshNumber];
-        }
 
         /// <summary>
         /// Gets the name.

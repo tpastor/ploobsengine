@@ -20,12 +20,10 @@ namespace PloobsEngine.Loader
     public struct ObjectInformation
     {
         public string modelName;
-        public int modelPart;
-        public BatchInformation batchInformation;                
-        public Texture2D difuse;
-        public Texture2D bump;
-        public Texture2D glow;
-        public Texture2D specular;
+        public int meshIndex;
+        public int meshPartIndex;
+        public BatchInformation batchInformation;
+        public TextureInformation textureInformation;
         public Vector3 position;
         public Vector3 scale;
         public Quaternion rotation;
@@ -33,7 +31,6 @@ namespace PloobsEngine.Loader
         public float dinamicfriction;
         public float staticfriction;
         public float ellasticity;
-
         public String collisionType;
 
         /// <summary>
@@ -47,23 +44,23 @@ namespace PloobsEngine.Loader
         {
             if (type == TextureType.DIFFUSE)
             {
-                return difuse != null;
+                return textureInformation.getTexture(TextureType.DIFFUSE) != null;
             }
             else if (type == TextureType.BUMP)
             {
-                return bump != null;
+                return textureInformation.getTexture(TextureType.BUMP) != null;
             }
             else if (type == TextureType.SPECULAR)
             {
-                return specular != null;
+                return textureInformation.getTexture(TextureType.SPECULAR) != null;
             }
             else if (type == TextureType.GLOW)
             {
-                return glow != null;
+                return textureInformation.getTexture(TextureType.GLOW) != null;
             }
             else if (type == TextureType.PARALAX)
             {
-                return false;
+                return textureInformation.getTexture(TextureType.PARALAX) != null;
             }
             return false;
         }

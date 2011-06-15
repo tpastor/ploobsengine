@@ -24,32 +24,33 @@ namespace PloobsEngine.Modelo
         /// <param name="specularTextureName">Name of the specular texture.</param>
         /// <param name="glowTextureName">Name of the glow texture.</param>
         /// <param name="CallLoadContent">if set to <c>true</c> [call load content].</param>
-       public SimpleModel(GraphicFactory factory,String modelName, String diffuseTextureName = null, String bumpTextureName = null, String specularTextureName = null, String glowTextureName = null, bool CallLoadContent = true)
-            : base(factory, modelName, diffuseTextureName, bumpTextureName, specularTextureName, glowTextureName, CallLoadContent)
+       public SimpleModel(GraphicFactory factory,String modelName, String diffuseTextureName = null, String bumpTextureName = null, String specularTextureName = null, String glowTextureName = null)
+            : base(factory, modelName, false)
         {
+            this._diffuseName = diffuseTextureName;
+            this._bumpName = bumpTextureName;
+            this._glowName = glowTextureName;
+            this._specularName = specularTextureName;
+            LoadModel(factory, out BatchInformations, out TextureInformations);
         }
 
         internal SimpleModel(GraphicFactory factory, String modelName, bool isInternal, String diffuseTextureName = null)
-            : base(isInternal,factory, modelName, diffuseTextureName, null, null, null)
+            : base(isInternal,factory, modelName,false)
         {
+            this._diffuseName = diffuseTextureName;
+            LoadModel(factory, out BatchInformations, out TextureInformations);
         }
-        
+        string _glowName = null;
+        string _diffuseName = null;
+        string _bumpName = null;
+        string _specularName = null;
         private Model model;        
         private float modelRadius;
 
-        protected override void LoadBatchInfo(GraphicFactory factory, out BatchInformation[][] BatchInformations)
+        protected override void LoadModel(GraphicFactory factory, out BatchInformation[][] BatchInformations, out TextureInformation[][] TextureInformation)
         {
-            model = factory.GetModel(this.Name, isInternal);
-            ModelBuilderHelper.Extract(model, out BatchInformations);
-
-            if (diffuse == null)            
-            {
-                if (model.Meshes[0].Effects[0] is BasicEffect)
-                {
-                    diffuse = (model.Meshes[0].Effects[0] as BasicEffect).Texture;
-                    _diffuseName = CUSTOM;
-                }
-            }
+            model = factory.GetModel(this.Name,isInternal);
+            ModelBuilderHelper.Extract(factory,out BatchInformations, out TextureInformation,this.Name,_diffuseName,_bumpName,_specularName,_glowName,isInternal);            
             
             BoundingSphere sphere = new BoundingSphere();
             foreach (var item in model.Meshes)
@@ -67,11 +68,6 @@ namespace PloobsEngine.Modelo
         public override float GetModelRadius()
         {
             return modelRadius;
-        }
-
-        public override BatchInformation[] GetBatchInformation(int meshNumber)
-        {
-            return BatchInformations[meshNumber];   
-        }
+        }        
     }
 }

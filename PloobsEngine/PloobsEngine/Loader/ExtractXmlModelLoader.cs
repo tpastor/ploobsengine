@@ -18,7 +18,7 @@ namespace PloobsEngine.Loader
     {
         public XmlModelMeshInfo(string modeName, string collisionType, float mass, float dinamicfriction, float staticfriction, float ellasticity, string difuseName, string bumpName, string specularName, string glowName)
         {
-            this.modeName = modeName;
+            this.modelName = modeName;
             this.collisionType = collisionType;
             this.difuseName = difuseName;
             this.bumpName = bumpName;
@@ -36,7 +36,7 @@ namespace PloobsEngine.Loader
         }
 
         public string collisionType;
-        public string modeName;
+        public string modelName;
         public string difuseName;
         public string bumpName;
         public string specularName;
@@ -174,7 +174,7 @@ namespace PloobsEngine.Loader
                 if (node.Name == "body")
                 {
                     XmlModelMeshInfo info = new XmlModelMeshInfo();
-                    info.modeName = SerializerHelper.DeserializeAttributeBaseType<String>("name", node);
+                    info.modelName = SerializerHelper.DeserializeAttributeBaseType<String>("name", node);
 
 
 
@@ -237,7 +237,7 @@ namespace PloobsEngine.Loader
                             info.glowName = removeExtension(SerializerHelper.DeserializeAttributeBaseType<String>("name", glow));
                         }
                     }
-                    infos.Add(info.modeName, info);
+                    infos.Add(info.modelName, info);
                 }
                 else if (node.Name == "pointlight")
                 {
@@ -353,36 +353,36 @@ namespace PloobsEngine.Loader
                         tr.Decompose(out scale, out ori, out pos);
 
                         ObjectInformation mi = new ObjectInformation();
-                        mi.modelName = inf.modeName;
-                        mi.modelPart = j;
+                        mi.modelName = inf.modelName;
+                        mi.meshPartIndex = j;
+                        mi.meshIndex = i;
                         mi.position = pos;
                         mi.scale = scale;
                         mi.rotation = ori;
 
                         ModelBuilderHelper.Extract(m, model.Meshes[i].MeshParts[j], out mi.batchInformation);
-                    mi.ellasticity = inf.ellasticity;
-                    mi.dinamicfriction = inf.dinamicfriction;
-                    mi.staticfriction = inf.staticfriction;
-                    mi.collisionType = inf.collisionType;
-                    mi.mass = inf.mass;
+                        mi.ellasticity = inf.ellasticity;
+                        mi.dinamicfriction = inf.dinamicfriction;
+                        mi.staticfriction = inf.staticfriction;
+                        mi.collisionType = inf.collisionType;
+                        mi.mass = inf.mass;
 
+                        mi.batchInformation.ModelLocalTransformation = m[model.Meshes[i].ParentBone.Index];
 
-
-
-
-                        mi.batchInformation.ModelLocalTransformation = m[model.Meshes[i].ParentBone.Index];                    
+                        mi.textureInformation = new TextureInformation(false, factory);
+                        mi.textureInformation.LoadTexture();
                                                 
                         if (inf.difuseName != null)
-                            mi.difuse = factory.GetTexture2D(texturePath + inf.difuseName);
+                            mi.textureInformation.SetTexture(factory.GetTexture2D(texturePath + inf.difuseName),TextureType.DIFFUSE);
 
                         if (inf.glowName != null)
-                            mi.glow = factory.GetTexture2D(texturePath + inf.glowName);
+                            mi.textureInformation.SetTexture(factory.GetTexture2D(texturePath + inf.glowName),TextureType.GLOW);
 
                         if (inf.specularName != null)
-                            mi.specular = factory.GetTexture2D(texturePath + inf.specularName);
+                            mi.textureInformation.SetTexture(factory.GetTexture2D(texturePath + inf.specularName),TextureType.SPECULAR);
 
                         if (inf.bumpName != null)
-                            mi.bump = factory.GetTexture2D(texturePath + inf.bumpName);
+                            mi.textureInformation.SetTexture(factory.GetTexture2D(texturePath + inf.bumpName),TextureType.BUMP);
 
                         elements.ModelMeshesInfo.Add(mi);
                     }
