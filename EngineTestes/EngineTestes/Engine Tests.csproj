@@ -145,6 +145,10 @@
     <Compile Include="AI\Steering\PedestrianPlugIn.cs" />
     <Compile Include="AI\Steering\SteerScreen.cs" />
     <Compile Include="BilboardsSamples\BilboardScreen.cs" />
+    <Compile Include="Bolt\BoltObject.cs" />
+    <Compile Include="Bolt\BoltSample.cs" />
+    <Compile Include="Bolt\BoltShader.cs" />
+    <Compile Include="Bolt\ColorTable.cs" />
     <Compile Include="CharacterControllerInput.cs" />
     <Compile Include="CharacterSample\CharacterScreen.cs" />
     <Compile Include="Constraint\ConstraintScreen.cs" />
@@ -160,7 +164,8 @@
     <Compile Include="Matali\Matalitests.cs" />
     <Compile Include="Material\ParalaxScreen.cs" />
     <Compile Include="OctreeScreen\OctreeScreen.cs" />
-    <Compile Include="PostEffectScreen.cs" />
+    <Compile Include="Post\UnderWater.cs" />
+    <Compile Include="Post\PostEffectScreen.cs" />
     <Compile Include="DeferredAnimatedScreen.cs" />
     <Compile Include="Loader\DeferredLoadScreen.cs" />
     <Compile Include="DeferredScreen.cs" />
@@ -170,8 +175,10 @@
     <Compile Include="ParticleSamples\ParticleScreen.cs" />
     <Compile Include="ParticleSamples\SmokePS.cs" />
     <Compile Include="ParticleSamples\SnowPS.cs" />
+    <Compile Include="Post\AdvancedTone.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Post\RadialBluScreen.cs" />
     <Compile Include="ReflectionMix\MixReflection.cs" />
     <Compile Include="SoundSamples\SoundScreen.cs" />
     <Compile Include="TechDemo\TechDemoScreenModel.cs" />
