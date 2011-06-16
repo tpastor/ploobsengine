@@ -202,6 +202,11 @@ Content\Textures\height_map.xnb
 Content\Textures\normal_map.xnb
 Content\Model\block.xnb
 Content\Model\cenario.xnb
+Content\Effects\AdvancedColorTone.xnb
+Content\Effects\Sharpen.xnb
+Content\Effects\UnderWater.xnb
+Content\Effects\laser_shader.xnb
+Content\Model\LaserBolt2.xnb
 Content\ModelInfos\shadow.xml
 Content\ModelInfos\sponza.xml
 Content\Skins\Default\Skin.xml

@@ -1,79 +1,26 @@
-// RadialBlur.fx 
+sampler TextureSampler : register(s0);
 
-// ###################
-// ##### GLOBALS #####
+float2 Center = { 0.5, 0.5 };
+float BlurStart = 1.0f;
+float BlurWidth = -0.1;
 
-float2 TexelSize = {0.0009, 0.0013};
-
-float2 Center
-<
-    string UIWidget = "slider";
-    string UIMin = "0.0,0.0";
-    string UIMax = "1.0,1.0";
-    string UIStep = "0.1,0.1";
-    string UIName = "Center";
-> = 0.5f;
-
-// absolute alpha value returned for the pixel color
-float GlobalAlpha
-<
-    string UIWidget = "slider";
-    string UIMin = "0.0";
-    string UIMax = "1.0";
-    string UIStep = "0.1";
-    string UIName = "Global Alpha";
-> = 1.0;
-
-float PixelDistance
-<
-    string UIWidget = "slider";
-    string UIMin = "0.0";
-    string UIMax = "0.1";
-    string UIStep = "0.01";
-    string UIName = "Pixel Distance";
-> = 0.01f;
-
-// #######################
-// ##### PARAMENTERS #####
-
-sampler samplerState;
-
-struct PixelShaderInput
+float4 PS_RadialBlur(float2 UV	: TEXCOORD0, uniform int nsamples ) : COLOR
 {
-	float2 TexCoord        : TEXCOORD0; // interpolated texture coordinates
-};
-
-
-// #######################
-// ##### PIXELSHADER #####
-
-// Main pass pixel shader
-float4 PShader(PixelShaderInput input) : COLOR0
-{
-	float2 s = input.TexCoord + TexelSize * 0.5;
-      
-    float2 coords[16];
-    for ( int i=0; i<16; i++ )
-    {
-        float scale = 1.0f + PixelDistance*(i * 0.66666f);
-        coords[i] = (s - Center) * scale + Center;
-    }
-    
-    float4 final = 0;
-    
-    for ( int i=0; i<16; i++ )
-    {
-      final += tex2D(samplerState, coords[i]);
-    }
-	
-    final *= 0.0625f;
-      
-  	// return final pixel color
-  	return float4(final.xyz, GlobalAlpha);
+    UV -= Center;
+    float4 c = 0;
+    // this loop will be unrolled by compiler and the constants precalculated:
+    for(int i=0; i<nsamples; i++) {
+    	float scale = BlurStart + BlurWidth*(i/(float) (nsamples-1));
+    	c += tex2D(TextureSampler, UV * scale + Center );
+   	}
+   	c /= nsamples;
+    return c;
 } 
 
-technique RadialBlur {
-		pass P0{ 
-			PixelShader = compile ps_2_0 PShader(); 
-		}
+technique AdvancedRadialBlur
+{
+    pass p0
+    {
+			PixelShader  = compile ps_2_0 PS_RadialBlur(24);
+    }
 }

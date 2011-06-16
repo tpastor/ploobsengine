@@ -11,10 +11,11 @@ namespace PloobsEngine.Physics.Bepu
 {
     public class CylinderObject : BepuEntityObject
     {
-        public CylinderObject(Vector3 pos, float altura, float raio, float mass,Matrix orientation,MaterialDescription md)
+        public CylinderObject(Vector3 pos, float altura, float raio, Vector3 scale, float mass,Matrix orientation,MaterialDescription md)
             : base(md,mass)
         {
-            entity = new Cylinder(pos, altura, raio, mass);
+            entity = new Cylinder(pos, altura * scale.Y, raio * scale.X, mass);
+            this.scale = scale;
             entity.Orientation = Quaternion.CreateFromRotationMatrix(orientation);            
         }
         public override PhysicObjectTypes PhysicObjectTypes

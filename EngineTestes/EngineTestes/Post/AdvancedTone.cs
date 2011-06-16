@@ -6,43 +6,31 @@ using PloobsEngine.SceneControl;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace PloobsEngine.SceneControl
+namespace EngineTestes.Post
 {
-    public class RadialBlurPostEffect : IPostEffect
+    class AdvancedTone : IPostEffect
     {
-        public RadialBlurPostEffect() : base(PostEffectType.All) {
-            Center = new Vector2(0.5f, 0.5f);
-            BlurStart = 1.0f;
-            BlurWidth = -0.1f;        
-        }
-        Effect effect;
-        public Vector2 Center
+        public AdvancedTone() : base(PostEffectType.All)
         {
-            set;
-            get;
-        }
-        public float BlurWidth
-        {
-            set;
-            get;
-        }
-        public float BlurStart
-        {
-            set;
-            get;
         }
 
+        float Desat = 0.5f;
+        float Toned = 0.5f;
+        Vector3 LightColor = new Vector3 (1, 1.0f, 1.0f) ;
+        Vector3 DarkColor = new Vector3(0.0f, 0.0f, 0);  
 
         public override void Init(PloobsEngine.Engine.GraphicInfo ginfo, PloobsEngine.Engine.GraphicFactory factory)
-        {            
-            effect = factory.GetEffect("RadialBlur", false, true);
+        {
+            effect = factory.GetEffect("Effects/AdvancedColorTone");
         }
-
+        Effect effect;
         public override void Draw(Microsoft.Xna.Framework.Graphics.Texture2D ImageToProcess, RenderHelper rHelper, Microsoft.Xna.Framework.GameTime gt, PloobsEngine.Engine.GraphicInfo GraphicInfo, IWorld world, bool useFloatBuffer)
         {
-            effect.Parameters["BlurStart"].SetValue(BlurStart);
-            effect.Parameters["BlurWidth"].SetValue(BlurWidth);
-            effect.Parameters["Center"].SetValue(Center);
+            effect.Parameters["Desat"].SetValue(Desat);
+            effect.Parameters["Toned"].SetValue(Toned);
+            effect.Parameters["DarkColor"].SetValue(DarkColor);
+            effect.Parameters["LightColor"].SetValue(LightColor);            
+            
             if (useFloatBuffer)
                 rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, effect, GraphicInfo.FullScreenRectangle, SamplerState.PointClamp);
             else

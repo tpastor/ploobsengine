@@ -71,7 +71,7 @@ namespace PloobsEngine.Loader
                     bb = ModelBuilderHelper.CreateBoundingBoxFromModel(binf, model);
                     Vector3 len = bb.Max - bb.Min;
 
-                    po = new CylinderObject(mi[0].position, len.Y, len.X / 2, mi[0].mass, Matrix.CreateFromQuaternion(mi[0].rotation), material);
+                    po = new CylinderObject(mi[0].position, len.Y, len.X / 2,Vector3.Up ,mi[0].mass, Matrix.CreateFromQuaternion(mi[0].rotation), material);
                     
                     break;
 

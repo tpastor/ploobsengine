@@ -18,6 +18,7 @@ using PloobsEngine.Loader;
 using PloobsEngine.Input;
 using PloobsEngine.Physic.PhysicObjects.BepuObject;
 using BEPUphysics.UpdateableSystems.ForceFields;
+using EngineTestes.Post;
 
 namespace EngineTestes
 {
@@ -122,6 +123,11 @@ namespace EngineTestes
             //SunPostEffect sun = new SunPostEffect();            
             //this.RenderTechnic.AddPostEffect(sun);
 
+            //AdvancedTone PostEffectTest = new AdvancedTone();
+            //this.RenderTechnic.AddPostEffect(PostEffectTest);
+
+            UnderWater nt = new UnderWater();
+            this.RenderTechnic.AddPostEffect(nt);
             
             CameraFirstPerson cam = new CameraFirstPerson(GraphicInfo.Viewport);
             cam.MoveSpeed *= 5;
