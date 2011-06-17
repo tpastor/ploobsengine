@@ -114,7 +114,7 @@ namespace ProjectTemplate
         protected override void Update(GameTime gameTime)
         {
             // Handle input
-            float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds / 100;
+            float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             KeyboardState keyboardState = Keyboard.GetState();           
 
 
