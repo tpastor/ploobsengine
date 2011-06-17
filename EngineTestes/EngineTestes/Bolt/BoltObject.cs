@@ -15,18 +15,15 @@ namespace EngineTestes.Bolt
     public class BoltObject: IObject
     {
         public BoltObject(GraphicFactory factory, Vector3 Postion, Vector3 direction, float speed = 150)
-            : base(new ForwardMaterial(new BoltShader(factory)), new SimpleModel(factory,"Model/LaserBolt2"), new CylinderObject(Postion, 5, 1,Vector3.One,10, Matrix.Identity, MaterialDescription.DefaultBepuMaterial()))
+            : base(new ForwardMaterial(new BoltShader(factory,Color.Red)), new SimpleModel(factory,"Model/LaserBolt2"), new CylinderObject(Postion, 5, 1,Vector3.One,10, Matrix.Identity, MaterialDescription.DefaultBepuMaterial()))
         {
-            this.PhysicObject.Velocity = direction * speed;
-            Vector3 vec = Vector3.Normalize(direction);
+            this.PhysicObject.Velocity = direction * speed;        
             //Vector3 front = this.Modelo.GetBatchInformation(0)[0].ModelLocalTransformation.Forward;
             Vector3 front = Vector3.Up;
-            Quaternion q = GetRotation(front, vec);
-            (this.PhysicObject as BepuEntityObject).Entity.Orientation = q;
-            if (Vector3.Transform(front, q) == vec)
-            {
-            }
+            Quaternion q = GetRotation(front, direction);
+            (this.PhysicObject as BepuEntityObject).Entity.Orientation = q;            
         }
+
         private Quaternion GetRotation(Vector3 src, Vector3 dest)
         {
             src.Normalize();

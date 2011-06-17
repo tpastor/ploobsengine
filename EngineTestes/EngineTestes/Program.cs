@@ -59,7 +59,8 @@ namespace EngineTestes
             //manager.AddScreen(new FSMScreen());
             //manager.AddScreen(new ParalaxScreen());
             //manager.AddScreen(new RadialBluScreen());
-            manager.AddScreen(new BoltSample());
+            //manager.AddScreen(new BoltSample());
+            manager.AddScreen(new ShatterSample());
         }
     }
 

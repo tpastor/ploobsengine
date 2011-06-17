@@ -180,6 +180,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Post\RadialBluScreen.cs" />
     <Compile Include="ReflectionMix\MixReflection.cs" />
+    <Compile Include="Shatter\DeferredShatterCustomShader.cs" />
+    <Compile Include="Shatter\ShatterSample.cs" />
     <Compile Include="SoundSamples\SoundScreen.cs" />
     <Compile Include="TechDemo\TechDemoScreenModel.cs" />
     <Compile Include="TechDemo\TechDemoScreen.cs" />
