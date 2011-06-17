@@ -153,6 +153,15 @@
     <Compile Include="CharacterSample\CharacterScreen.cs" />
     <Compile Include="Constraint\ConstraintScreen.cs" />
     <Compile Include="DebugDrawer\DebugDrawScreen.cs" />
+    <Compile Include="Explosion\ExplosionDebrisPS.cs" />
+    <Compile Include="Explosion\ExplosionFireSmokePS.cs" />
+    <Compile Include="Explosion\ExplosionFlash.cs" />
+    <Compile Include="Explosion\ExplosionFlyingSparksPS.cs" />
+    <Compile Include="Explosion\ExplosionPS.cs" />
+    <Compile Include="Explosion\ExplosionRoundSparksPS.cs" />
+    <Compile Include="Explosion\ExplosionScreen.cs" />
+    <Compile Include="Explosion\ExplosionShockwavePS.cs" />
+    <Compile Include="Explosion\ExplosionSmokeTrailsPS.cs" />
     <Compile Include="GUI\FGUIScreen.cs" />
     <Compile Include="GUI\GUIScreen.cs" />
     <Compile Include="LightPrePassIdea\HybridDeferred.cs" />
