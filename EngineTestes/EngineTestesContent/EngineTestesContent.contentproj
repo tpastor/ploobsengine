@@ -58,6 +58,9 @@
     <Reference Include="PloobsEnginePipelineDebug">
       <HintPath>..\..\PloobsEngine\PloobsEngine\bin\x86\Debug\PloobsEnginePipelineDebug.dll</HintPath>
     </Reference>
+    <Reference Include="ShatterProcessor">
+      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\ShatterProcessor.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\cenario.X">
@@ -181,6 +184,11 @@
     </Compile>
     <Compile Include="Effects\laser_shader.fx">
       <Name>laser_shader</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+    </Compile>
+    <Compile Include="Effects\ShatterEffect.fx">
+      <Name>ShatterEffect</Name>
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
     </Compile>
@@ -1003,6 +1011,28 @@
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <ProcessorParameters_RotationX>90</ProcessorParameters_RotationX>
+    </Compile>
+    <Compile Include="Model\ShatterBlock.X">
+      <Name>ShatterBlock</Name>
+      <Importer>XImporter</Importer>
+      <Processor>ShatterProcessor</Processor>
+      <ProcessorParameters_GenerateTangentFrames>True</ProcessorParameters_GenerateTangentFrames>
+    </Compile>
+    <Compile Include="Model\tank.fbx">
+      <Name>tank</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ShatterProcessor</Processor>
+      <ProcessorParameters_GenerateTangentFrames>True</ProcessorParameters_GenerateTangentFrames>
+    </Compile>
+    <Compile Include="Model\engine_diff_tex.tga">
+      <Name>engine_diff_tex</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Model\turret_alt_diff_tex.tga">
+      <Name>turret_alt_diff_tex</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
     </Compile>
     <None Include="Skins\Default\Skin.xml">
       <Name>Skin</Name>

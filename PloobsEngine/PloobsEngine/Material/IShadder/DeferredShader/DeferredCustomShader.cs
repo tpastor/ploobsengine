@@ -245,7 +245,7 @@ namespace PloobsEngine.Material
                             this._shader.Parameters["glow"].SetValue(obj.Modelo.getTexture(TextureType.GLOW, i, j));
                  
 
-                        Matrix w1 = Matrix.Multiply(wld, bi[j].ModelLocalTransformation);                    
+                        Matrix w1 = Matrix.Multiply(bi[j].ModelLocalTransformation,wld);                    
                         this._shader.Parameters["World"].SetValue(w1);
                         this._shader.Parameters["WorldInverseTranspose"].SetValue(Matrix.Transpose(Matrix.Invert(w1))); 
 
