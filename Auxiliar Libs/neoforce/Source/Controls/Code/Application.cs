@@ -177,8 +177,12 @@ namespace TomShane.Neoforce.Controls
 
 			IsFixedTimeStep = false;
 			IsMouseVisible = true;
-
+            
+        #if (!XBOX && !XBOX_FAKE)
             manager = new Manager(this, graphics, skin, (Form)Form.FromHandle(this.Window.Handle));
+#else
+            manager = new Manager(this, graphics, skin);
+#endif
 			manager.AutoCreateRenderTarget = false;
 			manager.TargetFrames = 60;
 			manager.WindowClosing += new WindowClosingEventHandler(Manager_WindowClosing);

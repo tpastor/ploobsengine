@@ -45,27 +45,30 @@ sampler depthSampler = sampler_state
 
 
 
+
 struct VertexShaderInput
 {
     float3 Position : POSITION0;
+    float2 TexCoord : TEXCOORD0;
 };
 
 struct VertexShaderOutput
 {
     float4 Position : POSITION0;
-    float4 ScreenPosition : TEXCOORD0;
+    float2 TexCoord : TEXCOORD0;    
+	float2 TexCoord1 : TEXCOORD1;    
 };
-
-
 
 VertexShaderOutput VertexShaderFunction(VertexShaderInput input)  
 {  
-      VertexShaderOutput output;
-    //processing geometry coordinates
-    //float4 worldPosition = mul(float4(input.Position,1), World);
-    //float4 viewPosition = mul(worldPosition, View);
+    VertexShaderOutput output;
+	input.Position.x =  input.Position.x - 2*halfPixel.x;
+	input.Position.y =  input.Position.y + 2*halfPixel.y;
     output.Position = float4(input.Position,1);
-    output.ScreenPosition = output.Position;
+
+    //align texture coordinates
+    output.TexCoord = input.TexCoord ;
+	output.TexCoord1 = input.TexCoord  - halfPixel;
     return output;
 }  
  
@@ -73,23 +76,19 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0  
 {  
 
-	//obtain screen position  
-    input.ScreenPosition.xy /= input.ScreenPosition.w;  
- 
-    float2 texCoord = 0.5f * (float2(input.ScreenPosition.x,-input.ScreenPosition.y) + 1);      
-    texCoord -=halfPixel;  
- 
-    //read depth  
-    float depthVal = tex2D(depthSampler,texCoord).r;  
- 
-    //compute screen-space position  
-    float4 position;  
-    position.xy = input.ScreenPosition.xy;  
-    position.z = depthVal;  
-    position.w = 1.0f;  
-    //transform to world space  
-    position = mul(position, InvertViewProjection);  
-    position /= position.w;  
+    //read depth
+    float depthVal = tex2D(depthSampler,input.TexCoord).r;
+
+    //compute screen-space position
+    float4 position;
+    position.x = input.TexCoord1.x * 2.0f - 1.0f;
+    position.y = -(input.TexCoord1.y * 2.0f - 1.0f);
+    position.z = depthVal;
+    position.w = 1.0f;
+    //transform to world space
+    position = mul(position, InvertViewProjection);
+    position /= position.w;
+	
  
     //surface-to-light vector  
     float3 lightVector = lightPosition - position;  
@@ -107,13 +106,13 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
         float spotIntensity = pow(SdL, lightDecayExponent);  
  
         //get normal data from the normalMap  
-        float4 normalData = tex2D(normalSampler,texCoord);  
+        float4 normalData = tex2D(normalSampler,input.TexCoord);  
         //tranform normal back into [-1,1] range  
         float3 normal = 2.0f * normalData.xyz - 1.0f;  
         //get specular power  
         float specularPower = normalData.a * 255;  
         //get specular intensity from the colorMap  
-        float specularIntensity = tex2D(colorSampler, texCoord).a;  
+        float specularIntensity = tex2D(colorSampler, input.TexCoord).a;  
  
         //compute diffuse light  
         float NdL = max(0,dot(normal,lightVector));  

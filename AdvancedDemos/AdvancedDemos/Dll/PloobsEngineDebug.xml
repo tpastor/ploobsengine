@@ -5626,6 +5626,638 @@
       <param name="callback">A callback class that is called for each proxy that is hit by the ray.</param>
       <param name="input">The ray-cast input data. The ray extends from p1 to p1 + maxFraction * (p2 - p1).</param>
     </member>
+    <member name="T:TomShane.Neoforce.Controls.Control">
+      <summary>
+            Defines the base class for all controls.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.Cursor">
+      <summary>
+            Gets or sets the cursor displaying over the control.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.Controls">
+      <summary>
+            Gets a list of all child controls.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.MovableArea">
+      <summary>
+            Gets or sets a rectangular area that reacts on moving the control with the mouse.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.IsChild">
+      <summary>
+            Gets a value indicating whether this control is a child control.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.IsParent">
+      <summary>
+            Gets a value indicating whether this control is a parent control.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.IsRoot">
+      <summary>
+            Gets a value indicating whether this control is a root control.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.CanFocus">
+      <summary>
+            Gets or sets a value indicating whether this control can receive focus. 
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.Detached">
+      <summary>
+            Gets or sets a value indicating whether this control is rendered off the parents texture.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.Passive">
+      <summary>
+            Gets or sets a value indicating whether this controls can receive user input events.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.Movable">
+      <summary>
+            Gets or sets a value indicating whether this control can be moved by the mouse.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.Resizable">
+      <summary>
+            Gets or sets a value indicating whether this control can be resized by the mouse.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.ResizerSize">
+      <summary>
+            Gets or sets the size of the rectangular borders around the control used for resizing by the mouse.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.ContextMenu">
+      <summary>
+            Gets or sets the ContextMenu associated with this control.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.DoubleClicks">
+      <summary>
+            Gets or sets a value indicating whether this control should process mouse double-clicks.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.OutlineResizing">
+      <summary>
+            Gets or sets a value indicating whether this control should use ouline resizing.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.OutlineMoving">
+      <summary>
+            Gets or sets a value indicating whether this control should use outline moving.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.Tag">
+      <summary>
+            Gets or sets the object that contains data about the control.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.Margins">
+      <summary>
+            Gets or sets the value indicating the distance from another control. Usable with StackPanel control.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.DesignMode">
+      <summary>
+            Gets or sets the value indicating wheter control is in design mode.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.GamePadActions">
+      <summary>
+            Gets or sets gamepad actions for the control.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.PartialOutline">
+      <summary>
+            Gets or sets the value indicating whether the control outline is displayed only for certain edges. 
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.StayOnBack">
+      <summary>
+            Gets or sets the value indicating whether the control is allowed to be brought in the front.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.StayOnTop">
+      <summary>
+            Gets or sets the value indicating that the control should stay on top of other controls.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.Name">
+      <summary>
+            Gets or sets a name of the control.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.Focused">
+      <summary>
+            Gets or sets a value indicating whether this control has input focus.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.ControlState">
+      <summary>
+            Gets a value indicating current state of the control.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.DrawingRect">
+      <summary>
+            Gets an area where is the control supposed to be drawn.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.Suspended">
+      <summary>
+            Gets or sets a value indicating whether this control should receive any events.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.IsMoving">
+      <summary>
+            Gets or sets a value indicating whether this controls is currently being moved.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.IsResizing">
+      <summary>
+            Gets or sets a value indicating whether this controls is currently being resized.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.Anchor">
+      <summary>
+            Gets or sets the edges of the container to which a control is bound and determines how a control is resized with its parent.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.ResizeEdge">
+      <summary>
+            Gets or sets the edges of the contol which are allowed for resizing.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.Skin">
+      <summary>
+            Gets or sets the skin used for rendering the control.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.Text">
+      <summary>
+            Gets or sets the text associated with this control.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.Alpha">
+      <summary>
+            Gets or sets the alpha value for this control.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.BackColor">
+      <summary>
+            Gets or sets the background color for the control.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.Color">
+      <summary>
+            Gets or sets the color for the control.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.TextColor">
+      <summary>
+            Gets or sets the text color for the control.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.Enabled">
+      <summary>
+            Gets or sets a value indicating whether the control can respond to user interaction.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.Visible">
+      <summary>
+            Gets or sets a value that indicates whether the control is rendered.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.Parent">
+      <summary>
+            Gets or sets the parent for the control.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.Root">
+      <summary>
+            Gets or sets the root for the control.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.Left">
+      <summary>
+            Gets or sets the distance, in pixels, between the left edge of the control and the left edge of its parent.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.Top">
+      <summary>
+            Gets or sets the distance, in pixels, between the top edge of the control and the top edge of its parent.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.Width">
+      <summary>
+            Gets or sets the width of the control.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.Height">
+      <summary>
+            Gets or sets the height of the control.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.MinimumWidth">
+      <summary>
+            Gets or sets the minimum width in pixels the control can be sized to.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.MinimumHeight">
+      <summary>
+            /// Gets or sets the minimum height in pixels the control can be sized to.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.MaximumWidth">
+      <summary>
+            /// Gets or sets the maximum width in pixels the control can be sized to.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Control.MaximumHeight">
+      <summary>
+            Gets or sets the maximum height in pixels the control can be sized to.
+            </summary>
+    </member>
+    <member name="T:TomShane.Neoforce.Controls.ListBox">
+      <summary>
+      Represents a control to display a list of items.
+    </summary>
+    </member>
+    <member name="T:TomShane.Neoforce.Controls.Window">
+      <summary>
+      Represents a window or dialog box that makes up an application's user interface.
+    </summary>
+    </member>
+    <member name="T:TomShane.Neoforce.Controls.ButtonBase">
+      <summary>
+      Implements the basic functionality common to button controls.
+    </summary>
+    </member>
+    <member name="T:TomShane.Neoforce.Controls.GamePadActions">
+      <summary>
+            Defines the gamepad actions mapping.
+            </summary>
+    </member>
+    <member name="T:TomShane.Neoforce.Controls.ControlsList">
+      <summary>
+            Defines type used as a controls collection.
+            </summary>
+    </member>
+    <member name="T:TomShane.Neoforce.Controls.Button">
+      <summary>
+      Represents a button control.
+    </summary>
+    </member>
+    <member name="T:TomShane.Neoforce.Controls.SizeMode">
+      <summary>
+      Specifies how an image is positioned within a control.
+    </summary>
+    </member>
+    <member name="T:TomShane.Neoforce.Controls.ButtonMode">
+      <summary>
+      Specifies how an image is positioned within a control.
+    </summary>
+    </member>
+    <member name="T:TomShane.Neoforce.Controls.Glyph">
+      <summary>
+      Represents an image on a button.
+    </summary>
+    </member>
+    <member name="T:TomShane.Neoforce.Controls.Manager">
+      <summary>
+            Manages rendering of all controls.
+            </summary>
+    </member>
+    <member name="M:TomShane.Neoforce.Controls.Manager.#ctor(Microsoft.Xna.Framework.Game,Microsoft.Xna.Framework.GraphicsDeviceManager,System.String,System.Windows.Forms.Form)">
+      <summary>
+            Initializes a new instance of the Manager class.
+            </summary>
+      <param name="game">The Game class.</param>
+      <param name="graphics">The GraphicsDeviceManager class provided by the Game class.</param>
+      <param name="skin">The name of the skin being loaded at the start.</param>
+      <param name="window">The window -- in xbox set to null.</param>
+    </member>
+    <member name="M:TomShane.Neoforce.Controls.Manager.#ctor(Microsoft.Xna.Framework.Game,System.String,System.Windows.Forms.Form)">
+      <summary>
+            Initializes a new instance of the Manager class.
+            </summary>
+      <param name="game">The Game class.</param>
+      <param name="skin">The name of the skin being loaded at the start.</param>
+      <param name="window">The window.</param>
+    </member>
+    <member name="M:TomShane.Neoforce.Controls.Manager.#ctor(Microsoft.Xna.Framework.Game,Microsoft.Xna.Framework.GraphicsDeviceManager,System.Windows.Forms.Form)">
+      <summary>
+            Initializes a new instance of the Manager class, loads the default skin and registers manager in the game class automatically.
+            </summary>
+      <param name="game">The Game class.</param>
+      <param name="graphics">The GraphicsDeviceManager class provided by the Game class.</param>
+      <param name="window">The window.</param>
+    </member>
+    <member name="M:TomShane.Neoforce.Controls.Manager.#ctor(Microsoft.Xna.Framework.Game,System.Windows.Forms.Form)">
+      <summary>
+            Initializes a new instance of the Manager class, loads the default skin and registers manager in the game class automatically.
+            </summary>
+      <param name="game">
+            The Game class.
+            </param>
+    </member>
+    <member name="M:TomShane.Neoforce.Controls.Manager.PrepareGraphicsDevice(System.Object,Microsoft.Xna.Framework.PreparingDeviceSettingsEventArgs)">
+      <summary>
+            Method used as an event handler for the GraphicsDeviceManager.PreparingDeviceSettings event.
+            </summary>
+    </member>
+    <member name="M:TomShane.Neoforce.Controls.Manager.Initialize">
+      <summary>
+            Initializes the controls manager.
+            </summary>
+    </member>
+    <member name="M:TomShane.Neoforce.Controls.Manager.SetSkin(System.String)">
+      <summary>
+            Sets and loads the new skin.
+            </summary>
+      <param name="name">
+            The name of the skin being loaded.
+            </param>
+    </member>
+    <member name="M:TomShane.Neoforce.Controls.Manager.SetSkin(TomShane.Neoforce.Controls.Skin)">
+      <summary>
+            Sets the new skin.
+            </summary>
+      <param name="skin">
+            The skin being set.
+            </param>
+    </member>
+    <member name="M:TomShane.Neoforce.Controls.Manager.BringToFront(TomShane.Neoforce.Controls.Control)">
+      <summary>
+            Brings the control to the front of the z-order.
+            </summary>
+      <param name="control">
+            The control being brought to the front.
+            </param>
+    </member>
+    <member name="M:TomShane.Neoforce.Controls.Manager.SendToBack(TomShane.Neoforce.Controls.Control)">
+      <summary>
+            Sends the control to the back of the z-order.
+            </summary>
+      <param name="control">
+            The control being sent back.
+            </param>
+    </member>
+    <member name="M:TomShane.Neoforce.Controls.Manager.Update(Microsoft.Xna.Framework.GameTime)">
+      <summary>
+            Called when the manager needs to be updated.
+            </summary>
+      <param name="gameTime">
+            Time elapsed since the last call to Update.
+            </param>
+    </member>
+    <member name="M:TomShane.Neoforce.Controls.Manager.Add(TomShane.Neoforce.Controls.Component)">
+      <summary>
+            Adds a component or a control to the manager.
+            </summary>
+      <param name="component">
+            The component or control being added.
+            </param>
+    </member>
+    <member name="M:TomShane.Neoforce.Controls.Manager.Remove(TomShane.Neoforce.Controls.Component)">
+      <summary>
+            Removes a component or a control from the manager.
+            </summary>
+      <param name="component">
+            The component or control being removed.
+            </param>
+    </member>
+    <member name="M:TomShane.Neoforce.Controls.Manager.BeginDraw(Microsoft.Xna.Framework.GameTime)">
+      <summary>
+            Renders all controls added to the manager.
+            </summary>
+      <param name="gameTime">
+            Time passed since the last call to Draw.
+            </param>
+    </member>
+    <member name="M:TomShane.Neoforce.Controls.Manager.EndDraw">
+      <summary>
+            Draws texture resolved from RenderTarget used for rendering.
+            </summary>
+    </member>
+    <member name="M:TomShane.Neoforce.Controls.Manager.EndDraw(Microsoft.Xna.Framework.Rectangle)">
+      <summary>
+            Draws texture resolved from RenderTarget to specified rectangle.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.Disposing">
+      <summary>
+            Gets a value indicating whether Manager is in the process of disposing.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.Window">
+      <summary>
+            Returns the <see cref="T:System.Windows.Forms.Form" /> the game runs in.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.Cursor">
+      <summary>
+            Gets or sets an application cursor.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.Game">
+      <summary>
+            Returns associated <see cref="P:TomShane.Neoforce.Controls.Manager.Game" /> component.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.GraphicsDevice">
+      <summary>
+            Returns associated <see cref="P:TomShane.Neoforce.Controls.Manager.GraphicsDevice" />.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.Graphics">
+      <summary>
+            Returns associated <see cref="T:Microsoft.Xna.Framework.GraphicsDeviceManager" />.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.Renderer">
+      <summary>
+            Returns <see cref="P:TomShane.Neoforce.Controls.Manager.Renderer" /> used for rendering controls.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.Content">
+      <summary>
+            Returns <see cref="!:ArchiveManager" /> used for loading assets.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.Input">
+      <summary>
+            Returns <see cref="T:TomShane.Neoforce.Controls.InputSystem" /> instance responsible for managing user input.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.Components">
+      <summary>
+            Returns list of components added to the manager.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.Controls">
+      <summary>
+            Returns list of controls added to the manager.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.GlobalDepth">
+      <summary>
+            Gets or sets the depth value used for rendering sprites.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.ToolTipDelay">
+      <summary>
+            Gets or sets the time that passes before the <see cref="T:TomShane.Neoforce.Controls.ToolTip" /> appears.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.MenuDelay">
+      <summary>
+            Gets or sets the time that passes before a submenu appears when hovered over menu item.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.DoubleClickTime">
+      <summary>
+            Gets or sets the maximum number of milliseconds that can elapse between a first click and a second click to consider the mouse action a double-click.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.TextureResizeIncrement">
+      <summary>
+            Gets or sets texture size increment in pixel while performing controls resizing.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.ToolTipsEnabled">
+      <summary>
+            Enables or disables showing of tooltips globally.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.LogUnhandledExceptions">
+      <summary>
+            Enables or disables logging of unhandled exceptions. 
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.InputEnabled">
+      <summary>
+            Enables or disables input processing.                   
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.RenderTarget">
+      <summary>
+            Gets or sets render target for drawing.                 
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.TargetFrames">
+      <summary>
+            Gets or sets update interval for drawing, logic and input.                           
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.KeyboardLayouts">
+      <summary>
+            Gets or sets collection of active keyboard layouts.     
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.UseGuide">
+      <summary>
+            Gets or sets a value indicating if Guide component can be used
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.AutoUnfocus">
+      <summary>
+            Gets or sets a value indicating if a control should unfocus if you click outside on the screen.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.AutoCreateRenderTarget">
+      <summary>
+            Gets or sets a value indicating wheter Manager should create render target automatically.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.KeyboardLayout">
+      <summary>
+            Gets or sets current keyboard layout for text input.    
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.SkinDirectory">
+      <summary>
+            Gets or sets the initial directory for looking for the skins in.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.LayoutDirectory">
+      <summary>
+            Gets or sets the initial directory for looking for the layout files in.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.SkinExtension">
+      <summary>
+            Gets or sets file extension for archived skin files.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.TargetWidth">
+      <summary>
+            Gets width of the selected render target in pixels.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.TargetHeight">
+      <summary>
+            Gets height of the selected render target in pixels.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.ScreenWidth">
+      <summary>
+            Gets current width of the screen in pixels.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.ScreenHeight">
+      <summary>
+            Gets current height of the screen in pixels.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.Skin">
+      <summary>
+            Gets or sets new skin used by all controls.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.ModalWindow">
+      <summary>
+            Returns currently active modal window.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.Manager.FocusedControl">
+      <summary>
+            Returns currently focused control.
+            </summary>
+    </member>
+    <member name="E:TomShane.Neoforce.Controls.Manager.DeviceSettingsChanged">
+      <summary>
+            Occurs when the GraphicsDevice settings are changed.
+            </summary>
+    </member>
+    <member name="E:TomShane.Neoforce.Controls.Manager.SkinChanging">
+      <summary>
+            Occurs when the skin is about to change.
+            </summary>
+    </member>
+    <member name="E:TomShane.Neoforce.Controls.Manager.SkinChanged">
+      <summary>
+            Occurs when the skin changes.
+            </summary>
+    </member>
+    <member name="E:TomShane.Neoforce.Controls.Manager.WindowClosing">
+      <summary>
+            Occurs when game window is about to close.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.InputSystem.InputOffset">
+      <summary>
+            Sets or gets input offset and ratio when rescaling controls in render target.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.InputSystem.InputMethods">
+      <summary>
+            Sets or gets input methods allowed for navigation.
+            </summary>
+    </member>
     <member name="T:PloobsEngine.Utils.VectorUtils">
       <summary>
             Lots of Vector Helpers
@@ -15190,6 +15822,119 @@
             Should not be used, here for compatibility
             </summary>
     </member>
+    <member name="M:PloobsEngine.Modelo.TextureInformation.getTexture(PloobsEngine.Modelo.TextureType)">
+      <summary>
+            Gets one texture of the model.
+            </summary>
+      <param name="type">The type.</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:PloobsEngine.Modelo.TextureInformation.SetTexture(System.String,PloobsEngine.Modelo.TextureType)">
+      <summary>
+            Sets the texture.
+            </summary>
+      <param name="textureName">Name of the texture.</param>
+      <param name="type">The type.</param>
+    </member>
+    <member name="M:PloobsEngine.Modelo.TextureInformation.LoadTexture">
+      <summary>
+            Load the model
+            </summary>
+      <param name="factory">The factory.</param>
+    </member>
+    <member name="M:PloobsEngine.Modelo.TextureInformation.SetTexture(Microsoft.Xna.Framework.Graphics.Texture2D,PloobsEngine.Modelo.TextureType)">
+      <summary>
+            Sets the texture.
+            </summary>
+      <param name="tex">The tex.</param>
+      <param name="type">The type.</param>
+    </member>
+    <member name="P:PloobsEngine.Modelo.TextureInformation.ParalaxName">
+      <summary>
+            Gets or sets the name of the paralax texture.
+            </summary>
+      <value>
+            The name of the paralax.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Modelo.TextureInformation.GlowName">
+      <summary>
+            Gets or sets the name of the glow texture.
+            </summary>
+      <value>
+            The name of the glow.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Modelo.TextureInformation.BumpMapName">
+      <summary>
+            Gets or sets the name of the bump map.
+            </summary>
+      <value>
+            The name of the bump map.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Modelo.TextureInformation.SpecularMapName">
+      <summary>
+            Gets or sets the name of the specular map.
+            </summary>
+      <value>
+            The name of the specular map.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Modelo.TextureInformation.DiffuseMapName">
+      <summary>
+            Gets or sets the name of the diffuse map.
+            </summary>
+      <value>
+            The name of the diffuse map.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Modelo.TextureInformation.MultiTexture1MapName">
+      <summary>
+            Gets or sets the name of the multi texture1 map.
+            </summary>
+      <value>
+            The name of the multi texture1 map.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Modelo.TextureInformation.MultiTexture2MapName">
+      <summary>
+            Gets or sets the name of the multi texture2 map.
+            </summary>
+      <value>
+            The name of the multi texture2 map.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Modelo.TextureInformation.MultiTexture3MapName">
+      <summary>
+            Gets or sets the name of the multi texture3 map.
+            </summary>
+      <value>
+            The name of the multi texture3 map.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Modelo.TextureInformation.MultiTexture4MapName">
+      <summary>
+            Gets or sets the name of the multi texture4 map.
+            </summary>
+      <value>
+            The name of the multi texture4 map.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Modelo.TextureInformation.HeightMapName">
+      <summary>
+            Gets or sets the name of the height map.
+            </summary>
+      <value>
+            The name of the height map.
+            </value>
+    </member>
+    <member name="E:PloobsEngine.Modelo.TextureInformation.OnTextureChange">
+      <summary>
+            Occurs when [on texture change].
+            </summary>
+    </member>
     <member name="T:PloobsEngine.Modelo.TreeModel">
       <summary>
             Tree Model
@@ -16883,119 +17628,6 @@
       <param name="quadRender">The quad render.</param>
       <param name="maxShadowmapSize">Size of the max shadowmap.</param>
       <param name="maxDepthBufferSize">Size of the max depth buffer.</param>
-    </member>
-    <member name="M:PloobsEngine.Modelo.TextureInformation.getTexture(PloobsEngine.Modelo.TextureType)">
-      <summary>
-            Gets one texture of the model.
-            </summary>
-      <param name="type">The type.</param>
-      <returns>
-      </returns>
-    </member>
-    <member name="M:PloobsEngine.Modelo.TextureInformation.SetTexture(System.String,PloobsEngine.Modelo.TextureType)">
-      <summary>
-            Sets the texture.
-            </summary>
-      <param name="textureName">Name of the texture.</param>
-      <param name="type">The type.</param>
-    </member>
-    <member name="M:PloobsEngine.Modelo.TextureInformation.LoadTexture">
-      <summary>
-            Load the model
-            </summary>
-      <param name="factory">The factory.</param>
-    </member>
-    <member name="M:PloobsEngine.Modelo.TextureInformation.SetTexture(Microsoft.Xna.Framework.Graphics.Texture2D,PloobsEngine.Modelo.TextureType)">
-      <summary>
-            Sets the texture.
-            </summary>
-      <param name="tex">The tex.</param>
-      <param name="type">The type.</param>
-    </member>
-    <member name="P:PloobsEngine.Modelo.TextureInformation.ParalaxName">
-      <summary>
-            Gets or sets the name of the paralax texture.
-            </summary>
-      <value>
-            The name of the paralax.
-            </value>
-    </member>
-    <member name="P:PloobsEngine.Modelo.TextureInformation.GlowName">
-      <summary>
-            Gets or sets the name of the glow texture.
-            </summary>
-      <value>
-            The name of the glow.
-            </value>
-    </member>
-    <member name="P:PloobsEngine.Modelo.TextureInformation.BumpMapName">
-      <summary>
-            Gets or sets the name of the bump map.
-            </summary>
-      <value>
-            The name of the bump map.
-            </value>
-    </member>
-    <member name="P:PloobsEngine.Modelo.TextureInformation.SpecularMapName">
-      <summary>
-            Gets or sets the name of the specular map.
-            </summary>
-      <value>
-            The name of the specular map.
-            </value>
-    </member>
-    <member name="P:PloobsEngine.Modelo.TextureInformation.DiffuseMapName">
-      <summary>
-            Gets or sets the name of the diffuse map.
-            </summary>
-      <value>
-            The name of the diffuse map.
-            </value>
-    </member>
-    <member name="P:PloobsEngine.Modelo.TextureInformation.MultiTexture1MapName">
-      <summary>
-            Gets or sets the name of the multi texture1 map.
-            </summary>
-      <value>
-            The name of the multi texture1 map.
-            </value>
-    </member>
-    <member name="P:PloobsEngine.Modelo.TextureInformation.MultiTexture2MapName">
-      <summary>
-            Gets or sets the name of the multi texture2 map.
-            </summary>
-      <value>
-            The name of the multi texture2 map.
-            </value>
-    </member>
-    <member name="P:PloobsEngine.Modelo.TextureInformation.MultiTexture3MapName">
-      <summary>
-            Gets or sets the name of the multi texture3 map.
-            </summary>
-      <value>
-            The name of the multi texture3 map.
-            </value>
-    </member>
-    <member name="P:PloobsEngine.Modelo.TextureInformation.MultiTexture4MapName">
-      <summary>
-            Gets or sets the name of the multi texture4 map.
-            </summary>
-      <value>
-            The name of the multi texture4 map.
-            </value>
-    </member>
-    <member name="P:PloobsEngine.Modelo.TextureInformation.HeightMapName">
-      <summary>
-            Gets or sets the name of the height map.
-            </summary>
-      <value>
-            The name of the height map.
-            </value>
-    </member>
-    <member name="E:PloobsEngine.Modelo.TextureInformation.OnTextureChange">
-      <summary>
-            Occurs when [on texture change].
-            </summary>
     </member>
     <member name="T:BEPUphysics.DeactivationManagement.ISimulationIslandConnection">
       <summary>
@@ -35738,6 +36370,489 @@
              Gets an enumerator over the entities in the collection.
             </summary>
       <returns>Enumerator over the entities in the collection.</returns>
+    </member>
+    <member name="T:XNAnimation.Effects.SkinnedModelBasicEffect">
+      <summary>
+            Represents an effect that supports skinning, normal, specular and diffuse textures, 
+            and phong lighting with multiple point light sources. This effect can use shader model 2.0
+            or 3.0, according to the number of lights enabled.
+            </summary>
+    </member>
+    <member name="M:XNAnimation.Effects.SkinnedModelBasicEffect.#ctor(Microsoft.Xna.Framework.Graphics.GraphicsDevice,XNAnimation.Effects.SkinnedModelBasicEffect)">
+      <summary>Initializes a new instance of the 
+            <see cref="T:XNAnimation.Effects.SkinnedModelBasicEffect" />
+            class.
+            </summary>
+      <param name="graphicsDevice">The graphics device that will create the effect.</param>
+      <param name="clone">The effect to clone.</param>
+    </member>
+    <member name="P:XNAnimation.Effects.SkinnedModelBasicEffect.Bones">
+      <summary>
+            Gets or sets the bone matrices of the skeleton.
+            </summary>
+    </member>
+    <member name="P:XNAnimation.Effects.SkinnedModelBasicEffect.View">
+      <summary>
+            Gets or sets the camera view matrix.
+            </summary>
+    </member>
+    <member name="P:XNAnimation.Effects.SkinnedModelBasicEffect.Projection">
+      <summary>
+            Gets or sets the camera projection matrix.
+            </summary>
+    </member>
+    <member name="P:XNAnimation.Effects.SkinnedModelBasicEffect.DiffuseMapEnabled">
+      <summary>
+            Enables diffuse texture.
+            </summary>
+    </member>
+    <member name="P:XNAnimation.Effects.SkinnedModelBasicEffect.GlowMapEnabled">
+      <summary>
+            Enables diffuse texture.
+            </summary>
+    </member>
+    <member name="P:XNAnimation.Effects.SkinnedModelBasicEffect.DiffuseMap">
+      <summary>
+            Gets or sets diffuse texture.
+            </summary>
+    </member>
+    <member name="P:XNAnimation.Effects.SkinnedModelBasicEffect.SpecularMap">
+      <summary>
+            Gets or sets normal map texture.
+            </summary>
+    </member>
+    <member name="P:XNAnimation.Effects.SkinnedModelBasicEffect.NormalMapEnabled">
+      <summary>
+            Enables normal map texture.
+            </summary>
+    </member>
+    <member name="P:XNAnimation.Effects.SkinnedModelBasicEffect.NormalMap">
+      <summary>
+            Gets or sets normal map texture.
+            </summary>
+    </member>
+    <member name="T:XNAnimation.Controllers.InterpolationMode">
+      <summary>
+            Specifies how translations, orientations and scales are interpolated between keyframes.
+            </summary>
+    </member>
+    <member name="F:XNAnimation.Controllers.InterpolationMode.None">
+      <summary>
+            Does not use interpolation.
+            </summary>
+    </member>
+    <member name="F:XNAnimation.Controllers.InterpolationMode.Linear">
+      <summary>
+            Linear interpolation. Supported on translations and scales.
+            </summary>
+    </member>
+    <member name="F:XNAnimation.Controllers.InterpolationMode.Cubic">
+      <summary>
+            Cubic interpolation. Supported on translations and scales.
+            </summary>
+    </member>
+    <member name="F:XNAnimation.Controllers.InterpolationMode.Spherical">
+      <summary>
+            Spherical interpolation. Only supported on orientations.
+            </summary>
+    </member>
+    <member name="T:XNAnimation.Controllers.PlaybackMode">
+      <summary>
+            Specifies how an animation clip is played.
+            </summary>
+    </member>
+    <member name="F:XNAnimation.Controllers.PlaybackMode.Forward">
+      <summary>
+            Plays the animation clip in the forward way.
+            </summary>
+    </member>
+    <member name="F:XNAnimation.Controllers.PlaybackMode.Backward">
+      <summary>
+            Plays the animation clip in the backward way.
+            </summary>
+    </member>
+    <member name="T:XNAnimation.Controllers.IAnimationController">
+      <summary>
+            Defines an interface for an animation controller.
+            </summary>
+    </member>
+    <member name="M:XNAnimation.Controllers.IAnimationController.StartClip(XNAnimation.AnimationClip)">
+      <summary>
+            Starts the playback of an animation clip from the beginning.
+            </summary>
+      <param name="animationClip">The animation clip to be played.</param>
+    </member>
+    <member name="M:XNAnimation.Controllers.IAnimationController.PlayClip(XNAnimation.AnimationClip)">
+      <summary>
+            Plays an animation clip.
+            </summary>
+      <param name="animationClip">The animation clip to be played.</param>
+    </member>
+    <member name="M:XNAnimation.Controllers.IAnimationController.CrossFade(XNAnimation.AnimationClip,System.TimeSpan)">
+      <summary>
+            Interpolates linearly between two animation clips, fading out the current 
+            animation clip and fading in a new one.
+            </summary>
+      <param name="animationClip">The animation clip to be faded in.</param>
+      <param name="fadeTime">Time used to fade in and out the animation clips.</param>
+    </member>
+    <member name="M:XNAnimation.Controllers.IAnimationController.CrossFade(XNAnimation.AnimationClip,System.TimeSpan,XNAnimation.Controllers.InterpolationMode,XNAnimation.Controllers.InterpolationMode,XNAnimation.Controllers.InterpolationMode)">
+      <summary>
+            Interpolates between two animation clips, fading out the current animation clip 
+            and fading in a new one.
+            </summary>
+      <param name="animationClip">The animation clip to be faded in.</param>
+      <param name="fadeTime">Time used to fade in and out the animation clips.</param>
+      <param name="translationInterpolation">How translations are interpolated between animation clips.</param>
+      <param name="orientationInterpolation">How orientations are interpolated between animation clips.</param>
+      <param name="scaleInterpolation">How scales are interpolated between animation clips.</param>
+    </member>
+    <member name="M:XNAnimation.Controllers.IAnimationController.Update(System.TimeSpan,Microsoft.Xna.Framework.Matrix)">
+      <summary>
+            Updates the animation clip time and calculates the new skeleton's bone pose.
+            </summary>
+      <param name="elapsedTime">Time elapsed since the last update.</param>
+      <param name="parent">The parent bone for the current skeleton's root bone.</param>
+    </member>
+    <member name="P:XNAnimation.Controllers.IAnimationController.AnimationClip">
+      <summary>
+            Gets the animation clip being played.
+            </summary>
+    </member>
+    <member name="P:XNAnimation.Controllers.IAnimationController.Time">
+      <summary>
+            Gets os sets the current animation playback time.
+            </summary>
+    </member>
+    <member name="P:XNAnimation.Controllers.IAnimationController.Speed">
+      <summary>
+            Gets os sets the animation playback speed.
+            </summary>
+    </member>
+    <member name="P:XNAnimation.Controllers.IAnimationController.LoopEnabled">
+      <summary>
+            Enables animation looping.
+            </summary>
+    </member>
+    <member name="P:XNAnimation.Controllers.IAnimationController.PlaybackMode">
+      <summary>
+            Gets os sets the animation playback mode.
+            </summary>
+    </member>
+    <member name="P:XNAnimation.Controllers.IAnimationController.TranslationInterpolation">
+      <summary>
+            Gets os sets how translations are interpolated between animation keyframes.
+            Supports linear and cubic interpolation.
+            </summary>
+    </member>
+    <member name="P:XNAnimation.Controllers.IAnimationController.OrientationInterpolation">
+      <summary>
+            Gets os sets how orientations are interpolated between animation keyframes.
+            Supports linear and spherical interpolation.
+            </summary>
+    </member>
+    <member name="P:XNAnimation.Controllers.IAnimationController.ScaleInterpolation">
+      <summary>
+            Gets os sets how scales are interpolated between animation keyframes.
+            Supports linear and cubic interpolation.
+            </summary>
+    </member>
+    <member name="P:XNAnimation.Controllers.IAnimationController.HasFinished">
+      <summary>
+            Returns whether the animation has finished.
+            </summary>
+    </member>
+    <member name="P:XNAnimation.Controllers.IAnimationController.IsPlaying">
+      <summary>
+            Returns whether the animation is playing.
+            </summary>
+    </member>
+    <member name="P:XNAnimation.Controllers.IAnimationController.LocalBonePoses">
+      <summary>
+            Gets the local pose of all skeleton's bones in depth-first order.
+            </summary>
+    </member>
+    <member name="P:XNAnimation.Controllers.IAnimationController.SkinnedBoneTransforms">
+      <summary>
+            Gets the final transformation of all skeleton's bonse in depth-first order.
+            This transformation is used to transfom the model's mesh vertices.
+            </summary>
+    </member>
+    <member name="T:XNAnimation.Controllers.IBlendable">
+      <summary>
+            Defines an interface for blendable animations.
+            </summary>
+    </member>
+    <member name="P:XNAnimation.Controllers.IBlendable.LocalBonePoses">
+      <summary>
+            Gets the local pose of all skeleton's bones in depth-first order.
+            </summary>
+    </member>
+    <member name="P:XNAnimation.Controllers.IBlendable.BlendWeight">
+      <summary>
+            Gets or sets the blend weight.
+            The blend weight must be a positive value between 0 and 1.
+            </summary>
+    </member>
+    <member name="T:XNAnimation.Resource1">
+      <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+    </member>
+    <member name="P:XNAnimation.Resource1.ResourceManager">
+      <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+    </member>
+    <member name="P:XNAnimation.Resource1.Culture">
+      <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+    </member>
+    <member name="M:XNAnimation.AnimationChannel.GetKeyframeIndexByTime(System.TimeSpan)">
+      <summary>
+            Return the nearest keyframe for the given time
+            </summary>
+      <param name="time">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="T:XNAnimation.Controllers.ISkeletonController">
+      <summary>
+            Defines an interface for an skeleton controller.
+            </summary>
+    </member>
+    <member name="M:XNAnimation.Controllers.ISkeletonController.SetBonePose(System.String,XNAnimation.Pose@)">
+      <summary>
+            Sets a custom pose for an skeleton's bone.
+            </summary>
+      <param name="channelName">The name of the bone.</param>
+      <param name="pose">The custom pose to be set.</param>
+    </member>
+    <member name="M:XNAnimation.Controllers.ISkeletonController.SetBonePose(System.String,XNAnimation.Pose)">
+      <summary>
+            Sets a custom pose for an skeleton's bone.
+            </summary>
+      <param name="channelName">The name of the bone.</param>
+      <param name="pose">The custom pose to be set.</param>
+    </member>
+    <member name="P:XNAnimation.Controllers.ISkeletonController.LocalBonePoses">
+      <summary>
+            Gets the local pose of all skeleton's bones in depth-first order.
+            </summary>
+    </member>
+    <member name="T:XNAnimation.Controllers.BlendMode">
+      <summary>
+            Specify how animation clips are blended.
+            </summary>
+    </member>
+    <member name="F:XNAnimation.Controllers.BlendMode.Interpolate">
+      <summary>
+            Blends animation clips interpolation between them.
+            </summary>
+    </member>
+    <member name="F:XNAnimation.Controllers.BlendMode.Additive">
+      <summary>
+            Blends animation clips additively.
+            </summary>
+    </member>
+    <member name="T:XNAnimation.Controllers.BlendLayer">
+      <summary>
+            Enumerates the available blend layers.
+            </summary>
+    </member>
+    <member name="F:XNAnimation.Controllers.BlendLayer.One">
+      <summary>
+            First blend layer.
+            </summary>
+    </member>
+    <member name="F:XNAnimation.Controllers.BlendLayer.Two">
+      <summary>
+            Second blend layer.
+            </summary>
+    </member>
+    <member name="F:XNAnimation.Controllers.BlendLayer.Three">
+      <summary>
+            Third blend layer.
+            </summary>
+    </member>
+    <member name="F:XNAnimation.Controllers.BlendLayer.Four">
+      <summary>
+            Fourth blend layer.
+            </summary>
+    </member>
+    <member name="T:XNAnimation.Controllers.IBlendController">
+      <summary>
+            Defines an interface for an animation blend controller.
+            </summary>
+    </member>
+    <member name="P:XNAnimation.Controllers.IBlendController.BlendMode">
+      <summary>
+            Gets or sets the animation blend mode.
+            </summary>
+    </member>
+    <member name="T:XNAnimation.Controllers.AnimationController">
+      <summary>
+            Controls how animations are played and interpolated.
+            </summary>
+    </member>
+    <member name="M:XNAnimation.Controllers.AnimationController.#ctor(XNAnimation.SkinnedModelBoneCollection)">
+      <summary>Initializes a new instance of the 
+            <see cref="T:XNAnimation.Controllers.AnimationController" />
+            class.
+            </summary>
+      <param name="skeleton">The skeleton of the model to be animated</param>
+    </member>
+    <member name="M:XNAnimation.Controllers.AnimationController.StartClip(XNAnimation.AnimationClip)">
+      <inheritdoc />
+    </member>
+    <member name="M:XNAnimation.Controllers.AnimationController.PlayClip(XNAnimation.AnimationClip)">
+      <inheritdoc />
+    </member>
+    <member name="M:XNAnimation.Controllers.AnimationController.CrossFade(XNAnimation.AnimationClip,System.TimeSpan)">
+      <inheritdoc />
+    </member>
+    <member name="M:XNAnimation.Controllers.AnimationController.CrossFade(XNAnimation.AnimationClip,System.TimeSpan,XNAnimation.Controllers.InterpolationMode,XNAnimation.Controllers.InterpolationMode,XNAnimation.Controllers.InterpolationMode)">
+      <inheritdoc />
+    </member>
+    <member name="M:XNAnimation.Controllers.AnimationController.Update(System.TimeSpan,Microsoft.Xna.Framework.Matrix)">
+      <inheritdoc />
+    </member>
+    <member name="M:XNAnimation.Controllers.AnimationController.UpdateCrossFadeTime(System.TimeSpan)">
+      <summary>
+            Updates the CrossFade time
+            </summary>
+      <param name="elapsedTime">Time elapsed since the last update.</param>
+    </member>
+    <member name="M:XNAnimation.Controllers.AnimationController.UpdateAnimationTime(System.TimeSpan)">
+      <summary>
+            Updates the animation clip time.
+            </summary>
+      <param name="elapsedTime">Time elapsed since the last update.</param>
+    </member>
+    <member name="M:XNAnimation.Controllers.AnimationController.UpdateChannelPoses">
+      <summary>
+            Updates the pose of all skeleton's bones.
+            </summary>
+    </member>
+    <member name="M:XNAnimation.Controllers.AnimationController.InterpolateChannelPose(XNAnimation.AnimationChannel,System.TimeSpan,XNAnimation.Pose@)">
+      <summary>
+            Retrieves and interpolates the pose of an animation channel.
+            </summary>
+      <param name="animationChannel">Name of the animation channel.</param>
+      <param name="animationTime">Current animation clip time.</param>
+      <param name="outPose">The output interpolated pose.</param>
+    </member>
+    <member name="M:XNAnimation.Controllers.AnimationController.UpdateAbsoluteBoneTransforms(Microsoft.Xna.Framework.Matrix@)">
+      <summary>
+            Calculates the final configuration of all skeleton's bones used to transform
+            the model's mesh.
+            </summary>
+      <param name="parent">
+      </param>
+    </member>
+    <member name="P:XNAnimation.Controllers.AnimationController.AnimationClip">
+      <inheritdoc />
+    </member>
+    <member name="P:XNAnimation.Controllers.AnimationController.Time">
+      <inheritdoc />
+    </member>
+    <member name="P:XNAnimation.Controllers.AnimationController.Speed">
+      <inheritdoc />
+    </member>
+    <member name="P:XNAnimation.Controllers.AnimationController.LoopEnabled">
+      <inheritdoc />
+    </member>
+    <member name="P:XNAnimation.Controllers.AnimationController.PlaybackMode">
+      <inheritdoc />
+    </member>
+    <member name="P:XNAnimation.Controllers.AnimationController.TranslationInterpolation">
+      <inheritdoc />
+    </member>
+    <member name="P:XNAnimation.Controllers.AnimationController.OrientationInterpolation">
+      <inheritdoc />
+    </member>
+    <member name="P:XNAnimation.Controllers.AnimationController.ScaleInterpolation">
+      <inheritdoc />
+    </member>
+    <member name="P:XNAnimation.Controllers.AnimationController.HasFinished">
+      <inheritdoc />
+    </member>
+    <member name="P:XNAnimation.Controllers.AnimationController.IsPlaying">
+      <inheritdoc />
+    </member>
+    <member name="P:XNAnimation.Controllers.AnimationController.LocalBonePoses">
+      <inheritdoc />
+    </member>
+    <member name="P:XNAnimation.Controllers.AnimationController.SkinnedBoneTransforms">
+      <inheritdoc />
+    </member>
+    <member name="P:XNAnimation.Controllers.AnimationController.BlendWeight">
+      <inheritdoc />
+    </member>
+    <member name="T:XNAnimation.SkinnedModelBone">
+      <summary>
+            Represents a bone from a skeleton
+            </summary>
+    </member>
+    <member name="P:XNAnimation.SkinnedModelBone.Index">
+      <summary>
+            Gets the index of this bone in depth-first order.
+            </summary>
+    </member>
+    <member name="P:XNAnimation.SkinnedModelBone.Name">
+      <summary>
+            Gets the name of this bone.
+            </summary>
+    </member>
+    <member name="P:XNAnimation.SkinnedModelBone.Parent">
+      <summary>
+            Gets the parent of this bone.
+            </summary>
+    </member>
+    <member name="P:XNAnimation.SkinnedModelBone.Children">
+      <summary>
+            Gets a collection of bones that are children of this bone.
+            </summary>
+    </member>
+    <member name="P:XNAnimation.SkinnedModelBone.BindPose">
+      <summary>
+            Gets the pose of this bone relative to its parent.
+            </summary>
+    </member>
+    <member name="P:XNAnimation.SkinnedModelBone.InverseBindPoseTransform">
+      <summary>
+            Gets a matrix used to transform model's mesh vertices putting them in the same 
+            coordinate system of this bone.
+            </summary>
+    </member>
+    <member name="T:XNAnimation.Controllers.SkeletonController">
+      <summary>
+            Controls the pose of each bone in a skeleton. Allows custom skeleton poses to be blended 
+            with other <see cref="T:XNAnimation.Controllers.IBlendable" /> objects.
+            </summary>
+    </member>
+    <member name="M:XNAnimation.Controllers.SkeletonController.#ctor(XNAnimation.SkinnedModelBoneDictionary)">
+      <summary>Initializes a new instance of the 
+            <see cref="T:XNAnimation.Controllers.SkeletonController"></see>
+            class.
+            </summary>
+      <param name="skeletonDictionary">
+      </param>
+    </member>
+    <member name="M:XNAnimation.Controllers.SkeletonController.SetBonePose(System.String,XNAnimation.Pose@)">
+      <inheritdoc />
+    </member>
+    <member name="M:XNAnimation.Controllers.SkeletonController.SetBonePose(System.String,XNAnimation.Pose)">
+      <inheritdoc />
+    </member>
+    <member name="P:XNAnimation.Controllers.SkeletonController.LocalBonePoses">
+      <inheritdoc />
+    </member>
+    <member name="P:XNAnimation.Controllers.SkeletonController.BlendWeight">
+      <inheritdoc />
     </member>
     <member name="T:DPSF.DefaultParticleSystemMagnet">
       <summary>

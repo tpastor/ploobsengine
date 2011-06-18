@@ -126,7 +126,7 @@
     </Reference>
     <Reference Include="TomShane.Neoforce.Controls, Version=0.7.2407.1915, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Dlls\NeoforceDll\bin\x86\Debug\TomShane.Neoforce.Controls.dll</HintPath>
+      <HintPath>Dlls\TomShane.Neoforce.Controls.dll</HintPath>
     </Reference>
     <Reference Include="XNAnimation">
       <HintPath>Dlls\XNAnimation.dll</HintPath>
