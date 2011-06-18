@@ -64,9 +64,9 @@ namespace PloobsEngine.SceneControl
         public override List<IObject> GetNotCulledObjectsList(MaterialType? Filter)
         {
             if (Filter == PloobsEngine.Material.MaterialType.DEFERRED)
-                return deferred;
+                return deferred.ToList();
             else if (Filter == PloobsEngine.Material.MaterialType.FORWARD)
-                return forward;
+                return forward.ToList();
             else
             {
                 List<IObject> objs = new List<IObject>();

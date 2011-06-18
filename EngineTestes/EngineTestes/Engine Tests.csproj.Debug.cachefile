@@ -179,6 +179,8 @@ Content\Effects\laser_shader.xnb
 Content\Effects\ShatterEffect.xnb
 Content\Effects\TransparentOnBorder.xnb
 Content\Effects\effect2.xnb
+Content\Effects\alphagradative.xnb
+Content\Effects\EMTransparencySHADER.xnb
 Content\Model\EnemyBeast.xnb
 Content\Model\PlayerMarine.xnb
 Content\Model\WeaponMachineGun.xnb
@@ -218,8 +220,6 @@ Content\Textures\treedifuse_0.xnb
 Content\Textures\folha_0.xnb
 Content\Model\engine_diff_tex_0.xnb
 Content\Model\turret_alt_diff_tex_0.xnb
-Content\Effects\alphagradative.xnb
-Content\Effects\EMTransparencySHADER.xnb
 Content\ModelInfos\shadow.xml
 Content\ModelInfos\sponza.xml
 Content\Skins\Default\Skin.xml
@@ -241,6 +241,7 @@ Content\Textures\teste.xnb
 Content\Textures\wave0.xnb
 Content\Textures\wave1.xnb
 Content\Textures\waves2.xnb
+Content\Textures\color_map.xnb
 Content\Effects\ByPassEffect.xnb
 Content\Effects\Deferred\AllBuffer.xnb
 Content\Effects\Deferred\AnimatedBillboard.xnb
@@ -330,11 +331,10 @@ Content\Effects\skybox.xnb
 Content\Effects\Deferred\clippingPlane.xnb
 Content\Effects\Deferred\InstancedBilboard.xnb
 Content\Effects\Deferred\AntiAliasingtabulastalker.xnb
+Content\Effects\reductionEffect.xnb
+Content\Effects\resolveShadowsEffect.xnb
 Content\Font\ConsoleFont.xnb
 Content\Models\block.xnb
 Content\Models\dome.xnb
 Content\Models\Dsphere.xnb
 Content\Models\sphere.xnb
-Content\Effects\reductionEffect.xnb
-Content\Effects\resolveShadowsEffect.xnb
-Content\Textures\color_map.xnb

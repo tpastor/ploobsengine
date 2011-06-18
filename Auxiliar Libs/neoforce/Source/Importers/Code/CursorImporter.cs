@@ -96,9 +96,9 @@ namespace TomShane.Neoforce.Importers
 #if DEBUG
 			return "TomShane.Neoforce.Controls.CursorReader, PloobsEngineDebug";
 #else
-         return "TomShane.Neoforce.Controls.CursorReader, PloobsEngine";
+         return "TomShane.Neoforce.Controls.CursorReader, PloobsEngineDebug";
 #endif
-		}
+        }
 		////////////////////////////////////////////////////////////////////////////
 
 		#endregion

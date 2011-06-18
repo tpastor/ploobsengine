@@ -604,6 +604,7 @@ namespace TomShane.Neoforce.Controls
 
 		#region //// Constructors //////        
 
+        #if (!XBOX && !XBOX_FAKE)
 		////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Initializes a new instance of the Manager class.
@@ -616,6 +617,20 @@ namespace TomShane.Neoforce.Controls
             : base(game)
         {            
                 disposing = false;
+#else
+        ////////////////////////////////////////////////////////////////////////////
+        /// <summary>
+        /// Initializes a new instance of the Manager class.
+        /// </summary>
+        /// <param name="game">The Game class.</param>
+        /// <param name="graphics">The GraphicsDeviceManager class provided by the Game class.</param>
+        /// <param name="skin">The name of the skin being loaded at the start.</param>
+        public Manager(Game game, GraphicsDeviceManager graphics, string skin)
+            : base(game)
+        {
+            disposing = false;
+
+#endif
 
 #if (!XBOX && !XBOX_FAKE)
                 menuDelay = SystemInformation.MenuShowDelay;
@@ -685,6 +700,7 @@ namespace TomShane.Neoforce.Controls
 		////////////////////////////////////////////////////////////////////////////                   
 #endif
 
+        #if (!XBOX && !XBOX_FAKE)
 		////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Initializes a new instance of the Manager class.
@@ -696,8 +712,22 @@ namespace TomShane.Neoforce.Controls
             : this(game, game.Services.GetService(typeof(IGraphicsDeviceManager)) as GraphicsDeviceManager, skin, window)
 		{
 		}
+#else
+        ////////////////////////////////////////////////////////////////////////////
+        /// <summary>
+        /// Initializes a new instance of the Manager class.
+        /// </summary>
+        /// <param name="game">The Game class.</param>
+        /// <param name="skin">The name of the skin being loaded at the start.</param>
+        /// <param name="window">The window.</param>
+        public Manager(Game game, string skin)
+            : this(game, game.Services.GetService(typeof(IGraphicsDeviceManager)) as GraphicsDeviceManager, skin)
+        {
+        }
+#endif
 		////////////////////////////////////////////////////////////////////////////
 
+        #if (!XBOX && !XBOX_FAKE)
 		////////////////////////////////////////////////////////////////////////////
         /// <summary>
         /// Initializes a new instance of the Manager class, loads the default skin and registers manager in the game class automatically.
@@ -709,8 +739,22 @@ namespace TomShane.Neoforce.Controls
 			: this(game, graphics, _DefaultSkin,window)
 		{
 		}
+#else
+        ////////////////////////////////////////////////////////////////////////////
+        /// <summary>
+        /// Initializes a new instance of the Manager class, loads the default skin and registers manager in the game class automatically.
+        /// </summary>
+        /// <param name="game">The Game class.</param>
+        /// <param name="graphics">The GraphicsDeviceManager class provided by the Game class.</param>
+        public Manager(Game game, GraphicsDeviceManager graphics)
+            : this(game, graphics, _DefaultSkin)
+        {
+        }
+#endif
 		////////////////////////////////////////////////////////////////////////////
 
+
+        #if (!XBOX && !XBOX_FAKE)
 		////////////////////////////////////////////////////////////////////////////
 		/// <summary>
 		/// Initializes a new instance of the Manager class, loads the default skin and registers manager in the game class automatically.
@@ -722,6 +766,17 @@ namespace TomShane.Neoforce.Controls
             : this(game, game.Services.GetService(typeof(IGraphicsDeviceManager)) as GraphicsDeviceManager, _DefaultSkin, form)
 		{
 		}
+#else
+        ////////////////////////////////////////////////////////////////////////////
+        /// <summary>
+        /// Initializes a new instance of the Manager class, loads the default skin and registers manager in the game class automatically.
+        /// </summary>
+        /// <param name="game">The Game class.</param>
+		public Manager(Game game)
+            : this(game, game.Services.GetService(typeof(IGraphicsDeviceManager)) as GraphicsDeviceManager, _DefaultSkin)
+		{
+		}
+#endif
 		////////////////////////////////////////////////////////////////////////////
 
 		#endregion
@@ -781,7 +836,10 @@ namespace TomShane.Neoforce.Controls
 
 		#region //// Methods ///////////
 
+        
+        #if (!XBOX && !XBOX_FAKE)
         private delegate void setcursordelegate(Cursor cursor);
+        #endif
 
 		////////////////////////////////////////////////////////////////////////////
 #if (!XBOX && !XBOX_FAKE)

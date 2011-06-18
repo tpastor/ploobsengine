@@ -44,7 +44,7 @@ namespace AdvancedDemo4._0
             base.LoadContent(GraphicInfo, factory, contentManager);
 
             ///Create the water
-            ///Water is just a Shader that Creats a Water like texture and binds it to a model
+            ///Water is just a Shader that Creates a Water like texture and binds it to a model
             {
                 IModelo sm = new SimpleModel(factory, "Model\\block");
                 Matrix trans = Matrix.CreateTranslation(new Vector3(0, 50, 0));

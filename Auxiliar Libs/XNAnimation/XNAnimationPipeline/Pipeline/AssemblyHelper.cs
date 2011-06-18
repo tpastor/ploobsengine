@@ -41,7 +41,9 @@ namespace XNAnimationPipeline.Pipeline
                 typeFullName + ", " + "PloobsEngineDebug" + ", " + assemblyTokens[1] + ", " +
                     assemblyTokens[2] + ", " + GetAssemblyPublicKey(targetPlatform);
 #else                  
-                typeFullName + ", " + "PloobsEngine" + ", " + assemblyTokens[1] + ", " +
+                //typeFullName + ", " + "PloobsEngine" + ", " + assemblyTokens[1] + ", " +
+                //    assemblyTokens[2] + ", " + GetAssemblyPublicKey(targetPlatform);
+            typeFullName + ", " + "PloobsEngineDebug" + ", " + assemblyTokens[1] + ", " +
                     assemblyTokens[2] + ", " + GetAssemblyPublicKey(targetPlatform);
 
 #endif
