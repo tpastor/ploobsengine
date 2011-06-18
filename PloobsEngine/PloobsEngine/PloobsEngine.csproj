@@ -16,8 +16,7 @@
     <XnaProfile>HiDef</XnaProfile>
     <XnaCrossPlatformGroupID>85e948e5-0d9d-44dd-82fb-419c162360c5</XnaCrossPlatformGroupID>
     <XnaOutputType>Game</XnaOutputType>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>Logo Ploobs.ico</ApplicationIcon>
     <Thumbnail>
     </Thumbnail>
     <PublishUrl>publish\</PublishUrl>
@@ -603,7 +602,9 @@
     <None Include="bin\x86\Debug\Content\Textures\white.xnb" />
     <None Include="Resources\ConsoleFont.spritefont" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Logo Ploobs.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <PropertyGroup>

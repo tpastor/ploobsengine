@@ -81,7 +81,7 @@ namespace PloobsEngine.Material
         /// <param name="render">The render.</param>
         /// <param name="camera">The camera.</param>
         public override void Draw(GameTime gt, IObject obj, RenderHelper render, ICamera camera, IList<ILight> lights)
-        {            
+        {   
                 IModelo modelo = obj.Modelo;           
                 IdParameter.SetValue(shaderId);
                 SpecularIntensityParameter.SetValue(specularIntensity);
