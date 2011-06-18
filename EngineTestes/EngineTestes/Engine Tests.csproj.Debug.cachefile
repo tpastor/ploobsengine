@@ -143,6 +143,8 @@ Content\Skins\Default\Images\Window.FrameTop.xnb
 Content\Skins\Default\Images\Window.Icon.xnb
 Content\Skins\Default\Images\Window.xnb
 Content\Skins\Default\Images\Window.Shadow.xnb
+Content\Model\engine_diff_tex.xnb
+Content\Model\turret_alt_diff_tex.xnb
 Content\Textures\chao.xnb
 Content\Textures\chaobump.xnb
 Content\Textures\folha.xnb
@@ -164,6 +166,7 @@ Content\Textures\WhiteSquare.xnb
 Content\Textures\Particle.xnb
 Content\Textures\tile.xnb
 Content\Textures\DudeSheet.xnb
+Content\Textures\ExplosionParticles.xnb
 Content\Effects\mlaa.xnb
 Content\Effects\Effect1.xnb
 Content\Effects\AntiAliasingtabulastalker.xnb
@@ -174,9 +177,13 @@ Content\Effects\Sharpen.xnb
 Content\Effects\UnderWater.xnb
 Content\Effects\laser_shader.xnb
 Content\Effects\ShatterEffect.xnb
+Content\Effects\TransparentOnBorder.xnb
+Content\Effects\effect2.xnb
 Content\Model\EnemyBeast.xnb
 Content\Model\PlayerMarine.xnb
 Content\Model\WeaponMachineGun.xnb
+Content\Model\tank.xnb
+Content\Model\Dude.xnb
 Content\Skins\Default\Fonts\Default.xnb
 Content\Trees\Birch.xnb
 Content\Trees\Gardenwood.xnb
@@ -209,12 +216,10 @@ Content\Textures\sponza_ceiling_a_diff_0.xnb
 Content\Textures\chao_0.xnb
 Content\Textures\treedifuse_0.xnb
 Content\Textures\folha_0.xnb
-Content\Model\tank.xnb
-Content\Model\engine_diff_tex.xnb
-Content\Model\turret_alt_diff_tex.xnb
 Content\Model\engine_diff_tex_0.xnb
 Content\Model\turret_alt_diff_tex_0.xnb
-Content\Textures\ExplosionParticles.xnb
+Content\Effects\alphagradative.xnb
+Content\Effects\EMTransparencySHADER.xnb
 Content\ModelInfos\shadow.xml
 Content\ModelInfos\sponza.xml
 Content\Skins\Default\Skin.xml

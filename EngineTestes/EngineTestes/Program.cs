@@ -61,7 +61,9 @@ namespace EngineTestes
             //manager.AddScreen(new RadialBluScreen());
             //manager.AddScreen(new BoltSample());
             //manager.AddScreen(new ShatterSample());
-            manager.AddScreen(new ExplosionScreen());
+            //manager.AddScreen(new ExplosionScreen());
+            //manager.AddScreen(new StealthEffectScreen());
+            manager.AddScreen(new StealthShaderScreen());
         }
     }
 

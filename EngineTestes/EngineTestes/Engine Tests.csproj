@@ -195,6 +195,11 @@
     <Compile Include="TechDemo\TechDemoScreenModel.cs" />
     <Compile Include="TechDemo\TechDemoScreen.cs" />
     <Compile Include="Terrain\TerrainScreen.cs" />
+    <Compile Include="TransparencyOnBorders\ForwardEMTransparentShader.cs" />
+    <Compile Include="TransparencyOnBorders\ForwardGradativeAlphaShader.cs" />
+    <Compile Include="TransparencyOnBorders\StealthEffectScreen.cs" />
+    <Compile Include="TransparencyOnBorders\StealthPostEffect.cs" />
+    <Compile Include="TransparencyOnBorders\StealthShaderScreen.cs" />
     <Compile Include="TransparencySamples\TransparentDeferredScreen.cs" />
     <Compile Include="TransparencySamples\TransparentForwardScreen.cs" />
     <Compile Include="Vegetation\VegetationDeferredScreen.cs" />
