@@ -545,6 +545,11 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="Textures\cubeMapGamma.dds">
+      <Name>cubeMapGamma</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>ContentProcessor2</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\EnemyBeastDiffuse.jpg">
@@ -1208,6 +1213,14 @@
       <Name>ExplosionParticles</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\islandmap2.jpg">
+      <Name>islandmap2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>GameTextureProcessor</Processor>
+      <ProcessorParameters_UseRGBA10>True</ProcessorParameters_UseRGBA10>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

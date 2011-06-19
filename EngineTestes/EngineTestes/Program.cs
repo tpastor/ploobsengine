@@ -27,7 +27,7 @@ namespace EngineTestes
         {
             //manager.AddScreen(new FirstScreen());
             //manager.AddScreen(new DeferredScreen());
-            manager.AddScreen(new DeferredLoadScreen());
+            //manager.AddScreen(new DeferredLoadScreen());
             //manager.AddScreen(new DeferredAnimatedScreen());
             //manager.AddScreen(new CharacterScreen());
             //manager.AddScreen(new ParticleScreen());
@@ -64,6 +64,7 @@ namespace EngineTestes
             //manager.AddScreen(new ExplosionScreen());
             //manager.AddScreen(new StealthEffectScreen());
             //manager.AddScreen(new StealthShaderScreen());
+            manager.AddScreen(new GammaCorrectionScreen());
         }
     }
 

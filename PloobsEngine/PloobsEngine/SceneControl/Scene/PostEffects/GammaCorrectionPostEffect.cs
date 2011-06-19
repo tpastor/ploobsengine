@@ -29,7 +29,7 @@ namespace PloobsEngine.SceneControl
         Effect effect = null;
 
         private GammaType _gType;
-
+        
         public override void Draw(Texture2D ImageToProcess, RenderHelper rHelper, GameTime gt, Engine.GraphicInfo GraphicInfo, IWorld world, bool useFloatingBuffer)
         {
             ///Draw a quad using the "effect", passing the CurrentImage as a Parameter            
@@ -42,7 +42,7 @@ namespace PloobsEngine.SceneControl
         public override void Init(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
         {
             ///Load the asset
-            effect = factory.GetEffect("gamma",false,true);            
+            effect = factory.GetEffect("gamma",true,true);            
             switch (_gType)
             {
                 case GammaType.Normal:
