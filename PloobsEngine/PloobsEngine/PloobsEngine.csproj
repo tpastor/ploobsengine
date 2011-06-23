@@ -60,6 +60,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <PlatformTarget>x86</PlatformTarget>
     <XnaCompressContent>true</XnaCompressContent>
+    <DocumentationFile>bin\x86\Release\PloobsEngine.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
