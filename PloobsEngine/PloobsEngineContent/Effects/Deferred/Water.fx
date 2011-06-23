@@ -6,6 +6,7 @@
 //--------------------------------------------------------------------------------
 //
 
+float fTimeM;	
 float fTime	: Time;
 float id;
  
@@ -193,17 +194,17 @@ float EvaluateWaveSharpDifferential( Wave w, float2 vPos, float fTime, float fK 
   return fK * w.fFreq * w.fAmp * pow( sin( dot( w.vDir, vPos ) * w.fFreq + fTime * w.fPhase )* 0.5 + 0.5 , fK - 1 ) * cos( dot( w.vDir, vPos ) * w.fFreq + fTime * w.fPhase );
 }
 
-VSOUTPUT VS_Water( float4 inPos : POSITION, float3 inNor : NORMAL, float2 inTex : TEXCOORD0,
-				   float3 inTan : TANGENT, float3 inBin : BINORMAL ) {
-	VSOUTPUT OUT = (VSOUTPUT)0;
-	
-	static Wave Waves[NUMWAVES] = {
+static Wave Waves[NUMWAVES] = {
 	{ 1.0f, 1.00f, 0.50f, float2( -1.0f, 0.0f ) },
 	{ 2.0f, 0.50f, 1.30f, float2( -0.7f, 0.7f ) },
 	{ .50f, .50f, 0.250f, float2( 0.2f, 0.1f ) },
 	};
 
 
+VSOUTPUT VS_Water( float4 inPos : POSITION, float3 inNor : NORMAL, float2 inTex : TEXCOORD0,
+				   float3 inTan : TANGENT, float3 inBin : BINORMAL ) {
+	VSOUTPUT OUT = (VSOUTPUT)0;
+	
 	// Generate some waves!
     Waves[0].fFreq 	= fWaveFreq;
     Waves[0].fAmp 	= fWaveAmp;
@@ -232,8 +233,7 @@ VSOUTPUT VS_Water( float4 inPos : POSITION, float3 inNor : NORMAL, float2 inTex 
 	
 	// Generate the normal map texture coordinates
 	OUT.vTex = inTex * vTextureScale;
-
-	float fTimeM = fmod( fTime, 100.0 );
+		
 	OUT.vBump0 = inTex * vTextureScale + fTimeM * vBumpSpeed;
 	OUT.vBump1 = inTex * vTextureScale * 2.0f + fTimeM * vBumpSpeed * 4.0;
 	OUT.vBump2 = inTex * vTextureScale * 4.0f + fTimeM * vBumpSpeed * 8.0;
@@ -278,8 +278,7 @@ struct PixelShaderOutput
     half4 LightOcclusion : COLOR3;
 };
 
-PixelShaderOutput PS_Water( VSOUTPUT IN ) : COLOR0 {
-
+PixelShaderOutput PS_Water( VSOUTPUT IN )  {
 
 	PixelShaderOutput output ;
 	// Fetch the normal maps (with signed scaling)
@@ -312,7 +311,7 @@ PixelShaderOutput PS_Water( VSOUTPUT IN ) : COLOR0 {
 
 	// Compute the Fresnel term
     float fFacing  = 1.0 - max( dot( IN.vView, vWorldNormal ), 0 );
-    float fFresnel = fFresnelBias + ( 1.0 - fFresnelBias ) * pow( fFacing, fFresnelPower);
+    float fFresnel = fFresnelBias + ( 1.0 - fFresnelBias ) * pow( abs(fFacing), fFresnelPower);
 
 	// Compute the final water color
     float4 vWaterColor = lerp( vDeepColor, vShallowColor, fFacing );
@@ -332,7 +331,6 @@ PixelShaderOutput PS_Water( VSOUTPUT IN ) : COLOR0 {
 //--------------------------------------------------
 technique techDefault {
 	pass p0 {
-		CullMode		= None;
 	
 		VertexShader	= compile vs_3_0 VS_Water();
 		PixelShader		= compile ps_3_0 PS_Water();

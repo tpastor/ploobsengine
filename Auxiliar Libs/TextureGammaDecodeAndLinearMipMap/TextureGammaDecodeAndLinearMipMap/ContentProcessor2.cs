@@ -234,33 +234,7 @@ namespace ContentLibrary
 
             return bmpColor;
 
-        }//method
-
-        // - - - - - - - - - - - - - - - - - - - -
-        byte ConvertFloat(float val)
-        {
-            return (byte)(val * 255.0f);
-        }//method
-        // - - - - - - - - - - - - - - - - - - - -
-        byte GammaEncodeFloat(float val)
-        {
-            double encoded = Math.Pow(val, 1.0 / 2.2);
-            double expanded = encoded * 255.0;
-            return (byte)expanded;
-        }//method
-        // - - - - - - - - - - - - - - - - - - - -
-        float NormalizeByte(byte val)
-        {
-            float unit = (float)val / 255.0f;
-            return unit;
-        }//method
-        // - - - - - - - - - - - - - - - - - - - -
-        float GammaDecodeByte(byte val)
-        {
-            double unit = (double)val / 255.0;
-            double decode = Math.Pow(unit, 2.2);
-            return (float)decode;
-        }//method
+        }//method        
 
         Color GammaEncodeColor(Vector4 vec)
         {
@@ -289,7 +263,7 @@ namespace ContentLibrary
             return Color.FromNonPremultiplied(resp); ;
         }
 
-        static Rgba1010102 GammaDecodeColor2(Vector4 vec)
+        Rgba1010102 GammaDecodeColor2(Vector4 vec)
         {
             Vector4 resp = new Vector4(1);
             resp.X = (float)Math.Pow(vec.X, 2.2);

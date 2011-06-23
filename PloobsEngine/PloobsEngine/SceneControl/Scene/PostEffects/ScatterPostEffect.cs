@@ -64,16 +64,7 @@ namespace PloobsEngine.SceneControl
             get { return exposition; }
             set { exposition = value; }
         }
-        float numSamples = 64f;
-
-        /// <summary>
-        /// Default 64
-        /// </summary>
-        public float NumSamples
-        {
-            get { return numSamples; }
-            set { numSamples = value; }
-        }
+        
 
         public override void Draw(Texture2D ImageToProcess, RenderHelper rHelper, GameTime gt, Engine.GraphicInfo GraphicInfo, IWorld world, bool useFloatingBuffer)
         {
@@ -86,7 +77,7 @@ namespace PloobsEngine.SceneControl
              effect.Parameters["WorldViewProjection"].SetValue(world.CameraManager.ActiveCamera.ViewProjection);
              effect.Parameters["LightPosition"].SetValue(lightPosition);
              effect.Parameters["CameraPos"].SetValue(world.CameraManager.ActiveCamera.Position);
-             effect.Parameters["numSamples"].SetValue(numSamples);
+             //effect.Parameters["numSamples"].SetValue(numSamples);
              effect.Parameters["halfPixel"].SetValue(GraphicInfo.HalfPixel);
              effect.Parameters["pb"].SetValue(tex);
              effect.Parameters["normal"].SetValue(ImageToProcess);
