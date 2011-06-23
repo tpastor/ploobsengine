@@ -434,6 +434,7 @@
       <Name>ball</Name>
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
+      <ProcessorParameters_GenerateTangentFrames>True</ProcessorParameters_GenerateTangentFrames>
     </Compile>
     <Compile Include="Textures\Cloud.tga">
       <Name>Cloud</Name>
