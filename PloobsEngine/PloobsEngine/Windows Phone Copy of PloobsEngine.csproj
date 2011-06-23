@@ -53,6 +53,7 @@
     <Optimize>true</Optimize>
     <DefineConstants>TRACE;WINDOWS_PHONE</DefineConstants>
     <XnaCompressContent>false</XnaCompressContent>
+    <LangVersion>default</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Windows Phone' ">
     <OutputPath>bin\Windows Phone\Debug</OutputPath>
@@ -454,7 +455,9 @@
     <Reference Include="BEPUphysics">
       <HintPath>Dlls\Phone7\BEPUphysics.dll</HintPath>
     </Reference>
-    <Reference Include="DPSFPhone, Version=2.1.0.0, Culture=neutral, PublicKeyToken=32c832bfa7326ee2, processorArchitecture=MSIL" />
+    <Reference Include="DPSFPhone">
+      <HintPath>Dlls\Phone7\DPSFPhone.dll</HintPath>
+    </Reference>
     <Reference Include="FarseerPhysicsXNA">
       <HintPath>Dlls\Phone7\FarseerPhysicsXNA.dll</HintPath>
     </Reference>

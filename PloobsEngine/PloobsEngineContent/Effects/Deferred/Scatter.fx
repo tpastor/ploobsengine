@@ -1,9 +1,8 @@
-float2 halfPixel;
+float2 floatPixel;
 float4x4 View;
 float4x4 WorldViewProjection;
 float3 LightPosition;
 float3 CameraPos;
-int numSamples;
 float Density = 0.1f;
 float Weight = 0.4f;
 float Decay = 1.0f;
@@ -50,35 +49,41 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 {
     VertexShaderOutput output;
     output.Position = float4(input.Position,1);
-    output.TexCoord = input.TexCoord - halfPixel;    
+    output.TexCoord = input.TexCoord - floatPixel;    
     return output;
 }
 
 float4 PixelShaderFunctionNormal(VertexShaderOutput input) : COLOR0
 {	
-	half4 screenPos = mul(LightPosition, WorldViewProjection);         
-    half2 ssPos = screenPos.xy / screenPos.w * float2(0.5,-0.5) + 0.5;
+	float4 screenPos = mul(LightPosition, WorldViewProjection);         
+    float2 ssPos = screenPos.xy / screenPos.w * float2(0.5,-0.5) + 0.5;
 	ssPos.y = 1.0f - ssPos.y;
     
-	half2 texCoord = input.TexCoord;
-	half2 oriTexCoord = texCoord;			
-	half2 deltaTexCoord = (texCoord - ssPos);    
-    deltaTexCoord *= 1.0f / numSamples * Density;    
-    half3 color = tex2D(baseTexture, texCoord);    
-    half illuminationDecay = 1.0f;    
-	for (int i=0; i < numSamples; i++)
+	float2 texCoord = input.TexCoord;
+	float2 oriTexCoord = texCoord;			
+	float2 deltaTexCoord = (texCoord - ssPos);    
+    deltaTexCoord *= 1.0f / 64 * Density;    
+    float3 color = tex2D(baseTexture, texCoord);    
+    float illuminationDecay = 1.0f;    
+	for (int i=0; i < 64; i++)
 	{		
 		texCoord -= deltaTexCoord;			
-		half3 sample = tex2D(baseTexture, texCoord);
+		float3 sample = tex2D(baseTexture, texCoord);
 		sample *= illuminationDecay * Weight;
 		color += sample;			
 		illuminationDecay *= Decay;
 	}
 	
-	half amount = dot(mul(LightDirection,View), half3(0.0f,0.0f,-1.f));
-	half4 sampleFrame = tex2D(frameSampler, oriTexCoord);    
-    ///-0.5 seria o arcos(abertura do sol ne screenspace --> tamanho dele)
-    return saturate(amount -abertura) * half4(color * Exposition, 1) + sampleFrame;
+	float amount = dot(mul(LightDirection,View), float3(0.0f,0.0f,-1.f));
+	float4 sampleFrame = tex2D(frameSampler, oriTexCoord);    
+    ///-0.5 seria o arcos(abertura do sol ne screenspace --> tamanho dele)		
+	///only god knows the reason of the above line (cit just work this way, probably a hlsl bug )
+	#if DEBUG
+    return saturate(amount - abertura) * float4(color * Exposition, 1) + sampleFrame;
+	#else
+	return clamp(amount - abertura,0,0.999999999999f) * float4(color * Exposition, 1) + sampleFrame;	
+	#endif
+	
 }
 
 technique NormalTechnich

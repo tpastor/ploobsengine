@@ -252,6 +252,7 @@ namespace PloobsEngine.Material
             effect.Parameters["fWaveAmp"].SetValue(waveAmplitude);
             effect.Parameters["fWaveFreq"].SetValue(waveFrequency);
             effect.Parameters["fTime"].SetValue((float)gt.TotalGameTime.TotalSeconds);
+            effect.Parameters["fTimeM"].SetValue((float)gt.TotalGameTime.TotalSeconds % 100);
 
             
             BatchInformation[] bi = obj.Modelo.GetBatchInformation(0);                

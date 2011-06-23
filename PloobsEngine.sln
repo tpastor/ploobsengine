@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engine Tests", "EngineTeste
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EngineTestesContent", "EngineTestes\EngineTestesContent\EngineTestesContent.contentproj", "{4DB11830-D1DC-4BD2-931D-11ADEAFA8BEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PloobsEngineIntegration", "WpfIntegration\PloobsEngineIntegration.csproj", "{B6919352-56FE-48AA-A319-0679D76C4059}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Windows Phone Copy of PloobsEngine", "PloobsEngine\PloobsEngine\Windows Phone Copy of PloobsEngine.csproj", "{3B2319A3-79C2-4F82-AC72-5B13A9D11F50}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnginePhoneTests", "EnginePhoneTests\EnginePhoneTests\EnginePhoneTests.csproj", "{7800E79F-72D2-4EF7-80A2-5CBA42193B2F}"
@@ -75,18 +73,6 @@ Global
 		{4DB11830-D1DC-4BD2-931D-11ADEAFA8BEA}.Release|Mixed Platforms.ActiveCfg = Release|x86
 		{4DB11830-D1DC-4BD2-931D-11ADEAFA8BEA}.Release|Windows Phone.ActiveCfg = Release|x86
 		{4DB11830-D1DC-4BD2-931D-11ADEAFA8BEA}.Release|x86.ActiveCfg = Release|x86
-		{B6919352-56FE-48AA-A319-0679D76C4059}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{B6919352-56FE-48AA-A319-0679D76C4059}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{B6919352-56FE-48AA-A319-0679D76C4059}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{B6919352-56FE-48AA-A319-0679D76C4059}.Debug|Windows Phone.ActiveCfg = Debug|x86
-		{B6919352-56FE-48AA-A319-0679D76C4059}.Debug|x86.ActiveCfg = Debug|x86
-		{B6919352-56FE-48AA-A319-0679D76C4059}.Debug|x86.Build.0 = Debug|x86
-		{B6919352-56FE-48AA-A319-0679D76C4059}.Release|Any CPU.ActiveCfg = Release|x86
-		{B6919352-56FE-48AA-A319-0679D76C4059}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{B6919352-56FE-48AA-A319-0679D76C4059}.Release|Mixed Platforms.Build.0 = Release|x86
-		{B6919352-56FE-48AA-A319-0679D76C4059}.Release|Windows Phone.ActiveCfg = Release|x86
-		{B6919352-56FE-48AA-A319-0679D76C4059}.Release|x86.ActiveCfg = Release|x86
-		{B6919352-56FE-48AA-A319-0679D76C4059}.Release|x86.Build.0 = Release|x86
 		{3B2319A3-79C2-4F82-AC72-5B13A9D11F50}.Debug|Any CPU.ActiveCfg = Debug|Windows Phone
 		{3B2319A3-79C2-4F82-AC72-5B13A9D11F50}.Debug|Mixed Platforms.ActiveCfg = Debug|Windows Phone
 		{3B2319A3-79C2-4F82-AC72-5B13A9D11F50}.Debug|Mixed Platforms.Build.0 = Debug|Windows Phone
