@@ -37,7 +37,7 @@ namespace PloobsEngine.SceneControl
                         
             foreach (ILight item in lights)
             {
-                if (item.LightType == LightType.Deferred_Directional)
+                if (item.LightType == LightType.Deferred_Directional && item.Enabled == true)
                 {
                     PloobsEngine.Light.DirectionalLightPE dl = item as PloobsEngine.Light.DirectionalLightPE;
 
@@ -63,7 +63,7 @@ namespace PloobsEngine.SceneControl
 
             foreach (ILight item in lights)
             {
-                if (item.LightType == LightType.Deferred_Point)
+                if (item.LightType == LightType.Deferred_Point && item.Enabled == true)
                 {
 
                     PointLightPE pl = item as PointLightPE;
@@ -112,7 +112,7 @@ namespace PloobsEngine.SceneControl
             
             foreach (ILight item in lights)
             {
-                if (item.LightType == LightType.Deferred_Spot)
+                if (item.LightType == LightType.Deferred_Spot && item.Enabled == true)
                 {
                     SpotLightPE sl = item as SpotLightPE;
                     spotLightEffect.Parameters["lightPosition"].SetValue(sl.Position);

@@ -158,7 +158,7 @@ namespace PloobsEngine.SceneControl
         {
             render.Clear(Color.Transparent, ClearOptions.Target);
 
-            foreach (ILight light in world.Lights.Where((a) => a.CastShadown == true))
+            foreach (ILight light in world.Lights.Where((a) => a.CastShadown == true && a.Enabled == true))
             {
                 switch (light.LightType)
                 {
@@ -189,9 +189,9 @@ namespace PloobsEngine.SceneControl
                 }
             }
 
-            render.PushBlendState(BlendState.AlphaBlend);       
+            render.PushBlendState(BlendState.AlphaBlend);
 
-            foreach (ILight light in world.Lights.Where((a) => a.CastShadown != true))
+            foreach (ILight light in world.Lights.Where((a) => a.CastShadown != true && a.Enabled == true))
             {
                 switch (light.LightType)
                 {

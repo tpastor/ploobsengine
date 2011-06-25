@@ -11027,11 +11027,6 @@
             Default 0.5f
             </summary>
     </member>
-    <member name="P:PloobsEngine.SceneControl.ScatterPostEffect.NumSamples">
-      <summary>
-            Default 64
-            </summary>
-    </member>
     <member name="M:PloobsEngine.SceneControl.SaturationPostEffect.#ctor(System.Single)">
       <summary>
             Initializes a new instance of the <see cref="T:PloobsEngine.SceneControl.SaturationPostEffect" /> class.
