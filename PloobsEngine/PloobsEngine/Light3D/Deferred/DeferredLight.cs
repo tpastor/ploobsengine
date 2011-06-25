@@ -16,6 +16,11 @@ namespace PloobsEngine.Light
     /// </summary>
     public abstract class DeferredLight : ILight
     {
+        public DeferredLight()
+        {
+            Enabled = true;
+        }
+
         #region ILight Members
 
 
@@ -158,6 +163,17 @@ namespace PloobsEngine.Light
             ActiveLogger.LogMessage("Serialization not implemented yet", LogLevel.RecoverableError);
         }
         #endif
+        #endregion
+
+        #region ILight Members
+
+
+        public bool Enabled
+        {
+            get;
+            set;
+        }
+
         #endregion
     }
 }

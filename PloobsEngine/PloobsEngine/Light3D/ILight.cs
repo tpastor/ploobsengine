@@ -39,6 +39,13 @@ namespace PloobsEngine.Light
             set;
             get;
         }
+
+        bool Enabled
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// Gets the type of the light.
         /// </summary>
