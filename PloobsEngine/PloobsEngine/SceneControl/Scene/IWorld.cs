@@ -185,8 +185,7 @@ namespace PloobsEngine.SceneControl
             }
             obj.RemoveThisObject();
             EntityMapper.getInstance().RemoveEntity(obj);
-            PhysicWorld.RemoveObject(obj.PhysicObject);
-            obj.PhysicObject.ObjectOwner = null;            
+            PhysicWorld.RemoveObject(obj.PhysicObject);            
             bool resp = Objects.Remove(obj);
             if (!resp)
             {

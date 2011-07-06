@@ -102,7 +102,8 @@ namespace WpfIntegration
                 ///The object itself
                 IObject obj = new IObject(fmaterial, simpleModel, tmesh);
                 ///Add to the world
-                EditorTestScreen.World.AddObject(obj);                
+                EditorTestScreen.World.AddObject(obj);
+
             }
             else
             {

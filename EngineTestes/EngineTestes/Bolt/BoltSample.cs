@@ -70,6 +70,11 @@ namespace ProjectTemplate
                 this.World.AddObject(bo);
             }
 
+            if (Keyboard.GetState().IsKeyDown(Keys.Enter))
+            {
+                this.World.RemoveObject(this.World.Objects[0]);
+            }
+
             base.Update(gameTime);
         } 
 

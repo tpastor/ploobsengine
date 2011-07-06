@@ -22,6 +22,7 @@ namespace EngineTestes
 {
     public class CharacterScreen : IScene
     {
+        IObject marine;
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             world = new IWorld(new BepuPhysicWorld(-0.98f,true,1), new SimpleCuller());
@@ -38,9 +39,19 @@ namespace EngineTestes
 
             SkyBox skybox = new SkyBox();
             engine.AddComponent(skybox);
+        }
 
-            InputAdvanced ia = new InputAdvanced();
-            engine.AddComponent(ia);
+        protected override void Update(GameTime gameTime)
+        {
+            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
+                if (this.World.Objects.Contains(marine))
+                {
+                    this.World.RemoveObject(marine);
+                }
+            }
+
+            base.Update(gameTime);
         }
 
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory ,IContentManager contentManager)
@@ -56,7 +67,7 @@ namespace EngineTestes
                 IMaterial mat = new DeferredMaterial(shader);
                 CharacterControllerInput character = new CharacterControllerInput(this, new Vector3(100, 150, 1), 1, 1, 50, Vector3.One * 10,0.5f);
 
-                IObject marine = new IObject(mat, sm, character.Characterobj);                
+                marine = new IObject(mat, sm, character.Characterobj);                
                 this.World.AddObject(marine);
 
                 LightThrowBepu lt = new LightThrowBepu(this.World, factory);
