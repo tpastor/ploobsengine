@@ -388,8 +388,8 @@ namespace PloobsEngine.Physics.Bepu
                 Body.Position = new Vector3(10000, 0, 0);
                 if (Body.Space != null)
                 {
-                    Space.Remove(Body);
-                    Space.Remove(collisionPairCollector);
+                    Body.Space.Remove(collisionPairCollector);
+                    Body.Space.Remove(Body);                    
                 }
             }
         }

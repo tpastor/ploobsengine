@@ -328,6 +328,7 @@ namespace PloobsEngine.Physics.Bepu
             if (entity != null)
                 entity.CollisionInformation.Events.RemoveAllEvents();
             this.obj.OnBeingRemoved -= obj_OnBeingRemoved;
+            this.obj = null;
         }
         
         public override void Enable()
