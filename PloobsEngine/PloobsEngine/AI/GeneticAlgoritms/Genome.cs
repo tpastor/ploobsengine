@@ -1,24 +1,22 @@
-//  All code copyright (c) 2003 Barry Lapthorn
-//  Website:  http://www.lapthorn.net
-//
-//  Disclaimer:  
-//  All code is provided on an "AS IS" basis, without warranty. The author 
-//  makes no representation, or warranty, either express or implied, with 
-//  respect to the code, its quality, accuracy, or fitness for a specific 
-//  purpose. Therefore, the author shall not have any liability to you or any 
-//  other person or entity with respect to any liability, loss, or damage 
-//  caused or alleged to have been caused directly or indirectly by the code
-//  provided.  This includes, but is not limited to, interruption of service, 
-//  loss of data, loss of profits, or consequential damages from the use of 
-//  this code.
-//
-//
-//  $Author: barry $
-//  $Revision: 1.1 $
-//
-//  $Id: Genome.cs,v 1.1 2003/08/19 20:59:05 barry Exp $
+#region License
+/*
+    PloobsEngine Game Engine Version 0.3 Beta
+    Copyright (C) 2011  Ploobs
 
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
 
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+#endregion
 using System;
 using System.Collections;
 

@@ -575,7 +575,6 @@
     <None Include="bin\x86\Debug\Content\Effects\Deferred\Water.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\WaterComplete.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\wiggle.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\KryptonEffect.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\reductionEffect.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\resolveShadowsEffect.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\ShadowDirectionalCascade.xnb" />
@@ -601,9 +600,11 @@
     <None Include="bin\x86\Debug\Content\Textures\wave1.xnb" />
     <None Include="bin\x86\Debug\Content\Textures\waves2.xnb" />
     <None Include="bin\x86\Debug\Content\Textures\white.xnb" />
+    <None Include="PloobsEngine.licenseheader" />
     <None Include="Resources\ConsoleFont.spritefont" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="License.txt" />
     <Content Include="Logo Ploobs.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

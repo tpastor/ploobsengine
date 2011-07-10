@@ -438,11 +438,11 @@
     <None Include="bin\Windows Phone\Debug\EnginePhoneContent\Models\dome.xnb" />
     <None Include="bin\Windows Phone\Debug\EnginePhoneContent\Models\Dsphere.xnb" />
     <None Include="bin\Windows Phone\Debug\EnginePhoneContent\Models\sphere.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\KryptonEffect.xnb" />
     <None Include="bin\x86\Debug\Content\Font\ConsoleFont.xnb" />
     <None Include="PhoneGameThumb.png">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
     </None>
+    <None Include="PloobsEngine.licenseheader" />
     <None Include="Properties\AppManifest.xml">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
     </None>
@@ -478,7 +478,11 @@
     <Reference Include="System.Xml.Serialization, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="bin\x86\Debug\Content\Effects\" />
     <Folder Include="Light\Deferred\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="License.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />

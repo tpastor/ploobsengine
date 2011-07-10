@@ -1,4 +1,10 @@
-﻿#region License
+﻿extensions: designer.cs
+extensions: .aspx .ascx
+<%-- 
+Sample license text.
+--%>
+extensions: .cs
+#region License
 /*
     PloobsEngine Game Engine Version 0.3 Beta
     Copyright (C) 2011  Ploobs
@@ -17,20 +23,3 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace PloobsEngine.IA
-{
-    public interface IWaypointConnector
-    {
-        WaypointsCollection ConnectWaypoints(WaypointsCollection col);
-        ConnectorType ConnectorType { get; }
-    }
-    public enum ConnectorType
-    { 
-        BETWEEN_COLLECTIONS_CONNECTEC , BETWEEN_WAYPOINTS_UNCONNECTED
-    }
-}
