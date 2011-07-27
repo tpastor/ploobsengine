@@ -294,16 +294,16 @@ namespace PloobsEngine.Physics
 
         public override void AddConstraint(IPhysicConstraint ctn)
         {
-            if (ctn.PhysicConstraintType == PhysicConstraintTypes.POINTPOINT)
-            {
-                PointPointConstraint co = (PointPointConstraint)ctn;
+
+
+            BepuPhysicConstraint co = (BepuPhysicConstraint)ctn;
 
                 if (co != null)
                 {
                     space.Add(co.Joint);
                     ctns.Add(co);
                 }
-            }
+          
             
             
         }

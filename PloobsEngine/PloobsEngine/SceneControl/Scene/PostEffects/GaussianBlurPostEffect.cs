@@ -108,10 +108,13 @@ namespace PloobsEngine.SceneControl
 
             SetParameters(GaussianBlurDirection.Horizontal);
             if (useFloatingBuffer)
+
                 rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, gblur, GraphicInfo.FullScreenRectangle, SamplerState.PointClamp);
             else
-                rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, gblur, GraphicInfo.FullScreenRectangle, GraphicInfo.SamplerState);            
-            
+                rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, gblur, GraphicInfo.FullScreenRectangle, GraphicInfo.SamplerState);
+
+
+
 
             intermediateTex  = rHelper.PopRenderTargetAsSingleRenderTarget2D();
             

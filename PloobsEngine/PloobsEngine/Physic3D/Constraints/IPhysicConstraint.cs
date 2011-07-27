@@ -46,7 +46,7 @@ namespace PloobsEngine.Physic.Constraints
         public abstract IPhysicObject BodyA { set; get; }
         public abstract IPhysicObject BodyB { set; get; }
 
-        public abstract PhysicConstraintTypes PhysicConstraintType { set; get; }
+        public abstract String PhysicConstraintType { set; get; }
 
 
 
@@ -59,13 +59,5 @@ namespace PloobsEngine.Physic.Constraints
     }
 
 
-    /// <summary>
-    /// Physic Types allowed
-    /// </summary>
-    public enum PhysicConstraintTypes
-    { 
     
-        POINTPOINT
-    
-    }
 }

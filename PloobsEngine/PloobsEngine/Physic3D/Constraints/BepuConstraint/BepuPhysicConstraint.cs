@@ -65,7 +65,7 @@ namespace PloobsEngine.Physic.Constraints.BepuConstraint
         }
 
 
-        public override PhysicConstraintTypes PhysicConstraintType
+        public override String PhysicConstraintType
         {
             set;
             get;

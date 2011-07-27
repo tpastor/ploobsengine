@@ -30,7 +30,7 @@ using BEPUphysics.MathExtensions;
 
 namespace PloobsEngine.Physics.Bepu
 {
-    public class CharacterObject : IPhysicObject
+    public class CharacterObject : BepuEntityObject
     {
         CharacterController characterController;
         float YAlignement;
@@ -40,7 +40,10 @@ namespace PloobsEngine.Physics.Bepu
         {
             this.rotation = rotation;
             this.YAlignement = YAlignement * scale.Y;
-            this.characterController = new CharacterController(position, characterHeight, characterWidth, supportHeight,mass, scale);            
+            this.characterController = new CharacterController(position, characterHeight, characterWidth, supportHeight,mass, scale);
+            this.entity = characterController.Body;
+            
+        
         }        
 
         public CharacterController CharacterController
@@ -122,6 +125,23 @@ namespace PloobsEngine.Physics.Bepu
             CharacterController.Jump();
         }
 
+        private bool isducking = false;
+        public void Duck()
+        {
+            if (!isducking)
+            {
+                isducking = true;
+                characterController.Duck(); 
+            }
+        }
+        public void StandUp()
+        {
+            if (isducking)
+            {
+                isducking = false;
+                characterController.Stand(); 
+            }
+        }
         public override Vector3 FaceVector
         {
             get { return rotation.Forward; }
