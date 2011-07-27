@@ -3,14 +3,16 @@ float2 sampleOffsets[15];
  
 Texture InputTexture;
  
-sampler inputTexture = sampler_state 
-{ 
-    texture = <InputTexture>; 
-    magfilter = LINEAR; 
-    minfilter = LINEAR; 
-    mipfilter = LINEAR; 
-};
+ sampler inputTexture : register(s0);
+//sampler inputTexture = sampler_state 
+//{ 
+    //texture = <InputTexture>; 
+    ////magfilter = LINEAR; 
+    ////minfilter = LINEAR; 
+    ////mipfilter = LINEAR; 
+//};
  
+
 struct VS_OUTPUT
 {
 	float4 Position	: POSITION;

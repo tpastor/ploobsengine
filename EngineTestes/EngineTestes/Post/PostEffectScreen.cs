@@ -88,7 +88,7 @@ namespace EngineTestes
             this.World.AddLight(ld5);
             #endregion
 
-            //FogPostEffect fog = new FogPostEffect(1,1000);
+            //FogPostEffect fog = new FogPostEffect(1, 1000);
             //fog.FogColor = Color.Red;
             //this.RenderTechnic.AddPostEffect(fog);
 
@@ -104,11 +104,14 @@ namespace EngineTestes
             //GaussianBlurPostEffect gb = new GaussianBlurPostEffect();
             //this.RenderTechnic.AddPostEffect(gb);
 
+            //RadialBlurPostEffect rb = new RadialBlurPostEffect();
+            //this.RenderTechnic.AddPostEffect(rb);
+
             //BloomPostEffect bloomPostEffect = new BloomPostEffect();
             //this.RenderTechnic.AddPostEffect(bloomPostEffect);
 
-            //DephtOfFieldPostEffect dof = new DephtOfFieldPostEffect();
-            //this.RenderTechnic.AddPostEffect(dof);
+            DephtOfFieldPostEffect dof = new DephtOfFieldPostEffect();
+            this.RenderTechnic.AddPostEffect(dof);
 
             //HdrPostEffect hdr = new HdrPostEffect();
             //this.RenderTechnic.AddPostEffect(hdr);

@@ -50,6 +50,12 @@ namespace PloobsEngine.Material
         IShader shader = null;
         private IAnimatedController controller;
 
+        public IAnimatedController Controller
+        {
+            get { return controller; }
+            set { controller = value; }
+        }
+
         #region IMaterial Members
 
         /// <summary>

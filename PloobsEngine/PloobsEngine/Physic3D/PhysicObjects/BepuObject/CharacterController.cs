@@ -55,6 +55,29 @@ namespace PloobsEngine.Physics.Bepu
         /// </summary>
         private float supportHeight;
 
+       
+        public void Duck()
+        {
+            if (IsSupported)
+            {
+                float minimunsupport = characterHeight/8;
+                collisionPairCollectorPositionOffset = new Vector3(0, -characterHeight / 2 - minimunsupport, 0);
+                collisionPairCollector.Height = minimunsupport*2;
+                
+            }
+        }
+
+
+        public void Stand()
+        {
+            if (IsSupported)
+            {
+                collisionPairCollectorPositionOffset = new Vector3(0, -characterHeight / 2 - supportHeight, 0);
+                collisionPairCollector.Height = supportHeight * 2;
+
+            }
+        
+        }
         /// <summary>
         /// Rate of increase in the character's speed in the movementDirection.
         /// </summary>
@@ -123,6 +146,11 @@ namespace PloobsEngine.Physics.Bepu
             }
         }
 
+
+
+        float characterHeight;
+
+        
         /// <summary>
         /// Constructs a simple character controller.
         /// </summary>
@@ -136,11 +164,13 @@ namespace PloobsEngine.Physics.Bepu
         {
             IsUpdating = false;
             characterWidth = characterWidth * scale.X;
-            characterHeight = characterHeight * scale.Y;
+            this.characterHeight = characterHeight * scale.Y;
             this.scale = scale;
             Body = new Capsule(position, characterHeight - characterWidth, characterWidth / 2, mass);
             collisionPairCollectorPositionOffset = new Vector3(0, -characterHeight / 2 - supportHeight, 0);
             collisionPairCollector = new Box(position + collisionPairCollectorPositionOffset, characterWidth, supportHeight * 2, characterWidth, 1);
+           
+            
             collisionPairCollector.CollisionInformation.CollisionRules.Personal = CollisionRule.NoNarrowPhaseUpdate; //Prevents collision detection/contact generation from being run.
             collisionPairCollector.IsAffectedByGravity = false;
             CollisionRules.AddRule(collisionPairCollector, Body, CollisionRule.NoBroadPhase);//Prevents the creation of any collision pairs between the body and the collector.
