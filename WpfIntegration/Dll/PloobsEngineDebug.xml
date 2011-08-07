@@ -15128,11 +15128,6 @@
       <param name="entities">The entities.</param>
       <param name="comparer">The comparer.</param>
     </member>
-    <member name="T:PloobsEngine.Physic.Constraints.PhysicConstraintTypes">
-      <summary>
-            Physic Types allowed
-            </summary>
-    </member>
     <member name="T:PloobsEngine.Material.DeferredWaterCompleteShader">
       <summary>
             Water with Reflection, refraction and animation shader

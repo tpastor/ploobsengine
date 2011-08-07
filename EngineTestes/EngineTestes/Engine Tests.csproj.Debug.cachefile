@@ -8,7 +8,6 @@ Content\Model\ilha.xnb
 Content\Model\LaserBolt2.xnb
 Content\Model\ShatterBlock.xnb
 Content\Textures\islandmap.xnb
-Content\Textures\cubeMap.xnb
 Content\AA\AreaMap129.xnb
 Content\AA\AreaMap17.xnb
 Content\AA\AreaMap33.xnb
@@ -64,7 +63,6 @@ Content\Textures\newtree.xnb
 Content\Textures\Bubble.xnb
 Content\Textures\height_map.xnb
 Content\Textures\normal_map.xnb
-Content\Textures\cubeMapGamma.xnb
 Content\Textures\EnemyBeastDiffuse.xnb
 Content\Textures\EnemyBeastNormal.xnb
 Content\Textures\EnemyBeastSpecular.xnb
@@ -167,7 +165,6 @@ Content\Textures\Particle.xnb
 Content\Textures\tile.xnb
 Content\Textures\DudeSheet.xnb
 Content\Textures\ExplosionParticles.xnb
-Content\Textures\islandmap2.xnb
 Content\Effects\mlaa.xnb
 Content\Effects\Effect1.xnb
 Content\Effects\AntiAliasingtabulastalker.xnb
@@ -221,6 +218,9 @@ Content\Textures\treedifuse_0.xnb
 Content\Textures\folha_0.xnb
 Content\Model\engine_diff_tex_0.xnb
 Content\Model\turret_alt_diff_tex_0.xnb
+Content\Textures\cubeMap.xnb
+Content\Textures\cubeMapGamma.xnb
+Content\Textures\islandmap2.xnb
 Content\Model\ball.xnb
 Content\ModelInfos\shadow.xml
 Content\ModelInfos\sponza.xml
