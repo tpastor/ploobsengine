@@ -110,8 +110,8 @@ namespace EngineTestes
             //BloomPostEffect bloomPostEffect = new BloomPostEffect();
             //this.RenderTechnic.AddPostEffect(bloomPostEffect);
 
-            DephtOfFieldPostEffect dof = new DephtOfFieldPostEffect();
-            this.RenderTechnic.AddPostEffect(dof);
+            //DephtOfFieldPostEffect dof = new DephtOfFieldPostEffect();
+            //this.RenderTechnic.AddPostEffect(dof);
 
             //HdrPostEffect hdr = new HdrPostEffect();
             //this.RenderTechnic.AddPostEffect(hdr);
@@ -129,8 +129,11 @@ namespace EngineTestes
             //AdvancedTone PostEffectTest = new AdvancedTone();
             //this.RenderTechnic.AddPostEffect(PostEffectTest);
 
-            UnderWater nt = new UnderWater();
-            this.RenderTechnic.AddPostEffect(nt);
+            GlowPostEffect glow = new GlowPostEffect();
+            this.RenderTechnic.AddPostEffect(glow);
+
+            //UnderWater nt = new UnderWater();
+            //this.RenderTechnic.AddPostEffect(nt);
             
             CameraFirstPerson cam = new CameraFirstPerson(GraphicInfo.Viewport);
             cam.MoveSpeed *= 5;

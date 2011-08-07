@@ -5,10 +5,7 @@ sampler colorSampler = sampler_state
 {
     Texture = (colorMap);
     AddressU = CLAMP;
-    AddressV = CLAMP;
-    MagFilter = LINEAR;
-    MinFilter = LINEAR;
-    Mipfilter = LINEAR;
+    AddressV = CLAMP;    
 };
 
 texture glowMapBlurried;

@@ -621,7 +621,7 @@ namespace PloobsEngine.SceneControl
         public void RenderFullScreenQuadVertexPixel(Effect effect,params SamplerState[] samplerStates)
         {
 
-            if (samplerStates != null)
+                if (samplerStates != null)
             {
                 for (int i = 0; i < samplerStates.Count(); i++)
                 {
