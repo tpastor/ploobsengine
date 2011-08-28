@@ -104,6 +104,11 @@ namespace PloobsEngine.Material
 
         private BasicEffect effect;
 
+        public BasicEffect BasicEffect
+        {
+            get { return effect; }            
+        }
+
         /// <summary>
         /// Initializes this instance.
         /// </summary>
