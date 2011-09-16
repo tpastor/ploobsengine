@@ -35,7 +35,9 @@ namespace PloobsEngine.Modelo
 
         public CustomModel(GraphicFactory factory, String modelName, int meshindex, BatchInformation[] binfo, Texture2D diffuse = null)
             : base(factory, modelName,false)
-        {            
+        {
+            System.Diagnostics.Debug.Assert(binfo != null);
+            System.Diagnostics.Debug.Assert(binfo.Count() != 0);
             BatchInformations = new BatchInformation[1][];
             BatchInformations[0] = binfo;
 
@@ -58,12 +60,14 @@ namespace PloobsEngine.Modelo
                 TextureInformations[0][j].LoadTexture();
                 if (diffuse == null)
                 {
-            
+                    if (model != null)
+                    {
                         BasicEffect effect = model.Meshes[meshindex].MeshParts[j].Effect as BasicEffect;
                         if (effect != null)
                         {
                             TextureInformations[0][j].SetTexture(effect.Texture, TextureType.DIFFUSE);
                         }
+                    }
                 }
                 else
                 {
@@ -99,7 +103,11 @@ namespace PloobsEngine.Modelo
 
         public CustomModel(GraphicFactory factory, String modelName, BatchInformation BatchInformation, TextureInformation TextureInformation, int meshindex = 0, int meshpartIndex = 0)        
             : base(factory, modelName, false)
-       {           
+       {
+
+           System.Diagnostics.Debug.Assert(BatchInformation != null);
+           System.Diagnostics.Debug.Assert(TextureInformation != null);
+
            BatchInformations = new BatchInformation[1][];
            BatchInformations[0] = new BatchInformation[1];
            BatchInformations[0][0] = BatchInformation;
@@ -119,11 +127,14 @@ namespace PloobsEngine.Modelo
 
            if (TextureInformation.getTexture(TextureType.DIFFUSE) == null)
            {
+               if (model != null)
+               {
                    BasicEffect effect = model.Meshes[meshindex].MeshParts[meshpartIndex].Effect as BasicEffect;
                    if (effect != null)
                    {
                        TextureInformations[0][0].SetTexture(effect.Texture, TextureType.DIFFUSE);
-                   }               
+                   }
+               }
            }           
        }         
         
