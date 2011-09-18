@@ -17,6 +17,7 @@ namespace ProjectTemplate
     /// <summary>
     /// Basic Forward Screen
     /// </summary>
+
     public class RadialBluScreen : IScene
     {
         /// <summary>
@@ -102,3 +103,4 @@ namespace ProjectTemplate
 
     }
 }
+
