@@ -448,4 +448,13 @@
   <data name="sphere1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>bin\Windows Phone\Debug\EnginePhoneContent\Models\sphere.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
   </data>
+  <data name="Heat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\x86\Debug\Content\Effects\Deferred\Heat.xnb;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Night" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\x86\Debug\Content\Effects\Deferred\Night.xnb;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="noise_tex6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\x86\Debug\Content\Textures\noise_tex6.xnb;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

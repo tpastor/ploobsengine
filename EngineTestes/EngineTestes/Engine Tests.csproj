@@ -175,8 +175,6 @@
     <Compile Include="Matali\Matalitests.cs" />
     <Compile Include="Material\ParalaxScreen.cs" />
     <Compile Include="OctreeScreen\OctreeScreen.cs" />
-    <Compile Include="Post\NightPostEffect.cs" />
-    <Compile Include="Post\HeatPostEffect.cs" />
     <Compile Include="Post\UnderWater.cs" />
     <Compile Include="Post\PostEffectScreen.cs" />
     <Compile Include="DeferredAnimatedScreen.cs" />

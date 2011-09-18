@@ -110,3 +110,6 @@ Content\Models\block.xnb
 Content\Models\dome.xnb
 Content\Models\Dsphere.xnb
 Content\Models\sphere.xnb
+Content\Textures\noise_tex6.xnb
+Content\Effects\Deferred\Night.xnb
+Content\Effects\Deferred\Heat.xnb

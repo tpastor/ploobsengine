@@ -554,6 +554,16 @@
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
     </Compile>
+    <Compile Include="Effects\Deferred\Night.fx">
+      <Name>Night</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+    </Compile>
+    <Compile Include="Effects\Deferred\Heat.fx">
+      <Name>Heat</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+    </Compile>
     <None Include="Effects\Water.fx">
       <Name>Water</Name>
       <Importer>EffectImporter</Importer>
@@ -606,6 +616,13 @@
     </Compile>
     <Compile Include="Textures\color_map.dds">
       <Name>color_map</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\noise_tex6.jpg">
+      <Name>noise_tex6</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
