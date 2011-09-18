@@ -8,23 +8,38 @@ using Microsoft.Xna.Framework;
 
 namespace EngineTestes.Post
 {
-    class UnderWater : IPostEffect
+    class SharpenPostEffect : IPostEffect
     {
-        public UnderWater()
+        public SharpenPostEffect()
             : base(PostEffectType.All)
         {
         }
         
         public override void Init(PloobsEngine.Engine.GraphicInfo ginfo, PloobsEngine.Engine.GraphicFactory factory)
         {
-            effect = factory.GetEffect("Effects/UnderWater");
+            effect = factory.GetEffect("Effects/Sharpen");
         }
         Effect effect;
-        float m_Timer ;        
+        float sharpAmount = 15;
+
+        public float SharpAmount
+        {
+            get { return sharpAmount; }
+            set { sharpAmount = value; }
+        }
+
+        float amount = 0.0006f;
+
+        public float Amount
+        {
+            get { return amount; }
+            set { amount = value; }
+        }
+
         public override void Draw(Microsoft.Xna.Framework.Graphics.Texture2D ImageToProcess, RenderHelper rHelper, Microsoft.Xna.Framework.GameTime gt, PloobsEngine.Engine.GraphicInfo GraphicInfo, IWorld world, bool useFloatBuffer)
         {
-            m_Timer += (float)gt.ElapsedGameTime.Milliseconds / 500;
-            effect.Parameters["timervalue"].SetValue(m_Timer);
+            effect.Parameters["sharpAmount"].SetValue(sharpAmount);
+            effect.Parameters["amount"].SetValue(amount);           
 
             if (useFloatBuffer)
                 rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, effect, GraphicInfo.FullScreenRectangle, SamplerState.PointClamp);
