@@ -88,11 +88,11 @@ namespace EngineTestes
             this.World.AddLight(ld5);
             #endregion
 
-            NightPostEffect np = new NightPostEffect();
-            this.RenderTechnic.AddPostEffect(np);
+            //NightPostEffect np = new NightPostEffect();
+            //this.RenderTechnic.AddPostEffect(np);
 
-            //HeatPostEffect h = new HeatPostEffect();
-            //this.RenderTechnic.AddPostEffect(h);
+            HeatPostEffect h = new HeatPostEffect();
+            this.RenderTechnic.AddPostEffect(h);
 
             //FogPostEffect fog = new FogPostEffect(1, 1000);
             //fog.FogColor = Color.Red;

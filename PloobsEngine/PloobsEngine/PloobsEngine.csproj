@@ -271,6 +271,8 @@
     <Compile Include="Physic3D\PhysicObjects\IPhysicObject.cs" />
     <Compile Include="Physic3D\SegmentInterceptInfo.cs" />
     <Compile Include="Physics2D\Farseer\GhostObject.cs" />
+    <Compile Include="SceneControl\Scene\PostEffects\HeatPostEffect.cs" />
+    <Compile Include="SceneControl\Scene\PostEffects\NightPostEffect.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\RadialBlurPostEffect.cs" />
     <Compile Include="SteeringSharperIa\AbstractVehicle.cs" />
     <Compile Include="SteeringSharperIa\AnnotationService.cs" />
@@ -527,12 +529,14 @@
     <None Include="bin\x86\Debug\Content\Effects\Deferred\glow.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\glowPost.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\GrassBillboard.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\Heat.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\HSV.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\InstancedBilboard.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\InstanceRenderGBuffer.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\Inverse.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\LineDetection.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\Luminance.xnb" />
+    <None Include="bin\x86\Debug\Content\Effects\Deferred\Night.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\noise.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\opacity.xnb" />
     <None Include="bin\x86\Debug\Content\Effects\Deferred\PlanarOriented.xnb" />
@@ -589,6 +593,7 @@
     <None Include="bin\x86\Debug\Content\Textures\explosion.xnb" />
     <None Include="bin\x86\Debug\Content\Textures\fire.xnb" />
     <None Include="bin\x86\Debug\Content\Textures\flare.xnb" />
+    <None Include="bin\x86\Debug\Content\Textures\noise_tex6.xnb" />
     <None Include="bin\x86\Debug\Content\Textures\normal.xnb" />
     <None Include="bin\x86\Debug\Content\Textures\random.xnb" />
     <None Include="bin\x86\Debug\Content\Textures\RANDOMNORMAL.xnb" />
