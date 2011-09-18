@@ -7,10 +7,7 @@ using PloobsEngine.SceneControl;
 using Microsoft.Xna.Framework;
 
 namespace EngineTestes.AI.FSM
-{
-    public delegate void Hanldler<P>(P p);
-    public delegate void HanldlerUp<P,Q>(P p,Q q);
-
+{ 
     class StateSample : IState
     {
         public StateSample(String Name,IObject Object)
@@ -23,9 +20,9 @@ namespace EngineTestes.AI.FSM
         #region IState Members
 
         public Func<IObject, string> NextStateFunc;
-        public Hanldler<IObject> InitFunc;
-        public Hanldler<IObject> FinishFunc;
-        public HanldlerUp<GameTime, IObject> UpdateFunc;
+        public Action<IObject> InitFunc;
+        public Action<IObject> FinishFunc;
+        public Action<GameTime, IObject> UpdateFunc;
 
         public void Init()
         {

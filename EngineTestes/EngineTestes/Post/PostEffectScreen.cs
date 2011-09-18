@@ -88,6 +88,12 @@ namespace EngineTestes
             this.World.AddLight(ld5);
             #endregion
 
+            NightPostEffect np = new NightPostEffect();
+            this.RenderTechnic.AddPostEffect(np);
+
+            //HeatPostEffect h = new HeatPostEffect();
+            //this.RenderTechnic.AddPostEffect(h);
+
             //FogPostEffect fog = new FogPostEffect(1, 1000);
             //fog.FogColor = Color.Red;
             //this.RenderTechnic.AddPostEffect(fog);
@@ -129,8 +135,8 @@ namespace EngineTestes
             //AdvancedTone PostEffectTest = new AdvancedTone();
             //this.RenderTechnic.AddPostEffect(PostEffectTest);
 
-            GlowPostEffect glow = new GlowPostEffect();
-            this.RenderTechnic.AddPostEffect(glow);
+            //GlowPostEffect glow = new GlowPostEffect();
+            //this.RenderTechnic.AddPostEffect(glow);
 
             //UnderWater nt = new UnderWater();
             //this.RenderTechnic.AddPostEffect(nt);
