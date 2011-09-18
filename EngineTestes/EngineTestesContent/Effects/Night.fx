@@ -4,6 +4,7 @@ texture tex;
 sampler noiseTex = sampler_state
 {
    Texture = <tex>;      
+   AddressU  = Wrap; AddressV = Wrap;    
 };
 
 struct PS_INPUT
@@ -12,7 +13,7 @@ struct PS_INPUT
 };
 
 float elapsedTime;
-float luminanceThreshold = 0.2;
+float luminanceThreshold = 0.1;
 float colorAmplification = 4;
 
 float4 UnderWater( PS_INPUT Input ) : COLOR0

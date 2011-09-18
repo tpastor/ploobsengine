@@ -21,9 +21,13 @@ namespace EngineTestes.Post
         }
         Effect effect;
         Texture2D tex;
+        private float m_Timer = 0;    
+
         public override void Draw(Microsoft.Xna.Framework.Graphics.Texture2D ImageToProcess, RenderHelper rHelper, Microsoft.Xna.Framework.GameTime gt, PloobsEngine.Engine.GraphicInfo GraphicInfo, IWorld world, bool useFloatBuffer)
         {
-            effect.Parameters["elapsedTime"].SetValue((float)gt.ElapsedGameTime.TotalMilliseconds);
+
+            m_Timer += (float)gt.ElapsedGameTime.Milliseconds / 500;
+            effect.Parameters["elapsedTime"].SetValue(m_Timer);
             effect.Parameters["tex"].SetValue(tex);
             
 
