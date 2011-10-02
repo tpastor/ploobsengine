@@ -34,6 +34,7 @@ using PloobsEngine.Entity;
 using PloobsEngine.Engine;
 using PloobsEngine.Particles;
 using System;
+using System.Threading.Tasks;
 
 namespace PloobsEngine.SceneControl
 {
@@ -52,7 +53,12 @@ namespace PloobsEngine.SceneControl
         /// <param name="PhysicWorld">The physic world.</param>
         /// <param name="Culler">The culler.</param>
         /// <param name="particleManager">The particle manager.</param>
+#if WINDOWS
+        /// <param name="multiThread">if set to <c>true</c> [mult thread].</param>
+        public IWorld(IPhysicWorld PhysicWorld, ICuller Culler, IParticleManager particleManager = null,bool multiThread = false)
+#else
         public IWorld(IPhysicWorld PhysicWorld, ICuller Culler, IParticleManager particleManager = null)
+#endif
         {
             if (PhysicWorld == null)
             {
@@ -77,6 +83,9 @@ namespace PloobsEngine.SceneControl
             SoundEmiters3D = new List<ISoundEmitter3D>();
             this.Culler = Culler;
             this.culler.world = this;
+#if WINDOWS
+            this.multThreading = multiThread;
+#endif
         }
 
         #if !WINDOWS_PHONE
@@ -214,34 +223,88 @@ namespace PloobsEngine.SceneControl
 
         }
 
+#if WINDOWS
+        bool multThreading = true;
+        TaskFactory factory = new TaskFactory(TaskScheduler.Default);        
+        List<Task> tasks = new List<Task>();
+#endif
         /// <summary>
         /// Updates the world.
         /// </summary>
         /// <param name="gt">The gt.</param>
         protected virtual void UpdateWorld(GameTime gt)
         {
-            PhysicWorld.iUpdate(gt);
-
-            ///critical code, no logging here, just the assert. (not present in the release)
-            Debug.Assert(CameraManager.ActiveCamera != null);
-            CameraManager.ActiveCamera.iUpdate(gt);
-
-            IObject[] toPass = Objects.ToArray();
-            for (int i = 0; i < toPass.Count(); i++)            
+#if WINDOWS
+            if (!multThreading)
             {
-                toPass[i].iUpdateObject(gt, CameraManager.ActiveCamera, Lights);                
+#endif
+                PhysicWorld.iUpdate(gt);
+
+                Debug.Assert(CameraManager.ActiveCamera != null);
+                CameraManager.ActiveCamera.iUpdate(gt);
+
+                IObject[] toPass = Objects.ToArray();
+                for (int i = 0; i < toPass.Count(); i++)
+                {
+                    toPass[i].iUpdateObject(gt, CameraManager.ActiveCamera, Lights);
+                }
+
+                if (ParticleManager != null)
+                    ParticleManager.iUpdate3D(gt, CameraManager.ActiveCamera.View, CameraManager.ActiveCamera.Projection, CameraManager.ActiveCamera.Position);
+
+                foreach (ISoundEmitter3D item in SoundEmiters3D)
+                {
+                    item.iUpdate(gt, CameraManager.ActiveCamera);
+                }
+#if WINDOWS
             }
-
-            if(ParticleManager!= null)
-                ParticleManager.iUpdate3D(gt, CameraManager.ActiveCamera.View, CameraManager.ActiveCamera.Projection, CameraManager.ActiveCamera.Position);
-
-            foreach (ISoundEmitter3D item in SoundEmiters3D)
+            else
             {
-                item.iUpdate(gt,CameraManager.ActiveCamera);                
+                Debug.Assert(CameraManager.ActiveCamera != null);
+                CameraManager.ActiveCamera.iUpdate(gt);
+
+                tasks.Clear();
+                float simultaneous = Objects.Count <= Environment.ProcessorCount * 2 ? Objects.Count : Environment.ProcessorCount * 2;
+                int perThread = (int)Math.Ceiling(((float)Objects.Count) / simultaneous);
+                IObject[] toPass = Objects.ToArray();
+
+                int num = Objects.Count - 1;
+                ILight[] lights = Lights.ToArray();
+
+                for (int j = 0; j < simultaneous; j++)
+                {
+                    int initial = num;
+                    tasks.Add(factory.StartNew(
+                        () =>
+                        {
+                            for (int i = initial; i > initial - perThread && i >= 0; i--)
+                            {
+                                toPass[i].iUpdateObject(gt, CameraManager.ActiveCamera,lights );
+                            }
+                        }
+                    ));
+                    num -= perThread;
+                }
+                
+                PhysicWorld.iUpdate(gt);
+
+                if (ParticleManager != null)
+                    ParticleManager.iUpdate3D(gt, CameraManager.ActiveCamera.View, CameraManager.ActiveCamera.Projection, CameraManager.ActiveCamera.Position);
+                
+                if (multThreading)
+                {
+                    Task.WaitAll(tasks.ToArray());                 
+                }
+
+                foreach (ISoundEmitter3D item in SoundEmiters3D)
+                {
+                    item.iUpdate(gt, CameraManager.ActiveCamera);
+                }
             }
-
-
+#endif
         }
+
+
         internal void iUpdateWorld(GameTime gt)
         {
             UpdateWorld(gt);
