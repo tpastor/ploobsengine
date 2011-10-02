@@ -88,11 +88,11 @@ namespace EngineTestes
             this.World.AddLight(ld5);
             #endregion
 
-            SharpenPostEffect sharpen = new SharpenPostEffect();
-            this.RenderTechnic.AddPostEffect(sharpen);
+            //SharpenPostEffect sharpen = new SharpenPostEffect();
+            //this.RenderTechnic.AddPostEffect(sharpen);
 
-            //DreamPostEffect dp = new DreamPostEffect();
-            //this.RenderTechnic.AddPostEffect(dp);
+            DreamPostEffect dp = new DreamPostEffect();
+            this.RenderTechnic.AddPostEffect(dp);
 
             //NightPostEffect np = new NightPostEffect();
             //this.RenderTechnic.AddPostEffect(np);

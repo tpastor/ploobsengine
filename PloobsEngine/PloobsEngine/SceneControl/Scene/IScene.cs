@@ -104,7 +104,7 @@ namespace PloobsEngine.SceneControl
         /// <param name="gameTime"></param>
         /// <param name="render"></param>
         protected override void Draw(Microsoft.Xna.Framework.GameTime gameTime,RenderHelper render)
-        {
+        {            
             if (_isFirstTimeTechnic == true)
             {                                
                 _renderTecnic.iBeforeFirstExecution(render, this.World);                
@@ -113,6 +113,16 @@ namespace PloobsEngine.SceneControl
             _renderTecnic.iExecuteTechnic(gameTime, render, this.World);           
             
         }
+
+        /// <summary>
+        /// CleanUp the Scene
+        /// </summary>
+        /// <param name="engine"></param>
+        protected override void CleanUp(EngineStuff engine)
+        {            
+            base.CleanUp(engine);
+        }
+
 
         /// <summary>
         /// Load content for the screen.        

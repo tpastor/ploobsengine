@@ -93,6 +93,8 @@ namespace PloobsEngine.SceneControl
         private IModelo modelo;
         private IMaterial material;
         private Matrix worldMatrix;
+
+        private object materialLock = new object();        
              
 
         /// <summary>
@@ -160,11 +162,13 @@ namespace PloobsEngine.SceneControl
         {
             set
             {
-                this.material = value;
+                lock (materialLock) 
+                    this.material = value;
             }
             get
             {
-                return material;
+                lock (materialLock) 
+                    return material;
             }
         }        
         
@@ -177,10 +181,11 @@ namespace PloobsEngine.SceneControl
         protected virtual void UpdateObject(GameTime gt, ICamera cam, IList<ILight> luzes) { }
         internal void iUpdateObject(GameTime gt, ICamera cam, IList<ILight> luzes)
         {
-            UpdateObject(gt, cam, luzes);
+            
+            lock (materialLock)
+                material.Update(gt, this, luzes);
+            
             worldMatrix = physicObject.WorldMatrix;
-
-            Material.Update(gt, this, luzes);
 
             if (lastFrameWorld != WorldMatrix)
             {
@@ -190,13 +195,16 @@ namespace PloobsEngine.SceneControl
                 lastFrameWorld = WorldMatrix;
             }
 
-            foreach (var item in IObjectAttachment)
-            {
-                item.IUpdate(this, gt);
-            }
+                UpdateObject(gt, cam, luzes);
 
-            if (OnUpdate != null)
-                OnUpdate(this, gt,cam);
+                foreach (var item in IObjectAttachment)
+                {
+                    item.IUpdate(this, gt);
+                }
+
+                if (OnUpdate != null)
+                    OnUpdate(this, gt, cam);
+            
         }       
 
 
