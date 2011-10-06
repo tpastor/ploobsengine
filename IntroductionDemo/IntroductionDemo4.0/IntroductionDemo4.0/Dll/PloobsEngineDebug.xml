@@ -12588,6 +12588,13 @@
       <param name="render">
       </param>
     </member>
+    <member name="M:PloobsEngine.SceneControl.IScene.CleanUp(PloobsEngine.Engine.EngineStuff)">
+      <summary>
+            CleanUp the Scene
+            </summary>
+      <param name="engine">
+      </param>
+    </member>
     <member name="M:PloobsEngine.SceneControl.IScene.LoadContent(PloobsEngine.Engine.GraphicInfo,PloobsEngine.Engine.GraphicFactory,PloobsEngine.SceneControl.IContentManager)">
       <summary>
             Load content for the screen.        
@@ -13022,13 +13029,8 @@
             Specification of a world
             </summary>
     </member>
-    <member name="M:PloobsEngine.SceneControl.IWorld.#ctor(PloobsEngine.Physics.IPhysicWorld,PloobsEngine.SceneControl.ICuller,PloobsEngine.Particles.IParticleManager)">
-      <summary>
-            Initializes a new instance of the <see cref="T:PloobsEngine.SceneControl.IWorld" /> class.
-            </summary>
-      <param name="PhysicWorld">The physic world.</param>
-      <param name="Culler">The culler.</param>
-      <param name="particleManager">The particle manager.</param>
+    <member name="M:PloobsEngine.SceneControl.IWorld.#ctor(PloobsEngine.Physics.IPhysicWorld,PloobsEngine.SceneControl.ICuller,PloobsEngine.Particles.IParticleManager,System.Boolean)">
+      <param name="multiThread">if set to <c>true</c> [mult thread].</param>
     </member>
     <member name="M:PloobsEngine.SceneControl.IWorld.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
       <summary>

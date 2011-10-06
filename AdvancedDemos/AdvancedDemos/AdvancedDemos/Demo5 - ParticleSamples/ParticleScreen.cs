@@ -35,7 +35,7 @@ namespace AdvancedDemo4._0
         /// <param name="world">The world.</param>
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            world = new IWorld(new BepuPhysicWorld(-0.097f,true), new SimpleCuller(),new DPSFParticleManager());
+            world = new IWorld(new BepuPhysicWorld(-0.097f, true), new SimpleCuller(), new DPSFParticleManager(), true);
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
             desc.UseFloatingBufferForLightMap = true;
