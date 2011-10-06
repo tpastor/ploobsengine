@@ -23,7 +23,7 @@ namespace IntroductionDemo4._0
         {
             ///create the world using bepu as physic api and a simple culler implementation
             ///IT DOES NOT USE PARTICLE SYSTEMS (see the complete constructor, see the ParticleDemo to know how to add particle support)
-            world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
+            world = new IWorld(new BepuPhysicWorld(), new SimpleCuller(), null, true);
 
             ///Create the deferred description
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
