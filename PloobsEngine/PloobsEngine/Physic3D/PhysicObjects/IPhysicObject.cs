@@ -111,15 +111,7 @@ namespace PloobsEngine.Physics
         /// <summary>
         /// Gets the physic object type.
         /// </summary>
-        public abstract PhysicObjectTypes PhysicObjectTypes { get; }
-        /// <summary>
-        /// Enables this instance.
-        /// </summary>
-        public abstract void Enable();
-        /// <summary>
-        /// Disables this instance.
-        /// </summary>
-        public abstract void Disable();
+        public abstract PhysicObjectTypes PhysicObjectTypes { get; }        
         /// <summary>
         /// Applies an impulse.
         /// </summary>

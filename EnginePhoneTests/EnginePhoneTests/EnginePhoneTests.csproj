@@ -52,7 +52,10 @@
     <XnaCompressContent>false</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BEPUphysics, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31f6a8732a21de19, processorArchitecture=MSIL" />
+    <Reference Include="BEPUphysics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31f6a8732a21de19, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\Phone7\BEPUphysics.dll</HintPath>
+    </Reference>
     <Reference Include="DPSFPhone, Version=2.1.0.0, Culture=neutral, PublicKeyToken=32c832bfa7326ee2, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\Phone7\DPSFPhone.dll</HintPath>

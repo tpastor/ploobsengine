@@ -340,22 +340,7 @@ namespace PloobsEngine.Physics.Bepu
             }
         }
 
-        /// <summary>
-        /// Always enabled
-        /// </summary>
-        public override void Enable()
-        {
-            ActiveLogger.LogMessage("triangle mesh is always enabled", LogLevel.Warning);
-        }
-
-        /// <summary>
-        /// Always enabled
-        /// </summary>
-        public override void Disable()
-        {
-            ActiveLogger.LogMessage("triangle mesh is always enabled", LogLevel.Warning);
-        }
-
+        
         /// <summary>
         /// Cant Aply Impulse on Static Object
         /// </summary>

@@ -195,16 +195,7 @@ namespace PloobsEngine.Physics.Bepu
             get { return PhysicObjectTypes.SPECIALIZEDMOVER; }
         }
 
-        public override void Enable()
-        {
-            bepuEntityObject.Enable();
-        }
-
-        public override void Disable()
-        {
-            bepuEntityObject.Disable();
-        }
-
+        
         public override void ApplyImpulse(Vector3 position, Vector3 force)
         {
             bepuEntityObject.ApplyImpulse(position,force);

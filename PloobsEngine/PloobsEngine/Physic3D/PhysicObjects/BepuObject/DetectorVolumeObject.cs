@@ -146,15 +146,6 @@ namespace PloobsEngine.Physics.Bepu
             }
         }
 
-        public override void Enable()
-        {
-            this.mesh.Enable();
-        }
-
-        public override void Disable()
-        {
-            this.mesh.Disable();
-        }
 
 
         public override BoundingBox BoundingBox
