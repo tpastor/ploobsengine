@@ -21,36 +21,33 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using BEPUphysics.Entities;
+using BEPUphysics.Collidables.MobileCollidables;
 using Microsoft.Xna.Framework;
-using BEPUphysics.DataStructures;
-using BEPUphysics.Entities.Prefabs;
 using PloobsEngine.Engine.Logger;
-using BEPUphysics.MathExtensions;
+using BEPUphysics.Entities.Prefabs;
 
 namespace PloobsEngine.Physics.Bepu
 {
-    public class CharacterObject : BepuEntityObject
+    public class FullCharacterObject : BepuEntityObject
     {
-        CharacterController characterController;
+        BEPUphysicsDemos.AlternateMovement.Character.CharacterController characterController;
         float YAlignement;
         Matrix rotation;
 
-        public CharacterObject(Vector3 position, Matrix rotation, float characterHeight, float characterWidth, float mass, float supportHeight, Vector3 scale, float YAlignement = 0)
+        public FullCharacterObject(Vector3 position, Matrix rotation, float height, float radius, Vector3 scale, float YAlignement = 0)
         {
+            this.scale = scale;
             this.rotation = rotation;
             this.YAlignement = YAlignement * scale.Y;
-            this.characterController = new CharacterController(position, characterHeight, characterWidth, supportHeight,mass, scale);
+            this.characterController = new BEPUphysicsDemos.AlternateMovement.Character.CharacterController(new Cylinder(position,height* scale.Y,radius * scale.X));            
             this.entity = characterController.Body;
-            
-        
-        }        
+        }
 
-        public CharacterController CharacterController
+        public BEPUphysicsDemos.AlternateMovement.Character.CharacterController CharacterController
         {
             get { return characterController; }
             set { characterController = value; }
-        }
+        }       
         
 
         public override PhysicObjectTypes PhysicObjectTypes
@@ -73,23 +70,24 @@ namespace PloobsEngine.Physics.Bepu
         {
             get
             {
-                return characterController.Position;
+                return characterController.Body.Position;
             }
             set
             {
-                characterController.Position = value;
+                characterController.Body.Position = value;
             }
         }
 
+        Vector3 scale;
         public override Vector3 Scale
         {
             get
             {
-                return CharacterController.scale;
+                return scale;
             }
             set
             {
-                CharacterController.scale = value;
+                ActiveLogger.LogMessage("cant set scele of a fullcharacter", LogLevel.Warning);
             }
         }
 
@@ -116,8 +114,8 @@ namespace PloobsEngine.Physics.Bepu
         }
 
         public void MoveToDirection(Vector2 movementDirection)
-        {           
-            CharacterController.MovementDirection = movementDirection;                               
+        {
+            CharacterController.HorizontalMotionConstraint.MovementDirection = movementDirection;
         }
 
         public void Jump()
@@ -128,19 +126,11 @@ namespace PloobsEngine.Physics.Bepu
         private bool isducking = false;
         public void Duck()
         {
-            if (!isducking)
-            {
-                isducking = true;
-                characterController.Duck(); 
-            }
+            CharacterController.StanceManager.DesiredStance = BEPUphysicsDemos.AlternateMovement.Character.Stance.Crouching ;
         }
         public void StandUp()
         {
-            if (isducking)
-            {
-                isducking = false;
-                characterController.Stand(); 
-            }
+            CharacterController.StanceManager.DesiredStance = BEPUphysicsDemos.AlternateMovement.Character.Stance.Standing;
         }
         public override Vector3 FaceVector
         {
@@ -151,7 +141,7 @@ namespace PloobsEngine.Physics.Bepu
         {
             get
             {
-                Vector3 pos = new Vector3(CharacterController.Position.X, CharacterController.Position.Y + this.YAlignement, CharacterController.Position.Z);
+                Vector3 pos = new Vector3(Position.X, Position.Y + this.YAlignement, Position.Z);
                 return Matrix.CreateScale(Scale) * Rotation * Matrix.CreateTranslation(pos);                
             }
         }
@@ -207,3 +197,47 @@ namespace PloobsEngine.Physics.Bepu
         }
     }
 }
+
+
+/*
+              //Collect the movement impulses.
+
+                Vector3 movementDir;
+
+                if (keyboardInput.IsKeyDown(Keys.E))
+                {
+                    movementDir = Camera.WorldMatrix.Forward;
+                    totalMovement += Vector2.Normalize(new Vector2(movementDir.X, movementDir.Z));
+                }
+                if (keyboardInput.IsKeyDown(Keys.D))
+                {
+                    movementDir = Camera.WorldMatrix.Forward;
+                    totalMovement -= Vector2.Normalize(new Vector2(movementDir.X, movementDir.Z));
+                }
+                if (keyboardInput.IsKeyDown(Keys.S))
+                {
+                    movementDir = Camera.WorldMatrix.Left;
+                    totalMovement += Vector2.Normalize(new Vector2(movementDir.X, movementDir.Z));
+                }
+                if (keyboardInput.IsKeyDown(Keys.F))
+                {
+                    movementDir = Camera.WorldMatrix.Right;
+                    totalMovement += Vector2.Normalize(new Vector2(movementDir.X, movementDir.Z));
+                }
+                if (totalMovement == Vector2.Zero)
+                    CharacterController.HorizontalMotionConstraint.MovementDirection = Vector2.Zero;
+                else
+                    CharacterController.HorizontalMotionConstraint.MovementDirection = Vector2.Normalize(totalMovement);
+
+                CharacterController.StanceManager.DesiredStance = keyboardInput.IsKeyDown(Keys.Z) ? Stance.Crouching : Stance.Standing;
+
+                //Jumping
+                if (previousKeyboardInput.IsKeyUp(Keys.A) && keyboardInput.IsKeyDown(Keys.A))
+                {
+                    CharacterController.Jump();
+                }
+#endif
+
+   
+
+*/
