@@ -150,6 +150,11 @@ namespace PloobsEngine.Physics
     public enum PhysicObjectTypes 
     {
         /// <summary>
+        /// Mobile Physic Obj
+        /// </summary>
+        MobilePhysicObject,
+
+        /// <summary>
         /// Terrain
         /// </summary>
         TERRAIN,
