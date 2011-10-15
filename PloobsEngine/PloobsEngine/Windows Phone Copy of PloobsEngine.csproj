@@ -203,6 +203,7 @@
     <Compile Include="Physic3D\PhysicObjects\BepuObject\DetectorVolumeObject.cs" />
     <Compile Include="Physic3D\PhysicObjects\BepuObject\GhostObject.cs" />
     <Compile Include="Physic3D\PhysicObjects\BepuObject\GravitationFieldObject.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\MobileMeshObject.cs" />
     <Compile Include="Physic3D\PhysicObjects\BepuObject\ObjectMover.cs" />
     <Compile Include="Physic3D\PhysicObjects\BepuObject\SphereObject.cs" />
     <Compile Include="Physic3D\PhysicObjects\BepuObject\TerrainObject.cs" />
