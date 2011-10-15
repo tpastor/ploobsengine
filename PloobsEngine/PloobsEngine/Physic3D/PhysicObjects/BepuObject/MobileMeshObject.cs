@@ -27,76 +27,74 @@ using BEPUphysics.Collidables;
 using BEPUphysics.MathExtensions;
 using PloobsEngine.Engine.Logger;
 using System;
+using BEPUphysics.Entities.Prefabs;
+using BEPUphysics.CollisionShapes;
 
 namespace PloobsEngine.Physics.Bepu
 {
     /// <summary>
-    /// Static Triangle Mesh Physic Object
+    /// Dynamic Mesh Physic Object
     /// </summary>
-    public class TriangleMeshObject : IPhysicObject
-    {        
-        StaticMesh triangleGroup;
-        IObject owner;        
-        Vector3 position;
+    public class MobileMeshObject : IPhysicObject
+    {
+        MobileMesh triangleGroup;
+        IObject owner;                
 
         /// <summary>
-        /// Gets or sets the static mesh.
+        /// Gets or sets the Mobile mesh.
         /// </summary>
         /// <value>
-        /// The static mesh.
+        /// The MObile mesh.
         /// </value>
-        public StaticMesh StaticMesh 
+        public MobileMesh MobileMesh 
         {
             get { return triangleGroup; }
             set { triangleGroup = value; }
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TriangleMeshObject"/> class.
+        /// Initializes a new instance of the <see cref="MobileMeshObject "/> class.
         /// </summary>
         /// <param name="model">The model.</param>
         /// <param name="pos">The pos.</param>
         /// <param name="rotation">The rotation.</param>
         /// <param name="scale">The scale.</param>
         /// <param name="materialDescription">The material description.</param>
-        public TriangleMeshObject(IModelo model, Vector3 pos, Matrix rotation, Vector3 scale, MaterialDescription materialDescription)
+        /// <param name="MobileMeshSolidity">The mobile mesh solidity.</param>
+        /// <param name="mass">The mass.</param>
+        public MobileMeshObject(IModelo model, Vector3 pos, Matrix rotation, Vector3 scale, MaterialDescription materialDescription,MobileMeshSolidity MobileMeshSolidity,float mass)
         {
             System.Diagnostics.Debug.Assert(model != null);
             System.Diagnostics.Debug.Assert(scale != Vector3.Zero);
-
-            this.rotation = rotation;
-            this.scale = scale;
-            this.position = pos;
+            
+            this.scale = scale;            
             Vector3[] vertices = null;
             int[] indices = null;
             ExtractData(ref vertices, ref indices, model);
-            triangleGroup = new StaticMesh(vertices, indices, new AffineTransform(scale, Quaternion.CreateFromRotationMatrix(rotation), position));
-            faceVector = Vector3.Transform(Vector3.Forward, triangleGroup.WorldTransform.Matrix);
+            triangleGroup = new MobileMesh(vertices, indices, new AffineTransform(scale, Quaternion.CreateFromRotationMatrix(rotation), pos), MobileMeshSolidity,mass);        
             triangleGroup.Material = new BEPUphysics.Materials.Material(materialDescription.StaticFriction, materialDescription.DinamicFriction, materialDescription.Bounciness);
-            
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TriangleMeshObject"/> class.
+        /// Initializes a new instance of the <see cref="MobileMeshObject "/> class.
         /// </summary>
         /// <param name="model">The model.</param>
         /// <param name="pos">The pos.</param>
         /// <param name="rotation">The rotation.</param>
         /// <param name="scale">The scale.</param>
         /// <param name="materialDescription">The material description.</param>
-        public TriangleMeshObject(Model model, Vector3 pos, Matrix rotation, Vector3 scale, MaterialDescription materialDescription)
+        /// <param name="MobileMeshSolidity">The mobile mesh solidity.</param>
+        /// <param name="mass">The mass.</param>
+        public MobileMeshObject(Model model, Vector3 pos, Matrix rotation, Vector3 scale, MaterialDescription materialDescription, MobileMeshSolidity MobileMeshSolidity,float mass)
         {
             System.Diagnostics.Debug.Assert(model != null);
             System.Diagnostics.Debug.Assert(scale != Vector3.Zero);
-
-            this.rotation = rotation;
-            this.scale = scale;
-            this.position = pos;
+                        
+            this.scale = scale;            
             Vector3[] vertices;
             int[] indices;
             TriangleMesh.GetVerticesAndIndicesFromModel(model, out vertices, out indices);
-            triangleGroup = new StaticMesh(vertices, indices, new AffineTransform(scale, Quaternion.CreateFromRotationMatrix(rotation), position));
-            faceVector = Vector3.Transform(Vector3.Forward, triangleGroup.WorldTransform.Matrix);            
+            triangleGroup = new MobileMesh(vertices, indices, new AffineTransform(scale, Quaternion.CreateFromRotationMatrix(rotation), pos), MobileMeshSolidity, mass);            
             triangleGroup.Material = new BEPUphysics.Materials.Material(materialDescription.StaticFriction,materialDescription.DinamicFriction,materialDescription.Bounciness);
         }
 
@@ -193,7 +191,7 @@ namespace PloobsEngine.Physics.Bepu
         /// </summary>
         public override PhysicObjectTypes PhysicObjectTypes
         {
-            get { return PhysicObjectTypes.TRIANGLEMESHOBJECT; }
+            get { return PhysicObjectTypes.MobilePhysicObject; }
         }
 
         #region IPhysicObject Members
@@ -231,11 +229,10 @@ namespace PloobsEngine.Physics.Bepu
             }
             set
             {
-                ActiveLogger.LogMessage("scale in triangle mesh should not be called", LogLevel.Warning);
+                ActiveLogger.LogMessage("scale in mobile mesh should not be called", LogLevel.Warning);
             }
         }
-
-        private Matrix rotation = Matrix.Identity;
+                
         /// <summary>
         /// Gets or sets the rotation.
         /// </summary>
@@ -246,21 +243,20 @@ namespace PloobsEngine.Physics.Bepu
         {
             get
             {
-                return rotation;
+                return Matrix.CreateFromQuaternion(triangleGroup.Orientation);
             }
             set
             {
-                ActiveLogger.LogMessage("Rotation in triangle mesh should not be called", LogLevel.Warning);   
+                triangleGroup.Orientation = Quaternion.CreateFromRotationMatrix(value);
             }
         }
-
-        private Vector3 faceVector;
+                
         /// <summary>
         /// Vector pointing to the front
         /// </summary>
         public override Vector3 FaceVector
         {
-            get { return faceVector; }
+            get { return triangleGroup.WorldTransform.Forward; }
         }
 
         /// <summary>
@@ -268,7 +264,7 @@ namespace PloobsEngine.Physics.Bepu
         /// </summary>
         public override Matrix WorldMatrix
         {
-            get { return triangleGroup.WorldTransform.Matrix; }
+            get { return Matrix.CreateScale(scale) * triangleGroup.WorldTransform; }
         }
 
 
@@ -357,7 +353,7 @@ namespace PloobsEngine.Physics.Bepu
         /// </summary>
         public override BoundingBox BoundingBox
         {
-            get { return triangleGroup.BoundingBox; }
+            get { return triangleGroup.CollisionInformation.BoundingBox; }
         }
 
         #if !WINDOWS_PHONE
