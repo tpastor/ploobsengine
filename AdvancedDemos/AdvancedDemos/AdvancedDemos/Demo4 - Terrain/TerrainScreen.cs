@@ -29,7 +29,7 @@ namespace AdvancedDemo4._0
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             ///with mult thread support
-            world = new IWorld(new BepuPhysicWorld(-0.97f, true, 1, true), new SimpleCuller(), null, true);
+            world = new IWorld(new BepuPhysicWorld(-0.97f,true,1,true), new SimpleCuller());
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
             desc.UseFloatingBufferForLightMap = true;            
