@@ -34,7 +34,9 @@ using PloobsEngine.Entity;
 using PloobsEngine.Engine;
 using PloobsEngine.Particles;
 using System;
+#if !WINDOWS_PHONE
 using System.Threading.Tasks;
+#endif
 
 namespace PloobsEngine.SceneControl
 {

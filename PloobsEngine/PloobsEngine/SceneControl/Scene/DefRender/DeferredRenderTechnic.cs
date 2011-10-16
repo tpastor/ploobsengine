@@ -102,6 +102,9 @@ namespace PloobsEngine.SceneControl
             this.ForwardPass = ForwardPass;
             this.RenderTargetsNameToDefferedDebug = RenderTargetsNameToDefferedDebug;
             this.BackGroundColor = BackGroundColor;
+            OrderAllObjectsBeforeDraw = null;
+            OrderDeferredObjectsBeforeDraw = null;
+            OrderForwardObjectsBeforeDraw = null;
         }
 
         public bool PhysicDebug ;
@@ -117,6 +120,22 @@ namespace PloobsEngine.SceneControl
         public ForwardPass ForwardPass;
         public String[] RenderTargetsNameToDefferedDebug;
         public Color BackGroundColor;
+
+        /// <summary>
+        /// Function called all frames to order all objects that are not culled
+        /// Use this to sort objects by material and minimize gpu state changes
+        /// </summary>
+        public Func<List<IObject>, List<IObject>> OrderAllObjectsBeforeDraw;
+        /// <summary>
+        /// Function called all frames to order all Deferred objects that are not culled
+        /// Use this to sort objects by material and minimize gpu state changes
+        /// </summary>
+        public Func<List<IObject>, List<IObject>> OrderDeferredObjectsBeforeDraw ;
+        /// <summary>
+        /// Function called all frames to order all Forward objects that are not culled
+        /// Use this to sort objects by material and minimize gpu state changes
+        /// </summary>
+        public Func<List<IObject>, List<IObject>> OrderForwardObjectsBeforeDraw ;
 
     }
 
@@ -249,6 +268,14 @@ namespace PloobsEngine.SceneControl
             List<IObject> DeferrednotCulledObjectsList = world.Culler.GetNotCulledObjectsList(MaterialType.DEFERRED);
             List<IObject> ForwardnotCulledObjectsList = world.Culler.GetNotCulledObjectsList(MaterialType.FORWARD);
 
+            if (desc.OrderAllObjectsBeforeDraw != null)
+                AllnotCulledObjectsList = desc.OrderAllObjectsBeforeDraw(AllnotCulledObjectsList);
+
+            if (desc.OrderDeferredObjectsBeforeDraw != null)
+                DeferrednotCulledObjectsList = desc.OrderDeferredObjectsBeforeDraw(DeferrednotCulledObjectsList);
+
+            if (desc.OrderForwardObjectsBeforeDraw != null)
+                ForwardnotCulledObjectsList = desc.OrderForwardObjectsBeforeDraw(ForwardnotCulledObjectsList);
 
             deferredGBuffer.PreDrawScene(gameTime, world, render, ginfo, AllnotCulledObjectsList);                        
             deferredGBuffer.SetGBuffer(render);            

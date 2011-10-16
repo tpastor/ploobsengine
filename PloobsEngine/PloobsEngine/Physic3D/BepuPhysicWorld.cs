@@ -165,6 +165,14 @@ namespace PloobsEngine.Physics
                 space.Add(bo.StaticMesh);
                 objs.Add(obj);
             }
+            else if (obj.PhysicObjectTypes == PhysicObjectTypes.MobilePhysicObject)
+            {
+                MobileMeshObject bo = (MobileMeshObject)obj;
+                bo.MobileMesh.Tag = obj;
+                space.Add(bo.MobileMesh);
+                objs.Add(obj);
+            }
+
             else if (obj.PhysicObjectTypes == PhysicObjectTypes.SPECIALIZEDMOVER)
             {
                 ObjectMover m = (ObjectMover)obj;
@@ -235,6 +243,13 @@ namespace PloobsEngine.Physics
                 space.Remove(bo.StaticMesh);
                 objs.Remove(obj);
             }
+            else if (obj.PhysicObjectTypes == PhysicObjectTypes.MobilePhysicObject)
+            {
+                MobileMeshObject bo = (MobileMeshObject)obj;
+                bo.MobileMesh.Tag = null;
+                space.Remove(bo.MobileMesh);
+                objs.Remove(obj);
+            }
             else if (obj.PhysicObjectTypes == PhysicObjectTypes.SPECIALIZEDMOVER)
             {
                 ObjectMover m = (ObjectMover)obj;
@@ -294,7 +309,6 @@ namespace PloobsEngine.Physics
 
         public override void AddConstraint(IPhysicConstraint ctn)
         {
-
 
             BepuPhysicConstraint co = (BepuPhysicConstraint)ctn;
 

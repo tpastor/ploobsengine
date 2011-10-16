@@ -24,8 +24,6 @@ namespace IntroductionDemo4._0
         ICamera cam;
 
 
-
-
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             world = new IWorld(new BepuPhysicWorld(-9.8f, true), new SimpleCuller());

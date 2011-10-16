@@ -263,16 +263,7 @@ namespace PloobsEngine.Physics.Bepu
             get { return PhysicObjectTypes.TERRAIN; }
         }
 
-        public override void Enable()
-        {            
-            ActiveLogger.LogMessage("Terrain is always enabled", LogLevel.RecoverableError);
-        }
-
-        public override void Disable()
-        {
-            ActiveLogger.LogMessage("Terrain is always enabled", LogLevel.RecoverableError);
-        }
-
+        
         public override  BoundingBox BoundingBox
         {
             get { return terrain.BoundingBox; }

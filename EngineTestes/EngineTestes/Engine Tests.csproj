@@ -176,6 +176,7 @@
     <Compile Include="Material\ParalaxScreen.cs" />
     <Compile Include="MultThreading\MultScreen.cs" />
     <Compile Include="OctreeScreen\OctreeScreen.cs" />
+    <Compile Include="Physic\MobilePhysicScreen.cs" />
     <Compile Include="Post\ProjectiveTexturingPostEffect.cs" />
     <Compile Include="Post\SharpenPostEffect.cs" />
     <Compile Include="Post\DreamPostEffect.cs" />
