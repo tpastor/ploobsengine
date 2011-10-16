@@ -73,6 +73,7 @@ namespace PloobsEngine.Physics.Bepu
             triangleGroup = new StaticMesh(vertices, indices, new AffineTransform(scale, Quaternion.CreateFromRotationMatrix(rotation), position));
             faceVector = Vector3.Transform(Vector3.Forward, triangleGroup.WorldTransform.Matrix);
             triangleGroup.Material = new BEPUphysics.Materials.Material(materialDescription.StaticFriction, materialDescription.DinamicFriction, materialDescription.Bounciness);
+            
         }
 
         /// <summary>
@@ -340,22 +341,7 @@ namespace PloobsEngine.Physics.Bepu
             }
         }
 
-        /// <summary>
-        /// Always enabled
-        /// </summary>
-        public override void Enable()
-        {
-            ActiveLogger.LogMessage("triangle mesh is always enabled", LogLevel.Warning);
-        }
-
-        /// <summary>
-        /// Always enabled
-        /// </summary>
-        public override void Disable()
-        {
-            ActiveLogger.LogMessage("triangle mesh is always enabled", LogLevel.Warning);
-        }
-
+        
         /// <summary>
         /// Cant Aply Impulse on Static Object
         /// </summary>

@@ -206,7 +206,8 @@ namespace PloobsEngine.Physics.Bepu
                 {
                     supportLocationVelocity = supportEntity.LinearVelocity + //linear component
                                               Vector3.Cross(supportEntity.AngularVelocity, supportLocation - supportEntity.Position);
-                    supportEntity.IsActive = true;
+                    supportEntity.ActivityInformation.Activate();
+
                 }
                 else
                     supportLocationVelocity = new Vector3();

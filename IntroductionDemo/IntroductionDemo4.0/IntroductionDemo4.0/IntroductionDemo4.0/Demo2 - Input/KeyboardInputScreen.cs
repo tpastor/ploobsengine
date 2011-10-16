@@ -23,7 +23,7 @@ namespace IntroductionDemo4._0
 
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            world = new IWorld(new BepuPhysicWorld(-0.097f,true), new SimpleCuller());
+            world = new IWorld(new BepuPhysicWorld(-0.097f, true), new SimpleCuller(), null, true);
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
             desc.DefferedDebug = false;
             desc.UseFloatingBufferForLightMap = false;                                    

@@ -260,6 +260,15 @@
     <Compile Include="Physic3D\PhysicObjects\BepuObject\CapsuleObject.cs" />
     <Compile Include="Physic3D\PhysicObjects\BepuObject\CharacterController.cs" />
     <Compile Include="Physic3D\PhysicObjects\BepuObject\CharacterObject.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\Character\CharacterController.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\Character\FullCharacterObject.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\Character\HorizontalMotionConstraint.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\Character\QueryManager.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\Character\StanceManager.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\Character\StepManager.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\Character\SupportFinder.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\Character\VerticalMotionConstraint.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\MobileMeshObject.cs" />
     <Compile Include="Physic3D\PhysicObjects\BepuObject\CylinderObject.cs" />
     <Compile Include="Physic3D\PhysicObjects\BepuObject\DetectorVolumeObject.cs" />
     <Compile Include="Physic3D\PhysicObjects\BepuObject\GhostObject.cs" />

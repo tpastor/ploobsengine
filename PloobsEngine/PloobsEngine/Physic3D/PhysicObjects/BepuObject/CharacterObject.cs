@@ -195,16 +195,7 @@ namespace PloobsEngine.Physics.Bepu
             set;
         }
 
-        public override void Enable()
-        {
-            characterController.Activate();
-        }
-
-        public override void Disable()
-        {
-            characterController.Deactivate();
-        }
-
+        
         public override void ApplyImpulse(Vector3 position, Vector3 force)
         {
             ActiveLogger.LogMessage("Cant Apply impulse in Character Object", LogLevel.Warning);   

@@ -50,7 +50,7 @@ namespace PloobsEngine.SceneControl
             #endif
             UsePreDrawPhase = false;
             UsePostDrawPhase = false;
-            
+            OrderAllObjectsBeforeDraw = null;            
         }
         #if !WINDOWS_PHONE
         public bool UsePostEffect;
@@ -58,6 +58,11 @@ namespace PloobsEngine.SceneControl
         public Color BackGroundColor;
         public bool UsePreDrawPhase ;
         public bool UsePostDrawPhase;
+        /// <summary>
+        /// Function called all frames to order all objects that are not culled
+        /// Use this to sort objects by material and minimize gpu state changes
+        /// </summary>
+        public Func<List<IObject>, List<IObject>> OrderAllObjectsBeforeDraw ;
     }
 
     public class ForwardRenderTecnich : IRenderTechnic
@@ -94,7 +99,9 @@ namespace PloobsEngine.SceneControl
         protected override void ExecuteTechnic(GameTime gameTime, RenderHelper render, IWorld world)
         {
             world.Culler.StartFrame(world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection, world.CameraManager.ActiveCamera.BoundingFrustum);
-            IEnumerable<IObject> objList = world.Culler.GetNotCulledObjectsList(Material.MaterialType.FORWARD);
+            List<IObject> objList = world.Culler.GetNotCulledObjectsList(Material.MaterialType.FORWARD);
+            if (desc.OrderAllObjectsBeforeDraw != null)
+                objList = desc.OrderAllObjectsBeforeDraw(objList);
 
             if (desc.UsePreDrawPhase)
             {

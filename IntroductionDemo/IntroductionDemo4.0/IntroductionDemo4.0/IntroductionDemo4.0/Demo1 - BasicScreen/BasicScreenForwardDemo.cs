@@ -25,7 +25,7 @@ namespace IntroductionDemo4._0
         /// <param name="world">The world.</param>
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
+            world = new IWorld(new BepuPhysicWorld(), new SimpleCuller(),null,true);
 
             ///Create a Forward Render Technich
             ///Most of our technich like illumination, shadow ... are NOT implemented in FORWARD. Use this for simple stuffs and

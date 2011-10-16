@@ -348,18 +348,7 @@ namespace PloobsEngine.Physics.Bepu
                 entity.CollisionInformation.Events.RemoveAllEvents();
             this.obj.OnBeingRemoved -= obj_OnBeingRemoved;
             this.obj = null;
-        }
-        
-        public override void Enable()
-        {
-            entity.IsActive = true;
-        }
-
-        public override void Disable()
-        {
-            entity.IsActive = false;
-        }
-
+        }       
         
 
         public override void ApplyImpulse(Vector3 position, Vector3 force)
