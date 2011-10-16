@@ -116,10 +116,10 @@ namespace EngineTestes
                     mi.textureInformation.SetTexture(factory.CreateTexture2DColor(1, 1, Color.Red), TextureType.DIFFUSE);
                 }
 
-                if (mi.HasTexture(TextureType.BUMP))
-                {
-                    mi.textureInformation.SetNullTexture(TextureType.BUMP);
-                }    
+                //if (mi.HasTexture(TextureType.BUMP))
+                //{
+                //    mi.textureInformation.SetNullTexture(TextureType.BUMP);
+                //}    
             }           
 
             

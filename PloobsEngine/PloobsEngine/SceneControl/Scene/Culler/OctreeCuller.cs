@@ -150,8 +150,11 @@ namespace PloobsEngine.SceneControl
                 return;
             }
 
-            objOctree[obj].Remove(obj);
-            objOctree.Remove(obj);
+            if (objOctree.ContainsKey(obj))
+            {
+                objOctree[obj].Remove(obj);
+                objOctree.Remove(obj); 
+            }
         }
 
         int num;

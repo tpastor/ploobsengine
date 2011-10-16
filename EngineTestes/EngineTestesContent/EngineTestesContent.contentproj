@@ -428,7 +428,7 @@
       <Name>PlayerMarine</Name>
       <Importer>FbxImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
-      <ProcessorParameters_GenerateTangentFrame>True</ProcessorParameters_GenerateTangentFrame>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Model\WeaponMachineGun.fbx">
       <Name>WeaponMachineGun</Name>

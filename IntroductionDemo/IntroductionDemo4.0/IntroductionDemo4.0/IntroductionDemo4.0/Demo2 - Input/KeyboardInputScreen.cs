@@ -77,7 +77,7 @@ namespace IntroductionDemo4._0
             
 
             ///Bind a Key event (combination of Key + state(pressed, Released ...) + inputMask ) to a function
-            SimpleConcreteKeyboardInputPlayable ik1 = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.T, g1, InputMask.G1);
+            SimpleConcreteKeyboardInputPlayable ik1 = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.T,g1, InputMask.G1);
             ///When you use the method Bind of a IScreen, The key event will be sent by the engine while this screen remains added in the ScreenManager.
             ///TO create a Gloal Input (Keep working even if the screen goes away), see the DemosHomeScreen.cs
             this.BindInput(ik1);            

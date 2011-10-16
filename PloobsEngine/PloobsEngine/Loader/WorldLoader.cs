@@ -37,6 +37,7 @@ using PloobsEngine.Physics.Bepu;
 using PloobsEngine.Material;
 using PloobsEngine.Physic.Constraints;
 using PloobsEngine.Physic.Constraints.BepuConstraint;
+using PloobsEngine.Particles;
 
 
 namespace PloobsEngine.Loader
@@ -44,6 +45,8 @@ namespace PloobsEngine.Loader
     public delegate IObject[] CreateIObject(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ObjectInformation[] mi);
     public delegate ILight CreateILight(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ILight li);
     public delegate ICamera CreateICamera(IWorld world, GraphicFactory factory, GraphicInfo ginfo, CameraInfo cinfo);
+    public delegate IParticleSystem CreateIParticle(IWorld world, ParticleInfo pinfo);
+    
     public delegate IPhysicConstraint CreateIConstraint(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ConstraintInfo cinfo, IObject o1, IObject o2);
     public delegate void ProcessDummies(IWorld world, DummyInfo dinfo);
 
@@ -84,6 +87,13 @@ namespace PloobsEngine.Loader
 
             switch (mi[0].collisionType)
             {
+
+                case "Ghost":
+
+                    Vector3 newpos = new Vector3(mi[0].position.X, mi[0].position.Y, mi[0].position.Z);
+                    po = new GhostObject(newpos,Matrix.CreateFromQuaternion(mi[0].rotation), mi[0].scale);
+
+                    break;
                 case "Cylinder":
 
                     binf.ModelLocalTransformation = Matrix.Identity;
@@ -112,6 +122,7 @@ namespace PloobsEngine.Loader
                     po = new BoxObject(mi[0].position, len.X, len.Y, len.Z, mi[0].mass, mi[0].scale, Matrix.CreateFromQuaternion(mi[0].rotation), material);
 
                     break;
+                case "TriangleMesh":
                 default:
                     po = new TriangleMeshObject(model, Vector3.Zero, Matrix.Identity, new Vector3(1), material);
                     break;
@@ -119,7 +130,18 @@ namespace PloobsEngine.Loader
 
             po.isMotionLess = massflag;
 
-            IShader shader = new DeferredCustomShader(mi[0].HasTexture(TextureType.GLOW), mi[0].HasTexture(TextureType.BUMP), mi[0].HasTexture(TextureType.SPECULAR), mi[0].HasTexture(TextureType.PARALAX));
+            IShader shader = null;
+            if (mi[0].HasTexture(TextureType.ENVIRONMENT))
+            {
+                shader = new DeferredEMReflectiveShader();
+                (shader as DeferredEMReflectiveShader).TextureCube = mi[0].textureInformation.getCubeTexture(TextureType.ENVIRONMENT);
+                
+            }
+            else
+            {
+                shader = new DeferredCustomShader(mi[0].HasTexture(TextureType.GLOW), mi[0].HasTexture(TextureType.BUMP), mi[0].HasTexture(TextureType.SPECULAR), mi[0].HasTexture(TextureType.PARALAX)); 
+            }
+          
             DeferredMaterial dm = new DeferredMaterial(shader);
             IObject ob = new IObject(dm, model, po);
 
@@ -135,6 +157,10 @@ namespace PloobsEngine.Loader
             return con;
         }
 
+
+      
+
+
         public static ICamera CreateCamera(IWorld world, GraphicFactory factory, GraphicInfo ginfo, CameraInfo cinfo)
         {
             CameraStatic cm = new CameraStatic(cinfo.Position, cinfo.Target);
@@ -144,6 +170,7 @@ namespace PloobsEngine.Loader
 
         public event CreateIObject OnCreateIObject = null;
         public event CreateILight OnCreateILight = null;
+        public event CreateIParticle OnCreateIParticle = null;
         public event CreateICamera OnCreateICamera = null;
         public event CreateIConstraint OnCreateIConstraint = null;
         public event ProcessDummies OnProcessDummies = null;
@@ -188,6 +215,8 @@ namespace PloobsEngine.Loader
                     
                 }
             }
+
+            
 
             foreach (var item in worldData.ConstraintInfo)
             {
@@ -246,6 +275,22 @@ namespace PloobsEngine.Loader
             {
                 if (OnProcessDummies != null)
                     OnProcessDummies(world, item);
+            }
+
+            foreach (var item in worldData.ParticleInfo)
+            {
+                if (OnCreateIParticle != null)
+                {
+                    IParticleSystem part = OnCreateIParticle(world, item);
+                    if (part != null)
+                    {
+                        world.ParticleManager.AddAndInitializeParticleSystem(part);
+                        (part as DPFSParticleSystem).IDPSFParticleSystem.Emitter.PositionData.Position = item.Position;
+                        (part as DPFSParticleSystem).IDPSFParticleSystem.Emitter.OrientationData.Orientation = item.Orientation;
+
+                    }
+                }
+                
             }
         }
     }

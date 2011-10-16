@@ -97,8 +97,14 @@ namespace EngineTestes
             //NightPostEffect np = new NightPostEffect();
             //this.RenderTechnic.AddPostEffect(np);
 
-            //HeatPostEffect h = new HeatPostEffect();
-            //this.RenderTechnic.AddPostEffect(h);
+            HeatPostEffect h = new HeatPostEffect();
+
+          //  this.RenderTechnic.AddPostEffect(h);
+            h.MaxIntensity = 0.4f;
+
+            GlowPostEffect glow = new GlowPostEffect();
+            this.RenderTechnic.AddPostEffect(glow);
+
 
             //FogPostEffect fog = new FogPostEffect(1, 1000);
             //fog.FogColor = Color.Red;

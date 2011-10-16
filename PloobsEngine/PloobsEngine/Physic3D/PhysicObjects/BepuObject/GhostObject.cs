@@ -71,7 +71,7 @@ namespace PloobsEngine.Physics.Bepu
      {
          get
          {
-             return pos;
+             return pos ;
          }
          set
          {

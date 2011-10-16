@@ -35,7 +35,7 @@ namespace PloobsEngine.Loader
 {
     internal struct XmlModelMeshInfo
     {
-        public XmlModelMeshInfo(string modeName, string collisionType, float mass, float dinamicfriction, float staticfriction, float ellasticity, string difuseName, string bumpName, string specularName, string glowName)
+        public XmlModelMeshInfo(string modeName, string collisionType, float mass, float dinamicfriction, float staticfriction, float ellasticity, string difuseName, string bumpName, string specularName, string glowName, string environName)
         {
             this.modelName = modeName;
             this.collisionType = collisionType;
@@ -43,6 +43,8 @@ namespace PloobsEngine.Loader
             this.bumpName = bumpName;
             this.specularName = specularName;
             this.glowName = glowName;
+            this.reflectionName = environName;
+
 
             this.mass = mass;
             this.dinamicfriction = dinamicfriction;
@@ -60,13 +62,14 @@ namespace PloobsEngine.Loader
         public string bumpName;
         public string specularName;
         public string glowName;
-
+        public string reflectionName;
 
 
         public float mass;
         public float dinamicfriction;
         public float staticfriction;
         public float ellasticity;
+        
 
     }
 
@@ -138,6 +141,8 @@ namespace PloobsEngine.Loader
             Dictionary<String, SpotLightInformation> spotLights = new Dictionary<string, SpotLightInformation>();
             //Dictionary<String, ConstraintInformation> constraints = new Dictionary<string, ConstraintInformation>();
             Dictionary<String, CameraInfo> cameras = new Dictionary<string, CameraInfo>();
+            Dictionary<String, ParticleInfo> particles = new Dictionary<string, ParticleInfo>();
+
 
             SerializerHelper.ChangeDecimalSymbolToPoint();
             XmlDocument xDoc = new XmlDocument();
@@ -190,6 +195,21 @@ namespace PloobsEngine.Loader
                     elements.ConstraintInfo.Add(cinfo);
                     
                 }
+                if (node.Name == "particle")
+                {
+                    ParticleInfo pinfo = new ParticleInfo();
+                    pinfo.Name = SerializerHelper.DeserializeAttributeBaseType<String>("name", node);
+                    pinfo.Position = SerializerHelper.DeserializeVector3("position", node);
+                    pinfo.Orientation = SerializerHelper.DeserializeQuaternion("rotation", node);
+                    
+                    XmlElement mass = node["type"];
+                    if (mass != null)
+                    {
+                       pinfo.Type = SerializerHelper.DeserializeAttributeBaseType<String>("value", mass);
+                    }
+
+                    elements.ParticleInfo.Add(pinfo);
+                }
                 if (node.Name == "body")
                 {
                     XmlModelMeshInfo info = new XmlModelMeshInfo();
@@ -235,25 +255,34 @@ namespace PloobsEngine.Loader
                     }
                     else
                     {
-                        XmlElement difuse = material["diffuse"];
-                        if (difuse != null)
+
+                        XmlElement reflect = material["reflection"];
+                        if (reflect != null)
                         {
-                            info.difuseName = removeExtension(SerializerHelper.DeserializeAttributeBaseType<String>("name", difuse));
+                            info.reflectionName = removeExtension(SerializerHelper.DeserializeAttributeBaseType<String>("name", reflect));
                         }
-                        XmlElement bump = material["bump"];
-                        if (bump != null)
+                        else
                         {
-                            info.bumpName = removeExtension(SerializerHelper.DeserializeAttributeBaseType<String>("name", bump));
-                        }
-                        XmlElement specular = material["specular"];
-                        if (specular != null)
-                        {
-                            info.specularName = removeExtension(SerializerHelper.DeserializeAttributeBaseType<String>("name", specular));
-                        }
-                        XmlElement glow = material["glow"];
-                        if (glow != null)
-                        {
-                            info.glowName = removeExtension(SerializerHelper.DeserializeAttributeBaseType<String>("name", glow));
+                            XmlElement difuse = material["diffuse"];
+                            if (difuse != null)
+                            {
+                                info.difuseName = removeExtension(SerializerHelper.DeserializeAttributeBaseType<String>("name", difuse));
+                            }
+                            XmlElement bump = material["bump"];
+                            if (bump != null)
+                            {
+                                info.bumpName = removeExtension(SerializerHelper.DeserializeAttributeBaseType<String>("name", bump));
+                            }
+                            XmlElement specular = material["specular"];
+                            if (specular != null)
+                            {
+                                info.specularName = removeExtension(SerializerHelper.DeserializeAttributeBaseType<String>("name", specular));
+                            }
+                            XmlElement glow = material["glow"];
+                            if (glow != null)
+                            {
+                                info.glowName = removeExtension(SerializerHelper.DeserializeAttributeBaseType<String>("name", glow));
+                            } 
                         }
                     }
                     infos.Add(info.modelName, info);
@@ -389,20 +418,28 @@ namespace PloobsEngine.Loader
                         mi.batchInformation.ModelLocalTransformation = m[model.Meshes[i].ParentBone.Index];
 
                         mi.textureInformation = new TextureInformation(false, factory);
+                        //mi.textureInformation.LoadTexture();
+
+                        if (inf.reflectionName != null)
+                        {
+                            mi.textureInformation.SetCubeTexture(factory.GetTextureCube(texturePath + inf.reflectionName), TextureType.ENVIRONMENT);
+                        }
+
+                        else
+                        {
+                            if (inf.difuseName != null)
+                                mi.textureInformation.SetTexture(factory.GetTexture2D(texturePath + inf.difuseName), TextureType.DIFFUSE);
+
+                            if (inf.glowName != null)
+                                mi.textureInformation.SetTexture(factory.GetTexture2D(texturePath + inf.glowName), TextureType.GLOW);
+
+                            if (inf.specularName != null)
+                                mi.textureInformation.SetTexture(factory.GetTexture2D(texturePath + inf.specularName), TextureType.SPECULAR);
+
+                            if (inf.bumpName != null)
+                                mi.textureInformation.SetTexture(factory.GetTexture2D(texturePath + inf.bumpName), TextureType.BUMP); 
+                        }
                         mi.textureInformation.LoadTexture();
-                                                
-                        if (inf.difuseName != null)
-                            mi.textureInformation.SetTexture(factory.GetTexture2D(texturePath + inf.difuseName),TextureType.DIFFUSE);
-
-                        if (inf.glowName != null)
-                            mi.textureInformation.SetTexture(factory.GetTexture2D(texturePath + inf.glowName),TextureType.GLOW);
-
-                        if (inf.specularName != null)
-                            mi.textureInformation.SetTexture(factory.GetTexture2D(texturePath + inf.specularName),TextureType.SPECULAR);
-
-                        if (inf.bumpName != null)
-                            mi.textureInformation.SetTexture(factory.GetTexture2D(texturePath + inf.bumpName),TextureType.BUMP);
-
                         elements.ModelMeshesInfo.Add(mi);
                     }
                 }
