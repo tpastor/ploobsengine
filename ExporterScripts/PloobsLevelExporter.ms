@@ -164,11 +164,34 @@ rollout main "Level Exporter"
 									format "\t\t\t<y> % </y>\n" -body.position[3]  to:currentFile
 									format "\t\t\t<z> % </z>\n" body.position[2]  to:currentFile	
 								format "\t\t</position>\n" to:currentFile
+								tt = "Spray"
+								format "\t\t\t<type value =\"%\" />\n" tt  to:currentFile
 								format "\t\t\t<width value =\"%\" />\n" body.emitterwidth  to:currentFile
 								format "\t\t\t<height value =\"%\" />\n" body.emitterheight  to:currentFile
 								
 								format "\t</particle>" to:currentFile
 								
+								)
+								else if(shape == SuperSpray) then
+								(
+								format "\t<particle name=\"%\">\n" body.name to:currentFile
+								--format getUserProp body "Particle" to:currentFile
+								format "\t\t<position>\n" to:currentFile
+									format "\t\t\t<x> % </x>\n" body.position[1]  to:currentFile
+									format "\t\t\t<y> % </y>\n" -body.position[3]  to:currentFile
+									format "\t\t\t<z> % </z>\n" body.position[2]  to:currentFile	
+								format "\t\t</position>\n" to:currentFile
+								
+								format "\t\t<rotation>\n" to:currentFile
+									format "\t\t\t<w> % </w>\n" body.rotation.w  to:currentFile
+									format "\t\t\t<x> % </x>\n" -body.rotation.x  to:currentFile
+									format "\t\t\t<y> % </y>\n" body.rotation.y  to:currentFile	
+									format "\t\t\t<z> % </z>\n" body.rotation.z  to:currentFile	
+								format "\t\t</rotation>\n" to:currentFile
+								
+								tt = "DirectionalSpray"
+								format "\t\t\t<type value =\"%\" />\n" tt  to:currentFile
+								format "\t</particle>" to:currentFile
 								)
 								
 								else if(shape == targetSpot) then
@@ -247,11 +270,18 @@ rollout main "Level Exporter"
                                 
                                 format "name=\"%\" >\n" body.name to:currentFile
 
-								if(getUserProp body "PhysicType" != undefined   ) do
+								if(getUserProp body "PhysicType" != undefined   ) then
 								(
 									fis = getUserProp body "PhysicType"
-									format "\t\t<collision type=\"%\"/>\n" shape to:currentFile
+									format "\t\t<collision type=\"%\"/>\n" fis to:currentFile
 								)
+								else
+								(
+								fis = "TriangleMesh"
+								format "\t\t<collision type=\"%\"/>\n" fis to:currentFile
+								
+								)
+								
 								
 								
 								if(getUserProp body "Mass" != undefined) do
@@ -316,27 +346,34 @@ rollout main "Level Exporter"
 									format "\t\t\t%\n" body.material.specularLevel  to:currentFile
 									format "\t\t\t</SpecularPower>\n" to:currentFile
 									
+									if(body.material.reflectionmap != undefined) then
+									(
+									a = getFileName body.material.reflectionmap.filename
+										format "\t\t\t<reflection name =\"%\" />\n" a  to:currentFile
 									
-									
-									if(body.material.diffusemap != undefined) do
+									)									
+									else
 									(
-									a = getFileName body.material.diffusemap.filename
-									format "\t\t\t<diffuse name =\"%\" />\n" a  to:currentFile
-									)
-									if(body.material.bumpmap != undefined) do
-									(
-									a =getFileName body.material.bumpmap.filename
-									format "\t\t\t<bump name =\"%\" />\n" a to:currentFile
-									)
-									if(body.material.specularlevelmap != undefined) do
-									(
-									a = getFileName body.material.specularlevelmap.filename
-									format "\t\t\t<specular name =\"%\" />\n" a to:currentFile
-									)
-									if(body.material.selfillummap != undefined) do
-									(
-									a = getFileName body.material.selfillummap.filename
-									format "\t\t\t<glow name =\"%\" />\n" a to:currentFile													
+										if(body.material.diffusemap != undefined) do
+										(
+										a = getFileName body.material.diffusemap.filename
+										format "\t\t\t<diffuse name =\"%\" />\n" a  to:currentFile
+										)
+										if(body.material.bumpmap != undefined) do
+										(
+										a =getFileName body.material.bumpmap.filename
+										format "\t\t\t<bump name =\"%\" />\n" a to:currentFile
+										)
+										if(body.material.specularlevelmap != undefined) do
+										(
+										a = getFileName body.material.specularlevelmap.filename
+										format "\t\t\t<specular name =\"%\" />\n" a to:currentFile
+										)
+										if(body.material.selfillummap != undefined) do
+										(
+										a = getFileName body.material.selfillummap.filename
+										format "\t\t\t<glow name =\"%\" />\n" a to:currentFile													
+										)
 									)
 									format "\t\t</material>\n" to:currentFile
 							
