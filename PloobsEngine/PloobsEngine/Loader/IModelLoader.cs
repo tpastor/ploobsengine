@@ -61,6 +61,11 @@ namespace PloobsEngine.Loader
         /// </returns>
         public bool HasTexture(TextureType type)
         {
+
+            if (type == TextureType.ENVIRONMENT)
+            {
+                return textureInformation.getCubeTexture(TextureType.ENVIRONMENT) != null;
+            }
             if (type == TextureType.DIFFUSE)
             {
                 return textureInformation.getTexture(TextureType.DIFFUSE) != null;
@@ -95,6 +100,14 @@ namespace PloobsEngine.Loader
         public String Name;
     }
 
+    public struct ParticleInfo
+    {
+        public string Name;
+        public Vector3 Position;
+        public Quaternion Orientation;
+        public string Type;    
+    }
+
 
     /// <summary>
     /// Dummy Info
@@ -126,6 +139,7 @@ namespace PloobsEngine.Loader
         List<CameraInfo> cameraInfo = new List<CameraInfo>();
         List<DummyInfo> dummyInfo = new List<DummyInfo>();
         List<ConstraintInfo> constraintInfo = new List<ConstraintInfo>();
+        List<ParticleInfo> particleInfo = new List<ParticleInfo>();
 
         /// <summary>
         /// Gets or sets the dummyinfo list.
@@ -140,6 +154,11 @@ namespace PloobsEngine.Loader
         }
 
 
+        public List<ParticleInfo> ParticleInfo
+        {
+            get { return particleInfo; }
+            set { particleInfo = value; }
+        }
 
         public List<ConstraintInfo> ConstraintInfo
         {
