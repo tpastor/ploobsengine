@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{D8E39357-DDD4-45A2-820C-32411E409A2A}</ProjectGuid>
+    <ProjectTypeGuids>{6D335F3A-9D43-41b4-9D22-F6F17C4BE596};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EngineTestes</RootNamespace>
+    <AssemblyName>EngineTestes</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
+    <XnaPlatform>Windows</XnaPlatform>
+    <XnaProfile>HiDef</XnaProfile>
+    <XnaCrossPlatformGroupID>0cff1ab4-043e-471e-8ad4-ad108925e46b</XnaCrossPlatformGroupID>
+    <XnaOutputType>Game</XnaOutputType>
+    <ApplicationIcon>Game.ico</ApplicationIcon>
+    <Thumbnail>GameThumbnail.png</Thumbnail>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\x86\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoStdLib>true</NoStdLib>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <PlatformTarget>x86</PlatformTarget>
+    <XnaCompressContent>True</XnaCompressContent>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\x86\Release</OutputPath>
+    <DefineConstants>TRACE;WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoStdLib>true</NoStdLib>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <PlatformTarget>x86</PlatformTarget>
+    <XnaCompressContent>true</XnaCompressContent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BEPUphysics">
+      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\BEPUphysics.dll</HintPath>
+    </Reference>
+    <Reference Include="DPSF">
+      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\DPSF.dll</HintPath>
+    </Reference>
+    <Reference Include="FarseerPhysicsXNA">
+      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\FarseerPhysicsXNA.dll</HintPath>
+    </Reference>
+    <Reference Include="Library">
+      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\Library.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Graphics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.GamerServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Xact, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Video, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Avatar, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Net, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Storage, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="mscorlib">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="TomShane.Neoforce.Controls, Version=0.7.2407.1915, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\TomShane.Neoforce.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="XNAnimation">
+      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\XNAnimation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="2DSamples\Basic2D.cs" />
+    <Compile Include="2DSamples\Border.cs" />
+    <Compile Include="2DSamples\Template2D.cs" />
+    <Compile Include="2DSamples\SpriteParticle.cs" />
+    <Compile Include="2DSamples\JointUpdateable.cs" />
+    <Compile Include="AA\AAScreen.cs" />
+    <Compile Include="AA\MLAntiAliasingPostEffect.cs" />
+    <Compile Include="AI\FSM\FSMScreen.cs" />
+    <Compile Include="AI\FSM\StateSample.cs" />
+    <Compile Include="AI\Pathfinding and Waypoints\IaPathFinding.cs" />
+    <Compile Include="AI\Pathfinding and Waypoints\IaWaypoints.cs" />
+    <Compile Include="AI\Pathfinding and Waypoints\moverAtachment.cs" />
+    <Compile Include="AI\Steering\Globals.cs" />
+    <Compile Include="AI\Steering\SteerAtachment.cs" />
+    <Compile Include="AI\Steering\Pedestrian.cs" />
+    <Compile Include="AI\Steering\PedestrianPlugIn.cs" />
+    <Compile Include="AI\Steering\SteerScreen.cs" />
+    <Compile Include="BilboardsSamples\BilboardScreen.cs" />
+    <Compile Include="Bolt\BoltObject.cs" />
+    <Compile Include="Bolt\BoltSample.cs" />
+    <Compile Include="Bolt\BoltShader.cs" />
+    <Compile Include="Bolt\ColorTable.cs" />
+    <Compile Include="CharacterControllerInput.cs" />
+    <Compile Include="CharacterSample\CharacterScreen.cs" />
+    <Compile Include="Constraint\ConstraintScreen.cs" />
+    <Compile Include="DebugDrawer\DebugDrawScreen.cs" />
+    <Compile Include="Explosion\ExplosionDebrisPS.cs" />
+    <Compile Include="Explosion\ExplosionFireSmokePS.cs" />
+    <Compile Include="Explosion\ExplosionFlash.cs" />
+    <Compile Include="Explosion\ExplosionFlyingSparksPS.cs" />
+    <Compile Include="Explosion\ExplosionPS.cs" />
+    <Compile Include="Explosion\ExplosionRoundSparksPS.cs" />
+    <Compile Include="Explosion\ExplosionScreen.cs" />
+    <Compile Include="Explosion\ExplosionShockwavePS.cs" />
+    <Compile Include="Explosion\ExplosionSmokeTrailsPS.cs" />
+    <Compile Include="Gamma Correction\GammaCorrectionScreen.cs" />
+    <Compile Include="GUI\FGUIScreen.cs" />
+    <Compile Include="GUI\GUIScreen.cs" />
+    <Compile Include="LightPrePassIdea\HybridDeferred.cs" />
+    <Compile Include="LightPrePassIdea\LightPrePassCombination.cs" />
+    <Compile Include="LightPrePassIdea\LightPrePassGBuffer.cs" />
+    <Compile Include="Loader\ForwardMeshesFromModelLoadScreen.cs" />
+    <Compile Include="Loader\ForwardLoadScreen.cs" />
+    <Compile Include="LoadingScreen\LoadScene.cs" />
+    <Compile Include="Matali\Matalitests.cs" />
+    <Compile Include="Material\ParalaxScreen.cs" />
+    <Compile Include="MultThreading\MultScreen.cs" />
+    <Compile Include="OctreeScreen\OctreeScreen.cs" />
+    <Compile Include="Post\ProjectiveTexturingPostEffect.cs" />
+    <Compile Include="Post\SharpenPostEffect.cs" />
+    <Compile Include="Post\DreamPostEffect.cs" />
+    <Compile Include="Post\UnderWater.cs" />
+    <Compile Include="Post\PostEffectScreen.cs" />
+    <Compile Include="DeferredAnimatedScreen.cs" />
+    <Compile Include="Loader\DeferredLoadScreen.cs" />
+    <Compile Include="DeferredScreen.cs" />
+    <Compile Include="FirstScreen.cs" />
+    <Compile Include="LightThrowBepu.cs" />
+    <Compile Include="MoveablePointLight.cs" />
+    <Compile Include="ParticleSamples\ParticleScreen.cs" />
+    <Compile Include="ParticleSamples\SmokePS.cs" />
+    <Compile Include="ParticleSamples\SnowPS.cs" />
+    <Compile Include="Post\AdvancedTone.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Post\RadialBluScreen.cs" />
+    <Compile Include="ReflectionMix\MixReflection.cs" />
+    <Compile Include="Shatter\DeferredShatterCustomShader.cs" />
+    <Compile Include="Shatter\ShatterSample.cs" />
+    <Compile Include="SoundSamples\SoundScreen.cs" />
+    <Compile Include="TechDemo\TechDemoScreenModel.cs" />
+    <Compile Include="TechDemo\TechDemoScreen.cs" />
+    <Compile Include="Terrain\TerrainScreen.cs" />
+    <Compile Include="TransparencyOnBorders\ForwardEMTransparentShader.cs" />
+    <Compile Include="TransparencyOnBorders\ForwardGradativeAlphaShader.cs" />
+    <Compile Include="TransparencyOnBorders\StealthEffectScreen.cs" />
+    <Compile Include="TransparencyOnBorders\StealthPostEffect.cs" />
+    <Compile Include="TransparencyOnBorders\StealthShaderScreen.cs" />
+    <Compile Include="TransparencySamples\TransparentDeferredScreen.cs" />
+    <Compile Include="TransparencySamples\TransparentForwardScreen.cs" />
+    <Compile Include="Vegetation\VegetationDeferredScreen.cs" />
+    <Compile Include="Vegetation\VegetationForwardScreen.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Game.ico" />
+    <Content Include="GameThumbnail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\PloobsEngine\PloobsEngine\PloobsEngine.csproj">
+      <Project>{1D050978-A350-47A8-B495-090DF10242B2}</Project>
+      <Name>PloobsEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EngineTestesContent\EngineTestesContent.contentproj">
+      <Name>EngineTestesContent %28Content%29</Name>
+      <XnaReferenceType>Content</XnaReferenceType>
+      <Project>{4DB11830-D1DC-4BD2-931D-11ADEAFA8BEA}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Xna.Framework.4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft XNA Framework Redistributable 4.0</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
+  <!--
+      To modify your build process, add your task inside one of the targets below and uncomment it. 
+      Other similar extension points exist, see Microsoft.Common.targets.
+      <Target Name="BeforeBuild">
+      </Target>
+      <Target Name="AfterBuild">
+      </Target>
+    -->
+</Project>

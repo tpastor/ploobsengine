@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="303c996a-2911-4c08-b492-6496c82b3edb" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+      <para><legacyBold>Welcome to Ploobs Engine Version 0.3</legacyBold></para>
+      <para>This guide is intended to be a
+reference that you can use to learn about the Engine as an user or a developer.</para>
+    </introduction>
+    <section>
+      <title>What is Ploobs Engine?</title>
+      <content>
+        <para>Its a Game Engine developed in XNA 4.0 and C# .Net 4.0. The 
+        engine was designed to be simple to use and simple to extend.
+        Our intention was clear: create a environment that make programming 
+        games for MS Windows and XBOX easier.</para>
+        <para> Its a large Framework including modules to deal with the most
+        common task when programming games like: Input, Physics,Scene Management,
+        Graphics and Resource Management. </para>
+        <para> Our main focus was in Graphics, using a render technich 
+        called Deferred Shading (Used in games like Starcraft 2 and Crysis 2). 
+        The render module was the result of our graduation Thesis.
+        </para>
+        <para>The engine is completely free for comercial and non comercial 
+        use. We givr free support in out forum.</para>
+      </content>
+    </section>        
+    <section>
+      <title>What I need to start using Ploobs Engine?</title>
+      <content>
+        <para>You just need some basic knowledge about C#, for the basic usage,
+        there is no need to know XNA or Computer Graphics at all.</para>
+        <para>For a developer, you need to install the XNA 4.0 SDK, the
+        .Net 4.0 Framework and Visual Studio 2010 complete or express.
+        For the hardware you just need a DirectX 10 video board compatible.</para>
+        <para>For a end user, you need the XNA 4.0 Runtime, the .Net 4.0
+        Client Runtime and a video board compatible with DirectX 10 </para>
+               
+      </content>
+    </section> 
+    <section>
+      <title>Important Links</title>
+      <content>
+      
+      <para> 
+        <externalLink>
+          <linkText>English Release:</linkText>          
+          <linkUri>http://ploobs.com.br/?p=504</linkUri>
+      </externalLink>
+      </para>
+      
+      <para> 
+        <externalLink>
+          <linkText>Project Codeplex Site:</linkText>          
+          <linkUri>http://ploobsengine.codeplex.com/</linkUri>
+      </externalLink>
+      </para>
+      
+      <para> 
+        <externalLink>
+          <linkText>Development Blog (In Portuguese)</linkText>          
+          <linkUri>http://ploobs.com.br/</linkUri>
+      </externalLink>
+      </para>
+      
+      <para> 
+        <externalLink>
+          <linkText>Forum:</linkText>          
+          <linkUri>http://ploobs.com.br/forum/</linkUri>
+      </externalLink>
+      </para>
+      
+      <para> 
+        <externalLink>
+          <linkText>Contact Mail:</linkText>          
+          <linkUri>mailto:contato@ploobs.com.br</linkUri>
+      </externalLink>
+      </para>
+      
+        <para> 
+        <externalLink>
+          <linkText>Project Mercurial Repo:</linkText>          
+          <linkUri>http://ploobsengine.hg.sourceforge.net:8000/hgroot/ploobsengine/ploobsengine</linkUri>
+      </externalLink>
+        </para>
+        
+        
+        <mediaLink>
+          <image xlink:href="Untitled" />
+       </mediaLink>
+       
+      </content>
+    </section> 
+    
+    
+  </developerConceptualDocument>
+</topic>
