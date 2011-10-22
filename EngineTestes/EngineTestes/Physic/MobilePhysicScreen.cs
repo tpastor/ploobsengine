@@ -41,6 +41,7 @@ namespace EngineTestes
             {
                 SimpleModel simpleModel = new SimpleModel(factory, "Model//uzi");
                 MobileMeshObject tmesh = new MobileMeshObject(simpleModel, new Vector3(100, 100, 10), Matrix.Identity, Vector3.One * 50, MaterialDescription.DefaultBepuMaterial(),BEPUphysics.CollisionShapes.MobileMeshSolidity.DoubleSided,10);
+                //TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, new Vector3(100, 100, 10), Matrix.Identity, Vector3.One * 50, MaterialDescription.DefaultBepuMaterial());
                 ForwardXNABasicShader shader = new ForwardXNABasicShader(ForwardXNABasicShaderDescription.Default());
                 ForwardMaterial fmaterial = new ForwardMaterial(shader);
                 IObject obj = new IObject(fmaterial, simpleModel, tmesh);

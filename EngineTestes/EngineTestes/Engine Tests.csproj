@@ -74,6 +74,9 @@
     <Reference Include="Library">
       <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\Library.dll</HintPath>
     </Reference>
+    <Reference Include="Lidgren.Network">
+      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\Lidgren.Network.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
       <Private>False</Private>
     </Reference>
@@ -175,6 +178,7 @@
     <Compile Include="Matali\Matalitests.cs" />
     <Compile Include="Material\ParalaxScreen.cs" />
     <Compile Include="MultThreading\MultScreen.cs" />
+    <Compile Include="Networking\NetworkingScreen.cs" />
     <Compile Include="OctreeScreen\OctreeScreen.cs" />
     <Compile Include="Physic\MobilePhysicScreen.cs" />
     <Compile Include="Post\ProjectiveTexturingPostEffect.cs" />

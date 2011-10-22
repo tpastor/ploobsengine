@@ -29,7 +29,7 @@ using PloobsEngine.Components;
 namespace PloobsEngine.MessageSystem
 {
     /// <summary>
-    /// Responsible to Deliver the messages to the Senders
+    /// Responsible to Deliver the messages to the Recievers
     /// o interessante eh q eu uso uma interface combinada com um delegate (fico muito loco , vo patentia ...)
     /// funciona assim , voce extende um interface q tem um metodo do tipo CanIhandleThisMessage q recebe um
     /// tipo de mensagem , se ele consegue dar handler ele devolve um delegate pra o tratador de mensagem q ele implementou
@@ -38,13 +38,14 @@ namespace PloobsEngine.MessageSystem
     /// e receber mensagens e o sistema ja sabe como trata-las...
     /// o sistema faz o "roteamento" das mensagens pra encontrar o destinatario
     /// eh possivel fazer broadcast e enviar apenas para um grupo usando as tags 
-    /// USEI components (nassa arquitetura) pra ficar mais facil de "plugar"    
+    /// USEI components (nessa arquitetura) pra ficar mais facil de "plugar"    
     /// </summary>
 
     public class MessageDeliver :  IComponent
     {
         public MessageDeliver() {  }
         public MessageDeliver( int Num)  { numMessagerdeliveredByFrame = Num; }
+        public const String SendToALLTag = "all";
         private static GameTime gt = new GameTime();
         private static PriorityQueueB<Message> fila = new PriorityQueueB<Message>(new MessageComparer());
         private static PriorityQueueB<Message> delayedfila = new PriorityQueueB<Message>(new DelayComparer());
@@ -144,7 +145,7 @@ namespace PloobsEngine.MessageSystem
         {
             if (m.Tag != null)
             {
-                if (m.Tag == "all")
+                if (m.Tag == SendToALLTag)
                 {
                     foreach (IRecieveMessageEntity var in EntityMapper.getInstance().GetAllRecieveEntities())
                     {
@@ -152,8 +153,7 @@ namespace PloobsEngine.MessageSystem
                             if (var.HandleThisMessageType(m.SenderType) != false)
                             {
                                 var.HandleMessage(m);
-                            }
-                     
+                            }                     
 
                     }
                     return;

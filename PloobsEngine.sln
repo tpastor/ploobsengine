@@ -13,11 +13,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Windows Phone Copy of Ploob
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnginePhoneTests", "EnginePhoneTests\EnginePhoneTests\EnginePhoneTests.csproj", "{7800E79F-72D2-4EF7-80A2-5CBA42193B2F}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "EnginePhoneTestsContent", "EnginePhoneTests\EnginePhoneTestsContent\EnginePhoneTestsContent.contentproj", "{9D42BEA1-2F84-4EF2-BF94-3FE38A494E58}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnginePhoneTestsContent", "EnginePhoneTests\EnginePhoneTestsContent\EnginePhoneTestsContent.contentproj", "{9D42BEA1-2F84-4EF2-BF94-3FE38A494E58}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnginePhoneContent", "EnginePhoneContent\EnginePhoneContent.contentproj", "{D45AAD1D-4A78-46F8-B21D-A5F222ECEFFB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PloobsEngineIntegration", "WpfIntegration\PloobsEngineIntegration.csproj", "{B6919352-56FE-48AA-A319-0679D76C4059}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameServer", "GameServer\GameServer\GameServer.csproj", "{D2F6ADA0-E509-4EAA-A463-92AE18FD22D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,8 +41,8 @@ Global
 		{1D050978-A350-47A8-B495-090DF10242B2}.Debug|x86.ActiveCfg = Debug|x86
 		{1D050978-A350-47A8-B495-090DF10242B2}.Debug|x86.Build.0 = Debug|x86
 		{1D050978-A350-47A8-B495-090DF10242B2}.Release|Any CPU.ActiveCfg = Release|x86
-		{1D050978-A350-47A8-B495-090DF10242B2}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{1D050978-A350-47A8-B495-090DF10242B2}.Release|Mixed Platforms.Build.0 = Release|x86
+		{1D050978-A350-47A8-B495-090DF10242B2}.Release|Mixed Platforms.ActiveCfg = Debug|x86
+		{1D050978-A350-47A8-B495-090DF10242B2}.Release|Mixed Platforms.Build.0 = Debug|x86
 		{1D050978-A350-47A8-B495-090DF10242B2}.Release|Windows Phone.ActiveCfg = Release|x86
 		{1D050978-A350-47A8-B495-090DF10242B2}.Release|Windows Phone.Build.0 = Release|x86
 		{1D050978-A350-47A8-B495-090DF10242B2}.Release|x86.ActiveCfg = Release|x86
@@ -61,8 +63,8 @@ Global
 		{D8E39357-DDD4-45A2-820C-32411E409A2A}.Debug|x86.ActiveCfg = Debug|x86
 		{D8E39357-DDD4-45A2-820C-32411E409A2A}.Debug|x86.Build.0 = Debug|x86
 		{D8E39357-DDD4-45A2-820C-32411E409A2A}.Release|Any CPU.ActiveCfg = Release|x86
-		{D8E39357-DDD4-45A2-820C-32411E409A2A}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{D8E39357-DDD4-45A2-820C-32411E409A2A}.Release|Mixed Platforms.Build.0 = Release|x86
+		{D8E39357-DDD4-45A2-820C-32411E409A2A}.Release|Mixed Platforms.ActiveCfg = Debug|x86
+		{D8E39357-DDD4-45A2-820C-32411E409A2A}.Release|Mixed Platforms.Build.0 = Debug|x86
 		{D8E39357-DDD4-45A2-820C-32411E409A2A}.Release|Windows Phone.ActiveCfg = Release|x86
 		{D8E39357-DDD4-45A2-820C-32411E409A2A}.Release|Windows Phone.Build.0 = Release|x86
 		{D8E39357-DDD4-45A2-820C-32411E409A2A}.Release|x86.ActiveCfg = Release|x86
@@ -134,6 +136,18 @@ Global
 		{B6919352-56FE-48AA-A319-0679D76C4059}.Release|Windows Phone.ActiveCfg = Release|x86
 		{B6919352-56FE-48AA-A319-0679D76C4059}.Release|x86.ActiveCfg = Release|x86
 		{B6919352-56FE-48AA-A319-0679D76C4059}.Release|x86.Build.0 = Release|x86
+		{D2F6ADA0-E509-4EAA-A463-92AE18FD22D1}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{D2F6ADA0-E509-4EAA-A463-92AE18FD22D1}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{D2F6ADA0-E509-4EAA-A463-92AE18FD22D1}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{D2F6ADA0-E509-4EAA-A463-92AE18FD22D1}.Debug|Windows Phone.ActiveCfg = Debug|x86
+		{D2F6ADA0-E509-4EAA-A463-92AE18FD22D1}.Debug|x86.ActiveCfg = Debug|x86
+		{D2F6ADA0-E509-4EAA-A463-92AE18FD22D1}.Debug|x86.Build.0 = Debug|x86
+		{D2F6ADA0-E509-4EAA-A463-92AE18FD22D1}.Release|Any CPU.ActiveCfg = Release|x86
+		{D2F6ADA0-E509-4EAA-A463-92AE18FD22D1}.Release|Mixed Platforms.ActiveCfg = Debug|x86
+		{D2F6ADA0-E509-4EAA-A463-92AE18FD22D1}.Release|Mixed Platforms.Build.0 = Debug|x86
+		{D2F6ADA0-E509-4EAA-A463-92AE18FD22D1}.Release|Windows Phone.ActiveCfg = Release|x86
+		{D2F6ADA0-E509-4EAA-A463-92AE18FD22D1}.Release|x86.ActiveCfg = Release|x86
+		{D2F6ADA0-E509-4EAA-A463-92AE18FD22D1}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

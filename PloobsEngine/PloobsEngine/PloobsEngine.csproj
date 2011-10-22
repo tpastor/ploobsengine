@@ -79,6 +79,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Dlls\Library.dll</HintPath>
     </Reference>
+    <Reference Include="Lidgren.Network">
+      <HintPath>Dlls\Lidgren.Network.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
       <Private>False</Private>
     </Reference>
@@ -211,9 +214,9 @@
     <Compile Include="Loader\WorldLoader.cs" />
     <Compile Include="Loader\ExtractXmlModelLoader.cs" />
     <Compile Include="Loader\IModelLoader.cs" />
-    <Compile Include="Material2D\Basic2DTextureMaterial.cs" />
-    <Compile Include="Material2D\I2DMaterial.cs" />
-    <Compile Include="Material2D\MaterialProcessor.cs" />
+    <Compile Include="MessageSystem\Material2D\Basic2DTextureMaterial.cs" />
+    <Compile Include="MessageSystem\Material2D\I2DMaterial.cs" />
+    <Compile Include="MessageSystem\Material2D\MaterialProcessor.cs" />
     <Compile Include="Material\DeferredAnimatedMaterial.cs" />
     <Compile Include="Material\DeferredMaterial.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredInstancedBilboardShader.cs" />
@@ -246,6 +249,9 @@
     <Compile Include="Modelo\SpecificModels\TreeModel.cs" />
     <Compile Include="Modelo\SpecificModels\WaterModel.cs" />
     <Compile Include="Modelo\TextureInformation.cs" />
+    <Compile Include="NetWorking\BepuPhysicWorldSync.cs" />
+    <Compile Include="NetWorking\Cliente.cs" />
+    <Compile Include="NetWorking\NetworkingMessageExtension.cs" />
     <Compile Include="Particles\DPFSParticleSystem.cs" />
     <Compile Include="Particles\DPSFParticleManager.cs" />
     <Compile Include="Particles\IParticleManager.cs" />

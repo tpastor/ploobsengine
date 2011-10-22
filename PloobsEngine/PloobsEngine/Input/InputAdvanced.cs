@@ -677,7 +677,7 @@ namespace PloobsEngine.Input
         GNONE = 0x0000000000000,
         GCamera = 0x1000000000000,
         /// <summary>
-        /// ALWAYS ON, no matter the mask forced
+        /// ALWAYS ON, no matter what the mask forced
         /// </summary>
         GSYSTEM = 0x0100000000000
     }

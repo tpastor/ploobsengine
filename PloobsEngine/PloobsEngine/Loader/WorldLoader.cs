@@ -50,7 +50,7 @@ namespace PloobsEngine.Loader
     public class WorldLoader
     {
         /// <summary>
-        /// Used to retrieve objects to
+        /// Used to retrieve objects
         /// </summary>
         private Dictionary<String, IObject> objects = new Dictionary<string, IObject>();
 

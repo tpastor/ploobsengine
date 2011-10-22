@@ -62,7 +62,7 @@ namespace PloobsEngine.IA
 
         #region IPathFinder Members
 
-        private float CostToCrossImplementation(WAYPOINTTYPE type)
+        protected float CostToCrossImplementation(WAYPOINTTYPE type)
         {
             switch (type)
             {
