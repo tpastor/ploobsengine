@@ -38,6 +38,13 @@ namespace PloobsEngine.NetWorking
             return mes;
         }
 
+        public NetOutgoingMessage CreateMessage(short messageType)
+        {
+            NetOutgoingMessage mes = client.CreateMessage();
+            mes.Write(messageType);
+            return mes;
+        }
+
         public void SendMessage(NetOutgoingMessage mes,NetDeliveryMethod method = NetDeliveryMethod.Unreliable)
         {
             if (servercon == null)
@@ -56,8 +63,7 @@ namespace PloobsEngine.NetWorking
             {
                 switch (msg.MessageType)
                 {
-                    case NetIncomingMessageType.Data:
-                        Console.WriteLine("recieved data message");
+                    case NetIncomingMessageType.Data:                        
                         NetMessageType type =(NetMessageType) msg.ReadInt16();
                         if (messagehandler[type] != null)
                         {

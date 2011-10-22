@@ -17,7 +17,7 @@ namespace GameServer
             NetworkServer server = new NetworkServer();
             while (true)
             {
-                server.ProccessMessageSync();
+                server.ProccessMessageSync();                
             }
         }
     }
