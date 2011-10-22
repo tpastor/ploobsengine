@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <!-- The configuration and platform will be used to determine which
+         assemblies to include from solution and project documentation
+         sources -->
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4e1f0a5d-e96c-4799-bc6b-94be54a5e18b}</ProjectGuid>
+    <SHFBSchemaVersion>1.9.3.0</SHFBSchemaVersion>
+    <!-- AssemblyName, Name, and RootNamespace are not used by SHFB but Visual
+         Studio adds them anyway -->
+    <AssemblyName>Documentation</AssemblyName>
+    <RootNamespace>Documentation</RootNamespace>
+    <Name>Documentation</Name>
+    <!-- SHFB properties -->
+    <OutputPath>C:\Users\tpastor\Desktop\port\Documentation\HelpOutput\</OutputPath>
+    <HtmlHelpName>Ploobs Engine Help</HtmlHelpName>
+    <Language>en-US</Language>
+    <FrameworkVersion>.NET 4.0.30319</FrameworkVersion>
+    <DocumentationSources>
+      <DocumentationSource sourceFile="Engine\bin\x86\Debug\PloobsEngine.dll" />
+      <DocumentationSource sourceFile="Engine\bin\x86\Debug\PloobsEngine.xml" />
+    </DocumentationSources>
+    <MissingTags>AutoDocumentCtors, AutoDocumentDispose</MissingTags>
+    <PlugInConfigurations>
+      <PlugInConfig id="Additional Content Only" enabled="True">
+        <configuration />
+      </PlugInConfig>
+    </PlugInConfigurations>
+    <HelpTitle>Ploobs Engine Help</HelpTitle>
+    <FeedbackEMailAddress>contato%40ploobs.com.br</FeedbackEMailAddress>
+    <CopyrightHref>http://ploobsengine.codeplex.com/</CopyrightHref>
+    <CopyrightText>[v 0.3 ] Ploobs Engine Help</CopyrightText>
+    <ComponentConfigurations>
+      <ComponentConfig id="Post-transform Component" enabled="True">
+        <component id="Post-transform Component" type="SandcastleBuilder.Components.PostTransformComponent" assembly="{@SHFBFolder}SandcastleBuilder.Components.dll">
+          <!-- Code colorizer files (required).
+                 Attributes:
+                    Stylesheet file (required)
+                    Script file (required)
+                    "Copy" image file (required) -->
+          <colorizer stylesheet="{@SHFBFolder}Colorizer\highlight.css" scriptFile="{@SHFBFolder}Colorizer\highlight.js" copyImage="{@SHFBFolder}Colorizer\CopyCode.gif" />
+          <!-- Base output paths for the files (required).  These should match
+                 the parent folder of the output path of the HTML files (see
+                 each of the SaveComponent instances below). -->
+          <outputPaths>
+{@HelpFormatOutputPaths}
+            </outputPaths>
+          <!-- Logo image file (optional).  Filename is required. The height,
+                 width, altText, placement, and alignment attributes are
+                 optional. -->
+          <logoFile filename="C:\Users\tpastor\Desktop\Release\Code\PloobsEngine\Helper Aux\Logo.jpg" height="0" width="0" altText="" placement="left" alignment="left" />
+        </component>
+      </ComponentConfig>
+    </ComponentConfigurations>
+  </PropertyGroup>
+  <!-- There are no properties for these groups.  AnyCPU needs to appear in
+       order for Visual Studio to perform the build.  The others are optional
+       common platform types that may appear. -->
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Win32' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Win32' ">
+  </PropertyGroup>
+  <ItemGroup>
+    <ContentLayout Include="Content Layout.content" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helper Aux\" />
+    <Folder Include="HelpFiles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="HelpFiles\Materials.aml" />
+    <None Include="HelpFiles\PostEffects.aml" />
+    <None Include="HelpFiles\PostEffects.aml" />
+    <None Include="HelpFiles\Components.aml" />
+    <None Include="HelpFiles\API Reference.aml" />
+    <None Include="HelpFiles\In Code Tutorial.aml" />
+    <None Include="HelpFiles\Tutorials. Codeaml.aml" />
+    <None Include="HelpFiles\Roadmap.aml" />
+    <None Include="HelpFiles\Max Exporter Plugin.aml" />
+    <None Include="HelpFiles\Visual Studio Solution.aml" />
+    <None Include="HelpFiles\Folder Layout.aml" />
+    <None Include="HelpFiles\Source Code.aml" />
+    <None Include="HelpFiles\About Us.aml" />
+    <None Include="HelpFiles\Introduction.aml" />
+    <None Include="HelpFiles\Basic Concepts.aml" />
+    <None Include="HelpFiles\Basic Concepts.aml" />
+    <None Include="HelpFiles\Basic Concepts.aml" />
+    <None Include="HelpFiles\Basic Concepts.aml" />
+    <None Include="HelpFiles\Introduction.aml" />
+    <None Include="HelpFiles\Features.aml" />
+    <None Include="HelpFiles\FAQ.aml" />
+    <None Include="HelpFiles\TroubleShooting.aml" />
+    <None Include="HelpFiles\References.aml" />
+    <None Include="HelpFiles\Glossary.aml" />
+    <None Include="HelpFiles\AdvancedTutorial.aml" />
+    <None Include="HelpFiles\BasicTutorial.aml" />
+    <None Include="HelpFiles\Tutorials.aml" />
+    <None Include="HelpFiles\Welcome.aml" />
+    <None Include="HelpFiles\Root.aml" />
+    <None Include="HelpFiles\Root.aml" />
+    <None Include="HelpFiles\Welcome.aml" />
+    <None Include="HelpFiles\Root.aml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Helper Aux\Untitled.jpg">
+      <ImageId>Untitled</ImageId>
+      <AlternateText>Untitled</AlternateText>
+    </Image>
+    <Image Include="Helper Aux\Simples.png">
+      <ImageId>Simples</ImageId>
+      <AlternateText>Simples</AlternateText>
+    </Image>
+    <Image Include="Helper Aux\tut0.jpg">
+      <ImageId>tut0</ImageId>
+      <AlternateText>tut 0</AlternateText>
+    </Image>
+    <Image Include="Helper Aux\Etapa1 10232010 64241 PM.jpg">
+      <ImageId>etapa1</ImageId>
+      <AlternateText>Etapa 1 10232010 64241 PM</AlternateText>
+    </Image>
+    <Content Include="Helper Aux\Untitled.jpg" />
+  </ItemGroup>
+  <!-- Import the SHFB build targets -->
+  <Import Project="$(SHFBROOT)\SandcastleHelpFileBuilder.targets" />
+</Project>

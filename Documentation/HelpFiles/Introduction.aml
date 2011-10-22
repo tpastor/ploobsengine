@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="59a6b1f1-762c-48c7-954e-c62f188fa3e9" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    
+    <introduction>      
+      <para>
+      This section will introduce you to the Ploobs Engine environment.       
+      </para>      
+    </introduction> 
+    
+  <section>
+      <title>Help Document Organization</title>
+      <content>        
+        <para>
+        This help document is organized as follows:
+        </para>
+        <para>
+        This introduction page talk about the engine features, the Basic 
+        Concepts page talks about the engine architecture.
+        Under the Tutorials section we have Basic Tutorial (a hello world demo 
+        very explained). In code tutorial (advanced demos) and some extras explaining
+        some engine specifics details.
+        In the Source code section we describe how the source code is organized
+        and how to create the release singe Dll.
+        The Max Exporter section explains how our 3DS Max exporter
+        works.
+        </para>
+               
+      </content>
+  </section> 
+ 
+ <section address="Section1">
+ <title>What Ploobs Engine Has to Offer ?</title>
+ <content>       
+ 
+ <para>
+ The Ploobs Engine version 0.3 is the port of the Xna 3.1 PloobsEngine version 0.2.
+ Lots of changes were made, principaly in the architecture and in the design.
+ We learned from our mistakes, this version is more Xna independent and
+ modular. 
+ </para>
+ <para>
+ One of the main guidelines in this version was simplicity. The engine try to helpl
+ the use to make the right thing. In the Debug version we use lots of 
+ asserts ensure that the user is doing the right think, we also have a new 
+ log system that gives some hints about common mistakes and commom errors to the user.
+ </para>
+      
+ <para>Here is a list of the principal Engine features.</para>
+       
+<para>
+This list is smaller than the 0.2 version. We did not ported all stuffs at once.
+</para>
+<list class="bullet">
+<listItem>
+<para>Forward Rendering e Deferred Rendering</para>
+<para>Two very different ways of rendering object in the screen. The forward
+technich is the traditional way of rendering, the Deferred is quite new in the
+industry and is used in games like Starcraft 2 and Crysis 2 </para>
+<para>The main goal of using Deferred Rendering for the end user is the
+huge number of dynamic lights that a scene can have, most of our effects is implemented in Deferred Rendering </para>
+</listItem>
+
+<listItem>
+<para>Artificial Inteligence (PathFinding, NN, GA, Agents and World Abstractions, Steering Behaviors ...)</para>
+<para>NOT PORTED YET</para>
+</listItem>
+
+<listItem>
+<para>3D and 2D Sound</para>
+<para>A simple module that supports background music, 2D sound effects and
+3D sounds (using dopler effect).
+</para>
+</listItem>
+
+<listItem>
+<para>Physics Integrated (Bepu API)</para>
+<para>We create an intermediate solution between
+a complete Wrapper (that is not good, because the physics engines
+architecture are never similar) and a coupled solution.
+The 0.2 version supported Bepu and JigLibX API, the 0.3 will not support JigLibX.
+We plan to support PhysicX soon.
+</para>
+</listItem>
+
+<listItem>
+<para>Animation Integrated  (XnaAnimation API, heavily altered to fit on the Deferred Render)</para>
+<para>Supports bone system animation, the render part of the XNAanimation
+was completely rewritten to fit in our deferred render</para>
+<para>This API was build by a Brazilian guy (like us)</para>
+</listItem>
+
+<listItem>
+<para>Dynamic Water and Ocean with waves</para>
+<para>Has some shader to deal with dynamic water completely in GPU, using 
+technichs like Vertex Displacement, pertubations maps and texture animation. 
+The water can have Dynamic refraction and reflection.
+</para>
+</listItem>
+
+<listItem>
+<para>Dynamic Reflection and Refraction</para>
+<para>Every object can reflect or refract the environment (Computers dont
+like these technich, cause they consume a lot of processing time, sometimes
+is good to fake them using environment mapping)</para>
+</listItem>
+
+<listItem>
+<para>Dynamic Lights (Spot, Point and Directional)</para>
+<para>You can move, change colors or diractions on the fly</para>
+<para>Virtually you can use as many lights as you want want</para>
+</listItem>
+
+<listItem>
+<para>BumpMaps, SpecularMaps,Glow Maps and Paralax Mapping</para>
+<para>There are some otimized shaders for specific materials and more 
+general ones with branches that supports every kind of combination between
+these maps</para>
+</listItem>
+
+<listItem>
+<para>Vegetation (Real Modeled Trees and Procedurally Generated Billboards)</para>
+<para>NOT PORTED YET</para>
+</listItem>
+
+<listItem>
+<para>Terrain with HeightMaps and Multitexture</para>
+<para>Supports classic Terrains with Height Maps and Colision</para>
+<para>Our implementation has a Multitexture LOD, that changes on the fly the
+textures coordinates according to the user field of view</para>
+</listItem>
+
+<listItem>
+<para>Dynamic Shadow (Shadow Mapping and Cascade Shadow Mapping) with 
+filtering</para>
+<para>Uses Classical shadow mapping for indoord environment (Directional and 
+Spot Lights) with lots of types of filtering and Cascade Shadow Mapping for 
+Outdoor Shadow (if properly combinared with others lights, you can fake some 
+good soft shadow) 
+</para>
+</listItem>
+
+<listItem>
+<para>Deferred with Antialiasing (PostEffect)</para>
+<para>In DirectX 9c there is no hardware MSAA for Multiple Render Target, so whe
+apply an adaptative low band pass filter to remove hight frequency data
+</para>
+<para>
+We support four types of shader AA: MLAA and other based on Rabula Rasa and Stalker GPU Gems Presentation.
+</para>
+</listItem>
+
+<listItem>
+<para>Post Effects: ToonShading, Gaussian Blur, Noise, Wiggle, Circular Glow, 
+ DOF, Bloom, HDR, Radial Blur, Negative, Black and White, SSAO, Color Correction,
+ Gama Correction, Saturation, Contrast, Fog, Ambient Scattering and 
+ much more ...</para>
+ <para>
+ The engine has a Simple and very easily extensible Post Proccess framework.
+ </para>
+</listItem>
+
+<listItem>
+<para>Extensible Particle System (soft particles also)</para>
+<para>
+We support the DPFSParticleSystem. It is very extensive and has lots of pre defined samples.
+We can support others particles system, the interfaces are very simple and clear
+</para>
+</listItem>
+
+<listItem>
+<para>Transparency (with Deferred Shading, extra Forward pass) and with Forward</para>
+<para>An extra render pass to create a "fake" order independent transparency
+</para>
+</listItem>
+
+<listItem>
+<para>EnvironmentMapping</para>
+<para>Can be used like a LightMap, or just to simulate metal appearance
+</para>
+<para>If can also be extended to implement Custom BRDFs </para>
+</listItem>
+
+<listItem>
+<para>Skybox</para>
+<para>Using TexCube Textures for skybo.
+The 0.2 Supported dynamic SkyDomes, we will port this.
+
+</para>
+</listItem>
+
+<listItem>
+<para>Billboards (Gpu Spherical and Cylindrical)</para>
+Scales very well, can use thousands of bilboards actives every frame
+</listItem>
+
+<listItem>
+<para>Animated Billboards and Textures</para>
+<para>
+Can use an Texure Atlas with frame animations to animated a Bilboard
+</para>
+</listItem>
+
+<listItem>
+<para>Video Player Embedded</para>
+Can Play common videos formats
+</listItem>
+
+<listItem>
+<para>Hardware Instancing (static and dynamic)</para>
+<para>No fully ported yet</para>
+</listItem>
+
+<listItem>
+<para>Trigger System</para>
+<para>Simple system capable of detecting situations and fire 
+events </para>
+</listItem>
+
+<listItem>
+<para>Message System</para>
+<para>Easy way to make entities comunicate </para>
+</listItem>
+
+<listItem>
+<para>Picking System</para>
+<para>Component that simplifies a lot the proccess of selecting a 3D object
+using the mouse
+</para>
+</listItem>
+
+<listItem>
+<para>Input Control System</para>
+<para>System that abstracts the complexities of keyboard usage, supporting 
+Mouse and Keyboard</para>
+</listItem>
+
+<listItem>
+<para>Resource Management System</para>
+<para>For Resource Caching and protection</para>
+</listItem>
+
+<listItem>
+<para>Screen Manager System</para>
+<para>Handle a lot of screen types, like Movie Screen, 2D World, 3D World 
+... </para>
+</listItem>
+
+<listItem>
+<para>Culling System</para>
+<para>Just send the object in the camera Frustrum to the GPU improving a 
+lot the render speed. Uses the Octree algorithm</para>
+</listItem>
+
+<listItem>
+<para>Profilling System (Real Time Graphs, Performance Counters, CSV Result Exporter ...)</para>
+<para>Not ported yet</para>
+</listItem>
+
+<listItem>
+<para>Graphics, Physics and Render Targets easily Debuggable </para>
+<para>Has lots of small features that helps the hard task of debugging</para>
+</listItem>
+
+<listItem>
+<para>Cameras (First Person, Quake like, Third Person, Static, Follow Path, 
+Interpolators ...)</para>
+<para> camera System that handle lots of types os cameras and some common 
+operations like interpolation and saving the camera state
+</para>
+</listItem>
+
+<listItem>
+<para>Integrated With WPF</para>
+<para>Its very easy to embedded the engine in a WPF application</para>
+</listItem>
+
+<listItem>
+<para>Integrated With 3DS Max using an Exporter Plugin </para>
+<para>Can export a complete scene (with models, camera, lights and dummies) 
+using a MaxScript plugin</para>
+</listItem>
+
+<listItem>
+<para>Has Lots of Math and Physicw Helpers</para>
+<para>An extensive Math and Physics Library for most commom operations
+</para>
+</listItem>
+
+<listItem>
+<para>Extensible Design and Easy to Use</para>
+<para>Very easy to extend (Normaly its just a question of extending an 
+interface) and very simple to use.
+</para>
+</listItem>
+</list>
+
+</content>      
+</section>        
+</developerConceptualDocument>
+</topic>
