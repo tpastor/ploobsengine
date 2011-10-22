@@ -28,6 +28,13 @@ namespace PloobsEngine.NetWorking
             return mes;
         }
 
+        public NetOutgoingMessage CreateMessage(short messageType)
+        {
+            NetOutgoingMessage mes = server.CreateMessage();
+            mes.Write(messageType);
+            return mes;
+        }
+
         public void SendMessage(NetOutgoingMessage mes,NetDeliveryMethod method = NetDeliveryMethod.Unreliable)
         {
             server.SendMessage(mes, server.Connections, method,0);
