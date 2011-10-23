@@ -2,6 +2,12 @@ using System;
 using Lidgren.Network;
 using System.Threading;
 using PloobsEngine.NetWorking;
+using PloobsEngine.Physics;
+using PloobsEngine.Utils;
+using Microsoft.Xna.Framework;
+using System.Diagnostics;
+using PloobsEngine.Modelo;
+using PloobsEngine.Physics.Bepu;
 
 namespace GameServer
 {
@@ -13,12 +19,12 @@ namespace GameServer
         /// </summary>
         static void Main(string[] args)
         {
-            Console.WriteLine("Starting server");
-            NetworkServer server = new NetworkServer();
-            while (true)
-            {
-                server.ProccessMessageSync();                
-            }
+
+            GameClass game = new GameClass();
+            game.Run();
+
+
+
         }
     }
 #endif

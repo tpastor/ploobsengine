@@ -6,8 +6,21 @@ using Lidgren.Network;
 
 namespace PloobsEngine.NetWorking
 {
-    class NetworkServer
+    public class NetworkServer
     {
+        Dictionary<String, NetConnection> _conns = new Dictionary<string, NetConnection>();
+
+        private Dictionary<String, NetConnection> ConnectionsNames
+        {
+            get
+            {
+                lock (this)
+                {
+                    return _conns;
+                }
+            }
+        }
+
         public NetworkServer(String serverName = "GameServer", int port = 14242)
         {
             NetPeerConfiguration config = new NetPeerConfiguration(serverName);
@@ -35,7 +48,7 @@ namespace PloobsEngine.NetWorking
             return mes;
         }
 
-        public void SendMessage(NetOutgoingMessage mes,NetDeliveryMethod method = NetDeliveryMethod.Unreliable)
+        public void SendMessageToAllClients(NetOutgoingMessage mes,NetDeliveryMethod method = NetDeliveryMethod.Unreliable)
         {
             server.SendMessage(mes, server.Connections, method,0);
         }
@@ -44,7 +57,7 @@ namespace PloobsEngine.NetWorking
 
         public void AddMessageHandler(NetMessageType messageType, Action<NetMessageType, NetIncomingMessage> handler)
         {
-            if (messagehandler[messageType] == null)
+            if (!messagehandler.ContainsKey(messageType))
             {
                 messagehandler[messageType] = new List<Action<NetMessageType, NetIncomingMessage>>();
                 messagehandler[messageType].Add(handler);
@@ -76,7 +89,7 @@ namespace PloobsEngine.NetWorking
                         if (!conFinded)
                         {
                             Console.WriteLine("ClientDiscovered");
-                            server.SendDiscoveryResponse(null, msg.SenderEndpoint);
+                            server.SendDiscoveryResponse(null, msg.SenderEndpoint);                            
                         }
                         break;
                     case NetIncomingMessageType.VerboseDebugMessage:
@@ -85,6 +98,19 @@ namespace PloobsEngine.NetWorking
                     case NetIncomingMessageType.ErrorMessage:
                         Console.WriteLine(msg.ReadString());
                         break;
+                    case NetIncomingMessageType.StatusChanged:
+                            NetConnectionStatus status = (NetConnectionStatus)msg.ReadByte();
+                            if (status == NetConnectionStatus.Connected)
+                            {
+                                ConnectionsNames.Add(msg.SenderEndpoint.ToString(), msg.SenderConnection);
+                            }
+                            else if(status == NetConnectionStatus.Disconnecting)
+                            {
+                                ConnectionsNames.Remove(msg.SenderEndpoint.ToString());
+                            }
+
+                            break;
+         
                     case NetIncomingMessageType.Data:                        
                         NetMessageType type =(NetMessageType) msg.ReadInt16();
                         if (messagehandler[type] != null)

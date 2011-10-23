@@ -179,8 +179,10 @@
     <Compile Include="Material\ParalaxScreen.cs" />
     <Compile Include="MultThreading\MultScreen.cs" />
     <Compile Include="Networking\NetworkingScreen.cs" />
+    <Compile Include="Networking\NetworkRemoteCreation.cs" />
     <Compile Include="OctreeScreen\OctreeScreen.cs" />
     <Compile Include="Physic\MobilePhysicScreen.cs" />
+    <Compile Include="Post\BackgroundTexture.cs" />
     <Compile Include="Post\ProjectiveTexturingPostEffect.cs" />
     <Compile Include="Post\SharpenPostEffect.cs" />
     <Compile Include="Post\DreamPostEffect.cs" />

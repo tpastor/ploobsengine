@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using Lidgren.Network;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics.PackedVector;
+using PloobsEngine.Physics;
 
 namespace PloobsEngine.NetWorking
 {
     public static class XNAExtensions
     {
+        public static void Update(this BepuPhysicWorld BepuPhysicWorld, GameTime gt)
+        {
+            BepuPhysicWorld.iUpdate(gt);
+        }
+
         /// <summary>
         /// Write a Point
         /// </summary>
@@ -290,5 +296,6 @@ namespace PloobsEngine.NetWorking
             retval.Radius = message.ReadSingle();
             return retval;
         }
+
     }
 }

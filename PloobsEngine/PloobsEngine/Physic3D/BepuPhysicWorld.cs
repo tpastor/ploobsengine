@@ -47,7 +47,7 @@ namespace PloobsEngine.Physics
     public class BepuPhysicWorld : IPhysicWorld
     {
         Space space;                
-        private List<IPhysicObject> objs;
+        private List<IPhysicObject> objs;        
 
         private List<IPhysicConstraint> ctns;
 
