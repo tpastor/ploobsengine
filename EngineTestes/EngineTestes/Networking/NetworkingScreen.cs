@@ -11,6 +11,7 @@ using PloobsEngine.Commands;
 using PloobsEngine.Input;
 using Lidgren.Network;
 using PloobsEngine.NetWorking;
+using EngineTestes.Networking;
 
 namespace EngineTestes
 {
@@ -27,7 +28,7 @@ namespace EngineTestes
         /// <param name="world">The world.</param>
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            world = new IWorld(new BepuPhysicWorld(-0.97f),new SimpleCuller());            
+            world = new IWorld(new BepuPhysicWorld(-0.97f,false,1),new SimpleCuller());            
 
             ///Create the deferred description
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
@@ -38,7 +39,7 @@ namespace EngineTestes
             ///create the deferred technich
             renderTech = new DeferredRenderTechnic(desc);
         }
-
+              
         
         /// <summary>
         /// Load content for the screen.
@@ -50,7 +51,10 @@ namespace EngineTestes
         {
             ///must be called before all
             base.LoadContent(GraphicInfo, factory, contentManager);
-                        
+
+            client = new NetworkCliente();
+            client.AddMessageHandler(NetMessageType.PhysicInternalSync, (World.PhysicWorld as BepuPhysicWorld).StartRecieveSyncPhysicMessages);
+
             ///Create a simple object
             ///Geomtric Info and textures (this model automaticaly loads the texture)
             SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
@@ -64,7 +68,8 @@ namespace EngineTestes
             IObject obj = new IObject(fmaterial, simpleModel, tmesh);
             ///Add to the world
             this.World.AddObject(obj);
-            
+            client.SendTriangleMeshCreationOrder(obj.GetId(), "Model//cenario", Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
+
             ///Add some directional lights to completely iluminate the world
             #region Lights
             DirectionalLightPE ld1 = new DirectionalLightPE(Vector3.Left, Color.White);
@@ -92,8 +97,8 @@ namespace EngineTestes
             key.KeyStateChange += new KeyStateChange(key_KeyStateChange);
             this.BindInput(key);
 
-            client = new NetworkCliente();
-            client.AddMessageHandler(NetMessageType.PhysicSync, (World.PhysicWorld as BepuPhysicWorld).StartRecieveSyncPhysicMessages);
+            
+            //LightThrowBepu lt = new LightThrowBepu(
         }
 
         protected override void Update(GameTime gameTime)
@@ -105,9 +110,18 @@ namespace EngineTestes
         NetworkCliente client;
         void key_KeyStateChange(InputPlayableKeyBoard ipk)
         {
-            NetOutgoingMessage mes = client.CreateMessage(NetMessageType.UserDefined);
-            mes.WriteMatrix(Matrix.Identity);
-            client.SendMessage(mes, NetDeliveryMethod.ReliableOrdered);
+            SimpleModel simpleModel = new SimpleModel(this.GraphicFactory, "Model//ball");
+            ///Physic info (position, rotation and scale are set here)
+            SphereObject tmesh = new SphereObject(new Vector3(50,50,10),1,1, 10, MaterialDescription.DefaultBepuMaterial());
+            ///Shader info (must be a deferred type)
+            DeferredNormalShader shader = new DeferredNormalShader();
+            ///Material info (must be a deferred type also)
+            DeferredMaterial fmaterial = new DeferredMaterial(shader);
+            ///The object itself
+            IObject obj = new IObject(fmaterial, simpleModel, tmesh);
+            ///Add to the world
+            this.World.AddObject(obj);
+            client.SendSphereCreationOrder(obj.GetId(), new Vector3(50, 50, 10), 1, 1, 10, MaterialDescription.DefaultBepuMaterial());
         }
 
     }

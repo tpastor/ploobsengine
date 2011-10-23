@@ -88,11 +88,14 @@ namespace EngineTestes
             this.World.AddLight(ld5);
             #endregion
 
+            BackgroundTexture bt = new BackgroundTexture("Textures//Bubble");
+            this.RenderTechnic.AddPostEffect(bt);
+
             //SharpenPostEffect sharpen = new SharpenPostEffect();
             //this.RenderTechnic.AddPostEffect(sharpen);
 
-            DreamPostEffect dp = new DreamPostEffect();
-            this.RenderTechnic.AddPostEffect(dp);
+            //DreamPostEffect dp = new DreamPostEffect();
+            //this.RenderTechnic.AddPostEffect(dp);
 
             //NightPostEffect np = new NightPostEffect();
             //this.RenderTechnic.AddPostEffect(np);
@@ -153,8 +156,8 @@ namespace EngineTestes
 
             LightThrowBepu lt = new LightThrowBepu(this.World, factory);
 
-            SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grasscube");
-            CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
+            //SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grasscube");
+            //CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
 
         }       
 

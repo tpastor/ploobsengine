@@ -249,9 +249,10 @@
     <Compile Include="Modelo\SpecificModels\TreeModel.cs" />
     <Compile Include="Modelo\SpecificModels\WaterModel.cs" />
     <Compile Include="Modelo\TextureInformation.cs" />
-    <Compile Include="NetWorking\BepuPhysicWorldSync.cs" />
-    <Compile Include="NetWorking\Cliente.cs" />
+    <Compile Include="NetWorking\NetMessageType.cs" />
+    <Compile Include="NetWorking\NetworkCliente.cs" />
     <Compile Include="NetWorking\NetworkingMessageExtension.cs" />
+    <Compile Include="NetWorking\NetworkServer.cs" />
     <Compile Include="Particles\DPFSParticleSystem.cs" />
     <Compile Include="Particles\DPSFParticleManager.cs" />
     <Compile Include="Particles\IParticleManager.cs" />

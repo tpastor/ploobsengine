@@ -5,22 +5,19 @@ using System.Text;
 using Lidgren.Network;
 using System.Threading.Tasks;
 using System.Threading;
+using Microsoft.Xna.Framework;
+using PloobsEngine.Physics;
 
 namespace PloobsEngine.NetWorking
 {
-    public enum NetMessageType : short
-    {
-        PhysicSync = 0x01,
-        UserDefined = 0x02
-    }
-
+    
     public class NetworkCliente
-    {
+    {        
         Dictionary<NetMessageType, List<Action<NetMessageType, NetIncomingMessage>>> messagehandler = new Dictionary<NetMessageType, List<Action<NetMessageType, NetIncomingMessage>>>();
         
         public void AddMessageHandler(NetMessageType messageType , Action<NetMessageType, NetIncomingMessage> handler)
         {
-            if(messagehandler[messageType] == null)
+            if(!messagehandler.ContainsKey(messageType))
             {
                 messagehandler[messageType] = new List<Action<NetMessageType,NetIncomingMessage>>();
                 messagehandler[messageType].Add(handler);
@@ -104,7 +101,9 @@ namespace PloobsEngine.NetWorking
                 {
                     case NetIncomingMessageType.DiscoveryResponse:
                         servercon = client.Connect(msg.SenderEndpoint);
-                        return;
+                        if(servercon  !=null)
+                            return;
+                        break;
                 }
             }
         }
