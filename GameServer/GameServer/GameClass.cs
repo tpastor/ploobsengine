@@ -34,7 +34,7 @@ namespace GameServer
             base.LoadContent();
             Console.WriteLine("Starting server");
 
-            pw = new BepuPhysicWorld(-0.97f, false, 1, true);
+            pw = new BepuPhysicWorld(-9f, false, 1, true);
             
             server = new NetworkServer();
             server.AddMessageHandler(NetMessageType.PhysicCreate, RecievePhysicObjects);                   

@@ -28,7 +28,7 @@ namespace EngineTestes
         /// <param name="world">The world.</param>
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            world = new IWorld(new BepuPhysicWorld(-0.97f,false,1),new SimpleCuller());            
+            world = new IWorld(new BepuPhysicWorld(-9f,false,1),new SimpleCuller());            
 
             ///Create the deferred description
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
