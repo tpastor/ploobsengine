@@ -92,18 +92,24 @@ namespace EngineTestes
             //this.RenderTechnic.AddPostEffect(sharpen);
 
             DreamPostEffect dp = new DreamPostEffect();
-            this.RenderTechnic.AddPostEffect(dp);
+            //this.RenderTechnic.AddPostEffect(dp);
 
             //NightPostEffect np = new NightPostEffect();
             //this.RenderTechnic.AddPostEffect(np);
 
+            SharpenPostEffect sp = new SharpenPostEffect();
+            this.RenderTechnic.AddPostEffect(sp);
+
             HeatPostEffect h = new HeatPostEffect();
+            //this.RenderTechnic.AddPostEffect(h);
 
           //  this.RenderTechnic.AddPostEffect(h);
             h.MaxIntensity = 0.4f;
 
             GlowPostEffect glow = new GlowPostEffect();
-            this.RenderTechnic.AddPostEffect(glow);
+            //this.RenderTechnic.AddPostEffect(glow);
+
+        
 
 
             //FogPostEffect fog = new FogPostEffect(1, 1000);

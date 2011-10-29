@@ -90,8 +90,8 @@ namespace PloobsEngine.Loader
 
                 case "Ghost":
 
-                    Vector3 newpos = new Vector3(mi[0].position.X, mi[0].position.Y, mi[0].position.Z);
-                    po = new GhostObject(newpos,Matrix.CreateFromQuaternion(mi[0].rotation), mi[0].scale);
+                   
+                    po = new GhostObject(mi[0].position,Matrix.CreateFromQuaternion(mi[0].rotation), mi[0].scale);
 
                     break;
                 case "Cylinder":
@@ -122,6 +122,10 @@ namespace PloobsEngine.Loader
                     po = new BoxObject(mi[0].position, len.X, len.Y, len.Z, mi[0].mass, mi[0].scale, Matrix.CreateFromQuaternion(mi[0].rotation), material);
 
                     break;
+
+                case "Water":
+                    po = new GhostObject(mi[0].position, Matrix.CreateFromQuaternion(mi[0].rotation), mi[0].scale);
+                    break;
                 case "TriangleMesh":
                 default:
                     po = new TriangleMeshObject(model, Vector3.Zero, Matrix.Identity, new Vector3(1), material);
@@ -137,6 +141,12 @@ namespace PloobsEngine.Loader
                 (shader as DeferredEMReflectiveShader).TextureCube = mi[0].textureInformation.getCubeTexture(TextureType.ENVIRONMENT);
                 
             }
+            else if (mi[0].collisionType.Contains("Water"))
+            {
+                Vector3 position = (Vector3)(mi[0].extra["position"]);
+                shader = new DeferredWaterCompleteShader((int)(float)(mi[0].extra["width"]),(int)(float)( mi[0].extra["length"]), new Plane(position.X, position.Y, position.Z, 1),10.0f);
+            }
+            
             else
             {
                 shader = new DeferredCustomShader(mi[0].HasTexture(TextureType.GLOW), mi[0].HasTexture(TextureType.BUMP), mi[0].HasTexture(TextureType.SPECULAR), mi[0].HasTexture(TextureType.PARALAX)); 

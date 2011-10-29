@@ -35,21 +35,19 @@ namespace PloobsEngine.Loader
 {
     internal struct XmlModelMeshInfo
     {
-        public XmlModelMeshInfo(string modeName, string collisionType, float mass, float dinamicfriction, float staticfriction, float ellasticity, string difuseName, string bumpName, string specularName, string glowName, string environName)
+        public XmlModelMeshInfo(string modeName, string collisionType, float mass, float dinamicfriction, float staticfriction, float ellasticity)
         {
             this.modelName = modeName;
             this.collisionType = collisionType;
-            this.difuseName = difuseName;
-            this.bumpName = bumpName;
-            this.specularName = specularName;
-            this.glowName = glowName;
-            this.reflectionName = environName;
+
 
 
             this.mass = mass;
             this.dinamicfriction = dinamicfriction;
             this.staticfriction = staticfriction;
             this.ellasticity = ellasticity;
+
+            this.material = new materialInfo();
 
 
 
@@ -58,18 +56,28 @@ namespace PloobsEngine.Loader
 
         public string collisionType;
         public string modelName;
-        public string difuseName;
-        public string bumpName;
-        public string specularName;
-        public string glowName;
-        public string reflectionName;
+
 
 
         public float mass;
         public float dinamicfriction;
         public float staticfriction;
         public float ellasticity;
-        
+
+        public materialInfo material;
+
+
+    }
+    internal struct materialInfo
+    {
+
+        public string difuseName;
+        public string bumpName;
+        public string specularName;
+        public string glowName;
+        public string reflectionName;
+
+        public Dictionary<string, object> extrainformation;
 
     }
 
@@ -81,11 +89,11 @@ namespace PloobsEngine.Loader
 
     internal struct SpotLightInformation
     {
-        public Vector3 pos;        
+        public Vector3 pos;
         public Color color;
         public float decay;
         public float multiplier;
-        public float angle;        
+        public float angle;
         public String name;
         public bool castShadow;
     }
@@ -114,7 +122,7 @@ namespace PloobsEngine.Loader
         /// <param name="xmlBasePath">The XML base path.</param>
         /// <param name="modelPath">The model path.</param>
         /// <param name="texturePath">The texture path.</param>
-        public ExtractXmlModelLoader(string xmlBasePath, string modelPath , string texturePath)
+        public ExtractXmlModelLoader(string xmlBasePath, string modelPath, string texturePath)
         {
             this.path = xmlBasePath;
             this.modelPath = modelPath;
@@ -128,16 +136,16 @@ namespace PloobsEngine.Loader
         //string texturePath = "..\\Content\\Textures\\";
         /// </summary>
         public ExtractXmlModelLoader()
-        {            
+        {
         }
 
-        #region IModelLoader Members        
+        #region IModelLoader Members
 
-        public ModelLoaderData Load(GraphicFactory factory,GraphicInfo ginfo,String Name)
+        public ModelLoaderData Load(GraphicFactory factory, GraphicInfo ginfo, String Name)
         {
             ModelLoaderData elements = new ModelLoaderData();
             Dictionary<String, XmlModelMeshInfo> infos = new Dictionary<string, XmlModelMeshInfo>();
-            Dictionary<String, targetInfo> targets = new Dictionary<string, targetInfo>();            
+            Dictionary<String, targetInfo> targets = new Dictionary<string, targetInfo>();
             Dictionary<String, SpotLightInformation> spotLights = new Dictionary<string, SpotLightInformation>();
             //Dictionary<String, ConstraintInformation> constraints = new Dictionary<string, ConstraintInformation>();
             Dictionary<String, CameraInfo> cameras = new Dictionary<string, CameraInfo>();
@@ -155,7 +163,7 @@ namespace PloobsEngine.Loader
 
                 if (node.Name == "Constraint")
                 {
-                    
+
                     ConstraintInfo cinfo = new ConstraintInfo();
 
 
@@ -181,19 +189,19 @@ namespace PloobsEngine.Loader
                     XmlElement breakable = node["isBreakable"];
                     if (breakable != null)
                     {
-                        
+
                         cinfo.breakable = SerializerHelper.DeserializeAttributeBaseType<bool>("value", breakable);
-                        
+
                     }
 
 
-                    
+
                     Vector3 pos = SerializerHelper.DeserializeVector3("position", node);
-                     cinfo.Position = new Vector3(pos.X, pos.Y, pos.Z);
+                    cinfo.Position = new Vector3(pos.X, pos.Y, pos.Z);
 
 
                     elements.ConstraintInfo.Add(cinfo);
-                    
+
                 }
                 if (node.Name == "particle")
                 {
@@ -201,11 +209,11 @@ namespace PloobsEngine.Loader
                     pinfo.Name = SerializerHelper.DeserializeAttributeBaseType<String>("name", node);
                     pinfo.Position = SerializerHelper.DeserializeVector3("position", node);
                     pinfo.Orientation = SerializerHelper.DeserializeQuaternion("rotation", node);
-                    
+
                     XmlElement mass = node["type"];
                     if (mass != null)
                     {
-                       pinfo.Type = SerializerHelper.DeserializeAttributeBaseType<String>("value", mass);
+                        pinfo.Type = SerializerHelper.DeserializeAttributeBaseType<String>("value", mass);
                     }
 
                     elements.ParticleInfo.Add(pinfo);
@@ -240,18 +248,32 @@ namespace PloobsEngine.Loader
                     {
                         info.ellasticity = SerializerHelper.DeserializeAttributeBaseType<float>("value", ellas);
                     }
-                    
-                    
-                    
+
+
+
                     XmlElement collision = node["collision"];
                     if (collision != null)
                     {
                         info.collisionType = SerializerHelper.DeserializeAttributeBaseType<String>("type", collision);
+
+                        if (info.collisionType.Contains("Water"))
+                        {
+
+                            Vector3 pos = SerializerHelper.DeserializeVector3("position", collision);
+
+                            float width = SerializerHelper.DeserializeAttributeBaseType<float>("value", collision["width"]);
+                            float length = SerializerHelper.DeserializeAttributeBaseType<float>("value", collision["length"]);
+
+                            info.material.extrainformation = new Dictionary<string, object>();
+                            info.material.extrainformation.Add("position", pos);
+                            info.material.extrainformation.Add("width", width);
+                            info.material.extrainformation.Add("length", length);
+                        }
                     }
                     XmlElement material = node["material"];
                     if (material == null)
                     {
-                        info.difuseName = "white";
+                        info.material.difuseName = "white";
                     }
                     else
                     {
@@ -259,30 +281,30 @@ namespace PloobsEngine.Loader
                         XmlElement reflect = material["reflection"];
                         if (reflect != null)
                         {
-                            info.reflectionName = removeExtension(SerializerHelper.DeserializeAttributeBaseType<String>("name", reflect));
+                            info.material.reflectionName = removeExtension(SerializerHelper.DeserializeAttributeBaseType<String>("name", reflect));
                         }
                         else
                         {
                             XmlElement difuse = material["diffuse"];
                             if (difuse != null)
                             {
-                                info.difuseName = removeExtension(SerializerHelper.DeserializeAttributeBaseType<String>("name", difuse));
+                                info.material.difuseName = removeExtension(SerializerHelper.DeserializeAttributeBaseType<String>("name", difuse));
                             }
                             XmlElement bump = material["bump"];
                             if (bump != null)
                             {
-                                info.bumpName = removeExtension(SerializerHelper.DeserializeAttributeBaseType<String>("name", bump));
+                                info.material.bumpName = removeExtension(SerializerHelper.DeserializeAttributeBaseType<String>("name", bump));
                             }
                             XmlElement specular = material["specular"];
                             if (specular != null)
                             {
-                                info.specularName = removeExtension(SerializerHelper.DeserializeAttributeBaseType<String>("name", specular));
+                                info.material.specularName = removeExtension(SerializerHelper.DeserializeAttributeBaseType<String>("name", specular));
                             }
                             XmlElement glow = material["glow"];
                             if (glow != null)
                             {
-                                info.glowName = removeExtension(SerializerHelper.DeserializeAttributeBaseType<String>("name", glow));
-                            } 
+                                info.material.glowName = removeExtension(SerializerHelper.DeserializeAttributeBaseType<String>("name", glow));
+                            }
                         }
                     }
                     infos.Add(info.modelName, info);
@@ -291,7 +313,7 @@ namespace PloobsEngine.Loader
                 {
                     String name = SerializerHelper.DeserializeAttributeBaseType<String>("name", node);
                     Vector3 pos = SerializerHelper.DeserializeVector3("position", node);
-                    pos = new Vector3(pos.X, -pos.Y, -pos.Z);                    
+                    pos = new Vector3(pos.X, -pos.Y, -pos.Z);
                     Vector3 vColor = SerializerHelper.DeserializeVector3("color", node);
                     Color color = new Color(vColor.X / 255, vColor.Y / 255, vColor.Z / 255);
                     float amount = SerializerHelper.DeserializeAttributeBaseType<float>("amount", node["multiplier"]);
@@ -302,7 +324,7 @@ namespace PloobsEngine.Loader
                     elements.LightsInfo.Add(pl);
                 }
                 else if (node.Name == "spotlight")
-                {                    
+                {
                     String name = SerializerHelper.DeserializeAttributeBaseType<String>("name", node);
                     Vector3 pos = SerializerHelper.DeserializeVector3("position", node);
                     pos = new Vector3(pos.X, -pos.Y, -pos.Z);
@@ -311,8 +333,8 @@ namespace PloobsEngine.Loader
                     Color color = new Color(vColor.X / 255, vColor.Y / 255, vColor.Z / 255);
                     float amount = SerializerHelper.DeserializeAttributeBaseType<float>("amount", node["multiplier"]);
                     float decay = SerializerHelper.DeserializeAttributeBaseType<float>("value", node["decay"]);
-                    bool castShadow = SerializerHelper.DeserializeBaseType<bool>("castShadows", node);                    
-                
+                    bool castShadow = SerializerHelper.DeserializeBaseType<bool>("castShadows", node);
+
                     SpotLightInformation spi = new SpotLightInformation();
                     spi.angle = MathHelper.ToRadians(fallof);
                     spi.color = color;
@@ -320,7 +342,7 @@ namespace PloobsEngine.Loader
                     spi.multiplier = amount;
                     spi.name = name;
                     spi.pos = pos;
-                    spi.castShadow = castShadow;          
+                    spi.castShadow = castShadow;
                     spotLights.Add(spi.name, spi);
 
 
@@ -333,7 +355,7 @@ namespace PloobsEngine.Loader
                     targetInfo ti = new targetInfo();
                     ti.targetPos = pos;
                     ti.name = name;
-                    targets.Add(ti.name, ti);                    
+                    targets.Add(ti.name, ti);
                 }
                 else if (node.Name == "camera")
                 {
@@ -343,7 +365,7 @@ namespace PloobsEngine.Loader
                     CameraInfo co = new CameraInfo();
                     co.Name = name;
                     co.Position = pos;
-                    cameras.Add(co.Name,co);
+                    cameras.Add(co.Name, co);
                 }
                 else if (node.Name == "dummy")
                 {
@@ -361,10 +383,10 @@ namespace PloobsEngine.Loader
             foreach (var item in spotLights)
             {
                 SpotLightInformation si = item.Value;
-                targetInfo ti =  targets[item.Key + ".Target"];
+                targetInfo ti = targets[item.Key + ".Target"];
                 SpotLightPE sl = new SpotLightPE(si.pos, Vector3.Normalize(ti.targetPos - si.pos), si.decay, (ti.targetPos - si.pos).Length() * 10f, si.color, (float)Math.Cos(si.angle / 2), si.multiplier);
                 sl.CastShadown = si.castShadow;
-                sl.Name = si.name;                
+                sl.Name = si.name;
                 elements.LightsInfo.Add(sl);
 
             }
@@ -376,7 +398,7 @@ namespace PloobsEngine.Loader
                 targetInfo ti = targets[item.Key + ".Target"];
                 ci.Target = ti.targetPos;
                 elements.CameraInfo.Add(ci);
-            }            
+            }
 
 
             Model model = factory.GetModel(modelPath + Name);
@@ -387,7 +409,7 @@ namespace PloobsEngine.Loader
             for (int i = 0; i < model.Meshes.Count; i++)
             {
                 String name = model.Meshes[i].Name.Substring(5);
-                if (infos.ContainsKey(name)) 
+                if (infos.ContainsKey(name))
                 {
 
                     for (int j = 0; j < model.Meshes[i].MeshParts.Count; j++)
@@ -408,6 +430,8 @@ namespace PloobsEngine.Loader
                         mi.scale = scale;
                         mi.rotation = ori;
 
+                        
+
                         ModelBuilderHelper.Extract(m, model.Meshes[i].MeshParts[j], out mi.batchInformation);
                         mi.ellasticity = inf.ellasticity;
                         mi.dinamicfriction = inf.dinamicfriction;
@@ -420,24 +444,28 @@ namespace PloobsEngine.Loader
                         mi.textureInformation = new TextureInformation(false, factory);
                         //mi.textureInformation.LoadTexture();
 
-                        if (inf.reflectionName != null)
+                        if (inf.material.reflectionName != null)
                         {
-                            mi.textureInformation.SetCubeTexture(factory.GetTextureCube(texturePath + inf.reflectionName), TextureType.ENVIRONMENT);
+                            mi.textureInformation.SetCubeTexture(factory.GetTextureCube(texturePath + inf.material.reflectionName), TextureType.ENVIRONMENT);
                         }
 
                         else
                         {
-                            if (inf.difuseName != null)
-                                mi.textureInformation.SetTexture(factory.GetTexture2D(texturePath + inf.difuseName), TextureType.DIFFUSE);
+                            if (inf.material.difuseName != null)
+                                mi.textureInformation.SetTexture(factory.GetTexture2D(texturePath + inf.material.difuseName), TextureType.DIFFUSE);
 
-                            if (inf.glowName != null)
-                                mi.textureInformation.SetTexture(factory.GetTexture2D(texturePath + inf.glowName), TextureType.GLOW);
+                            if (inf.material.glowName != null)
+                                mi.textureInformation.SetTexture(factory.GetTexture2D(texturePath + inf.material.glowName), TextureType.GLOW);
 
-                            if (inf.specularName != null)
-                                mi.textureInformation.SetTexture(factory.GetTexture2D(texturePath + inf.specularName), TextureType.SPECULAR);
+                            if (inf.material.specularName != null)
+                                mi.textureInformation.SetTexture(factory.GetTexture2D(texturePath + inf.material.specularName), TextureType.SPECULAR);
 
-                            if (inf.bumpName != null)
-                                mi.textureInformation.SetTexture(factory.GetTexture2D(texturePath + inf.bumpName), TextureType.BUMP); 
+                            if (inf.material.bumpName != null)
+                                mi.textureInformation.SetTexture(factory.GetTexture2D(texturePath + inf.material.bumpName), TextureType.BUMP);
+                        }
+                        if (inf.collisionType.Contains("Water"))
+                        {
+                            mi.extra = inf.material.extrainformation;
                         }
                         mi.textureInformation.LoadTexture();
                         elements.ModelMeshesInfo.Add(mi);
@@ -445,7 +473,7 @@ namespace PloobsEngine.Loader
                 }
             }
 
-            
+
 
             SerializerHelper.ChangeDecimalSymbolToSystemDefault();
             ///Clear Stuffs
@@ -463,6 +491,6 @@ namespace PloobsEngine.Loader
         }
     }
 
-        #endregion    
+        #endregion
 }
 #endif
