@@ -83,8 +83,10 @@ namespace WpfIntegration
         {
             OpenFileDialog OpenFileDialog = new OpenFileDialog();
             OpenFileDialog.Filter = "X Files (*.x)|*.x";
-            OpenFileDialog.ShowDialog();            
-            String fileName = OpenFileDialog.FileName;
+            OpenFileDialog.ShowDialog();
+            String fileName = OpenFileDialog.FileName;            
+            if(String.IsNullOrEmpty(fileName ))
+                return;
             ContentBuilder.Add(fileName, "Model",null,"ModelProcessor");
             String buildError = ContentBuilder.Build();
             if (string.IsNullOrEmpty(buildError))
