@@ -273,7 +273,23 @@ rollout main "Level Exporter"
 								if(getUserProp body "PhysicType" != undefined   ) then
 								(
 									fis = getUserProp body "PhysicType"
+									
+									if(fis == "Water")then
+									(
+									format "\t\t<collision type=\"%\">\n" fis to:currentFile
+									format "\t\t\t<position>\n" to:currentFile									
+									format "\t\t\t\t<x> % </x>\n" body.position[1]  to:currentFile
+									format "\t\t\t\t<y> % </y>\n" -body.position[3]  to:currentFile
+									format "\t\t\t\t<z> % </z>\n" body.position[2]  to:currentFile								
+									format "\t\t\t</position>\n" to:currentFile
+									format "\t\t\t<width value=\"%\"/>\n" body.width to:currentFile
+									format "\t\t\t<length value=\"%\"/>\n" body.length to:currentFile									
+									format "\t\t</collision>\n" to:currentFile
+									)
+									else
+									(
 									format "\t\t<collision type=\"%\"/>\n" fis to:currentFile
+									)
 								)
 								else
 								(

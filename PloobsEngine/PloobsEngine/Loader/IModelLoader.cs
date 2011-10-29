@@ -51,6 +51,9 @@ namespace PloobsEngine.Loader
         public float staticfriction;
         public float ellasticity;
         public String collisionType;
+        
+        //store extra information
+        public Dictionary<string, object> extra;
 
         /// <summary>
         /// Determines whether this model has the specified texture type.
