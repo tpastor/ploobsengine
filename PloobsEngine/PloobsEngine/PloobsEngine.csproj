@@ -249,6 +249,8 @@
     <Compile Include="Modelo\SpecificModels\TreeModel.cs" />
     <Compile Include="Modelo\SpecificModels\WaterModel.cs" />
     <Compile Include="Modelo\TextureInformation.cs" />
+    <Compile Include="NetWorking\NetWorkEchoMessageServer.cs" />
+    <Compile Include="NetWorking\NetWorkEchoMessageClient.cs" />
     <Compile Include="NetWorking\NetWorkServerObject.cs" />
     <Compile Include="NetWorking\NetworkingMessageExtension.cs" />
     <Compile Include="NetWorking\ServerIObject.cs" />

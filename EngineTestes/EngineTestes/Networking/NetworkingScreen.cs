@@ -13,6 +13,7 @@ using Lidgren.Network;
 using PloobsEngine.NetWorking;
 using PloobsEngine.Entity;
 using System;
+using System.Diagnostics;
 
 namespace EngineTestes
 {
@@ -22,6 +23,7 @@ namespace EngineTestes
     /// </summary>
     public class NetworkingScreen : IScene
     {
+        NetworkCliente client;
 
         /// <summary>
         /// Sets the world and render technich.
@@ -55,37 +57,27 @@ namespace EngineTestes
             base.LoadContent(GraphicInfo, factory, contentManager);
 
             client = new NetworkCliente(World);
-            client.RegisterMessageSync(PhysicObjectTypes.SPHEREOBJECT,
-                (mes, obj) =>
+
+            NetWorkClientObject no = new NetWorkClientObject("tmesh",
+
+                (mes) =>
                 {
-                    BEPUphysics.Entities.Entity ent = (obj.PhysicObject as BepuEntityObject).Entity;
-                    ent.Position = mes.ReadVector3();
-                    ent.Orientation = mes.ReadRotation();
-                    ent.LinearVelocity = mes.ReadVector3();
-                    ent.AngularVelocity = mes.ReadVector3();
+                    mes.WriteTrianglemesh("Model//cenario", Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
+                    return mes;
+                },
+                (mes, id) =>
+                {
+                    SimpleModel model;
+                    TriangleMeshObject triangleMesh = mes.ReadTrianglemesh(GraphicFactory, out model);
+                    DeferredNormalShader shader = new DeferredNormalShader();
+                    DeferredMaterial fmaterial = new DeferredMaterial(shader);
+                    IObject obj = new IObject(fmaterial, model, triangleMesh);
+                    obj.SetId(id);
+                    return obj;
                 }
             );
-            
-            NetWorkClientObject no = new NetWorkClientObject("tmesh",
-                
-                (mes) => 
-                    {
-                            mes.WriteTrianglemesh("Model//cenario", Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
-                            return mes;
-                    },
-                (mes,id) => 
-                    {
-                        SimpleModel model;
-                        TriangleMeshObject triangleMesh = mes.ReadTrianglemesh(GraphicFactory, out model);
-                        DeferredNormalShader shader = new DeferredNormalShader();                        
-                        DeferredMaterial fmaterial = new DeferredMaterial(shader);
-                        IObject obj =  new IObject(fmaterial, model, triangleMesh);                        
-                        obj.SetId(id);
-                        return obj;
-                    }
-            );
             client.CreateNetWorkObject(no);
-            
+
 
             ///Add some directional lights to completely iluminate the world
             #region Lights
@@ -106,14 +98,22 @@ namespace EngineTestes
             this.World.AddLight(ld4);
             this.World.AddLight(ld5);
             #endregion
-                        
-            ///add a camera
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(false,GraphicInfo.Viewport));
 
-            SimpleConcreteKeyboardInputPlayable key = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Microsoft.Xna.Framework.Input.Keys.Space);
-            key.KeyStateChange += new KeyStateChange(key_KeyStateChange);
-            this.BindInput(key);
-            
+            ///add a camera
+            this.World.CameraManager.AddCamera(new CameraFirstPerson(false, GraphicInfo.Viewport));
+
+            {
+                SimpleConcreteKeyboardInputPlayable key = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Microsoft.Xna.Framework.Input.Keys.Space);
+                key.KeyStateChange += new KeyStateChange(key_KeyStateChange);
+                this.BindInput(key);
+            }
+
+            {
+                SimpleConcreteKeyboardInputPlayable key = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Microsoft.Xna.Framework.Input.Keys.Enter);
+                key.KeyStateChange +=new KeyStateChange(key_KeyStateChange2);
+                this.BindInput(key);
+            }
+
         }
 
         protected override void Update(GameTime gameTime)
@@ -122,7 +122,24 @@ namespace EngineTestes
             client.ProcessMessageSync();
         }
 
-        NetworkCliente client;
+        void key_KeyStateChange2(InputPlayableKeyBoard ipk)
+        {
+            NetWorkEchoMessageClient c = new NetWorkEchoMessageClient("teste",
+                (mes) =>
+                {
+                    mes.Write("TESTE");
+                    return mes;
+                }
+            ,
+            (mes) =>
+            {
+                ///server will change the message =P (just  a test ...)
+                Debug.Assert(mes.ReadString() == "TESTE123");
+            }
+            );
+            client.AddNetWorkEchoMessage(c,true);
+        }
+
         void key_KeyStateChange(InputPlayableKeyBoard ipk)
         {
             NetWorkClientObject no = new NetWorkClientObject("simpleball",
