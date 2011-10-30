@@ -89,8 +89,17 @@ namespace PloobsEngine.SceneControl
             this.multThreading = multiThread;
 #endif
         }
-
         #if !WINDOWS_PHONE
+
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IWorld"/> class.
+        /// TO let the IWorld implementations free from the formal constructor
+        /// </summary>
+        protected IWorld()
+        {
+        }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="IWorld"/> class.
         /// Desserialization
@@ -226,7 +235,7 @@ namespace PloobsEngine.SceneControl
         }
 
 #if WINDOWS
-        bool multThreading = true;
+        protected bool multThreading = true;
         TaskFactory factory = new TaskFactory(TaskScheduler.Default);        
         List<Task> tasks = new List<Task>();
 #endif

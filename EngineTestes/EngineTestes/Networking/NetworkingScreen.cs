@@ -11,10 +11,12 @@ using PloobsEngine.Commands;
 using PloobsEngine.Input;
 using Lidgren.Network;
 using PloobsEngine.NetWorking;
-using EngineTestes.Networking;
+using PloobsEngine.Entity;
+using System;
 
 namespace EngineTestes
 {
+
     /// <summary>
     /// Basic Deferred Scene
     /// </summary>
@@ -28,7 +30,7 @@ namespace EngineTestes
         /// <param name="world">The world.</param>
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            world = new IWorld(new BepuPhysicWorld(-9f,false,1),new SimpleCuller());            
+            world = new IWorld(new BepuPhysicWorld(-9f,true,1),new SimpleCuller());            
 
             ///Create the deferred description
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
@@ -52,23 +54,38 @@ namespace EngineTestes
             ///must be called before all
             base.LoadContent(GraphicInfo, factory, contentManager);
 
-            client = new NetworkCliente();
-            client.AddMessageHandler(NetMessageType.PhysicInternalSync, (World.PhysicWorld as BepuPhysicWorld).StartRecieveSyncPhysicMessages);
-
-            ///Create a simple object
-            ///Geomtric Info and textures (this model automaticaly loads the texture)
-            SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
-            ///Physic info (position, rotation and scale are set here)
-            TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
-            ///Shader info (must be a deferred type)
-            DeferredNormalShader shader = new DeferredNormalShader();
-            ///Material info (must be a deferred type also)
-            DeferredMaterial fmaterial = new DeferredMaterial(shader);
-            ///The object itself
-            IObject obj = new IObject(fmaterial, simpleModel, tmesh);
-            ///Add to the world
-            this.World.AddObject(obj);
-            client.SendTriangleMeshCreationOrder(obj.GetId(), "Model//cenario", Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
+            client = new NetworkCliente(World);
+            client.RegisterMessageSync(PhysicObjectTypes.SPHEREOBJECT,
+                (mes, obj) =>
+                {
+                    BEPUphysics.Entities.Entity ent = (obj.PhysicObject as BepuEntityObject).Entity;
+                    ent.Position = mes.ReadVector3();
+                    ent.Orientation = mes.ReadRotation();
+                    ent.LinearVelocity = mes.ReadVector3();
+                    ent.AngularVelocity = mes.ReadVector3();
+                }
+            );
+            
+            NetWorkClientObject no = new NetWorkClientObject("tmesh",
+                
+                (mes) => 
+                    {
+                            mes.WriteTrianglemesh("Model//cenario", Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
+                            return mes;
+                    },
+                (mes,id) => 
+                    {
+                        SimpleModel model;
+                        TriangleMeshObject triangleMesh = mes.ReadTrianglemesh(GraphicFactory, out model);
+                        DeferredNormalShader shader = new DeferredNormalShader();                        
+                        DeferredMaterial fmaterial = new DeferredMaterial(shader);
+                        IObject obj =  new IObject(fmaterial, model, triangleMesh);                        
+                        obj.SetId(id);
+                        return obj;
+                    }
+            );
+            client.CreateNetWorkObject(no);
+            
 
             ///Add some directional lights to completely iluminate the world
             #region Lights
@@ -96,9 +113,7 @@ namespace EngineTestes
             SimpleConcreteKeyboardInputPlayable key = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Microsoft.Xna.Framework.Input.Keys.Space);
             key.KeyStateChange += new KeyStateChange(key_KeyStateChange);
             this.BindInput(key);
-
             
-            //LightThrowBepu lt = new LightThrowBepu(
         }
 
         protected override void Update(GameTime gameTime)
@@ -110,19 +125,28 @@ namespace EngineTestes
         NetworkCliente client;
         void key_KeyStateChange(InputPlayableKeyBoard ipk)
         {
-            SimpleModel simpleModel = new SimpleModel(this.GraphicFactory, "Model//ball");
-            ///Physic info (position, rotation and scale are set here)
-            SphereObject tmesh = new SphereObject(new Vector3(50,50,10),1,1, 10, MaterialDescription.DefaultBepuMaterial());
-            ///Shader info (must be a deferred type)
-            DeferredNormalShader shader = new DeferredNormalShader();
-            ///Material info (must be a deferred type also)
-            DeferredMaterial fmaterial = new DeferredMaterial(shader);
-            ///The object itself
-            IObject obj = new IObject(fmaterial, simpleModel, tmesh);
-            ///Add to the world
-            this.World.AddObject(obj);
-            client.SendSphereCreationOrder(obj.GetId(), new Vector3(50, 50, 10), 1, 1, 10, MaterialDescription.DefaultBepuMaterial());
+            NetWorkClientObject no = new NetWorkClientObject("simpleball",
+
+                (mes) =>
+                {
+                    mes.WriteSphere(new Vector3(50, 50, 10), 1, 1, 10, MaterialDescription.DefaultBepuMaterial());
+                    return mes;
+                },
+                (mes,id) =>
+                {
+                        SimpleModel simpleModel = new SimpleModel(this.GraphicFactory, "Model//ball");
+                        SphereObject sphere =  mes.ReadSphere();
+                        DeferredNormalShader shader = new DeferredNormalShader();                        
+                        DeferredMaterial fmaterial = new DeferredMaterial(shader);
+                        IObject obj = new IObject(fmaterial, simpleModel, sphere);
+                        obj.SetId(id);
+                        return obj;
+                }
+            );
+
+            client.CreateNetWorkObject(no);
         }
+         
 
     }
 }

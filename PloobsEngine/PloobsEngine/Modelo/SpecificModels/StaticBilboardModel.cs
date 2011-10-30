@@ -32,12 +32,11 @@ namespace PloobsEngine.Modelo
     public class StaticBilboardModel : IModelo
     {
         public StaticBilboardModel(GraphicFactory factory, String BilboardsName, String diffuseTextureName, List<Vector3> positions)
-            : base(factory, BilboardsName,false)
+            : base(factory, BilboardsName,true)
         {
             System.Diagnostics.Debug.Assert(positions != null && positions.Count != 0);
             this.positions = positions;
-            this.diffuseTextureName = diffuseTextureName;
-            LoadModelo(factory);            
+            this.diffuseTextureName = diffuseTextureName;            
         }
 
         string diffuseTextureName;

@@ -8,7 +8,16 @@ namespace PloobsEngine.NetWorking
     public enum NetMessageType : short
     {
         PhysicInternalSync = 0x01,        
-        PhysicCreate = 0x03,
-        UserDefined = 0x02
+        UserDefined = 0x02,
+        PhysicRedistribute = 0x04,
+        CreateNetworkObjectOnServer = 0x05,
+        CreateNetworkObjectOnClient = 0x06
     }
+
+    public class NetWorkingConstants
+    {
+        public const int HeaderSizeinBytes = sizeof(short);
+    }
+    
+
 }
