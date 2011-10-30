@@ -88,11 +88,19 @@ namespace PloobsEngine.SceneControl
             Name = null;
         }
 
-        private Matrix lastFrameWorld;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IObject"/> class.
+        /// Let the user free to implement the IObject the way they want
+        /// </summary>
+        protected IObject()
+        {
+        }
+
+        protected Matrix lastFrameWorld;
         private IPhysicObject physicObject;
         private IModelo modelo;
         private IMaterial material;
-        private Matrix worldMatrix;
+        protected Matrix worldMatrix;
 
         private object materialLock = new object();        
              
@@ -181,9 +189,12 @@ namespace PloobsEngine.SceneControl
         protected virtual void UpdateObject(GameTime gt, ICamera cam, IList<ILight> luzes) { }
         internal void iUpdateObject(GameTime gt, ICamera cam, IList<ILight> luzes)
         {
-            
+
             lock (materialLock)
-                material.Update(gt, this, luzes);
+            {
+                if (material != null)
+                    material.Update(gt, this, luzes);
+            }
             
             worldMatrix = physicObject.WorldMatrix;
 

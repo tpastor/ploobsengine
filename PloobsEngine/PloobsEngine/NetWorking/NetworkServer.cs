@@ -3,12 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Lidgren.Network;
+using System.Diagnostics;
+using PloobsEngine.SceneControl;
 
 namespace PloobsEngine.NetWorking
 {
     public class NetworkServer
     {
+        IWorld world;
+        NetServer server;
         Dictionary<String, NetConnection> _conns = new Dictionary<string, NetConnection>();
+        Dictionary<NetMessageType, List<Action<NetMessageType, NetIncomingMessage>>> messagehandler = new Dictionary<NetMessageType, List<Action<NetMessageType, NetIncomingMessage>>>();
+        Dictionary<string, NetWorkServerObject> NetWorkObjects = new Dictionary<string, NetWorkServerObject>();
+
+        public NetworkServer(IWorld world, String serverName = "GameServer", int port = 14242)
+        {
+            Debug.Assert(world != null);
+            this.world = world;
+
+            NetPeerConfiguration config = new NetPeerConfiguration(serverName);
+            config.EnableMessageType(NetIncomingMessageType.DiscoveryRequest);
+            config.Port = port;
+
+            // create and start server
+            server = new NetServer(config);
+            server.Start();
+
+            AddMessageHandler(NetMessageType.CreateNetworkObjectOnServer, RecieveCreateNetworkObjectOnServer);
+        }
 
         private Dictionary<String, NetConnection> ConnectionsNames
         {
@@ -20,19 +42,7 @@ namespace PloobsEngine.NetWorking
                 }
             }
         }
-
-        public NetworkServer(String serverName = "GameServer", int port = 14242)
-        {
-            NetPeerConfiguration config = new NetPeerConfiguration(serverName);
-            config.EnableMessageType(NetIncomingMessageType.DiscoveryRequest);
-            config.Port = port;
-
-            // create and start server
-            server = new NetServer(config);
-            server.Start();
-        }
-
-        NetServer server;        
+        
 
         public NetOutgoingMessage CreateMessage(NetMessageType messageType)
         {
@@ -52,8 +62,30 @@ namespace PloobsEngine.NetWorking
         {
             server.SendMessage(mes, server.Connections, method,0);
         }
+                
+        public void CreateServerObject(NetWorkServerObject no)
+        {
+            Debug.Assert(no.CreateLoadObjectOrder != null);
+            NetWorkObjects.Add(no.Identifier, no);
+        }
 
-        Dictionary<NetMessageType, List<Action<NetMessageType, NetIncomingMessage>>> messagehandler = new Dictionary<NetMessageType, List<Action<NetMessageType, NetIncomingMessage>>>();
+        void RecieveCreateNetworkObjectOnServer(NetMessageType NetMessageType, NetIncomingMessage NetIncomingMessage)
+        {
+            String ident = NetIncomingMessage.ReadString();
+            if (NetWorkObjects.ContainsKey(ident))
+            {
+                ServerIObject obj = NetWorkObjects[ident].CreateLoadObjectOrder(NetIncomingMessage);
+                world.AddObject(obj);
+
+                ///skip the message type                
+                NetIncomingMessage.Position = sizeof(short) * 8;
+
+                NetOutgoingMessage o = CreateMessage(NetWorking.NetMessageType.CreateNetworkObjectOnClient);
+                o.Write(obj.GetId());
+                NetOutgoingMessage mes = NetWorkObjects[ident].CreateRedistributeOrder(obj, NetIncomingMessage, o);
+                this.SendMessageToAllClients(mes,NetDeliveryMethod.ReliableOrdered);
+            }
+        }
 
         public void AddMessageHandler(NetMessageType messageType, Action<NetMessageType, NetIncomingMessage> handler)
         {
@@ -65,6 +97,19 @@ namespace PloobsEngine.NetWorking
             else
             {
                 messagehandler[messageType].Add(handler);
+            }
+        }
+
+        public virtual void SyncAllClients()
+        {
+            foreach (var item in  world.Objects)
+            {
+                if (item.PhysicObject.isMotionLess == false)
+                {
+                    NetOutgoingMessage mes = this.CreateMessage(NetMessageType.PhysicInternalSync);
+                    mes.WriteEntitySync(item.GetId(), item.PhysicObject.Position, item.PhysicObject.Rotation, item.PhysicObject.Velocity, item.PhysicObject.AngularVelocity);
+                    this.SendMessageToAllClients(mes, NetDeliveryMethod.Unreliable);
+                }
             }
         }
 

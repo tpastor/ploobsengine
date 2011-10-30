@@ -10,13 +10,13 @@ using Microsoft.Xna.Framework.Graphics;
 using PloobsEngine.Physics.Bepu;
 using Lidgren.Network;
 using PloobsEngine.Engine;
+using PloobsEngine.SceneControl;
 
 namespace GameServer
 {
     class GameClass : Game
     {
-        NetworkServer server;
-        BepuPhysicWorld pw;
+        NetworkServer server;        
         float elap = 0;
 
         public GameClass()
@@ -24,6 +24,7 @@ namespace GameServer
             GraphicsDeviceManager graphics = new GraphicsDeviceManager(this);            
         }
 
+        NetworkServerWorld world;
         protected override void Initialize()
         {
             
@@ -34,62 +35,57 @@ namespace GameServer
             base.LoadContent();
             Console.WriteLine("Starting server");
 
-            pw = new BepuPhysicWorld(-9f, false, 1, true);
+            world = new NetworkServerWorld(new BepuPhysicWorld(-9f, true, 1, true),false);
             
-            server = new NetworkServer();
-            server.AddMessageHandler(NetMessageType.PhysicCreate, RecievePhysicObjects);                   
+            server = new NetworkServer(world);
+
+            NetWorkServerObject NetWorkServerObject1 = new NetWorkServerObject("tmesh",
+                (mes) =>
+                    {
+                        TriangleMeshObject tmesh = mes.ReadTrianglemesh(Content);
+                        return new ServerIObject(tmesh);
+                    }
+                    ,
+                    (obj, min, mout) =>
+                    {
+                        return mout.CopyIncommingMessage(min, NetWorkingConstants.HeaderSizeinBytes );                        
+                    }
+                );
+            server.CreateServerObject(NetWorkServerObject1);
+
+            NetWorkServerObject NetWorkServerObject2 = new NetWorkServerObject("simpleball",
+                (mes) =>
+                {
+                    SphereObject tmesh = mes.ReadSphere();
+                    return new ServerIObject(tmesh);
+                }
+                    ,
+                    (obj, min, mout) =>
+                    {
+                        return mout.CopyIncommingMessage(min, NetWorkingConstants.HeaderSizeinBytes);
+                    }
+                );
+            server.CreateServerObject(NetWorkServerObject2);
         }
-
-        public void RecievePhysicObjects( NetMessageType mestype, NetIncomingMessage message)
-        {
-            PhysicObjectTypes type = (PhysicObjectTypes)message.ReadInt32();
-
-            if (type == PhysicObjectTypes.TRIANGLEMESHOBJECT)
-            {
-                int id = message.ReadInt32();
-                String objectName = message.ReadString();
-                Vector3 pos = message.ReadVector3();
-                Matrix oro = Matrix.CreateFromQuaternion(message.ReadRotation());
-                Vector3 scale = message.ReadVector3();
-                float Bounciness = message.ReadFloat();
-                float DinamicFriction = message.ReadFloat();
-                float StaticFriction = message.ReadFloat();
-                
-
-                TriangleMeshObject tmesh = new TriangleMeshObject(Content.Load<Model>(objectName), pos, oro, scale, new MaterialDescription(StaticFriction, DinamicFriction, Bounciness));
-                pw.AddObject(tmesh);
-                tmesh.StaticMesh.Tag = id;
-            }
-            else if (type == PhysicObjectTypes.SPHEREOBJECT)
-            {
-                int id = message.ReadInt32();
-                Vector3 pos = message.ReadVector3();
-                float raio = message.ReadFloat();
-                float mass = message.ReadFloat();
-                float scale = message.ReadFloat();
-                float Bounciness = message.ReadFloat();
-                float DinamicFriction = message.ReadFloat();
-                float StaticFriction = message.ReadFloat();
-                SphereObject tmesh = new SphereObject(pos, raio, mass, scale, new MaterialDescription(StaticFriction, DinamicFriction, Bounciness));
-                pw.AddObject(tmesh);
-                tmesh.Entity.Tag = id;
-            }
-        }       
 
         
         protected override void Update(GameTime gameTime)
         {
                 base.Update(gameTime);            
 
-                    server.ProccessMessageSync();            
-                    pw.Update( gameTime);
+                    server.ProccessMessageSync();
+                    world.Update(gameTime);
 
                     elap += (float)gameTime.ElapsedGameTime.Milliseconds;
-                    if (elap > 30)
+                    if (elap > 500)
                     {
-                        pw.SendSyncPhysicMessages(server);
+                        server.SyncAllClients();
                         elap = 0;
                     }
         }
+
+         
+
     }
 }
+
