@@ -710,6 +710,11 @@
             Connect has been sent; waiting for ConnectResponse
             </summary>
         </member>
+        <member name="F:Lidgren.Network.NetConnectionStatus.RespondedAwaitingApproval">
+            <summary>
+            Connect was received and ApprovalMessage released to the application; awaiting Approve() or Deny()
+            </summary>
+        </member>
         <member name="F:Lidgren.Network.NetConnectionStatus.RespondedConnect">
             <summary>
             Connect was received and ConnectResponse has been sent; waiting for ConnectionEstablished
@@ -1520,7 +1525,7 @@
         </member>
         <member name="P:Lidgren.Network.NetPeerConfiguration.MaximumTransmissionUnit">
             <summary>
-            Gets or sets the maximum amount of bytes to send in a single packet, excluding ip, udp and lidgren headers
+            Gets or sets the maximum amount of bytes to send in a single packet, excluding ip, udp and lidgren headers. Cannot be changed once NetPeer is initialized.
             </summary>
         </member>
         <member name="P:Lidgren.Network.NetPeerConfiguration.DefaultOutgoingMessageCapacity">
