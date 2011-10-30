@@ -66,6 +66,20 @@ namespace GameServer
                     }
                 );
             server.CreateServerObject(NetWorkServerObject2);
+
+
+            NetWorkEchoMessageServer s = new NetWorkEchoMessageServer("teste",
+                (min, mout) =>
+                {
+                    String message = min.ReadString();
+                    message += "123";
+                    mout.Write(message);
+                    return mout;
+                }
+            );
+            server.AddNetWorkEchoMessage(s);
+
+
         }
 
         
@@ -83,9 +97,6 @@ namespace GameServer
                         elap = 0;
                     }
         }
-
-         
-
     }
 }
 

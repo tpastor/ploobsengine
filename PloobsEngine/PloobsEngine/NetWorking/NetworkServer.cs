@@ -12,6 +12,7 @@ namespace PloobsEngine.NetWorking
     {
         IWorld world;
         NetServer server;
+        Dictionary<string, NetWorkEchoMessageServer> NetWorkEcho = new Dictionary<string, NetWorkEchoMessageServer>();
         Dictionary<String, NetConnection> _conns = new Dictionary<string, NetConnection>();
         Dictionary<NetMessageType, List<Action<NetMessageType, NetIncomingMessage>>> messagehandler = new Dictionary<NetMessageType, List<Action<NetMessageType, NetIncomingMessage>>>();
         Dictionary<string, NetWorkServerObject> NetWorkObjects = new Dictionary<string, NetWorkServerObject>();
@@ -30,6 +31,7 @@ namespace PloobsEngine.NetWorking
             server.Start();
 
             AddMessageHandler(NetMessageType.CreateNetworkObjectOnServer, RecieveCreateNetworkObjectOnServer);
+            AddMessageHandler(NetMessageType.Echo, HandleEchoMessage);
         }
 
         private Dictionary<String, NetConnection> ConnectionsNames
@@ -86,6 +88,26 @@ namespace PloobsEngine.NetWorking
                 this.SendMessageToAllClients(mes,NetDeliveryMethod.ReliableOrdered);
             }
         }
+
+        public void AddNetWorkEchoMessage(NetWorkEchoMessageServer mes)
+        {
+            Debug.Assert(mes.AnswerMessage != null);            
+            NetWorkEcho[mes.Identifier] = mes;
+        }
+
+        void HandleEchoMessage(NetMessageType NetMessageType, NetIncomingMessage NetIncomingMessage)
+        {
+            String ident = NetIncomingMessage.ReadString();
+            long unique = NetIncomingMessage.ReadInt64();
+
+            if(NetWorkEcho.ContainsKey(ident))
+            {
+                NetOutgoingMessage o = CreateMessage(NetWorking.NetMessageType.Echo);
+                o.Write(ident);
+                o.Write(unique);
+                SendMessageToAllClients(NetWorkEcho[ident].AnswerMessage(NetIncomingMessage,o),NetDeliveryMethod.ReliableOrdered);
+            }
+        }    
 
         public void AddMessageHandler(NetMessageType messageType, Action<NetMessageType, NetIncomingMessage> handler)
         {

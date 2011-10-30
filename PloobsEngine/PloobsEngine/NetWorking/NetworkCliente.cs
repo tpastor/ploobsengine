@@ -21,6 +21,8 @@ namespace PloobsEngine.NetWorking
         NetConnection servercon;
         IWorld world;
         Dictionary<string, NetWorkClientObject> NetWorkObjects = new Dictionary<string, NetWorkClientObject>();
+        Dictionary<string, NetWorkEchoMessageClient> NetWorkEcho = new Dictionary<string, NetWorkEchoMessageClient>();
+
         Dictionary<PhysicObjectTypes, Action<NetIncomingMessage, IObject>> Synchandlers = new Dictionary<PhysicObjectTypes, Action<NetIncomingMessage, IObject>>();
         Dictionary<NetMessageType, List<Action<NetMessageType, NetIncomingMessage>>> messagehandler = new Dictionary<NetMessageType, List<Action<NetMessageType, NetIncomingMessage>>>();
 
@@ -42,6 +44,40 @@ namespace PloobsEngine.NetWorking
 
             AddMessageHandler(NetMessageType.CreateNetworkObjectOnClient, RecieveCreateNetworkObjectOnClient);
             AddMessageHandler(NetMessageType.PhysicInternalSync, StartRecieveSyncPhysicMessages);
+            AddMessageHandler(NetMessageType.Echo, HandleEchoMessage);
+
+            RegisterMessagePhysicSync(PhysicObjectTypes.SPHEREOBJECT,
+                (mes, obj) =>
+                {
+                    IPhysicObject ent = obj.PhysicObject;
+                    ent.Position = mes.ReadVector3();
+                    ent.Rotation = Matrix.CreateFromQuaternion(mes.ReadRotation());
+                    ent.Velocity = mes.ReadVector3();
+                    ent.AngularVelocity = mes.ReadVector3();
+                }
+            );
+
+            RegisterMessagePhysicSync(PhysicObjectTypes.BOXOBJECT,
+                (mes, obj) =>
+                {
+                    IPhysicObject ent = obj.PhysicObject;
+                    ent.Position = mes.ReadVector3();
+                    ent.Rotation = Matrix.CreateFromQuaternion(mes.ReadRotation());
+                    ent.Velocity = mes.ReadVector3();
+                    ent.AngularVelocity = mes.ReadVector3();
+                }
+            );
+
+            RegisterMessagePhysicSync(PhysicObjectTypes.CYLINDEROBJECT,
+                (mes, obj) =>
+                {
+                    IPhysicObject ent = obj.PhysicObject;
+                    ent.Position = mes.ReadVector3();
+                    ent.Rotation = Matrix.CreateFromQuaternion(mes.ReadRotation());
+                    ent.Velocity = mes.ReadVector3();
+                    ent.AngularVelocity = mes.ReadVector3();
+                }
+            );
         }
 
 
@@ -113,10 +149,13 @@ namespace PloobsEngine.NetWorking
             }
         }
         
+
         private void waitConnection()
         {
             NetIncomingMessage msg;
-            while (true)
+            ///TODO - based on time waiting .... configurable
+            int i = 0;
+            while (i < 100)
             {
                 while ((msg = client.ReadMessage()) != null)
                 {
@@ -131,6 +170,7 @@ namespace PloobsEngine.NetWorking
                 }
                 Thread.Sleep(100);
             }
+            throw new Exception("Cannot connection to server ");
         }
 
         public void CreateNetWorkObject(NetWorkClientObject no)
@@ -140,9 +180,8 @@ namespace PloobsEngine.NetWorking
 
             NetOutgoingMessage om = this.CreateMessage(NetMessageType.CreateNetworkObjectOnServer);
             om.Write(no.Identifier);
-            SendMessage(no.CreateRemoteObjectOrder(om),NetDeliveryMethod.ReliableOrdered);
-            if(!NetWorkObjects.ContainsKey(no.Identifier))
-                NetWorkObjects.Add(no.Identifier, no);
+            SendMessage(no.CreateRemoteObjectOrder(om),NetDeliveryMethod.ReliableOrdered);            
+            NetWorkObjects[no.Identifier] =  no;
         }
                 
         void RecieveCreateNetworkObjectOnClient(NetMessageType NetMessageType, NetIncomingMessage NetIncomingMessage)
@@ -155,12 +194,48 @@ namespace PloobsEngine.NetWorking
                 world.AddObject(obj);
             }
         }
-               
 
-        public void RegisterMessageSync(PhysicObjectTypes type , Action<NetIncomingMessage,IObject> handler)
+        public void AddNetWorkEchoMessage(NetWorkEchoMessageClient mes, bool originHandleMessageBack = false)
+        {
+            Debug.Assert(mes.HandleMessageBack != null);
+            Debug.Assert(mes.CreateMessage != null);
+
+            NetOutgoingMessage om = this.CreateMessage(NetMessageType.Echo);
+            om.Write(mes.Identifier);
+            if (!originHandleMessageBack)
+            {
+                om.Write((long)client.UniqueIdentifier);
+            }
+            else
+            {
+                om.Write((long)0);
+            }
+            SendMessage(mes.CreateMessage(om),NetDeliveryMethod.ReliableOrdered);
+            NetWorkEcho[mes.Identifier] = mes;
+        }
+
+        void HandleEchoMessage(NetMessageType NetMessageType, NetIncomingMessage NetIncomingMessage)
+        {
+            String ident = NetIncomingMessage.ReadString();
+            long unique = NetIncomingMessage.ReadInt64();
+            if (unique == client.UniqueIdentifier)
+                return;
+
+            if (NetWorkEcho.ContainsKey(ident))
+            {
+                NetWorkEcho[ident].HandleMessageBack(NetIncomingMessage);
+            }
+        }               
+
+        public void RegisterMessagePhysicSync(PhysicObjectTypes type , Action<NetIncomingMessage,IObject> handler)
         {            
             Debug.Assert(handler!=null);
             Synchandlers.Add(type, handler);
+        }
+
+        public void UnRegisterMessagePhysicSync(PhysicObjectTypes type)
+        {            
+            Synchandlers.Remove(type);
         }
 
         void StartRecieveSyncPhysicMessages(NetMessageType NetMessageType, NetIncomingMessage NetIncomingMessage)

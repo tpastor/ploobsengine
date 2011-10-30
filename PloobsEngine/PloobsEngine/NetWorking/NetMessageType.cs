@@ -11,7 +11,8 @@ namespace PloobsEngine.NetWorking
         UserDefined = 0x02,
         PhysicRedistribute = 0x04,
         CreateNetworkObjectOnServer = 0x05,
-        CreateNetworkObjectOnClient = 0x06
+        CreateNetworkObjectOnClient = 0x06,
+        Echo = 0x07
     }
 
     public class NetWorkingConstants
