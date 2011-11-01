@@ -36,8 +36,8 @@ namespace EnginePhoneTests
 
         void LoadScreen(ScreenManager manager)
         {
-            //manager.AddScreen(new FirstScreen());
-            manager.AddScreen(new Basic2D());
+            manager.AddScreen(new FirstScreen());
+            //manager.AddScreen(new Basic2D());
         }
         
         /// <summary>
