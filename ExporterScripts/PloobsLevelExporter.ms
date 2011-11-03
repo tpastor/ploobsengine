@@ -175,22 +175,24 @@ rollout main "Level Exporter"
 								else if(shape == SuperSpray) then
 								(
 								format "\t<particle name=\"%\">\n" body.name to:currentFile
-								--format getUserProp body "Particle" to:currentFile
+								
+								tt = "DirectionalSpray"
+								format "\t\t<type value =\"%\" />\n" tt  to:currentFile
+								
 								format "\t\t<position>\n" to:currentFile
 									format "\t\t\t<x> % </x>\n" body.position[1]  to:currentFile
-									format "\t\t\t<y> % </y>\n" -body.position[3]  to:currentFile
-									format "\t\t\t<z> % </z>\n" body.position[2]  to:currentFile	
+									format "\t\t\t<y> % </y>\n" body.position[3]  to:currentFile
+									format "\t\t\t<z> % </z>\n" -body.position[2]  to:currentFile	
 								format "\t\t</position>\n" to:currentFile
 								
 								format "\t\t<rotation>\n" to:currentFile
-									format "\t\t\t<w> % </w>\n" body.rotation.w  to:currentFile
-									format "\t\t\t<x> % </x>\n" -body.rotation.x  to:currentFile
+									format "\t\t\t<x> % </x>\n" body.rotation.z  to:currentFile
 									format "\t\t\t<y> % </y>\n" body.rotation.y  to:currentFile	
-									format "\t\t\t<z> % </z>\n" body.rotation.z  to:currentFile	
+									format "\t\t\t<z> % </z>\n" body.rotation.x  to:currentFile	
+									format "\t\t\t<w> % </w>\n" body.rotation.w  to:currentFile	
 								format "\t\t</rotation>\n" to:currentFile
 								
-								tt = "DirectionalSpray"
-								format "\t\t\t<type value =\"%\" />\n" tt  to:currentFile
+								
 								format "\t</particle>" to:currentFile
 								)
 								
