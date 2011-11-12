@@ -68,6 +68,7 @@ namespace PloobsEngine.Cameras
             : this(0, 0, new Vector3(0, 100, 150), viewport)
         {            
         }
+#if WINDOWS
         /// <summary>
         /// Initializes a new instance of the <see cref="CameraFirstPerson"/> class.
         /// </summary>
@@ -78,6 +79,7 @@ namespace PloobsEngine.Cameras
         {
             this.useMouse = useMouse;
         }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="CameraFirstPerson"/> class.
         /// </summary>
@@ -90,7 +92,6 @@ namespace PloobsEngine.Cameras
             this.useMouse = useMouse;
         }
 
-
         /// <summary>
         /// Enables the mouse control.
         /// </summary>
@@ -99,7 +100,7 @@ namespace PloobsEngine.Cameras
         {
             this.useMouse = status;
         }
-
+#endif
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CameraFirstPerson"/> class.
@@ -205,8 +206,10 @@ namespace PloobsEngine.Cameras
             _position = startingPos;            
             _aspectRatio = viewPort.AspectRatio;            
             UpdateViewMatrix();
+#if WINDOWS
             Mouse.SetPosition(viewPort.Width / 2, viewPort.Height / 2);
-            originalMouseState = Mouse.GetState();            
+            originalMouseState = Mouse.GetState();
+#endif
             _projection = Matrix.CreatePerspectiveFieldOfView(_fieldOdView, _aspectRatio, _nearPlane, _farPlane);
             this._frustrum = new BoundingFrustum(_view * _projection);            
         }
@@ -215,7 +218,10 @@ namespace PloobsEngine.Cameras
 
         private Matrix viewProjection;
         private Vector3 _position = Vector3.Right;
+#if WINDOWS
         private bool useMouse = true;
+        private MouseState originalMouseState;
+#endif
         private Vector3 _target = Vector3.Zero;
         private bool _hasmoved = true;
         private Vector3 _up = Vector3.Up;
@@ -231,7 +237,6 @@ namespace PloobsEngine.Cameras
         private float updownRot;
         private float rotationSpeed = 0.005f;        
         private float sensibility = 0.5f;
-        private MouseState originalMouseState;
         private Viewport viewPort;
         private float moveSpeed = 1f;
 #if WINDOWS_PHONE
@@ -476,7 +481,7 @@ namespace PloobsEngine.Cameras
         private void UpdateCamera(MouseState currentMouseState, KeyboardState keyState)
         {
             _hasmoved = false;
-            #if !WINDOWS_PHONE
+            #if WINDOWS
             if (currentMouseState != originalMouseState && useMouse == true)
             {
                 float xDifference = currentMouseState.X - originalMouseState.X;

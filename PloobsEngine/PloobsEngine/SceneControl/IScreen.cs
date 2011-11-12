@@ -83,6 +83,8 @@ public IScreen()
         #if !WINDOWS_PHONE
         private Dictionary<IInput, BindKeyCommand> KeyBinds = new Dictionary<IInput, BindKeyCommand>();
         private Dictionary<IInput, BindMouseCommand> MouseBinds = new Dictionary<IInput, BindMouseCommand>();
+        #else
+        private Dictionary<IInput, BindGestureCommand> GestureBinds= new Dictionary<IInput, BindGestureCommand>();
         #endif
         public OnScreenChangeState OnScreenChangeState = null;
 
@@ -98,6 +100,8 @@ public IScreen()
             KeyBinds.Add(ipk,bkc);
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bkc);
         }
+
+
 
         /// <summary>
         /// Binds the MouseBottom input.
@@ -349,7 +353,29 @@ public IScreen()
         internal void RemoveThisScreen(EngineStuff engine)
         {
             CleanUp(engine);
-        }        
+        }
+
+#if WINDOWS_PHONE
+        public void BindInput(InputPlaybleGesture ipk)
+        {
+            System.Diagnostics.Debug.Assert(ipk != null);
+            BindGestureCommand bkc = new BindGestureCommand(ipk, BindAction.ADD);
+            GestureBinds.Add(ipk, bkc);
+            CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bkc);
+        }
+
+        public void RemoveInputBinding(InputPlaybleGesture ipk)
+        {
+            System.Diagnostics.Debug.Assert(ipk != null);
+            BindGestureCommand bc = GestureBinds[ipk];
+            if (bc != null)
+            {
+                bc.BindAction = BindAction.REMOVE;
+                CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bc);
+            }
+        }
+#endif
+
         /// <summary>
         /// Cleans up resources that dont are exclusive of the screen        
         /// </summary>
@@ -366,6 +392,13 @@ public IScreen()
                 item.BindAction = BindAction.REMOVE;
                 CommandProcessor.getCommandProcessor().SendCommandAssyncronous(item);
             }
+#else
+            foreach (var item in GestureBinds.Values)
+            {
+                item.BindAction = BindAction.REMOVE;
+                CommandProcessor.getCommandProcessor().SendCommandAssyncronous(item);
+            }
+            
             #endif
 
             IScreenUpdateable[] updts = updateables.ToArray();

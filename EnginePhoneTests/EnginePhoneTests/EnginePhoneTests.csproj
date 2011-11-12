@@ -52,7 +52,9 @@
     <XnaCompressContent>false</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BEPUphysics, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31f6a8732a21de19, processorArchitecture=MSIL" />
+    <Reference Include="BEPUphysics">
+      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\Phone7\BEPUphysics.dll</HintPath>
+    </Reference>
     <Reference Include="DPSFPhone, Version=2.1.0.0, Culture=neutral, PublicKeyToken=32c832bfa7326ee2, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\Phone7\DPSFPhone.dll</HintPath>
@@ -60,6 +62,7 @@
     <Reference Include="FarseerPhysicsXNA">
       <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\Phone7\FarseerPhysicsXNA.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Devices.Sensors, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Xna.Framework" />
     <Reference Include="Microsoft.Xna.Framework.Game" />
     <Reference Include="Microsoft.Xna.Framework.Graphics" />
@@ -77,7 +80,13 @@
     <Compile Include="2DSamples\Border.cs" />
     <Compile Include="2DSamples\JointUpdateable.cs" />
     <Compile Include="2DSamples\SpriteParticle.cs" />
+    <Compile Include="Camera\CamScreen.cs" />
+    <Compile Include="Camera\P3DCamera.cs" />
+    <Compile Include="BallThrowBepu.cs" />
     <Compile Include="FirstScreen.cs" />
+    <Compile Include="InputGesture\InputGestureScreen.cs" />
+    <Compile Include="Picking\Picking3D.cs" />
+    <Compile Include="Picking\Picking2D.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="Properties\AppManifest.xml">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
@@ -106,6 +115,7 @@
       <XnaReferenceType>Content</XnaReferenceType>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--

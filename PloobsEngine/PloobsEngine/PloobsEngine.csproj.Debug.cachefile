@@ -14,6 +14,7 @@ Content\Textures\wave0.xnb
 Content\Textures\wave1.xnb
 Content\Textures\waves2.xnb
 Content\Textures\color_map.xnb
+Content\Textures\noise_tex6.xnb
 Content\Effects\ByPassEffect.xnb
 Content\Effects\Deferred\AllBuffer.xnb
 Content\Effects\Deferred\AnimatedBillboard.xnb
@@ -105,11 +106,10 @@ Content\Effects\Deferred\InstancedBilboard.xnb
 Content\Effects\Deferred\AntiAliasingtabulastalker.xnb
 Content\Effects\reductionEffect.xnb
 Content\Effects\resolveShadowsEffect.xnb
+Content\Effects\Deferred\Night.xnb
+Content\Effects\Deferred\Heat.xnb
 Content\Font\ConsoleFont.xnb
 Content\Models\block.xnb
 Content\Models\dome.xnb
 Content\Models\Dsphere.xnb
 Content\Models\sphere.xnb
-Content\Textures\noise_tex6.xnb
-Content\Effects\Deferred\Night.xnb
-Content\Effects\Deferred\Heat.xnb
