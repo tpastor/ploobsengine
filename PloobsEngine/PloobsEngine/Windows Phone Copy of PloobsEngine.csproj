@@ -485,7 +485,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\x86\Debug\Content\Effects\" />
-    <Folder Include="Light\Deferred\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="License.txt" />
