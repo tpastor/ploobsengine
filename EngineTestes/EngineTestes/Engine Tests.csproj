@@ -153,6 +153,8 @@
     <Compile Include="CharacterControllerInput.cs" />
     <Compile Include="CharacterSample\CharacterScreen.cs" />
     <Compile Include="Constraint\ConstraintScreen.cs" />
+    <Compile Include="Custom Model\CustomModelScreen.cs" />
+    <Compile Include="Custom Model\TerrainModel.cs" />
     <Compile Include="DebugDrawer\DebugDrawScreen.cs" />
     <Compile Include="Explosion\ExplosionDebrisPS.cs" />
     <Compile Include="Explosion\ExplosionFireSmokePS.cs" />

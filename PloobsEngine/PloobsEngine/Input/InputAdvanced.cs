@@ -17,7 +17,6 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
-#if !WINDOWS_PHONE
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,11 +24,19 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using PloobsEngine.Components;
+#if WINDOWS_PHONE
+using Microsoft.Xna.Framework.Input.Touch;
+#endif
 
 namespace PloobsEngine.Input
 {
 
-#if !XBOX360 && !WINDOWS_PHONE
+    public enum EntityType
+    {
+        IOBJECT, CAMERA, COMPONENT, TOOLS
+    }
+
+#if WINDOWS
     /// <summary>
     /// Mouse Buttoms
     /// </summary>
@@ -51,14 +58,14 @@ namespace PloobsEngine.Input
     public class InputAdvanced : IComponent
     {
 
-        private IDictionary<Keys, InputPlayableKeyBoard> _Mapper = new Dictionary<Keys, InputPlayableKeyBoard>();
-
+        public static readonly String MyName = "InputAdvanced";
+        
 #if XBOX360
         private Dictionary<Buttons, float>[] buttonCache;
         private GamePadState[] currentPadState;
         private GamePadState[] previousPadState;
-#else 
-        public static readonly String MyName = "InputAdvanced";
+#elif WINDOWS
+        private IDictionary<Keys, InputPlayableKeyBoard> _Mapper = new Dictionary<Keys, InputPlayableKeyBoard>();
         private Dictionary<Keys, float> keyCache;
         private KeyboardState currentKeyState;
         private KeyboardState previousKeyState;
@@ -67,6 +74,56 @@ namespace PloobsEngine.Input
         private Dictionary<MouseButtons, float> mouseCache;
         private MouseState currentMouseState;
         private MouseState previousMouseState;
+#elif WINDOWS_PHONE
+        private Dictionary<GestureType, List<InputPlaybleGesture>> _gestureMapper = new Dictionary<GestureType, List<InputPlaybleGesture>>();
+        bool addedgesture = false;
+        internal void BindGesture(InputPlaybleGesture ip, BindAction ba)
+        {
+            if (ba == BindAction.ADD)
+            {
+                addedgesture = true;
+                if(_gestureMapper.ContainsKey(ip.GestureType))
+                {
+                    _gestureMapper[ip.GestureType].Add(ip);
+                }
+                else
+                {
+                    
+                    TouchPanel.EnabledGestures = TouchPanel.EnabledGestures | ip.GestureType;
+                    List<InputPlaybleGesture> gest = new List<InputPlaybleGesture>();
+                    gest.Add(ip);
+                    _gestureMapper.Add(ip.GestureType, gest);
+                }
+                   
+            }
+            else if (ba == BindAction.REMOVE)
+            {
+                List<InputPlaybleGesture> gest = _gestureMapper[ip.GestureType];
+                gest.Remove(ip);
+            }
+        }
+
+        internal void ProcessGesture()
+        {
+            if (addedgesture)
+            {
+                while (TouchPanel.IsGestureAvailable)
+                {
+                    GestureSample sample = TouchPanel.ReadGesture();
+                    if (_gestureMapper.ContainsKey(sample.GestureType))
+                    {
+                        foreach (var item in _gestureMapper[sample.GestureType])
+                        {
+                            if (processMask(item.InputMask))
+                            {
+                                item.FireEvent(sample);
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
 #endif
 
         /// <summary>
@@ -92,7 +149,7 @@ namespace PloobsEngine.Input
 
             foreach (Buttons button in Enum.GetValues(Buttons))
                 buttonCache.Add(button, 0.0f);
-#else
+#elif WINDOWS
             keyCache = new Dictionary<Keys, float>();
             previousKeyState = currentKeyState = Keyboard.GetState();
             mouseCache = new Dictionary<MouseButtons, float>();
@@ -103,6 +160,7 @@ namespace PloobsEngine.Input
                 keyCache.Add(key, 0.0f);
             foreach (MouseButtons mb in Enum.GetValues(typeof(MouseButtons)))
                 mouseCache.Add(mb, 0.0f);
+#elif WINDOWS_PHONE
 #endif
         }
 
@@ -129,7 +187,7 @@ namespace PloobsEngine.Input
                 else
                     buttonCache[b] = 0.0f;
             }
-#else
+#elif WINDOWS
             // We set the Previous states to the Current states
             // since the Current states will be updated with
             // the ACTUAL Current states.
@@ -161,10 +219,15 @@ namespace PloobsEngine.Input
                 else
                     mouseCache[mb] = 0.0f;
             }
+#elif WINDOWS_PHONE
 #endif
 
+#if WINDOWS
             ProcessKeys();
             ProcessMouse();
+#elif WINDOWS_PHONE
+            ProcessGesture();
+#endif
             
         }
 
@@ -205,7 +268,7 @@ namespace PloobsEngine.Input
         {
             return currentPadState[(int)player].Thumbsticks.Right;
         }
-#else
+#elif WINDOWS
         #region Mouse Input
         // Mouse Buttons Elapsed Time
         
@@ -317,7 +380,7 @@ namespace PloobsEngine.Input
             return currentKeyState.IsKeyUp(key);
         }
         #endregion
-
+#elif WINDOWS_PHONE
 #endif
 
         #region IReciever Members
@@ -350,9 +413,11 @@ namespace PloobsEngine.Input
             this.mask = this.mask | mask;
         }
 
+        #if WINDOWS
         internal void Clear()
         {
-        _keysMapperDown = new List<InputPlayableKeyBoard>();
+
+         _keysMapperDown = new List<InputPlayableKeyBoard>();
         _keysMapperPress = new List<InputPlayableKeyBoard>();
         _keysMapperUp = new List<InputPlayableKeyBoard>();
         _keysMapperRelease = new List<InputPlayableKeyBoard>();
@@ -469,6 +534,7 @@ namespace PloobsEngine.Input
             }            
             
         }
+#endif
         private bool processMask(InputMask m)
         {
             if ((m & mask) == m )
@@ -478,6 +544,7 @@ namespace PloobsEngine.Input
             return false;
         }
 
+#if WINDOWS
         private void ProcessMouse()
         {            
             foreach (InputPlaybleMouseBottom ip in _mouseMapperDown)
@@ -524,6 +591,9 @@ namespace PloobsEngine.Input
 
         }
 
+        #elif WINDOWS_PHONE
+#endif
+
         /// <summary>
         /// Gets the type of the component type.
         /// </summary>
@@ -535,6 +605,7 @@ namespace PloobsEngine.Input
             get { return ComponentType.UPDATEABLE; }
         }
 
+#if WINDOWS
         private void ProcessKeys()
         {
             foreach (InputPlayableKeyBoard ip in _keysMapperDown)
@@ -630,7 +701,8 @@ namespace PloobsEngine.Input
         private IList<InputPlaybleMouseBottom> _mouseMapperUp = new List<InputPlaybleMouseBottom>();
         private IList<InputPlaybleMouseBottom> _mouseMapperRelease = new List<InputPlaybleMouseBottom>();
         private IList<InputPlaybleMousePosition> _mouseMapperPosition = new List<InputPlaybleMousePosition>();
-
+        #elif WINDOWS_PHONE
+#endif
         #endregion
 
     }
@@ -682,4 +754,3 @@ namespace PloobsEngine.Input
         GSYSTEM = 0x0100000000000
     }
 }
-#endif

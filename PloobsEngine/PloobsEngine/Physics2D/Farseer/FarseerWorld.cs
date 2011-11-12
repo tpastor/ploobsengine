@@ -31,7 +31,7 @@ namespace PloobsEngine.Physics2D.Farseer
         public FarseerWorld(Vector2 gravity)
         {
             world = new World(gravity);
-
+        
 #if WINDOWS || XBOX
             ConvertUnits.SetDisplayUnitToSimUnitRatio(24f);
       
@@ -79,6 +79,15 @@ namespace PloobsEngine.Physics2D.Farseer
             {
                 obj.Enabled = false;
             }
+        }
+
+        public override I2DPhysicObject Picking(Vector2 point)
+        {          
+             Fixture fix =  world.TestPoint(point);
+            if(fix == null)
+                return null;
+            else
+            return fix.Body.UserData as I2DPhysicObject;
         }
     }
 }

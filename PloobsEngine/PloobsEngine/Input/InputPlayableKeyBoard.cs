@@ -72,9 +72,6 @@ namespace PloobsEngine.Input
   {
       PRESS, UP, RELEASE, DOWN
   }
-  public enum EntityType
-  {
-      IOBJECT , CAMERA , COMPONENT , TOOLS
-  }
+  
 }
 #endif

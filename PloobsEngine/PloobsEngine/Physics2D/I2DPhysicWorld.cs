@@ -50,5 +50,6 @@ namespace PloobsEngine.Physics2D
         /// <param name="obj">The obj.</param>
         public abstract void RemoveObject(I2DPhysicObject obj);
 
+        public abstract I2DPhysicObject Picking(Vector2 point);
     }
 }
