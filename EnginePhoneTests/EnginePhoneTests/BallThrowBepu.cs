@@ -23,6 +23,9 @@ namespace EngineTestes
         Random rd = new Random();
         GraphicFactory factory;
 
+        protected override void Update(GameTime gameTime)
+        {            
+        }
 
         public BallThrowBepu(IScene scene, GraphicFactory factory, GestureType type)
             : base(scene)
@@ -40,10 +43,7 @@ namespace EngineTestes
                    _mundo.AddObject(physObj);
                }
            );
-
             scene.BindInput(SimpleConcreteGestureInputPlayable);
-
-            
         }
         
 
