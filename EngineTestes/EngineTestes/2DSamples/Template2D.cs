@@ -1,5 +1,5 @@
 ﻿using PloobsEngine.SceneControl._2DScene;
-using PloobsEngine.Physics2D.Farseer;
+using PloobsEngine.Physic2D.Farseer;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Material2D;
 using Microsoft.Xna.Framework.Input;

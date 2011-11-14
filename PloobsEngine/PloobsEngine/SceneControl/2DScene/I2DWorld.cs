@@ -21,7 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using PloobsEngine.Physics2D;
+using PloobsEngine.Physic2D;
 using PloobsEngine.Particles;
 using PloobsEngine.Engine.Logger;
 using System.Diagnostics;
@@ -52,6 +52,7 @@ namespace PloobsEngine.SceneControl._2DScene
             this.PhysicWorld = PhysicWorld;                        
             Dummies = new List<IDummy>();            
             Objects = new List<I2DObject>();
+            SoundEmiters2D = new List<ISoundEmitter2D>();
             MaterialSortedObjects = new Dictionary<Type, List<I2DObject>>();
             
 #if !WINDOWS_PHONE

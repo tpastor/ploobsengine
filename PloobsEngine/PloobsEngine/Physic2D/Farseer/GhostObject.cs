@@ -22,34 +22,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
-namespace PloobsEngine.Physics2D
+namespace PloobsEngine.Physic2D.Farseer
 {
-    public abstract class I2DPhysicWorld
+    public class GhostObject : I2DPhysicObject
     {
-
-        /// <summary>
-        /// Updates 
-        /// </summary>
-        /// <param name="gt">The gt.</param>
-        protected abstract void Update(GameTime gt);
-        internal void iUpdate(GameTime gt)
+        public GhostObject(Vector2 Position, float rotation = 0)
         {
-            Update(gt);
+            this.Enabled = false;
+            this.Position = Position;
+            this.Rotation = rotation;
+            this.Origin = Vector2.Zero;
         }
 
-        /// <summary>
-        /// Adds the object.
-        /// </summary>
-        /// <param name="obj">The obj.</param>
-        public abstract void AddObject(I2DPhysicObject obj);
-
-        /// <summary>
-        /// Removes the object.
-        /// </summary>
-        /// <param name="obj">The obj.</param>
-        public abstract void RemoveObject(I2DPhysicObject obj);
-
-        public abstract I2DPhysicObject Picking(Vector2 point);
+        public override bool isDynamic
+        {
+            get
+            {
+                return false;
+            }
+            set
+            {                
+            }
+        }
     }
 }

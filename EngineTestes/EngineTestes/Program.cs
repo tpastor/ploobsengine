@@ -25,8 +25,7 @@ namespace EngineTestes
 
         static void LoadScreen(ScreenManager manager)
         {
-            //manager.AddScreen(new PostEffectScreen());
-            //manager.AddScreen(new NetworkingScreen());
+            //manager.AddScreen(new CustomModelScreen());
             //manager.AddScreen(new MobilePhysicScreen());
             //manager.AddScreen(new MultScreen());
             //manager.AddScreen(new FirstScreen());
@@ -35,7 +34,7 @@ namespace EngineTestes
             //manager.AddScreen(new DeferredAnimatedScreen());
             //manager.AddScreen(new CharacterScreen());
             //manager.AddScreen(new ParticleScreen());
-            //manager.AddScreen(new PostEffectScreen());
+           // manager.AddScreen(new PostEffectScreen());
             //manager.AddScreen(new SoundScreen());
             //manager.AddScreen(new TransparentForwardScreen());
             //manager.AddScreen(new BilboardScreen());
@@ -55,13 +54,13 @@ namespace EngineTestes
             //manager.AddScreen(new VegetationForwardScreen());
             //manager.AddScreen(new VegetationDeferredScreen());            
             //manager.AddScreen(new MixReflection());                        
-            //manager.AddScreen(new Basic2D());
+            manager.AddScreen(new Basic2D());
             //manager.AddScreen(new ConstraintScreen());
             //manager.AddScreen(new IaWaypoints());
             //manager.AddScreen(new IaPathFinding());
             //manager.AddScreen(new SteerScreen());
             //manager.AddScreen(new FSMScreen());
-            manager.AddScreen(new ParalaxScreen());
+            //manager.AddScreen(new ParalaxScreen());
             //manager.AddScreen(new RadialBluScreen());
             //manager.AddScreen(new BoltSample());
             //manager.AddScreen(new ShatterSample());
