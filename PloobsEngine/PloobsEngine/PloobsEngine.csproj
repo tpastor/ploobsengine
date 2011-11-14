@@ -284,7 +284,7 @@
     <Compile Include="Physic3D\PhysicObjects\BepuObject\TriangleMeshObject.cs" />
     <Compile Include="Physic3D\PhysicObjects\IPhysicObject.cs" />
     <Compile Include="Physic3D\SegmentInterceptInfo.cs" />
-    <Compile Include="Physics2D\Farseer\GhostObject.cs" />
+    <Compile Include="Physic2D\Farseer\GhostObject.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\HeatPostEffect.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\NightPostEffect.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\RadialBlurPostEffect.cs" />
@@ -316,12 +316,12 @@
     <Compile Include="Utils\Debug 2D Primitives\PrimitiveBatch.cs" />
     <Compile Include="Utils\Debug 2D Primitives\Triangles.cs" />
     <Compile Include="Utils\Debug 2D Primitives\TrianglesStrip.cs" />
-    <Compile Include="Physics2D\Farseer\Asset2DCreator.cs" />
-    <Compile Include="Physics2D\ConvertUtils.cs" />
-    <Compile Include="Physics2D\Farseer\FarseerWorld.cs" />
-    <Compile Include="Physics2D\Farseer\FarseerObject.cs" />
-    <Compile Include="Physics2D\I2DPhysicObject.cs" />
-    <Compile Include="Physics2D\I2DPhysicWorld.cs" />
+    <Compile Include="Physic2D\Farseer\Asset2DCreator.cs" />
+    <Compile Include="Physic2D\ConvertUtils.cs" />
+    <Compile Include="Physic2D\Farseer\FarseerWorld.cs" />
+    <Compile Include="Physic2D\Farseer\FarseerObject.cs" />
+    <Compile Include="Physic2D\I2DPhysicObject.cs" />
+    <Compile Include="Physic2D\I2DPhysicWorld.cs" />
     <Compile Include="SceneControl\2DScene\Basic2DRenderTechnich.cs" />
     <Compile Include="SceneControl\2DScene\Camera2D.cs" />
     <Compile Include="SceneControl\2DScene\I2DObject.cs" />

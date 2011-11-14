@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using PloobsEngine.SceneControl._2DScene;
-using PloobsEngine.Physics2D.Farseer;
+using PloobsEngine.Physic2D.Farseer;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Material2D;
 using Microsoft.Xna.Framework.Input;
@@ -19,7 +19,7 @@ using DPSF.ParticleSystems;
 using PloobsEngine.Light2D;
 using PloobsEngine.Engine;
 using PloobsEngine.Input;
-using PloobsEngine.Physics2D;
+using PloobsEngine.Physic2D;
 
 namespace EngineTestes._2DSamples
 {
