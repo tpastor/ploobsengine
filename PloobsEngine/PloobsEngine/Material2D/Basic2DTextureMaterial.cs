@@ -23,7 +23,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using PloobsEngine.Physics2D.Farseer;
+using PloobsEngine.Physic2D.Farseer;
 using FarseerPhysics.Common;
 using PloobsEngine.Engine;
 

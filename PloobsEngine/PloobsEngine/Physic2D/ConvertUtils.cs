@@ -23,7 +23,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace PloobsEngine.Physics2D.Farseer
+namespace PloobsEngine.Physic2D.Farseer
 {
     /// <summary>
     /// Convert units between display and simulation units.

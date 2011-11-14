@@ -24,7 +24,7 @@ using System.Text;
 using PloobsEngine.SceneControl._2DScene;
 using Microsoft.Xna.Framework;
 
-namespace PloobsEngine.Physics2D
+namespace PloobsEngine.Physic2D
 {
     public abstract class I2DPhysicObject
     {       
@@ -53,6 +53,18 @@ namespace PloobsEngine.Physics2D
         {
             set;
             get;
+        }
+
+        public virtual Vector2 LinearVelocity
+        {
+            set;
+            get;
+        }
+        public virtual float AngularVelocity
+        {
+            set;
+            get;
+
         }
         public virtual float Rotation
         {

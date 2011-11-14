@@ -22,7 +22,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using PloobsEngine.MessageSystem;
-using PloobsEngine.Physics2D;
+using PloobsEngine.Physic2D;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Material2D;
 using PloobsEngine.Modelo2D;

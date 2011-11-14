@@ -26,10 +26,10 @@ using Microsoft.Xna.Framework.Graphics;
 using FarseerPhysics.Common;
 using FarseerPhysics.Collision;
 using FarseerPhysics.Common.Decomposition;
-using PloobsEngine.Physics2D.Farseer;
+using PloobsEngine.Physic2D.Farseer;
 using PloobsEngine.Engine;
 
-namespace PloobsEngine.Physics2D.Farseer
+namespace PloobsEngine.Physic2D.Farseer
 {
     public class FarseerAsset2DCreator
     {

@@ -27,7 +27,7 @@ using FarseerPhysics.Common;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using FarseerPhysics.Collision.Shapes;
-using PloobsEngine.Physics2D.Farseer;
+using PloobsEngine.Physic2D.Farseer;
 
 namespace PloobsEngine.Modelo2D
 {

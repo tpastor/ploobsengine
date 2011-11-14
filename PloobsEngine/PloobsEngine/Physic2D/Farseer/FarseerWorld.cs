@@ -24,7 +24,7 @@ using System.Text;
 using FarseerPhysics.Dynamics;
 using Microsoft.Xna.Framework;
 
-namespace PloobsEngine.Physics2D.Farseer
+namespace PloobsEngine.Physic2D.Farseer
 {
     public class FarseerWorld : I2DPhysicWorld
     {
