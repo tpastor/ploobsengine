@@ -52,8 +52,10 @@ namespace PloobsEngine.Features.DebugDraw
 
         public override string getMyName()
         {
-            return "DebugDraw";
+            return MyName;
         }
+
+        public static readonly String MyName = "DebugDraw";
 
         protected override void PosWithDepthDraw(SceneControl.RenderHelper render, Microsoft.Xna.Framework.GameTime gt, Microsoft.Xna.Framework.Matrix activeView, Microsoft.Xna.Framework.Matrix activeProjection)
         {

@@ -115,15 +115,13 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 
 	float attenuation;
 	if(quadratic)
-	{    
-	
-	float norm = saturate(length(lightVector)/(lightRadius ));
-	attenuation =  pow(1.0f - norm , 2)  ;    
-    
+	{    	
+	float norm = saturate(length(lightVector)/(lightRadius ));	
+	attenuation =  pow(1.0f - norm , 2)  ;    	
 	}
 	else
 	{	
-    attenuation = saturate(1.0f - (length(lightVector) )/(lightRadius )); 
+    attenuation = saturate(1.0f - (length(lightVector) )/(lightRadius )); 		
 	}
 	
 	
@@ -143,7 +141,6 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 
     //take into account attenuation and lightIntensity.
     return attenuation * lightIntensity * float4(diffuseLight.rgb,specularLight);
-
 }
 
 technique Technique1

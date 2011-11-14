@@ -32,15 +32,13 @@ namespace IntroductionDemo4._0
 
         int index = 0;
 
-        static int totalDemos = 15;
+        static int totalDemos = 17;
         EngineStuff engine;
 
         private int[] screenList = new int[totalDemos];
 
         private IScreen GetScreen(int screenNumber)
-        {
-
-            screenNumber = 13;
+        {   
             switch (screenNumber)
             {
                 case 0:
@@ -73,6 +71,12 @@ namespace IntroductionDemo4._0
                     return new PickingScreen();                    
                 case 14:                    
                     return new ChangingMessagesScreen();
+                case 15:
+                    return new DebugDrawScreen();
+                case 16:
+                    return new MultScreen();
+                case 17:
+                  return new MobilePhysicScreen();                   
                 default:
                     break;
             }

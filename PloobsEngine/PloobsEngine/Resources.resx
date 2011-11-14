@@ -229,9 +229,6 @@
   <data name="GrassBillboard" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>bin\x86\Debug\Content\Effects\Deferred\GrassBillboard.xnb;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="HSV" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>bin\x86\Debug\Content\Effects\Deferred\HSV.xnb;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="InstanceRenderGBuffer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>bin\x86\Debug\Content\Effects\Deferred\InstanceRenderGBuffer.xnb;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -456,5 +453,8 @@
   </data>
   <data name="noise_tex6" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>bin\x86\Debug\Content\Textures\noise_tex6.xnb;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="HSV" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\x86\Release\Content\Effects\Deferred\HSV.xnb;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
