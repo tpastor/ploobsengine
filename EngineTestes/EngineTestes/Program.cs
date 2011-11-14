@@ -25,8 +25,7 @@ namespace EngineTestes
 
         static void LoadScreen(ScreenManager manager)
         {
-            //manager.AddScreen(new PostEffectScreen());
-            //manager.AddScreen(new NetworkingScreen());
+            //manager.AddScreen(new PostEffectScreen());            
             //manager.AddScreen(new MobilePhysicScreen());
             //manager.AddScreen(new MultScreen());
             //manager.AddScreen(new FirstScreen());
