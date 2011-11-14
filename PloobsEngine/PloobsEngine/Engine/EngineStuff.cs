@@ -382,9 +382,9 @@ namespace PloobsEngine.Engine
             }
 
             ///THE ONLY COMPONENTS ADDED BY DEFAULT
-            #if !WINDOWS_PHONE
+           
             ComponentManager.AddComponent(new InputAdvanced());
-            #endif
+          
             ComponentManager.AddComponent(new TaskProcessor());
         }
 
@@ -834,6 +834,8 @@ namespace PloobsEngine.Engine
             }
 
             ///THE ONLY COMPONENTS ADDED BY DEFAULT                        
+               ComponentManager.AddComponent(new InputAdvanced());
+          
             ComponentManager.AddComponent(new TaskProcessor());
         }
 

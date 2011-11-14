@@ -53,12 +53,15 @@ namespace PloobsEngine.Modelo
         protected string _diffuseName = null;
         protected string _bumpName = null;
         protected string _specularName = null;
+        private string _reflectionName = null;
         protected string _mult1 = null;
         protected string _mult2 = null;
         protected string _mult3 = null;
         protected string _mult4 = null;
         protected string _heightMap = null;
         protected Texture2D diffuse = null;
+        protected TextureCube reflection = null;
+
         protected Texture2D bump = null;
         protected Texture2D specular = null;
         protected Texture2D glow = null;
@@ -77,6 +80,18 @@ namespace PloobsEngine.Modelo
         public event OnTextureChange OnTextureChange = null;
 
 
+        public TextureCube getCubeTexture(TextureType type)
+        {
+            if (type == TextureType.ENVIRONMENT)
+            {
+                return this.reflection;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         /// <summary>
         /// Gets one texture of the model.
         /// </summary>
@@ -84,6 +99,8 @@ namespace PloobsEngine.Modelo
         /// <returns></returns>
         public Texture2D getTexture(TextureType type)
         {
+           
+
             if (type == TextureType.DIFFUSE)
             {
                 return diffuse;                
@@ -134,6 +151,11 @@ namespace PloobsEngine.Modelo
         {
             switch (type)
             {
+
+                case TextureType.ENVIRONMENT:
+                     this._reflectionName = "CUSTOM";
+                    this.reflection = null;
+                    break;
                 case TextureType.DIFFUSE:
                     this._diffuseName = "CUSTOM";
                     this.diffuse = null;
@@ -191,6 +213,10 @@ namespace PloobsEngine.Modelo
         {
             switch (type)
             {
+
+                case TextureType.ENVIRONMENT:
+                    this._reflectionName = textureName;
+                    break;
                 case TextureType.DIFFUSE:
                     this._diffuseName = textureName;
                     break;
@@ -236,7 +262,12 @@ namespace PloobsEngine.Modelo
         /// </summary>
         /// <param name="factory">The factory.</param>
         internal void LoadTexture()
-        {            
+        {
+            if (!String.IsNullOrEmpty(_reflectionName) && _reflectionName != CUSTOM)
+            {
+                this.reflection = factory.GetTextureCube(_reflectionName, isInternal);
+            }
+
             if (!String.IsNullOrEmpty(_diffuseName) && _diffuseName != CUSTOM)
             {
                 this.diffuse = factory.GetTexture2D(_diffuseName, isInternal);
@@ -278,6 +309,22 @@ namespace PloobsEngine.Modelo
                 this.heightMap = factory.GetTexture2D(_heightMap, isInternal);
             }                        
         }
+
+        public void SetCubeTexture(TextureCube tex, TextureType type)
+        {
+            switch (type)
+            {
+                case TextureType.ENVIRONMENT:
+                    this._reflectionName = "CUSTOM";
+                    this.reflection = tex;
+                    break;
+                default:
+                    ActiveLogger.LogMessage("Setting Invalid Type of Texture", LogLevel.RecoverableError);
+                    break;
+            }
+        
+        }
+
                 /// <summary>
         /// Sets the texture.
         /// </summary>
@@ -287,6 +334,9 @@ namespace PloobsEngine.Modelo
         {
             switch (type)
             {
+
+                                  
+
                 case TextureType.DIFFUSE:
                     this._diffuseName = "CUSTOM";
                     this.diffuse = tex;

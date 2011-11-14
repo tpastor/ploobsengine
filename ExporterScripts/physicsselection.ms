@@ -4,7 +4,7 @@ phistype = "Box"
 
 rollout MainRollout "Basic Characteristic" width:184 height:358
 (
-	dropdownList ptype "Physics Type" pos:[8,16] width:168 height:40 items:#("Box", "Sphere", "TriangleMesh")
+	dropdownList ptype "Physics Type" pos:[8,16] width:168 height:40 items:#("Box", "Sphere", "TriangleMesh","Ghost","Water")
 
 	button btn1 "OK" pos:[37,289] width:104 height:32
 	dropdownList mtype "Material" pos:[11,98] width:165 height:40 enabled:true items:#("Wood", "Metal", "Rubber") selection:2
@@ -32,6 +32,14 @@ rollout MainRollout "Basic Characteristic" width:184 height:358
 		if(ptype.selection == 3) do
 		(
 			phistype = "TriangleMesh"
+		)
+		if(ptype.selection == 4) do
+		(
+			phistype = "Ghost"
+		)
+		if(ptype.selection == 5) do
+		(
+			phistype = "Water"
 		)
 		
 		for o in selection do

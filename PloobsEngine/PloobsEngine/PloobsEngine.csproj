@@ -161,6 +161,8 @@
     <Compile Include="AI\Waypoints\WaypointsCollection.cs" />
     <Compile Include="Audio\2DSoundEffect\SoundAudioPlayer.cs" />
     <Compile Include="Audio\2DSoundEffect\SimpleSoundEffect.cs" />
+    <Compile Include="Audio\3DSound\ISoundEmitter2D.cs" />
+    <Compile Include="Audio\3DSound\Static2DSound.cs" />
     <Compile Include="Audio\3DSound\Static3DSound.cs" />
     <Compile Include="Audio\3DSound\ISoundEmitter3D.cs" />
     <Compile Include="Audio\3DSound\ObjectFollower3DSound.cs" />
@@ -202,6 +204,9 @@
     <Compile Include="Features\Tasks\ITask.cs" />
     <Compile Include="Features\Tasks\TaskCommand.cs" />
     <Compile Include="Features\Tasks\TaskProcessor.cs" />
+    <Compile Include="Input\BindGestureCommand.cs" />
+    <Compile Include="Input\InputPlaybleGesture.cs" />
+    <Compile Include="Input\SimpleConcreteGestureInputPlayable.cs" />
     <Compile Include="Light2D\Light2D.cs" />
     <Compile Include="Light2D\PointLight2D.cs" />
     <Compile Include="Light2D\ShadowmapResolver.cs" />
@@ -637,8 +642,7 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>merge.bat</PostBuildEvent>
   </PropertyGroup>
   <!--
       To modify your build process, add your task inside one of the targets below and uncomment it. 

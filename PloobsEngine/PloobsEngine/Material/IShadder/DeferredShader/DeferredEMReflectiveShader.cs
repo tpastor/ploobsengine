@@ -142,7 +142,7 @@ namespace PloobsEngine.Material
                     for (int j = 0; j < bi.Count(); j++)
                     {
                         if (rType == ReflectionType.ReflexiveSurface)
-                            this._shader.Parameters["Texture"].SetValue(obj.Modelo.getTexture(TextureType.DIFFUSE, i, j));
+                            this._shader.Parameters["Texture"].SetValue(obj.Modelo.getTexture(TextureType.ENVIRONMENT, i, j));
                         this._shader.Parameters["World"].SetValue(Matrix.Multiply(wld, bi[j].ModelLocalTransformation));
                         render.RenderBatch(bi[j], _shader);
                     }         
@@ -156,8 +156,14 @@ namespace PloobsEngine.Material
 
         public override void  Initialize(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, IObject obj)        
  	    {
-            this._shader = factory.GetEffect("EMSHADER",true,true);            
-            texCube = factory.GetTextureCube(texName,false);            
+            this._shader = factory.GetEffect("EMSHADER",true,true);
+
+            if (texCube == null)
+            {
+                texCube = factory.GetTextureCube(texName, false);             
+            }
+            
+            
             base.Initialize(ginfo, factory, obj);
         }
 

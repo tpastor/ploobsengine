@@ -90,6 +90,30 @@ namespace PloobsEngine.Utils
             }
         }
 
+
+
+
+        public static void SerializeQuaternion(Quaternion? quaternion, String fieldName, System.Xml.XmlTextWriter textWriter)
+        {
+            if (quaternion.HasValue)
+            {
+                SerializeQuaternion((Quaternion)quaternion, fieldName, textWriter);
+                return;
+            }
+            else
+            {
+                textWriter.WriteStartElement(fieldName, null);
+                textWriter.WriteElementString("x", null);
+                textWriter.WriteElementString("y", null);
+                textWriter.WriteElementString("z", null);
+                textWriter.WriteElementString("w", null);
+                textWriter.WriteEndElement();
+            }
+        }
+
+
+
+
         /// <summary>
         /// Serializes the vector2.
         /// </summary>
@@ -274,6 +298,23 @@ namespace PloobsEngine.Utils
             vec.Z = float.Parse(node[fieldName]["z"].InnerText, ni);
             return vec;
         }
+
+
+        public static Quaternion DeserializeQuaternion(String fieldName, System.Xml.XmlNode node)
+        {
+
+            Quaternion quat = new Quaternion();
+
+            quat.X = float.Parse(node[fieldName]["x"].InnerText, ni);
+            quat.Y = float.Parse(node[fieldName]["y"].InnerText, ni);
+            quat.Z = float.Parse(node[fieldName]["z"].InnerText, ni);
+            quat.W = float.Parse(node[fieldName]["w"].InnerText, ni);
+
+            return quat;
+       
+        
+        }
+
         /// <summary>
         /// Deserializes the vector2.
         /// </summary>
