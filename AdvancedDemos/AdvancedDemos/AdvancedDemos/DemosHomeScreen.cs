@@ -33,6 +33,8 @@ namespace AdvancedDemo4._0
 
         private IScreen GetScreen(int screenNumber)
         {
+
+            screenNumber = 13;
             switch (screenNumber)
             {
                 case 0:

@@ -39,8 +39,17 @@ namespace PloobsEngine.SceneControl
             effect = factory.GetEffect("Heat",false,true);
         }
         Effect effect;
+        private float maxIntensity;
+
+        public float MaxIntensity
+        {
+            get { return maxIntensity; }
+            set { maxIntensity = value; }
+        }
         public override void Draw(Microsoft.Xna.Framework.Graphics.Texture2D ImageToProcess, RenderHelper rHelper, Microsoft.Xna.Framework.GameTime gt, PloobsEngine.Engine.GraphicInfo GraphicInfo, IWorld world, bool useFloatBuffer)
         {
+            
+            
             if (useFloatBuffer)
                 rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, effect, GraphicInfo.FullScreenRectangle, SamplerState.PointClamp);
             else

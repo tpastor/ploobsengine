@@ -192,6 +192,10 @@ namespace PloobsEngine.Modelo
     public enum TextureType
     {
         /// <summary>
+        /// EnvironmentMap
+        /// </summary>
+        ENVIRONMENT,
+        /// <summary>
         /// Diffuse
         /// </summary>
         DIFFUSE,

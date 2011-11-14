@@ -28,6 +28,7 @@ using System.Diagnostics;
 using PloobsEngine.Engine;
 using PloobsEngine.Entity;
 using Microsoft.Xna.Framework;
+using PloobsEngine.Audio;
 
 namespace PloobsEngine.SceneControl._2DScene
 {
@@ -241,6 +242,13 @@ namespace PloobsEngine.SceneControl._2DScene
 
             if(ParticleManager!= null)
                 ParticleManager.iUpdate2D(gt, camera2D.View, camera2D.SimProjection);
+
+            foreach (ISoundEmitter2D item in SoundEmiters2D)
+            {
+                item.iUpdate(gt, camera2D);
+            }
+
+
         }
         internal void iUpdateWorld(GameTime gt)
         {
@@ -316,8 +324,56 @@ namespace PloobsEngine.SceneControl._2DScene
         {
             get;
             protected set;
-        }       
+        }
 
+        /// <summary>
+        /// Gets the objects.
+        /// </summary>
+        public List<ISoundEmitter2D> SoundEmiters2D
+        {
+            get;
+            protected set;
+        }
+
+
+        /// <summary>
+        /// Adds the sound emitter.
+        /// </summary>
+        /// <param name="em">The em.</param>
+        /// <param name="play">if set to <c>true</c> [play].</param>
+        public virtual void AddSoundEmitter(ISoundEmitter2D em, bool play = false)
+        {
+            if (em == null)
+            {
+                ActiveLogger.LogMessage("Emitter is Null " + em.ToString(), LogLevel.RecoverableError);
+                return;
+            }
+
+            SoundEmiters2D.Add(em);
+            em.Apply3D();
+            if (play)
+                em.Play();
+        }
+
+        /// <summary>
+        /// Removes the sound emitter.
+        /// </summary>
+        /// <param name="e">The e.</param>
+        public virtual void RemoveSoundEmitter(ISoundEmitter2D em)
+        {
+            if (em == null)
+            {
+                ActiveLogger.LogMessage("Emitter is Null " + em.ToString(), LogLevel.RecoverableError);
+                return;
+            }
+            em.Stop();
+            bool resp = SoundEmiters2D.Remove(em);
+            if (!resp)
+            {
+                ActiveLogger.LogMessage("Emitter not found: " + em.ToString(), LogLevel.Warning);
+            }
+
+        }
 
     }
 }
