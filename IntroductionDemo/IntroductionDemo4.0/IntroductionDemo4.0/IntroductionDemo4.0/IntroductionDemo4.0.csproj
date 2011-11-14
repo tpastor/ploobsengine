@@ -112,6 +112,9 @@
   <ItemGroup>
     <Compile Include="Commons\LightThrowBepu.cs" />
     <Compile Include="Commons\MoveablePointLight.cs" />
+    <Compile Include="Demos Extras\DebugDrawScreen.cs" />
+    <Compile Include="Demos Extras\MobilePhysicScreen.cs" />
+    <Compile Include="Demos Extras\MultScreen.cs" />
     <Compile Include="TitleScreen.cs" />
     <Compile Include="Demo1 - BasicScreen\BasicScreenDeferredDemo.cs" />
     <Compile Include="Demo1 - BasicScreen\BasicScreenForwardDemo.cs" />

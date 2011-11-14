@@ -31,7 +31,7 @@ namespace EngineTestes
             world = new IWorld(new BepuPhysicWorld(-0.97f, true), new SimpleCuller());
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
-            desc.UseFloatingBufferForLightMap = true;
+            desc.UseFloatingBufferForLightMap = true;            
             renderTech = new DeferredRenderTechnic(desc);
         }
 
@@ -138,6 +138,8 @@ namespace EngineTestes
                 SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.K, EnableDisableBump);
                 this.BindInput(ik);
             }
+
+            new LightThrowBepu(this.World, GraphicFactory);
         }
 
         public void aumentaScale(InputPlayableKeyBoard ipk)

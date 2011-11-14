@@ -26,7 +26,7 @@ namespace EngineTestes
         static void LoadScreen(ScreenManager manager)
         {
             //manager.AddScreen(new PostEffectScreen());
-            manager.AddScreen(new NetworkingScreen());
+            //manager.AddScreen(new NetworkingScreen());
             //manager.AddScreen(new MobilePhysicScreen());
             //manager.AddScreen(new MultScreen());
             //manager.AddScreen(new FirstScreen());
@@ -61,7 +61,7 @@ namespace EngineTestes
             //manager.AddScreen(new IaPathFinding());
             //manager.AddScreen(new SteerScreen());
             //manager.AddScreen(new FSMScreen());
-            //manager.AddScreen(new ParalaxScreen());
+            manager.AddScreen(new ParalaxScreen());
             //manager.AddScreen(new RadialBluScreen());
             //manager.AddScreen(new BoltSample());
             //manager.AddScreen(new ShatterSample());

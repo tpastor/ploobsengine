@@ -2,15 +2,11 @@ float2 halfPixel;
 float4 toAdd;
 float4 toMultiply;
 
+
 texture cena;
 sampler cenaSampler = sampler_state
 {
-   Texture = <cena>;
-   MinFilter = LINEAR;
-   MagFilter = LINEAR;
-   MipFilter = LINEAR;   
-   AddressU  = Clamp;
-   AddressV  = Clamp;
+   Texture = <cena>;   
 };
 
 

@@ -98,6 +98,7 @@ namespace PloobsEngine.SceneControl
 
         private void DrawPointLight(RenderHelper render, GraphicInfo ginfo, ICamera camera, PointLightPE pl, IDeferredGBuffer DeferredGBuffer,bool cullPointLight)
         {
+
             pointLightEffect.Parameters["halfPixel"].SetValue(ginfo.HalfPixel);
             pointLightEffect.Parameters["colorMap"].SetValue(DeferredGBuffer[GBufferTypes.COLOR]);
             pointLightEffect.Parameters["normalMap"].SetValue(DeferredGBuffer[GBufferTypes.NORMAL]);
@@ -112,7 +113,7 @@ namespace PloobsEngine.SceneControl
 
                     ContainmentType ct = ContainmentType.Contains;
                     if (cullPointLight)
-                        ct = camera.BoundingFrustum.Contains(new BoundingSphere(pl.LightPosition, pl.LightRadius * 1.5f));
+                        ct = camera.BoundingFrustum.Contains(new BoundingSphere(pl.LightPosition, pl.LightRadius));
                     if (ct == ContainmentType.Contains || ct == ContainmentType.Intersects)
                     {
                         pointLightEffect.Parameters["World"].SetValue(sphereWorldMatrix);
@@ -124,7 +125,7 @@ namespace PloobsEngine.SceneControl
 
                         float cameraToCenter = Vector3.Distance(camera.Position, pl.LightPosition);
 
-                        if (cameraToCenter < pl.LightRadius)
+                        if (cameraToCenter < pl.LightRadius + camera.NearPlane)
                             render.PushRasterizerState(RasterizerState.CullClockwise);
                         else
                             render.PushRasterizerState(RasterizerState.CullCounterClockwise);

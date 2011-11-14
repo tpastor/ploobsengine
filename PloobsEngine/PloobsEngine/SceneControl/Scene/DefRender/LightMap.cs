@@ -90,7 +90,7 @@ namespace PloobsEngine.SceneControl
                     
                     ContainmentType ct = ContainmentType.Contains;
                     if(cullPointLight)
-                        ct = camera.BoundingFrustum.Contains(new BoundingSphere(pl.LightPosition, pl.LightRadius * 1.5f));
+                        ct = camera.BoundingFrustum.Contains(new BoundingSphere(pl.LightPosition, pl.LightRadius ));
                     if (ct == ContainmentType.Contains || ct == ContainmentType.Intersects)
                     {
                         pointLightEffect.Parameters["World"].SetValue(sphereWorldMatrix);
@@ -102,14 +102,17 @@ namespace PloobsEngine.SceneControl
 
                         float cameraToCenter = Vector3.Distance(camera.Position, pl.LightPosition);
 
-                        if (cameraToCenter < pl.LightRadius)
+                        if (cameraToCenter < pl.LightRadius + camera.NearPlane)
                             render.PushRasterizerState(RasterizerState.CullClockwise);
                         else
                             render.PushRasterizerState(RasterizerState.CullCounterClockwise);
-                            
-                        render.RenderBatch(sphereModel.GetBatchInformation(0)[0],pointLightEffect);
+
+                        render.RenderBatch(sphereModel.GetBatchInformation(0)[0], pointLightEffect);
 
                         render.PopRasterizerState();
+                    }
+                    else
+                    {
                     }
                 }
             }

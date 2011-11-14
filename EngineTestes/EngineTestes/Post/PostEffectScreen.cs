@@ -88,8 +88,11 @@ namespace EngineTestes
             this.World.AddLight(ld5);
             #endregion
 
-            BackgroundTexture bt = new BackgroundTexture("Textures//Bubble");
-            this.RenderTechnic.AddPostEffect(bt);
+            HSVEffect hsv = new HSVEffect(new Vector4(), new Vector4(1.5f,1,1,1));
+            this.RenderTechnic.AddPostEffect(hsv);
+
+            //BackgroundTexture bt = new BackgroundTexture("Textures//Bubble");
+            //this.RenderTechnic.AddPostEffect(bt);
 
             //SharpenPostEffect sharpen = new SharpenPostEffect();
             //this.RenderTechnic.AddPostEffect(sharpen);

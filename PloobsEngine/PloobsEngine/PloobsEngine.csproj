@@ -632,6 +632,7 @@
     <None Include="bin\x86\Debug\Content\Textures\wave1.xnb" />
     <None Include="bin\x86\Debug\Content\Textures\waves2.xnb" />
     <None Include="bin\x86\Debug\Content\Textures\white.xnb" />
+    <None Include="bin\x86\Release\Content\Effects\Deferred\HSV.xnb" />
     <None Include="PloobsEngine.licenseheader" />
     <None Include="Resources\ConsoleFont.spritefont" />
   </ItemGroup>
