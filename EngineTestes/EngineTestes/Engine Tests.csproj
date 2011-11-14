@@ -180,7 +180,6 @@
     <Compile Include="Matali\Matalitests.cs" />
     <Compile Include="Material\ParalaxScreen.cs" />
     <Compile Include="MultThreading\MultScreen.cs" />
-    <Compile Include="Networking\NetworkingScreen.cs" />
     <Compile Include="OctreeScreen\OctreeScreen.cs" />
     <Compile Include="Physic\MobilePhysicScreen.cs" />
     <Compile Include="Post\BackgroundTexture.cs" />
