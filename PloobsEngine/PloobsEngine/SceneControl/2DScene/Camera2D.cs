@@ -22,7 +22,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
-using PloobsEngine.Physics2D.Farseer;
+using PloobsEngine.Physic2D.Farseer;
 using PloobsEngine.Engine;
 
 namespace PloobsEngine.SceneControl._2DScene

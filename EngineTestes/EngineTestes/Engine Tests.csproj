@@ -156,8 +156,6 @@
     <Compile Include="CharacterControllerInput.cs" />
     <Compile Include="CharacterSample\CharacterScreen.cs" />
     <Compile Include="Constraint\ConstraintScreen.cs" />
-    <Compile Include="Custom Model\CustomModelScreen.cs" />
-    <Compile Include="Custom Model\TerrainModel.cs" />
     <Compile Include="DebugDrawer\DebugDrawScreen.cs" />
     <Compile Include="Explosion\ExplosionDebrisPS.cs" />
     <Compile Include="Explosion\ExplosionFireSmokePS.cs" />
@@ -260,7 +258,9 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Custom Model\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--

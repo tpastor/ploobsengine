@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
-using PloobsEngine.Physics2D.Farseer;
+using PloobsEngine.Physic2D.Farseer;
 using FarseerPhysics.Dynamics;
 using Microsoft.Xna.Framework;
 using FarseerPhysics.Common;
 using FarseerPhysics.Factories;
 using PloobsEngine.Engine;
-using PloobsEngine.Physics2D;
+using PloobsEngine.Physic2D;
 
 namespace PloobsEngine.SceneControl._2DScene
 {
