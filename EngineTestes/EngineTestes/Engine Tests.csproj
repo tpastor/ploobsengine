@@ -168,6 +168,7 @@
     <Compile Include="Explosion\ExplosionScreen.cs" />
     <Compile Include="Explosion\ExplosionShockwavePS.cs" />
     <Compile Include="Explosion\ExplosionSmokeTrailsPS.cs" />
+    <Compile Include="ForwardBuildInMaterials\ForwardMaterialsScreen.cs" />
     <Compile Include="Gamma Correction\GammaCorrectionScreen.cs" />
     <Compile Include="GUI\FGUIScreen.cs" />
     <Compile Include="GUI\GUIScreen.cs" />

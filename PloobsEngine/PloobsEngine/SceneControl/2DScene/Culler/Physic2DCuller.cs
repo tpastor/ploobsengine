@@ -46,7 +46,7 @@ namespace PloobsEngine.SceneControl._2DScene.Culler
             MaterialSortedObjects.Clear();
             
             Vector3[] corners = new Vector3[8];
-            frustrum.GetCorners(corners);
+            frustrum.GetCorners(corners);            
             List<I2DPhysicObject> objs = world.PhysicWorld.TestAABB(new Vector2(corners[0].X, corners[0].Y), new Vector2(corners[2].X, corners[2].Y));
 
             foreach (var item in objs)
