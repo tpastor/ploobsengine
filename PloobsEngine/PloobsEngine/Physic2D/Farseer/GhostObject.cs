@@ -23,6 +23,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using PloobsEngine.Engine.Logger;
 
 namespace PloobsEngine.Physic2D.Farseer
 {
@@ -36,6 +37,11 @@ namespace PloobsEngine.Physic2D.Farseer
             this.Origin = Vector2.Zero;
         }
 
+        public override Physic2DType Physic2DType
+        {
+            get { return Physic2D.Physic2DType.Ghost; }
+        }
+
         public override bool isDynamic
         {
             get
@@ -43,7 +49,9 @@ namespace PloobsEngine.Physic2D.Farseer
                 return false;
             }
             set
-            {                
+            {
+                if(value == true)
+                    ActiveLogger.LogMessage("ghost is never dynamic", LogLevel.RecoverableError);
             }
         }
     }

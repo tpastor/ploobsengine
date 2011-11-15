@@ -31,7 +31,7 @@ namespace PloobsEngine.SceneControl
     {
         public AntiAliasingPostEffect() : base(PostEffectType.Deferred) 
         {
-            this.priority = float.MaxValue;
+            this.Priority = float.MaxValue;
         }
 
         private float weight = 1;

@@ -25,13 +25,13 @@ using Microsoft.Xna.Framework;
 using PloobsEngine.Material2D;
 using Microsoft.Xna.Framework.Graphics;
 using PloobsEngine.Engine;
+using PloobsEngine.Physic2D;
 
 namespace PloobsEngine.SceneControl._2DScene
 {
     public delegate void RenderBackGround(GraphicInfo ginfo, RenderHelper render);
     public delegate void BeforeDraw(GraphicInfo ginfo, RenderHelper render);
-    public delegate void AfterDrawBeforePostEffects(GraphicInfo ginfo, RenderHelper render);
-     
+    public delegate void AfterDrawBeforePostEffects(GraphicInfo ginfo, RenderHelper render);     
 
     public class Basic2DRenderTechnich : RenderTechnich2D
     {
@@ -108,19 +108,22 @@ namespace PloobsEngine.SceneControl._2DScene
 
         protected override void ExecuteTechnic(Microsoft.Xna.Framework.GameTime gameTime, RenderHelper render, I2DWorld world)
         {
+            world.Culler.StartFrame(world.Camera2D.SimView, world.Camera2D.SimProjection, world.Camera2D.BoundingFrustrum);
+            Dictionary<Type, List<I2DObject>> objs = world.Culler.GetNotCulledObjectsList();
+
             if (UsePreDrawPhase)
-            {                
-                foreach (var item in world.MaterialSortedObjects.Keys)
+            {
+                foreach (var item in objs.Keys)
                 {
                     IMaterialProcessor MaterialProcessor = MaterialProcessors[item];
 
                     if (MaterialProcessor != null)
                     {
-                        MaterialProcessor.ProcessPreDraw(gameTime, render, world.Camera2D,world, world.MaterialSortedObjects[item]);
+                        MaterialProcessor.ProcessPreDraw(gameTime, render, world.Camera2D, world, objs[item]);
                     }
                     else
                     {
-                        foreach (var iobj in world.MaterialSortedObjects[item])
+                        foreach (var iobj in objs[item])
                         {
                             if (iobj.PhysicObject.Enabled == true)
                             {
@@ -140,22 +143,23 @@ namespace PloobsEngine.SceneControl._2DScene
 
             if (UseLights)
             {
+                BoundingFrustum bf = world.Camera2D.BoundingFrustrum;
                 foreach (var item in world.Lights2D)
-                {
+                {                    
                     item.BeginDrawingShadowCasters(render);
                     item.UpdateLight(world.Camera2D.View);
 
-                    foreach (var item2 in world.MaterialSortedObjects.Keys)
+                    foreach (var item2 in objs.Keys)
                     {
                         IMaterialProcessor MaterialProcessor = MaterialProcessors[item2];
 
                         if (MaterialProcessor != null)
                         {
-                            MaterialProcessor.ProcessLightDraw(gameTime, render, world.Camera2D, world.MaterialSortedObjects[item2], Color.Black, item);
+                            MaterialProcessor.ProcessLightDraw(gameTime, render, world.Camera2D, objs[item2], Color.Black, item);
                         }
                         else
                         {
-                            foreach (var iobj in world.MaterialSortedObjects[item2])
+                            foreach (var iobj in objs[item2])
                             {
                                 if (iobj.PhysicObject.Enabled == true)
                                 {
@@ -204,24 +208,23 @@ namespace PloobsEngine.SceneControl._2DScene
             if(RenderBackGround!=null)
                 RenderBackGround(ginfo,render);
 #endif
-
             if (UseDrawComponents)
                 render.RenderPreComponents(gameTime, world.Camera2D.View, world.Camera2D.SimProjection);
 
             if (BeforeDraw != null)
                 BeforeDraw(ginfo, render);
 
-            foreach (var item in world.MaterialSortedObjects.Keys)
+            foreach (var item in objs.Keys)
             {
                 IMaterialProcessor MaterialProcessor = MaterialProcessors[item];
 
                 if (MaterialProcessor != null)
                 {
-                    MaterialProcessor.ProcessDraw(gameTime, render, world.Camera2D, world.MaterialSortedObjects[item]);
+                    MaterialProcessor.ProcessDraw(gameTime, render, world.Camera2D, objs[item]);
                 }
                 else
                 {
-                    foreach (var iobj in world.MaterialSortedObjects[item])
+                    foreach (var iobj in objs[item])
                     {
                         if (iobj.PhysicObject.Enabled == true)
                         {
@@ -230,6 +233,7 @@ namespace PloobsEngine.SceneControl._2DScene
                     }                    
                 }
             }
+
             if (UseDrawComponents)
                 render.RenderPosWithDepthComponents(gameTime, world.Camera2D.View, world.Camera2D.SimProjection);
 
@@ -237,7 +241,7 @@ namespace PloobsEngine.SceneControl._2DScene
                 world.ParticleManager.iDraw(gameTime, world.Camera2D.View, world.Camera2D.SimProjection, render);
 
             if (AfterDrawBeforePostEffects != null)
-                BeforeDraw(ginfo, render);
+                AfterDrawBeforePostEffects(ginfo, render);
 
 #if !WINDOWS_PHONE
             if (UsePostProcessing)

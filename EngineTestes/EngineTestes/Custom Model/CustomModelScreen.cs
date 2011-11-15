@@ -39,10 +39,10 @@ namespace EngineTestes
             ///try to update the vertices array instead of creating one every time
             VertexPositionTexture[] vertices = new VertexPositionTexture[vecs.Length];
             for (int i = 0; i < vecs.Length; i++)
-       {
+            {
                 VertexPositionTexture v = new VertexPositionTexture(vecs[i],Vector2.Zero);
-       vertices[i] = v;
-       }
+                vertices[i] = v;
+            }
 
 
               //TO CONSTRUCT
@@ -54,9 +54,7 @@ namespace EngineTestes
             IObject obj2 = new IObject(mat,VoxelTerrainModel,tm);
 
 
-///TO UPDATE
-
-
+            ///TO UPDATE
             ///PHYSIC
             ///to update the triangle mesh date (updated version of indices/vertices ....)
             tm.StaticMesh.Mesh.Data.Indices = indices; 
@@ -73,6 +71,7 @@ namespace EngineTestes
             VoxelTerrainModel.Vertices = vertices;
             VoxelTerrainModel.Indices = indices ;
             }
+
             {
                 SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
                 TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());

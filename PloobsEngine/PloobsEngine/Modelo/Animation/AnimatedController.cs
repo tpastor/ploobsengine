@@ -17,7 +17,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
-#if !WINDOWS_PHONE	
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -245,6 +245,7 @@ namespace PloobsEngine.Modelo.Animation
 
         #endregion
 
+#if !WINDOWS_PHONE
         #region ISerializable Members
 
         public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
@@ -253,6 +254,6 @@ namespace PloobsEngine.Modelo.Animation
         }
 
         #endregion
+#endif
     }
 }
-#endif

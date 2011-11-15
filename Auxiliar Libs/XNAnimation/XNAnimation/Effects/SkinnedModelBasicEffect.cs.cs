@@ -214,7 +214,7 @@ namespace XNAnimation.Effects
                 bonesParam.Elements[i].SetValue(Matrix.Identity);            
         }
         
-
+        #if !WINDOWS_PHONE
         internal static SkinnedModelBasicEffect Read(ContentReader input)
         {
             IGraphicsDeviceService graphicsDeviceService = (IGraphicsDeviceService)
@@ -222,7 +222,7 @@ namespace XNAnimation.Effects
 
             GraphicsDevice graphicsDevice = graphicsDeviceService.GraphicsDevice;
 
-            //ResourceContentManager cnt = new ResourceContentManager(input.ContentManager.ServiceProvider, Resource1.ResourceManager);            
+            //ResourceContentManager cnt = new ResourceContentManager(input.ContentManager.ServiceProvider, Resource1.ResourceManager);            z
             SkinnedModelBasicEffect basicEffect = new SkinnedModelBasicEffect(graphicsDevice, Resource1.SkinnedModelEffect);
             
 
@@ -240,5 +240,31 @@ namespace XNAnimation.Effects
 
             return basicEffect;
         }
+#else
+        internal static SkinnedEffect Read(ContentReader input)
+        {
+            IGraphicsDeviceService graphicsDeviceService = (IGraphicsDeviceService)
+                    input.ContentManager.ServiceProvider.GetService(typeof(IGraphicsDeviceService));
+
+            GraphicsDevice graphicsDevice = graphicsDeviceService.GraphicsDevice;
+
+            SkinnedEffect basicEffect = new SkinnedEffect(graphicsDevice);
+
+
+            input.ReadVector3();
+            input.ReadVector3();
+            input.ReadVector3();
+            input.ReadSingle();
+
+            input.ReadBoolean();
+            input.ReadBoolean();
+            input.ReadBoolean();
+            input.ReadObject<Texture2D>(); 
+            input.ReadObject<Texture2D>(); 
+            input.ReadObject<Texture2D>(); 
+
+            return basicEffect;
+        }
+#endif
     }
 }
