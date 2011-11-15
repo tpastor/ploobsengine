@@ -26,9 +26,19 @@ using Microsoft.Xna.Framework;
 
 namespace PloobsEngine.Physic2D
 {
+    public enum Physic2DType
+    {
+        Ghost,Physic
+    }
+
     public abstract class I2DPhysicObject
     {       
         Vector2 origin;
+
+        public abstract Physic2DType Physic2DType
+        {
+            get;            
+        }
 
         public Vector2 Origin
         {
