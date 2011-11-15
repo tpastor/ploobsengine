@@ -1,0 +1,451 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <ProjectGuid>{35AFC410-C882-4EF4-8CE0-C53C2C712B0C}</ProjectGuid>
+    <ProjectTypeGuids>{96E2B04D-8817-42c6-938A-82C39BA4D311};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TomShane.Neoforce.Controls</RootNamespace>
+    <AssemblyName>TomShane.Neoforce.Controls</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
+    <ApplicationIcon>Resources\Neoforce.ico</ApplicationIcon>
+    <OutputPath>bin\$(Platform)\$(Configuration)</OutputPath>
+    <ContentRootDirectory>Content</ContentRootDirectory>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>"..\..\..\..\..\tools\buildmarker\BuildMarker.exe" ..\..\..\properties\AssemblyInfo.cs /i</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <XnaPlatform>Windows</XnaPlatform>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <XnaPlatform>Windows</XnaPlatform>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Xna.Framework.Content.Pipeline, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
+    <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.TextureImporter, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Cursors\Busy.cur">
+      <Name>Busy</Name>
+      <Importer>CursorImporter</Importer>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Cursors\Cross.cur">
+      <Name>Cross</Name>
+      <Importer>CursorImporter</Importer>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Cursors\Default.cur">
+      <Name>Default</Name>
+      <Importer>CursorImporter</Importer>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Cursors\DiagonalLeft.cur">
+      <Name>DiagonalLeft</Name>
+      <Importer>CursorImporter</Importer>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Cursors\DiagonalRight.cur">
+      <Name>DiagonalRight</Name>
+      <Importer>CursorImporter</Importer>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Cursors\Horizontal.cur">
+      <Name>Horizontal</Name>
+      <Importer>CursorImporter</Importer>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Cursors\Move.cur">
+      <Name>Move</Name>
+      <Importer>CursorImporter</Importer>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Cursors\Text.cur">
+      <Name>Text</Name>
+      <Importer>CursorImporter</Importer>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Cursors\Vertical.cur">
+      <Name>Vertical</Name>
+      <Importer>CursorImporter</Importer>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Fonts\Default.spritefont">
+      <Name>Default</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\Button.png">
+      <Name>Button</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\CheckBox.Checked.png">
+      <Name>CheckBox.Checked</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\CheckBox.png">
+      <Name>CheckBox</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\ComboBox.Button.png">
+      <Name>ComboBox.Button</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\ComboBox.ListBox.png">
+      <Name>ComboBox.ListBox</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\ComboBox.png">
+      <Name>ComboBox</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\ContextMenu.png">
+      <Name>ContextMenu</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\ContextMenu.Selection.png">
+      <Name>ContextMenu.Selection</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\Control.Outline.png">
+      <Name>Control.Outline</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\Control.png">
+      <Name>Control</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\GroupBox.Flat.png">
+      <Name>GroupBox.Flat</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\GroupBox.png">
+      <Name>GroupBox</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\GroupPanel.png">
+      <Name>GroupPanel</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\Icon.Error.png">
+      <Name>Icon.Error</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\Icon.Information.png">
+      <Name>Icon.Information</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\Icon.Question.png">
+      <Name>Icon.Question</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\Icon.Warning.png">
+      <Name>Icon.Warning</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\ListBox.png">
+      <Name>ListBox</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\ListBox.Selection.png">
+      <Name>ListBox.Selection</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\MainMenu.png">
+      <Name>MainMenu</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\MainMenu.Selection.png">
+      <Name>MainMenu.Selection</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\ProgressBar.png">
+      <Name>ProgressBar</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\ProgressBar.Scale.png">
+      <Name>ProgressBar.Scale</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\RadioButton.Checked.png">
+      <Name>RadioButton.Checked</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\RadioButton.png">
+      <Name>RadioButton</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\ScrollBar.ButtonHorz.png">
+      <Name>ScrollBar.ButtonHorz</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\ScrollBar.ButtonVert.png">
+      <Name>ScrollBar.ButtonVert</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\ScrollBar.GlyphHorz.png">
+      <Name>ScrollBar.GlyphHorz</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\ScrollBar.GlyphVert.png">
+      <Name>ScrollBar.GlyphVert</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\ScrollBar.RailHorz.png">
+      <Name>ScrollBar.RailHorz</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\ScrollBar.RailVert.png">
+      <Name>ScrollBar.RailVert</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\Shared.ArrowDown.png">
+      <Name>Shared.ArrowDown</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\Shared.ArrowLeft.png">
+      <Name>Shared.ArrowLeft</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\Shared.ArrowRight.png">
+      <Name>Shared.ArrowRight</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\Shared.ArrowUp.png">
+      <Name>Shared.ArrowUp</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\Shared.End.png">
+      <Name>Shared.End</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\Shared.Glyph.png">
+      <Name>Shared.Glyph</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\Shared.Home.png">
+      <Name>Shared.Home</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\Shared.PageDown.png">
+      <Name>Shared.PageDown</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\Shared.PageUp.png">
+      <Name>Shared.PageUp</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\Sidebar.png">
+      <Name>Sidebar</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\SidebarPanel.png">
+      <Name>SidebarPanel</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\SpinBox.Button.png">
+      <Name>SpinBox.Button</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\SpinBox.png">
+      <Name>SpinBox</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\StatusBar.png">
+      <Name>StatusBar</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\TabControl.Header.png">
+      <Name>TabControl.Header</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\TabControl.png">
+      <Name>TabControl</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\TextBox.Cursor.png">
+      <Name>TextBox.Cursor</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\TextBox.png">
+      <Name>TextBox</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\ToolBar.png">
+      <Name>ToolBar</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\ToolBarButton.png">
+      <Name>ToolBarButton</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\ToolBarPanel.png">
+      <Name>ToolBarPanel</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\ToolTip.png">
+      <Name>ToolTip</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\TrackBar.Button.png">
+      <Name>TrackBar.Button</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\TrackBar.png">
+      <Name>TrackBar</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\Window.Caption.png">
+      <Name>Window.Caption</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\Window.CloseButton.png">
+      <Name>Window.CloseButton</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\Window.FrameBottom.png">
+      <Name>Window.FrameBottom</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\Window.FrameLeft.png">
+      <Name>Window.FrameLeft</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\Window.FrameRight.png">
+      <Name>Window.FrameRight</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\Window.FrameTop.png">
+      <Name>Window.FrameTop</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\Window.Icon.png">
+      <Name>Window.Icon</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\Window.png">
+      <Name>Window</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Skins\Default\Images\Window.Shadow.png">
+      <Name>Window.Shadow</Name>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Skins\Default\Skin.xml">
+      <Name>Skin</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Importers\Importers.csproj">
+      <Project>{8ED9B288-C739-4A73-A0A3-0382587B771D}</Project>
+      <Name>Importers</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties Reset="0" AssemblyVersion="0" AssemblyFileVersion="0" StartDate="20100815" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
