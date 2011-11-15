@@ -31,7 +31,7 @@ using FarseerPhysics.Factories;
 using FarseerPhysics.Common.PolygonManipulation;
 using PloobsEngine.Modelo2D;
 
-namespace PloobsEngine.Physics2D.Farseer
+namespace PloobsEngine.Physic2D.Farseer
 {
     public class FarseerObject : I2DPhysicObject
     {
@@ -110,6 +110,30 @@ namespace PloobsEngine.Physics2D.Farseer
 
         #region I2DPhysicObject Members
 
+
+        public override Vector2 LinearVelocity
+        {
+            get
+            {
+                return body.LinearVelocity;
+            }
+            set
+            {
+                body.LinearVelocity = value;
+            }
+        }
+
+        public override float AngularVelocity
+        {
+            get
+            {
+                return body.AngularVelocity;
+            }
+            set
+            {
+                body.AngularVelocity = value;
+            }
+        }
         public override bool isDynamic
         {
             get

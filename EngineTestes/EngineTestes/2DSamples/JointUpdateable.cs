@@ -6,7 +6,7 @@ using PloobsEngine;
 using Microsoft.Xna.Framework.Input;
 using PloobsEngine.SceneControl._2DScene;
 using Microsoft.Xna.Framework;
-using PloobsEngine.Physics2D.Farseer;
+using PloobsEngine.Physic2D.Farseer;
 using FarseerPhysics.Dynamics.Joints;
 using FarseerPhysics.Dynamics;
 
