@@ -37,7 +37,7 @@ namespace XNAnimationPipeline.Pipeline
 #if DEBUG
             return
                 //typeFullName + ", " + assemblyTokens[0] + ", " + assemblyTokens[1] + ", " +
-                //    assemblyTokens[2] + ", " + GetAssemblyPublicKey(targetPlatform);
+                    //assemblyTokens[2] + ", " + GetAssemblyPublicKey(targetPlatform);
                 typeFullName + ", " + "PloobsEngineDebug" + ", " + assemblyTokens[1] + ", " +
                     assemblyTokens[2] + ", " + GetAssemblyPublicKey(targetPlatform);
 #else                  
@@ -59,12 +59,12 @@ namespace XNAnimationPipeline.Pipeline
                 case TargetPlatform.Windows:
                     publicKey += windowsPublicKeyTokens;
                     break;
-
+                case TargetPlatform.WindowsPhone:
+                    publicKey += windowsPublicKeyTokens;
+                    break;
                 case TargetPlatform.Xbox360:
                     //publicKey += xboxPublicKeyTokens;
                     throw new Exception("XBOX NOT SUPPORTED");
-                    break;
-
                 default:
                     throw new ArgumentException("targetPlatform");
             }

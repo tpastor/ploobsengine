@@ -120,8 +120,7 @@ namespace PloobsEngine.Material
             effect = factory.GetBasicEffect();            
             base.Initialize(ginfo,factory,obj);
             effect.PreferPerPixelLighting = true;
-            SetDescription(desc);
-            base.Initialize(ginfo, factory, obj);
+            SetDescription(desc);        
         }
 
         public ForwardXNABasicShaderDescription GetDescription()

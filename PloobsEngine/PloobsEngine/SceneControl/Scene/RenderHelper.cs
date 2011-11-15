@@ -588,7 +588,7 @@ namespace PloobsEngine.SceneControl
 
         /// <summary>
         /// Resyncs the Device States
-        /// THIS IS BECAUSE THE SPRITEBATCH KILL THE RENDER STATES, NO SAVE STATE. XNA DOCUMENTATION FAILS !!!!
+        /// THIS IS BECAUSE THE SPRITEBATCH KILLS THE RENDER STATES, NO SAVE STATE. XNA DOCUMENTATION FAILS !!!!
         /// </summary>
         public void ResyncStates()
         {
