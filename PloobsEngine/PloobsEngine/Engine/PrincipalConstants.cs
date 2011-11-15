@@ -37,8 +37,6 @@ namespace PloobsEngine
         /// This funcionality is not on yet
         /// </summary>
         public const String DefaultInitConfFileName = "Content/confs\\initconf.txt";
-        //public const String DefaultAttributesSyncronousConfFileName = "Content/confs\\syncronousclasses.txt";
-        //public const String DefaultAttributesAssyncronousConfFileName = "Content/confs\\assyncronousattributeInfo.txt";
         ///// <summary>
         ///// Script Message sender name
         ///// </summary>
