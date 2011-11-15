@@ -106,7 +106,7 @@ namespace PloobsEngine.Physics.Bepu
          {
              if (value == false)
              {
-                 throw new Exception("Eh sempre motion less");
+                 ActiveLogger.LogMessage("Ghost is always motion less", LogLevel.RecoverableError);
              }
          }
      }
@@ -119,7 +119,7 @@ namespace PloobsEngine.Physics.Bepu
          }
          set
          {
-             throw new Exception("Sempre imovel");
+             ActiveLogger.LogMessage("Ghost does not have velocity", LogLevel.RecoverableError);
          }
      }
 

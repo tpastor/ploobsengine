@@ -381,7 +381,7 @@ public IScreen()
         /// </summary>
         protected virtual void CleanUp(EngineStuff engine)
         {    
-            #if !WINDOWS_PHONE
+#if WINDOWS
             foreach (var item in KeyBinds.Values)
 	        {
                 item.BindAction = BindAction.REMOVE;
