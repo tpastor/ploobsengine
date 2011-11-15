@@ -23,6 +23,7 @@ using System.Linq;
 using System.Text;
 using FarseerPhysics.Dynamics;
 using Microsoft.Xna.Framework;
+using FarseerPhysics.Collision;
 
 namespace PloobsEngine.Physic2D.Farseer
 {
@@ -56,13 +57,13 @@ namespace PloobsEngine.Physic2D.Farseer
 
         public override void AddObject(I2DPhysicObject obj)
         {
-            if (obj is FarseerObject)
+            if (obj.Physic2DType == Physic2DType.Physic)
             {
                 FarseerObject ob = obj as FarseerObject;
                 ob.Body.UserData = obj;
                 ob.Body.Enabled = true;                
             }
-            else if (obj is GhostObject)
+            else if (obj.Physic2DType == Physic2DType.Ghost)
             {
                 obj.Enabled = true;
             }
@@ -70,12 +71,12 @@ namespace PloobsEngine.Physic2D.Farseer
 
         public override void RemoveObject(I2DPhysicObject obj)
         {
-            if (obj is FarseerObject)
+            if (obj.Physic2DType == Physic2DType.Physic)
             {
                 FarseerObject ob = obj as FarseerObject;
                 world.RemoveBody(ob.Body);
             }
-            else if (obj is GhostObject)
+            else if (obj.Physic2DType == Physic2DType.Ghost)
             {
                 obj.Enabled = false;
             }
@@ -88,6 +89,27 @@ namespace PloobsEngine.Physic2D.Farseer
                 return null;
             else
             return fix.Body.UserData as I2DPhysicObject;
+        }
+
+        List<I2DPhysicObject> objs = new List<I2DPhysicObject>();
+        public override List<I2DPhysicObject> TestAABB(Vector2 min, Vector2 max)
+        {
+            objs.Clear();
+            AABB a = new AABB(ref min, ref max);
+            world.QueryAABB(
+                (p) =>
+                {
+                    if (p.Body.UserData != null)
+                    {
+                        I2DPhysicObject I2DPhysicObject = (I2DPhysicObject)p.Body.UserData;
+                        if(!objs.Contains(I2DPhysicObject))
+                             objs.Add(I2DPhysicObject);
+                    }
+                    return true;
+                }
+
+            , ref a);
+            return objs;
         }
     }
 }

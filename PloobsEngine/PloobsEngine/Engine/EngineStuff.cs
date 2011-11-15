@@ -85,7 +85,7 @@ namespace PloobsEngine.Engine
         /// <param name="logger">The logger.</param>
         /// <param name="useMipMapWhenPossible">if set to <c>true</c> [use mip map when possible].</param>
         /// <param name="UseAnisotropicFiltering">if set to <c>true</c> [use anisotropic filtering].</param>
-        internal InitialEngineDescription(String ScreenName = "PloobsEngine", int BackBufferWidth = 800, int BackBufferHeight = 600, bool isFullScreen = false, GraphicsProfile graphicsProfile = GraphicsProfile.HiDef, bool useVerticalSyncronization = false, bool isMultiSampling = false, bool isFixedGameTime = false, ILogger logger = null, bool useMipMapWhenPossible = false, bool UseAnisotropicFiltering = false, DisplayOrientation supportedOrientation = DisplayOrientation.Portrait | DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight)
+        internal InitialEngineDescription(String ScreenName = "PloobsEngine", int BackBufferWidth = 800, int BackBufferHeight = 600, bool isFullScreen = false, GraphicsProfile graphicsProfile = GraphicsProfile.HiDef, bool useVerticalSyncronization = false, bool isMultiSampling = false, bool isFixedGameTime = false, ILogger logger = null, bool useMipMapWhenPossible = false, bool UseAnisotropicFiltering = false)
         {            
             this.UseVerticalSyncronization = useVerticalSyncronization;
             this.BackBufferHeight = BackBufferHeight;
@@ -102,8 +102,6 @@ namespace PloobsEngine.Engine
             this.ScreenName = ScreenName;
             this.useMipMapWhenPossible = useMipMapWhenPossible;
             this.UseAnisotropicFiltering = UseAnisotropicFiltering;
-            this.SupportedOrientations = supportedOrientation;
-            
         }
 
         /// <summary>
@@ -180,8 +178,7 @@ namespace PloobsEngine.Engine
         public OnExit OnExit;
 
         internal UnhandledExceptionEventHandler UnhandledExceptionEventHandler;
-        internal EventHandler<EventArgs> onExitHandler;
-        public DisplayOrientation SupportedOrientations;        
+        internal EventHandler<EventArgs> onExitHandler;        
  
     }
 
@@ -259,12 +256,7 @@ namespace PloobsEngine.Engine
             graphics.PreferMultiSampling = initialDescription.isMultiSampling;
             graphics.PreferredBackBufferHeight = initialDescription.BackBufferHeight;
             graphics.PreferredBackBufferWidth = initialDescription.BackBufferWidth;
-            graphics.PreferredDepthStencilFormat = DepthFormat.Depth24Stencil8;
-            graphics.SupportedOrientations = initialDescription.SupportedOrientations;
-
-
-            graphics.ApplyChanges();
-
+            graphics.PreferredDepthStencilFormat = DepthFormat.Depth24Stencil8;                                    
             
         }        
         

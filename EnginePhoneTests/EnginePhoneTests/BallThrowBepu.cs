@@ -24,8 +24,7 @@ namespace EngineTestes
         GraphicFactory factory;
 
         protected override void Update(GameTime gameTime)
-        {
-            throw new NotImplementedException();
+        {            
         }
 
         public BallThrowBepu(IScene scene, GraphicFactory factory, GestureType type)

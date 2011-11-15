@@ -224,6 +224,7 @@
     <Compile Include="Material2D\MaterialProcessor.cs" />
     <Compile Include="Material\DeferredAnimatedMaterial.cs" />
     <Compile Include="Material\DeferredMaterial.cs" />
+    <Compile Include="Material\ForwardAnimatedMaterial.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredInstancedBilboardShader.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredAnimatedTextureShader.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredCilindricGPUBilboardShader.cs" />
@@ -238,6 +239,10 @@
     <Compile Include="Material\IShadder\DeferredShader\DeferredSphericalBilboardShader.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredProceduralAnimatedBilboardShader.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredTerrainShader.cs" />
+    <Compile Include="Material\IShadder\ForwardShader\ForwardEnvironmentShader.cs" />
+    <Compile Include="Material\IShadder\ForwardShader\ForwardDualTextureShader.cs" />
+    <Compile Include="Material\IShadder\ForwardShader\ForwardGenericBuildInShader.cs" />
+    <Compile Include="Material\IShadder\ForwardShader\ForwardSimpleAnimationShader.cs" />
     <Compile Include="Material\IShadder\ForwardShader\ForwardTransparenteShader.cs" />
     <Compile Include="Material\IShadder\ForwardShader\ForwardTreeShader.cs" />
     <Compile Include="Material\TreeMaterial.cs" />
@@ -298,6 +303,9 @@
     <Compile Include="Physic3D\PhysicObjects\IPhysicObject.cs" />
     <Compile Include="Physic3D\SegmentInterceptInfo.cs" />
     <Compile Include="Physic2D\Farseer\GhostObject.cs" />
+    <Compile Include="SceneControl\2DScene\Culler\Simple2DCuller.cs" />
+    <Compile Include="SceneControl\2DScene\Culler\I2DCuller.cs" />
+    <Compile Include="SceneControl\2DScene\Culler\Physic2DCuller.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\HeatPostEffect.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\NightPostEffect.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\RadialBlurPostEffect.cs" />
@@ -456,6 +464,7 @@
     <Compile Include="SceneControl\Scene\QuadRender.cs" />
     <Compile Include="SceneControl\Scene\ForwardRender\ForwardRenderTecnich.cs" />
     <Compile Include="Utils\EnumerableExtension.cs" />
+    <Compile Include="Utils\Math\Circle.cs" />
     <Compile Include="Utils\TextureCreator.cs" />
     <Compile Include="Trigger\BepuTrigger.cs" />
     <Compile Include="Trigger\GenericEventHandler.cs" />

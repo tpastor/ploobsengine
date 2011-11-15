@@ -100,6 +100,14 @@ namespace PloobsEngine.Physic2D.Farseer
 
         }
 
+        public override Physic2DType Physic2DType
+        {
+            get
+            {
+                return Physic2D.Physic2DType.Physic;
+            }            
+        }
+
         private Body body;
 
         public Body Body
