@@ -224,6 +224,7 @@
     <Compile Include="Material2D\MaterialProcessor.cs" />
     <Compile Include="Material\DeferredAnimatedMaterial.cs" />
     <Compile Include="Material\DeferredMaterial.cs" />
+    <Compile Include="Material\ForwardAnimatedMaterial.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredInstancedBilboardShader.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredAnimatedTextureShader.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredCilindricGPUBilboardShader.cs" />
@@ -241,6 +242,7 @@
     <Compile Include="Material\IShadder\ForwardShader\ForwardEnvironmentShader.cs" />
     <Compile Include="Material\IShadder\ForwardShader\ForwardDualTextureShader.cs" />
     <Compile Include="Material\IShadder\ForwardShader\ForwardGenericBuildInShader.cs" />
+    <Compile Include="Material\IShadder\ForwardShader\ForwardSimpleAnimationShader.cs" />
     <Compile Include="Material\IShadder\ForwardShader\ForwardTransparenteShader.cs" />
     <Compile Include="Material\IShadder\ForwardShader\ForwardTreeShader.cs" />
     <Compile Include="Material\TreeMaterial.cs" />
