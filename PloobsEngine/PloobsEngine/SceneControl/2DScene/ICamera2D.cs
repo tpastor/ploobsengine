@@ -34,6 +34,15 @@ namespace PloobsEngine.SceneControl._2DScene
         void Update(Microsoft.Xna.Framework.GameTime gameTime);
         Microsoft.Xna.Framework.Matrix View { get; }
         float Zoom { get; set; }
+
+        /// <summary>
+        /// Piece of the screen seen by the camera
+        /// </summary>
+        Rectangle ScreenPortion
+        {
+            get;
+        }
+
         BoundingFrustum BoundingFrustrum
         {
             get;

@@ -238,6 +238,9 @@
     <Compile Include="Material\IShadder\DeferredShader\DeferredSphericalBilboardShader.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredProceduralAnimatedBilboardShader.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredTerrainShader.cs" />
+    <Compile Include="Material\IShadder\ForwardShader\ForwardEnvironmentShader.cs" />
+    <Compile Include="Material\IShadder\ForwardShader\ForwardDualTextureShader.cs" />
+    <Compile Include="Material\IShadder\ForwardShader\ForwardGenericBuildInShader.cs" />
     <Compile Include="Material\IShadder\ForwardShader\ForwardTransparenteShader.cs" />
     <Compile Include="Material\IShadder\ForwardShader\ForwardTreeShader.cs" />
     <Compile Include="Material\TreeMaterial.cs" />
@@ -459,6 +462,7 @@
     <Compile Include="SceneControl\Scene\QuadRender.cs" />
     <Compile Include="SceneControl\Scene\ForwardRender\ForwardRenderTecnich.cs" />
     <Compile Include="Utils\EnumerableExtension.cs" />
+    <Compile Include="Utils\Math\Circle.cs" />
     <Compile Include="Utils\TextureCreator.cs" />
     <Compile Include="Trigger\BepuTrigger.cs" />
     <Compile Include="Trigger\GenericEventHandler.cs" />

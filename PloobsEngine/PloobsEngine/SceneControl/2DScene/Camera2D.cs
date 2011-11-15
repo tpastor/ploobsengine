@@ -322,6 +322,7 @@ namespace PloobsEngine.SceneControl._2DScene
                     {
                         Vector2.Clamp(ref _targetPosition, ref _minPosition, ref _maxPosition, out _targetPosition);
                     }
+                 
                 }
                 if (_rotationTracking)
                 {
@@ -329,7 +330,7 @@ namespace PloobsEngine.SceneControl._2DScene
                     if (_minRotation != _maxRotation)
                     {
                         _targetRotation = MathHelper.Clamp(_targetRotation, _minRotation, _maxRotation);
-                    }
+                    }                 
                 }
             }
             Vector2 delta = _targetPosition - _currentPosition;
@@ -368,6 +369,8 @@ namespace PloobsEngine.SceneControl._2DScene
             _currentRotation += 80f * rotDelta * rotInertia * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             SetView();
+            ///naiiiiiiiive =P
+            updatefrustrum = true;
         }
 
         public Vector2 ConvertScreenToWorld(Vector2 location)
@@ -390,10 +393,34 @@ namespace PloobsEngine.SceneControl._2DScene
 
         #region ICamera2D Members
 
-
+        bool updatefrustrum = false;
+        BoundingFrustum BoundingFrustum;
         public BoundingFrustum BoundingFrustrum
         {
-            get { return new BoundingFrustum(SimView * SimProjection); }
+            get {
+                if (updatefrustrum)
+                {
+                        BoundingFrustum = new BoundingFrustum(SimView * SimProjection);
+                        updatefrustrum = false;
+                }
+                return BoundingFrustum;                
+            }
+        }
+
+        #endregion
+
+        #region ICamera2D Members
+
+
+        public Rectangle ScreenPortion
+        {
+            get {
+
+                Vector3[] corners = new Vector3[8];
+                BoundingFrustrum.GetCorners(corners);
+                Rectangle rect = new Rectangle((int)corners[0].X, (int)corners[0].Y, (int)corners[2].X - (int)corners[0].X, (int)corners[2].Y - (int)corners[0].Y);                
+                return rect;           
+            }
         }
 
         #endregion
