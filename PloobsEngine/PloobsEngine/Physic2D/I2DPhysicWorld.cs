@@ -50,6 +50,20 @@ namespace PloobsEngine.Physic2D
         /// <param name="obj">The obj.</param>
         public abstract void RemoveObject(I2DPhysicObject obj);
 
+        /// <summary>
+        /// Test a Point agains the world
+        /// </summary>
+        /// <param name="point">The point.</param>
+        /// <returns></returns>
         public abstract I2DPhysicObject Picking(Vector2 point);
+
+
+        /// <summary>
+        /// Tests the AABB against the world.
+        /// </summary>
+        /// <param name="min">The min.</param>
+        /// <param name="max">The max.</param>
+        /// <returns></returns>
+        public abstract List<I2DPhysicObject> TestAABB(Vector2 min, Vector2 max);
     }
 }

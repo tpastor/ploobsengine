@@ -68,6 +68,7 @@ namespace EngineTestes._2DSamples
                 IModelo2D model = new SpriteFarseer(tex);
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
                 FarseerObject fs = new FarseerObject(fworld, tex);
+                
                 I2DObject o = new I2DObject(fs, mat, model);
                 o.Name = "Goo";
                 this.World.AddObject(o);
@@ -79,6 +80,7 @@ namespace EngineTestes._2DSamples
                 IModelo2D model = new SpriteFarseer(factory, verts, Color.Orange);
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
                 FarseerObject fs = new FarseerObject(fworld, verts);
+
                 I2DObject o = new I2DObject(fs, mat, model);
                 o.Name = "Rectangle";
                 this.World.AddObject(o);
@@ -90,6 +92,7 @@ namespace EngineTestes._2DSamples
                 IModelo2D model = new SpriteFarseer(factory, circle, Color.Orange);
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();                
                 FarseerObject fs = new FarseerObject(fworld, circle);
+                
                 I2DObject o = new I2DObject(fs, mat, model);
                 o.Name = "Circle";
                 this.World.AddObject(o);
@@ -103,7 +106,6 @@ namespace EngineTestes._2DSamples
             this.BindInput(new SimpleConcreteGestureInputPlayable(Microsoft.Xna.Framework.Input.Touch.GestureType.Tap,
                  (sample) =>
                  {
-
                      I2DPhysicObject obj = this.World.PhysicWorld.Picking(this.World.Camera2D.ConvertScreenToWorld(sample.Position));
                      if (obj != null)
                      {
@@ -126,7 +128,6 @@ namespace EngineTestes._2DSamples
             render.RenderTextComplete("PloobsEngine Gestures with Windows Phone7", new Vector2(20, 10), Color.Red, Matrix.Identity);
             if(pickedName != null)
                 render.RenderTextComplete("Picked: " + pickedName, new Vector2(20, 30), Color.Red, Matrix.Identity);
-
         }
 
     }

@@ -298,6 +298,9 @@
     <Compile Include="Physic3D\PhysicObjects\IPhysicObject.cs" />
     <Compile Include="Physic3D\SegmentInterceptInfo.cs" />
     <Compile Include="Physic2D\Farseer\GhostObject.cs" />
+    <Compile Include="SceneControl\2DScene\Culler\Simple2DCuller.cs" />
+    <Compile Include="SceneControl\2DScene\Culler\I2DCuller.cs" />
+    <Compile Include="SceneControl\2DScene\Culler\Physic2DCuller.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\HeatPostEffect.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\NightPostEffect.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\RadialBlurPostEffect.cs" />

@@ -34,5 +34,9 @@ namespace PloobsEngine.SceneControl._2DScene
         void Update(Microsoft.Xna.Framework.GameTime gameTime);
         Microsoft.Xna.Framework.Matrix View { get; }
         float Zoom { get; set; }
+        BoundingFrustum BoundingFrustrum
+        {
+            get;
+        }
     }
 }

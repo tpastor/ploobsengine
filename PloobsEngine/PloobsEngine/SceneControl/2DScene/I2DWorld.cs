@@ -29,6 +29,7 @@ using PloobsEngine.Engine;
 using PloobsEngine.Entity;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Audio;
+using PloobsEngine.SceneControl._2DScene.Culler;
 
 namespace PloobsEngine.SceneControl._2DScene
 {
@@ -39,7 +40,7 @@ namespace PloobsEngine.SceneControl._2DScene
         /// </summary>
         /// <param name="PhysicWorld">The physic world.</param>
         /// <param name="particleManager">The particle manager.</param>
-        public I2DWorld(I2DPhysicWorld PhysicWorld, IParticleManager particleManager = null)
+        public I2DWorld(I2DPhysicWorld PhysicWorld, IParticleManager particleManager = null, I2DCuller culler = null)
         {
             if (PhysicWorld == null)
             {
@@ -47,20 +48,31 @@ namespace PloobsEngine.SceneControl._2DScene
                 Debug.Assert(PhysicWorld != null);
                 throw new Exception("Physic World cannot be null");
             }
+
+            if (culler == null)
+            {
+                this.culler = new Simple2DCuller();                
+            }
+            else
+            {
+                this.culler = culler;
+            }
+            this.culler.world = this;
             
             this.particleManager = particleManager;            
             this.PhysicWorld = PhysicWorld;                        
             Dummies = new List<IDummy>();            
             Objects = new List<I2DObject>();
             SoundEmiters2D = new List<ISoundEmitter2D>();
-            MaterialSortedObjects = new Dictionary<Type, List<I2DObject>>();
+            
             
 #if !WINDOWS_PHONE
             Lights2D = new List<PloobsEngine.Light2D.Light2D>();
 #endif
 
         }
-        
+
+        protected I2DCuller culler;
         protected GraphicInfo graphicsInfo;
         protected GraphicFactory graphicsFactory;
         protected IContentManager contentManager;
@@ -100,7 +112,7 @@ namespace PloobsEngine.SceneControl._2DScene
             Lights2D.Add(Light);
         }
 
-        public void Remove(PloobsEngine.Light2D.Light2D Light)
+        public void RemoveLight(PloobsEngine.Light2D.Light2D Light)
         {
             Light.RenderTarget = null;
             Lights2D.Remove(Light);
@@ -175,12 +187,8 @@ namespace PloobsEngine.SceneControl._2DScene
             PhysicWorld.AddObject(obj.PhysicObject);
             obj.PhysicObject.Owner = obj;
             Objects.Add(obj);
+            culler.onObjectAdded(obj);
 
-            if (!MaterialSortedObjects.ContainsKey(obj.Material.GetType()))
-            {
-                MaterialSortedObjects[obj.Material.GetType()] = new List<I2DObject>();
-            }
-            MaterialSortedObjects[obj.Material.GetType()].Add(obj);
         }
 
         /// <summary>
@@ -220,7 +228,7 @@ namespace PloobsEngine.SceneControl._2DScene
             }
             else
             {
-                MaterialSortedObjects[obj.Material.GetType()].Remove(obj);
+                culler.onObjectRemoved(obj);
             }
 
         }
@@ -312,6 +320,14 @@ namespace PloobsEngine.SceneControl._2DScene
             protected set;
         }
 
+        public I2DCuller Culler
+        {
+            get
+            {
+                return culler;
+            }
+        }
+
         /// <summary>
         /// Gets the objects.
         /// </summary>
@@ -321,11 +337,7 @@ namespace PloobsEngine.SceneControl._2DScene
             protected set;
         }
 
-        public Dictionary<Type, List<I2DObject>> MaterialSortedObjects
-        {
-            get;
-            protected set;
-        }
+        
 
         /// <summary>
         /// Gets the objects.
