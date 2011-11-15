@@ -17,7 +17,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
-#if WINDOWS_PHONE
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -104,6 +104,7 @@ namespace PloobsEngine.Material
             this.WorldMatrix = ent.WorldMatrix;         
         }
         
+#if WINDOWS_PHONE
         public override void  Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<Light.ILight> lights)        
  	    {
             AnimatedModel modelo = obj.Modelo as AnimatedModel;
@@ -132,8 +133,61 @@ namespace PloobsEngine.Material
                 modelMesh.Draw();
             }
         }
-    }
+#else
+         public override void  Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<Light.ILight> lights)        
+ 	    {
+            AnimatedModel modelo = obj.Modelo as AnimatedModel;
 
+            for (int i = 0; i < modelo.GetAnimatedModel().Meshes.Count; i++)
+            {
+                ModelMesh modelMesh = modelo.GetAnimatedModel().Meshes[i];
+                for (int j = 0; j < modelMesh.MeshParts.Count; j++)
+                {
+#if WINDOWS_PHONE
+                    SkinnedEffect basicEffect = (SkinnedEffect)modelMesh.MeshParts[j].Effect;                    
+                    basicEffect.Texture = modelo.getTexture(TextureType.DIFFUSE,i,j);                    
+                    if (followBone)
+                    {
+                        basicEffect.World = Followed.GetBoneAbsoluteTransform(boneName) * Followobj.WorldMatrix;
+                        basicEffect.SetBoneTransforms(modelo.getBonesTransformation());
+                    }
+                    else
+                    {
+                        basicEffect.World = WorldMatrix;
+                        basicEffect.SetBoneTransforms(ac.GetBoneTransformations());
+                    }
+                    basicEffect.View = cam.View;
+                    basicEffect.Projection = cam.Projection;
+                }
+
+                modelMesh.Draw();
+            }
+#else
+                    SkinnedModelBasicEffect basicEffect = (SkinnedModelBasicEffect)modelMesh.MeshParts[j].Effect;
+                    basicEffect.CurrentTechnique = basicEffect.Techniques["FORWARD"];
+                    basicEffect.Parameters["diffuseMap0"].SetValue(modelo.getTexture(TextureType.DIFFUSE, i, j));
+                    basicEffect.Parameters["diffuseMapEnabled"].SetValue(true);
+                    if (followBone)
+                    {
+                        basicEffect.World = Followed.GetBoneAbsoluteTransform(boneName) * Followobj.WorldMatrix;
+                        basicEffect.Bones = ac.GetBoneTransformations();
+                    }
+                    else
+                    {
+                        basicEffect.World = WorldMatrix;
+                        basicEffect.Bones = ac.GetBoneTransformations();
+                    }
+                    basicEffect.View = cam.View;
+                    basicEffect.Projection = cam.Projection;
+                }
+                modelMesh.Draw();
+            }
+#endif
+
+        }
+
+#endif
+
+    }
     
 }
-#endif
