@@ -21,8 +21,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Diagnostics;
 using PloobsEngine.MessageSystem;
+using PloobsEngine.Engine.Logger;
 
 namespace PloobsEngine.Entity
 {
@@ -374,8 +374,9 @@ namespace PloobsEngine.Entity
 
                 }
                 else
-                {                    
-                    Debug.WriteLine("Entidade nao encontrada Type: " + ent.GetType().AssemblyQualifiedName + " ID: " + ent.GetId());
+                {
+                    ActiveLogger.LogMessage("Entidade nao encontrada Type: " + ent.GetType().AssemblyQualifiedName + " ID: " + ent.GetId(),LogLevel.RecoverableError);
+                    
                 }
             }
         }

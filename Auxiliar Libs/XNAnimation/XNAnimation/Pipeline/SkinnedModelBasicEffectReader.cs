@@ -14,9 +14,11 @@
  */
 using Microsoft.Xna.Framework.Content;
 using XNAnimation.Effects;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace XNAnimation.Pipeline
 {
+    #if !WINDOWS_PHONE
     internal class SkinnedModelBasicEffectReader : ContentTypeReader<SkinnedModelBasicEffect>
     {
         protected override SkinnedModelBasicEffect Read(ContentReader input,
@@ -25,4 +27,14 @@ namespace XNAnimation.Pipeline
             return SkinnedModelBasicEffect.Read(input);
         }
     }
+#else
+    internal class SkinnedModelBasicEffectReader : ContentTypeReader<SkinnedEffect>
+    {
+        protected override SkinnedEffect Read(ContentReader input,
+            SkinnedEffect existingInstance)
+        {
+            return SkinnedModelBasicEffect.Read(input);
+        }
+    }
+#endif
 }

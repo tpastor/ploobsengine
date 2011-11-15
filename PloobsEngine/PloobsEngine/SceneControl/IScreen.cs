@@ -381,7 +381,7 @@ public IScreen()
         /// </summary>
         protected virtual void CleanUp(EngineStuff engine)
         {    
-            #if !WINDOWS_PHONE
+#if WINDOWS
             foreach (var item in KeyBinds.Values)
 	        {
                 item.BindAction = BindAction.REMOVE;
@@ -392,14 +392,14 @@ public IScreen()
                 item.BindAction = BindAction.REMOVE;
                 CommandProcessor.getCommandProcessor().SendCommandAssyncronous(item);
             }
-#else
+#elif WINDOWS_PHONE
             foreach (var item in GestureBinds.Values)
             {
                 item.BindAction = BindAction.REMOVE;
                 CommandProcessor.getCommandProcessor().SendCommandAssyncronous(item);
             }
             
-            #endif
+#endif
 
             IScreenUpdateable[] updts = updateables.ToArray();
 

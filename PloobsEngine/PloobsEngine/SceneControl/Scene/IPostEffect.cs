@@ -71,7 +71,7 @@ namespace PloobsEngine.SceneControl
                 }
             }
         }
-        protected float priority;
+        private float priority;
         internal IIRenderTechnic tech = null;
 
 
