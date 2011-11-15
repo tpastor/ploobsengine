@@ -41,7 +41,7 @@ namespace EngineTestes
                 this.threshold = 0.0008f;
             }
             
-            this.priority = float.MaxValue;
+            this.Priority = float.MaxValue;
         }
 
         MLAntiAliasingEdgeDetectionMode mLAntiAliasingEdgeDetectionMode;
