@@ -1,5 +1,4 @@
-﻿
-#region License
+﻿#region License
 /*
     PloobsEngine Game Engine Version 0.3 Beta
     Copyright (C) 2011  Ploobs
@@ -18,7 +17,6 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
-#if WINDOWS_PHONE
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -211,4 +209,3 @@ namespace PloobsEngine.Material
         #endregion
     }
 }
-#endif
