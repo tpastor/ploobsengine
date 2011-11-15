@@ -38,7 +38,7 @@
     <WarningLevel>4</WarningLevel>
     <NoStdLib>true</NoStdLib>
     <UseVSHostingProcess>false</UseVSHostingProcess>
-    <XnaCompressContent>false</XnaCompressContent>
+    <XnaCompressContent>true</XnaCompressContent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Windows Phone' ">
     <DebugType>pdbonly</DebugType>
@@ -49,19 +49,12 @@
     <WarningLevel>4</WarningLevel>
     <NoStdLib>true</NoStdLib>
     <UseVSHostingProcess>false</UseVSHostingProcess>
-    <XnaCompressContent>false</XnaCompressContent>
+    <XnaCompressContent>true</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BEPUphysics">
-      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\Phone7\BEPUphysics.dll</HintPath>
-    </Reference>
-    <Reference Include="DPSFPhone, Version=2.1.0.0, Culture=neutral, PublicKeyToken=32c832bfa7326ee2, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\Phone7\DPSFPhone.dll</HintPath>
-    </Reference>
-    <Reference Include="FarseerPhysicsXNA">
-      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\Phone7\FarseerPhysicsXNA.dll</HintPath>
-    </Reference>
+    <Reference Include="BEPUphysics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31f6a8732a21de19, processorArchitecture=MSIL" />
+    <Reference Include="DPSFPhone, Version=2.1.0.0, Culture=neutral, PublicKeyToken=32c832bfa7326ee2, processorArchitecture=MSIL" />
+    <Reference Include="FarseerPhysicsXNA, Version=3.3.4186.19001, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Devices.Sensors, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Xna.Framework" />
     <Reference Include="Microsoft.Xna.Framework.Game" />
@@ -74,12 +67,14 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Net" />
+    <Reference Include="XNAnimation, Version=0.7.0.0, Culture=neutral, PublicKeyToken=0c21691816f8c6d0, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="2DSamples\Basic2D.cs" />
     <Compile Include="2DSamples\Border.cs" />
     <Compile Include="2DSamples\JointUpdateable.cs" />
     <Compile Include="2DSamples\SpriteParticle.cs" />
+    <Compile Include="Animation\AnimationScreen.cs" />
     <Compile Include="Camera\CamScreen.cs" />
     <Compile Include="Camera\P3DCamera.cs" />
     <Compile Include="BallThrowBepu.cs" />

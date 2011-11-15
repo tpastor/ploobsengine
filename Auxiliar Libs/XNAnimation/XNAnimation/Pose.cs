@@ -19,7 +19,9 @@ using System.Globalization;
 
 namespace XNAnimation
 {
+#if !WINDOWS_PHONE
     [Serializable]
+#endif
     public struct Pose : IEquatable<Pose>
     {
         public Vector3 Translation;
