@@ -19,6 +19,7 @@ using DPSF.ParticleSystems;
 using PloobsEngine.Light2D;
 using PloobsEngine.Engine;
 using PloobsEngine.Input;
+using PloobsEngine.SceneControl._2DScene.Culler;
 
 namespace EngineTestes._2DSamples
 {
@@ -41,7 +42,7 @@ namespace EngineTestes._2DSamples
             rt.RenderBackGround += new RenderBackGround(rt_RenderBackGround);
             renderTech = rt;
 
-            world = new I2DWorld(new FarseerWorld(new Vector2(0, 9.8f)),new DPSFParticleManager());            
+            world = new I2DWorld(new FarseerWorld(new Vector2(0, 9.8f)),new DPSFParticleManager(), new Physic2DCuller());            
         }
 
         void rt_RenderBackGround(GraphicInfo ginfo,RenderHelper render)
@@ -113,12 +114,11 @@ namespace EngineTestes._2DSamples
                 
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
                 Texture2D frame = factory.GetTexturePart(tex,sa.GetFrameRectangle("ANIM1",0));
-                FarseerObject fs = new FarseerObject(fworld, frame);
+                FarseerObject fs = new FarseerObject(fworld, frame);                
 
                 //GhostObject fs = new GhostObject(Vector2.Zero);
                 sheet = new I2DObject(fs, mat, sa);
                 this.World.AddObject(sheet);
-
             }
 
             {
@@ -216,6 +216,8 @@ namespace EngineTestes._2DSamples
             base.Draw(gameTime, render);
 
             border.Draw(render, this.World.Camera2D);
+
+            render.RenderTextComplete("Objects rendered: " + World.Culler.RenderedObjectThisFrame, new Vector2(10, 10), Color.White, Matrix.Identity);
 
         }
 

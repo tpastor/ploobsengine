@@ -71,7 +71,7 @@ namespace PloobsEngine.SceneControl
                         continue;
                     }
 
-                    //if (cam.BoundingFrustum.Contains(item.PhysicObject.BoundingBox) != Microsoft.Xna.Framework.ContainmentType.Disjoint)
+                    if (frustrum.Contains(item.PhysicObject.BoundingBox) != Microsoft.Xna.Framework.ContainmentType.Disjoint)
                     {
                         forward.Add(item);
                     }    

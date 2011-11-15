@@ -387,6 +387,16 @@ namespace PloobsEngine.SceneControl._2DScene
 
             return new Vector2(t.X, t.Y);
         }
+
+        #region ICamera2D Members
+
+
+        public BoundingFrustum BoundingFrustrum
+        {
+            get { return new BoundingFrustum(SimView * SimProjection); }
+        }
+
+        #endregion
     }
 
 }
