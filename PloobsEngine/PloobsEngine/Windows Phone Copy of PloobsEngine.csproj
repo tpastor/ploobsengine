@@ -175,6 +175,9 @@
     <Compile Include="Material\IShadder\DeferredShader\DeferredSphericalBilboardShader.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredProceduralAnimatedBilboardShader.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredTerrainShader.cs" />
+    <Compile Include="Material\IShadder\ForwardShader\ForwardDualTextureShader.cs" />
+    <Compile Include="Material\IShadder\ForwardShader\ForwardEnvironmentShader.cs" />
+    <Compile Include="Material\IShadder\ForwardShader\ForwardGenericBuildInShader.cs" />
     <Compile Include="Material\IShadder\ForwardShader\ForwardSimpleAnimationShader.cs" />
     <Compile Include="Material\IShadder\ForwardShader\ForwardTransparenteShader.cs" />
     <Compile Include="Material\IShadder\ForwardShader\ForwardTreeShader.cs" />
@@ -494,7 +497,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\x86\Debug\Content\Effects\" />
-    <Folder Include="Physics2D\Farseer\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="License.txt" />

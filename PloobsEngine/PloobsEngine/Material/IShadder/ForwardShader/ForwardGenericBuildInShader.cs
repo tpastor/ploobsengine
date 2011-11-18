@@ -27,23 +27,28 @@ using PloobsEngine.Modelo;
 using PloobsEngine.SceneControl;
 using Microsoft.Xna.Framework;
 using System.Diagnostics;
+using PloobsEngine.Light;
+using PloobsEngine.Cameras;
 
 namespace PloobsEngine.Material
 {
 
+    public delegate void drawFunction(ICamera ICamera, GameTime GameTime, RenderHelper RenderHelper, IObject IObject, IList<ILight> Lights);        
     /// <summary>    
     /// Wrapper to xna effects
     /// </summary>
     public class ForwardGenericBuildInShader<effect> : IShader where effect : Effect
     {
-        Action<GameTime, IObject,IList<Light.ILight>> up;
-        Action<GameTime,IObject, RenderHelper, Cameras.ICamera, IList<Light.ILight>> draw;
-        public ForwardGenericBuildInShader(effect effect, Action<GameTime,IObject, RenderHelper, Cameras.ICamera, IList<Light.ILight>> onDraw, Action<GameTime,IObject, IList<Light.ILight>> onUpdate = null)            
+
+        drawFunction draw;
+        Action<GameTime, IObject,IList<ILight>> up;
+
+        public ForwardGenericBuildInShader(effect effect, drawFunction drawFunction ,Action<GameTime, IObject, IList<ILight>> onUpdate = null)            
         {
             Debug.Assert(effect != null);
-            Debug.Assert(onDraw != null);
+            //Debug.Assert(onDraw != null);
             this.up = onUpdate;
-            this.draw = onDraw;
+            this.draw = drawFunction;
             this.eff = effect;
         }
 
@@ -84,7 +89,7 @@ namespace PloobsEngine.Material
         public override void Draw(GameTime gt, IObject obj, RenderHelper render, Cameras.ICamera cam, IList<Light.ILight> lights)
         {
             base.Draw(gt, obj, render, cam, lights);
-            draw(gt, obj, render, cam, lights);            
+            draw(cam, gt, render, obj, lights);            
         }
 
         /// <summary>
