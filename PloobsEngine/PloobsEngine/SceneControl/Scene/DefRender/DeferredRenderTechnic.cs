@@ -17,7 +17,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
-#if !WINDOWS_PHONE
+#if !WINDOWS_PHONE && !REACH
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -441,7 +441,7 @@ namespace PloobsEngine.SceneControl
 
         }
 
-        #region IRenderTechnic Members
+#region IRenderTechnic Members
 
         /// <summary>
         /// Gets the name of the technic.
@@ -462,7 +462,7 @@ namespace PloobsEngine.SceneControl
     internal class PostEffectComparer : IComparer<IPostEffect>
     {        
     
-        #region IComparer<IPostEffect> Members
+#region IComparer<IPostEffect> Members
 
         public int  Compare(IPostEffect x, IPostEffect y)
         {

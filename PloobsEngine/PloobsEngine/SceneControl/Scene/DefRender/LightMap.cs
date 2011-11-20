@@ -17,7 +17,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
-#if !WINDOWS_PHONE
+#if !WINDOWS_PHONE && !REACH
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,7 +44,7 @@ namespace PloobsEngine.SceneControl
         GraphicInfo ginfo;
         SamplerState samplerState;
         
-        #region IDeferredLightMap Members        
+#region IDeferredLightMap Members        
         protected void DrawDirectionalLight(ICamera camera, IList<ILight> lights, IDeferredGBuffer DeferredGBuffer,RenderHelper render)
         {
             directionalLightEffect.Parameters["colorMap"].SetValue(DeferredGBuffer[GBufferTypes.COLOR]);
@@ -155,7 +155,7 @@ namespace PloobsEngine.SceneControl
 
         #endregion
 
-        #region IDeferredLightMap Members
+#region IDeferredLightMap Members
 
 
         public Texture2D this[DeferredLightMapType type]
@@ -176,7 +176,7 @@ namespace PloobsEngine.SceneControl
 
         #endregion
 
-        #region IDeferredLightMap Members
+#region IDeferredLightMap Members
 
         public void SetLightMap(RenderHelper render)
         {            
@@ -190,7 +190,7 @@ namespace PloobsEngine.SceneControl
 
         #endregion
 
-        #region IDeferredLightMap Members
+#region IDeferredLightMap Members
 
 
         public void DrawLights(GameTime gameTime, IWorld world, IDeferredGBuffer deferredGBuffer, RenderHelper render)

@@ -17,7 +17,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
-#if !WINDOWS_PHONE
+#if !WINDOWS_PHONE && !REACH
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,7 +39,7 @@ namespace PloobsEngine.SceneControl
         private RenderTarget2D lightOclusionRT; //finally, this one will hold the depth
         private Effect clearBufferEffect;
         private Color backGroundColor;        
-        #region IDeferredGBuffer Members        
+#region IDeferredGBuffer Members        
 
         public Color BackGroundColor
         {
@@ -70,7 +70,7 @@ namespace PloobsEngine.SceneControl
         
         #endregion
 
-        #region IDeferredGBuffer Members
+#region IDeferredGBuffer Members
 
         public void SetGBuffer(RenderHelper render)
         {

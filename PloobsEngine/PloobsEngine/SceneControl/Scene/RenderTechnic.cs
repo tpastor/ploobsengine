@@ -33,7 +33,7 @@ namespace PloobsEngine.SceneControl
     /// </summary>
     public abstract class IRenderTechnic : PloobsEngine.SceneControl.Scene.IIRenderTechnic
     {
-        #if !WINDOWS_PHONE
+#if !WINDOWS_PHONE && !REACH
         public IRenderTechnic(PostEffectType PostEffectType)
         {
             this.PostEffectType = PostEffectType;
@@ -96,7 +96,7 @@ namespace PloobsEngine.SceneControl
             }
             return false;
         }
-        #endif
+#endif
 
         /// <summary>
         /// Befores the first execution.
@@ -126,12 +126,12 @@ namespace PloobsEngine.SceneControl
         protected virtual void AfterLoadContent(IContentManager manager, GraphicInfo ginfo, GraphicFactory factory) { }
         internal void iAfterLoadContent(IContentManager manager, GraphicInfo ginfo, GraphicFactory factory)
         {
-            #if !WINDOWS_PHONE
+#if !WINDOWS_PHONE && !REACH
             for (int i = 0; i < PostEffects.Count; i++)			
             {
                 PostEffects[i].Init(ginfo,factory);
             }
-            #endif
+#endif
             AfterLoadContent(manager,ginfo,factory);
             
         }
