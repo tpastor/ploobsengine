@@ -3,6 +3,9 @@ using PloobsEngine.Cameras;
 using PloobsEngine.Light;
 using PloobsEngine.Physics;
 using PloobsEngine.SceneControl;
+using PloobsEngine.Modelo;
+using PloobsEngine.Physics.Bepu;
+using PloobsEngine.Material;
 
 namespace ProjectTemplate
 {
@@ -46,7 +49,7 @@ namespace ProjectTemplate
             ///Uncoment to Add an object
             /////Create a simple object
             /////Geomtric Info and textures (this model automaticaly loads the texture)
-            //SimpleModel simpleModel = new SimpleModel(factory, "Model FILEPATH GOES HERE", "Diffuse Texture FILEPATH GOES HERE -- Use only if it is not embeded in the Model file");            
+            //SimpleModel simpleModel = new SimpleModel(factory, "Model FILEPATH GOES HERE", "Diffuse Texture FILEPATH GOES HERE -- Use only if it is not embeded in the Model file");
             /////Physic info (position, rotation and scale are set here)
             //TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
             /////Shader info (must be a deferred type)
