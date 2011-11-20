@@ -67,7 +67,11 @@ namespace PloobsEngine.Engine
         /// <returns></returns>
         public static InitialEngineDescription Default()
         {
+#if !REACH
             return new InitialEngineDescription("PloobsEngine",800,600,false,GraphicsProfile.HiDef,false,false,true,null,false,false);
+#else
+            return new InitialEngineDescription("PloobsEngine",800,600,false,GraphicsProfile.Reach,false,false,true,null,false,false);
+#endif
         }
 
         
@@ -85,7 +89,11 @@ namespace PloobsEngine.Engine
         /// <param name="logger">The logger.</param>
         /// <param name="useMipMapWhenPossible">if set to <c>true</c> [use mip map when possible].</param>
         /// <param name="UseAnisotropicFiltering">if set to <c>true</c> [use anisotropic filtering].</param>
+        #if !REACH
         internal InitialEngineDescription(String ScreenName = "PloobsEngine", int BackBufferWidth = 800, int BackBufferHeight = 600, bool isFullScreen = false, GraphicsProfile graphicsProfile = GraphicsProfile.HiDef, bool useVerticalSyncronization = false, bool isMultiSampling = false, bool isFixedGameTime = false, ILogger logger = null, bool useMipMapWhenPossible = false, bool UseAnisotropicFiltering = false, DisplayOrientation supportedOrientation = DisplayOrientation.Portrait | DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight)
+#else
+        internal InitialEngineDescription(String ScreenName = "PloobsEngine", int BackBufferWidth = 800, int BackBufferHeight = 600, bool isFullScreen = false, GraphicsProfile graphicsProfile = GraphicsProfile.Reach, bool useVerticalSyncronization = false, bool isMultiSampling = false, bool isFixedGameTime = false, ILogger logger = null, bool useMipMapWhenPossible = false, bool UseAnisotropicFiltering = false, DisplayOrientation supportedOrientation = DisplayOrientation.Portrait | DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight)
+#endif
         {            
             this.UseVerticalSyncronization = useVerticalSyncronization;
             this.BackBufferHeight = BackBufferHeight;
@@ -570,7 +578,7 @@ namespace PloobsEngine.Engine
         /// <param name="logger">The logger.</param>
         /// <param name="useMipMapWhenPossible">if set to <c>true</c> [use mip map when possible].</param>
         /// <param name="UseAnisotropicFiltering">if set to <c>true</c> [use anisotropic filtering].</param>
-        internal  InitialEngineDescription(String ScreenName = "PloobsEngine", int BackBufferWidth = 800, int BackBufferHeight = 600, bool isFullScreen = false, GraphicsProfile graphicsProfile = GraphicsProfile.HiDef, bool useVerticalSyncronization = false, bool isMultiSampling = false, bool isFixedGameTime = false, ILogger logger = null, bool useMipMapWhenPossible = false, bool UseAnisotropicFiltering = false)
+        internal  InitialEngineDescription(String ScreenName = "PloobsEngine", int BackBufferWidth = 800, int BackBufferHeight = 600, bool isFullScreen = false, GraphicsProfile graphicsProfile = GraphicsProfile.HiDef, bool useVerticalSyncronization = false, bool isMultiSampling = false, bool isFixedGameTime = false, ILogger logger = null, bool useMipMapWhenPossible = false, bool UseAnisotropicFiltering = false,DisplayOrientation supportedOrientation = DisplayOrientation.Portrait | DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight)
         {            
             this.UseVerticalSyncronization = useVerticalSyncronization;
             this.BackBufferHeight = BackBufferHeight;
@@ -585,6 +593,7 @@ namespace PloobsEngine.Engine
             this.ScreenName = ScreenName;
             this.useMipMapWhenPossible = useMipMapWhenPossible;
             this.UseAnisotropicFiltering = UseAnisotropicFiltering;
+            this.SupportedOrientations = supportedOrientation;
         }
 
         /// <summary>
@@ -623,6 +632,11 @@ namespace PloobsEngine.Engine
         /// Use MipMap When creating the Render Targets
         /// </summary>
         public bool useMipMapWhenPossible;
+
+        /// <summary>
+        /// Supported DisplayOrientation 
+        /// </summary>
+        public DisplayOrientation SupportedOrientations;        
 
         /// <summary>        
         //     Identifies the set of supported devices for the game based on device capabilities.
@@ -730,6 +744,7 @@ namespace PloobsEngine.Engine
             graphics.PreferredBackBufferHeight = initialDescription.BackBufferHeight;
             graphics.PreferredBackBufferWidth = initialDescription.BackBufferWidth;
             graphics.PreferredDepthStencilFormat = DepthFormat.Depth24Stencil8;                                    
+            graphics.SupportedOrientations = initialDescription.SupportedOrientations;
             
         }        
         

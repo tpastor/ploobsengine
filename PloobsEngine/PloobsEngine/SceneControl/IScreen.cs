@@ -88,7 +88,7 @@ public IScreen()
         #endif
         public OnScreenChangeState OnScreenChangeState = null;
 
-        #if !WINDOWS_PHONE
+        #if !WINDOWS_PHONE 
         /// <summary>
         /// Binds the KeyBoard input.
         /// </summary>

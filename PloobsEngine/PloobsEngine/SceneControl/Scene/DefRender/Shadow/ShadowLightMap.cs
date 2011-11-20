@@ -17,7 +17,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
-#if !WINDOWS_PHONE
+#if !WINDOWS_PHONE && !REACH
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,7 +69,7 @@ namespace PloobsEngine.SceneControl
         DirectionalShadowRenderer shadow;
         private int shadownBufferSize;
         
-        #region IDeferredLightMap Members
+#region IDeferredLightMap Members
 
         private void DrawDirectionalLight(RenderHelper render, GraphicInfo ginfo, ICamera camera, DirectionalLightPE dl, IDeferredGBuffer DeferredGBuffer)
         {    
@@ -280,7 +280,7 @@ namespace PloobsEngine.SceneControl
 
         #endregion
 
-        #region IDeferredLightMap Members
+#region IDeferredLightMap Members
 
 
         public Texture2D this[DeferredLightMapType type]
@@ -300,7 +300,7 @@ namespace PloobsEngine.SceneControl
 
         #endregion
 
-        #region IDeferredLightMap Members
+#region IDeferredLightMap Members
 
         public void SetLightMap(RenderHelper render)
         {
