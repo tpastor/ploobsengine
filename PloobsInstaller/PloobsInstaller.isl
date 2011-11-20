@@ -342,6 +342,11 @@
 		<col def="S0">ISDotNetInstallerArgsUninstall</col>
 		<col def="S0">ISDotNetInstallerArgsRollback</col>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td>{177595C9-FD18-4B21-AC9D-D7523BF8027F}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT1</td><td>{37C0058F-B9CE-42EB-A1C1-28ADDE92195D}</td><td>PersonalFolder</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT2</td><td>{7A023A59-6091-4D7F-B94C-6971C2FFB8AC}</td><td>VISUAL_STUDIO_2010</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT3</td><td>{AE8C66A4-AE30-441C-9619-A8653A8B81FB}</td><td>TEMPLATES</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT4</td><td>{FAC3D8AC-59E6-4CD6-BED0-CCBD1C93F56C}</td><td>PROJECTTEMPLATES</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT5</td><td>{586D962E-1559-4342-8B47-8D87C66A01B0}</td><td>ITEMTEMPLATES</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>PloobsEngineDebug.dll</td><td>{34C0D0B6-BCF0-4B4E-9E68-0E4416B68B03}</td><td>INSTALLDIR</td><td>2</td><td/><td>ploobsenginedebug.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>PloobsEnginePipelineDebug.dll</td><td>{9B3F8E95-961F-4C14-A2BF-D4D90201CD24}</td><td>INSTALLDIR</td><td>2</td><td/><td>ploobsenginepipelinedebug.dl</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
@@ -1052,6 +1057,11 @@
 	<table name="CreateFolder">
 		<col key="yes" def="s72">Directory_</col>
 		<col key="yes" def="s72">Component_</col>
+		<row><td>ITEMTEMPLATES</td><td>ISX_DEFAULTCOMPONENT5</td></row>
+		<row><td>PROJECTTEMPLATES</td><td>ISX_DEFAULTCOMPONENT4</td></row>
+		<row><td>PersonalFolder</td><td>ISX_DEFAULTCOMPONENT1</td></row>
+		<row><td>TEMPLATES</td><td>ISX_DEFAULTCOMPONENT3</td></row>
+		<row><td>VISUAL_STUDIO_2010</td><td>ISX_DEFAULTCOMPONENT2</td></row>
 	</table>
 
 	<table name="CustomAction">
@@ -1145,12 +1155,14 @@
 		<row><td>ISMyCompanyDir</td><td>ProgramFilesFolder</td><td>MYCOMP~1|My Company Name</td><td/><td>0</td><td/></row>
 		<row><td>ISMyProductDir</td><td>ISMyCompanyDir</td><td>MYPROD~1|My Product Name</td><td/><td>0</td><td/></row>
 		<row><td>ISYourDataBaseDir</td><td>INSTALLDIR</td><td>Database</td><td/><td>0</td><td/></row>
+		<row><td>ITEMTEMPLATES</td><td>TEMPLATES</td><td>ITEMTE~1|ItemTemplates</td><td/><td>0</td><td/></row>
 		<row><td>LocalAppDataFolder</td><td>TARGETDIR</td><td>.:LocalA~1|LocalAppData</td><td/><td>0</td><td/></row>
 		<row><td>MY_PRODUCT_NAME</td><td>PLOOBS</td><td>MYPROD~1|My Product Name</td><td/><td>0</td><td/></row>
 		<row><td>MyPicturesFolder</td><td>TARGETDIR</td><td>.:MyPict~1|MyPictures</td><td/><td>0</td><td/></row>
 		<row><td>NetHoodFolder</td><td>TARGETDIR</td><td>.:NetHood</td><td/><td>0</td><td/></row>
 		<row><td>PLOOBS</td><td>ProgramFilesFolder</td><td>Ploobs</td><td/><td>0</td><td/></row>
 		<row><td>PLOOBSENGINE</td><td>PLOOBS</td><td>PLOOBS~1|PloobsEngine</td><td/><td>0</td><td/></row>
+		<row><td>PROJECTTEMPLATES</td><td>TEMPLATES</td><td>PROJEC~1|ProjectTemplates</td><td/><td>0</td><td/></row>
 		<row><td>PersonalFolder</td><td>TARGETDIR</td><td>.:Personal</td><td/><td>0</td><td/></row>
 		<row><td>PrimaryVolumePath</td><td>TARGETDIR</td><td>.:Primar~1|PrimaryVolumePath</td><td/><td>0</td><td/></row>
 		<row><td>PrintHoodFolder</td><td>TARGETDIR</td><td>.:PRINTH~1|PrintHood</td><td/><td>0</td><td/></row>
@@ -1163,9 +1175,11 @@
 		<row><td>System16Folder</td><td>TARGETDIR</td><td>.:System</td><td/><td>0</td><td/></row>
 		<row><td>SystemFolder</td><td>TARGETDIR</td><td>.:System32</td><td/><td>0</td><td/></row>
 		<row><td>TARGETDIR</td><td/><td>SourceDir</td><td/><td>0</td><td/></row>
+		<row><td>TEMPLATES</td><td>VISUAL_STUDIO_2010</td><td>TEMPLA~1|Templates</td><td/><td>0</td><td/></row>
 		<row><td>TempFolder</td><td>TARGETDIR</td><td>.:Temp</td><td/><td>0</td><td/></row>
 		<row><td>TemplateFolder</td><td>TARGETDIR</td><td>.:ShellNew</td><td/><td>0</td><td/></row>
 		<row><td>USERPROFILE</td><td>TARGETDIR</td><td>.:USERPR~1|UserProfile</td><td/><td>0</td><td/></row>
+		<row><td>VISUAL_STUDIO_2010</td><td>PersonalFolder</td><td>VISUAL~1|Visual Studio 2010</td><td/><td>0</td><td/></row>
 		<row><td>WindowsFolder</td><td>TARGETDIR</td><td>.:Windows</td><td/><td>0</td><td/></row>
 		<row><td>WindowsVolume</td><td>TARGETDIR</td><td>.:WinRoot</td><td/><td>0</td><td/></row>
 	</table>
@@ -1860,6 +1874,11 @@
 		<col key="yes" def="s38">Feature_</col>
 		<col key="yes" def="s72">Component_</col>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT</td></row>
+		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT1</td></row>
+		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT2</td></row>
+		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT3</td></row>
+		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT4</td></row>
+		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT5</td></row>
 		<row><td>AlwaysInstall</td><td>PloobsEngineDebug.dll</td></row>
 		<row><td>AlwaysInstall</td><td>PloobsEnginePipelineDebug.dll</td></row>
 	</table>
@@ -2138,6 +2157,11 @@
 		<col def="S0">HTTPLocation</col>
 		<col def="S0">Miscellaneous</col>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td/><td/><td>_CFFDEAC2_6F95_4CA7_B0D7_65E917B90B8A_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT1</td><td/><td/><td>_D5C11F16_80C1_4555_8B2F_2E3F9DE51A51_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT2</td><td/><td/><td>_85B2FBF2_564C_4595_841A_23842BEFCE1C_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT3</td><td/><td/><td>_733EAC54_4208_411C_914F_E588A8A9C826_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT4</td><td/><td/><td>_86AEEB3F_B3AA_4955_B24C_C61AD44C380A_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT5</td><td/><td/><td>_B5763974_13E9_4D65_8897_BBCB4A9B5D16_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>PloobsEngineDebug.dll</td><td/><td/><td>_FE5EA79E_9221_4D64_961D_AAEC84D9AEEB_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>PloobsEnginePipelineDebug.dll</td><td/><td/><td>_F5C029E9_7C20_456F_A056_73F3FDB37D19_FILTER</td><td/><td/><td/><td/></row>
 	</table>

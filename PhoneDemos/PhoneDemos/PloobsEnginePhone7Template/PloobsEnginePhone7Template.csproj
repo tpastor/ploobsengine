@@ -61,6 +61,7 @@
     <Reference Include="FarseerPhysicsXNA">
       <HintPath>..\PloobsEnginePhone7Template\EngineDlls\FarseerPhysicsXNA.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Devices.Sensors, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
     <Reference Include="XNAnimation">
       <HintPath>..\PloobsEnginePhone7Template\EngineDlls\XNAnimation.dll</HintPath>
     </Reference>
@@ -93,8 +94,19 @@
     <None Include="EngineDLLs\BEPUphysics.XML" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Basic2D.cs" />
+    <Compile Include="2DSamples\Basic2D.cs" />
+    <Compile Include="2DSamples\Border.cs" />
+    <Compile Include="2DSamples\JointUpdateable.cs" />
+    <Compile Include="2DSamples\SpriteParticle.cs" />
+    <Compile Include="Animation\AnimationScreen.cs" />
+    <Compile Include="BallThrowBepu.cs" />
+    <Compile Include="Camera\CamScreen.cs" />
+    <Compile Include="Camera\P3DCamera.cs" />
+    <Compile Include="DemosHomeScreen.cs" />
     <Compile Include="FirstScreen.cs" />
+    <Compile Include="InputGesture\InputGestureScreen.cs" />
+    <Compile Include="Picking\Picking2D.cs" />
+    <Compile Include="Picking\Picking3D.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="Properties\AppManifest.xml">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
