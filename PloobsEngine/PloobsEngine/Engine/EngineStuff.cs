@@ -324,7 +324,7 @@ namespace PloobsEngine.Engine
 
             if (this.initialDescription.UnhandledException_Handler != null)
             {
-                this.initialDescription.UnhandledExceptionEventHandler = new UnhandledExceptionEventHandler(initialDescription.UnhandledException_Handler);
+                this.initialDescription.UnhandledExceptionEventHandler = new UnhandledExceptionEventHandler(initialDescription.UnhandledException_Handler);                 
                 AppDomain.CurrentDomain.UnhandledException += this.initialDescription.UnhandledExceptionEventHandler;
             }
 
@@ -417,10 +417,12 @@ namespace PloobsEngine.Engine
         {
             if (component == null)
                 ActiveLogger.LogMessage("Cant add null Component", LogLevel.RecoverableError);
-
-            bool resp = ComponentManager.AddComponent(component);
-            if(!resp)
-                ActiveLogger.LogMessage("Component already added ", LogLevel.Warning);
+            else
+            {
+                bool resp = ComponentManager.AddComponent(component);
+                if (!resp)
+                    ActiveLogger.LogMessage("Component already added ", LogLevel.Warning);
+            }
         }
 
         /// <summary>
@@ -431,9 +433,12 @@ namespace PloobsEngine.Engine
         {
             if (String.IsNullOrEmpty(componentName))
                 ActiveLogger.LogMessage("Bad Component name", LogLevel.RecoverableError);
-            bool resp = ComponentManager.RemoveComponent(componentName);
-            if (!resp)
-                ActiveLogger.LogMessage("Component already Removed", LogLevel.Warning);
+            else
+            {
+                bool resp = ComponentManager.RemoveComponent(componentName);
+                if (!resp)
+                    ActiveLogger.LogMessage("Component already Removed", LogLevel.Warning);
+            }
         }
 
         /// <summary>
@@ -445,11 +450,17 @@ namespace PloobsEngine.Engine
         public T GetComponent<T>(String componentName)  where T : IComponent
         {
             if (String.IsNullOrEmpty(componentName))
+            {
                 ActiveLogger.LogMessage("Bad Component name", LogLevel.RecoverableError);
-            IComponent comp = ComponentManager.GetComponent(componentName);
-            if(comp == null)
-                ActiveLogger.LogMessage("Component not found " + componentName, LogLevel.RecoverableError);
-            return (T) comp;
+                return null;
+            }
+            else
+            {
+                IComponent comp = ComponentManager.GetComponent(componentName);
+                if (comp == null)
+                    ActiveLogger.LogMessage("Component not found " + componentName, LogLevel.RecoverableError);
+                return (T)comp;
+            }
         }
 
         /// <summary>
@@ -462,8 +473,14 @@ namespace PloobsEngine.Engine
         public bool HasComponent(String componentName)
         {
             if (String.IsNullOrEmpty(componentName))
+            {
                 ActiveLogger.LogMessage("Bad Component name", LogLevel.RecoverableError);
-            return ComponentManager.HasComponent(componentName);
+                return false;
+            }
+            else
+            {
+                return ComponentManager.HasComponent(componentName);
+            }
         }
 
         /// <summary>
@@ -875,10 +892,12 @@ namespace PloobsEngine.Engine
         {
             if (component == null)
                 ActiveLogger.LogMessage("Cant add null Component", LogLevel.RecoverableError);
-
-            bool resp = ComponentManager.AddComponent(component);
-            if(!resp)
-                ActiveLogger.LogMessage("Component already added ", LogLevel.Warning);
+            else
+            {
+                bool resp = ComponentManager.AddComponent(component);
+                if (!resp)
+                    ActiveLogger.LogMessage("Component already added ", LogLevel.Warning);
+            }
         }
 
         /// <summary>
@@ -889,9 +908,12 @@ namespace PloobsEngine.Engine
         {
             if (String.IsNullOrEmpty(componentName))
                 ActiveLogger.LogMessage("Bad Component name", LogLevel.RecoverableError);
-            bool resp = ComponentManager.RemoveComponent(componentName);
-            if (!resp)
-                ActiveLogger.LogMessage("Component already Removed", LogLevel.Warning);
+            else
+            {
+                bool resp = ComponentManager.RemoveComponent(componentName);
+                if (!resp)
+                    ActiveLogger.LogMessage("Component already Removed", LogLevel.Warning);
+            }
         }
 
         /// <summary>
@@ -903,11 +925,17 @@ namespace PloobsEngine.Engine
         public T GetComponent<T>(String componentName)  where T : IComponent
         {
             if (String.IsNullOrEmpty(componentName))
+            {
                 ActiveLogger.LogMessage("Bad Component name", LogLevel.RecoverableError);
-            IComponent comp = ComponentManager.GetComponent(componentName);
-            if(comp == null)
-                ActiveLogger.LogMessage("Component not found " + componentName, LogLevel.RecoverableError);
-            return (T) comp;
+                return null;
+            }
+            else
+            {
+                IComponent comp = ComponentManager.GetComponent(componentName);
+                if (comp == null)
+                    ActiveLogger.LogMessage("Component not found " + componentName, LogLevel.RecoverableError);
+                return (T)comp;
+            }
         }
 
         /// <summary>
@@ -920,8 +948,14 @@ namespace PloobsEngine.Engine
         public bool HasComponent(String componentName)
         {
             if (String.IsNullOrEmpty(componentName))
+            {
                 ActiveLogger.LogMessage("Bad Component name", LogLevel.RecoverableError);
-            return ComponentManager.HasComponent(componentName);
+                return false;
+            }
+            else
+            {
+                return ComponentManager.HasComponent(componentName);
+            }
         }
 
         /// <summary>
