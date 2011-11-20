@@ -20,19 +20,21 @@ using PloobsEngine.Commands;
 using PloobsEngine.DataStructure;
 using System;
 using PloobsEngine.Engine;
+using EngineTestes;
+using Microsoft.Xna.Framework.Input.Touch;
 
-namespace IntroductionDemo4._0
+namespace PloobsEnginePhone7Template
 {
 
     public class DemosHomeScreen : IScreen
     {        
-        public DemosHomeScreen() : base(null)
+        public DemosHomeScreen() : base()
         {
         }
 
         int index = 0;
 
-        static int totalDemos = 19;
+        static int totalDemos = 7;
         EngineStuff engine;
 
         private int[] screenList = new int[totalDemos];
@@ -42,45 +44,20 @@ namespace IntroductionDemo4._0
             switch (screenNumber)
             {
                 case 0:
-                    return new BasicScreenDeferredDemo();
+                    return new FirstScreen();
                 case 1:
-                    return new BasicScreenForwardDemo();
+                    return new Basic2D();
                 case 2:
-                    return new KeyboardInputScreen();
+                    return new CamScreen();
                 case 3:
-                    return new LightInterpolationScreen();
+                    return new InputGestureScreen();
                 case 4:
-                    return new PointLightScreen();
+                    return new Picking2D();
                 case 5:
-                    return new SpotLightScreen();
+                    return new Picking3D();
                 case 6:
-                    return new CollisionTypesBepuScreen();
-                case 7:
-                    return new GravitationalBepuScreen();
-                case 8:
-                    return new MovementScreen();
-                case 9:
-                    return new StressBepuScreen();
-                case 10:
-                    return new CameraPathScreen();
-                case 11:
-                    return new CameraScreens();                
-                case 12:
-                    return new TriggerBepuScreen();                    
-                case 13:
-                    return new PickingScreen();                    
-                case 14:                    
-                    return new ChangingMessagesScreen();
-                case 15:
-                    return new DebugDrawScreen();
-                case 16:
-                    return new MultScreen();
-                case 17:
-                  return new MobilePhysicScreen();                   
-                case 18:
-                  return new ConstraintScreen();
-                default:
-                    break;
+                    return new AnimationScreen();    
+                
             }
             return null;
         }
@@ -93,24 +70,40 @@ namespace IntroductionDemo4._0
             this.engine = engine;
         }
 
+        float delta = 0;
         protected override void  LoadContent(PloobsEngine.Engine.GraphicInfo GraphicInfo, PloobsEngine.Engine.GraphicFactory factory, IContentManager contentManager)
         {
- 	        base.LoadContent(GraphicInfo, factory, contentManager);
-             
+            base.LoadContent(GraphicInfo, factory, contentManager);
+
             for (int i = 0; i < totalDemos; i++)
             {
                 screenList.SetValue(i, i);
             }
 
             {
-                SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.F1, ChangeDemo);
-                BindKeyCommand bk = new BindKeyCommand(ik, BindAction.ADD);
-                CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bk);
+                SimpleConcreteGestureInputPlayable SimpleConcreteGestureInputPlayable = new SimpleConcreteGestureInputPlayable(Microsoft.Xna.Framework.Input.Touch.GestureType.HorizontalDrag,
+                    (sample) =>
+                    {
+                        delta += sample.Delta.Length();
+                    }
+                );
+                BindGestureCommand BindGestureCommand = new BindGestureCommand(SimpleConcreteGestureInputPlayable, BindAction.ADD);
+                CommandProcessor.getCommandProcessor().SendCommandAssyncronous(BindGestureCommand);
             }
             {
-                SimpleConcreteKeyboardInputPlayable ik = new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.Escape, LeaveGame);
-                BindKeyCommand bk = new BindKeyCommand(ik, BindAction.ADD);
-                CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bk);
+                SimpleConcreteGestureInputPlayable SimpleConcreteGestureInputPlayable = new SimpleConcreteGestureInputPlayable(Microsoft.Xna.Framework.Input.Touch.GestureType.DragComplete,
+                    (sample) =>
+                    {
+                        ///big horizontal drag only =P
+                        if (delta > 300)
+                        {
+                            ChangeDemo();                         
+                        }
+                        delta = 0;
+                    }
+                );
+                BindGestureCommand BindGestureCommand = new BindGestureCommand(SimpleConcreteGestureInputPlayable, BindAction.ADD);
+                CommandProcessor.getCommandProcessor().SendCommandAssyncronous(BindGestureCommand);
             }
         }
 
@@ -118,14 +111,13 @@ namespace IntroductionDemo4._0
         {            
             render.Clear(Color.Black);
 
-            render.RenderTextComplete("Welcome to the Ploobs Game Engine Funcionality Introduction Demos", new Vector2(40, 30), Color.White, Matrix.Identity);
-            render.RenderTextComplete("The focus here is not in the visual, it is in the funcionalities (Check the Source Code =P)", new Vector2(40, 50), Color.Red, Matrix.Identity);            
-            render.RenderTextComplete("(Press F1 to cycle through demos)", new Vector2(40, 75), Color.White, Matrix.Identity);
-            render.RenderTextComplete("(Press Escape to exit)", new Vector2(40, 95), Color.White, Matrix.Identity);           
+            render.RenderTextComplete("Welcome to the Ploobs Game Engine Funcionality Introduction Demos for Phone 7", new Vector2(40, 30), Color.White, Matrix.Identity);
+            render.RenderTextComplete("The focus here is not in the visual, it is in the funcionalities (Check the Source Code =P)", new Vector2(40, 50), Color.Red, Matrix.Identity);
+            render.RenderTextComplete("(Make a BIG HorizontalDrag gesture to cycle through demos)", new Vector2(40, 75), Color.White, Matrix.Identity);            
 
         }
 
-        public void ChangeDemo(InputPlayableKeyBoard ipk)
+        public void ChangeDemo()
         {
             if(this.ScreenState == PloobsEngine.SceneControl.ScreenState.Active)
                 this.ScreenState = ScreenState.Hidden;
@@ -135,10 +127,6 @@ namespace IntroductionDemo4._0
             ScreenManager.AddScreen(active);
             index++;
         }
-
-        public void LeaveGame(InputPlayableKeyBoard ipk)
-        {
-            engine.Exit();
-        }
+        
     }
 }
