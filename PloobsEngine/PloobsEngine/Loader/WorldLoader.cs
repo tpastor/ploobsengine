@@ -134,7 +134,7 @@ namespace PloobsEngine.Loader
             po.isMotionLess = massflag;
 
             IShader shader = null;
-            #if !REACH && !WINDOWS_PHONE
+#if !REACH && !WINDOWS_PHONE
             
             if (mi[0].HasTexture(TextureType.ENVIRONMENT))
             {
