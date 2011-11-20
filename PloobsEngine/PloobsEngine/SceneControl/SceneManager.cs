@@ -169,10 +169,7 @@ namespace PloobsEngine.SceneControl
         }
 
         /// <summary>
-        /// Removes a screen from the screen manager. You should normally
-        /// use GameScreen.ExitScreen instead of calling this directly, so
-        /// the screen can gradually transition off rather than just being
-        /// instantly removed.
+        /// Removes a screen from the screen manager. 
         /// </summary>
         /// <param name="screen">The screen.</param>
         /// <param name="cleanUp">if set to <c>true</c> [clean up the screen].</param>

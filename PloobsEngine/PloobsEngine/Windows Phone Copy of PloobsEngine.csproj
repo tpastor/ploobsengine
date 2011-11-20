@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PloobsEngine</RootNamespace>
-    <AssemblyName>PloobsEngine</AssemblyName>
+    <AssemblyName>PloobsEnginePhone7</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
@@ -67,7 +67,7 @@
     <DefineConstants>DEBUG;TRACE;WINDOWS_PHONE</DefineConstants>
     <XnaCompressContent>false</XnaCompressContent>
     <LangVersion>default</LangVersion>
-    <DocumentationFile>bin\Windows Phone\Debug\PloobsEngine.XML</DocumentationFile>
+    <DocumentationFile>bin\Windows Phone\Debug\PloobsEnginePhone7.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -97,8 +97,8 @@
     <Compile Include="AI\Waypoints\WaypointsCollection.cs" />
     <Compile Include="Audio\2DSoundEffect\SoundAudioPlayer.cs" />
     <Compile Include="Audio\2DSoundEffect\SimpleSoundEffect.cs" />
-    <Compile Include="Audio\3DSound\ISoundEmitter2D.cs" />
     <Compile Include="Audio\3DSound\Static2DSound.cs" />
+    <Compile Include="Audio\3DSound\ISoundEmitter2D.cs" />
     <Compile Include="Audio\3DSound\Static3DSound.cs" />
     <Compile Include="Audio\3DSound\ISoundEmitter3D.cs" />
     <Compile Include="Audio\3DSound\ObjectFollower3DSound.cs" />
@@ -175,6 +175,9 @@
     <Compile Include="Material\IShadder\DeferredShader\DeferredSphericalBilboardShader.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredProceduralAnimatedBilboardShader.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredTerrainShader.cs" />
+    <Compile Include="Material\IShadder\ForwardShader\ForwardDualTextureShader.cs" />
+    <Compile Include="Material\IShadder\ForwardShader\ForwardEnvironmentShader.cs" />
+    <Compile Include="Material\IShadder\ForwardShader\ForwardGenericBuildInShader.cs" />
     <Compile Include="Material\IShadder\ForwardShader\ForwardSimpleAnimationShader.cs" />
     <Compile Include="Material\IShadder\ForwardShader\ForwardTransparenteShader.cs" />
     <Compile Include="Material\IShadder\ForwardShader\ForwardTreeShader.cs" />
@@ -488,13 +491,10 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml.Serialization, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="XNAnimation">
-      <HintPath>Dlls\Phone7\XNAnimation.dll</HintPath>
-    </Reference>
+    <Reference Include="XNAnimation, Version=0.7.0.0, Culture=neutral, PublicKeyToken=0c21691816f8c6d0, processorArchitecture=x86" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\x86\Debug\Content\Effects\" />
-    <Folder Include="Physics2D\Farseer\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="License.txt" />

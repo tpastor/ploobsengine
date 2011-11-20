@@ -17,7 +17,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
-#if !WINDOWS_PHONE
+#if !WINDOWS_PHONE && !REACH
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +33,7 @@ namespace PloobsEngine.SceneControl
         private Effect wiggle;
         private float m_Timer = 0;        
 
-        #region IPostEffect Members
+#region IPostEffect Members
 
         public override void Draw(Texture2D ImageToProcess, RenderHelper rHelper, GameTime gt, Engine.GraphicInfo GraphicInfo, IWorld world, bool useFloatingBuffer)
         {
@@ -51,7 +51,7 @@ namespace PloobsEngine.SceneControl
 
         #endregion
 
-        #region IPostEffect Members        
+#region IPostEffect Members        
         public override void Init(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
         {            
             this.wiggle = factory.GetEffect("wiggle",false,true);         

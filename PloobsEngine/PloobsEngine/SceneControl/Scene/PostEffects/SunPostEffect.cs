@@ -17,7 +17,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
-#if !WINDOWS_PHONE
+#if !WINDOWS_PHONE && !REACH
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,7 +38,7 @@ namespace PloobsEngine.SceneControl
             this.flareTexture = flareTexture;
         }
 
-        #region IPostEffect Members
+#region IPostEffect Members
         private string flareTexture = null;        
                
         Effect effect = null;

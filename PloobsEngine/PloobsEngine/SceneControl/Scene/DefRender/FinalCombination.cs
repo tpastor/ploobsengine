@@ -17,7 +17,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
-#if !WINDOWS_PHONE
+#if !WINDOWS_PHONE && !REACH
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,7 +51,7 @@ namespace PloobsEngine.SceneControl
         }       
         
 
-        #region IDeferredFinalCombination Members
+#region IDeferredFinalCombination Members
 
 
         public Texture2D this[GBufferTypes type]
@@ -72,7 +72,7 @@ namespace PloobsEngine.SceneControl
 
         #endregion
 
-        #region IDeferredFinalCombination Members
+#region IDeferredFinalCombination Members
 
         public void SetFinalCombination(RenderHelper render)
         {
@@ -116,7 +116,7 @@ namespace PloobsEngine.SceneControl
 
         #endregion
 
-        #region IDeferredFinalCombination Members
+#region IDeferredFinalCombination Members
 
 
         public void LoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, bool useFloatBuffer, bool saveToTexture )
