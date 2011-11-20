@@ -57,7 +57,7 @@ namespace PloobsEngine.SceneControl._2DScene
         public Color AmbientColor = Color.FromNonPremultiplied(10, 10, 10, 255);
 
         Engine.GraphicInfo ginfo;
-#if !WINDOWS_PHONE        
+#if !WINDOWS_PHONE && !REACH        
         /// <summary>
         /// Default
         /// Color.Gray
@@ -91,7 +91,7 @@ namespace PloobsEngine.SceneControl._2DScene
         protected override void AfterLoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
         {
             this.ginfo = ginfo;
-#if !WINDOWS_PHONE
+#if !WINDOWS_PHONE && !REACH
             blendState = new BlendState();
             blendState.ColorSourceBlend = Blend.DestinationColor;
             blendState.ColorDestinationBlend = Blend.SourceColor;            
@@ -135,7 +135,7 @@ namespace PloobsEngine.SceneControl._2DScene
             }
 
 
-#if !WINDOWS_PHONE
+#if !WINDOWS_PHONE && !REACH
             if (UsePostProcessing)
             {
                 render.PushRenderTarget(renderTarget);
@@ -243,7 +243,7 @@ namespace PloobsEngine.SceneControl._2DScene
             if (AfterDrawBeforePostEffects != null)
                 AfterDrawBeforePostEffects(ginfo, render);
 
-#if !WINDOWS_PHONE
+#if !WINDOWS_PHONE && !REACH
             if (UsePostProcessing)
             {
                 render[PrincipalConstants.CurrentImage] = render.PopRenderTarget()[0].RenderTarget as Texture2D;

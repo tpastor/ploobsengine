@@ -32,7 +32,7 @@ namespace PloobsEngine.Cameras
     /// <summary>
     /// Specification of a camera
     /// </summary>
-    #if !WINDOWS_PHONE
+#if !WINDOWS_PHONE
     public abstract class ICamera : ISerializable
 #else
     public abstract class ICamera 

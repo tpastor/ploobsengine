@@ -64,9 +64,9 @@ namespace PloobsEngine.SceneControl._2DScene
             Dummies = new List<IDummy>();            
             Objects = new List<I2DObject>();
             SoundEmiters2D = new List<ISoundEmitter2D>();
-            
-            
-#if !WINDOWS_PHONE
+
+
+#if !WINDOWS_PHONE && !REACH
             Lights2D = new List<PloobsEngine.Light2D.Light2D>();
 #endif
 
@@ -104,7 +104,7 @@ namespace PloobsEngine.SceneControl._2DScene
                 camera2D = new Camera2D(graphicsInfo);
             }
         }
-#if !WINDOWS_PHONE
+#if !WINDOWS_PHONE && !REACH
 
         public void AddLight(PloobsEngine.Light2D.Light2D Light)
         {

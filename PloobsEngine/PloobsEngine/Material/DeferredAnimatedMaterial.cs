@@ -17,7 +17,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
-#if !WINDOWS_PHONE
+#if !WINDOWS_PHONE && !REACH
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,7 +56,7 @@ namespace PloobsEngine.Material
             set { controller = value; }
         }
 
-        #region IMaterial Members
+#region IMaterial Members
 
         /// <summary>
         /// Initializations the specified Material.
@@ -174,7 +174,7 @@ namespace PloobsEngine.Material
 
         #endregion
 
-        #region ISerializable Members
+#region ISerializable Members
 
 #if !WINDOWS_PHONE
         /// <summary>
@@ -198,7 +198,7 @@ namespace PloobsEngine.Material
         }
 
 
-        #region IMaterial Members
+#region IMaterial Members
 
 
         public bool IsVisible

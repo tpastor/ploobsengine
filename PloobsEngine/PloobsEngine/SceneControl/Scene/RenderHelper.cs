@@ -60,7 +60,7 @@ namespace PloobsEngine.SceneControl
             effect = new BasicEffect(device);
             qrender = new QuadRender(device);
             this.componentManager = componentManager;
-            #if !WINDOWS_PHONE
+            #if !WINDOWS_PHONE && !REACH
             defaultFont = cmanager.GetAsset<Microsoft.Xna.Framework.Graphics.SpriteFont>("ConsoleFont", true);
             #else
             defaultFont = cmanager.GetAsset<Microsoft.Xna.Framework.Graphics.SpriteFont>("ConsoleFont1", true);
@@ -613,7 +613,7 @@ namespace PloobsEngine.SceneControl
             }
         }
 
-        #if !WINDOWS_PHONE
+#if !WINDOWS_PHONE && !REACH
         /// <summary>
         /// Renders the texture to full screen using vertex and pixel shader .
         /// </summary>
@@ -661,7 +661,7 @@ namespace PloobsEngine.SceneControl
                 ResyncStates();
         }
 
-        #if !WINDOWS_PHONE
+#if !WINDOWS_PHONE && !REACH
         public SamplerState GetRecomendedSamplerForTheActualRenderTarget()
         {
             SurfaceFormat format = RenderStatesStack.Peek()[0].RenderTarget.Format;
@@ -757,7 +757,7 @@ namespace PloobsEngine.SceneControl
             }
         }
 
-        #if !WINDOWS_PHONE
+#if !WINDOWS_PHONE && !REACH
         /// <summary>
         /// Renders the scene with custom material.
         /// </summary>
@@ -878,7 +878,7 @@ namespace PloobsEngine.SceneControl
                     obj.Material.Shadder.BasicDraw(gt, obj, view,projection, world.Lights, this, clippingPlane, useAlphaBlend);
             }
         }
-    #endif
+#endif
     }
     
     public delegate void OnDrawingSceneCustomMaterial(Effect effect,IObject obj, BatchInformation bi,ref Matrix view,ref Matrix projection);

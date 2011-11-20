@@ -17,7 +17,6 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
-#if !WINDOWS_PHONE
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -135,6 +134,8 @@ namespace PloobsEngine.Loader
             po.isMotionLess = massflag;
 
             IShader shader = null;
+#if !REACH && !WINDOWS_PHONE
+            
             if (mi[0].HasTexture(TextureType.ENVIRONMENT))
             {
                 shader = new DeferredEMReflectiveShader();
@@ -153,6 +154,11 @@ namespace PloobsEngine.Loader
             }
           
             DeferredMaterial dm = new DeferredMaterial(shader);
+#else
+            shader = new ForwardXNABasicShader();
+            ForwardMaterial dm = new ForwardMaterial(shader);
+
+#endif
             IObject ob = new IObject(dm, model, po);
 
             ob.Name = mi[0].modelName;
@@ -221,8 +227,7 @@ namespace PloobsEngine.Loader
                     foreach (var obj in WorldLoader.CreateOBJ(world, factory, ginfo, objinfos[item].ToArray()))
                     {
                         world.AddObject(obj);    
-                    }
-                    
+                    }                    
                 }
             }
 
@@ -233,8 +238,8 @@ namespace PloobsEngine.Loader
 
                 List<IObject> obb = world.Objects.ToList();                
 
-                IObject o1 = obb.Find(delegate(IObject o) { return o.Name == item.bodyA; });
-                IObject o2 = obb.Find(delegate(IObject o) { return o.Name == item.bodyB; });
+                IObject o1 = obb.First(delegate(IObject o) { return o.Name == item.bodyA; });
+                IObject o2 = obb.First(delegate(IObject o) { return o.Name == item.bodyB; });
 
                 if (o1.PhysicObject.PhysicObjectTypes != PhysicObjectTypes.TRIANGLEMESHOBJECT && o2.PhysicObject.PhysicObjectTypes != PhysicObjectTypes.TRIANGLEMESHOBJECT)
                 {
@@ -306,4 +311,3 @@ namespace PloobsEngine.Loader
     }
 
 }
-#endif
