@@ -29,7 +29,7 @@ namespace ProjectTemplate
             world = new IWorld(new BepuPhysicWorld(-0.97f,true,1), new SimpleCuller());
 
             ///Create the deferred technich
-            ForwardRenderTecnichDescription desc = new ForwardRenderTecnichDescription(Color.CornflowerBlue);
+            ForwardRenderTecnichDescription desc = new ForwardRenderTecnichDescription();
             renderTech = new ForwardRenderTecnich(desc);
         }
 
@@ -43,7 +43,7 @@ namespace ProjectTemplate
         {
             base.LoadContent(GraphicInfo,factory, contentManager);            
 
-            ///Uncoment to add your model
+            //Uncoment to add your model
             //SimpleModel simpleModel = new SimpleModel(factory, "MODEL PATH HERE");
             /////Physic info (position, rotation and scale are set here)
             //TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());

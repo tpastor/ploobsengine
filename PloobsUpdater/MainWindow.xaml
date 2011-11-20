@@ -1,0 +1,11 @@
+﻿<Window x:Class="PloobsUpdater.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Button Content="Get PloobsEngine" Height="70" HorizontalAlignment="Left" Margin="344,62,0,0" Name="button1" VerticalAlignment="Top" Width="117" Click="button1_Click" />
+        <ListBox Height="125" HorizontalAlignment="Left" Margin="0,71,0,0" Name="listBox1" VerticalAlignment="Top" Width="215"  MouseDoubleClick="listBox1_MouseDoubleClick"/>
+        <Label Content="Avaliable Versions" Height="28" HorizontalAlignment="Left" Margin="12,37,0,0" Name="label1" VerticalAlignment="Top" />
+        <Label Content="Current Version:" Height="28" HorizontalAlignment="Left" Margin="298,12,0,0" Name="label2" VerticalAlignment="Top" />
+    </Grid>
+</Window>
