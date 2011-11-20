@@ -111,10 +111,19 @@ namespace PloobsEngine.Engine
             return RenderTargetPool.GetIntermediateTexture(width, height, mipmap, SurfaceFormat, DepthFormat, preferedMultisampleCount, RenderTargetUsage);
         }
 
+
+        public SpriteFont GetSpriteFont(String fontName, bool isInternal = false)
+        {
+
+            return contentManager.GetAsset<SpriteFont>(fontName, isInternal);
+        }
+
         public Texture2D GetTexture2D(String textureName,bool isInternal = false)
         {
             return contentManager.GetAsset<Texture2D>(textureName, isInternal);
         }
+
+
 
         public TextureCube GetTextureCube(String textureName, bool isInternal = false)
         {
