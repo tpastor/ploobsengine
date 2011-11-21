@@ -92,7 +92,7 @@ namespace PloobsEngine.Engine
         #if !REACH
         internal InitialEngineDescription(String ScreenName = "PloobsEngine", int BackBufferWidth = 800, int BackBufferHeight = 600, bool isFullScreen = false, GraphicsProfile graphicsProfile = GraphicsProfile.HiDef, bool useVerticalSyncronization = false, bool isMultiSampling = false, bool isFixedGameTime = false, ILogger logger = null, bool useMipMapWhenPossible = false, bool UseAnisotropicFiltering = false, DisplayOrientation supportedOrientation = DisplayOrientation.Portrait | DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight)
 #else
-        internal InitialEngineDescription(String ScreenName = "PloobsEngine", int BackBufferWidth = 800, int BackBufferHeight = 600, bool isFullScreen = false, GraphicsProfile graphicsProfile = GraphicsProfile.Reach, bool useVerticalSyncronization = false, bool isMultiSampling = false, bool isFixedGameTime = false, ILogger logger = null, bool useMipMapWhenPossible = false, bool UseAnisotropicFiltering = false, DisplayOrientation supportedOrientation = DisplayOrientation.Portrait | DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight)
+        internal InitialEngineDescription(String ScreenName = "PloobsEngine", int BackBufferWidth = 800, int BackBufferHeight = 600, bool isFullScreen = false, GraphicsProfile graphicsProfile = GraphicsProfile.Reach, bool useVerticalSyncronization = false, bool isMultiSampling = false, bool isFixedGameTime = false, ILogger logger = null, bool useMipMapWhenPossible = false, bool UseAnisotropicFiltering = false, DisplayOrientation supportedOrientation = DisplayOrientation.Default | DisplayOrientation.Portrait | DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight)
 #endif
         {            
             this.UseVerticalSyncronization = useVerticalSyncronization;
@@ -313,6 +313,7 @@ namespace PloobsEngine.Engine
             graphics.PreferMultiSampling = initialDescription.isMultiSampling;
             graphics.PreferredBackBufferHeight = initialDescription.BackBufferHeight;
             graphics.PreferredBackBufferWidth = initialDescription.BackBufferWidth;
+            graphics.SupportedOrientations = initialDescription.SupportedOrientations;
             graphics.ApplyChanges();
             
             if (this.initialDescription.OnExit != null)
@@ -595,7 +596,7 @@ namespace PloobsEngine.Engine
         /// <param name="logger">The logger.</param>
         /// <param name="useMipMapWhenPossible">if set to <c>true</c> [use mip map when possible].</param>
         /// <param name="UseAnisotropicFiltering">if set to <c>true</c> [use anisotropic filtering].</param>
-        internal  InitialEngineDescription(String ScreenName = "PloobsEngine", int BackBufferWidth = 800, int BackBufferHeight = 600, bool isFullScreen = false, GraphicsProfile graphicsProfile = GraphicsProfile.HiDef, bool useVerticalSyncronization = false, bool isMultiSampling = false, bool isFixedGameTime = false, ILogger logger = null, bool useMipMapWhenPossible = false, bool UseAnisotropicFiltering = false,DisplayOrientation supportedOrientation = DisplayOrientation.Portrait | DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight)
+        internal  InitialEngineDescription(String ScreenName = "PloobsEngine", int BackBufferWidth = 800, int BackBufferHeight = 600, bool isFullScreen = false, GraphicsProfile graphicsProfile = GraphicsProfile.HiDef, bool useVerticalSyncronization = false, bool isMultiSampling = false, bool isFixedGameTime = false, ILogger logger = null, bool useMipMapWhenPossible = false, bool UseAnisotropicFiltering = false,DisplayOrientation supportedOrientation = DisplayOrientation.Default | DisplayOrientation.Portrait | DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight)
         {            
             this.UseVerticalSyncronization = useVerticalSyncronization;
             this.BackBufferHeight = BackBufferHeight;
@@ -728,6 +729,7 @@ namespace PloobsEngine.Engine
         IContentManager contentManager;
         RenderHelper render;
         internal Game game;
+        public event Action<Object, EventArgs> OrientationChanged;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EngineStuff"/> class.
@@ -762,7 +764,15 @@ namespace PloobsEngine.Engine
             graphics.PreferredBackBufferWidth = initialDescription.BackBufferWidth;
             graphics.PreferredDepthStencilFormat = DepthFormat.Depth24Stencil8;                                    
             graphics.SupportedOrientations = initialDescription.SupportedOrientations;
-            
+            this.game.Window.OrientationChanged += new EventHandler<EventArgs>(Window_OrientationChanged);
+                 
+        }
+
+
+        void Window_OrientationChanged(object sender, EventArgs e)
+        {
+            if (OrientationChanged != null)
+                OrientationChanged(sender, e);
         }        
         
 
@@ -797,6 +807,7 @@ namespace PloobsEngine.Engine
             graphics.PreferMultiSampling = initialDescription.isMultiSampling;
             graphics.PreferredBackBufferHeight = initialDescription.BackBufferHeight;
             graphics.PreferredBackBufferWidth = initialDescription.BackBufferWidth;
+            graphics.SupportedOrientations = initialDescription.SupportedOrientations;
             graphics.ApplyChanges();
             
             if (this.initialDescription.OnExit != null)

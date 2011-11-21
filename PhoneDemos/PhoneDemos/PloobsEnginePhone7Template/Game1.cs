@@ -25,8 +25,7 @@ namespace PloobsEnginePhone7Template
         public Game1()
         {
             InitialEngineDescription desc = InitialEngineDescription.Default();
-            desc.isMultiSampling = true;
-
+            desc.isFullScreen = true;
             engine = new EngineStuff(this, ref desc, LoadScreen);
 
             // Frame rate is 30 fps by default for Windows Phone.
