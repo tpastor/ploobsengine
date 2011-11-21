@@ -45,7 +45,7 @@ namespace PloobsEngine.Material
         /// <param name="alpha">The alpha.</param>
         /// <param name="EnableLightning">if set to <c>true</c> [enable lightning].</param>
         /// <param name="EnableTexture">if set to <c>true</c> [enable texture].</param>
-        public ForwardXNABasicShaderDescription(Color AmbientColor, Color EmissiveColor, Color SpecularColor, float specularPower = 50, float alpha = 1, bool EnableLightning = true, bool EnableTexture = true)
+        public ForwardXNABasicShaderDescription(Color AmbientColor, Color EmissiveColor, Color SpecularColor, float specularPower = 50, float alpha = 1, bool EnableLightning = true, bool DefaultLightning = true, bool EnableTexture = true)
         {
             this.AmbientColor = AmbientColor.ToVector3();
             this.EmissiveColor = EmissiveColor.ToVector3();
@@ -54,7 +54,8 @@ namespace PloobsEngine.Material
             this.alpha = alpha;
             this.EnableLightning = EnableLightning;
             this.EnableTexture = EnableTexture;
-            DefaultLightning = false;
+            this.DefaultLightning = DefaultLightning;
+            ObjectColor = Vector3.Zero;
         }
 
         /// <summary>
@@ -75,6 +76,8 @@ namespace PloobsEngine.Material
         public Vector3 SpecularColor;
         public float SpecularPower;
         public float alpha;
+        public Vector3 ObjectColor;
+
              
     }
 
@@ -135,25 +138,28 @@ namespace PloobsEngine.Material
         public void SetDescription(ForwardXNABasicShaderDescription desc)
         {
             this.desc = desc;
-            if (desc.DefaultLightning)
+            if (desc.EnableLightning)
             {
-                effect.EnableDefaultLighting();
-            }
-            else
-            {
-                if (effect.LightingEnabled)
+                if (desc.DefaultLightning)
+                {
+                    effect.EnableDefaultLighting();
+                }
+                else
                 {
                     effect.LightingEnabled = true;
                     effect.SpecularColor = desc.SpecularColor;
                     effect.SpecularPower = desc.SpecularPower;
                     effect.EmissiveColor = desc.EmissiveColor;
-                    effect.AmbientLightColor = desc.AmbientColor;                    
+                    effect.AmbientLightColor = desc.AmbientColor;
                 }
             }
-            
-            effect.TextureEnabled = desc.EnableTexture;
-            effect.Alpha = desc.alpha;
-            
+
+            if (desc.EnableTexture)
+                effect.TextureEnabled = desc.EnableTexture;
+            else
+                effect.DiffuseColor = desc.ObjectColor;
+
+            effect.Alpha = desc.alpha;            
         }
 
         /// <summary>

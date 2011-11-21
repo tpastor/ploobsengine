@@ -39,7 +39,7 @@ namespace PloobsEngine.Material
     /// <summary>
     /// Base Class For all Shaders
     /// </summary>
-    #if !WINDOWS_PHONE
+#if !WINDOWS_PHONE
     public abstract class IShader : ISerializable
 #else
     public abstract class IShader 
@@ -96,7 +96,7 @@ namespace PloobsEngine.Material
         /// </summary>
         public virtual void Initialize(GraphicInfo ginfo, GraphicFactory factory, IObject obj)
         {
-            #if !WINDOWS_PHONE
+            #if !WINDOWS_PHONE && !REACH
             basicDraw = factory.GetEffect("clippingPlane", false, true);
             getDepth = factory.GetEffect("ShadowDepth",false,true);
             #endif
@@ -163,7 +163,7 @@ namespace PloobsEngine.Material
         {            
         }
 
-        #if !WINDOWS_PHONE
+#if !WINDOWS_PHONE && !REACH
         /// <summary>
         /// Exctract the depth from an object
         /// </summary>
@@ -231,13 +231,16 @@ namespace PloobsEngine.Material
             if(useAlphaBlending)
                 render.PopBlendState();
         }
-        
-        
-        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        #endif
+
+
+#if !WINDOWS_PHONE
+              public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             
         }
-        #endif
+  
+#endif
 
     }
 }

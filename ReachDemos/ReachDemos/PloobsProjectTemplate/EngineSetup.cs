@@ -34,7 +34,8 @@ namespace ProjectTemplate
         {
             ///add the first screen here
             ///WE ARE ADDING THE DEFERRED SCREEN, you can add wherever you want
-            manager.AddScreen(new TemplateForwardScreen());
+            //manager.AddScreen(new TemplateForwardScreen());
+            manager.AddScreen(new AnimationScreen());
 
         }
 

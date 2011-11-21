@@ -188,7 +188,7 @@
             Description that helps building the XNABasicShader
             </summary>
         </member>
-        <member name="M:PloobsEngine.Material.ForwardXNABasicShaderDescription.#ctor(Microsoft.Xna.Framework.Color,Microsoft.Xna.Framework.Color,Microsoft.Xna.Framework.Color,System.Single,System.Single,System.Boolean,System.Boolean)">
+        <member name="M:PloobsEngine.Material.ForwardXNABasicShaderDescription.#ctor(Microsoft.Xna.Framework.Color,Microsoft.Xna.Framework.Color,Microsoft.Xna.Framework.Color,System.Single,System.Single,System.Boolean,System.Boolean,System.Boolean)">
             <summary>
             Initializes a new instance of the <see cref="T:PloobsEngine.Material.ForwardXNABasicShaderDescription"/> struct.
             </summary>
@@ -5553,13 +5553,13 @@
         </member>
         <member name="M:PloobsEngine.Material.ForwardSimpleAnimationShader.#ctor(PloobsEngine.Modelo.Animation.IAnimatedController)">
             <summary>
-            Initializes a new instance of the <see cref="!:DeferredSimpleAnimationShader"/> class.
+            Initializes a new instance of the <see cref="T:PloobsEngine.Material.ForwardSimpleAnimationShader"/> class.
             </summary>
             <param name="ac">The ac.</param>
         </member>
         <member name="M:PloobsEngine.Material.ForwardSimpleAnimationShader.#ctor(PloobsEngine.Modelo.Animation.IAnimatedController,PloobsEngine.SceneControl.IObject,PloobsEngine.Modelo.Animation.IAnimatedController,System.String)">
             <summary>
-            Initializes a new instance of the <see cref="!:DeferredSimpleAnimationShader"/> class.
+            Initializes a new instance of the <see cref="T:PloobsEngine.Material.ForwardSimpleAnimationShader"/> class.
             THIS IS A SPECIAL CONSTRUCTOR, it is used to ATACH this shader to a external BONE
             Can be used for example to put a gun in the hand of a character
             </summary>
@@ -5576,6 +5576,11 @@
             <param name="gt"></param>
             <param name="ent">The ent.</param>
             <param name="lights">The lights.</param>
+        </member>
+        <member name="P:PloobsEngine.Material.ForwardSimpleAnimationShader.SkinnedEffect">
+            <summary>
+            CAN BE ONLY CALLED AFTER Adding the IOBJECT TO THE WORLD
+            </summary>
         </member>
         <member name="P:PloobsEngine.Material.ForwardSimpleAnimationShader.MaterialType">
             <summary>

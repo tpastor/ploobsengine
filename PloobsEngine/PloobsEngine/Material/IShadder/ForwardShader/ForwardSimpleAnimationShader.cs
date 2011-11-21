@@ -33,11 +33,33 @@ using XNAnimation.Effects;
 
 namespace PloobsEngine.Material
 {
+
+ 
     /// <summary>
     /// Animation shader with simple effects
     /// </summary>
     public class ForwardSimpleAnimationShader : IShader
     {
+
+#if WINDOWS_PHONE || REACH        
+                
+        /// <summary>
+        /// CAN BE ONLY CALLED AFTER Adding the IOBJECT TO THE WORLD
+        /// </summary>
+        public SkinnedEffect SkinnedEffect
+        {
+            get;
+            set;
+        }
+
+        public bool EnableTexture
+        {
+            get;
+            set;
+        }
+        
+#endif
+
         /// <summary>
         /// Serialization
         /// </summary>
@@ -46,16 +68,17 @@ namespace PloobsEngine.Material
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DeferredSimpleAnimationShader"/> class.
+        /// Initializes a new instance of the <see cref="ForwardSimpleAnimationShader"/> class.
         /// </summary>
         /// <param name="ac">The ac.</param>
         public ForwardSimpleAnimationShader(IAnimatedController ac)
-        {
-            this.ac = ac; 
+            {            
+            this.ac = ac;
+            EnableTexture = true;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DeferredSimpleAnimationShader"/> class.
+        /// Initializes a new instance of the <see cref="ForwardSimpleAnimationShader"/> class.
         /// THIS IS A SPECIAL CONSTRUCTOR, it is used to ATACH this shader to a external BONE
         /// Can be used for example to put a gun in the hand of a character
         /// </summary>
@@ -63,17 +86,48 @@ namespace PloobsEngine.Material
         /// <param name="obj">The obj.</param>
         /// <param name="Followed">The followed.</param>
         /// <param name="boneName">Name of the bone.</param>
-        public ForwardSimpleAnimationShader(IAnimatedController ac, IObject obj, IAnimatedController Followed, String boneName)
-        {
+         public ForwardSimpleAnimationShader(IAnimatedController ac, IObject obj, IAnimatedController Followed, String boneName)
+        {            
             this.ac = ac;            
             this.Followed = Followed;
             followBone = true;
             this.boneName = boneName;
-            this.Followobj = obj;       
+            this.Followobj = obj;
+            EnableTexture = true;
+        }
 
-        }       
+         public override void Initialize(PloobsEngine.Engine.GraphicInfo ginfo, PloobsEngine.Engine.GraphicFactory factory, PloobsEngine.SceneControl.IObject obj)
+         {
+             base.Initialize(ginfo, factory, obj);
 
-        IObject Followobj;
+#if WINDOWS_PHONE || REACH
+             SkinnedEffect = factory.GetSkinnedEffect();
+             SkinnedEffect.EnableDefaultLighting();
+#endif
+         }
+
+#if WINDOWS_PHONE || REACH
+         IObject ent = null;
+         public override void PreUpdate(IObject ent, IList<Light.ILight> lights)
+         {
+             this.ent = ent;
+             base.PreUpdate(ent, lights);
+
+             AnimatedModel modelo = ent.Modelo as AnimatedModel;
+
+             for (int i = 0; i < modelo.GetAnimatedModel().Meshes.Count; i++)
+             {
+                 ModelMesh modelMesh = modelo.GetAnimatedModel().Meshes[i];
+                 for (int j = 0; j < modelMesh.MeshParts.Count; j++)
+                 {
+                     modelMesh.MeshParts[j].Effect = SkinnedEffect;
+                 }
+             }
+         }
+#endif
+
+
+         IObject Followobj;
         String boneName;
         IAnimatedController Followed;
         bool followBone = false;
@@ -103,8 +157,9 @@ namespace PloobsEngine.Material
             base.Update(gt, ent, lights);
             this.WorldMatrix = ent.WorldMatrix;         
         }
-        
-#if WINDOWS_PHONE
+     
+
+#if WINDOWS_PHONE || REACH
         public override void  Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<Light.ILight> lights)        
  	    {
             AnimatedModel modelo = obj.Modelo as AnimatedModel;
@@ -114,8 +169,11 @@ namespace PloobsEngine.Material
                 ModelMesh modelMesh = modelo.GetAnimatedModel().Meshes[i];
                 for (int j = 0; j < modelMesh.MeshParts.Count; j++)
                 {
-                    SkinnedEffect basicEffect = (SkinnedEffect)modelMesh.MeshParts[j].Effect;                    
-                    basicEffect.Texture = modelo.getTexture(TextureType.DIFFUSE,i,j);                    
+                    SkinnedEffect basicEffect = (SkinnedEffect) modelMesh.MeshParts[j].Effect;
+
+                    if (EnableTexture)
+                        basicEffect.Texture = modelo.getTexture(TextureType.DIFFUSE, i, j);
+                    
                     if (followBone)
                     {
                         basicEffect.World = Followed.GetBoneAbsoluteTransform(boneName) * Followobj.WorldMatrix;
@@ -143,26 +201,6 @@ namespace PloobsEngine.Material
                 ModelMesh modelMesh = modelo.GetAnimatedModel().Meshes[i];
                 for (int j = 0; j < modelMesh.MeshParts.Count; j++)
                 {
-#if WINDOWS_PHONE
-                    SkinnedEffect basicEffect = (SkinnedEffect)modelMesh.MeshParts[j].Effect;                    
-                    basicEffect.Texture = modelo.getTexture(TextureType.DIFFUSE,i,j);                    
-                    if (followBone)
-                    {
-                        basicEffect.World = Followed.GetBoneAbsoluteTransform(boneName) * Followobj.WorldMatrix;
-                        basicEffect.SetBoneTransforms(modelo.getBonesTransformation());
-                    }
-                    else
-                    {
-                        basicEffect.World = WorldMatrix;
-                        basicEffect.SetBoneTransforms(ac.GetBoneTransformations());
-                    }
-                    basicEffect.View = cam.View;
-                    basicEffect.Projection = cam.Projection;
-                }
-
-                modelMesh.Draw();
-            }
-#else
                     SkinnedModelBasicEffect basicEffect = (SkinnedModelBasicEffect)modelMesh.MeshParts[j].Effect;
                     basicEffect.CurrentTechnique = basicEffect.Techniques["FORWARD"];
                     basicEffect.Parameters["diffuseMap0"].SetValue(modelo.getTexture(TextureType.DIFFUSE, i, j));
@@ -186,8 +224,6 @@ namespace PloobsEngine.Material
 
         }
 
-#endif
-
     }
     
-}
+

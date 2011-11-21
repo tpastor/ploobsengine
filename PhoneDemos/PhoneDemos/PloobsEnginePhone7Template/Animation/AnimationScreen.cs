@@ -40,6 +40,7 @@ namespace PloobsEnginePhone7Template
 
                 ///Cria o shader e o material animados 
                 ForwardSimpleAnimationShader sas = new ForwardSimpleAnimationShader(arobo);
+                
                 ForwardAnimatedMaterial amat = new ForwardAnimatedMaterial(arobo, sas);
 
                 IObject marine = new IObject(amat,am, new GhostObject(Vector3.Zero,Matrix.Identity,Vector3.One * 10));
