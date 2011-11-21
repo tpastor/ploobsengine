@@ -37,7 +37,13 @@ namespace PloobsEngine.SceneControl
 
         public EngineContentManager(Game game)
         {
-            cmanagerInternal = new ResourceContentManager(game.Services, Resources.ResourceManager);
+#if REACH 
+         cmanagerInternal = new ResourceContentManager(game.Services, PloobsEngineReach.Resource2.ResourceManager);
+#elif WINDOWS_PHONE
+         cmanagerInternal = new ResourceContentManager(game.Services, Resource3.ResourceManager);
+#else
+         cmanagerInternal = new ResourceContentManager(game.Services, Resources.ResourceManager);
+#endif            
             externalContentManager = game.Content;
         }
 

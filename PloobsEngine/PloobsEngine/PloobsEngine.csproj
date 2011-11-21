@@ -303,6 +303,12 @@
     <Compile Include="Physic3D\PhysicObjects\IPhysicObject.cs" />
     <Compile Include="Physic3D\SegmentInterceptInfo.cs" />
     <Compile Include="Physic2D\Farseer\GhostObject.cs" />
+    <Compile Include="Resource2.Designer.cs" />
+    <Compile Include="Resource3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource3.resx</DependentUpon>
+    </Compile>
     <Compile Include="SceneControl\2DScene\Culler\Simple2DCuller.cs" />
     <Compile Include="SceneControl\2DScene\Culler\I2DCuller.cs" />
     <Compile Include="SceneControl\2DScene\Culler\Physic2DCuller.cs" />
@@ -516,6 +522,11 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resource2.resx" />
+    <EmbeddedResource Include="Resource3.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource3.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
