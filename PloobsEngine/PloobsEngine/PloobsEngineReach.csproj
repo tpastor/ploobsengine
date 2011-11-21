@@ -210,6 +210,11 @@
     <Compile Include="Physic3D\PhysicObjects\IPhysicObject.cs" />
     <Compile Include="Physic3D\SegmentInterceptInfo.cs" />
     <Compile Include="Physic2D\Farseer\GhostObject.cs" />
+    <Compile Include="Resource2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource2.resx</DependentUpon>
+    </Compile>
     <Compile Include="SceneControl\2DScene\Culler\Simple2DCuller.cs" />
     <Compile Include="SceneControl\2DScene\Culler\I2DCuller.cs" />
     <Compile Include="SceneControl\2DScene\Culler\Physic2DCuller.cs" />
@@ -320,11 +325,6 @@
     <Compile Include="Modelo\IModelo.cs" />
     <Compile Include="Modelo\ModelBuilderHelper.cs" />
     <Compile Include="Modelo\SimpleModel.cs" />
-    <Compile Include="Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="SceneControl\EngineContentManager.cs" />
     <Compile Include="SceneControl\IContentManager.cs" />
     <Compile Include="SceneControl\IScreen.cs" />
@@ -395,6 +395,7 @@
     <Compile Include="Utils\TimePassed.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="bin\Windows Phone\Debug\EnginePhoneContent\Font\ConsoleFont.xnb" />
     <None Include="bin\Windows Phone\Debug\EnginePhoneContent\Models\block.xnb" />
     <None Include="bin\Windows Phone\Debug\EnginePhoneContent\Models\dome.xnb" />
     <None Include="bin\Windows Phone\Debug\EnginePhoneContent\Models\Dsphere.xnb" />
@@ -507,6 +508,7 @@
     <None Include="bin\x86\Debug\Content\Textures\wave1.xnb" />
     <None Include="bin\x86\Debug\Content\Textures\waves2.xnb" />
     <None Include="bin\x86\Debug\Content\Textures\white.xnb" />
+    <None Include="bin\x86\Debug\PloobsEngineReachContent\ConsoleFont.xnb" />
     <None Include="bin\x86\Release\Content\Effects\Deferred\HSV.xnb" />
     <None Include="PloobsEngine.licenseheader" />
     <None Include="Resources\ConsoleFont.spritefont" />
@@ -547,11 +549,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\EnginePhoneContent\EnginePhoneContent.contentproj">
-      <Project>{D45AAD1D-4A78-46F8-B21D-A5F222ECEFFB}</Project>
-      <Name>EnginePhoneContent</Name>
+    <ProjectReference Include="..\..\PloobsEngineReachContent\PloobsEngineReachContent.contentproj">
+      <Project>{B1698752-EB8C-4692-8BCD-2E4768B892E2}</Project>
+      <Name>PloobsEngineReachContent</Name>
       <XnaReferenceType>Content</XnaReferenceType>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource2.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource2.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />

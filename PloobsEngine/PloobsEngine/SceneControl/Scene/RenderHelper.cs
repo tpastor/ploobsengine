@@ -60,11 +60,7 @@ namespace PloobsEngine.SceneControl
             effect = new BasicEffect(device);
             qrender = new QuadRender(device);
             this.componentManager = componentManager;
-            #if !WINDOWS_PHONE && !REACH
-            defaultFont = cmanager.GetAsset<Microsoft.Xna.Framework.Graphics.SpriteFont>("ConsoleFont", true);
-            #else
-            defaultFont = cmanager.GetAsset<Microsoft.Xna.Framework.Graphics.SpriteFont>("ConsoleFont1", true);
-            #endif
+            defaultFont = cmanager.GetAsset<Microsoft.Xna.Framework.Graphics.SpriteFont>("ConsoleFont", true);            
         }
 
         /// <summary>

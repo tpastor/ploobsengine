@@ -61,10 +61,10 @@ namespace PloobsEnginePhone7Template
         {        
             base.Draw(gameTime, render);
             render.RenderTextComplete("PloobsEngine Picking 3D on Windows Phone7", new Vector2(20, 10), Color.Red, Matrix.Identity);
-            render.RenderTextComplete("Use DoubleTap on the scene", new Vector2(20, 10), Color.Red, Matrix.Identity);
+            render.RenderTextComplete("Use DoubleTap on the scene", new Vector2(20, 30), Color.Red, Matrix.Identity);
             
             if(result != null)
-                render.RenderTextComplete(result, new Vector2(20, 30), Color.Red, Matrix.Identity);
+                render.RenderTextComplete(result, new Vector2(20, 50), Color.Red, Matrix.Identity);
         }
 
     }
