@@ -111,6 +111,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Animation\AnimationScreen.cs" />
     <Compile Include="TemplateScreens\TemplateForwardScreen.cs" />
     <Compile Include="EngineSetup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
