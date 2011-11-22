@@ -117,6 +117,7 @@
     <Compile Include="Commands\IReciever.cs" />
     <Compile Include="Components\ComponentManager.cs" />
     <Compile Include="Components\IComponent.cs" />
+    <Compile Include="DataStructure\QuadTree.cs" />
     <Compile Include="Features\SkyBox\SkyBoxEnableDisableCommand.cs" />
     <Compile Include="Features\SkyBox\Skybox.cs" />
     <Compile Include="Features\SkyBox\SkyBoxUpdateParametersCommand.cs" />
@@ -381,6 +382,8 @@
     <Compile Include="SceneControl\Scene\ForwardRender\ForwardRenderTecnich.cs" />
     <Compile Include="Utils\EnumerableExtension.cs" />
     <Compile Include="Utils\Math\Circle.cs" />
+    <Compile Include="Utils\PolygonUnion.cs" />
+    <Compile Include="Utils\Primitives.cs" />
     <Compile Include="Utils\TextureCreator.cs" />
     <Compile Include="Trigger\BepuTrigger.cs" />
     <Compile Include="Trigger\GenericEventHandler.cs" />
@@ -403,6 +406,7 @@
     <Compile Include="Utils\PerlinNoise.cs" />
     <Compile Include="Utils\Serializer\SerializerHelper.cs" />
     <Compile Include="Utils\TimePassed.cs" />
+    <Compile Include="Utils\Triangulator.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
