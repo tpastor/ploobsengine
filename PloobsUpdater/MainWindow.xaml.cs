@@ -258,7 +258,7 @@ namespace PloobsUpdater
 
                     foreach (var item in Directory.EnumerateFiles(o))
                     {
-                        if (item.EndsWith(".dll"))
+                        if (item.EndsWith(".dll") && item.Contains("PloobsEnginePhone"))
                         {
                             //PloobsEngineDebug, Version=0.0.0.1, Culture=neutral, PublicKeyToken=0c21691816f8c6d0
                             Assembly Assembly = Assembly.LoadFile(item);
