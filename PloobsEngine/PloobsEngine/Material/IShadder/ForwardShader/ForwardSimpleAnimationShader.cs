@@ -74,7 +74,7 @@ namespace PloobsEngine.Material
         public ForwardSimpleAnimationShader(IAnimatedController ac)
         {
             this.ac = ac;
-            #if WINDOWS_PHONE || REACH
+#if WINDOWS_PHONE || REACH
             EnableTexture = true;
 #endif
         }
@@ -95,7 +95,7 @@ namespace PloobsEngine.Material
             followBone = true;
             this.boneName = boneName;
             this.Followobj = obj;
-            #if WINDOWS_PHONE || REACH
+#if WINDOWS_PHONE || REACH
             EnableTexture = true;
 #endif
         }
@@ -224,11 +224,11 @@ namespace PloobsEngine.Material
                 }
                 modelMesh.Draw();
             }
-#endif
-
         }
-
+#endif
     }
 }
+
+
     
 

@@ -112,7 +112,7 @@ namespace PloobsEngine.Utils
             float length = normal.Length();
 
             // this vector should not be between p0 and p1
-            Vector3 p;
+            Vector3 p = new Vector3();
             p.X = (float) StaticRandom.RandomInstance.NextDouble();
             p.Y = (float)StaticRandom.RandomInstance.NextDouble();
             p.Z = (float)StaticRandom.RandomInstance.NextDouble();
@@ -336,7 +336,7 @@ namespace PloobsEngine.Utils
             slices = Math.Max(3, slices);
 
             // this vector should not be between start and end
-            Vector3 p;
+            Vector3 p = new Vector3();
             p.X = (float)StaticRandom.RandomInstance.NextDouble();
             p.Y = (float)StaticRandom.RandomInstance.NextDouble();
             p.Z = (float)StaticRandom.RandomInstance.NextDouble();
@@ -455,7 +455,7 @@ namespace PloobsEngine.Utils
             slices = Math.Max(3, slices);
 
             // this vector should not be between start and end
-            Vector3 p;
+            Vector3 p = new Vector3();
             p.X = (float)StaticRandom.RandomInstance.NextDouble();
             p.Y = (float)StaticRandom.RandomInstance.NextDouble();
             p.Z = (float)StaticRandom.RandomInstance.NextDouble();
