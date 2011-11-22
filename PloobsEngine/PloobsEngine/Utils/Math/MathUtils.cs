@@ -298,7 +298,7 @@ namespace PloobsEngine.Utils
                
        public static Matrix CreateRotationFromLine(Vector3 start, Vector3 end)
        {
-           Vector3 p; // this vector should not be between start and end
+           Vector3 p = new Vector3() ; // this vector should not be between start and end
            p.X = (float) StaticRandom.RandomInstance.NextDouble();
            p.Y = (float) StaticRandom.RandomInstance.NextDouble();
            p.Z = (float) StaticRandom.RandomInstance.NextDouble();
