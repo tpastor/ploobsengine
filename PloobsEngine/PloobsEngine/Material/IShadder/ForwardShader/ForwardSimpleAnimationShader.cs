@@ -34,7 +34,7 @@ using XNAnimation.Effects;
 namespace PloobsEngine.Material
 {
 
- 
+
     /// <summary>
     /// Animation shader with simple effects
     /// </summary>
@@ -72,9 +72,11 @@ namespace PloobsEngine.Material
         /// </summary>
         /// <param name="ac">The ac.</param>
         public ForwardSimpleAnimationShader(IAnimatedController ac)
-            {            
+        {
             this.ac = ac;
+            #if WINDOWS_PHONE || REACH
             EnableTexture = true;
+#endif
         }
 
         /// <summary>
@@ -86,25 +88,27 @@ namespace PloobsEngine.Material
         /// <param name="obj">The obj.</param>
         /// <param name="Followed">The followed.</param>
         /// <param name="boneName">Name of the bone.</param>
-         public ForwardSimpleAnimationShader(IAnimatedController ac, IObject obj, IAnimatedController Followed, String boneName)
-        {            
-            this.ac = ac;            
+        public ForwardSimpleAnimationShader(IAnimatedController ac, IObject obj, IAnimatedController Followed, String boneName)
+        {
+            this.ac = ac;
             this.Followed = Followed;
             followBone = true;
             this.boneName = boneName;
             this.Followobj = obj;
+            #if WINDOWS_PHONE || REACH
             EnableTexture = true;
+#endif
         }
 
-         public override void Initialize(PloobsEngine.Engine.GraphicInfo ginfo, PloobsEngine.Engine.GraphicFactory factory, PloobsEngine.SceneControl.IObject obj)
-         {
-             base.Initialize(ginfo, factory, obj);
+        public override void Initialize(PloobsEngine.Engine.GraphicInfo ginfo, PloobsEngine.Engine.GraphicFactory factory, PloobsEngine.SceneControl.IObject obj)
+        {
+            base.Initialize(ginfo, factory, obj);
 
 #if WINDOWS_PHONE || REACH
              SkinnedEffect = factory.GetSkinnedEffect();
              SkinnedEffect.EnableDefaultLighting();
 #endif
-         }
+        }
 
 #if WINDOWS_PHONE || REACH
          IObject ent = null;
@@ -127,7 +131,7 @@ namespace PloobsEngine.Material
 #endif
 
 
-         IObject Followobj;
+        IObject Followobj;
         String boneName;
         IAnimatedController Followed;
         bool followBone = false;
@@ -155,9 +159,9 @@ namespace PloobsEngine.Material
         public override void Update(GameTime gt, IObject ent, IList<Light.ILight> lights)
         {
             base.Update(gt, ent, lights);
-            this.WorldMatrix = ent.WorldMatrix;         
+            this.WorldMatrix = ent.WorldMatrix;
         }
-     
+
 
 #if WINDOWS_PHONE || REACH
         public override void  Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<Light.ILight> lights)        
@@ -192,8 +196,8 @@ namespace PloobsEngine.Material
             }
         }
 #else
-         public override void  Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<Light.ILight> lights)        
- 	    {
+        public override void Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<Light.ILight> lights)
+        {
             AnimatedModel modelo = obj.Modelo as AnimatedModel;
 
             for (int i = 0; i < modelo.GetAnimatedModel().Meshes.Count; i++)
@@ -225,5 +229,6 @@ namespace PloobsEngine.Material
         }
 
     }
+}
     
 
