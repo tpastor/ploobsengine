@@ -8,9 +8,27 @@
         <ListBox Height="125" HorizontalAlignment="Left" Margin="0,71,0,0" Name="listBox1" VerticalAlignment="Top" Width="215"  MouseDoubleClick="listBox1_MouseDoubleClick"/>
         <Label Content="Avaliable Versions" Height="28" HorizontalAlignment="Left" Margin="12,37,0,0" Name="label1" VerticalAlignment="Top" />
         <Label Content="Current Version:" Height="28" HorizontalAlignment="Left" Margin="298,12,0,0" Name="label2" VerticalAlignment="Top" />
+
         <tb:TaskbarIcon
+      x:Name="MyNotifyIcon"
       IconSource="DefaultTrayIcon.ico"
-      ToolTipText="PloobsUploader" TrayRightMouseDown="TaskbarIcon_TrayRightMouseDown"  />
+      ToolTipText="PloobsUpdater"
+            TrayLeftMouseDown="TaskbarIcon_TrayRightMouseDown"
+            >
+
+            <!-- Set a simple context menu  -->
+            <tb:TaskbarIcon.ContextMenu >                
+                <ContextMenu                   
+      Background="LightCoral"   >
+                    <MenuItem Click="MenuItem_Click" Header="Open" />
+                    <MenuItem Click="MenuItem_Click_1" Header="Exit" />                    
+                </ContextMenu>
+            </tb:TaskbarIcon.ContextMenu>            
+            
+            
+        </tb:TaskbarIcon>
+
+
 
     </Grid>
     
