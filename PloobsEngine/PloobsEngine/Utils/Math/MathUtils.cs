@@ -295,5 +295,35 @@ namespace PloobsEngine.Utils
             smoothedAccumulator = Interpolate(Clip(smoothRate, 0, 1), smoothedAccumulator, newValue);
         }
 
+               
+       public static Matrix CreateRotationFromLine(Vector3 start, Vector3 end)
+       {
+           Vector3 p; // this vector should not be between start and end
+           p.X = (float) StaticRandom.RandomInstance.NextDouble();
+           p.Y = (float) StaticRandom.RandomInstance.NextDouble();
+           p.Z = (float) StaticRandom.RandomInstance.NextDouble();
+           //
+           Vector3 r = Vector3.Cross(p - start, end - start);
+           Vector3 s = Vector3.Cross(r, end - start);
+           r.Normalize();
+           s.Normalize();
+           //
+           Vector3 forward = end - start;
+           forward.Normalize();
+           //
+           float theta = 0;
+           float rCosTheta = (float)Math.Cos(theta), 
+                 rSinTheta = (float)Math.Sin(theta);
+           //
+           Vector3 up = new Vector3()
+           {
+               X = start.X + rCosTheta * r.X + rSinTheta * s.X,
+               Y = start.Y + rCosTheta * r.Y + rSinTheta * s.Y,
+               Z = start.Z + rCosTheta * r.Z + rSinTheta * s.Z
+           };
+           return Matrix.CreateWorld(start, forward, up);
+       }
+
+
     }
 }
