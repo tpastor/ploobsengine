@@ -27,6 +27,10 @@ namespace PloobsUpdater
         public MainWindow()
         {
             InitializeComponent();
+            this.Hide();
+
+            return;
+
             RegistryKey myKey = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Wow6432Node\\Microsoft\\.NETFramework\\v4.0.30319\\AssemblyFoldersEx\\PloobsEngine", false);
             if (myKey != null)
             {
@@ -138,6 +142,17 @@ namespace PloobsUpdater
             process.StartInfo.FileName = temppath; 
             process.Start(); 
             process.WaitForExit();
+        }
+
+        private void TaskbarIcon_TrayRightMouseDown(object sender, RoutedEventArgs e)
+        {
+            this.Show();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            this.Hide();
         }
     }
 }
