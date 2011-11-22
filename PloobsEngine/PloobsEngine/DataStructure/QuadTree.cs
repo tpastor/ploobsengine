@@ -6,388 +6,370 @@ using Microsoft.Xna.Framework;
 
 namespace PloobsEngine.DataStructure
 {
-    /// <summary>
-    /// A simple interface defining a position and a bounding sphere.
-    /// Any object that implements this interface can be used with the QuadTree class.
-    /// This interface would typically be moved into another source file.
-    /// Note: Currently the QuadTree does not use the BoundSphere member, so it does not need to be in the interface.
-    /// </summary>
-    public interface ISpatialNode
-    {
-        Vector3 Position { get; }
-        BoundingSphere BoundSphere { get; }
-    }
-
-    /// <summary>
-    /// A generic dynamic recursive QuadTree
-    /// </summary>
-    public class QuadTree<T> where T : ISpatialNode
-    {
-        #region Fields
-
-        public readonly BoundingBox BoundingBox;
-        public readonly List<T> Objects;
-        public int MaxObjects;
-        public QuadTree<T> Parent;
-        public QuadTree<T> TopLeft;
-        public QuadTree<T> TopRight;
-        public QuadTree<T> BottomLeft;
-        public QuadTree<T> BottomRight;
-        static List<QuadTree<T>> leavesInsideBound = new List<QuadTree<T>>();
-
-        #endregion
-
-        #region Initialization
-
         /// <summary>
-        /// Constructor
+        /// Interface to define Rect, so that QuadTree knows how to store the object.
         /// </summary>
-        /// <typeparam name="maxObjects">The maximum number of objects per leaf. If an object is inserted into a leaf that
-        /// already constains maxObject, then the leaf will be split, and the contained objects moved down to the appropriate
-        /// child leaves</typeparam>
-        /// <typeparam name="box">The bounding box that defines the size of the QuadTree</typeparam>
-        public QuadTree(int maxObjects, BoundingBox box)
+        public interface IHasRectangle
         {
-            MaxObjects = maxObjects;
-            box.Min.Y = float.MinValue;
-            box.Max.Y = float.MaxValue;
-            BoundingBox = box;
-            Objects = new List<T>(maxObjects);
+            /// <summary>
+            /// The rectangle that defines the object's boundaries.
+            /// </summary>
+            Rectangle Rect { get; }
         }
 
         /// <summary>
-        /// Constructor
+        /// A QuadTree Object that provides fast and efficient storage of objects in a world space.
         /// </summary>
-        /// <typeparam name="maxObjects">The maximum number of objects per leaf. If an object is inserted into a leaf that
-        /// already constains maxObject, then the leaf will be split, and the contained objects moved down to the appropriate
-        /// child leaves</typeparam>
-        /// <typeparam name="position">The center of the QuadTree in world space</typeparam>
-        /// <typeparam name="scale">The size of the QuadTree</typeparam>
-        public QuadTree(int maxObjects, Vector3 position, Vector3 scale)
-            : this(maxObjects, new BoundingBox(position - scale * 0.5f, position + scale * 0.5f))
+        /// <typeparam name="T">Any object iheriting from IHasRect.</typeparam>
+        public class QuadTree<T> where T : IHasRectangle
         {
-        }
+            #region Constants
+            // How many objects can exist in a QuadTree before it sub divides itself
+            private const int MAX_OBJECTS_PER_NODE = 2;
+            #endregion
 
-        #endregion
+            #region Private Members
+            private List<T> m_objects = null;       // The objects in this QuadTree
+            private Rectangle m_rect;               // The area this QuadTree represents
 
-        #region Public Properties
+            private QuadTree<T> m_childTL = null;   // Top Left Child
+            private QuadTree<T> m_childTR = null;   // Top Right Child
+            private QuadTree<T> m_childBL = null;   // Bottom Left Child
+            private QuadTree<T> m_childBR = null;   // Bottom Right Child
+            #endregion
 
-        /// <summary>
-        /// Return True if this QuadTree is a Leaf (has no child nodes), or false if it is not a leaf.
-        /// </summary>
-        public bool IsLeaf
-        {
-            get { return TopLeft == null; }
-        }
+            #region Public Properties
+            /// <summary>
+            /// The area this QuadTree represents.
+            /// </summary>
+            public Rectangle QuadRect { get { return m_rect; } }
 
-        /// <summary>
-        /// Return the number of leaves contained by a QuadTree Node.
-        /// </summary>
-        public int LeafCount
-        {
-            get
+            /// <summary>
+            /// The top left child for this QuadTree
+            /// </summary>
+            public QuadTree<T> TopLeftChild { get { return m_childTL; } }
+
+            /// <summary>
+            /// The top right child for this QuadTree
+            /// </summary>
+            public QuadTree<T> TopRightChild { get { return m_childTR; } }
+
+            /// <summary>
+            /// The bottom left child for this QuadTree
+            /// </summary>
+            public QuadTree<T> BottomLeftChild { get { return m_childBL; } }
+
+            /// <summary>
+            /// The bottom right child for this QuadTree
+            /// </summary>
+            public QuadTree<T> BottomRightChild { get { return m_childBR; } }
+
+            /// <summary>
+            /// The objects contained in this QuadTree at it's level (ie, excludes children)
+            /// </summary>
+            public List<T> Objects { get { return m_objects; } }
+
+            /// <summary>
+            /// How many total objects are contained within this QuadTree (ie, includes children)
+            /// </summary>
+            public int Count { get { return this.ObjectCount(); } }
+            #endregion
+
+            #region Constructor
+            /// <summary>
+            /// Creates a QuadTree for the specified area.
+            /// </summary>
+            /// <param name="rect">The area this QuadTree object will encompass.</param>
+            public QuadTree(Rectangle rect)
             {
-                return IsLeaf ? 4 : (TopLeft.LeafCount + TopRight.LeafCount + BottomLeft.LeafCount + BottomRight.LeafCount);
+                m_rect = rect;
             }
-        }
 
-        #endregion
-
-        #region Add Object
-
-        /// <summary>
-        /// Add a new object to the QuadTree. 
-        /// This method will find the correct leaf, add the object to the leaf's list and then return the leaf.
-        /// </summary>
-        public QuadTree<T> AddObject(T spatial)
-        {
-            QuadTree<T> result = null;
-
-            if (BoundingBox.Contains(spatial.Position) == ContainmentType.Contains)
+            /// <summary>
+            /// Creates a QuadTree for the specified area.
+            /// </summary>
+            /// <param name="x">The top-left position of the area rectangle.</param>
+            /// <param name="y">The top-right position of the area reactangle.</param>
+            /// <param name="width">The width of the area rectangle.</param>
+            /// <param name="height">The height of the area rectangle.</param>
+            public QuadTree(int x, int y, int width, int height)
             {
-                if (TopLeft == null)
+                m_rect = new Rectangle(x, y, width, height);
+            }
+            #endregion
+
+            #region Private Members
+            /// <summary>
+            /// Add an item to the object list.
+            /// </summary>
+            /// <param name="item">The item to add.</param>
+            private void Add(T item)
+            {
+                if (m_objects == null)
+                    m_objects = new List<T>();
+
+                m_objects.Add(item);
+            }
+
+            /// <summary>
+            /// Remove an item from the object list.
+            /// </summary>
+            /// <param name="item">The object to remove.</param>
+            private void Remove(T item)
+            {
+                if (m_objects != null && m_objects.Contains(item))
+                    m_objects.Remove(item);
+            }
+
+            /// <summary>
+            /// Get the total for all objects in this QuadTree, including children.
+            /// </summary>
+            /// <returns>The number of objects contained within this QuadTree and its children.</returns>
+            private int ObjectCount()
+            {
+                int count = 0;
+
+                // Add the objects at this level
+                if (m_objects != null) count += m_objects.Count;
+
+                // Add the objects that are contained in the children
+                if (m_childTL != null)
                 {
-                    if (Objects.Count < MaxObjects)
-                    {
-                        Objects.Add(spatial);
-                        return this;
-                    }
-
-                    Split();
-
-                    if (TopLeft == null)
-                    {
-                        MaxObjects *= 2;
-                        return AddObject(spatial);
-                    }
-
-                    // continue down
+                    count += m_childTL.ObjectCount();
+                    count += m_childTR.ObjectCount();
+                    count += m_childBL.ObjectCount();
+                    count += m_childBR.ObjectCount();
                 }
 
-                result = TopLeft.AddObject(spatial);
-                if (result == null)
+                return count;
+            }
+
+            /// <summary>
+            /// Subdivide this QuadTree and move it's children into the appropriate Quads where applicable.
+            /// </summary>
+            private void Subdivide()
+            {
+                // We've reached capacity, subdivide...
+                Point size = new Point(m_rect.Width / 2, m_rect.Height / 2);
+                Point mid = new Point(m_rect.X + size.X, m_rect.Y + size.Y);
+
+                m_childTL = new QuadTree<T>(new Rectangle(m_rect.Left, m_rect.Top, size.X, size.Y));
+                m_childTR = new QuadTree<T>(new Rectangle(mid.X, m_rect.Top, size.X, size.Y));
+                m_childBL = new QuadTree<T>(new Rectangle(m_rect.Left, mid.Y, size.X, size.Y));
+                m_childBR = new QuadTree<T>(new Rectangle(mid.X, mid.Y, size.X, size.Y));
+
+                // If they're completely contained by the quad, bump objects down
+                for (int i = 0; i < m_objects.Count; i++)
                 {
-                    result = TopRight.AddObject(spatial);
-                    if (result == null)
+                    QuadTree<T> destTree = GetDestinationTree(m_objects[i]);
+
+                    if (destTree != this)
                     {
-                        result = BottomLeft.AddObject(spatial);
-                        if (result == null)
+                        // Insert to the appropriate tree, remove the object, and back up one in the loop
+                        destTree.Insert(m_objects[i]);
+                        Remove(m_objects[i]);
+                        i--;
+                    }
+                }
+            }
+
+            /// <summary>
+            /// Get the child Quad that would contain an object.
+            /// </summary>
+            /// <param name="item">The object to get a child for.</param>
+            /// <returns></returns>
+            private QuadTree<T> GetDestinationTree(T item)
+            {
+                // If a child can't contain an object, it will live in this Quad
+                QuadTree<T> destTree = this;
+
+                if (m_childTL.QuadRect.Contains(item.Rect))
+                {
+                    destTree = m_childTL;
+                }
+                else if (m_childTR.QuadRect.Contains(item.Rect))
+                {
+                    destTree = m_childTR;
+                }
+                else if (m_childBL.QuadRect.Contains(item.Rect))
+                {
+                    destTree = m_childBL;
+                }
+                else if (m_childBR.QuadRect.Contains(item.Rect))
+                {
+                    destTree = m_childBR;
+                }
+
+                return destTree;
+            }
+            #endregion
+
+            #region Public Methods
+            /// <summary>
+            /// Clears the QuadTree of all objects, including any objects living in its children.
+            /// </summary>
+            public void Clear()
+            {
+                // Clear out the children, if we have any
+                if (m_childTL != null)
+                {
+                    m_childTL.Clear();
+                    m_childTR.Clear();
+                    m_childBL.Clear();
+                    m_childBR.Clear();
+                }
+
+                // Clear any objects at this level
+                if (m_objects != null)
+                {
+                    m_objects.Clear();
+                    m_objects = null;
+                }
+
+                // Set the children to null
+                m_childTL = null;
+                m_childTR = null;
+                m_childBL = null;
+                m_childBR = null;
+            }
+
+            /// <summary>
+            /// Deletes an item from this QuadTree. If the object is removed causes this Quad to have no objects in its children, it's children will be removed as well.
+            /// </summary>
+            /// <param name="item">The item to remove.</param>
+            public void Delete(T item)
+            {
+                // If this level contains the object, remove it
+                bool objectRemoved = false;
+                if (m_objects != null && m_objects.Contains(item))
+                {
+                    Remove(item);
+                    objectRemoved = true;
+                }
+
+                // If we didn't find the object in this tree, try to delete from its children
+                if (m_childTL != null && !objectRemoved)
+                {
+                    m_childTL.Delete(item);
+                    m_childTR.Delete(item);
+                    m_childBL.Delete(item);
+                    m_childBR.Delete(item);
+                }
+
+                if (m_childTL != null)
+                {
+                    // If all the children are empty, delete all the children
+                    if (m_childTL.Count == 0 &&
+                        m_childTR.Count == 0 &&
+                        m_childBL.Count == 0 &&
+                        m_childBR.Count == 0)
+                    {
+                        m_childTL = null;
+                        m_childTR = null;
+                        m_childBL = null;
+                        m_childBR = null;
+                    }
+                }
+            }
+
+            /// <summary>
+            /// Insert an item into this QuadTree object.
+            /// </summary>
+            /// <param name="item">The item to insert.</param>
+            public void Insert(T item)
+            {
+                // If this quad doesn't intersect the items rectangle, do nothing
+                if (!m_rect.Intersects(item.Rect))
+                    return;
+
+                if (m_objects == null ||
+                    (m_childTL == null && m_objects.Count + 1 <= MAX_OBJECTS_PER_NODE))
+                {
+                    // If there's room to add the object, just add it
+                    Add(item);
+                }
+                else
+                {
+                    // No quads, create them and bump objects down where appropriate
+                    if (m_childTL == null)
+                    {
+                        Subdivide();
+                    }
+
+                    // Find out which tree this object should go in and add it there
+                    QuadTree<T> destTree = GetDestinationTree(item);
+                    if (destTree == this)
+                    {
+                        Add(item);
+                    }
+                    else
+                    {
+                        destTree.Insert(item);
+                    }
+                }
+            }
+
+            /// <summary>
+            /// Get the objects in this tree that intersect with the specified rectangle.
+            /// </summary>
+            /// <param name="rect">The rectangle to find objects in.</param>
+            /// <param name="results">A reference to a list that will be populated with the results.</param>
+            public void GetObjects(Rectangle rect, ref List<T> results)
+            {
+                // We can't do anything if the results list doesn't exist
+                if (results != null)
+                {
+                    if (rect.Contains(m_rect))
+                    {
+                        // If the search area completely contains this quad, just get every object this quad and all it's children have
+                        GetAllObjects(ref results);
+                    }
+                    else if (rect.Intersects(m_rect))
+                    {
+                        // Otherwise, if the quad isn't fully contained, only add objects that intersect with the search rectangle
+                        if (m_objects != null)
                         {
-                            result = BottomRight.AddObject(spatial);
+                            for (int i = 0; i < m_objects.Count; i++)
+                            {
+                                if (rect.Intersects(m_objects[i].Rect))
+                                {
+                                    results.Add(m_objects[i]);
+                                }
+                            }
+                        }
+
+                        // Get the objects for the search rectangle from the children
+                        if (m_childTL != null)
+                        {
+                            m_childTL.GetObjects(rect, ref results);
+                            m_childTR.GetObjects(rect, ref results);
+                            m_childBL.GetObjects(rect, ref results);
+                            m_childBR.GetObjects(rect, ref results);
                         }
                     }
                 }
             }
-            return result;
-        }
 
-        #endregion
-
-        #region Remove Object
-
-        /// <summary>
-        /// Remove an object from the QuadTree.
-        /// This method will find the containing leaf, and remove the object from the leaf's list.
-        /// </summary>
-        public void RemoveObject(T spatial)
-        {
-            QuadTree<T> leaf = FindLeaf(spatial.Position);
-            if (leaf != null)
+            /// <summary>
+            /// Get all objects in this Quad, and it's children.
+            /// </summary>
+            /// <param name="results">A reference to a list in which to store the objects.</param>
+            public void GetAllObjects(ref List<T> results)
             {
-                leaf.Objects.Remove(spatial);
-            }
-        }
+                // If this Quad has objects, add them
+                if (m_objects != null)
+                    results.AddRange(m_objects);
 
-        #endregion
-
-        #region Object Moved
-
-        /// <summary>
-        /// If an object is moved by your program, call this method, passing the object and the objects current leaf.
-        /// The object will be reassigned to the correct leaf if it has moved outside the bounds of its current leaf.
-        /// </summary>
-        /// <typeparam name="prevNode">The leaf containing the object before it was moved</typeparam>
-        public QuadTree<T> ObjectMoved(T spatial, QuadTree<T> prevNode)
-        {
-            QuadTree<T> result = null;
-
-            if (BoundingBox.Contains(spatial.Position) == ContainmentType.Contains)
-            {
-                if (TopLeft == null)
+                // If we have children, get their objects too
+                if (m_childTL != null)
                 {
-                    if (this != prevNode)
-                    {
-                        if (prevNode != null)
-                            prevNode.Objects.Remove(spatial);
-
-                        return AddObject(spatial);
-                    }
-                    return this;
-                }
-
-                if ((result = TopLeft.ObjectMoved(spatial, prevNode)) == null)
-                    if ((result = TopRight.ObjectMoved(spatial, prevNode)) == null)
-                        if ((result = BottomLeft.ObjectMoved(spatial, prevNode)) == null)
-                            result = BottomRight.ObjectMoved(spatial, prevNode);
-            }
-            return result;
-        }
-
-        #endregion
-
-        #region Find Leaves
-
-        /// <summary>
-        /// Return the QuadTree leaf that contains the specified position
-        /// </summary>
-        public QuadTree<T> FindLeaf(Vector3 position)
-        {
-            if (BoundingBox.Contains(position) == ContainmentType.Contains)
-            {
-                if (TopLeft == null)
-                {
-                    return this;
-                }
-                else
-                {
-                    QuadTree<T> result;
-                    if ((result = TopLeft.FindLeaf(position)) == null)
-                        if ((result = TopRight.FindLeaf(position)) == null)
-                            if ((result = BottomLeft.FindLeaf(position)) == null)
-                                result = BottomRight.FindLeaf(position);
-
-                    return result;
+                    m_childTL.GetAllObjects(ref results);
+                    m_childTR.GetAllObjects(ref results);
+                    m_childBL.GetAllObjects(ref results);
+                    m_childBR.GetAllObjects(ref results);
                 }
             }
-            return null;
+            #endregion
         }
-
-        /// <summary>
-        /// Return a list of all QuadTree leaves that intersect the specified frustum
-        /// </summary>
-        public List<QuadTree<T>> GetLeavesInsideFrustrum(BoundingFrustum frustum)
-        {
-            leavesInsideBound.Clear();
-            AddLeavesInsideFrustrum(frustum);
-            return leavesInsideBound;
-        }
-
-        void AddLeavesInsideFrustrum(BoundingFrustum frustum)
-        {
-            if (frustum.Contains(BoundingBox) != ContainmentType.Disjoint)
-            {
-                if (TopLeft == null)
-                {
-                    leavesInsideBound.Add(this);
-                }
-                else
-                {
-                    TopLeft.AddLeavesInsideFrustrum(frustum);
-                    TopRight.AddLeavesInsideFrustrum(frustum);
-                    BottomLeft.AddLeavesInsideFrustrum(frustum);
-                    BottomRight.AddLeavesInsideFrustrum(frustum);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Return a list of all QuadTree leaves that intersect the specified bounding sphere
-        /// </summary>
-        public List<QuadTree<T>> GetLeavesInsideSphere(BoundingSphere sphere)
-        {
-            leavesInsideBound.Clear();
-            AddLeavesInsideSphere(sphere);
-            return leavesInsideBound;
-        }
-
-        void AddLeavesInsideSphere(BoundingSphere sphere)
-        {
-            if (sphere.Contains(BoundingBox) != ContainmentType.Disjoint)
-            {
-                if (TopLeft == null)
-                {
-                    leavesInsideBound.Add(this);
-                }
-                else
-                {
-                    TopLeft.AddLeavesInsideSphere(sphere);
-                    TopRight.AddLeavesInsideSphere(sphere);
-                    BottomLeft.AddLeavesInsideSphere(sphere);
-                    BottomRight.AddLeavesInsideSphere(sphere);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Return a list of all QuadTree leaves that intersect the specified band
-        /// </summary>
-        /// <typeparam name="innerSphere">Inner band edge</typeparam>
-        /// <typeparam name="outerSphere">Outer band edge</typeparam>
-        public List<QuadTree<T>> GetLeavesInsideSphereBand(BoundingSphere innerSphere, BoundingSphere outerSphere)
-        {
-            leavesInsideBound.Clear();
-            AddLeavesInsideSphereBand(innerSphere, outerSphere);
-            return leavesInsideBound;
-        }
-
-        void AddLeavesInsideSphereBand(BoundingSphere innerSphere, BoundingSphere outerSphere)
-        {
-            if (outerSphere.Contains(BoundingBox) != ContainmentType.Disjoint
-                && innerSphere.Contains(BoundingBox) != ContainmentType.Contains)
-            {
-                if (TopLeft == null)
-                {
-                    leavesInsideBound.Add(this);
-                }
-                else
-                {
-                    TopLeft.AddLeavesInsideSphereBand(innerSphere, outerSphere);
-                    TopRight.AddLeavesInsideSphereBand(innerSphere, outerSphere);
-                    BottomLeft.AddLeavesInsideSphereBand(innerSphere, outerSphere);
-                    BottomRight.AddLeavesInsideSphereBand(innerSphere, outerSphere);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Return a list of all QuadTree leaves that intersect the specified bounding box
-        /// </summary>
-        public List<QuadTree<T>> GetLeavesInsideBox(BoundingBox box)
-        {
-            leavesInsideBound.Clear();
-            AddLeavesInsideBox(box);
-            return leavesInsideBound;
-        }
-
-        void AddLeavesInsideBox(BoundingBox box)
-        {
-            if (box.Contains(BoundingBox) != ContainmentType.Disjoint)
-            {
-                if (TopLeft == null)
-                {
-                    leavesInsideBound.Add(this);
-                }
-                else
-                {
-                    TopLeft.AddLeavesInsideBox(box);
-                    TopRight.AddLeavesInsideBox(box);
-                    BottomLeft.AddLeavesInsideBox(box);
-                    BottomRight.AddLeavesInsideBox(box);
-                }
-            }
-        }
-
-        #endregion
-
-        #region Split
-
-        /// <summary>
-        /// Split a leaf into 4 x child leaves, and reassign contained objects to child leaves.
-        /// </summary>
-        void Split()
-        {
-            float halfScaleX = (BoundingBox.Max.X - BoundingBox.Min.X) * 0.5f;
-            float halfScaleZ = (BoundingBox.Max.Z - BoundingBox.Min.Z) * 0.5f;
-            Vector3 halfScale = new Vector3(halfScaleX, 0f, halfScaleZ);
-            float qtrScaleX = halfScaleX * 0.5f;
-            float qtrScaleZ = halfScaleZ * 0.5f;
-
-            if (qtrScaleX != 0f && qtrScaleZ != 0f)
-            {
-                Vector3 topLeftPosition = BoundingBox.Min + new Vector3(qtrScaleX, 0f, qtrScaleZ);
-                Vector3 topRightPosition = BoundingBox.Min + new Vector3(qtrScaleX + halfScaleX, 0f, qtrScaleZ);
-                Vector3 bottomLeftPosition = BoundingBox.Min + new Vector3(qtrScaleX, 0f, qtrScaleZ + halfScaleZ);
-                Vector3 bottomRightPosition = BoundingBox.Min + new Vector3(qtrScaleX + halfScaleX, 0f, qtrScaleZ + halfScaleZ);
-
-                TopLeft = new QuadTree<T>(MaxObjects, topLeftPosition, halfScale);
-                TopRight = new QuadTree<T>(MaxObjects, topRightPosition, halfScale);
-                BottomLeft = new QuadTree<T>(MaxObjects, bottomLeftPosition, halfScale);
-                BottomRight = new QuadTree<T>(MaxObjects, bottomRightPosition, halfScale);
-
-                TopLeft.Parent = this;
-                TopRight.Parent = this;
-                BottomLeft.Parent = this;
-                BottomRight.Parent = this;
-
-                ReassignObjects();
-                Objects.Clear();
-            }
-        }
-
-        /// <summary>
-        /// Reassign objects to child leaves, based on position.
-        /// </summary>
-        void ReassignObjects()
-        {
-            foreach (T spatial in Objects)
-            {
-                if (TopLeft.AddObject(spatial) == null)
-                    if (TopRight.AddObject(spatial) == null)
-                        if (BottomLeft.AddObject(spatial) == null)
-                            BottomRight.AddObject(spatial);
-            }
-        }
-
-        #endregion
     }
-}
+ 
