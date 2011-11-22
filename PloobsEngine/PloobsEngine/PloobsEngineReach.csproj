@@ -371,6 +371,8 @@
     <Compile Include="SceneControl\Scene\ForwardRender\ForwardRenderTecnich.cs" />
     <Compile Include="Utils\EnumerableExtension.cs" />
     <Compile Include="Utils\Math\Circle.cs" />
+    <Compile Include="Utils\PolygonUnion.cs" />
+    <Compile Include="Utils\Primitives.cs" />
     <Compile Include="Utils\TextureCreator.cs" />
     <Compile Include="Trigger\BepuTrigger.cs" />
     <Compile Include="Trigger\GenericEventHandler.cs" />
@@ -393,6 +395,7 @@
     <Compile Include="Utils\PerlinNoise.cs" />
     <Compile Include="Utils\Serializer\SerializerHelper.cs" />
     <Compile Include="Utils\TimePassed.cs" />
+    <Compile Include="Utils\Triangulator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Windows Phone\Debug\EnginePhoneContent\Font\ConsoleFont.xnb" />
