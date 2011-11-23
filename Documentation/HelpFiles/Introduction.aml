@@ -15,15 +15,20 @@
         This help document is organized as follows:
         </para>
         <para>
-        This introduction page talk about the engine features, the Basic 
-        Concepts page talks about the engine architecture.
-        Under the Tutorials section we have Basic Tutorial (a hello world demo 
-        very explained). In code tutorial (advanced demos) and some extras explaining
-        some engine specifics details.
-        In the Source code section we describe how the source code is organized
-        and how to create the release singe Dll.
-        The Max Exporter section explains how our 3DS Max exporter
-        works.
+        
+<list class="bullet">
+  <listItem><para>This introduction page talk about the engine features</para></listItem>
+  <listItem><para>The Basic Concepts page talks about the engine architecture.</para></listItem>
+  <listItem><para>Under the Tutorials section we have Basic Tutorial (a hello world demo 
+        very explained). </para></listItem>
+  <listItem><para>In code tutorial (advanced demos) and some extras explaining
+        some engine specifics details.</para></listItem>
+        <listItem><para>In the Source code section we describe how the source code is organized.</para></listItem>
+        <listItem><para>The Max Exporter section explains how our 3DS Max exporter
+        works.</para></listItem>
+        <listItem><para>In the API Reference section we show all the PloobsEngine classes.</para></listItem>  
+</list>
+        
         </para>
                
       </content>
@@ -34,36 +39,31 @@
  <content>       
  
  <para>
- The Ploobs Engine version 0.3 is the port of the Xna 3.1 PloobsEngine version 0.2.
- Lots of changes were made, principaly in the architecture and in the design.
- We learned from our mistakes, this version is more Xna independent and
- modular. 
+ The actual version of the Ploobs Engine version is 0.4
+ Lots of changes were made comparing with the 0.3 version (released in may of 2011). 
+ We learned from our mistakes, this version is more modular and Xna independent. 
  </para>
  <para>
- One of the main guidelines in this version was simplicity. The engine try to helpl
- the use to make the right thing. In the Debug version we use lots of 
- asserts ensure that the user is doing the right think, we also have a new 
- log system that gives some hints about common mistakes and commom errors to the user.
+ One of the main guidelines in this version was simplicity. The engine try to help
+ the user to make the right thing always. 
+ In the Debug version we use lots of asserts to ensure that the user is doing the right 
+ think, we also have a new log system that output some hints about common mistakes 
+ and commom errors to the user.
  </para>
       
- <para>Here is a list of the principal Engine features.</para>
+ <para>Here is a list of the principal Engine features:</para>
        
-<para>
-This list is smaller than the 0.2 version. We did not ported all stuffs at once.
-</para>
 <list class="bullet">
 <listItem>
-<para>Forward Rendering e Deferred Rendering</para>
+<para>Supports High End PC-Windows, Low End PC-Windows and Windows Phone 7</para>
+<para>Forward Rendering for Low End PC and Windows Phone 7 and Deferred Rendering for High End PC</para>
 <para>Two very different ways of rendering object in the screen. The forward
-technich is the traditional way of rendering, the Deferred is quite new in the
+technich is the traditional way of rendering, the Deferred is relatively new in the
 industry and is used in games like Starcraft 2 and Crysis 2 </para>
-<para>The main goal of using Deferred Rendering for the end user is the
-huge number of dynamic lights that a scene can have, most of our effects is implemented in Deferred Rendering </para>
 </listItem>
 
 <listItem>
 <para>Artificial Inteligence (PathFinding, NN, GA, Agents and World Abstractions, Steering Behaviors ...)</para>
-<para>NOT PORTED YET</para>
 </listItem>
 
 <listItem>
@@ -74,25 +74,23 @@ huge number of dynamic lights that a scene can have, most of our effects is impl
 </listItem>
 
 <listItem>
-<para>Physics Integrated (Bepu API)</para>
+<para> 3D and 2D Physics Integrated</para>
+<para>Integration with Bepu and Farseer physics</para>
 <para>We create an intermediate solution between
 a complete Wrapper (that is not good, because the physics engines
 architecture are never similar) and a coupled solution.
-The 0.2 version supported Bepu and JigLibX API, the 0.3 will not support JigLibX.
-We plan to support PhysicX soon.
 </para>
 </listItem>
 
 <listItem>
-<para>Animation Integrated  (XnaAnimation API, heavily altered to fit on the Deferred Render)</para>
-<para>Supports bone system animation, the render part of the XNAanimation
-was completely rewritten to fit in our deferred render</para>
+<para>Animation Integrated  (XnaAnimation API, heavily altered to fit on the Deferred Render and Forward Render)</para>
+<para>Supports bone system animation</para>
 <para>This API was build by a Brazilian guy (like us)</para>
 </listItem>
 
 <listItem>
-<para>Dynamic Water and Ocean with waves</para>
-<para>Has some shader to deal with dynamic water completely in GPU, using 
+<para>Dynamic Water and Ocean with waves (Deferred Render)</para>
+<para>Some Shaders to deal with dynamic water completely in GPU, using 
 technichs like Vertex Displacement, pertubations maps and texture animation. 
 The water can have Dynamic refraction and reflection.
 </para>
@@ -100,9 +98,8 @@ The water can have Dynamic refraction and reflection.
 
 <listItem>
 <para>Dynamic Reflection and Refraction</para>
-<para>Every object can reflect or refract the environment (Computers dont
-like these technich, cause they consume a lot of processing time, sometimes
-is good to fake them using environment mapping)</para>
+<para>Every object can reflect or refract the environment</para>
+<para>The dynamic version uses a planar texture generated in real time and the static version uses an environment map</para>
 </listItem>
 
 <listItem>
@@ -112,7 +109,7 @@ is good to fake them using environment mapping)</para>
 </listItem>
 
 <listItem>
-<para>BumpMaps, SpecularMaps,Glow Maps and Paralax Mapping</para>
+<para>BumpMaps, SpecularMaps, Glow Maps and Paralax Mapping (Only for Deferred Shading)</para>
 <para>There are some otimized shaders for specific materials and more 
 general ones with branches that supports every kind of combination between
 these maps</para>
@@ -120,7 +117,6 @@ these maps</para>
 
 <listItem>
 <para>Vegetation (Real Modeled Trees and Procedurally Generated Billboards)</para>
-<para>NOT PORTED YET</para>
 </listItem>
 
 <listItem>
@@ -131,7 +127,7 @@ textures coordinates according to the user field of view</para>
 </listItem>
 
 <listItem>
-<para>Dynamic Shadow (Shadow Mapping and Cascade Shadow Mapping) with 
+<para>Dynamic Shadow (Cascade Shadow Mapping) with 
 filtering</para>
 <para>Uses Classical shadow mapping for indoord environment (Directional and 
 Spot Lights) with lots of types of filtering and Cascade Shadow Mapping for 
@@ -143,7 +139,7 @@ good soft shadow)
 <listItem>
 <para>Deferred with Antialiasing (PostEffect)</para>
 <para>In DirectX 9c there is no hardware MSAA for Multiple Render Target, so whe
-apply an adaptative low band pass filter to remove hight frequency data
+apply some adaptative low band pass filters to remove hight frequency data.
 </para>
 <para>
 We support four types of shader AA: MLAA and other based on Rabula Rasa and Stalker GPU Gems Presentation.
@@ -161,7 +157,7 @@ We support four types of shader AA: MLAA and other based on Rabula Rasa and Stal
 </listItem>
 
 <listItem>
-<para>Extensible Particle System (soft particles also)</para>
+<para>Extensible Particle System (2D and 3D)</para>
 <para>
 We support the DPFSParticleSystem. It is very extensive and has lots of pre defined samples.
 We can support others particles system, the interfaces are very simple and clear
@@ -183,15 +179,13 @@ We can support others particles system, the interfaces are very simple and clear
 
 <listItem>
 <para>Skybox</para>
-<para>Using TexCube Textures for skybo.
-The 0.2 Supported dynamic SkyDomes, we will port this.
-
+<para>Using TexCube Textures for skybox.
 </para>
 </listItem>
 
 <listItem>
 <para>Billboards (Gpu Spherical and Cylindrical)</para>
-Scales very well, can use thousands of bilboards actives every frame
+Scales very well, can use thousands of bilboards actives every frame (with instancing)
 </listItem>
 
 <listItem>
@@ -202,13 +196,12 @@ Can use an Texure Atlas with frame animations to animated a Bilboard
 </listItem>
 
 <listItem>
-<para>Video Player Embedded</para>
+<para>Video Player Embedded (Only for PC-Windows)</para>
 Can Play common videos formats
 </listItem>
 
 <listItem>
 <para>Hardware Instancing (static and dynamic)</para>
-<para>No fully ported yet</para>
 </listItem>
 
 <listItem>
@@ -233,6 +226,7 @@ using the mouse
 <para>Input Control System</para>
 <para>System that abstracts the complexities of keyboard usage, supporting 
 Mouse and Keyboard</para>
+<para>Gestures support for Windows Phone 7</para>
 </listItem>
 
 <listItem>
@@ -247,14 +241,9 @@ Mouse and Keyboard</para>
 </listItem>
 
 <listItem>
-<para>Culling System</para>
+<para>2D and 3D Culling System</para>
 <para>Just send the object in the camera Frustrum to the GPU improving a 
 lot the render speed. Uses the Octree algorithm</para>
-</listItem>
-
-<listItem>
-<para>Profilling System (Real Time Graphs, Performance Counters, CSV Result Exporter ...)</para>
-<para>Not ported yet</para>
 </listItem>
 
 <listItem>
@@ -285,6 +274,7 @@ using a MaxScript plugin</para>
 <para>Has Lots of Math and Physicw Helpers</para>
 <para>An extensive Math and Physics Library for most commom operations
 </para>
+<para>Include classes to handle Pools, Octrees, Quadtrees ...</para>
 </listItem>
 
 <listItem>
@@ -293,6 +283,21 @@ using a MaxScript plugin</para>
 interface) and very simple to use.
 </para>
 </listItem>
+
+<listItem>
+<para>MultiThreading Support</para>
+<para>Native Engine MultiThreading
+</para>
+</listItem>
+
+<listItem>
+<para>Looots of others stuffs</para>
+<externalLink>
+          <linkText>Check Here:</linkText>          
+          <linkUri>http://ploobs.com.br/?page_id=465</linkUri>
+</externalLink>
+</listItem>
+
 </list>
 
 </content>      

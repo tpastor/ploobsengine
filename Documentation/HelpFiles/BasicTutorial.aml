@@ -7,13 +7,13 @@
     </summary>
     -->
     <introduction>      
-      <para>Most Basic Sample</para>
+      <para>Basic Samples</para>
     </introduction>    
     <section address="Section1">
       <title>The Most Simple 3D World</title>
       <content>        
         <para>
-        First of all we need to set up a XNA 3.1 project.
+        First of all we need to set up a XNA 4.0 project.
         </para>
         <para>
 		For this, just open the Visual Studio, New project, C#, XNA 3.1 and Windows Game.

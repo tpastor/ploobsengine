@@ -11,16 +11,8 @@
       <title>What we are planning to do in the near future</title>
       <content>              
       
-		<list class="bullet">
-		  <listItem><para><legacyBold>PORT TO XNA 4.0</legacyBold></para></listItem>
-		  <listItem><para><legacyBold>Preparing catching eyes Demos (Focused on Graphics)</legacyBold></para></listItem>
-		  <listItem><para>Better API Documentation (in code and extra documents)</para></listItem>
-		  <listItem><para>Make the API safer (including asserts in debug code and more user friendly error messages)</para></listItem>
-		  <listItem><para>Make Some Modules more intuitive</para></listItem>
-		  <listItem><para>Release Demos Showing all the Features Working Together</para></listItem>
-		  <listItem><para>Integrate With a Good HUD System</para></listItem>
-		  <listItem><para>Integrate With Lidgren NetWork</para></listItem>
-		  <listItem><para><legacyUnderline>Fix all the bugs that appears</legacyUnderline></para></listItem>
+		<list class="bullet">		  		  		  		  		  		  
+		  <para>BLABLABAL</para>
 		</list>	        
       </content>
       <!-- If a section contains a sections element, its content creates

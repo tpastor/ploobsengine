@@ -24,46 +24,24 @@
         like:</para>
         
 		<list class="bullet">
-		  <listItem><para>A custom version of XNAAnimation API</para></listItem>
-		  <listItem><para>A custom version of JigLibX API</para></listItem>
+		  <listItem><para>A custom version of XNAAnimation API</para></listItem>		  
 		  <listItem><para>A custom version of SharpSteer API</para></listItem>
 		  <listItem><para>A custom version of LTree API</para></listItem>
 		  <listItem><para>BepuPhysics API</para></listItem>		  
+		  <listItem><para>LidGren API</para></listItem>		  
+		  <listItem><para>Farseer API</para></listItem>		  
+		  <listItem><para>DPSF API</para></listItem>		  
 		</list>
 		
 		<para>
-		All the Custom Versions code are included in the Source Code package
+		All the Custom Versions code of the above DLLS are included in the Source Code package
 		</para>
-		
-		<para>
-		Some demos uses:
-		</para>
-		
-<list class="bullet">
-  <listItem><para>ModelXML, a simple API that i created to load a custom 
-  XML format</para></listItem>
-  <listItem><para>Zed Graph, a very good .Net API to draw graph</para></listItem>
-  <listItem><para>Lua Interface, to interop with the LUA language</para></listItem>
-</list>
-
-<para>
-	Some libs were customized to fit our need, some because the project was "abandoned" like JigLibX and SharpSteer (BugFix and add features), others because we need to fit them in our deferred render like XNAAnimation and LTree.
-</para>
-<para>
-The code of LTree and SharpSteer were included in the solution. The JigLib and XNAAnimation were not (just the DLL), the code is in the Auxiliar Libs Folder
-</para>
 <para>
 The utility program ILMERGE (http://www.microsoft.com/downloads/details.aspx?FamilyID=22914587-b4ad-4eae-87cf-b14ae6a939b0) is used to combine
-the DLLs in just one.
-</para>
-<para>
-We use the following command to combine our DLLs
-</para>
-<para>
-ilmerge /out:PloobsEngineDebug.dll BEPUphysics.dll JigLibX.dll LTreesLibrary.dll LTreesPipeline.dll PloobsEngine.dll XNAnimation.dll XNAnimationPipeline.dll /xmldocs /keyfile:XNAnimation.snk /ver:1.0.0.0 /log
+the DLLs in just one. The .bat that creates the unified dll are included in the repo. 
 </para>
 <alert class="note">      
- All the DLLs used by the ilmerge command must be in the same folder, and you need to put them by hand there
+ All the DLLs used by the ilmerge command must be in the same folder, and you need to put them by hand there. (normally you dont need to create the single DLL, only if you want to recompile the engine)
 </alert>
 
 		

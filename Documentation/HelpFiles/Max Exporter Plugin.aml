@@ -6,8 +6,7 @@
     </introduction>    
     <section address="Section1">
       <title>Max Exporter Information</title>
-      <content>        
-      
+      <content>              
       <para>
       The Max Exporter Plugin is built to assist the user exporting Lights, Camera, Dummies and Textures Maps from 3D Max Studio.
       </para>
@@ -32,28 +31,6 @@
 	  <listItem><para>Export the same scene in .XML format (using our plugin)</para></listItem>
 	  <listItem><para>Load the .XML scene using the engine. (the XML contains all the info needed to load cameras, lights, dummies and objects with different types of textures - whe current support self illuminance, bump, specular and diffuse) See the Scene example in AdvanceExamples Package.</para></listItem>	  
 	</list>
-
-<para>	
-A more detained about using the plugin (inside the 3DS Max) with screenshots can be found 
-        <externalLink>
-          <linkText>HERE (IN PORTUGUES)</linkText>          
-          <linkUri>http://ploobs.com.br/</linkUri>
-      </externalLink>      
-</para>
-
-<para>
-There is also another Plugin using the Max SDK under development, for more info visit the project 
-		<externalLink>
-          <linkText>ModelXML. </linkText>          
-          <linkUri>http://modelxml.codeplex.com/</linkUri>
-      </externalLink>
-.Some of my projects already use it, but now, its not so stable as KW Export for .X.
-</para>
-<para>
-In Source Code, project ETAPA1, you can find a Scene Sample using this experimental plugin
-</para>
-
-      
         
       </content>
       <!-- If a section contains a sections element, its content creates

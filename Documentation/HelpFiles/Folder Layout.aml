@@ -7,8 +7,7 @@
     <section address="Section1">
       <title>Folder Layout</title>
       <content>        
-        <para>Add one or more sections with content</para>
-        
+        <para>Add one or more sections with content</para>        
 		<list class="bullet">
 		  <listItem>
 		  <para>Code</para>		  
@@ -18,11 +17,8 @@
 				 </listItem>
 				  
 				  <listItem>
-				  <para>Auxiliar Libs</para>
-				  
-						<list class="bullet">
-						  <listItem><para>JiglibX</para></listItem>
-						  <listItem><para>HeighMapProcessor</para></listItem>
+				  <para>Auxiliar Libs</para>				  
+						<list class="bullet">						  						  
 						  <listItem><para>XNAAnimation</para></listItem>						  
 						</list>
 				  </listItem>

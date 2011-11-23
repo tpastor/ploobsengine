@@ -15,7 +15,7 @@
     <RootNamespace>Documentation</RootNamespace>
     <Name>Documentation</Name>
     <!-- SHFB properties -->
-    <OutputPath>C:\Users\tpastor\Desktop\port\Documentation\HelpOutput\</OutputPath>
+    <OutputPath>C:\Users\thiago.dias.pastor\Documents\Helper\</OutputPath>
     <HtmlHelpName>Ploobs Engine Help</HtmlHelpName>
     <Language>en-US</Language>
     <FrameworkVersion>.NET 4.0.30319</FrameworkVersion>
@@ -32,7 +32,7 @@
     <HelpTitle>Ploobs Engine Help</HelpTitle>
     <FeedbackEMailAddress>contato%40ploobs.com.br</FeedbackEMailAddress>
     <CopyrightHref>http://ploobsengine.codeplex.com/</CopyrightHref>
-    <CopyrightText>[v 0.3 ] Ploobs Engine Help</CopyrightText>
+    <CopyrightText>[v 0.4 ] Ploobs Engine Help</CopyrightText>
     <ComponentConfigurations>
       <ComponentConfig id="Post-transform Component" enabled="True">
         <component id="Post-transform Component" type="SandcastleBuilder.Components.PostTransformComponent" assembly="{@SHFBFolder}SandcastleBuilder.Components.dll">
@@ -51,7 +51,7 @@
           <!-- Logo image file (optional).  Filename is required. The height,
                  width, altText, placement, and alignment attributes are
                  optional. -->
-          <logoFile filename="C:\Users\tpastor\Desktop\Release\Code\PloobsEngine\Helper Aux\Logo.jpg" height="0" width="0" altText="" placement="left" alignment="left" />
+          <logoFile filename="C:\Users\thiago.dias.pastor\Desktop\port\Documentation\Helper Aux\Logo.jpg" height="0" width="0" altText="" placement="left" alignment="left" />
         </component>
       </ComponentConfig>
     </ComponentConfigurations>
@@ -117,6 +117,10 @@
     <None Include="HelpFiles\Root.aml" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Helper Aux\Logo.jpg">
+      <ImageId>Logo</ImageId>
+      <AlternateText>Logo</AlternateText>
+    </Image>
     <Image Include="Helper Aux\Untitled.jpg">
       <ImageId>Untitled</ImageId>
       <AlternateText>Untitled</AlternateText>
