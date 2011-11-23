@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="29a6f033-83ad-4c69-b3cd-6ce5bcc673d4" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">    
+    <introduction>      
+      <para>This page talk a little about the engine developers</para>
+    </introduction>    
+    <section address="Section1">
+      <title>Thiago Dias Pastor</title>
+      <content>        
+        <para>Iam a Computer Engineer graduated in the end of 2010 in 
+        University of Sao Paulo, Brazil. I worked as a developer in Web, 
+        finance and computer graphics area. </para>
+        <para>
+        The ploobs engine was my hobby project for more than one year 
+        and half, in the beginning it was just a sandbox where i developed
+        cool stuffs, as the time passed, i decided to turn it to a real
+        game engine. My graduation project was the Engine Deferred Render 
+        Module. 
+        </para>
+        <para>
+        Depeloping the engine was a really cool task, it helped me to learn 
+        lots of things about computer graphics and project management. I was 
+        involved principally in the Design and implementation area.        
+        </para>
+        <para>Check my others opensource projects in the Computer Graphics:
+        </para>
+        
+		<list class="bullet">
+		  <listItem>
+		  <para>
+			  <externalLink>
+	          <linkText>Software Render (using rasterization)</linkText>	      
+	          <linkUri>http://softrender.codeplex.com/</linkUri>
+	      	 </externalLink>
+		  </para>
+		  </listItem>
+		  
+		  <listItem>
+		  <para>
+			  <externalLink>
+	          <linkText>Software Raytracing</linkText>	      
+	          <linkUri>https://sourceforge.net/projects/learnraytracing/</linkUri>
+	      	 </externalLink>
+		  </para>
+		  </listItem>
+		  
+		  <listItem>
+		  <para>
+			  <externalLink>
+	          <linkText>DirectX 11 Experiments</linkText>	      
+	          <linkUri>http://dx11experiments.codeplex.com/</linkUri>
+	      	 </externalLink>
+		  </para>
+		  </listItem>
+		  
+		  <listItem>
+		  <para>
+			  <externalLink>
+	          <linkText>Model XML - Importer and Exporters</linkText>	      
+	          <linkUri>http://modelxml.codeplex.com/</linkUri>
+	      	 </externalLink>
+		  </para>
+		  </listItem>	  
+		  
+		</list>
+        <para>
+        To contact me send a email to: thiagodiaspastor@gmail.com
+        </para>
+      </content>
+      </section>
+      
+    
+    <section address="Section2">
+      <title>Bruno Duarte Correa</title>
+      <content>        
+        <para>Iam a Computer Engineer graduated in the end of 2010 in 
+        University of Sao Paulo, Brazil.</para>
+        <para>
+        To contact me send a email to: bruno.duartec@gmail.com
+        </para>
+      </content>      
+      
+      </section>
+      
+    <relatedTopics>
+      <!-- One or more of the following:
+           - A local link
+           - An external link
+           - A code entity reference
+
+      <link xlink:href="Other Topic's ID"/>
+      <link xlink:href="Other Topic's ID">Link inner text</link>
+
+      <externalLink>
+          <linkText>Link text</linkText>
+          <linkAlternateText>Optional alternate link text</linkAlternateText>
+          <linkUri>URI</linkUri>
+      </externalLink>
+
+      <codeEntityReference>API member ID</codeEntityReference>
+
+      Examples:
+
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8270" />
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8278">Some other topic</link>
+
+      <externalLink>
+          <linkText>SHFB on CodePlex</linkText>
+          <linkAlternateText>Go to CodePlex</linkAlternateText>
+          <linkUri>http://shfb.codeplex.com</linkUri>
+      </externalLink>
+
+      <codeEntityReference>T:TestDoc.TestClass</codeEntityReference>
+      <codeEntityReference>P:TestDoc.TestClass.SomeProperty</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor(System.String,System.Int32)</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.ToString</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.FirstMethod</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.SecondMethod(System.Int32,System.String)</codeEntityReference>
+      -->
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

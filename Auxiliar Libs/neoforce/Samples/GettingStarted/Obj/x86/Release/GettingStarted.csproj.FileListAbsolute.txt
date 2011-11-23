@@ -1,0 +1,18 @@
+E:\source\_priv\Neoforce\Samples\Bin\TomShane.Neoforce.Samples.GettingStarted.exe
+E:\source\_priv\Neoforce\Samples\Bin\TomShane.Neoforce.Samples.GettingStarted.pdb
+E:\source\_priv\Neoforce\Samples\GettingStarted\obj\x86\Release\ResolveAssemblyReference.cache
+E:\source\_priv\Neoforce\Samples\GettingStarted\obj\x86\Release\Microsoft.Xna.Framework.RuntimeProfile.txt
+E:\source\_priv\Neoforce\Samples\GettingStarted\obj\x86\Release\TomShane.Neoforce.Samples.GettingStarted.exe
+E:\source\_priv\Neoforce\Samples\GettingStarted\obj\x86\Release\TomShane.Neoforce.Samples.GettingStarted.pdb
+G:\tom shane\projects\Neoforce\Samples\Bin\TomShane.Neoforce.Samples.GettingStarted.exe
+G:\tom shane\projects\Neoforce\Samples\Bin\TomShane.Neoforce.Samples.GettingStarted.pdb
+G:\tom shane\projects\Neoforce\Samples\GettingStarted\obj\x86\Release\ResolveAssemblyReference.cache
+G:\tom shane\projects\Neoforce\Samples\GettingStarted\obj\x86\Release\Microsoft.Xna.Framework.RuntimeProfile.txt
+G:\tom shane\projects\Neoforce\Samples\GettingStarted\obj\x86\Release\TomShane.Neoforce.Samples.GettingStarted.exe
+G:\tom shane\projects\Neoforce\Samples\GettingStarted\obj\x86\Release\TomShane.Neoforce.Samples.GettingStarted.pdb
+E:\tom shane\Neoforce\Samples\Bin\TomShane.Neoforce.Samples.GettingStarted.exe
+E:\tom shane\Neoforce\Samples\Bin\TomShane.Neoforce.Samples.GettingStarted.pdb
+E:\tom shane\Neoforce\Samples\GettingStarted\obj\x86\Release\ResolveAssemblyReference.cache
+E:\tom shane\Neoforce\Samples\GettingStarted\obj\x86\Release\Microsoft.Xna.Framework.RuntimeProfile.txt
+E:\tom shane\Neoforce\Samples\GettingStarted\obj\x86\Release\TomShane.Neoforce.Samples.GettingStarted.exe
+E:\tom shane\Neoforce\Samples\GettingStarted\obj\x86\Release\TomShane.Neoforce.Samples.GettingStarted.pdb

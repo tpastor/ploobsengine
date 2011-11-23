@@ -1,0 +1,10 @@
+C:\Users\tpastor\Desktop\neofrce\Samples\Bin\Content\Skins\Default\Addons\Custom\Cursors\Custom.Cursor.xnb
+C:\Users\tpastor\Desktop\neofrce\Samples\Bin\Content\Skins\Default\Addons\Custom\Fonts\Custom.Font.xnb
+C:\Users\tpastor\Desktop\neofrce\Samples\Bin\Content\Skins\Default\Addons\Custom\Images\Custom.Button.xnb
+C:\Users\tpastor\Desktop\neofrce\Samples\Bin\Content\Skins\Default\Addons\Custom\Skin.xml
+C:\Users\tpastor\Desktop\neofrce\Samples\Bin\TomShane.Neoforce.Samples.AddonControls.exe
+C:\Users\tpastor\Desktop\neofrce\Samples\Bin\TomShane.Neoforce.Samples.AddonControls.pdb
+C:\Users\tpastor\Desktop\neofrce\Samples\AddonControls\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\tpastor\Desktop\neofrce\Samples\AddonControls\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\tpastor\Desktop\neofrce\Samples\AddonControls\obj\x86\Debug\TomShane.Neoforce.Samples.AddonControls.exe
+C:\Users\tpastor\Desktop\neofrce\Samples\AddonControls\obj\x86\Debug\TomShane.Neoforce.Samples.AddonControls.pdb
