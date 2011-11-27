@@ -429,9 +429,7 @@ namespace PloobsEngine.Loader
                         mi.position = pos;
                         mi.scale = scale;
                         mi.rotation = ori;
-
                         
-
                         ModelBuilderHelper.Extract(m, model.Meshes[i].MeshParts[j], out mi.batchInformation);
                         mi.ellasticity = inf.ellasticity;
                         mi.dinamicfriction = inf.dinamicfriction;
@@ -442,7 +440,7 @@ namespace PloobsEngine.Loader
                         mi.batchInformation.ModelLocalTransformation = m[model.Meshes[i].ParentBone.Index];
 
                         mi.textureInformation = new TextureInformation(false, factory);
-                        //mi.textureInformation.LoadTexture();
+                        
 
                         if (inf.material.reflectionName != null)
                         {
@@ -463,17 +461,20 @@ namespace PloobsEngine.Loader
                             if (inf.material.bumpName != null)
                                 mi.textureInformation.SetTexture(factory.GetTexture2D(texturePath + inf.material.bumpName), TextureType.BUMP);
                         }
-                        if (inf.collisionType.Contains("Water"))
+
+                        if (inf.collisionType != null)
                         {
-                            mi.extra = inf.material.extrainformation;
+                            if (inf.collisionType.Contains("Water"))
+                            {
+                                mi.extra = inf.material.extrainformation;
+                            }
                         }
+
                         mi.textureInformation.LoadTexture();
                         elements.ModelMeshesInfo.Add(mi);
                     }
                 }
             }
-
-
 
             SerializerHelper.ChangeDecimalSymbolToSystemDefault();
             ///Clear Stuffs

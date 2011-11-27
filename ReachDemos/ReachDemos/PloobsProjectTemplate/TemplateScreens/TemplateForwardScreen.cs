@@ -45,17 +45,17 @@ namespace ProjectTemplate
             base.LoadContent(GraphicInfo, factory, contentManager);
 
             ///Uncoment to add your model
-            //SimpleModel simpleModel = new SimpleModel(factory, "MODEL PATH HERE");
-            /////Physic info (position, rotation and scale are set here)
-            //TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
-            /////Forward Shader (look at this shader construction for more info)
-            //ForwardXNABasicShader shader = new ForwardXNABasicShader();      
-            /////Deferred material
-            //ForwardMaterial fmaterial = new ForwardMaterial(shader);            
-            /////The object itself
-            //IObject obj = new IObject(fmaterial,simpleModel,tmesh);
-            /////Add to the world
-            //this.World.AddObject(obj); 
+            SimpleModel simpleModel = new SimpleModel(factory, "Model/cenario");
+            ///Physic info (position, rotation and scale are set here)
+            TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
+            ///Forward Shader (look at this shader construction for more info)
+            ForwardXNABasicShader shader = new ForwardXNABasicShader();
+            ///Deferred material
+            ForwardMaterial fmaterial = new ForwardMaterial(shader);
+            ///The object itself
+            IObject obj = new IObject(fmaterial, simpleModel, tmesh);
+            ///Add to the world
+            this.World.AddObject(obj); 
 
             ///add a camera
             this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo.Viewport));
@@ -71,7 +71,7 @@ namespace ProjectTemplate
             base.Draw(gameTime, render);
 
             ///Draw some text on the screen
-            render.RenderTextComplete("Demo: Basic Screen Forward", new Vector2(GraphicInfo.Viewport.Width - 315, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Demo: Basic Screen Forward (Move the camera using WASD)", new Vector2(GraphicInfo.Viewport.Width - 315, 15), Color.White, Matrix.Identity);
         }
 
     }

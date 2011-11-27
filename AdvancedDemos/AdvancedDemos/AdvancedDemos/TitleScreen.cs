@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using PloobsEngine.SceneControl;
+using System;
 
 namespace AdvancedDemo4._0
 {
@@ -16,7 +17,6 @@ namespace AdvancedDemo4._0
         public override void VideoEnded()
         {
             ScreenManager.RemoveScreen(this);
-
             DemosHomeScreen menu = new DemosHomeScreen();
             ScreenManager.AddScreen(menu);
         }

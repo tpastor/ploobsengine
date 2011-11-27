@@ -49,8 +49,7 @@ namespace ProjectTemplate
                 //sas.EnableTexture = true;
             }
 
-            var newCameraFirstPerson = new CameraFirstPerson(GraphicInfo.Viewport);
-            //newCameraFirstPerson.UseAcelerometer = true;
+            var newCameraFirstPerson = new CameraFirstPerson(GraphicInfo.Viewport);        
             this.World.CameraManager.AddCamera(newCameraFirstPerson);
         }
 

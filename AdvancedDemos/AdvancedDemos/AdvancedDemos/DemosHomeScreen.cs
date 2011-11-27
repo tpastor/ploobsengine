@@ -32,9 +32,7 @@ namespace AdvancedDemo4._0
         private int[] screenList = new int[22];
 
         private IScreen GetScreen(int screenNumber)
-        {
-
-            screenNumber = 13;
+        {            
             switch (screenNumber)
             {
                 case 0:
@@ -308,11 +306,15 @@ namespace AdvancedDemo4._0
 
         public void ChangeDemo(InputPlayableKeyBoard ipk)
         {
+
+            ///lazy ways of cycling between demos
+            ///just remove everything and load the righ screen
+
             if (active is LoadingScreen || (active != null && active.IsLoaded == false))
                 return;            
 
-            if(this.ScreenState == PloobsEngine.SceneControl.ScreenState.Active)
-                this.ScreenState = ScreenState.Hidden;
+            //if(this.ScreenState == PloobsEngine.SceneControl.ScreenState.Active)
+            //    this.ScreenState = ScreenState.Hidden;
 
 
             foreach (var item in ScreenManager.GetScreens())

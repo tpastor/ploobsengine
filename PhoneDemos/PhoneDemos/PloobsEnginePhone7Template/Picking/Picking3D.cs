@@ -42,14 +42,31 @@ namespace PloobsEnginePhone7Template
                 this.World.AddObject(obj);
             }
 
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 10; j++)
+                {
+                    SimpleModel sm = new SimpleModel(factory, "Model\\ball");
+                    sm.SetTexture(factory.CreateTexture2DColor(1, 1, Color.White), TextureType.DIFFUSE);
+                    SphereObject pi = new SphereObject(new Vector3(i * 10, 20, j * 10), 1, 1, 3, MaterialDescription.DefaultBepuMaterial());
+                    pi.isMotionLess = true;
+                    ForwardXNABasicShader shader = new ForwardXNABasicShader(ForwardXNABasicShaderDescription.Default());
+                    IMaterial mat = new ForwardMaterial(shader);
+                    IObject obj4 = new IObject(mat, sm, pi);
+                    obj4.Name = "Block " + i + " : " + j;
+                    this.World.AddObject(obj4);
+                }
+            }
+
             Picking pick = new Picking(this, Microsoft.Xna.Framework.Input.Touch.GestureType.DoubleTap);
             pick.Start();
-            pick.OnPickedGesture += new OnPicked(pick_OnPickedGesture);
+            pick.OnPickedNoneButton += new OnPicked(pick_OnPickedGesture);
 
             var newCameraFirstPerson = new CameraFirstPerson(GraphicInfo.Viewport);
             this.World.CameraManager.AddCamera(newCameraFirstPerson);
          
         }
+
 
         String result = null;
         void pick_OnPickedGesture(SegmentInterceptInfo SegmentInterceptInfo, Microsoft.Xna.Framework.Input.Touch.TouchLocation TouchLocation)
@@ -61,7 +78,7 @@ namespace PloobsEnginePhone7Template
         {        
             base.Draw(gameTime, render);
             render.RenderTextComplete("PloobsEngine Picking 3D on Windows Phone7", new Vector2(20, 10), Color.Red, Matrix.Identity);
-            render.RenderTextComplete("Use DoubleTap on the scene", new Vector2(20, 30), Color.Red, Matrix.Identity);
+            render.RenderTextComplete("Use tap to move the camera and select objects", new Vector2(20, 30), Color.Red, Matrix.Identity);
             
             if(result != null)
                 render.RenderTextComplete(result, new Vector2(20, 50), Color.Red, Matrix.Identity);

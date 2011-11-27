@@ -18,6 +18,8 @@ namespace ProjectTemplate
             //desc.UseVerticalSyncronization = true;
             //desc.isFixedGameTime = true;
             //desc.isMultiSampling = true;
+            //desc.BackBufferWidth = ...;
+            //desc.BackBufferHeight = ...;           
             desc.useMipMapWhenPossible = true;
             desc.Logger = new SimpleLogger();
             desc.UnhandledException_Handler = UnhandledException;
@@ -32,10 +34,9 @@ namespace ProjectTemplate
 
         static void LoadScreen(ScreenManager manager)
         {
-            ///add the first screen here
-            ///WE ARE ADDING THE DEFERRED SCREEN, you can add wherever you want
-            //manager.AddScreen(new TemplateForwardScreen());
-            manager.AddScreen(new AnimationScreen());
+            ///add the first screen here            
+            manager.AddScreen(new TemplateForwardScreen());
+            //manager.AddScreen(new AnimationScreen());
 
         }
 
