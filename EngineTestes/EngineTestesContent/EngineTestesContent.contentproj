@@ -566,6 +566,51 @@
       <Importer>TextureImporter</Importer>
       <Processor>ContentProcessor2</Processor>
     </Compile>
+    <Compile Include="Textures\vase_plant.tga">
+      <Name>vase_plant</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\background.tga">
+      <Name>background</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\chain_texture.tga">
+      <Name>chain_texture</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\vase_hanging.tga">
+      <Name>vase_hanging</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\vase_dif.tga">
+      <Name>vase_dif</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\vase_round.tga">
+      <Name>vase_round</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\background_ddn.tga">
+      <Name>background_ddn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\chain_texture_ddn.tga">
+      <Name>chain_texture_ddn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\vase_round_ddn.tga">
+      <Name>vase_round_ddn</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\EnemyBeastDiffuse.jpg">
@@ -1078,6 +1123,11 @@
     <Compile Include="Model\Dude.fbx">
       <Name>Dude</Name>
       <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Model\sponza.X">
+      <Name>sponza</Name>
+      <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
     </Compile>
     <None Include="Skins\Default\Skin.xml">
