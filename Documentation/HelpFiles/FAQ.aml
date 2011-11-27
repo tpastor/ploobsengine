@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="c958a210-248c-461d-9a4c-a70112ab66ab" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!--
+    <summary>
+      <para>Optional summary abstract</para>
+    </summary>
+    -->
+    <introduction>
+      <!-- Uncomment this to generate an outline of the section and sub-section
+           titles.  Specify a numeric value as the inner text to limit it to
+           a specific number of sub-topics when creating the outline.  Specify
+           zero (0) to limit it to top-level sections only.  -->
+      <autoOutline /> 
+      <para>Frequently Asked Question</para>
+    </introduction>
+    <!-- Add one or more top-level section elements.  These are collapsible.
+         If using <autoOutline />, add an address attribute to identify it
+         and specify a title so that it can be jumped to with a hyperlink. -->
+    <section address="Section1">
+      <title>Why Everything has "blocky" appearance and are White and Black ? </title>
+      <content>        
+        <para>
+        Its an XNA Pipeline problem, to correct this you need to close the Visual Studio
+        Open you Content folder by hand and erase the folders BIN and OBJ. After this
+        go to Visual Studio and recompile project.        
+        </para>
+      </content>
+    </section>
+    <section address="Section2">
+      <title>It appears that the back buffer isn't cleared ? (looks like that the actual
+      frame is as mix with all the previous one) </title>
+      <content>        
+        <para>        
+        Its a video Board configuration problem, you need to go to the Nvidia/ATI
+        control panel and check your graphics settings. Sometimes whe set 
+        it Best Quality, if this is the case you need to change 
+        it to "Let the application Decides".
+        </para>
+        <alert class="note">
+      	For the Developer, sometimes is better to set the setings to Best 
+      	Performance, youo will lost some quality but its gonna be very faster
+      	principally in olders machines
+      	</alert>
+      </content>
+    </section>
+    <section address="Section3">
+      <title>Cant use the Scene Loader ? Its always throw a Strange Exception </title>
+      <content>        
+        <para>
+        The problem here is that the XML provided as sample uses "," as the
+        separator for float numbers and probably your computer is set to use
+        "." as the separator. To fix this, go to control panel, Region and 
+        language, aditional configurations and change the decimal symbol to
+        ",". This is gonna be fixed in the next major release.
+        </para>
+      </content>
+    </section>
+    <section address="Section4">
+      <title> The application throws an Exception saying that it cant create 
+      the Pixel or Vertex Shader </title>
+      <content>        
+        <para>
+        It happens when the user/developer dont have the required minimum
+        Shader Model (As a rule of thumb the engine uses Shader Model 3.0, 
+        but some effects uses the 2.0). In this case, there is nothing to do,
+        you need to change your Graphic Card (Only very old cards will have 
+        this problem )
+        </para>
+      </content>
+    </section>
+    
+    <section address="Section4">
+      <title> BrutalForceWorld is used for most of the screens. What should be used for a title screen or menu screen where there is no use for physics or 3D? </title>
+      <content>        
+        <para>
+        You should extend the IScreen instead of extending IScene. Then overrides the Draw and update Methods
+        </para>
+      </content>
+    </section>
+    
+    <section address="Section4">
+      <title> Is it possible to remove just some of the Drawing.Draw2dTextAt2dLocation text or can you only get rid of it all using ClearAll()?</title>
+      <content>        
+        <para>
+        The Drawing.Draw2dTextAt2dLocation return a TextEntry, that has a property Visible that you can change.
+You have 2 operations type:
+</para>
+<para>
+the first: Clear all = true
+</para>
+<para>
+every frame the text and lines .... will be deleted, just rendered once, you control the dynamic text/lines using the Update or draw method.
+</para>
+<para>
+in this case the textentry is useless
+</para>
+<para>
+the first: Clear all = false
+</para>
+<para>
+everything is persistent, if you call Drawing.Draw2dTextAt2dLocation it will keep drawing forever
+</para>
+<para>
+Clear All clears EVERYTHING in this case and the TextEntry object is usefull (visible property works)
+</para>
+<para>
+In this version, you cant hide lines and circles.
+        </para>
+      </content>
+    </section>
+    
+   <section address="Section4">
+      <title> For some reason the text ("Welcome to the Ploobs..." etc.) in my screen is only showing up for one frame and then it disappears.</title>
+      <content>              
+        <para> 
+        The default behavior of the Drawing is to show the contents only one frame and delete it.
+		to show in all the frames use
+		</para>
+		<para>
+		Drawing.ClearEveryFrame(false);
+		</para>
+		<para>
+		in the loading of the screen
+        </para>        
+      </content>        
+     </section>
+    
+    
+    
+    <relatedTopics>
+      <!-- One or more of the following:
+           - A local link
+           - An external link
+           - A code entity reference
+
+      <link xlink:href="Other Topic's ID"/>
+      <link xlink:href="Other Topic's ID">Link inner text</link>
+
+      <externalLink>
+          <linkText>Link text</linkText>
+          <linkAlternateText>Optional alternate link text</linkAlternateText>
+          <linkUri>URI</linkUri>
+      </externalLink>
+
+      <codeEntityReference>API member ID</codeEntityReference>
+
+      Examples:
+
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8270" />
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8278">Some other topic</link>
+
+      <externalLink>
+          <linkText>SHFB on CodePlex</linkText>
+          <linkAlternateText>Go to CodePlex</linkAlternateText>
+          <linkUri>http://shfb.codeplex.com</linkUri>
+      </externalLink>
+
+      <codeEntityReference>T:TestDoc.TestClass</codeEntityReference>
+      <codeEntityReference>P:TestDoc.TestClass.SomeProperty</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor(System.String,System.Int32)</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.ToString</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.FirstMethod</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.SecondMethod(System.Int32,System.String)</codeEntityReference>
+      -->
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

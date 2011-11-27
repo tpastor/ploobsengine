@@ -1,0 +1,335 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="f97d6691-b9bf-41c7-b292-4a9ced74b81e" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!--
+    <summary>
+      <para>Optional summary abstract</para>
+    </summary>
+    -->
+    <introduction>      
+      <para>Basic Samples</para>
+    </introduction>    
+    <section address="Section1">
+      <title>The Most Simple 3D World</title>
+      <content>        
+        <para>
+        First of all we need to set up a XNA 4.0 project.
+        </para>
+        <para>
+		For this, just open the Visual Studio, New project, C#, XNA 3.1 and Windows Game.
+		After that, you will see a basic XNA example. Lets change it to use the Engine.
+		First of all, we need to add the references to our DLL.
+		For this click in Add References in the project and add the DLL of the Engine (the name depends of the release, at the time iam writing this document the name is PloobsEngineDebug.dll)
+		You also need to add the reference in the content pipeline (To use the vegetation, Animation and HeightMap tools). To do this, just click in the Content and after click in the references of the content and add the SAME dll there too.	
+		</para>
+		<para>
+		Now we need to create the first sample. All Ploobs Engine application has the same skeleton that is:
+		</para>
+		
+		<list class="ordered">
+  		<listItem><para>Initiate the Engine</para></listItem>
+  		<listItem><para>Create and set a Screen</para></listItem>
+  		<listItem><para>Populate the Screen (registering callbacks to events)</para></listItem>
+		</list>        
+        
+        <legacyBold>Initiate the Engine</legacyBold>
+        
+        <para>The following code shows how to initiate the engine.</para>
+        
+        <code lang="c#" title=" ">
+static class Program
+{
+        static EngineStuff engine;
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        static void Main(string[] args)
+        {
+            using (engine = EngineStuff.CreateAndStartEngine(true))
+            {
+                engine.SetResolution(800, 600);
+                engine.EngineLoadContent = LoadContent;
+                engine.Run();
+            }
+        }
+        public static void LoadContent()
+        {
+            engine.ScreenManager.AddScreen(new SoftScreen());            
+        }
+}
+      </code>
+      
+      <para>
+      Its very simple, we just need to create the EngineStuff Object and register a LoadContent Function (we can also set some parameters like Fullscreen Mode, resolution ... ). To "see" the EngineObject class we need to add following line in the program.cpp -> using PloobsEngine;
+      </para>
+      <para>
+		The LoadContent function will just create the initial Screen (can be a menu, a 3D world, wherever ...) and add it to the ScreenManager.
+	  </para>
+	  
+	  <legacyBold>Create and set a Screen</legacyBold>
+	  
+	  <para>
+	  Now we need to create a Screen. In this example i will be more specific and will create a simple 3D World, but the screen could be anything like a Cinematic, 2D world .... The engine provide a subclass of IScreen to build 3D worlds, its called IScene. 
+	  </para>
+	<para>
+	The following piece of code show how to set up a basic 3D world.
+	</para>
+	
+	<code lang="c#" title=" ">
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using PloobsEngine;
+using PloobsEngine.Cameras;
+using PloobsEngine.Light;
+using PloobsEngine.Material;
+using PloobsEngine.Modelo;
+using PloobsEngine.Physics;
+using PloobsEngine.Physics.Bepu;
+using PloobsEngine.SceneControl;
+
+namespace Demos
+{
+    /// <summary>
+    /// Cena Basica
+    /// </summary>
+    public class BasicScreenDemo : SceneScreen
+    {        
+
+        /// <summary>
+        /// Instancia de um Objeto que extende IWorld
+        /// Representa o mundo virtual (Onde os objetos, luzes, cameras, trigers .... serao adicionados )
+        /// </summary>
+        private BrutalForceWorld mundo;        
+
+        /// <summary>
+        /// Construtor
+        /// </summary>
+        /// <param name="es"></param>
+        public BasicScreenDemo(EngineStuff es)
+        {            
+            ///Criacao do Mundo Virtual
+            ///Recebe como Parametro um Objeto do tipo IPhysicWorld (um mundo fisico)
+            mundo = new BrutalForceWorld(new BepuPhysicWorld());            
+        }
+
+        /// <summary>
+        /// Override
+        /// Funcao Chamada uma unica vez quando a cena esta sendo carregada
+        /// </summary>
+        /// <param name="es"></param>
+        public override void LoadContent(EngineStuff es)
+        {
+            ///Chama a funcao LoadContent do pai
+            base.LoadContent(es);
+
+            ///Criando os Modelos
+            #region Models
+            {
+                SimpleModel sm = new SimpleModel("..\\Content\\Model\\cenario");
+                sm.LoadModelo();
+                IPhysicObject pi = new TriangleMeshObject(Vector3.Zero, sm);
+                NormalDeferred shader = new NormalDeferred();
+                shader.SpecularIntensity = 0;
+                shader.Initialize();
+                IMaterial mat = new Material(shader);
+                IObject obj = new SimpleObject(mat, pi, sm);
+                mundo.AddObject(obj);
+            }            
+
+            #endregion
+
+            ///Criacao de uma camera em primeira pessoa (Controlada por mouse e teclado)
+            CameraFirstPerson cam = new CameraFirstPerson(true);            
+            ///Setando alguns parametros da Camera
+            cam.Sensibility = 0.5f;
+            cam.RotationSpeed = 0.005f;
+            ///Adicionando ela no mundo
+            mundo.AddCamera(cam);
+            
+            #region Light
+            DirectionalLight ld1 = new DirectionalLight(Vector3.Left, Color.White);
+            DirectionalLight ld2 = new DirectionalLight(Vector3.Right, Color.White);
+            DirectionalLight ld3 = new DirectionalLight(Vector3.Backward, Color.White);
+            DirectionalLight ld4 = new DirectionalLight(Vector3.Forward, Color.White);
+            DirectionalLight ld5 = new DirectionalLight(Vector3.Down, Color.White);
+            float li = 0.4f;
+            ld1.LightIntensity = li;
+            ld2.LightIntensity = li;
+            ld3.LightIntensity = li;
+            ld4.LightIntensity = li;
+            ld5.LightIntensity = li;
+            mundo.AddLight(ld1);
+            mundo.AddLight(ld2);
+            mundo.AddLight(ld3);
+            mundo.AddLight(ld4);
+            mundo.AddLight(ld5);
+            #endregion
+                        
+            DeferredRenderTechnic dr = new DeferredRenderTechnic(es);
+
+            AntiAliasingPostEffect aa = new AntiAliasingPostEffect();
+            aa.Weight = 2;
+            dr.AddPostEffect(aa);
+
+            IRenderTechnic[] rt = new IRenderTechnic[] { dr };
+            this.RenderTechnics = rt;            
+            this.World = mundo;
+        }
+    }
+}
+		</code>
+		
+		<para>
+		The code showed create a simple 3D world. The basic Steps to create a World are:
+		</para>
+		
+		
+<list class="ordered">
+  <listItem><para>Create a concrete instance of IWorld </para></listItem>
+  <listItem><para>Populate the World with objects, AT LEAST one CAMERA, lights (if lights arent added, everything will be DARK !!! ), ....</para></listItem>
+  <listItem><para>Create the concrete render Technich</para></listItem>
+  <listItem><para>Bind the World AND the RenderTechinch to the SCREEN</para></listItem>  
+</list>
+
+<legacyBold>Create a concrete instance of <codeInline>IWorld</codeInline></legacyBold>
+
+<para>
+This is done by creating a class that implements the <codeInline>IWorld</codeInline> interface. the engine provides one that will be enough for most of the projects, the <codeInline>BrutalForceWorld</codeInline> class. 
+</para>
+<alert class="note">      
+ It does not mean that everything done in the class <codeInline>BrutalForceWorld</codeInline> is brutal force, its more a fun name than everything else !!!      
+</alert>
+
+<para>
+The constructor of the <codeInline>BrutalForceWorld</codeInline> recieves a instance of a <codeInline>IPhysicWorld</codeInline> (entity that will control the spacial relations between objects ).
+</para>
+<para>
+The engine has 2 concrete implementations of this class, the first one uses the BEPU physic engine and the second use the JigLibX
+physic engine.
+</para>
+<para>
+In this example we used the BepuPhysic engine.
+</para>
+
+<para>
+After this, we need to populate our scene, so we override the function LoadContent of the Screen (dont forget to call the base when overloading Screen methods).
+</para>
+
+<para>
+The first thing created is an Object
+</para> 
+     
+<code lang="c#" title= " ">
+{
+                SimpleModel sm = new SimpleModel("..\\Content\\Model\\cenario");
+                sm.LoadModelo();
+                IPhysicObject pi = new TriangleMeshObject(Vector3.Zero, sm);
+                NormalDeferred shader = new NormalDeferred();  //uses basic phong
+                shader.SpecularIntensity = 0;
+                shader.Initialize();
+                IMaterial mat = new Material(shader);
+                IObject obj = new SimpleObject(mat, pi, sm);
+                mundo.AddObject(obj);
+}      
+</code>      
+<para>
+The object is composed by three things, a <codeInline>Modelo</codeInline>, a <codeInline>Shader</codeInline> and a <codeInline>PhysicObject</codeInline>.
+</para>
+<para>
+The <codeInline>Modelo</codeInline> used is the <codeInline>SimpleModel</codeInline> that loads a model from a file (using the XNA Model Processing Pipeline) and converts its data to our internal data structure (we dont use the XNA Model Class, because its not flexible enough). This class loads the texture also. There are lots of Modelo Implementations, look at the Advanced Examples package.
+</para>
+<para>
+After, we need to create the Physic Object, in this sample we choose to create a Triangle Mesh (the object will colide using the Model Triangles as a "skin", there  are also other types of physic object like Sphere, Cube .... ).
+</para>
+<para>
+And finally we create a <codeInline>Shader</codeInline>. The Ploobs Engine uses two types of render: a Deferred and a Foward. So, there are two diferent types of shaders and we need to take care when choosing which of them to use. The Deferred render accept forward and deferred shaders, but the Forward Shader accept just forward shader. On other potential problem is that some advanced shaders expect a special type of Modelo (like the bilboards shader), look at the advanced samples Package or the source code for more info.
+</para>
+<para>
+All the shaders subclasses the class <codeInline>IShader</codeInline> that has a function called MaterialType that return the type of the shader (deferred or forward). We will explain how to set the render for each type in moments.
+</para>
+<para>
+After the pieces of the object are created, we just put them together creating a concrete instance of IOBJECT (int this sample we used the SimpleObject that is good enough for most of projects) and add it to the world. DONT FORGET TO ADD THE ASSET cenario.x and the texture to the CONTENT
+</para>
+<para>
+Finally we create the camera and the lights. (for more complex lights and cameras see the simple examples package or the source code)
+</para>      
+
+<legacyBold>Create the concrete render Technich</legacyBold>
+
+<para>
+The following lines create a deferred render technic: 
+</para>
+
+<code lang="c#" title=" ">
+DeferredRenderTechnic dr = new DeferredRenderTechnic(es);
+
+ IRenderTechnic[] rt = new IRenderTechnic[] { dr };
+</code>
+
+<para>
+We can create deferred and forward technic here, remember that the object's shader must be choose acoording to this choice.
+</para>
+
+<legacyBold>Bind the World AND the RenderTechinch to the SCREEN</legacyBold>
+
+<para>
+Finally we need to bind the render technic and the world to the screen, for this we just use the following lines
+</para>
+
+<code lang="c#" title=" ">
+this.RenderTechnics = rt;            
+this.World = mundo;
+</code>
+
+<para>
+Now, the basic world is up, and we can press F5 and see the result.
+</para>
+
+<para>
+<legacyItalic>enjoy !!!</legacyItalic>
+</para>
+<mediaLink>
+          <image placement="center" xlink:href="tut0" />
+       </mediaLink>
+ </content>
+      
+    </section>
+    <relatedTopics>
+      <!-- One or more of the following:
+           - A local link
+           - An external link
+           - A code entity reference
+
+      <link xlink:href="Other Topic's ID"/>
+      <link xlink:href="Other Topic's ID">Link inner text</link>
+
+      <externalLink>
+          <linkText>Link text</linkText>
+          <linkAlternateText>Optional alternate link text</linkAlternateText>
+          <linkUri>URI</linkUri>
+      </externalLink>
+
+      <codeEntityReference>API member ID</codeEntityReference>
+
+      Examples:
+
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8270" />
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8278">Some other topic</link>
+
+      <externalLink>
+          <linkText>SHFB on CodePlex</linkText>
+          <linkAlternateText>Go to CodePlex</linkAlternateText>
+          <linkUri>http://shfb.codeplex.com</linkUri>
+      </externalLink>
+
+      <codeEntityReference>T:TestDoc.TestClass</codeEntityReference>
+      <codeEntityReference>P:TestDoc.TestClass.SomeProperty</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor(System.String,System.Int32)</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.ToString</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.FirstMethod</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.SecondMethod(System.Int32,System.String)</codeEntityReference>
+      -->
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

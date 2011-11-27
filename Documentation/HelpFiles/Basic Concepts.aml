@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="a25877d2-612c-4183-a631-782e2e0373b4" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">    
+    <introduction>      
+      <para>This section will show the basic Design concepts around the Engine</para>
+    </introduction>    
+    <section address="Section1">
+      <title>The Engine hard birth (A little bit of story =P)</title>
+      <content>        
+        <para>This is the second public release of the engine, but is not 
+        our first attempt to make a game engine, actually, it is the fourth</para>
+        <para> The first one happened a little more than two year ago, and it
+        was horrible, we did not separate the concepts well ... when
+        things started to grow ... everything blowed up.</para>
+        <para>Our the second attempt was less frustrating. 
+        We used this version in the 2010 Imagine Cup
+        competition and we got really nice results, however the physic engine 
+        we were using that time were discontinued (and it has looots of bugs).
+        The interesting fact is that the engine was very coupled
+        with that (we choose to do that to gain in performance) and ... we cant 
+        change the physic engine without destroying everything else. So we 
+        decide to redesign again the engine from scretch, using our experience from imagine 
+        cup and from our Computer Enginner classes.
+        Right Now, we are "happy" if our new design (if we could come back 
+        in time, we would change lots of things :). Takes time to know that
+        software production is an evolutionary proccess ).</para> 
+        <para>The current version is more an optimization of the last version than something really new.</para>
+        <para>The next section will show the basic concepts behind the architecture of the engine,
+        its very important that you read this to understand how things works. 
+        Surprisely its very simple and easy to understand !!! =P
+        </para>
+      </content>
+      </section>
+      
+      <section address="Section2">
+      <title>Basic Concepts</title>
+      
+      <content>
+      <para> People always say that pictures talks more than words,in software
+      production its much more true. So we will start with a simple class 
+      diagram.</para>
+      
+      <mediaLink>
+          <image placement="center" xlink:href="Simples" />
+       </mediaLink>
+      
+      <para> 
+      Quite simple isn't ? Lets explain the principal parts.
+      </para>
+      <para>
+      In few words, the master class EngineStuff has an instance of 
+      ScreenManger that is a container and a handler of screens (yeah,
+      its possible to have lots of screens active at a time). A <codeInline>IScreen
+      </codeInline> can be anything like a menu, a movie, a 2D World .... or a 3D World.
+      The 3D world is a special type of screen called <codeInline>IScene</codeInline>). 
+      Every <codeInline>IScene</codeInline> has a <codeInline>IWorld</codeInline> 
+      and a <codeInline>IRenderTechnich</codeInline>. The IWorld act as a container
+      of objects, triggers, particles systems (everything that is interactive) 
+      and the RenderTechnich is responsible for draw each entity of the game.
+      </para>
+      <para>
+      As i said, the IWorld is a container that has lots of things, one of those is 
+      a very special entity that we call <codeInline>IObject</codeInline>. It represents
+      every "object" on the screen (for example, a house, a player,
+      a terrain ... everything except triggers and particle =P ).       
+      </para>
+      <para>
+      Each <codeInline>IObject</codeInline> is composed by three parts, a <codeInline>IModelo</codeInline> 
+      that is a container of vertices, indices and textures, a 
+      <codeInline>IPhysicObject</codeInline> that is the spacial representation 
+      of an object (may or may not have Physic Object) and a 
+      <codeInline>IMaterial</codeInline> that is responsible to draw the object 
+      (with the help of the RenderTechnic). 
+      That's all !!!
+      <alert class="note">
+      Other stuffs like cameras and ligths are added and handled by the 
+      <codeInline>IWorld</codeInline> also.
+      </alert>
+      </para>
+      <para> 
+      All the classes showed in the diagram are interfaces or abstract classes
+      (except the <codeInline>ScreenManager</codeInline> and the 
+      <codeInline>EngineStuff</codeInline>), there are lots of implementations 
+      for each one of these components to fits most of the users needs.
+      </para>
+      <para> 
+      Now, one question remains, where the engine user interact 
+      with the engine ? 
+      </para>
+      <para>
+      It depends of what he wants, if he wants a 3D scene, he just need to override
+      the <codeInline>IScene</codeInline> abstract class. All of the Screens 
+      have a method called <codeInline>LoadContent</codeInline> that the user 
+      must overrides. This is the place where the IWorld objects (particles, triggers,IObjects ...) are created.       
+      </para>
+      <para>
+      All the interactions of the user with the 3D world are done by callbacks
+      and messaging exchanging. For example, if you want the character to die
+      when he recieves a shot, you need to add a callback in the character
+      that is activated when a bullet collides with him, and after send 
+      messages to everyone interested (like the Hud system, you allies ...). 
+      Every communication is based in messages and callback.
+      </para>
+      <para>
+      These are the most basic concepts of the engine , with this knowledge you will be
+      able to follow the simple tutorials. 
+      </para>
+      <para>
+      <legacyBold>IF/WHEN SOMETHING IS NOT CLEAR, YOU CAN ALWAYS CONTACT US !!!!</legacyBold>
+      </para>
+      
+      </content>      
+      
+    </section>
+    <relatedTopics>    
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

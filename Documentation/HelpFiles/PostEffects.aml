@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="a7219ad3-e9ac-4fe4-a5d2-72d3ca5029e7" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!--
+    <summary>
+      <para>Optional summary abstract</para>
+    </summary>
+    -->
+    <introduction>      
+      <para>This Page Describre the Post Effects in the engine</para>
+    </introduction>   
+    <section address="Section1">
+      <title>What are post effects? </title>
+      <content>
+        <!-- Uncomment this to create a sub-section outline
+        <autoOutline /> -->
+        <para>Post Effects are image processing technichs aplied in the framebuffer
+        </para>
+        <para>
+        The good about this, is that the input and the output of this process is a 2D image, so we cam combine than easily
+        </para>
+        <para>
+        Some examples of PostEffects are: BlackAndWith, HDR, Screen Space Ambient Oclusion, Fog, Depth of field ...
+        </para>
+        <para>
+        The engine has a very big list of post effect. Adding and removing them is very simple.
+        </para>
+        <para>
+        <code lang="c#" title=" ">
+		FogPostEffect peffect = new FogPostEffect(0.008f, FogType.EXPONENCIALSQUARED);
+		DeferredRenderTechnich.AddPostEffect(peffect);
+		</code>
+		</para>
+		<para>
+		Where DeferredRenderTechnich is an instance to the DeferredRenderTechnich. To remove just change the AddPostEffect to RemovePostEffect. You can recover a READ ONLY list of active post effects using the DeferredRenderTechich.PostEffectsList (This list contains a post effect called NONEPostEffect, its is used internally, you cant remove it). Always use the Add and Remove Methods to manipulate the PostEffects.
+        </para>
+        <para>
+		If you will manipulate post effects, is a good practice to maintain a explicity reference to the DeferredRenderTechnich, cause it is holded internaly as an array of IRenderTechnich and you will need some casts to recover it.		
+        </para>
+      </content>      
+    </section>    
+    
+    <section address="Section2">
+      <title>Extending Post Effects Framework</title>
+      <content>
+        <para>
+        Its a very easy task, every Post effect extend IPostEffect interface, you just need to implement a couple of simple methods
+        </para>
+        <para>
+        The post effect must write to the current render target, if he need an auxiliary one, the developer is responsible to save and restore the current render target.
+        </para>
+        <para>
+        A simple post effect can be seen here (BlackWhite)
+        </para>
+        <para>
+        <code lang="c#" title=" ">
+    public class BlackWhitePostEffect : IPostEffect
+    {
+        #region IPostEffect Members
+               
+        Effect effect = null;   
+
+        public void Draw(IRenderHelper rHelper, Microsoft.Xna.Framework.GameTime gt, Microsoft.Xna.Framework.Rectangle screenRec, IWorld world)
+        {
+            ///Draw a quad using the "effect", passing the CurrentImage as a Parameter
+            rHelper.RenderTextureToFullScreenSpriteBatch(PrincipalConstants.CurrentImage, effect);            
+        }
+
+        public void init(EngineStuff engine)
+        {
+            ///Load the asset
+            effect = EngineStuff.InternalContentManager.GetAsset("BlackWhite");            
+        }
+       
+        #endregion
+    }
+	</code>
+	</para>
+	<para>
+	The function RenderTextureToFullScreenSpriteBatch just render a Quad binding the texture passed in the first parameter (name of the texture produced in the render process) to the first texture register. You can acess the textures produced in earlier stages using rHelper[NAME_OF_THE_TEXTURE], PrincipalConstants Has the names.
+	</para>
+	<para>	
+	It uses a shader to perform the effect:
+	</para>	
+	<para>
+	<code lang="c#" title=" ">
+	struct PS_INPUT
+{
+   float2 texcoord0:     TEXCOORD0;
+};
+
+sampler samplerState; 
+
+float4 PShader( float2 texCoord: TEXCOORD0 ) : COLOR
+{
+    float4 color = tex2D( samplerState, texCoord );
+	float4 gris = (0.3*color.r) + (0.55*color.g) + (0.15*color.b);
+	color.r = gris;
+	color.g = gris;
+	color.b = gris;
+	
+	return color;
+	
+}
+
+technique RenderScene
+{
+    pass p0
+    {
+        PixelShader = compile ps_2_0 PShader();
+    }
+}
+	</code>
+	</para>
+	<para>
+	Repare that this shader dont use VertexShader. This shader just read the current image
+	from the texture and combine all their chanell using a classic formula and outpu the result
+	in all components of the output (producing gray-scale colors)
+	</para>	
+	<para>
+	Some Post effects can use vertex shader, and of course can have constant parameters. Look at the Engine Source code for more info
+	</para>
+
+      </content>      
+    </section>
+    
+    <relatedTopics>
+      <!-- One or more of the following:
+           - A local link
+           - An external link
+           - A code entity reference
+
+      <link xlink:href="Other Topic's ID"/>
+      <link xlink:href="Other Topic's ID">Link inner text</link>
+
+      <externalLink>
+          <linkText>Link text</linkText>
+          <linkAlternateText>Optional alternate link text</linkAlternateText>
+          <linkUri>URI</linkUri>
+      </externalLink>
+
+      <codeEntityReference>API member ID</codeEntityReference>
+
+      Examples:
+
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8270" />
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8278">Some other topic</link>
+
+      <externalLink>
+          <linkText>SHFB on CodePlex</linkText>
+          <linkAlternateText>Go to CodePlex</linkAlternateText>
+          <linkUri>http://shfb.codeplex.com</linkUri>
+      </externalLink>
+
+      <codeEntityReference>T:TestDoc.TestClass</codeEntityReference>
+      <codeEntityReference>P:TestDoc.TestClass.SomeProperty</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor(System.String,System.Int32)</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.ToString</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.FirstMethod</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.SecondMethod(System.Int32,System.String)</codeEntityReference>
+      -->
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

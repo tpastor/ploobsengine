@@ -1,0 +1,6 @@
+C:\Users\tpastor\Desktop\neofrce\Samples\Bin\TomShane.Neoforce.Samples.RenderTargets.exe
+C:\Users\tpastor\Desktop\neofrce\Samples\Bin\TomShane.Neoforce.Samples.RenderTargets.pdb
+C:\Users\tpastor\Desktop\neofrce\Samples\RenderTargets\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\tpastor\Desktop\neofrce\Samples\RenderTargets\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\tpastor\Desktop\neofrce\Samples\RenderTargets\obj\x86\Debug\TomShane.Neoforce.Samples.RenderTargets.exe
+C:\Users\tpastor\Desktop\neofrce\Samples\RenderTargets\obj\x86\Debug\TomShane.Neoforce.Samples.RenderTargets.pdb
