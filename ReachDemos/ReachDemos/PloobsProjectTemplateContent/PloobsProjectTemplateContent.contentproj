@@ -57,11 +57,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\ball.X">
-      <Name>ball</Name>
-      <Importer>XImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-    </Compile>
     <Compile Include="Model\cenario.X">
       <Name>cenario</Name>
       <Importer>XImporter</Importer>
@@ -71,6 +66,7 @@
       <Name>PlayerMarine</Name>
       <Importer>FbxImporter</Importer>
       <Processor>SkinnedModelProcessor</Processor>
+      <ProcessorParameters_GenerateTangentFrame>True</ProcessorParameters_GenerateTangentFrame>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

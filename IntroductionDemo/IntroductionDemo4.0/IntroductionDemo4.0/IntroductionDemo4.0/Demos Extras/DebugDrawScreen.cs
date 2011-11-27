@@ -115,7 +115,7 @@ namespace IntroductionDemo4._0
             base.Draw(gameTime, render);
 
             ///Draw some text to the screen
-            render.RenderTextComplete("Demo: Drawing Basic Debug Primitives", new Vector2(GraphicInfo.Viewport.Width - 315, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Demo: Drawing Basic Debug Primitives", new Vector2(GraphicInfo.Viewport.Width - 515, 15), Color.White, Matrix.Identity);
         }
 
         protected override void CleanUp(PloobsEngine.Engine.EngineStuff engine)

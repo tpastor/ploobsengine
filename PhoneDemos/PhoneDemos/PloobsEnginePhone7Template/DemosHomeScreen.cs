@@ -84,7 +84,7 @@ namespace PloobsEnginePhone7Template
                 SimpleConcreteGestureInputPlayable SimpleConcreteGestureInputPlayable = new SimpleConcreteGestureInputPlayable(Microsoft.Xna.Framework.Input.Touch.GestureType.HorizontalDrag,
                     (sample) =>
                     {
-                        delta += sample.Delta.Length();
+                        delta += sample.Delta.X;
                     }
                 );
                 BindGestureCommand BindGestureCommand = new BindGestureCommand(SimpleConcreteGestureInputPlayable, BindAction.ADD);
@@ -95,7 +95,7 @@ namespace PloobsEnginePhone7Template
                     (sample) =>
                     {
                         ///big horizontal drag only =P
-                        if (delta > 300)
+                        if (delta > 400)
                         {
                             ChangeDemo();                         
                         }

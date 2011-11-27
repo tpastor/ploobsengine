@@ -123,48 +123,7 @@ namespace PloobsEnginePhone7Template
             Vector2 v = Reciever.PhysicObject.Position; ///simulation position            
             SpriteParticleSystem.AttractorPosition = new Vector3(v,0);
         }
-
-        protected override void Update(GameTime gameTime)
-        {
-            HandleCamera(gameTime);
-
-            base.Update(gameTime);
-        }        
-
-        private void HandleCamera(GameTime gameTime)
-        {
-            Vector2 camMove = Vector2.Zero;
-            KeyboardState KeyboardState =  Keyboard.GetState();
-            if (KeyboardState.IsKeyDown(Keys.Up))
-            {
-                camMove.Y -= 10f * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            }
-            if (KeyboardState.IsKeyDown(Keys.Down))
-            {
-                camMove.Y += 10f * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            }
-            if (KeyboardState.IsKeyDown(Keys.Left))
-            {
-                camMove.X -= 10f * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            }
-            if (KeyboardState.IsKeyDown(Keys.Right))
-            {
-                camMove.X += 10f * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            }
-            if (KeyboardState.IsKeyDown(Keys.PageUp))
-            {
-                this.World.Camera2D.Zoom += 5f * (float)gameTime.ElapsedGameTime.TotalSeconds * this.World.Camera2D.Zoom / 20f;
-            }
-            if (KeyboardState.IsKeyDown(Keys.PageDown))
-            {
-                this.World.Camera2D.Zoom -= 5f * (float)gameTime.ElapsedGameTime.TotalSeconds * this.World.Camera2D.Zoom / 20f;
-            }
-            if (camMove != Vector2.Zero)
-            {
-                this.World.Camera2D.MoveCamera(camMove);
-            }            
-        }
-
+        
         protected override void Draw(GameTime gameTime, PloobsEngine.SceneControl.RenderHelper render)
         {
             base.Draw(gameTime, render);

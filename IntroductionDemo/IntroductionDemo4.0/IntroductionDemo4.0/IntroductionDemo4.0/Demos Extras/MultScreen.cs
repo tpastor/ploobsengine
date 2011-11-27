@@ -60,7 +60,7 @@ namespace IntroductionDemo4._0
                 for (int j = 0; j < 10; j++)
                 {                   
                     SimpleModel simpleModel = new SimpleModel(factory, "Model//uzi");
-                    TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, new Vector3(18 * j, 10, 8 * i), Matrix.Identity, Vector3.One * 10, MaterialDescription.DefaultBepuMaterial());
+                    TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, new Vector3(25 * j, 30,15 * i), Matrix.Identity, Vector3.One * 10, MaterialDescription.DefaultBepuMaterial());
                     ForwardXNABasicShader shader = new ForwardXNABasicShader(ForwardXNABasicShaderDescription.Default());
                     ForwardMaterial fmaterial = new ForwardMaterial(shader);
                     IObject obj = new IObject(fmaterial, simpleModel, tmesh);
@@ -84,8 +84,10 @@ namespace IntroductionDemo4._0
 
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {        
-            base.Draw(gameTime, render);
-            render.RenderTextComplete("FPS " + fps, Vector2.Zero, Color.White, Matrix.Identity);
+            base.Draw(gameTime, render);            
+            render.RenderTextComplete("Demo: Enabling MultiThreading", new Vector2(GraphicInfo.Viewport.Width - 515, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("FPS: " + fps, new Vector2(GraphicInfo.Viewport.Width - 515, 35), Color.White, Matrix.Identity);
+            
         }
         protected override void CleanUp(EngineStuff engine)
         {

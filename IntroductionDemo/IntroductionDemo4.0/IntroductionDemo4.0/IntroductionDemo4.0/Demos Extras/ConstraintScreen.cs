@@ -19,9 +19,7 @@ namespace IntroductionDemo4._0
     /// Basic Deferred Scene
     /// </summary>
     public class ConstraintScreen : IScene
-    {
-
-        private GraphicFactory gf;
+    {                
         private BepuPhysicConstraint constraint;
         LightThrowBepu lt;
         
@@ -36,7 +34,7 @@ namespace IntroductionDemo4._0
         {
             ///create the world using bepu as physic api and a simple culler implementation
             ///IT DOES NOT USE PARTICLE SYSTEMS (see the complete constructor, see the ParticleDemo to know how to add particle support)
-            world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
+            world = new IWorld(new BepuPhysicWorld(-0.098f), new SimpleCuller());
 
             ///Create the deferred description
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
@@ -58,36 +56,18 @@ namespace IntroductionDemo4._0
         {
             ///must be called before all
             base.LoadContent(GraphicInfo, factory, contentManager);
-            this.gf = factory;
-
-
-
-            ///Uncoment to Add an object
-            /////Create a simple object
-            /////Geomtric Info and textures (this model automaticaly loads the texture)
-            //SimpleModel simpleModel = new SimpleModel(factory, "Model FILEPATH GOES HERE", "Diffuse Texture FILEPATH GOES HERE -- Use only if it is not embeded in the Model file");            
-            /////Physic info (position, rotation and scale are set here)
-            //TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
-            /////Shader info (must be a deferred type)
-            //DeferredNormalShader shader = new DeferredNormalShader();
-            /////Material info (must be a deferred type also)
-            //DeferredMaterial fmaterial = new DeferredMaterial(shader);
-            /////The object itself
-            //IObject obj = new IObject(fmaterial, simpleModel, tmesh);
-            /////Add to the world
-            //this.World.AddObject(obj);
-
+            
             List<IObject> balls = new List<IObject>();
             Vector3 pos1,pos2;
-            pos1 = Vector3.Zero;
-            pos2 = new Vector3(0,-3,0);
+            pos1 = new Vector3(0, 20, 0);
+            pos2 = new Vector3(0,-50,0);
 
-            IObject ball1 = CreateSphere(pos1, Matrix.Identity);
-            ball1.PhysicObject.isMotionLess = true; // Setting the Parent object as imovable
+            IObject ball1 = CreateSphere(pos1, Matrix.Identity, Color.Red);
+            ball1.PhysicObject.isMotionLess = true; // Setting the Parent object as static
 
             World.AddObject(ball1);
 
-            IObject ball2 = CreateSphere(pos2,Matrix.Identity);
+            IObject ball2 = CreateSphere(pos2,Matrix.Identity,Color.White);
             World.AddObject(ball2);
             balls.Add(ball2);
 
@@ -96,10 +76,6 @@ namespace IntroductionDemo4._0
 
             World.PhysicWorld.AddConstraint(constraint);
 
-
-            
-
-            
 
             ///Add some directional lights to completely iluminate the world
             #region Lights
@@ -123,9 +99,6 @@ namespace IntroductionDemo4._0
 
             lt = new LightThrowBepu(this.World, factory);
 
-
-           
-
             ///add a camera
             this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo.Viewport));
         }
@@ -148,17 +121,15 @@ namespace IntroductionDemo4._0
             base.Update(gameTime);
         }
 
-      
-      
 
-        private IObject CreateSphere(Vector3 pos, Matrix ori)
+        private IObject CreateSphere(Vector3 pos, Matrix ori, Color Color)
         {
             ///Load a Model with a custom texture
-            SimpleModel sm2 = new SimpleModel(gf, "Model\\ball");
-            sm2.SetTexture(gf.CreateTexture2DColor(1, 1, Color.White, false), TextureType.DIFFUSE);
+            SimpleModel sm2 = new SimpleModel(GraphicFactory, "Model\\ball");
+            sm2.SetTexture(GraphicFactory.CreateTexture2DColor(1, 1, Color, false), TextureType.DIFFUSE);
             DeferredNormalShader nd = new DeferredNormalShader();
             IMaterial m = new DeferredMaterial(nd);
-            SphereObject pi2 = new SphereObject(pos, 1, 0.5f, 1, MaterialDescription.DefaultBepuMaterial());
+            SphereObject pi2 = new SphereObject(pos, 1, 0.05f, 10, MaterialDescription.DefaultBepuMaterial());
             IObject o = new IObject(m, sm2, pi2);
             return o;
         }
@@ -175,6 +146,8 @@ namespace IntroductionDemo4._0
 
             ///Draw some text to the screen
             render.RenderTextComplete("Demo: Constraint Screen", new Vector2(GraphicInfo.Viewport.Width - 315, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Left click to throw a ball at the with ball =P", new Vector2(GraphicInfo.Viewport.Width - 315, 35), Color.White, Matrix.Identity);
+            
         }
 
         protected override void CleanUp(EngineStuff engine)

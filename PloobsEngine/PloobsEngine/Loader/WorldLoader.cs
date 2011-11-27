@@ -142,10 +142,10 @@ namespace PloobsEngine.Loader
                 (shader as DeferredEMReflectiveShader).TextureCube = mi[0].textureInformation.getCubeTexture(TextureType.ENVIRONMENT);
                 
             }
-            else if (mi[0].collisionType.Contains("Water"))
+            else if (mi[0].collisionType != null && mi[0].collisionType.Contains("Water"))
             {
                 Vector3 position = (Vector3)(mi[0].extra["position"]);
-                shader = new DeferredWaterCompleteShader((int)(float)(mi[0].extra["width"]),(int)(float)( mi[0].extra["length"]), new Plane(position.X, position.Y, position.Z, 1),10.0f);
+                shader = new DeferredWaterCompleteShader((int)(mi[0].extra["width"]),(int)( mi[0].extra["length"]), new Plane(position.X, position.Y, position.Z, 1),10.0f);
             }
             
             else

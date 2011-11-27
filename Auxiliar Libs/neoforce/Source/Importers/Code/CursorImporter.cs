@@ -40,6 +40,57 @@ namespace TomShane.Neoforce.Importers
 
 	#region //// Importer //////////
 
+    internal static class AssemblyHelper
+    {
+        private static readonly string windowsPublicKeyTokens = "0c21691816f8c6d0";
+        //private static readonly string windowsPublicKeyTokens = "7ebcd2ab87b5cecb";
+        //private static readonly string xboxPublicKeyTokens = "121fbd51268a0405";
+
+        private static readonly string[] assemblySplitter = { ", " };
+
+        internal static string GetRuntimeReader(Type type, TargetPlatform targetPlatform)
+        {
+            // Type full name
+            string typeFullName = type.FullName;
+
+            // Assembly name tokenized
+            string fullAssemblyName = type.Assembly.FullName;
+            string[] assemblyTokens = fullAssemblyName.Split(assemblySplitter, StringSplitOptions.None);
+
+            return
+                //typeFullName + ", " + assemblyTokens[0] + ", " + assemblyTokens[1] + ", " +
+                //    assemblyTokens[2] + ", " + GetAssemblyPublicKey(targetPlatform);
+                typeFullName + ", " + "PloobsEngineDebug" + ", " + assemblyTokens[1] + ", " +
+                    assemblyTokens[2] + ", " + GetAssemblyPublicKey(targetPlatform);
+
+        }
+
+        internal static string GetAssemblyPublicKey(TargetPlatform targetPlatform)
+        {
+            string publicKey = "PublicKeyToken=";
+
+            publicKey += windowsPublicKeyTokens;
+
+            //switch (targetPlatform)
+            //{
+            //    case TargetPlatform.Windows:
+            //        publicKey += windowsPublicKeyTokens;
+            //        break;
+
+            //    case TargetPlatform.Xbox360:
+            //        //publicKey += xboxPublicKeyTokens;
+            //        throw new Exception("XBOX NOT SUPPORTED");
+            //        break;
+
+            //    default:
+            //        throw new ArgumentException("targetPlatform");
+            //}
+
+            return publicKey;
+        }
+    }
+
+
 	public class CursorFile
 	{
 		public byte[] Data = null;
@@ -93,16 +144,14 @@ namespace TomShane.Neoforce.Importers
 		////////////////////////////////////////////////////////////////////////////    
 		public override string GetRuntimeReader(TargetPlatform targetPlatform)
 		{
-#if DEBUG
-			return "TomShane.Neoforce.Controls.CursorReader, PloobsEngineDebug";
-#else
-         return "TomShane.Neoforce.Controls.CursorReader, PloobsEngineDebug";
-#endif
+            return AssemblyHelper.GetRuntimeReader(typeof(TomShane.Neoforce.Controls.CursorReader),targetPlatform);
         }
 		////////////////////////////////////////////////////////////////////////////
 
 		#endregion
 	}
+
+
 	////////////////////////////////////////////////////////////////////////////
 
 	#endregion

@@ -22,6 +22,7 @@ namespace IntroductionDemo4._0
             //desc.useMipMapWhenPossible = true;
             desc.Logger = new SimpleLogger();
             desc.UnhandledException_Handler = UnhandledException;
+
             ///start the engine
             using (EngineStuff engine = new EngineStuff(ref desc, LoadScreen))
             {

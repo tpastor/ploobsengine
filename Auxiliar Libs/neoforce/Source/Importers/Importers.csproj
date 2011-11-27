@@ -40,13 +40,13 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\NeoforceDLL\bin\Debug\</OutputPath>
+    <OutputPath>..\..\..\..\..\..\..\..\bin\x86\Release\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
     <XnaPlatform>Windows</XnaPlatform>
-    <DocumentationFile>..\..\..\NeoforceDLL\bin\Debug\TomShane.Neoforce.Importers.XML</DocumentationFile>
+    <DocumentationFile>\bin\x86\Release\TomShane.Neoforce.Importers.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DebugType>pdbonly</DebugType>
@@ -57,8 +57,7 @@
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
     <XnaPlatform>Windows</XnaPlatform>
-    <DocumentationFile>
-    </DocumentationFile>
+    <DocumentationFile>..\..\..\Billiards\bin\x86\Release\TomShane.Neoforce.Importers.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Xbox 360' ">
     <DebugSymbols>true</DebugSymbols>
@@ -145,6 +144,12 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Controls\Controls.csproj">
+      <Project>{9C8328B3-97FC-4F39-A1BC-6DC4A1730C26}</Project>
+      <Name>Controls</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.ContentPipelineExtensions.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -160,7 +165,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties StartDate="20080911" AssemblyFileVersion="0" AssemblyVersion="1" Reset="0" />
+      <UserProperties Reset="0" AssemblyVersion="1" AssemblyFileVersion="0" StartDate="20080911" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

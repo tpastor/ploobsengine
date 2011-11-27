@@ -71,14 +71,14 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\Billiards\bin\x86\Release\</OutputPath>
+    <OutputPath>..\..\..\..\..\..\..\..\bin\x86\Release\</OutputPath>
     <DefineConstants>TRACE;WINDOWS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoStdLib>true</NoStdLib>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <PlatformTarget>x86</PlatformTarget>
-    <DocumentationFile>..\..\..\Billiards\bin\x86\Release\TomShane.Neoforce.Controls.XML</DocumentationFile>
+    <DocumentationFile>\bin\x86\Release\TomShane.Neoforce.Controls.XML</DocumentationFile>
     <XnaCompressContent>True</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
@@ -260,13 +260,6 @@
       <ProductName>Microsoft XNA Framework Redistributable 4.0</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Content\ControlsContent.contentproj">
-      <Project>{35AFC410-C882-4EF4-8CE0-C53C2C712B0C}</Project>
-      <Name>ControlsContent %28Content%29</Name>
-      <XnaReferenceType>Content</XnaReferenceType>
-    </ProjectReference>
   </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -59,5 +59,13 @@ namespace IntroductionDemo4._0
             LightThrowBepu.CleanUp();
         }
 
+        protected override void Draw(GameTime gameTime, RenderHelper render)
+        {
+            base.Draw(gameTime, render);
+
+            render.RenderTextComplete("Demo: Physic Triangle Mesh Mobile Sample", new Vector2(GraphicInfo.Viewport.Width - 515, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("The uzzi gun is a Triangle Mesh", new Vector2(GraphicInfo.Viewport.Width - 515, 35), Color.White, Matrix.Identity);
+        }
+
     }
 }

@@ -33,7 +33,8 @@ namespace AdvancedDemo4._0
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
             desc.UseFloatingBufferForLightMap = true;
-            ShadowLightMap css = new ShadowLightMap(ShadowFilter.PCF7x7SOFT, 2048,DirectionalShadowFilteringType.PCF7x7,512,0.85f);            
+            ///Directional lights uses CSM and Spot lights uses classic Shadow Mapping. Both can use heavy filtering options
+            ShadowLightMap css = new ShadowLightMap(ShadowFilter.PCF7x7SOFT, 2048, DirectionalShadowFilteringType.PCF7x7, 1024, 0.75f);            
             desc.DeferredLightMap = css;
             renderTech = new DeferredRenderTechnic(desc);
         }
@@ -114,9 +115,9 @@ namespace AdvancedDemo4._0
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);
-            render.RenderTextComplete("Demo 20-22:Directional Shadow Sample using cascade Shadow Mapping", new Vector2(10, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Demo 20-22:Directional Shadow Sample using Cascade Shadow Mapping", new Vector2(10, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("This sample uses PCF7x7 filter with soft edges, it is heavy", new Vector2(10, 35), Color.White, Matrix.Identity);
-            render.RenderTextComplete("The Shadow Map resolution is 2048X2048 --big ", new Vector2(10, 55), Color.White, Matrix.Identity);
+            render.RenderTextComplete("The Shadow Map resolution is 1024x1024 --big ", new Vector2(10, 55), Color.White, Matrix.Identity);
         }
 
     }
