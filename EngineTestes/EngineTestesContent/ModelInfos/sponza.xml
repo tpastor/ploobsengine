@@ -1,8 +1,8 @@
 <!-- Comments: -->
 <SCENE>
-	<body 	 name="sponza_00" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_00" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -13,9 +13,9 @@
 			<bump name ="sponza_thorn_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_01" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_01" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -25,9 +25,9 @@
 			<diffuse name ="vase_plant.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_03" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_03" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -38,9 +38,9 @@
 			<bump name ="background_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_05" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_05" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -51,9 +51,9 @@
 			<bump name ="spnza_bricks_a_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_06" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_06" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -64,9 +64,9 @@
 			<bump name ="spnza_bricks_a_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_07" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_07" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -76,9 +76,9 @@
 			<diffuse name ="sponza_arch_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_08" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_08" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -88,9 +88,9 @@
 			<diffuse name ="sponza_ceiling_a_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_09" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_09" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -101,9 +101,9 @@
 			<bump name ="sponza_column_a_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_10" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_10" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -114,9 +114,9 @@
 			<bump name ="sponza_column_a_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_11" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_11" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -127,9 +127,9 @@
 			<bump name ="sponza_column_a_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_12" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_12" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -140,9 +140,9 @@
 			<bump name ="sponza_column_a_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_13" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_13" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -153,9 +153,9 @@
 			<bump name ="sponza_column_a_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_14" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_14" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -166,9 +166,9 @@
 			<bump name ="sponza_column_a_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_15" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_15" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -179,9 +179,9 @@
 			<bump name ="sponza_column_a_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_16" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_16" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -192,9 +192,9 @@
 			<bump name ="sponza_column_a_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_17" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_17" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -204,9 +204,9 @@
 			<diffuse name ="sponza_arch_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_18" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_18" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -216,9 +216,9 @@
 			<diffuse name ="sponza_floor_a_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_19" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_19" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -228,9 +228,9 @@
 			<diffuse name ="sponza_ceiling_a_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_20" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_20" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -240,9 +240,9 @@
 			<diffuse name ="sponza_arch_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_21" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_21" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -252,9 +252,9 @@
 			<diffuse name ="sponza_arch_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_22" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_22" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -265,9 +265,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_23" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_23" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -278,9 +278,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_24" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_24" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -291,9 +291,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_25" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_25" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -304,9 +304,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_26" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_26" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -317,9 +317,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_27" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_27" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -330,9 +330,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_28" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_28" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -343,9 +343,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_29" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_29" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -356,9 +356,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_30" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_30" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -369,9 +369,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_31" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_31" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -382,9 +382,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_32" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_32" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -395,9 +395,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_33" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_33" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -408,9 +408,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_34" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_34" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -421,9 +421,9 @@
 			<bump name ="spnza_bricks_a_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_35" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_35" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -433,9 +433,9 @@
 			<diffuse name ="sponza_ceiling_a_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_36" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_36" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -446,9 +446,9 @@
 			<bump name ="spnza_bricks_a_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_37" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_37" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -458,9 +458,9 @@
 			<diffuse name ="sponza_arch_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_38" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_38" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -470,9 +470,9 @@
 			<diffuse name ="sponza_ceiling_a_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_39" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_39" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -482,9 +482,9 @@
 			<diffuse name ="sponza_arch_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_40" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_40" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -494,9 +494,9 @@
 			<diffuse name ="sponza_ceiling_a_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_41" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_41" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -506,9 +506,9 @@
 			<diffuse name ="sponza_arch_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_42" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_42" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -518,9 +518,9 @@
 			<diffuse name ="sponza_ceiling_a_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_43" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_43" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -530,9 +530,9 @@
 			<diffuse name ="sponza_arch_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_44" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_44" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -542,9 +542,9 @@
 			<diffuse name ="sponza_ceiling_a_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_45" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_45" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -554,9 +554,9 @@
 			<diffuse name ="sponza_arch_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_46" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_46" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -566,9 +566,9 @@
 			<diffuse name ="sponza_ceiling_a_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_47" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_47" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -578,9 +578,9 @@
 			<diffuse name ="sponza_arch_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_48" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_48" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -590,9 +590,9 @@
 			<diffuse name ="sponza_ceiling_a_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_49" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_49" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -602,9 +602,9 @@
 			<diffuse name ="sponza_arch_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_50" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_50" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -614,9 +614,9 @@
 			<diffuse name ="sponza_ceiling_a_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_51" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_51" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -626,9 +626,9 @@
 			<diffuse name ="sponza_arch_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_52" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_52" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -638,9 +638,9 @@
 			<diffuse name ="sponza_ceiling_a_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_53" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_53" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -650,9 +650,9 @@
 			<diffuse name ="sponza_arch_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_54" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_54" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -662,9 +662,9 @@
 			<diffuse name ="sponza_ceiling_a_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_55" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_55" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -674,9 +674,9 @@
 			<diffuse name ="sponza_arch_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_56" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_56" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -686,9 +686,9 @@
 			<diffuse name ="sponza_arch_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_57" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_57" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -698,9 +698,9 @@
 			<diffuse name ="sponza_arch_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_58" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_58" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -710,9 +710,9 @@
 			<diffuse name ="sponza_arch_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_59" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_59" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -722,9 +722,9 @@
 			<diffuse name ="sponza_arch_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_60" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_60" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -734,9 +734,9 @@
 			<diffuse name ="sponza_arch_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_61" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_61" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -746,9 +746,9 @@
 			<diffuse name ="sponza_arch_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_62" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_62" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -758,9 +758,9 @@
 			<diffuse name ="sponza_arch_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_63" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_63" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -770,9 +770,9 @@
 			<diffuse name ="sponza_arch_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_64" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_64" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -782,9 +782,9 @@
 			<diffuse name ="sponza_arch_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_65" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_65" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -794,9 +794,9 @@
 			<diffuse name ="sponza_arch_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_66" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_66" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -807,9 +807,9 @@
 			<bump name ="spnza_bricks_a_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_67" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_67" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -819,9 +819,9 @@
 			<diffuse name ="sponza_arch_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_68" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_68" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -832,9 +832,9 @@
 			<bump name ="spnza_bricks_a_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_69" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_69" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -845,9 +845,9 @@
 			<bump name ="spnza_bricks_a_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_70" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_70" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -857,9 +857,9 @@
 			<diffuse name ="sponza_details_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_71" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_71" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -869,9 +869,9 @@
 			<diffuse name ="sponza_details_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_72" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_72" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -881,9 +881,9 @@
 			<diffuse name ="sponza_details_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_73" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_73" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -893,9 +893,9 @@
 			<diffuse name ="sponza_details_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_74" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_74" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -905,9 +905,9 @@
 			<diffuse name ="sponza_details_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_75" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_75" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -918,9 +918,9 @@
 			<bump name ="spnza_bricks_a_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_76" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_76" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -931,9 +931,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_77" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_77" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -944,9 +944,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_78" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_78" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -957,9 +957,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_79" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_79" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -970,9 +970,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_80" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_80" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -983,9 +983,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_81" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_81" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -996,9 +996,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_82" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_82" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1009,9 +1009,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_83" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_83" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1022,9 +1022,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_84" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_84" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1035,9 +1035,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_85" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_85" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1048,9 +1048,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_86" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_86" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1061,9 +1061,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_87" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_87" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1074,9 +1074,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_88" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_88" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1087,9 +1087,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_89" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_89" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1100,9 +1100,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_90" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_90" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1113,9 +1113,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_91" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_91" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1126,9 +1126,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_92" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_92" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1139,9 +1139,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_93" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_93" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1152,9 +1152,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_94" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_94" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1165,9 +1165,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_95" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_95" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1178,9 +1178,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_96" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_96" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1191,9 +1191,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_97" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_97" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1204,9 +1204,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_98" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_98" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1217,9 +1217,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_99" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_99" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1230,9 +1230,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_100" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_100" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1243,9 +1243,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_101" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_101" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1256,9 +1256,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_102" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_102" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1269,9 +1269,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_103" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_103" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1282,9 +1282,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_104" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_104" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1295,9 +1295,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_105" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_105" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1308,9 +1308,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_106" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_106" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1321,9 +1321,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_107" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_107" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1334,9 +1334,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_108" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_108" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1347,9 +1347,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_109" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_109" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1360,9 +1360,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_110" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_110" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1373,9 +1373,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_111" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_111" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1386,9 +1386,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_112" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_112" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1399,9 +1399,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_113" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_113" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1412,9 +1412,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_114" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_114" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1425,9 +1425,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_115" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_115" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1438,9 +1438,9 @@
 			<bump name ="sponza_column_c_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_116" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_116" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1451,9 +1451,9 @@
 			<bump name ="spnza_bricks_a_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_117" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_117" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1463,9 +1463,9 @@
 			<diffuse name ="sponza_floor_a_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_118" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_118" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1476,9 +1476,9 @@
 			<bump name ="sponza_column_a_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_119" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_119" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1489,9 +1489,9 @@
 			<bump name ="sponza_column_a_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_120" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_120" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1502,9 +1502,9 @@
 			<bump name ="sponza_column_a_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_121" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_121" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1515,9 +1515,9 @@
 			<bump name ="sponza_column_a_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_122" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_122" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1527,9 +1527,9 @@
 			<diffuse name ="sponza_arch_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_123" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_123" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1539,9 +1539,9 @@
 			<diffuse name ="sponza_arch_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_124" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_124" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1551,9 +1551,9 @@
 			<diffuse name ="sponza_arch_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_125" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_125" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1564,9 +1564,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_126" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_126" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1577,9 +1577,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_127" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_127" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1590,9 +1590,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_128" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_128" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1603,9 +1603,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_129" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_129" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1616,9 +1616,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_130" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_130" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1629,9 +1629,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_131" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_131" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1642,9 +1642,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_132" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_132" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1655,9 +1655,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_133" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_133" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1668,9 +1668,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_134" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_134" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1681,9 +1681,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_135" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_135" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1694,9 +1694,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_136" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_136" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1707,9 +1707,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_137" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_137" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1720,9 +1720,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_138" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_138" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1733,9 +1733,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_139" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_139" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1746,9 +1746,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_140" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_140" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1759,9 +1759,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_141" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_141" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1772,9 +1772,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_142" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_142" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1785,9 +1785,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_143" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_143" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1798,9 +1798,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_144" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_144" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1811,9 +1811,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_145" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_145" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1824,9 +1824,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_146" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_146" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1837,9 +1837,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_147" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_147" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1850,9 +1850,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_148" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_148" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1863,9 +1863,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_149" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_149" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1876,9 +1876,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_150" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_150" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1889,9 +1889,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_151" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_151" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1902,9 +1902,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_152" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_152" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1915,9 +1915,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_153" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_153" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1928,9 +1928,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_154" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_154" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1941,9 +1941,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_155" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_155" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1954,9 +1954,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_156" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_156" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1967,9 +1967,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_157" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_157" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1980,9 +1980,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_158" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_158" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -1993,9 +1993,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_159" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_159" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2006,9 +2006,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_160" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_160" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2019,9 +2019,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_161" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_161" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2032,9 +2032,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_162" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_162" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2045,9 +2045,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_163" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_163" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2058,9 +2058,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_164" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_164" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2071,9 +2071,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_165" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_165" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2084,9 +2084,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_166" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_166" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2097,9 +2097,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_167" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_167" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2110,9 +2110,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_168" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_168" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2123,9 +2123,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_169" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_169" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2136,9 +2136,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_170" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_170" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2149,9 +2149,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_171" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_171" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2162,9 +2162,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_172" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_172" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2175,9 +2175,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_173" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_173" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2188,9 +2188,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_174" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_174" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2201,9 +2201,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_175" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_175" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2214,9 +2214,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_176" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_176" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2227,9 +2227,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_177" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_177" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2240,9 +2240,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_178" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_178" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2253,9 +2253,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_179" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_179" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2266,9 +2266,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_180" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_180" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2279,9 +2279,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_181" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_181" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2292,9 +2292,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_182" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_182" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2305,9 +2305,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_183" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_183" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2318,9 +2318,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_184" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_184" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2331,9 +2331,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_185" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_185" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2344,9 +2344,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_186" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_186" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2357,9 +2357,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_187" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_187" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2370,9 +2370,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_188" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_188" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2383,9 +2383,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_189" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_189" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2396,9 +2396,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_190" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_190" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2409,9 +2409,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_191" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_191" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2422,9 +2422,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_192" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_192" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2435,9 +2435,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_193" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_193" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2448,9 +2448,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_194" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_194" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2461,9 +2461,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_195" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_195" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2474,9 +2474,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_196" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_196" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2487,9 +2487,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_197" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_197" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2500,9 +2500,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_198" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_198" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2513,9 +2513,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_199" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_199" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2526,9 +2526,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_200" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_200" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2539,9 +2539,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_201" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_201" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2552,9 +2552,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_202" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_202" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2565,9 +2565,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_203" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_203" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2578,9 +2578,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_204" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_204" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2591,9 +2591,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_205" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_205" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2604,9 +2604,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_206" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_206" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2617,9 +2617,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_207" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_207" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2630,9 +2630,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_208" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_208" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2643,9 +2643,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_209" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_209" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2656,9 +2656,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_210" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_210" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2669,9 +2669,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_211" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_211" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2682,9 +2682,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_212" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_212" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2695,9 +2695,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_213" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_213" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2708,9 +2708,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_214" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_214" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2721,9 +2721,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_215" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_215" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2734,9 +2734,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_216" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_216" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2747,9 +2747,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_217" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_217" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2760,9 +2760,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_218" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_218" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2773,9 +2773,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_219" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_219" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2786,9 +2786,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_220" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_220" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2799,9 +2799,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_221" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_221" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2812,9 +2812,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_222" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_222" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2825,9 +2825,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_223" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_223" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2838,9 +2838,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_224" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_224" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2851,9 +2851,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_225" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_225" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2864,9 +2864,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_226" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_226" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2877,9 +2877,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_227" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_227" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2890,9 +2890,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_228" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_228" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2903,9 +2903,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_229" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_229" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2916,9 +2916,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_230" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_230" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2929,9 +2929,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_231" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_231" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2942,9 +2942,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_232" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_232" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2955,9 +2955,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_233" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_233" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2968,9 +2968,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_234" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_234" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2981,9 +2981,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_235" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_235" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -2994,9 +2994,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_236" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_236" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3007,9 +3007,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_237" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_237" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3020,9 +3020,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_238" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_238" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3033,9 +3033,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_239" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_239" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3046,9 +3046,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_240" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_240" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3059,9 +3059,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_241" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_241" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3072,9 +3072,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_242" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_242" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3085,9 +3085,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_243" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_243" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3098,9 +3098,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_244" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_244" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3111,9 +3111,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_245" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_245" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3124,9 +3124,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_246" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_246" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3137,9 +3137,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_247" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_247" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3150,9 +3150,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_248" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_248" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3163,9 +3163,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_249" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_249" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3176,9 +3176,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_250" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_250" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3189,9 +3189,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_251" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_251" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3202,9 +3202,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_252" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_252" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3215,9 +3215,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_253" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_253" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3228,9 +3228,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_254" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_254" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3241,9 +3241,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_255" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_255" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3254,9 +3254,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_256" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_256" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3267,9 +3267,9 @@
 			<bump name ="sponza_column_b_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_257" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_257" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3280,9 +3280,9 @@
 			<bump name ="spnza_bricks_a_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_258" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_258" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3293,9 +3293,9 @@
 			<bump name ="spnza_bricks_a_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_259" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_259" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3305,9 +3305,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_260" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_260" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3317,9 +3317,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_261" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_261" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3329,9 +3329,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_262" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_262" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3341,9 +3341,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_263" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_263" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3353,9 +3353,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_264" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_264" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3365,9 +3365,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_265" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_265" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3377,9 +3377,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_266" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_266" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3389,9 +3389,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_267" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_267" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3401,9 +3401,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_268" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_268" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3413,9 +3413,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_269" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_269" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3425,9 +3425,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_270" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_270" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3437,9 +3437,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_271" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_271" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3449,9 +3449,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_272" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_272" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3461,9 +3461,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_273" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_273" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3473,9 +3473,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_274" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_274" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3485,9 +3485,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_275" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_275" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3498,9 +3498,9 @@
 			<bump name ="sponza_thorn_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_276" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_276" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3511,9 +3511,9 @@
 			<bump name ="sponza_thorn_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_277" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_277" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3524,9 +3524,9 @@
 			<bump name ="sponza_thorn_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_278" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_278" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3537,9 +3537,9 @@
 			<bump name ="sponza_thorn_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_279" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_279" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3550,9 +3550,9 @@
 			<bump name ="sponza_thorn_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_280" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_280" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3563,9 +3563,9 @@
 			<bump name ="sponza_thorn_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_281" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_281" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3576,9 +3576,9 @@
 			<bump name ="sponza_thorn_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_282" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_282" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3588,9 +3588,9 @@
 			<diffuse name ="sponza_fabric_green_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_283" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_283" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3600,9 +3600,9 @@
 			<diffuse name ="sponza_fabric_blue_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_284" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_284" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3612,9 +3612,9 @@
 			<diffuse name ="sponza_fabric_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_285" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_285" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3624,9 +3624,9 @@
 			<diffuse name ="sponza_fabric_green_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_286" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_286" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3636,9 +3636,9 @@
 			<diffuse name ="sponza_fabric_blue_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_287" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_287" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3648,9 +3648,9 @@
 			<diffuse name ="sponza_fabric_green_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_288" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_288" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3660,9 +3660,9 @@
 			<diffuse name ="sponza_fabric_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_289" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_289" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3672,9 +3672,9 @@
 			<diffuse name ="sponza_fabric_blue_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_290" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_290" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3684,9 +3684,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_291" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_291" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3696,9 +3696,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_292" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_292" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3708,9 +3708,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_293" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_293" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3720,9 +3720,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_294" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_294" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3732,9 +3732,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_295" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_295" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3744,9 +3744,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_296" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_296" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3756,9 +3756,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_297" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_297" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3768,9 +3768,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_298" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_298" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3780,9 +3780,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_299" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_299" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3792,9 +3792,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_300" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_300" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3804,9 +3804,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_301" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_301" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3816,9 +3816,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_302" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_302" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3828,9 +3828,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_303" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_303" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3840,9 +3840,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_304" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_304" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3852,9 +3852,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_305" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_305" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3864,9 +3864,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_306" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_306" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3876,9 +3876,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_307" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_307" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3888,9 +3888,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_308" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_308" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3900,9 +3900,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_309" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_309" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3912,9 +3912,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_310" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_310" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3924,9 +3924,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_311" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_311" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3936,9 +3936,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_312" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_312" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3948,9 +3948,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_313" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_313" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3960,9 +3960,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_314" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_314" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3972,9 +3972,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_315" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_315" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3984,9 +3984,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_316" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_316" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -3996,9 +3996,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_317" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_317" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4008,9 +4008,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_318" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_318" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4020,9 +4020,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_319" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_319" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4032,9 +4032,9 @@
 			<diffuse name ="sponza_flagpole_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_320" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_320" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4044,9 +4044,9 @@
 			<diffuse name ="sponza_curtain_blue_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_321" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_321" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4056,9 +4056,9 @@
 			<diffuse name ="sponza_curtain_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_322" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_322" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4068,9 +4068,9 @@
 			<diffuse name ="sponza_curtain_green_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_323" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_323" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4080,9 +4080,9 @@
 			<diffuse name ="sponza_curtain_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_324" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_324" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4092,9 +4092,9 @@
 			<diffuse name ="sponza_curtain_green_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_325" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_325" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4104,9 +4104,9 @@
 			<diffuse name ="sponza_curtain_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_326" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_326" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4116,9 +4116,9 @@
 			<diffuse name ="sponza_curtain_blue_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_327" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_327" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4128,9 +4128,9 @@
 			<diffuse name ="sponza_curtain_green_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_328" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_328" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4140,9 +4140,9 @@
 			<diffuse name ="sponza_curtain_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_329" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_329" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4152,9 +4152,9 @@
 			<diffuse name ="sponza_curtain_blue_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_330" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_330" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4165,9 +4165,9 @@
 			<bump name ="chain_texture_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_331" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_331" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4178,9 +4178,9 @@
 			<bump name ="chain_texture_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_332" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_332" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4191,9 +4191,9 @@
 			<bump name ="chain_texture_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_333" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_333" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4204,9 +4204,9 @@
 			<bump name ="chain_texture_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_334" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_334" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4216,9 +4216,9 @@
 			<diffuse name ="vase_hanging.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_335" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_335" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4228,9 +4228,9 @@
 			<diffuse name ="vase_hanging.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_336" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_336" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4240,9 +4240,9 @@
 			<diffuse name ="vase_hanging.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_337" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_337" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4252,9 +4252,9 @@
 			<diffuse name ="vase_hanging.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_338" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_338" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4264,9 +4264,9 @@
 			<diffuse name ="vase_hanging.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_339" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_339" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4277,9 +4277,9 @@
 			<bump name ="chain_texture_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_340" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_340" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4290,9 +4290,9 @@
 			<bump name ="chain_texture_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_341" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_341" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4303,9 +4303,9 @@
 			<bump name ="chain_texture_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_342" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_342" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4316,9 +4316,9 @@
 			<bump name ="chain_texture_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_343" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_343" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4328,9 +4328,9 @@
 			<diffuse name ="vase_hanging.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_344" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_344" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4340,9 +4340,9 @@
 			<diffuse name ="vase_hanging.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_345" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_345" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4352,9 +4352,9 @@
 			<diffuse name ="vase_hanging.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_346" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_346" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4364,9 +4364,9 @@
 			<diffuse name ="vase_hanging.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_347" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_347" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4376,9 +4376,9 @@
 			<diffuse name ="vase_hanging.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_348" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_348" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4389,9 +4389,9 @@
 			<bump name ="chain_texture_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_349" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_349" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4402,9 +4402,9 @@
 			<bump name ="chain_texture_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_350" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_350" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4415,9 +4415,9 @@
 			<bump name ="chain_texture_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_351" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_351" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4428,9 +4428,9 @@
 			<bump name ="chain_texture_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_352" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_352" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4440,9 +4440,9 @@
 			<diffuse name ="vase_hanging.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_353" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_353" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4452,9 +4452,9 @@
 			<diffuse name ="vase_hanging.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_354" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_354" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4464,9 +4464,9 @@
 			<diffuse name ="vase_hanging.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_355" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_355" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4476,9 +4476,9 @@
 			<diffuse name ="vase_hanging.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_356" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_356" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4488,9 +4488,9 @@
 			<diffuse name ="vase_hanging.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_357" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_357" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4501,9 +4501,9 @@
 			<bump name ="chain_texture_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_358" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_358" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4514,9 +4514,9 @@
 			<bump name ="chain_texture_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_359" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_359" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4527,9 +4527,9 @@
 			<bump name ="chain_texture_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_360" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_360" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4540,9 +4540,9 @@
 			<bump name ="chain_texture_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_361" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_361" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4552,9 +4552,9 @@
 			<diffuse name ="vase_hanging.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_362" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_362" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4564,9 +4564,9 @@
 			<diffuse name ="vase_hanging.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_363" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_363" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4576,9 +4576,9 @@
 			<diffuse name ="vase_hanging.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_364" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_364" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4588,9 +4588,9 @@
 			<diffuse name ="vase_hanging.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_365" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_365" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4600,9 +4600,9 @@
 			<diffuse name ="vase_hanging.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_366" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_366" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4612,9 +4612,9 @@
 			<diffuse name ="vase_plant.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_367" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_367" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4624,9 +4624,9 @@
 			<diffuse name ="vase_plant.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_368" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_368" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4636,9 +4636,9 @@
 			<diffuse name ="vase_plant.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_369" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_369" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4648,9 +4648,9 @@
 			<diffuse name ="vase_plant.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_370" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_370" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4660,9 +4660,9 @@
 			<diffuse name ="vase_plant.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_371" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_371" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4672,9 +4672,9 @@
 			<diffuse name ="vase_plant.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_372" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_372" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4684,9 +4684,9 @@
 			<diffuse name ="vase_plant.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_373" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_373" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4696,9 +4696,9 @@
 			<diffuse name ="vase_dif.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_374" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_374" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4708,9 +4708,9 @@
 			<diffuse name ="vase_dif.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_375" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_375" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4720,9 +4720,9 @@
 			<diffuse name ="vase_dif.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_376" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_376" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4732,9 +4732,9 @@
 			<diffuse name ="vase_dif.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_377" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_377" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4745,9 +4745,9 @@
 			<bump name ="background_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_378" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_378" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4758,9 +4758,9 @@
 			<bump name ="background_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_379" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_379" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4771,9 +4771,9 @@
 			<bump name ="spnza_bricks_a_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_380" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_380" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4783,9 +4783,9 @@
 			<diffuse name ="sponza_roof_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_381" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_381" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4795,9 +4795,9 @@
 			<diffuse name ="sponza_roof_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="sponza_382" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="sponza_382" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4808,9 +4808,9 @@
 			<bump name ="spnza_bricks_a_diff.tga" />
 		</material>
 	</body> 
-	<body 	 name="lion1" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="lion1" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4821,9 +4821,9 @@
 			<bump name ="lion_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="lion2" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="lion2" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4834,9 +4834,9 @@
 			<bump name ="lion_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="vaso1" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="vaso1" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4847,9 +4847,9 @@
 			<bump name ="vase_round_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="vaso2" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="vaso2" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4860,9 +4860,9 @@
 			<bump name ="vase_round_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="vaso3" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="vaso3" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4873,9 +4873,9 @@
 			<bump name ="vase_round_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="vaso4" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="vaso4" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4886,9 +4886,9 @@
 			<bump name ="vase_round_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="vaso5" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="vaso5" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4899,9 +4899,9 @@
 			<bump name ="vase_round_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="vaso6" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="vaso6" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4912,9 +4912,9 @@
 			<bump name ="vase_round_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="vaso7" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="vaso7" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4925,9 +4925,9 @@
 			<bump name ="vase_round_ddn.tga" />
 		</material>
 	</body> 
-	<body 	 name="vaso8" >
-		<collision type="Editable_Poly"/>
-		<material>
+	<body name="vaso8" >
+		<collision type="TriangleMesh"/>
+		<material name="Standardmaterial">
 			<SpecularIntensity>
 			10.0
 			</SpecularIntensity>
@@ -4938,4 +4938,515 @@
 			<bump name ="vase_round_ddn.tga" />
 		</material>
 	</body> 
+	<dummy name="Character">
+		<position>
+			<x> 52.1656 </x>
+			<y> 56.6523 </y>
+			<z> -1.62112 </z>
+		</position>
+	</dummy>
+	<pointlight name="Omni01">
+		<position>
+			<x> 207.197 </x>
+			<y> 134.052 </y>
+			<z> -41.5424 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="0.5" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni02">
+		<position>
+			<x> 207.197 </x>
+			<y> 134.052 </y>
+			<z> 41.044 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="0.5" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni03">
+		<position>
+			<x> 87.4319 </x>
+			<y> 134.052 </y>
+			<z> 41.044 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="0.5" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni04">
+		<position>
+			<x> 87.4319 </x>
+			<y> 134.052 </y>
+			<z> -41.5424 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="0.5" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni05">
+		<position>
+			<x> -8.90141 </x>
+			<y> 134.052 </y>
+			<z> 41.044 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="0.5" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni06">
+		<position>
+			<x> -8.90141 </x>
+			<y> 134.052 </y>
+			<z> -41.5424 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="0.5" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni07">
+		<position>
+			<x> -105.235 </x>
+			<y> 134.052 </y>
+			<z> 41.044 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="0.5" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni08">
+		<position>
+			<x> -105.235 </x>
+			<y> 134.052 </y>
+			<z> -41.5424 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="0.5" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni09">
+		<position>
+			<x> -201.568 </x>
+			<y> 134.052 </y>
+			<z> 41.044 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="0.5" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni10">
+		<position>
+			<x> -201.568 </x>
+			<y> 134.052 </y>
+			<z> -41.5424 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="0.5" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni11">
+		<position>
+			<x> -201.568 </x>
+			<y> 35.7015 </y>
+			<z> 41.044 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="0.5" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni12">
+		<position>
+			<x> -201.568 </x>
+			<y> 35.7015 </y>
+			<z> -41.5424 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="0.5" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni13">
+		<position>
+			<x> -105.235 </x>
+			<y> 35.7015 </y>
+			<z> 41.044 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="0.5" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni14">
+		<position>
+			<x> -105.235 </x>
+			<y> 35.7015 </y>
+			<z> -41.5424 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="0.5" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni15">
+		<position>
+			<x> -8.90141 </x>
+			<y> 35.7015 </y>
+			<z> -41.5424 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="0.5" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni16">
+		<position>
+			<x> -8.90141 </x>
+			<y> 35.7015 </y>
+			<z> 41.044 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="0.5" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni17">
+		<position>
+			<x> 87.4319 </x>
+			<y> 35.7015 </y>
+			<z> 41.044 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="0.5" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni18">
+		<position>
+			<x> 87.4319 </x>
+			<y> 35.7015 </y>
+			<z> -41.5424 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="0.5" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni19">
+		<position>
+			<x> 207.197 </x>
+			<y> 35.7015 </y>
+			<z> 41.044 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="0.5" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni20">
+		<position>
+			<x> 207.197 </x>
+			<y> 35.7015 </y>
+			<z> -41.5424 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="0.5" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni23">
+		<position>
+			<x> -194.656 </x>
+			<y> -62.4783 </y>
+			<z> 77.5963 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="0.5" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni24">
+		<position>
+			<x> -194.656 </x>
+			<y> -62.4783 </y>
+			<z> -78.0947 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="0.5" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni25">
+		<position>
+			<x> -13.0497 </x>
+			<y> -62.4783 </y>
+			<z> -78.0947 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="0.5" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni26">
+		<position>
+			<x> -13.0497 </x>
+			<y> -62.4783 </y>
+			<z> 77.5963 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="0.5" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni27">
+		<position>
+			<x> 168.557 </x>
+			<y> -62.4783 </y>
+			<z> 77.5963 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="0.5" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni28">
+		<position>
+			<x> 168.557 </x>
+			<y> -62.4783 </y>
+			<z> -78.0947 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="0.5" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni21">
+		<position>
+			<x> 153.147 </x>
+			<y> 45.2832 </y>
+			<z> -99.6964 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="1.0" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni29">
+		<position>
+			<x> -66.4104 </x>
+			<y> 45.2832 </y>
+			<z> -99.6964 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="1.0" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni30">
+		<position>
+			<x> -285.968 </x>
+			<y> 45.2832 </y>
+			<z> -99.6964 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="1.0" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni31">
+		<position>
+			<x> -285.968 </x>
+			<y> 45.2832 </y>
+			<z> 4.51965 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="1.0" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni32">
+		<position>
+			<x> -285.968 </x>
+			<y> 45.2832 </y>
+			<z> 108.736 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="1.0" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni33">
+		<position>
+			<x> -129.591 </x>
+			<y> 45.2832 </y>
+			<z> 108.736 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="1.0" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni34">
+		<position>
+			<x> 26.787 </x>
+			<y> 45.2832 </y>
+			<z> 108.736 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="1.0" />
+		<decay value ="200.0" />
+	</pointlight>
+	<pointlight name="Omni35">
+		<position>
+			<x> 183.165 </x>
+			<y> 45.2832 </y>
+			<z> 108.736 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+		<multiplier amount="1.0" />
+		<decay value ="200.0" />
+	</pointlight>
+	<dummy name="Fire01">
+		<position>
+			<x> -135.134 </x>
+			<y> 126.68 </y>
+			<z> 42.8434 </z>
+		</position>
+	</dummy>
+	<dummy name="Fire02">
+		<position>
+			<x> 131.163 </x>
+			<y> 126.68 </y>
+			<z> 42.8434 </z>
+		</position>
+	</dummy>
+	<dummy name="Fire03">
+		<position>
+			<x> 131.163 </x>
+			<y> 126.68 </y>
+			<z> -43.1529 </z>
+		</position>
+	</dummy>
+	<dummy name="Fire04">
+		<position>
+			<x> -134.351 </x>
+			<y> 126.68 </y>
+			<z> -43.1529 </z>
+		</position>
+	</dummy>
 </SCENE>
