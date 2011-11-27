@@ -36,6 +36,8 @@ namespace PloobsEngine.Cameras
 {
     /// <summary>
     /// First Person Camera
+    /// To be used in Ploobs Demos and in Debug Mode.
+    /// It is not a camera to be used in Production Environment
     /// </summary>
     public class CameraFirstPerson : ICamera
     {
@@ -55,7 +57,9 @@ namespace PloobsEngine.Cameras
           set { 
               useAcelerometer = value;
               if (useAcelerometer)
+              {
                   StartAcelerometer();
+              }
           }
         }
 #endif
@@ -108,12 +112,18 @@ namespace PloobsEngine.Cameras
         /// <param name="lrRot">The leftright rotation.</param>
         /// <param name="udRot">The updown rotation.</param>
         /// <param name="startingPos">The starting pos.</param>
-        /// <param name="viewport">The viewport.</param>
-        public CameraFirstPerson(float lrRot, float udRot, Vector3 startingPos, Viewport viewport)
-        {
+        /// <param name="viewport">The viewport.</param>        
+#if WINDOWS_PHONE
+        /// <param name="useAcelerometer">if set to <c>true</c> [use acelerometer].</param>
+        public CameraFirstPerson(float lrRot, float udRot, Vector3 startingPos, Viewport viewport,bool useAcelerometer  = false)
+#else
+            public CameraFirstPerson(float lrRot, float udRot, Vector3 startingPos, Viewport viewport)
+#endif
+        {            
             init(lrRot, udRot, startingPos,viewport);
 
 #if WINDOWS_PHONE
+            this.useAcelerometer = useAcelerometer;
             if (useAcelerometer)
             {
                 accelSensor = new Microsoft.Devices.Sensors.Accelerometer();
@@ -157,6 +167,12 @@ namespace PloobsEngine.Cameras
 
                 try
                 {
+                    if (accelSensor == null)
+                    {
+                        accelSensor = new Microsoft.Devices.Sensors.Accelerometer();
+                        accelSensor.ReadingChanged += new EventHandler<Microsoft.Devices.Sensors.AccelerometerReadingEventArgs>(accelSensor_ReadingChanged);
+                    }
+
                     accelSensor.Start();
                     accelActive = true;
                 }
