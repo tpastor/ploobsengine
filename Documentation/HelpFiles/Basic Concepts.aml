@@ -36,8 +36,8 @@
       <title>Basic Concepts</title>
       
       <content>
-      <para> People always say that pictures talks more than words,in software
-      production its much more true. So we will start with a simple class 
+      <para> People always says that pictures talks more than words,in software
+      production its much more true than ever. So we will start with a simple class 
       diagram.</para>
       
       <mediaLink>
@@ -45,7 +45,7 @@
        </mediaLink>
       
       <para> 
-      Quite simple isn't ? Lets explain the principal parts.
+      Quite simple isn't ? Lets explain the principal parts (focus on 3D here, the 2D is very much the same).
       </para>
       <para>
       In few words, the master class EngineStuff has an instance of 

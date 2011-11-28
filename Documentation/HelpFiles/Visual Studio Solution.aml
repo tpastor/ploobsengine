@@ -11,49 +11,24 @@
     <section address="Section2">
       <title>Ploobs Engine Project</title>
       <content>        
-        <para>The main project (the engine itself) was built using visual studio 2008 (but can be ported without any trouble to visual studio 2005 and express editions).
+        <para>The main project (the engine itself) was built using visual studio 2010 (Ultimate and Express editions).
         </para>
         <para>
-		The main solution avaliable in the mercurial repository contains 5 projects:
+		The main solution avaliable in the root folder contains 11 projects:
 		</para>
 		
 <list class="bullet">
-  <listItem><para>Assets</para></listItem>
-  <listItem><para>Etapa1</para></listItem>
-  <listItem><para>LTreeLibrary</para></listItem>
-  <listItem><para>LTreePipeline</para></listItem>
-  <listItem><para>Engine</para></listItem>
+  <listItem><para>Engine Tests</para></listItem>
+  <listItem><para>Engine TestsContent</para></listItem>
+  <listItem><para>EnginePhoneTests</para></listItem>
+  <listItem><para>EnginePhoneTestsContent</para></listItem>
+  <listItem><para>PloobsEngine</para></listItem>
+  <listItem><para>PloobsEngineContent</para></listItem>
+  <listItem><para>PloobsEngineReach</para></listItem>
+  <listItem><para>PloobsEngineReachReach</para></listItem>
+  <listItem><para>Windows Phone Copy of PloobsEngine</para></listItem>
+  <listItem><para>PloobsInstaller - Unload this project if you dont have InstallShield LE installed</para></listItem>
 </list>
-
-	
-	<legacyBold>Assets</legacyBold>	
-	<para>
-	Constains all the assets used INSIDE the PLoobsEngine. This projects compiles all the assets and output them in a .xnb form. Them those serializable resources are used exclusively in PloobsEngine. The end user cannot load them.
-	</para>
-	<para>
-	Using such aproach is good because all assets are embedded in the same DLL (PloobsEngine) and they are protected. All assets used are free domain (some created by us, and others found on the internet)
-	</para>
-
-	<legacyBold>Etapa1</legacyBold>	
-	<para>
-	Constains LOTS of RANDOM projects that uses the PloobsEngine. It works as a HUGE SANDBOX. There is some projects about SUBDIVISION SURFACES, using the Butterfly and PN-Triangles that are really cool !!! There are also some Terrain experiments with real time deformation !!! There are lots AI content Related, including my implementation of the Steering Behaviors 
-	</para>
-	<para>	
-	BE CAREFUL, ITS NOT ORGANIZED at all.
-	</para>
-	<para>	
-	In a close future, i intent to take some of these projects and create a separate Solution for them (and document them, possibly blogging about them also).
-	</para>			    
-    
-    <legacyBold>LTreeLibrary and LTreePipeline</legacyBold>	
-    <para>
-    Contains the LTree implementation, the HLSL files are in a resource form.
-    </para>
-    
-    <legacyBold>Engine</legacyBold>	
-    <para>
-    Contains all the engine related code. They are reasonably organized in folder. The external DLLs used in the engine like XNAAnimation.dll is in the DLL folder of the Engine. If you want a custom version of XNAAnimation, you need to build the new DLL, put them in the DLL folder of Engine, build PloobsEngine solution and merge the resulting DLLs (bin folder of Engine Project, dont forget to add the XNA custom pipeline DLLs in the merge also).
-    </para>
     </content>
     </section>
 

@@ -12,7 +12,14 @@
       <content>              
       
 		<list class="bullet">		  		  		  		  		  		  
-		  <para>BLABLABAL</para>
+		  <para>Ploobs Editor</para>
+		</list>	        
+		<list class="bullet">		  		  		  		  		  		  
+		  <para>Networking</para>
+		</list>	        
+		
+		<list class="bullet">		  		  		  		  		  		  
+		  <para>Xbox 360 Support</para>
 		</list>	        
       </content>
       <!-- If a section contains a sections element, its content creates

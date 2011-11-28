@@ -26,7 +26,7 @@
 	</para>
 	
 	<list class="ordered">
-	  <listItem><para>Download the KW Export plugin (http://www.kwxport.org/, in case of 3ds MAx) and use the .X format instead of FBX</para></listItem>
+	  <listItem><para>Install the KW Exporter (DO NOT WORKS ON 3DS MAX 2012) plugin (provided in the Ploobs Installer) and use the .X format instead of FBX</para></listItem>
 	  <listItem><para>Export the scene in .X format</para></listItem>
 	  <listItem><para>Export the same scene in .XML format (using our plugin)</para></listItem>
 	  <listItem><para>Load the .XML scene using the engine. (the XML contains all the info needed to load cameras, lights, dummies and objects with different types of textures - whe current support self illuminance, bump, specular and diffuse) See the Scene example in AdvanceExamples Package.</para></listItem>	  

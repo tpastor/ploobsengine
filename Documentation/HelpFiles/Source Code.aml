@@ -8,10 +8,10 @@
     <section address="Section1">
       <title>Ploobs Engine Source Code</title>
       <content>        
-        <para>All the source code is stored in a sourceforge Mercurial Repo 
+        <para>All the PloobsEngine source code is stored in our  
         <externalLink>
-          <linkText>In this address</linkText>          
-          <linkUri>http://ploobsengine.hg.sourceforge.net:8000/hgroot/ploobsengine/ploobsengine</linkUri>
+          <linkText>Google Code Mercurial Repo</linkText>          
+          <linkUri>http://code.google.com/p/port-ploobsengine/source/checkout</linkUri>
       </externalLink>
       </para>
       </content>
@@ -21,12 +21,13 @@
       <title>Dependencies</title>
       <content>        
         <para>The Ploobs Engine uses some external DLL to perform its work 
-        like:</para>
+        like (all of them included in the Repo):</para>
         
 		<list class="bullet">
 		  <listItem><para>A custom version of XNAAnimation API</para></listItem>		  
 		  <listItem><para>A custom version of SharpSteer API</para></listItem>
 		  <listItem><para>A custom version of LTree API</para></listItem>
+		  <listItem><para>A custom version of OpenSteer API</para></listItem>
 		  <listItem><para>BepuPhysics API</para></listItem>		  
 		  <listItem><para>LidGren API</para></listItem>		  
 		  <listItem><para>Farseer API</para></listItem>		  

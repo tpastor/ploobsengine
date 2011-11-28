@@ -5,23 +5,34 @@
       <para>Tutorials Section</para>
     </introduction>    
     <section address="Section1">
-      <title>Basic Tutorial</title>
+      <title>PloobsEngine Tutorials</title>
       <content>        
-        <para>Show how to set up a very basic 3D scene, <link xlink:href="f97d6691-b9bf-41c7-b292-4a9ced74b81e">check it </link></para>
+        <para>We have lots of tutorials ranging from very basic stuffs to more complicated ones in our website.
+        <externalLink>
+          <linkText>Check them here</linkText>          
+          <linkUri>http://ploobs.com.br/?page_id=1379</linkUri>
+      </externalLink>              
+      </para>
+      <para>
+      We strongly suggest you to read at least the first 6 ones before using PloobsEngine for real. 
+      </para>
+      <alert>
+      All of the Contents showed in these tutorials are included in the Introduction and in the Advanced Demos that you installed with the PloobsInstaller. 
+      </alert>      
       </content>      
-    </section>
+    </section>    
     
-    <section address="Section2">
-      <title>Introduction and Advanced Funcionalities Tutorials</title>
-      <content>        
-        <para>Show lots of engine features separed, <link xlink:href="4130e8d1-be66-4937-bf59-8bfb37b9dbab">check it </link></para>
-      </content>      
-    </section>
-    
-    <section address="Section2">
+    <section address="Sectio3">
       <title>Engine Components</title>
       <content>        
-        <para>Explain what componets are, <link xlink:href="258feb2d-6ec3-4273-ae1e-24b339b0be81">check it </link></para>
+        <para>Explain the PloobsEngine Components architecture: <link xlink:href="258feb2d-6ec3-4273-ae1e-24b339b0be81">check it </link></para>
+      </content>      
+    </section>
+ 
+     <section address="Section5">
+      <title>PloobsEngine Windows Phone 7 Demos</title>
+      <content>        
+        <para>The PloobsInstaller added the source code of one project containing some Basic Demos about using PloobsEngine on the Windows Phone, check it -- there is a shortcut in your desktop to the demos folder</para>
       </content>      
     </section>
     

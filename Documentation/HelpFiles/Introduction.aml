@@ -6,10 +6,34 @@
       <para>
       This section will introduce you to the Ploobs Engine environment.       
       </para>      
-    </introduction> 
+    </introduction>
+    
+    <section address="Section0">
+ <title>What PloobsEngine.msi installed on my machine ???</title>
+ <content>   
+ <para>
+ The Ploobs Installer will install and configure the following stuffs:
+ 
+<list class="bullet">
+  <listItem><para>PloobsEngine DLLs for the PC Windows HiDef (with reasonable video board), PC Windows Reach (with low end video boards) and Windows Phone 7 </para></listItem>
+  <listItem><para>Introduction Demos Source Code: Visual Studio 2010 project showing the most basic funcionalities of the PloobsEngine</para></listItem>
+  <listItem><para>Advanced Demos Source Code: Visual Studio 2010 project showing some advanced funcionalities of the PloobsEngine</para></listItem>
+  <listItem><para>Phone Demos Source: Visual Studio 2010 project showing some basic stuffs about Windows Phone 7 for PloobsEngine</para></listItem>
+  <listItem><para>Advanced Demos Binaries: Pre Compiled .exe with our Advanded Demos</para></listItem>
+  <listItem><para>Visual Studio 2010 Templates (for all plataforms). We have Project Templates and Item Templates. They are automatically installed</para></listItem>
+  <listItem><para>3DS Max PloobsEngine Exporter Plugin</para></listItem>
+  <listItem><para>3DS Max KwExport .X Exporter - A 3DS Max plugin for exporting .x format that we strongly recomend</para></listItem>
+  <listItem><para>Starwarrior, a Space Invader like game with all the source code for PC Reach and Windows Phone 7</para></listItem>
+  <listItem><para>This help Document =P</para></listItem>
+</list>
+
+ </para>
+ 
+ </content>
+ </section>
     
   <section>
-      <title>Help Document Organization</title>
+      <title>This Help Document Organization</title>
       <content>        
         <para>
         This help document is organized as follows:
@@ -17,13 +41,11 @@
         <para>
         
 <list class="bullet">
-  <listItem><para>This introduction page talk about the engine features</para></listItem>
+  <listItem><para>This Introduction page talk about the engine features</para></listItem>
   <listItem><para>The Basic Concepts page talks about the engine architecture.</para></listItem>
-  <listItem><para>Under the Tutorials section we have Basic Tutorial (a hello world demo 
-        very explained). </para></listItem>
-  <listItem><para>In code tutorial (advanced demos) and some extras explaining
-        some engine specifics details.</para></listItem>
-        <listItem><para>In the Source code section we describe how the source code is organized.</para></listItem>
+  <listItem><para>Under the Tutorials section we have a very Basic 3D Tutorial (a hello world demo 
+        explained in details). </para></listItem>
+        <listItem><para>In the Source code section we describe how the source code is organized in our repo (for those who wants to download and play with it).</para></listItem>
         <listItem><para>The Max Exporter section explains how our 3DS Max exporter
         works.</para></listItem>
         <listItem><para>In the API Reference section we show all the PloobsEngine classes.</para></listItem>  

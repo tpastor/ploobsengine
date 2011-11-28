@@ -15,12 +15,13 @@
         <para>
         First of all we need to set up a XNA 4.0 project.
         </para>
+        <para>If you have (you probably have =P) the Visual Studio 2010 templates installed, skip the next paragraph, you just need to click on new project in visual studio and choose our PloobsEngine 3D Sample Project.
         <para>
-		For this, just open the Visual Studio, New project, C#, XNA 3.1 and Windows Game.
-		After that, you will see a basic XNA example. Lets change it to use the Engine.
+		For this, just open the Visual Studio, New project, C#, XNA 4.0 and Windows Game.
+		After that, you will see a basic XNA example. Lets change it to use the Engine DLLs.
 		First of all, we need to add the references to our DLL.
 		For this click in Add References in the project and add the DLL of the Engine (the name depends of the release, at the time iam writing this document the name is PloobsEngineDebug.dll)
-		You also need to add the reference in the content pipeline (To use the vegetation, Animation and HeightMap tools). To do this, just click in the Content and after click in the references of the content and add the SAME dll there too.	
+		You also need to add the reference in the content pipeline (To use the vegetation, Animation tools). To do this, just click in the Content and after click in the references of the content and add the PloobsEnginePipelineDebug.dll there too.	
 		</para>
 		<para>
 		Now we need to create the first sample. All Ploobs Engine application has the same skeleton that is:
@@ -29,7 +30,7 @@
 		<list class="ordered">
   		<listItem><para>Initiate the Engine</para></listItem>
   		<listItem><para>Create and set a Screen</para></listItem>
-  		<listItem><para>Populate the Screen (registering callbacks to events)</para></listItem>
+  		<listItem><para>Populate the Screen (registering callbacks to events, .....)</para></listItem>
 		</list>        
         
         <legacyBold>Initiate the Engine</legacyBold>

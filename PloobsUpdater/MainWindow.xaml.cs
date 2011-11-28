@@ -20,6 +20,7 @@ using System.Windows.Threading;
 using System.Windows.Controls.Primitives;
 using Hardcodet.Wpf.TaskbarNotification;
 using System.Runtime.InteropServices;
+using NUnrar.Archive;
 
 namespace PloobsUpdater
 {
@@ -40,6 +41,8 @@ namespace PloobsUpdater
             InitializeComponent();
             this.Hide();
 
+            HandleXnaVersion();
+
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
             dispatcherTimer.Interval = new TimeSpan(3, 0,0 );
             dispatcherTimer.Start();
@@ -52,32 +55,33 @@ namespace PloobsUpdater
             if (isConnected == false)
                 return;
 
-                try
+            try
+            {
+                AvaliableVersions.Clear();
+                ftp = new FTP("ftp.ploobs.com.br", "ploobs", "5ruTrus6");
+                ftp.Connect();
+                ftp.ChangeDir("/ploobs/Web/Updater");
+
+                foreach (String item in ftp.List())
                 {
-                    ftp = new FTP("ftp.ploobs.com.br", "ploobs", "5ruTrus6");
-                    ftp.Connect();
-                    ftp.ChangeDir("/ploobs/Web/Updater");
-
-                    foreach (String item in ftp.List())
-                    {
-                        String[] files = item.Split(' ');
-                        String file = files[files.Count() - 1];
-                        AvaliableVersions.Add(file);
-                        listBox1.Items.Add(file);
-                    }
-
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
+                    String[] files = item.Split(' ');
+                    String file = files[files.Count() - 1];
+                    AvaliableVersions.Add(file);
+                    listBox1.Items.Add(file);
                 }
 
-                if (packageName != null)
-                {
-                    label2.Content = "CurrentVersion: " + packageName;
-                }
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            if (packageName != null)
+            {
+                label2.Content = "CurrentVersion: " + packageName;
+            }
+   
         }
 
 
@@ -142,6 +146,7 @@ namespace PloobsUpdater
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
+            HandleXnaVersion();
 
             if (isConnected == false)
             {
@@ -157,15 +162,27 @@ namespace PloobsUpdater
 
                     Random rd = new Random();
                     int rdnum = rd.Next();
-                    String sitem = AvaliableVersions[AvaliableVersions.Count - 1];
+                    String sitem = listBox1.SelectedItem as String;
                     ftp.ChangeDir("/ploobs/Web/Updater/" + sitem);
-                    String temppath = System.IO.Path.GetTempPath() + "PloobsEngine" + rdnum + ".msi";
-                    ftp.OpenDownload("PloobsEngine.msi", temppath, true);
+                    String temppath = System.IO.Path.GetTempPath() + "PloobsEngine" + rdnum + ".rar";
+                    ftp.OpenDownload("PloobsEngine.rar", temppath, true);
 
                     while (ftp.DoDownload() != 0)
                     {
                         Thread.Sleep(500);
                     }
+
+                    try
+                    {
+                        RarArchive.WriteToDirectory(temppath, System.IO.Path.GetTempPath());
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                        return;
+                    }
+
+                    temppath = System.IO.Path.GetTempPath() + "PloobsEngine//setup.exe";
 
                     System.Diagnostics.Process process = new System.Diagnostics.Process();
                     process.StartInfo.FileName = temppath;
@@ -194,7 +211,105 @@ namespace PloobsUpdater
             process.WaitForExit();
         }
         
-        private void listBox1_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        
+        private void TaskbarIcon_TrayRightMouseDown(object sender, RoutedEventArgs e)
+        {
+            this.Show();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            this.Hide();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            this.Show();
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();            
+        }
+
+
+        private void HandleXnaVersion()
+        {
+            if (GetXNAVersion() == false)
+            {
+                MessageBox.Show("You dont have the XNA 4.0 version installed, pls install it from " + @"http://www.microsoft.com/download/en/details.aspx?id=23714");
+                Application.Current.Shutdown();
+            }
+        }
+
+        private bool GetXNAVersion()
+        {
+            if (Is64BitMode())
+            {
+                RegistryKey myKey = Registry.LocalMachine.OpenSubKey("HKEY_LOCAL_MACHINE\\Software\\Wow6432Node\\Microsoft\\XNA\\Framework\\4.0", false);
+                if (myKey != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                RegistryKey myKey = Registry.LocalMachine.OpenSubKey("HKEY_LOCAL_MACHINE\\Software\\Microsoft\\XNA\\Framework\\4.0", false);
+                if (myKey != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+        }        
+
+        /// <summary>
+        /// ai sim hein !!!
+        /// </summary>
+        /// <returns></returns>
+        private static bool Is64BitMode()
+        {
+        return System.Runtime.InteropServices.Marshal.SizeOf(typeof(IntPtr)) == 8;
+        }
+
+
+
+
+
+        private void GetVersionOnRegistry()
+        {
+            RegistryKey myKey = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Wow6432Node\\Microsoft\\.NETFramework\\v4.0.30319\\AssemblyFoldersEx\\PloobsEngine", false);
+            if (myKey != null)
+            {
+                String o = myKey.GetValue(null) as String;
+                if (o != null)
+                {
+
+                    foreach (var item in Directory.EnumerateFiles(o))
+                    {
+                        if (item.EndsWith(".dll") && item.Contains("PloobsEnginePhone"))
+                        {
+                            //PloobsEngineDebug, Version=0.0.0.1, Culture=neutral, PublicKeyToken=0c21691816f8c6d0
+                            Assembly Assembly = Assembly.LoadFile(item);
+                            String name = Assembly.FullName.Split(',')[0];
+                            String version = Assembly.FullName.Split(',')[1].Split('=')[1];
+                            packageName = version;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void button2_Click(object sender, RoutedEventArgs e)
         {
             if (isConnected == false)
             {
@@ -223,51 +338,6 @@ namespace PloobsUpdater
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-            }
-        }
-
-        private void TaskbarIcon_TrayRightMouseDown(object sender, RoutedEventArgs e)
-        {
-            this.Show();
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            e.Cancel = true;
-            this.Hide();
-        }
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            this.Show();
-        }
-
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();            
-        }
-
-        private void GetVersionOnRegistry()
-        {
-            RegistryKey myKey = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Wow6432Node\\Microsoft\\.NETFramework\\v4.0.30319\\AssemblyFoldersEx\\PloobsEngine", false);
-            if (myKey != null)
-            {
-                String o = myKey.GetValue(null) as String;
-                if (o != null)
-                {
-
-                    foreach (var item in Directory.EnumerateFiles(o))
-                    {
-                        if (item.EndsWith(".dll") && item.Contains("PloobsEnginePhone"))
-                        {
-                            //PloobsEngineDebug, Version=0.0.0.1, Culture=neutral, PublicKeyToken=0c21691816f8c6d0
-                            Assembly Assembly = Assembly.LoadFile(item);
-                            String name = Assembly.FullName.Split(',')[0];
-                            String version = Assembly.FullName.Split(',')[1].Split('=')[1];
-                            packageName = version;
-                        }
-                    }
-                }
             }
         }
     }

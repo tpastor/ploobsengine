@@ -20,11 +20,21 @@
     <section>
       <title>What I need to start using Ploobs Engine?</title>
       <content>        
-        <para> As Developer, You will need to install the XNA 4.0 SDK (if you are interested in Windows Phone, install the Windows Phone SDK also), the
-        .Net 4.0 Framework and Visual Studio 2010 complete or express.
+        <para> As Developer, You will need to install the 
+        <externalLink>
+          <linkText>XNA 4.0 SDK</linkText>          
+          <linkUri>http://www.microsoft.com/download/en/details.aspx?id=23714</linkUri>
+      </externalLink>      
+        (if you are interested in Windows Phone, install the <externalLink>
+          <linkText>Windows Phone SDK</linkText>          
+          <linkUri>http://www.microsoft.com/download/en/details.aspx?id=27570</linkUri>
+      </externalLink> also), the
+        .Net 4.0 Framework and The Visual Studio 2010 complete or express.
         For the hardware you just need a DirectX 10 video board compatible.</para>
+        <para>To learn about using Ploobs, go to our <link xlink:href="eca770db-afcb-4ccb-a250-5201f8688d64">Tutorial Section </link> in this document</para>
+        
         <para>As an end user, you will need to install the XNA 4.0 Runtime, the .Net 4.0
-        Runtime and a video board compatible with DirectX 10 </para>               
+        Runtime and have a video board compatible with DirectX 10 </para>               
       </content>
     </section> 
     <section>

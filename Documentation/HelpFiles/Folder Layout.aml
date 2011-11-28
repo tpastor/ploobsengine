@@ -5,48 +5,68 @@
       <para>Source Code Folder Layout</para>
     </introduction>    
     <section address="Section1">
-      <title>Folder Layout</title>
-      <content>        
-        <para>Add one or more sections with content</para>        
+      <title>Folders Layout (Only the most important Ones)</title>
+      <content>                
 		<list class="bullet">
-		  <listItem>
-		  <para>Code</para>		  
-				<list class="bullet">
-				<listItem>
-				  <para>Help</para>
-				 </listItem>
-				  
-				  <listItem>
-				  <para>Auxiliar Libs</para>				  
-						<list class="bullet">						  						  
-						  <listItem><para>XNAAnimation</para></listItem>						  
-						</list>
-				  </listItem>
-				  <listItem>
-				  <para>Exporter</para>
-				  
-					<list class="bullet">
-					  <listItem><para>3DS MAX Exporter - Script</para></listItem>
+			<listItem>
+			<para>
+			AdvancedDemos
+			</para>
+			</listItem>
+			<listItem>
+			<para>
+			Auxiliar Libs
+			</para>
+			<list class="bullet">
+					  <listItem><para>LTREE</para></listItem>
+					  <listItem><para>neoforce</para></listItem>
+					  <listItem><para>ObjImporter</para></listItem>
+					  <listItem><para>TextureGammaDecodeAndLinearMipMap</para></listItem>
+					  <listItem><para>XNAnimation</para></listItem>
 					</list>
-
-				  </listItem>
-				  <listItem>
-				  <para>PloobsEngine</para>
-				  
-					<list class="bullet">
-					  <listItem><para>Assets</para></listItem>
-					  <listItem><para>Etapa1</para></listItem>
-					  <listItem><para>PloobsEngine</para></listItem>
-					  <listItem><para>LTreesLibrary</para></listItem>
-					  <listItem><para>LTreesPipeline</para></listItem>
-					</list>
-
-				  </listItem>
-				  
-				</list>
-		  </listItem>
-		  <listItem><para>Documents</para></listItem>
-		  <listItem><para>Releases</para></listItem>
+			</listItem>
+			<listItem>
+			<para>
+			Documentation (This help project on SandCastle)
+			</para>
+			</listItem>
+			<listItem>
+			<para>
+			EngineTestes (Project used to test PloobsEngine Features)
+			</para>
+			</listItem>
+			<listItem>
+			<para>
+			ExporterScripts (Contains our 3DS Max Exporter Scripts)
+			</para>
+			</listItem>
+			<listItem>
+			<para>
+			IntroductionDemo
+			</para>
+			</listItem>
+			<listItem>
+			<para>
+			Phone Demos
+			</para>
+			</listItem>
+		<listItem>
+			<para>
+			PloobsEngine
+			</para>
+			</listItem>
+			<listItem>
+			<para>
+			Reach Demos
+			</para>
+			</listItem>
+			
+			<listItem>
+			<para>
+			Templates
+			</para>
+			</listItem>
+			
 		</list>
         
       </content>      
