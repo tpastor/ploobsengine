@@ -1,0 +1,6 @@
+C:\Users\tpastor\Desktop\neofrce\Samples\Bin\TomShane.Neoforce.Samples.GettingStarted.exe
+C:\Users\tpastor\Desktop\neofrce\Samples\Bin\TomShane.Neoforce.Samples.GettingStarted.pdb
+C:\Users\tpastor\Desktop\neofrce\Samples\GettingStarted\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\tpastor\Desktop\neofrce\Samples\GettingStarted\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\tpastor\Desktop\neofrce\Samples\GettingStarted\obj\x86\Debug\TomShane.Neoforce.Samples.GettingStarted.exe
+C:\Users\tpastor\Desktop\neofrce\Samples\GettingStarted\obj\x86\Debug\TomShane.Neoforce.Samples.GettingStarted.pdb

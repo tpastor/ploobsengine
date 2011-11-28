@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="303c996a-2911-4c08-b492-6496c82b3edb" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+      <para><legacyBold>Welcome to Ploobs Engine Version 0.4</legacyBold></para>
+      <para>This guide is intended to be a reference that you can use to learn about the Engine as an user or a developer.</para>
+    </introduction>
+    <section>
+      <title>What is Ploobs Engine?</title>
+      <content>
+        <para>Its a Game Engine developed in XNA 4.0 and C# .Net 4.0. The 
+        engine was designed to be simple to use and simple to extend.
+        </para>
+        <para> Its a large Framework including modules to deal with task like: Input, Physics,Scene Management,
+        Graphics, Resource Management and others. </para>        
+        <para>The engine has two license models, one for comercial and non comercial 
+        purpose.</para>
+      </content>
+    </section>        
+    <section>
+      <title>What I need to start using Ploobs Engine?</title>
+      <content>        
+        <para> As Developer, You will need to install the 
+        <externalLink>
+          <linkText>XNA 4.0 SDK</linkText>          
+          <linkUri>http://www.microsoft.com/download/en/details.aspx?id=23714</linkUri>
+      </externalLink>      
+        (if you are interested in Windows Phone, install the <externalLink>
+          <linkText>Windows Phone SDK</linkText>          
+          <linkUri>http://www.microsoft.com/download/en/details.aspx?id=27570</linkUri>
+      </externalLink> also), the
+        .Net 4.0 Framework and The Visual Studio 2010 complete or express.
+        For the hardware you just need a DirectX 10 video board compatible.</para>
+        <para>To learn about using Ploobs, go to our <link xlink:href="eca770db-afcb-4ccb-a250-5201f8688d64">Tutorial Section </link> in this document</para>
+        
+        <para>As an end user, you will need to install the XNA 4.0 Runtime, the .Net 4.0
+        Runtime and have a video board compatible with DirectX 10 </para>               
+      </content>
+    </section> 
+    <section>
+      <title>Important Links</title>
+      <content>
+      
+      <para> 
+        <externalLink>
+          <linkText>English Release:</linkText>          
+          <linkUri>http://ploobs.com.br/?p=504</linkUri>
+      </externalLink>
+      </para>
+      
+      
+      <para> 
+        <externalLink>
+          <linkText>Engine Galery:</linkText>          
+          <linkUri>http://ploobs.com.br/?page_id=465</linkUri>
+      </externalLink>
+      </para>
+
+      
+      <para> 
+        <externalLink>
+          <linkText>Project Tutorials:</linkText>          
+          <linkUri>http://ploobs.com.br/?page_id=1379</linkUri>
+      </externalLink>
+      </para>
+      
+      <para> 
+        <externalLink>
+          <linkText>Development Blog (In Portuguese and English)</linkText>          
+          <linkUri>http://ploobs.com.br/</linkUri>
+      </externalLink>
+      </para>
+      
+      <para> 
+        <externalLink>
+          <linkText>Forum:</linkText>          
+          <linkUri>http://ploobs.com.br/forum/</linkUri>
+      </externalLink>
+      </para>
+      
+      <para> 
+        <externalLink>
+          <linkText>Contact Mail:</linkText>          
+          <linkUri>mailto:contato@ploobs.com.br</linkUri>
+      </externalLink>
+      </para>
+      
+        <para> 
+        <externalLink>
+          <linkText>Project Mercurial Repo:</linkText>          
+          <linkUri>http://ploobsengine.hg.sourceforge.net:8000/hgroot/ploobsengine/ploobsengine</linkUri>
+      </externalLink>
+        </para>
+        
+        
+        <mediaLink>
+          <image xlink:href="Untitled" />
+       </mediaLink>
+       
+      </content>
+    </section> 
+    
+    
+  </developerConceptualDocument>
+</topic>
