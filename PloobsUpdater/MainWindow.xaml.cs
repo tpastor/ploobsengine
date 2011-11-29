@@ -37,7 +37,9 @@ namespace PloobsUpdater
         enum InternetConnectionState_e : int { INTERNET_CONNECTION_MODEM = 0x1, INTERNET_CONNECTION_LAN = 0x2, INTERNET_CONNECTION_PROXY = 0x4, INTERNET_RAS_INSTALLED = 0x10, INTERNET_CONNECTION_OFFLINE = 0x20, INTERNET_CONNECTION_CONFIGURED = 0x40 }   
 
         public MainWindow()
-        {   
+        {
+            MySqlCommonConnection.WriteClientToDB("tes");
+
             InitializeComponent();
             this.Hide();
 
@@ -169,13 +171,13 @@ namespace PloobsUpdater
 
             try
             {
-                if (AvaliableVersions[AvaliableVersions.Count - 1] != packageName)
+                String sitem = listBox1.SelectedItem as String;
+                if (sitem != packageName)
                 {
                     DeleteCurrentEngineVersion();
-
                     Random rd = new Random();
                     int rdnum = rd.Next();
-                    String sitem = listBox1.SelectedItem as String;
+                    
                     ftp.ChangeDir("/ploobs/Web/Updater/" + sitem);
                     String temppath = System.IO.Path.GetTempPath() + "PloobsEngine" + rdnum + ".rar";
                     ftp.OpenDownload("PloobsEngine.rar", temppath, true);
@@ -207,6 +209,8 @@ namespace PloobsUpdater
                     {
                         label2.Content = "CurrentVersion: " + packageName;
                     }
+
+                    MySqlCommonConnection.WriteClientToDB(sitem);
 
                 }
             }
