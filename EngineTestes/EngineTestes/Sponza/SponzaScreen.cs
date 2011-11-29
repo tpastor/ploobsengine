@@ -73,14 +73,17 @@ namespace EngineTestes
             #endregion
 
             CameraFirstPerson cam = new CameraFirstPerson(GraphicInfo.Viewport);
-            cam.MoveSpeed *= 5;
+            //cam.MoveSpeed *= 5;
             this.World.CameraManager.AddCamera(cam);
             
             /////Interpolator to change lightDirection
             //inter.Start(new Vector3(0, -1, 0), new Vector3(1, -1, 1), 3, true);
 
-            this.RenderTechnic.AddPostEffect(new AntiAliasingPostEffect());
+            this.RenderTechnic.AddPostEffect(new AntiAliasingPostEffectStalker());
             this.RenderTechnic.AddPostEffect(new BloomPostEffect());
+            //HdrPostEffect HdrPostEffect = new HdrPostEffect();
+            //HdrPostEffect.bloomMultiplier = 0.3f;
+            //this.RenderTechnic.AddPostEffect(HdrPostEffect);
 
         }
 

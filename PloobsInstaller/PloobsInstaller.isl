@@ -227,6 +227,7 @@
 		<col key="yes" def="s72">Signature_</col>
 		<row><td>DOTNETVERSION40CLIENT</td><td>DotNet40Client</td></row>
 		<row><td>DOTNETVERSION40FULL</td><td>DotNet40Full</td></row>
+		<row><td>SOFTWARE_WOW6432NODE_XNA_FRAMEWORK_V4.0</td><td>NewSignature1</td></row>
 	</table>
 
 	<table name="BBControl">
@@ -3665,6 +3666,7 @@
 		<col def="I2">Order</col>
 		<col def="I2">ISSetupLocation</col>
 		<col def="S255">ISReleaseFlags</col>
+		<row><td>_FD88981E_A816_4810_B93B_9B32C78D0711_</td><td>Microsoft .NET Framework 4.0 Full (Web Download).prq</td><td/><td/><td/></row>
 	</table>
 
 	<table name="ISSetupType">
@@ -3707,6 +3709,7 @@
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_PROCESSOR</td><td>1033</td><td>The processor is not adequate for running [ProductName].</td><td>0</td><td/><td>-1650505517</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>-1650505517</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_SCREEN</td><td>1033</td><td>The screen resolution is not adequate for running [ProductName].</td><td>0</td><td/><td>-1650505517</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_SOFTWARE_WOW6432NODE_XNA_FRA</td><td>1033</td><td>XNA 4.0 SDK Not Found. Download and Install it from here: http://www.microsoft.com/download/en/details.aspx?id=23714</td><td>0</td><td/><td>-442536617</td></row>
 		<row><td>IDPROP_SETUPTYPE_COMPACT</td><td>1033</td><td>Compact</td><td>0</td><td/><td>-1650505517</td></row>
 		<row><td>IDPROP_SETUPTYPE_COMPACT_DESC</td><td>1033</td><td>Compact Description</td><td>0</td><td/><td>-1650505517</td></row>
 		<row><td>IDPROP_SETUPTYPE_COMPLETE</td><td>1033</td><td>Complete</td><td>0</td><td/><td>-1650505517</td></row>
@@ -5129,6 +5132,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>(Not Version9X) And (Not VersionNT=400) And (Not VersionNT=500) And (Not VersionNT=502) And (Not (VersionNT=600 And Not (MsiNTProductType=1))) And (Not (VersionNT=601 And Not (MsiNTProductType=1)))</td><td>##IDPROP_EXPRESS_LAUNCH_CONDITION_OS##</td></row>
 		<row><td>DOTNETVERSION40CLIENT&gt;="#1"</td><td>##IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION40CLIENT##</td></row>
 		<row><td>DOTNETVERSION40FULL&gt;="#1"</td><td>##IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION40FULL##</td></row>
+		<row><td>SOFTWARE_WOW6432NODE_XNA_FRAMEWORK_V4.0</td><td>##IDPROP_EXPRESS_LAUNCH_CONDITION_SOFTWARE_WOW6432NODE_XNA_FRA##</td></row>
 	</table>
 
 	<table name="ListBox">
@@ -5462,7 +5466,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>RestartManagerOption</td><td>CloseRestart</td><td/></row>
 		<row><td>SERIALNUMBER</td><td/><td/></row>
 		<row><td>SERIALNUMVALSUCCESSRETVAL</td><td>1</td><td/></row>
-		<row><td>SecureCustomProperties</td><td>ISFOUNDNEWERPRODUCTVERSION;USERNAME;COMPANYNAME;ISX_SERIALNUM;SUPPORTDIR;DOTNETVERSION40CLIENT;DOTNETVERSION40FULL</td><td/></row>
+		<row><td>SecureCustomProperties</td><td>ISFOUNDNEWERPRODUCTVERSION;USERNAME;COMPANYNAME;ISX_SERIALNUM;SUPPORTDIR;DOTNETVERSION40CLIENT;DOTNETVERSION40FULL;SOFTWARE_WOW6432NODE_XNA_FRAMEWORK_V4.0</td><td/></row>
 		<row><td>SelectedSetupType</td><td>##IDS__DisplayName_Typical##</td><td/></row>
 		<row><td>SetupType</td><td>Typical</td><td/></row>
 		<row><td>UpgradeCode</td><td>{A3C64CAF-37B3-4A46-BA1F-6F367E5D87A0}</td><td/></row>
@@ -5509,6 +5513,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="I2">Type</col>
 		<row><td>DotNet40Client</td><td>2</td><td>SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Client</td><td>Install</td><td>2</td></row>
 		<row><td>DotNet40Full</td><td>2</td><td>SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full</td><td>Install</td><td>2</td></row>
+		<row><td>NewSignature1</td><td>2</td><td>SOFTWARE/Wow6432Node/XNA/Framework/v4.0</td><td/><td>2</td></row>
 	</table>
 
 	<table name="Registry">

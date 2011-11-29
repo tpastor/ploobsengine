@@ -73,7 +73,7 @@ namespace ProjectTemplate
                 SimpleModel simpleModel = new SimpleModel(factory, "model/dude");
                 //simpleModel.SetTexture(factory.CreateTexture2DColor(1,1,Color.Red), TextureType.DIFFUSE);
                 ///Physic info (position, rotation and scale are set here)
-                GhostObject pi = new GhostObject(new Vector3(100, 10, 0), Matrix.Identity, new Vector3(4));
+                GhostObject pi = new GhostObject(new Vector3(200, 10, 0), Matrix.Identity, new Vector3(4));
                 ///Shader info (must be a deferred type)
                 ForwardEMTransparentShader shader = new ForwardEMTransparentShader("Textures/Cubemap");                
                 ///Material info (must be a deferred type also)
@@ -95,7 +95,7 @@ namespace ProjectTemplate
                 ///The object itself
                 IObject obj = new IObject(fmaterial, simpleModel, tmesh);
                 ///Add to the world
-                this.World.AddObject(obj);
+                //this.World.AddObject(obj);
             }
 
             ///add a camera
