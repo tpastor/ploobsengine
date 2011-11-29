@@ -46,11 +46,32 @@ namespace PloobsEngine.SceneControl
         protected RenderTarget2D currentFrameLuminance;
         protected RenderTarget2D currentFrameAdaptedLuminance;
         protected RenderTarget2D lastFrameAdaptedLuminance;
+        /// <summary>
+        /// 0.8
+        /// </summary>
         public float toneMapKey = 0.8f;
+
+        /// <summary>
+        /// 16
+        /// </summary>
         public float maxLuminance = 16.0f;
+
+        /// <summary>
+        /// 0.05f
+        /// </summary>
         public float bloomThreshold = 0.05f;
+
+        /// <summary>
+        /// 1
+        /// </summary>
         public float bloomMultiplier = 1.0f;
+        /// <summary>
+        /// 2.5f
+        /// </summary>
         public float blurSigma = 2.5f;
+        /// <summary>
+        /// 0.5f
+        /// </summary>
         public float fTau = 0.5f;
         GraphicFactory factory;
         bool firstTime = true;
