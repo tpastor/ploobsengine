@@ -34,7 +34,7 @@ namespace PloobsEnginePhone7Template
 
         int index = 0;
 
-        static int totalDemos = 7;
+        static int totalDemos = 8;
         EngineStuff engine;
 
         private int[] screenList = new int[totalDemos];
@@ -57,6 +57,8 @@ namespace PloobsEnginePhone7Template
                     return new Picking3D();
                 case 6:
                     return new AnimationScreen();    
+                case 7:
+                    return new RotateCameraScreen();
                 
             }
             return null;

@@ -101,6 +101,8 @@
     <Compile Include="Animation\AnimationScreen.cs" />
     <Compile Include="BallThrowBepu.cs" />
     <Compile Include="Camera\CamScreen.cs" />
+    <Compile Include="Camera\RotatingCamera.cs" />
+    <Compile Include="Camera\RotateCameraScreen.cs" />
     <Compile Include="Camera\P3DCamera.cs" />
     <Compile Include="DemosHomeScreen.cs" />
     <Compile Include="FirstScreen.cs" />
