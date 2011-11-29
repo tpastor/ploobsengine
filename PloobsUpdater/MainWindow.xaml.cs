@@ -37,7 +37,7 @@ namespace PloobsUpdater
         enum InternetConnectionState_e : int { INTERNET_CONNECTION_MODEM = 0x1, INTERNET_CONNECTION_LAN = 0x2, INTERNET_CONNECTION_PROXY = 0x4, INTERNET_RAS_INSTALLED = 0x10, INTERNET_CONNECTION_OFFLINE = 0x20, INTERNET_CONNECTION_CONFIGURED = 0x40 }   
 
         public MainWindow()
-        {
+        {   
             InitializeComponent();
             this.Hide();
 
@@ -80,6 +80,12 @@ namespace PloobsUpdater
             if (packageName != null)
             {
                 label2.Content = "CurrentVersion: " + packageName;
+            }
+
+            if (AvaliableVersions.Count == 0)
+            {
+                button1.IsEnabled = false;
+                button2.IsEnabled = false;
             }
    
         }
@@ -133,6 +139,13 @@ namespace PloobsUpdater
                 this.MyNotifyIcon.ShowBalloonTip(title, text, BalloonIcon.Info);
                 this.MyNotifyIcon.TrayBalloonTipClicked += new RoutedEventHandler(MyNotifyIcon_TrayBalloonTipClicked);
             }
+
+            if (AvaliableVersions.Count == 0)
+            {
+                button1.IsEnabled = false;
+                button2.IsEnabled = false;
+            }
+
         }
 
         void MyNotifyIcon_TrayBalloonTipClicked(object sender, RoutedEventArgs e)
@@ -174,7 +187,7 @@ namespace PloobsUpdater
 
                     try
                     {
-                        RarArchive.WriteToDirectory(temppath, System.IO.Path.GetTempPath());
+                        RarArchive.WriteToDirectory(temppath, System.IO.Path.GetTempPath(),NUnrar.Common.ExtractOptions.ExtractFullPath);
                     }
                     catch (Exception ex)
                     {
@@ -189,7 +202,7 @@ namespace PloobsUpdater
                     process.Start();
                     process.WaitForExit();
 
-                    packageName = AvaliableVersions[AvaliableVersions.Count - 1];
+                    packageName = sitem;
                     if (packageName != null)
                     {
                         label2.Content = "CurrentVersion: " + packageName;
@@ -245,9 +258,7 @@ namespace PloobsUpdater
 
         private bool GetXNAVersion()
         {
-            if (Is64BitMode())
-            {
-                RegistryKey myKey = Registry.LocalMachine.OpenSubKey("HKEY_LOCAL_MACHINE\\Software\\Wow6432Node\\Microsoft\\XNA\\Framework\\4.0", false);
+                RegistryKey myKey = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Wow6432Node\\Microsoft\\XNA\\Framework\\v4.0", false);
                 if (myKey != null)
                 {
                     return true;
@@ -256,30 +267,8 @@ namespace PloobsUpdater
                 {
                     return false;
                 }
-            }
-            else
-            {
-                RegistryKey myKey = Registry.LocalMachine.OpenSubKey("HKEY_LOCAL_MACHINE\\Software\\Microsoft\\XNA\\Framework\\4.0", false);
-                if (myKey != null)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-
         }        
 
-        /// <summary>
-        /// ai sim hein !!!
-        /// </summary>
-        /// <returns></returns>
-        private static bool Is64BitMode()
-        {
-        return System.Runtime.InteropServices.Marshal.SizeOf(typeof(IntPtr)) == 8;
-        }
 
 
 
@@ -296,13 +285,14 @@ namespace PloobsUpdater
 
                     foreach (var item in Directory.EnumerateFiles(o))
                     {
-                        if (item.EndsWith(".dll") && item.Contains("PloobsEnginePhone"))
+                        if (item.EndsWith(".dll") && item.Contains("PloobsEngineDebug"))
                         {
                             //PloobsEngineDebug, Version=0.0.0.1, Culture=neutral, PublicKeyToken=0c21691816f8c6d0
                             Assembly Assembly = Assembly.LoadFile(item);
                             String name = Assembly.FullName.Split(',')[0];
                             String version = Assembly.FullName.Split(',')[1].Split('=')[1];
                             packageName = version;
+                            break;
                         }
                     }
                 }
