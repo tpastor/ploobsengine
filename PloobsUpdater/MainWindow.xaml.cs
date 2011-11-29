@@ -38,8 +38,6 @@ namespace PloobsUpdater
 
         public MainWindow()
         {
-            MySqlCommonConnection.WriteClientToDB("tes");
-
             InitializeComponent();
             this.Hide();
 

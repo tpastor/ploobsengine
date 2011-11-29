@@ -33,7 +33,7 @@ namespace PloobsEnginePhone7Template
         }
 
         void LoadScreen(ScreenManager manager)
-        {
+        {            
             manager.AddScreen(new DemosHomeScreen());
         }
 
