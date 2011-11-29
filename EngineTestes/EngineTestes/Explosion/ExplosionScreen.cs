@@ -27,6 +27,7 @@ namespace EngineTestes
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
             desc.DefferedDebug = false;
+            desc.BackGroundColor = Color.Black;
             desc.UseFloatingBufferForLightMap = true;
             renderTech = new DeferredRenderTechnic(desc);
         }   
@@ -47,12 +48,12 @@ namespace EngineTestes
             DPFSParticleSystem ps = new DPFSParticleSystem("exp", exp);
             this.World.ParticleManager.AddAndInitializeParticleSystem(ps);
             
-            SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
-            TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
-            DeferredNormalShader shader = new DeferredNormalShader();
-            DeferredMaterial fmaterial = new DeferredMaterial(shader);
-            IObject obj = new IObject(fmaterial, simpleModel, tmesh);
-            this.World.AddObject(obj);            
+            //SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
+            //TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
+            //DeferredNormalShader shader = new DeferredNormalShader();
+            //DeferredMaterial fmaterial = new DeferredMaterial(shader);
+            //IObject obj = new IObject(fmaterial, simpleModel, tmesh);
+            //this.World.AddObject(obj);            
 
             #region NormalLight
             DirectionalLightPE ld1 = new DirectionalLightPE(Vector3.Left, Color.White);
@@ -75,8 +76,8 @@ namespace EngineTestes
 
             this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo.Viewport));
 
-            SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//cubemap");
-            CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
+            //SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//cubemap");
+            //CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
 
             //this.RenderTechnic.AddPostEffect(new AntiAliasingPostEffectTabula());
             this.RenderTechnic.AddPostEffect(new AntiAliasingPostEffectStalker());
