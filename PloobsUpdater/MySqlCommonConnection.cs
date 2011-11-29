@@ -3,101 +3,58 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
+using System.Net;
+using System.Management;
+using System.Windows;
 
 /// <summary>
 /// Summary description for CommonConnection
 /// </summary>
-public class MySqlCommonConnection
+public static class MySqlCommonConnection
 {
 
-    private static MySqlCommonConnection instance;
+    static string connectionstring = "server=dbmy0027.whservidor.com;User Id=ploobs_6;Persist Security Info=True;database=ploobs_6;password=tcc123";
 
-
-    public static MySqlCommonConnection Instance()
+    public static void WriteClientToDB(String PloobsVersion)
     {
-        // Use 'Lazy initialization' 
-        if (instance == null)
-        {
-            instance = new MySqlCommonConnection();
-        }
-
-        return instance;
-    }
-    
-    
-    private MySqlConnection connection;
-
-
-
-    string connectionstring = "server=dbmy0027.whservidor.com;User Id=ploobs_6;Persist Security Info=True;database=ploobs_6;password=tcc123";
-    public void CreateConnection()
-    {
-
-       
-        //string MyConString = "SERVER=dbmy0027.whservidor.com;" +
-        //          "DATABASE=ploobs_6;" +
-        //          "UID=ploobs_6;" +
-        //          "PASSWORD=tcc123;";
-        connection = new MySqlConnection(connectionstring);    
-    }
-
-    public void CreateMySqlDataReader(string mySelectQuery)
-    {
-
-        MySqlConnection myConnection = new MySqlConnection(connectionstring);
-        myConnection.Open();
-
-        MySqlCommand myCommand = new MySqlCommand(mySelectQuery, myConnection);
-        
-        MySqlDataReader myReader;
-        myReader = myCommand.ExecuteReader();
+        MySqlConnection myConnection = null;
         try
         {
-            while (myReader.Read())
-            {
+            myConnection = new MySqlConnection(connectionstring);
+            myConnection.Open();
+            String processor = System.Environment.GetEnvironmentVariable("PROCESSOR_IDENTIFIER");
 
-                for (int i = 0; i < myReader.FieldCount; i++)
+            System.OperatingSystem osInfo = System.Environment.OSVersion;
+            var hostEntry = Dns.GetHostEntry(Dns.GetHostName());
+            var ip = (from addr in hostEntry.AddressList where addr.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork select addr.ToString()).FirstOrDefault();
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_DisplayConfiguration");
+            string graphicsCard = string.Empty;
+            foreach (ManagementObject mo in searcher.Get())
+            {
+                foreach (PropertyData property in mo.Properties)
                 {
-                    Console.WriteLine(myReader.GetString(i)); 
+                    if (property.Name == "Description")
+                    {
+                        graphicsCard = property.Value.ToString();
+                    }
                 }
             }
+
+            String mySelectQuery = "INSERT INTO UsersInfo (Name, Os, Ip, Processors,Date,VideoCard,Version) VALUES (\"" + Environment.MachineName + "\",\"" + osInfo.VersionString + "\", \"" + ip + "\", \"" + processor + "\",\"" + DateTime.Now.ToString("yyyy-MM-dd") + "\" , \"" + graphicsCard + "\", \"" + PloobsVersion + "\")";
+            MySqlCommand myCommand = new MySqlCommand(mySelectQuery, myConnection);
+            myCommand.ExecuteNonQuery();
+        }
+        catch (Exception ex)
+        {
+            ///nothing =P
         }
         finally
-        {
-            myReader.Close();
+        {            
             myConnection.Close();
-        }
-    } 
-
-   public void CreateMySqlCommand() 
-  {
-    MySqlConnection myConnection = new MySqlConnection(connectionstring);
-    myConnection.Open();
-    MySqlTransaction myTrans = myConnection.BeginTransaction();
-    string mySelectQuery = "SELECT * FROM ploobs_6.PLOOBS_PROFILING";
-    MySqlCommand myCommand = new MySqlCommand(mySelectQuery, myConnection,myTrans);
-    myCommand.CommandTimeout = 20;
-  }
-  
-    public void executeSQL(string sql)
-    {
-
-        MySqlCommand cmd = new MySqlCommand();
-        cmd.CommandText = sql;
-        cmd.Connection = connection;
-        connection.Open();
-        int aff = cmd.ExecuteNonQuery();
-
-        
-        connection.Close();
-
+        }     
     }
+
     
-    protected MySqlCommonConnection() { }
-
-
-	
-
 
 }
 
