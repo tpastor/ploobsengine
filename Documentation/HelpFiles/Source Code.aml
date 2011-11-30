@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="4d773c73-38ae-446e-b240-1a030ce10492" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+      <para>This pages talks about hwo the source code is organized</para>
+    </introduction>    
+    
+    <section address="Section1">
+      <title>Ploobs Engine Source Code</title>
+      <content>        
+        <para>All the PloobsEngine source code is stored in our  
+        <externalLink>
+          <linkText>Google Code Mercurial Repo</linkText>          
+          <linkUri>http://code.google.com/p/port-ploobsengine/source/checkout</linkUri>
+      </externalLink>
+      </para>
+      </content>
+      </section>
+    
+    <section address="Section2">
+      <title>Dependencies</title>
+      <content>        
+        <para>The Ploobs Engine uses some external DLL to perform its work 
+        like (all of them included in the Repo):</para>
+        
+		<list class="bullet">
+		  <listItem><para>A custom version of XNAAnimation API</para></listItem>		  
+		  <listItem><para>A custom version of SharpSteer API</para></listItem>
+		  <listItem><para>A custom version of LTree API</para></listItem>
+		  <listItem><para>A custom version of OpenSteer API</para></listItem>
+		  <listItem><para>BepuPhysics API</para></listItem>		  
+		  <listItem><para>LidGren API</para></listItem>		  
+		  <listItem><para>Farseer API</para></listItem>		  
+		  <listItem><para>DPSF API</para></listItem>		  
+		</list>
+		
+		<para>
+		All the Custom Versions code of the above DLLS are included in the Source Code package
+		</para>
+<para>
+The utility program ILMERGE (http://www.microsoft.com/downloads/details.aspx?FamilyID=22914587-b4ad-4eae-87cf-b14ae6a939b0) is used to combine
+the DLLs in just one. The .bat that creates the unified dll are included in the repo. 
+</para>
+<alert class="note">      
+ All the DLLs used by the ilmerge command must be in the same folder, and you need to put them by hand there. (normally you dont need to create the single DLL, only if you want to recompile the engine)
+</alert>
+
+		
+
+      </content>      
+    </section>
+    <relatedTopics>
+      <!-- One or more of the following:
+           - A local link
+           - An external link
+           - A code entity reference
+
+      <link xlink:href="Other Topic's ID"/>
+      <link xlink:href="Other Topic's ID">Link inner text</link>
+
+      <externalLink>
+          <linkText>Link text</linkText>
+          <linkAlternateText>Optional alternate link text</linkAlternateText>
+          <linkUri>URI</linkUri>
+      </externalLink>
+
+      <codeEntityReference>API member ID</codeEntityReference>
+
+      Examples:
+
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8270" />
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8278">Some other topic</link>
+
+      <externalLink>
+          <linkText>SHFB on CodePlex</linkText>
+          <linkAlternateText>Go to CodePlex</linkAlternateText>
+          <linkUri>http://shfb.codeplex.com</linkUri>
+      </externalLink>
+
+      <codeEntityReference>T:TestDoc.TestClass</codeEntityReference>
+      <codeEntityReference>P:TestDoc.TestClass.SomeProperty</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor(System.String,System.Int32)</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.ToString</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.FirstMethod</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.SecondMethod(System.Int32,System.String)</codeEntityReference>
+      -->
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>
