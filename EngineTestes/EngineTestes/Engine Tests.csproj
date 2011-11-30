@@ -205,6 +205,7 @@
     <Compile Include="Shatter\DeferredShatterCustomShader.cs" />
     <Compile Include="Shatter\ShatterSample.cs" />
     <Compile Include="SoundSamples\SoundScreen.cs" />
+    <Compile Include="Sponza\SponzaScreen.cs" />
     <Compile Include="TechDemo\TechDemoScreenModel.cs" />
     <Compile Include="TechDemo\TechDemoScreen.cs" />
     <Compile Include="Terrain\TerrainScreen.cs" />
