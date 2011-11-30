@@ -34,17 +34,26 @@ namespace PloobsEngine.SceneControl
     public class EngineContentManager : IContentManager
     {
         ContentManager cmanagerInternal;
-
+#if SILVER
+        public EngineContentManager(ContentManager ContentManager)
+#else
         public EngineContentManager(Game game)
+#endif
         {
 #if REACH 
-         cmanagerInternal = new ResourceContentManager(game.Services, PloobsEngineReach.Resource2.ResourceManager);
-#elif WINDOWS_PHONE
-         cmanagerInternal = new ResourceContentManager(game.Services, Resource3.ResourceManager);
-#else
-         cmanagerInternal = new ResourceContentManager(game.Services, Resources.ResourceManager);
-#endif            
+            cmanagerInternal = new ResourceContentManager(game.Services, PloobsEngineReach.Resource2.ResourceManager);
             externalContentManager = game.Content;
+#elif WINDOWS_PHONE && !SILVER
+            cmanagerInternal = new ResourceContentManager(game.Services, Resource3.ResourceManager);
+            externalContentManager = game.Content;
+#elif SILVER
+            cmanagerInternal = new ResourceContentManager(ContentManager.ServiceProvider, Resource3.ResourceManager);
+            externalContentManager = ContentManager;
+#else
+            cmanagerInternal = new ResourceContentManager(game.Services, Resources.ResourceManager);
+            externalContentManager = game.Content;
+#endif
+
         }
 
         private static IDictionary<String, object> _modelDicInt = new Dictionary<String, object>();

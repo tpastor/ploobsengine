@@ -61,7 +61,7 @@ namespace PloobsEngine.Engine
                 SamplerState = SamplerState.LinearClamp;
 
             UseAnisotropicFiltering = useAnisotropicFiltering;
-#if !WINDOWS_PHONE
+#if !WINDOWS_PHONE || SILVER
             GraphicsAdapter = engine.GraphicsDevice.Adapter;
 #else
             GraphicsAdapter = engine.game.GraphicsDevice.Adapter;

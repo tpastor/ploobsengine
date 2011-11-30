@@ -114,7 +114,7 @@ namespace PloobsUpdater
 
             try
             {
-                
+
                 AvaliableVersions.Clear();
                 listBox1.Items.Clear();
 
@@ -134,6 +134,10 @@ namespace PloobsUpdater
             catch (Exception ex)
             {
                 ///do not show message box here ....
+            }
+            finally
+            {
+                ftp.Disconnect();
             }
 
             if (oldLast != AvaliableVersions[AvaliableVersions.Count - 1])
