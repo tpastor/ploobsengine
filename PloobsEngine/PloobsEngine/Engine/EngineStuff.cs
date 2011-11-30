@@ -528,6 +528,544 @@ namespace PloobsEngine.Engine
 
     
 }
+#elif SILVER
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Microsoft.Xna.Framework;
+using PloobsEngine.Engine.Logger;
+using Microsoft.Xna.Framework.Graphics;
+using PloobsEngine.SceneControl;
+using PloobsEngine.Components;
+using PloobsEngine.Commands;
+using Microsoft.Xna.Framework.Audio;
+using PloobsEngine.Input;
+using PloobsEngine.Features;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Phone.Controls;
+
+namespace PloobsEngine.Engine
+{
+
+    /// <summary>
+    /// Delegate Called when a unhandle exception is found in the engine
+    /// </summary>
+    /// <param name="sender">The sender.</param>
+    /// <param name="e">The <see cref="System.UnhandledExceptionEventArgs"/> instance containing the event data.</param>
+    public delegate void UnhandledException(object sender, UnhandledExceptionEventArgs e);
+        
+    /// <summary>
+    /// InitialEngineDescription
+    /// </summary>
+    public struct InitialEngineDescription
+    {
+
+        /// <summary>
+        /// Defaults this instance.
+        /// </summary>
+        /// <returns></returns>
+        public static InitialEngineDescription Default()
+        {
+            return new InitialEngineDescription("PloobsEngine", 800, 480, false, GraphicsProfile.Reach, false, false, true, null, false, false);
+        }
+
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InitialEngineDescription"/> struct.
+        /// </summary>
+        /// <param name="ScreenName">Name of the screen.</param>
+        /// <param name="BackBufferWidth">Width of the back buffer.</param>
+        /// <param name="BackBufferHeight">Height of the back buffer.</param>
+        /// <param name="isFullScreen">if set to <c>true</c> [is full screen].</param>
+        /// <param name="graphicsProfile">The graphics profile.</param>
+        /// <param name="useVerticalSyncronization">if set to <c>true</c> [use vertical syncronization].</param>
+        /// <param name="isMultiSampling">if set to <c>true</c> [is multi sampling].</param>
+        /// <param name="isFixedGameTime">if set to <c>true</c> [is fixed game time].</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="useMipMapWhenPossible">if set to <c>true</c> [use mip map when possible].</param>
+        /// <param name="UseAnisotropicFiltering">if set to <c>true</c> [use anisotropic filtering].</param>
+        internal InitialEngineDescription(String ScreenName = "PloobsEngine", int BackBufferWidth = 800, int BackBufferHeight = 600, bool isFullScreen = false, GraphicsProfile graphicsProfile = GraphicsProfile.HiDef, bool useVerticalSyncronization = false, bool isMultiSampling = false, bool isFixedGameTime = false, ILogger logger = null, bool useMipMapWhenPossible = false, bool UseAnisotropicFiltering = false, DisplayOrientation supportedOrientation = DisplayOrientation.Default | DisplayOrientation.Portrait | DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight)
+        {
+            this.UseVerticalSyncronization = useVerticalSyncronization;
+            this.BackBufferHeight = BackBufferHeight;
+            this.BackBufferWidth = BackBufferWidth;
+            this.Logger = logger;
+            this.GraphicsProfile = graphicsProfile;
+            this.ScreenName = ScreenName;
+            this.useMipMapWhenPossible = useMipMapWhenPossible;
+            this.UseAnisotropicFiltering = UseAnisotropicFiltering;
+            UpdateInterval = TimeSpan.FromTicks(333333);
+        }
+
+        /// <summary>
+        /// Update per second
+        /// Default TimeSpan.FromTicks(333333);
+        /// </summary>
+        public TimeSpan UpdateInterval ;
+
+        /// <summary>
+        /// Use Anisotropic Filtering when possible
+        /// </summary>
+        public bool UseAnisotropicFiltering;
+
+        /// <summary>
+        /// Screen Name
+        /// </summary>
+        public String ScreenName;
+
+        /// <summary>
+        /// use V-Sync
+        /// </summary>
+        public bool UseVerticalSyncronization;
+        /// <summary>
+        /// BackBufferHeight 
+        /// </summary>
+        public int BackBufferHeight;
+        /// <summary>
+        /// BackBufferWidth
+        /// </summary>
+        public int BackBufferWidth;
+        /// <summary>
+        /// Logger implementation, can be null for no logging
+        /// </summary>
+        public ILogger Logger;
+
+        /// <summary>
+        /// Use MipMap When creating the Render Targets
+        /// </summary>
+        public bool useMipMapWhenPossible;
+
+        
+        /// <summary>        
+        //     Identifies the set of supported devices for the game based on device capabilities.
+        //
+        // Parameters:
+        //   HiDef:
+        //     Use the largest available set of graphic features and capabilities to target
+        //     devices, such as an Xbox 360 console and a Windows-based computer, that have
+        //     more enhanced graphic capabilities.
+        //
+        //   Reach:
+        //     Use a limited set of graphic features and capabilities, allowing the game
+        //     to support the widest variety of devices, including all Windows-based computers
+        //     and Windows Phone.
+        /// </summary>
+        internal GraphicsProfile GraphicsProfile;
+
+
+        
+
+    }
+
+    /// <summary>
+    /// Sound Options Desciption
+    /// </summary>
+    public struct SoundMasterOptionDescription
+    {
+        public SoundMasterOptionDescription(float DistanceScale, float DoplerScale, float MasterVolume)
+        {
+            this.DistanceScale = DistanceScale;
+            this.DoplerScale = DoplerScale;
+            this.MasterVolume = MasterVolume;
+        }
+
+        public static SoundMasterOptionDescription Default()
+        {
+            return new SoundMasterOptionDescription(1, 1, 1);
+        }
+
+        public float DistanceScale;
+        public float DoplerScale;
+        public float MasterVolume;
+    }
+
+    /// <summary>
+    /// Engine Entry point
+    /// </summary>
+    public class EngineStuff
+    {
+        SoundMasterOptionDescription soundMasterOptionDescription = SoundMasterOptionDescription.Default();
+        InitialEngineDescription initialDescription;
+        SharedGraphicsDeviceManager graphics;
+        ScreenManager ScreenManager;
+        ComponentManager ComponentManager;
+        ContentManager ContentManager;
+        GraphicInfo GraphicInfo;
+        GraphicFactory GraphicFactory;        
+        IContentManager contentManager;
+        RenderHelper render;
+        public readonly GraphicsDevice GraphicsDevice;
+        GameTimer timer;
+        PhoneApplicationPage PhoneApplicationPage;
+        UIElementRenderer elementRenderer;        
+        
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EngineStuff"/> class.
+        /// </summary>        
+        private EngineStuff(SharedGraphicsDeviceManager SharedGraphicsDeviceManager, ContentManager ContentManager, ref InitialEngineDescription initialDescription)
+        {
+            this.ContentManager = ContentManager;
+            this.initialDescription = initialDescription;
+            ActiveLogger.logger = initialDescription.Logger;
+
+            this.graphics = SharedGraphicsDeviceManager;
+            GraphicsDevice = SharedGraphicsDeviceManager.Current.GraphicsDevice;
+            graphics.GraphicsProfile = initialDescription.GraphicsProfile;            
+            graphics.SynchronizeWithVerticalRetrace = initialDescription.UseVerticalSyncronization;            
+            graphics.PreferredBackBufferHeight = initialDescription.BackBufferHeight;
+            graphics.PreferredBackBufferWidth = initialDescription.BackBufferWidth;
+            graphics.PreferredDepthStencilFormat = DepthFormat.Depth24Stencil8;
+            LoadContent();
+        }
+
+        private EngineStuff(SharedGraphicsDeviceManager SharedGraphicsDeviceManager, ContentManager ContentManager,bool UseAnisotropicFiltering = false,bool useMipMapWhenPossible = false)
+        {
+            this.ContentManager = ContentManager;
+            this.graphics = SharedGraphicsDeviceManager;
+            GraphicsDevice = SharedGraphicsDeviceManager.Current.GraphicsDevice;
+            InitialEngineDescription initialDescription = InitialEngineDescription.Default();
+            initialDescription.UseAnisotropicFiltering = UseAnisotropicFiltering;
+            initialDescription.useMipMapWhenPossible = useMipMapWhenPossible;
+            initialDescription.UseVerticalSyncronization = SharedGraphicsDeviceManager.SynchronizeWithVerticalRetrace;
+            initialDescription.BackBufferHeight = SharedGraphicsDeviceManager.DefaultBackBufferHeight;
+            initialDescription.BackBufferWidth = SharedGraphicsDeviceManager.DefaultBackBufferWidth;
+            this.initialDescription = initialDescription;
+            LoadContent();
+        }
+
+        public static EngineStuff Current
+        {
+            set;
+            get;
+        }
+
+        public static void InitializePloobsEngine(SharedGraphicsDeviceManager SharedGraphicsDeviceManager, ContentManager ContentManager, ref InitialEngineDescription initialDescription)
+        {
+            if (Current == null)
+            {
+                Current = new EngineStuff(SharedGraphicsDeviceManager, ContentManager, ref initialDescription);
+            }
+        }
+
+        public static void InitializePloobsEngine(SharedGraphicsDeviceManager SharedGraphicsDeviceManager, ContentManager ContentManager, bool UseAnisotropicFiltering = false, bool useMipMapWhenPossible = false)
+        {
+            if (Current == null)
+            {
+                Current = new EngineStuff(SharedGraphicsDeviceManager, ContentManager, UseAnisotropicFiltering, useMipMapWhenPossible);
+
+            }            
+        }
+
+        /// <summary>
+        /// Gets the engine description.
+        /// </summary>
+        /// <returns></returns>
+        public InitialEngineDescription GetEngineDescription()
+        {
+            return initialDescription;
+        }
+
+        /// <summary>
+        /// Applies the engine description.
+        /// </summary>
+        /// <param name="initialDescription">The initial description.</param>
+        public void ApplyEngineDescription(ref InitialEngineDescription initialDescription)
+        {
+            this.initialDescription = initialDescription;
+        
+            ActiveLogger.logger = initialDescription.Logger;
+            graphics.GraphicsProfile = initialDescription.GraphicsProfile;
+        
+            graphics.SynchronizeWithVerticalRetrace = initialDescription.UseVerticalSyncronization;        
+            graphics.PreferredBackBufferHeight = initialDescription.BackBufferHeight;
+            graphics.PreferredBackBufferWidth = initialDescription.BackBufferWidth;        
+            graphics.ApplyChanges();
+
+            
+            Rectangle fs = new Rectangle(0, 0, graphics.GraphicsDevice.Viewport.Width, graphics.GraphicsDevice.Viewport.Height);
+            Vector2 halfPixel = new Vector2();
+            halfPixel.X = 0.5f / (float)GraphicsDevice.PresentationParameters.BackBufferWidth;
+            halfPixel.Y = 0.5f / (float)GraphicsDevice.PresentationParameters.BackBufferHeight;
+
+            GraphicInfo.ChangeProps(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount, GraphicsDevice.PresentationParameters.DepthStencilFormat, initialDescription.useMipMapWhenPossible, initialDescription.UseAnisotropicFiltering);
+            GraphicInfo.FireEvent(GraphicInfo);
+        }
+
+        /// <summary>
+        /// Gets the sound master option description.
+        /// </summary>
+        /// <returns></returns>
+        public SoundMasterOptionDescription GetSoundMasterOptionDescription()
+        {
+            return soundMasterOptionDescription;
+        }
+
+        /// <summary>
+        /// Sets the sound master option description.
+        /// </summary>
+        /// <param name="soundMasterOptionDescription">The sound master option description.</param>
+        public void SetSoundMasterOptionDescription(ref SoundMasterOptionDescription soundMasterOptionDescription)
+        {
+            this.soundMasterOptionDescription = soundMasterOptionDescription;
+            SoundEffect.DistanceScale = soundMasterOptionDescription.DistanceScale;
+            SoundEffect.DopplerScale = soundMasterOptionDescription.DoplerScale;
+            SoundEffect.MasterVolume = soundMasterOptionDescription.MasterVolume;
+        }
+
+
+
+        /// <summary>
+        /// Load the content
+        /// </summary>
+        private void LoadContent()
+        {
+            SharedGraphicsDeviceManager.Current.GraphicsDevice.SetSharingMode(true); 
+            Rectangle fs = new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
+            Vector2 halfPixel = new Vector2()
+            {
+                X = 0.5f / (float)GraphicsDevice.PresentationParameters.BackBufferWidth,
+                Y = 0.5f / (float)GraphicsDevice.PresentationParameters.BackBufferHeight
+            };
+
+            contentManager = new EngineContentManager(ContentManager);
+            GraphicInfo = new GraphicInfo(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount, GraphicsDevice.PresentationParameters.DepthStencilFormat, initialDescription.useMipMapWhenPossible, this, initialDescription.UseAnisotropicFiltering);
+            GraphicsDevice.DeviceReset += new EventHandler<EventArgs>(GraphicsDevice_DeviceReset);
+            GraphicFactory = new Engine.GraphicFactory(GraphicInfo, GraphicsDevice, contentManager);
+            ComponentManager = new ComponentManager(GraphicInfo, GraphicFactory);
+            render = new RenderHelper(this.GraphicsDevice, ComponentManager, contentManager);
+            GraphicFactory.render = render;
+            ComponentManager.LoadContent(ref GraphicInfo);
+            render.PushBlendState(BlendState.Opaque);
+            render.PushDepthStencilState(DepthStencilState.Default);
+            render.PushRasterizerState(RasterizerState.CullCounterClockwise);
+            render.PushRenderTarget(null);
+
+            ScreenManager = new ScreenManager(ref GraphicInfo, GraphicFactory, contentManager, render, this);
+            
+            ///THE ONLY COMPONENTS ADDED BY DEFAULT                        
+            ComponentManager.AddComponent(new InputAdvanced());
+
+            ComponentManager.AddComponent(new TaskProcessor());
+
+        }
+
+        void GraphicsDevice_DeviceReset(object sender, EventArgs e)
+        {
+            GraphicInfo.FireResetEvent(sender, e);
+        }
+
+        /// <summary>
+        /// Adds the component.
+        /// </summary>
+        /// <param name="component">The component.</param>
+        public void AddComponent(IComponent component)
+        {
+            if (component == null)
+                ActiveLogger.LogMessage("Cant add null Component", LogLevel.RecoverableError);
+            else
+            {
+                bool resp = ComponentManager.AddComponent(component);
+                if (!resp)
+                    ActiveLogger.LogMessage("Component already added ", LogLevel.Warning);
+            }
+        }
+
+        /// <summary>
+        /// Removes the component by name
+        /// </summary>
+        /// <param name="componentName">Name of the component.</param>
+        public void RemoveComponent(String componentName)
+        {
+            if (String.IsNullOrEmpty(componentName))
+                ActiveLogger.LogMessage("Bad Component name", LogLevel.RecoverableError);
+            else
+            {
+                bool resp = ComponentManager.RemoveComponent(componentName);
+                if (!resp)
+                    ActiveLogger.LogMessage("Component already Removed", LogLevel.Warning);
+            }
+        }
+
+        /// <summary>
+        /// Gets the component by name.
+        /// </summary>
+        /// <typeparam name="T">Component type</typeparam>
+        /// <param name="componentName">Name of the component.</param>
+        /// <returns></returns>
+        public T GetComponent<T>(String componentName) where T : IComponent
+        {
+            if (String.IsNullOrEmpty(componentName))
+            {
+                ActiveLogger.LogMessage("Bad Component name", LogLevel.RecoverableError);
+                return null;
+            }
+            else
+            {
+                IComponent comp = ComponentManager.GetComponent(componentName);
+                if (comp == null)
+                    ActiveLogger.LogMessage("Component not found " + componentName, LogLevel.RecoverableError);
+                return (T)comp;
+            }
+        }
+
+        /// <summary>
+        /// Determines whether the specified component name exist.
+        /// </summary>
+        /// <param name="componentName">Name of the component.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified component name has component; otherwise, <c>false</c>.
+        /// </returns>
+        public bool HasComponent(String componentName)
+        {
+            if (String.IsNullOrEmpty(componentName))
+            {
+                ActiveLogger.LogMessage("Bad Component name", LogLevel.RecoverableError);
+                return false;
+            }
+            else
+            {
+                return ComponentManager.HasComponent(componentName);
+            }
+        }
+
+        /// <summary>
+        /// This is used to display an error message if there is no suitable graphics device or sound card.
+        /// </summary>
+        /// <param name="exception">The exception to display.</param>
+        /// <returns></returns>
+        internal void ShowMissingRequirementMessage(Exception exception)
+        {
+            ActiveLogger.LogMessage(exception.Message, LogLevel.FatalError);
+        }
+
+        /// <summary>
+        /// Remove All Screens and stop the timer
+        /// </summary>
+        /// <param name="Screen"></param>
+        public void LeaveScene()
+        {
+            SharedGraphicsDeviceManager.Current.GraphicsDevice.SetSharingMode(false);
+            if (timer != null)
+            {
+                timer.Stop();
+                timer.Dispose();
+            }
+
+            foreach (var item in ScreenManager.GetScreens())
+            {
+                ScreenManager.RemoveScreen(item);
+            }
+
+        }
+
+        /// <summary>
+        /// Add a new scene to the Engine
+        /// REMOVE ALL PREVIOUS ONES
+        /// </summary>
+        /// <param name="Screen"></param>
+        public void StartScene(IScreen Screen, PhoneApplicationPage PhoneApplicationPage)
+        {            
+            this.PhoneApplicationPage = PhoneApplicationPage;
+            PhoneApplicationPage.LayoutUpdated += new EventHandler(PhoneApplicationPage_LayoutUpdated);
+            if (timer != null)
+            {
+                timer.Stop();
+                timer.Dispose();
+            }
+
+            SharedGraphicsDeviceManager.Current.GraphicsDevice.SetSharingMode(true); 
+            timer = new GameTimer();
+            timer.UpdateInterval = initialDescription.UpdateInterval;
+            timer.Update +=new EventHandler<GameTimerEventArgs>(timer_Update); ;
+            timer.Draw += new EventHandler<GameTimerEventArgs>(timer_Draw); ;
+            timer.Start();
+
+            foreach (var item in ScreenManager.GetScreens())
+            {
+                ScreenManager.RemoveScreen(item);
+            }
+
+            ScreenManager.AddScreen(Screen);
+        }
+
+        void PhoneApplicationPage_LayoutUpdated(object sender, EventArgs e)
+        {                        
+            // Create the UIElementRenderer to draw the Silverlight page to a texture.
+
+            // Verify the page has a valid size
+            if (PhoneApplicationPage.ActualWidth <= 0 && PhoneApplicationPage.ActualHeight <= 0)
+            {
+                return;
+            }
+
+            int width = (int)PhoneApplicationPage.ActualWidth;
+            int height = (int)PhoneApplicationPage.ActualHeight;
+
+            // See if the UIElementRenderer is alre ady the page's size
+            if ((elementRenderer != null) &&
+                (elementRenderer.Texture != null) &&
+                (elementRenderer.Texture.Width == width) &&
+                (elementRenderer.Texture.Height == height))
+            {
+                return;
+            }
+
+            // Dispose the UIElementRenderer before creating a new one
+            if (elementRenderer != null)
+            {
+                elementRenderer.Dispose();
+            }
+
+           elementRenderer = new UIElementRenderer(PhoneApplicationPage, width, height);        
+            
+        }
+
+        void timer_Draw(object sender, GameTimerEventArgs e)
+        {
+            if(elementRenderer != null)
+                elementRenderer.Render();
+            
+            GameTime GameTime = new GameTime(e.TotalTime, e.ElapsedTime, e.IsRunningSlowly);
+            Draw(GameTime);
+
+
+            if (elementRenderer != null)
+            {
+                render.RenderTextureComplete(elementRenderer.Texture);
+            }
+        }
+
+        void timer_Update(object sender, GameTimerEventArgs e)
+        {
+            GameTime GameTime = new GameTime(e.TotalTime, e.ElapsedTime, e.IsRunningSlowly);
+            Update(GameTime);
+        }
+
+        /// <summary>
+        /// Updates the engine, called by XNA
+        /// </summary>
+        /// <param name="gameTime">Time passed since the last call to Update.</param>
+        private void Update(GameTime gameTime)
+        {
+                ComponentManager.Update(gameTime);
+                ScreenManager.Update(gameTime);
+                CommandProcessor.getCommandProcessor().ProcessCommands();
+        }
+
+
+        /// <summary>
+        /// Reference page contains code sample.
+        /// </summary>
+        /// <param name="gameTime">Time passed since the last call to Draw.</param>
+        private void Draw(GameTime gameTime)
+        {
+                ScreenManager.Draw(gameTime);
+        }
+    }
+}
+
 #else
 using System;
 using System.Collections.Generic;
@@ -611,7 +1149,7 @@ namespace PloobsEngine.Engine
             this.ScreenName = ScreenName;
             this.useMipMapWhenPossible = useMipMapWhenPossible;
             this.UseAnisotropicFiltering = UseAnisotropicFiltering;
-            this.SupportedOrientations = supportedOrientation;
+            this.SupportedOrientations = supportedOrientation;            
         }
 
         /// <summary>
