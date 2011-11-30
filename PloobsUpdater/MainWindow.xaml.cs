@@ -207,17 +207,10 @@ namespace PloobsUpdater
                                }
 
                                label2.Content = "INSTALLING";
-
-                               try
-                               {
-                                   RarArchive.WriteToDirectory(temppath, System.IO.Path.GetTempPath(), NUnrar.Common.ExtractOptions.ExtractFullPath);
-                               }
-                               catch (Exception ex)
-                               {
-                                   MessageBox.Show(ex.ToString());
-                                   return;
-                               }
-
+                                                              
+                               RarArchive.WriteToDirectory(temppath, System.IO.Path.GetTempPath(), NUnrar.Common.ExtractOptions.ExtractFullPath);
+                               
+                               
                                temppath = System.IO.Path.GetTempPath() + "PloobsEngine//setup.exe";
 
                                System.Diagnostics.Process process = new System.Diagnostics.Process();
