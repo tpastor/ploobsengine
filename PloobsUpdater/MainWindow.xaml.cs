@@ -21,6 +21,8 @@ using System.Windows.Controls.Primitives;
 using Hardcodet.Wpf.TaskbarNotification;
 using System.Runtime.InteropServices;
 using NUnrar.Archive;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace PloobsUpdater
 {
@@ -75,6 +77,10 @@ namespace PloobsUpdater
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                ftp.Disconnect();
             }
 
             if (packageName != null)
@@ -150,7 +156,8 @@ namespace PloobsUpdater
 
         void MyNotifyIcon_TrayBalloonTipClicked(object sender, RoutedEventArgs e)
         {
-            this.Show();            
+            if(!this.IsVisible)
+                this.Show();            
         }
 
         String packageName = null;
@@ -172,75 +179,117 @@ namespace PloobsUpdater
                 String sitem = listBox1.SelectedItem as String;
                 if (sitem != packageName)
                 {
-                    DeleteCurrentEngineVersion();
+                    if(packageName != null)
+                        DeleteCurrentEngineVersion();
                     Random rd = new Random();
                     int rdnum = rd.Next();
-                    
-                    ftp.ChangeDir("/ploobs/Web/Updater/" + sitem);
-                    String temppath = System.IO.Path.GetTempPath() + "PloobsEngine" + rdnum + ".rar";
-                    ftp.OpenDownload("PloobsEngine.rar", temppath, true);
 
-                    while (ftp.DoDownload() != 0)
-                    {
-                        Thread.Sleep(500);
-                    }
+                    button1.IsEnabled = false;
+                    progressBar1.Value = 0;
 
-                    try
-                    {
-                        RarArchive.WriteToDirectory(temppath, System.IO.Path.GetTempPath(),NUnrar.Common.ExtractOptions.ExtractFullPath);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString());
-                        return;
-                    }
+                    label2.Content = "Downloading";
+                    Task.Factory.StartNew(() =>
+                       {
+                           try
+                           {
+                               FTP ftp = new FTP("ftp.ploobs.com.br", "ploobs", "5ruTrus6");
+                               ftp.Connect();
+                               ftp.ChangeDir("/ploobs/Web/Updater/" + sitem);
+                               String temppath = System.IO.Path.GetTempPath() + "PloobsEngine" + rdnum + ".rar";
+                               ftp.OpenDownload("PloobsEngine.rar", temppath, true);
 
-                    temppath = System.IO.Path.GetTempPath() + "PloobsEngine//setup.exe";
 
-                    System.Diagnostics.Process process = new System.Diagnostics.Process();
-                    process.StartInfo.FileName = temppath;
-                    process.Start();
-                    process.WaitForExit();
+                               while (ftp.DoDownload() != 0)
+                               {                                   
+                                   progressBar1.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
+                                   (Action)(() => { progressBar1.Value = 100 * (float)ftp.BytesTotal / (float)ftp.FileSize; }));
+                                   
+                               }
 
-                    packageName = sitem;
-                    if (packageName != null)
-                    {
-                        label2.Content = "CurrentVersion: " + packageName;
-                    }
+                               label2.Content = "INSTALLING";
 
-                    MySqlCommonConnection.WriteClientToDB(sitem);
+                               try
+                               {
+                                   RarArchive.WriteToDirectory(temppath, System.IO.Path.GetTempPath(), NUnrar.Common.ExtractOptions.ExtractFullPath);
+                               }
+                               catch (Exception ex)
+                               {
+                                   MessageBox.Show(ex.ToString());
+                                   return;
+                               }
 
+                               temppath = System.IO.Path.GetTempPath() + "PloobsEngine//setup.exe";
+
+                               System.Diagnostics.Process process = new System.Diagnostics.Process();
+                               process.StartInfo.FileName = temppath;
+                               process.Start();
+                               process.WaitForExit();
+
+                               packageName = sitem;
+                               if (packageName != null)
+                               {
+                                   label2.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
+                                   (Action)(() => { label2.Content = "CurrentVersion: " + packageName; }));
+                                   
+                               }
+
+                               label2.Content = "Current Version: " + packageName;
+
+                               MySqlCommonConnection.WriteClientToDB(sitem);
+                           }
+                           catch (Exception ex)
+                           {
+                               MessageBox.Show(ex.ToString());
+                               label2.Content = "ERROR";
+                           }
+                           finally
+                           {
+                               button1.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
+                                   (Action)(() => { button1.IsEnabled = true; }));
+                               
+                           }
+                        }
+                    );
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-            }
+            }            
         }
 
         public void DeleteCurrentEngineVersion()
-        {            
-            System.Diagnostics.Process process = new System.Diagnostics.Process();
-            process.StartInfo.FileName = "msiexec.exe /x {2AF6A123-A362-4E2B-B23A-D1E952C15A9C}";
-            process.Start();
-            process.WaitForExit();
+        {
+            try
+            {
+                System.Diagnostics.Process process = new System.Diagnostics.Process();
+                process.StartInfo.FileName = @"msiexec.exe";
+                process.StartInfo.Arguments = " /x {2AF6A123-A362-4E2B-B23A-D1E952C15A9C}";
+                process.Start();
+                process.WaitForExit();
+            }
+            catch (Exception ex)
+            {
+            }
         }
         
         
         private void TaskbarIcon_TrayRightMouseDown(object sender, RoutedEventArgs e)
         {
-            this.Show();
+            if(!this.IsVisible)
+                this.Show();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             e.Cancel = true;
-            this.Hide();
+            this.Hide();         
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            this.Show();
+            if(!this.IsVisible)
+                this.Show();
         }
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
@@ -270,10 +319,6 @@ namespace PloobsUpdater
                     return false;
                 }
         }        
-
-
-
-
 
 
         private void GetVersionOnRegistry()

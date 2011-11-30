@@ -5,7 +5,7 @@
         Title="PloobsEngine Updater" Height="286" Width="287" Closing="Window_Closing" >
     <Grid>
         <Button Content="GetSelectedVersion" Height="36" HorizontalAlignment="Left" Margin="130,202,0,0" Name="button1" VerticalAlignment="Top" Width="123" Click="button1_Click" />
-        <ListBox Height="125" HorizontalAlignment="Left" Margin="0,71,0,0" Name="listBox1" VerticalAlignment="Top" Width="253" />
+        <ListBox Height="107" HorizontalAlignment="Left" Margin="9,71,0,0" Name="listBox1" VerticalAlignment="Top" Width="244" />
         <Label Content="Avaliable Versions" Height="28" HorizontalAlignment="Left" Margin="12,37,0,0" Name="label1" VerticalAlignment="Top" />
         <Label Content="Current Version:" Height="28" HorizontalAlignment="Left" Margin="14,12,0,0" Name="label2" VerticalAlignment="Top" />
 
@@ -26,7 +26,8 @@
             
             
         </tb:TaskbarIcon>
-        <Button Content="GetDocumentation" Height="23" HorizontalAlignment="Left" Margin="12,215,0,0" Name="button2" VerticalAlignment="Top" Width="112" Click="button2_Click" />
+        <Button Content="GetDocumentation" Height="36" HorizontalAlignment="Left" Margin="9,202,0,0" Name="button2" VerticalAlignment="Top" Width="115" Click="button2_Click" />
+        <ProgressBar Height="10" HorizontalAlignment="Left" Margin="9,184,0,0" Name="progressBar1" VerticalAlignment="Top" Width="244" />
     </Grid>
     
 </Window>
