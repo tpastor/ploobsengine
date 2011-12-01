@@ -14,5 +14,5 @@
     shell:SystemTray.IsVisible="False">
 
     <!--No XAML content as the page is rendered entirely with XNA-->
-    <Button Content="Button" Height="99" Name="button1" Width="204" />
+    <Button Content="Button" Height="99" Name="button1" Width="204" Click="button1_Click" />
 </phone:PhoneApplicationPage>
