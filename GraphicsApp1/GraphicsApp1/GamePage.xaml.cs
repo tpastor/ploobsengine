@@ -14,6 +14,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using PloobsEngine.Engine;
 using EngineTestes;
+using PloobsEngine.SceneControl;
 
 namespace GraphicsApp1
 {
@@ -25,9 +26,11 @@ namespace GraphicsApp1
             EngineStuff.InitializePloobsEngine(SharedGraphicsDeviceManager.Current, (Application.Current as App).Content);            
         }
 
+        FirstScreen FirstScreen;
         protected override void OnNavigatedTo(NavigationEventArgs e)
-        {   
-            EngineStuff.Current.StartScene(new FirstScreen(),this);            
+        {
+            FirstScreen = new FirstScreen();
+            EngineStuff.Current.StartScene(FirstScreen, this);            
             base.OnNavigatedTo(e);
         }
 
@@ -35,6 +38,13 @@ namespace GraphicsApp1
         {
             EngineStuff.Current.LeaveScene();
             base.OnNavigatedFrom(e);
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            Texture2D tex =  FirstScreen.GraphicFactory.CreateTexture2DRandom(1, 1);
+            IObject obj =  FirstScreen.World.Objects[0];
+            obj.Modelo.SetTexture(tex, PloobsEngine.Modelo.TextureType.DIFFUSE);
         }
     }
 }
