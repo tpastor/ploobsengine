@@ -41,7 +41,8 @@ namespace EngineTestes
                 this.World.AddObject(obj);
             }
 
-            var newCameraFirstPerson = new CameraFirstPerson(GraphicInfo.Viewport);            
+            var newCameraFirstPerson = new CameraFirstPerson(GraphicInfo.Viewport);
+            //newCameraFirstPerson.UseAcelerometer = true;
             this.World.CameraManager.AddCamera(newCameraFirstPerson);            
         }
 

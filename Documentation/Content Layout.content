@@ -16,5 +16,6 @@
   <Topic id="28731b2f-7e00-4045-a1ce-f5278e5632ec" visible="True" />
   <Topic id="dbba5d1d-6a4d-4d60-b099-799bdab0bbaa" visible="True" />
   <Topic id="29a6f033-83ad-4c69-b3cd-6ce5bcc673d4" visible="True" />
+  <Topic id="5260262b-6583-47fb-97d5-5802238f3c64" visible="True" tocTitle="License" />
   <Topic id="3544638b-64ef-4e88-a456-c335e409b449" visible="True" apiParentMode="InsertAsChild" />
 </Topics>

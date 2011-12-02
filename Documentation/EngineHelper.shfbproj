@@ -83,6 +83,7 @@
     <Folder Include="HelpFiles\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="HelpFiles\license.aml" />
     <None Include="HelpFiles\Materials.aml" />
     <None Include="HelpFiles\PostEffects.aml" />
     <None Include="HelpFiles\PostEffects.aml" />
