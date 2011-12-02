@@ -14,10 +14,10 @@
       </externalLink>              
       </para>
       <para>
-      We strongly suggest you to read at least the first 6 ones before using PloobsEngine for real. 
+      <legacyBold>We strongly suggest you to read at least the first 6 ones<legacyUnderline></legacyUnderline></legacyBold> before using PloobsEngine for real. 
       </para>
       <alert>
-      All of the Contents showed in these tutorials are included in the Introduction and in the Advanced Demos that you installed with the PloobsInstaller. 
+      <legacyBold>All of the Contents showed in these tutorials are included in the Introduction and in the Advanced Demos that you installed with the PloobsInstaller. </legacyBold>
       </alert>      
       </content>      
     </section>    
@@ -32,7 +32,7 @@
      <section address="Section5">
       <title>PloobsEngine Windows Phone 7 Demos</title>
       <content>        
-        <para>The PloobsInstaller added the source code of one project containing some Basic Demos about using PloobsEngine on the Windows Phone, check it -- there is a shortcut in your desktop to the demos folder</para>
+        <para>The PloobsInstaller added the source code of one project containing some Basic Demos about using PloobsEngine on the Windows Phone, <legacyBold>there is a shortcut in your desktop to the demos folder</legacyBold></para>
       </content>      
     </section>
     

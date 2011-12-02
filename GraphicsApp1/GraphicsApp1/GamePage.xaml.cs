@@ -42,6 +42,7 @@ namespace GraphicsApp1
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
+            ///dummy -> change the texture color
             Texture2D tex =  FirstScreen.GraphicFactory.CreateTexture2DRandom(1, 1);
             IObject obj =  FirstScreen.World.Objects[0];
             obj.Modelo.SetTexture(tex, PloobsEngine.Modelo.TextureType.DIFFUSE);

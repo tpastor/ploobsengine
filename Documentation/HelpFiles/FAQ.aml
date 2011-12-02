@@ -44,7 +44,8 @@
         Shader Model (As a rule of thumb the engine uses Shader Model 3.0, 
         but some effects uses the 2.0). In this case, there is nothing to do,
         you need to change your Graphic Card (Only very old cards will have 
-        this problem )
+        this problem ).
+        Try using the Reach Version of the PLoobsEngine.
         </para>
       </content>
     </section>   
