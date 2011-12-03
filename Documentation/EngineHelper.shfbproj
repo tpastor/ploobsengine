@@ -21,7 +21,8 @@
     <FrameworkVersion>.NET 4.0.30319</FrameworkVersion>
     <DocumentationSources>
       <DocumentationSource sourceFile="..\PloobsEngine\PloobsEngine\bin\x86\Debug\PloobsEngineDebug.dll" />
-<DocumentationSource sourceFile="..\PloobsEngine\PloobsEngine\bin\x86\Debug\PloobsEngineDebug.xml" /></DocumentationSources>
+      <DocumentationSource sourceFile="..\PloobsEngine\PloobsEngine\bin\x86\Debug\PloobsEngineDebug.xml" />
+    </DocumentationSources>
     <MissingTags>AutoDocumentCtors, AutoDocumentDispose</MissingTags>
     <PlugInConfigurations>
       <PlugInConfig id="Additional Content Only" enabled="False">
