@@ -5525,7 +5525,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="I4">ISAttributes</col>
 		<row><td>Registry1</td><td>2</td><td>Software\Wow6432Node\Microsoft\.NETFramework\v4.0.30319\AssemblyFoldersEx\PloobsEngine</td><td/><td>[INSTALLDIR]\Windows HiDef</td><td>ISX_DEFAULTCOMPONENT</td><td>0</td></row>
 		<row><td>Registry2</td><td>2</td><td>Software\Ploobs\PloobsEngine</td><td>Location</td><td>[INSTALLDIR]</td><td>ISX_DEFAULTCOMPONENT</td><td>0</td></row>
-		<row><td>Registry3</td><td>2</td><td>Software\Ploobs\PloobsEngine</td><td>Version</td><td>0.4</td><td>ISX_DEFAULTCOMPONENT</td><td>0</td></row>
+		<row><td>Registry3</td><td>2</td><td>Software\Ploobs\PloobsEngine</td><td>Version</td><td>0.4.0</td><td>ISX_DEFAULTCOMPONENT</td><td>0</td></row>
 	</table>
 
 	<table name="RemoveFile">

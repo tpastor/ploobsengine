@@ -183,7 +183,7 @@ namespace PloobsUpdater
                 String sitem = listBox1.SelectedItem as String;
                 if (sitem != packageName)
                 {
-                    if(packageName != null)
+                    if (packageName != null)
                         DeleteCurrentEngineVersion();
                     Random rd = new Random();
                     int rdnum = rd.Next();
@@ -204,17 +204,17 @@ namespace PloobsUpdater
 
 
                                while (ftp.DoDownload() != 0)
-                               {                                   
+                               {
                                    progressBar1.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
                                    (Action)(() => { progressBar1.Value = 100 * (float)ftp.BytesTotal / (float)ftp.FileSize; }));
-                                   
+
                                }
 
                                label2.Content = "INSTALLING";
-                                                              
+
                                RarArchive.WriteToDirectory(temppath, System.IO.Path.GetTempPath(), NUnrar.Common.ExtractOptions.ExtractFullPath);
-                               
-                               
+
+
                                temppath = System.IO.Path.GetTempPath() + "PloobsEngine//setup.exe";
 
                                System.Diagnostics.Process process = new System.Diagnostics.Process();
@@ -227,7 +227,7 @@ namespace PloobsUpdater
                                {
                                    label2.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
                                    (Action)(() => { label2.Content = "CurrentVersion: " + packageName; }));
-                                   
+
                                }
 
                                label2.Content = "Current Version: " + packageName;
@@ -243,10 +243,14 @@ namespace PloobsUpdater
                            {
                                button1.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
                                    (Action)(() => { button1.IsEnabled = true; }));
-                               
+
                            }
-                        }
+                       }
                     );
+                }
+                else
+                {
+                    MessageBox.Show("You already have this version installed");
                 }
             }
             catch (Exception ex)
