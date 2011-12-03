@@ -20,12 +20,11 @@
     <Language>en-US</Language>
     <FrameworkVersion>.NET 4.0.30319</FrameworkVersion>
     <DocumentationSources>
-      <DocumentationSource sourceFile="Engine\bin\x86\Debug\PloobsEngine.dll" />
-      <DocumentationSource sourceFile="Engine\bin\x86\Debug\PloobsEngine.xml" />
-    </DocumentationSources>
+      <DocumentationSource sourceFile="..\PloobsEngine\PloobsEngine\bin\x86\Debug\PloobsEngineDebug.dll" />
+<DocumentationSource sourceFile="..\PloobsEngine\PloobsEngine\bin\x86\Debug\PloobsEngineDebug.xml" /></DocumentationSources>
     <MissingTags>AutoDocumentCtors, AutoDocumentDispose</MissingTags>
     <PlugInConfigurations>
-      <PlugInConfig id="Additional Content Only" enabled="True">
+      <PlugInConfig id="Additional Content Only" enabled="False">
         <configuration />
       </PlugInConfig>
     </PlugInConfigurations>
@@ -51,7 +50,7 @@
           <!-- Logo image file (optional).  Filename is required. The height,
                  width, altText, placement, and alignment attributes are
                  optional. -->
-          <logoFile filename="C:\Users\thiago.dias.pastor\Desktop\port\Documentation\Helper Aux\Logo.jpg" height="0" width="0" altText="" placement="left" alignment="left" />
+          <logoFile filename="C:\port-ploobsengine\Documentation\Helper Aux\Logo.jpg" height="0" width="0" altText="" placement="left" alignment="left" />
         </component>
       </ComponentConfig>
     </ComponentConfigurations>
@@ -83,6 +82,8 @@
     <Folder Include="HelpFiles\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="HelpFiles\1700d8f8-5f46-4ba2-b2b1-0edcc29bb41e.aml" />
+    <None Include="HelpFiles\Roadm.aml" />
     <None Include="HelpFiles\license.aml" />
     <None Include="HelpFiles\Materials.aml" />
     <None Include="HelpFiles\PostEffects.aml" />

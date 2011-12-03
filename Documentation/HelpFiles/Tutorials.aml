@@ -7,11 +7,18 @@
     <section address="Section1">
       <title>PloobsEngine Tutorials</title>
       <content>        
-        <para>We have lots of tutorials ranging from very basic stuffs to more complicated ones in our website.
+      	<para>
+      	After installing the PloobsEngine, you will see one shortcut in your Desktop called <legacyBold>PloobsDemos Code</legacyBold>. There you will find the source code of all of our demos. Just open then in Visual Studio and Run.      	
+      	</para>
+      	<para>
+      	To Compile/Run the demos the users must have the XNA 4.0 Framework and the Windows Phone SDK 7.1
+      	</para>
+        <para>We also have lots of tutorials ranging from very basic stuffs to more complicated ones in our website.
         <externalLink>
           <linkText>Check them here</linkText>          
           <linkUri>http://ploobs.com.br/?page_id=1379</linkUri>
       </externalLink>              
+      .
       </para>
       <para>
       <legacyBold>We strongly suggest you to read at least the first 6 ones<legacyUnderline></legacyUnderline></legacyBold> before using PloobsEngine for real. 
@@ -21,6 +28,15 @@
       </alert>      
       </content>      
     </section>    
+        
+     <section address="Section5">
+      <title>PloobsEngine Windows Phone 7 Demos</title>
+      <content>        
+      <para>
+      There are two ways of using PloobsEngine with Windows Phone 7. The first one is relying on the StandAlone PloobsEngine with XNA (Check the Folder PhoneDemos). The second is to use the PloobsEngine with SilverLight and XNA (check the folder SilverlightEngineDemo) .
+      </para>       
+      </content>          
+    </section>
     
     <section address="Sectio3">
       <title>Engine Components</title>
@@ -29,12 +45,6 @@
       </content>      
     </section>
  
-     <section address="Section5">
-      <title>PloobsEngine Windows Phone 7 Demos</title>
-      <content>        
-        <para>The PloobsInstaller added the source code of one project containing some Basic Demos about using PloobsEngine on the Windows Phone, <legacyBold>there is a shortcut in your desktop to the demos folder</legacyBold></para>
-      </content>      
-    </section>
     
     <relatedTopics>
       <!-- One or more of the following:
