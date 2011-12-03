@@ -3709,7 +3709,7 @@
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_PROCESSOR</td><td>1033</td><td>The processor is not adequate for running [ProductName].</td><td>0</td><td/><td>-1650505517</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>-1650505517</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_SCREEN</td><td>1033</td><td>The screen resolution is not adequate for running [ProductName].</td><td>0</td><td/><td>-1650505517</td></row>
-		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_SOFTWARE_WOW6432NODE_XNA_FRA</td><td>1033</td><td>XNA 4.0 SDK Not Found. Download and Install it from here: http://www.microsoft.com/download/en/details.aspx?id=23714</td><td>0</td><td/><td>-442536617</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_SOFTWARE_WOW6432NODE_XNA_FRA</td><td>1033</td><td>XNA 4.0 SDK Not Found. Download and Install it from here: http://www.microsoft.com/download/en/details.aspx?id=23714</td><td>0</td><td/><td>371132566</td></row>
 		<row><td>IDPROP_SETUPTYPE_COMPACT</td><td>1033</td><td>Compact</td><td>0</td><td/><td>-1650505517</td></row>
 		<row><td>IDPROP_SETUPTYPE_COMPACT_DESC</td><td>1033</td><td>Compact Description</td><td>0</td><td/><td>-1650505517</td></row>
 		<row><td>IDPROP_SETUPTYPE_COMPLETE</td><td>1033</td><td>Complete</td><td>0</td><td/><td>-1650505517</td></row>
@@ -5132,7 +5132,6 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>(Not Version9X) And (Not VersionNT=400) And (Not VersionNT=500) And (Not VersionNT=502) And (Not (VersionNT=600 And Not (MsiNTProductType=1))) And (Not (VersionNT=601 And Not (MsiNTProductType=1)))</td><td>##IDPROP_EXPRESS_LAUNCH_CONDITION_OS##</td></row>
 		<row><td>DOTNETVERSION40CLIENT&gt;="#1"</td><td>##IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION40CLIENT##</td></row>
 		<row><td>DOTNETVERSION40FULL&gt;="#1"</td><td>##IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION40FULL##</td></row>
-		<row><td>SOFTWARE_WOW6432NODE_XNA_FRAMEWORK_V4.0</td><td>##IDPROP_EXPRESS_LAUNCH_CONDITION_SOFTWARE_WOW6432NODE_XNA_FRA##</td></row>
 	</table>
 
 	<table name="ListBox">
@@ -5513,7 +5512,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="I2">Type</col>
 		<row><td>DotNet40Client</td><td>2</td><td>SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Client</td><td>Install</td><td>2</td></row>
 		<row><td>DotNet40Full</td><td>2</td><td>SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full</td><td>Install</td><td>2</td></row>
-		<row><td>NewSignature1</td><td>2</td><td>SOFTWARE/Wow6432Node/XNA/Framework/v4.0</td><td/><td>2</td></row>
+		<row><td>NewSignature1</td><td>2</td><td>SOFTWARE\Wow6432Node\Microsoft\XNA\Framework\v4.0\Installed</td><td>1</td><td>2</td></row>
 	</table>
 
 	<table name="Registry">
@@ -5525,6 +5524,8 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="s72">Component_</col>
 		<col def="I4">ISAttributes</col>
 		<row><td>Registry1</td><td>2</td><td>Software\Wow6432Node\Microsoft\.NETFramework\v4.0.30319\AssemblyFoldersEx\PloobsEngine</td><td/><td>[INSTALLDIR]\Windows HiDef</td><td>ISX_DEFAULTCOMPONENT</td><td>0</td></row>
+		<row><td>Registry2</td><td>2</td><td>Software\Ploobs\PloobsEngine</td><td>Location</td><td>[INSTALLDIR]</td><td>ISX_DEFAULTCOMPONENT</td><td>0</td></row>
+		<row><td>Registry3</td><td>2</td><td>Software\Ploobs\PloobsEngine</td><td>Version</td><td>0.4</td><td>ISX_DEFAULTCOMPONENT</td><td>0</td></row>
 	</table>
 
 	<table name="RemoveFile">

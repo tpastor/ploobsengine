@@ -320,26 +320,11 @@ namespace PloobsUpdater
 
         private void GetVersionOnRegistry()
         {
-            RegistryKey myKey = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Wow6432Node\\Microsoft\\.NETFramework\\v4.0.30319\\AssemblyFoldersEx\\PloobsEngine", false);
+            
+            RegistryKey myKey = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Wow6432Node\\Ploobs\\PloobsEngine", false);
             if (myKey != null)
             {
-                String o = myKey.GetValue(null) as String;
-                if (o != null)
-                {
-
-                    foreach (var item in Directory.EnumerateFiles(o))
-                    {
-                        if (item.EndsWith(".dll") && item.Contains("PloobsEngineDebug"))
-                        {
-                            //PloobsEngineDebug, Version=0.0.0.1, Culture=neutral, PublicKeyToken=0c21691816f8c6d0
-                            Assembly Assembly = Assembly.LoadFile(item);
-                            String name = Assembly.FullName.Split(',')[0];
-                            String version = Assembly.FullName.Split(',')[1].Split('=')[1];
-                            packageName = version;
-                            break;
-                        }
-                    }
-                }
+                packageName = myKey.GetValue("Version") as String;                    
             }
         }
 
