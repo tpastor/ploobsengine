@@ -210,7 +210,9 @@ namespace PloobsUpdater
 
                                }
 
-                               label2.Content = "INSTALLING";
+                               label2.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
+                                   (Action)(() => { label2.Content = "INSTALLING"; }));
+                               
 
                                RarArchive.WriteToDirectory(temppath, System.IO.Path.GetTempPath(), NUnrar.Common.ExtractOptions.ExtractFullPath);
 
@@ -222,15 +224,11 @@ namespace PloobsUpdater
                                process.Start();
                                process.WaitForExit();
 
-                               packageName = sitem;
-                               if (packageName != null)
-                               {
-                                   label2.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
-                                   (Action)(() => { label2.Content = "CurrentVersion: " + packageName; }));
+                               packageName = sitem;                               
 
-                               }
-
-                               label2.Content = "Current Version: " + packageName;
+                               label2.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
+                                   (Action)(() => { label2.Content = "Current Version: " + packageName; }));
+                               
 
                                MySqlCommonConnection.WriteClientToDB(sitem);
                            }
@@ -243,6 +241,14 @@ namespace PloobsUpdater
                            {
                                button1.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
                                    (Action)(() => { button1.IsEnabled = true; }));
+
+                               if (packageName != null)
+                               {
+                                   label2.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
+                                   (Action)(() => { label2.Content = "CurrentVersion: " + packageName; }));
+
+                               }
+
 
                            }
                        }
