@@ -8,21 +8,15 @@
       <title>Thiago Dias Pastor</title>
       <content>        
         <para>Iam a Computer Engineer graduated in the end of 2010 in 
-        University of Sao Paulo, Brazil. I worked as a developer in Web, 
-        finance and computer graphics area. </para>
+        University of Sao Paulo, Brazil. I worked as a developer in 
+        finance and computer graphics area. Today iam working at Accenture in telecommunication area.</para>
         <para>
-        The ploobs engine was my hobby project for more than one year 
-        and half, in the beginning it was just a sandbox where i developed
-        cool stuffs, as the time passed, i decided to turn it to a real
-        game engine. My graduation project was the Engine Deferred Render 
+        The ploobs engine was my hobby project for more than three year, in the beginning it was just a sandbox where i developed
+        cool stuffs, as the time passed, we (ploobs) decided to turn it to a real
+        game engine. My graduation project was the Deferred Render 
         Module. 
-        </para>
-        <para>
-        Depeloping the engine was a really cool task, it helped me to learn 
-        lots of things about computer graphics and project management. I was 
-        involved principally in the Design and implementation area.        
-        </para>
-        <para>Check my others opensource projects in the Computer Graphics:
+        </para>        
+        <para>Check out my others opensource projects in the Computer Graphics ar:
         </para>
         
 		<list class="bullet">
@@ -75,6 +69,10 @@
       <content>        
         <para>Iam a Computer Engineer graduated in the end of 2010 in 
         University of Sao Paulo, Brazil.</para>
+        <para>
+        The ploobs engine was also my hobby project for more than three year.
+        My graduation project was the Deferred Render Module (with Thiago). 
+        </para>        
         <para>
         To contact me send a email to: bruno.duartec@gmail.com
         </para>

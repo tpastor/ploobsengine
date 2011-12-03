@@ -8,13 +8,13 @@
     <section>
       <title>What is Ploobs Engine?</title>
       <content>
-        <para>Its a Game Engine developed in XNA 4.0 and C# .Net 4.0. The 
+        <para>Its a Game Engine developed in XNA 4.0 and C# .Net 4.0 for PC and Windows Phone 7. The 
         engine was designed to be simple to use and simple to extend.
         </para>
         <para> Its a large Framework including modules to deal with task like: Input, Physics,Scene Management,
-        Graphics, Resource Management and others. </para>        
-        <para>The engine has two license models, one for comercial and non comercial 
-        purpose.</para>
+        Graphics, Resource Management and <link xlink:href="59a6b1f1-762c-48c7-954e-c62f188fa3e9">others</link>.  </para>        
+        <para>The engine has <link xlink:href="5260262b-6583-47fb-97d5-5802238f3c64">dual license model</link>, one for comercial and another for non comercial purpose.        
+        </para>
       </content>
     </section>        
     <section>
@@ -30,15 +30,15 @@
           <linkUri>http://www.microsoft.com/download/en/details.aspx?id=27570</linkUri>
       </externalLink> also), the
         .Net 4.0 Framework and The Visual Studio 2010 complete or express.
-        For the hardware you just need a DirectX 10 video board compatible.</para>
-        <para>To learn about using Ploobs, go to our <link xlink:href="eca770db-afcb-4ccb-a250-5201f8688d64">Tutorial Section </link> in this document</para>
+        </para>
+        <para>To learn about using PloobsEngine, go to our <link xlink:href="eca770db-afcb-4ccb-a250-5201f8688d64">Tutorial Section </link>.</para>
         
         <para>As an end user, you will need to install the XNA 4.0 Runtime, the .Net 4.0
-        Runtime and have a video board compatible with DirectX 10 </para>               
+        Runtime.</para>               
       </content>
     </section> 
     <section>
-      <title>Important Links</title>
+      <title>External Important Links</title>
       <content>
       
       <para> 
@@ -46,8 +46,7 @@
           <linkText>English Release</linkText>          
           <linkUri>http://ploobs.com.br/?p=504</linkUri>
       </externalLink>
-      </para>
-      
+      </para>      
       
       <para> 
         <externalLink>
@@ -87,7 +86,7 @@
       
         <para> 
         <externalLink>
-          <linkText>Project Mercurial Repo:</linkText>          
+          <linkText>Project Mercurial Repo</linkText>          
           <linkUri>http://code.google.com/p/port-ploobsengine/source/checkout</linkUri>
       </externalLink>
         </para>

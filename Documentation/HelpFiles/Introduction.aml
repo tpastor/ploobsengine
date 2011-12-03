@@ -58,27 +58,27 @@
   </section> 
  
  <section address="Section1">
- <title>What Ploobs Engine Has to Offer ?</title>
+ <title><legacyBold>What Ploobs Engine Has to Offer ?</legacyBold></title>
  <content>       
  
  <para>
  The actual version of the Ploobs Engine version is 0.4
  Lots of changes were made comparing with the 0.3 version (released in may of 2011). 
- We learned from our mistakes, this version is more modular and Xna independent. 
+ We learned from our mistakes, this version is more modular and Xna independent than ever. 
  </para>
  <para>
  One of the main guidelines in this version was simplicity. The engine try to help
  the user to make the right thing always. 
  In the Debug version we use lots of asserts to ensure that the user is doing the right 
  think, we also have a new log system that output some hints about common mistakes 
- and commom errors to the user.
+ and commom errors.
  </para>
       
  <para>Here is a list of the principal Engine features:</para>
        
 <list class="bullet">
 <listItem>
-<para>Supports High End PC-Windows, Low End PC-Windows and Windows Phone 7</para>
+<para>Supports High End PC-Windows, Low End PC-Windows and Windows Phone 7 (with or without SilverLight)</para>
 <para>Forward Rendering for Low End PC and Windows Phone 7 and Deferred Rendering for High End PC</para>
 <para>Two very different ways of rendering object in the screen. The forward
 technich is the traditional way of rendering, the Deferred is relatively new in the
