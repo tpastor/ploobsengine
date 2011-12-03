@@ -4928,11 +4928,11 @@
 		<col def="I2">ISIconIndex</col>
 		<row><td>ARPPRODUCTICON.exe</td><td/><td>C:\Users\tpastor\Desktop\port\PloobsEngine\PloobsEngine\Logo Ploobs.ico</td><td>0</td></row>
 		<row><td>AdvancedDemos.exe1_9DB5D6AEFA124E3DA8CF530CF2CC721A.exe</td><td/><td>C:\Users\tpastor\Desktop\Dlls\Demos\AdvancedDemos\AdvancedDemos\AdvancedDemos\obj\x86\Debug\AdvancedDemos.exe</td><td>0</td></row>
-		<row><td>AdvancedDemos.exe1_C4D297D4EB00465FB3CCB62993AC0DEB.exe</td><td/><td>C:\Dlls\AdvDemosBinaries\AdvancedDemos.exe</td><td>0</td></row>
+		<row><td>AdvancedDemos.exe1_C27B04AF4D7B4D5183530DD025DE344C.exe</td><td/><td>C:\Dlls\Windows HiDef\PloobsEngineDebug.dll</td><td>0</td></row>
 		<row><td>AdvancedDemos.exe1_E23014CDA5E04106B55219C7FDBC614A.exe</td><td/><td>C:\Users\tpastor\Desktop\Dlls\AdvDemosBinaries\AdvancedDemos.exe</td><td>0</td></row>
 		<row><td>AdvancedDemos.exe_5CDF6576053D4A4C906E0F5EB48406D2.exe</td><td/><td>C:\Users\tpastor\Desktop\Dlls\Demos\AdvancedDemos\AdvancedDemos\AdvancedDemos\bin\x86\Debug\AdvancedDemos.exe</td><td>0</td></row>
 		<row><td>AdvancedDemos.exe_6A40C0350952450FB1B9EA113D1E4B98.exe</td><td/><td>C:\Users\tpastor\Desktop\Dlls\AdvDemosBinaries\AdvancedDemos.exe</td><td>0</td></row>
-		<row><td>AdvancedDemos.exe_E73ED2E3990245B8B1EE0C2380F6E578.exe</td><td/><td>C:\Dlls\AdvDemosBinaries\AdvancedDemos.exe</td><td>0</td></row>
+		<row><td>AdvancedDemos.exe_C22A40BD76874218813E1B1FA2004D79.exe</td><td/><td>C:\Dlls\Windows HiDef\PloobsEngineDebug.dll</td><td>0</td></row>
 		<row><td>IntroductionDemo4._6C95F7DA50704362AFAAA600902C84E6.exe</td><td/><td>C:\Users\tpastor\Desktop\Dlls\Demos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\IntroductionDemo4.0\obj\x86\Debug\IntroductionDemo4.0.exe</td><td>0</td></row>
 		<row><td>IntroductionDemo4._B7DB531E6F6546A7A9C24D02D5F2A00F.exe</td><td/><td>C:\Users\tpastor\Desktop\Dlls\Demos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\IntroductionDemo4.0\bin\x86\Debug\IntroductionDemo4.0.exe</td><td>0</td></row>
 		<row><td>PloobsProjectTempl_02BF06FCC83A4251943032B8B2EDEA9C.exe</td><td/><td>C:\Users\tpastor\Desktop\Dlls\Demos\ReachDemos\ReachDemos\PloobsProjectTemplate\bin\x86\Debug\PloobsProjectTemplate.exe</td><td>0</td></row>
@@ -5623,8 +5623,8 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">ISComments</col>
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
-		<row><td>AdvancedDemos.exe</td><td>ploobs_1_ploobsengine</td><td>##IDS_SHORTCUT_DISPLAY_NAME8##</td><td>AdvancedDemos.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>AdvancedDemos.exe_E73ED2E3990245B8B1EE0C2380F6E578.exe</td><td>1</td><td>1</td><td>ADVDEMOSBINARIES</td><td/><td/><td/><td/><td/><td/><td/></row>
-		<row><td>AdvancedDemos.exe1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME8##</td><td>AdvancedDemos.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>AdvancedDemos.exe1_C4D297D4EB00465FB3CCB62993AC0DEB.exe</td><td>1</td><td>1</td><td>ADVDEMOSBINARIES</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>AdvancedDemos.exe</td><td>ploobs_1_ploobsengine</td><td>##IDS_SHORTCUT_DISPLAY_NAME8##</td><td>AdvancedDemos.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>AdvancedDemos.exe_C22A40BD76874218813E1B1FA2004D79.exe</td><td>1</td><td>1</td><td>ADVDEMOSBINARIES</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>AdvancedDemos.exe1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME8##</td><td>AdvancedDemos.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>AdvancedDemos.exe1_C27B04AF4D7B4D5183530DD025DE344C.exe</td><td>1</td><td>1</td><td>ADVDEMOSBINARIES</td><td/><td/><td/><td/><td/><td/><td/></row>
 		<row><td>NewShortcut1</td><td>ploobs_1_ploobsengine</td><td>##ID_STRING9##</td><td>ISX_DEFAULTCOMPONENT</td><td>[DEMOS]</td><td/><td/><td/><td/><td/><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
 		<row><td>NewShortcut11</td><td>DesktopFolder</td><td>##ID_STRING9##</td><td>ISX_DEFAULTCOMPONENT</td><td>[DEMOS]</td><td/><td/><td/><td/><td/><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
 		<row><td>NewShortcut2</td><td>ploobs_1_ploobsengine</td><td>##ID_STRING10##</td><td>ISX_DEFAULTCOMPONENT</td><td>[HELP]</td><td/><td/><td/><td/><td/><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
