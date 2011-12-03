@@ -48,9 +48,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BEPUphysics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31f6a8732a21de19, processorArchitecture=MSIL" />
-    <Reference Include="DPSFPhone, Version=2.1.0.0, Culture=neutral, PublicKeyToken=32c832bfa7326ee2, processorArchitecture=MSIL" />
-    <Reference Include="FarseerPhysicsXNA, Version=3.3.4186.19001, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="BEPUphysics">
+      <HintPath>..\DLL\BEPUphysics.dll</HintPath>
+    </Reference>
+    <Reference Include="DPSFPhone">
+      <HintPath>..\DLL\DPSFPhone.dll</HintPath>
+    </Reference>
+    <Reference Include="FarseerPhysicsXNA">
+      <HintPath>..\DLL\FarseerPhysicsXNA.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Interop" />
     <Reference Include="Microsoft.Xna.Framework" />
@@ -58,14 +64,18 @@
     <Reference Include="Microsoft.Xna.Framework.Graphics" />
     <Reference Include="Microsoft.Xna.Framework.Input.Touch" />
     <Reference Include="microsoft.xna.framework.interop" />
-    <Reference Include="PloobsEnginePhone7, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PloobsEnginePhone7">
+      <HintPath>..\DLL\PloobsEnginePhone7.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows" />
     <Reference Include="system" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
     <Reference Include="System.Xml" />
     <Reference Include="mscorlib.extensions" />
-    <Reference Include="XNAnimation, Version=0.7.0.0, Culture=neutral, PublicKeyToken=0c21691816f8c6d0, processorArchitecture=MSIL" />
+    <Reference Include="XNAnimation">
+      <HintPath>..\DLL\XNAnimation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">

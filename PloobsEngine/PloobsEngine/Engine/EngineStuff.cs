@@ -1027,7 +1027,7 @@ namespace PloobsEngine.Engine
             if(elementRenderer != null)
                 elementRenderer.Render();
             
-            GameTime GameTime = new GameTime(e.TotalTime, e.ElapsedTime, e.IsRunningSlowly);
+            GameTime GameTime = new GameTime(e.TotalTime, e.ElapsedTime);
             Draw(GameTime);
 
 
@@ -1039,7 +1039,7 @@ namespace PloobsEngine.Engine
 
         void timer_Update(object sender, GameTimerEventArgs e)
         {
-            GameTime GameTime = new GameTime(e.TotalTime, e.ElapsedTime, e.IsRunningSlowly);
+            GameTime GameTime = new GameTime(e.TotalTime, e.ElapsedTime);
             Update(GameTime);
         }
 
