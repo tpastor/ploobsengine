@@ -698,7 +698,8 @@ namespace PloobsEngine.Engine
         public readonly GraphicsDevice GraphicsDevice;
         GameTimer timer;
         PhoneApplicationPage PhoneApplicationPage;
-        UIElementRenderer elementRenderer;        
+        UIElementRenderer elementRenderer;
+        EventHandler EventHandler = null;
         
 
         /// <summary>
@@ -968,7 +969,19 @@ namespace PloobsEngine.Engine
         public void StartScene(IScreen Screen, PhoneApplicationPage PhoneApplicationPage)
         {            
             this.PhoneApplicationPage = PhoneApplicationPage;
-            PhoneApplicationPage.LayoutUpdated += new EventHandler(PhoneApplicationPage_LayoutUpdated);
+
+            ///restart everything
+            if (elementRenderer != null)
+                elementRenderer.Dispose();
+            
+            elementRenderer = new UIElementRenderer(PhoneApplicationPage, GraphicInfo.BackBufferWidth, GraphicInfo.BackBufferHeight);
+            
+            if(EventHandler != null)
+                PhoneApplicationPage.LayoutUpdated -= EventHandler;
+
+            EventHandler = new EventHandler(PhoneApplicationPage_LayoutUpdated);
+            PhoneApplicationPage.LayoutUpdated += EventHandler;
+
             if (timer != null)
             {
                 timer.Stop();
