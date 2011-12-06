@@ -33,11 +33,13 @@ namespace PloobsEngine.Material
     public class ForwardEnvironmentShader : IShader
     {
         TextureCube TextureCube;
-        float amountDiffuse = 1;        
-        public ForwardEnvironmentShader(TextureCube TextureCube, float amountDiffuse = 1)
+        float amountDiffuse = 1;
+        bool enableLightining = true;
+        public ForwardEnvironmentShader(TextureCube TextureCube, float amountDiffuse = 1, bool enableLightining = true)
         {
             this.TextureCube = TextureCube;
-            this.amountDiffuse = amountDiffuse;            
+            this.amountDiffuse = amountDiffuse;
+            this.enableLightining = enableLightining;
         }
 
         private EnvironmentMapEffect effect;
@@ -56,7 +58,9 @@ namespace PloobsEngine.Material
         public override void Initialize(GraphicInfo ginfo, GraphicFactory factory, IObject obj)
         {
             effect = factory.GetEnvironmentMapEffect();
-            effect.EnableDefaultLighting();
+            if(enableLightining)
+                effect.EnableDefaultLighting();
+            effect.EnvironmentMapAmount = amountDiffuse;    
             base.Initialize(ginfo,factory,obj);            
         }
 
@@ -82,7 +86,7 @@ namespace PloobsEngine.Material
                 {
                     effect.Texture = obj.Modelo.getTexture(Modelo.TextureType.DIFFUSE,i,j);
                     effect.EnvironmentMap = TextureCube;
-                    effect.EnvironmentMapAmount = amountDiffuse;                    
+                                   
                     effect.World = bi[j].ModelLocalTransformation * obj.WorldMatrix;
                     render.RenderBatch(bi[j],effect);
                 }
