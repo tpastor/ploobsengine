@@ -51,7 +51,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <DefineConstants>TRACE;WINDOWS_PHONE</DefineConstants>
+    <DefineConstants>TRACE;WINDOWS_PHONE;SILVER</DefineConstants>
     <XnaCompressContent>false</XnaCompressContent>
     <LangVersion>default</LangVersion>
     <DocumentationFile>bin\Windows Phone\Release\PloobsEnginePhone7.XML</DocumentationFile>
