@@ -369,8 +369,8 @@ Global
 		{B990BF20-C075-428E-A961-CF6458B55761}.CD_ROM|Windows Phone.Build.0 = Debug|Windows Phone
 		{B990BF20-C075-428E-A961-CF6458B55761}.CD_ROM|x86.ActiveCfg = Debug|Windows Phone
 		{B990BF20-C075-428E-A961-CF6458B55761}.Debug|Any CPU.ActiveCfg = Debug|Windows Phone
-		{B990BF20-C075-428E-A961-CF6458B55761}.Debug|Mixed Platforms.ActiveCfg = Debug|Windows Phone
-		{B990BF20-C075-428E-A961-CF6458B55761}.Debug|Mixed Platforms.Build.0 = Debug|Windows Phone
+		{B990BF20-C075-428E-A961-CF6458B55761}.Debug|Mixed Platforms.ActiveCfg = Release|Windows Phone
+		{B990BF20-C075-428E-A961-CF6458B55761}.Debug|Mixed Platforms.Build.0 = Release|Windows Phone
 		{B990BF20-C075-428E-A961-CF6458B55761}.Debug|Windows Phone.ActiveCfg = Debug|Windows Phone
 		{B990BF20-C075-428E-A961-CF6458B55761}.Debug|Windows Phone.Build.0 = Debug|Windows Phone
 		{B990BF20-C075-428E-A961-CF6458B55761}.Debug|x86.ActiveCfg = Debug|Windows Phone

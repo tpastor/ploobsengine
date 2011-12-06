@@ -966,7 +966,8 @@ namespace PloobsEngine.Engine
         /// REMOVE ALL PREVIOUS ONES
         /// </summary>
         /// <param name="Screen"></param>
-        public void StartScene(IScreen Screen, PhoneApplicationPage PhoneApplicationPage)
+        /// /// <param name="PhoneApplicationPage"></param>
+        public void StartScene(IScene Screen, PhoneApplicationPage PhoneApplicationPage)
         {            
             this.PhoneApplicationPage = PhoneApplicationPage;
 

@@ -191,7 +191,6 @@ namespace PloobsEngine.Material
                     basicEffect.View = cam.View;
                     basicEffect.Projection = cam.Projection;
                 }
-
                 modelMesh.Draw();
             }
         }
