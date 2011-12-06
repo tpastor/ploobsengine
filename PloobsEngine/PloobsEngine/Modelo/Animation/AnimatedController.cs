@@ -45,19 +45,18 @@ namespace PloobsEngine.Modelo.Animation
         public AnimatedController(IAnimatedModel model, String StartAnimationName = null,bool changeOnlyWhenDifferentAnimation = true)            
         {
             skinnedModel = model.GetAnimation() as SkinnedModel;
-            animationController = new AnimationController(skinnedModel.SkeletonBones);            
+            AnimationController = new AnimationController(skinnedModel.SkeletonBones);            
             this.StartAnimationName = StartAnimationName;
             this.actualAnimation = StartAnimationName;
             if(StartAnimationName != null)
-                animationController.StartClip(skinnedModel.AnimationClips[StartAnimationName]);
+                AnimationController.StartClip(skinnedModel.AnimationClips[StartAnimationName]);
             this.changeOnlyWhenDifferentAnimation = changeOnlyWhenDifferentAnimation;
 
         }
 
         private bool changeOnlyWhenDifferentAnimation = true;
         private string actualAnimation;
-        private SkinnedModel skinnedModel;        
-        private AnimationController animationController;
+        private SkinnedModel skinnedModel;                
         private String StartAnimationName = null;
         private IDictionary<String, String> _actionAnimation = new Dictionary<string, String>();
         private double transitionBetweenAnimationTimeInSeconds = 1;
@@ -84,11 +83,11 @@ namespace PloobsEngine.Modelo.Animation
         {
             get
             {
-                return animationController.Speed;
+                return AnimationController.Speed;
             }
             set
             {
-                this.animationController.Speed = value;
+                this.AnimationController.Speed = value;
             }
         }
 
@@ -102,11 +101,11 @@ namespace PloobsEngine.Modelo.Animation
         {
             get
             {
-                return animationController.LoopEnabled;
+                return AnimationController.LoopEnabled;
             }
             set
             {
-                this.animationController.LoopEnabled = value;
+                this.AnimationController.LoopEnabled = value;
             }
         }
 
@@ -131,7 +130,7 @@ namespace PloobsEngine.Modelo.Animation
         /// <param name="rot">The rot.</param>
         public void TransformBone(String boneName,Quaternion rot)
         {
-            animationController.SetBoneController(boneName, rot);
+            AnimationController.SetBoneController(boneName, rot);
         }
 
         /// <summary>
@@ -141,7 +140,13 @@ namespace PloobsEngine.Modelo.Animation
         /// <returns></returns>
         public Matrix GetBoneAbsoluteTransform(String boneName)
         {
-            return animationController.GetBoneAbsoluteTransform(boneName);
+            return AnimationController.GetBoneAbsoluteTransform(boneName);
+        }
+
+        public AnimationController AnimationController
+        {
+            internal set;
+            get;
         }
 
         /// <summary>
@@ -155,7 +160,7 @@ namespace PloobsEngine.Modelo.Animation
             {
                 if (animationName != actualAnimation)
                 {
-                    animationController.CrossFade(
+                    AnimationController.CrossFade(
                             skinnedModel.AnimationClips[animationName],
                             TimeSpan.FromSeconds(transitionBetweenAnimationTimeInSeconds));
                     actualAnimation = animationName;
@@ -163,7 +168,7 @@ namespace PloobsEngine.Modelo.Animation
             }
             else
             {
-                animationController.CrossFade(
+                AnimationController.CrossFade(
                      skinnedModel.AnimationClips[animationName],
                      TimeSpan.FromSeconds(transitionBetweenAnimationTimeInSeconds));
                 actualAnimation = animationName;
@@ -185,7 +190,7 @@ namespace PloobsEngine.Modelo.Animation
         /// <param name="gt">The gt.</param>
         public void Update(Microsoft.Xna.Framework.GameTime gt)
         {
-            animationController.Update(gt.ElapsedGameTime, Matrix.Identity);
+            AnimationController.Update(gt.ElapsedGameTime, Matrix.Identity);
         }
 
         #endregion
@@ -202,29 +207,29 @@ namespace PloobsEngine.Modelo.Animation
             if (im == AnimationInterpolationMode.No_Interpolation)
             {
 
-                animationController.TranslationInterpolation = InterpolationMode.None;
-                animationController.OrientationInterpolation = InterpolationMode.None;
-                animationController.ScaleInterpolation = InterpolationMode.None;
+                AnimationController.TranslationInterpolation = InterpolationMode.None;
+                AnimationController.OrientationInterpolation = InterpolationMode.None;
+                AnimationController.ScaleInterpolation = InterpolationMode.None;
             }
             else if (im == AnimationInterpolationMode.Linear_Interpolation)
             {
 
-                animationController.TranslationInterpolation = InterpolationMode.Linear;
-                animationController.OrientationInterpolation = InterpolationMode.Linear;
-                animationController.ScaleInterpolation = InterpolationMode.Linear;
+                AnimationController.TranslationInterpolation = InterpolationMode.Linear;
+                AnimationController.OrientationInterpolation = InterpolationMode.Linear;
+                AnimationController.ScaleInterpolation = InterpolationMode.Linear;
             }
             else if (im == AnimationInterpolationMode.Cubic_Interpolation)
             {
 
-                animationController.TranslationInterpolation = InterpolationMode.Cubic;
-                animationController.OrientationInterpolation = InterpolationMode.Linear;
-                animationController.ScaleInterpolation = InterpolationMode.Cubic;
+                AnimationController.TranslationInterpolation = InterpolationMode.Cubic;
+                AnimationController.OrientationInterpolation = InterpolationMode.Linear;
+                AnimationController.ScaleInterpolation = InterpolationMode.Cubic;
             }
             else if (im == AnimationInterpolationMode.Spherical_Interpolation)
             {
-                animationController.TranslationInterpolation = InterpolationMode.Linear;
-                animationController.OrientationInterpolation = InterpolationMode.Spherical;
-                animationController.ScaleInterpolation = InterpolationMode.Linear;
+                AnimationController.TranslationInterpolation = InterpolationMode.Linear;
+                AnimationController.OrientationInterpolation = InterpolationMode.Spherical;
+                AnimationController.ScaleInterpolation = InterpolationMode.Linear;
 
             }
         }
@@ -240,7 +245,7 @@ namespace PloobsEngine.Modelo.Animation
         /// <returns></returns>
         public Matrix[] GetBoneTransformations()
         {
-            return animationController.SkinnedBoneTransforms;
+            return AnimationController.SkinnedBoneTransforms;
         }        
 
         #endregion
