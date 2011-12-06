@@ -48,23 +48,43 @@ namespace AdvancedDemo4._0
         {
             base.LoadContent(GraphicInfo, factory, contentManager);
 
+            IObject marine;
+            AnimatedController marinecontroler;
             {
                 ///carrega o Modelo
                 AnimatedModel am = new AnimatedModel(factory, "..\\Content\\Model\\PlayerMarine", "..\\Content\\Textures\\PlayerMarineDiffuse");
                 ///Inicializa o Controlador (Idle eh o nome da animacao inicial)
-                AnimatedController arobo = new AnimatedController(am, "Idle");
+                marinecontroler = new AnimatedController(am, "Idle");
 
                 ///Cria o shader e o material animados 
-                DeferredSimpleAnimationShader sas = new DeferredSimpleAnimationShader(arobo);
-                DeferredAnimatedMaterial amat = new DeferredAnimatedMaterial(arobo, sas);
+                DeferredSimpleAnimationShader sas = new DeferredSimpleAnimationShader(marinecontroler);
+                DeferredAnimatedMaterial amat = new DeferredAnimatedMaterial(marinecontroler, sas);
 
                 CharacterControllerInput gp = new CharacterControllerInput(this, new Vector3(100, 50, 1), 25, 10, 10, Vector3.One);
 
-                IObject marine = new IObject(amat, am, gp.Characterobj);
+                marine = new IObject(amat, am, gp.Characterobj);
                 ///Adiciona no mundo
                 this.World.AddObject(marine);
 
-                lt = new LightThrowBepu(this.World, factory);
+                LightThrowBepu lt = new LightThrowBepu(this.World, factory);
+            }
+
+            {
+                ///carrega o Modelo
+                AnimatedModel am = new AnimatedModel(factory, "..\\Content\\Model\\WeaponMachineGun", "..\\Content\\Textures\\WeaponMachineGunDiffuse");
+                ///Inicializa o Controlador (Idle eh o nome da animacao inicial)
+                AnimatedController arobo = new AnimatedController(am);
+                //arobo.isLoop = true;               
+
+                ///Cria o shader e o material animados 
+                DeferredSimpleAnimationShader sas = new DeferredSimpleAnimationShader(arobo, marine, marinecontroler, "R_Hand2");
+                DeferredAnimatedMaterial amat = new DeferredAnimatedMaterial(arobo, sas);
+                IObject gun = new IObject(amat, am, new GhostObject(new Vector3(0, 0, 0), Matrix.Identity, Vector3.One));
+
+                ///Adiciona no mundo
+                this.World.AddObject(gun);
+
+
             }
 
             {
