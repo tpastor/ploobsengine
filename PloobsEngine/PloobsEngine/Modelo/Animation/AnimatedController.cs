@@ -56,8 +56,14 @@ namespace PloobsEngine.Modelo.Animation
 
         private bool changeOnlyWhenDifferentAnimation = true;
         private string actualAnimation;
-        private SkinnedModel skinnedModel;        
+        private SkinnedModel skinnedModel;
         private AnimationController animationController;
+
+        public AnimationController AnimationController
+        {
+            get { return animationController; }
+            set { animationController = value; }
+        }
         private String StartAnimationName = null;
         private IDictionary<String, String> _actionAnimation = new Dictionary<string, String>();
         private double transitionBetweenAnimationTimeInSeconds = 1;
