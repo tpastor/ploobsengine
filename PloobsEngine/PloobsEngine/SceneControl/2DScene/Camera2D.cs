@@ -317,7 +317,7 @@ namespace PloobsEngine.SceneControl._2DScene
             {
                 if (_positionTracking)
                 {
-                    _targetPosition = _trackingBody.PhysicObject.Position;
+                    _targetPosition = ConvertUnits.ToSimUnits( _trackingBody.PhysicObject.Position);
                     if (_minPosition != _maxPosition)
                     {
                         Vector2.Clamp(ref _targetPosition, ref _minPosition, ref _maxPosition, out _targetPosition);
