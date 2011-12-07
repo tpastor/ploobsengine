@@ -17,7 +17,6 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
-#if !WINDOWS_PHONE
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,20 +52,40 @@ namespace PloobsEngine.Modelo
         protected override void LoadModel(GraphicFactory factory, out BatchInformation[][] BatchInformations, out TextureInformation[][] TextureInformations)
         {
             List<VertexPositionNormalTexture> vertexList = new List<VertexPositionNormalTexture>();
+#if WINDOWS_PHONE || REACH
+            ////gambi shortcut
+            List<int> indexList2 = new List<int>();
+            GetVertexData(vertexList, indexList2, terrainObject);
+            List<short> indexList = new List<short>();
+            foreach (var item in indexList2)
+            {
+                indexList.Add( (short) item);
+            }
+            indexList2.Clear();
+#else
             List<int> indexList = new List<int>();
             GetVertexData(vertexList, indexList, terrainObject);
-
+#endif
             modelRadius = (terrainObject.BoundingBox.Max - terrainObject.BoundingBox.Max).Length() / 2;
 
             var newVertices = new VertexPositionNormalTexture[vertexList.Count];
             vertexList.CopyTo(newVertices);
 
+#if WINDOWS_PHONE|| REACH
+            var newIndices = new short[indexList.Count];
+#else
             var newIndices = new int[indexList.Count];
+#endif
+            
             indexList.CopyTo(newIndices);
 
             VertexBuffer vertexBufferS = factory.CreateVertexBuffer(VertexPositionNormalTexture.VertexDeclaration, newVertices.Count(), BufferUsage.WriteOnly);
             vertexBufferS.SetData(newVertices);
-            IndexBuffer indexBufferS = factory.CreateIndexBuffer(IndexElementSize.ThirtyTwoBits,newIndices.Count(),BufferUsage.WriteOnly);
+#if WINDOWS_PHONE || REACH
+            IndexBuffer indexBufferS = factory.CreateIndexBuffer(IndexElementSize.SixteenBits,newIndices.Count(),BufferUsage.WriteOnly);
+#else
+            IndexBuffer indexBufferS = factory.CreateIndexBuffer(IndexElementSize.ThirtyTwoBits, newIndices.Count(), BufferUsage.WriteOnly);
+#endif
             indexBufferS.SetData(newIndices);
             
             BatchInformations = new BatchInformation[1][];
@@ -74,6 +93,7 @@ namespace PloobsEngine.Modelo
             b[0] = new BatchInformation(0, newVertices.Count(), newIndices.Count() / 3, 0, 0, VertexPositionNormalTexture.VertexDeclaration,VertexPositionNormalTexture.VertexDeclaration.VertexStride);
             b[0].VertexBuffer = vertexBufferS;
             b[0].IndexBuffer = indexBufferS;
+            b[0].ModelLocalTransformation = Matrix.Identity;
             BatchInformations[0] = b;
 
             TextureInformations = new TextureInformation[1][];
@@ -194,6 +214,4 @@ namespace PloobsEngine.Modelo
             return modelRadius;
         }
     }   
-
 }
-#endif
