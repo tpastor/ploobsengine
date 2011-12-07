@@ -182,7 +182,7 @@ namespace PloobsEngine.Physics
                 space.Add(m.Rotator);
                 objs.Add(m.BepuEntityObject);
             }
-            #if !WINDOWS_PHONE
+           
             else if (obj.PhysicObjectTypes == PhysicObjectTypes.TERRAIN)
             {
                 TerrainObject t = obj as TerrainObject;
@@ -190,7 +190,7 @@ namespace PloobsEngine.Physics
                 t.Terrain.Tag = obj;                
                 objs.Add(obj);
             }
-            #endif
+ 
             else if (obj.PhysicObjectTypes == PhysicObjectTypes.DETECTOROBJECT)
             {
                 DetectorVolumeObject m = (DetectorVolumeObject)obj;

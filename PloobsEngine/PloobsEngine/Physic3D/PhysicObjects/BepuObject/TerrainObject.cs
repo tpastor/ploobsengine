@@ -17,7 +17,6 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
-#if !WINDOWS_PHONE
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -276,11 +275,11 @@ namespace PloobsEngine.Physics.Bepu
             ActiveLogger.LogMessage("Cant apply force in terrain", LogLevel.RecoverableError);
         }
 
-
+#if !WINDOWS_PHONE
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
         {
             ActiveLogger.LogMessage("Serialization not implemented yet", LogLevel.RecoverableError);
         }
+#endif
     }
 }
-#endif
