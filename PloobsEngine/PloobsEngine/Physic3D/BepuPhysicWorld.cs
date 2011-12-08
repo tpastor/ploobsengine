@@ -264,7 +264,7 @@ namespace PloobsEngine.Physics
                 DetectorVolumeObject m = (DetectorVolumeObject)obj;
                 space.Remove(m.DetectorVolume);
             }
-            #if !WINDOWS_PHONE
+           
             else if (obj.PhysicObjectTypes == PhysicObjectTypes.TERRAIN)
             {
                 TerrainObject t = obj as TerrainObject;
@@ -272,7 +272,7 @@ namespace PloobsEngine.Physics
                 t.Terrain.Tag = null;
                 objs.Remove(obj);
             }
-            #endif
+            
             else if (obj.PhysicObjectTypes == PhysicObjectTypes.CHARACTEROBJECT)
             {
                 CharacterObject cc = (CharacterObject)obj;
