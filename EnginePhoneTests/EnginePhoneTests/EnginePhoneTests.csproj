@@ -62,6 +62,7 @@
     <Reference Include="Microsoft.Xna.Framework.GamerServices" />
     <Reference Include="Microsoft.Xna.Framework.Input.Touch" />
     <Reference Include="mscorlib" />
+    <Reference Include="PloobsEnginePhone7, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -101,10 +102,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\PloobsEngine\PloobsEngine\Windows Phone Copy of PloobsEngine.csproj">
-      <Project>{3B2319A3-79C2-4F82-AC72-5B13A9D11F50}</Project>
-      <Name>Windows Phone Copy of PloobsEngine</Name>
-    </ProjectReference>
     <ProjectReference Include="..\EnginePhoneTestsContent\EnginePhoneTestsContent.contentproj">
       <Name>EnginePhoneTestsContent</Name>
       <XnaReferenceType>Content</XnaReferenceType>

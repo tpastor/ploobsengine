@@ -17,7 +17,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
-#if !WINDOWS_PHONE
+#if (WINDOWS || XBOX) && !REACH
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -40,16 +40,13 @@ namespace PloobsEngine.Features
         private VertexPositionNormalTexture[] cubeVertices;
         private VertexBuffer vertexBuffer;
         private TextureCube texture;
-        private Effect effect;
-        private GraphicsDevice device;
-        private ICamera cam;
+        private Effect effect;       
+        
         public static readonly String MyName = "SkyBox";
         GraphicFactory factory;
         BatchInformation bi;
         bool enable = false;
         
-        private bool initialized = false;
-
         #region Initialize        
         
 
@@ -204,8 +201,7 @@ namespace PloobsEngine.Features
             vertexBuffer = factory.CreateVertexBuffer(VertexPositionNormalTexture.VertexDeclaration,36, BufferUsage.None);
             vertexBuffer.SetData<VertexPositionNormalTexture>(cubeVertices);
             bi = new BatchInformation(0, 36, 23, 0, 0, VertexPositionNormalTexture.VertexDeclaration, VertexPositionNormalTexture.VertexDeclaration.VertexStride, BatchType.NORMAL);
-            bi.VertexBuffer = vertexBuffer;
-            initialized = true;
+            bi.VertexBuffer = vertexBuffer;            
         }
 
         #endregion
@@ -261,4 +257,218 @@ namespace PloobsEngine.Features
         #endregion
     }
 }
+#else 
+using System;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using PloobsEngine.SceneControl;
+using PloobsEngine.Engine;
+using PloobsEngine.Cameras;
+using PloobsEngine.Components;
+
+namespace PloobsEngine.Features
+{
+    public class SkyBox : IComponent
+    {
+        String textureCubeName;
+        bool enable = false;        
+        
+        internal void setParameters(String texCubeName)
+        {
+            Cube = GraphicFactory.GetTextureCube(texCubeName);             
+            CubeFaces = new Texture2D[6];
+            PositionOffset = new Vector3(20, 20, 20);
+            CreateGraphic(512);
+            StripTexturesFromCube();
+            InitializeData();
+        }
+        
+        protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory)
+        {
+            base.LoadContent(GraphicInfo, factory);
+            this.GraphicFactory = factory;
+        }
+
+
+        #region Properties
+        GraphicFactory GraphicFactory;
+        public Vector3 PositionOffset { get; set; }
+        public Vector3 Position { get; set; }
+        public TextureCube Cube { get; set; }
+        public Color[] PixelArray { get; set; }
+        public Texture2D[] CubeFaces { get; set; }
+        public VertexBuffer VertexBuffer { get; set; }
+        public IndexBuffer IndexBuffer { get; set; }
+        public BasicEffect Effect { get; set; }
+        #endregion
+
+        internal void setParameters(bool enable)
+        {
+            this.enable = enable;
+        }        
+        
+
+        public override string getMyName()
+        {
+            return MyName;
+        }
+
+        public static readonly String MyName = "SkyBox";
+
+        public override ComponentType ComponentType
+        {
+            get { return PloobsEngine.Components.ComponentType.PRE_DRAWABLE; }
+        }
+
+        protected override void PreDraw(RenderHelper render, GameTime gt, Matrix activeView, Matrix activeProjection)
+        {
+            if (!enable || Cube == null)
+                return;
+
+            Matrix viewIT = Matrix.Invert(Matrix.Transpose(activeView));
+            Vector3 position = new Vector3(viewIT.M14, viewIT.M24, viewIT.M34);
+
+            this.Position = position + PositionOffset;
+            Effect.View = activeView;
+            Effect.Projection = activeProjection;
+            Effect.World = Matrix.Identity;
+
+            render.PushDepthStencilState(new DepthStencilState() { DepthBufferEnable = false });
+            render.PushRasterizerState(new RasterizerState() { CullMode = CullMode.None });
+
+            var graphics = Effect.GraphicsDevice;
+            graphics.SetVertexBuffer(VertexBuffer);
+            graphics.Indices = IndexBuffer;
+
+            Effect.Texture = CubeFaces[0];
+            Effect.CurrentTechnique.Passes[0].Apply();
+            graphics.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, _vertices.Count, 0, 2);
+            Effect.Texture = CubeFaces[1];
+            Effect.CurrentTechnique.Passes[0].Apply();
+            graphics.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, _vertices.Count, 6, 2);
+            Effect.Texture = CubeFaces[2];
+            Effect.CurrentTechnique.Passes[0].Apply();
+            graphics.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, _vertices.Count, 12, 2);
+            Effect.Texture = CubeFaces[3];
+            Effect.CurrentTechnique.Passes[0].Apply();
+            graphics.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, _vertices.Count, 18, 2);
+            Effect.Texture = CubeFaces[4];
+            Effect.CurrentTechnique.Passes[0].Apply();
+            graphics.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, _vertices.Count, 24, 2);
+            Effect.Texture = CubeFaces[5];
+            Effect.CurrentTechnique.Passes[0].Apply();
+            graphics.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, _vertices.Count, 30, 2);
+
+            render.PopDepthStencilState();
+            render.PopRasterizerState();
+
+        }
+        #region Fields
+
+        private List<VertexPositionNormalTexture> _vertices = new List<VertexPositionNormalTexture>();
+        private List<ushort> _indices = new List<ushort>();
+        #endregion
+        #region Private methods
+        private void InitializeData()
+        {
+            VertexBuffer = GraphicFactory.CreateVertexBuffer(VertexPositionNormalTexture.VertexDeclaration, _vertices.Count, BufferUsage.None);
+            VertexBuffer.SetData<VertexPositionNormalTexture>(_vertices.ToArray());
+            IndexBuffer = GraphicFactory.CreateIndexBuffer(IndexElementSize.SixteenBits, _indices.Count, BufferUsage.None);
+            IndexBuffer.SetData<ushort>(_indices.ToArray());
+            Effect = GraphicFactory.GetBasicEffect();
+            Effect.TextureEnabled = true;
+            //Effect.EnableDefaultLighting();         
+        }
+
+
+        private void CreateGraphic(float size)
+        {
+            Vector3[] normals = {                                     
+                                    Vector3.Right,                                     
+                                    Vector3.Left,                                     
+                                    Vector3.Up,
+                                    Vector3.Down,
+                                    Vector3.Backward,                                     
+                                    Vector3.Forward,                                 
+                                };
+            Vector2[] textureCoordinates = {   
+                                               Vector2.One, Vector2.UnitY, Vector2.Zero, Vector2.UnitX,
+                                               Vector2.Zero, Vector2.UnitX, Vector2.One, Vector2.UnitY,  
+                                               Vector2.Zero, Vector2.UnitX, Vector2.One, Vector2.UnitY,  
+                                               Vector2.Zero, Vector2.UnitX, Vector2.One, Vector2.UnitY,  
+                                               Vector2.UnitY, Vector2.Zero, Vector2.UnitX, Vector2.One,  
+                                               Vector2.UnitY, Vector2.Zero, Vector2.UnitX, Vector2.One,  
+                                           };
+            var index = 0;
+            foreach (var normal in normals)
+            {
+                var side1 = new Vector3(normal.Z, normal.X, normal.Y);
+                var side2 = Vector3.Cross(normal, side1);
+                AddIndex(CurrentVertex + 0);
+                AddIndex(CurrentVertex + 1);
+                AddIndex(CurrentVertex + 2);
+                AddIndex(CurrentVertex + 0);
+                AddIndex(CurrentVertex + 2);
+                AddIndex(CurrentVertex + 3);
+                AddVertex((normal - side1 - side2) * size / 2, normal, textureCoordinates[index++]);
+                AddVertex((normal - side1 + side2) * size / 2, normal, textureCoordinates[index++]);
+                AddVertex((normal + side1 + side2) * size / 2, normal, textureCoordinates[index++]);
+                AddVertex((normal + side1 - side2) * size / 2, normal, textureCoordinates[index++]);
+            }
+        }
+        protected void StripTexturesFromCube()
+        {
+            PixelArray = new Color[Cube.Size * Cube.Size];
+            for (int s = 0; s < CubeFaces.Length; s++)
+            {
+                CubeFaces[s] = GraphicFactory.CreateTexture2D(Cube.Size, Cube.Size, false, SurfaceFormat.Color);
+                switch (s)
+                {
+                    case 0:
+                        Cube.GetData<Color>(CubeMapFace.PositiveX, PixelArray);
+                        CubeFaces[s].SetData<Color>(PixelArray);
+                        break;
+                    case 1:
+                        Cube.GetData(CubeMapFace.NegativeX, PixelArray);
+                        CubeFaces[s].SetData(PixelArray);
+                        break;
+                    case 2:
+                        Cube.GetData(CubeMapFace.PositiveY, PixelArray);
+                        CubeFaces[s].SetData(PixelArray);
+                        break;
+                    case 3:
+                        Cube.GetData(CubeMapFace.NegativeY, PixelArray);
+                        CubeFaces[s].SetData(PixelArray);
+                        break;
+                    case 4:
+                        Cube.GetData(CubeMapFace.PositiveZ, PixelArray);
+                        CubeFaces[s].SetData(PixelArray);
+                        break;
+                    case 5:
+                        Cube.GetData(CubeMapFace.NegativeZ, PixelArray);
+                        CubeFaces[s].SetData(PixelArray);
+                        break;
+                }
+            }
+        }
+        protected void AddVertex(Vector3 position, Vector3 normal, Vector2 textureCoordinates)
+        {
+            _vertices.Add(new VertexPositionNormalTexture(position, normal, textureCoordinates));
+        }
+        protected void AddIndex(int index)
+        {
+            if (index > ushort.MaxValue)
+                throw new ArgumentOutOfRangeException("index");
+            _indices.Add((ushort)index);
+        }
+
+        protected int CurrentVertex
+        {
+            get { return _vertices.Count; }
+        }
+        #endregion
+    }
+} 
+
 #endif
