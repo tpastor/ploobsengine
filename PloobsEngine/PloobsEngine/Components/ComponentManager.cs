@@ -227,6 +227,15 @@ namespace PloobsEngine.Components
         }
 
         /// <summary>
+        /// Return all the Components Names
+        /// </summary>
+        /// <returns></returns>
+        public ICollection<String> GetComponentsNames()
+        {
+            return _comps.Keys;
+        }
+
+        /// <summary>
         /// Removes the component.
         /// </summary>
         /// <param name="name">The name.</param>

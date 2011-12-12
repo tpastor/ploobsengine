@@ -105,4 +105,103 @@ namespace PloobsEngine.SceneControl
         #endregion
     }
 }
+#else
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
+
+
+namespace PloobsEngine.SceneControl
+{
+    /// <summary>
+    /// Bloom Post Effect
+    /// </summary>
+    public class BloomPostEffect : IPostEffect
+    {
+        public BloomPostEffect() : base(PostEffectType.WindowsPhoneAndReach) { }
+
+        #region IPostEffect Members
+
+        int brightNess = 70;
+
+        // <summary>
+        /// Bloom Parameter
+        /// 0 TO 255
+        /// </summary>
+        public int BrightNess
+        {
+            get { return brightNess; }
+            set
+            {
+                brightNess = value;
+            }
+        }
+
+        int bloomThreshold = 60;
+
+        /// <summary>
+        /// Bloom Parameter
+        /// 0 TO 255
+        /// </summary>
+        public int BloomThreshold
+        {
+            get { return bloomThreshold; }
+            set
+            {
+                bloomThreshold = value;                
+            }
+        }
+        BlendState additiveBlend;
+        BlendState subBlend;
+        RenderTarget2D rt;
+
+        public override void Draw(Texture2D ImageToProcess, RenderHelper render, GameTime gt, Engine.GraphicInfo GraphicInfo, IWorld world, bool useFloatingBuffer)
+        {
+            ///NOSSO threshold FILTER KKKKK =P
+            render.PushRenderTarget(rt);
+            render.Clear(Color.FromNonPremultiplied(bloomThreshold, bloomThreshold, bloomThreshold, 255));
+            render.RenderTextureComplete(rt, Color.White, GraphicInfo.FullScreenRectangle, Matrix.Identity, null, true, SpriteSortMode.Deferred, SamplerState.LinearClamp, subBlend);
+            render.PopRenderTarget();
+
+            render.Clear(Color.Black);
+            render.RenderTextureComplete(ImageToProcess, Color.White, GraphicInfo.FullScreenRectangle, Matrix.Identity);
+
+            ///NOSSO BLUR KKKKK (mais KKKK)
+            render.RenderTextureComplete(rt, Color.FromNonPremultiplied(255, 255, 255, brightNess), GraphicInfo.FullScreenRectangle, Matrix.CreateTranslation(2, 2, 0), null, true, SpriteSortMode.Deferred, SamplerState.AnisotropicClamp, additiveBlend);
+            render.RenderTextureComplete(rt, Color.FromNonPremultiplied(255, 255, 255, brightNess), GraphicInfo.FullScreenRectangle, Matrix.CreateTranslation(-2, -2, 0), null, true, SpriteSortMode.Deferred, SamplerState.AnisotropicClamp, additiveBlend);
+            render.RenderTextureComplete(rt, Color.FromNonPremultiplied(255, 255, 255, brightNess), GraphicInfo.FullScreenRectangle, Matrix.CreateTranslation(2, -2, 0), null, true, SpriteSortMode.Deferred, SamplerState.AnisotropicClamp, additiveBlend);
+            render.RenderTextureComplete(rt, Color.FromNonPremultiplied(255, 255, 255, brightNess), GraphicInfo.FullScreenRectangle, Matrix.CreateTranslation(-2, 2, 0), null, true, SpriteSortMode.Deferred, SamplerState.AnisotropicClamp, additiveBlend);                              
+            
+        }
+
+
+        public override void Init(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
+        {
+            additiveBlend = new BlendState();
+            additiveBlend.AlphaBlendFunction = BlendFunction.Add;
+            additiveBlend.AlphaSourceBlend = Blend.One;
+            additiveBlend.AlphaDestinationBlend = Blend.One;
+            additiveBlend.ColorBlendFunction = BlendFunction.Add;
+            additiveBlend.ColorSourceBlend = Blend.One;
+            additiveBlend.ColorDestinationBlend = Blend.One;
+
+            subBlend = new BlendState();
+            subBlend.AlphaBlendFunction = BlendFunction.Subtract;
+            subBlend.AlphaSourceBlend = Blend.One;
+            subBlend.AlphaDestinationBlend = Blend.One;
+            subBlend.ColorBlendFunction = BlendFunction.Subtract;
+            subBlend.ColorSourceBlend = Blend.One;
+            subBlend.ColorDestinationBlend = Blend.One;
+
+            rt = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
+            
+        }
+
+        #endregion
+    }
+}
+
 #endif

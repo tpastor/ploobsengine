@@ -457,24 +457,7 @@ namespace PloobsEngine.SceneControl
         
         #endregion
 
-    }
-
-    internal class PostEffectComparer : IComparer<IPostEffect>
-    {        
-    
-#region IComparer<IPostEffect> Members
-
-        public int  Compare(IPostEffect x, IPostEffect y)
-        {
- 	        if(x.Priority > y.Priority)
-                return 1;
-            if(x.Priority  == y.Priority )
-                return 0;
-            return -1;
-        }
-
-        #endregion
-}
+    }    
 
 }
 

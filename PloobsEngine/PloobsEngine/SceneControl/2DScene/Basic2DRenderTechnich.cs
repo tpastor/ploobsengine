@@ -69,12 +69,6 @@ namespace PloobsEngine.SceneControl._2DScene
         public bool UseLights = true;
         BlendState blendState;
         RenderTarget2D screenShadows;
-        RenderTarget2D renderTarget;
-        RenderTarget2D postEffectTarget;
-        /// <summary>
-        /// Default true
-        /// </summary>
-        public bool UsePostProcessing = true;        
         PloobsEngine.Light2D.ShadowmapResolver shadowmapResolver;
 
         public Basic2DRenderTechnich() : base(PostEffectType.Forward2D)
@@ -82,11 +76,19 @@ namespace PloobsEngine.SceneControl._2DScene
             MaterialProcessors.Add(typeof(Basic2DTextureMaterial), new Basic2DTextureMaterialProcessor());
         }
 #else
-        public Basic2DRenderTechnich()         
+        public Basic2DRenderTechnich()
+            : base(PostEffectType.WindowsPhoneAndReach)
         {
             MaterialProcessors.Add(typeof(Basic2DTextureMaterial), new Basic2DTextureMaterialProcessor());
         }
 #endif
+
+        /// <summary>
+        /// Default false
+        /// </summary>
+        public bool UsePostProcessing = false;
+        RenderTarget2D renderTarget;
+        RenderTarget2D postEffectTarget;
 
         protected override void AfterLoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
         {
@@ -96,13 +98,13 @@ namespace PloobsEngine.SceneControl._2DScene
             blendState.ColorSourceBlend = Blend.DestinationColor;
             blendState.ColorDestinationBlend = Blend.SourceColor;            
             shadowmapResolver = new PloobsEngine.Light2D.ShadowmapResolver(factory,new QuadRender(factory.device), PloobsEngine.Light2D.ShadowmapSize.Size512, PloobsEngine.Light2D.ShadowmapSize.Size512);
-            screenShadows = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);            
+            screenShadows = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);                        
+#endif
             if (UsePostProcessing)
             {
                 renderTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
                 postEffectTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
             }
-#endif
             base.AfterLoadContent(manager, ginfo, factory);
         }
 
@@ -134,13 +136,13 @@ namespace PloobsEngine.SceneControl._2DScene
                 }
             }
 
-
-#if !WINDOWS_PHONE && !REACH
             if (UsePostProcessing)
             {
                 render.PushRenderTarget(renderTarget);
             }
 
+#if !WINDOWS_PHONE && !REACH
+        
             if (UseLights)
             {
                 BoundingFrustum bf = world.Camera2D.BoundingFrustrum;
@@ -243,7 +245,6 @@ namespace PloobsEngine.SceneControl._2DScene
             if (AfterDrawBeforePostEffects != null)
                 AfterDrawBeforePostEffects(ginfo, render);
 
-#if !WINDOWS_PHONE && !REACH
             if (UsePostProcessing)
             {
                 render[PrincipalConstants.CurrentImage] = render.PopRenderTarget()[0].RenderTarget as Texture2D;
@@ -261,7 +262,7 @@ namespace PloobsEngine.SceneControl._2DScene
                 render.Clear(Color.Black);
                 render.RenderTextureComplete(render[PrincipalConstants.CurrentImage], Color.White, ginfo.FullScreenRectangle, Matrix.Identity, null, true, SpriteSortMode.Deferred, SamplerState.AnisotropicClamp, BlendState.AlphaBlend);
             }
-#endif
+
             if (UseDrawComponents)
                 render.RenderPosComponents(gameTime, world.Camera2D.View, world.Camera2D.SimProjection);            
         }
