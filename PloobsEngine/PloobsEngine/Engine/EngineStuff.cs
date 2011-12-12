@@ -944,8 +944,8 @@ namespace PloobsEngine.Engine
         /// <summary>
         /// Remove All Screens and stop the timer
         /// </summary>
-        /// <param name="Screen"></param>
-        public void LeaveScene()
+        /// <param name="removeComponents"></param>
+        public void LeaveScene(bool removeComponents = false)
         {
             SharedGraphicsDeviceManager.Current.GraphicsDevice.SetSharingMode(false);
             if (timer != null)
@@ -957,6 +957,14 @@ namespace PloobsEngine.Engine
             foreach (var item in ScreenManager.GetScreens())
             {
                 ScreenManager.RemoveScreen(item);
+            }
+
+            if (removeComponents)
+            {
+                foreach (var item in this.ComponentManager.GetComponentsNames())
+                {
+                    this.RemoveComponent(item);
+                }
             }
 
         }

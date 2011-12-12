@@ -31,7 +31,7 @@ namespace PloobsEngine.SceneControl._2DScene
 {
     public abstract class RenderTechnich2D : IIRenderTechnic
     {
-#if !WINDOWS_PHONE && !REACH
+
         public RenderTechnich2D(PostEffectType PostEffectType)
         {
             this.PostEffectType = PostEffectType;
@@ -93,8 +93,7 @@ namespace PloobsEngine.SceneControl._2DScene
                     return true;
             }
             return false;
-        }
-        #endif
+        }        
 
         /// <summary>
         /// Befores the first execution.
@@ -124,12 +123,11 @@ namespace PloobsEngine.SceneControl._2DScene
         protected virtual void AfterLoadContent(IContentManager manager, GraphicInfo ginfo, GraphicFactory factory) { }
         internal void iAfterLoadContent(IContentManager manager, GraphicInfo ginfo, GraphicFactory factory)
         {
-#if !WINDOWS_PHONE && !REACH
+
             for (int i = 0; i < PostEffects.Count; i++)			
             {
                 PostEffects[i].Init(ginfo,factory);
             }
-#endif
             AfterLoadContent(manager,ginfo,factory);
             
         }

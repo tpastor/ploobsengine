@@ -17,7 +17,6 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
-#if !WINDOWS_PHONE && !REACH
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -92,8 +91,7 @@ namespace PloobsEngine.SceneControl
         /// <summary>
         /// Initiates the specified Post Effect.
         /// Called by the engine
-        /// </summary>
-        /// <param name="manager">The manager.</param>
+        /// </summary>        
         /// <param name="ginfo">The ginfo.</param>
         /// <param name="factory">The factory.</param>
         public abstract void Init(GraphicInfo ginfo, GraphicFactory factory);
@@ -120,19 +118,48 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         Deferred = 0x0001,
         /// <summary>
-        /// only on Forward
+        /// only on Forward Hidef
         /// </summary>
         Forward3D = 0x0010,
 
         /// <summary>
-        /// Works in 2D Also
+        /// Works in 2D Also Hidef
         /// </summary>
         Forward2D = 0x0100,
+
         /// <summary>
-        /// Works in both renders
+        /// Works on WindowsPhoneAndReach (2D and 3D) 
+        /// </summary>
+        WindowsPhoneAndReach = 0x1000,
+
+        /// <summary>
+        /// Works in both renders for PC Hidef
+        /// </summary>
+        AllHidef = 0x0111,
+
+
+        /// <summary>
+        /// Works in all renders (Designed to run on Phone7)
         /// </summary>
         All = 0x1111
+
+
     }
 
+    internal class PostEffectComparer : IComparer<IPostEffect>
+    {
+
+        #region IComparer<IPostEffect> Members
+
+        public int Compare(IPostEffect x, IPostEffect y)
+        {
+            if (x.Priority > y.Priority)
+                return 1;
+            if (x.Priority == y.Priority)
+                return 0;
+            return -1;
+        }
+
+        #endregion
+    }
 }
-#endif
