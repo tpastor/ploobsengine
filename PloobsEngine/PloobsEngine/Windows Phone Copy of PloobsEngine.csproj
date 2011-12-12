@@ -44,7 +44,7 @@
     <SupportedCultures />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Windows Phone' ">
-    <OutputPath>bin\Windows Phone\Release</OutputPath>
+    <OutputPath>bin\Windows Phone\Release\StandAlone\</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoStdLib>true</NoStdLib>
@@ -54,7 +54,7 @@
     <DefineConstants>TRACE;WINDOWS_PHONE</DefineConstants>
     <XnaCompressContent>false</XnaCompressContent>
     <LangVersion>default</LangVersion>
-    <DocumentationFile>bin\Windows Phone\Release\PloobsEnginePhone7.XML</DocumentationFile>
+    <DocumentationFile>bin\Windows Phone\Release\StandAlone\PloobsEnginePhone7.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Windows Phone' ">
     <OutputPath>bin\Windows Phone\Debug</OutputPath>
