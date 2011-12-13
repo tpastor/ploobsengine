@@ -44,7 +44,7 @@ namespace PloobsEngine.Modelo2D
         /// <param name="color"></param>
         /// <param name="isInSimulationUnits"></param>
         /// <param name="materialScale"></param>
-        public SpriteFarseer(GraphicFactory factory, Vertices vertices, Color color, bool isInSimulationUnits = false,float materialScale = 1)
+        public SpriteFarseer(GraphicFactory factory, Vertices vertices, Color color, bool isInSimulationUnits = false)
             : base(ModelType.Texture)
         {
             if(assetCreator ==null)
@@ -58,7 +58,7 @@ namespace PloobsEngine.Modelo2D
                 }
             }
 
-            Texture = assetCreator.CreateTextureFromVertices(vertices,color, materialScale);
+            Texture = assetCreator.CreateTextureFromVertices(vertices,color, 1);
             Origin = new Vector2(Texture.Width / 2f, Texture.Height / 2f);
         }
 
@@ -70,7 +70,7 @@ namespace PloobsEngine.Modelo2D
         /// <param name="color"></param>
         /// <param name="isInSimulationUnits"></param>
         /// <param name="materialScale"></param>
-        public SpriteFarseer(GraphicFactory factory, PolygonShape shape, Color color, bool isInSimulationUnits = false, float materialScale = 1)
+        public SpriteFarseer(GraphicFactory factory, PolygonShape shape, Color color, bool isInSimulationUnits = false)
             : base(ModelType.Texture)
         {
             if (assetCreator == null)
@@ -84,7 +84,7 @@ namespace PloobsEngine.Modelo2D
                 }
             }
 
-            Texture = assetCreator.CreateTextureFromVertices(shape.Vertices, color, materialScale);
+            Texture = assetCreator.CreateTextureFromVertices(shape.Vertices, color,1);
             Origin = new Vector2(Texture.Width / 2f, Texture.Height / 2f);
         }
 
@@ -96,7 +96,7 @@ namespace PloobsEngine.Modelo2D
        /// <param name="color"></param>
        /// <param name="isInSimulationUnits"></param>
        /// <param name="materialScale"></param>
-         public SpriteFarseer(GraphicFactory factory, float radius, Color color, bool isInSimulationUnits = false, float materialScale = 1)
+         public SpriteFarseer(GraphicFactory factory, float radius, Color color, bool isInSimulationUnits = false)
             : base(ModelType.Texture)
         {
             if (assetCreator == null)
@@ -108,7 +108,7 @@ namespace PloobsEngine.Modelo2D
             }
 
 
-            Texture = assetCreator.CreateCircleTexture(radius, color, materialScale);
+            Texture = assetCreator.CreateCircleTexture(radius, color, 1);
             Origin = new Vector2(Texture.Width / 2f, Texture.Height / 2f);
         }
 
