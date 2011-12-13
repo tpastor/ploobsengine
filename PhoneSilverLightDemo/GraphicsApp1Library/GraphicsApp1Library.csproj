@@ -42,6 +42,15 @@
     <XnaCompressContent>false</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BEPUphysics">
+      <HintPath>..\Phone7\BEPUphysics.dll</HintPath>
+    </Reference>
+    <Reference Include="DPSFPhone">
+      <HintPath>..\Phone7\DPSFPhone.dll</HintPath>
+    </Reference>
+    <Reference Include="FarseerPhysicsXNA">
+      <HintPath>..\Phone7\FarseerPhysicsXNA.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xna.Framework">
       <Private>False</Private>
     </Reference>
@@ -60,6 +69,9 @@
     <Reference Include="mscorlib">
       <Private>False</Private>
     </Reference>
+    <Reference Include="PloobsEnginePhone7">
+      <HintPath>..\Phone7\PloobsEnginePhone7.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
@@ -77,16 +89,15 @@
     <Reference Include="System.Net">
       <Private>False</Private>
     </Reference>
+    <Reference Include="XNAnimation">
+      <HintPath>..\Phone7\XNAnimation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FirstScreen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\PloobsEngine\PloobsEngine\Windows Phone Copy of PloobsEngine SilverLight.csproj">
-      <Project>{B990BF20-C075-428E-A961-CF6458B55761}</Project>
-      <Name>Windows Phone Copy of PloobsEngine SilverLight</Name>
-    </ProjectReference>
     <ProjectReference Include="..\GraphicsApp1LibraryContent\GraphicsApp1LibraryContent.contentproj">
       <Name>GraphicsApp1LibraryContent</Name>
       <XnaReferenceType>Content</XnaReferenceType>

@@ -48,6 +48,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BEPUphysics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31f6a8732a21de19, processorArchitecture=MSIL" />
+    <Reference Include="DPSFPhone, Version=2.1.0.0, Culture=neutral, PublicKeyToken=32c832bfa7326ee2, processorArchitecture=MSIL" />
+    <Reference Include="FarseerPhysicsXNA, Version=3.3.4186.19001, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Interop" />
     <Reference Include="Microsoft.Xna.Framework" />
@@ -55,12 +58,14 @@
     <Reference Include="Microsoft.Xna.Framework.Graphics" />
     <Reference Include="Microsoft.Xna.Framework.Input.Touch" />
     <Reference Include="microsoft.xna.framework.interop" />
+    <Reference Include="PloobsEnginePhone7, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
     <Reference Include="System.Xml" />
     <Reference Include="mscorlib.extensions" />
+    <Reference Include="XNAnimation, Version=0.7.0.0, Culture=neutral, PublicKeyToken=0c21691816f8c6d0, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -102,10 +107,6 @@
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\PloobsEngine\PloobsEngine\Windows Phone Copy of PloobsEngine SilverLight.csproj">
-      <Project>{B990BF20-C075-428E-A961-CF6458B55761}</Project>
-      <Name>Windows Phone Copy of PloobsEngine SilverLight</Name>
-    </ProjectReference>
     <ProjectReference Include="..\GraphicsApp1Library\GraphicsApp1Library.csproj">
       <Project>{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}</Project>
       <Name>GraphicsApp1Library</Name>

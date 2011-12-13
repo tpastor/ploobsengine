@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010 Express for Windows Phone
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PloobsEngine", "PloobsEngine\PloobsEngine\PloobsEngine.csproj", "{1D050978-A350-47A8-B495-090DF10242B2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PloobsEngineContent", "PloobsEngine\PloobsEngineContent\PloobsEngineContent.contentproj", "{7ED0C250-A783-40B2-912E-4A4C222C4CE5}"
@@ -24,12 +24,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PloobsEngineReachContent", "PloobsEngineReachContent\PloobsEngineReachContent.contentproj", "{B1698752-EB8C-4692-8BCD-2E4768B892E2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Windows Phone Copy of PloobsEngine SilverLight", "PloobsEngine\PloobsEngine\Windows Phone Copy of PloobsEngine SilverLight.csproj", "{B990BF20-C075-428E-A961-CF6458B55761}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphicsApp1", "GraphicsApp1\GraphicsApp1\GraphicsApp1.csproj", "{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphicsApp1Library", "GraphicsApp1\GraphicsApp1Library\GraphicsApp1Library.csproj", "{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphicsApp1LibraryContent", "GraphicsApp1\GraphicsApp1LibraryContent\GraphicsApp1LibraryContent.contentproj", "{8879CC64-F366-4DD4-ABDB-4CB24F732D37}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnginePhoneSilverLightContent", "EnginePhoneSilverLightContent\EnginePhoneSilverLightContent.contentproj", "{43C1F8D7-F6BF-4F5D-99F1-13DF1D04E1B0}"
 EndProject
@@ -394,96 +388,6 @@ Global
 		{B990BF20-C075-428E-A961-CF6458B55761}.SingleImage|Windows Phone.ActiveCfg = Debug|Windows Phone
 		{B990BF20-C075-428E-A961-CF6458B55761}.SingleImage|Windows Phone.Build.0 = Debug|Windows Phone
 		{B990BF20-C075-428E-A961-CF6458B55761}.SingleImage|x86.ActiveCfg = Debug|Windows Phone
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.CD_ROM|Any CPU.Deploy.0 = Release|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.CD_ROM|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.CD_ROM|Mixed Platforms.Build.0 = Release|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.CD_ROM|Mixed Platforms.Deploy.0 = Release|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.CD_ROM|Windows Phone.ActiveCfg = Release|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.CD_ROM|x86.ActiveCfg = Release|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.Debug|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.Debug|Mixed Platforms.Build.0 = Release|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.Debug|Mixed Platforms.Deploy.0 = Release|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.Debug|Windows Phone.ActiveCfg = Debug|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.DVD-5|Any CPU.Deploy.0 = Debug|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.DVD-5|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.DVD-5|Mixed Platforms.Build.0 = Debug|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.DVD-5|Mixed Platforms.Deploy.0 = Debug|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.DVD-5|Windows Phone.ActiveCfg = Debug|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.DVD-5|x86.ActiveCfg = Debug|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.Release|Mixed Platforms.Deploy.0 = Release|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.Release|Windows Phone.ActiveCfg = Release|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.Release|x86.ActiveCfg = Release|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.SingleImage|Any CPU.Build.0 = Release|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.SingleImage|Any CPU.Deploy.0 = Release|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.SingleImage|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.SingleImage|Mixed Platforms.Build.0 = Release|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.SingleImage|Mixed Platforms.Deploy.0 = Release|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.SingleImage|Windows Phone.ActiveCfg = Release|Any CPU
-		{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}.SingleImage|x86.ActiveCfg = Release|Any CPU
-		{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}.CD_ROM|Any CPU.ActiveCfg = Release|Windows Phone
-		{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}.CD_ROM|Mixed Platforms.ActiveCfg = Release|Windows Phone
-		{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}.CD_ROM|Mixed Platforms.Build.0 = Release|Windows Phone
-		{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}.CD_ROM|Windows Phone.ActiveCfg = Release|Windows Phone
-		{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}.CD_ROM|Windows Phone.Build.0 = Release|Windows Phone
-		{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}.CD_ROM|x86.ActiveCfg = Release|Windows Phone
-		{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}.Debug|Any CPU.ActiveCfg = Debug|Windows Phone
-		{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}.Debug|Mixed Platforms.ActiveCfg = Release|Windows Phone
-		{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}.Debug|Mixed Platforms.Build.0 = Release|Windows Phone
-		{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}.Debug|Windows Phone.ActiveCfg = Debug|Windows Phone
-		{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}.Debug|Windows Phone.Build.0 = Debug|Windows Phone
-		{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}.Debug|x86.ActiveCfg = Debug|Windows Phone
-		{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}.DVD-5|Any CPU.ActiveCfg = Debug|Windows Phone
-		{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}.DVD-5|Mixed Platforms.ActiveCfg = Debug|Windows Phone
-		{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}.DVD-5|Mixed Platforms.Build.0 = Debug|Windows Phone
-		{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}.DVD-5|Windows Phone.ActiveCfg = Debug|Windows Phone
-		{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}.DVD-5|Windows Phone.Build.0 = Debug|Windows Phone
-		{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}.DVD-5|x86.ActiveCfg = Debug|Windows Phone
-		{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}.Release|Any CPU.ActiveCfg = Release|Windows Phone
-		{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}.Release|Mixed Platforms.ActiveCfg = Release|Windows Phone
-		{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}.Release|Mixed Platforms.Build.0 = Release|Windows Phone
-		{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}.Release|Windows Phone.ActiveCfg = Release|Windows Phone
-		{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}.Release|Windows Phone.Build.0 = Release|Windows Phone
-		{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}.Release|x86.ActiveCfg = Release|Windows Phone
-		{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}.SingleImage|Any CPU.ActiveCfg = Release|Windows Phone
-		{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}.SingleImage|Mixed Platforms.ActiveCfg = Release|Windows Phone
-		{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}.SingleImage|Mixed Platforms.Build.0 = Release|Windows Phone
-		{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}.SingleImage|Windows Phone.ActiveCfg = Release|Windows Phone
-		{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}.SingleImage|Windows Phone.Build.0 = Release|Windows Phone
-		{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}.SingleImage|x86.ActiveCfg = Release|Windows Phone
-		{8879CC64-F366-4DD4-ABDB-4CB24F732D37}.CD_ROM|Any CPU.ActiveCfg = Debug|Any CPU
-		{8879CC64-F366-4DD4-ABDB-4CB24F732D37}.CD_ROM|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{8879CC64-F366-4DD4-ABDB-4CB24F732D37}.CD_ROM|Windows Phone.ActiveCfg = Debug|Any CPU
-		{8879CC64-F366-4DD4-ABDB-4CB24F732D37}.CD_ROM|x86.ActiveCfg = Debug|Any CPU
-		{8879CC64-F366-4DD4-ABDB-4CB24F732D37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8879CC64-F366-4DD4-ABDB-4CB24F732D37}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{8879CC64-F366-4DD4-ABDB-4CB24F732D37}.Debug|Windows Phone.ActiveCfg = Debug|Any CPU
-		{8879CC64-F366-4DD4-ABDB-4CB24F732D37}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{8879CC64-F366-4DD4-ABDB-4CB24F732D37}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
-		{8879CC64-F366-4DD4-ABDB-4CB24F732D37}.DVD-5|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{8879CC64-F366-4DD4-ABDB-4CB24F732D37}.DVD-5|Windows Phone.ActiveCfg = Debug|Any CPU
-		{8879CC64-F366-4DD4-ABDB-4CB24F732D37}.DVD-5|x86.ActiveCfg = Debug|Any CPU
-		{8879CC64-F366-4DD4-ABDB-4CB24F732D37}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{8879CC64-F366-4DD4-ABDB-4CB24F732D37}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{8879CC64-F366-4DD4-ABDB-4CB24F732D37}.Release|Windows Phone.ActiveCfg = Debug|Any CPU
-		{8879CC64-F366-4DD4-ABDB-4CB24F732D37}.Release|x86.ActiveCfg = Debug|Any CPU
-		{8879CC64-F366-4DD4-ABDB-4CB24F732D37}.SingleImage|Any CPU.ActiveCfg = Debug|Any CPU
-		{8879CC64-F366-4DD4-ABDB-4CB24F732D37}.SingleImage|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{8879CC64-F366-4DD4-ABDB-4CB24F732D37}.SingleImage|Windows Phone.ActiveCfg = Debug|Any CPU
-		{8879CC64-F366-4DD4-ABDB-4CB24F732D37}.SingleImage|x86.ActiveCfg = Debug|Any CPU
 		{43C1F8D7-F6BF-4F5D-99F1-13DF1D04E1B0}.CD_ROM|Any CPU.ActiveCfg = Debug|Any CPU
 		{43C1F8D7-F6BF-4F5D-99F1-13DF1D04E1B0}.CD_ROM|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{43C1F8D7-F6BF-4F5D-99F1-13DF1D04E1B0}.CD_ROM|Windows Phone.ActiveCfg = Debug|Any CPU
