@@ -58,6 +58,12 @@ namespace PloobsEngine.Physic2D.Farseer
             body.Enabled = false;
         }
 
+        public FarseerObject(FarseerWorld world, IModelo2D model, float density = 1, BodyType BodyType = BodyType.Dynamic)
+            : this(world,model.Texture,density,BodyType)
+        {
+            
+        }
+
         public FarseerObject(FarseerWorld world, Texture2D texture,float density = 1, BodyType BodyType = BodyType.Dynamic, float colapseDistance = 4)
         {            
              //Create an array to hold the data from the texture

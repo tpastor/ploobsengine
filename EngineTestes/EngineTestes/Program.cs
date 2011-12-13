@@ -28,7 +28,8 @@ namespace EngineTestes
 
         static void LoadScreen(ScreenManager manager)
         {
-            manager.AddScreen(new SponzaScreen());
+            manager.AddScreen(new Teste2D());
+            //manager.AddScreen(new SponzaScreen());
             //manager.AddScreen(new ForwardMaterialsScreen());
             //manager.AddScreen(new PostEffectScreen());            
             //manager.AddScreen(new MobilePhysicScreen());

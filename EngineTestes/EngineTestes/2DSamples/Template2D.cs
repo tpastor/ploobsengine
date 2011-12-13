@@ -72,7 +72,7 @@ namespace Template
             ///circle
             CircleShape circle = new CircleShape(5, 1);
             {
-                IModelo2D model = new SpriteFarseer(factory, circle, Color.Orange);
+                IModelo2D model = new SpriteFarseer(factory, 5, Color.Orange);
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();                
                 FarseerObject fs = new FarseerObject(fworld, circle);
                 I2DObject o = new I2DObject(fs, mat, model);
