@@ -163,7 +163,7 @@ namespace PloobsEngine.SceneControl
             ///NOSSO threshold FILTER KKKKK =P
             render.PushRenderTarget(rt);
             render.Clear(Color.FromNonPremultiplied(bloomThreshold, bloomThreshold, bloomThreshold, 255));
-            render.RenderTextureComplete(rt, Color.White, GraphicInfo.FullScreenRectangle, Matrix.Identity, null, true, SpriteSortMode.Deferred, SamplerState.LinearClamp, subBlend);
+            render.RenderTextureComplete(ImageToProcess, Color.White, GraphicInfo.FullScreenRectangle, Matrix.Identity, null, true, SpriteSortMode.Deferred, SamplerState.LinearClamp, subBlend);
             render.PopRenderTarget();
 
             render.Clear(Color.Black);
