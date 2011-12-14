@@ -54,8 +54,27 @@ namespace PloobsEngine.SceneControl._2DScene
         /// Color.FromNonPremultiplied(10, 10, 10, 255)
         /// WHEN NOT USING LIGHTS, this is the background color
         /// </summary>
-        public Color AmbientColor = Color.FromNonPremultiplied(10, 10, 10, 255);
+        private Color ambientColor = Color.FromNonPremultiplied(10, 10, 10, 255);
 
+        public Color AmbientColor
+        {
+          get { return ambientColor; }
+          set { ambientColor = value; }
+        }
+
+        public bool UseLayerInPreDraw
+        {
+            set;
+            get;
+        }
+
+        public bool UseLayerInDraw
+        {
+            set;
+            get;
+        }
+
+        
         Engine.GraphicInfo ginfo;
 #if !WINDOWS_PHONE && !REACH        
         /// <summary>
@@ -66,20 +85,30 @@ namespace PloobsEngine.SceneControl._2DScene
         /// <summary>
         /// Default true
         /// </summary>
-        public bool UseLights = true;
+        private bool useLights = true;
+
+        public bool UseLights
+        {
+          get { return useLights; }
+          set { useLights = value; }
+        }
         BlendState blendState;
         RenderTarget2D screenShadows;
-        PloobsEngine.Light2D.ShadowmapResolver shadowmapResolver;
+        PloobsEngine.Light2D.ShadowmapResolver shadowmapResolver;        
 
         public Basic2DRenderTechnich() : base(PostEffectType.Forward2D)
         {
             MaterialProcessors.Add(typeof(Basic2DTextureMaterial), new Basic2DTextureMaterialProcessor());
+            UseLayerInPreDraw = false;
+            UseLayerInDraw = false;
         }
 #else
         public Basic2DRenderTechnich()
             : base(PostEffectType.WindowsPhoneAndReach)
         {
             MaterialProcessors.Add(typeof(Basic2DTextureMaterial), new Basic2DTextureMaterialProcessor());
+            UseLayerInPreDraw = false;
+            UseLayerInDraw = false;
         }
 #endif
 
@@ -121,7 +150,7 @@ namespace PloobsEngine.SceneControl._2DScene
 
                     if (MaterialProcessor != null)
                     {
-                        MaterialProcessor.ProcessPreDraw(gameTime, render, world.Camera2D, world, objs[item]);
+                        MaterialProcessor.ProcessPreDraw(UseLayerInPreDraw,gameTime, render, world.Camera2D, world, objs[item]);
                     }
                     else
                     {
@@ -222,7 +251,7 @@ namespace PloobsEngine.SceneControl._2DScene
 
                 if (MaterialProcessor != null)
                 {
-                    MaterialProcessor.ProcessDraw(gameTime, render, world.Camera2D, objs[item]);
+                    MaterialProcessor.ProcessDraw(UseLayerInDraw, gameTime, render, world.Camera2D, objs[item]);
                 }
                 else
                 {
