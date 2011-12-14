@@ -133,7 +133,7 @@ namespace EngineTestes
 
             ///animated sprite
             {
-                Texture2D tex = factory.GetTexture2D("Textures//DudeSheet");
+                Texture2D tex = factory.GetTexture2D("Textures//DudeSheet");                
                 SpriteAnimated sa = new SpriteAnimated(tex, 8, 2);
                 sa.AddAnimation("ANIM1", 1, 8, 0);
                 sa.AddAnimation("ANIM2", 2, 4, MathHelper.PiOver2);
