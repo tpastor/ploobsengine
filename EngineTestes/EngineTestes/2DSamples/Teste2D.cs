@@ -46,14 +46,14 @@ namespace EngineTestes
 
             //ground
             {
-                //Vertices Vertices = new Vertices(3);
-                //Vertices.Add(new Vector2(-1, -1));
-                //Vertices.Add(new Vector2(0, 0));
-                //Vertices.Add(new Vector2(1, -1));
+                Vertices Vertices = new Vertices(3);
+                Vertices.Add(new Vector2(-200, 0));
+                Vertices.Add(new Vector2(0, 200));
+                Vertices.Add(new Vector2(200, 0));
 
-                //SpriteFarseer SpriteFarseer = new SpriteFarseer(factory, Vertices, Color.Green, false);
+                //SpriteFarseer SpriteFarseer = new SpriteFarseer(factory, Vertices, Color.Red);
                 //Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
-                //FarseerObject fs = new FarseerObject(fworld, Vertices, 1,BodyType.Static);
+                //FarseerObject fs = new FarseerObject(fworld, SpriteFarseer, 1, BodyType.Static);
                 //I2DObject o = new I2DObject(fs, mat, SpriteFarseer);
                 //this.World.AddObject(o);
 
@@ -70,25 +70,25 @@ namespace EngineTestes
             }
 
             ///rectangle
-            Vertices verts = PolygonTools.CreateRectangle(1, 1);
+            Vertices verts = PolygonTools.CreateRectangle(50, 50);
             {
                 IModelo2D model = new SpriteFarseer(factory, verts, Color.Red);
                 model.LayerDepth = 1;
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
-                FarseerObject fs = new FarseerObject(fworld, verts, 1, BodyType.Static);
+                FarseerObject fs = new FarseerObject(fworld, model, 1, BodyType.Static);
                 I2DObject o = new I2DObject(fs, mat, model);
                 this.World.AddObject(o);
             }
 
             ///rectangle
             ////cria em Display
-            verts = PolygonTools.CreateRectangle(1, 1);
+            verts = PolygonTools.CreateRectangle(50, 50);
 
             {
                 IModelo2D model = new SpriteFarseer(factory, verts, Color.Green);
                 model.LayerDepth = 1;
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
-                FarseerObject fs = new FarseerObject(fworld, verts, 1, BodyType.Static);
+                FarseerObject fs = new FarseerObject(fworld, model, 1, BodyType.Static);
                 I2DObject o = new I2DObject(fs, mat, model);
 
                 ///usa Simulation unit 
@@ -98,21 +98,21 @@ namespace EngineTestes
 
 
             ///rectangle
-            verts = PolygonTools.CreateRectangle(5, 5);
+            verts = PolygonTools.CreateRectangle(50, 50);
             {
                 IModelo2D model = new SpriteFarseer(factory, verts, Color.Orange);
                 model.LayerDepth = 0;
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
-                FarseerObject fs = new FarseerObject(fworld, verts, 1, BodyType.Static);
+                FarseerObject fs = new FarseerObject(fworld, model, 1, BodyType.Static);
                 I2DObject o = new I2DObject(fs, mat, model);
                 o.PhysicObject.Position = new Vector2(-GraphicInfo.BackBufferWidth / 2, 0);
                 this.World.AddObject(o);
             }
 
             ///circle
-            CircleShape circle = new CircleShape(5, 1);
+            CircleShape circle = new CircleShape(50, 1);
             {
-                IModelo2D model = new SpriteFarseer(factory, 5, Color.Orange);
+                IModelo2D model = new SpriteFarseer(factory, circle, Color.Orange);
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
                 FarseerObject fs = new FarseerObject(fworld, circle, BodyType.Static);
                 I2DObject o = new I2DObject(fs, mat, model);

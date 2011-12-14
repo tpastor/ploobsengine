@@ -54,5 +54,10 @@ namespace PloobsEngine.Physic2D.Farseer
                     ActiveLogger.LogMessage("ghost is never dynamic", LogLevel.RecoverableError);
             }
         }
+
+        public override void ApplyForce(Vector2 force, Vector2? point = null)
+        {
+            ActiveLogger.LogMessage("Cant apply force on ghost obj", LogLevel.RecoverableError);
+        }
     }
 }

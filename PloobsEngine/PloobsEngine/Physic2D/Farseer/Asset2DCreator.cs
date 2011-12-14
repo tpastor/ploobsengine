@@ -84,8 +84,8 @@ namespace PloobsEngine.Physic2D.Farseer
             Vertices verts = new Vertices(vertices);
 
             // scale to display units (i.e. pixels) for rendering to texture
-            Vector2 scale = ConvertUnits.ToDisplayUnits(Vector2.One);
-            verts.Scale(ref scale);
+            //Vector2 scale = ConvertUnits.ToDisplayUnits(Vector2.One);
+            //verts.Scale(ref scale);
 
             // translate the boundingbox center to the texture center
             // because we use an orthographic projection for rendering later
@@ -154,8 +154,8 @@ namespace PloobsEngine.Physic2D.Farseer
             const float segmentSize = MathHelper.TwoPi / CircleSegments;
             float theta = segmentSize;
 
-            radiusX = ConvertUnits.ToDisplayUnits(radiusX);
-            radiusY = ConvertUnits.ToDisplayUnits(radiusY);
+            //radiusX = ConvertUnits.ToDisplayUnits(radiusX);
+            //radiusY = ConvertUnits.ToDisplayUnits(radiusY);
             if(texture != null)
                 materialScale /= texture.Width;
 
