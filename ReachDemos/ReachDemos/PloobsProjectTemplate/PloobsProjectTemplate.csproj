@@ -114,6 +114,7 @@
     <Compile Include="2D Demos\Basic2DScreen.cs" />
     <Compile Include="2D Demos\Basic2DPositioningScreen.cs" />
     <Compile Include="2D Demos\Basic2DCameraScreen.cs" />
+    <Compile Include="2D Demos\Basic2DSpriteScreen.cs" />
     <Compile Include="Animation\AnimationScreen.cs" />
     <Compile Include="TemplateScreens\TemplateForwardScreen.cs" />
     <Compile Include="EngineSetup.cs" />
