@@ -34,8 +34,6 @@ namespace PloobsEngine.Modelo2D
     public class SpriteFarseer : IModelo2D
     {
         static FarseerAsset2DCreator assetCreator = null;
-
-
         
         /// <summary>
         /// 
@@ -43,13 +41,16 @@ namespace PloobsEngine.Modelo2D
         /// <param name="factory"></param>
         /// <param name="vertices"></param>
         /// <param name="color"></param>
-        /// <param name="isInSimulationUnits"></param>
-        /// <param name="materialScale"></param>
+        /// <param name="isInSimulationUnits"></param>        
         public SpriteFarseer(GraphicFactory factory, Vertices vertices, Color color,bool isInSimulationUnits = false)
             : base(ModelType.Texture)
         {
             if(assetCreator ==null)
                 assetCreator  = new FarseerAsset2DCreator(factory);
+
+            Vector2 scale = Vector2.One / 2;
+            vertices.Scale(ref scale);
+
 
             if (isInSimulationUnits)
             {
@@ -69,6 +70,10 @@ namespace PloobsEngine.Modelo2D
             if (assetCreator == null)
                 assetCreator = new FarseerAsset2DCreator(factory);
 
+            Vector2 scale = Vector2.One / 2;
+            vertices.Scale(ref scale);
+
+
             if (isInSimulationUnits)
             {
                 for (int i = 0; i < vertices.Count; i++)
@@ -87,13 +92,15 @@ namespace PloobsEngine.Modelo2D
         /// <param name="factory"></param>
         /// <param name="shape"></param>
         /// <param name="color"></param>
-        /// <param name="isInSimulationUnits"></param>
-        /// <param name="materialScale"></param>
+        /// <param name="isInSimulationUnits"></param>        
         public SpriteFarseer(GraphicFactory factory, PolygonShape shape, Color color, bool isInSimulationUnits = false)
             : base(ModelType.Texture)
         {
             if (assetCreator == null)
                 assetCreator = new FarseerAsset2DCreator(factory);
+
+            Vector2 scale = Vector2.One /2;
+            shape.Vertices.Scale(ref scale);
 
             if (isInSimulationUnits)
             {
@@ -113,8 +120,7 @@ namespace PloobsEngine.Modelo2D
             if (assetCreator == null)
                 assetCreator = new FarseerAsset2DCreator(factory);
 
-
-            Texture = assetCreator.CreateCircleTexture(shape.Radius, color, 1);
+            Texture = assetCreator.CreateCircleTexture(shape.Radius / 2, color, 1);
             Origin = new Vector2(Texture.Width / 2f, Texture.Height / 2f);
         }
 
