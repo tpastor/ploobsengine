@@ -80,8 +80,8 @@ namespace EngineTestes
                 this.World.AddObject(o);
             }
 
-            ///rectangle
-            ////cria em Display
+            //rectangle
+            //cria em Display
             verts = PolygonTools.CreateRectangle(50, 50);
 
             {
@@ -90,8 +90,7 @@ namespace EngineTestes
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
                 FarseerObject fs = new FarseerObject(fworld, model, 1, BodyType.Static);
                 I2DObject o = new I2DObject(fs, mat, model);
-
-                ///usa Simulation unit 
+            
                 o.PhysicObject.Position = new Vector2(50, 50);
                 this.World.AddObject(o);
             }

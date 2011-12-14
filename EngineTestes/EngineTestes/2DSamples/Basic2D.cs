@@ -95,7 +95,7 @@ namespace EngineTestes._2DSamples
             }
 
             ///circle
-            CircleShape circle = new CircleShape(5, 1);
+            CircleShape circle = new CircleShape(50, 1);
             {
                 IModelo2D model = new SpriteFarseer(factory, circle , Color.Orange);
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
