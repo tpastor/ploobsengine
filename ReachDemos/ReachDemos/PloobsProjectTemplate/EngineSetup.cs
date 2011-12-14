@@ -2,6 +2,7 @@ using PloobsEngine.Engine;
 using PloobsEngine.SceneControl;
 using PloobsEngine.Engine.Logger;
 using System;
+using EngineTestes;
 
 namespace ProjectTemplate
 {
@@ -18,9 +19,9 @@ namespace ProjectTemplate
             //desc.UseVerticalSyncronization = true;
             //desc.isFixedGameTime = true;
             //desc.isMultiSampling = true;
-            //desc.BackBufferWidth = ...;
-            //desc.BackBufferHeight = ...;           
-            desc.useMipMapWhenPossible = true;
+            desc.BackBufferWidth = 800;
+            desc.BackBufferHeight = 600;           
+            desc.useMipMapWhenPossible = false;
             desc.Logger = new SimpleLogger();
             desc.UnhandledException_Handler = UnhandledException;
             ///start the engine
@@ -35,7 +36,10 @@ namespace ProjectTemplate
         static void LoadScreen(ScreenManager manager)
         {
             ///add the first screen here            
-            manager.AddScreen(new TemplateForwardScreen());
+            manager.AddScreen(new Basic2DCameraScreen());
+            //manager.AddScreen(new Basic2DPositioningScreen());
+            //manager.AddScreen(new Basic2DScreen());
+            //manager.AddScreen(new TemplateForwardScreen());
             //manager.AddScreen(new AnimationScreen());
 
         }
