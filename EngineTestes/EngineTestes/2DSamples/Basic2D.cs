@@ -41,7 +41,6 @@ namespace EngineTestes._2DSamples
             rt.UsePostProcessing = false;
             rt.RenderBackGround += new RenderBackGround(rt_RenderBackGround);
             renderTech = rt;
-
             world = new I2DWorld(new FarseerWorld(new Vector2(0, 9.8f)),new DPSFParticleManager(), new Physic2DCuller());            
         }
 
@@ -67,8 +66,9 @@ namespace EngineTestes._2DSamples
                 Texture2D tex = factory.GetTexture2D("Textures//goo");
                 IModelo2D model = new SpriteFarseer(tex);
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
-                FarseerObject fs = new FarseerObject(fworld, tex);
-                I2DObject o = new I2DObject(fs, mat, model);                
+                FarseerObject fs = new FarseerObject(fworld, model);
+                I2DObject o = new I2DObject(fs, mat, model);
+                o.PhysicObject.Position = new Vector2(200, 0);
                 this.World.AddObject(o);
             }
 
@@ -78,7 +78,7 @@ namespace EngineTestes._2DSamples
                 tex = factory.GetScaledTexture(tex, new Vector2(2));
                 IModelo2D model = new SpriteFarseer(tex);
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
-                FarseerObject fs = new FarseerObject(fworld, tex);
+                FarseerObject fs = new FarseerObject(fworld, model);
                 I2DObject o = new I2DObject(fs, mat, model);
                 o.OnHasMoved += new PloobsEngine.SceneControl._2DScene.OnHasMoved(o_OnHasMoved);
                 this.World.AddObject(o);
@@ -89,8 +89,9 @@ namespace EngineTestes._2DSamples
             {
                 IModelo2D model = new SpriteFarseer(factory, verts, Color.Orange);
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
-                FarseerObject fs = new FarseerObject(fworld, verts);
+                FarseerObject fs = new FarseerObject(fworld, model);
                 I2DObject o = new I2DObject(fs, mat, model);
+                o.PhysicObject.Position = new Vector2(-200, 0);
                 this.World.AddObject(o);
             }
 
@@ -99,8 +100,9 @@ namespace EngineTestes._2DSamples
             {
                 IModelo2D model = new SpriteFarseer(factory, circle , Color.Orange);
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
-                FarseerObject fs = new FarseerObject(fworld, circle);
+                FarseerObject fs = new FarseerObject(fworld, model);
                 I2DObject o = new I2DObject(fs, mat, model);
+                o.PhysicObject.Position = new Vector2(200, -100);
                 this.World.AddObject(o);
             }
 
@@ -117,6 +119,7 @@ namespace EngineTestes._2DSamples
 
                 //GhostObject fs = new GhostObject(Vector2.Zero);
                 sheet = new I2DObject(fs, mat, sa);
+                sheet.PhysicObject.Position = new Vector2(500, 0);
                 this.World.AddObject(sheet);
             }
 

@@ -27,6 +27,7 @@ namespace EngineTestes
         {
             Basic2DRenderTechnich rt = new Basic2DRenderTechnich();
             rt.RenderBackGround += new RenderBackGround(rt_RenderBackGround);
+            rt.UseLayerInDraw = true;
             renderTech = rt;
             world = new I2DWorld(new FarseerWorld(new Vector2(0, 9.8f)), new DPSFParticleManager());
         }

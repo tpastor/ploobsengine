@@ -28,7 +28,7 @@ namespace EngineTestes
 
         static void LoadScreen(ScreenManager manager)
         {
-            manager.AddScreen(new Teste2D());
+            //manager.AddScreen(new Teste2D());
             //manager.AddScreen(new SponzaScreen());
             //manager.AddScreen(new ForwardMaterialsScreen());
             //manager.AddScreen(new PostEffectScreen());            
@@ -60,7 +60,7 @@ namespace EngineTestes
             //manager.AddScreen(new VegetationForwardScreen());
             //manager.AddScreen(new VegetationDeferredScreen());            
             //manager.AddScreen(new MixReflection());                        
-            //manager.AddScreen(new Basic2D());
+            manager.AddScreen(new Basic2D());
             //manager.AddScreen(new ConstraintScreen());
             //manager.AddScreen(new IaWaypoints());
             //manager.AddScreen(new IaPathFinding());
