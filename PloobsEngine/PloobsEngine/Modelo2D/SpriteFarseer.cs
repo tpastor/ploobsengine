@@ -35,6 +35,7 @@ namespace PloobsEngine.Modelo2D
     {
         static FarseerAsset2DCreator assetCreator = null;
 
+
         
         /// <summary>
         /// 
@@ -44,7 +45,7 @@ namespace PloobsEngine.Modelo2D
         /// <param name="color"></param>
         /// <param name="isInSimulationUnits"></param>
         /// <param name="materialScale"></param>
-        public SpriteFarseer(GraphicFactory factory, Vertices vertices, Color color, bool isInSimulationUnits = false)
+        public SpriteFarseer(GraphicFactory factory, Vertices vertices, Color color,bool isInSimulationUnits = false)
             : base(ModelType.Texture)
         {
             if(assetCreator ==null)
@@ -58,7 +59,25 @@ namespace PloobsEngine.Modelo2D
                 }
             }
 
-            Texture = assetCreator.CreateTextureFromVertices(vertices,color, 1);
+            Texture = assetCreator.CreateTextureFromVertices(vertices, color, 1);
+            Origin = new Vector2(Texture.Width / 2f, Texture.Height / 2f);
+        }
+
+        public SpriteFarseer(GraphicFactory factory, Vertices vertices, Texture2D tex, bool isInSimulationUnits = false)
+            : base(ModelType.Texture)
+        {
+            if (assetCreator == null)
+                assetCreator = new FarseerAsset2DCreator(factory);
+
+            if (isInSimulationUnits)
+            {
+                for (int i = 0; i < vertices.Count; i++)
+                {
+                    vertices[i] = ConvertUnits.ToSimUnits(vertices[i]);
+                }
+            }
+
+            Texture = assetCreator.CreateTextureFromVertices(vertices, 1, tex);
             Origin = new Vector2(Texture.Width / 2f, Texture.Height / 2f);
         }
 
@@ -88,27 +107,14 @@ namespace PloobsEngine.Modelo2D
             Origin = new Vector2(Texture.Width / 2f, Texture.Height / 2f);
         }
 
-       /// <summary>
-       /// 
-       /// </summary>
-       /// <param name="factory"></param>
-       /// <param name="radius"></param>
-       /// <param name="color"></param>
-       /// <param name="isInSimulationUnits"></param>
-       /// <param name="materialScale"></param>
-         public SpriteFarseer(GraphicFactory factory, float radius, Color color, bool isInSimulationUnits = false)
+       public SpriteFarseer(GraphicFactory factory, CircleShape shape, Color color)
             : base(ModelType.Texture)
         {
             if (assetCreator == null)
                 assetCreator = new FarseerAsset2DCreator(factory);
 
-            if (isInSimulationUnits)
-            {
-                radius = ConvertUnits.ToSimUnits(radius);
-            }
 
-
-            Texture = assetCreator.CreateCircleTexture(radius, color, 1);
+            Texture = assetCreator.CreateCircleTexture(shape.Radius, color, 1);
             Origin = new Vector2(Texture.Width / 2f, Texture.Height / 2f);
         }
 

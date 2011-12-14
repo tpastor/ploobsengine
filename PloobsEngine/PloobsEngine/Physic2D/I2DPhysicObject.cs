@@ -103,6 +103,9 @@ namespace PloobsEngine.Physic2D
             }
             return false;
         }
+
+        public abstract void ApplyForce(Vector2 force, Vector2? point = null);
+        
     
     }
 }

@@ -180,7 +180,7 @@ namespace PloobsEngine.Physic2D.Farseer
             }
             set
             {
-                body.Rotation = value;
+                body.Rotation = value;             
             }
         }
 
@@ -193,6 +193,18 @@ namespace PloobsEngine.Physic2D.Farseer
             internal set
             {
                 body.Enabled = value;
+            }
+        }
+
+        public override void ApplyForce(Vector2 force, Vector2? point = null)
+        {
+            if (point == null)
+            {
+                body.ApplyForce(force);
+            }
+            else
+            {
+                body.ApplyForce(force, point.Value);
             }
         }
 

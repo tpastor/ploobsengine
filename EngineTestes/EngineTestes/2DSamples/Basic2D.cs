@@ -85,7 +85,7 @@ namespace EngineTestes._2DSamples
             }
 
             ///rectangle
-            Vertices verts = PolygonTools.CreateRectangle(5, 5);
+            Vertices verts = PolygonTools.CreateRectangle(50, 50);
             {
                 IModelo2D model = new SpriteFarseer(factory, verts, Color.Orange);
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
@@ -97,7 +97,7 @@ namespace EngineTestes._2DSamples
             ///circle
             CircleShape circle = new CircleShape(5, 1);
             {
-                IModelo2D model = new SpriteFarseer(factory, 5 , Color.Orange);
+                IModelo2D model = new SpriteFarseer(factory, circle , Color.Orange);
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
                 FarseerObject fs = new FarseerObject(fworld, circle);
                 I2DObject o = new I2DObject(fs, mat, model);
