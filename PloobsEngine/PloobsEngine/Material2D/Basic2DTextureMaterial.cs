@@ -68,9 +68,12 @@ namespace PloobsEngine.Material2D
     {
         #region IMaterialProcessor Members
 
-        public void ProcessDraw(GameTime gameTime, SceneControl.RenderHelper render, SceneControl._2DScene.ICamera2D camera, List<SceneControl._2DScene.I2DObject> objects)
+        public void ProcessDraw(bool uselayer, GameTime gameTime, SceneControl.RenderHelper render, SceneControl._2DScene.ICamera2D camera, List<SceneControl._2DScene.I2DObject> objects)
         {
-            render.RenderBegin(camera.View, null);
+            if(uselayer)
+                render.RenderBegin(camera.View, null,SpriteSortMode.BackToFront);
+            else
+                render.RenderBegin(camera.View, null, SpriteSortMode.Deferred);
             foreach (var iobj in objects)
             {
                 if (iobj.PhysicObject.Enabled == true)
@@ -81,9 +84,13 @@ namespace PloobsEngine.Material2D
             render.RenderEnd();
         }
 
-        public void ProcessPreDraw(GameTime gameTime, SceneControl.RenderHelper render, SceneControl._2DScene.ICamera2D camera, SceneControl._2DScene.I2DWorld world, List<SceneControl._2DScene.I2DObject> objects)
+        public void ProcessPreDraw(bool uselayer,GameTime gameTime, SceneControl.RenderHelper render, SceneControl._2DScene.ICamera2D camera, SceneControl._2DScene.I2DWorld world, List<SceneControl._2DScene.I2DObject> objects)
         {
-            render.RenderBegin(camera.View, null);
+            if (uselayer)
+                render.RenderBegin(camera.View, null, SpriteSortMode.BackToFront);
+            else
+                render.RenderBegin(camera.View, null, SpriteSortMode.Deferred);
+         
             foreach (var iobj in objects)
             {
                 if (iobj.PhysicObject.Enabled == true)
@@ -96,7 +103,8 @@ namespace PloobsEngine.Material2D
 
         public void ProcessLightDraw(GameTime gameTime, SceneControl.RenderHelper render, SceneControl._2DScene.ICamera2D camera, List<SceneControl._2DScene.I2DObject> objects, Color color, PloobsEngine.Light2D.Light2D light)
         {
-            render.RenderBegin(camera.View, null);
+           render.RenderBegin(camera.View, null, SpriteSortMode.Deferred);
+            
             foreach (var iobj in objects)
             {
                 if (iobj.PhysicObject.Enabled == true)

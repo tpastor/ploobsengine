@@ -51,11 +51,11 @@ namespace EngineTestes
                 Vertices.Add(new Vector2(0, 200));
                 Vertices.Add(new Vector2(200, 0));
 
-                //SpriteFarseer SpriteFarseer = new SpriteFarseer(factory, Vertices, Color.Red);
-                //Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
-                //FarseerObject fs = new FarseerObject(fworld, SpriteFarseer, 1, BodyType.Static);
-                //I2DObject o = new I2DObject(fs, mat, SpriteFarseer);
-                //this.World.AddObject(o);
+                SpriteFarseer SpriteFarseer = new SpriteFarseer(factory, Vertices, Color.Red);
+                Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
+                FarseerObject fs = new FarseerObject(fworld, SpriteFarseer, 1, BodyType.Static);
+                I2DObject o = new I2DObject(fs, mat, SpriteFarseer);
+                this.World.AddObject(o);
 
             }
 
@@ -73,7 +73,7 @@ namespace EngineTestes
             Vertices verts = PolygonTools.CreateRectangle(50, 50);
             {
                 IModelo2D model = new SpriteFarseer(factory, verts, Color.Red);
-                model.LayerDepth = 1;
+                model.LayerDepth = 0;
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
                 FarseerObject fs = new FarseerObject(fworld, model, 1, BodyType.Static);
                 I2DObject o = new I2DObject(fs, mat, model);
@@ -112,11 +112,11 @@ namespace EngineTestes
             ///circle
             CircleShape circle = new CircleShape(50, 1);
             {
-                IModelo2D model = new SpriteFarseer(factory, circle, Color.Orange);
+                IModelo2D model = new SpriteFarseer(factory, circle, Color.Yellow);
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
-                FarseerObject fs = new FarseerObject(fworld, circle, BodyType.Static);
+                FarseerObject fs = new FarseerObject(fworld, model);
                 I2DObject o = new I2DObject(fs, mat, model);
-                o.PhysicObject.Position = new Vector2(GraphicInfo.BackBufferWidth / 2, 0);
+                o.PhysicObject.Position = new Vector2(0, -GraphicInfo.BackBufferHeight / 2);
                 this.World.AddObject(o);
             }
 

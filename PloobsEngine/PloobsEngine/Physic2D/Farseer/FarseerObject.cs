@@ -99,11 +99,11 @@ namespace PloobsEngine.Physic2D.Farseer
             }
 
             //Create a single body with multiple fixtures
-            body = BodyFactory.CreateCompoundPolygon(world.World, list, density, BodyType.Dynamic);
+            body = BodyFactory.CreateCompoundPolygon(world.World, list, density, BodyType);
             body.BodyType = BodyType;
             body.CollisionCategories = Category.All;
             body.CollidesWith = Category.All;
-
+            body.Enabled = false;
         }
 
         public override Physic2DType Physic2DType
