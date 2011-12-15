@@ -93,8 +93,8 @@ namespace EngineTestes
             this.BindInput(new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS, Keys.Space,
                 (a) =>
                 {
-                    (sheet.Modelo as SpriteAnimated).Animation = animations[animationIndex];
                     animationIndex = (animationIndex + 1) % 2;
+                    (sheet.Modelo as SpriteAnimated).Animation = animations[animationIndex];                    
                 }
                 ));
         }
@@ -105,7 +105,7 @@ namespace EngineTestes
         {
             base.Draw(gameTime, render);
             render.RenderTextComplete("PloobsEngine 2D Sprite Sample", new Vector2(20, 10), Color.Red, Matrix.Identity);
-
+            render.RenderTextComplete("Press Space to change the animation", new Vector2(20, 30), Color.Red, Matrix.Identity);
         }        
 
     }
