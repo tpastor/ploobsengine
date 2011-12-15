@@ -33,7 +33,7 @@ namespace EngineTestes
             rt.UseDrawComponents = true;
             renderTech = rt;
             world = new I2DWorld(new FarseerWorld(new Vector2(0, 9.8f)), new DPSFParticleManager());
-        }
+        }        
 
         void rt_RenderBackGround(GraphicInfo ginfo, RenderHelper render)
         {
@@ -45,6 +45,7 @@ namespace EngineTestes
 
         protected override void InitScreen(GraphicInfo GraphicInfo, EngineStuff engine)
         {
+            engine.IsMouseVisible = true;
             Primitive2DDraw = new Primitive2DDraw(); 
             engine.AddComponent(Primitive2DDraw);
             base.InitScreen(GraphicInfo, engine);
@@ -145,16 +146,24 @@ namespace EngineTestes
                 sheet.PhysicObject.Position = new Vector2(100, 100);
                 this.World.AddObject(sheet);
             }
-
-            Lines l = new Lines();
-            l.AddLine(new Vector2(0, -GraphicInfo.BackBufferHeight / 2),Vector2.Zero);
-            Primitive2DDraw.Add2DPrimitive(l);
+                        
+            Primitive2DDraw.Add2DPrimitive(lines);
 
             ///camera
             this.World.Camera2D = new Camera2D(GraphicInfo);
             base.LoadContent(GraphicInfo, factory, contentManager);
         }
 
+        Lines lines = new Lines();
+
+        protected override void Update(GameTime gameTime)
+        {
+            lines.Clear();
+            Vector2 mpos = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
+            Vector2 wpos = this.World.Camera2D.ConvertScreenToWorld(mpos);
+            lines.AddLine(wpos, Vector2.Zero);
+            base.Update(gameTime);
+        }
 
         protected override void Draw(GameTime gameTime, PloobsEngine.SceneControl.RenderHelper render)
         {
