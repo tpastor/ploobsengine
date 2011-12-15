@@ -18,7 +18,7 @@ namespace ProjectTemplate
             ///optional parameters, the default is good for most situations
             //desc.UseVerticalSyncronization = true;
             //desc.isFixedGameTime = true;
-            //desc.isMultiSampling = true;
+            //desc.isMultiSampling = true;            
             desc.BackBufferWidth = 800;
             desc.BackBufferHeight = 600;           
             desc.useMipMapWhenPossible = false;
