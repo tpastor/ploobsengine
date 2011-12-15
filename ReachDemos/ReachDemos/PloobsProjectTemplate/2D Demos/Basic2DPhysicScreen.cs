@@ -19,6 +19,7 @@ using PloobsEngine.Light2D;
 using PloobsEngine.Engine;
 using PloobsEngine.Input;
 using PloobsEngine.Physic2D;
+using PloobsEngine.Features.DebugDraw;
 
 namespace EngineTestes
 {
@@ -33,7 +34,8 @@ namespace EngineTestes
     public class Basic2DPhysicScreen : I2DScene
     {
         I2DObject ball;
-        Texture2D tile;        
+        Texture2D tile;
+        Primitive2DDraw Primitive2DDraw;
         /// <summary>
         /// Called once on screen load
         /// </summary>
@@ -49,9 +51,12 @@ namespace EngineTestes
             world = new I2DWorld(new FarseerWorld(new Vector2(0, 9.8f)),new DPSFParticleManager());            
         }
 
+
         protected override void InitScreen(PloobsEngine.Engine.GraphicInfo GraphicInfo, PloobsEngine.Engine.EngineStuff engine)
         {
             engine.IsMouseVisible = true;
+            Primitive2DDraw = new PloobsEngine.Features.DebugDraw.Primitive2DDraw();
+            engine.AddComponent(Primitive2DDraw);
             base.InitScreen(GraphicInfo, engine);
         }
 
@@ -148,17 +153,24 @@ namespace EngineTestes
                 this.World.AddObject(ball);
             }
 
+            Lines lines = new Lines();
+            lines.isEnabled = false;
+
             this.BindInput(new SimpleConcreteMouseBottomInputPlayable(StateKey.RELEASE, EntityType.TOOLS, MouseButtons.LeftButton,
                  (sample) =>
                  {
-                    
+                     lines.isEnabled = false;
                  }
              ));
 
             this.BindInput(new SimpleConcreteMouseBottomInputPlayable(StateKey.PRESS,EntityType.TOOLS,MouseButtons.LeftButton,
                  (sample) =>
                  {
-                     Vector2 mpos = new Vector2(sample.X, sample.Y);  
+                     lines.isEnabled = true;
+                     lines.Clear();
+                     Vector2 mpos = new Vector2(sample.X, sample.Y);
+                     Vector2 wpos =  this.World.Camera2D.ConvertScreenToWorld(mpos);
+                     lines.AddLine(wpos, ball.PhysicObject.Position);
                  }
              ));
 

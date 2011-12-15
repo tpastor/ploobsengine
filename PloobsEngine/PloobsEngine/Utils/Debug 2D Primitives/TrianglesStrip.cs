@@ -46,6 +46,11 @@ namespace PloobsEngine.Features.DebugDraw
             point.Add(new Vector2(x1,y1));            
         }
 
+        public void Clear()
+        {
+            point.Clear();
+        }
+
         public void SetColor(Color color)
         {
             this.color = color;

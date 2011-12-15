@@ -41,6 +41,11 @@ namespace PloobsEngine.Features.DebugDraw
             state.FillMode = FillMode.WireFrame;
         }
 
+        public void Clear()
+        {
+            point.Clear();
+        }
+
         public void AddTriangle(float x1, float y1, float x2, float y2, float x3, float y3)
         {
             point.Add(new Vector2(x1,y1));
