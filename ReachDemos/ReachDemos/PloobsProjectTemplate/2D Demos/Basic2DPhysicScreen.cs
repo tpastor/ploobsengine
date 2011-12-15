@@ -249,21 +249,24 @@ namespace EngineTestes
         {
             if (fired)
             {
-                if ((obj.PhysicObject as FarseerObject).AngularVelocity == 0 && (obj.PhysicObject as FarseerObject).LinearVelocity == Vector2.Zero)
+                if ((obj.PhysicObject.Position.Y > 500 || (obj.PhysicObject as FarseerObject).LinearVelocity.Length() < 0.5f) && (goo.PhysicObject as FarseerObject).LinearVelocity.Length() < 0.5f)
                 {
                     ///victory condition =P
-                    if (goo.PhysicObject.Position.Y < -100)
+                    if (goo.PhysicObject.Position.Y > 150)
                     {
                         ///VC GANHOU EBA !!!
                         System.Windows.Forms.MessageBox.Show("YOU HAVE WON !!!");
+                        fired = false;
                     }
                     else
                     {
                         ///you have lost playba =P
                         System.Windows.Forms.MessageBox.Show("YOU HAVE LOST !!!");
+                        fired = false;
                     }
                 }
-                fired = false;
+
+                
             }
         }
 

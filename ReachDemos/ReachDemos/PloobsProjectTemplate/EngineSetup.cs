@@ -38,8 +38,8 @@ namespace ProjectTemplate
         {
 
             ///add the first screen here        
-            manager.AddScreen(new Basic2DParticle());
-            //manager.AddScreen(new Basic2DPhysicScreen());
+            //manager.AddScreen(new Basic2DParticle());
+            manager.AddScreen(new Basic2DPhysicScreen());
             //manager.AddScreen(new Basic2DSpriteScreen());
             //manager.AddScreen(new Basic2DCameraScreen());
             //manager.AddScreen(new Basic2DPositioningScreen());
