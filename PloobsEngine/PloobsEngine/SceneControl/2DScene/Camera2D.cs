@@ -380,7 +380,7 @@ namespace PloobsEngine.SceneControl._2DScene
             updatefrustrum = true;
         }
 
-        public Vector2 ConvertScreenToWorld(Vector2 location, bool useSimulatedProjection = true)
+        public Vector2 ConvertScreenToWorld(Vector2 location, bool useSimulatedProjection = true , bool returnInDisplayUnits = true)
         {
             Vector3 t = new Vector3(location, 0);            
 
@@ -390,20 +390,28 @@ namespace PloobsEngine.SceneControl._2DScene
                 t = _graphics.Viewport.Unproject(t, _projection, _view, Matrix.Identity);
 
             if (useSimulatedProjection)
-                return ConvertUnits.ToDisplayUnits(new Vector2(t.X, t.Y));
+            {
+                if(returnInDisplayUnits)
+                    return ConvertUnits.ToDisplayUnits(new Vector2(t.X, t.Y));
+                else
+                    return new Vector2(t.X, t.Y);
+            }
             else
                 return new Vector2(t.X, t.Y);
         }
 
-        public Vector2 ConvertWorldToScreen(Vector2 location,bool useSimulatedProjection = true)
+        public Vector2 ConvertWorldToScreen(Vector2 location,bool useSimulatedProjection = true, bool convertToSimUnits = true)
         {
             Vector3 t = new Vector3(location, 0);
 
             if (useSimulatedProjection)
-                t = ConvertUnits.ToSimUnits(t);
+            {
+                if(convertToSimUnits)
+                    t = ConvertUnits.ToSimUnits(t);
+            }
 
             if (useSimulatedProjection)
-                t = _graphics.Viewport.Project(t, _simprojection, _view, Matrix.Identity);
+                t = _graphics.Viewport.Project(t, _simprojection, this.SimView, Matrix.Identity);
             else
                 t = _graphics.Viewport.Project(t, _projection, _view, Matrix.Identity);
 

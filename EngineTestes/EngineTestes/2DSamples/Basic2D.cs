@@ -20,6 +20,7 @@ using PloobsEngine.Light2D;
 using PloobsEngine.Engine;
 using PloobsEngine.Input;
 using PloobsEngine.SceneControl._2DScene.Culler;
+using PloobsEnginePhone7Template;
 
 namespace EngineTestes._2DSamples
 {

@@ -10,6 +10,7 @@ using PloobsEngine.Particles;
 using PloobsEngine.Light2D;
 using PloobsEngine.Engine;
 using EngineTestes._2DSamples;
+using PloobsEnginePhone7Template;
 
 namespace Template
 {
