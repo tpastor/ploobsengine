@@ -44,6 +44,11 @@ namespace PloobsEngine.Features.DebugDraw
             lines.Add(v2);
         }
 
+        public void Clear()
+        {
+            lines.Clear();
+        }
+
         public void SetColor(Color color)
         {
             this.color = color;
