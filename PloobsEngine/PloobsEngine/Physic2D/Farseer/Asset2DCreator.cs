@@ -219,7 +219,11 @@ namespace PloobsEngine.Physic2D.Farseer
                                                         DepthFormat.None, pp.MultiSampleCount,
                                                         RenderTargetUsage.DiscardContents);
             _device.RasterizerState = RasterizerState.CullNone;
-            _device.SamplerStates[0] = SamplerState.LinearWrap;
+
+            if(material==null || ( !PloobsEngine.Utils.MathUtils.IsPowerOfTwo(material.Width) || !PloobsEngine.Utils.MathUtils.IsPowerOfTwo(material.Height)))
+                _device.SamplerStates[0] = SamplerState.LinearClamp;
+            else
+                _device.SamplerStates[0] = SamplerState.LinearWrap;
 
             _device.SetRenderTarget(texture);
             _device.Clear(Color.Transparent);
