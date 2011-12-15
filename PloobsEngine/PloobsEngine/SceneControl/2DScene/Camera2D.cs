@@ -45,6 +45,7 @@ namespace PloobsEngine.SceneControl._2DScene
         private Vector2 _minPosition;
         private float _minRotation;
         private bool _positionTracking;
+        private Matrix _simprojection;
         private Matrix _projection;
         private bool _rotationTracking;
         private Vector2 _targetPosition;
@@ -60,8 +61,12 @@ namespace PloobsEngine.SceneControl._2DScene
         public Camera2D(GraphicInfo graphics)
         {
             _graphics = graphics;
-            _projection = Matrix.CreateOrthographicOffCenter(0f, ConvertUnits.ToSimUnits(_graphics.Viewport.Width),
+            _simprojection = Matrix.CreateOrthographicOffCenter(0f, ConvertUnits.ToSimUnits(_graphics.Viewport.Width),
                                                              ConvertUnits.ToSimUnits(_graphics.Viewport.Height), 0f, 0f,
+                                                             1f);
+
+            _projection = Matrix.CreateOrthographicOffCenter(0f, _graphics.Viewport.Width,
+                                                             _graphics.Viewport.Height, 0f, 0f,
                                                              1f);
             _view = Matrix.Identity;
             _batchView = Matrix.Identity;
@@ -84,8 +89,10 @@ namespace PloobsEngine.SceneControl._2DScene
 
         public Matrix SimProjection
         {
-            get { return _projection; }
+            get { return _simprojection; }
         }
+
+        
 
         /// <summary>
         /// The current position of the camera.
@@ -373,20 +380,32 @@ namespace PloobsEngine.SceneControl._2DScene
             updatefrustrum = true;
         }
 
-        public Vector2 ConvertScreenToWorld(Vector2 location)
+        public Vector2 ConvertScreenToWorld(Vector2 location, bool useSimulatedProjection = true)
         {
-            Vector3 t = new Vector3(location, 0);
+            Vector3 t = new Vector3(location, 0);            
 
-            t = _graphics.Viewport.Unproject(t, _projection, _view, Matrix.Identity);
+            if(useSimulatedProjection)
+                t = _graphics.Viewport.Unproject(t, _simprojection, this.SimView, Matrix.Identity);
+            else
+                t = _graphics.Viewport.Unproject(t, _projection, _view, Matrix.Identity);
 
-            return new Vector2(t.X, t.Y);
+            if (useSimulatedProjection)
+                return ConvertUnits.ToDisplayUnits(new Vector2(t.X, t.Y));
+            else
+                return new Vector2(t.X, t.Y);
         }
 
-        public Vector2 ConvertWorldToScreen(Vector2 location)
+        public Vector2 ConvertWorldToScreen(Vector2 location,bool useSimulatedProjection = true)
         {
             Vector3 t = new Vector3(location, 0);
 
-            t = _graphics.Viewport.Project(t, _projection, _view, Matrix.Identity);
+            if (useSimulatedProjection)
+                t = ConvertUnits.ToSimUnits(t);
+
+            if (useSimulatedProjection)
+                t = _graphics.Viewport.Project(t, _simprojection, _view, Matrix.Identity);
+            else
+                t = _graphics.Viewport.Project(t, _projection, _view, Matrix.Identity);
 
             return new Vector2(t.X, t.Y);
         }
@@ -423,6 +442,16 @@ namespace PloobsEngine.SceneControl._2DScene
             }
         }
 
+        #endregion
+
+
+        #region ICamera2D Members        
+
+        public Matrix Projection
+        {
+            get { return _projection; }
+        }
+        
         #endregion
     }
 

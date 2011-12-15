@@ -46,7 +46,9 @@ namespace EngineTestes
             ////creating the rendering technic
             Basic2DRenderTechnich rt = new Basic2DRenderTechnich();            
             rt.RenderBackGround += new RenderBackGround(rt_RenderBackGround);
-            renderTech = rt;            
+            ///enable draw components
+            rt.UseDrawComponents = true;
+            renderTech = rt;                  
             ///creating the world =P
             world = new I2DWorld(new FarseerWorld(new Vector2(0, 9.8f)),new DPSFParticleManager());            
         }
@@ -153,34 +155,54 @@ namespace EngineTestes
                 this.World.AddObject(ball);
             }
 
-            Lines lines = new Lines();
-            lines.isEnabled = false;
-
-            this.BindInput(new SimpleConcreteMouseBottomInputPlayable(StateKey.RELEASE, EntityType.TOOLS, MouseButtons.LeftButton,
+            SimpleConcreteMouseBottomInputPlayable SimpleConcreteMouseBottomInputPlayable1 = new SimpleConcreteMouseBottomInputPlayable(StateKey.PRESS, EntityType.TOOLS, MouseButtons.LeftButton,
                  (sample) =>
                  {
+                     mousepressed = true;
+                 }
+             );
+            this.BindInput(SimpleConcreteMouseBottomInputPlayable1);
+
+
+            SimpleConcreteMouseBottomInputPlayable SimpleConcreteMouseBottomInputPlayable = null;
+            SimpleConcreteMouseBottomInputPlayable = new SimpleConcreteMouseBottomInputPlayable(StateKey.RELEASE, EntityType.TOOLS, MouseButtons.LeftButton,
+                 (sample) =>
+                 {
+                     mousepressed = false;
                      lines.isEnabled = false;
-                 }
-             ));
 
-            this.BindInput(new SimpleConcreteMouseBottomInputPlayable(StateKey.PRESS,EntityType.TOOLS,MouseButtons.LeftButton,
-                 (sample) =>
-                 {
-                     lines.isEnabled = true;
-                     lines.Clear();
-                     Vector2 mpos = new Vector2(sample.X, sample.Y);
-                     Vector2 wpos =  this.World.Camera2D.ConvertScreenToWorld(mpos);
-                     lines.AddLine(wpos, ball.PhysicObject.Position);
+                     Vector2 mpos = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
+                     Vector2 wpos = this.World.Camera2D.ConvertScreenToWorld(mpos);
+                     Vector2 force = (ball.PhysicObject.Position - wpos) * 30;
+                     ball.PhysicObject.ApplyForce(force);
+                     this.RemoveInputBinding(SimpleConcreteMouseBottomInputPlayable);
+                     this.RemoveInputBinding(SimpleConcreteMouseBottomInputPlayable1);
                  }
-             ));
+             );
+            this.BindInput(SimpleConcreteMouseBottomInputPlayable);
 
+            
             ///the basic ortographic 2D camera
             this.World.Camera2D = new Camera2D(GraphicInfo);
             base.LoadContent(GraphicInfo, factory, contentManager);
+
+            Primitive2DDraw.Add2DPrimitive(lines);
         }
 
+        bool mousepressed = false;
+        Lines lines = new Lines();
         protected override void Update(GameTime gameTime)
         {
+            if (mousepressed)
+            {
+                lines.isEnabled = true;
+                lines.Clear();
+                Vector2 mpos = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
+                Vector2 wpos = this.World.Camera2D.ConvertScreenToWorld(mpos);
+
+                lines.AddLine(wpos, ball.PhysicObject.Position);
+            }
+
             ///handle camera movements =P
             Vector2 camMove = Vector2.Zero;
             KeyboardState KeyboardState = Keyboard.GetState();
