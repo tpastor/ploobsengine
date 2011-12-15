@@ -35,8 +35,10 @@ namespace ProjectTemplate
 
         static void LoadScreen(ScreenManager manager)
         {
+
             ///add the first screen here            
-            manager.AddScreen(new Basic2DSpriteScreen());
+            manager.AddScreen(new Basic2DPhysicScreen());
+            //manager.AddScreen(new Basic2DSpriteScreen());
             //manager.AddScreen(new Basic2DCameraScreen());
             //manager.AddScreen(new Basic2DPositioningScreen());
             //manager.AddScreen(new Basic2DScreen());

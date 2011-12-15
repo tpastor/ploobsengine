@@ -58,17 +58,17 @@ namespace PloobsEngine.Features.DebugDraw
             this.fill = fill;
         }
 
-        protected override void Draw(Vector2 transform, RenderHelper render, PrimitiveBatch batch)
+        protected override void Draw(Matrix view, Matrix Projection, RenderHelper render, PrimitiveBatch batch)
         {
             if (fill == false)
             {
                 render.PushRasterizerState(state);
             }
 
-            batch.Begin(PrimitiveType.TriangleList);
+            batch.Begin(PrimitiveType.TriangleList,view,Projection);
             foreach (var item in point)
             {
-                batch.AddVertex(item + transform, color);
+                batch.AddVertex(item, color);
             }
             batch.End();
 
