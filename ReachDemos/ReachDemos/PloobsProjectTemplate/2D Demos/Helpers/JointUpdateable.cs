@@ -17,7 +17,7 @@ namespace PloobsEnginePhone7Template
         FarseerWorld world;
         ICamera2D camera;
         private FixedMouseJoint _fixedMouseJoint;
-        public JointUpdateable(I2DScene scene, FarseerWorld world, ICamera2D camera)
+        public JointUpdateable(I2DScene scene, FarseerWorld world,ICamera2D camera)
             : base(scene)
         {
             this.camera = camera;
@@ -28,8 +28,8 @@ namespace PloobsEnginePhone7Template
         protected override void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
             MouseState ms = Mouse.GetState();
-            Vector2 position = camera.ConvertScreenToWorld(new Vector2(ms.X, ms.Y), true, false);
-
+            Vector2 position = camera.ConvertScreenToWorld(new Vector2(ms.X,ms.Y),true,false);
+            
             if (ms.LeftButton == ButtonState.Pressed && _fixedMouseJoint == null)
             {
                 Fixture savedFixture = world.World.TestPoint(position);
@@ -53,6 +53,6 @@ namespace PloobsEnginePhone7Template
             {
                 _fixedMouseJoint.WorldAnchorB = position;
             }
-        }
+        }        
     }
 }
