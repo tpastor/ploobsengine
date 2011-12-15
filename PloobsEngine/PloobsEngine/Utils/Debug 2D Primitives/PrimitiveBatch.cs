@@ -24,6 +24,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
+using PloobsEngine.Engine;
 
 namespace PloobsEngine.Features.DebugDraw
 {
@@ -76,23 +77,19 @@ namespace PloobsEngine.Features.DebugDraw
 
         // the constructor creates a new PrimitiveBatch and sets up all of the internals
         // that PrimitiveBatch will need.
-        public PrimitiveBatch(GraphicsDevice graphicsDevice)
+        public PrimitiveBatch(GraphicFactory factory)
         {
-            if (graphicsDevice == null)
-            {
-                throw new ArgumentNullException("graphicsDevice");
-            }
-            device = graphicsDevice;
+            device = factory.device;
 
             // set up a new basic effect, and enable vertex colors.
-            basicEffect = new BasicEffect(graphicsDevice);
+            basicEffect = factory.GetBasicEffect();
             basicEffect.VertexColorEnabled = true;
 
             // projection uses CreateOrthographicOffCenter to create 2d projection
             // matrix with 0,0 in the upper left.
             basicEffect.Projection = Matrix.CreateOrthographicOffCenter
-                (0, graphicsDevice.Viewport.Width,
-                graphicsDevice.Viewport.Height, 0,
+                (0, device.Viewport.Width,
+                device.Viewport.Height, 0,
                 0, 1);
         }
 
@@ -115,8 +112,11 @@ namespace PloobsEngine.Features.DebugDraw
 
         // Begin is called to tell the PrimitiveBatch what kind of primitives will be
         // drawn, and to prepare the graphics card to render those primitives.
-        public void Begin(PrimitiveType primitiveType)
+        public void Begin(PrimitiveType primitiveType, Matrix view, Matrix projection)
         {
+            basicEffect.View = view;
+            basicEffect.Projection = projection;
+
             if (hasBegun)
             {
                 throw new InvalidOperationException

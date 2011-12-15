@@ -293,7 +293,7 @@ namespace PloobsEngine.SceneControl._2DScene
             }
 
             if (UseDrawComponents)
-                render.RenderPosComponents(gameTime, world.Camera2D.View, world.Camera2D.SimProjection);            
+                render.RenderPosComponents(gameTime, world.Camera2D.SimView, world.Camera2D.SimProjection);            
         }
 
         public override string TechnicName

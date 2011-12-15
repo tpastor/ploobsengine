@@ -119,6 +119,7 @@
     <Compile Include="Components\ComponentManager.cs" />
     <Compile Include="Components\IComponent.cs" />
     <Compile Include="DataStructure\QuadTree.cs" />
+    <Compile Include="Features\Primitive2D\Primitive2DDraw.cs" />
     <Compile Include="Features\SkyBox\SkyBoxEnableDisableCommand.cs" />
     <Compile Include="Features\SkyBox\Skybox.cs" />
     <Compile Include="Features\SkyBox\SkyBoxUpdateParametersCommand.cs" />

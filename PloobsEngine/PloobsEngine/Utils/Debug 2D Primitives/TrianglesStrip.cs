@@ -56,7 +56,7 @@ namespace PloobsEngine.Features.DebugDraw
             this.fill = fill;
         }
                 
-        protected override void Draw(Vector2 transform, RenderHelper render, PrimitiveBatch batch)
+        protected override void Draw(Matrix view, Matrix Projection, RenderHelper render, PrimitiveBatch batch)
         {
             if (fill == false)
             {
@@ -68,10 +68,10 @@ namespace PloobsEngine.Features.DebugDraw
                 throw new InvalidOperationException("Need at least 3 points to make a triangle strip");
             }
 
-            batch.Begin(PrimitiveType.TriangleStrip);
+            batch.Begin(PrimitiveType.TriangleStrip,view,Projection);
             foreach (var item in point)
             {
-                batch.AddVertex(item + transform, color);       
+                batch.AddVertex(item, color);       
             }
             batch.End();
 

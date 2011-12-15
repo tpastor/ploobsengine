@@ -37,12 +37,12 @@ namespace PloobsEngine.Features.DebugDraw
             Init(ginfo,factory);
         }
 
-        protected abstract void Draw(Vector2 transform, RenderHelper render, PrimitiveBatch batch);
+        protected abstract void Draw(Matrix view, Matrix Projection, RenderHelper render, PrimitiveBatch batch);
         
-        internal void iDraw(Vector2 transform, RenderHelper render, PrimitiveBatch batch)
+        internal void iDraw(Matrix view, Matrix Projection, RenderHelper render, PrimitiveBatch batch)
         {
             if (isEnabled)
-                Draw(transform,render,batch);
+                Draw(view, Projection,render,batch);
         }
 
         public bool isEnabled

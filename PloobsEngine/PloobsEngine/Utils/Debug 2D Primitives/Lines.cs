@@ -38,18 +38,24 @@ namespace PloobsEngine.Features.DebugDraw
             lines.Add(new Vector2(x2, y2));            
         }
 
+        public void AddLine(Vector2 v1, Vector2 v2)
+        {
+            lines.Add(v1);
+            lines.Add(v2);
+        }
+
         public void SetColor(Color color)
         {
             this.color = color;
-        }        
-        
+        }
 
-        protected override void Draw(Vector2 transform, RenderHelper render, PrimitiveBatch batch)
+
+        protected override void Draw(Matrix view, Matrix Projection, RenderHelper render, PrimitiveBatch batch)
         {
-            batch.Begin(PrimitiveType.LineList);
+            batch.Begin(PrimitiveType.LineList,view,Projection);
             foreach (var item in lines)
             {
-                batch.AddVertex(item + transform, color);
+                batch.AddVertex(item, color);
             }
             batch.End();
         }

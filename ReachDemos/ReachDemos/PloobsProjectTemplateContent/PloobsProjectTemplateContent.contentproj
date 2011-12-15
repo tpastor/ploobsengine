@@ -40,7 +40,8 @@
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.VideoImporters, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL">
       <Private>False</Private>
     </Reference>
-    <Reference Include="PloobsEnginePipelineDebug">
+    <Reference Include="PloobsEnginePipelineDebug, Version=0.0.0.1, Culture=neutral, PublicKeyToken=0c21691816f8c6d0, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\PloobsEnginePipelineDebug.dll</HintPath>
     </Reference>
   </ItemGroup>
