@@ -71,7 +71,7 @@ namespace ProjectTemplate
             base.Draw(gameTime, render);
 
             ///Draw some text on the screen
-            render.RenderTextComplete("Demo: Basic Screen Forward (Move the camera using WASD)", new Vector2(GraphicInfo.Viewport.Width - 315, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Demo: Basic Screen Forward (Move the camera using WASD and Mouse)", new Vector2(GraphicInfo.Viewport.Width - 315, 15), Color.White, Matrix.Identity);
         }
 
     }

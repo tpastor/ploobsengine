@@ -4,6 +4,7 @@ using PloobsEngine.Engine.Logger;
 using System;
 using EngineTestes;
 using PloobsEnginePhone7Template;
+using IntroductionDemo4._0;
 
 namespace ProjectTemplate
 {
@@ -36,10 +37,11 @@ namespace ProjectTemplate
 
         static void LoadScreen(ScreenManager manager)
         {
+            manager.AddScreen(new DemosHomeScreen());
 
             ///add the first screen here        
             //manager.AddScreen(new Basic2DParticle());
-            manager.AddScreen(new Basic2DPhysicScreen());
+            //manager.AddScreen(new Basic2DPhysicScreen());
             //manager.AddScreen(new Basic2DSpriteScreen());
             //manager.AddScreen(new Basic2DCameraScreen());
             //manager.AddScreen(new Basic2DPositioningScreen());

@@ -56,7 +56,7 @@ namespace ProjectTemplate
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {        
             base.Draw(gameTime, render);
-            render.RenderTextComplete("PloobsEngine 3D Bone Animation Demo on Windows Phone7", new Vector2(20, 10), Color.Red, Matrix.Identity);
+            render.RenderTextComplete("PloobsEngine 3D Bone Animation Demo on Reach Profile", new Vector2(20, 10), Color.Red, Matrix.Identity);
         }
 
     }
