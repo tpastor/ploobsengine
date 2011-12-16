@@ -100,8 +100,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\Cloud.tga">
-      <Name>Cloud</Name>
+    <Compile Include="Textures\CloudLight.tga">
+      <Name>CloudLight</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
