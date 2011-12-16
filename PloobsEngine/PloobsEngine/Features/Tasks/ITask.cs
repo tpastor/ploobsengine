@@ -28,20 +28,26 @@ namespace PloobsEngine.Features
     /// Specification of a task
     /// Task is a class that operates in ANOTHER THREAD    
     /// </summary>
-    public interface ITask
+    public abstract class ITask
     {
+        public event Action<ITask, IAsyncResult> Ended;
+
         /// <summary>
         /// Called when the task ends
         /// </summary>
         /// <param name="result">The result.</param>
-        void Result(IAsyncResult result);
+        public virtual void Result(IAsyncResult result) 
+        { 
+            if (Ended != null) 
+                Ended(this,result); 
+        }
 
         /// <summary>
         /// Processes the task.
         /// </summary>
-        void Process();
+        public abstract void Process();
 
-        TaskEndType TaskEndType
+        public abstract TaskEndType TaskEndType
         {
             get;           
         }

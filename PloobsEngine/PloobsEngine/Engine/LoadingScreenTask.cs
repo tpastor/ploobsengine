@@ -46,13 +46,13 @@ namespace PloobsEngine.Engine
 
         #region ITask Members
 
-        public void Result(IAsyncResult result)
+        public override void Result(IAsyncResult result)
         {
             LoadingScreen.ScreenManager.RemoveScreen(LoadingScreen);
             LoadingScreen.ScreenManager.AddScreen(ToLoadScreen,null,false);            
         }
 
-        public void Process()
+        public override void Process()
         {
             ToLoadScreen.iInitScreen(ToLoadScreen.GraphicInfo, engine);
             ToLoadScreen.iLoadContent(ToLoadScreen.GraphicInfo, ToLoadScreen.GraphicFactory, contentManager);
@@ -60,7 +60,7 @@ namespace PloobsEngine.Engine
             ToLoadScreen.IsLoaded = true;
         }
 
-        public TaskEndType TaskEndType
+        public override TaskEndType TaskEndType
         {
             get { return Features.TaskEndType.ON_NEXT_UPDATE; }
         }
