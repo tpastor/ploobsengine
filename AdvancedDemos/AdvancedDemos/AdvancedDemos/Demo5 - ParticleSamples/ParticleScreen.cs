@@ -16,6 +16,7 @@ using PloobsEngine.Features;
 using PloobsEngine.Commands;
 using PloobsEngine.Particles;
 using PloobsEngine.Loader;
+using DPSF.ParticleSystems;
 
 namespace AdvancedDemo4._0
 {

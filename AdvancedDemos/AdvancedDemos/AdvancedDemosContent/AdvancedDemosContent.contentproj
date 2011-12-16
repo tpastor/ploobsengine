@@ -100,13 +100,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Textures\Cloud.tga">
-      <Name>Cloud</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Skins\Default\Cursors\Busy.cur">
       <Name>Busy</Name>
       <Importer>CursorImporter</Importer>
