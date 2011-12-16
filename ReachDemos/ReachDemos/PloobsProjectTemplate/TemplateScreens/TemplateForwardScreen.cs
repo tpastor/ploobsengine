@@ -50,7 +50,7 @@ namespace ProjectTemplate
             TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
             ///Forward Shader (look at this shader construction for more info)
             ForwardXNABasicShader shader = new ForwardXNABasicShader();
-            ///Deferred material
+            ///Forward material
             ForwardMaterial fmaterial = new ForwardMaterial(shader);
             ///The object itself
             IObject obj = new IObject(fmaterial, simpleModel, tmesh);

@@ -5,6 +5,7 @@ using System;
 using EngineTestes;
 using PloobsEnginePhone7Template;
 using IntroductionDemo4._0;
+using AdvancedDemo4._0;
 
 namespace ProjectTemplate
 {
@@ -17,10 +18,10 @@ namespace ProjectTemplate
         {
             ///Create the default Engine Description
             InitialEngineDescription desc = InitialEngineDescription.Default();
-            ///optional parameters, the default is good for most situations
-            //desc.UseVerticalSyncronization = true;
-            //desc.isFixedGameTime = true;
-            //desc.isMultiSampling = true;            
+            ///optional parameters, the default is good for most situations            
+            desc.isFixedGameTime = true;                
+            desc.UseVerticalSyncronization = true;
+            desc.isMultiSampling = true;
             desc.BackBufferWidth = 800;
             desc.BackBufferHeight = 600;           
             desc.useMipMapWhenPossible = false;
@@ -37,6 +38,7 @@ namespace ProjectTemplate
 
         static void LoadScreen(ScreenManager manager)
         {
+            
             manager.AddScreen(new DemosHomeScreen());
 
             ///add the first screen here        
