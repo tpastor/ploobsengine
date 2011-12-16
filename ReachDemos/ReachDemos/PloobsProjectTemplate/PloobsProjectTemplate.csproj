@@ -122,6 +122,8 @@
     <Compile Include="2D Demos\Helpers\SpriteParticle.cs" />
     <Compile Include="Animation\AnimationScreen.cs" />
     <Compile Include="DemosHomeScreen.cs" />
+    <Compile Include="Particle3D\ParticleScreen.cs" />
+    <Compile Include="Particle3D\SnowPS.cs" />
     <Compile Include="TemplateScreens\TaskApiSample.cs" />
     <Compile Include="TemplateScreens\TemplateForwardScreen.cs" />
     <Compile Include="EngineSetup.cs" />
