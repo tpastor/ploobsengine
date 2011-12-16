@@ -23,6 +23,7 @@ using PloobsEngine.Engine;
 using EngineTestes;
 using PloobsEnginePhone7Template;
 using ProjectTemplate;
+using PloobsProjectTemplate.TemplateScreens;
 
 namespace IntroductionDemo4._0
 {
@@ -36,7 +37,7 @@ namespace IntroductionDemo4._0
 
         int index = 0;
 
-        static int totalDemos = 7;
+        static int totalDemos = 8;
         EngineStuff engine;
 
         private int[] screenList = new int[totalDemos];
@@ -59,6 +60,8 @@ namespace IntroductionDemo4._0
                     return new TemplateForwardScreen();                
                 case 6:
                     return new AnimationScreen();                
+                case 7:
+                    return new TaskSampleScreen();
                 default:
                     break;
             }

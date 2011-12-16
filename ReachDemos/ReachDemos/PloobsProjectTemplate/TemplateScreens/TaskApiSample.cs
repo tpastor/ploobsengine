@@ -2,21 +2,38 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using PloobsEngine.SceneControl;
-using PloobsEngine.Physics;
-using PloobsEngine.Modelo;
-using PloobsEngine.Material;
-using PloobsEngine.Engine;
-using PloobsEngine.Physics.Bepu;
-using Microsoft.Xna.Framework;
+using PloobsEngine.Features;
+using System.Threading;
 using PloobsEngine.Cameras;
+using PloobsEngine.Material;
+using PloobsEngine.SceneControl;
+using Microsoft.Xna.Framework;
+using PloobsEngine.Physics.Bepu;
+using PloobsEngine.Modelo;
+using PloobsEngine.Engine;
+using PloobsEngine.Physics;
+using PloobsEngine.Commands;
 
-namespace ProjectTemplate
+namespace PloobsProjectTemplate.TemplateScreens
 {
-    /// <summary>
-    /// Basic Forward Screen
-    /// </summary>
-    public class TemplateForwardScreen : IScene
+    public class taskSample : ITask
+    {        
+        #region ITask Members
+
+        public override void Process()
+        {
+            Thread.Sleep(5000);
+        }
+     
+        public override TaskEndType TaskEndType
+        {
+            get { return PloobsEngine.Features.TaskEndType.ON_NEXT_UPDATE; }
+        }
+
+        #endregion
+    }
+
+    public class TaskSampleScreen : IScene
     {
         /// <summary>
         /// Sets the world and render technich.
@@ -55,12 +72,27 @@ namespace ProjectTemplate
             ///The object itself
             IObject obj = new IObject(fmaterial, simpleModel, tmesh);
             ///Add to the world
-            this.World.AddObject(obj); 
+            this.World.AddObject(obj);
 
             ///add a camera
             this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo.Viewport));
+
+            ///task sample
+            taskSample taskSample = new taskSample();
+            ///when ended, call this (syncronous -- specified in the itask implementation) function
+            taskSample.Ended += new Action<ITask, IAsyncResult>(taskSample_Ended);
+            ///create and send the task to the processor
+            TaskCommand TaskCommand = new TaskCommand(taskSample);
+            CommandProcessor.getCommandProcessor().SendCommandAssyncronous(TaskCommand);
         }
 
+        void taskSample_Ended(ITask arg1, IAsyncResult arg2)
+        {
+            ended = true;
+        }
+
+
+        bool ended = false;
         /// <summary>
         /// This is called when the screen should draw itself.
         /// </summary>
@@ -71,7 +103,9 @@ namespace ProjectTemplate
             base.Draw(gameTime, render);
 
             ///Draw some text on the screen
-            render.RenderTextComplete("Demo: Basic Screen Forward (Move the camera using WASD and Mouse)", new Vector2(10, 15), Color.Red, Matrix.Identity);
+            render.RenderTextComplete("Demo: Task API usage sample", new Vector2(GraphicInfo.Viewport.Width - 315, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("TaskEnded: " + ended, new Vector2(GraphicInfo.Viewport.Width - 315, 35), Color.Red, Matrix.Identity);
+            
         }
 
     }
