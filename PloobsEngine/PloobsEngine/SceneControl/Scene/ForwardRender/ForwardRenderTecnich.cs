@@ -78,6 +78,7 @@ namespace PloobsEngine.SceneControl
 
         RenderTarget2D renderTarget;
         RenderTarget2D postEffectTarget;
+        Engine.GraphicFactory factory;
 
         Engine.GraphicInfo ginfo;
         #region IRenderTechnic Members
@@ -85,6 +86,8 @@ namespace PloobsEngine.SceneControl
         protected override void AfterLoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
         {
             this.ginfo = ginfo;
+            this.factory = factory;
+            this.ginfo.OnGraphicInfoChange += new Engine.OnGraphicInfoChange(ginfo_OnGraphicInfoChange);
 
             if (desc.UsePostEffect)
             {
@@ -92,6 +95,17 @@ namespace PloobsEngine.SceneControl
                 postEffectTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
             }            
             base.AfterLoadContent(manager, ginfo, factory);
+        }
+
+        void ginfo_OnGraphicInfoChange(Engine.GraphicInfo newGraphicInfo)
+        {
+            if (renderTarget != null && postEffectTarget != null)
+            {
+                renderTarget.Dispose();
+                postEffectTarget.Dispose();
+                renderTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
+                postEffectTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
+            }
         }
 
         protected override void ExecuteTechnic(GameTime gameTime, RenderHelper render, IWorld world)

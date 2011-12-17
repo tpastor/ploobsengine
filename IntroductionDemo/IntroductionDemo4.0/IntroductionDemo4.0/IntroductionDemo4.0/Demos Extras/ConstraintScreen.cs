@@ -100,7 +100,7 @@ namespace IntroductionDemo4._0
             lt = new LightThrowBepu(this.World, factory);
 
             ///add a camera
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo.Viewport));
+            this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo));
         }
         protected override void Update(GameTime gameTime)
         {
@@ -145,8 +145,8 @@ namespace IntroductionDemo4._0
             base.Draw(gameTime, render);
 
             ///Draw some text to the screen
-            render.RenderTextComplete("Demo: Constraint Screen", new Vector2(GraphicInfo.Viewport.Width - 315, 15), Color.White, Matrix.Identity);
-            render.RenderTextComplete("Left click to throw a ball at the with ball =P", new Vector2(GraphicInfo.Viewport.Width - 315, 35), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Demo: Constraint Screen", new Vector2(10, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Left click to throw a ball at the with ball =P", new Vector2(10, 35), Color.White, Matrix.Identity);
             
         }
 

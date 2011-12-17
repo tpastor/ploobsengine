@@ -109,7 +109,7 @@ namespace AdvancedDemo4._0
             this.RenderTechnic.AddPostEffect(ssao);
 
 
-            CameraFirstPerson cam = new CameraFirstPerson(MathHelper.ToRadians(0), MathHelper.ToRadians(-10), new Vector3(0,100, 150), GraphicInfo.Viewport);
+            CameraFirstPerson cam = new CameraFirstPerson(MathHelper.ToRadians(0), MathHelper.ToRadians(-10), new Vector3(0,100, 150), GraphicInfo);
             ///add a camera
             this.World.CameraManager.AddCamera(cam);
         }

@@ -103,7 +103,7 @@ namespace IntroductionDemo4._0
 
             #endregion            
 
-            cam = new CameraFirstPerson(GraphicInfo.Viewport);            
+            cam = new CameraFirstPerson(GraphicInfo);            
             cam.FarPlane = 3000;
             this.World.CameraManager.AddCamera(cam);
 

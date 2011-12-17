@@ -17,23 +17,24 @@ using PloobsEngine.Commands;
 using PloobsEngine.Loader;
 using PloobsEngine.Modelo.Animation;
 using PloobsEngine.Input;
+using EngineTestes;
 
 namespace AdvancedDemo4._0
 {
     /// <summary>
     /// Animation Screen
     /// </summary>
-    public class DeferredAnimatedScreen : IScene
+    public class ForwardAnimatedScreen : IScene
     {
-        LightThrowBepu lt;
-
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            world = new IWorld(new BepuPhysicWorld(-0.98f,true,1), new SimpleCuller());
+            BepuPhysicWorld BepuPhysicWorld = new BepuPhysicWorld(-9.7f);
+            SimpleCuller SimpleCuller = new SimpleCuller();
+            world = new IWorld(BepuPhysicWorld, SimpleCuller);
 
-            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
-            desc.UseFloatingBufferForLightMap = true;
-            renderTech = new DeferredRenderTechnic(desc);
+            ForwardRenderTecnichDescription desc = ForwardRenderTecnichDescription.Default();
+            desc.BackGroundColor = Color.CornflowerBlue;
+            renderTech = new ForwardRenderTecnich(desc);
         }
 
         protected override void InitScreen(GraphicInfo GraphicInfo, EngineStuff engine)
@@ -48,8 +49,6 @@ namespace AdvancedDemo4._0
         {
             base.LoadContent(GraphicInfo, factory, contentManager);
 
-            var a = AppDomain.CurrentDomain.GetAssemblies();
-
             IObject marine;
             AnimatedController marinecontroler;
             {
@@ -59,16 +58,18 @@ namespace AdvancedDemo4._0
                 marinecontroler = new AnimatedController(am, "Idle");
 
                 ///Cria o shader e o material animados 
-                DeferredSimpleAnimationShader sas = new DeferredSimpleAnimationShader(marinecontroler);
-                DeferredAnimatedMaterial amat = new DeferredAnimatedMaterial(marinecontroler, sas);
+                ForwardSimpleAnimationShader sas = new ForwardSimpleAnimationShader(marinecontroler);
+                ForwardAnimatedMaterial amat = new ForwardAnimatedMaterial(marinecontroler, sas);
+                marine = new IObject(amat, am, new GhostObject(new Vector3(0, -30, 0), Matrix.CreateRotationX(MathHelper.ToRadians(30)), Vector3.One * 0.4f));
+
+                ///Adiciona no mundo
+                this.World.AddObject(marine);                  
 
                 CharacterControllerInput gp = new CharacterControllerInput(this, new Vector3(100, 50, 1), 25, 10, 10, Vector3.One);
-
                 marine = new IObject(amat, am, gp.Characterobj);
                 ///Adiciona no mundo
                 this.World.AddObject(marine);
 
-                lt = new LightThrowBepu(this.World, factory);
             }
 
             {
@@ -77,10 +78,10 @@ namespace AdvancedDemo4._0
                 ///Inicializa o Controlador (Idle eh o nome da animacao inicial)
                 AnimatedController arobo = new AnimatedController(am);
                 //arobo.isLoop = true;               
-
+                                
                 ///Cria o shader e o material animados 
-                DeferredSimpleAnimationShader sas = new DeferredSimpleAnimationShader(arobo, marine, marinecontroler, "R_Hand2");
-                DeferredAnimatedMaterial amat = new DeferredAnimatedMaterial(arobo, sas);
+                ForwardSimpleAnimationShader sas = new ForwardSimpleAnimationShader(arobo, marine, marinecontroler, "R_Hand2");
+                ForwardAnimatedMaterial amat = new ForwardAnimatedMaterial(arobo, sas);
                 IObject gun = new IObject(amat, am, new GhostObject(new Vector3(0, 0, 0), Matrix.Identity, Vector3.One));
 
                 ///Adiciona no mundo
@@ -92,32 +93,12 @@ namespace AdvancedDemo4._0
             {
                 SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
                 TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
-                DeferredNormalShader shader = new DeferredNormalShader();
-                DeferredMaterial fmaterial = new DeferredMaterial(shader);
+                ForwardXNABasicShader shader = new ForwardXNABasicShader();
+                ForwardMaterial fmaterial = new ForwardMaterial(shader);
                 IObject obj = new IObject(fmaterial, simpleModel, tmesh);
                 this.World.AddObject(obj);
             }
 
-            #region NormalLight
-            DirectionalLightPE ld1 = new DirectionalLightPE(Vector3.Left, Color.White);
-            DirectionalLightPE ld2 = new DirectionalLightPE(Vector3.Right, Color.White);
-            DirectionalLightPE ld3 = new DirectionalLightPE(Vector3.Backward, Color.White);
-            DirectionalLightPE ld4 = new DirectionalLightPE(Vector3.Forward, Color.White);
-            DirectionalLightPE ld5 = new DirectionalLightPE(Vector3.Down, Color.White);
-            float li = 0.5f;
-            ld1.LightIntensity = li;
-            ld2.LightIntensity = li;
-            ld3.LightIntensity = li;
-            ld4.LightIntensity = li;
-            ld5.LightIntensity = li;
-            this.World.AddLight(ld1);
-            this.World.AddLight(ld2);
-            this.World.AddLight(ld3);
-            this.World.AddLight(ld4);
-            this.World.AddLight(ld5);
-            #endregion
-
-            
 
             CameraFirstPerson cam = new CameraFirstPerson(MathHelper.ToRadians(-60), MathHelper.ToRadians(-20), new Vector3(30, 50, 50), GraphicInfo);
             cam.MoveSpeed *= 5;
@@ -129,7 +110,6 @@ namespace AdvancedDemo4._0
 
         protected override void CleanUp(EngineStuff engine)
         {
-            lt.CleanUp();
             engine.RemoveComponent("SkyBox");
             base.CleanUp(engine);
         }

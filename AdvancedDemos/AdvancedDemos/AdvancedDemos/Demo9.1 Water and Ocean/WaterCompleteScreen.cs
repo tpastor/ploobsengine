@@ -92,7 +92,7 @@ namespace AdvancedDemo4._0
             this.World.AddLight(ld6);
             #endregion
 
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(true, GraphicInfo.Viewport));
+            this.World.CameraManager.AddCamera(new CameraFirstPerson(true, GraphicInfo));
 
             SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grassCube");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);

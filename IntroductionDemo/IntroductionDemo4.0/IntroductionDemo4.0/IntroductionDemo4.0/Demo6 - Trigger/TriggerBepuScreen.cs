@@ -138,7 +138,7 @@ namespace IntroductionDemo4._0
             ///JUST to show that everyone can recieve messages
             rmessage = new ReciveMessage();
 
-            cam = new CameraFirstPerson(GraphicInfo.Viewport);            
+            cam = new CameraFirstPerson(GraphicInfo);            
             cam.FarPlane = 2000;
 
             lt = new LightThrowBepu(this.World, factory);

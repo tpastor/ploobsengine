@@ -61,7 +61,7 @@ namespace IntroductionDemo4._0
 
 
             ///add a camera
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo.Viewport));                              
+            this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo));                              
         }
 
         /// <summary>

@@ -89,7 +89,7 @@ namespace AdvancedDemo4._0
             // Add the window control to the manager processing queue.
             guiManager.Manager.Add(window);         
 
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(false,GraphicInfo.Viewport));
+            this.World.CameraManager.AddCamera(new CameraFirstPerson(false,GraphicInfo));
 
             SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grassCube");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);

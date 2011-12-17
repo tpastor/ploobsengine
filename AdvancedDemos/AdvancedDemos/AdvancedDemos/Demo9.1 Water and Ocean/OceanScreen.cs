@@ -162,7 +162,7 @@ namespace AdvancedDemo4._0
             this.RenderTechnic.AddPostEffect(new AntiAliasingPostEffectStalker());
 
 
-            CameraFirstPerson cam = new CameraFirstPerson(MathHelper.ToRadians(-120), MathHelper.ToRadians(-5), new Vector3(-70, 70, 90), GraphicInfo.Viewport);
+            CameraFirstPerson cam = new CameraFirstPerson(MathHelper.ToRadians(-120), MathHelper.ToRadians(-5), new Vector3(-70, 70, 90), GraphicInfo);
             this.World.CameraManager.AddCamera(cam);
 
             SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//cubemap");

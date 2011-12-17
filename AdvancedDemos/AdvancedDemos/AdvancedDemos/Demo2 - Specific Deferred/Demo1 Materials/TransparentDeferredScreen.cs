@@ -155,7 +155,7 @@ namespace AdvancedDemo4._0
 
             this.RenderTechnic.AddPostEffect(new AntiAliasingPostEffectStalker());
 
-            CameraFirstPerson cam = new CameraFirstPerson(MathHelper.ToRadians(30), MathHelper.ToRadians(-10), new Vector3(150, 150, 200), GraphicInfo.Viewport);
+            CameraFirstPerson cam = new CameraFirstPerson(MathHelper.ToRadians(30), MathHelper.ToRadians(-10), new Vector3(150, 150, 200), GraphicInfo);
 
             this.World.CameraManager.AddCamera(cam);
 

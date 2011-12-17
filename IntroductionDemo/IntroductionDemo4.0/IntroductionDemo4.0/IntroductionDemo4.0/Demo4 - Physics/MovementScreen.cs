@@ -93,7 +93,7 @@ namespace IntroductionDemo4._0
             camerasNames.Value = cam0.Name;
             camerasNames.Next();
 
-            cam1 = new CameraFirstPerson(GraphicInfo.Viewport);
+            cam1 = new CameraFirstPerson(GraphicInfo);
             ///Dando um nome a ela (para poder recupera-la depois)
             cam1.Name = "first person";
             cam1.FarPlane = 3000;

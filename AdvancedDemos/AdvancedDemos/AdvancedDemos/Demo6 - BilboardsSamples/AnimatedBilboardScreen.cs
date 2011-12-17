@@ -105,7 +105,7 @@ namespace AdvancedDemo4._0
             #endregion
 
 
-            CameraFirstPerson cam = new CameraFirstPerson(MathHelper.ToRadians(-60), MathHelper.ToRadians(-10), new Vector3(-200, 150, 250), GraphicInfo.Viewport);
+            CameraFirstPerson cam = new CameraFirstPerson(MathHelper.ToRadians(-60), MathHelper.ToRadians(-10), new Vector3(-200, 150, 250), GraphicInfo);
             this.World.CameraManager.AddCamera(cam);
 
             SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grassCube");
