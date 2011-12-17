@@ -128,7 +128,7 @@ namespace IntroductionDemo4._0
 
             #endregion            
 
-            cam = new CameraFirstPerson(GraphicInfo.Viewport);            
+            cam = new CameraFirstPerson(GraphicInfo);            
             cam.FarPlane = 3000;
 
             lt = new LightThrowBepu(this.World, factory);

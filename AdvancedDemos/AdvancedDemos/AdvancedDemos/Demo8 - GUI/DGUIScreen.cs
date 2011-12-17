@@ -116,7 +116,7 @@ namespace AdvancedDemo4._0
             this.World.AddLight(ld5);
             #endregion
 
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(false,GraphicInfo.Viewport));
+            this.World.CameraManager.AddCamera(new CameraFirstPerson(false,GraphicInfo));
 
             this.RenderTechnic.AddPostEffect(new AntiAliasingPostEffectStalker());
 

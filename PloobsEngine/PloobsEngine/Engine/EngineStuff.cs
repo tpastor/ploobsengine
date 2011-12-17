@@ -269,11 +269,7 @@ namespace PloobsEngine.Engine
             graphics.PreferredBackBufferWidth = initialDescription.BackBufferWidth;
             graphics.PreferredDepthStencilFormat = DepthFormat.Depth24Stencil8;
             graphics.SupportedOrientations = initialDescription.SupportedOrientations;
-
-
-            graphics.ApplyChanges();
-
-            
+            graphics.ApplyChanges();            
         }        
         
 
@@ -706,18 +702,19 @@ namespace PloobsEngine.Engine
         /// Initializes a new instance of the <see cref="EngineStuff"/> class.
         /// </summary>        
         private EngineStuff(SharedGraphicsDeviceManager SharedGraphicsDeviceManager, ContentManager ContentManager, ref InitialEngineDescription initialDescription)
-        {
+        {            
             this.ContentManager = ContentManager;
             this.initialDescription = initialDescription;
             ActiveLogger.logger = initialDescription.Logger;
 
             this.graphics = SharedGraphicsDeviceManager;
+
             GraphicsDevice = SharedGraphicsDeviceManager.Current.GraphicsDevice;
             graphics.GraphicsProfile = initialDescription.GraphicsProfile;            
             graphics.SynchronizeWithVerticalRetrace = initialDescription.UseVerticalSyncronization;            
             graphics.PreferredBackBufferHeight = initialDescription.BackBufferHeight;
             graphics.PreferredBackBufferWidth = initialDescription.BackBufferWidth;
-            graphics.PreferredDepthStencilFormat = DepthFormat.Depth24Stencil8;
+            graphics.PreferredDepthStencilFormat = DepthFormat.Depth24Stencil8;            
             LoadContent();
         }
 

@@ -95,7 +95,7 @@ namespace AdvancedDemo4._0
 
             ///Classic Camera =P
             
-            CameraFirstPerson cam = new CameraFirstPerson(MathHelper.ToRadians(30), MathHelper.ToRadians(-30), new Vector3(50,50,75), GraphicInfo.Viewport);
+            CameraFirstPerson cam = new CameraFirstPerson(MathHelper.ToRadians(30), MathHelper.ToRadians(-30), new Vector3(50,50,75), GraphicInfo);
             cam.FarPlane = 500;
             cam.NearPlane = 1;
             cam.MoveSpeed *= 2;

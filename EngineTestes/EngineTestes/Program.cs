@@ -4,6 +4,7 @@ using PloobsEngine.SceneControl;
 using EngineTestes.LoadingScreen;
 using ProjectTemplate;
 using EngineTestes._2DSamples;
+using AdvancedDemo4._0;
 
 namespace EngineTestes
 {
@@ -27,9 +28,9 @@ namespace EngineTestes
         }
 
         static void LoadScreen(ScreenManager manager)
-        {
-            //manager.AddScreen(new Primitive2D());
-            manager.AddScreen(new Teste2D());
+        {            
+            manager.AddScreen(new Primitive2D());
+            //manager.AddScreen(new Teste2D());
             //manager.AddScreen(new SponzaScreen());
             //manager.AddScreen(new ForwardMaterialsScreen());
             //manager.AddScreen(new PostEffectScreen());            
@@ -39,6 +40,7 @@ namespace EngineTestes
             //manager.AddScreen(new DeferredScreen());
             //manager.AddScreen(new DeferredLoadScreen());
             //manager.AddScreen(new DeferredAnimatedScreen());
+            //manager.AddScreen(new ForwardAnimatedScreen());
             //manager.AddScreen(new CharacterScreen());
             //manager.AddScreen(new ParticleScreen());
             //manager.AddScreen(new PostEffectScreen());

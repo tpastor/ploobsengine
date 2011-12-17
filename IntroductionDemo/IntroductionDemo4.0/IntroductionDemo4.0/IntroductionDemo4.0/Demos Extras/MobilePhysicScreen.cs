@@ -16,19 +16,20 @@ namespace IntroductionDemo4._0
 {
     public class MobilePhysicScreen : IScene
     {
-
-        LightThrowBepu LightThrowBepu;
+                
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
+            world = new IWorld(new BepuPhysicWorld(-9.8f), new SimpleCuller());
 
-            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
+            ForwardRenderTecnichDescription desc = ForwardRenderTecnichDescription.Default();
             desc.BackGroundColor = Color.CornflowerBlue;
-            renderTech = new DeferredRenderTechnic(desc);
+            renderTech = new ForwardRenderTecnich(desc);
         }
 
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory ,IContentManager contentManager)
         {
+            BepuPhysicWorld.ApplyHighStabilitySettings(this.World.PhysicWorld as BepuPhysicWorld);
+
             base.LoadContent(GraphicInfo, factory, contentManager);
 
             {
@@ -37,34 +38,56 @@ namespace IntroductionDemo4._0
                 ForwardXNABasicShader shader = new ForwardXNABasicShader(ForwardXNABasicShaderDescription.Default());
                 ForwardMaterial fmaterial = new ForwardMaterial(shader);
                 IObject obj = new IObject(fmaterial, simpleModel, tmesh);
-                this.World.AddObject(obj);
+                this.World.AddObject(obj);               
+                
             }
             {
                 SimpleModel simpleModel = new SimpleModel(factory, "Model//uzi");
-                MobileMeshObject tmesh = new MobileMeshObject(simpleModel, new Vector3(100, 100, 10), Matrix.Identity, Vector3.One * 50, MaterialDescription.DefaultBepuMaterial(),BEPUphysics.CollisionShapes.MobileMeshSolidity.DoubleSided,10);
+                simpleModel.SetTexture(factory.CreateTexture2DColor(1, 1, Color.Green), TextureType.DIFFUSE);
+                MobileMeshObject tmesh = new MobileMeshObject(simpleModel, new Vector3(100, 100, 10), Matrix.Identity, Vector3.One * 10, MaterialDescription.DefaultBepuMaterial(),BEPUphysics.CollisionShapes.MobileMeshSolidity.DoubleSided,10);
                 //TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, new Vector3(100, 100, 10), Matrix.Identity, Vector3.One * 50, MaterialDescription.DefaultBepuMaterial());
                 ForwardXNABasicShader shader = new ForwardXNABasicShader(ForwardXNABasicShaderDescription.Default());
                 ForwardMaterial fmaterial = new ForwardMaterial(shader);
                 IObject obj = new IObject(fmaterial, simpleModel, tmesh);
-                this.World.AddObject(obj); 
+                this.World.AddObject(obj);
+                shader.BasicEffect.EnableDefaultLighting();
             }
 
-            LightThrowBepu = new LightThrowBepu(this.World, factory);
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo.Viewport));            
-        }
+            {
+                SimpleModel simpleModel = new SimpleModel(factory, "Model//uzi");
+                simpleModel.SetTexture(factory.CreateTexture2DColor(1, 1, Color.Yellow), TextureType.DIFFUSE);
+                MobileMeshObject tmesh = new MobileMeshObject(simpleModel, new Vector3(150, 100, 10), Matrix.Identity, Vector3.One * 20, MaterialDescription.DefaultBepuMaterial(), BEPUphysics.CollisionShapes.MobileMeshSolidity.DoubleSided, 10);
+                //TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, new Vector3(100, 100, 10), Matrix.Identity, Vector3.One * 50, MaterialDescription.DefaultBepuMaterial());
+                ForwardXNABasicShader shader = new ForwardXNABasicShader(ForwardXNABasicShaderDescription.Default());
+                ForwardMaterial fmaterial = new ForwardMaterial(shader);
+                IObject obj = new IObject(fmaterial, simpleModel, tmesh);
+                this.World.AddObject(obj);
+                shader.BasicEffect.EnableDefaultLighting();
 
-        protected override void CleanUp(EngineStuff engine)
-        {
-            base.CleanUp(engine);
-            LightThrowBepu.CleanUp();
+            }
+
+            {
+                SimpleModel simpleModel = new SimpleModel(factory, "Model//uzi");
+                simpleModel.SetTexture(factory.CreateTexture2DColor(1, 1, Color.Red), TextureType.DIFFUSE);
+                MobileMeshObject tmesh = new MobileMeshObject(simpleModel, new Vector3(200, 100, 10), Matrix.Identity, Vector3.One * 15, MaterialDescription.DefaultBepuMaterial(), BEPUphysics.CollisionShapes.MobileMeshSolidity.DoubleSided, 10);
+                //TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, new Vector3(100, 100, 10), Matrix.Identity, Vector3.One * 50, MaterialDescription.DefaultBepuMaterial());
+                ForwardXNABasicShader shader = new ForwardXNABasicShader(ForwardXNABasicShaderDescription.Default());
+                ForwardMaterial fmaterial = new ForwardMaterial(shader);
+                IObject obj = new IObject(fmaterial, simpleModel, tmesh);
+                this.World.AddObject(obj);
+                shader.BasicEffect.EnableDefaultLighting();
+            }
+            
+            this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo));            
         }
+        
 
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);
 
             render.RenderTextComplete("Demo: Physic Triangle Mesh Mobile Sample", new Vector2(GraphicInfo.Viewport.Width - 515, 15), Color.White, Matrix.Identity);
-            render.RenderTextComplete("The uzzi gun is a Triangle Mesh", new Vector2(GraphicInfo.Viewport.Width - 515, 35), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Uzzies guns are Triangle Meshes", new Vector2(GraphicInfo.Viewport.Width - 515, 35), Color.White, Matrix.Identity);
         }
 
     }

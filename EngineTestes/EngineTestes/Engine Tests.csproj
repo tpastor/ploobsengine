@@ -150,6 +150,7 @@
     <Compile Include="AI\Steering\Pedestrian.cs" />
     <Compile Include="AI\Steering\PedestrianPlugIn.cs" />
     <Compile Include="AI\Steering\SteerScreen.cs" />
+    <Compile Include="Animation\ForwardAnimatedScreen.cs" />
     <Compile Include="BilboardsSamples\BilboardScreen.cs" />
     <Compile Include="Bolt\BoltObject.cs" />
     <Compile Include="Bolt\BoltSample.cs" />
@@ -190,7 +191,7 @@
     <Compile Include="Post\DreamPostEffect.cs" />
     <Compile Include="Post\UnderWater.cs" />
     <Compile Include="Post\PostEffectScreen.cs" />
-    <Compile Include="DeferredAnimatedScreen.cs" />
+    <Compile Include="Animation\DeferredAnimatedScreen.cs" />
     <Compile Include="Loader\DeferredLoadScreen.cs" />
     <Compile Include="DeferredScreen.cs" />
     <Compile Include="FirstScreen.cs" />

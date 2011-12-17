@@ -61,7 +61,7 @@ namespace IntroductionDemo4._0
             this.World.AddLight(ld);                                             
            
             ///Camera basica
-            ICamera cam = new CameraFirstPerson(GraphicInfo.Viewport);
+            ICamera cam = new CameraFirstPerson(GraphicInfo);
             cam.Name = "stdCam";
             
             this.World.CameraManager.AddCamera(cam);                                                        

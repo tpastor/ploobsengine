@@ -120,7 +120,7 @@ namespace IntroductionDemo4._0
             ///Create a FirstPerson Camera
             ///This is a special camera, used in the development
             ///You can move around using wasd / qz / and the mouse
-            CameraFirstPerson cam = new CameraFirstPerson(GraphicInfo.Viewport);            
+            CameraFirstPerson cam = new CameraFirstPerson(GraphicInfo);            
             this.World.CameraManager.AddCamera(cam);
 
             ///Create some directionals lights and add to the world

@@ -18,6 +18,7 @@ namespace IntroductionDemo4._0
             ScreenManager.RemoveScreen(this);
 
             DemosHomeScreen menu = new DemosHomeScreen();
+            
             ScreenManager.AddScreen(menu);
         }
 

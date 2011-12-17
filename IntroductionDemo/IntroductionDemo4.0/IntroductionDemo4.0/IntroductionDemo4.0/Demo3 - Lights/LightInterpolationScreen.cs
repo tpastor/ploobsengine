@@ -50,7 +50,7 @@ namespace IntroductionDemo4._0
 
             #endregion            
 
-            CameraFirstPerson cam = new CameraFirstPerson(GraphicInfo.Viewport);            
+            CameraFirstPerson cam = new CameraFirstPerson(GraphicInfo);            
             cam.FarPlane = 2000;
 
             ///Atirador de bolas classico
