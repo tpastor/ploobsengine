@@ -39,11 +39,12 @@ namespace PloobsEngine.Features.DebugDraw
             base.LoadContent(GraphicInfo, factory);
             batch = new PrimitiveBatch(factory);
         }
-        
 
+
+        public static readonly String myName = "Primitive2DDraw";
         public override string getMyName()
         {
-            return "Primitive2DDraw";
+            return myName;
         }
 
         protected override void AfterDraw(PloobsEngine.SceneControl.RenderHelper render, Microsoft.Xna.Framework.GameTime gt, Microsoft.Xna.Framework.Matrix activeView, Microsoft.Xna.Framework.Matrix activeProjection)

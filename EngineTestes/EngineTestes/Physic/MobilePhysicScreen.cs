@@ -49,7 +49,7 @@ namespace EngineTestes
             }
 
             new LightThrowBepu(this.World, factory);
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo.Viewport));            
+            this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo));            
         }
 
         protected override void Draw(GameTime gameTime, RenderHelper render)

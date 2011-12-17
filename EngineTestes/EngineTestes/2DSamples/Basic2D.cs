@@ -158,10 +158,10 @@ namespace EngineTestes._2DSamples
         void sc_KeyStateChange(InputPlayableKeyBoard ipk)
         {
             SpriteAnimated sa = sheet.Modelo as SpriteAnimated;
-            if (sa.Animation == "ANIM1")
-                sa.Animation = "ANIM2";
+            if (sa.GetCurrentAnimation().Name == "ANIM1")
+                sa.ChangeAnimation("ANIM2");
             else
-                sa.Animation = "ANIM1";
+                sa.ChangeAnimation("ANIM1");
         }
 
         void o_OnHasMoved(I2DObject Reciever)

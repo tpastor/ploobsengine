@@ -59,7 +59,7 @@ namespace EngineTestes
             //ForwardMaterial dm = new ForwardMaterial(shader);
             //this.World.AddObject(new IObject(dm, model, po));        
             
-            CameraFirstPerson cam = new CameraFirstPerson(GraphicInfo.Viewport);
+            CameraFirstPerson cam = new CameraFirstPerson(GraphicInfo);
             cam.MoveSpeed *= 5;
             this.World.CameraManager.AddCamera(cam);
 

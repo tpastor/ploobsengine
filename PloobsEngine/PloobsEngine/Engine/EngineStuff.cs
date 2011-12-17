@@ -742,17 +742,17 @@ namespace PloobsEngine.Engine
             get;
         }
 
-        public static void InitializePloobsEngine(SharedGraphicsDeviceManager SharedGraphicsDeviceManager, ContentManager ContentManager, ref InitialEngineDescription initialDescription)
+        public static void InitializePloobsEngine(SharedGraphicsDeviceManager SharedGraphicsDeviceManager, ContentManager ContentManager, ref InitialEngineDescription initialDescription, bool forceRecreating = false)
         {
-            if (Current == null)
+            if (Current == null || forceRecreating ==true)
             {
                 Current = new EngineStuff(SharedGraphicsDeviceManager, ContentManager, ref initialDescription);
             }
         }
 
-        public static void InitializePloobsEngine(SharedGraphicsDeviceManager SharedGraphicsDeviceManager, ContentManager ContentManager, bool UseAnisotropicFiltering = false, bool useMipMapWhenPossible = false)
+        public static void InitializePloobsEngine(SharedGraphicsDeviceManager SharedGraphicsDeviceManager, ContentManager ContentManager, bool forceRecreating = false, bool UseAnisotropicFiltering = false, bool useMipMapWhenPossible = false)
         {
-            if (Current == null)
+            if (Current == null || forceRecreating == true)
             {
                 Current = new EngineStuff(SharedGraphicsDeviceManager, ContentManager, UseAnisotropicFiltering, useMipMapWhenPossible);
 
@@ -770,6 +770,7 @@ namespace PloobsEngine.Engine
 
         /// <summary>
         /// Applies the engine description.
+        /// NOT RECOMENDED IN WP7 + XNA
         /// </summary>
         /// <param name="initialDescription">The initial description.</param>
         public void ApplyEngineDescription(ref InitialEngineDescription initialDescription)
@@ -781,7 +782,7 @@ namespace PloobsEngine.Engine
         
             graphics.SynchronizeWithVerticalRetrace = initialDescription.UseVerticalSyncronization;        
             graphics.PreferredBackBufferHeight = initialDescription.BackBufferHeight;
-            graphics.PreferredBackBufferWidth = initialDescription.BackBufferWidth;        
+            graphics.PreferredBackBufferWidth = initialDescription.BackBufferWidth;            
             graphics.ApplyChanges();
 
             
@@ -847,9 +848,7 @@ namespace PloobsEngine.Engine
             
             ///THE ONLY COMPONENTS ADDED BY DEFAULT                        
             ComponentManager.AddComponent(new InputAdvanced());
-
             ComponentManager.AddComponent(new TaskProcessor());
-
         }
 
         void GraphicsDevice_DeviceReset(object sender, EventArgs e)
@@ -969,14 +968,19 @@ namespace PloobsEngine.Engine
 
         }
 
+        PageOrientation PageOrientation;
         /// <summary>
         /// Add a new scene to the Engine
         /// REMOVE ALL PREVIOUS ONES
         /// </summary>
-        /// <param name="Screen"></param>
+        /// <param name="Screen">The screen.</param>
+        /// <param name="PhoneApplicationPage">The phone application page.</param>
         public void StartScene(IScreen Screen, PhoneApplicationPage PhoneApplicationPage)
-        {            
+        {   
             this.PhoneApplicationPage = PhoneApplicationPage;
+            PageOrientation = PhoneApplicationPage.Orientation;
+
+            this.PhoneApplicationPage.OrientationChanged += new EventHandler<OrientationChangedEventArgs>(PhoneApplicationPage_OrientationChanged);
 
             ///restart everything
             if (elementRenderer != null)
@@ -995,7 +999,7 @@ namespace PloobsEngine.Engine
                 timer.Stop();
                 timer.Dispose();
             }
-
+            
             SharedGraphicsDeviceManager.Current.GraphicsDevice.SetSharingMode(true); 
             timer = new GameTimer();
             timer.UpdateInterval = initialDescription.UpdateInterval;
@@ -1009,6 +1013,52 @@ namespace PloobsEngine.Engine
             }
 
             ScreenManager.AddScreen(Screen);
+        }
+
+        void PhoneApplicationPage_OrientationChanged(object sender, OrientationChangedEventArgs e)
+        {
+            ////can i change the parameters ??            
+            if (PhoneApplicationPage.SupportedOrientations == SupportedPageOrientation.PortraitOrLandscape
+                ||
+                (PhoneApplicationPage.SupportedOrientations == SupportedPageOrientation.Landscape && ( (e.Orientation & PageOrientation.Landscape ) == PageOrientation.Landscape))
+                ||
+                (PhoneApplicationPage.SupportedOrientations == SupportedPageOrientation.Portrait && ((e.Orientation & PageOrientation.Portrait) == PageOrientation.Portrait))
+                )
+            {
+                
+                if (PageOrientation != PhoneApplicationPage.Orientation)
+                {
+                    ///the manual way ....
+                    graphics.PreferredBackBufferHeight = initialDescription.BackBufferWidth;
+                    graphics.PreferredBackBufferWidth = initialDescription.BackBufferHeight;
+                    graphics.ApplyChanges();
+
+                    Rectangle fs = new Rectangle(0, 0, graphics.GraphicsDevice.Viewport.Width, graphics.GraphicsDevice.Viewport.Height);
+                    Vector2 halfPixel = new Vector2();
+                    halfPixel.X = 0.5f / (float)GraphicsDevice.PresentationParameters.BackBufferWidth;
+                    halfPixel.Y = 0.5f / (float)GraphicsDevice.PresentationParameters.BackBufferHeight;
+
+                    GraphicInfo.ChangeProps(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount, GraphicsDevice.PresentationParameters.DepthStencilFormat, initialDescription.useMipMapWhenPossible, initialDescription.UseAnisotropicFiltering);
+                    GraphicInfo.FireEvent(GraphicInfo);
+
+                    PageOrientation = PhoneApplicationPage.Orientation;
+                    
+                    initialDescription.BackBufferWidth = graphics.PreferredBackBufferWidth;
+                    initialDescription.BackBufferHeight = graphics.PreferredBackBufferHeight;
+
+                    ///restart 
+                    if (elementRenderer != null)
+                        elementRenderer.Dispose();
+
+                    elementRenderer = new UIElementRenderer(PhoneApplicationPage, GraphicInfo.BackBufferWidth, GraphicInfo.BackBufferHeight);
+
+                    if (EventHandler != null)
+                        PhoneApplicationPage.LayoutUpdated -= EventHandler;
+
+                    EventHandler = new EventHandler(PhoneApplicationPage_LayoutUpdated);
+                    PhoneApplicationPage.LayoutUpdated += EventHandler;
+                }
+            }
         }
 
         void PhoneApplicationPage_LayoutUpdated(object sender, EventArgs e)

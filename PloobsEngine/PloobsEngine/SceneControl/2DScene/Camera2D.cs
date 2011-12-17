@@ -29,6 +29,8 @@ namespace PloobsEngine.SceneControl._2DScene
 {
     public class Camera2D : PloobsEngine.SceneControl._2DScene.ICamera2D
     {
+        public event Action<Camera2D> ReachedTheTrackingPosition;
+        
         private const float _minZoom = 0.02f;
         private const float _maxZoom = 20f;
         private static GraphicInfo _graphics;
@@ -38,7 +40,7 @@ namespace PloobsEngine.SceneControl._2DScene
         private Vector2 _currentPosition;
 
         private float _currentRotation;
-
+        private bool reached = true;
         private float _currentZoom;
         private Vector2 _maxPosition;
         private float _maxRotation;
@@ -53,6 +55,41 @@ namespace PloobsEngine.SceneControl._2DScene
         private I2DObject _trackingBody;
         private Vector2 _translateCenter;
         private Matrix _view;
+        private float intertiaControllerExp = 2;
+        private float intertiaControllerDivider = 10;
+        private float intertiaController = 1;
+        private float speedUpDistance = 10;
+        private float distanceToReach = 2;
+
+        public float DistanceToReach
+        {
+            get { return ConvertUnits.ToDisplayUnits(distanceToReach); }
+            set { distanceToReach = ConvertUnits.ToSimUnits(value); }
+        }
+
+        public float SpeedUpDistance
+        {
+            get { return ConvertUnits.ToDisplayUnits(speedUpDistance); }
+            set { speedUpDistance = ConvertUnits.ToSimUnits(value); }
+        }
+
+        public float IntertiaController
+        {
+            get { return intertiaController; }
+            set { intertiaController = value; }
+        }
+
+        public float IntertiaControllerDivider
+        {
+            get { return intertiaControllerDivider; }
+            set { intertiaControllerDivider = value; }
+        }
+
+        public float IntertiaControllerExp
+        {
+            get { return intertiaControllerExp; }
+            set { intertiaControllerExp = value; }
+        }
 
         /// <summary>
         /// The constructor for the Camera2D class.
@@ -61,6 +98,7 @@ namespace PloobsEngine.SceneControl._2DScene
         public Camera2D(GraphicInfo graphics)
         {
             _graphics = graphics;
+            _graphics.OnGraphicInfoChange += new OnGraphicInfoChange(_graphics_OnGraphicInfoChange);
             _simprojection = Matrix.CreateOrthographicOffCenter(0f, ConvertUnits.ToSimUnits(_graphics.Viewport.Width),
                                                              ConvertUnits.ToSimUnits(_graphics.Viewport.Height), 0f, 0f,
                                                              1f);
@@ -75,6 +113,21 @@ namespace PloobsEngine.SceneControl._2DScene
                                            ConvertUnits.ToSimUnits(_graphics.Viewport.Height / 2f));
 
             ResetCamera();
+        }
+
+        void _graphics_OnGraphicInfoChange(GraphicInfo newGraphicInfo)
+        {
+            _simprojection = Matrix.CreateOrthographicOffCenter(0f, ConvertUnits.ToSimUnits(_graphics.Viewport.Width),
+                                                             ConvertUnits.ToSimUnits(_graphics.Viewport.Height), 0f, 0f,
+                                                             1f);
+
+            _projection = Matrix.CreateOrthographicOffCenter(0f, _graphics.Viewport.Width,
+                                                             _graphics.Viewport.Height, 0f, 0f,
+                                                             1f);
+
+            _translateCenter = new Vector2(ConvertUnits.ToSimUnits(_graphics.Viewport.Width / 2f),
+                                           ConvertUnits.ToSimUnits(_graphics.Viewport.Height / 2f));
+
         }
 
         public Matrix View
@@ -193,7 +246,13 @@ namespace PloobsEngine.SceneControl._2DScene
                 _trackingBody = value;
                 if (_trackingBody != null)
                 {
+                    reached = false;
                     _positionTracking = true;
+                }
+                else
+                {
+                    _positionTracking = false;
+                    reached = true;
                 }
             }
         }
@@ -203,12 +262,14 @@ namespace PloobsEngine.SceneControl._2DScene
             get { return _positionTracking; }
             set
             {
-                if (value && _trackingBody != null)
+                if (value)
                 {
+                    reached = false;
                     _positionTracking = true;
                 }
                 else
                 {
+                    reached = true;
                     _positionTracking = false;
                 }
             }
@@ -347,9 +408,9 @@ namespace PloobsEngine.SceneControl._2DScene
                 delta /= distance;
             }
             float inertia;
-            if (distance < 10f)
+            if (distance < speedUpDistance)
             {
-                inertia = (float)Math.Pow(distance / 10.0, 2.0);
+                inertia = (float)Math.Pow(distance / intertiaControllerDivider, intertiaControllerExp);
             }
             else
             {
@@ -359,9 +420,9 @@ namespace PloobsEngine.SceneControl._2DScene
             float rotDelta = _targetRotation - _currentRotation;
 
             float rotInertia;
-            if (Math.Abs(rotDelta) < 5f)
+            if (Math.Abs(rotDelta) < speedUpDistance/2)
             {
-                rotInertia = (float)Math.Pow(rotDelta / 5.0, 2.0);
+                rotInertia = (float)Math.Pow(rotDelta / (intertiaControllerDivider / 2), intertiaControllerExp);
             }
             else
             {
@@ -372,12 +433,20 @@ namespace PloobsEngine.SceneControl._2DScene
                 rotDelta /= Math.Abs(rotDelta);
             }
 
-            _currentPosition += 100f * delta * inertia * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            _currentRotation += 80f * rotDelta * rotInertia * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            _currentPosition += 100f * delta * inertia * (float)gameTime.ElapsedGameTime.TotalSeconds * intertiaController;
+            _currentRotation += 80f * rotDelta * rotInertia * (float)gameTime.ElapsedGameTime.TotalSeconds * intertiaController;
 
             SetView();
             ///naiiiiiiiive =P
             updatefrustrum = true;
+
+
+            delta = _targetPosition - _currentPosition;
+            if (reached == false && ReachedTheTrackingPosition != null && delta.Length() < distanceToReach)
+            {
+                ReachedTheTrackingPosition(this);
+                reached = true;
+            }
         }
 
         public Vector2 ConvertScreenToWorld(Vector2 location, bool useSimulatedProjection = true , bool returnInDisplayUnits = true)

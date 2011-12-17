@@ -152,7 +152,7 @@ namespace EngineTestes
             //UnderWater nt = new UnderWater();
             //this.RenderTechnic.AddPostEffect(nt);
             
-            CameraFirstPerson cam = new CameraFirstPerson(GraphicInfo.Viewport);
+            CameraFirstPerson cam = new CameraFirstPerson(GraphicInfo);
             cam.MoveSpeed *= 5;
             this.World.CameraManager.AddCamera(cam);
 

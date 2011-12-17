@@ -68,7 +68,7 @@ namespace EngineTestes
                 }
             }
 
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo.Viewport));
+            this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo));
             
         }
 

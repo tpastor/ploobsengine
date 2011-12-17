@@ -85,7 +85,7 @@ namespace EngineTestes
             lt = new LightThrowBepu(this.World, factory);
 
             ///add a camera
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo.Viewport));
+            this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo));
         }
 
         /// <summary>

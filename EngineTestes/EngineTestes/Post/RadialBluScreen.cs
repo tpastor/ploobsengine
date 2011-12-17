@@ -61,7 +61,7 @@ namespace ProjectTemplate
             this.RenderTechnic.AddPostEffect(RadialBlurPostEffect);
 
             ///add a camera
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo.Viewport));
+            this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo));
         }
 
         RadialBlurPostEffect RadialBlurPostEffect = new RadialBlurPostEffect();

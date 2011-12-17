@@ -28,9 +28,55 @@ namespace PloobsEngine.Modelo2D
 {
     public class AnimationClass
     {
-        public Rectangle[] Rectangles;        
-        public bool IsLooping = true;
-        public int Frames;
-        public float Rotation;
+        internal AnimationClass(String Name, bool isLooping, float FramesPerSecond)
+        {
+            timeToUpdate = (1f / FramesPerSecond);
+            this.Name = Name;
+            IsLooping = isLooping;
+        }
+
+        public String Name
+        {
+            get;
+            internal set;
+        }
+
+        internal float timeToUpdate = 0.05f;
+        public float FramesPerSecond
+        {            
+            get { return 1f / timeToUpdate; }
+        }
+
+
+        public Rectangle[] Rectangles
+        {
+            internal set;
+            get;
+        }
+        /// <summary>
+        /// Default = true
+        /// </summary>
+        public bool IsLooping
+        {
+            set;
+            get;
+        }
+
+        /// <summary>
+        /// Total Frames
+        /// </summary>
+        public int Frames
+        {
+            internal set;
+            get;
+        }
+        /// <summary>
+        /// Animation Rotation
+        /// </summary>
+        public float Rotation
+        {
+            set;
+            get;
+        }
     }
 }

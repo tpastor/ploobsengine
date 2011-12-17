@@ -84,13 +84,6 @@ namespace PloobsEngine.Features.DebugDraw
             // set up a new basic effect, and enable vertex colors.
             basicEffect = factory.GetBasicEffect();
             basicEffect.VertexColorEnabled = true;
-
-            // projection uses CreateOrthographicOffCenter to create 2d projection
-            // matrix with 0,0 in the upper left.
-            basicEffect.Projection = Matrix.CreateOrthographicOffCenter
-                (0, device.Viewport.Width,
-                device.Viewport.Height, 0,
-                0, 1);
         }
 
         public void Dispose()
