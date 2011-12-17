@@ -75,7 +75,7 @@ namespace PloobsProjectTemplate.TemplateScreens
             this.World.AddObject(obj);
 
             ///add a camera
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo.Viewport));
+            this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo));
 
             ///task sample
             taskSample taskSample = new taskSample();

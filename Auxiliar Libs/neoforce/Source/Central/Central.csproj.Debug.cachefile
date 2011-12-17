@@ -1,7 +1,3 @@
-Content\Images\Caption.xnb
-Content\Images\Default.xnb
-Content\Images\Green.xnb
-Content\Layout\Window.xml
 Content\Skins\Default\Cursors\Busy.xnb
 Content\Skins\Default\Cursors\Cross.xnb
 Content\Skins\Default\Cursors\Default.xnb
@@ -77,3 +73,7 @@ Content\Skins\Default\Images\Window.Icon.xnb
 Content\Skins\Default\Images\Window.xnb
 Content\Skins\Default\Images\Window.Shadow.xnb
 Content\Skins\Default\Skin.xml
+Content\Images\Caption.xnb
+Content\Images\Default.xnb
+Content\Images\Green.xnb
+Content\Layout\Window.xml
