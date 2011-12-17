@@ -96,7 +96,7 @@ namespace EngineTestes
             this.World.AddLight(ld5);
             #endregion
 
-            CameraFirstPerson cam = new CameraFirstPerson(GraphicInfo.Viewport);
+            CameraFirstPerson cam = new CameraFirstPerson(GraphicInfo);
             cam.MoveSpeed *= 5;
             this.World.CameraManager.AddCamera(cam);
 

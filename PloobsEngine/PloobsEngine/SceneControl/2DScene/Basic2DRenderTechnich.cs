@@ -38,6 +38,7 @@ namespace PloobsEngine.SceneControl._2DScene
         public event RenderBackGround RenderBackGround = null;
         public event BeforeDraw BeforeDraw = null;
         public event AfterDrawBeforePostEffects AfterDrawBeforePostEffects = null;
+        GraphicFactory factory;
         
         /// <summary>
         /// Default false
@@ -122,6 +123,7 @@ namespace PloobsEngine.SceneControl._2DScene
         protected override void AfterLoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
         {
             this.ginfo = ginfo;
+            this.factory = factory;
 #if !WINDOWS_PHONE && !REACH
             blendState = new BlendState();
             blendState.ColorSourceBlend = Blend.DestinationColor;
@@ -129,12 +131,24 @@ namespace PloobsEngine.SceneControl._2DScene
             shadowmapResolver = new PloobsEngine.Light2D.ShadowmapResolver(factory,new QuadRender(factory.device), PloobsEngine.Light2D.ShadowmapSize.Size512, PloobsEngine.Light2D.ShadowmapSize.Size512);
             screenShadows = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);                        
 #endif
+            this.ginfo.OnGraphicInfoChange += new OnGraphicInfoChange(ginfo_OnGraphicInfoChange);
             if (UsePostProcessing)
             {
                 renderTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
                 postEffectTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
             }
             base.AfterLoadContent(manager, ginfo, factory);
+        }
+
+        void ginfo_OnGraphicInfoChange(GraphicInfo newGraphicInfo)
+        {
+            if (renderTarget != null && postEffectTarget != null)
+            {
+                renderTarget.Dispose();
+                postEffectTarget.Dispose();
+                renderTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
+                postEffectTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
+            }
         }
 
         protected override void ExecuteTechnic(Microsoft.Xna.Framework.GameTime gameTime, RenderHelper render, I2DWorld world)

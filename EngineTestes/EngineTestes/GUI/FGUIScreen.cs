@@ -99,7 +99,7 @@ namespace EngineTestes
             this.World.AddLight(ld5);
             #endregion
 
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(true,GraphicInfo.Viewport));
+            this.World.CameraManager.AddCamera(new CameraFirstPerson(true,GraphicInfo));
 
             SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//cubemap");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);

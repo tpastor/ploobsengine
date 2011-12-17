@@ -106,7 +106,7 @@ namespace ProjectTemplate
             this.RenderTechnic.AddPostEffect(new AntiAliasingPostEffect());
 
             ///add a camera
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo.Viewport));
+            this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo));
         }
 
         const float duration = 2;

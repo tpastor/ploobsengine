@@ -28,6 +28,7 @@ using PloobsEngine.Utils;
 using PloobsEngine.MessageSystem;
 using PloobsEngine.SceneControl;
 using PloobsEngine.Engine.Logger;
+using PloobsEngine.Engine;
 #if WINDOWS_PHONE
 using Microsoft.Xna.Framework.Input.Touch;
 #endif
@@ -64,12 +65,13 @@ namespace PloobsEngine.Cameras
         }
 #endif
 
+
         /// <summary>
         /// Initializes a new instance of the <see cref="CameraFirstPerson"/> class.
         /// </summary>
-        /// <param name="viewport">The viewport.</param>
-        public CameraFirstPerson(Viewport viewport)
-            : this(0, 0, new Vector3(0, 100, 150), viewport)
+        /// <param name="graphicInfo">The graphic info.</param>
+        public CameraFirstPerson(GraphicInfo graphicInfo)
+            : this(0, 0, new Vector3(0, 100, 150), graphicInfo)
         {            
         }
 #if WINDOWS
@@ -78,8 +80,8 @@ namespace PloobsEngine.Cameras
         /// </summary>
         /// <param name="useMouse">if set to <c>true</c> [use mouse].</param>
         /// <param name="viewport">The viewport.</param>
-        public CameraFirstPerson(bool useMouse, Viewport viewport)
-            : this(0, 0, new Vector3(0, 100, 150), viewport)
+        public CameraFirstPerson(bool useMouse, GraphicInfo graphicInfo)
+            : this(0, 0, new Vector3(0, 100, 150), graphicInfo)
         {
             this.useMouse = useMouse;
         }
@@ -88,10 +90,9 @@ namespace PloobsEngine.Cameras
         /// Initializes a new instance of the <see cref="CameraFirstPerson"/> class.
         /// </summary>
         /// <param name="useMouse">if set to <c>true</c> [use mouse].</param>
-        /// <param name="position">The position.</param>
-        /// <param name="viewport">The viewport.</param>
-        public CameraFirstPerson(bool useMouse, Vector3 position, Viewport viewport)
-            : this(0, 0, position, viewport)
+        /// <param name="position">The position.</param>        
+        public CameraFirstPerson(bool useMouse, Vector3 position, GraphicInfo graphicInfo)
+            : this(0, 0, position, graphicInfo)
         {
             this.useMouse = useMouse;
         }
@@ -115,12 +116,12 @@ namespace PloobsEngine.Cameras
         /// <param name="viewport">The viewport.</param>        
 #if WINDOWS_PHONE
         /// <param name="useAcelerometer">if set to <c>true</c> [use acelerometer].</param>
-        public CameraFirstPerson(float lrRot, float udRot, Vector3 startingPos, Viewport viewport,bool useAcelerometer  = false)
+        public CameraFirstPerson(float lrRot, float udRot, Vector3 startingPos, GraphicInfo graphicInfo, bool useAcelerometer = false)
 #else
-            public CameraFirstPerson(float lrRot, float udRot, Vector3 startingPos, Viewport viewport)
+            public CameraFirstPerson(float lrRot, float udRot, Vector3 startingPos, GraphicInfo graphicInfo)
 #endif
         {            
-            init(lrRot, udRot, startingPos,viewport);
+            init(lrRot, udRot, startingPos,graphicInfo);
 
 #if WINDOWS_PHONE
             this.useAcelerometer = useAcelerometer;
@@ -214,18 +215,26 @@ namespace PloobsEngine.Cameras
 
 #endif
 
-        private void init(float lrRot, float udRot, Vector3 startingPos, Viewport viewport)
+        private void init(float lrRot, float udRot, Vector3 startingPos, GraphicInfo graphicInfo)
         {
+            this.ginfo = graphicInfo;
             this.leftrightRot = lrRot;
-            this.updownRot = udRot;
-            this.viewPort = viewport;
-            _position = startingPos;            
-            _aspectRatio = viewPort.AspectRatio;            
+            this.updownRot = udRot;            
+            _position = startingPos;
+            _aspectRatio = graphicInfo.Viewport.AspectRatio;
+            graphicInfo.OnGraphicInfoChange += new OnGraphicInfoChange(graphicInfo_OnGraphicInfoChange);
             UpdateViewMatrix();
 #if WINDOWS
-            Mouse.SetPosition(viewPort.Width / 2, viewPort.Height / 2);
+            Mouse.SetPosition(graphicInfo.Viewport.Width / 2, graphicInfo.Viewport.Height / 2);
             originalMouseState = Mouse.GetState();
 #endif
+            _projection = Matrix.CreatePerspectiveFieldOfView(_fieldOdView, _aspectRatio, _nearPlane, _farPlane);
+            this._frustrum = new BoundingFrustum(_view * _projection);            
+        }
+
+        void graphicInfo_OnGraphicInfoChange(GraphicInfo newGraphicInfo)
+        {
+            _aspectRatio = newGraphicInfo.Viewport.AspectRatio;
             _projection = Matrix.CreatePerspectiveFieldOfView(_fieldOdView, _aspectRatio, _nearPlane, _farPlane);
             this._frustrum = new BoundingFrustum(_view * _projection);            
         }
@@ -238,6 +247,7 @@ namespace PloobsEngine.Cameras
         private bool useMouse = true;
         private MouseState originalMouseState;
 #endif
+        private GraphicInfo ginfo;
         private Vector3 _target = Vector3.Zero;
         private bool _hasmoved = true;
         private Vector3 _up = Vector3.Up;
@@ -252,8 +262,7 @@ namespace PloobsEngine.Cameras
         private float leftrightRot;
         private float updownRot;
         private float rotationSpeed = 0.005f;        
-        private float sensibility = 0.5f;
-        private Viewport viewPort;
+        private float sensibility = 0.5f;        
         private float moveSpeed = 1f;
 #if WINDOWS_PHONE
         Microsoft.Devices.Sensors.Accelerometer accelSensor;
@@ -504,7 +513,7 @@ namespace PloobsEngine.Cameras
                 float yDifference = currentMouseState.Y - originalMouseState.Y;
                 leftrightRot -= rotationSpeed * xDifference;
                 updownRot -= rotationSpeed * yDifference;
-                Mouse.SetPosition(viewPort.Width / 2, viewPort.Height / 2); //precisa zerar a posicao 
+                Mouse.SetPosition(ginfo.Viewport.Width / 2, ginfo.Viewport.Height / 2); //precisa zerar a posicao 
                 UpdateViewMatrix();
                 _hasmoved = true;
             }
@@ -539,7 +548,7 @@ namespace PloobsEngine.Cameras
                 AddToCameraPosition(new Vector3(0, -sensibility, 0));
                 _hasmoved = true;
             }
-        #else            
+#else
             TouchCollection tc = TouchPanel.GetState();
             if (tc.Count > 0)
             {

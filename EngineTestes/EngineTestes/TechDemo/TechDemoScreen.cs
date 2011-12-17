@@ -93,7 +93,7 @@ namespace EngineTestes
 
             #endregion
 
-            CameraFirstPerson cam = new CameraFirstPerson(GraphicInfo.Viewport);
+            CameraFirstPerson cam = new CameraFirstPerson(GraphicInfo);
             cam.FarPlane = 1000;
             cam.MoveSpeed *= 5;
             this.World.CameraManager.AddCamera(cam);

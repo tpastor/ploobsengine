@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010 Express for Windows Phone
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PloobsEngine", "PloobsEngine\PloobsEngine\PloobsEngine.csproj", "{1D050978-A350-47A8-B495-090DF10242B2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PloobsEngineContent", "PloobsEngine\PloobsEngineContent\PloobsEngineContent.contentproj", "{7ED0C250-A783-40B2-912E-4A4C222C4CE5}"

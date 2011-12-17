@@ -112,6 +112,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using PloobsEngine.Engine;
 
 
 namespace PloobsEngine.SceneControl
@@ -123,6 +124,7 @@ namespace PloobsEngine.SceneControl
     {
         public BloomPostEffect() : base(PostEffectType.WindowsPhoneAndReach) { }
 
+        GraphicFactory factory;
         #region IPostEffect Members
 
         int brightNess = 70;
@@ -197,7 +199,15 @@ namespace PloobsEngine.SceneControl
             subBlend.ColorDestinationBlend = Blend.One;
 
             rt = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
+            ginfo.OnGraphicInfoChange += new Engine.OnGraphicInfoChange(ginfo_OnGraphicInfoChange);
+            this.factory = factory;
             
+        }
+
+        void ginfo_OnGraphicInfoChange(Engine.GraphicInfo newGraphicInfo)
+        {
+            rt.Dispose();
+            rt = factory.CreateRenderTarget(newGraphicInfo.BackBufferWidth, newGraphicInfo.BackBufferHeight);
         }
 
         #endregion
