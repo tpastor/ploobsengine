@@ -58,7 +58,7 @@ namespace ProjectTemplate
             this.World.AddObject(obj); 
 
             ///add a camera
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo.Viewport));
+            this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo));
         }
 
         /// <summary>

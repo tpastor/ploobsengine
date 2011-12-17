@@ -94,7 +94,7 @@ namespace EngineTestes
                 (a) =>
                 {
                     animationIndex = (animationIndex + 1) % 2;
-                    (sheet.Modelo as SpriteAnimated).Animation = animations[animationIndex];                    
+                    (sheet.Modelo as SpriteAnimated).ChangeAnimation(animations[animationIndex]);                    
                 }
                 ));
         }

@@ -49,7 +49,7 @@ namespace ProjectTemplate
                 //sas.EnableTexture = true;
             }
 
-            var newCameraFirstPerson = new CameraFirstPerson(GraphicInfo.Viewport);        
+            var newCameraFirstPerson = new CameraFirstPerson(GraphicInfo);        
             this.World.CameraManager.AddCamera(newCameraFirstPerson);
         }
 
