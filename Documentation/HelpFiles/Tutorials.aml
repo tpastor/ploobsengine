@@ -33,10 +33,28 @@
       <title>PloobsEngine Windows Phone 7 Demos</title>
       <content>        
       <para>
-      There are two ways of using PloobsEngine with Windows Phone 7. The first one is relying on the StandAlone PloobsEngine with XNA (Check the Folder PhoneDemos). The second is to use the PloobsEngine with SilverLight and XNA (check the folder SilverlightEngineDemo) .
+      There are more than 10 demos + a small tutorial game in WP7. <legacyBold>Be aware that most of the features showed in the PC demos can be used in WP7 version also</legacyBold>.
       </para>       
       </content>          
     </section>
+    
+    <section address="Section5">
+      <title>More Demos ???!!!!</title>
+      <content>        
+      <para>
+      There are some features that we did not make specific demos. For more informations about them, check our 
+      <externalLink>
+          <linkText>EngineTest Project </linkText>          
+          <linkUri>http://code.google.com/p/port-ploobsengine/source/browse/#hg%2FEngineTestes%2FEngineTestes</linkUri>
+      </externalLink>              
+      (located in our repo, used to test new features).
+      </para>       
+      <para>
+      Remember that you can download the full repo with all the PloobsEngine Code from there =P
+      </para>
+      </content>          
+    </section>
+    
     
     <section address="Sectio3">
       <title>Engine Components</title>

@@ -36,7 +36,8 @@
       <title>Basic Concepts For 3D</title>      
       <content>
       <para>
-      This small section will explain the basic engine concepts using as a sample a 3D scene. All the topics discussed are pretty much the same for 2D (only the name of some classes change).
+      This small section will explain the basic engine concepts using as a sample a 3D scene. All the topics discussed are pretty much the same for 2D (only the name of some classes changes).
+      Check our Tutorials and our demos to learn more.
       </para>
       <para> People always says that pictures talks more than words,in software
       production its much more true than ever. So we will start with a simple class 

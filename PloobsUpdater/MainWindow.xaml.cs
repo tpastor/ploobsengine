@@ -199,7 +199,7 @@ namespace PloobsUpdater
                                FTP ftp = new FTP("ftp.ploobs.com.br", "ploobs", "5ruTrus6");
                                ftp.Connect();
                                ftp.ChangeDir("/ploobs/Web/Updater/" + sitem);
-                               String temppath = System.IO.Path.GetTempPath() + "PloobsEngine" + rdnum + ".rar";
+                               String temppath = System.IO.Path.GetTempPath() + System.IO.Path.GetRandomFileName();
                                ftp.OpenDownload("PloobsEngine.rar", temppath, true);
 
 
@@ -214,9 +214,13 @@ namespace PloobsUpdater
                                    (Action)(() => { label2.Content = "INSTALLING"; }));
                                
 
+                               if(File.Exists(System.IO.Path.GetTempPath() + "PloobsEngine//setup.exe"))
+                               {
+                                   File.Delete(System.IO.Path.GetTempPath() + "PloobsEngine//setup.exe");
+                               }
+
                                RarArchive.WriteToDirectory(temppath, System.IO.Path.GetTempPath(), NUnrar.Common.ExtractOptions.ExtractFullPath);
-
-
+                               
                                temppath = System.IO.Path.GetTempPath() + "PloobsEngine//setup.exe";
 
                                System.Diagnostics.Process process = new System.Diagnostics.Process();

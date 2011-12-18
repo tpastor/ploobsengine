@@ -28,6 +28,7 @@
 		  <listItem><para>A custom version of SharpSteer API</para></listItem>
 		  <listItem><para>A custom version of LTree API</para></listItem>
 		  <listItem><para>A custom version of OpenSteer API</para></listItem>
+		  <listItem><para>A custom version of Neoforce API</para></listItem>
 		  <listItem><para>BepuPhysics API</para></listItem>		  
 		  <listItem><para>LidGren API</para></listItem>		  
 		  <listItem><para>Farseer API</para></listItem>		  

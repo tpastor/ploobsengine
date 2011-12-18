@@ -13,7 +13,7 @@
         </para>
         <para> Its a large Framework including modules to deal with task like: Input, Physics,Scene Management,
         Graphics, Resource Management and <link xlink:href="59a6b1f1-762c-48c7-954e-c62f188fa3e9">others</link>.  </para>        
-        <para>The engine has <link xlink:href="5260262b-6583-47fb-97d5-5802238f3c64">dual license model</link>, one for comercial and another for non comercial purpose.        
+        <para>PloobsEngine has a <link xlink:href="5260262b-6583-47fb-97d5-5802238f3c64">dual license model</link>, one for comercial and another for non comercial purposes.        
         </para>
       </content>
     </section>        
@@ -37,6 +37,28 @@
         Runtime.</para>               
       </content>
     </section> 
+    
+    
+    <section>
+      <title>What are the PloobsEngine Versions ?</title>
+      <content>        
+        <para> PloobsEngine has been divided in three main versons:</para>               
+        <para>
+<list class="ordered">
+  <listItem><para>PC HiDef Version: This version contains all the features of the engine, and is designed to run on High Specs PCs (with greater Video Boards =P)</para></listItem>
+  <listItem><para>PC Reach Version: Constains just a subset of the engine features (the missing ones are those that use GPU and shaders intensively). Designed to run on EVERY computer =P</para></listItem>
+  <listItem><para>Windows Phone 7 + Silverlight Version: Same features of PC Reach Version plus those that are special for Wp7. Integrated With SilverLight Controls </para></listItem>
+</list> 
+        </para>
+        <para>
+        The features you find in WP7 and Reach version works on Hidef Version. <legacyBold>All the Versions are included in the PloobsEngine Installer</legacyBold>
+        </para>
+        <para>
+        In a simple way, only features that uses custom shaders (like dynamic reflections, shadows, multiple dynamic lights ...) are not avaliable on Reach and WP7 plataforms. 
+        </para>
+      </content>
+    </section> 
+    
     <section>
       <title>External Important Links</title>
       <content>

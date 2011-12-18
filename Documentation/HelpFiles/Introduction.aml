@@ -15,16 +15,18 @@
  The Ploobs Installer will install and configure the following stuffs:
  
 <list class="bullet">
-  <listItem><para>PloobsEngine DLLs for the PC Windows HiDef (with reasonable video board), PC Windows Reach (with low end video boards) and Windows Phone 7 </para></listItem>
-  <listItem><para>Introduction Demos Source Code: Visual Studio 2010 project showing the most basic funcionalities of the PloobsEngine</para></listItem>
-  <listItem><para>Advanced Demos Source Code: Visual Studio 2010 project showing some advanced funcionalities of the PloobsEngine</para></listItem>
-  <listItem><para>Phone Demos Source: Visual Studio 2010 project showing some basic stuffs about Windows Phone 7 for PloobsEngine</para></listItem>
+  <listItem><para>PloobsEngine DLLs for the PC Windows HiDef (with reasonable video board), PC Windows Reach (with low end video boards) and Windows Phone 7 + SilverLight </para></listItem>
+  <listItem><para>Introduction Demos Source Code: Visual Studio 2010 project showing the most basic funcionalities of the PloobsEngine. These demos show the final content in 3D but the concepts showed are valid for both 3D and 2D</para></listItem>
+  <listItem><para>Advanced Demos Source Code: Visual Studio 2010 project showing some advanced funcionalities of the PloobsEngine. These demos show the final content in 3D but the concepts showed are valid for both 3D and 2D</para></listItem>
+  <listItem><para>Reach Demos Source: Visual Studio 2010 project showing more demos using te Reach version of PloobsEngine. There are 2D and 3D demos here (you can use 2D in all plataforms, but in Hidef you can have features like Dynamic 2D lights with shadow and Post Effects) </para></listItem>
+  <listItem><para>Phone7 + SilverLight Demos Source: Visual Studio 2010 project showing some basic stuffs about Windows Phone 7 for PloobsEngine. There are 2D and 3D demos here </para></listItem>
   <listItem><para>Advanced Demos Binaries: Pre Compiled .exe with our Advanded Demos</para></listItem>
   <listItem><para>Visual Studio 2010 Templates (for all plataforms). We have Project Templates and Item Templates. They are automatically installed</para></listItem>
   <listItem><para>3DS Max PloobsEngine Exporter Plugin</para></listItem>
   <listItem><para>3DS Max KwExport .X Exporter - A 3DS Max plugin for exporting .x format that we strongly recomend</para></listItem>
-  <listItem><para>Starwarrior, a Space Invader like game with all the source code for PC Reach and Windows Phone 7</para></listItem>
-  <listItem><para>Experimental PloobsEngine version for WP7 and SilverLight</para></listItem>
+  <listItem><para>Starwarrior, a Space Invader like game with all the source code for Windows Phone 7</para></listItem>
+  <listItem><para>PloobsEngine version for WP7 and SilverLight</para></listItem>
+  <listItem><para>As a Bonus, we included all the Dlls (Pc, WP7 and Xbox) from Artemis, our high performance opensource Entity System (used in the StarWarrior Demo =P) </para></listItem>
   <listItem><para>This help Document =P</para></listItem>
 </list>
 
@@ -78,7 +80,7 @@
        
 <list class="bullet">
 <listItem>
-<para>Supports High End PC-Windows, Low End PC-Windows and Windows Phone 7 (with or without SilverLight)</para>
+<para>Supports High End PC-Windows, Low End PC-Windows and Windows Phone 7 (with SilverLight)</para>
 <para>Forward Rendering for Low End PC and Windows Phone 7 and Deferred Rendering for High End PC</para>
 <para>Two very different ways of rendering object in the screen. The forward
 technich is the traditional way of rendering, the Deferred is relatively new in the
@@ -162,7 +164,7 @@ good soft shadow)
 <listItem>
 <para>Deferred with Antialiasing (PostEffect)</para>
 <para>In DirectX 9c there is no hardware MSAA for Multiple Render Target, so whe
-apply some adaptative low band pass filters to remove hight frequency data.
+apply some adaptative low band pass filters to remove high frequency data.
 </para>
 <para>
 We support four types of shader AA: MLAA and other based on Rabula Rasa and Stalker GPU Gems Presentation.
@@ -176,6 +178,9 @@ We support four types of shader AA: MLAA and other based on Rabula Rasa and Stal
  much more ...</para>
  <para>
  The engine has a Simple and very easily extensible Post Proccess framework.
+ </para>
+  <para>
+ <legacyBold>We have Bloom for Windows Phone 7</legacyBold>(Dark Magic =P)
  </para>
 </listItem>
 
@@ -214,7 +219,7 @@ Scales very well, can use thousands of bilboards actives every frame (with insta
 <listItem>
 <para>Animated Billboards and Textures</para>
 <para>
-Can use an Texure Atlas with frame animations to animated a Bilboard
+Can use an Texure Atlas with frame animations to animated a Billboard
 </para>
 </listItem>
 
@@ -239,8 +244,14 @@ events </para>
 </listItem>
 
 <listItem>
+<para>2D Sprite System</para>
+<para>Simple Way to extract and play animations from textures</para>
+</listItem>
+
+
+<listItem>
 <para>Picking System</para>
-<para>Component that simplifies a lot the proccess of selecting a 3D object
+<para>Component that simplifies a lot the proccess of selecting a 3D and 2D objects
 using the mouse
 </para>
 </listItem>
@@ -316,7 +327,7 @@ interface) and very simple to use.
 <listItem>
 <para>Looots of others stuffs</para>
 <externalLink>
-          <linkText>Check Here:</linkText>          
+          <linkText>Check Here for more</linkText>          
           <linkUri>http://ploobs.com.br/?page_id=465</linkUri>
 </externalLink>
 </listItem>
