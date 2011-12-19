@@ -2,6 +2,7 @@ using PloobsEngine.Engine;
 using PloobsEngine.SceneControl;
 using PloobsEngine.Engine.Logger;
 using System;
+using System.Windows.Forms;
 
 namespace AdvancedDemo4._0
 {    
@@ -62,7 +63,8 @@ namespace AdvancedDemo4._0
         static void UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             ///handle unhandled exception here (log, send to a server ....)
-            Console.WriteLine("Exception: " + e.ToString());
+            //Console.WriteLine("Exception: " + e.ToString());
+            MessageBox.Show(e.ExceptionObject.ToString());
         }
     }
 
@@ -77,7 +79,14 @@ namespace AdvancedDemo4._0
         public void Log(string Message, LogLevel logLevel)
         {
             ///handle messages logs
-            Console.WriteLine(Message + "  -  "  + logLevel.ToString());
+            if (logLevel == LogLevel.FatalError)
+            {
+                MessageBox.Show("Fatal Error: " + Message);
+            }
+            else
+            {
+                Console.WriteLine(Message + "  -  " + logLevel.ToString());
+            }
         }
 
         #endregion
