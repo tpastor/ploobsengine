@@ -320,22 +320,41 @@ namespace PloobsUpdater
 
         private bool GetXNAVersion()
         {
-                RegistryKey myKey = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Wow6432Node\\Microsoft\\XNA\\Framework\\v4.0", false);
-                if (myKey != null)
-                {
+            String key = null;
+            if (Environment.Is64BitOperatingSystem)
+            {
+                key = "SOFTWARE\\Wow6432Node\\Microsoft\\XNA\\Framework\\v4.0";
+            }
+            else
+            {
+                key = "SOFTWARE\\Microsoft\\XNA\\Framework\\v4.0";
+            }
+
+            RegistryKey myKey = Registry.LocalMachine.OpenSubKey(key, false);
+            if (myKey != null)
+            {
                     return true;
-                }
-                else
-                {
+            }
+            else
+            {
                     return false;
-                }
+            }
         }        
 
 
         private void GetVersionOnRegistry()
         {
-            
-            RegistryKey myKey = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Wow6432Node\\Ploobs\\PloobsEngine", false);
+
+            String key = null;
+            if (Environment.Is64BitOperatingSystem)
+            {
+                key = "SOFTWARE\\Wow6432Node\\Ploobs\\PloobsEngine";
+            }
+            else
+            {
+                key = "SOFTWARE\\Ploobs\\PloobsEngine";
+            }            
+            RegistryKey myKey = Registry.LocalMachine.OpenSubKey(key, false);
             if (myKey != null)
             {
                 packageName = myKey.GetValue("Version") as String;                    
