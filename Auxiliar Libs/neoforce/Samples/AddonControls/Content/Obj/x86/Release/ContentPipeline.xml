@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>Skins\Default\Addons\Custom\Cursors\Custom.Cursor.cur</Source>
+      <Name>Skins\Default\Addons\Custom\Cursors\Custom.Cursor</Name>
+      <Importer>CursorImporter</Importer>
+      <Options>None</Options>
+      <Output>G:\tom shane\projects\Neoforce\Samples\Bin\Content\Skins\Default\Addons\Custom\Cursors\Custom.Cursor.xnb</Output>
+      <Time>2009-12-01T08:51:18+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Skins\Default\Addons\Custom\Fonts\Custom.Font.spritefont</Source>
+      <Name>Skins\Default\Addons\Custom\Fonts\Custom.Font</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>G:\tom shane\projects\Neoforce\Samples\Bin\Content\Skins\Default\Addons\Custom\Fonts\Custom.Font.xnb</Output>
+      <Time>2009-12-01T08:51:18+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Skins\Default\Addons\Custom\Images\Custom.Button.png</Source>
+      <Name>Skins\Default\Addons\Custom\Images\Custom.Button</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>G:\tom shane\projects\Neoforce\Samples\Bin\Content\Skins\Default\Addons\Custom\Images\Custom.Button.xnb</Output>
+      <Time>2009-12-01T08:51:18+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Skins\Default\Addons\Custom\Skin.xml</Source>
+      <Name>Skins\Default\Addons\Custom\Skin</Name>
+      <Importer>SkinImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+      <Options>None</Options>
+      <Output>G:\tom shane\projects\Neoforce\Samples\Bin\Content\Skins\Default\Addons\Custom\Skin.xnb</Output>
+      <Time>2010-09-18T18:44:09.3374573+02:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <TargetPlatform>Windows</TargetPlatform>
+      <TargetProfile>Reach</TargetProfile>
+      <BuildConfiguration>Release</BuildConfiguration>
+      <CompressContent>true</CompressContent>
+      <RootDirectory>G:\tom shane\projects\Neoforce\Samples\AddonControls\Content\</RootDirectory>
+      <LoggerRootDirectory>G:\tom shane\projects\Neoforce\Samples\AddonControls\</LoggerRootDirectory>
+      <IntermediateDirectory>G:\tom shane\projects\Neoforce\Samples\AddonControls\Content\obj\x86\Release\</IntermediateDirectory>
+      <OutputDirectory>G:\tom shane\projects\Neoforce\Samples\Bin\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>G:\tom shane\projects\Neoforce\Bin\TomShane.Neoforce.Importers.dll</Key>
+        <Value>2010-09-18T19:15:17.8192365+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2010-08-23T12:41:18+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2010-09-18T18:01:50.3887106+02:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>
