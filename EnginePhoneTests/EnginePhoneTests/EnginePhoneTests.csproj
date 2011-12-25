@@ -52,9 +52,15 @@
     <XnaCompressContent>true</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BEPUphysics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31f6a8732a21de19, processorArchitecture=MSIL" />
-    <Reference Include="DPSFPhone, Version=2.1.0.0, Culture=neutral, PublicKeyToken=32c832bfa7326ee2, processorArchitecture=MSIL" />
-    <Reference Include="FarseerPhysicsXNA, Version=3.3.4186.19001, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="BEPUphysics">
+      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\Phone7\BEPUphysics.dll</HintPath>
+    </Reference>
+    <Reference Include="DPSFPhone">
+      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\Phone7\DPSFPhone.dll</HintPath>
+    </Reference>
+    <Reference Include="FarseerPhysicsXNA, Version=3.3.4186.19001, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\Phone7\FarseerPhysicsXNA.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Devices.Sensors, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Xna.Framework" />
     <Reference Include="Microsoft.Xna.Framework.Game" />
@@ -62,13 +68,17 @@
     <Reference Include="Microsoft.Xna.Framework.GamerServices" />
     <Reference Include="Microsoft.Xna.Framework.Input.Touch" />
     <Reference Include="mscorlib" />
-    <Reference Include="PloobsEnginePhone7, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PloobsEnginePhone7">
+      <HintPath>..\..\PloobsEngine\PloobsEngine\bin\Windows Phone\Release\StandAlone\PloobsEnginePhone7.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Net" />
-    <Reference Include="XNAnimation, Version=0.7.0.0, Culture=neutral, PublicKeyToken=0c21691816f8c6d0, processorArchitecture=MSIL" />
+    <Reference Include="XNAnimation, Version=0.7.0.0, Culture=neutral, PublicKeyToken=0c21691816f8c6d0, processorArchitecture=MSIL">
+      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\Phone7\XNAnimation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="2DSamples\Basic2D.cs" />

@@ -46,7 +46,7 @@ namespace EngineTestes
             pick.Start();
             pick.OnPickedGesture += new OnPicked(pick_OnPickedGesture);
 
-            var newCameraFirstPerson = new CameraFirstPerson(GraphicInfo.Viewport);
+            var newCameraFirstPerson = new CameraFirstPerson(GraphicInfo);
             this.World.CameraManager.AddCamera(newCameraFirstPerson);
          
         }

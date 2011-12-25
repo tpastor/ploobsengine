@@ -47,7 +47,7 @@ namespace EngineTestes
                 this.World.AddObject(marine);
             }
 
-            var newCameraFirstPerson = new CameraFirstPerson(GraphicInfo.Viewport);
+            var newCameraFirstPerson = new CameraFirstPerson(GraphicInfo);
             //newCameraFirstPerson.UseAcelerometer = true;
             this.World.CameraManager.AddCamera(newCameraFirstPerson);
         }
