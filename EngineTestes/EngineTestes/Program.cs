@@ -28,8 +28,9 @@ namespace EngineTestes
         }
 
         static void LoadScreen(ScreenManager manager)
-        {            
-            manager.AddScreen(new Primitive2D());
+        {
+            manager.AddScreen(new Basic2DNeoforce());
+            //manager.AddScreen(new Primitive2D());
             //manager.AddScreen(new Teste2D());
             //manager.AddScreen(new SponzaScreen());
             //manager.AddScreen(new ForwardMaterialsScreen());

@@ -71,7 +71,8 @@ namespace ProjectTemplate
 
             if (Keyboard.GetState().IsKeyDown(Keys.Enter))
             {
-                this.World.RemoveObject(this.World.Objects[0]);
+                if(this.World.Objects.Count > 1)
+                    this.World.RemoveObject(this.World.Objects[0]);
             }
 
             base.Update(gameTime);
