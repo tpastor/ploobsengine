@@ -133,6 +133,7 @@
   <ItemGroup>
     <Compile Include="2DSamples\Basic2D.cs" />
     <Compile Include="2DSamples\Border.cs" />
+    <Compile Include="2DSamples\Basic2DNeoforce.cs" />
     <Compile Include="2DSamples\Primitive2D.cs" />
     <Compile Include="2DSamples\Teste2D.cs" />
     <Compile Include="2DSamples\Template2D.cs" />
