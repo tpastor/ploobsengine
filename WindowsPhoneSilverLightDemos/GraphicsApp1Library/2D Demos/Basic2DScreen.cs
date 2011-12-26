@@ -17,6 +17,7 @@ using PloobsEngine.SceneControl;
 using PloobsEngine.Particles;
 using PloobsEngine.Light2D;
 using PloobsEngine.Engine;
+using PloobsEnginePhone7Template;
 
 namespace EngineTestes
 {
@@ -101,7 +102,7 @@ namespace EngineTestes
             }
 
             ///rectangle
-            Vertices verts = PolygonTools.CreateRectangle(5, 5);
+            Vertices verts = PolygonTools.CreateRectangle(50, 50);
             {
                 IModelo2D model = new SpriteFarseer(factory, verts, Color.Orange);
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
@@ -111,7 +112,7 @@ namespace EngineTestes
             }
 
             ///circle
-            CircleShape circle = new CircleShape(5, 1);
+            CircleShape circle = new CircleShape(50, 1);
             {
                 IModelo2D model = new SpriteFarseer(factory, circle, Color.Orange);
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();                
@@ -148,7 +149,7 @@ namespace EngineTestes
             DPSFParticleManager DPSFParticleManager = this.World.ParticleManager as DPSFParticleManager;
             DPFSParticleSystem ParticleSystem = DPSFParticleManager.GetParticleSystem("TESTE") as DPFSParticleSystem;
             SpriteParticleSystem SpriteParticleSystem = ParticleSystem.IDPSFParticleSystem as SpriteParticleSystem;
-            SpriteParticleSystem.AttractorMode = (EngineTestes.SpriteParticleSystem.EAttractorModes) (i + 1 );        
+            SpriteParticleSystem.AttractorMode = (SpriteParticleSystem.EAttractorModes) (i + 1 );        
 
         }
 

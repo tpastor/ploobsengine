@@ -51,5 +51,35 @@ namespace PloobsFeatures
 
             NavigationService.Navigate(new Uri("/TerrainPage.xaml", UriKind.Relative));
         }
+
+        private void Basic2DPositioning_Tap(object sender, GestureEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Basic2DPositioning.xaml", UriKind.Relative));
+        }
+
+        private void Basic2DCamera_Tap(object sender, GestureEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Basic2DCamera.xaml", UriKind.Relative));
+        }
+
+        private void Basic2DSprite_Tap(object sender, GestureEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Basic2DSprite.xaml", UriKind.Relative));
+        }
+
+        private void Basic2DParticle_Tap(object sender, GestureEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Basic2DParticles.xaml", UriKind.Relative));            
+        }
+
+        private void Basic2DPhysic_Tap(object sender, GestureEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Basic2DPhysic.xaml", UriKind.Relative));            
+        }
+
+        private void particles3D_Tap(object sender, GestureEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/Particles3D.xaml", UriKind.Relative));            
+        }
     }
 }

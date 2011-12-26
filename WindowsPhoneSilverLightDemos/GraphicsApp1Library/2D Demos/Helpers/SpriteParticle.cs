@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Content;
 using DPSF;
 #endregion
 
-namespace EngineTestes
+namespace PloobsEnginePhone7Template
 {
     // Create a new type of Particle for this Particle System
 #if (WINDOWS)

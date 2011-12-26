@@ -13,7 +13,7 @@ using PloobsEngine.Physic2D;
 using PloobsEngine.SceneControl;
 using PloobsEngine.SceneControl._2DScene;
 
-namespace EngineTestes
+namespace PloobsEnginePhone7Template
 {
         public class Border
         {
