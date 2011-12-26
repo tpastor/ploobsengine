@@ -11,7 +11,7 @@ using FarseerPhysics.Dynamics.Joints;
 using FarseerPhysics.Dynamics;
 using Microsoft.Xna.Framework.Input.Touch;
 
-namespace EngineTestes
+namespace PloobsEnginePhone7Template
 {
     public class JointUpdateable : IScreenUpdateable
     {
@@ -41,7 +41,7 @@ namespace EngineTestes
                 TouchLocation tl = touchCollection[0];
 
                 Vector2 position = camera.ConvertScreenToWorld(new Vector2(tl.Position.X,
-                         tl.Position.Y));
+                         tl.Position.Y),true,false);
 
                 if (tl.State == TouchLocationState.Pressed && _fixedMouseJoint == null)
                 {
@@ -68,6 +68,7 @@ namespace EngineTestes
                 }
 
             }
-        }        
+        }
+                 
     }
 }

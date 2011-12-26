@@ -57,9 +57,7 @@
     <Reference Include="Microsoft.Xna.Framework.Graphics" />
     <Reference Include="Microsoft.Xna.Framework.Input.Touch" />
     <Reference Include="microsoft.xna.framework.interop" />
-    <Reference Include="PloobsEnginePhone7">
-      <HintPath>..\Phone7\PloobsEnginePhone7.dll</HintPath>
-    </Reference>
+    <Reference Include="PloobsEnginePhone7, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
     <Reference Include="System.Core" />
@@ -74,6 +72,21 @@
     <Compile Include="Basic2D.xaml.cs">
       <DependentUpon>Basic2D.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Basic2DCamera.xaml.cs">
+      <DependentUpon>Basic2DCamera.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Basic2DParticles.xaml.cs">
+      <DependentUpon>Basic2DParticles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Basic2DPhysic.xaml.cs">
+      <DependentUpon>Basic2DPhysic.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Basic2DPositioning.xaml.cs">
+      <DependentUpon>Basic2DPositioning.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Basic2DSprite.xaml.cs">
+      <DependentUpon>Basic2DSprite.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EnvironmentPage.xaml.cs">
       <DependentUpon>EnvironmentPage.xaml</DependentUpon>
     </Compile>
@@ -85,6 +98,9 @@
     </Compile>
     <Compile Include="ModelManipulationPage.xaml.cs">
       <DependentUpon>ModelManipulationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Particles3D.xaml.cs">
+      <DependentUpon>Particles3D.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StressPage.xaml.cs">
@@ -103,6 +119,26 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Basic2DCamera.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Basic2DParticles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Basic2DPhysic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Basic2DPositioning.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Basic2DSprite.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EnvironmentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -116,6 +152,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ModelManipulationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Particles3D.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

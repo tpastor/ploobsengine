@@ -71,9 +71,7 @@
     <Reference Include="mscorlib">
       <Private>False</Private>
     </Reference>
-    <Reference Include="PloobsEnginePhone7">
-      <HintPath>..\Phone7\PloobsEnginePhone7.dll</HintPath>
-    </Reference>
+    <Reference Include="PloobsEnginePhone7, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
@@ -96,18 +94,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="2DSamples\Basic2DScreen.cs" />
-    <Compile Include="2DSamples\Border.cs" />
-    <Compile Include="2DSamples\JointUpdateable.cs" />
-    <Compile Include="2DSamples\SpriteParticle.cs" />
-    <Compile Include="AnimationScreen1.cs" />
+    <Compile Include="2D Demos\Basic2DCameraScreen.cs" />
+    <Compile Include="2D Demos\Basic2DParticleScreen.cs" />
+    <Compile Include="2D Demos\Basic2DPhysicScreen.cs" />
+    <Compile Include="2D Demos\Basic2DPositioningScreen.cs" />
+    <Compile Include="2D Demos\Basic2DSpriteScreen.cs" />
+    <Compile Include="2D Demos\Helpers\Border.cs" />
+    <Compile Include="2D Demos\Helpers\JointUpdateable.cs" />
+    <Compile Include="2D Demos\Helpers\SpriteParticle.cs" />
+    <Compile Include="2D Demos\Basic2DScreen.cs" />
+    <Compile Include="3D Demos\AnimationScreen1.cs" />
     <Compile Include="BallThrowBepu.cs" />
+    <Compile Include="3D Demos\ParticleScreen.cs" />
+    <Compile Include="3D Demos\SnowPS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RotatingCamera.cs" />
-    <Compile Include="SkyBoxScreen.cs" />
-    <Compile Include="StressScreen.cs" />
-    <Compile Include="TechTruthScreen.cs" />
-    <Compile Include="TerrainScreen.cs" />
+    <Compile Include="3D Demos\SkyBoxScreen.cs" />
+    <Compile Include="3D Demos\StressScreen.cs" />
+    <Compile Include="3D Demos\TechTruthScreen.cs" />
+    <Compile Include="3D Demos\TerrainScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GraphicsApp1LibraryContent\GraphicsApp1LibraryContent.contentproj">

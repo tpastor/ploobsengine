@@ -51,6 +51,28 @@
                 </StackPanel>
             </controls:PanoramaItem>
 
+            <!--Panorama item three-->
+            <controls:PanoramaItem>
+                <StackPanel>
+                    <Image  Tap="Basic2DPositioning_Tap" Height="200"  HorizontalAlignment="Center"  Name="Basic2DPositioning" Stretch="Fill" VerticalAlignment="Top" Width="400" Source="/PloobsFeatures;component/Terrain.jpg" Margin="0,10" />
+                    <Image   Tap="Basic2DCamera_Tap" Height="200" HorizontalAlignment="center"  Name="Basic2DCamera" Stretch="Fill" VerticalAlignment="Top" Width="400" Source="/PloobsFeatures;component/modelmanipulationplate.jpg" Margin="0,10" />
+                </StackPanel>
+            </controls:PanoramaItem>
+
+            <controls:PanoramaItem>
+                <StackPanel>
+                    <Image Tap="Basic2DSprite_Tap"  Height="200"  HorizontalAlignment="Center"  Name="Basic2DSprite" Stretch="Fill" VerticalAlignment="Top" Width="400" Source="/PloobsFeatures;component/Terrain.jpg" Margin="0,10" />
+                    <Image  Tap="Basic2DParticle_Tap" Height="200" HorizontalAlignment="center"  Name="Basic2DParticle" Stretch="Fill" VerticalAlignment="Top" Width="400" Source="/PloobsFeatures;component/modelmanipulationplate.jpg" Margin="0,10" />
+                </StackPanel>
+            </controls:PanoramaItem>
+
+
+            <controls:PanoramaItem>
+                <StackPanel>
+                    <Image Tap="Basic2DPhysic_Tap" Height="200"  HorizontalAlignment="Center"  Name="Basic2DPhysic" Stretch="Fill" VerticalAlignment="Top" Width="400" Source="/PloobsFeatures;component/Terrain.jpg" Margin="0,10" />
+                    <Image Tap="particles3D_Tap" Height="200" HorizontalAlignment="center"  Name="particles3D" Stretch="Fill" VerticalAlignment="Top" Width="400" Source="/PloobsFeatures;component/modelmanipulationplate.jpg" Margin="0,10" />
+                </StackPanel>
+            </controls:PanoramaItem>
 
 
         </controls:Panorama>

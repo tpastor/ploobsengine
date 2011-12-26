@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010 Express for Windows Phone
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PloobsFeatures", "GraphicsApp1\PloobsFeatures.csproj", "{78267474-D9AE-4FBE-B135-7B9C7FEFA5F1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphicsApp1Library", "GraphicsApp1Library\GraphicsApp1Library.csproj", "{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}"
