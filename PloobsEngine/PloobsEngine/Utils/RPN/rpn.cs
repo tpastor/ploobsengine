@@ -11,7 +11,7 @@ public class Rpn  {
         _infixTransformer = new InfixTransformer();
     }
    private InfixTransformer _infixTransformer;
-   private const char [] sp = new char [] {' ','\t'};
+   private char [] sp = new char [] {' ','\t'};
 
     /// <summary>
     /// Evaluate Infix expression
