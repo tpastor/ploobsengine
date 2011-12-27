@@ -859,9 +859,14 @@ namespace TomShane.Neoforce.Controls
 		{
 			// Initializing skins for every control created, even not visible or 
 			// not added to the manager or another parent.
-			foreach (Control c in Control.Stack)
+            
+            Control[] control = new Control[Control.Stack.Count];
+            Control.Stack.CopyTo(control);
+
+            foreach (Control c in control)
 			{
-				c.InitSkin();
+                if(!c.alreadyInitedskin)
+				    c.InitSkin();
 			}
 		}
 		////////////////////////////////////////////////////////////////////////////          
@@ -869,11 +874,16 @@ namespace TomShane.Neoforce.Controls
 		////////////////////////////////////////////////////////////////////////////
 		private void InitControls()
 		{
+
+            Control[] control = new Control[Control.Stack.Count];
+            Control.Stack.CopyTo(control);
+
 			// Initializing all controls created, even not visible or 
 			// not added to the manager or another parent.
-			foreach (Control c in Control.Stack)
+			foreach (Control c in control)
 			{
-				c.Init();
+                if (!c.alreadyInited)
+				    c.Init();
 			}
 		}
 		////////////////////////////////////////////////////////////////////////////       
