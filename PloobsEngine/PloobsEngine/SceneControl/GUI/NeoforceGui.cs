@@ -79,12 +79,14 @@ namespace PloobsEngine.SceneControl.GUI
 
         protected override void EndDraw(Microsoft.Xna.Framework.GameTime gt, RenderHelper render, Engine.GraphicInfo ginfo)
         {
+            manager.Draw(gt);
+
             manager.EndDraw();
             render.ResyncStates();
         }
 
         protected override void BeginDraw(Microsoft.Xna.Framework.GameTime gt, RenderHelper render, Engine.GraphicInfo ginfo)
-        {
+       {
             manager.BeginDraw(gt);
             render.ResyncStates();
         }

@@ -1752,30 +1752,40 @@ namespace TomShane.Neoforce.Controls
 		#endregion
 
 		#region //// Protected /////////
-
+        internal bool alreadyInited = false;
 		////////////////////////////////////////////////////////////////////////////
 		public override void Init()
 		{
-			base.Init();
+            if (alreadyInited == false)
+            {
+                base.Init();
 
-			OnMove(new MoveEventArgs());
-			OnResize(new ResizeEventArgs());
+                OnMove(new MoveEventArgs());
+                OnResize(new ResizeEventArgs());
+                alreadyInited = true;
+            }
+            
 		}
 		//////////////////////////////////////////////////////////////////////////// 
 
 		////////////////////////////////////////////////////////////////////////////
+        internal bool alreadyInitedskin = false;
 		protected internal virtual void InitSkin()
 		{
-			if (Manager != null && Manager.Skin != null && Manager.Skin.Controls != null)
-			{
-				SkinControl s = Manager.Skin.Controls[Utilities.DeriveControlName(this)];
-				if (s != null) Skin = new SkinControl(s);
-				else Skin = new SkinControl(Manager.Skin.Controls["Control"]);
-			}
-			else
-			{
-				throw new Exception("Control skin cannot be initialized. No skin loaded.");
-			}
+            if (alreadyInitedskin == false)
+            {
+                if (Manager != null && Manager.Skin != null && Manager.Skin.Controls != null)
+                {
+                    SkinControl s = Manager.Skin.Controls[Utilities.DeriveControlName(this)];
+                    if (s != null) Skin = new SkinControl(s);
+                    else Skin = new SkinControl(Manager.Skin.Controls["Control"]);
+                }
+                else
+                {
+                    throw new Exception("Control skin cannot be initialized. No skin loaded.");
+                }
+                alreadyInitedskin = true;
+            }
 		}
 		////////////////////////////////////////////////////////////////////////////
 
