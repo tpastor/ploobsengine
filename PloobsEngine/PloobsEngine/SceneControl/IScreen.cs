@@ -409,7 +409,10 @@ public IScreen()
             }
 
             if (gui != null)
+            {
                 gui.iDispose();
+                gui = null;
+            }
         }        
 
     }
