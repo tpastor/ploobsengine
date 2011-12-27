@@ -59,7 +59,7 @@ namespace PloobsEngine.Utils
             char possibleFunction;
             try
             {
-                possibleFunction = char.Parse(token);
+                possibleFunction = Convert.ToChar(token);
             }
             catch (Exception e)
             {
