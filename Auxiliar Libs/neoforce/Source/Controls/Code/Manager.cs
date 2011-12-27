@@ -52,7 +52,7 @@ namespace TomShane.Neoforce.Controls
 	/// <summary>
 	/// Manages rendering of all controls.
 	/// </summary>  
-	public class Manager : DrawableGameComponent
+	public class Manager 
 	{
 
 		private struct ControlStates
@@ -74,7 +74,7 @@ namespace TomShane.Neoforce.Controls
 		internal const int _MenuDelay = 500;
 		internal const int _ToolTipDelay = 500;
 		internal const int _DoubleClickTime = 500;
-		internal const int _TextureResizeIncrement = 32;
+		internal const int _TextureResizeIncrement = 32;        
 		internal const RenderTargetUsage _RenderTargetUsage = RenderTargetUsage.DiscardContents;
 		////////////////////////////////////////////////////////////////////////////    
 
@@ -169,12 +169,12 @@ namespace TomShane.Neoforce.Controls
 		/// <summary>
 		/// Returns associated <see cref="Game"/> component.
 		/// </summary>
-		public virtual new Game Game { get { return base.Game; } }
+        public virtual new Game Game { internal set;  get; }
 
 		/// <summary>
 		/// Returns associated <see cref="GraphicsDevice"/>.
 		/// </summary>
-		public virtual new GraphicsDevice GraphicsDevice { get { return base.GraphicsDevice; } }
+		public virtual new GraphicsDevice GraphicsDevice { get { return Game.GraphicsDevice; } }
 
 		/// <summary>
 		/// Returns associated <see cref="GraphicsDeviceManager"/>.
@@ -613,9 +613,8 @@ namespace TomShane.Neoforce.Controls
         /// <param name="graphics">The GraphicsDeviceManager class provided by the Game class.</param>
         /// <param name="skin">The name of the skin being loaded at the start.</param>
         /// <param name="window">The window -- in xbox set to null.</param>
-        public Manager(Game game, GraphicsDeviceManager graphics, string skin, Form window)
-            : base(game)
-        {            
+        public Manager(Game game, GraphicsDeviceManager graphics, string skin, Form window)            
+        {     
                 disposing = false;
 #else
         ////////////////////////////////////////////////////////////////////////////
@@ -643,6 +642,7 @@ namespace TomShane.Neoforce.Controls
                 window.FormClosing += new FormClosingEventHandler(Window_FormClosing);
 #endif
 
+                this.Game = game;
                 content = new ContentManager(Game.Services);
                 input = new InputSystem(this, new InputOffset(0, 0, 1f, 1f));
                 components = new List<Component>();
@@ -784,10 +784,8 @@ namespace TomShane.Neoforce.Controls
 		#region //// Destructors ///////
 
 		////////////////////////////////////////////////////////////////////////////
-		protected override void Dispose(bool disposing)
+		public void Dispose()
 		{
-			if (disposing)
-			{
 				this.disposing = true;
 
 				// Recursively disposing all controls added to the manager and its child controls.
@@ -827,8 +825,6 @@ namespace TomShane.Neoforce.Controls
 					input.Dispose();
 					input = null;
 				}
-			}
-			base.Dispose(disposing);
 		}
 		////////////////////////////////////////////////////////////////////////////
 
@@ -945,9 +941,8 @@ namespace TomShane.Neoforce.Controls
 		/// Initializes the controls manager.
 		/// </summary>    
 		////////////////////////////////////////////////////////////////////////////
-		public override void Initialize()
+		public void Initialize()
 		{
-			base.Initialize();
 
 			if (autoCreateRenderTarget)
 			{
@@ -1113,7 +1108,7 @@ namespace TomShane.Neoforce.Controls
 		/// <param name="gameTime">
 		/// Time elapsed since the last call to Update.
 		/// </param>
-		public override void Update(GameTime gameTime)
+		public void Update(GameTime gameTime)
 		{
 			updateTime += gameTime.ElapsedGameTime.Ticks;
 			double ms = TimeSpan.FromTicks(updateTime).TotalMilliseconds;
@@ -1238,7 +1233,7 @@ namespace TomShane.Neoforce.Controls
 		////////////////////////////////////////////////////////////////////////////
 
 		////////////////////////////////////////////////////////////////////////////   
-		public override void Draw(GameTime gameTime)
+		public void Draw(GameTime gameTime)
 		{
 			if (renderTarget != null)
 			{
