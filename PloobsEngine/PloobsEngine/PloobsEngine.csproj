@@ -10,7 +10,8 @@
     <RootNamespace>PloobsEngine</RootNamespace>
     <AssemblyName>PloobsEngine</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
     <XnaPlatform>Windows</XnaPlatform>
     <XnaProfile>HiDef</XnaProfile>
@@ -82,6 +83,9 @@
     <Reference Include="Lidgren.Network">
       <HintPath>Dlls\Lidgren.Network.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Build" />
+    <Reference Include="Microsoft.Build.Engine" />
+    <Reference Include="Microsoft.Build.Framework" />
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
       <Private>False</Private>
     </Reference>
@@ -182,6 +186,8 @@
     <Compile Include="Components\ComponentManager.cs" />
     <Compile Include="Components\IComponent.cs" />
     <Compile Include="DataStructure\QuadTree.cs" />
+    <Compile Include="Engine\ContentCompiler\ContentBuilder.cs" />
+    <Compile Include="Engine\ContentCompiler\ErrorLogger.cs" />
     <Compile Include="Features\Primitive2D\Primitive2DDraw.cs" />
     <Compile Include="Features\SkyBox\SkyBoxEnableDisableCommand.cs" />
     <Compile Include="Features\SkyBox\Skybox.cs" />
