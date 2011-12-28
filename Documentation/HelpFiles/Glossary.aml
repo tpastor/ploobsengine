@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="28731b2f-7e00-4045-a1ce-f5278e5632ec" revisionNumber="1">
+  <developerGlossaryDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <glossary>
+      <!-- <title>Optional title</title> -->
+      <!-- Glossary division.  You can use these to group entries.  If you only
+           have one group, you can omit it and list the glossaryEntry elements
+           directly.
+
+           If used, be sure to give each glossaryDiv a unique address attribute
+           and a title element.  These will be used to create an index at the
+           top of the glossary page.
+
+           Glossary divisions will appear in the order defined in the topic.
+           Glossary entries will be sorted by the first term for the entry.
+           Terms are sorted by their value. -->
+      <glossaryDiv address="Group1">
+        <title>Render</title>
+        <glossaryEntry>
+          <terms>            
+            <term termId="xyz">Forward Render</term>            
+          </terms>
+          <definition>
+            <para>Traditional render technic that mix the light and 
+            geometry pass together</para>
+          </definition>       
+        </glossaryEntry>
+        <glossaryEntry>
+          <terms>            
+            <term termId="xyzw">Deferred Render</term>            
+          </terms>
+          <definition>
+            <para>Deferred render is a three dimensional shading technique in 
+            which the result of a shading algorithm is calculated by dividing it 
+            into smaller parts that are written to intermediate buffer storage 
+            to be combined later, instead of immediately writing the shader 
+            result to the color framebuffer (From Wiki)</para>
+          </definition>       
+        </glossaryEntry>        
+        <glossaryEntry>
+          <terms>            
+            <term termId="xyzwssa">Ploobs</term>            
+          </terms>
+          <definition>
+            <para>The sound of a drop of water hitting the floor =P</para>
+          </definition>       
+        </glossaryEntry>                
+        <glossaryEntry>
+          <terms>            
+            <term termId="xyzww">Shader</term>            
+          </terms>
+          <definition>
+            <para>
+            In the engine, shader means two thing, the first one is the class 
+            IShader that is responsible for interacting with the GPU when 
+            drawing models. The second thing is the general definition of this
+            world that means :  "A shader is a set of software instructions 
+            which is used primarily to calculate rendering effects on graphics 
+            hardware."
+            </para>
+          </definition>       
+        </glossaryEntry>
+      </glossaryDiv>
+    </glossary>
+  </developerGlossaryDocument>
+</topic>
