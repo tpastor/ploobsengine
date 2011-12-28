@@ -37,7 +37,7 @@ namespace PloobsEngine
     {
 
         private int id;
-        private IScreen owner;
+        protected IScreen owner;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="IScreenUpdateable"/> class.

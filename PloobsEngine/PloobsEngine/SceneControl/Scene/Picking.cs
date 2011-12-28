@@ -53,7 +53,7 @@ namespace PloobsEngine.SceneControl
         /// <param name="pickingRayDistance">The picking ray distance.</param>
         public Picking(IScene owner, float pickingRayDistance = 500)
             : base(owner)
-        {
+        {            
             leftButtonIntercept = rightButtonIntercept = noneButtonIntercept = CullNothing;
             this.pickingRayDistance = pickingRayDistance;
             world = owner.World;
@@ -121,7 +121,6 @@ namespace PloobsEngine.SceneControl
         {
             if (OnPickedNoneButton != null)
             {
-
                 MouseState ms = Mouse.GetState();
                 UpdatePickRay(ms);
 
@@ -156,32 +155,37 @@ namespace PloobsEngine.SceneControl
 
         private void MouseBottomLeft(MouseState ms)
         {
-            if (OnPickedLeftButton != null)
+            if (owner.ScreenState == ScreenState.Active)
             {
-                UpdatePickRay(ms);
-
-                SegmentInterceptInfo rti = world.PhysicWorld.SegmentIntersect(ray, noneButtonIntercept, pickingRayDistance);
-                if (rti == null)
-                    return;
                 if (OnPickedLeftButton != null)
-                    OnPickedLeftButton(rti);
+                {
+                    UpdatePickRay(ms);
+
+                    SegmentInterceptInfo rti = world.PhysicWorld.SegmentIntersect(ray, noneButtonIntercept, pickingRayDistance);
+                    if (rti == null)
+                        return;
+                    if (OnPickedLeftButton != null)
+                        OnPickedLeftButton(rti);
+                }
             }
 
         }
 
         private void MouseBottomRight(MouseState ms)
         {
-            if (OnPickedRighttButton != null)
+            if (owner.ScreenState == ScreenState.Active)
             {
-                UpdatePickRay(ms);
-
-                SegmentInterceptInfo rti = world.PhysicWorld.SegmentIntersect(ray, noneButtonIntercept, pickingRayDistance);
-                if (rti == null)
-                    return;
                 if (OnPickedRighttButton != null)
-                    OnPickedRighttButton(rti);
-            }
+                {
+                    UpdatePickRay(ms);
 
+                    SegmentInterceptInfo rti = world.PhysicWorld.SegmentIntersect(ray, noneButtonIntercept, pickingRayDistance);
+                    if (rti == null)
+                        return;
+                    if (OnPickedRighttButton != null)
+                        OnPickedRighttButton(rti);
+                }
+            }            
         }
 
         protected override void CleanUp()
