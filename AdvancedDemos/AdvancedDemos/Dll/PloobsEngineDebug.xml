@@ -170,6 +170,28 @@
       <param name="newValue">The new value.</param>
       <param name="smoothedAccumulator">The smoothed accumulator.</param>
     </member>
+    <member name="M:PloobsEngine.Utils.Rpn.EvaluateInfix(System.String,System.Single@)">
+      <summary>
+            Evaluate Infix expression
+            </summary>
+      <param name="s">
+      </param>
+      <param name="result">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:PloobsEngine.Utils.Rpn.EvaluateRPN(System.String,System.Single@)">
+      <summary>
+            Evaluate RPN expression
+            </summary>
+      <param name="s">
+      </param>
+      <param name="result">
+      </param>
+      <returns>
+      </returns>
+    </member>
     <member name="T:PloobsEngine.SceneControl.IPostEffect">
       <summary>
             IPost Effect Specification
@@ -21095,16 +21117,6 @@
       Represents a control to display a list of items.
     </summary>
     </member>
-    <member name="T:TomShane.Neoforce.Controls.Window">
-      <summary>
-      Represents a window or dialog box that makes up an application's user interface.
-    </summary>
-    </member>
-    <member name="T:TomShane.Neoforce.Controls.ButtonBase">
-      <summary>
-      Implements the basic functionality common to button controls.
-    </summary>
-    </member>
     <member name="T:TomShane.Neoforce.Controls.GamePadActions">
       <summary>
             Defines the gamepad actions mapping.
@@ -21115,10 +21127,15 @@
             Defines type used as a controls collection.
             </summary>
     </member>
-    <member name="T:TomShane.Neoforce.Controls.Button">
+    <member name="P:TomShane.Neoforce.Controls.InputSystem.InputOffset">
       <summary>
-      Represents a button control.
-    </summary>
+            Sets or gets input offset and ratio when rescaling controls in render target.
+            </summary>
+    </member>
+    <member name="P:TomShane.Neoforce.Controls.InputSystem.InputMethods">
+      <summary>
+            Sets or gets input methods allowed for navigation.
+            </summary>
     </member>
     <member name="T:TomShane.Neoforce.Controls.SizeMode">
       <summary>
@@ -21133,6 +21150,21 @@
     <member name="T:TomShane.Neoforce.Controls.Glyph">
       <summary>
       Represents an image on a button.
+    </summary>
+    </member>
+    <member name="T:TomShane.Neoforce.Controls.ButtonBase">
+      <summary>
+      Implements the basic functionality common to button controls.
+    </summary>
+    </member>
+    <member name="T:TomShane.Neoforce.Controls.Button">
+      <summary>
+      Represents a button control.
+    </summary>
+    </member>
+    <member name="T:TomShane.Neoforce.Controls.Window">
+      <summary>
+      Represents a window or dialog box that makes up an application's user interface.
     </summary>
     </member>
     <member name="T:TomShane.Neoforce.Controls.Manager">
@@ -21455,16 +21487,6 @@
     <member name="E:TomShane.Neoforce.Controls.Manager.WindowClosing">
       <summary>
             Occurs when game window is about to close.
-            </summary>
-    </member>
-    <member name="P:TomShane.Neoforce.Controls.InputSystem.InputOffset">
-      <summary>
-            Sets or gets input offset and ratio when rescaling controls in render target.
-            </summary>
-    </member>
-    <member name="P:TomShane.Neoforce.Controls.InputSystem.InputMethods">
-      <summary>
-            Sets or gets input methods allowed for navigation.
             </summary>
     </member>
     <member name="T:BEPUphysics.ISpaceObject">
