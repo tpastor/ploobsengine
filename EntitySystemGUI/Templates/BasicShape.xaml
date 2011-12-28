@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ControlTemplate x:Key="BasicShape1">
+        <StackPanel>
+            <Image Name="tplImage" Source="/Images/Entity.png" Stretch="Uniform" Width="100" Height="100" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="tplTextBlock" Text="User stage" HorizontalAlignment="Center"/>
+        </StackPanel>
+    </ControlTemplate>
+
+</ResourceDictionary>
