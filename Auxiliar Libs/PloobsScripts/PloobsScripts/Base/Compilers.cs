@@ -11,7 +11,7 @@ namespace PloobsScripts
 {
     public static class Compilers
     {
-        public static Assembly GenerateAssembly(out String errors, String[] references, params CodeCompileUnit[] GenerateClassCode)
+        public static Assembly GenerateAssembly(out String errors, ICollection<String> references, params CodeCompileUnit[] GenerateClassCode)
         {
             CSharpCodeProvider csp = new CSharpCodeProvider();
 

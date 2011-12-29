@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Base\Compilers.cs" />
     <Compile Include="Base\Executor.cs" />
+    <Compile Include="Base\Expose.cs" />
     <Compile Include="Base\Generator.cs" />
     <Compile Include="Base\ScriptParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

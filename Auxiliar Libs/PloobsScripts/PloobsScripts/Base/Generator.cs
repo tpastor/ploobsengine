@@ -11,7 +11,7 @@ namespace PloobsScripts
 {
     public class Generator
     {
-        public List<String> References
+        public ICollection<String> References
         {
             get;
             private set;
@@ -34,8 +34,8 @@ namespace PloobsScripts
 
         CodeTypeDeclaration derived;
 
-        public Generator(ScriptParsed ScriptParsed, String CodeNamespace, bool addXNAReferences = false)
-            : this(ScriptParsed.references.ToArray(),ScriptParsed.UsingStatements.ToArray(),CodeNamespace,addXNAReferences)
+        public Generator(ScriptParsed ScriptParsed, String CodeNamespace, bool addCoreNetAPIs = true ,bool addXNAReferences = false)
+            : this(ScriptParsed.references, ScriptParsed.UsingStatements, CodeNamespace, addCoreNetAPIs, addXNAReferences)
         {
         }
 
@@ -49,8 +49,7 @@ namespace PloobsScripts
         /// <param name="addXNAReferences">Add basic XNA 4.0 dlls</param>
         public Generator(ICollection<String> references, ICollection<String> imports, String CodeNamespace, bool addCoreNetAPIs = true ,bool addXNAReferences = false)
         {
-            this.References = new List<string>();
-            this.References.AddRange(references);
+            this.References = references;
             this.CodeNamespace = CodeNamespace;
             this.imports = imports;
 
@@ -59,6 +58,7 @@ namespace PloobsScripts
                 this.References.Add("System.dll");
                 this.References.Add("mscorlib.dll");
             }
+
             if (addXNAReferences)
             {
                 String xnaPath = Environment.GetEnvironmentVariable("XNAGSv4");
