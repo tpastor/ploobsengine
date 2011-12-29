@@ -68,6 +68,52 @@ namespace test
 
             Console.ReadLine();
         }
+
+        public void teste3()
+        {
+            ScriptParsed ScriptParsed = Parser.ParseScriptFile("script3.txt");
+
+            List<String> references = new List<string>()
+            { 
+             "System.dll",
+            "mscorlib.dll",
+            "test.exe"
+            };
+
+            List<String> usings = new List<string>()
+            {
+                "test"
+            };
+            usings.AddRange(ScriptParsed.UsingStatements);
+
+            Generator GenerateClassCode = new PloobsScripts.Generator(references,usings, "TesteInter");
+            GenerateClassCode.GenerateClass("teste", "interteste");
+
+            GenerateClassCode.GenerateMethod("handle", ScriptParsed.MethodCode, typeof(void), System.CodeDom.MemberAttributes.Public);
+
+            String srt = GenerateClassCode.GetCode(ScriptParsed.AuxiliarFunctionsCode);
+
+            Console.WriteLine(srt);
+            StreamWriter sw = File.CreateText("teste3.cs");
+            sw.Write(srt);
+            sw.Close();
+
+            String erro;
+            Assembly Assembly = Compilers.GenerateAssembly(srt, references, out erro);
+            if (erro != null)
+            {
+                MessageBox.Show(erro);
+                return;
+            }
+
+            interteste interteste = Executor.BindTypeFromAssembly<interteste>(Assembly, GenerateClassCode.TypeName);
+
+            interteste.handle();
+
+            Console.ReadLine();
+
+        }
+
     }
 
     public interface interteste
