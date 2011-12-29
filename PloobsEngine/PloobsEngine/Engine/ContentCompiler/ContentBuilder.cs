@@ -20,7 +20,7 @@ namespace PloobsEngine.AssetLoader
     /// in a temporary directory. After the build finishes, you can use a regular
     /// ContentManager to load these temporary .xnb files in the usual way.
     /// </summary>
-    class ContentBuilder : IDisposable
+    public class ContentBuilder : IDisposable
     {
         #region Fields
 
