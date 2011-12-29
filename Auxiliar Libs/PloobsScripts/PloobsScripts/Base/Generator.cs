@@ -11,14 +11,15 @@ namespace PloobsScripts
 {
     public class Generator
     {
-        public String[] References
+        public List<String> References
         {
             get;
             private set;
         }
 
+        String className;
         String CodeNamespace;
-        String[] imports;
+        ICollection<String> imports;
         public String TypeName
         {
             private set;
@@ -33,11 +34,24 @@ namespace PloobsScripts
 
         CodeTypeDeclaration derived;
 
-        public Generator(String[] references, String[] imports, String CodeNamespace)
+        public Generator(ScriptParsed ScriptParsed, String CodeNamespace, bool addXNAReferences = false)
+            : this(ScriptParsed.references.ToArray(),ScriptParsed.UsingStatements.ToArray(),CodeNamespace,addXNAReferences)
         {
-            this.References = references;
+        }
+
+        public Generator(ICollection<String> references, ICollection<String> imports, String CodeNamespace, bool addXNAReferences = false)
+        {
+            this.References = new List<string>();
+            this.References.AddRange(references);
             this.CodeNamespace = CodeNamespace;
             this.imports = imports;
+            if (addXNAReferences)
+            {
+                String xnaPath = Environment.GetEnvironmentVariable("XNAGSv4");
+                this.References.Add(xnaPath + @"\References\Windows\x86\Microsoft.Xna.Framework.dll");
+                this.References.Add(xnaPath + @"References\Windows\x86\Microsoft.Xna.Framework.Game.dll");
+                this.References.Add(xnaPath + @"References\Windows\x86\Microsoft.Xna.Framework.Graphics.dll");
+            }            
         }
 
         public void GenerateField(String name,Type type ,MemberAttributes MemberAttributes = MemberAttributes.Public)
@@ -51,7 +65,7 @@ namespace PloobsScripts
             CodeMemberField.Name = name;
             derived.Members.Add(CodeMemberField);
         }
-
+        
         public void GenerateMethod(String MethodName,String body, Type returnType, MemberAttributes MemberAttributes = MemberAttributes.Public, params KeyValuePair<Type,String>[] parameters)
         {
             if (CodeCompileUnit == null)
@@ -75,8 +89,8 @@ namespace PloobsScripts
         }
 
         public void GenerateClass(String className, String baseClass = null)
-        {           
-
+        {
+            this.className = className;
             CodeCompileUnit = new CodeCompileUnit();
 
             foreach (var item in References)
@@ -128,6 +142,24 @@ namespace PloobsScripts
             derived.Members.Add(derivedClassConstructor);            
         }
 
+        public String GetCode(string functionsMethod)
+        {
+                String resp = GetCode();
+            int index = IndexOfNth(resp, "{", 2);
+
+            String begin = resp.Substring(0, index + 1);
+            begin += Environment.NewLine;
+            String end = resp.Substring(index + 1);
+
+            String full = begin + functionsMethod + Environment.NewLine + end;
+            return full;
+            
+        }
+
+        public String GetCode(ScriptParsed ScriptParsed)
+        {
+            return this.GetCode(ScriptParsed.AuxiliarFunctionsCode);
+        }
 
         public String GetCode()
         {
@@ -143,7 +175,33 @@ namespace PloobsScripts
 
         }
 
-        public static String GenerateFullClass(String[] references, String[] imports, String CodeNamespace,String className, string methodBody, String method = "Method")
+
+        public static int IndexOfNth(string s, string match, int occurence)
+        {
+            int i = 1; 
+            int index = 0; 
+            while (i <= occurence && (index = s.IndexOf(match, index + 1)) != -1) 
+            {
+                if (i == occurence)             
+                    return index; i++; 
+            } 
+            return -1;
+        }     
+
+        public static String GenerateFullClass(ScriptParsed ScriptParsed, String CodeNamespace, String className, String method = "Method")
+        {
+            String resp = GenerateFullClass(ScriptParsed.References, ScriptParsed.UsingStatements, CodeNamespace, className,ScriptParsed.MethodCode ,method);
+            int index = IndexOfNth(resp, "{", 2);
+
+            String begin = resp.Substring(0, index + 1);
+            begin += Environment.NewLine;
+            String end = resp.Substring(index + 1);
+
+            String full = begin + ScriptParsed.AuxiliarFunctionsCode + Environment.NewLine + end;
+            return full;
+        }
+
+        public static String GenerateFullClass(ICollection<String> references, ICollection<String> imports, String CodeNamespace, String className, string methodBody, String method = "Method")
         {
                 CodeCompileUnit unit = new CodeCompileUnit();
 

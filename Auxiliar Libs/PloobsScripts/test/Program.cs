@@ -14,8 +14,9 @@ namespace test
         static void Main(string[] args)
         {
             AdvancedTest t = new AdvancedTest();
-            t.teste1();
-            t.teste2();
+            //t.teste1();
+            //t.teste2();
+            t.teste3();
         }
     }
 }
