@@ -44,34 +44,31 @@ namespace EngineTestes
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory ,IContentManager contentManager)
         {
             base.LoadContent(GraphicInfo,factory, contentManager);
-                        
-            String text = File.ReadAllText("Content//Script//script.txt");
-            String xnaPath = Environment.GetEnvironmentVariable("XNAGSv4");
-            String[] references = new String[] { "System.dll", "mscorlib.dll", "EngineTestes.exe", "PloobsEngine.dll", 
-                xnaPath + @"\References\Windows\x86\Microsoft.Xna.Framework.dll",
-                xnaPath + @"References\Windows\x86\Microsoft.Xna.Framework.Game.dll",
-                xnaPath + @"References\Windows\x86\Microsoft.Xna.Framework.Graphics.dll"
-            };
 
-            String[] imports = new String[] { "EngineTestes.Scripts" , "System" , "System.Collections.Generic" , "System.Text"
+            ScriptParsed ScriptParsed = Parser.ParseScriptFile("Content//Script//script.txt");                        
+            ScriptParsed.References.AddRange( new String[] {"EngineTestes.exe", "PloobsEngine.dll"                
+            });            
+
+            ScriptParsed.UsingStatements.AddRange(new String[] { "EngineTestes.Scripts" , "System" , "System.Collections.Generic" , "System.Text"
             , "PloobsEngine.Engine", "PloobsEngine.Modelo" , "PloobsEngine.Physics.Bepu", "PloobsEngine.Material", "PloobsEngine.SceneControl"
             , "Microsoft.Xna.Framework" , "PloobsEngine.Physics" , "PloobsEngine.Utils" , "PloobsEngine.Light"
             , "Microsoft.Xna.Framework.Graphics" , "PloobsEngine.Cameras" , "PloobsEngine.Features", "PloobsEngine.Commands"
-            };            
+            });
 
-            Generator GenerateClassCode = new PloobsScripts.Generator(references, imports, "TesteInter");
+            Generator GenerateClassCode = new PloobsScripts.Generator(ScriptParsed, "TesteInter",true,true);
             GenerateClassCode.GenerateClass("teste", "ISceneBuilder");
-            GenerateClassCode.GenerateMethod("BuildScene", text, typeof(void), System.CodeDom.MemberAttributes.Public | System.CodeDom.MemberAttributes.Override);
-            String srt = GenerateClassCode.GetCode();
+            GenerateClassCode.GenerateMethod("BuildScene", ScriptParsed.MethodCode, typeof(void), System.CodeDom.MemberAttributes.Public | System.CodeDom.MemberAttributes.Override);
+            String srt = GenerateClassCode.GetCode(ScriptParsed);
             
             String erro = null;
-            Assembly Assembly = Compilers.GenerateAssembly(srt, references, out erro);
+            Assembly Assembly = Compilers.GenerateAssembly(srt, ScriptParsed.References, out erro);
             if (erro != null)
             {
                 throw new Exception(erro);
             }
 
             ISceneBuilder interteste = Executor.BindTypeFromAssembly<ISceneBuilder>(Assembly, GenerateClassCode.TypeName);
+
             interteste.graphicFactory = GraphicFactory;
             interteste.graphicInfo = GraphicInfo;
             interteste.world = this.World;
