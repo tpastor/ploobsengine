@@ -8,6 +8,41 @@ namespace PloobsScripts
 {
     public static class Executor
     {
+        public static List<MethodInfo> GetExposedMethods(Assembly assembly, String typeName)
+        {
+            List<MethodInfo> infos = new List<MethodInfo>(); 
+            Type type = assembly.GetType(typeName);
+            foreach (var item in type.GetMethods(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
+            {
+                 object[] attribs = item.GetCustomAttributes(typeof(Expose), true);
+                 if (attribs != null && attribs.Count() > 0)
+                 {
+                     infos.Add(item);
+                 }            
+            }
+            return infos;
+        }
+
+        public static object CallExposedMethods(object obj, String methodName, object[] parameters, bool checkIfExposed = false)
+        {
+            if (checkIfExposed)
+            {
+                MethodInfo mi = obj.GetType().GetMethod(methodName, BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
+                if (mi.GetCustomAttributes(typeof(Expose), true).Count() > 0)
+                {
+                    return mi.Invoke(obj, parameters);
+                }
+                else
+                {
+                    throw new Exception("method not exposed");
+                }
+            }
+            else
+            {
+                return obj.GetType().GetMethod(methodName, BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance).Invoke(obj, parameters);
+            }
+        }
+
         public static  T BindTypeFromAssembly<T>(Assembly assembly, Type type) where T : class
         {
             return (T) assembly.CreateInstance(type.FullName);            
