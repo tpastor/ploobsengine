@@ -107,9 +107,21 @@ namespace PloobsEngine.SceneControl
             OrderForwardObjectsBeforeDraw = null;
         }
 
+        /// <summary>
+        /// not yet avaliable
+        /// </summary>
         public bool PhysicDebug ;
+        /// <summary>
+        /// not yet avaliable
+        /// </summary>
         public bool LightDebug ;
+        /// <summary>
+        /// Cant be change at runtime (only in the creation time)
+        /// </summary>
         public bool DefferedDebug ;
+        /// <summary>
+        /// Cant be change at runtime (only in the creation time)
+        /// </summary>
         public bool UseFloatingBufferForLightMap ;
         public bool CullPointLight;
         public bool ExtraForwardPass;
@@ -118,6 +130,9 @@ namespace PloobsEngine.SceneControl
         public IDeferredFinalCombination DeferredFinalCombination;
         public RestoreDepthOption RestoreDepthOption;
         public ForwardPass ForwardPass;
+        /// <summary>
+        /// cant be changed at runtime
+        /// </summary>
         public String[] RenderTargetsNameToDefferedDebug;
         public Color BackGroundColor;
 
@@ -172,7 +187,7 @@ namespace PloobsEngine.SceneControl
             }
         }
 
-        DeferredRenderTechnicInitDescription desc;
+        DeferredRenderTechnicInitDescription desc;        
         private IDeferredGBuffer deferredGBuffer ;
         private IDeferredLightMap deferredLightMap ;
         private IDeferredFinalCombination deferredFinalCombination ;
@@ -184,6 +199,14 @@ namespace PloobsEngine.SceneControl
         private GraphicInfo ginfo;
         int halfWidth;
         int halfHeight;
+
+        /// <summary>
+        /// Not all confs can be changed at runtime (ex: cant enable deferred debug. You can only start with it enabled)
+        /// </summary>
+        public DeferredRenderTechnicInitDescription DeferredRenderTechnicInitDescription
+        {
+            get { return desc; }            
+        }
 
         private void SwapTargetBuffers()
         {
@@ -217,7 +240,7 @@ namespace PloobsEngine.SceneControl
 
             if (ginfo.CheckIfRenderTargetFormatIsSupported(SurfaceFormat.Single, DepthFormat.Depth24Stencil8, ginfo.UseMipMap, ginfo.MultiSample) == false)
             {
-                ActiveLogger.LogMessage("Shadow can behave strange, you dont have the minimum requirements, check the logs for more info ", LogLevel.Warning);
+                ActiveLogger.LogMessage("Shadow can behave strange, you dont have the minimum requirements", LogLevel.Warning);
             }
 
 

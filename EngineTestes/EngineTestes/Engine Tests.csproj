@@ -108,6 +108,12 @@
     <Reference Include="mscorlib">
       <Private>False</Private>
     </Reference>
+    <Reference Include="PloobsScripts">
+      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\PloobsScripts.dll</HintPath>
+    </Reference>
+    <Reference Include="PloobsSerializator">
+      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\PloobsSerializator.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
@@ -207,6 +213,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Post\RadialBluScreen.cs" />
     <Compile Include="ReflectionMix\MixReflection.cs" />
+    <Compile Include="Scripts\ScriptScreen.cs" />
+    <Compile Include="Scripts\ISceneBuilder.cs" />
     <Compile Include="Shatter\DeferredShatterCustomShader.cs" />
     <Compile Include="Shatter\ShatterSample.cs" />
     <Compile Include="SoundSamples\SoundScreen.cs" />
@@ -269,6 +277,7 @@
   <ItemGroup>
     <None Include="app.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--

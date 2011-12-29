@@ -108,6 +108,27 @@ namespace PloobsScripts
             TypeName = CodeNamespace + "." + className;
         }
 
+        public void GenerateConstructor(String body, params KeyValuePair<Type, String>[] parameters)
+        {
+            if (CodeCompileUnit == null)
+                throw new Exception("Call Generate Class Before");
+
+            CodeConstructor derivedClassConstructor = new CodeConstructor();
+            derivedClassConstructor.Attributes = MemberAttributes.Public;            
+
+            foreach (var item in parameters)
+            {
+                CodeParameterDeclarationExpression CodeParameterDeclarationExpression = new CodeParameterDeclarationExpression(item.Key, item.Value);
+                derivedClassConstructor.Parameters.Add(CodeParameterDeclarationExpression);
+            }
+
+            CodeSnippetStatement code = new CodeSnippetStatement(body);
+            derivedClassConstructor.Statements.Add(code);
+
+            derived.Members.Add(derivedClassConstructor);            
+        }
+
+
         public String GetCode()
         {
             CSharpCodeProvider codeProvider = new CSharpCodeProvider();
