@@ -29,6 +29,7 @@
     <NoStdLib>true</NoStdLib>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <XnaCompressContent>false</XnaCompressContent>
+    <LangVersion>default</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Windows Phone' ">
     <DebugType>pdbonly</DebugType>
@@ -40,6 +41,7 @@
     <NoStdLib>true</NoStdLib>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <XnaCompressContent>false</XnaCompressContent>
+    <LangVersion>default</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BEPUphysics">
@@ -69,7 +71,7 @@
     <Reference Include="mscorlib">
       <Private>False</Private>
     </Reference>
-    <Reference Include="PloobsEnginePhone7">
+    <Reference Include="PloobsEnginePhone7, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\Phone7\PloobsEnginePhone7.dll</HintPath>
     </Reference>
     <Reference Include="System">
@@ -94,13 +96,31 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FirstScreen.cs" />
+    <Compile Include="2D Demos\Basic2DCameraScreen.cs" />
+    <Compile Include="2D Demos\Basic2DParticleScreen.cs" />
+    <Compile Include="2D Demos\Basic2DPhysicScreen.cs" />
+    <Compile Include="2D Demos\Basic2DPositioningScreen.cs" />
+    <Compile Include="2D Demos\Basic2DSpriteScreen.cs" />
+    <Compile Include="2D Demos\Helpers\Border.cs" />
+    <Compile Include="2D Demos\Helpers\JointUpdateable.cs" />
+    <Compile Include="2D Demos\Helpers\SpriteParticle.cs" />
+    <Compile Include="2D Demos\Basic2DScreen.cs" />
+    <Compile Include="3D Demos\AnimationScreen1.cs" />
+    <Compile Include="BallThrowBepu.cs" />
+    <Compile Include="3D Demos\ParticleScreen.cs" />
+    <Compile Include="3D Demos\SnowPS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RotatingCamera.cs" />
+    <Compile Include="3D Demos\SkyBoxScreen.cs" />
+    <Compile Include="3D Demos\StressScreen.cs" />
+    <Compile Include="3D Demos\TechTruthScreen.cs" />
+    <Compile Include="3D Demos\TerrainScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GraphicsApp1LibraryContent\GraphicsApp1LibraryContent.contentproj">
-      <Name>GraphicsApp1LibraryContent</Name>
+      <Name>GraphicsApp1LibraryContent %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>
+      <Project>{8879CC64-F366-4DD4-ABDB-4CB24F732D37}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
