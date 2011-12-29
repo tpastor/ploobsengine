@@ -1,8 +1,10 @@
 ﻿System.Console.WriteLine("BEGIN");
 using System.IO;
 testemetodo(10);
+
 function: void testemetodo(int a)
 {
 System.Console.WriteLine("abobrinha verde");
 }
+
 System.Console.WriteLine("END");
