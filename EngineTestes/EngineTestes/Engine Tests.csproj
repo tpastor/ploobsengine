@@ -213,6 +213,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Post\RadialBluScreen.cs" />
     <Compile Include="ReflectionMix\MixReflection.cs" />
+    <Compile Include="Scripts\ActionScriptScreen.cs" />
+    <Compile Include="Scripts\IScriptHelper.cs" />
+    <Compile Include="Scripts\InterScriptTalking.cs" />
     <Compile Include="Scripts\ScriptScreen.cs" />
     <Compile Include="Scripts\ISceneBuilder.cs" />
     <Compile Include="Shatter\DeferredShatterCustomShader.cs" />
