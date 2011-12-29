@@ -39,12 +39,26 @@ namespace PloobsScripts
         {
         }
 
-        public Generator(ICollection<String> references, ICollection<String> imports, String CodeNamespace, bool addXNAReferences = false)
+        /// <summary>
+        /// Create the generator class
+        /// </summary>
+        /// <param name="references"></param>
+        /// <param name="imports"></param>
+        /// <param name="CodeNamespace"></param>
+        /// <param name="addCoreNetAPIs">System and mscorlib</param>
+        /// <param name="addXNAReferences">Add basic XNA 4.0 dlls</param>
+        public Generator(ICollection<String> references, ICollection<String> imports, String CodeNamespace, bool addCoreNetAPIs = true ,bool addXNAReferences = false)
         {
             this.References = new List<string>();
             this.References.AddRange(references);
             this.CodeNamespace = CodeNamespace;
             this.imports = imports;
+
+            if(addCoreNetAPIs)
+            {
+                this.References.Add("System.dll");
+                this.References.Add("mscorlib.dll");
+            }
             if (addXNAReferences)
             {
                 String xnaPath = Environment.GetEnvironmentVariable("XNAGSv4");

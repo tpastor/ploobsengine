@@ -74,9 +74,7 @@ namespace test
             ScriptParsed ScriptParsed = Parser.ParseScriptFile("script3.txt");
 
             List<String> references = new List<string>()
-            { 
-             "System.dll",
-            "mscorlib.dll",
+            {             
             "test.exe"
             };
 
