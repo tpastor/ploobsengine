@@ -15,8 +15,9 @@ using Microsoft.Xna.Framework.Graphics;
 using PloobsEngine.Engine;
 using EngineTestes;
 using PloobsEngine.SceneControl;
+using PloobsEnginePhone7Template;
 
-namespace GraphicsApp1
+namespace PloobsFeatures
 {
     public partial class GamePage : PhoneApplicationPage
     {        
@@ -26,10 +27,10 @@ namespace GraphicsApp1
             EngineStuff.InitializePloobsEngine(SharedGraphicsDeviceManager.Current, (Application.Current as App).Content);            
         }
 
-        FirstScreen FirstScreen;
+        AnimationScreen1 FirstScreen;
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            FirstScreen = new FirstScreen();
+            FirstScreen = new AnimationScreen1();
             EngineStuff.Current.StartScene(FirstScreen, this);            
             base.OnNavigatedTo(e);
         }
@@ -42,10 +43,34 @@ namespace GraphicsApp1
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            ///dummy -> change the texture color
-            Texture2D tex =  FirstScreen.GraphicFactory.CreateTexture2DRandom(1, 1);
-            IObject obj =  FirstScreen.World.Objects[0];
-            obj.Modelo.SetTexture(tex, PloobsEngine.Modelo.TextureType.DIFFUSE);
+            FirstScreen.TogleRotation();
+       
+        }
+
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+            FirstScreen.TogleWireFrame();
+        }
+
+        private void button3_Click(object sender, RoutedEventArgs e)
+        {
+            FirstScreen.TogleIllumination();
+        }
+
+        private void button4_Click(object sender, RoutedEventArgs e)
+        {
+            FirstScreen.TogleAnimation();
+        }
+
+        private void slider1_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if(FirstScreen != null)
+                FirstScreen.MultiplySpeed((float)e.NewValue);
+        }
+
+        private void button5_Click(object sender, RoutedEventArgs e)
+        {
+            FirstScreen.TogleModel();
         }
     }
 }
