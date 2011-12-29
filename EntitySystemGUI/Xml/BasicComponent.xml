@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Component>
+  <Name>Basic</Name>
+  <Entities>
+    <Entity>
+      <name>Name</name>
+      <type>String</type>
+    </Entity>
+    <Entity>
+      <name>Value</name>
+      <type>int</type>
+    </Entity>
+
+  </Entities>  
+</Component>

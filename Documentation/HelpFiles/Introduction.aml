@@ -1,0 +1,340 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="59a6b1f1-762c-48c7-954e-c62f188fa3e9" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    
+    <introduction>      
+      <para>
+      This section will introduce you to the Ploobs Engine environment.       
+      </para>      
+    </introduction>
+    
+    <section address="Section0">
+ <title>What PloobsEngine.msi installed on my machine ???</title>
+ <content>   
+ <para>
+ The Ploobs Installer will install and configure the following stuffs:
+ 
+<list class="bullet">
+  <listItem><para>PloobsEngine DLLs for the PC Windows HiDef (with reasonable video board), PC Windows Reach (with low end video boards) and Windows Phone 7 + SilverLight </para></listItem>
+  <listItem><para>Introduction Demos Source Code: Visual Studio 2010 project showing the most basic funcionalities of the PloobsEngine. These demos show the final content in 3D but the concepts showed are valid for both 3D and 2D</para></listItem>
+  <listItem><para>Advanced Demos Source Code: Visual Studio 2010 project showing some advanced funcionalities of the PloobsEngine. These demos show the final content in 3D but the concepts showed are valid for both 3D and 2D</para></listItem>
+  <listItem><para>Reach Demos Source: Visual Studio 2010 project showing more demos using te Reach version of PloobsEngine. There are 2D and 3D demos here (you can use 2D in all plataforms, but in Hidef you can have features like Dynamic 2D lights with shadow and Post Effects) </para></listItem>
+  <listItem><para>Phone7 + SilverLight Demos Source: Visual Studio 2010 project showing some basic stuffs about Windows Phone 7 for PloobsEngine. There are 2D and 3D demos here </para></listItem>
+  <listItem><para>Advanced Demos Binaries: Pre Compiled .exe with our Advanded Demos</para></listItem>
+  <listItem><para>Visual Studio 2010 Templates (for all plataforms). We have Project Templates and Item Templates. They are automatically installed</para></listItem>
+  <listItem><para>3DS Max PloobsEngine Exporter Plugin</para></listItem>
+  <listItem><para>3DS Max KwExport .X Exporter - A 3DS Max plugin for exporting .x format that we strongly recomend</para></listItem>
+  <listItem><para>Starwarrior, a Space Invader like game with all the source code for Windows Phone 7</para></listItem>
+  <listItem><para>PloobsEngine version for WP7 and SilverLight</para></listItem>
+  <listItem><para>As a Bonus, we included all the Dlls (Pc, WP7 and Xbox) from Artemis, our high performance opensource Entity System (used in the StarWarrior Demo =P) </para></listItem>
+  <listItem><para>This help Document =P</para></listItem>
+</list>
+
+ </para>
+ 
+ </content>
+ </section>
+    
+  <section>
+      <title>This Help Document Organization</title>
+      <content>        
+        <para>
+        This help document is organized as follows:
+        </para>
+        <para>
+        
+<list class="bullet">
+  <listItem><para>This Introduction page talk about the engine features</para></listItem>
+  <listItem><para>The Basic Concepts page talks about the engine architecture.</para></listItem>
+  <listItem><para>Under the Tutorials section we have a very Basic 3D Tutorial (a hello world demo 
+        explained in details). </para></listItem>
+        <listItem><para>In the Source code section we describe how the source code is organized in our repo (for those who wants to download and play with it).</para></listItem>
+        <listItem><para>The Max Exporter section explains how our 3DS Max exporter
+        works.</para></listItem>
+        <listItem><para>In the API Reference section we show all the PloobsEngine classes.</para></listItem>  
+</list>
+        
+        </para>
+               
+      </content>
+  </section> 
+ 
+ <section address="Section1">
+ <title><legacyBold>What Ploobs Engine Has to Offer ?</legacyBold></title>
+ <content>       
+ 
+ <para>
+ The actual version of the Ploobs Engine version is 0.4
+ Lots of changes were made comparing with the 0.3 version (released in may of 2011). 
+ We learned from our mistakes, this version is more modular and Xna independent than ever. 
+ </para>
+ <para>
+ One of the main guidelines in this version was simplicity. The engine try to help
+ the user to make the right thing always. 
+ In the Debug version we use lots of asserts to ensure that the user is doing the right 
+ think, we also have a new log system that output some hints about common mistakes 
+ and commom errors.
+ </para>
+      
+ <para>Here is a list of the principal Engine features:</para>
+       
+<list class="bullet">
+<listItem>
+<para>Supports High End PC-Windows, Low End PC-Windows and Windows Phone 7 (with SilverLight)</para>
+<para>Forward Rendering for Low End PC and Windows Phone 7 and Deferred Rendering for High End PC</para>
+<para>Two very different ways of rendering object in the screen. The forward
+technich is the traditional way of rendering, the Deferred is relatively new in the
+industry and is used in games like Starcraft 2 and Crysis 2 </para>
+</listItem>
+
+<listItem>
+<para>Artificial Inteligence (PathFinding, NN, GA, Agents and World Abstractions, Steering Behaviors ...)</para>
+</listItem>
+
+<listItem>
+<para>3D and 2D Sound</para>
+<para>A simple module that supports background music, 2D sound effects and
+3D sounds (using dopler effect).
+</para>
+</listItem>
+
+<listItem>
+<para> 3D and 2D Physics Integrated</para>
+<para>Integration with Bepu and Farseer physics</para>
+<para>We create an intermediate solution between
+a complete Wrapper (that is not good, because the physics engines
+architecture are never similar) and a coupled solution.
+</para>
+</listItem>
+
+<listItem>
+<para>Animation Integrated  (XnaAnimation API, heavily altered to fit on the Deferred Render and Forward Render)</para>
+<para>Supports bone system animation</para>
+<para>This API was build by a Brazilian guy (like us)</para>
+</listItem>
+
+<listItem>
+<para>Dynamic Water and Ocean with waves (Deferred Render)</para>
+<para>Some Shaders to deal with dynamic water completely in GPU, using 
+technichs like Vertex Displacement, pertubations maps and texture animation. 
+The water can have Dynamic refraction and reflection.
+</para>
+</listItem>
+
+<listItem>
+<para>Dynamic Reflection and Refraction</para>
+<para>Every object can reflect or refract the environment</para>
+<para>The dynamic version uses a planar texture generated in real time and the static version uses an environment map</para>
+</listItem>
+
+<listItem>
+<para>Dynamic Lights (Spot, Point and Directional)</para>
+<para>You can move, change colors or diractions on the fly</para>
+<para>Virtually you can use as many lights as you want want</para>
+</listItem>
+
+<listItem>
+<para>BumpMaps, SpecularMaps, Glow Maps and Paralax Mapping (Only for Deferred Shading)</para>
+<para>There are some otimized shaders for specific materials and more 
+general ones with branches that supports every kind of combination between
+these maps</para>
+</listItem>
+
+<listItem>
+<para>Vegetation (Real Modeled Trees and Procedurally Generated Billboards)</para>
+</listItem>
+
+<listItem>
+<para>Terrain with HeightMaps and Multitexture</para>
+<para>Supports classic Terrains with Height Maps and Colision</para>
+<para>Our implementation has a Multitexture LOD, that changes on the fly the
+textures coordinates according to the user field of view</para>
+</listItem>
+
+<listItem>
+<para>Dynamic Shadow (Cascade Shadow Mapping) with 
+filtering</para>
+<para>Uses Classical shadow mapping for indoord environment (Directional and 
+Spot Lights) with lots of types of filtering and Cascade Shadow Mapping for 
+Outdoor Shadow (if properly combinared with others lights, you can fake some 
+good soft shadow) 
+</para>
+</listItem>
+
+<listItem>
+<para>Deferred with Antialiasing (PostEffect)</para>
+<para>In DirectX 9c there is no hardware MSAA for Multiple Render Target, so whe
+apply some adaptative low band pass filters to remove high frequency data.
+</para>
+<para>
+We support four types of shader AA: MLAA and other based on Rabula Rasa and Stalker GPU Gems Presentation.
+</para>
+</listItem>
+
+<listItem>
+<para>Post Effects: ToonShading, Gaussian Blur, Noise, Wiggle, Circular Glow, 
+ DOF, Bloom, HDR, Radial Blur, Negative, Black and White, SSAO, Color Correction,
+ Gama Correction, Saturation, Contrast, Fog, Ambient Scattering and 
+ much more ...</para>
+ <para>
+ The engine has a Simple and very easily extensible Post Proccess framework.
+ </para>
+  <para>
+ <legacyBold>We have Bloom for Windows Phone 7</legacyBold>(Dark Magic =P)
+ </para>
+</listItem>
+
+<listItem>
+<para>Extensible Particle System (2D and 3D)</para>
+<para>
+We support the DPFSParticleSystem. It is very extensive and has lots of pre defined samples.
+We can support others particles system, the interfaces are very simple and clear
+</para>
+</listItem>
+
+<listItem>
+<para>Transparency (with Deferred Shading, extra Forward pass) and with Forward</para>
+<para>An extra render pass to create a "fake" order independent transparency
+</para>
+</listItem>
+
+<listItem>
+<para>EnvironmentMapping</para>
+<para>Can be used like a LightMap, or just to simulate metal appearance
+</para>
+<para>If can also be extended to implement Custom BRDFs </para>
+</listItem>
+
+<listItem>
+<para>Skybox</para>
+<para>Using TexCube Textures for skybox.
+</para>
+</listItem>
+
+<listItem>
+<para>Billboards (Gpu Spherical and Cylindrical)</para>
+Scales very well, can use thousands of bilboards actives every frame (with instancing)
+</listItem>
+
+<listItem>
+<para>Animated Billboards and Textures</para>
+<para>
+Can use an Texure Atlas with frame animations to animated a Billboard
+</para>
+</listItem>
+
+<listItem>
+<para>Video Player Embedded (Only for PC-Windows)</para>
+Can Play common videos formats
+</listItem>
+
+<listItem>
+<para>Hardware Instancing (static and dynamic)</para>
+</listItem>
+
+<listItem>
+<para>Trigger System</para>
+<para>Simple system capable of detecting situations and fire 
+events </para>
+</listItem>
+
+<listItem>
+<para>Message System</para>
+<para>Easy way to make entities comunicate </para>
+</listItem>
+
+<listItem>
+<para>2D Sprite System</para>
+<para>Simple Way to extract and play animations from textures</para>
+</listItem>
+
+
+<listItem>
+<para>Picking System</para>
+<para>Component that simplifies a lot the proccess of selecting a 3D and 2D objects
+using the mouse
+</para>
+</listItem>
+
+<listItem>
+<para>Input Control System</para>
+<para>System that abstracts the complexities of keyboard usage, supporting 
+Mouse and Keyboard</para>
+<para>Gestures support for Windows Phone 7</para>
+</listItem>
+
+<listItem>
+<para>Resource Management System</para>
+<para>For Resource Caching and protection</para>
+</listItem>
+
+<listItem>
+<para>Screen Manager System</para>
+<para>Handle a lot of screen types, like Movie Screen, 2D World, 3D World 
+... </para>
+</listItem>
+
+<listItem>
+<para>2D and 3D Culling System</para>
+<para>Just send the object in the camera Frustrum to the GPU improving a 
+lot the render speed. Uses the Octree algorithm</para>
+</listItem>
+
+<listItem>
+<para>Graphics, Physics and Render Targets easily Debuggable </para>
+<para>Has lots of small features that helps the hard task of debugging</para>
+</listItem>
+
+<listItem>
+<para>Cameras (First Person, Quake like, Third Person, Static, Follow Path, 
+Interpolators ...)</para>
+<para> camera System that handle lots of types os cameras and some common 
+operations like interpolation and saving the camera state
+</para>
+</listItem>
+
+<listItem>
+<para>Integrated With WPF</para>
+<para>Its very easy to embedded the engine in a WPF application</para>
+</listItem>
+
+<listItem>
+<para>Integrated With 3DS Max using an Exporter Plugin </para>
+<para>Can export a complete scene (with models, camera, lights and dummies) 
+using a MaxScript plugin</para>
+</listItem>
+
+<listItem>
+<para>Has Lots of Math and Physicw Helpers</para>
+<para>An extensive Math and Physics Library for most commom operations
+</para>
+<para>Include classes to handle Pools, Octrees, Quadtrees ...</para>
+</listItem>
+
+<listItem>
+<para>Extensible Design and Easy to Use</para>
+<para>Very easy to extend (Normaly its just a question of extending an 
+interface) and very simple to use.
+</para>
+</listItem>
+
+<listItem>
+<para>MultiThreading Support</para>
+<para>Native Engine MultiThreading
+</para>
+</listItem>
+
+<listItem>
+<para>Looots of others stuffs</para>
+<externalLink>
+          <linkText>Check Here for more</linkText>          
+          <linkUri>http://ploobs.com.br/?page_id=465</linkUri>
+</externalLink>
+</listItem>
+
+</list>
+
+</content>      
+</section>        
+</developerConceptualDocument>
+</topic>
