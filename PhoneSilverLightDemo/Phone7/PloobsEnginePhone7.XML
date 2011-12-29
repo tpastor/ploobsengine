@@ -1422,6 +1422,21 @@
             Gets the mesh number.
             </summary>
         </member>
+        <member name="P:PloobsEngine.Modelo2D.AnimationClass.IsLooping">
+            <summary>
+            Default = true
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.Modelo2D.AnimationClass.Frames">
+            <summary>
+            Total Frames
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.Modelo2D.AnimationClass.Rotation">
+            <summary>
+            Animation Rotation
+            </summary>
+        </member>
         <member name="T:PloobsEngine.Material.ForwardAnimatedMaterial">
             <summary>
             Forward Phone7 Animated Material
@@ -1846,6 +1861,7 @@
         <member name="M:PloobsEngine.Engine.EngineStuff.ApplyEngineDescription(PloobsEngine.Engine.InitialEngineDescription@)">
             <summary>
             Applies the engine description.
+            NOT RECOMENDED IN WP7 + XNA
             </summary>
             <param name="initialDescription">The initial description.</param>
         </member>
@@ -1913,7 +1929,8 @@
             Add a new scene to the Engine
             REMOVE ALL PREVIOUS ONES
             </summary>
-            <param name="Screen"></param>
+            <param name="Screen">The screen.</param>
+            <param name="PhoneApplicationPage">The phone application page.</param>
         </member>
         <member name="M:PloobsEngine.Engine.EngineStuff.Update(Microsoft.Xna.Framework.GameTime)">
             <summary>
@@ -7224,13 +7241,13 @@
             It is not a camera to be used in Production Environment
             </summary>
         </member>
-        <member name="M:PloobsEngine.Cameras.CameraFirstPerson.#ctor(Microsoft.Xna.Framework.Graphics.Viewport)">
+        <member name="M:PloobsEngine.Cameras.CameraFirstPerson.#ctor(PloobsEngine.Engine.GraphicInfo)">
             <summary>
             Initializes a new instance of the <see cref="T:PloobsEngine.Cameras.CameraFirstPerson"/> class.
             </summary>
-            <param name="viewport">The viewport.</param>
+            <param name="graphicInfo">The graphic info.</param>
         </member>
-        <member name="M:PloobsEngine.Cameras.CameraFirstPerson.#ctor(System.Single,System.Single,Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Graphics.Viewport,System.Boolean)">
+        <member name="M:PloobsEngine.Cameras.CameraFirstPerson.#ctor(System.Single,System.Single,Microsoft.Xna.Framework.Vector3,PloobsEngine.Engine.GraphicInfo,System.Boolean)">
             <param name="useAcelerometer">if set to <c>true</c> [use acelerometer].</param>
         </member>
         <member name="P:PloobsEngine.Cameras.CameraFirstPerson.UseAcelerometer">
