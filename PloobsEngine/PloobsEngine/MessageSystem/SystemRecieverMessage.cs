@@ -29,7 +29,7 @@ namespace PloobsEngine.MessageSystem
     /// <summary>    
     /// Helper to Handle some message
     /// </summary>
-    internal class SystemRecieverMessage : IRecieveMessageEntity, IDisposable
+    public class SystemRecieverMessage : IRecieveMessageEntity, IDisposable
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SystemRecieverMessage"/> class.
@@ -57,8 +57,11 @@ namespace PloobsEngine.MessageSystem
         /// <param name="mes">The mes.</param>
         public virtual void HandleMessage(Message mes)
         {
-            
+            if (OnMessage != null)
+                OnMessage(mes);
         }
+
+        public event Action<Message> OnMessage;
 
         #endregion
 
