@@ -16,7 +16,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace GraphicsApp1
+namespace PloobsFeatures
 {
     // The App implements IServiceProvider for ContentManagers and other types to
     // be able to access the graphics device services.
