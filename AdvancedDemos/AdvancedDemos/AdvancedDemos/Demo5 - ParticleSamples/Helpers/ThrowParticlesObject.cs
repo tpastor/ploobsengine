@@ -12,8 +12,8 @@ namespace AdvancedDemo4._0
 {
     class ThrowParticlesObject : IObject
     {
-        DefaultTexturedQuadParticleSystem particleSystem;
-        public ThrowParticlesObject(DefaultTexturedQuadParticleSystem particleSystem,IMaterial material, IModelo modelo, IPhysicObject physicObject)
+        DefaultSprite3DBillboardParticleSystem particleSystem;
+        public ThrowParticlesObject(DefaultSprite3DBillboardParticleSystem particleSystem, IMaterial material, IModelo modelo, IPhysicObject physicObject)
             : base(material, modelo, physicObject)
         {
             this.particleSystem = particleSystem;

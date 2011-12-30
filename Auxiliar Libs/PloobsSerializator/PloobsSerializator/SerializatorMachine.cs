@@ -50,8 +50,7 @@ namespace PloobsSerializator
                 {
                     b.Serialize(x, a);
                 }
-            );
-            
+            );           
          
 
             desserializador.Add(typeof(string),

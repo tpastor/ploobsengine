@@ -15,6 +15,7 @@ using PloobsEngine.Physics;
 using PloobsEngine.Engine;
 using PloobsEngine.Particles;
 using DPSF;
+using DPSF.ParticleSystems;
 
 namespace AdvancedDemo4._0
 {
@@ -50,7 +51,7 @@ namespace AdvancedDemo4._0
         /// <param name="pos"></param>
         /// <param name="ori"></param>
         /// <returns></returns>
-        private ThrowParticlesObject SpawnPrimitive(DefaultTexturedQuadParticleSystem particleSystem, Vector3 pos, Matrix ori)
+        private ThrowParticlesObject SpawnPrimitive(DefaultSprite3DBillboardParticleSystem particleSystem, Vector3 pos, Matrix ori)
         {
             ///Load a Model with a custom texture
             SimpleModel sm2 = new SimpleModel(scene.GraphicFactory, "Model\\ball");

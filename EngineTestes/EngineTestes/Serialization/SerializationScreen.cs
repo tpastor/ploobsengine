@@ -45,7 +45,9 @@ namespace EngineTestes
             ObjectMock ObjectMock = new ObjectMock(GraphicFactory, "Model/cenario", Vector3.Zero, Matrix.Identity, Vector3.One);
             SerializatorWrapper.Serialize(ObjectMock, "cena.xml");
             ObjectMock mloaded = (ObjectMock)SerializatorWrapper.Desserialize<ObjectMock>("cena.xml", GraphicFactory);
+            this.World.AddObject(mloaded);
 
+            
             IObject obj;
             {
                 SimpleModel simpleModel = new SimpleModel(factory, "Model//ball");
@@ -81,7 +83,7 @@ namespace EngineTestes
                 ));
 
 
-            this.World.AddObject(mloaded);
+            
             this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo));
 
         }
