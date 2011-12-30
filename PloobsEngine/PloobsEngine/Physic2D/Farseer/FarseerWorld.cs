@@ -27,8 +27,15 @@ using FarseerPhysics.Collision;
 
 namespace PloobsEngine.Physic2D.Farseer
 {
+    /// <summary>
+    /// 2D farseer physic world implementation
+    /// </summary>
     public class FarseerWorld : I2DPhysicWorld
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FarseerWorld"/> class.
+        /// </summary>
+        /// <param name="gravity">The gravity.</param>
         public FarseerWorld(Vector2 gravity)
         {
             world = new World(gravity);
@@ -49,12 +56,20 @@ namespace PloobsEngine.Physic2D.Farseer
             set { world = value; }
         }
 
+        /// <summary>
+        /// Updates
+        /// </summary>
+        /// <param name="gt">The gt.</param>
         protected override void Update(Microsoft.Xna.Framework.GameTime gt)
         {            
             // variable time step but never less then 30 Hz
             world.Step(Math.Min((float)gt.ElapsedGameTime.TotalSeconds, (1f / 30f)));               
         }
 
+        /// <summary>
+        /// Adds the object.
+        /// </summary>
+        /// <param name="obj">The obj.</param>
         public override void AddObject(I2DPhysicObject obj)
         {
             if (obj.Physic2DType == Physic2DType.Physic)
@@ -69,6 +84,10 @@ namespace PloobsEngine.Physic2D.Farseer
             }
         }
 
+        /// <summary>
+        /// Removes the object.
+        /// </summary>
+        /// <param name="obj">The obj.</param>
         public override void RemoveObject(I2DPhysicObject obj)
         {
             if (obj.Physic2DType == Physic2DType.Physic)
@@ -82,6 +101,11 @@ namespace PloobsEngine.Physic2D.Farseer
             }
         }
 
+        /// <summary>
+        /// Test a Point agains the world
+        /// </summary>
+        /// <param name="point">The point.</param>
+        /// <returns></returns>
         public override I2DPhysicObject Picking(Vector2 point)
         {          
              Fixture fix =  world.TestPoint(point);
@@ -92,6 +116,12 @@ namespace PloobsEngine.Physic2D.Farseer
         }
 
         List<I2DPhysicObject> objs = new List<I2DPhysicObject>();
+        /// <summary>
+        /// Tests the AABB against the world.
+        /// </summary>
+        /// <param name="min">The min.</param>
+        /// <param name="max">The max.</param>
+        /// <returns></returns>
         public override List<I2DPhysicObject> TestAABB(Vector2 min, Vector2 max)
         {
             objs.Clear();

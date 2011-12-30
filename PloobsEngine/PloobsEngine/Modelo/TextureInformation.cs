@@ -27,6 +27,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace PloobsEngine.Modelo
 {
+    /// <summary>
+    /// Handles the textures of a IModelo.
+    /// Similar to BatchInformation, but for textures only
+    /// </summary>
     public class TextureInformation
     {
         public TextureInformation(bool isinternal, GraphicFactory factory, String diffuseTextureName = null, String bumpTextureName = null, String specularTextureName = null, String glowTextureName = null)
@@ -147,6 +151,10 @@ namespace PloobsEngine.Modelo
             }
         }
 
+        /// <summary>
+        /// Sets the passed texture type to null.
+        /// </summary>
+        /// <param name="type">The type.</param>
         public void SetNullTexture(TextureType type)
         {
             switch (type)

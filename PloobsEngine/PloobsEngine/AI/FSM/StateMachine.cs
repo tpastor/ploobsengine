@@ -26,16 +26,21 @@ using Microsoft.Xna.Framework;
 
 namespace PloobsEngine.IA
 {
+    /// <summary>
+    /// Ploobs State Machine
+    /// </summary>
     public class StateMachine
     {
-        public StateMachine()
-        {        
-        }
         
         private IDictionary<String,IState> _states = new Dictionary<String,IState>();
         private String currentState = null;
         private bool newInState = true;
 
+        /// <summary>
+        /// Add a state to the FSM
+        /// The first added state will be the current state (call SetCurrentState to change it)
+        /// </summary>
+        /// <param name="state"></param>
         public void AddState(IState state)
         {
             if (currentState == null)
@@ -43,15 +48,27 @@ namespace PloobsEngine.IA
             _states.Add(state.Name, state);
         }
 
+        /// <summary>
+        /// Set the current state
+        /// </summary>
+        /// <param name="name"></param>
         public void SetCurrentState(String name)
         {
             this.currentState = name;
         }
+        /// <summary>
+        /// Get current state
+        /// </summary>
+        /// <returns></returns>
         public IState GetCurrentState()
         {
             return _states[currentState];
         }
 
+        /// <summary>
+        /// Updates the FSM.
+        /// </summary>
+        /// <param name="gameTime">The game time.</param>
         public void UpdateFSM(GameTime gameTime)
         {
             if (newInState)

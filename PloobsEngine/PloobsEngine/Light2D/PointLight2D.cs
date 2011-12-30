@@ -25,6 +25,9 @@ using Microsoft.Xna.Framework;
 
 namespace PloobsEngine.Light2D
 {
+    /// <summary>
+    /// 2D point light
+    /// </summary>
     public class PointLight2D : Light2D
     {        
         public PointLight2D(Vector2 position, Color color, float intensisty = 1, ShadowmapSize ShadowmapSize = ShadowmapSize.Size512)

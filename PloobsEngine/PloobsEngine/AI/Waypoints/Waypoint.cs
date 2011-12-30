@@ -26,6 +26,9 @@ using Microsoft.Xna.Framework;
 namespace PloobsEngine.IA
 {
     #if !WINDOWS_PHONE
+    /// <summary>
+    /// Waypoint
+    /// </summary>
     [Serializable]
 #endif
     public class Waypoint
@@ -41,6 +44,12 @@ namespace PloobsEngine.IA
         private object aditionalInfo;
         private IAPathfinderNode node;
 
+        /// <summary>
+        /// Gets or sets the node attached
+        /// </summary>
+        /// <value>
+        /// The node.
+        /// </value>
         public IAPathfinderNode Node
         {
             get { return node; }

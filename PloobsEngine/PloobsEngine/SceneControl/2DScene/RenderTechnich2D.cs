@@ -29,9 +29,16 @@ using PloobsEngine.SceneControl.Scene;
 
 namespace PloobsEngine.SceneControl._2DScene
 {
+    /// <summary>
+    /// Render technic for 2D specification
+    /// </summary>
     public abstract class RenderTechnich2D : IIRenderTechnic
     {
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RenderTechnich2D"/> class.
+        /// </summary>
+        /// <param name="PostEffectType">Type of the post effect.</param>
         public RenderTechnich2D(PostEffectType PostEffectType)
         {
             this.PostEffectType = PostEffectType;

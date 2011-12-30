@@ -28,12 +28,53 @@ using PloobsEngine.SceneControl;
 
 namespace PloobsEngine.Material2D
 {
+    /// <summary>
+    /// 2D material Specification
+    /// </summary>
     public abstract class I2DMaterial
     {        
+        /// <summary>
+        /// Called when the material is initialized (added to the world)
+        /// </summary>
+        /// <param name="ginfo"></param>
+        /// <param name="factory"></param>
+        /// <param name="obj"></param>
         public virtual void Initialization(GraphicInfo ginfo, GraphicFactory factory, I2DObject obj) { }
+
+        /// <summary>
+        /// Called once each frame before the draw phase
+        /// </summary>
+        /// <param name="gt">The gt.</param>
+        /// <param name="mundo">The mundo.</param>
+        /// <param name="obj">The obj.</param>
+        /// <param name="render">The render.</param>
         public virtual void PreDrawnPhase(GameTime gt, I2DWorld mundo, I2DObject obj, RenderHelper render) { }
+        /// <summary>
+        /// Draws 
+        /// Called once each frame
+        /// </summary>
+        /// <param name="gt">The gt.</param>
+        /// <param name="obj">The obj.</param>
+        /// <param name="render">The render.</param>
         public abstract void Draw(GameTime gt, I2DObject obj, RenderHelper render);
+
+        /// <summary>
+        /// Called once when lights are enabled
+        /// Responsible for drawing the scene from the light perspective
+        /// </summary>
+        /// <param name="gt">The gt.</param>
+        /// <param name="obj">The obj.</param>
+        /// <param name="render">The render.</param>
+        /// <param name="color">The color.</param>
+        /// <param name="light">The light.</param>
         public abstract void LightDraw(GameTime gt, I2DObject obj, RenderHelper render, Color color,PloobsEngine.Light2D.Light2D light);
+
+        /// <summary>
+        /// Updates.
+        /// Called once each frame
+        /// </summary>
+        /// <param name="gameTime">The game time.</param>
+        /// <param name="obj">The obj.</param>
         public virtual void Update(GameTime gameTime, I2DObject obj) { }             
     }
 }

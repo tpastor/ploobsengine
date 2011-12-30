@@ -28,6 +28,9 @@ using PloobsEngine.SceneControl;
 
 namespace PloobsEngine.Light2D
 {
+    /// <summary>
+    /// Abstract class to define a 2D light
+    /// </summary>
     public abstract class Light2D
     {
         internal RenderTarget2D RenderTarget { get; set; }

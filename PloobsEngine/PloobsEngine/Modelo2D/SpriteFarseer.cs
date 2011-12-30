@@ -31,6 +31,10 @@ using PloobsEngine.Physic2D.Farseer;
 
 namespace PloobsEngine.Modelo2D
 {
+    /// <summary>
+    /// Specific model for farseer physics
+    /// MOST WIDELY USED +P
+    /// </summary>
     public class SpriteFarseer : IModelo2D
     {
         static FarseerAsset2DCreator assetCreator = null;

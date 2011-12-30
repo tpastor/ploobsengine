@@ -66,8 +66,8 @@ namespace EngineTestes
                     this.World.RemoveObject(obj);
                     DynamicObjectSaver DynamicObjectSaver = new Serialization.DynamicObjectSaver(obj.Modelo.Name, obj.PhysicObject.Position, obj.PhysicObject.Rotation, obj.PhysicObject.Scale, obj.PhysicObject.Velocity, obj.PhysicObject.AngularVelocity);
                     SerializatorWrapper.Serialize(DynamicObjectSaver, "dyn.xml");
+                    
                     DynamicObjectSaver dloaded = (DynamicObjectSaver)SerializatorWrapper.Desserialize<DynamicObjectSaver>("dyn.xml");
-
                     SimpleModel simpleModel = new SimpleModel(factory, dloaded.modelName);
                     simpleModel.SetTexture(factory.CreateTexture2DColor(1, 1, Color.Green), TextureType.DIFFUSE);
                     SphereObject tmesh = new SphereObject(dloaded.position, 1, 10, dloaded.scale.X, MaterialDescription.DefaultBepuMaterial());                    

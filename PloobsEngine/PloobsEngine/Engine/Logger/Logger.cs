@@ -24,6 +24,9 @@ using System.Text;
 
 namespace PloobsEngine.Engine.Logger
 {
+    /// <summary>
+    /// Interface to define a Ploobs Logger
+    /// </summary>
     public interface ILogger
     {
         void Log(String Message, LogLevel logLevel);
@@ -48,10 +51,19 @@ namespace PloobsEngine.Engine.Logger
         Warning
     }
 
+    /// <summary>
+    /// Static Class responsible for Ploobs logging 
+    /// </summary>
     public static class ActiveLogger
     {
         internal static ILogger logger;
 
+        /// <summary>
+        /// Logs a message.
+        /// In Release, warning messages are not logged
+        /// </summary>
+        /// <param name="message">The message.</param>
+        /// <param name="level">The level.</param>
         public static void LogMessage(String message, LogLevel level)
         {
 

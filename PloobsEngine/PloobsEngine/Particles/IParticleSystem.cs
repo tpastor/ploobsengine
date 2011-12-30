@@ -27,9 +27,16 @@ using PloobsEngine.Engine;
 
 namespace PloobsEngine.Particles
 {
+    /// <summary>
+    /// Particle system specification
+    /// </summary>
     public abstract class IParticleSystem
-    {        
+    {
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IParticleSystem"/> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
         public IParticleSystem(String name)
         {
             if (String.IsNullOrEmpty(name))
@@ -41,6 +48,12 @@ namespace PloobsEngine.Particles
             this.Name = name;
         }
 
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        /// <value>
+        /// The name.
+        /// </value>
         public String Name
         {
             get;

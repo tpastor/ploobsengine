@@ -30,6 +30,10 @@ using PloobsEngine.Loader;
 
 namespace PloobsEngine.Modelo
 {
+    /// <summary>
+    /// Model implementation responsible for holding a specific mesh of a larger model
+    /// Used by our World loader (from 3ds exporter)
+    /// </summary>
     public class CustomModel : IModelo
     {
 
@@ -143,7 +147,9 @@ namespace PloobsEngine.Modelo
 
         protected override void LoadModel(GraphicFactory factory, out BatchInformation[][] BatchInformations, out TextureInformation[][] TextureInformations)
         {
-            ///code not called
+            ///code not called !!!
+            ///Here for future usage.
+
             model = factory.GetModel(this.Name, isInternal);
             ModelBuilderHelper.Extract(model, out BatchInformations);
             

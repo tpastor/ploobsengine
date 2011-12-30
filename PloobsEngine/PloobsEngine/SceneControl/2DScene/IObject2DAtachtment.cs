@@ -25,6 +25,9 @@ using Microsoft.Xna.Framework;
 
 namespace PloobsEngine.SceneControl._2DScene
 {
+    /// <summary>
+    /// 2D object attachement
+    /// </summary>
     public abstract class IObject2DAtachtment
     {
         /// <summary>

@@ -26,6 +26,9 @@ using Microsoft.Xna.Framework;
 
 namespace PloobsEngine.SceneControl._2DScene.Culler
 {
+    /// <summary>
+    /// Specification for a 2D culler system
+    /// </summary>
     public abstract class I2DCuller
     {
         internal I2DWorld world = null;

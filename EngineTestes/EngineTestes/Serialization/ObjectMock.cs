@@ -28,7 +28,6 @@ namespace EngineTestes.Serialization
             IObjectAttachment = new List<IObjectAttachment>();
         }
 
-
         public String modelName;
         public Vector3 position;
         public Vector3 scale;

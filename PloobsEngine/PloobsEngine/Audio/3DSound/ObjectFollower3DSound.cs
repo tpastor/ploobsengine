@@ -26,6 +26,9 @@ using PloobsEngine.SceneControl;
 
 namespace PloobsEngine.Audio
 {
+    /// <summary>
+    /// 3D sound that follows a 3D object
+    /// </summary>
     public class ObjectFollower3DSound : ISoundEmitter3D
     {
         public ObjectFollower3DSound(IContentManager cmanager, string audioname,IObject follow)

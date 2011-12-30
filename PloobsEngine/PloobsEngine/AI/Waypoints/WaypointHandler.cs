@@ -29,19 +29,26 @@ using PloobsEngine.Utils;
 
 namespace PloobsEngine.IA
 {
+    /// <summary>
+    /// Interface to user handling waypoints
+    /// </summary>
     public class WaypointHandler
     {
         static int id = 0;
         WaypointsCollection col;       
 
         /// <summary>
-        /// ReInicia a Instancia do handler
+        ///Restart the handler
         /// </summary>
         public void Clear()
         {
             col = new WaypointsCollection();        
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WaypointHandler"/> class.
+        /// </summary>
+        /// <param name="mapName">Name of the map.</param>
         public WaypointHandler(String mapName = null)
         {
             col = new WaypointsCollection();
@@ -53,6 +60,11 @@ namespace PloobsEngine.IA
             return id++;
         }
 
+        /// <summary>
+        /// Adds the an unconnected waypoint to the map .
+        /// </summary>
+        /// <param name="worldPos">The world pos.</param>
+        /// <param name="type">The type.</param>
         public void AddDefaultWaypointUnconnected(Vector3 worldPos,WAYPOINTTYPE type)
         {
             Waypoint w = new Waypoint();
@@ -64,6 +76,10 @@ namespace PloobsEngine.IA
             col.State = WaypointsState.UnConnected;
         }
 
+        /// <summary>
+        /// Adds the an unconnected waypoint to the map .
+        /// </summary>
+        /// <param name="waypoint">The waypoint.</param>
         public void AddWaypointUnconnected(Waypoint waypoint)
         {
             if (waypoint == null)
@@ -74,11 +90,19 @@ namespace PloobsEngine.IA
             col.State = WaypointsState.UnConnected;
         }
 
+        /// <summary>
+        /// Removes the waypoint.
+        /// </summary>
+        /// <param name="id">The id.</param>
         public void RemoveWaypoint(int id)
         {
             col.IdWaypoint.Remove(id);
-        }        
-        
+        }
+
+        /// <summary>
+        /// Saves the connected waypoints to a file.
+        /// </summary>
+        /// <param name="fileName">Name of the file.</param>
         public void SaveConnectedWaypoints(String fileName)
         {
             if (col.State != WaypointsState.Connected)
@@ -92,6 +116,10 @@ namespace PloobsEngine.IA
             XmlContentLoader.SaveXmlContent(col, col.GetType(), fileName);
         }
 
+        /// <summary>
+        /// Saves the unconnected waypoints to a file
+        /// </summary>
+        /// <param name="fileName">Name of the file.</param>
         public void SaveUnconnectedWaypoints(String fileName)
         {
             if (col.State == WaypointsState.Connected)
@@ -107,6 +135,10 @@ namespace PloobsEngine.IA
         }
 
 
+        /// <summary>
+        /// Loads the connected waypoints  from a file
+        /// </summary>
+        /// <param name="FileName">Name of the file.</param>
         public void LoadConnectedWaypoints(String FileName)        
         {
             if (FileName == null)
@@ -141,8 +173,13 @@ namespace PloobsEngine.IA
             if(col.State == WaypointsState.Connected)
             Unconnect();
 
-        }        
-        
+        }
+
+        /// <summary>
+        /// Loads the connected waypoints islands.
+        /// </summary>
+        /// <param name="waypoints">The waypoints.</param>
+        /// <param name="connector">The connector.</param>
         public void LoadConnectedWaypointsIslands(String[] waypoints , IWaypointConnector connector)
         {
             if (waypoints==null || waypoints.Length == 0 )
@@ -173,6 +210,9 @@ namespace PloobsEngine.IA
 
         }
 
+        /// <summary>
+        /// Unconnects teh waypoints in this handler.
+        /// </summary>
         public void Unconnect()
         {
             col.State = WaypointsState.UnConnected;
@@ -186,7 +226,11 @@ namespace PloobsEngine.IA
                 }
             }
         }
-        
+
+        /// <summary>
+        /// Connects the waypoints in this handler
+        /// </summary>
+        /// <param name="connector">The connector.</param>
         public void ConnectWaypoints(IWaypointConnector connector)
         {
             if (connector == null)
@@ -204,6 +248,9 @@ namespace PloobsEngine.IA
             }            
         }
 
+        /// <summary>
+        /// Gets the current waypoints collection.
+        /// </summary>
         public WaypointsCollection CurrentWaypointsCollection
         {
             get
@@ -214,9 +261,11 @@ namespace PloobsEngine.IA
     }
 
     #if !WINDOWS_PHONE
+    /// <summary>
+    /// Handler Waypoints state
+    /// </summary>
     [Serializable]
     #endif
-
     public enum WaypointsState
     {
         Connected,UnConnected,Empty

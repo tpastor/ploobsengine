@@ -49,6 +49,9 @@ namespace PloobsEngine.Loader
     public delegate IPhysicConstraint CreateIConstraint(IWorld world, GraphicFactory factory, GraphicInfo ginfo, ConstraintInfo cinfo, IObject o1, IObject o2);
     public delegate void ProcessDummies(IWorld world, DummyInfo dinfo);
 
+    /// <summary>
+    /// Used to build the world from a loaded source (like our 3ds exporter script )
+    /// </summary>
     public class WorldLoader
     {
         /// <summary>

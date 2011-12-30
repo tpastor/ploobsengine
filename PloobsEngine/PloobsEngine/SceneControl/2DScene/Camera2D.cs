@@ -27,8 +27,14 @@ using PloobsEngine.Engine;
 
 namespace PloobsEngine.SceneControl._2DScene
 {
+    /// <summary>
+    /// 2D camera System
+    /// </summary>
     public class Camera2D : PloobsEngine.SceneControl._2DScene.ICamera2D
     {
+        /// <summary>
+        /// Occurs when [reached the tracking position].
+        /// </summary>
         public event Action<Camera2D> ReachedTheTrackingPosition;
         
         private const float _minZoom = 0.02f;
@@ -61,30 +67,65 @@ namespace PloobsEngine.SceneControl._2DScene
         private float speedUpDistance = 10;
         private float distanceToReach = 2;
 
+        /// <summary>
+        /// Gets or sets the distance to reach the target.
+        /// default 2
+        /// </summary>
+        /// <value>
+        /// The distance to reach.
+        /// </value>
         public float DistanceToReach
         {
             get { return ConvertUnits.ToDisplayUnits(distanceToReach); }
             set { distanceToReach = ConvertUnits.ToSimUnits(value); }
         }
 
+        /// <summary>
+        /// Gets or sets the speed up distance.
+        /// default 10
+        /// </summary>
+        /// <value>
+        /// The speed up distance.
+        /// </value>
         public float SpeedUpDistance
         {
             get { return ConvertUnits.ToDisplayUnits(speedUpDistance); }
             set { speedUpDistance = ConvertUnits.ToSimUnits(value); }
         }
 
+        /// <summary>
+        /// Gets or sets the intertia controller value
+        /// default 1
+        /// </summary>
+        /// <value>
+        /// The intertia controller.
+        /// </value>
         public float IntertiaController
         {
             get { return intertiaController; }
             set { intertiaController = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the intertia controller divider value.
+        /// deafault 10
+        /// </summary>
+        /// <value>
+        /// The intertia controller divider.
+        /// </value>
         public float IntertiaControllerDivider
         {
             get { return intertiaControllerDivider; }
             set { intertiaControllerDivider = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the intertia controller exp value.
+        /// default 2
+        /// </summary>
+        /// <value>
+        /// The intertia controller exp.
+        /// </value>
         public float IntertiaControllerExp
         {
             get { return intertiaControllerExp; }

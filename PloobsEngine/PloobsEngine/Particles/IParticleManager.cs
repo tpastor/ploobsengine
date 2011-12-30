@@ -27,22 +27,44 @@ using PloobsEngine.Engine;
 
 namespace PloobsEngine.Particles
 {
+    /// <summary>
+    /// Abstract particle manager
+    /// </summary>
     public abstract class IParticleManager
     {
+        /// <summary>
+        /// Gets the graphic factory.
+        /// </summary>
         public GraphicFactory GraphicFactory
         {
             get;
             internal set;
         }
 
+        /// <summary>
+        /// Gets the graphic info.
+        /// </summary>
         public GraphicInfo GraphicInfo
         {
             get;
             internal set;
         }
 
+        /// <summary>
+        /// Adds the and initialize particle system.
+        /// </summary>
+        /// <param name="particleSystem">The particle system.</param>
         public abstract void AddAndInitializeParticleSystem(IParticleSystem particleSystem);
+        /// <summary>
+        /// Removes the particle system.
+        /// </summary>
+        /// <param name="particleSystem">The particle system.</param>
         public abstract void RemoveParticleSystem(IParticleSystem particleSystem);
+        /// <summary>
+        /// Gets the particle system.
+        /// </summary>
+        /// <param name="particleSystemName">Name of the particle system.</param>
+        /// <returns></returns>
         public abstract IParticleSystem GetParticleSystem(String particleSystemName);
 
         protected abstract void Update3D(GameTime gt, Matrix view, Matrix Projection, Vector3 camPosition);
@@ -63,6 +85,12 @@ namespace PloobsEngine.Particles
             Draw(gt,view,Projection,render);
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="IParticleManager"/> is enabled.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if enabled; otherwise, <c>false</c>.
+        /// </value>
         public abstract bool Enabled
         {
             set;

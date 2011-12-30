@@ -109,6 +109,9 @@ namespace PloobsEngine.Loader
     }
 
 
+    /// <summary>
+    /// Loader for our 3ds max exporter
+    /// </summary>
     public class ExtractXmlModelLoader : IModelLoader
     {
         string path = "Content\\ModelInfos\\";

@@ -26,6 +26,10 @@ using PloobsEngine.SceneControl;
 
 namespace PloobsEngine.Audio
 {
+    /// <summary>
+    /// Simple effect Sound effect class
+    /// This instance is not shared. It is completely independent
+    /// </summary>
     public class SimpleSoundEffect
     {
         SoundEffect mySoundEffect;
@@ -46,7 +50,8 @@ namespace PloobsEngine.Audio
             System.Diagnostics.Debug.Assert(!String.IsNullOrEmpty(name));
             System.Diagnostics.Debug.Assert(volume >= -1 && volume <= 1);
             System.Diagnostics.Debug.Assert(pitch >= -1 && pitch <= 1);
-            System.Diagnostics.Debug.Assert(pan >= -1 && pan <= 1);            
+            System.Diagnostics.Debug.Assert(pan >= -1 && pan <= 1);    
+        
             this.mySoundEffect = cmanager.GetAsset<SoundEffect>(name);
             this.Duration = mySoundEffect.Duration;
             this.Name = mySoundEffect.Name;

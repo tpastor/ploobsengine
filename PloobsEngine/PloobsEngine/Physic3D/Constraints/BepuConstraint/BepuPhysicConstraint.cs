@@ -26,11 +26,21 @@ using PloobsEngine.Engine.Logger;
 
 namespace PloobsEngine.Physic.Constraints.BepuConstraint
 {
+    /// <summary>
+    /// Bepu Constraint Type
+    /// Extend this class to implement any constraint in bepu
+    /// </summary>
     public class BepuPhysicConstraint : IPhysicConstraint
     {
 
         protected Joint joint;
 
+        /// <summary>
+        /// Gets or sets the joint.
+        /// </summary>
+        /// <value>
+        /// The joint.
+        /// </value>
         public Joint Joint
         {
             get { return joint; }
@@ -52,12 +62,24 @@ namespace PloobsEngine.Physic.Constraints.BepuConstraint
             }
         }
 
+        /// <summary>
+        /// Gets or sets the body A.
+        /// </summary>
+        /// <value>
+        /// The body A.
+        /// </value>
         public override Physics.IPhysicObject BodyA
         {
             set;
             get;
         }
 
+        /// <summary>
+        /// Gets or sets the body B.
+        /// </summary>
+        /// <value>
+        /// The body B.
+        /// </value>
         public override Physics.IPhysicObject BodyB
         {
             set;

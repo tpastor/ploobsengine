@@ -28,6 +28,9 @@ using PloobsEngine.Engine.Logger;
 
 namespace PloobsEngine.SceneControl._2DScene
 {
+    /// <summary>
+    /// Screen for 2D scenes
+    /// </summary>
     public abstract class I2DScene : IScreen
     {
        #if !WINDOWS_PHONE

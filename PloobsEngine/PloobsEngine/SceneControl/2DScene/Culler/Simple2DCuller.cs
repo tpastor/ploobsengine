@@ -26,6 +26,9 @@ using PloobsEngine.Physic2D;
 
 namespace PloobsEngine.SceneControl._2DScene.Culler
 {
+    /// <summary>
+    /// Dummy 2D culler system 
+    /// </summary>
     public class Simple2DCuller : I2DCuller
     {        
         public Simple2DCuller()

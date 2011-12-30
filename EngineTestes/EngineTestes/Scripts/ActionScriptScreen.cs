@@ -129,6 +129,8 @@ namespace EngineTestes
                 this.BindInput(new SimpleConcreteKeyboardInputPlayable(StateKey.DOWN,Keys.Space,                
                 (a) => 
                     {                        
+                        ///5000 is the id of the script
+                        ///defined inside it =P look talk1.txt
                         MessageDeliver.SendMessage(new Message(-1,5000,null,Priority.LOW,0,SenderType.NORMAL,StaticRandom.PickRandomPoint(new Vector3(100,100,100),new Vector3(200,100,200),new Vector3(-100,100,-100)),null));
                     }
                 ));

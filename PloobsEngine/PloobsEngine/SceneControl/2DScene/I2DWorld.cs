@@ -33,6 +33,9 @@ using PloobsEngine.SceneControl._2DScene.Culler;
 
 namespace PloobsEngine.SceneControl._2DScene
 {
+    /// <summary>
+    /// 2D World
+    /// </summary>
     public class I2DWorld
     {
         /// <summary>
@@ -79,12 +82,21 @@ namespace PloobsEngine.SceneControl._2DScene
         protected IParticleManager particleManager;
         protected ICamera2D camera2D = null;
 
+        /// <summary>
+        /// Gets or sets the camera2D.
+        /// </summary>
+        /// <value>
+        /// The camera2D.
+        /// </value>
         public ICamera2D Camera2D
         {
             get { return camera2D; }
             set { camera2D = value; }
         }
 
+        /// <summary>
+        /// Gets the particle manager.
+        /// </summary>
         public IParticleManager ParticleManager
         {
             get {                
@@ -106,18 +118,29 @@ namespace PloobsEngine.SceneControl._2DScene
         }
 #if !WINDOWS_PHONE && !REACH
 
+        /// <summary>
+        /// Adds the light.
+        /// </summary>
+        /// <param name="Light">The light.</param>
         public void AddLight(PloobsEngine.Light2D.Light2D Light)
         {
             Light.RenderTarget = graphicsFactory.CreateRenderTarget(Light.baseSize, Light.baseSize);
             Lights2D.Add(Light);
         }
 
+        /// <summary>
+        /// Removes the light.
+        /// </summary>
+        /// <param name="Light">The light.</param>
         public void RemoveLight(PloobsEngine.Light2D.Light2D Light)
         {
             Light.RenderTarget = null;
             Lights2D.Remove(Light);
         }
 
+        /// <summary>
+        /// Gets the lights 2D.
+        /// </summary>
         public List<PloobsEngine.Light2D.Light2D> Lights2D
         {
             get;

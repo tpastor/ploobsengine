@@ -27,6 +27,9 @@ using Microsoft.Xna.Framework;
 
 namespace PloobsEngine.Audio
 {
+    /// <summary>
+    /// Static 3D sound
+    /// </summary>
     public class Static3DSound : ISoundEmitter3D
     {
         public Static3DSound(IContentManager cmanager, string audioname, Vector3 Position)

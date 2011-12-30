@@ -31,8 +31,11 @@ namespace PloobsEngine.SceneControl._2DScene
 {
     public delegate void RenderBackGround(GraphicInfo ginfo, RenderHelper render);
     public delegate void BeforeDraw(GraphicInfo ginfo, RenderHelper render);
-    public delegate void AfterDrawBeforePostEffects(GraphicInfo ginfo, RenderHelper render);     
+    public delegate void AfterDrawBeforePostEffects(GraphicInfo ginfo, RenderHelper render);
 
+    /// <summary>
+    /// 2D render technic
+    /// </summary>
     public class Basic2DRenderTechnich : RenderTechnich2D
     {
         public event RenderBackGround RenderBackGround = null;

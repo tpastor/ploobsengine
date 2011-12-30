@@ -29,6 +29,9 @@ using PloobsEngine.Engine;
 
 namespace PloobsEngine.Material2D
 {
+    /// <summary>
+    /// Basic 2D Material
+    /// </summary>
     public class Basic2DTextureMaterial : I2DMaterial
     {
 
@@ -64,6 +67,9 @@ namespace PloobsEngine.Material2D
         }
     }
 
+    /// <summary>
+    /// Basic Processor for the 2D basic Material
+    /// </summary>
     public class Basic2DTextureMaterialProcessor : IMaterialProcessor
     {
         #region IMaterialProcessor Members

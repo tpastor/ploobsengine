@@ -28,8 +28,15 @@ using System.Windows.Forms;
 
 namespace PloobsEngine.SceneControl.GUI
 {
+    /// <summary>
+    /// Neoforce tomshade Gui implementation
+    /// </summary>
     public class NeoforceGui : IGui
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NeoforceGui"/> class.
+        /// </summary>
+        /// <param name="skin">The skin. Null for default</param>
         public NeoforceGui(String skin = null)
         {
             this.skin = skin;
@@ -38,6 +45,9 @@ namespace PloobsEngine.SceneControl.GUI
         String skin;
         Manager manager;
 
+        /// <summary>
+        /// Gets the Neoforce manager.
+        /// </summary>
         public Manager Manager
         {
             get { return manager; }            

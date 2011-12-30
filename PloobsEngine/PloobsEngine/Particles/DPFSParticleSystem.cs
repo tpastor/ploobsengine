@@ -27,10 +27,18 @@ using PloobsEngine.Engine;
 
 namespace PloobsEngine.Particles
 {
+    /// <summary>
+    /// DPSF particle system implementation
+    /// </summary>
     public class DPFSParticleSystem : IParticleSystem
     {
 
-       
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DPFSParticleSystem"/> class.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="IDPSFParticleSystem">The IDPSF particle system.</param>
         public DPFSParticleSystem(String name, IDPSFParticleSystem IDPSFParticleSystem)
             : base(name)
         {
@@ -42,6 +50,12 @@ namespace PloobsEngine.Particles
             this.IDPSFParticleSystem = IDPSFParticleSystem;
         }
 
+        /// <summary>
+        /// Gets or sets the IDPSF particle system.
+        /// </summary>
+        /// <value>
+        /// The IDPSF particle system.
+        /// </value>
         public IDPSFParticleSystem IDPSFParticleSystem
         {
             get;

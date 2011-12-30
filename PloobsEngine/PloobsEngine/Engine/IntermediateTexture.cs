@@ -25,6 +25,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace PloobsEngine.Engine
 {
+    /// <summary>
+    /// Instance of a render target that belongs to a pool
+    /// </summary>
     public class IntermediateRenderTarget
     {
         public RenderTarget2D RenderTarget;

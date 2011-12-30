@@ -31,7 +31,7 @@ namespace PloobsEngine.Commands
     {
         /// <summary>
         /// The name of the reciever
-        /// MUST BE UNIQUE
+        /// MUST BE UNIQUE 
         /// </summary>
         /// <returns></returns>
         string getMyName();

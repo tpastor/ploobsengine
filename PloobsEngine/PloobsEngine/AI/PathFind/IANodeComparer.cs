@@ -24,7 +24,7 @@ using System.Text;
 
 namespace PloobsEngine.IA
 {
-    public class IANodeComparer : IComparer<Waypoint>
+    internal class IANodeComparer : IComparer<Waypoint>
     {
         public int Compare(Waypoint nodeA, Waypoint nodeB)
         {

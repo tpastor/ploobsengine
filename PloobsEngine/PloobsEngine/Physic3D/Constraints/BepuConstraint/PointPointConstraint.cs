@@ -29,6 +29,9 @@ using PloobsEngine.Engine.Logger;
 
 namespace PloobsEngine.Physic.Constraints.BepuConstraint
 {
+    /// <summary>
+    /// Point to Point Constraint
+    /// </summary>
     public class PointPointConstraint : BepuPhysicConstraint
     {        
 

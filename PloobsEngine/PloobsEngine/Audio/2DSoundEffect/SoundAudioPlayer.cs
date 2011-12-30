@@ -105,6 +105,7 @@ namespace PloobsEngine.Audio
 
         /// <summary>
         /// Add A Sound Effect to the Repo
+        /// Sounds are shared here
         /// </summary>
         /// <param name="musicNamePath">filepath</param>
         /// <param name="musicName">Name used to refer to this effect latter</param>

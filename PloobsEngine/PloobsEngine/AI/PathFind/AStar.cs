@@ -28,6 +28,9 @@ namespace PloobsEngine.IA
 {
     public delegate float CostToCross<T>(T type);
 
+    /// <summary>
+    /// Ploobs Astar Pathfinding implementation
+    /// </summary>
     public class AStar 
     {
         private PriorityQueueB<Waypoint> openQueue;
@@ -35,20 +38,41 @@ namespace PloobsEngine.IA
         private Waypoint parentNode;
         private IMap map;
         private float heuristicEstimateValue = 1;
+
+        /// <summary>
+        /// Delegate called to evaluate the cost to cross a determined waypoint type
+        /// </summary>
         public CostToCross<WAYPOINTTYPE> CostToCross = null;
         private bool ended = false;
+
+        /// <summary>
+        /// Gets a value indicating whether Astar <see cref="AStar"/> is ended.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if ended; otherwise, <c>false</c>.
+        /// </value>
         public bool Ended
         {
             get { return ended; }            
         }
-        
 
+
+        /// <summary>
+        /// Gets or sets the heuristic estimate value.
+        /// </summary>
+        /// <value>
+        /// The heuristic estimate value.
+        /// </value>
         public float HeuristicEstimateValue
         {
             get { return heuristicEstimateValue; }
             set { heuristicEstimateValue = value; }
-        }        
+        }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AStar"/> class.
+        /// </summary>
+        /// <param name="map">The map.</param>
         public AStar(IMap map)
         {            
             this.map = map;
@@ -62,6 +86,11 @@ namespace PloobsEngine.IA
 
         #region IPathFinder Members
 
+        /// <summary>
+        /// Costs to cross implementation. (used if no delegate costtowalk is provided)
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns></returns>
         protected float CostToCrossImplementation(WAYPOINTTYPE type)
         {
             switch (type)
@@ -77,11 +106,25 @@ namespace PloobsEngine.IA
             }
         }
 
+        /// <summary>
+        /// Compute and return the path
+        /// </summary>
+        /// <param name="Start">The start.</param>
+        /// <param name="End">The end.</param>
+        /// <param name="iterations">The iterations.</param>
+        /// <returns></returns>
         public LinkedList<Waypoint> GetPath(Vector3 Start, Vector3 End, float iterations = float.MaxValue)
         {
             return GetPath(map.GetClosestWaypoint(Start), map.GetClosestWaypoint(End), iterations);
         }
 
+        /// <summary>
+        /// Compute and return the path
+        /// </summary>
+        /// <param name="Start">The start.</param>
+        /// <param name="End">The end.</param>
+        /// <param name="iterations">The iterations.</param>
+        /// <returns></returns>
         public LinkedList<Waypoint> GetPath(Waypoint Start, Waypoint End,float iterations = float.MaxValue)
         {
 
@@ -248,6 +291,12 @@ namespace PloobsEngine.IA
             }
         }
 
+        /// <summary>
+        /// Gets or sets the map.
+        /// </summary>
+        /// <value>
+        /// The map.
+        /// </value>
         public IMap Map
         {
             get

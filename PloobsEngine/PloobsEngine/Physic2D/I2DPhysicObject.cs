@@ -26,62 +26,126 @@ using Microsoft.Xna.Framework;
 
 namespace PloobsEngine.Physic2D
 {
+    /// <summary>
+    /// Physic object type
+    /// </summary>
     public enum Physic2DType
     {
-        Ghost,Physic
+        /// <summary>
+        /// Do not exists in physic world (no collision detection, no ray intersections ......)
+        /// </summary>
+        Ghost,
+        /// <summary>
+        /// Real physic object
+        /// </summary>
+        Physic
     }
 
+    /// <summary>
+    /// 2D physic object specification
+    /// </summary>
     public abstract class I2DPhysicObject
     {       
         Vector2 origin;
 
+        /// <summary>
+        /// Gets the type of the physic2D.
+        /// </summary>
+        /// <value>
+        /// The type of the physic2 D.
+        /// </value>
         public abstract Physic2DType Physic2DType
         {
             get;            
         }
 
+        /// <summary>
+        /// Gets or sets the origin.
+        /// </summary>
+        /// <value>
+        /// The origin.
+        /// </value>
         public Vector2 Origin
         {
             get { return origin; }
             set { origin = value; }
         }
-        
 
+
+        /// <summary>
+        /// Gets the owner.
+        /// </summary>
         public I2DObject Owner
         {
             internal set;
             get;
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance is dynamic.
+        /// </summary>
+        /// <value>
+        /// 	<c>true</c> if this instance is dynamic; otherwise, <c>false</c>.
+        /// </value>
         public virtual bool isDynamic
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Gets or sets the position.
+        /// </summary>
+        /// <value>
+        /// The position.
+        /// </value>
         public virtual Vector2 Position
         {
             set;
             get;
         }
 
+        /// <summary>
+        /// Gets or sets the linear velocity.
+        /// </summary>
+        /// <value>
+        /// The linear velocity.
+        /// </value>
         public virtual Vector2 LinearVelocity
         {
             set;
             get;
         }
+        /// <summary>
+        /// Gets or sets the angular velocity.
+        /// </summary>
+        /// <value>
+        /// The angular velocity.
+        /// </value>
         public virtual float AngularVelocity
         {
             set;
             get;
 
         }
+        /// <summary>
+        /// Gets or sets the rotation.
+        /// </summary>
+        /// <value>
+        /// The rotation.
+        /// </value>
         public virtual float Rotation
         {
             set;
             get;
         }
 
+        /// <summary>
+        /// Gets a value indicating whether this <see cref="I2DPhysicObject"/> is enabled.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if enabled; otherwise, <c>false</c>.
+        /// </value>
         public virtual bool Enabled
         {
             internal set;
@@ -104,6 +168,11 @@ namespace PloobsEngine.Physic2D
             return false;
         }
 
+        /// <summary>
+        /// Applies the force.
+        /// </summary>
+        /// <param name="force">The force.</param>
+        /// <param name="point">The point.</param>
         public abstract void ApplyForce(Vector2 force, Vector2? point = null);
         
     

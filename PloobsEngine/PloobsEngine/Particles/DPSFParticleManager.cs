@@ -28,8 +28,14 @@ using PloobsEngine.Engine.Logger;
 
 namespace PloobsEngine.Particles
 {
+    /// <summary>
+    /// DPSF particle manager implementation
+    /// </summary>
     public class DPSFParticleManager : IParticleManager
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DPSFParticleManager"/> class.
+        /// </summary>
         public DPSFParticleManager()
         {
             manager = new ParticleSystemManager();
@@ -37,14 +43,24 @@ namespace PloobsEngine.Particles
 
         private ParticleSystemManager manager;
 
+        /// <summary>
+        /// Gets the particle system manager.
+        /// </summary>
         public ParticleSystemManager ParticleSystemManager
         {
             get { return manager; }            
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public readonly Dictionary<String, IParticleSystem> ParticleSystem = new Dictionary<string,IParticleSystem>();
-                        
 
+
+        /// <summary>
+        /// Adds the and initialize particle system.
+        /// </summary>
+        /// <param name="particleSystem">The particle system.</param>
         public override void AddAndInitializeParticleSystem(IParticleSystem particleSystem)
         {
             System.Diagnostics.Debug.Assert(particleSystem != null, "Particle System cannot be null");            
@@ -64,6 +80,10 @@ namespace PloobsEngine.Particles
             }
         }
 
+        /// <summary>
+        /// Removes the particle system.
+        /// </summary>
+        /// <param name="particleSystem">The particle system.</param>
         public override void RemoveParticleSystem(IParticleSystem particleSystem)
         {
             System.Diagnostics.Debug.Assert(particleSystem != null, "Particle System cannot be null");            
@@ -83,6 +103,12 @@ namespace PloobsEngine.Particles
 
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="IParticleManager"/> is enabled.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if enabled; otherwise, <c>false</c>.
+        /// </value>
         public override bool Enabled
         {
             get
@@ -95,6 +121,13 @@ namespace PloobsEngine.Particles
             }
         }
 
+        /// <summary>
+        /// Update3D particle systems
+        /// </summary>
+        /// <param name="gt">The gt.</param>
+        /// <param name="view">The view.</param>
+        /// <param name="Projection">The projection.</param>
+        /// <param name="camPosition">The cam position.</param>
         protected override void Update3D(GameTime gt, Matrix view, Matrix Projection, Vector3 camPosition)
         {
             // Set the World, View, and Projection Matrices for the Particle Systems before Drawing them
@@ -107,6 +140,12 @@ namespace PloobsEngine.Particles
             manager.UpdateAllParticleSystems((float)gt.ElapsedGameTime.TotalSeconds);
         }
 
+        /// <summary>
+        /// Updates 2D particle systems
+        /// </summary>
+        /// <param name="gt">The gt.</param>
+        /// <param name="view">The view.</param>
+        /// <param name="Projection">The projection.</param>
         protected override void Update2D(GameTime gt, Matrix view, Matrix Projection)
         {
             // Set the World, View, and Projection Matrices for the Particle Systems before Drawing them
@@ -118,11 +157,23 @@ namespace PloobsEngine.Particles
             manager.UpdateAllParticleSystems((float)gt.ElapsedGameTime.TotalSeconds);
         }
 
+        /// <summary>
+        /// Draws all particles
+        /// </summary>
+        /// <param name="gt">The gt.</param>
+        /// <param name="view">The view.</param>
+        /// <param name="Projection">The projection.</param>
+        /// <param name="render">The render.</param>
         protected override void Draw(GameTime gt, Matrix view, Matrix Projection, RenderHelper render)
         {
             manager.DrawAllParticleSystems();
         }
 
+        /// <summary>
+        /// Gets the particle system.
+        /// </summary>
+        /// <param name="particleSystemName">Name of the particle system.</param>
+        /// <returns></returns>
         public override IParticleSystem GetParticleSystem(string particleSystemName)
         {
             if (ParticleSystem.ContainsKey(particleSystemName))
