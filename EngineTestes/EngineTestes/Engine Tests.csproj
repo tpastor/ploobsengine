@@ -218,6 +218,10 @@
     <Compile Include="Scripts\InterScriptTalking.cs" />
     <Compile Include="Scripts\ScriptScreen.cs" />
     <Compile Include="Scripts\ISceneBuilder.cs" />
+    <Compile Include="Serialization\DynamicObjectSaver.cs" />
+    <Compile Include="Serialization\ObjectMock.cs" />
+    <Compile Include="Serialization\SerializationScreen.cs" />
+    <Compile Include="Serialization\SerializatorWrapper.cs" />
     <Compile Include="Shatter\DeferredShatterCustomShader.cs" />
     <Compile Include="Shatter\ShatterSample.cs" />
     <Compile Include="SoundSamples\SoundScreen.cs" />

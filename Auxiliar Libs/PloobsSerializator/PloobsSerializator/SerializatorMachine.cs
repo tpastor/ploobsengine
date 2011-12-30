@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Globalization;
 using System.Collections;
 using System.Xml.Linq;
+using System.Runtime.Remoting.Contexts;
 
 namespace PloobsSerializator
 {
@@ -114,14 +115,14 @@ namespace PloobsSerializator
         }
 
 
-        public T Desserialize<T>(String path,Dictionary<Type, Func<XElement, object>> des =null)
+        public T Desserialize<T>(String path, object Context = null, Dictionary<Type,Func<XElement, object>> des =null)
             where T : class             
-        {            
-            return (T)Desserialize(path,des);
+        {   
+            return (T)Desserialize(path,Context, des);
         }
 
         Dictionary<Type, Func<XElement, object>> desserializador = new Dictionary<Type, Func<XElement, object>>(); 
-        public object Desserialize(String path, Dictionary<Type, Func<XElement, object>> helpers = null)         
+        public object Desserialize(String path,object Context = null,Dictionary<Type, Func<XElement, object>> helpers = null)         
         {
             if (helpers != null)
             {
@@ -131,6 +132,7 @@ namespace PloobsSerializator
                 }
             }
 
+            DeSerializerProxy.Context = Context;
             XMLDeserializer desserializer = new XMLDeserializer(DeSerializerProxy, desserializador);
             DeSerializerProxy.XMLDeserializer = desserializer;
             return desserializer.Load(path);

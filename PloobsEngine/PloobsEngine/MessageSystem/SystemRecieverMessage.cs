@@ -38,6 +38,12 @@ namespace PloobsEngine.MessageSystem
         {
             EntityMapper.getInstance().AddEntity(this);
         }
+
+        public SystemRecieverMessage(int id)
+        {
+            this.id = id;
+            EntityMapper.getInstance().AddEntity(this);
+        }
         
         #region IRecieveMessageEntity Members
 
