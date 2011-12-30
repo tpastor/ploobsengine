@@ -24,13 +24,27 @@ using System.Text;
 
 namespace PloobsEngine.IA
 {
+    /// <summary>
+    /// Interface to define how to connect waypoints (used in the handler)
+    /// </summary>
     public interface IWaypointConnector
     {
         WaypointsCollection ConnectWaypoints(WaypointsCollection col);
         ConnectorType ConnectorType { get; }
     }
+
+    /// <summary>
+    /// Type of connections
+    /// </summary>
     public enum ConnectorType
-    { 
-        BETWEEN_COLLECTIONS_CONNECTEC , BETWEEN_WAYPOINTS_UNCONNECTED
+    {
+        /// <summary>
+        /// Between islands
+        /// </summary>
+        BETWEEN_COLLECTIONS_CONNECTEC ,
+        /// <summary>
+        /// Between waypoints
+        /// </summary>
+        BETWEEN_WAYPOINTS_UNCONNECTED
     }
 }

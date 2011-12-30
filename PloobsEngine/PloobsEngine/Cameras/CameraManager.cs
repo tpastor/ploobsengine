@@ -29,27 +29,50 @@ using PloobsEngine.Utils;
 
 namespace PloobsEngine.Cameras
 {
+    /// <summary>
+    /// How to interpolate cameras
+    /// </summary>
     public enum InterpolationType
     {
-        BYTIME,BYSTEP
+        /// <summary>
+        /// Using fixed time (speed)
+        /// </summary>
+        BYTIME,
+        /// <summary>
+        /// By fixed distance
+        /// </summary>
+        BYSTEP
     }
 
+
+    /// <summary>
+    /// If should or not interpolate between camera transitions
+    /// </summary>
     public enum TransitionMode
     {
         INTERPOLATED,IMEDIATELY
     }
 
+    /// <summary>
+    /// State of the Camera
+    /// </summary>
     public enum State
     {
         INTERPOLATING,NORMAL
     }
 
+    /// <summary>
+    /// Camera holding interface
+    /// </summary>
     public struct CameraDescription
     {        
         public String name;
         public ICamera cam;
     };
 
+    /// <summary>
+    /// Handle 3D cameras transitions and storage
+    /// </summary>
     public class CameraManager
     {
         public static readonly String DEFAULTCAMERA  = "defaultCamera";
@@ -65,8 +88,8 @@ namespace PloobsEngine.Cameras
         }
 
         /// <summary>
-        /// Adiciona uma camera
-        /// Se a camera tiver o nome DEFAULTCAMERA ela vira a camera atual tb
+        /// Add a camera
+        /// if camera name is DEFAULTCAMERA it becomes the active one
         /// </summary>
         /// <param name="cam"></param>
         /// <param name="name"></param>
@@ -112,8 +135,8 @@ namespace PloobsEngine.Cameras
         }
 
         /// <summary>
-        /// Remove uma Camera
-        /// Cuidado, pois ela pode estar Ativa !!!
+        /// Remove a camera
+        /// WARNING, IF IT IS ACTIVE AN EXCEPTION WILL BE RAISED
         /// </summary>
         /// <param name="name">nome da camera</param>
         public void RemoveCamera(String name)
@@ -142,7 +165,7 @@ namespace PloobsEngine.Cameras
         }
         
         /// <summary>
-        /// Retorna a Camera ativa
+        /// Active Camera
         /// </summary>
         public ICamera ActiveCamera
         {
@@ -153,8 +176,8 @@ namespace PloobsEngine.Cameras
         }
 
         /// <summary>
-        /// Seta uma camera ativa
-        /// modo de transicao Imediata
+        /// Set Active camera
+        /// Imediate transition
         /// </summary>
         /// <param name="name"></param>
         public void SetActiveCamera(String name)
@@ -171,8 +194,7 @@ namespace PloobsEngine.Cameras
             }
         }
         /// <summary>
-        /// Seta uma camera ativa
-        /// modo de transicao Imediata
+        /// Set active camera
         /// </summary>
         /// <param name="name"></param>
         /// <param name="time">tempo de demora ou velocidade  -> para controlar o interpolador</param>
@@ -232,18 +254,30 @@ namespace PloobsEngine.Cameras
         }
         
         /// <summary>
-        /// Retorna uma lista das cameras ativas
+        /// Cameras added
         /// </summary>
         /// <returns></returns>
         public List<CameraDescription> GetCamerasDescription()
         {
             return _cameras;
+
         }
+        /// <summary>
+        /// Gets the type of the active camera.
+        /// </summary>
+        /// <value>
+        /// The type of the active camera.
+        /// </value>
         public State ActiveCameraType
         {
             get { return activeCameraType; }
         }
 
+        /// <summary>
+        /// Gets the camera by name.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <returns></returns>
         public ICamera GetCamera(String name)
         {            
             int camIndex = _cameras.FindIndex(delegate(CameraDescription t) { return t.name == name; });

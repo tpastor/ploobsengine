@@ -27,6 +27,9 @@ using Microsoft.Xna.Framework;
 
 namespace PloobsEngine.Audio
 {
+    /// <summary>
+    /// Static 2D sound
+    /// </summary>
     public class Static2DSound : ISoundEmitter2D
     {
         public Static2DSound(IContentManager cmanager, string audioname, Vector2 Position)

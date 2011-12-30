@@ -27,6 +27,9 @@ using PloobsEngine.Engine;
 
 namespace PloobsEngine.Features.DebugDraw
 {
+    /// <summary>
+    /// Interface to define a specific Debug Shape
+    /// </summary>
     public interface IDebugDrawShape
     {
         bool Visible

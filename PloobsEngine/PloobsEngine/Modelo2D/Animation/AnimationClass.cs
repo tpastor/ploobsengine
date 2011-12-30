@@ -26,6 +26,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace PloobsEngine.Modelo2D
 {
+    /// <summary>
+    /// Sprite keyframe animation information
+    /// </summary>
     public class AnimationClass
     {
         internal AnimationClass(String Name, bool isLooping, float FramesPerSecond)

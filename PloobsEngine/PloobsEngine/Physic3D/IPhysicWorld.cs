@@ -32,7 +32,7 @@ namespace PloobsEngine.Physics
     public delegate bool CullerConditionAvaliator<T, V>(T param1, V param2);
 
     /// <summary>
-    /// Physic Object Specification
+    /// 3D Physic World Specification
     /// </summary>
     #if !WINDOWS_PHONE
     public abstract class IPhysicWorld : ISerializable

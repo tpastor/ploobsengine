@@ -25,6 +25,10 @@ using Microsoft.Xna.Framework;
 
 namespace PloobsEngine.IA
 {
+    /// <summary>
+    /// SImple implementation of a map
+    /// Brutal force one. Do not scale for HUGE number of waypoints
+    /// </summary>
     public class SimpleMap : IMap
     {
         public SimpleMap(WaypointsCollection col)
@@ -37,6 +41,11 @@ namespace PloobsEngine.IA
 
         #region IMap Members
 
+        /// <summary>
+        /// Gets the closest waypoint to a position
+        /// </summary>
+        /// <param name="Position">The position.</param>
+        /// <returns></returns>
         public Waypoint GetClosestWaypoint(Microsoft.Xna.Framework.Vector3 Position)
         {
             List<Waypoint> list = ways.GetWaypointsList();

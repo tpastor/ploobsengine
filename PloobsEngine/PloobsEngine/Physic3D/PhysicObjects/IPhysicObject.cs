@@ -29,6 +29,9 @@ using System.Runtime.Serialization;
 
 namespace PloobsEngine.Physics
 {
+    /// <summary>
+    /// 3D Physic Material Description
+    /// </summary>
     public struct MaterialDescription
     {
         public MaterialDescription(float StaticFriction, float DinamicFriction, float Bounciness)
@@ -38,14 +41,27 @@ namespace PloobsEngine.Physics
             this.Bounciness = Bounciness;
         }
 
+        /// <summary>
+        /// Defaults the bepu material.
+        /// </summary>
+        /// <returns></returns>
         public static MaterialDescription DefaultBepuMaterial()
         {
             MaterialDescription md = new MaterialDescription(BEPUphysics.Materials.MaterialManager.DefaultStaticFriction, BEPUphysics.Materials.MaterialManager.DefaultKineticFriction, BEPUphysics.Materials.MaterialManager.DefaultBounciness);
             return md;           
         }
 
+        /// <summary>
+        /// Static Friction
+        /// </summary>
         public float StaticFriction;
+        /// <summary>
+        /// Dynamic Friction
+        /// </summary>
         public float DinamicFriction;
+        /// <summary>
+        /// Bounciness
+        /// </summary>
         public float Bounciness;
     };
 

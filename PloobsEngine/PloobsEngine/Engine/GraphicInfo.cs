@@ -97,7 +97,7 @@ namespace PloobsEngine.Engine
 
         private GraphicsAdapter graphicsAdapter;
 
-                /// <summary>
+        /// <summary>
         /// Graphic Adapter
         /// </summary>
         public GraphicsAdapter GraphicsAdapter

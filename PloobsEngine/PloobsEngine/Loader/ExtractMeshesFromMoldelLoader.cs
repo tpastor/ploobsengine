@@ -27,6 +27,9 @@ using PloobsEngine.Modelo;
 
 namespace PloobsEngine.Loader
 {
+    /// <summary>
+    /// Extracts meshes from a scene model
+    /// </summary>
     public class ExtractMeshesFromMoldelLoader : IModelLoader
     {
         #region IModelLoader Members

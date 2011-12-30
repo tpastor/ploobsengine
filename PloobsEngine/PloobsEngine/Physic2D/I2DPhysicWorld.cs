@@ -25,6 +25,9 @@ using Microsoft.Xna.Framework;
 
 namespace PloobsEngine.Physic2D
 {
+    /// <summary>
+    /// 2D physic world specification
+    /// </summary>
     public abstract class I2DPhysicWorld
     {
 

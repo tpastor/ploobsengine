@@ -27,7 +27,7 @@ using PloobsEngine.Commands;
 namespace PloobsEngine.Input
 {
     /// <summary>
-    /// Turn n Input Mask OFF
+    /// Turn a Input Mask OFF
     /// </summary>
     public class TurnOffInputMaskCommand : ICommand
     {

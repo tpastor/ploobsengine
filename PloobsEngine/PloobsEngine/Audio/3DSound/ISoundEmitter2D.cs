@@ -33,7 +33,7 @@ using PloobsEngine.SceneControl._2DScene;
 namespace PloobsEngine.Audio
 {
     /// <summary>
-    /// Generic Sound 3D Emiter 
+    /// Generic Sound 2D Emiter 
     /// </summary>
     public abstract class ISoundEmitter2D 
     {

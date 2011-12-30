@@ -248,6 +248,12 @@ namespace PloobsEngine.Modelo
         }
 
 
+        /// <summary>
+        /// Extracts the model radius and center.
+        /// </summary>
+        /// <param name="bi">The bi.</param>
+        /// <param name="radius">The radius.</param>
+        /// <param name="center">The center.</param>
         public static void ExtractModelRadiusAndCenter(BatchInformation bi, out float radius, out Vector3 center)
         {
             // Read the format of the vertex buffer  

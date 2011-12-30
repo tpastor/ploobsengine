@@ -25,6 +25,9 @@ using PloobsEngine.Commands;
 
 namespace PloobsEngine.Features.DebugDraw
 {
+    /// <summary>
+    /// Command responsible for registering a Shape Drawer
+    /// </summary>
     public class RegisterDebugDrawCommand : ICommand
     {
         public RegisterDebugDrawCommand(DebugShapesDrawer DebugDrawer)
@@ -50,3 +53,17 @@ namespace PloobsEngine.Features.DebugDraw
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

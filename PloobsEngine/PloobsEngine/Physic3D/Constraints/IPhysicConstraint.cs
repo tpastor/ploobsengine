@@ -27,7 +27,7 @@ using System.Runtime.Serialization;
 
 namespace PloobsEngine.Physic.Constraints
 {
-      /// <summary>
+    /// <summary>
     /// Specification of a physic Constraint
     /// </summary>
     #if !WINDOWS_PHONE

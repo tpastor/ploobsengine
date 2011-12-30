@@ -25,6 +25,9 @@ using PloobsEngine.Components;
 
 namespace PloobsEngine.Features.DebugDraw
 {
+    /// <summary>
+    /// Component responsible for drawing 3D primitives on the top of the screen (with depth testing enabled)
+    /// </summary>
     public class DebugDraw : IComponent
     {
         private List<DebugShapesDrawer> debugDrawers = new List<DebugShapesDrawer>();

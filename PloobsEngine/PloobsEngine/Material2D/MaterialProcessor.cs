@@ -27,6 +27,11 @@ using Microsoft.Xna.Framework;
 
 namespace PloobsEngine.Material2D
 {
+    /// <summary>
+    /// Interface for material processor
+    /// Each material must have a processor
+    /// Processors coordinate how the materials should be draw
+    /// </summary>
     public interface IMaterialProcessor
     {        
         void ProcessLightDraw(GameTime gameTime, RenderHelper render, ICamera2D camera, List<I2DObject> objects,Color color,PloobsEngine.Light2D.Light2D light);

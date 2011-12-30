@@ -26,11 +26,17 @@ using Microsoft.Xna.Framework;
 
 namespace PloobsEngine.Modelo2D
 {
+    /// <summary>
+    /// Type of the model
+    /// </summary>
     public enum ModelType
     {
         Texture,Vertices
-    }     
+    }
 
+    /// <summary>
+    /// 2D model specification
+    /// </summary>
     public abstract class IModelo2D
     {
         public IModelo2D(ModelType ModelType)
@@ -41,42 +47,84 @@ namespace PloobsEngine.Modelo2D
             Rotation = 0;
         }
 
+        /// <summary>
+        /// Gets or sets the source rectangle (if texture type)
+        /// Null otherwise
+        /// </summary>
+        /// <value>
+        /// The source rectangle.
+        /// </value>
         public Rectangle? SourceRectangle
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Gets the type of the model.
+        /// </summary>
+        /// <value>
+        /// The type of the model.
+        /// </value>
         public ModelType ModelType
         {
             get;
             internal set;
         }
 
+        /// <summary>
+        /// Gets or sets the rotation.
+        /// </summary>
+        /// <value>
+        /// The rotation.
+        /// </value>
         public float Rotation
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Gets or sets the texture.
+        /// </summary>
+        /// <value>
+        /// The texture.
+        /// </value>
         public Texture2D Texture
         {
             set;
             get;
         }
 
+        /// <summary>
+        /// Gets or sets the origin of the model (center of the object normally, in local coordinates)
+        /// </summary>
+        /// <value>
+        /// The origin.
+        /// </value>
         public Vector2 Origin
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Gets or sets the layer depth.
+        /// same concept of Photoshop =P
+        /// </summary>
+        /// <value>
+        /// The layer depth.
+        /// </value>
         public float LayerDepth
         {
             set;
             get;
         }
 
+        /// <summary>
+        /// Updates the modelo.
+        /// </summary>
+        /// <param name="gameTime">The game time.</param>
         public virtual void Update(GameTime gameTime)
         {
         }

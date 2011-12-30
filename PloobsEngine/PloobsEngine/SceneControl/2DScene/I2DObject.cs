@@ -55,6 +55,9 @@ namespace PloobsEngine.SceneControl._2DScene
     public delegate void OnHasMoved(I2DObject Reciever);
 
 
+    /// <summary>
+    /// 2D Object
+    /// </summary>
     public class I2DObject : IRecieveMessageEntity
     {
         public I2DObject(I2DPhysicObject physicObject, I2DMaterial material,IModelo2D Modelo)
@@ -104,11 +107,23 @@ namespace PloobsEngine.SceneControl._2DScene
             }
         }
 
+        /// <summary>
+        /// Gets or sets the material.
+        /// </summary>
+        /// <value>
+        /// The material.
+        /// </value>
         public I2DMaterial Material
         {
             get;
             set;
         }
+        /// <summary>
+        /// Gets or sets the modelo.
+        /// </summary>
+        /// <value>
+        /// The modelo.
+        /// </value>
         public IModelo2D Modelo
         {
             set;

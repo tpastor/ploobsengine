@@ -27,12 +27,33 @@ using Microsoft.Xna.Framework;
 
 namespace PloobsEngine.IA
 {
+    /// <summary>
+    /// Interface to represent an abstract State in the ploobs finite state machine
+    /// </summary>
     public interface IState
     {
+        /// <summary>
+        /// called on this state is entered
+        /// </summary>
         void Init();
+        /// <summary>
+        /// called to find a state change is needed.
+        /// Return null if no state change is needed
+        /// </summary>
+        /// <returns></returns>
         String NextState();
+        /// <summary>
+        /// Called all the frames
+        /// </summary>
+        /// <param name="gameTime"></param>
         void UpdateState(GameTime gameTime);
+        /// <summary>
+        /// Called when leaving this state
+        /// </summary>
         void Finish();
+        /// <summary>
+        /// Name of the state (unique)
+        /// </summary>
         String Name
         {
             get;

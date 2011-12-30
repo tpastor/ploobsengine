@@ -24,12 +24,24 @@ using System.Text;
 namespace PloobsEngine.IA
 {
     #if !WINDOWS_PHONE
+    /// <summary>
+    /// Node in the Astar algorithm
+    /// </summary>
     [Serializable]
 #endif
     public class IAPathfinderNode
     {
+        /// <summary>
+        /// fitness
+        /// </summary>
         public float F;
+        /// <summary>
+        /// goal
+        /// </summary>
         public float G;
+        /// <summary>
+        /// heuristic
+        /// </summary>
         public float H;  // f = gone + heuristic
         public float X;
         public float Y;

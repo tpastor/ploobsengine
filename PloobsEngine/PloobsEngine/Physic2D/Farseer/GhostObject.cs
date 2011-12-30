@@ -27,8 +27,16 @@ using PloobsEngine.Engine.Logger;
 
 namespace PloobsEngine.Physic2D.Farseer
 {
+    /// <summary>
+    /// Ghost Object implementation (works on Farseer)
+    /// </summary>
     public class GhostObject : I2DPhysicObject
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GhostObject"/> class.
+        /// </summary>
+        /// <param name="Position">The position.</param>
+        /// <param name="rotation">The rotation.</param>
         public GhostObject(Vector2 Position, float rotation = 0)
         {
             this.Enabled = false;

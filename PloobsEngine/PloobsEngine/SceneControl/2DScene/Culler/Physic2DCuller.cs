@@ -26,6 +26,10 @@ using PloobsEngine.Physic2D;
 
 namespace PloobsEngine.SceneControl._2DScene.Culler
 {
+    /// <summary>
+    /// 2D physic based Culler
+    /// Very effective
+    /// </summary>
     public class Physic2DCuller : I2DCuller
     {
         List<I2DObject> ghosts = new List<I2DObject>();

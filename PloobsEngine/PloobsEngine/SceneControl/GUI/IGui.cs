@@ -26,6 +26,9 @@ using PloobsEngine.Engine;
 
 namespace PloobsEngine.SceneControl.GUI
 {
+    /// <summary>
+    /// Specification for a GUI system
+    /// </summary>
     public abstract class IGui
     {
         protected abstract void Initialize(EngineStuff engine, GraphicFactory factory, GraphicInfo ginfo);

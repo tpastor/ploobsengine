@@ -28,6 +28,9 @@ namespace PloobsEngine.Features
 {
     public delegate void FpsEvent(float fps);
 
+    /// <summary>
+    /// Component to count fps
+    /// </summary>
     public class FPSCounter : IComponent
     {
         private float _TotalTime = 0f, _TotalTimeX = 0f,

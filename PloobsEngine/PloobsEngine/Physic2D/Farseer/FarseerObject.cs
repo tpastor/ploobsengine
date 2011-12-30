@@ -33,6 +33,9 @@ using PloobsEngine.Modelo2D;
 
 namespace PloobsEngine.Physic2D.Farseer
 {
+    /// <summary>
+    /// Farseer 2D physic object implementation
+    /// </summary>
     public class FarseerObject : I2DPhysicObject
     {
         public FarseerObject(FarseerWorld world, Shape shape, BodyType BodyType = BodyType.Dynamic)

@@ -26,6 +26,9 @@ using PloobsEngine.Engine;
 
 namespace PloobsEngine.Features.DebugDraw
 {
+    /// <summary>
+    /// Responsible for a collection of Debug primitives Draw
+    /// </summary>
     public class DebugShapesDrawer
     {
         public DebugShapesDrawer(bool DrawAllShapesEachFrame = false)
@@ -35,6 +38,12 @@ namespace PloobsEngine.Features.DebugDraw
 
         bool drawAllShapesEachFrame = false;
 
+        /// <summary>
+        /// Gets a value indicating whether [draw all shapes each frame].
+        /// </summary>
+        /// <value>
+        /// 	<c>true</c> if [draw all shapes each frame]; otherwise, <c>false</c>.
+        /// </value>
         public bool DrawAllShapesEachFrame
         {
             get { return drawAllShapesEachFrame; }
@@ -44,6 +53,10 @@ namespace PloobsEngine.Features.DebugDraw
         List<IDebugDrawShape> shapes = new List<IDebugDrawShape>();
         bool initialized = false;
 
+        /// <summary>
+        /// Adds a shape to this drawer.
+        /// </summary>
+        /// <param name="shape">The shape.</param>
         public void AddShape(IDebugDrawShape shape) 
         {
             if (initialized)

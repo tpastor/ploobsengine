@@ -7,10 +7,17 @@ using PloobsEngine.Features.DebugDraw;
 
 namespace PloobsEngine.Features.DebugDraw
 {
+    /// <summary>
+    /// Component to draw 2D primitives on the top of the screen
+    /// </summary>
     public class Primitive2DDraw : IComponent
     {
         List<I2DPrimitive> primitives = new List<I2DPrimitive>();
 
+        /// <summary>
+        /// Add the 2D primitive.
+        /// </summary>
+        /// <param name="I2DPrimitive">The i2 D primitive.</param>
         public void Add2DPrimitive(I2DPrimitive I2DPrimitive)
         {
             System.Diagnostics.Debug.Assert(GraphicInfo != null);
@@ -19,6 +26,10 @@ namespace PloobsEngine.Features.DebugDraw
             primitives.Add(I2DPrimitive);
         }
 
+        /// <summary>
+        /// Remove the 2D primitive.
+        /// </summary>
+        /// <param name="I2DPrimitive">The i2 D primitive.</param>
         public void Remove2DPrimitive(I2DPrimitive I2DPrimitive)
         {
             primitives.Remove(I2DPrimitive);

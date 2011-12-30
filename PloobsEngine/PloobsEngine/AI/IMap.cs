@@ -25,12 +25,20 @@ using Microsoft.Xna.Framework;
 
 namespace PloobsEngine.IA
 {
+    /// <summary>
+    /// AI Map interface
+    /// </summary>
     public interface IMap
     {
+        /// <summary>
+        /// Gets the closest waypoint to a position
+        /// </summary>
+        /// <param name="Position">The position.</param>
+        /// <returns></returns>
         Waypoint GetClosestWaypoint(Vector3 Position);
         
         /// <summary>
-        /// Waypoints do Mapa
+        /// Waypoints of the map
         /// </summary>
         WaypointsCollection Waypoints
         {

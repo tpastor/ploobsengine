@@ -31,6 +31,10 @@ namespace PloobsEngine.SceneControl
 {
     public delegate void VideoEnded();
 
+    /// <summary>
+    /// Screen responsible for playing video
+    /// Extend it 
+    /// </summary>
     public  class MovieScreen : IScreen
     {
         public MovieScreen(String location, Color backGoundColor) : base(null)

@@ -25,6 +25,9 @@ using Microsoft.Xna.Framework;
 
 namespace PloobsEngine.Light2D
 {
+    /// <summary>
+    /// 2D sport light
+    /// </summary>
     public class SpotLight2D : Light2D
     {
         public Vector2 Direction;
