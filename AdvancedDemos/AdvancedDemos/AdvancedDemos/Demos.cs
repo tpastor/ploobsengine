@@ -32,8 +32,8 @@ namespace AdvancedDemo4._0
 
         static void LoadScreen(ScreenManager manager)
         {            
-            ///add the title screen
-            manager.AddScreen(new TitleScreen());
+            ///add the title screen            
+            //manager.AddScreen(new TitleScreen());
             //manager.AddScreen(new DeferredLoadScreen());
             //manager.AddScreen(new BumpSpecularDemo());                        
             //manager.AddScreen(new EnvMapScreen());                        
@@ -42,7 +42,7 @@ namespace AdvancedDemo4._0
             //manager.AddScreen(new SoundScreen());
             //manager.AddScreen(new FollowerObjectSoundScreen());                        
             //manager.AddScreen(new TerrainScreen());                        
-            //manager.AddScreen(new ParticleScreen());                        
+            manager.AddScreen(new ParticleScreen());                        
             //manager.AddScreen(new AnimatedBilboardScreen());                        
             //manager.AddScreen(new InstancedBilboardScreen());                        
             //manager.AddScreen(new NormalBilboardScreen());                        

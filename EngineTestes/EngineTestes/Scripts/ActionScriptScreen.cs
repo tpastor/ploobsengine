@@ -55,14 +55,14 @@ namespace EngineTestes
             ///script to build the scene
             {
                 ScriptParsed ScriptParsed = Parser.ParseScriptFile("Content//Script//script.txt");
-                ScriptParsed.References.AddRange(new String[] {"EngineTestes.exe", "PloobsEngine.dll"                
-            });
+                ScriptParsed.References.AddRange(new String[] { "EngineTestes.exe", "PloobsEngine.dll" });
+            
 
                 ScriptParsed.UsingStatements.AddRange(new String[] { "EngineTestes.Scripts" , "System" , "System.Collections.Generic" , "System.Text"
             , "PloobsEngine.Engine", "PloobsEngine.Modelo" , "PloobsEngine.Physics.Bepu", "PloobsEngine.Material", "PloobsEngine.SceneControl"
             , "Microsoft.Xna.Framework" , "PloobsEngine.Physics" , "PloobsEngine.Utils" , "PloobsEngine.Light"
-            , "Microsoft.Xna.Framework.Graphics" , "PloobsEngine.Cameras" , "PloobsEngine.Features", "PloobsEngine.Commands"
-            });
+            , "Microsoft.Xna.Framework.Graphics" , "PloobsEngine.Cameras" , "PloobsEngine.Features", "PloobsEngine.Commands"});
+            
 
                 Generator GenerateClassCode = new PloobsScripts.Generator(ScriptParsed, "TesteInter", true, true);
                 GenerateClassCode.GenerateClass("teste", "ISceneBuilder");
@@ -92,15 +92,13 @@ namespace EngineTestes
             ///script to handle messages
             {
                 ScriptParsed ScriptParsed = Parser.ParseScriptFile("Content//Script//talk1.txt");
-                ScriptParsed.References.AddRange(new String[] {"EngineTestes.exe", "PloobsEngine.dll"                
-            });
+                ScriptParsed.References.AddRange(new String[] {"EngineTestes.exe", "PloobsEngine.dll"});
 
                 ScriptParsed.UsingStatements.AddRange(new String[] { "EngineTestes.Scripts" , "System" , "System.Collections.Generic" , "System.Text"
             , "PloobsEngine.Engine", "PloobsEngine.Modelo" , "PloobsEngine.Physics.Bepu", "PloobsEngine.Material", "PloobsEngine.SceneControl"
             , "Microsoft.Xna.Framework" , "PloobsEngine.Physics" , "PloobsEngine.Utils" , "PloobsEngine.Light"
             , "Microsoft.Xna.Framework.Graphics" , "PloobsEngine.Cameras" , "PloobsEngine.Features", "PloobsEngine.Commands", "PloobsEngine.MessageSystem"
-            , "EngineTestes.Scripts"
-            });
+            , "EngineTestes.Scripts" });
 
                 Generator GenerateClassCode = new PloobsScripts.Generator(ScriptParsed, "talking", true, true);
                 GenerateClassCode.GenerateClass("talk", "InterScriptTalking");

@@ -41,11 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes.cs" />
+    <Compile Include="DesserializerProxy.cs" />
     <Compile Include="SerializerProxy.cs" />
     <Compile Include="XMLDeserializer.cs" />
     <Compile Include="XmlSerializer.cs" />
     <Compile Include="ICustomSerializable.cs" />
-    <Compile Include="ISerializable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SerializatorMachine.cs" />
   </ItemGroup>

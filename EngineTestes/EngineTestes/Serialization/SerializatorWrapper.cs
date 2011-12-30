@@ -12,11 +12,11 @@ namespace EngineTestes.Serialization
 {
     public class SerializatorWrapper
     {
-        Dictionary<Type, Action<String, object, XmlSerializer>> des = new Dictionary<Type, Action<String, object, XmlSerializer>>();
+        Dictionary<Type, Action<String, object, XmlSerializer>> serializator = new Dictionary<Type, Action<String, object, XmlSerializer>>();
         Dictionary<Type, Func<XElement, object>> desserializador = new Dictionary<Type, Func<XElement, object>>(); 
         public SerializatorWrapper()
         {
-            des.Add(typeof(Matrix),
+            serializator.Add(typeof(Matrix),
                 (x, a, b) =>
                 {
                     Matrix v = (Matrix)a;
@@ -41,7 +41,7 @@ namespace EngineTestes.Serialization
                 }
             );
 
-            des.Add(typeof(Vector3),
+            serializator.Add(typeof(Vector3),
                 (x, a, b) =>
                 {
                     Vector3 v = (Vector3) a;
@@ -53,7 +53,7 @@ namespace EngineTestes.Serialization
                 }
             );
 
-            des.Add(typeof(Quaternion),
+            serializator.Add(typeof(Quaternion),
                 (x, a, b) =>
                 {
                     Quaternion v = (Quaternion)a;
@@ -66,7 +66,7 @@ namespace EngineTestes.Serialization
                 }
             );
 
-            des.Add(typeof(Vector4),
+            serializator.Add(typeof(Vector4),
           (x, a, b) =>
           {
               Vector4 v = (Vector4)a;
@@ -78,7 +78,7 @@ namespace EngineTestes.Serialization
               b.EndType(x);
           }
       );
-            des.Add(typeof(Color),
+            serializator.Add(typeof(Color),
             (x, a, b) =>
             {
                 Color v = (Color)a;
@@ -93,7 +93,7 @@ namespace EngineTestes.Serialization
         );
 
 
-            des.Add(typeof(Vector2),
+            serializator.Add(typeof(Vector2),
             (x, a, b) =>
             {
                 Vector2 v = (Vector2)a;
@@ -194,7 +194,7 @@ namespace EngineTestes.Serialization
         public void Serialize(Object obj, String path)
         {
             SerializatorMachine SerializatorMachine = new SerializatorMachine();
-            SerializatorMachine.Serialize(obj, path, Encoding.Default, des);
+            SerializatorMachine.Serialize(obj, path, Encoding.Default, serializator);
         }
 
         public T Desserialize<T>(String path, object context = null)
@@ -202,6 +202,7 @@ namespace EngineTestes.Serialization
             SerializatorMachine SerializatorMachine = new SerializatorMachine();
             return (T)SerializatorMachine.Desserialize(path, context, desserializador);
         }
+        
     }
 }
 
