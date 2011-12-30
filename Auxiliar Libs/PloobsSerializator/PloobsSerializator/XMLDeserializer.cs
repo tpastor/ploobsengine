@@ -192,8 +192,8 @@ namespace PloobsSerializator
         
         private object Getunitialized(Type type)
         {            
-            System.Runtime.Serialization.FormatterServices.GetSafeUninitializedObject(type);
-            return type;
+            return System.Runtime.Serialization.FormatterServices.GetSafeUninitializedObject(type);
+            
         }
 
         private object GetInstace(Type type)

@@ -52,6 +52,7 @@ namespace EngineTestes
         {
             base.LoadContent(GraphicInfo, factory, contentManager);
 
+            ///script to build the scene
             {
                 ScriptParsed ScriptParsed = Parser.ParseScriptFile("Content//Script//script.txt");
                 ScriptParsed.References.AddRange(new String[] {"EngineTestes.exe", "PloobsEngine.dll"                
@@ -88,6 +89,7 @@ namespace EngineTestes
 
 
 
+            ///script to handle messages
             {
                 ScriptParsed ScriptParsed = Parser.ParseScriptFile("Content//Script//talk1.txt");
                 ScriptParsed.References.AddRange(new String[] {"EngineTestes.exe", "PloobsEngine.dll"                
@@ -120,8 +122,7 @@ namespace EngineTestes
                 interteste.renderTechnic = RenderTechnic;
 
                 interteste.execute();
-                EntityMapper.getInstance().AddEntity(interteste);
-                
+                EntityMapper.getInstance().AddEntity(interteste);                
 
                 SystemRecieverMessage SystemRecieverMessage = new SystemRecieverMessage();
                 SystemRecieverMessage.OnMessage += new Action<Message>(SystemRecieverMessage_OnMessage);
