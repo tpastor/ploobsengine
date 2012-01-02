@@ -23,8 +23,7 @@ namespace EngineTestes
     /// NOT COMPLETE SHOULD NOT BE USED IN REAL APPS
     /// </summary>
     public class RotatingCamera : ICamera
-    {             
-        
+    {   
         /// <summary>
         /// Initializes a new instance of the <see cref="CameraFirstPerson"/> class.
         /// </summary>
@@ -36,6 +35,19 @@ namespace EngineTestes
         {
             this.center = center;
             init(IScreen);
+            IScreen.GraphicInfo.OnGraphicInfoChange += GraphicInfo_OnGraphicInfoChange;
+        }
+
+        void GraphicInfo_OnGraphicInfoChange(object sender, EventArgs e)
+        {
+            _aspectRatio = (sender as PloobsEngine.Engine.GraphicInfo).Viewport.AspectRatio;
+            _projection = Matrix.CreatePerspectiveFieldOfView(_fieldOdView, _aspectRatio, _nearPlane, _farPlane);
+        }
+
+        public override void CleanUp()
+        {
+            IScreen.GraphicInfo.OnGraphicInfoChange -= GraphicInfo_OnGraphicInfoChange;
+            base.CleanUp();
         }
 
         public RotatingCamera(IScreen IScreen)
@@ -44,9 +56,11 @@ namespace EngineTestes
         }
 
         Vector3 center = Vector3.Zero;
+        IScreen IScreen;
 
         private void init(IScreen IScreen)
         {
+            this.IScreen = IScreen;
 
             _aspectRatio = IScreen.GraphicInfo.Viewport.AspectRatio;            
             _projection = Matrix.CreatePerspectiveFieldOfView(_fieldOdView, _aspectRatio, _nearPlane, _farPlane);

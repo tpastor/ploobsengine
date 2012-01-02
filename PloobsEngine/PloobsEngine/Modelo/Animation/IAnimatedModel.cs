@@ -52,6 +52,23 @@ namespace PloobsEngine.Modelo.Animation
         /// The result need to be casted (vary toooo much between animation APIs, better to keep as Object)
         /// </summary>
         /// <returns></returns>
-        public abstract Object GetAnimation();        
+        public abstract Object GetAnimation();
+
+        public override void CleanUp(GraphicFactory factory)
+        {
+            if (_glowName != null)
+                factory.ReleaseAsset(_glowName);
+
+            if (_diffuseName != null)
+                factory.ReleaseAsset(_diffuseName);
+
+            if (_bumpName != null)
+                factory.ReleaseAsset(_bumpName);
+
+            if (_specularName != null)
+                factory.ReleaseAsset(_specularName);
+
+            base.CleanUp(factory);
+        }
     }
 }

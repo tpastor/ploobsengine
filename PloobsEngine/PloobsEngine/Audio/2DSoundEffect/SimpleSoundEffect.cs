@@ -23,6 +23,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Audio;
 using PloobsEngine.SceneControl;
+using PloobsEngine.Engine;
 
 namespace PloobsEngine.Audio
 {
@@ -33,26 +34,27 @@ namespace PloobsEngine.Audio
     public class SimpleSoundEffect
     {
         SoundEffect mySoundEffect;
-        SoundEffectInstance mySoundEffectInstance;        
-
+        SoundEffectInstance mySoundEffectInstance;
+        String internalName;
         /// <summary>
         /// Initializes a new instance of the <see cref="SimpleSoundEffect"/> class.
         /// </summary>
-        /// <param name="cmanager">The cmanager.</param>
+        /// <param name="factory">The factory.</param>
         /// <param name="name">The name.</param>
         /// <param name="volume">The volume.</param>
         /// <param name="pitch">The pitch(-1 to 1).</param>
         /// <param name="pan">The pan (-1 to 1).</param>
         /// <param name="isLooped">if set to <c>true</c> [is looped].</param>
-        public SimpleSoundEffect(IContentManager cmanager , string name, float volume = 1, float pitch = 0, float pan = 0, bool isLooped = false)
+        public SimpleSoundEffect(GraphicFactory factory, string name, float volume = 1, float pitch = 0, float pan = 0, bool isLooped = false)
         {
-            System.Diagnostics.Debug.Assert(cmanager != null);
+            System.Diagnostics.Debug.Assert(factory != null);
             System.Diagnostics.Debug.Assert(!String.IsNullOrEmpty(name));
             System.Diagnostics.Debug.Assert(volume >= -1 && volume <= 1);
             System.Diagnostics.Debug.Assert(pitch >= -1 && pitch <= 1);
-            System.Diagnostics.Debug.Assert(pan >= -1 && pan <= 1);    
-        
-            this.mySoundEffect = cmanager.GetAsset<SoundEffect>(name);
+            System.Diagnostics.Debug.Assert(pan >= -1 && pan <= 1);
+
+            internalName = name;
+            this.mySoundEffect = factory.GetAsset<SoundEffect>(name);
             this.Duration = mySoundEffect.Duration;
             this.Name = mySoundEffect.Name;
             this.mySoundEffectInstance = mySoundEffect.CreateInstance();
@@ -102,6 +104,28 @@ namespace PloobsEngine.Audio
         public void Resume()
         {
             this.mySoundEffectInstance.Resume();
+        }
+
+        /// <summary>
+        /// Cleans up.
+        /// Not called by the engine
+        /// </summary>
+        public void CleanUp()
+        {
+            mySoundEffect.Dispose();
+        }
+
+        /// <summary>
+        /// Cleans up.
+        /// Not called by the engine
+        /// </summary>
+        /// <param name="factory">The factory.</param>
+        /// <param name="removeSoundGeneratorAlso">if set to <c>true</c> [remove sound generator also].</param>
+        public void CleanUp(GraphicFactory factory,bool removeSoundGeneratorAlso = true)
+        {
+            if(removeSoundGeneratorAlso)
+                factory.ReleaseAsset(internalName);
+            mySoundEffect.Dispose();
         }
 
         public SoundState State

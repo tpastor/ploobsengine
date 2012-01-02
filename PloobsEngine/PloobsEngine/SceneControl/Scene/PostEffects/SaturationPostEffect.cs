@@ -54,7 +54,7 @@ namespace PloobsEngine.SceneControl
 
         public override void Draw(Texture2D ImageToProcess, RenderHelper rHelper, GameTime gt, Engine.GraphicInfo GraphicInfo, IWorld world, bool useFloatingBuffer)
         {         
-            ///Draw a quad using the "effect", passing the CurrentImage as a Parameter            
+            //Draw a quad using the "effect", passing the CurrentImage as a Parameter            
             effect.Parameters["saturation"].SetValue(saturation);
 
             if (useFloatingBuffer)
@@ -65,7 +65,7 @@ namespace PloobsEngine.SceneControl
 
         public override void Init(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
         {
-            ///Load the asset
+            //Load the asset
             effect = factory.GetEffect("saturation",false,true);            
         }
 

@@ -57,8 +57,6 @@ namespace PloobsEngine.Light
 
         #endregion        
 
-        private string _name = null;        
-        private int id;
         protected Matrix viewMatrix;
         protected Matrix projMatrix;
         protected float _bias;

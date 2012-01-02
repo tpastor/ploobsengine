@@ -33,6 +33,10 @@ namespace PloobsEngine.SceneControl
     /// </summary>
     public abstract class IPostEffect
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IPostEffect"/> class.
+        /// </summary>
+        /// <param name="PostEffectType">Type of the post effect.</param>
         public IPostEffect(PostEffectType PostEffectType)
         {
             this.PostEffectType = PostEffectType;
@@ -106,6 +110,17 @@ namespace PloobsEngine.SceneControl
         /// <param name="world">The world.</param>
         /// <param name="useFloatBuffer">if set to <c>true</c> [use float buffer].</param>
         public abstract void Draw(Texture2D ImageToProcess,RenderHelper rHelper, GameTime gt, GraphicInfo GraphicInfo, IWorld world,bool useFloatBuffer);
+
+
+        /// <summary>
+        /// Cleans up
+        /// Called when the screen that this post effect is attached is removed
+        /// IF this post effect is not bounded to a screen (render technic), this method obvious is not called =P
+        /// </summary>
+        public virtual void CleanUp()
+        {
+        }
+
     }
 
     /// <summary>

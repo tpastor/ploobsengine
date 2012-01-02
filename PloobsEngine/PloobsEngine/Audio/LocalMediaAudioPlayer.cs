@@ -39,10 +39,10 @@ namespace PloobsEngine.Audio
         {
             get { return sampleMediaLibrary; }
             set { sampleMediaLibrary = value; }
-        }       
+        }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="BackGroundAudioPlayer"/> is loop.
+        /// Gets or sets a value indicating whether this <see cref="LocalMediaAudioPlayer"/> is loop.
         /// </summary>
         /// <value>
         ///   <c>true</c> if loop; otherwise, <c>false</c>.

@@ -28,6 +28,7 @@ using Microsoft.Xna.Framework.Audio;
 using PloobsEngine.SceneControl;
 using PloobsEngine.Cameras;
 using PloobsEngine.Engine.Logger;
+using PloobsEngine.Engine;
 
 namespace PloobsEngine.Audio
 {
@@ -36,12 +37,18 @@ namespace PloobsEngine.Audio
     /// </summary>
     public abstract class ISoundEmitter3D 
     {
-        public ISoundEmitter3D(IContentManager cmanager,String SoundName)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ISoundEmitter3D"/> class.
+        /// </summary>
+        /// <param name="factory">The factory.</param>
+        /// <param name="SoundName">Name of the sound.</param>
+        public ISoundEmitter3D(GraphicFactory factory,String SoundName)
         {
-            System.Diagnostics.Debug.Assert(cmanager != null);
+            System.Diagnostics.Debug.Assert(factory != null);
             System.Diagnostics.Debug.Assert(!String.IsNullOrEmpty(SoundName));
-            
-            SoundEffect se = cmanager.GetAsset<SoundEffect>(SoundName);                        
+
+            this.internalName = SoundName;
+            SoundEffect se = factory.GetAsset<SoundEffect>(SoundName);                        
             soundEngineInstance = se.CreateInstance();
 
             Name = se.Name;
@@ -49,6 +56,7 @@ namespace PloobsEngine.Audio
             listener = new AudioListener();
             emiter = new AudioEmitter();
         }
+        String internalName;
 
 #if DEBUG
         bool isAdded = false;
@@ -60,6 +68,20 @@ namespace PloobsEngine.Audio
 #endif
 
             soundEngineInstance.Apply3D(listener, emiter);
+        }
+
+        /// <summary>
+        /// Cleans up.
+        /// </summary>
+        /// <param name="factory">The factory.</param>
+        /// <param name="removeSoundGeneratorAlso">if set to <c>true</c> [remove sound generator also].</param>
+        public void CleanUp(GraphicFactory factory, bool removeSoundGeneratorAlso = true)
+        {
+            if (removeSoundGeneratorAlso)
+            {
+                factory.ReleaseAsset(internalName);
+            }
+            soundEngineInstance.Dispose();
         }
 
         public TimeSpan Duration

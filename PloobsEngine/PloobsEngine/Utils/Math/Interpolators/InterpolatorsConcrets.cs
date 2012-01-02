@@ -25,8 +25,15 @@ using Microsoft.Xna.Framework;
 
 namespace PloobsEngine.Utils
 {
+    /// <summary>
+    /// Float Interpolator
+    /// </summary>
     public class FloatInterpolator : Interpolator<float>
     {
+        /// <summary>
+        /// Interpolates this instance.
+        /// </summary>
+        /// <returns></returns>
         protected override float Interpolate()
         {
             return smoothStep
@@ -35,15 +42,27 @@ namespace PloobsEngine.Utils
         }
     }
 
+    /// <summary>
+    /// Float Interpolator at constant step
+    /// </summary>
     public class FloatInterpolatorConstantStep : Interpolator<float>
     {
         private float step;
         private float acum = 0;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FloatInterpolatorConstantStep"/> class.
+        /// </summary>
+        /// <param name="step">The step.</param>
         public FloatInterpolatorConstantStep(float step)
         {
             this.step = step;
         }
 
+        /// <summary>
+        /// Updates
+        /// </summary>
+        /// <param name="gameTime">The game time.</param>
+        /// <returns></returns>
         public override float Update(GameTime gameTime)
         {
             if (IsActive == true)
@@ -56,12 +75,19 @@ namespace PloobsEngine.Utils
             return CurrentValue;            
         }
 
+        /// <summary>
+        /// Resets this instance.
+        /// </summary>
         public override void Reset()
         {
             acum = 0;
             IsActive = true;
         }
 
+        /// <summary>
+        /// Interpolates this instance.
+        /// </summary>
+        /// <returns></returns>
         protected override float Interpolate()
         {
             acum += step;
@@ -71,14 +97,26 @@ namespace PloobsEngine.Utils
         }
     }
 
+    /// <summary>
+    /// Interpolator for Vector3 ate Constant step
+    /// </summary>
     public class Vec3InterpolatorConstantStep : Interpolator<Vector3>
     {
         private float step;
         private float acum = 0;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Vec3InterpolatorConstantStep"/> class.
+        /// </summary>
+        /// <param name="step">The step.</param>
         public Vec3InterpolatorConstantStep(float step)
         {
             this.step = step;
         }
+        /// <summary>
+        /// Updates this instance
+        /// </summary>
+        /// <param name="gameTime">The game time.</param>
+        /// <returns></returns>
         public override Vector3 Update(GameTime gameTime)
         {
             if (IsActive == true)
@@ -91,6 +129,9 @@ namespace PloobsEngine.Utils
             return currentValue;
         }
 
+        /// <summary>
+        /// Resets this instance.
+        /// </summary>
         public override void Reset()
         {
             acum = 0;
@@ -98,6 +139,10 @@ namespace PloobsEngine.Utils
         }
 
 
+        /// <summary>
+        /// Interpolates this instance.
+        /// </summary>
+        /// <returns></returns>
         protected override Vector3 Interpolate()
         {
             acum += step;
@@ -107,8 +152,15 @@ namespace PloobsEngine.Utils
         }
     }
 
+    /// <summary>
+    /// Vector3 Interpolator
+    /// </summary>
     public class Vec3Interpolator : Interpolator<Vector3>
     {
+        /// <summary>
+        /// Interpolates this instance.
+        /// </summary>
+        /// <returns></returns>
         protected override Vector3 Interpolate()
         {
             return smoothStep
@@ -118,8 +170,15 @@ namespace PloobsEngine.Utils
     }
 
 
+    /// <summary>
+    /// Vector4 Interpolator
+    /// </summary>
     public class Vec4Interpolator : Interpolator<Vector4>
     {
+        /// <summary>
+        /// Interpolates this instance.
+        /// </summary>
+        /// <returns></returns>
         protected override Vector4 Interpolate()
         {
             return smoothStep

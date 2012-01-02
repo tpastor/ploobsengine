@@ -13,7 +13,7 @@ namespace EngineTestes.Scripts
         {            
         }
 
-        protected int id;
+        protected long id;
         public virtual void RecieveMessage(Message message)
         {
             
@@ -45,12 +45,12 @@ namespace EngineTestes.Scripts
 
         #region IEntity Members
 
-        public int GetId()
+        public long GetId()
         {
             return id;
         }
 
-        public void SetId(int id)
+        public void SetId(long id)
         {
             this.id = id;
         }

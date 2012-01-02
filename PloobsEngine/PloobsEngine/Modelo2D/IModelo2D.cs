@@ -39,6 +39,10 @@ namespace PloobsEngine.Modelo2D
     /// </summary>
     public abstract class IModelo2D
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IModelo2D"/> class.
+        /// </summary>
+        /// <param name="ModelType">Type of the model.</param>
         public IModelo2D(ModelType ModelType)
         {
             this.ModelType = ModelType;
@@ -128,5 +132,24 @@ namespace PloobsEngine.Modelo2D
         public virtual void Update(GameTime gameTime)
         {
         }
+
+        /// <summary>
+        /// Cleans up.
+        /// </summary>
+        /// <param name="factory">The factory.</param>
+        public virtual void CleanUp(PloobsEngine.Engine.GraphicFactory factory)
+        {
+            String fullName = Texture.Tag as String;            
+            if (fullName != null)
+            {
+                factory.ReleaseAsset(fullName);
+            }
+            if (fullName == "CREATED")
+            {
+                Texture.Dispose();
+            }
+            
+        }
+             
     }
 }

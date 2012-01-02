@@ -39,6 +39,7 @@ namespace PloobsEngine.SceneControl._2DScene
     /// Called on every update
     /// </summary>
     /// <param name="obj">The obj.</param>
+    /// <param name="gt">The gt.</param>
     public delegate void OnUpdate(I2DObject obj, GameTime gt);
 
     /// <summary>
@@ -155,8 +156,6 @@ namespace PloobsEngine.SceneControl._2DScene
         /// Updates the object.
         /// </summary>
         /// <param name="gt">The gt.</param>
-        /// <param name="cam">The cam.</param>
-        /// <param name="luzes">The luzes.</param>
         protected virtual void UpdateObject(GameTime gt) { }
         internal void iUpdateObject(GameTime gt)
         {
@@ -217,14 +216,14 @@ namespace PloobsEngine.SceneControl._2DScene
         #endregion
 
         #region IEntity Members
-        private int id;
+        private long id;
         /// <summary>
         /// return the entity id
         /// </summary>
         /// <returns>
         /// the id
         /// </returns>
-        public int GetId()
+        public long GetId()
         {
             return id;
         }
@@ -233,9 +232,22 @@ namespace PloobsEngine.SceneControl._2DScene
         /// sets the id
         /// </summary>
         /// <param name="id"></param>
-        public void SetId(int id)
+        public void SetId(long id)
         {
             this.id = id;
+        }
+
+        public virtual void CleanUp(PloobsEngine.Engine.GraphicFactory factory)
+        {
+            this.Material.CleanUp(factory);
+            this.PhysicObject = null;
+            this.Modelo.CleanUp(factory) ;
+            this.Material = null;
+            this.PhysicObject = null;
+            this.Modelo = null;
+            this.Material = null;
+            I2DObjectAtachtment.Clear();
+            I2DObjectAtachtment = null;
         }
 
         #endregion

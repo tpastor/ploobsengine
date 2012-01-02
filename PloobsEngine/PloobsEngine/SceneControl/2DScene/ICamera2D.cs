@@ -111,5 +111,11 @@ namespace PloobsEngine.SceneControl._2DScene
         {
             get;
         }
+
+        /// <summary>
+        /// Called when the attached screen is removed
+        /// If this camera is not attached to a screen, this method is not called =P
+        /// </summary>
+        void CleanUp();
     }
 }

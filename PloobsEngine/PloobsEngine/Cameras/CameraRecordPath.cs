@@ -55,10 +55,12 @@ namespace PloobsEngine.Cameras
         {
             this.cam = cam;            
         }
-        
+
         /// <summary>
         /// CameraRecordPath
         /// </summary>
+        /// <param name="screen">The screen.</param>
+        /// <param name="cam">The cam.</param>
         /// <param name="CurveLoopType">Attenuation in the path curves</param>
         public CameraRecordPath(IScreen screen, ICamera cam, CurveLoopType CurveLoopType)
             : base(screen)

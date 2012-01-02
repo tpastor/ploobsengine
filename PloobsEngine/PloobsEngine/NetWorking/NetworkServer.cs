@@ -79,7 +79,7 @@ namespace PloobsEngine.NetWorking
                 ServerIObject obj = NetWorkObjects[ident].CreateLoadObjectOrder(NetIncomingMessage);
                 world.AddObject(obj);
 
-                ///skip the message type                
+                //skip the message type                
                 NetIncomingMessage.Position = sizeof(short) * 8;
 
                 NetOutgoingMessage o = CreateMessage(NetWorking.NetMessageType.CreateNetworkObjectOnClient);

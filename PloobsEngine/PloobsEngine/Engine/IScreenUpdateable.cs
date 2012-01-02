@@ -36,7 +36,7 @@ namespace PloobsEngine
     public abstract class IScreenUpdateable : IEntity
     {
 
-        private int id;
+        private long id;
         protected IScreen owner;
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace PloobsEngine
         /// <returns>
         /// the id
         /// </returns>
-        public int GetId()
+        public long GetId()
         {
             return this.id;
         }
@@ -115,7 +115,7 @@ namespace PloobsEngine
         /// sets the id
         /// </summary>
         /// <param name="id"></param>
-        public void SetId(int id)
+        public void SetId(long id)
         {
             this.id = id;
         }

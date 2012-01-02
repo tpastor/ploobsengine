@@ -43,7 +43,7 @@ namespace PloobsEngine.Utils
             String line = sr.ReadLine();
             while ( line != null  )
             {
-                ///% is a comentary
+                //% is a comentary
                 if (!line.StartsWith("%") && line != "")
                 {
                 string word1 = line.Substring(0,line.IndexOf('='));

@@ -122,6 +122,9 @@ namespace PloobsEngine.SceneControl
     /// </summary>
     public class BloomPostEffect : IPostEffect
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BloomPostEffect"/> class.
+        /// </summary>
         public BloomPostEffect() : base(PostEffectType.WindowsPhoneAndReach) { }
 
         GraphicFactory factory;
@@ -156,10 +159,20 @@ namespace PloobsEngine.SceneControl
                 bloomThreshold = value;                
             }
         }
+        Engine.GraphicInfo ginfo;
         BlendState additiveBlend;
         BlendState subBlend;
         RenderTarget2D rt;
 
+        /// <summary>
+        /// Draws
+        /// </summary>
+        /// <param name="ImageToProcess">The image to process.</param>
+        /// <param name="render">The render.</param>
+        /// <param name="gt">The gt.</param>
+        /// <param name="GraphicInfo">The graphic info.</param>
+        /// <param name="world">The world.</param>
+        /// <param name="useFloatingBuffer">if set to <c>true</c> [use floating buffer].</param>
         public override void Draw(Texture2D ImageToProcess, RenderHelper render, GameTime gt, Engine.GraphicInfo GraphicInfo, IWorld world, bool useFloatingBuffer)
         {
             ///NOSSO threshold FILTER KKKKK =P
@@ -180,6 +193,12 @@ namespace PloobsEngine.SceneControl
         }
 
 
+        /// <summary>
+        /// Initiates the specified Post Effect.
+        /// Called by the engine
+        /// </summary>
+        /// <param name="ginfo">The ginfo.</param>
+        /// <param name="factory">The factory.</param>
         public override void Init(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
         {
             additiveBlend = new BlendState();
@@ -199,16 +218,28 @@ namespace PloobsEngine.SceneControl
             subBlend.ColorDestinationBlend = Blend.One;
 
             rt = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
-            ginfo.OnGraphicInfoChange += new Engine.OnGraphicInfoChange(ginfo_OnGraphicInfoChange);
+            ginfo.OnGraphicInfoChange += ginfo_OnGraphicInfoChange;
             this.factory = factory;
+            this.ginfo = ginfo;
             
         }
 
-        void ginfo_OnGraphicInfoChange(Engine.GraphicInfo newGraphicInfo)
+        void ginfo_OnGraphicInfoChange(object sender, EventArgs e)
         {
-            rt.Dispose();
-            rt = factory.CreateRenderTarget(newGraphicInfo.BackBufferWidth, newGraphicInfo.BackBufferHeight);
+            GraphicInfo newGraphicInfo = (GraphicInfo)sender;
+            if (rt != null)
+            {
+                rt.Dispose();
+                rt = factory.CreateRenderTarget(newGraphicInfo.BackBufferWidth, newGraphicInfo.BackBufferHeight);
+            }
         }
+
+        public override void CleanUp()
+        {
+            ginfo.OnGraphicInfoChange -= ginfo_OnGraphicInfoChange;
+            base.CleanUp();
+        }
+
 
         #endregion
     }

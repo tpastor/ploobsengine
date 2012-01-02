@@ -32,6 +32,10 @@ using PloobsEngine.Commands;
 
 namespace PloobsEngine.SceneControl
 {
+    /// <summary>
+    /// Called when Screen state change
+    /// </summary>
+    /// <param name="screen">The screen.</param>
     public delegate void OnScreenChangeState(IScreen screen);
 
     /// <summary>
@@ -71,22 +75,43 @@ namespace PloobsEngine.SceneControl
         {
             this.gui = gui;
             IsLoaded = false;
+            CleanupAbles = new List<ICleanupAble>();
         }
         #else
 public IScreen()
         {
             this.gui = null;
             IsLoaded = false;
+            CleanupAbles = new List<ICleanupAble>();
         }
 #endif
-               
-        #if !WINDOWS_PHONE
+
+#if !WINDOWS_PHONE
         private Dictionary<IInput, BindKeyCommand> KeyBinds = new Dictionary<IInput, BindKeyCommand>();
-        private Dictionary<IInput, BindMouseCommand> MouseBinds = new Dictionary<IInput, BindMouseCommand>();
+        private Dictionary<IInput, BindMouseCommand> MouseBinds = new Dictionary<IInput, BindMouseCommand>();        
         #else
         private Dictionary<IInput, BindGestureCommand> GestureBinds= new Dictionary<IInput, BindGestureCommand>();
         #endif
+        /// <summary>
+        /// called on OnScreenStateChange 
+        /// </summary>
         public OnScreenChangeState OnScreenChangeState = null;
+
+        /// <summary>
+        /// Attach a cleanupable to the screen
+        /// </summary>
+        /// <param name="ICleanupAble">The Icleanupable.</param>
+        public void AttachCleanUpAble(ICleanupAble ICleanupAble)
+        {
+            System.Diagnostics.Debug.Assert(ICleanupAble != null);
+            this.CleanupAbles.Add(ICleanupAble);
+        }
+
+        private IList<ICleanupAble> CleanupAbles
+        {
+            get;
+            set;
+        }
 
         #if !WINDOWS_PHONE 
         /// <summary>
@@ -173,6 +198,12 @@ public IScreen()
         }
         #endif
 
+        /// <summary>
+        /// Gets a value indicating whether this instance is loaded.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if this instance is loaded; otherwise, <c>false</c>.
+        /// </value>
         public bool IsLoaded
         {
             get;
@@ -413,6 +444,16 @@ public IScreen()
                 gui.iDispose();
                 gui = null;
             }
+
+            foreach (var item in CleanupAbles)
+            {
+                item.CleanUp(graphicFactory);
+            }
+            CleanupAbles.Clear();
+#if DEBUG
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+#endif
         }        
 
     }

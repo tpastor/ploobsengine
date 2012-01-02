@@ -43,6 +43,7 @@ namespace PloobsEngine.SceneControl._2DScene
         /// </summary>
         /// <param name="PhysicWorld">The physic world.</param>
         /// <param name="particleManager">The particle manager.</param>
+        /// <param name="culler">The culler.</param>
         public I2DWorld(I2DPhysicWorld PhysicWorld, IParticleManager particleManager = null, I2DCuller culler = null)
         {
             if (PhysicWorld == null)
@@ -67,6 +68,7 @@ namespace PloobsEngine.SceneControl._2DScene
             Dummies = new List<IDummy>();            
             Objects = new List<I2DObject>();
             SoundEmiters2D = new List<ISoundEmitter2D>();
+            CleanUpObjectsOnDispose = true;
 
 
 #if !WINDOWS_PHONE && !REACH
@@ -90,7 +92,7 @@ namespace PloobsEngine.SceneControl._2DScene
         /// </value>
         public ICamera2D Camera2D
         {
-            get { return camera2D; }
+            get { return    camera2D; }
             set { camera2D = value; }
         }
 
@@ -104,6 +106,9 @@ namespace PloobsEngine.SceneControl._2DScene
             }            
         }
 
+        /// <summary>
+        /// Inits the world.
+        /// </summary>
         protected virtual void InitWorld()
         {
             if (particleManager != null)
@@ -154,6 +159,9 @@ namespace PloobsEngine.SceneControl._2DScene
             InitWorld();
         }
 
+        /// <summary>
+        /// Gets the content manager.
+        /// </summary>
         public IContentManager ContentManager
         {
             get
@@ -343,6 +351,23 @@ namespace PloobsEngine.SceneControl._2DScene
             protected set;
         }
 
+
+        /// <summary>
+        /// Gets or sets a value indicating whether [clean up objects on dispose].
+        /// </summary>
+        /// <value>
+        /// 	<c>true</c> if [clean up objects on dispose]; otherwise, <c>false</c>.
+        /// </value>
+        public bool CleanUpObjectsOnDispose
+        {
+            set;
+            get;
+        }
+
+
+        /// <summary>
+        /// Gets the culler.
+        /// </summary>
         public I2DCuller Culler
         {
             get
@@ -394,7 +419,7 @@ namespace PloobsEngine.SceneControl._2DScene
         /// <summary>
         /// Removes the sound emitter.
         /// </summary>
-        /// <param name="e">The e.</param>
+        /// <param name="em">The em.</param>
         public virtual void RemoveSoundEmitter(ISoundEmitter2D em)
         {
             if (em == null)
@@ -408,7 +433,34 @@ namespace PloobsEngine.SceneControl._2DScene
             {
                 ActiveLogger.LogMessage("Emitter not found: " + em.ToString(), LogLevel.Warning);
             }
+        }
 
+        /// <summary>
+        /// Cleans up.
+        /// </summary>
+        public virtual void CleanUp()
+        {
+            Camera2D.CleanUp();
+
+            if (CleanUpObjectsOnDispose)
+            {
+                foreach (var item in Objects)
+                {
+                    item.CleanUp(graphicsFactory);
+                }
+            }
+
+            foreach (var item in SoundEmiters2D)
+            {
+                item.CleanUp(graphicsFactory);
+            }
+
+            Objects.Clear();
+            Camera2D = null;
+            Dummies.Clear();
+            SoundEmiters2D.Clear();
+            particleManager = null;
+            PhysicWorld = null;
         }
 
     }

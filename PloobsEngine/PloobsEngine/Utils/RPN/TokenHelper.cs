@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace PloobsEngine.Utils
 {
+    /// <summary>
+    /// Token Helper used for RPN calculator
+    /// </summary>
     public class TokenHelper
     {
         private const string _operators = "+-*/%=!^";
@@ -20,6 +23,13 @@ namespace PloobsEngine.Utils
     };
 
 
+        /// <summary>
+        /// Determines whether the specified token is operator.
+        /// </summary>
+        /// <param name="token">The token.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified token is operator; otherwise, <c>false</c>.
+        /// </returns>
         public bool IsOperator(string token)
         {
             if (string.IsNullOrWhiteSpace(token))
@@ -29,6 +39,11 @@ namespace PloobsEngine.Utils
             return _operators.Contains(token);
         }
 
+        /// <summary>
+        /// Gets the precedence for.
+        /// </summary>
+        /// <param name="token">The token.</param>
+        /// <returns></returns>
         public int GetPrecedenceFor(string token)
         {
             foreach (KeyValuePair<string, int> precedenceMapping in _operatorsToPrecedenceMapping)
@@ -41,19 +56,33 @@ namespace PloobsEngine.Utils
             throw new InvalidOperationException(string.Format("{0} is not a valid operator!", token));
         }
 
+        /// <summary>
+        /// Determines whether the specified token is number.
+        /// </summary>
+        /// <param name="token">The token.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified token is number; otherwise, <c>false</c>.
+        /// </returns>
         public bool IsNumber(string token)
         {
             try
             {
                 int result = int.Parse(token);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
             return true;
         }
 
+        /// <summary>
+        /// Determines whether the specified token is function.
+        /// </summary>
+        /// <param name="token">The token.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified token is function; otherwise, <c>false</c>.
+        /// </returns>
         public bool IsFunction(string token)
         {
             char possibleFunction;
@@ -61,13 +90,20 @@ namespace PloobsEngine.Utils
             {
                 possibleFunction = Convert.ToChar(token);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
             return (possibleFunction >= 'A' && possibleFunction <= 'Z');
         }
 
+        /// <summary>
+        /// Determines whether [is left associative] [the specified token].
+        /// </summary>
+        /// <param name="token">The token.</param>
+        /// <returns>
+        ///   <c>true</c> if [is left associative] [the specified token]; otherwise, <c>false</c>.
+        /// </returns>
         public bool IsLeftAssociative(string token)
         {
             if (string.IsNullOrWhiteSpace(token) || token.Length != 1)
@@ -77,6 +113,13 @@ namespace PloobsEngine.Utils
             return _leftAssociativeOperators.Contains(token);
         }
 
+        /// <summary>
+        /// Determines whether [is right associative] [the specified token].
+        /// </summary>
+        /// <param name="token">The token.</param>
+        /// <returns>
+        ///   <c>true</c> if [is right associative] [the specified token]; otherwise, <c>false</c>.
+        /// </returns>
         public bool IsRightAssociative(string token)
         {
             if (string.IsNullOrWhiteSpace(token) || token.Length != 1)

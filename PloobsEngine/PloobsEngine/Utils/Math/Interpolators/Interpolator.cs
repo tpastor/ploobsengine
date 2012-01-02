@@ -50,19 +50,46 @@ namespace PloobsEngine.Utils
     {
         #region Fields
 
+        /// <summary>
+        /// Is active
+        /// </summary>
         public bool IsActive;
+        /// <summary>
+        /// Current Duration
+        /// </summary>
         protected double currentDuration;
+        /// <summary>
+        /// Total duration
+        /// </summary>
         protected double totalDuration;
+        /// <summary>
+        /// Is smoth step
+        /// </summary>
         protected bool smoothStep;
+        /// <summary>
+        /// V1
+        /// </summary>
         protected T value1;
+        /// <summary>
+        /// V2
+        /// </summary>
         protected T value2;
+        /// <summary>
+        /// Current value
+        /// </summary>
         protected T currentValue;
 
+        /// <summary>
+        /// Gets the value2.
+        /// </summary>
         public T Value2
         {
             get { return value2; }
         }
 
+        /// <summary>
+        /// Gets the current value.
+        /// </summary>
         public T CurrentValue
         {
             get { return currentValue; }

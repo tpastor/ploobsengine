@@ -53,7 +53,7 @@ namespace PloobsEngine.SceneControl
         /// <param name="device">The device.</param>
         /// <param name="componentManager">The component manager.</param>
         /// <param name="cmanager">The cmanager.</param>
-        internal RenderHelper(GraphicsDevice device,ComponentManager componentManager,IContentManager cmanager)
+        internal RenderHelper(GraphicsDevice device, ComponentManager componentManager, IContentManager cmanager)
         {
             this.device = device;
             spriteBatch = new SpriteBatch(device);
@@ -268,11 +268,19 @@ namespace PloobsEngine.SceneControl
             return PopRenderTarget()[0].RenderTarget as RenderTarget2D;
         }
 
+        /// <summary>
+        /// Sets the view port.
+        /// </summary>
+        /// <param name="viewPort">The view port.</param>
         public void SetViewPort(Viewport viewPort)
         {
             device.Viewport = viewPort;
         }
 
+        /// <summary>
+        /// Gets the view port.
+        /// </summary>
+        /// <returns></returns>
         public Viewport GetViewPort()
         {
             return device.Viewport ;
@@ -317,6 +325,14 @@ namespace PloobsEngine.SceneControl
             device.DrawUserPrimitives<T>(PrimitiveType, verts, vertexOffset, primitiveCount);
         }
 
+        /// <summary>
+        /// Renders the user primitive.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="PrimitiveType">Type of the primitive.</param>
+        /// <param name="verts">The verts.</param>
+        /// <param name="vertexOffset">The vertex offset.</param>
+        /// <param name="primitiveCount">The primitive count.</param>
         public void RenderUserPrimitive<T>(PrimitiveType PrimitiveType, T[] verts, int vertexOffset, int primitiveCount) where T : struct, IVertexType
         {            
             device.DrawUserPrimitives<T>(PrimitiveType, verts, vertexOffset, primitiveCount);
@@ -340,6 +356,17 @@ namespace PloobsEngine.SceneControl
             device.DrawUserIndexedPrimitives<T>(PrimitiveType, verts, vertexOffset, vertesCount, indices, indexOffset, primitiveCount);
         }
 
+        /// <summary>
+        /// Renders the user indexed primitive.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="PrimitiveType">Type of the primitive.</param>
+        /// <param name="verts">The verts.</param>
+        /// <param name="vertexOffset">The vertex offset.</param>
+        /// <param name="vertesCount">The vertes count.</param>
+        /// <param name="indices">The indices.</param>
+        /// <param name="indexOffset">The index offset.</param>
+        /// <param name="primitiveCount">The primitive count.</param>
         public void RenderUserIndexedPrimitive<T>(PrimitiveType PrimitiveType, T[] verts, int vertexOffset, int vertesCount, short[] indices, int indexOffset, int primitiveCount) where T : struct, IVertexType
         {         
             device.DrawUserIndexedPrimitives<T>(PrimitiveType, verts, vertexOffset, vertesCount, indices, indexOffset, primitiveCount);
@@ -363,6 +390,17 @@ namespace PloobsEngine.SceneControl
             device.DrawUserIndexedPrimitives<T>(PrimitiveType, verts, vertexOffset, vertesCount, indices, indexOffset, primitiveCount);
         }
 
+        /// <summary>
+        /// Renders the user indexed primitive.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="PrimitiveType">Type of the primitive.</param>
+        /// <param name="verts">The verts.</param>
+        /// <param name="vertexOffset">The vertex offset.</param>
+        /// <param name="vertesCount">The vertes count.</param>
+        /// <param name="indices">The indices.</param>
+        /// <param name="indexOffset">The index offset.</param>
+        /// <param name="primitiveCount">The primitive count.</param>
         public void RenderUserIndexedPrimitive<T>(PrimitiveType PrimitiveType, T[] verts, int vertexOffset, int vertesCount, int[] indices, int indexOffset, int primitiveCount) where T : struct, IVertexType
         {            
             device.DrawUserIndexedPrimitives<T>(PrimitiveType, verts, vertexOffset, vertesCount, indices, indexOffset, primitiveCount);
@@ -567,6 +605,7 @@ namespace PloobsEngine.SceneControl
         /// <param name="destination">The destination.</param>
         /// <param name="transform">The transform.</param>
         /// <param name="source">The source.</param>
+        /// <param name="resyncState">if set to <c>true</c> [resync state].</param>
         /// <param name="SpriteSortMode">The sprite sort mode.</param>
         /// <param name="samplerState">State of the sampler.</param>
         /// <param name="blenderState">State of the blender.</param>
@@ -614,6 +653,7 @@ namespace PloobsEngine.SceneControl
         /// Renders the texture to full screen using vertex and pixel shader .
         /// </summary>
         /// <param name="effect">The effect.</param>
+        /// <param name="samplerStates">The sampler states.</param>
         public void RenderFullScreenQuadVertexPixel(Effect effect,params SamplerState[] samplerStates)
         {
 
@@ -641,6 +681,10 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         /// <param name="scene">The scene.</param>
         /// <param name="effect">The effect.</param>
+        /// <param name="rectangle">The rectangle.</param>
+        /// <param name="samplerState">State of the sampler.</param>
+        /// <param name="blenderState">State of the blender.</param>
+        /// <param name="sync">if set to <c>true</c> [sync].</param>
         public void RenderTextureToFullScreenSpriteBatch(Texture2D scene, Effect effect, Rectangle rectangle, SamplerState samplerState = null, BlendState blenderState = null, bool sync = true)
         {
             effect.CurrentTechnique.Passes[0].Apply();
@@ -658,6 +702,10 @@ namespace PloobsEngine.SceneControl
         }
 
 #if !WINDOWS_PHONE && !REACH
+        /// <summary>
+        /// Gets the recomended sampler for the actual render target.
+        /// </summary>
+        /// <returns></returns>
         public SamplerState GetRecomendedSamplerForTheActualRenderTarget()
         {
             SurfaceFormat format = RenderStatesStack.Peek()[0].RenderTarget.Format;
@@ -673,6 +721,9 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         /// <param name="texture">The texture name (already in this class).</param>
         /// <param name="effect">The effect.</param>
+        /// <param name="samplerState">State of the sampler.</param>
+        /// <param name="blenderState">State of the blender.</param>
+        /// <param name="sync">if set to <c>true</c> [sync].</param>
         public void RenderTextureToFullScreenSpriteBatch(String texture, Effect effect, SamplerState samplerState = null, BlendState blenderState = null,bool sync = true)
         {
             System.Diagnostics.Debug.Assert(Scenes.ContainsKey(texture),"Texture not found in Render, make sure it exists");
@@ -804,6 +855,15 @@ namespace PloobsEngine.SceneControl
             }
         }
 
+        /// <summary>
+        /// Renders the scene depth.
+        /// </summary>
+        /// <param name="world">The world.</param>
+        /// <param name="gt">The gt.</param>
+        /// <param name="objListException">The obj list exception.</param>
+        /// <param name="view">The view.</param>
+        /// <param name="projection">The projection.</param>
+        /// <param name="useCuller">if set to <c>true</c> [use culler].</param>
         public void RenderSceneDepth(IWorld world, GameTime gt, List<IObject> objListException, Matrix view, Matrix projection, bool useCuller = false)
         {            
             IEnumerable<IObject> objs;
@@ -827,6 +887,14 @@ namespace PloobsEngine.SceneControl
             }
         }
 
+        /// <summary>
+        /// Renders the scene depth.
+        /// </summary>
+        /// <param name="world">The world.</param>
+        /// <param name="gt">The gt.</param>
+        /// <param name="view">The view.</param>
+        /// <param name="projection">The projection.</param>
+        /// <param name="useCuller">if set to <c>true</c> [use culler].</param>
         public void RenderSceneDepth(IWorld world, GameTime gt, Matrix view, Matrix projection, bool useCuller = false)
         {
             IEnumerable<IObject> objs;
@@ -847,6 +915,18 @@ namespace PloobsEngine.SceneControl
             }
         }
 
+        /// <summary>
+        /// Renders the scene reflection refration.
+        /// </summary>
+        /// <param name="world">The world.</param>
+        /// <param name="gt">The gt.</param>
+        /// <param name="objListException">The obj list exception.</param>
+        /// <param name="view">The view.</param>
+        /// <param name="projection">The projection.</param>
+        /// <param name="drawComponentsPreDraw">if set to <c>true</c> [draw components pre draw].</param>
+        /// <param name="useCuller">if set to <c>true</c> [use culler].</param>
+        /// <param name="clippingPlane">The clipping plane.</param>
+        /// <param name="useAlphaBlend">if set to <c>true</c> [use alpha blend].</param>
         public void RenderSceneReflectionRefration(IWorld world, GameTime gt, List<IObject> objListException, Matrix view, Matrix projection,bool drawComponentsPreDraw = true ,bool useCuller = false,Plane? clippingPlane = null,bool useAlphaBlend = false)
         {
             if (drawComponentsPreDraw)
@@ -876,7 +956,15 @@ namespace PloobsEngine.SceneControl
         }
 #endif
     }
-    
+
+    /// <summary>
+    /// OnDrawingScene with CustomMaterial
+    /// </summary>
+    /// <param name="effect">The effect.</param>
+    /// <param name="obj">The obj.</param>
+    /// <param name="bi">The bi.</param>
+    /// <param name="view">The view.</param>
+    /// <param name="projection">The projection.</param>
     public delegate void OnDrawingSceneCustomMaterial(Effect effect,IObject obj, BatchInformation bi,ref Matrix view,ref Matrix projection);
 
 }

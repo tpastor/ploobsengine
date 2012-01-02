@@ -36,9 +36,9 @@ float4 PShader(float2 texCoord : TEXCOORD0) : COLOR0
  factor = min(1.0,factor)*weight;
  float4 color = float4(0.0,0.0,0.0,0.0);
 
- for( int i=0;i<8;i++ )
+ for( int j=0;j<8;j++ )
  {
-	color += tex2D(TextureSampler,texCoord + delta[i]*pixel_size*factor);
+	color += tex2D(TextureSampler,texCoord + delta[j]*pixel_size*factor);
  }
  color += 2.0*tex2D(TextureSampler,texCoord);
  return color*(1.0/10.0);

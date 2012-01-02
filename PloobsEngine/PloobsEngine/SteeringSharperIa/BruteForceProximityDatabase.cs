@@ -56,7 +56,7 @@ namespace Bnoerj.AI.Steering
 				if (obj != null)
 				{
 					// remove this token from the database's vector
-                    ///DANGEROUS LINE !!!
+                    //DANGEROUS LINE !!!
 					bfpd.group.Remove(this);
 					obj = null;
 				}

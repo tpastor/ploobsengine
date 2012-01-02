@@ -110,6 +110,7 @@ namespace PloobsEngine.Physics.Bepu
         /// <param name="heighmapName">Name of the heighmap texture</param>
         /// <param name="translation">The translation.</param>
         /// <param name="rotation">The rotation.</param>
+        /// <param name="materialDesc">The material desc.</param>
         /// <param name="XSpacing">The X spacing.</param>
         /// <param name="ZSpacing">The Z spacing.</param>
         /// <param name="heightMultipler">Default 10 - controla a altura, menor mais alto</param>

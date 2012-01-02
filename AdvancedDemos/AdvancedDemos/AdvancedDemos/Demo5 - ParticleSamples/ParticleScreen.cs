@@ -74,6 +74,7 @@ namespace AdvancedDemo4._0
                 ///Create the xml file model extractor
                 ///Loads a XML file that was export by our 3DS MAX plugin
                 ExtractXmlModelLoader ext = new ExtractXmlModelLoader("Content//ModelInfos//", "Model//", "Textures//");
+                this.AttachCleanUpAble(ext);
                 ///Extract all the XML info (Model,Cameras, ...)
                 ModelLoaderData data = ext.Load(factory, GraphicInfo, "ilha");
                 ///Create the WOrld Loader

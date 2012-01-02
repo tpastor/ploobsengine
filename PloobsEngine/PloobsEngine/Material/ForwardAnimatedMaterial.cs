@@ -32,9 +32,11 @@ namespace PloobsEngine.Material
     /// </summary>
     public class ForwardAnimatedMaterial : IMaterial
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ForwardMaterial"/> class.
         /// </summary>
+        /// <param name="controller">The controller.</param>
         /// <param name="shader">The shader.</param>
         public ForwardAnimatedMaterial(IAnimatedController controller, ForwardSimpleAnimationShader shader)
         {
@@ -188,13 +190,22 @@ namespace PloobsEngine.Material
         }
 #endif
         #endregion
-        
+
+        /// <summary>
+        /// Cleans up.
+        /// </summary>
+        /// <param name="factory"></param>
+        public void CleanUp(PloobsEngine.Engine.GraphicFactory factory)
+        {
+            shader.Cleanup(factory);            
+        }
 
         public bool CanAppearOfReflectionRefraction
         {
             get;
             set;
         }
+
 
 
         #region IMaterial Members

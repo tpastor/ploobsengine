@@ -36,7 +36,6 @@ namespace PloobsEngine.Modelo
     /// </summary>
     public class CustomModel : IModelo
     {
-
         public CustomModel(GraphicFactory factory, String modelName, int meshindex, BatchInformation[] binfo, Texture2D diffuse = null)
             : base(factory, modelName,false)
         {
@@ -147,8 +146,8 @@ namespace PloobsEngine.Modelo
 
         protected override void LoadModel(GraphicFactory factory, out BatchInformation[][] BatchInformations, out TextureInformation[][] TextureInformations)
         {
-            ///code not called !!!
-            ///Here for future usage.
+            //code not called !!!
+            //Here for future usage.
 
             model = factory.GetModel(this.Name, isInternal);
             ModelBuilderHelper.Extract(model, out BatchInformations);

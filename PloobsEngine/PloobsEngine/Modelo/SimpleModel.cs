@@ -42,7 +42,6 @@ namespace PloobsEngine.Modelo
         /// <param name="bumpTextureName">Name of the bump texture.</param>
         /// <param name="specularTextureName">Name of the specular texture.</param>
         /// <param name="glowTextureName">Name of the glow texture.</param>
-        /// <param name="CallLoadContent">if set to <c>true</c> [call load content].</param>
        public SimpleModel(GraphicFactory factory,String modelName, String diffuseTextureName = null, String bumpTextureName = null, String specularTextureName = null, String glowTextureName = null)
             : base(factory, modelName, false)
         {

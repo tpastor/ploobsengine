@@ -35,7 +35,6 @@ namespace PloobsEngine.SceneControl
         Effect effect = null;             
         float density = 0.1f;
         Vector3 lightPosition = new Vector3(2000.0f, 2800.0f, 2000.0f);
-        Effect effect2 = null;        
         RenderTarget2D tr2d;
         ToBlackPostEffect to;
 

@@ -35,7 +35,6 @@ namespace PloobsEngine.Physics.Bepu
 {
     public class DetectorVolumeObject : IPhysicObject
     {                
-        IObject owner;
         TriangleMeshObject mesh;
         DetectorVolume detectorVolume;
 

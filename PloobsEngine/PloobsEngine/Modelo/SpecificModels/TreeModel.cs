@@ -39,6 +39,7 @@ namespace PloobsEngine.Modelo
         /// <summary>
         /// Initializes a new instance of the <see cref="TreeModel"/> class.
         /// </summary>
+        /// <param name="factory">The factory.</param>
         /// <param name="profileName">Name of the profile (LTREE content pipeline processed file).</param>
         /// <param name="trunktextureName">Name of the trunktexture.</param>
         /// <param name="LeaftextureName">Name of the leaftexture.</param>
@@ -48,9 +49,15 @@ namespace PloobsEngine.Modelo
             this.LeaftextureName = LeaftextureName;
             this.profileName = profileName;
             LoadModel(factory,out BatchInformations,out TextureInformations);
-
+            this.modelName = profileName;
         }
 
+        /// <summary>
+        /// Loads the model.
+        /// </summary>
+        /// <param name="factory">The factory.</param>
+        /// <param name="BatchInformations">The batch informations.</param>
+        /// <param name="TextureInformations">The texture informations.</param>
         protected override void LoadModel(GraphicFactory factory, out BatchInformation[][] BatchInformations, out TextureInformation[][] TextureInformations)
         {
             TreeProfile t = factory.GetAsset<TreeProfile>(profileName);
@@ -109,6 +116,10 @@ namespace PloobsEngine.Modelo
             set { tree = value; }
         }
 
+        /// <summary>
+        /// Gets the model radius.
+        /// </summary>
+        /// <returns></returns>
         public override float GetModelRadius()
         {
             return tree.TrunkMesh.BoundingSphere.Radius;
@@ -117,32 +128,12 @@ namespace PloobsEngine.Modelo
         #region IModelo Members
 
         /// <summary>
-        /// Gets the mesh number.
+        /// Gets the Total mesh number.
         /// </summary>
         public override int MeshNumber
         {
             get { return 2; }
-        }
-
-
-        /// <summary>
-        /// Gets the name.
-        /// CANNOT SET
-        /// </summary>
-        /// <value>
-        /// The name.
-        /// </value>
-        public string Name
-        {
-            get
-            {
-                return profileName;
-            }
-            set
-            {
-                throw new InvalidOperationException("cant change the name");
-            }
-        }
+        }       
 
         #endregion
     }

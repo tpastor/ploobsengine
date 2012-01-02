@@ -36,6 +36,9 @@ namespace PloobsEngine.SceneControl
     /// </summary>
     public class SimpleCuller : ICuller
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SimpleCuller"/> class.
+        /// </summary>
         public SimpleCuller()
         {            
         }       

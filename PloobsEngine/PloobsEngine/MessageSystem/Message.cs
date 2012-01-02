@@ -44,7 +44,7 @@ namespace PloobsEngine.MessageSystem
             set { check = value; }
         }
 
-        private int sender;
+        private long sender;
 
         /// <summary>
         /// Gets or sets the sender ID.
@@ -52,12 +52,12 @@ namespace PloobsEngine.MessageSystem
         /// <value>
         /// The sender.
         /// </value>
-        public int Sender
+        public long Sender
         {
             get { return sender; }
             set { sender = value; }
         }
-        private int receiver;
+        private long receiver;
 
         /// <summary>
         /// Gets or sets the receiver ID.
@@ -65,7 +65,7 @@ namespace PloobsEngine.MessageSystem
         /// <value>
         /// The receiver.
         /// </value>
-        public int Receiver
+        public long Receiver
         {
             get { return receiver; }
             set { receiver = value; }
@@ -164,7 +164,7 @@ namespace PloobsEngine.MessageSystem
         /// <param name="type">Message Type; The engine DONT use this field for NOTHING, its for user control</param>
         /// <param name="Content">Message Content</param>
         /// <param name="cod">Message Code, The engine DONT use this field, its for user control</param>
-        public Message(int sender, int receiver, string tag , Priority pri , int timetodeliver , SenderType type ,Object Content, string cod)
+        public Message(long sender, long receiver, string tag, Priority pri, int timetodeliver, SenderType type, Object Content, string cod)
         {
             this.sender = sender;
             this.receiver = receiver;
@@ -219,7 +219,14 @@ namespace PloobsEngine.MessageSystem
     /// </summary>
     public enum Checks
     {
-        CHECK_DELIVERY,DONT_CHECK_DELIVERY
+        /// <summary>
+        /// Check if destiny exist before sending the message
+        /// </summary>
+        CHECK_DELIVERY,
+        /// <summary>
+        /// Do not check anything.
+        /// </summary>
+        DONT_CHECK_DELIVERY
     }
 
      

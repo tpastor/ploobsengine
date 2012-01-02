@@ -34,11 +34,18 @@ namespace PloobsEngine.SceneControl
     public abstract class IRenderTechnic : PloobsEngine.SceneControl.Scene.IIRenderTechnic
     {
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IRenderTechnic"/> class.
+        /// </summary>
+        /// <param name="PostEffectType">Type of the post effect.</param>
         public IRenderTechnic(PostEffectType PostEffectType)
         {
             this.PostEffectType = PostEffectType;
-        }        
+        }
 
+        /// <summary>
+        /// Post Effect type
+        /// </summary>
         protected PostEffectType PostEffectType;
 
         /// <summary>
@@ -111,6 +118,7 @@ namespace PloobsEngine.SceneControl
         /// <summary>
         /// Executes the technic.
         /// </summary>
+        /// <param name="gameTime">The game time.</param>
         /// <param name="render">The render.</param>
         /// <param name="world">The world.</param>
         protected abstract void ExecuteTechnic(GameTime gameTime, RenderHelper render, IWorld world);
@@ -144,6 +152,16 @@ namespace PloobsEngine.SceneControl
         {
             get;
         }
-        
+
+
+        #region IIRenderTechnic Members
+
+
+        /// <summary>
+        /// Cleans up.
+        /// </summary>
+        public abstract void CleanUp();
+
+        #endregion
     }
 }

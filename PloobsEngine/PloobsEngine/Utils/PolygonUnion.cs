@@ -1,4 +1,4 @@
-﻿///CREDITS FOR XNA WIKI !!!!
+﻿//CREDITS FOR XNA WIKI !!!!
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +8,19 @@ using Microsoft.Xna.Framework;
 namespace PloobsEngine.Utils
 {
 
+    /// <summary>
+    /// Perform some polygon unions
+    /// </summary>
     public static class PolygonUnion
     {
+        /// <summary>
+        /// Polygon Unio
+        /// </summary>
+        /// <param name="polya">The polya.</param>
+        /// <param name="polyb">The polyb.</param>
+        /// <param name="union">The union.</param>
+        /// <param name="intersection">The intersection.</param>
+        /// <returns></returns>
         public static bool PolyUnion(Vector2[] polya, Vector2[] polyb, out Vector2[] union, out Vector2[] intersection)
         {
             if (!Intersects(polya, polyb))
@@ -234,6 +245,9 @@ namespace PloobsEngine.Utils
         /// Projects a polygon onto the axis, giving the maximum and minimum positions.
         /// </summary>
         /// <param name="points">Points that are in world space with origin at the centre</param>
+        /// <param name="axis">The axis.</param>
+        /// <param name="max">The max.</param>
+        /// <param name="min">The min.</param>
         private static void ProjectPoly(Vector2[] points, Vector2 axis, out float max, out float min)
         {
             //Projecting a point onto an axis uses a dot product.

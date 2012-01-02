@@ -134,6 +134,14 @@ namespace PloobsEngine.Modelo
         {
             return modelRadius;
         }
+
+        public override void CleanUp(GraphicFactory factory)
+        {
+            base.CleanUp(factory);
+            BatchInformations[0][0].VertexBuffer.Dispose();
+            BatchInformations[0][0].IndexBuffer.Dispose();
+            BatchInformations[0][0].VertexDeclaration.Dispose();
+        }
     }
 
     /// <summary>

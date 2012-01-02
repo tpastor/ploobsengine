@@ -164,7 +164,16 @@ namespace PloobsEngine.Material
 
         }
 
-        #endregion
+        /// <summary>
+        /// Cleans up.
+        /// </summary>
+        /// <param name="factory"></param>
+        public void CleanUp(PloobsEngine.Engine.GraphicFactory factory)
+        {
+            shader.Cleanup(factory);
+        }
+
+#endregion
 
 #region ISerializable Members
 
@@ -178,7 +187,7 @@ namespace PloobsEngine.Material
         public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
         {            
         }
-        #endregion
+#endregion
 
         public bool CanAppearOfReflectionRefraction
         {
@@ -197,7 +206,7 @@ namespace PloobsEngine.Material
             set;
         }
 
-        #endregion
+#endregion
     }
 }
 #endif

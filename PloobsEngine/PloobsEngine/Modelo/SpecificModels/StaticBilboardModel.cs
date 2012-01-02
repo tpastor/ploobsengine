@@ -41,7 +41,7 @@ namespace PloobsEngine.Modelo
         }
 
         string diffuseTextureName;
-        private float modelRadius;
+        private float modelRadius = 0;
         List<Vector3> positions;
 
         protected override void LoadModel(GraphicFactory factory, out BatchInformation[][] BatchInformations, out TextureInformation[][] TextureInformations)
@@ -83,6 +83,13 @@ namespace PloobsEngine.Modelo
         public override int MeshNumber
         {
             get { return 1; }
+        }
+
+        public override void CleanUp(GraphicFactory factory)
+        {
+            base.CleanUp(factory);
+            BatchInformations[0][0].VertexBuffer.Dispose();
+            TextureInformations[0][0].ClenaUp(factory);
         }
 
         public override float GetModelRadius()

@@ -28,7 +28,7 @@ using Microsoft.Xna.Framework.Input;
 namespace PloobsEngine.Utils
 {
     /// <summary>
-    /// Represents a Curve3D 
+    /// Represents a Curve3D
     /// using one XNA Curve for each axis
     /// </summary>
     #if !WINDOWS_PHONE
@@ -36,8 +36,17 @@ namespace PloobsEngine.Utils
 #endif
     public class Curve3D
     {
+        /// <summary>
+        /// Curve x
+        /// </summary>
         public Curve curveX = new Curve();
+        /// <summary>
+        /// curve y
+        /// </summary>
         public Curve curveY = new Curve();
+        /// <summary>
+        /// curve z
+        /// </summary>
         public Curve curveZ = new Curve();
 
         /// <summary>

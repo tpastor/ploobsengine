@@ -41,7 +41,8 @@ namespace PloobsEngine.Features.DebugDraw
         /// Creates a new box.
         /// Visible by default
         /// </summary>
-        /// <param name="BoundingBox">The bounding box.</param>
+        /// <param name="position">The position.</param>
+        /// <param name="radius">The radius.</param>
         /// <param name="color">The box's color.</param>
         public DebugSphere(Vector3 position, float radius, Color color)
         {            
@@ -50,7 +51,12 @@ namespace PloobsEngine.Features.DebugDraw
             this.Position = position;
             Visible = true;
         }
-         
+
+        /// <summary>
+        /// Initializes
+        /// </summary>
+        /// <param name="factory">The factory.</param>
+        /// <param name="ginfo">The ginfo.</param>
         public void  Initialize(Engine.GraphicFactory factory, Engine.GraphicInfo ginfo)
         {
             tex = factory.CreateTexture2DColor(1, 1, Color);
@@ -62,13 +68,20 @@ namespace PloobsEngine.Features.DebugDraw
             }
         }
 
+        /// <summary>
+        /// Position
+        /// </summary>
         public Vector3 Position;
+        /// <summary>
+        /// Radius
+        /// </summary>
         public float Radius;
-        private Color Color;        
+        private Color Color;
 
         /// <summary>
         /// Draws the box.
         /// </summary>
+        /// <param name="render">The render.</param>
         /// <param name="view">The viewing matrix.</param>
         /// <param name="projection">The projection matrix.</param>
         public void Draw(RenderHelper render, Matrix view, Matrix projection)

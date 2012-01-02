@@ -146,7 +146,7 @@ namespace IntroductionDemo4._0
 
             ///Draw some text to the screen
             render.RenderTextComplete("Demo: Constraint Screen", new Vector2(10, 15), Color.White, Matrix.Identity);
-            render.RenderTextComplete("Left click to throw a ball at the with ball =P", new Vector2(10, 35), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Left click to throw a ball at the white ball =P", new Vector2(10, 35), Color.White, Matrix.Identity);
             
         }
 

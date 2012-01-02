@@ -23,6 +23,8 @@ using System.Linq;
 using System.Text;
 using PloobsEngine.MessageSystem;
 using PloobsEngine.Engine.Logger;
+using PloobsEngine.Utils;
+using PloobsEngine.Utils.WeakReference;
 
 namespace PloobsEngine.Entity
 {
@@ -30,11 +32,13 @@ namespace PloobsEngine.Entity
     /// Manage all entities
     /// Responsable for setting the ids, managing tags and RecieverEntities    
     /// Its a singleton
+    /// IT USES WEAK REFERENCES !!! (Even so, YOU ARE RESPONSIBLE FOR REMOVING ENTITIES NOT USED !!!!!!!!!)
+    /// Weak reference is just a fail safe mechanism =P
     /// </summary>
     public class EntityMapper
     {
-            Dictionary<int, Object> ids = new Dictionary<int, object>();
-            int a = 1000;
+            Dictionary<long, object> ids = new Dictionary<long, object>();
+            long a = 1000;
             private EntityMapper() { }
             private static EntityMapper mapper = null;
 
@@ -43,22 +47,21 @@ namespace PloobsEngine.Entity
             /// </summary>
             /// <returns></returns>
             public static EntityMapper getInstance()
-            {
+            {                
                 if (mapper == null)
                     mapper = new EntityMapper();
 
                 return mapper;
-
             }
 
 
-            IDictionary<int, IEntity> IdEntity = new Dictionary<int, IEntity>();
-            IDictionary<int, IRecieveMessageEntity> IdRecieveEntity = new Dictionary<int, IRecieveMessageEntity>();
+            IDictionary<long, WeakReference<IEntity>> IdEntity = new Dictionary<long, WeakReference<IEntity>>();
+            IDictionary<long, WeakReference<IRecieveMessageEntity>> IdRecieveEntity = new Dictionary<long, WeakReference<IRecieveMessageEntity>>();
 
-            IDictionary<IRecieveMessageEntity, List<String>> recieveEntityTag = new Dictionary<IRecieveMessageEntity, List<String>>();
-            IDictionary<String, IList<IRecieveMessageEntity>> tagRecieveEntity = new Dictionary<String, IList<IRecieveMessageEntity>>();
+            IDictionary<long, IList<String>> recieveEntityTag = new Dictionary<long, IList<String>>();
+            IDictionary<String, WeakList<IRecieveMessageEntity>> tagRecieveEntity = new Dictionary<String, WeakList<IRecieveMessageEntity>>();
 
-            private int getNextAvaliableId()
+            private long getNextAvaliableId()
             {
                 while (true)
                 {
@@ -75,9 +78,9 @@ namespace PloobsEngine.Entity
         /// </summary>
         /// <param name="Agente"></param>
         /// <returns></returns>
-        public int AddEntity(IEntity Agente)
+            public long AddEntity(IEntity Agente)
             {
-                int id;
+                long id;
                 if (Agente.GetId() > 0)
                 {                    
                     if (ids.ContainsKey(Agente.GetId()))
@@ -90,20 +93,20 @@ namespace PloobsEngine.Entity
                         id = Agente.GetId();
                         ids.Add(id, null);
                     }
-                    IdEntity.Add(id, Agente);
+                    IdEntity.Add(id, new WeakReference<IEntity>(Agente));
                     if (Agente is IRecieveMessageEntity)
                     {
-                        IdRecieveEntity.Add(id, Agente as IRecieveMessageEntity);
+                        IdRecieveEntity.Add(id, new WeakReference<IRecieveMessageEntity>(Agente as IRecieveMessageEntity));
                     }
                 }
                 else
                 {
                     id = getNextAvaliableId();
                     Agente.SetId(id);
-                    IdEntity.Add(id, Agente);
+                    IdEntity.Add(id, new WeakReference<IEntity>(Agente));
                     if (Agente is IRecieveMessageEntity)
                     {
-                        IdRecieveEntity.Add(id, Agente as IRecieveMessageEntity);
+                        IdRecieveEntity.Add(id, new WeakReference<IRecieveMessageEntity>(Agente as IRecieveMessageEntity));
                     }
                 }
                 return id;
@@ -114,14 +117,17 @@ namespace PloobsEngine.Entity
             /// </summary>
             /// <param name="id">id</param>
             /// <returns></returns>
-            public IEntity getEntity(int id)
+            public IEntity getEntity(long id)
             {
                 if(IdEntity.ContainsKey(id))
                 {
-                return IdEntity[id];
+                    IEntity IEntity = IdEntity[id].Target ;
+                    if (IEntity != null)
+                    {
+                        return IEntity;
+                    }
                 }
-                throw new Exception("nao foi encontrada a entidade referente a " + id);
-
+                throw new Exception("Reference not found for ID" + id);
             }
 
             /// <summary>
@@ -129,13 +135,15 @@ namespace PloobsEngine.Entity
             /// </summary>
             /// <param name="id">id</param>
             /// <returns></returns>
-            public IRecieveMessageEntity getRecieveEntity(int id)
+            public IRecieveMessageEntity getRecieveEntity(long id)
             {
                 if (IdRecieveEntity.ContainsKey(id))
                 {
-                    return IdRecieveEntity[id];
+                    IRecieveMessageEntity IRecieveMessageEntity = IdRecieveEntity[id].Target;
+                    if(IRecieveMessageEntity != null)
+                        return IRecieveMessageEntity;
                 }
-                throw new Exception("nao foi encontrada a entidade referente a " + id);
+                throw new Exception("Reference not found for ID" + id);
 
             }
 
@@ -145,14 +153,14 @@ namespace PloobsEngine.Entity
             /// </summary>
             /// <param name="tag">tag</param>
             /// <param name="Agente">agents list</param>
-            public void AddgrouptagRecieveEntity(string tag, IList<IRecieveMessageEntity> Agente)
+            public void AddgrouptagRecieveEntity(string tag, WeakList<IRecieveMessageEntity> Agente)
             {
 
                 foreach (IRecieveMessageEntity item in Agente)
                 {
                     if (!IdEntity.ContainsKey(item.GetId()))
                     {
-                        throw new Exception("instancia ainda nao foi colocada no mapper " + item.ToString() );
+                        throw new Exception("Add the following instace to the mapper before adding to a group: " + item.ToString() );
                     }
                 }
 
@@ -166,24 +174,20 @@ namespace PloobsEngine.Entity
                 else
                 {
                     tagRecieveEntity.Add(tag, Agente);
-
                 }
 
                 foreach (IRecieveMessageEntity var in Agente)
                 {
-                    if(recieveEntityTag.ContainsKey(var))
+                    if(recieveEntityTag.ContainsKey(var.GetId()))
                     {
-                   recieveEntityTag[var].Add(tag);   
+                        recieveEntityTag[var.GetId()].Add(tag);   
                    }
                     else
                    {
-                       recieveEntityTag[var] = new List<string>();
-                       recieveEntityTag[var].Add(tag);
-
+                       recieveEntityTag[var.GetId()] = new List<string>();
+                       recieveEntityTag[var.GetId()].Add(tag);
                    }
-
-                }
-                
+                }               
          
             }
 
@@ -197,13 +201,12 @@ namespace PloobsEngine.Entity
                 if (tagRecieveEntity.ContainsKey(tag))
                 {
                     tagRecieveEntity[tag].Remove(Agente);
-                }
-                
+                }               
 
             }
 
             /// <summary>
-            /// Add ont IrecieveMessageEntity int a tag(create the tag if sont exist)
+            /// Add the IrecieveMessageEntity in a tag (create the tag if doesnt exists)
             /// </summary>
             /// <param name="tag"></param>
             /// <param name="Agente"></param>
@@ -211,7 +214,7 @@ namespace PloobsEngine.Entity
             {
                 if (!IdEntity.ContainsKey(Agente.GetId()))
                 {
-                    throw new Exception("instancia ainda nao foi colocada no mapper " + Agente.ToString());
+                    throw new Exception("The following instance is not in the mapper, add it beforing calling this: " + Agente.ToString());
                 }
 
                 if (tagRecieveEntity.ContainsKey(tag))
@@ -220,20 +223,19 @@ namespace PloobsEngine.Entity
                 }
                 else
                 {
-                    List<IRecieveMessageEntity> l = new List<IRecieveMessageEntity>();
+                    WeakList<IRecieveMessageEntity> l = new WeakList<IRecieveMessageEntity>();
                     l.Add(Agente);
                     tagRecieveEntity.Add(tag, l);
                 }
 
-                if (recieveEntityTag.ContainsKey(Agente))
+                if (recieveEntityTag.ContainsKey(Agente.GetId()))
                 {
-                    recieveEntityTag[Agente].Add(tag);
+                    recieveEntityTag[Agente.GetId()].Add(tag);
                 }
                 else
                 {
-                    recieveEntityTag[Agente] = new List<string>();
-                    recieveEntityTag[Agente].Add(tag);
-
+                    recieveEntityTag[Agente.GetId()] = new List<string>();
+                    recieveEntityTag[Agente.GetId()].Add(tag);
                 }
 
             }
@@ -249,8 +251,7 @@ namespace PloobsEngine.Entity
                 {
                     return tagRecieveEntity[tag];
                 }
-                throw new Exception("Nao contem tag " + tag);
-
+                throw new Exception("Tag does not exists: " + tag);
             }
 
             /// <summary>
@@ -259,7 +260,14 @@ namespace PloobsEngine.Entity
             /// <returns></returns>
             public ICollection<IEntity> GetAllEntities()
             {
-                return IdEntity.Values;
+                List<IEntity> entities = new List<IEntity>();
+                foreach (var item in IdEntity.Values)
+                {
+                    IEntity e = item.Target;
+                    if (e != null)
+                        entities.Add(e);
+                }
+                return entities;                
             }
             /// <summary>
             /// return all IRecieveMessageEntity entities
@@ -267,34 +275,47 @@ namespace PloobsEngine.Entity
             /// <returns></returns>
             public ICollection<IRecieveMessageEntity> GetAllRecieveEntities()
             {
-                return  IdRecieveEntity.Values;
+                List<IRecieveMessageEntity> IRecieveMessageEntity = new List<IRecieveMessageEntity>();
+                foreach (var item in IdRecieveEntity.Values)
+                {
+                    IRecieveMessageEntity i = item.Target;
+                    if (i != null)
+                        IRecieveMessageEntity.Add(i);
+                }
+                return IRecieveMessageEntity;
             }
 
             /// <summary>
-            /// Checks if entity with parameter id exist.
+            /// Checks if entity with parameter id exists.
             /// </summary>
             /// <param name="id">The id.</param>
             /// <returns></returns>
-            public bool CheckEntity(int id)
+            public bool CheckEntity(long id)
             {
                 if (!IdEntity.ContainsKey(id))
                 {
-                     if(!IdRecieveEntity.ContainsKey(id))
-                     {
-                         return false;
-                     }
+                    return false;                     
                 }
-                return true;
-            
+
+                if (IdEntity[id].IsAlive)
+                {
+                    return true;
+                }
+                else
+                {
+                    IdEntity.Remove(id);
+                    return false;
+                }
             }
-            
-            
+
+
             /// <summary>
             /// Remove the entity
             /// THE ID USED BY THIS ENTITY WILL NOT USED AGAIN (EVEN AFTER THE REMOVE)
             /// </summary>
             /// <param name="cod">id</param>
-            public void RemoveEntity(int cod)
+            /// <returns></returns>
+            public bool RemoveEntity(long cod)
             {
                 if (IdEntity.ContainsKey(cod))
                 {
@@ -302,9 +323,15 @@ namespace PloobsEngine.Entity
 
                     if (IdRecieveEntity.ContainsKey(cod))
                     {
-                        IRecieveMessageEntity irent = IdRecieveEntity[cod];
-                        List<String> tags = null;
-                        bool found = recieveEntityTag.TryGetValue(irent,out tags);
+                        IRecieveMessageEntity irent = IdRecieveEntity[cod].Target;
+                        if (irent == null)
+                        {
+                            IdRecieveEntity.Remove(cod);
+                            return false;
+                        }
+
+                        IList<String> tags = null;
+                        bool found = recieveEntityTag.TryGetValue(irent.GetId(), out tags);
 
                         if (found)
                         {
@@ -312,19 +339,17 @@ namespace PloobsEngine.Entity
 	                            {
                                     tagRecieveEntity[var].Remove(irent);                            		 
 	                            }
-                            recieveEntityTag.Remove(irent);
-                        }
-
-                                       
+                            recieveEntityTag.Remove(irent.GetId());
+                        }                                       
                         IdRecieveEntity.Remove(cod);
                     }
 
                 }
                 else
                 {
-                    throw new Exception("Entidade nao encontrada");
+                    return false;
                 }
-
+                return true;
             }
 
 
@@ -347,18 +372,20 @@ namespace PloobsEngine.Entity
             /// REMOVE AN ENTITY
             /// </summary>
             /// <param name="ent"></param>
-            public void RemoveEntity(IEntity ent)
+            public bool RemoveEntity(IEntity ent)
             {
-                int cod = ent.GetId();
+                long cod = ent.GetId();
                 if (IdEntity.ContainsKey(cod))
                 {
                     IdEntity.Remove(cod);
 
                     if (IdRecieveEntity.ContainsKey(cod))
                     {
-                        IRecieveMessageEntity irent = IdRecieveEntity[cod];
-                        List<String> tags = null;
-                        bool found = recieveEntityTag.TryGetValue(irent,out tags);
+                        //iam sure it is not collected cause one reference is passed as a parameter ....
+                        IRecieveMessageEntity irent = IdRecieveEntity[cod].Target;
+                        
+                        IList<String> tags = null;
+                        bool found = recieveEntityTag.TryGetValue(irent.GetId(), out tags);
 
                         if (found)
                         {
@@ -366,7 +393,7 @@ namespace PloobsEngine.Entity
                             {
                                 tagRecieveEntity[var].Remove(irent);
                             }
-                            recieveEntityTag.Remove(irent);
+                            recieveEntityTag.Remove(irent.GetId());
                         }
 
                         IdRecieveEntity.Remove(cod);
@@ -375,9 +402,9 @@ namespace PloobsEngine.Entity
                 }
                 else
                 {
-                    ActiveLogger.LogMessage("Entidade nao encontrada Type: " + ent.GetType().AssemblyQualifiedName + " ID: " + ent.GetId(),LogLevel.RecoverableError);
-                    
+                    return false;                    
                 }
+                return true;
             }
         }
     }

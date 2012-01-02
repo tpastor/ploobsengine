@@ -44,6 +44,7 @@ namespace PloobsEngine.Material
         /// <param name="specularPower">The specular power.</param>
         /// <param name="alpha">The alpha.</param>
         /// <param name="EnableLightning">if set to <c>true</c> [enable lightning].</param>
+        /// <param name="DefaultLightning">if set to <c>true</c> [default lightning].</param>
         /// <param name="EnableTexture">if set to <c>true</c> [enable texture].</param>
         public ForwardXNABasicShaderDescription(Color AmbientColor, Color EmissiveColor, Color SpecularColor, float specularPower = 50, float alpha = 1, bool EnableLightning = true, bool DefaultLightning = true, bool EnableTexture = true)
         {

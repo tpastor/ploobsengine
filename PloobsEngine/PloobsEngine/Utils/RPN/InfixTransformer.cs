@@ -3,12 +3,20 @@ using System.Linq;
 
 namespace PloobsEngine.Utils
 {
+    /// <summary>
+    /// Transform Infix to RPN
+    /// </summary>
     public class InfixTransformer
     {
         private readonly TokenHelper _tokenHelper = new TokenHelper();
         private readonly Queue<string> _output = new Queue<string>();
         private readonly Stack<string> _operators = new Stack<string>();
 
+        /// <summary>
+        /// Transforms the specified current expression.
+        /// </summary>
+        /// <param name="currentExpression">The current expression.</param>
+        /// <returns></returns>
         public string Transform(string currentExpression)
         {
             List<string> tokens = currentExpression.Split(new char[] { ' ' }).ToList();

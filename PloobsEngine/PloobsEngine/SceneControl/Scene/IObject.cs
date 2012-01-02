@@ -45,6 +45,8 @@ namespace PloobsEngine.SceneControl
     /// Called on every update
     /// </summary>
     /// <param name="obj">The obj.</param>
+    /// <param name="gt">The gt.</param>
+    /// <param name="cam">The cam.</param>
     public delegate void OnUpdate(IObject obj,GameTime gt, ICamera cam);
 
     /// <summary>
@@ -96,10 +98,16 @@ namespace PloobsEngine.SceneControl
         {
         }
 
+        /// <summary>
+        /// Last Frame Matrix
+        /// </summary>
         protected Matrix lastFrameWorld;
         private IPhysicObject physicObject;
         private IModelo modelo;
         private IMaterial material;
+        /// <summary>
+        /// World Matrix
+        /// </summary>
         protected Matrix worldMatrix;
 
         private object materialLock = new object();        
@@ -240,14 +248,29 @@ namespace PloobsEngine.SceneControl
         /// Gets or sets the Iobject atachtment.
         /// </summary>
         /// <value>
-        /// The I object atachtment.
+        /// The Iobject atachtment.
         /// </value>
         public List<IObjectAttachment> IObjectAttachment
         {
             set;
             get;
 
-        }        
+        }
+
+        /// <summary>
+        /// Cleans up.
+        /// </summary>
+        /// <param name="factory">The factory.</param>
+        public virtual void CleanUp(PloobsEngine.Engine.GraphicFactory factory)
+        {
+            Modelo.CleanUp(factory);
+            Material.CleanUp(factory);
+            Modelo = null;
+            Material = null;
+            PhysicObject = null;
+            IObjectAttachment.Clear();
+            IObjectAttachment = null;
+        }
 
         #region IRecieveMessageEntity Members
 
@@ -284,14 +307,14 @@ namespace PloobsEngine.SceneControl
         #endregion
 
         #region IEntity Members
-        private int id;
+        private long id;
         /// <summary>
         /// return the entity id
         /// </summary>
         /// <returns>
         /// the id
         /// </returns>
-        public int GetId()
+        public long GetId()
         {
             return id;
         }
@@ -300,7 +323,7 @@ namespace PloobsEngine.SceneControl
         /// sets the id
         /// </summary>
         /// <param name="id"></param>
-        public void SetId(int id)
+        public void SetId(long id)
         {
             this.id = id;
         }

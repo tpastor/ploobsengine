@@ -30,6 +30,9 @@ using PloobsEngine.Engine;
 
 namespace PloobsEngine.SceneControl
 {
+    /// <summary>
+    /// Deferred implementation of final combination pass
+    /// </summary>
     public class FinalCombination : IDeferredFinalCombination
     {                      
         private Effect finalCombineEffect;                 
@@ -39,12 +42,23 @@ namespace PloobsEngine.SceneControl
         private bool saveToTexture;
         private bool useFloatBuffer;
 
+        /// <summary>
+        /// Gets or sets the ambient color factor.
+        /// Uniform for all the scene
+        /// </summary>
+        /// <value>
+        /// The color of the ambient.
+        /// </value>
         public Color AmbientColor
         {
             get { return ambientColor; }
             set { ambientColor = value; }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FinalCombination"/> class.
+        /// </summary>
+        /// <param name="AmbientColor">Color of the ambient.</param>
         public FinalCombination(Color AmbientColor)
         {
             this.ambientColor = AmbientColor;
@@ -74,6 +88,10 @@ namespace PloobsEngine.SceneControl
 
 #region IDeferredFinalCombination Members
 
+        /// <summary>
+        /// Sets the final combination.
+        /// </summary>
+        /// <param name="render">The render.</param>
         public void SetFinalCombination(RenderHelper render)
         {
             if (saveToTexture)

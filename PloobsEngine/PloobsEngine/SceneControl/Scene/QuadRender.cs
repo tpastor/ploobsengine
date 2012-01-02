@@ -40,7 +40,7 @@ namespace PloobsEngine.SceneControl
         /// <summary>
         /// Loads the quad.
         /// </summary>
-        /// <param name="engine">The engine.</param>
+        /// <param name="device">The device.</param>
         public QuadRender(GraphicsDevice device) 
         {
             

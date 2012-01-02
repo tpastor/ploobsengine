@@ -74,7 +74,7 @@ namespace PloobsEngine.Engine
 #endif
         }
 
-        
+
         /// <summary>
         /// Initializes a new instance of the <see cref="InitialEngineDescription"/> struct.
         /// </summary>
@@ -89,6 +89,7 @@ namespace PloobsEngine.Engine
         /// <param name="logger">The logger.</param>
         /// <param name="useMipMapWhenPossible">if set to <c>true</c> [use mip map when possible].</param>
         /// <param name="UseAnisotropicFiltering">if set to <c>true</c> [use anisotropic filtering].</param>
+        /// <param name="supportedOrientation">The supported orientation.</param>
         #if !REACH
         internal InitialEngineDescription(String ScreenName = "PloobsEngine", int BackBufferWidth = 800, int BackBufferHeight = 600, bool isFullScreen = false, GraphicsProfile graphicsProfile = GraphicsProfile.HiDef, bool useVerticalSyncronization = false, bool isMultiSampling = false, bool isFixedGameTime = false, ILogger logger = null, bool useMipMapWhenPossible = false, bool UseAnisotropicFiltering = false, DisplayOrientation supportedOrientation = DisplayOrientation.Portrait | DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight)
 #else
@@ -152,18 +153,18 @@ namespace PloobsEngine.Engine
         public bool useMipMapWhenPossible;
 
         /// <summary>        
-        //     Identifies the set of supported devices for the game based on device capabilities.
-        //
-        // Parameters:
-        //   HiDef:
-        //     Use the largest available set of graphic features and capabilities to target
-        //     devices, such as an Xbox 360 console and a Windows-based computer, that have
-        //     more enhanced graphic capabilities.
-        //
-        //   Reach:
-        //     Use a limited set of graphic features and capabilities, allowing the game
-        //     to support the widest variety of devices, including all Windows-based computers
-        //     and Windows Phone.
+        ///     Identifies the set of supported devices for the game based on device capabilities.
+        ///
+        /// Parameters:
+        ///   HiDef:
+        ///     Use the largest available set of graphic features and capabilities to target
+        ///     devices, such as an Xbox 360 console and a Windows-based computer, that have
+        ///     more enhanced graphic capabilities.
+        ///
+        ///   Reach:
+        ///     Use a limited set of graphic features and capabilities, allowing the game
+        ///     to support the widest variety of devices, including all Windows-based computers
+        ///     and Windows Phone.
         /// </summary>
         internal GraphicsProfile GraphicsProfile;
 
@@ -232,6 +233,18 @@ namespace PloobsEngine.Engine
         RenderHelper render;
 
         /// <summary>
+        /// Gets or sets the content manager.
+        /// </summary>
+        /// <value>
+        /// The content manager.
+        /// </value>
+        public IContentManager ContentManager
+        {
+            get { return contentManager; }
+            set { contentManager = value; }
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="EngineStuff"/> class.
         /// </summary>
         /// <param name="initialDescription">The initial description.</param>
@@ -257,7 +270,7 @@ namespace PloobsEngine.Engine
                 AppDomain.CurrentDomain.UnhandledException += this.initialDescription.UnhandledExceptionEventHandler;
             }
                     
-            Content.RootDirectory = "Content";
+            
             this.Window.Title = initialDescription.ScreenName;
 
             graphics = new GraphicsDeviceManager(this);
@@ -364,14 +377,16 @@ namespace PloobsEngine.Engine
         {
             base.LoadContent();
 
+
             Rectangle fs = new Rectangle(0, 0, graphics.GraphicsDevice.Viewport.Width, graphics.GraphicsDevice.Viewport.Height);
             Vector2 halfPixel = new Vector2()
             {
                 X = 0.5f / (float)GraphicsDevice.PresentationParameters.BackBufferWidth,
                 Y = 0.5f / (float)GraphicsDevice.PresentationParameters.BackBufferHeight
             };
-            
-            contentManager = new EngineContentManager(this);
+
+            this.Content = new ContentTracker(this.Services,"Content");            
+            contentManager = new IContentManager(this);
             GraphicInfo = new GraphicInfo(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount, GraphicsDevice.PresentationParameters.DepthStencilFormat,initialDescription.useMipMapWhenPossible,this,initialDescription.UseAnisotropicFiltering);
             this.GraphicsDevice.DeviceReset += new EventHandler<EventArgs>(GraphicsDevice_DeviceReset);            
             GraphicFactory = new Engine.GraphicFactory(GraphicInfo, GraphicsDevice, contentManager);
@@ -394,7 +409,7 @@ namespace PloobsEngine.Engine
                 Exit();
             }
 
-            ///THE ONLY COMPONENTS ADDED BY DEFAULT
+            //THE ONLY COMPONENTS ADDED BY DEFAULT
            
             ComponentManager.AddComponent(new InputAdvanced());
           
@@ -479,6 +494,7 @@ namespace PloobsEngine.Engine
                 return ComponentManager.HasComponent(componentName);
             }
         }
+
 
         /// <summary>
         /// This is used to display an error message if there is no suitable graphics device or sound card.
@@ -627,25 +643,25 @@ namespace PloobsEngine.Engine
         /// </summary>
         public ILogger Logger;
 
-        /// <summary>
+        /// <summary>/
         /// Use MipMap When creating the Render Targets
         /// </summary>
         public bool useMipMapWhenPossible;
 
         
         /// <summary>        
-        //     Identifies the set of supported devices for the game based on device capabilities.
-        //
-        // Parameters:
-        //   HiDef:
-        //     Use the largest available set of graphic features and capabilities to target
-        //     devices, such as an Xbox 360 console and a Windows-based computer, that have
-        //     more enhanced graphic capabilities.
-        //
-        //   Reach:
-        //     Use a limited set of graphic features and capabilities, allowing the game
-        //     to support the widest variety of devices, including all Windows-based computers
-        //     and Windows Phone.
+        ///     Identifies the set of supported devices for the game based on device capabilities.
+        ///
+        /// Parameters:
+        ///   HiDef:
+        ///     Use the largest available set of graphic features and capabilities to target
+        ///     devices, such as an Xbox 360 console and a Windows-based computer, that have
+        ///     more enhanced graphic capabilities.
+        ///
+        ///   Reach:
+        ///     Use a limited set of graphic features and capabilities, allowing the game
+        ///     to support the widest variety of devices, including all Windows-based computers
+        ///     and Windows Phone.
         /// </summary>
         internal GraphicsProfile GraphicsProfile;
 
@@ -686,11 +702,14 @@ namespace PloobsEngine.Engine
         SharedGraphicsDeviceManager graphics;
         ScreenManager ScreenManager;
         ComponentManager ComponentManager;
-        ContentManager ContentManager;
+        ContentManager SilverLightContentManager;
         GraphicInfo GraphicInfo;
-        GraphicFactory GraphicFactory;        
-        IContentManager contentManager;
+        GraphicFactory GraphicFactory;
+        IContentManager contentManager;        
         RenderHelper render;
+        /// <summary>
+        /// Graphics device
+        /// </summary>
         public readonly GraphicsDevice GraphicsDevice;
         GameTimer timer;
         PhoneApplicationPage PhoneApplicationPage;
@@ -703,7 +722,7 @@ namespace PloobsEngine.Engine
         /// </summary>        
         private EngineStuff(SharedGraphicsDeviceManager SharedGraphicsDeviceManager, ContentManager ContentManager, ref InitialEngineDescription initialDescription)
         {            
-            this.ContentManager = ContentManager;
+            this.SilverLightContentManager = ContentManager;
             this.initialDescription = initialDescription;
             ActiveLogger.logger = initialDescription.Logger;
 
@@ -720,7 +739,7 @@ namespace PloobsEngine.Engine
 
         private EngineStuff(SharedGraphicsDeviceManager SharedGraphicsDeviceManager, ContentManager ContentManager,bool UseAnisotropicFiltering = false,bool useMipMapWhenPossible = false)
         {
-            this.ContentManager = ContentManager;
+            this.SilverLightContentManager = ContentManager;
             this.graphics = SharedGraphicsDeviceManager;
             GraphicsDevice = SharedGraphicsDeviceManager.Current.GraphicsDevice;
             InitialEngineDescription initialDescription = InitialEngineDescription.Default();
@@ -733,27 +752,76 @@ namespace PloobsEngine.Engine
             LoadContent();
         }
 
+        /// <summary>
+        /// Gets the current instance of ploobsengine.
+        /// </summary>
         public static EngineStuff Current
         {
-            set;
+            internal set;
             get;
         }
 
-        public static void InitializePloobsEngine(SharedGraphicsDeviceManager SharedGraphicsDeviceManager, ContentManager ContentManager, ref InitialEngineDescription initialDescription, bool forceRecreating = false)
+        /// <summary>
+        /// Initializes the ploobs engine.
+        /// </summary>
+        /// <param name="SharedGraphicsDeviceManager">The shared graphics device manager.</param>
+        /// <param name="ContentManager">The content manager.</param>
+        /// <param name="initialDescription">The initial description.</param>
+        /// <param name="forceRecreating">if set to <c>true</c> [force recreating].</param>
+        /// <param name="removeComponents">if set to <c>true</c> [remove components].</param>
+        /// <param name="ClearAllEventsSubscribers">if set to <c>true</c> [clear all events subscribers].</param>
+        public static void InitializePloobsEngine(SharedGraphicsDeviceManager SharedGraphicsDeviceManager, ContentManager ContentManager, ref InitialEngineDescription initialDescription, bool forceRecreating = false, bool removeComponents = false, bool ClearAllEventsSubscribers = false)
         {
-            if (Current == null || forceRecreating ==true)
+            if (Current == null || forceRecreating == true)
             {
                 Current = new EngineStuff(SharedGraphicsDeviceManager, ContentManager, ref initialDescription);
             }
+            else
+            {                
+                if (removeComponents)
+                {
+                    foreach (var item in Current.ComponentManager.GetComponentsNames().ToArray())
+                    {
+                        Current.ComponentManager.RemoveComponent(item);
+                    }
+                }
+                if (ClearAllEventsSubscribers)
+                {
+                    Current.GraphicInfo.ClearOnGraphicInfoChangeEvent();
+                }
+            }
         }
 
-        public static void InitializePloobsEngine(SharedGraphicsDeviceManager SharedGraphicsDeviceManager, ContentManager ContentManager, bool forceRecreating = false, bool UseAnisotropicFiltering = false, bool useMipMapWhenPossible = false)
+        /// <summary>
+        /// Initializes the ploobs engine.
+        /// </summary>
+        /// <param name="SharedGraphicsDeviceManager">The shared graphics device manager.</param>
+        /// <param name="ContentManager">The content manager.</param>
+        /// <param name="forceRecreating">if set to <c>true</c> [force recreating].</param>
+        /// <param name="UseAnisotropicFiltering">if set to <c>true</c> [use anisotropic filtering].</param>
+        /// <param name="useMipMapWhenPossible">if set to <c>true</c> [use mip map when possible].</param>
+        /// <param name="removeComponents">if set to <c>true</c> [remove components].</param>
+        /// <param name="ClearAllEventsSubscribers">if set to <c>true</c> [clear all events subscribers].</param>
+        public static void InitializePloobsEngine(SharedGraphicsDeviceManager SharedGraphicsDeviceManager, ContentManager ContentManager, bool forceRecreating = false, bool UseAnisotropicFiltering = false, bool useMipMapWhenPossible = false, bool removeComponents = false, bool ClearAllEventsSubscribers = false)
         {
             if (Current == null || forceRecreating == true)
             {
                 Current = new EngineStuff(SharedGraphicsDeviceManager, ContentManager, UseAnisotropicFiltering, useMipMapWhenPossible);
-
-            }            
+            }
+            else
+            {                
+                if (removeComponents)
+                {
+                    foreach (var item in Current.ComponentManager.GetComponentsNames().ToArray())
+                    {
+                        Current.ComponentManager.RemoveComponent(item);
+                    }
+                }
+                if (ClearAllEventsSubscribers)
+                {
+                    Current.GraphicInfo.ClearOnGraphicInfoChangeEvent();
+                }
+            }
         }
 
         /// <summary>
@@ -764,6 +832,7 @@ namespace PloobsEngine.Engine
         {
             return initialDescription;
         }
+
 
         /// <summary>
         /// Applies the engine description.
@@ -828,7 +897,7 @@ namespace PloobsEngine.Engine
                 Y = 0.5f / (float)GraphicsDevice.PresentationParameters.BackBufferHeight
             };
 
-            contentManager = new EngineContentManager(ContentManager);
+            contentManager = new IContentManager(SilverLightContentManager);
             GraphicInfo = new GraphicInfo(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount, GraphicsDevice.PresentationParameters.DepthStencilFormat, initialDescription.useMipMapWhenPossible, this, initialDescription.UseAnisotropicFiltering);
             GraphicsDevice.DeviceReset += new EventHandler<EventArgs>(GraphicsDevice_DeviceReset);
             GraphicFactory = new Engine.GraphicFactory(GraphicInfo, GraphicsDevice, contentManager);
@@ -843,9 +912,9 @@ namespace PloobsEngine.Engine
 
             ScreenManager = new ScreenManager(ref GraphicInfo, GraphicFactory, contentManager, render, this);
             
-            ///THE ONLY COMPONENTS ADDED BY DEFAULT                        
+            //THE ONLY COMPONENTS ADDED BY DEFAULT                        
             ComponentManager.AddComponent(new InputAdvanced());
-            ComponentManager.AddComponent(new TaskProcessor());
+            //ComponentManager.AddComponent(new TaskProcessor());
         }
 
         void GraphicsDevice_DeviceReset(object sender, EventArgs e)
@@ -937,11 +1006,13 @@ namespace PloobsEngine.Engine
             ActiveLogger.LogMessage(exception.Message, LogLevel.FatalError);
         }
 
+
         /// <summary>
         /// Remove All Screens and stop the timer
         /// </summary>
-        /// <param name="removeComponents"></param>
-        public void LeaveScene(bool removeComponents = false)
+        /// <param name="removeComponents">if set to <c>true</c> [remove components].</param>
+        /// <param name="removeAllEventSubscribers">if set to <c>true</c> [remove all event subscribers].</param>
+        public void LeaveScene(bool removeComponents = false, bool removeAllEventSubscribers = false)
         {
             SharedGraphicsDeviceManager.Current.GraphicsDevice.SetSharingMode(false);
             if (timer != null)
@@ -963,9 +1034,15 @@ namespace PloobsEngine.Engine
                 }
             }
 
+            if (removeAllEventSubscribers)
+            {
+                GraphicInfo.ClearOnGraphicInfoChangeEvent();
+            }
+
         }
 
         PageOrientation PageOrientation;
+        IScreen ScreenAddedAfter = null;
         /// <summary>
         /// Add a new scene to the Engine
         /// REMOVE ALL PREVIOUS ONES
@@ -973,13 +1050,50 @@ namespace PloobsEngine.Engine
         /// <param name="Screen">The screen.</param>
         /// <param name="PhoneApplicationPage">The phone application page.</param>
         public void StartScene(IScreen Screen, PhoneApplicationPage PhoneApplicationPage)
-        {   
+        {
+            if (timer != null)
+            {
+                timer.Stop();
+                timer.Dispose();
+            }
+
+            SharedGraphicsDeviceManager.Current.GraphicsDevice.SetSharingMode(true); 
             this.PhoneApplicationPage = PhoneApplicationPage;
+
+            foreach (var item in ScreenManager.GetScreens())
+            {
+                ScreenManager.RemoveScreen(item);
+            }
+            
+            if (PageOrientation != Microsoft.Phone.Controls.PageOrientation.None && PageOrientation != PhoneApplicationPage.Orientation)
+            {
+                graphics.PreferredBackBufferHeight = initialDescription.BackBufferWidth;
+                graphics.PreferredBackBufferWidth = initialDescription.BackBufferHeight;
+                graphics.ApplyChanges();
+
+                Rectangle fs = new Rectangle(0, 0, graphics.GraphicsDevice.Viewport.Width, graphics.GraphicsDevice.Viewport.Height);
+                Vector2 halfPixel = new Vector2();
+                halfPixel.X = 0.5f / (float)GraphicsDevice.PresentationParameters.BackBufferWidth;
+                halfPixel.Y = 0.5f / (float)GraphicsDevice.PresentationParameters.BackBufferHeight;
+
+                GraphicInfo.ChangeProps(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount, GraphicsDevice.PresentationParameters.DepthStencilFormat, initialDescription.useMipMapWhenPossible, initialDescription.UseAnisotropicFiltering);
+                GraphicInfo.FireEvent(GraphicInfo);
+
+                initialDescription.BackBufferWidth = graphics.PreferredBackBufferWidth;
+                initialDescription.BackBufferHeight = graphics.PreferredBackBufferHeight;
+
+                //hack, cant initialize the scene now cause the device is lost now
+                //and xna only reconstruct it in the next internal "update" method.
+                ScreenAddedAfter = Screen;
+            }
+            else
+            {
+                ScreenManager.AddScreen(Screen);           
+            }
+
             PageOrientation = PhoneApplicationPage.Orientation;
 
-            this.PhoneApplicationPage.OrientationChanged += new EventHandler<OrientationChangedEventArgs>(PhoneApplicationPage_OrientationChanged);
-
-            ///restart everything
+            //restart everything
             if (elementRenderer != null)
                 elementRenderer.Dispose();
             
@@ -991,30 +1105,19 @@ namespace PloobsEngine.Engine
             EventHandler = new EventHandler(PhoneApplicationPage_LayoutUpdated);
             PhoneApplicationPage.LayoutUpdated += EventHandler;
 
-            if (timer != null)
-            {
-                timer.Stop();
-                timer.Dispose();
-            }
-            
-            SharedGraphicsDeviceManager.Current.GraphicsDevice.SetSharingMode(true); 
+            this.PhoneApplicationPage.OrientationChanged += new EventHandler<OrientationChangedEventArgs>(PhoneApplicationPage_OrientationChanged);
+                        
             timer = new GameTimer();
             timer.UpdateInterval = initialDescription.UpdateInterval;
-            timer.Update +=new EventHandler<GameTimerEventArgs>(timer_Update); ;
-            timer.Draw += new EventHandler<GameTimerEventArgs>(timer_Draw); ;
+            timer.Update +=new EventHandler<GameTimerEventArgs>(timer_Update);
+            timer.Draw += new EventHandler<GameTimerEventArgs>(timer_Draw);             
             timer.Start();
 
-            foreach (var item in ScreenManager.GetScreens())
-            {
-                ScreenManager.RemoveScreen(item);
-            }
-
-            ScreenManager.AddScreen(Screen);
         }
 
         void PhoneApplicationPage_OrientationChanged(object sender, OrientationChangedEventArgs e)
         {
-            ////can i change the parameters ??            
+            //can i change the parameters ??            
             if (PhoneApplicationPage.SupportedOrientations == SupportedPageOrientation.PortraitOrLandscape
                 ||
                 (PhoneApplicationPage.SupportedOrientations == SupportedPageOrientation.Landscape && ( (e.Orientation & PageOrientation.Landscape ) == PageOrientation.Landscape))
@@ -1043,7 +1146,7 @@ namespace PloobsEngine.Engine
                     initialDescription.BackBufferWidth = graphics.PreferredBackBufferWidth;
                     initialDescription.BackBufferHeight = graphics.PreferredBackBufferHeight;
 
-                    ///restart 
+                    //restart 
                     if (elementRenderer != null)
                         elementRenderer.Dispose();
 
@@ -1092,6 +1195,13 @@ namespace PloobsEngine.Engine
 
         void timer_Draw(object sender, GameTimerEventArgs e)
         {
+            //needed hack
+            if (ScreenAddedAfter != null)
+            {
+                ScreenManager.AddScreen(ScreenAddedAfter);
+                ScreenAddedAfter = null;
+            }
+
             if(elementRenderer != null)
                 elementRenderer.Render();
             
@@ -1122,6 +1232,17 @@ namespace PloobsEngine.Engine
                 CommandProcessor.getCommandProcessor().ProcessCommands();
         }
 
+        /// <summary>
+        /// Gets or sets the content manager.
+        /// </summary>
+        /// <value>
+        /// The content manager.
+        /// </value>
+        public IContentManager ContentManager
+        {
+            get { return contentManager; }
+            set { contentManager = value; }
+        }
 
         /// <summary>
         /// Reference page contains code sample.
@@ -1332,7 +1453,7 @@ namespace PloobsEngine.Engine
         GraphicInfo GraphicInfo;
         GraphicFactory GraphicFactory;
         LoadScreen LoadScreen;
-        IContentManager contentManager;
+        EngineContentManager contentManager;
         RenderHelper render;
         internal Game game;
         public event Action<Object, EventArgs> OrientationChanged;
@@ -1499,6 +1620,16 @@ namespace PloobsEngine.Engine
         void GraphicsDevice_DeviceReset(object sender, EventArgs e)
         {
             GraphicInfo.FireResetEvent(sender, e);
+        }
+
+        /// <summary>
+        /// Removes the subscribers for the event Device Lost of GraphicInfo obj.
+        /// This is usefull cause it releases references and let GC works
+        /// Call this (if needed) in screen transitions (if you dont need old screens anymore)
+        /// </summary>
+        public void RemoveSubscribersForGraphicEvents()
+        {
+            GraphicInfo.RemoveSubscribers();
         }
         
         /// <summary>

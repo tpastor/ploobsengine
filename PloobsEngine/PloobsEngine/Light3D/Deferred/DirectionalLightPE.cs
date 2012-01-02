@@ -68,7 +68,7 @@ namespace PloobsEngine.Light
             this.color = color;
             target = lightDirection;
             position = Vector3.Zero;
-            ///bom valor para o Bias, obtido experimentalmente para este tipo de luz
+            //bom valor para o Bias, obtido experimentalmente para este tipo de luz
             _bias = 0.006f;
         }
 

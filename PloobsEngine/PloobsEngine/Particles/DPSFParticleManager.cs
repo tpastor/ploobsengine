@@ -70,8 +70,8 @@ namespace PloobsEngine.Particles
             ParticleSystem[particleSystem.Name] = particleSystem;
             if(particleSystem is DPFSParticleSystem)
             {
-                DPFSParticleSystem ps = particleSystem as DPFSParticleSystem;
-                ps.IDPSFParticleSystem.AutoInitialize(GraphicFactory.device, GraphicFactory.contentManager.externalContentManager, GraphicFactory.SpriteBatch);
+                DPFSParticleSystem ps = particleSystem as DPFSParticleSystem;                
+                ps.IDPSFParticleSystem.AutoInitialize(GraphicFactory.device, GraphicFactory.contentManager.ContentManager, GraphicFactory.SpriteBatch);
                 manager.AddParticleSystem(ps.IDPSFParticleSystem);            
             }
             else

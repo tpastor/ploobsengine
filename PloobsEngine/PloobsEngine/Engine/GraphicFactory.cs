@@ -44,7 +44,7 @@ namespace PloobsEngine.Engine
         TextureCreator texCreator;
         internal RenderHelper render;
 
-        internal GraphicFactory(GraphicInfo ginfo, GraphicsDevice device,IContentManager contentManager)
+        internal GraphicFactory(GraphicInfo ginfo, GraphicsDevice device, IContentManager contentManager)
         {
             this.device = device;
             this.ginfo = ginfo;
@@ -198,7 +198,9 @@ namespace PloobsEngine.Engine
         /// <returns></returns>
         public Texture2D GetTexture2D(String textureName,bool isInternal = false)
         {
-            return contentManager.GetAsset<Texture2D>(textureName, isInternal);
+            Texture2D Texture2D = contentManager.GetAsset<Texture2D>(textureName, isInternal);
+            Texture2D.Tag = textureName;
+            return Texture2D;
         }
 
 
@@ -211,7 +213,9 @@ namespace PloobsEngine.Engine
         /// <returns></returns>
         public TextureCube GetTextureCube(String textureName, bool isInternal = false)
         {
-            return contentManager.GetAsset<TextureCube>(textureName, isInternal);
+            TextureCube TextureCube = contentManager.GetAsset<TextureCube>(textureName, isInternal);
+            TextureCube.Tag = textureName;
+            return TextureCube;
         }
 
 
@@ -225,7 +229,9 @@ namespace PloobsEngine.Engine
         /// <returns></returns>
         public Texture2D CreateTexture2D(int width, int height,bool mipmap = false,SurfaceFormat format = SurfaceFormat.Color)
         {
-            return new Texture2D(device, width, height, mipmap, format);
+            Texture2D Texture2D =new Texture2D(device, width, height, mipmap, format);
+            Texture2D.Tag = "CREATED";
+            return Texture2D;
         }
         /// <summary>
         /// Creates the color of the texture2D.
@@ -237,7 +243,9 @@ namespace PloobsEngine.Engine
         /// <returns></returns>
         public Texture2D CreateTexture2DColor(int width, int height, Color color,bool mipmap = false)
         {
-            return texCreator.CreateColorTexture(width, height, color, mipmap);
+            Texture2D Texture2D = texCreator.CreateColorTexture(width, height, color, mipmap);
+            Texture2D.Tag = "CREATED";
+            return Texture2D;
         }
         /// <summary>
         /// Creates the texture2D random color
@@ -248,7 +256,9 @@ namespace PloobsEngine.Engine
         /// <returns></returns>
         public Texture2D CreateTexture2DRandom(int width, int height, bool mipmap = false)
         {
-            return texCreator.CreateCompleteRandomColorTexture(width, height, mipmap);
+            Texture2D Texture2D = texCreator.CreateCompleteRandomColorTexture(width, height, mipmap);
+            Texture2D.Tag = "CREATED";
+            return Texture2D;
         }
 
         /// <summary>
@@ -259,8 +269,10 @@ namespace PloobsEngine.Engine
         /// <param name="mipmap">if set to <c>true</c> [mipmap].</param>
         /// <returns></returns>
         public Texture2D CreateTexture2DBlackAndWhite(int width, int height, bool mipmap = false)
-        {            
-            return texCreator.CreateBlackAndWhiteRandomTexture(width, height, mipmap);
+        {
+            Texture2D Texture2D = texCreator.CreateBlackAndWhiteRandomTexture(width, height, mipmap);
+            Texture2D.Tag = "CREATED";
+            return Texture2D;
         }
 
         /// <summary>
@@ -276,7 +288,9 @@ namespace PloobsEngine.Engine
         /// <returns></returns>
         public Texture2D CreateTexture2DPerlinNoise(int width, int height, float frequencia, float amplitude, float persistence, int octave, bool mipmap = false)
         {
-            return texCreator.CreatePerlinNoiseTexture(width, height, frequencia,amplitude,persistence,octave,mipmap);
+            Texture2D Texture2D = texCreator.CreatePerlinNoiseTexture(width, height, frequencia, amplitude, persistence, octave, mipmap);
+            Texture2D.Tag = "CREATED";
+            return Texture2D;
         }
 
         /// <summary>
@@ -381,6 +395,15 @@ namespace PloobsEngine.Engine
             render.Clear(Color.Transparent, ClearOptions.Target);
             render.RenderTextureComplete(texture, Color.White, new Rectangle(0, 0, rectangle.Width, rectangle.Height), Matrix.Identity, rectangle, true, SpriteSortMode.Deferred, SamplerState.AnisotropicClamp);
             return render.PopRenderTargetAsSingleRenderTarget2D();
+        }
+
+        /// <summary>
+        /// Releases the asset.
+        /// </summary>
+        /// <param name="assetName">Name of the asset.</param>
+        public void ReleaseAsset(String assetName)
+        {
+            contentManager.ReleaseAsset(assetName);
         }
 
 

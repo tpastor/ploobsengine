@@ -7,8 +7,19 @@ using Microsoft.Xna.Framework;
 
 namespace PloobsEngine.Utils
 {
+    /// <summary>
+    /// Gelper to Generate Primitives
+    /// </summary>
     public class Primitives
     {
+        /// <summary>
+        /// Spheres.
+        /// </summary>
+        /// <param name="radius">The radius.</param>
+        /// <param name="n">The n.</param>
+        /// <param name="invertFaces">if set to <c>true</c> [invert faces].</param>
+        /// <param name="vertices">The vertices.</param>
+        /// <param name="indices">The indices.</param>
         public static void Sphere(float radius, int n, bool invertFaces,
                           out VertexPositionTexture[] vertices, out int[] indices)
         {
@@ -100,6 +111,18 @@ namespace PloobsEngine.Utils
             }
         }
 
+        /// <summary>
+        /// Capsoles
+        /// </summary>
+        /// <param name="p0">The p0.</param>
+        /// <param name="p1">The p1.</param>
+        /// <param name="r0">The r0.</param>
+        /// <param name="r1">The r1.</param>
+        /// <param name="segments">The segments.</param>
+        /// <param name="slices">The slices.</param>
+        /// <param name="invertFaces">if set to <c>true</c> [invert faces].</param>
+        /// <param name="vertices">The vertices.</param>
+        /// <param name="indices">The indices.</param>
         public static void Capsole(Vector3 p0, Vector3 p1, float r0, float r1,
                            int segments, int slices, bool invertFaces,
                            out VertexPositionTexture[] vertices, out int[] indices)
@@ -327,6 +350,22 @@ namespace PloobsEngine.Utils
             return (float)Math.Sqrt(Math.Pow(t1 + t2, 1f / n1));
         }
 
+        /// <summary>
+        /// Superscylinder.
+        /// </summary>
+        /// <param name="p0">The p0.</param>
+        /// <param name="p1">The p1.</param>
+        /// <param name="r0">The r0.</param>
+        /// <param name="r1">The r1.</param>
+        /// <param name="m">The m.</param>
+        /// <param name="n1">The n1.</param>
+        /// <param name="n2">The n2.</param>
+        /// <param name="n3">The n3.</param>
+        /// <param name="segments">The segments.</param>
+        /// <param name="slices">The slices.</param>
+        /// <param name="invertFaces">if set to <c>true</c> [invert faces].</param>
+        /// <param name="vertices">The vertices.</param>
+        /// <param name="indices">The indices.</param>
         public static void SuperCylinder(Vector3 p0, Vector3 p1, float r0, float r1,
                                          float m, float n1, float n2, float n3,
                                          int segments, int slices, bool invertFaces,
@@ -446,7 +485,19 @@ namespace PloobsEngine.Utils
                 }
             }
         }
-       
+
+        /// <summary>
+        /// Cylinders.
+        /// </summary>
+        /// <param name="p0">The p0.</param>
+        /// <param name="p1">The p1.</param>
+        /// <param name="r0">The r0.</param>
+        /// <param name="r1">The r1.</param>
+        /// <param name="segments">The segments.</param>
+        /// <param name="slices">The slices.</param>
+        /// <param name="invertFaces">if set to <c>true</c> [invert faces].</param>
+        /// <param name="vertices">The vertices.</param>
+        /// <param name="indices">The indices.</param>
         public static void Cylinder(Vector3 p0, Vector3 p1, float r0, float r1,
                             int segments, int slices, bool invertFaces,
                             out VertexPositionTexture[] vertices, out int[] indices)
@@ -563,6 +614,13 @@ namespace PloobsEngine.Utils
             }
         }
 
+        /// <summary>
+        /// Fullscreens quad.
+        /// </summary>
+        /// <param name="width">The width.</param>
+        /// <param name="height">The height.</param>
+        /// <param name="vertices">The vertices.</param>
+        /// <param name="indices">The indices.</param>
         public static void FullscreenQuad(int width, int height,
                                   out VertexPositionTexture[] vertices, out int[] indices)
         {

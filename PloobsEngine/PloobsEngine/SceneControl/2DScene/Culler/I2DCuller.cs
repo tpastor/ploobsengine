@@ -36,14 +36,15 @@ namespace PloobsEngine.SceneControl._2DScene.Culler
         /// <summary>
         /// Get all the objects that pass the culling phase
         /// </summary>
-        /// <param name="Filter">Or Filter, null for all</param>
         /// <returns></returns>
         public abstract Dictionary<Type, List<I2DObject>> GetNotCulledObjectsList();
 
         /// <summary>
         /// Called by the engine Once in the start of each rendering pass
         /// </summary>
-        /// <param name="world"></param>
+        /// <param name="view">The view.</param>
+        /// <param name="projection">The projection.</param>
+        /// <param name="frustrum">The frustrum.</param>
         public abstract void StartFrame(Matrix view, Matrix projection, BoundingFrustum frustrum);
 
         /// <summary>

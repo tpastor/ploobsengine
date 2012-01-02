@@ -51,7 +51,7 @@ namespace PloobsEngine.SceneControl
         
         public override void Draw(Texture2D ImageToProcess, RenderHelper rHelper, GameTime gt, Engine.GraphicInfo GraphicInfo, IWorld world, bool useFloatingBuffer)
         {
-            ///Draw a quad using the "effect", passing the CurrentImage as a Parameter            
+            //Draw a quad using the "effect", passing the CurrentImage as a Parameter            
             if (useFloatingBuffer)
                 rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, effect, GraphicInfo.FullScreenRectangle, SamplerState.PointClamp);
             else
@@ -60,7 +60,7 @@ namespace PloobsEngine.SceneControl
 
         public override void Init(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
         {
-            ///Load the asset
+            //Load the asset
             effect = factory.GetEffect("gamma",true,true);            
             switch (_gType)
             {

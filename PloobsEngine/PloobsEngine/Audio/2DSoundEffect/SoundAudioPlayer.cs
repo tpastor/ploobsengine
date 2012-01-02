@@ -25,6 +25,7 @@ using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Audio;
 using PloobsEngine.SceneControl;
 using PloobsEngine.Engine.Logger;
+using PloobsEngine.Engine;
 
 namespace PloobsEngine.Audio
 {
@@ -34,16 +35,16 @@ namespace PloobsEngine.Audio
     public class SoundAudioPlayer
     {
         private Dictionary<string, SimpleSoundEffect> musics = new Dictionary<string, SimpleSoundEffect>();
-        private IContentManager manager;
+        private GraphicFactory manager;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SoundAudioPlayer"/> class.
         /// </summary>
-        /// <param name="cmanager">The cmanager.</param>
-        public SoundAudioPlayer(IContentManager cmanager)
+        /// <param name="factory">The factory.</param>
+        public SoundAudioPlayer(GraphicFactory factory)
         {
-            System.Diagnostics.Debug.Assert(cmanager!= null);
-            this.manager = cmanager;
+            System.Diagnostics.Debug.Assert(factory != null);
+            this.manager = factory;
         }
 
         /// <summary>
@@ -203,6 +204,19 @@ namespace PloobsEngine.Audio
         /// </summary>
         public void RemoveAllSounds()
         {
+            musics.Clear();
+        }
+
+        /// <summary>
+        /// Cleans up.
+        /// Not called by the engine
+        /// </summary>
+        public void CleanUp()
+        {
+            foreach (var item in musics.Keys)
+            {
+                manager.ReleaseAsset(item);
+            }            
             musics.Clear();
         }        
     }

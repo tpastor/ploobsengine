@@ -23,6 +23,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Audio;
 using PloobsEngine.SceneControl;
+using PloobsEngine.Engine;
 
 namespace PloobsEngine.Audio
 {
@@ -31,8 +32,8 @@ namespace PloobsEngine.Audio
     /// </summary>
     public class ObjectFollower3DSound : ISoundEmitter3D
     {
-        public ObjectFollower3DSound(IContentManager cmanager, string audioname,IObject follow)
-            : base(cmanager,audioname)
+        public ObjectFollower3DSound(GraphicFactory factory, string audioname, IObject follow)
+            : base(factory, audioname)
         {
             System.Diagnostics.Debug.Assert(follow != null);
             this.follower = follow;

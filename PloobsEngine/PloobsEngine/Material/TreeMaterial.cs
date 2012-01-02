@@ -87,6 +87,15 @@ namespace PloobsEngine.Material
         }
 
         /// <summary>
+        /// Cleans up.
+        /// </summary>
+        /// <param name="factory"></param>
+        public void CleanUp(PloobsEngine.Engine.GraphicFactory factory)
+        {
+            shader.Cleanup(factory);
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="TreeMaterial"/> class.
         /// </summary>
         /// <param name="shader">The shader.</param>
@@ -117,7 +126,7 @@ namespace PloobsEngine.Material
         }
 
         IShader shader;
-        #region IMaterial Members
+#region IMaterial Members
 
         public bool CanCreateShadow
         {
@@ -172,7 +181,7 @@ namespace PloobsEngine.Material
 
         #endregion
 
-        #region ISerializable Members
+#region ISerializable Members
 
         public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
         {
@@ -181,7 +190,7 @@ namespace PloobsEngine.Material
 
         #endregion
 
-        #region IMaterial Members
+#region IMaterial Members
 
 
         public bool CanAppearOfReflectionRefraction
@@ -192,7 +201,7 @@ namespace PloobsEngine.Material
 
         #endregion
 
-        #region IMaterial Members
+#region IMaterial Members
 
 
         /// <summary>

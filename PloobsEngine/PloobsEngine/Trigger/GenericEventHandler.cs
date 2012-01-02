@@ -26,17 +26,30 @@ using PloobsEngine.Events;
 
 namespace PloobsEngine.Trigger
 {
+    /// <summary>
+    /// Generic Event Handler
+    /// </summary>
     public abstract class GenericEventHandler : IRecieveMessageEntity , IEventHandler
     {        
         #region IEntity Members
 
-        private int _id;
-        public int GetId()
+        private long _id;
+        /// <summary>
+        /// return the entity id
+        /// </summary>
+        /// <returns>
+        /// the id
+        /// </returns>
+        public long GetId()
         {
             return _id;
         }
 
-        public void SetId(int id)
+        /// <summary>
+        /// sets the id
+        /// </summary>
+        /// <param name="id"></param>
+        public void SetId(long id)
         {
             this._id = id;
         }
@@ -59,12 +72,20 @@ namespace PloobsEngine.Trigger
 
         #region IEventHandler Members
 
+        /// <summary>
+        /// Processes the specified mes.
+        /// </summary>
+        /// <param name="mes">The mes.</param>
         public void Process(Message mes)
         {
 
             HandleEvent(mes.Content as IEvent<Object>);
         }
 
+        /// <summary>
+        /// Handles the event.
+        /// </summary>
+        /// <param name="evt">The evt.</param>
         public abstract void HandleEvent(IEvent<Object> evt);
         #endregion
     }

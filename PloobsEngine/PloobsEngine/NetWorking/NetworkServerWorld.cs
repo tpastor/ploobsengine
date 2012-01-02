@@ -16,11 +16,11 @@ namespace PloobsEngine.NetWorking
 {
     public class NetworkServerWorld : IWorld
     {
+#if WINDOWS
         /// <summary>
         /// Initializes a new instance of the <see cref="IWorld"/> class.
         /// </summary>
-        /// <param name="PhysicWorld">The physic world.</param>        
-#if WINDOWS
+        /// <param name="PhysicWorld">The physic world.</param>
         /// <param name="multiThread">if set to <c>true</c> [mult thread].</param>
         public NetworkServerWorld(IPhysicWorld PhysicWorld,bool multiThread = false)
 #else

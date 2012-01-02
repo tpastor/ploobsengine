@@ -47,7 +47,7 @@ namespace PloobsEngine.Utils
 
         
         /// <summary>
-        // Returns a float randomly distributed between 0 and 1
+        /// Returns a float randomly distributed between 0 and 1
         /// </summary>
         /// <returns></returns>
         public static float Random()

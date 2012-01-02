@@ -99,6 +99,11 @@ namespace PloobsEngine.DataStructure
 		#endregion
 
         #region Methods
+        /// <summary>
+        /// Switches the elements.
+        /// </summary>
+        /// <param name="i">The i.</param>
+        /// <param name="j">The j.</param>
         protected void SwitchElements(int i, int j)
 		{
 			T h = InnerList[i];
@@ -106,16 +111,24 @@ namespace PloobsEngine.DataStructure
 			InnerList[j] = h;
 		}
 
+        /// <summary>
+        /// Called when [compare].
+        /// </summary>
+        /// <param name="i">The i.</param>
+        /// <param name="j">The j.</param>
+        /// <returns></returns>
         protected virtual int OnCompare(int i, int j)
         {
             return mComparer.Compare(InnerList[i],InnerList[j]);
         }
 
-		/// <summary>
-		/// Push an object onto the PQ
-		/// </summary>
-		/// <param name="O">The new object</param>
-		/// <returns>The index in the list where the object is _now_. This will change when objects are taken from or put onto the PQ.</returns>
+        /// <summary>
+        /// Push an object onto the PQ
+        /// </summary>
+        /// <param name="item">The item.</param>
+        /// <returns>
+        /// The index in the list where the object is _now_. This will change when objects are taken from or put onto the PQ.
+        /// </returns>
 		public int Push(T item)
 		{
 			int p = InnerList.Count,p2;

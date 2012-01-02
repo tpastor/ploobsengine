@@ -398,7 +398,7 @@ namespace PloobsEngine.NetWorking
         }
 
 
-        public static void WriteEntitySync(this NetOutgoingMessage mes, int id, Vector3 Position, Quaternion Orientation, Vector3 LinearVelocity, Vector3 AngularVelocity)
+        public static void WriteEntitySync(this NetOutgoingMessage mes, long id, Vector3 Position, Quaternion Orientation, Vector3 LinearVelocity, Vector3 AngularVelocity)
         {
             mes.Write(id);
             mes.Write(Position);
@@ -407,7 +407,7 @@ namespace PloobsEngine.NetWorking
             mes.Write(AngularVelocity);
         }
 
-        public static void WriteEntitySync(this NetOutgoingMessage mes, int id, Vector3 Position, Matrix Orientation, Vector3 LinearVelocity, Vector3 AngularVelocity)
+        public static void WriteEntitySync(this NetOutgoingMessage mes, long id, Vector3 Position, Matrix Orientation, Vector3 LinearVelocity, Vector3 AngularVelocity)
         {
             mes.Write(id);
             mes.Write(Position);

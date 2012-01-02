@@ -62,16 +62,16 @@ namespace PloobsEngine.MessageSystem
             get { return numMessagerdeliveredByFrame; }
             set { numMessagerdeliveredByFrame = value;}
         }
-        
+
         /// <summary>
         /// Deliver the messages
         /// </summary>
-        /// <param name="gt"></param>
+        /// <param name="gtt">The GTT.</param>
         protected override void Update(GameTime gtt)
         {
             gt = gtt;
 
-            ///primeiro Todas as com tempo 0
+            //primeiro Todas as com tempo 0
             while (true)
             {
                 Message m = delayedfila.Peek();
@@ -87,7 +87,7 @@ namespace PloobsEngine.MessageSystem
                 }
             }            
 
-            /// o resto respeitando o limite por frame
+            // o resto respeitando o limite por frame
             for (int i = 0; i < numMessagerdeliveredByFrame; i++)
             {
                 if (fila.Count == 0)
@@ -162,12 +162,16 @@ namespace PloobsEngine.MessageSystem
                 IList<IRecieveMessageEntity> list = EntityMapper.getInstance().GetTagRecieveEntity(m.Tag);
                 foreach (IRecieveMessageEntity var in list)
                 {
-
-                    if (var.HandleThisMessageType(m.SenderType) != false)
+                    if (var != null)
                     {
-                        var.HandleMessage(m);
+                        if (var.HandleThisMessageType(m.SenderType) != false)
+                        {
+                            var.HandleMessage(m);
+                        }
                     }
                 }
+
+
             }
             else
             {

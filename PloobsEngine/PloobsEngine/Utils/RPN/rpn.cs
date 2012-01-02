@@ -4,9 +4,16 @@ using System.Collections.Generic;
 namespace PloobsEngine.Utils
 {
 
-public class Rpn  {
+    /// <summary>
+    /// Calculator
+    /// (Can use Infix and RPN notation)
+    /// </summary>
+public class Calculator  {
 
-    public Rpn()
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Calculator"/> class.
+    /// </summary>
+    public Calculator()
     {
         _infixTransformer = new InfixTransformer();
     }
@@ -64,7 +71,7 @@ public class Rpn  {
       else if (tk == "/") x /= y;
       else
       {
-          tks.Push("ERRO"); /// will cause error upside
+          tks.Push("ERRO"); // will cause error upside
           return -1;          
       }
     }

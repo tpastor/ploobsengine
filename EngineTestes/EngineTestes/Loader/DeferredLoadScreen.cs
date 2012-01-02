@@ -53,6 +53,7 @@ namespace EngineTestes
             base.LoadContent(GraphicInfo,factory, contentManager);
 
             ExtractXmlModelLoader ext = new ExtractXmlModelLoader("Content//ModelInfos//", "Model//", "Textures//");
+            this.AttachCleanUpAble(ext);
             ModelLoaderData data = ext.Load(factory, GraphicInfo, "shadow");
             WorldLoader wl = new WorldLoader();
             wl.OnCreateIObject += new CreateIObject(wl_OnCreateIObject);
@@ -147,6 +148,13 @@ namespace EngineTestes
             //ld1.LightDirection = inter.CurrentValue;
 
             base.Update(gameTime);
+
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
+                this.ScreenManager.RemoveScreen(this);
+                this.ScreenManager.AddScreen(new SponzaScreen());
+            }
         }
 
     }

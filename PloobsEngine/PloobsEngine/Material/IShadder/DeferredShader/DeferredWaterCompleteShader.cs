@@ -213,7 +213,7 @@ namespace PloobsEngine.Material
 
         public override void PreDrawPhase(GameTime gt, IWorld world, IObject obj, RenderHelper render, ICamera cam)
         {
-            ///REFRACAO
+            //REFRACAO
             Plane refractionClipPlane;
             if (cam.Position.Y > -plane.D)
             {
@@ -228,7 +228,7 @@ namespace PloobsEngine.Material
             render.RenderSceneReflectionRefration(world, gt, new List<IObject>() { obj }, cam.View, cam.Projection, true, true,refractionClipPlane);
             refractionMap = render.PopRenderTarget()[0].RenderTarget as Texture2D;            
 
-            ///REFLEXAO
+            //REFLEXAO
             Matrix m = Matrix.CreateReflection(plane);
             Vector3 pos;
             Vector3 target;

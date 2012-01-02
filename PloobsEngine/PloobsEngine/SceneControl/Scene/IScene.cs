@@ -39,16 +39,17 @@ namespace PloobsEngine.SceneControl
     public abstract class IScene : IScreen
     {
 #if !WINDOWS_PHONE
-        public IScene(IGui gui = null) : base(gui) { }
+        public IScene(IGui gui = null) : base(gui) {  }
 #else
-        public IScene() : base() { }
+        public IScene() : base() {  }
 #endif
 
         #region properties
         
         private IRenderTechnic _renderTecnic = null;        
-        private bool _isFirstTimeTechnic = true;       
+        private bool _isFirstTimeTechnic = true;
 
+        
 
         /// <summary>
         /// Gets the render technics.
@@ -121,6 +122,8 @@ namespace PloobsEngine.SceneControl
         protected override void CleanUp(EngineStuff engine)
         {            
             base.CleanUp(engine);
+            this.RenderTechnic.CleanUp();
+            World.CleanUp();
         }
 
 

@@ -24,7 +24,10 @@ using System.Text;
 
 namespace PloobsEngine.Utils
 {
-    public class StatisticsUtils
+    /// <summary>
+    /// Statistics helper class
+    /// </summary>
+    public static class StatisticsUtils
     {
         /// <summary>
         /// Get average
@@ -78,8 +81,8 @@ namespace PloobsEngine.Utils
         /// <param name="y">Y</param>
         /// <param name="covXY">Covariance X,Y</param>
         /// <param name="pearson">Pearson X,Y</param>
-        /// <param name="MultiplierX">Multiplier of X ( COVXY / VARX )</param>
-        /// /// <param name="MultiplierY">Multiplier of Y ( COVXY / VARY )</param>
+        /// <param name="multiplierX">The multiplier X.</param>
+        /// <param name="multiplierY">The multiplier Y.</param>
         public static void GetCorrelation(double[] x, double[] y, ref double covXY, ref double pearson, ref double multiplierX, ref double multiplierY)
         {
             if (x.Length != y.Length)

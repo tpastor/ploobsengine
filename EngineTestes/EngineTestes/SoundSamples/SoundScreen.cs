@@ -70,7 +70,7 @@ namespace EngineTestes
             //AlbumCollection ac = lm.MediaLibrary.Albums;
             //lm.PlayAlbum(ac[0]);
             
-            sound = new Static3DSound(contentManager, "Songs/pianosong", Vector3.Zero);
+            sound = new Static3DSound(factory, "Songs/pianosong", Vector3.Zero);
             this.World.AddSoundEmitter(sound, true);
 
             //ObjectFollower3DSound sound2 = new ObjectFollower3DSound(contentManager, "Songs/pianosong", obj);
@@ -125,7 +125,7 @@ namespace EngineTestes
             if (Keyboard.GetState().IsKeyDown(Keys.LeftControl))
             {
                 this.World.RemoveSoundEmitter(sound);
-                sound = new Static3DSound(contentManager, "Songs/pianosong", Vector3.Zero);
+                sound = new Static3DSound(GraphicFactory, "Songs/pianosong", Vector3.Zero);
                 this.World.AddSoundEmitter(sound, true);
                 
                 sound.Play();

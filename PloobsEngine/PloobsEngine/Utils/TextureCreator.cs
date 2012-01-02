@@ -33,6 +33,11 @@ namespace PloobsEngine.Utils
     /// </summary>
     internal class TextureCreator
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TextureCreator"/> class.
+        /// </summary>
+        /// <param name="info">The info.</param>
+        /// <param name="factory">The factory.</param>
         public TextureCreator(GraphicInfo info,GraphicFactory factory)
         {
             this.info = info;
@@ -60,6 +65,7 @@ namespace PloobsEngine.Utils
         /// <param name="sizex">The sizex.</param>
         /// <param name="sizey">The sizey.</param>
         /// <param name="texCor">The tex cor.</param>
+        /// <param name="mipmap">if set to <c>true</c> [mipmap].</param>
         /// <returns></returns>
         public Texture2D CreateColorTexture(int sizex,int sizey,Color texCor,bool mipmap = false)
         {
@@ -93,6 +99,7 @@ namespace PloobsEngine.Utils
         /// </summary>
         /// <param name="sizex">The sizex.</param>
         /// <param name="sizey">The sizey.</param>
+        /// <param name="mipmap">if set to <c>true</c> [mipmap].</param>
         /// <returns></returns>
         public Texture2D CreateCompleteRandomColorTexture(int sizex,int sizey,bool mipmap = false)
         {
@@ -130,6 +137,7 @@ namespace PloobsEngine.Utils
         /// </summary>
         /// <param name="sizex">The sizex.</param>
         /// <param name="sizey">The sizey.</param>
+        /// <param name="mipmap">if set to <c>true</c> [mipmap].</param>
         /// <returns></returns>
         public Texture2D CreateBlackAndWhiteRandomTexture(int sizex,int sizey,bool mipmap = false)
         {
@@ -173,6 +181,7 @@ namespace PloobsEngine.Utils
         /// <param name="amplitude">The amplitude.</param>
         /// <param name="persistence">The persistence.</param>
         /// <param name="octave">The octave.</param>
+        /// <param name="mipmap">if set to <c>true</c> [mipmap].</param>
         /// <returns></returns>
         public Texture2D CreatePerlinNoiseTexture(int sizex, int sizey,float frequencia, float amplitude, float persistence, int octave,bool mipmap = false)
         {
