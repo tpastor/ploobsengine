@@ -442,6 +442,11 @@ namespace PloobsEngine.SceneControl._2DScene
         {
             Camera2D.CleanUp();
 
+            foreach (var item in Objects.ToArray())
+            {
+                this.RemoveObject(item);
+            }
+            
             if (CleanUpObjectsOnDispose)
             {
                 foreach (var item in Objects)
@@ -449,6 +454,14 @@ namespace PloobsEngine.SceneControl._2DScene
                     item.CleanUp(graphicsFactory);
                 }
             }
+
+            
+
+            foreach (var item in SoundEmiters2D.ToArray())
+            {
+                this.RemoveSoundEmitter(item);
+            }
+            
 
             foreach (var item in SoundEmiters2D)
             {
@@ -461,6 +474,7 @@ namespace PloobsEngine.SceneControl._2DScene
             SoundEmiters2D.Clear();
             particleManager = null;
             PhysicWorld = null;
+            this.culler = null;
         }
 
     }

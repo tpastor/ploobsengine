@@ -75,6 +75,7 @@ namespace PloobsEngine.SceneControl
         {
             this.gui = gui;
             IsLoaded = false;
+            CleanUpWhenRemoved = true;
             CleanupAbles = new List<ICleanupAble>();
         }
         #else
@@ -83,6 +84,7 @@ public IScreen()
             this.gui = null;
             IsLoaded = false;
             CleanupAbles = new List<ICleanupAble>();
+            CleanUpWhenRemoved = true;
         }
 #endif
 
@@ -108,6 +110,12 @@ public IScreen()
         }
 
         private IList<ICleanupAble> CleanupAbles
+        {
+            get;
+            set;
+        }
+
+        public bool CleanUpWhenRemoved
         {
             get;
             set;
@@ -411,18 +419,20 @@ public IScreen()
         /// Cleans up resources that dont are exclusive of the screen        
         /// </summary>
         protected virtual void CleanUp(EngineStuff engine)
-        {    
-#if WINDOWS
-            foreach (var item in KeyBinds.Values)
-	        {
-                item.BindAction = BindAction.REMOVE;
-                CommandProcessor.getCommandProcessor().SendCommandAssyncronous(item);
-	        }
-            foreach (var item in MouseBinds.Values)
+        {
+            if (CleanUpWhenRemoved)
             {
-                item.BindAction = BindAction.REMOVE;
-                CommandProcessor.getCommandProcessor().SendCommandAssyncronous(item);
-            }
+#if WINDOWS
+                foreach (var item in KeyBinds.Values)
+                {
+                    item.BindAction = BindAction.REMOVE;
+                    CommandProcessor.getCommandProcessor().SendCommandAssyncronous(item);
+                }
+                foreach (var item in MouseBinds.Values)
+                {
+                    item.BindAction = BindAction.REMOVE;
+                    CommandProcessor.getCommandProcessor().SendCommandAssyncronous(item);
+                }
 #elif WINDOWS_PHONE
             foreach (var item in GestureBinds.Values)
             {
@@ -432,28 +442,29 @@ public IScreen()
             
 #endif
 
-            IScreenUpdateable[] updts = updateables.ToArray();
+                IScreenUpdateable[] updts = updateables.ToArray();
 
-            for (int i = 0; i < updts.Length; i++)
-            {
-                updts[i].iCleanUp();
-            }
+                for (int i = 0; i < updts.Length; i++)
+                {
+                    updts[i].iCleanUp();
+                }
 
-            if (gui != null)
-            {
-                gui.iDispose();
-                gui = null;
-            }
+                if (gui != null)
+                {
+                    gui.iDispose();
+                    gui = null;
+                }
 
-            foreach (var item in CleanupAbles)
-            {
-                item.CleanUp(graphicFactory);
-            }
-            CleanupAbles.Clear();
+                foreach (var item in CleanupAbles)
+                {
+                    item.CleanUp(graphicFactory);
+                }
+                CleanupAbles.Clear();
 #if DEBUG
             GC.Collect();
             GC.WaitForPendingFinalizers();
 #endif
+            }
         }        
 
     }

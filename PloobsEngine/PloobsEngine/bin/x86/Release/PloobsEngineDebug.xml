@@ -3060,6 +3060,227 @@
             Gets the acceleration of the vehicle.
             </summary>
     </member>
+    <member name="T:PloobsEngine.Engine.ContentTracker">
+      <summary>
+            Async section of ContentTracker
+            </summary>
+      <summary>
+            Custom content manager. Allows for removing individual items and provides
+            detailed information about asset relationships
+            </summary>
+    </member>
+    <member name="T:PloobsEngine.Engine.ContentTracker.AssetLoaded">
+      <summary>
+            Signature of a method to call when an 
+            asset finishes loading asyncronously
+            </summary>
+      <param name="asset">
+      </param>
+    </member>
+    <member name="T:PloobsEngine.Engine.ContentTracker.LoadAsyncParams">
+      <summary>
+            The paramaters required to asyncronously load an asset
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.Engine.ContentTracker.LoadAsyncParams.#ctor(System.Type,System.String,PloobsEngine.Engine.ContentTracker.AssetLoaded)">
+      <summary>
+            Constructor for convenience
+            </summary>
+    </member>
+    <member name="T:PloobsEngine.Engine.ContentTracker.ValidSourceAssetDesc">
+      <summary>
+            Internal class for storing source asset loading information
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Engine.ContentTracker.loadItemsQueue">
+      <summary>
+            Queue of items to be loaded
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Engine.ContentTracker.loadThread">
+      <summary>
+            Thread on which asyncronous loading will occur
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Engine.ContentTracker.loadResetEvent">
+      <summary>
+            Reset event so load thread can wait once the queue is empty
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Engine.ContentTracker.mCloseRequested">
+      <summary>
+             A flag to request the thread to return from its loop
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Engine.ContentTracker.loadedAssets">
+      <summary>
+            All loaded AssetTrackers, keyed by the asset name
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Engine.ContentTracker.loadedAssetNames">
+      <summary>
+            List of loaded asset names. Useful for statistics
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Engine.ContentTracker.untrackedAssets">
+      <summary>
+            A list of AssetTrackers that were loaded directly from disk. 
+            They can not be reloaded or unloaded individually as they do not have unique names.
+            They do need to be stored so they can be Disposed when the ContentTracker is Unloaded.
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Engine.ContentTracker.SourceAssetLoaders">
+      <summary>
+            Registered source asset types
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.Engine.ContentTracker.LoadAsync``1(System.String,PloobsEngine.Engine.ContentTracker.AssetLoaded)">
+      <summary>
+            Asyncronously loads the specified asset
+            </summary>
+      <typeparam name="T">Generic type parameter</typeparam>
+      <param name="assetName">Name of asset to laod</param>
+      <param name="itemLoadedMethod">Method to call once load is completed</param>
+      <returns>AssetTracker of asset to be loaded. Allows 
+            users to poll the asset status if desired</returns>
+    </member>
+    <member name="M:PloobsEngine.Engine.ContentTracker.LoadingThreadWorker">
+      <summary>
+            Consume the Queue of assets to be loaded then wait 
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.Engine.ContentTracker.#ctor(System.IServiceProvider)">
+      <summary>
+            Constructs a ContentTracker
+            </summary>
+      <param name="serviceProvider">The provider object for getting services</param>
+    </member>
+    <member name="M:PloobsEngine.Engine.ContentTracker.#ctor(System.IServiceProvider,System.String)">
+      <summary>
+            Constructs a ContentTracker
+            </summary>
+      <param name="serviceProvider">The provider object for getting services</param>
+      <param name="rootDirectory">The root directory of the ContentTracker</param>
+    </member>
+    <member name="M:PloobsEngine.Engine.ContentTracker.Load``1(System.String)">
+      <summary>
+            Return the specified asset. Read it from disk if not available
+            </summary>
+      <typeparam name="T">The Type of asset to load</typeparam>
+      <param name="assetName">Name of the asset to load</param>
+      <returns>A reference to the loaded asset</returns>
+    </member>
+    <member name="M:PloobsEngine.Engine.ContentTracker.LoadFromDisk``1(System.String)">
+      <summary>
+            Return the specified asset. ALWAYS Read it from disk
+            </summary>
+      <typeparam name="T">The Type of asset to load</typeparam>
+      <param name="assetName">Name of the asset to load</param>
+      <returns>A reference to the loaded asset</returns>
+    </member>
+    <member name="M:PloobsEngine.Engine.ContentTracker.LoadToTracker``1(System.String,PloobsEngine.Engine.AssetTracker,System.Boolean)">
+      <summary>
+            Return the specified asset. Read it from disk if not available
+            </summary>
+      <typeparam name="T">The Type of asset to load</typeparam>
+      <param name="assetName">Name of the asset to load</param>
+      <param name="tracker">An AssetTracker to use when loading this asset. May be null</param>
+      <param name="forceReadAsset">if set to <c>true</c> [force read asset].</param>
+      <returns>
+            A reference to the loaded asset
+            </returns>
+    </member>
+    <member name="M:PloobsEngine.Engine.ContentTracker.Unload">
+      <summary>
+            Clean up all assets
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.Engine.ContentTracker.Release(System.String)">
+      <summary>
+            Release asset. Decrements the reference count and
+            removes child assets when the count is zero
+            </summary>
+      <param name="assetName">Asset to release</param>
+    </member>
+    <member name="M:PloobsEngine.Engine.ContentTracker.Unload(System.String,System.Boolean)">
+      <summary>
+            Force an asset to be disposed. Optionally releases child assets 
+            </summary>
+      <param name="assetName">Name of asset to unload</param>
+      <param name="releaseChildren">Release child assets</param>
+    </member>
+    <member name="M:PloobsEngine.Engine.ContentTracker.DisposeAssetTracker(PloobsEngine.Engine.AssetTracker,System.Boolean)">
+      <summary>
+            Destroy IDisposables that were tracked by this asset but do not 
+            exist as assets in their own right. This will also dispose the
+            unmanaged internals like vertex and index buffers
+            </summary>
+      <param name="tracker">AssetTracker to dispose</param>
+      <param name="releaseChildren">If true, child assets will be released</param>
+    </member>
+    <member name="M:PloobsEngine.Engine.ContentTracker.Reload``1(System.String)">
+      <summary>
+            Reloads the specified asset.
+            </summary>
+      <typeparam name="T">The Type of asset to reload</typeparam>
+      <param name="assetName">Name of the asset to load</param>
+      <returns>The new reference to the reloaded asset</returns>
+    </member>
+    <member name="M:PloobsEngine.Engine.ContentTracker.IsLoaded(System.String)">
+      <summary>
+            Tests if the specified asset is loaded
+            </summary>
+      <param name="assetName">Name of asset to test</param>
+      <returns>True if asset is loaded otherwise false</returns>
+    </member>
+    <member name="M:PloobsEngine.Engine.ContentTracker.GetTracker(System.String)">
+      <summary>
+            Returns the Asset Tracker
+            </summary>
+      <param name="assetName">Name of asset to get tracker for</param>
+      <returns>The AssetTracker with specified name, or null if not existing</returns>
+    </member>
+    <member name="M:PloobsEngine.Engine.ContentTracker.GetReferenceCount(System.String)">
+      <summary>
+            Gets an Asset's reference count
+            </summary>
+      <param name="assetName">Name of asset to get reference count for</param>
+      <returns>Reference count of specified asset</returns>
+    </member>
+    <member name="M:PloobsEngine.Engine.ContentTracker.GetLoadedAssetNames">
+      <summary>
+            Get the names of all assets that are currently loaded
+            </summary>
+      <returns>List of loaded asset names</returns>
+    </member>
+    <member name="M:PloobsEngine.Engine.ContentTracker.SearchForAsset(System.Object,System.String@)">
+      <summary>
+            Check if the specified object is a loaded asset
+            </summary>
+      <param name="asset">asset reference to search for</param>
+      <param name="assetName">Name asset with specified reference if found</param>
+      <returns>True if the specified asset was found and false otherwise</returns>
+    </member>
+    <member name="M:PloobsEngine.Engine.ContentTracker.RegisterSourceAssetLoader(System.Type,System.String[],System.Func{System.String,System.Object})">
+      <summary>
+            Causes ContentTracker to attempt to find and load source assets of the given Type.
+            UseSourceAssets must also be set to true for this to happen
+            </summary>
+      <param name="assetType">Asset Type to search for source assets</param>
+      <param name="validExtensions">An array of file extensions (eg ".png") that are valid for the asset Type</param>
+      <param name="loadAssetDelegate">Method to call when a valid source file is found</param>
+    </member>
+    <member name="P:PloobsEngine.Engine.ContentTracker.IsLoading">
+      <summary>
+            Returns true if the ContentTracker is currently loading.
+            Returns false otherwise
+            </summary>
+    </member>
+    <member name="P:PloobsEngine.Engine.ContentTracker.UseSourceAssets">
+      <summary>
+            Tells the ContentTracker to attempt to load source asset types, if they exist.
+            </summary>
+    </member>
     <member name="T:PloobsEngine.Physics.Bepu.BepuEntityObject">
       <summary>
             Base class for Bepu entities
@@ -3621,6 +3842,28 @@
             Handler Waypoints state
             </summary>
     </member>
+    <member name="T:PloobsEngine.Utils.SmartWeakEvent`1">
+      <summary>
+            A class for managing a weak event.
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.Utils.SmartWeakEvent`1.Add(`0)">
+      <summary>
+            Adds the specified ev.
+            </summary>
+      <param name="eh">The eh.</param>
+    </member>
+    <member name="M:PloobsEngine.Utils.SmartWeakEvent`1.RemoveDeadEntries">
+      <summary>
+            Removes the dead entries.
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.Utils.SmartWeakEvent`1.Remove(`0)">
+      <summary>
+            Removes the specified ev.
+            </summary>
+      <param name="eh">The eh.</param>
+    </member>
     <member name="F:PloobsEngine.SceneControl.HdrPostEffect.toneMapKey">
       <summary>
             0.8
@@ -3752,6 +3995,22 @@
     <member name="F:Bnoerj.AI.Steering.SteerLibrary.hisPositionAtNearestApproach">
             XXX globals only for the sake of graphical annotation
         </member>
+    <member name="M:PloobsEngine.Engine.Extensions.RemoveAll``1(System.Collections.Generic.List{``0},System.Func{``0,System.Boolean})">
+      <summary> 
+            Removes all elements from the List that match the conditions defined by the specified predicate. 
+            </summary>
+      <typeparam name="T">The type of elements held by the List.</typeparam>
+      <param name="list">The List to remove the elements from.</param>
+      <param name="match">The Predicate delegate that defines the conditions of the elements to remove.</param>
+    </member>
+    <member name="M:PloobsEngine.Engine.Extensions.Exists``1(System.Collections.Generic.List{``0},System.Func{``0,System.Boolean})">
+      <summary> 
+            Returns true if the List contains elements that match the conditions defined by the specified predicate. 
+            </summary>
+      <typeparam name="T">The type of elements held by the List.</typeparam>
+      <param name="list">The List to search for a match in.</param>
+      <param name="match">The Predicate delegate that defines the conditions of the elements to match against.</param>
+    </member>
     <member name="T:PloobsEngine.Physic2D.I2DPhysicObject">
       <summary>
             2D physic object specification
@@ -9586,6 +9845,99 @@
             Gets the Sound state.
             </summary>
     </member>
+    <member name="T:PloobsEngine.Utils.WeakReference.WeakList`1">
+      <summary>
+            List with weak references
+            </summary>
+      <typeparam name="T">
+      </typeparam>
+    </member>
+    <member name="M:PloobsEngine.Utils.WeakReference.WeakList`1.IndexOf(`0)">
+      <summary>
+            Indexes the of.
+            </summary>
+      <param name="item">The item.</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:PloobsEngine.Utils.WeakReference.WeakList`1.Insert(System.Int32,`0)">
+      <summary>
+            Inserts the specified index.
+            </summary>
+      <param name="index">The index.</param>
+      <param name="item">The item.</param>
+    </member>
+    <member name="M:PloobsEngine.Utils.WeakReference.WeakList`1.RemoveAt(System.Int32)">
+      <summary>
+            Removes at.
+            </summary>
+      <param name="index">The index.</param>
+    </member>
+    <member name="M:PloobsEngine.Utils.WeakReference.WeakList`1.Add(`0)">
+      <summary>
+            Adds the specified item.
+            </summary>
+      <param name="item">The item.</param>
+    </member>
+    <member name="M:PloobsEngine.Utils.WeakReference.WeakList`1.Clear">
+      <summary>
+            Clears this instance.
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.Utils.WeakReference.WeakList`1.Contains(`0)">
+      <summary>
+            Determines whether [contains] [the specified item].
+            </summary>
+      <param name="item">The item.</param>
+      <returns>
+        <c>true</c> if [contains] [the specified item]; otherwise, <c>false</c>.
+            </returns>
+    </member>
+    <member name="M:PloobsEngine.Utils.WeakReference.WeakList`1.CopyTo(`0[],System.Int32)">
+      <summary>
+            Copies to.
+            </summary>
+      <param name="array">The array.</param>
+      <param name="arrayIndex">Index of the array.</param>
+    </member>
+    <member name="M:PloobsEngine.Utils.WeakReference.WeakList`1.Remove(`0)">
+      <summary>
+            Removes the specified item.
+            </summary>
+      <param name="item">The item.</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:PloobsEngine.Utils.WeakReference.WeakList`1.GetEnumerator">
+      <summary>
+            Gets the enumerator.
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:PloobsEngine.Utils.WeakReference.WeakList`1.Purge">
+      <summary>
+            Purges this instance.
+            </summary>
+    </member>
+    <member name="P:PloobsEngine.Utils.WeakReference.WeakList`1.Item(System.Int32)">
+      <summary>
+            Gets or sets the <see cref="!:T" /> at the specified index.
+            </summary>
+    </member>
+    <member name="P:PloobsEngine.Utils.WeakReference.WeakList`1.Count">
+      <summary>
+            Gets the count.
+            </summary>
+    </member>
+    <member name="P:PloobsEngine.Utils.WeakReference.WeakList`1.IsReadOnly">
+      <summary>
+            Gets a value indicating whether this instance is read only.
+            </summary>
+      <value>
+        <c>true</c> if this instance is read only; otherwise, <c>false</c>.
+            </value>
+    </member>
     <member name="T:PloobsEngine.SceneControl.IWorld">
       <summary>
             Specification of a world
@@ -10116,6 +10468,42 @@
       <summary>
             Get the name of the activation function
             </summary>
+    </member>
+    <member name="T:PloobsEngine.Utils.WeakReference`1">
+      <summary>
+            Weak reference Strong type
+            </summary>
+      <typeparam name="T">
+      </typeparam>
+    </member>
+    <member name="M:PloobsEngine.Utils.WeakReference`1.#ctor(`0)">
+      <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Utils.WeakReference`1" /> class.
+            </summary>
+      <param name="target">The target.</param>
+    </member>
+    <member name="M:PloobsEngine.Utils.WeakReference`1.#ctor(`0,System.Boolean)">
+      <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Utils.WeakReference`1" /> class.
+            </summary>
+      <param name="target">The target.</param>
+      <param name="trackResurrection">if set to <c>true</c> [track resurrection].</param>
+    </member>
+    <member name="M:PloobsEngine.Utils.WeakReference`1.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Utils.WeakReference`1" /> class.
+            </summary>
+      <param name="info">An object that holds all the data needed to serialize or deserialize the current <see cref="T:System.WeakReference" /> object.</param>
+      <param name="context">(Reserved) Describes the source and destination of the serialized stream specified by <paramref name="info" />.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="info" /> is null. </exception>
+    </member>
+    <member name="P:PloobsEngine.Utils.WeakReference`1.Target">
+      <summary>
+            Gets or sets the object (the target) referenced by the current <see cref="T:System.WeakReference" /> object.
+            </summary>
+      <returns>null if the object referenced by the current <see cref="T:System.WeakReference" /> object has been garbage collected; otherwise, a reference to the object referenced by the current <see cref="T:System.WeakReference" /> object.</returns>
+      <exception cref="T:System.InvalidOperationException">The reference to the target object is invalid. This exception can be thrown while setting this property if the value is a null reference or if the object has been finalized during the set operation.</exception>
     </member>
     <member name="T:PloobsEngine.Utils.BundleHandler">
       <summary>
@@ -11983,6 +12371,32 @@
             Keep previous generation's fittest individual in place of worst in current
             </summary>
     </member>
+    <member name="T:PloobsEngine.Utils.EnumerableExtensions">
+      <summary>
+            Some extensions to IEnumerable
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.Utils.EnumerableExtensions.CopyTo``1(System.Collections.Generic.IEnumerable{``0},``0[],System.Int32)">
+      <summary>
+            Copies to
+            </summary>
+      <typeparam name="T">
+      </typeparam>
+      <param name="source">The source.</param>
+      <param name="array">The array.</param>
+      <param name="startIndex">The start index.</param>
+    </member>
+    <member name="M:PloobsEngine.Utils.EnumerableExtensions.IndexOf``1(System.Collections.Generic.IEnumerable{``0},``0)">
+      <summary>
+            Index of
+            </summary>
+      <typeparam name="T">
+      </typeparam>
+      <param name="source">The source.</param>
+      <param name="item">The item.</param>
+      <returns>
+      </returns>
+    </member>
     <member name="T:PloobsEngine.Trigger.TriggerEvent">
       <summary>
             Special Event used by triggers
@@ -13556,6 +13970,65 @@
             </summary>
       <param name="obj">The obj.</param>
       <param name="gt">The gt.</param>
+    </member>
+    <member name="T:PloobsEngine.Engine.AssetStatus">
+      <summary>
+            Describes the load status of an asset
+            </summary>
+    </member>
+    <member name="T:PloobsEngine.Engine.AssetTracker">
+      <summary>
+            Tracks individual asset information
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Engine.AssetTracker.AssetName">
+      <summary>
+            Name of the asset.
+            Used as the key to look up this AssetTracker
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Engine.AssetTracker.Asset">
+      <summary>
+            The actual asset
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Engine.AssetTracker.Disposables">
+      <summary>
+            Disposables owned by this asset
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Engine.AssetTracker.RefCount">
+      <summary>
+            Asset's reference count.
+            Asset will be unloaded when this reaches zero
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Engine.AssetTracker.Status">
+      <summary>
+            Asset's current load status.
+            Can be used to check when threaded loading completes
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Engine.AssetTracker.RefersTo">
+      <summary>
+            Assets that we reference (children)
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Engine.AssetTracker.ReferredToBy">
+      <summary>
+            Assets that reference us (parents)
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Engine.AssetTracker.AssetChanged">
+      <summary>
+            Callback invoked when this asset is reloaded or unloaded
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.Engine.AssetTracker.OnAssetChanged(System.Object)">
+      <summary>
+            Helper for invoking AssetChanged. 
+            Marked as internal because it's invoked by ContentTracker. 
+            </summary>
     </member>
     <member name="M:PloobsEngine.NetWorking.NetworkServerWorld.#ctor(PloobsEngine.Physics.IPhysicWorld,System.Boolean)">
       <summary>
@@ -16138,479 +16611,6 @@
     <member name="P:PloobsEngine.IA.NeuralNetwork.NeuralNetwork.Item(System.Int32)">
       <summary>
             Get the n th Layer of the network 
-            </summary>
-    </member>
-    <member name="T:PloobsEngine.Utils.SmartWeakEvent`1">
-      <summary>
-            A class for managing a weak event.
-            </summary>
-    </member>
-    <member name="M:PloobsEngine.Utils.SmartWeakEvent`1.Add(`0)">
-      <summary>
-            Adds the specified ev.
-            </summary>
-      <param name="eh">The eh.</param>
-    </member>
-    <member name="M:PloobsEngine.Utils.SmartWeakEvent`1.RemoveDeadEntries">
-      <summary>
-            Removes the dead entries.
-            </summary>
-    </member>
-    <member name="M:PloobsEngine.Utils.SmartWeakEvent`1.Remove(`0)">
-      <summary>
-            Removes the specified ev.
-            </summary>
-      <param name="eh">The eh.</param>
-    </member>
-    <member name="T:PloobsEngine.Utils.EnumerableExtensions">
-      <summary>
-            Some extensions to IEnumerable
-            </summary>
-    </member>
-    <member name="M:PloobsEngine.Utils.EnumerableExtensions.CopyTo``1(System.Collections.Generic.IEnumerable{``0},``0[],System.Int32)">
-      <summary>
-            Copies to
-            </summary>
-      <typeparam name="T">
-      </typeparam>
-      <param name="source">The source.</param>
-      <param name="array">The array.</param>
-      <param name="startIndex">The start index.</param>
-    </member>
-    <member name="M:PloobsEngine.Utils.EnumerableExtensions.IndexOf``1(System.Collections.Generic.IEnumerable{``0},``0)">
-      <summary>
-            Index of
-            </summary>
-      <typeparam name="T">
-      </typeparam>
-      <param name="source">The source.</param>
-      <param name="item">The item.</param>
-      <returns>
-      </returns>
-    </member>
-    <member name="T:PloobsEngine.Utils.WeakReference.WeakList`1">
-      <summary>
-            List with weak references
-            </summary>
-      <typeparam name="T">
-      </typeparam>
-    </member>
-    <member name="M:PloobsEngine.Utils.WeakReference.WeakList`1.IndexOf(`0)">
-      <summary>
-            Indexes the of.
-            </summary>
-      <param name="item">The item.</param>
-      <returns>
-      </returns>
-    </member>
-    <member name="M:PloobsEngine.Utils.WeakReference.WeakList`1.Insert(System.Int32,`0)">
-      <summary>
-            Inserts the specified index.
-            </summary>
-      <param name="index">The index.</param>
-      <param name="item">The item.</param>
-    </member>
-    <member name="M:PloobsEngine.Utils.WeakReference.WeakList`1.RemoveAt(System.Int32)">
-      <summary>
-            Removes at.
-            </summary>
-      <param name="index">The index.</param>
-    </member>
-    <member name="M:PloobsEngine.Utils.WeakReference.WeakList`1.Add(`0)">
-      <summary>
-            Adds the specified item.
-            </summary>
-      <param name="item">The item.</param>
-    </member>
-    <member name="M:PloobsEngine.Utils.WeakReference.WeakList`1.Clear">
-      <summary>
-            Clears this instance.
-            </summary>
-    </member>
-    <member name="M:PloobsEngine.Utils.WeakReference.WeakList`1.Contains(`0)">
-      <summary>
-            Determines whether [contains] [the specified item].
-            </summary>
-      <param name="item">The item.</param>
-      <returns>
-        <c>true</c> if [contains] [the specified item]; otherwise, <c>false</c>.
-            </returns>
-    </member>
-    <member name="M:PloobsEngine.Utils.WeakReference.WeakList`1.CopyTo(`0[],System.Int32)">
-      <summary>
-            Copies to.
-            </summary>
-      <param name="array">The array.</param>
-      <param name="arrayIndex">Index of the array.</param>
-    </member>
-    <member name="M:PloobsEngine.Utils.WeakReference.WeakList`1.Remove(`0)">
-      <summary>
-            Removes the specified item.
-            </summary>
-      <param name="item">The item.</param>
-      <returns>
-      </returns>
-    </member>
-    <member name="M:PloobsEngine.Utils.WeakReference.WeakList`1.GetEnumerator">
-      <summary>
-            Gets the enumerator.
-            </summary>
-      <returns>
-      </returns>
-    </member>
-    <member name="M:PloobsEngine.Utils.WeakReference.WeakList`1.Purge">
-      <summary>
-            Purges this instance.
-            </summary>
-    </member>
-    <member name="P:PloobsEngine.Utils.WeakReference.WeakList`1.Item(System.Int32)">
-      <summary>
-            Gets or sets the <see cref="!:T" /> at the specified index.
-            </summary>
-    </member>
-    <member name="P:PloobsEngine.Utils.WeakReference.WeakList`1.Count">
-      <summary>
-            Gets the count.
-            </summary>
-    </member>
-    <member name="P:PloobsEngine.Utils.WeakReference.WeakList`1.IsReadOnly">
-      <summary>
-            Gets a value indicating whether this instance is read only.
-            </summary>
-      <value>
-        <c>true</c> if this instance is read only; otherwise, <c>false</c>.
-            </value>
-    </member>
-    <member name="T:PloobsEngine.Utils.WeakReference`1">
-      <summary>
-            Weak reference Strong type
-            </summary>
-      <typeparam name="T">
-      </typeparam>
-    </member>
-    <member name="M:PloobsEngine.Utils.WeakReference`1.#ctor(`0)">
-      <summary>
-            Initializes a new instance of the <see cref="T:PloobsEngine.Utils.WeakReference`1" /> class.
-            </summary>
-      <param name="target">The target.</param>
-    </member>
-    <member name="M:PloobsEngine.Utils.WeakReference`1.#ctor(`0,System.Boolean)">
-      <summary>
-            Initializes a new instance of the <see cref="T:PloobsEngine.Utils.WeakReference`1" /> class.
-            </summary>
-      <param name="target">The target.</param>
-      <param name="trackResurrection">if set to <c>true</c> [track resurrection].</param>
-    </member>
-    <member name="M:PloobsEngine.Utils.WeakReference`1.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-      <summary>
-            Initializes a new instance of the <see cref="T:PloobsEngine.Utils.WeakReference`1" /> class.
-            </summary>
-      <param name="info">An object that holds all the data needed to serialize or deserialize the current <see cref="T:System.WeakReference" /> object.</param>
-      <param name="context">(Reserved) Describes the source and destination of the serialized stream specified by <paramref name="info" />.</param>
-      <exception cref="T:System.ArgumentNullException">
-        <paramref name="info" /> is null. </exception>
-    </member>
-    <member name="P:PloobsEngine.Utils.WeakReference`1.Target">
-      <summary>
-            Gets or sets the object (the target) referenced by the current <see cref="T:System.WeakReference" /> object.
-            </summary>
-      <returns>null if the object referenced by the current <see cref="T:System.WeakReference" /> object has been garbage collected; otherwise, a reference to the object referenced by the current <see cref="T:System.WeakReference" /> object.</returns>
-      <exception cref="T:System.InvalidOperationException">The reference to the target object is invalid. This exception can be thrown while setting this property if the value is a null reference or if the object has been finalized during the set operation.</exception>
-    </member>
-    <member name="T:PloobsEngine.Engine.ContentTracker">
-      <summary>
-            Async section of ContentTracker
-            </summary>
-      <summary>
-            Custom content manager. Allows for removing individual items and provides
-            detailed information about asset relationships
-            </summary>
-    </member>
-    <member name="T:PloobsEngine.Engine.ContentTracker.AssetLoaded">
-      <summary>
-            Signature of a method to call when an 
-            asset finishes loading asyncronously
-            </summary>
-      <param name="asset">
-      </param>
-    </member>
-    <member name="T:PloobsEngine.Engine.ContentTracker.LoadAsyncParams">
-      <summary>
-            The paramaters required to asyncronously load an asset
-            </summary>
-    </member>
-    <member name="M:PloobsEngine.Engine.ContentTracker.LoadAsyncParams.#ctor(System.Type,System.String,PloobsEngine.Engine.ContentTracker.AssetLoaded)">
-      <summary>
-            Constructor for convenience
-            </summary>
-    </member>
-    <member name="T:PloobsEngine.Engine.ContentTracker.ValidSourceAssetDesc">
-      <summary>
-            Internal class for storing source asset loading information
-            </summary>
-    </member>
-    <member name="F:PloobsEngine.Engine.ContentTracker.loadItemsQueue">
-      <summary>
-            Queue of items to be loaded
-            </summary>
-    </member>
-    <member name="F:PloobsEngine.Engine.ContentTracker.loadThread">
-      <summary>
-            Thread on which asyncronous loading will occur
-            </summary>
-    </member>
-    <member name="F:PloobsEngine.Engine.ContentTracker.loadResetEvent">
-      <summary>
-            Reset event so load thread can wait once the queue is empty
-            </summary>
-    </member>
-    <member name="F:PloobsEngine.Engine.ContentTracker.mCloseRequested">
-      <summary>
-             A flag to request the thread to return from its loop
-            </summary>
-    </member>
-    <member name="F:PloobsEngine.Engine.ContentTracker.loadedAssets">
-      <summary>
-            All loaded AssetTrackers, keyed by the asset name
-            </summary>
-    </member>
-    <member name="F:PloobsEngine.Engine.ContentTracker.loadedAssetNames">
-      <summary>
-            List of loaded asset names. Useful for statistics
-            </summary>
-    </member>
-    <member name="F:PloobsEngine.Engine.ContentTracker.untrackedAssets">
-      <summary>
-            A list of AssetTrackers that were loaded directly from disk. 
-            They can not be reloaded or unloaded individually as they do not have unique names.
-            They do need to be stored so they can be Disposed when the ContentTracker is Unloaded.
-            </summary>
-    </member>
-    <member name="F:PloobsEngine.Engine.ContentTracker.SourceAssetLoaders">
-      <summary>
-            Registered source asset types
-            </summary>
-    </member>
-    <member name="M:PloobsEngine.Engine.ContentTracker.LoadAsync``1(System.String,PloobsEngine.Engine.ContentTracker.AssetLoaded)">
-      <summary>
-            Asyncronously loads the specified asset
-            </summary>
-      <typeparam name="T">Generic type parameter</typeparam>
-      <param name="assetName">Name of asset to laod</param>
-      <param name="itemLoadedMethod">Method to call once load is completed</param>
-      <returns>AssetTracker of asset to be loaded. Allows 
-            users to poll the asset status if desired</returns>
-    </member>
-    <member name="M:PloobsEngine.Engine.ContentTracker.LoadingThreadWorker">
-      <summary>
-            Consume the Queue of assets to be loaded then wait 
-            </summary>
-    </member>
-    <member name="M:PloobsEngine.Engine.ContentTracker.#ctor(System.IServiceProvider)">
-      <summary>
-            Constructs a ContentTracker
-            </summary>
-      <param name="serviceProvider">The provider object for getting services</param>
-    </member>
-    <member name="M:PloobsEngine.Engine.ContentTracker.#ctor(System.IServiceProvider,System.String)">
-      <summary>
-            Constructs a ContentTracker
-            </summary>
-      <param name="serviceProvider">The provider object for getting services</param>
-      <param name="rootDirectory">The root directory of the ContentTracker</param>
-    </member>
-    <member name="M:PloobsEngine.Engine.ContentTracker.Load``1(System.String)">
-      <summary>
-            Return the specified asset. Read it from disk if not available
-            </summary>
-      <typeparam name="T">The Type of asset to load</typeparam>
-      <param name="assetName">Name of the asset to load</param>
-      <returns>A reference to the loaded asset</returns>
-    </member>
-    <member name="M:PloobsEngine.Engine.ContentTracker.LoadFromDisk``1(System.String)">
-      <summary>
-            Return the specified asset. ALWAYS Read it from disk
-            </summary>
-      <typeparam name="T">The Type of asset to load</typeparam>
-      <param name="assetName">Name of the asset to load</param>
-      <returns>A reference to the loaded asset</returns>
-    </member>
-    <member name="M:PloobsEngine.Engine.ContentTracker.LoadToTracker``1(System.String,PloobsEngine.Engine.AssetTracker,System.Boolean)">
-      <summary>
-            Return the specified asset. Read it from disk if not available
-            </summary>
-      <typeparam name="T">The Type of asset to load</typeparam>
-      <param name="assetName">Name of the asset to load</param>
-      <param name="tracker">An AssetTracker to use when loading this asset. May be null</param>
-      <param name="forceReadAsset">if set to <c>true</c> [force read asset].</param>
-      <returns>
-            A reference to the loaded asset
-            </returns>
-    </member>
-    <member name="M:PloobsEngine.Engine.ContentTracker.Unload">
-      <summary>
-            Clean up all assets
-            </summary>
-    </member>
-    <member name="M:PloobsEngine.Engine.ContentTracker.Release(System.String)">
-      <summary>
-            Release asset. Decrements the reference count and
-            removes child assets when the count is zero
-            </summary>
-      <param name="assetName">Asset to release</param>
-    </member>
-    <member name="M:PloobsEngine.Engine.ContentTracker.Unload(System.String,System.Boolean)">
-      <summary>
-            Force an asset to be disposed. Optionally releases child assets 
-            </summary>
-      <param name="assetName">Name of asset to unload</param>
-      <param name="releaseChildren">Release child assets</param>
-    </member>
-    <member name="M:PloobsEngine.Engine.ContentTracker.DisposeAssetTracker(PloobsEngine.Engine.AssetTracker,System.Boolean)">
-      <summary>
-            Destroy IDisposables that were tracked by this asset but do not 
-            exist as assets in their own right. This will also dispose the
-            unmanaged internals like vertex and index buffers
-            </summary>
-      <param name="tracker">AssetTracker to dispose</param>
-      <param name="releaseChildren">If true, child assets will be released</param>
-    </member>
-    <member name="M:PloobsEngine.Engine.ContentTracker.Reload``1(System.String)">
-      <summary>
-            Reloads the specified asset.
-            </summary>
-      <typeparam name="T">The Type of asset to reload</typeparam>
-      <param name="assetName">Name of the asset to load</param>
-      <returns>The new reference to the reloaded asset</returns>
-    </member>
-    <member name="M:PloobsEngine.Engine.ContentTracker.IsLoaded(System.String)">
-      <summary>
-            Tests if the specified asset is loaded
-            </summary>
-      <param name="assetName">Name of asset to test</param>
-      <returns>True if asset is loaded otherwise false</returns>
-    </member>
-    <member name="M:PloobsEngine.Engine.ContentTracker.GetTracker(System.String)">
-      <summary>
-            Returns the Asset Tracker
-            </summary>
-      <param name="assetName">Name of asset to get tracker for</param>
-      <returns>The AssetTracker with specified name, or null if not existing</returns>
-    </member>
-    <member name="M:PloobsEngine.Engine.ContentTracker.GetReferenceCount(System.String)">
-      <summary>
-            Gets an Asset's reference count
-            </summary>
-      <param name="assetName">Name of asset to get reference count for</param>
-      <returns>Reference count of specified asset</returns>
-    </member>
-    <member name="M:PloobsEngine.Engine.ContentTracker.GetLoadedAssetNames">
-      <summary>
-            Get the names of all assets that are currently loaded
-            </summary>
-      <returns>List of loaded asset names</returns>
-    </member>
-    <member name="M:PloobsEngine.Engine.ContentTracker.SearchForAsset(System.Object,System.String@)">
-      <summary>
-            Check if the specified object is a loaded asset
-            </summary>
-      <param name="asset">asset reference to search for</param>
-      <param name="assetName">Name asset with specified reference if found</param>
-      <returns>True if the specified asset was found and false otherwise</returns>
-    </member>
-    <member name="M:PloobsEngine.Engine.ContentTracker.RegisterSourceAssetLoader(System.Type,System.String[],System.Func{System.String,System.Object})">
-      <summary>
-            Causes ContentTracker to attempt to find and load source assets of the given Type.
-            UseSourceAssets must also be set to true for this to happen
-            </summary>
-      <param name="assetType">Asset Type to search for source assets</param>
-      <param name="validExtensions">An array of file extensions (eg ".png") that are valid for the asset Type</param>
-      <param name="loadAssetDelegate">Method to call when a valid source file is found</param>
-    </member>
-    <member name="P:PloobsEngine.Engine.ContentTracker.IsLoading">
-      <summary>
-            Returns true if the ContentTracker is currently loading.
-            Returns false otherwise
-            </summary>
-    </member>
-    <member name="P:PloobsEngine.Engine.ContentTracker.UseSourceAssets">
-      <summary>
-            Tells the ContentTracker to attempt to load source asset types, if they exist.
-            </summary>
-    </member>
-    <member name="M:PloobsEngine.Engine.Extensions.RemoveAll``1(System.Collections.Generic.List{``0},System.Func{``0,System.Boolean})">
-      <summary> 
-            Removes all elements from the List that match the conditions defined by the specified predicate. 
-            </summary>
-      <typeparam name="T">The type of elements held by the List.</typeparam>
-      <param name="list">The List to remove the elements from.</param>
-      <param name="match">The Predicate delegate that defines the conditions of the elements to remove.</param>
-    </member>
-    <member name="M:PloobsEngine.Engine.Extensions.Exists``1(System.Collections.Generic.List{``0},System.Func{``0,System.Boolean})">
-      <summary> 
-            Returns true if the List contains elements that match the conditions defined by the specified predicate. 
-            </summary>
-      <typeparam name="T">The type of elements held by the List.</typeparam>
-      <param name="list">The List to search for a match in.</param>
-      <param name="match">The Predicate delegate that defines the conditions of the elements to match against.</param>
-    </member>
-    <member name="T:PloobsEngine.Engine.AssetStatus">
-      <summary>
-            Describes the load status of an asset
-            </summary>
-    </member>
-    <member name="T:PloobsEngine.Engine.AssetTracker">
-      <summary>
-            Tracks individual asset information
-            </summary>
-    </member>
-    <member name="F:PloobsEngine.Engine.AssetTracker.AssetName">
-      <summary>
-            Name of the asset.
-            Used as the key to look up this AssetTracker
-            </summary>
-    </member>
-    <member name="F:PloobsEngine.Engine.AssetTracker.Asset">
-      <summary>
-            The actual asset
-            </summary>
-    </member>
-    <member name="F:PloobsEngine.Engine.AssetTracker.Disposables">
-      <summary>
-            Disposables owned by this asset
-            </summary>
-    </member>
-    <member name="F:PloobsEngine.Engine.AssetTracker.RefCount">
-      <summary>
-            Asset's reference count.
-            Asset will be unloaded when this reaches zero
-            </summary>
-    </member>
-    <member name="F:PloobsEngine.Engine.AssetTracker.Status">
-      <summary>
-            Asset's current load status.
-            Can be used to check when threaded loading completes
-            </summary>
-    </member>
-    <member name="F:PloobsEngine.Engine.AssetTracker.RefersTo">
-      <summary>
-            Assets that we reference (children)
-            </summary>
-    </member>
-    <member name="F:PloobsEngine.Engine.AssetTracker.ReferredToBy">
-      <summary>
-            Assets that reference us (parents)
-            </summary>
-    </member>
-    <member name="F:PloobsEngine.Engine.AssetTracker.AssetChanged">
-      <summary>
-            Callback invoked when this asset is reloaded or unloaded
-            </summary>
-    </member>
-    <member name="M:PloobsEngine.Engine.AssetTracker.OnAssetChanged(System.Object)">
-      <summary>
-            Helper for invoking AssetChanged. 
-            Marked as internal because it's invoked by ContentTracker. 
             </summary>
     </member>
     <member name="M:FarseerPhysics.Controllers.ControllerFilter.IgnoreController(FarseerPhysics.Controllers.ControllerType)">

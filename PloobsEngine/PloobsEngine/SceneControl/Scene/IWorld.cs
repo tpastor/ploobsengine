@@ -579,6 +579,26 @@ namespace PloobsEngine.SceneControl
                 item.cam.CleanUp();
             }
 
+            foreach (var item in Objects.ToArray())
+            {
+                this.RemoveObject(item);
+            }
+
+            foreach (var item in SoundEmiters3D.ToArray())
+            {
+                this.RemoveSoundEmitter(item);
+            }
+
+            foreach (var item in Triggers.ToArray())
+            {
+                this.RemoveTrigger(item);
+            }
+
+            foreach (var item in Lights.ToArray())
+            {
+                this.RemoveLight(item);
+            }
+
             if (CleanUpObjectsOnDispose)
             {
                 foreach (var item in Objects)
