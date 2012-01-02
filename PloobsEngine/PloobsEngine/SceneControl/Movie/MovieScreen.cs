@@ -198,9 +198,12 @@ namespace PloobsEngine.SceneControl
         /// <param name="engine"></param>
         protected override void CleanUp(Engine.EngineStuff engine)
         {
-            videoPlayer.Dispose();            
-            engine.ContentManager.ReleaseAsset(location);            
-            base.CleanUp(engine);
+            if (CleanUpWhenRemoved)
+            {
+                videoPlayer.Dispose();
+                engine.ContentManager.ReleaseAsset(location);
+                base.CleanUp(engine);
+            }
         }
 
         /// <summary>

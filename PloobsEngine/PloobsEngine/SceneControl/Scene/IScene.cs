@@ -120,10 +120,13 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         /// <param name="engine"></param>
         protected override void CleanUp(EngineStuff engine)
-        {            
-            base.CleanUp(engine);
-            this.RenderTechnic.CleanUp();
-            World.CleanUp();
+        {
+            if (CleanUpWhenRemoved)
+            {
+                base.CleanUp(engine);
+                this.RenderTechnic.CleanUp();
+                World.CleanUp();
+            }
         }
 
 
