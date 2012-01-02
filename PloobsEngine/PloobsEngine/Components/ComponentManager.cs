@@ -117,6 +117,7 @@ namespace PloobsEngine.Components
         /// <summary>
         /// Draw the Afters draw.
         /// </summary>
+        /// <param name="render">The render.</param>
         /// <param name="gt">The gt.</param>
         /// <param name="activeView">The active view.</param>
         /// <param name="activeProjection">The active projection.</param>
@@ -146,7 +147,7 @@ namespace PloobsEngine.Components
         /// <summary>
         /// Loads the content.
         /// </summary>
-        /// <param name="engine">The engine.</param>
+        /// <param name="GraphicInfo">The graphic info.</param>
         internal void LoadContent(ref GraphicInfo GraphicInfo)
         {
             foreach (IComponent item in _comps.Values)

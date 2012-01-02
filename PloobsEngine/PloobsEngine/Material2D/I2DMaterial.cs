@@ -75,6 +75,12 @@ namespace PloobsEngine.Material2D
         /// </summary>
         /// <param name="gameTime">The game time.</param>
         /// <param name="obj">The obj.</param>
-        public virtual void Update(GameTime gameTime, I2DObject obj) { }             
+        public virtual void Update(GameTime gameTime, I2DObject obj) { }
+
+        /// <summary>
+        /// Cleans up.
+        /// </summary>
+        /// <param name="factory">The factory.</param>
+        public virtual void CleanUp(GraphicFactory factory) { }
     }
 }

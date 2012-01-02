@@ -29,6 +29,9 @@ using PloobsEngine.Engine.Logger;
 
 namespace PloobsEngine.SceneControl
 {
+    /// <summary>
+    /// When video Ended
+    /// </summary>
     public delegate void VideoEnded();
 
     /// <summary>
@@ -49,8 +52,14 @@ namespace PloobsEngine.SceneControl
         protected VideoPlayer videoPlayer;        
         protected bool started = false;
         protected bool play = true;        
-        private VideoEnded videoEnded;        
+        private VideoEnded videoEnded;
 
+        /// <summary>
+        /// Sets the video ended delegate.
+        /// </summary>
+        /// <value>
+        /// The video ended delegate.
+        /// </value>
         public VideoEnded VideoEndedDelegate
         {
             set
@@ -59,6 +68,12 @@ namespace PloobsEngine.SceneControl
             }
         }
 
+        /// <summary>
+        /// Load graphics content for the screen.
+        /// </summary>
+        /// <param name="GraphicInfo"></param>
+        /// <param name="factory"></param>
+        /// <param name="contentManager"></param>
         protected override void  LoadContent(Engine.GraphicInfo GraphicInfo, Engine.GraphicFactory factory, IContentManager contentManager)
         {
              base.LoadContent(GraphicInfo, factory, contentManager);            
@@ -67,6 +82,12 @@ namespace PloobsEngine.SceneControl
              videoPlayer.IsLooped = false;            
 
         }
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance is looped.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if this instance is looped; otherwise, <c>false</c>.
+        /// </value>
         public bool IsLooped
         {
             get
@@ -80,6 +101,9 @@ namespace PloobsEngine.SceneControl
         }
 
 
+        /// <summary>
+        /// Plays this instance.
+        /// </summary>
         public void Play()
         {
             if (started)
@@ -88,6 +112,9 @@ namespace PloobsEngine.SceneControl
                 play = true;
 
         }
+        /// <summary>
+        /// Stops this instance.
+        /// </summary>
         public void Stop()
         {
             if (started)
@@ -95,17 +122,28 @@ namespace PloobsEngine.SceneControl
             else
                 play = false;
         }
+        /// <summary>
+        /// Resumes this instance.
+        /// </summary>
         public void Resume()
         {
             if (started)
                 videoPlayer.Resume();
         }
+        /// <summary>
+        /// Sets the volume.
+        /// </summary>
+        /// <param name="vol">The vol.</param>
         public void setVolume(float vol)
         {
             if (started)
             videoPlayer.Volume = vol;
             ActiveLogger.LogMessage("Cant set volume if the movie did not started", LogLevel.RecoverableError);
         }
+        /// <summary>
+        /// Gets the state.
+        /// </summary>
+        /// <returns></returns>
         public MediaState getState()
         {
             if (started)
@@ -114,6 +152,10 @@ namespace PloobsEngine.SceneControl
             return MediaState.Stopped;
         }
 
+        /// <summary>
+        /// Update the Screen
+        /// </summary>
+        /// <param name="gameTime"></param>
         protected override void  Update(GameTime gameTime)	
         {
             started = true;
@@ -135,14 +177,37 @@ namespace PloobsEngine.SceneControl
             base.Update(gameTime);            
         }
 
+        /// <summary>
+        /// Videoes the ended.
+        /// </summary>
         public virtual void VideoEnded()
         {
         }
 
+        /// <summary>
+        /// Updates the movie.
+        /// </summary>
+        /// <param name="gt">The gt.</param>
         public virtual void UpdateMovie(GameTime gt)
         {
         }
 
+        /// <summary>
+        /// Cleans up resources that dont are exclusive of the screen
+        /// </summary>
+        /// <param name="engine"></param>
+        protected override void CleanUp(Engine.EngineStuff engine)
+        {
+            videoPlayer.Dispose();            
+            engine.ContentManager.ReleaseAsset(location);            
+            base.CleanUp(engine);
+        }
+
+        /// <summary>
+        /// This is called when the screen should draw itself.
+        /// </summary>
+        /// <param name="gameTime"></param>
+        /// <param name="render"></param>
         protected override void  Draw(GameTime gameTime, RenderHelper render)
         {
  	       render.Clear(backGoundColor);

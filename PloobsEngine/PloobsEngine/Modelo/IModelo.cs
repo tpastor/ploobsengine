@@ -33,7 +33,7 @@ namespace PloobsEngine.Modelo
     /// Called when the texture change
     /// </summary>
     /// <param name="type">The type.</param>
-    /// <param name="model">The model.</param>
+    /// <param name="tex">The tex.</param>
     public delegate void OnTextureChange(TextureType type,TextureInformation tex);
 
     /// <summary>
@@ -70,11 +70,23 @@ namespace PloobsEngine.Modelo
                 LoadModelo(factory);
         }
 
-        internal bool isInternal = false;                    
-        String    modelName = null;
-        
+        internal bool isInternal = false;
+        /// <summary>
+        /// Model Name
+        /// </summary>
+        protected String  modelName = null;
+
+        /// <summary>
+        /// All BAtchInformations of the model
+        /// </summary>
         protected BatchInformation[][] BatchInformations = null;
+        /// <summary>
+        /// All Texture Informations from the mode
+        /// </summary>
         protected TextureInformation[][] TextureInformations = null;
+        /// <summary>
+        /// Graphic Factory
+        /// </summary>
         protected GraphicFactory factory;
 
         /// <summary>
@@ -108,6 +120,8 @@ namespace PloobsEngine.Modelo
         /// </summary>
         /// <param name="textureName">Name of the texture.</param>
         /// <param name="type">The type.</param>
+        /// <param name="meshIndex">Index of the mesh.</param>
+        /// <param name="meshPartIndex">Index of the mesh part.</param>
         public void SetTexture(String textureName, TextureType type, int meshIndex = 0, int meshPartIndex = 0)
         {
             TextureInformation ti = TextureInformations[meshIndex][meshPartIndex];
@@ -146,7 +160,7 @@ namespace PloobsEngine.Modelo
         }
 
         /// <summary>
-        /// Gets the mesh number.
+        /// Gets the Total mesh number.
         /// </summary>
         public abstract int MeshNumber{get;}
 
@@ -183,7 +197,25 @@ namespace PloobsEngine.Modelo
             {
                 return modelName;
             }
-        }               
+        }
+
+        /// <summary>
+        /// Cleans up the IModelo
+        /// </summary>
+        public virtual void CleanUp(GraphicFactory factory)
+        {
+            factory.ReleaseAsset(Name);
+            for (int i = 0; i < MeshNumber; i++)
+            {
+                foreach (var item in TextureInformations[i])
+                {
+                    factory.ReleaseAsset(item.DiffuseMapName);
+                    factory.ReleaseAsset(item.BumpMapName);
+                    factory.ReleaseAsset(item.GlowName);
+                    factory.ReleaseAsset(item.SpecularMapName);
+                }
+            }
+        }
 
     }
     /// <summary>

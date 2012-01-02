@@ -17,8 +17,10 @@ namespace EngineTestes
 {
     public class MultScreen : IScene
     {
+        public event Action<int> evento;
+
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
-        {
+        {            
             world = new IWorld(new BepuPhysicWorld(-9.8f,false,1,true), new SimpleCuller(),null,true);
 
             ForwardRenderTecnichDescription desc = ForwardRenderTecnichDescription.Default();

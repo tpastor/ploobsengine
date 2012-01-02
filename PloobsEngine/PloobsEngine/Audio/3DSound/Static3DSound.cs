@@ -24,6 +24,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Audio;
 using PloobsEngine.SceneControl;
 using Microsoft.Xna.Framework;
+using PloobsEngine.Engine;
 
 namespace PloobsEngine.Audio
 {
@@ -32,12 +33,24 @@ namespace PloobsEngine.Audio
     /// </summary>
     public class Static3DSound : ISoundEmitter3D
     {
-        public Static3DSound(IContentManager cmanager, string audioname, Vector3 Position)
-            : base(cmanager,audioname)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Static3DSound"/> class.
+        /// </summary>
+        /// <param name="factory">The factory.</param>
+        /// <param name="audioname">The audioname.</param>
+        /// <param name="Position">The position.</param>
+        public Static3DSound(GraphicFactory factory, string audioname, Vector3 Position)
+            : base(factory, audioname)
         {
             EmiterPosition = Position;
         }
 
+        /// <summary>
+        /// Gets or sets the emiter position.
+        /// </summary>
+        /// <value>
+        /// The emiter position.
+        /// </value>
         public Vector3 EmiterPosition
         {
             get
@@ -50,6 +63,11 @@ namespace PloobsEngine.Audio
             }
         }
 
+        /// <summary>
+        /// Updates .
+        /// </summary>
+        /// <param name="gt">The gt.</param>
+        /// <param name="camera">The camera.</param>
         protected override void Update(Microsoft.Xna.Framework.GameTime gt, Cameras.ICamera camera)
         {   
             Listener.Position = camera.Position;

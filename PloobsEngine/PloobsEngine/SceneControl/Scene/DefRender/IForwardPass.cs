@@ -28,11 +28,13 @@ namespace PloobsEngine.SceneControl
     public interface IForwardPass
     {
         /// <summary>
-        /// Draws all the forward Objects 
+        /// Draws all the forward Objects
         /// </summary>
         /// <param name="gt">The gt.</param>
         /// <param name="world">The world.</param>
         /// <param name="render">The render.</param>
+        /// <param name="deferred">The deferred.</param>
+        /// <param name="forward">The forward.</param>
         void Draw(Microsoft.Xna.Framework.GameTime gt, IWorld world, RenderHelper render, List<IObject> deferred, List<IObject> forward);
     }
 }

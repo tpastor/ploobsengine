@@ -47,12 +47,16 @@ namespace PloobsEngine.SceneControl
         /// <param name="gameTime">The game time.</param>
         /// <param name="world">The world.</param>
         /// <param name="deferredGBuffer">The deferred G buffer.</param>
+        /// <param name="render">The render.</param>
         void DrawLights(GameTime gameTime,IWorld world, IDeferredGBuffer deferredGBuffer,RenderHelper render);
         /// <summary>
         /// Loads the content.
         /// </summary>
-        /// <param name="engine">The engine.</param>
-        /// <param name="useFloatBuffer">if set to <c>true</c> [use float buffer].</param>
+        /// <param name="manager">The manager.</param>
+        /// <param name="ginfo">The ginfo.</param>
+        /// <param name="factory">The factory.</param>
+        /// <param name="cullPointLight">if set to <c>true</c> [cull point light].</param>
+        /// <param name="useFloatingBufferForLightning">if set to <c>true</c> [use floating buffer for lightning].</param>
         void LoadContent(IContentManager manager, GraphicInfo ginfo, GraphicFactory factory,bool cullPointLight, bool useFloatingBufferForLightning );
         /// <summary>
         /// Get the generated Images by this pass

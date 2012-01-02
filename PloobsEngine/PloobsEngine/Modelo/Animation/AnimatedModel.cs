@@ -113,6 +113,11 @@ namespace PloobsEngine.Modelo.Animation
         {
             get { return skinnedModel.Model.Meshes.Count; }
         }
+
+        public override void CleanUp(GraphicFactory factory)
+        {
+            base.CleanUp(factory);
+        }
                       
         #endregion
     }

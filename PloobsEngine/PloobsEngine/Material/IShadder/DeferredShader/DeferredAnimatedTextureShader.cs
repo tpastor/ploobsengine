@@ -49,6 +49,7 @@ namespace PloobsEngine.Material
         /// </summary>
         /// <param name="numFrames">numero de frames que tem na textura</param>
         /// <param name="msBetweenFrames">tempo entre frames em milisegundos</param>
+        /// <param name="bilboardType">Type of the bilboard.</param>
         public DeferredAnimatedTextureShader(int numFrames, int msBetweenFrames, BilboardType bilboardType)
         {
             this.bilboardType = bilboardType;
@@ -222,12 +223,12 @@ namespace PloobsEngine.Material
 
         public override void BasicDraw(GameTime gt, IObject obj, Matrix view, Matrix projection, IList<ILight> lights, RenderHelper render, Plane? clippingPlane, bool useAlphaBlending = false)
         {
-            ///no reflection refraction
+            //no reflection refraction
         }
 
         public override void DepthExtractor(GameTime gt, IObject obj, Matrix View, Matrix projection, RenderHelper render)
         {
-            ///no shadow
+            //no shadow
         }
 
     

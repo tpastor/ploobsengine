@@ -20,10 +20,32 @@
 using System;
 namespace PloobsEngine.SceneControl.Scene
 {
+    /// <summary>
+    /// IRender Technic Specification
+    /// </summary>
     public interface IIRenderTechnic
     {
+        /// <summary>
+        /// Adds the post effect.
+        /// </summary>
+        /// <param name="postEffect">The post effect.</param>
         void AddPostEffect(global::PloobsEngine.SceneControl.IPostEffect postEffect);
+        /// <summary>
+        /// Determines whether [contains post effect] [the specified post effect].
+        /// </summary>
+        /// <param name="postEffect">The post effect.</param>
+        /// <returns>
+        ///   <c>true</c> if [contains post effect] [the specified post effect]; otherwise, <c>false</c>.
+        /// </returns>
         bool ContainsPostEffect(global::PloobsEngine.SceneControl.IPostEffect postEffect);
+        /// <summary>
+        /// Removes the post effect.
+        /// </summary>
+        /// <param name="postEffect">The post effect.</param>
         void RemovePostEffect(global::PloobsEngine.SceneControl.IPostEffect postEffect);
+        /// <summary>
+        /// Cleans up.
+        /// </summary>
+        void CleanUp();
     }
 }

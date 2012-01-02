@@ -42,7 +42,15 @@ namespace PloobsEngine.Utils
             this.MAX_HEIGHT = height;                
         }
 
+        /// <summary>
+        /// max width
+        /// default 356
+        /// </summary>
         public int MAX_WIDTH = 256;
+        /// <summary>
+        /// Max height
+        /// default 256
+        /// </summary>
         public int MAX_HEIGHT = 256;
                 
         /// <summary>

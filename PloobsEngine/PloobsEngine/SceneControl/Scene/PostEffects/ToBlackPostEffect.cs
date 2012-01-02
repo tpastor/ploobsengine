@@ -34,7 +34,6 @@ namespace PloobsEngine.SceneControl
         public ToBlackPostEffect() : base(PostEffectType.Deferred) { }
 
         Effect effect = null;                
-        RenderTarget2D tr2d;
         public Texture2D t;
 
         public override void Draw(Texture2D ImageToProcess, RenderHelper rHelper, GameTime gt, Engine.GraphicInfo GraphicInfo, IWorld world, bool useFloatingBuffer)

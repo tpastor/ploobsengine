@@ -36,14 +36,14 @@ namespace PloobsEngine.SceneControl._2DScene
        #if !WINDOWS_PHONE
         public I2DScene(IGui gui = null) : base(gui) { }
 #else
-        public I2DScene() : base() { }
+        public I2DScene() : base() {  }
 #endif
 
         #region properties
 
         private RenderTechnich2D _renderTecnic = null;        
-        private bool _isFirstTimeTechnic = true;              
-
+        private bool _isFirstTimeTechnic = true;
+        
 
         /// <summary>
         /// Gets the render technics.
@@ -157,7 +157,17 @@ namespace PloobsEngine.SceneControl._2DScene
         /// <param name="renderTech">The render tech.</param>
         /// <param name="world">The world.</param>
         protected abstract void SetWorldAndRenderTechnich(out RenderTechnich2D renderTech, out I2DWorld world);
-        
+
+        /// <summary>
+        /// Cleans up resources that are not exclusive to this screen
+        /// </summary>
+        /// <param name="engine"></param>
+        protected override void CleanUp(EngineStuff engine)
+        {
+            base.CleanUp(engine);
+            RenderTechnic.CleanUp();
+                   
+        }        
     }
 
 }

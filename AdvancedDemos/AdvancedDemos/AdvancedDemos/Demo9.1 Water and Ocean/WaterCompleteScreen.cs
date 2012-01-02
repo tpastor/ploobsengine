@@ -64,6 +64,7 @@ namespace AdvancedDemo4._0
             }
 
             ExtractXmlModelLoader ext = new ExtractXmlModelLoader("Content//ModelInfos//", "Model//", "Textures//");
+            this.AttachCleanUpAble(ext);
             ModelLoaderData data = ext.Load(factory, GraphicInfo, "shadow");
             WorldLoader wl = new WorldLoader();
             wl.OnCreateIObject += new CreateIObject(wl_OnCreateIObject);

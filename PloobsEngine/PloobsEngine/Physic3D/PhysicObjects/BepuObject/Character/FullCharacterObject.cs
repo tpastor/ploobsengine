@@ -78,7 +78,6 @@ namespace PloobsEngine.Physics.Bepu
             }
         }
 
-        Vector3 scale;
         public override Vector3 Scale
         {
             get
@@ -123,7 +122,6 @@ namespace PloobsEngine.Physics.Bepu
             CharacterController.Jump();
         }
 
-        private bool isducking = false;
         public void Duck()
         {
             CharacterController.StanceManager.DesiredStance = BEPUphysicsDemos.AlternateMovement.Character.Stance.Crouching ;

@@ -64,7 +64,7 @@ namespace PloobsEngine.Commands
         /// <param name="recieverId">The reciever id.</param>
         public void SendCommandSyncronous(ICommand command, String recieverId)
         {
-            ///this is removed in Release version, critical code here
+            //this is removed in Release version, critical code here
             System.Diagnostics.Debug.Assert(command != null,"command cannot be null");
             System.Diagnostics.Debug.Assert(!String.IsNullOrEmpty(recieverId), "reciver id cannot be null");
             SendCommand(command, recieverId);

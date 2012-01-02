@@ -79,11 +79,12 @@ namespace PloobsEngine.Features.DebugDraw
                 effect.TextureEnabled = false;                
             }        
         }
-    
+
 
         /// <summary>
         /// Draws the box.
         /// </summary>
+        /// <param name="render">The render.</param>
         /// <param name="view">The viewing matrix.</param>
         /// <param name="projection">The projection matrix.</param>
         public void Draw(RenderHelper render, Matrix view, Matrix projection)

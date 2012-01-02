@@ -46,7 +46,7 @@ namespace PloobsEngine.Modelo
         /// </summary>
         /// <param name="factory">The factory.</param>
         /// <param name="BilboardsName">Name of the bilboards.</param>
-        /// <param name="diffuseTextuteName">Name of the diffuse textute.</param>
+        /// <param name="diffuseTextureName">Name of the diffuse texture.</param>
         /// <param name="instances">The instances.</param>
         public InstancedBilboardModel(GraphicFactory factory, String BilboardsName, String diffuseTextureName, BilboardInstance[] instances)
             : base(factory, BilboardsName  ,false)
@@ -130,7 +130,13 @@ namespace PloobsEngine.Modelo
             TextureInformations[0][0] = new TextureInformation(isInternal, factory, diffuseTextureName, null, null, null);
             TextureInformations[0][0].LoadTexture();
         }
-        
+
+        public override void CleanUp(GraphicFactory factory)
+        {
+            base.CleanUp(factory);
+            BatchInformations[0][0].InstancedVertexBuffer.Dispose();            
+            TextureInformations[0][0].ClenaUp(factory);
+        }
 
         public override int MeshNumber
         {

@@ -24,15 +24,10 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using PloobsEngine.Engine.Logger;
+using PloobsEngine.Utils;
 
 namespace PloobsEngine.Engine
-{
-    /// <summary>
-    /// When GraphicInfo changes
-    /// </summary>
-    /// <param name="newGraphicInfo">The new graphic info.</param>
-    public delegate void OnGraphicInfoChange(GraphicInfo newGraphicInfo);
-    
+{   
     /// <summary>
     /// Contains Graphics Informations about the current execution
     /// </summary>
@@ -43,8 +38,7 @@ namespace PloobsEngine.Engine
             this.BackBufferHeight = BackBufferHeight;
             this.BackBufferWidth = BackBufferWidth;
             this.FullScreenRectangle = FullScreenRectangle;
-            this.HalfPixel = halfPixel;
-            OnGraphicInfoChange = null;
+            this.HalfPixel = halfPixel;            
             this.device = device;
             Viewport = device.Viewport;
             this.MultiSample = MultiSample;
@@ -87,12 +81,6 @@ namespace PloobsEngine.Engine
             UseAnisotropicFiltering = useAnisotropicFiltering;
         }
 
-        internal void FireResetEvent(object obj, EventArgs args)
-        {
-            if(DeviceReset!=null)
-                DeviceReset(obj, args);
-        }
-
         internal EngineStuff EngineStuff;
 
         private GraphicsAdapter graphicsAdapter;
@@ -132,13 +120,7 @@ namespace PloobsEngine.Engine
             internal set { samplerState = value; }
         }
 
-        private GraphicsDevice device;
-
-        internal void FireEvent(GraphicInfo gi)
-        {
-            if(OnGraphicInfoChange!= null)
-                OnGraphicInfoChange(gi);
-        }
+        private GraphicsDevice device;        
 
         private bool useMipMap;
 
@@ -176,17 +158,76 @@ namespace PloobsEngine.Engine
             internal set { multiSample = value; }
         }
 
+        
+
+#if !WINDOWS_PHONE
         /// <summary>
         /// Occurs when [on graphic info change].
         /// </summary>
-        public event OnGraphicInfoChange OnGraphicInfoChange;
+        public event EventHandler OnGraphicInfoChange
+        {
+            add { _onGraphicInfoChange.Add(value); }
+            remove { _onGraphicInfoChange.Remove(value); }
+        }
+
+        internal void FireEvent(GraphicInfo gi)
+        {
+            _onGraphicInfoChange.Raise(this,null);
+        }
+
+        SmartWeakEvent<EventHandler> _onGraphicInfoChange
+        = new SmartWeakEvent<EventHandler>();
+
+        SmartWeakEvent<EventHandler> _deviceReset
+        = new SmartWeakEvent<EventHandler>();
 
         /// <summary>
         /// Occurs when [device reset].
         /// </summary>
-        public event EventHandler<EventArgs> DeviceReset = null;
+        public event EventHandler DeviceReset
+        {
+            add { _deviceReset.Add(value); }
+            remove { _deviceReset.Remove(value); }
+        }
+
+
+        internal void FireResetEvent(object obj, EventArgs args)
+        {            
+             _deviceReset.Raise(obj, args);
+        }
+
+#else
+        internal void ClearOnGraphicInfoChangeEvent()
+        {
+            OnGraphicInfoChange = null;
+            DeviceReset = null;
+        }
+
+        /// <summary>
+        /// Occurs when [on graphic info change].
+        /// </summary>
+        public event EventHandler OnGraphicInfoChange;
+
+        internal void FireEvent(GraphicInfo gi)
+        {
+            if(OnGraphicInfoChange!= null)
+                OnGraphicInfoChange(gi,null);
+        }
 
         
+        /// <summary>
+        /// Occurs when [device reset].
+        /// </summary>
+        public event EventHandler DeviceReset;
+
+        internal void FireResetEvent(object obj, EventArgs args)
+        {            
+            if(DeviceReset!=null)
+                DeviceReset(obj, args);
+        }
+#endif
+
+
         private int backBufferHeight;
 
         /// <summary>
@@ -263,6 +304,7 @@ namespace PloobsEngine.Engine
         /// <param name="depthFormat">The depth format.</param>
         /// <param name="useMipMap">if set to <c>true</c> [use mip map].</param>
         /// <param name="multisample">The multisample.</param>
+        /// <param name="GraphicsProfile">The graphics profile.</param>
         /// <returns></returns>
         public bool CheckIfRenderTargetFormatIsSupported(SurfaceFormat format, DepthFormat depthFormat, bool useMipMap, int multisample, GraphicsProfile GraphicsProfile = GraphicsProfile.HiDef)
         {
@@ -288,7 +330,7 @@ namespace PloobsEngine.Engine
 
                 return false;
             }
-            else ///true !!!
+            else //true !!!
             {
                 return true;
             }

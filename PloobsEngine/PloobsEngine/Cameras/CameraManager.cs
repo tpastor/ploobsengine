@@ -65,8 +65,14 @@ namespace PloobsEngine.Cameras
     /// Camera holding interface
     /// </summary>
     public struct CameraDescription
-    {        
+    {
+        /// <summary>
+        /// Name of the camera
+        /// </summary>
         public String name;
+        /// <summary>
+        /// Camera
+        /// </summary>
         public ICamera cam;
     };
 
@@ -196,8 +202,9 @@ namespace PloobsEngine.Cameras
         /// <summary>
         /// Set active camera
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="time">tempo de demora ou velocidade  -> para controlar o interpolador</param>
+        /// <param name="name">The name.</param>
+        /// <param name="type">The type.</param>
+        /// <param name="timeOrStep">The time or step.</param>
         public void SetActiveCamera(String name,  InterpolationType type ,float timeOrStep)
         {
             if (activeCameraType == State.NORMAL)

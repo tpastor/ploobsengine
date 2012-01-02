@@ -88,9 +88,7 @@ namespace PloobsEngine.Cameras
         private float _farPlane = 1000.0f;
         private Matrix _view;
         private Matrix _projection;
-        private BoundingBox _box;
-        private BoundingFrustum _frustrum;
-        private int _id;
+        private BoundingFrustum _frustrum;        
 
         #endregion
 

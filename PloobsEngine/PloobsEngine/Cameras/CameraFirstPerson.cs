@@ -79,7 +79,7 @@ namespace PloobsEngine.Cameras
         /// Initializes a new instance of the <see cref="CameraFirstPerson"/> class.
         /// </summary>
         /// <param name="useMouse">if set to <c>true</c> [use mouse].</param>
-        /// <param name="viewport">The viewport.</param>
+        /// <param name="graphicInfo">The graphic info.</param>
         public CameraFirstPerson(bool useMouse, GraphicInfo graphicInfo)
             : this(0, 0, new Vector3(0, 100, 150), graphicInfo)
         {
@@ -90,7 +90,8 @@ namespace PloobsEngine.Cameras
         /// Initializes a new instance of the <see cref="CameraFirstPerson"/> class.
         /// </summary>
         /// <param name="useMouse">if set to <c>true</c> [use mouse].</param>
-        /// <param name="position">The position.</param>        
+        /// <param name="position">The position.</param>
+        /// <param name="graphicInfo">The graphic info.</param>
         public CameraFirstPerson(bool useMouse, Vector3 position, GraphicInfo graphicInfo)
             : this(0, 0, position, graphicInfo)
         {
@@ -113,7 +114,7 @@ namespace PloobsEngine.Cameras
         /// <param name="lrRot">The leftright rotation.</param>
         /// <param name="udRot">The updown rotation.</param>
         /// <param name="startingPos">The starting pos.</param>
-        /// <param name="viewport">The viewport.</param>        
+        /// <param name="graphicInfo">The graphic info.</param>
 #if WINDOWS_PHONE
         /// <param name="useAcelerometer">if set to <c>true</c> [use acelerometer].</param>
         public CameraFirstPerson(float lrRot, float udRot, Vector3 startingPos, GraphicInfo graphicInfo, bool useAcelerometer = false)
@@ -222,7 +223,7 @@ namespace PloobsEngine.Cameras
             this.updownRot = udRot;            
             _position = startingPos;
             _aspectRatio = graphicInfo.Viewport.AspectRatio;
-            graphicInfo.OnGraphicInfoChange += new OnGraphicInfoChange(graphicInfo_OnGraphicInfoChange);
+            graphicInfo.OnGraphicInfoChange+=new EventHandler(graphicInfo_OnGraphicInfoChange);
             UpdateViewMatrix();
 #if WINDOWS
             Mouse.SetPosition(graphicInfo.Viewport.Width / 2, graphicInfo.Viewport.Height / 2);
@@ -232,12 +233,14 @@ namespace PloobsEngine.Cameras
             this._frustrum = new BoundingFrustum(_view * _projection);            
         }
 
-        void graphicInfo_OnGraphicInfoChange(GraphicInfo newGraphicInfo)
+        void graphicInfo_OnGraphicInfoChange(object sender, EventArgs e)
         {
-            _aspectRatio = newGraphicInfo.Viewport.AspectRatio;
+            GraphicInfo ginfo = (GraphicInfo)sender;
+            _aspectRatio = ginfo.Viewport.AspectRatio;
             _projection = Matrix.CreatePerspectiveFieldOfView(_fieldOdView, _aspectRatio, _nearPlane, _farPlane);
             this._frustrum = new BoundingFrustum(_view * _projection);            
         }
+
 
         #region Fields
 
@@ -456,16 +459,25 @@ namespace PloobsEngine.Cameras
             }
         }
 
+        /// <summary>
+        /// Gets the view.
+        /// </summary>
         public override Matrix View
         {
             get { return _view; }
         }
 
+        /// <summary>
+        /// Gets the projection.
+        /// </summary>
         public override Matrix Projection
         {
             get { return _projection; }
         }
 
+        /// <summary>
+        /// Gets the bounding frustum.
+        /// </summary>
         public override BoundingFrustum BoundingFrustum
         {
             get 
@@ -497,6 +509,10 @@ namespace PloobsEngine.Cameras
         }
 
 
+        /// <summary>
+        /// Updates .
+        /// </summary>
+        /// <param name="gt">The gt.</param>
         protected override void Update(Microsoft.Xna.Framework.GameTime gt)
         {
              UpdateCamera(Mouse.GetState(),Keyboard.GetState());

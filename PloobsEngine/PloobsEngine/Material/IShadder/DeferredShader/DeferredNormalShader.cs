@@ -99,6 +99,7 @@ namespace PloobsEngine.Material
         /// <param name="obj">The obj.</param>
         /// <param name="render">The render.</param>
         /// <param name="camera">The camera.</param>
+        /// <param name="lights">The lights.</param>
         public override void Draw(GameTime gt, IObject obj, RenderHelper render, ICamera camera, IList<ILight> lights)
         {   
                 IModelo modelo = obj.Modelo;           

@@ -116,6 +116,7 @@ namespace PloobsEngine.SceneControl._2DScene
         /// <summary>
         /// Executes the technic.
         /// </summary>
+        /// <param name="gameTime">The game time.</param>
         /// <param name="render">The render.</param>
         /// <param name="world">The world.</param>
         protected abstract void ExecuteTechnic(GameTime gameTime, RenderHelper render, I2DWorld world);
@@ -148,6 +149,14 @@ namespace PloobsEngine.SceneControl._2DScene
         {
             get;
         }
+
+
+        #region IIRenderTechnic Members
+
+
+        public abstract void CleanUp();
         
+
+        #endregion
     }
 }

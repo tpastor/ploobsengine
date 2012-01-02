@@ -34,8 +34,10 @@ namespace PloobsEngine.Loader
     {
         #region IModelLoader Members
 
+        List<String> modelNames = new List<string>();
         public ModelLoaderData Load(Engine.GraphicFactory factory, Engine.GraphicInfo info, string Name)
         {
+            modelNames.Add(Name);
             ModelLoaderData ModelLoaderData = new ModelLoaderData();
             Model model = factory.GetModel(Name);
             Matrix[] m = new Matrix[model.Bones.Count];
@@ -84,6 +86,20 @@ namespace PloobsEngine.Loader
 
 
             return ModelLoaderData;
+        }
+
+        #endregion
+
+        #region IModelLoader Members
+
+        public void CleanUp(Engine.GraphicFactory factory)
+        {
+            foreach (var item in modelNames)
+            {
+                factory.ReleaseAsset(item);
+            }
+            modelNames.Clear();
+
         }
 
         #endregion

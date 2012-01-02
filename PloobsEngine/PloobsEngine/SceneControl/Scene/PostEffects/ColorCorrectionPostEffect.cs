@@ -70,7 +70,7 @@ namespace PloobsEngine.SceneControl
 
         public override void Draw(Texture2D ImageToProcess, RenderHelper rHelper, GameTime gt, Engine.GraphicInfo GraphicInfo, IWorld world, bool useFloatingBuffer)
         {
-            ///Draw a quad using the "effect", passing the CurrentImage as a Parameter            
+            //Draw a quad using the "effect", passing the CurrentImage as a Parameter            
             effect.Parameters["ColorCorrect"].SetValue(colorCorrect);
             effect.Parameters["ColorAdd"].SetValue(colorAdd);
             effect.Parameters["ColorToAddIntensity"].SetValue(colorToAddIntensity);
@@ -83,7 +83,7 @@ namespace PloobsEngine.SceneControl
 
         public override void Init(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
         {
-            ///Load the asset
+            //Load the asset
             effect = factory.GetEffect("colorCorrection",false,true);            
         }
 

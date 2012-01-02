@@ -24,6 +24,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Engine.Logger;
 using Microsoft.Xna.Framework.Graphics;
+using PloobsEngine.Engine;
 
 namespace PloobsEngine.SceneControl
 {    
@@ -87,7 +88,7 @@ namespace PloobsEngine.SceneControl
         {
             this.ginfo = ginfo;
             this.factory = factory;
-            this.ginfo.OnGraphicInfoChange += new Engine.OnGraphicInfoChange(ginfo_OnGraphicInfoChange);
+            this.ginfo.OnGraphicInfoChange+=new EventHandler(ginfo_OnGraphicInfoChange); ;
 
             if (desc.UsePostEffect)
             {
@@ -97,8 +98,9 @@ namespace PloobsEngine.SceneControl
             base.AfterLoadContent(manager, ginfo, factory);
         }
 
-        void ginfo_OnGraphicInfoChange(Engine.GraphicInfo newGraphicInfo)
+        void ginfo_OnGraphicInfoChange(object sender, EventArgs e)
         {
+            GraphicInfo newGraphicInfo = (GraphicInfo)sender;
             if (renderTarget != null && postEffectTarget != null)
             {
                 renderTarget.Dispose();
@@ -107,7 +109,7 @@ namespace PloobsEngine.SceneControl
                 postEffectTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
             }
         }
-
+        
         protected override void ExecuteTechnic(GameTime gameTime, RenderHelper render, IWorld world)
         {
             world.Culler.StartFrame(world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection, world.CameraManager.ActiveCamera.BoundingFrustum);
@@ -133,7 +135,7 @@ namespace PloobsEngine.SceneControl
             render.RenderPreComponents(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection);                        
             foreach (var item in objList)
             {
-                ///critical code, no log
+                //critical code, no log
                 System.Diagnostics.Debug.Assert(item.Material.MaterialType == Material.MaterialType.FORWARD, "This Technich is just for forward materials and shaders");
                 if(item.Material.IsVisible)
                     item.Material.Drawn(gameTime,item, world.CameraManager.ActiveCamera, world.Lights, render);                
@@ -182,6 +184,21 @@ namespace PloobsEngine.SceneControl
         }
 
         #endregion
+
+        public override void CleanUp()
+        {
+            this.ginfo.OnGraphicInfoChange -= ginfo_OnGraphicInfoChange;
+            if (renderTarget != null && postEffectTarget != null)
+            {
+                renderTarget.Dispose();
+                postEffectTarget.Dispose();
+            }
+
+            for (int i = 0; i < PostEffects.Count; i++)
+            {
+                PostEffects[i].CleanUp();
+            }
+        }
     }
 }
 

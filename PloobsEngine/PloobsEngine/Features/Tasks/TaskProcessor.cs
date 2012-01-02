@@ -1,4 +1,5 @@
-﻿#region License
+﻿
+#region License
 /*
     PloobsEngine Game Engine Version 0.3 Beta
     Copyright (C) 2011  Ploobs
@@ -27,6 +28,10 @@ using System.IO;
 using PloobsEngine.Engine.Logger;
 using System.Threading;
 
+#if WINDOWS_PHONE
+using Worker = System.ComponentModel.BackgroundWorker;
+#endif
+
 namespace PloobsEngine.Features
 {
     /// <summary>
@@ -48,6 +53,7 @@ namespace PloobsEngine.Features
         /// <param name="task">The task.</param>
         public void StartTask(ITask task)
         {
+#if !WINDOWS_PHONE
             Task t = new Task(task.Process);
             if (task.TaskEndType == TaskEndType.INSTANT)
             {                
@@ -57,8 +63,41 @@ namespace PloobsEngine.Features
             {                
                 t.BeginInvoke(new AsyncCallback(onfinished), task);                
             }
-        }
+#else
+         Worker worker = new Worker();
+         worker.DoWork+=new System.ComponentModel.DoWorkEventHandler(                          
+             (a,b)=> task.Process()
+        );
 
+         if (task.TaskEndType == TaskEndType.INSTANT)
+         {
+             worker.RunWorkerCompleted+=new System.ComponentModel.RunWorkerCompletedEventHandler(
+                 (a, b) => task.Result()
+                     );
+         }
+         else if (task.TaskEndType == TaskEndType.ON_NEXT_UPDATE)
+         {
+             worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(
+                 (a, b) =>
+                 {
+                     if (b.Error != null)
+                     {
+                         ActiveLogger.LogMessage("Thread finished with errors " + b.Error.ToString(), LogLevel.RecoverableError);
+                         return;
+                     }
+                     lock (finished)
+                     {
+                         finished.Add(task);
+                     }
+                 }
+                 );
+         }       
+          
+          worker.RunWorkerAsync();
+#endif
+        }
+                
+#if !WINDOWS_PHONE
         private void onfinished(IAsyncResult ar)
         {
             if (ar.IsCompleted == false)
@@ -75,6 +114,7 @@ namespace PloobsEngine.Features
                 finished.Add(task);
             }
         }
+#endif
 
         protected override void Update(GameTime gt)
         {
@@ -86,7 +126,11 @@ namespace PloobsEngine.Features
                 {
                     foreach (var item in finished)
                     {
+#if !WINDOWS_PHONE
                         item.Result(null);
+#else
+                        item.Result();
+#endif
                     }
                     finished.Clear();
                 }

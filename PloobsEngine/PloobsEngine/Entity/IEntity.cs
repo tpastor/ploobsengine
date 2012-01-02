@@ -33,12 +33,12 @@ namespace PloobsEngine.Entity
         /// return the entity id
         /// </summary>
         /// <returns>the id</returns>
-        int GetId();
+        Int64 GetId();                
 
         /// <summary>
         /// sets the id
         /// </summary>
         /// <param name="id"></param>
-        void SetId(int id);
+        void SetId(Int64 id); 
     }
 }

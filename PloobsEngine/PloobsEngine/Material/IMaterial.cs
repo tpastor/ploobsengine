@@ -127,7 +127,12 @@ namespace PloobsEngine.Material
         /// <value>
         /// 	<c>true</c> if this instance is visible; otherwise, <c>false</c>.
         /// </value>
-        bool IsVisible { set; get; }                
+        bool IsVisible { set; get; }              
+  
+        /// <summary>
+        /// Cleans up.
+        /// </summary>
+        void CleanUp(GraphicFactory factory);
     }
 
     /// <summary>

@@ -153,7 +153,7 @@ namespace PloobsEngine.NetWorking
         private void waitConnection()
         {
             NetIncomingMessage msg;
-            ///TODO - based on time waiting .... configurable
+            //TODO - based on time waiting .... configurable
             int i = 0;
             while (i < 100)
             {

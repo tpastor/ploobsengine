@@ -29,6 +29,11 @@ namespace PloobsEngine.Engine.Logger
     /// </summary>
     public interface ILogger
     {
+        /// <summary>
+        /// Logs the specified message.
+        /// </summary>
+        /// <param name="Message">The message.</param>
+        /// <param name="logLevel">The log level.</param>
         void Log(String Message, LogLevel logLevel);
     }
 

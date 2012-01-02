@@ -113,8 +113,9 @@ namespace PloobsEngine.Material
 
         /// <summary>
         /// Updates this shader
-        /// Called every frame once        
+        /// Called every frame once
         /// </summary>
+        /// <param name="gt">The gt.</param>
         /// <param name="ent">The ent.</param>
         /// <param name="lights">The lights.</param>
         public virtual void Update(GameTime gt, IObject ent, IList<ILight> lights)
@@ -142,9 +143,10 @@ namespace PloobsEngine.Material
 
         /// <summary>
         /// Called after the draw phase.
-        /// In deferred its responsible for the Forward Pass, in forward its not called        
+        /// In deferred its responsible for the Forward Pass, in forward its not called
         /// </summary>
-        /// <param name="modelo">The modelo.</param>
+        /// <param name="gt">The gt.</param>
+        /// <param name="obj">The obj.</param>
         /// <param name="render">The render.</param>
         /// <param name="cam">The camera.</param>
         /// <param name="lights">The lights.</param>
@@ -156,10 +158,19 @@ namespace PloobsEngine.Material
         /// <summary>
         /// Draw
         /// </summary>
-        /// <param name="modelo">The modelo.</param>
+        /// <param name="gt">The gt.</param>
+        /// <param name="obj">The obj.</param>
         /// <param name="render">The render.</param>
         /// <param name="cam">The cam.</param>
+        /// <param name="lights">The lights.</param>
         public virtual void Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<ILight> lights)
+        {            
+        }
+
+        /// <summary>
+        /// Cleanups this instance.
+        /// </summary>
+        public virtual void Cleanup(GraphicFactory factory)
         {            
         }
 
@@ -169,8 +180,8 @@ namespace PloobsEngine.Material
         /// </summary>
         /// <param name="gt">The gt.</param>
         /// <param name="obj">The obj.</param>
-        /// <param name="cam">The cam.</param>
-        /// <param name="lights">The lights.</param>
+        /// <param name="View">The view.</param>
+        /// <param name="projection">The projection.</param>
         /// <param name="render">The render.</param>
         public virtual void DepthExtractor(GameTime gt, IObject obj, Matrix View, Matrix projection, RenderHelper render)
         {
@@ -195,10 +206,12 @@ namespace PloobsEngine.Material
         /// </summary>
         /// <param name="gt">The gt.</param>
         /// <param name="obj">The obj.</param>
-        /// <param name="cam">The cam.</param>
+        /// <param name="view">The view.</param>
+        /// <param name="projection">The projection.</param>
         /// <param name="lights">The lights.</param>
         /// <param name="render">The render.</param>
         /// <param name="clippingPlane">The clipping plane.</param>
+        /// <param name="useAlphaBlending">if set to <c>true</c> [use alpha blending].</param>
         public virtual void BasicDraw(GameTime gt, IObject obj, Matrix view, Matrix projection, IList<ILight> lights, RenderHelper render,Plane? clippingPlane, bool useAlphaBlending = false)
         {
             Matrix wld = obj.WorldMatrix;

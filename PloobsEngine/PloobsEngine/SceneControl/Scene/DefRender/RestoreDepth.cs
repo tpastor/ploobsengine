@@ -54,7 +54,7 @@ namespace PloobsEngine.SceneControl
         }        
 
         private RenderTarget2D target;
-        private Effect restore;        
+        private Effect restore;
 
         /// <summary>
         /// Performs the forward pass.
@@ -62,6 +62,7 @@ namespace PloobsEngine.SceneControl
         /// <param name="combined">The combined.</param>
         /// <param name="depth">The depth.</param>
         /// <param name="render">The render.</param>
+        /// <param name="ginfo">The ginfo.</param>
         public void PerformForwardPass(Texture2D combined, Texture2D depth, RenderHelper render,GraphicInfo ginfo)
         {
             render.PushRenderTarget(target);                           

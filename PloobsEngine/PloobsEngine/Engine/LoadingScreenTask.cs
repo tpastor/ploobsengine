@@ -36,6 +36,13 @@ namespace PloobsEngine.Engine
         IScreen ToLoadScreen;
         IContentManager contentManager;
         EngineStuff engine;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LoadingScreenTask"/> class.
+        /// </summary>
+        /// <param name="ToLoadScreen">To load screen.</param>
+        /// <param name="contentManager">The content manager.</param>
+        /// <param name="engine">The engine.</param>
+        /// <param name="LoadingScreen">The loading screen.</param>
         public LoadingScreenTask(IScreen ToLoadScreen, IContentManager contentManager, EngineStuff engine, IScreen LoadingScreen)
         {
             this.ToLoadScreen = ToLoadScreen;
@@ -46,12 +53,22 @@ namespace PloobsEngine.Engine
 
         #region ITask Members
 
+#if !WINDOWS_PHONE
         public override void Result(IAsyncResult result)
+#else
+        /// <summary>
+        /// Called when the task ends
+        /// </summary>
+        public override void Result()
+#endif
         {
             LoadingScreen.ScreenManager.RemoveScreen(LoadingScreen);
             LoadingScreen.ScreenManager.AddScreen(ToLoadScreen,null,false);            
         }
 
+        /// <summary>
+        /// Processes the task.
+        /// </summary>
         public override void Process()
         {
             ToLoadScreen.iInitScreen(ToLoadScreen.GraphicInfo, engine);
@@ -60,6 +77,12 @@ namespace PloobsEngine.Engine
             ToLoadScreen.IsLoaded = true;
         }
 
+        /// <summary>
+        /// Gets the end type of the task.
+        /// </summary>
+        /// <value>
+        /// The end type of the task.
+        /// </value>
         public override TaskEndType TaskEndType
         {
             get { return Features.TaskEndType.ON_NEXT_UPDATE; }

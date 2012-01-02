@@ -53,6 +53,8 @@ namespace PloobsEngine.SceneControl
         /// <param name="manager">The manager.</param>
         /// <param name="ginfo">The ginfo.</param>
         /// <param name="factory">The factory.</param>
+        /// <param name="useFloatBuffer">if set to <c>true</c> [use float buffer].</param>
+        /// <param name="saveToTexture">if set to <c>true</c> [save to texture].</param>
         void LoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, bool useFloatBuffer, bool saveToTexture);
         
         /// <summary>

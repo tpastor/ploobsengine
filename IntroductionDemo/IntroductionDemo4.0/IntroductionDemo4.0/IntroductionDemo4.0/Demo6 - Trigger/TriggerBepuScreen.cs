@@ -258,13 +258,13 @@ namespace IntroductionDemo4._0
         #endregion
 
         #region IEntity Members
-        int id;
-        public int GetId()
+        long id;
+        public long GetId()
         {
             return id;
         }
 
-        public void SetId(int id)
+        public void SetId(long id)
         {
             this.id = id;
         }

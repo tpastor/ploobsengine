@@ -135,6 +135,13 @@ namespace PloobsEngine.Cameras
         /// </value>
         public String Name { get; set; }
 
+        /// <summary>
+        /// Called when the attached screen is removed
+        /// If this camera is not attached to a screen, this method is not called =P
+        /// </summary>
+        public virtual void CleanUp()
+        {
+        }
 
         #region ISerializable Members
 

@@ -33,8 +33,18 @@ namespace PloobsEngine.Modelo
     /// </summary>
     public class TextureInformation
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TextureInformation"/> class.
+        /// </summary>
+        /// <param name="isinternal">if set to <c>true</c> [isinternal].</param>
+        /// <param name="factory">The factory.</param>
+        /// <param name="diffuseTextureName">Name of the diffuse texture.</param>
+        /// <param name="bumpTextureName">Name of the bump texture.</param>
+        /// <param name="specularTextureName">Name of the specular texture.</param>
+        /// <param name="glowTextureName">Name of the glow texture.</param>
         public TextureInformation(bool isinternal, GraphicFactory factory, String diffuseTextureName = null, String bumpTextureName = null, String specularTextureName = null, String glowTextureName = null)
         {
+            isDisposed = false;
             this.isInternal = isinternal;            
 
             if (factory == null)
@@ -74,9 +84,52 @@ namespace PloobsEngine.Modelo
         protected Texture2D multitexture2 = null;
         protected Texture2D multitexture3 = null;
         protected Texture2D multitexture4 = null;
-        protected Texture2D heightMap = null;
-        protected BatchInformation[][] BatchInformations = null;
-        protected GraphicFactory factory;        
+        protected Texture2D heightMap = null;        
+        protected GraphicFactory factory;
+
+        public bool isDisposed
+        {
+            private set;
+            get;
+        }
+
+
+        /// <summary>
+        /// Disposes all.
+        /// </summary>
+        /// <param name="factory">The factory.</param>
+        public void ClenaUp(GraphicFactory factory)
+        {
+            if (bump != null)
+                factory.ReleaseAsset(BumpMapName);
+
+            if (specular != null)
+                factory.ReleaseAsset(_specularName);
+
+            if (diffuse != null)
+                factory.ReleaseAsset(DiffuseMapName);
+
+            if (glow != null)
+                factory.ReleaseAsset(_glowName);
+
+            if (heightMap != null)
+                factory.ReleaseAsset(HeightMapName);
+
+            if (multitexture1 != null)
+                factory.ReleaseAsset(MultiTexture1MapName);
+
+            if (multitexture2 != null)
+                factory.ReleaseAsset(MultiTexture2MapName);
+
+            if (multitexture3 != null)
+                factory.ReleaseAsset(MultiTexture3MapName);
+
+            if (multitexture4 != null)
+                factory.ReleaseAsset(MultiTexture4MapName);
+
+
+            isDisposed = true;
+        }
 
         /// <summary>
         /// Occurs when [on texture change].
@@ -84,6 +137,11 @@ namespace PloobsEngine.Modelo
         public event OnTextureChange OnTextureChange = null;
 
 
+        /// <summary>
+        /// Gets the cube texture.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns></returns>
         public TextureCube getCubeTexture(TextureType type)
         {
             if (type == TextureType.ENVIRONMENT)
@@ -268,7 +326,6 @@ namespace PloobsEngine.Modelo
         /// <summary>
         /// Load the model
         /// </summary>
-        /// <param name="factory">The factory.</param>
         internal void LoadTexture()
         {
             if (!String.IsNullOrEmpty(_reflectionName) && _reflectionName != CUSTOM)
@@ -318,6 +375,11 @@ namespace PloobsEngine.Modelo
             }                        
         }
 
+        /// <summary>
+        /// Sets the cube texture.
+        /// </summary>
+        /// <param name="tex">The tex.</param>
+        /// <param name="type">The type.</param>
         public void SetCubeTexture(TextureCube tex, TextureType type)
         {
             switch (type)

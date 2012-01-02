@@ -51,6 +51,9 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         /// <param name="gameTime">The game time.</param>
         /// <param name="world">The world.</param>
+        /// <param name="render">The render.</param>
+        /// <param name="ginfo">The ginfo.</param>
+        /// <param name="objectsToPreDraw">The objects to pre draw.</param>
         void PreDrawScene(GameTime gameTime, IWorld world, RenderHelper render, GraphicInfo ginfo, List<IObject> objectsToPreDraw);
 
         /// <summary>
@@ -59,6 +62,9 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         /// <param name="gameTime">The game time.</param>
         /// <param name="world">The world.</param>
+        /// <param name="render">The render.</param>
+        /// <param name="ginfo">The ginfo.</param>
+        /// <param name="objectsToPreDraw">The objects to pre draw.</param>
         void DrawScene(GameTime gameTime, IWorld world, RenderHelper render, GraphicInfo ginfo, List<IObject> objectsToPreDraw);
         /// <summary>
         /// Loads the content.
@@ -66,6 +72,7 @@ namespace PloobsEngine.SceneControl
         /// <param name="manager">The manager.</param>
         /// <param name="ginfo">The ginfo.</param>
         /// <param name="factory">The factory.</param>
+        /// <param name="BackGroundColor">Color of the back ground.</param>
         void LoadContent(IContentManager manager, GraphicInfo ginfo, GraphicFactory factory,Color BackGroundColor);
 
 

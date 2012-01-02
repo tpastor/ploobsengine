@@ -18,7 +18,9 @@ namespace PloobsEngine.Utils
         /// Triangulates a 2D polygon produced the indexes required to render the points as a triangle list.
         /// </summary>
         /// <param name="vertices">The polygon vertices.</param>
-        /// <returns>The indexes used to render the points as a triangle list.</returns>
+        /// <returns>
+        /// The indexes used to render the points as a triangle list.
+        /// </returns>
         public static int[] Triangulate(params Vector2[] vertices)
         {
             List<Triangle> triangles = new List<Triangle>();

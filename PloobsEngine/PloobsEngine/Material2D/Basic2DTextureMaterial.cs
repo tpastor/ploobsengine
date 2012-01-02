@@ -74,6 +74,14 @@ namespace PloobsEngine.Material2D
     {
         #region IMaterialProcessor Members
 
+        /// <summary>
+        /// Processes the draw.
+        /// </summary>
+        /// <param name="uselayer">if set to <c>true</c> [uselayer].</param>
+        /// <param name="gameTime">The game time.</param>
+        /// <param name="render">The render.</param>
+        /// <param name="camera">The camera.</param>
+        /// <param name="objects">The objects.</param>
         public void ProcessDraw(bool uselayer, GameTime gameTime, SceneControl.RenderHelper render, SceneControl._2DScene.ICamera2D camera, List<SceneControl._2DScene.I2DObject> objects)
         {
             if(uselayer)
@@ -90,6 +98,15 @@ namespace PloobsEngine.Material2D
             render.RenderEnd();
         }
 
+        /// <summary>
+        /// Processes the pre draw.
+        /// </summary>
+        /// <param name="uselayer">if set to <c>true</c> [uselayer].</param>
+        /// <param name="gameTime">The game time.</param>
+        /// <param name="render">The render.</param>
+        /// <param name="camera">The camera.</param>
+        /// <param name="world">The world.</param>
+        /// <param name="objects">The objects.</param>
         public void ProcessPreDraw(bool uselayer,GameTime gameTime, SceneControl.RenderHelper render, SceneControl._2DScene.ICamera2D camera, SceneControl._2DScene.I2DWorld world, List<SceneControl._2DScene.I2DObject> objects)
         {
             if (uselayer)
@@ -107,6 +124,15 @@ namespace PloobsEngine.Material2D
             render.RenderEnd();
         }
 
+        /// <summary>
+        /// Processes the light draw.
+        /// </summary>
+        /// <param name="gameTime">The game time.</param>
+        /// <param name="render">The render.</param>
+        /// <param name="camera">The camera.</param>
+        /// <param name="objects">The objects.</param>
+        /// <param name="color">The color.</param>
+        /// <param name="light">The light.</param>
         public void ProcessLightDraw(GameTime gameTime, SceneControl.RenderHelper render, SceneControl._2DScene.ICamera2D camera, List<SceneControl._2DScene.I2DObject> objects, Color color, PloobsEngine.Light2D.Light2D light)
         {
            render.RenderBegin(camera.View, null, SpriteSortMode.Deferred);

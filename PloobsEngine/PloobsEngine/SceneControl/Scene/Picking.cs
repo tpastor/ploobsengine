@@ -75,9 +75,7 @@ namespace PloobsEngine.SceneControl
         BindMouseCommand bmc2;
         private GraphicInfo info;
         private IWorld world;
-        private Ray ray;
-        private InputPlaybleMouseBottom pbLeft = null;
-        private InputPlaybleMouseBottom pbRight = null;
+        private Ray ray;        
         private float pickingRayDistance;
 
         public event OnPicked OnPickedLeftButton = null;

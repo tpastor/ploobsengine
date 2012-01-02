@@ -134,7 +134,7 @@ namespace PloobsEngine.SceneControl._2DScene
             shadowmapResolver = new PloobsEngine.Light2D.ShadowmapResolver(factory,new QuadRender(factory.device), PloobsEngine.Light2D.ShadowmapSize.Size512, PloobsEngine.Light2D.ShadowmapSize.Size512);
             screenShadows = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);                        
 #endif
-            this.ginfo.OnGraphicInfoChange += new OnGraphicInfoChange(ginfo_OnGraphicInfoChange);
+            this.ginfo.OnGraphicInfoChange+=new EventHandler(ginfo_OnGraphicInfoChange); 
             if (UsePostProcessing)
             {
                 renderTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
@@ -143,8 +143,9 @@ namespace PloobsEngine.SceneControl._2DScene
             base.AfterLoadContent(manager, ginfo, factory);
         }
 
-        void ginfo_OnGraphicInfoChange(GraphicInfo newGraphicInfo)
+        void ginfo_OnGraphicInfoChange(object sender, EventArgs e)
         {
+            GraphicInfo ginfo = (GraphicInfo)sender;
             if (renderTarget != null && postEffectTarget != null)
             {
                 renderTarget.Dispose();
@@ -153,6 +154,7 @@ namespace PloobsEngine.SceneControl._2DScene
                 postEffectTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
             }
         }
+
 
         protected override void ExecuteTechnic(Microsoft.Xna.Framework.GameTime gameTime, RenderHelper render, I2DWorld world)
         {
@@ -316,6 +318,21 @@ namespace PloobsEngine.SceneControl._2DScene
         public override string TechnicName
         {
             get { return "Basic2DRenderTechnich"; }
+        }
+
+        public override void CleanUp()
+        {
+            this.ginfo.OnGraphicInfoChange -= ginfo_OnGraphicInfoChange;
+            if (renderTarget != null && postEffectTarget != null)
+            {
+                renderTarget.Dispose();
+                postEffectTarget.Dispose();
+            }
+
+            for (int i = 0; i < PostEffects.Count; i++)
+            {
+                PostEffects[i].CleanUp();
+            }
         }
     }
 }

@@ -30,6 +30,9 @@ using PloobsEngine.Features.DebugDraw;
 
 namespace PloobsEngine.SceneControl
 {
+    /// <summary>
+    /// Octree culler for 3D
+    /// </summary>
     public class OctreeCuller : ICuller
     {
 

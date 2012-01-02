@@ -165,6 +165,22 @@
             <param name="newValue">The new value.</param>
             <param name="smoothedAccumulator">The smoothed accumulator.</param>
         </member>
+        <member name="M:PloobsEngine.Utils.Rpn.EvaluateInfix(System.String,System.Single@)">
+            <summary>
+            Evaluate Infix expression
+            </summary>
+            <param name="s"></param>
+            <param name="result"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Utils.Rpn.EvaluateRPN(System.String,System.Single@)">
+            <summary>
+            Evaluate RPN expression
+            </summary>
+            <param name="s"></param>
+            <param name="result"></param>
+            <returns></returns>
+        </member>
         <member name="T:PloobsEngine.SceneControl.ICuller">
             <summary>
             Culler Specification
@@ -238,8 +254,11 @@
             <summary>
             Loads the content.
             </summary>
-            <param name="engine">The engine.</param>
-            <param name="useFloatBuffer">if set to <c>true</c> [use float buffer].</param>
+            <param name="manager">The manager.</param>
+            <param name="ginfo">The ginfo.</param>
+            <param name="factory">The factory.</param>
+            <param name="cullPointLight">if set to <c>true</c> [cull point light].</param>
+            <param name="useFloatingBufferForLightning">if set to <c>true</c> [use floating buffer for lightning].</param>
         </member>
         <member name="P:PloobsEngine.SceneControl.IDeferredLightMap.Item(PloobsEngine.SceneControl.DeferredLightMapType)">
             <summary>
@@ -254,6 +273,11 @@
         <member name="F:PloobsEngine.SceneControl.DeferredLightMapType.LIGHTMAP">
             <summary>
             LightMap
+            </summary>
+        </member>
+        <member name="T:PloobsEngine.SceneControl._2DScene.I2DScene">
+            <summary>
+            Screen for 2D scenes
             </summary>
         </member>
         <member name="T:PloobsEngine.SceneControl.IScreen">
@@ -381,6 +405,12 @@
             <param name="renderTech">The render tech.</param>
             <param name="world">The world.</param>
         </member>
+        <member name="M:PloobsEngine.SceneControl._2DScene.I2DScene.CleanUp(PloobsEngine.Engine.EngineStuff)">
+            <summary>
+            Cleans up resources that are not exclusive to this screen
+            </summary>
+            <param name="engine"></param>
+        </member>
         <member name="P:PloobsEngine.SceneControl._2DScene.I2DScene.RenderTechnic">
             <summary>
             Gets the render technics.
@@ -436,6 +466,17 @@
         <member name="P:Bnoerj.AI.Steering.Trail.TickColor">
             <summary>
             Gets or sets the color of the ticks.
+            </summary>
+        </member>
+        <member name="T:PloobsEngine.SceneControl._2DScene.Culler.Physic2DCuller">
+            <summary>
+            2D physic based Culler
+            Very effective
+            </summary>
+        </member>
+        <member name="T:PloobsEngine.SceneControl._2DScene.Culler.I2DCuller">
+            <summary>
+            Specification for a 2D culler system
             </summary>
         </member>
         <member name="M:PloobsEngine.SceneControl._2DScene.Culler.I2DCuller.GetNotCulledObjectsList">
@@ -605,6 +646,13 @@
             Gets the height map.
             </summary>
         </member>
+        <member name="T:PloobsEngine.Material2D.IMaterialProcessor">
+            <summary>
+            Interface for material processor
+            Each material must have a processor
+            Processors coordinate how the materials should be draw
+            </summary>
+        </member>
         <member name="T:PloobsEngine.Light.PointLightPE">
             <summary>
             Deferred Point Light
@@ -754,6 +802,11 @@
             The type of the light.
             </value>
         </member>
+        <member name="T:PloobsEngine.Features.DebugDraw.IDebugDrawShape">
+            <summary>
+            Interface to define a specific Debug Shape
+            </summary>
+        </member>
         <member name="F:PloobsEngine.Features.DebugDraw.DebugBox.effect">
             <summary>
             The basic effect used to draw boxes.
@@ -826,7 +879,7 @@
         <member name="M:PloobsEngine.Commands.IReciever.getMyName">
             <summary>
             The name of the reciever
-            MUST BE UNIQUE
+            MUST BE UNIQUE 
             </summary>
             <returns></returns>
         </member>
@@ -1277,6 +1330,17 @@
             Indicates whether the local space is right handed.
             </summary>
         </member>
+        <member name="T:PloobsEngine.Physic.Constraints.BepuConstraint.PointPointConstraint">
+            <summary>
+            Point to Point Constraint
+            </summary>
+        </member>
+        <member name="T:PloobsEngine.Physic.Constraints.BepuConstraint.BepuPhysicConstraint">
+            <summary>
+            Bepu Constraint Type
+            Extend this class to implement any constraint in bepu
+            </summary>
+        </member>
         <member name="T:PloobsEngine.Physic.Constraints.IPhysicConstraint">
             <summary>
             Specification of a physic Constraint
@@ -1288,6 +1352,30 @@
             </summary>
             <value>
             The position.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.Physic.Constraints.BepuConstraint.BepuPhysicConstraint.Joint">
+            <summary>
+            Gets or sets the joint.
+            </summary>
+            <value>
+            The joint.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.Physic.Constraints.BepuConstraint.BepuPhysicConstraint.BodyA">
+            <summary>
+            Gets or sets the body A.
+            </summary>
+            <value>
+            The body A.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.Physic.Constraints.BepuConstraint.BepuPhysicConstraint.BodyB">
+            <summary>
+            Gets or sets the body B.
+            </summary>
+            <value>
+            The body B.
             </value>
         </member>
         <member name="T:PloobsEngine.Physic2D.Farseer.ConvertUnits">
@@ -1422,6 +1510,11 @@
             Gets the mesh number.
             </summary>
         </member>
+        <member name="T:PloobsEngine.Modelo2D.AnimationClass">
+            <summary>
+            Sprite keyframe animation information
+            </summary>
+        </member>
         <member name="P:PloobsEngine.Modelo2D.AnimationClass.IsLooping">
             <summary>
             Default = true
@@ -1520,6 +1613,56 @@
             <value>
               <c>true</c> if [affected by shadow]; otherwise, <c>false</c>.
             </value>
+        </member>
+        <member name="T:PloobsEngine.Material2D.I2DMaterial">
+            <summary>
+            2D material Specification
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Material2D.I2DMaterial.Initialization(PloobsEngine.Engine.GraphicInfo,PloobsEngine.Engine.GraphicFactory,PloobsEngine.SceneControl._2DScene.I2DObject)">
+            <summary>
+            Called when the material is initialized (added to the world)
+            </summary>
+            <param name="ginfo"></param>
+            <param name="factory"></param>
+            <param name="obj"></param>
+        </member>
+        <member name="M:PloobsEngine.Material2D.I2DMaterial.PreDrawnPhase(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl._2DScene.I2DWorld,PloobsEngine.SceneControl._2DScene.I2DObject,PloobsEngine.SceneControl.RenderHelper)">
+            <summary>
+            Called once each frame before the draw phase
+            </summary>
+            <param name="gt">The gt.</param>
+            <param name="mundo">The mundo.</param>
+            <param name="obj">The obj.</param>
+            <param name="render">The render.</param>
+        </member>
+        <member name="M:PloobsEngine.Material2D.I2DMaterial.Draw(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl._2DScene.I2DObject,PloobsEngine.SceneControl.RenderHelper)">
+            <summary>
+            Draws 
+            Called once each frame
+            </summary>
+            <param name="gt">The gt.</param>
+            <param name="obj">The obj.</param>
+            <param name="render">The render.</param>
+        </member>
+        <member name="M:PloobsEngine.Material2D.I2DMaterial.LightDraw(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl._2DScene.I2DObject,PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.Color,PloobsEngine.Light2D.Light2D)">
+            <summary>
+            Called once when lights are enabled
+            Responsible for drawing the scene from the light perspective
+            </summary>
+            <param name="gt">The gt.</param>
+            <param name="obj">The obj.</param>
+            <param name="render">The render.</param>
+            <param name="color">The color.</param>
+            <param name="light">The light.</param>
+        </member>
+        <member name="M:PloobsEngine.Material2D.I2DMaterial.Update(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl._2DScene.I2DObject)">
+            <summary>
+            Updates.
+            Called once each frame
+            </summary>
+            <param name="gameTime">The game time.</param>
+            <param name="obj">The obj.</param>
         </member>
         <member name="F:PloobsEngine.Features.DebugDraw.DebugSphere.effect">
             <summary>
@@ -1944,6 +2087,11 @@
             </summary>
             <param name="gameTime">Time passed since the last call to Draw.</param>
         </member>
+        <member name="T:PloobsEngine.SceneControl._2DScene.I2DWorld">
+            <summary>
+            2D World
+            </summary>
+        </member>
         <member name="M:PloobsEngine.SceneControl._2DScene.I2DWorld.#ctor(PloobsEngine.Physic2D.I2DPhysicWorld,PloobsEngine.Particles.IParticleManager,PloobsEngine.SceneControl._2DScene.Culler.I2DCuller)">
             <summary>
             Initializes a new instance of the <see cref="T:PloobsEngine.SceneControl.IWorld"/> class.
@@ -2003,6 +2151,19 @@
             Removes the sound emitter.
             </summary>
             <param name="e">The e.</param>
+        </member>
+        <member name="P:PloobsEngine.SceneControl._2DScene.I2DWorld.Camera2D">
+            <summary>
+            Gets or sets the camera2D.
+            </summary>
+            <value>
+            The camera2D.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.SceneControl._2DScene.I2DWorld.ParticleManager">
+            <summary>
+            Gets the particle manager.
+            </summary>
         </member>
         <member name="P:PloobsEngine.SceneControl._2DScene.I2DWorld.GraphicsInfo">
             <summary>
@@ -2341,6 +2502,12 @@
             Gets and sets the position of the character.
             </summary>
         </member>
+        <member name="T:PloobsEngine.Modelo.CustomModel">
+            <summary>
+            Model implementation responsible for holding a specific mesh of a larger model
+            Used by our World loader (from 3ds exporter)
+            </summary>
+        </member>
         <member name="T:PloobsEngine.Commands.ICommand">
             <summary>
             Command Pattern
@@ -2365,6 +2532,11 @@
             <value>
             The name of the target.
             </value>
+        </member>
+        <member name="T:PloobsEngine.Features.DebugDraw.DebugDraw">
+            <summary>
+            Component responsible for drawing 3D primitives on the top of the screen (with depth testing enabled)
+            </summary>
         </member>
         <member name="T:PloobsEngine.Events.SimpleEvent">
             <summary>
@@ -2500,10 +2672,58 @@
             <param name="position">Position</param>
             <param name="Target">Target Vector (Used to create the view matriz - LookAt method)</param>
         </member>
-        <member name="M:PloobsEngine.IA.WaypointHandler.Clear">
+        <member name="T:PloobsEngine.IA.WaypointHandler">
             <summary>
-            ReInicia a Instancia do handler
+            Interface to user handling waypoints
             </summary>
+        </member>
+        <member name="M:PloobsEngine.IA.WaypointHandler.Clear">
+             <summary>
+            Restart the handler
+             </summary>
+        </member>
+        <member name="M:PloobsEngine.IA.WaypointHandler.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.IA.WaypointHandler"/> class.
+            </summary>
+            <param name="mapName">Name of the map.</param>
+        </member>
+        <member name="M:PloobsEngine.IA.WaypointHandler.AddDefaultWaypointUnconnected(Microsoft.Xna.Framework.Vector3,PloobsEngine.IA.WAYPOINTTYPE)">
+            <summary>
+            Adds the an unconnected waypoint to the map .
+            </summary>
+            <param name="worldPos">The world pos.</param>
+            <param name="type">The type.</param>
+        </member>
+        <member name="M:PloobsEngine.IA.WaypointHandler.AddWaypointUnconnected(PloobsEngine.IA.Waypoint)">
+            <summary>
+            Adds the an unconnected waypoint to the map .
+            </summary>
+            <param name="waypoint">The waypoint.</param>
+        </member>
+        <member name="M:PloobsEngine.IA.WaypointHandler.RemoveWaypoint(System.Int32)">
+            <summary>
+            Removes the waypoint.
+            </summary>
+            <param name="id">The id.</param>
+        </member>
+        <member name="M:PloobsEngine.IA.WaypointHandler.SaveConnectedWaypoints(System.String)">
+            <summary>
+            Saves the connected waypoints to a file.
+            </summary>
+            <param name="fileName">Name of the file.</param>
+        </member>
+        <member name="M:PloobsEngine.IA.WaypointHandler.SaveUnconnectedWaypoints(System.String)">
+            <summary>
+            Saves the unconnected waypoints to a file
+            </summary>
+            <param name="fileName">Name of the file.</param>
+        </member>
+        <member name="M:PloobsEngine.IA.WaypointHandler.LoadConnectedWaypoints(System.String)">
+            <summary>
+            Loads the connected waypoints  from a file
+            </summary>
+            <param name="FileName">Name of the file.</param>
         </member>
         <member name="M:PloobsEngine.IA.WaypointHandler.LoadUnconnectedWaypoints(System.String)">
             <summary>
@@ -2511,6 +2731,29 @@
             If it is connected, it will be unconnected
             </summary>
             <param name="FileName">Name of the file.</param>
+        </member>
+        <member name="M:PloobsEngine.IA.WaypointHandler.LoadConnectedWaypointsIslands(System.String[],PloobsEngine.IA.IWaypointConnector)">
+            <summary>
+            Loads the connected waypoints islands.
+            </summary>
+            <param name="waypoints">The waypoints.</param>
+            <param name="connector">The connector.</param>
+        </member>
+        <member name="M:PloobsEngine.IA.WaypointHandler.Unconnect">
+            <summary>
+            Unconnects teh waypoints in this handler.
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.IA.WaypointHandler.ConnectWaypoints(PloobsEngine.IA.IWaypointConnector)">
+            <summary>
+            Connects the waypoints in this handler
+            </summary>
+            <param name="connector">The connector.</param>
+        </member>
+        <member name="P:PloobsEngine.IA.WaypointHandler.CurrentWaypointsCollection">
+            <summary>
+            Gets the current waypoints collection.
+            </summary>
         </member>
         <member name="T:PloobsEngine.Modelo.SimpleModel">
             <summary>
@@ -2531,7 +2774,7 @@
         </member>
         <member name="T:PloobsEngine.Input.TurnOffInputMaskCommand">
             <summary>
-            Turn n Input Mask OFF
+            Turn a Input Mask OFF
             </summary>
         </member>
         <member name="M:PloobsEngine.Input.TurnOffInputMaskCommand.#ctor(PloobsEngine.Input.InputMask)">
@@ -2567,6 +2810,32 @@
         </member>
         <member name="F:Bnoerj.AI.Steering.SteerLibrary.hisPositionAtNearestApproach">
             XXX globals only for the sake of graphical annotation
+        </member>
+        <member name="T:PloobsEngine.Physics.MaterialDescription">
+            <summary>
+            3D Physic Material Description
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Physics.MaterialDescription.DefaultBepuMaterial">
+            <summary>
+            Defaults the bepu material.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:PloobsEngine.Physics.MaterialDescription.StaticFriction">
+            <summary>
+            Static Friction
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.MaterialDescription.DinamicFriction">
+            <summary>
+            Dynamic Friction
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physics.MaterialDescription.Bounciness">
+            <summary>
+            Bounciness
+            </summary>
         </member>
         <member name="T:PloobsEngine.Physics.PhysicObjectTypes">
             <summary>
@@ -2661,7 +2930,7 @@
         </member>
         <member name="T:PloobsEngine.Physics.IPhysicWorld">
             <summary>
-            Physic Object Specification
+            3D Physic World Specification
             </summary>
         </member>
         <member name="M:PloobsEngine.Physics.IPhysicWorld.DebugDrawn(Microsoft.Xna.Framework.GameTime,PloobsEngine.Cameras.ICamera)">
@@ -2744,6 +3013,104 @@
             Gets the physic constraints.
             </summary>
         </member>
+        <member name="T:PloobsEngine.Physic2D.Farseer.GhostObject">
+            <summary>
+            Ghost Object implementation (works on Farseer)
+            </summary>
+        </member>
+        <member name="T:PloobsEngine.Physic2D.I2DPhysicObject">
+            <summary>
+            2D physic object specification
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Physic2D.I2DPhysicObject.ApplyForce(Microsoft.Xna.Framework.Vector2,System.Nullable{Microsoft.Xna.Framework.Vector2})">
+            <summary>
+            Applies the force.
+            </summary>
+            <param name="force">The force.</param>
+            <param name="point">The point.</param>
+        </member>
+        <member name="P:PloobsEngine.Physic2D.I2DPhysicObject.Physic2DType">
+            <summary>
+            Gets the type of the physic2D.
+            </summary>
+            <value>
+            The type of the physic2 D.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.Physic2D.I2DPhysicObject.Origin">
+            <summary>
+            Gets or sets the origin.
+            </summary>
+            <value>
+            The origin.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.Physic2D.I2DPhysicObject.Owner">
+            <summary>
+            Gets the owner.
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.Physic2D.I2DPhysicObject.isDynamic">
+            <summary>
+            Gets or sets a value indicating whether this instance is dynamic.
+            </summary>
+            <value>
+            	<c>true</c> if this instance is dynamic; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.Physic2D.I2DPhysicObject.Position">
+            <summary>
+            Gets or sets the position.
+            </summary>
+            <value>
+            The position.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.Physic2D.I2DPhysicObject.LinearVelocity">
+            <summary>
+            Gets or sets the linear velocity.
+            </summary>
+            <value>
+            The linear velocity.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.Physic2D.I2DPhysicObject.AngularVelocity">
+            <summary>
+            Gets or sets the angular velocity.
+            </summary>
+            <value>
+            The angular velocity.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.Physic2D.I2DPhysicObject.Rotation">
+            <summary>
+            Gets or sets the rotation.
+            </summary>
+            <value>
+            The rotation.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.Physic2D.I2DPhysicObject.Enabled">
+            <summary>
+            Gets a value indicating whether this <see cref="T:PloobsEngine.Physic2D.I2DPhysicObject"/> is enabled.
+            </summary>
+            <value>
+              <c>true</c> if enabled; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:PloobsEngine.Physic2D.Farseer.GhostObject.#ctor(Microsoft.Xna.Framework.Vector2,System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Physic2D.Farseer.GhostObject"/> class.
+            </summary>
+            <param name="Position">The position.</param>
+            <param name="rotation">The rotation.</param>
+        </member>
+        <member name="T:PloobsEngine.Features.DebugDraw.RegisterDebugDrawCommand">
+            <summary>
+            Command responsible for registering a Shape Drawer
+            </summary>
+        </member>
         <member name="T:PloobsEngine.SceneControl.QuadRender">
             <summary>
             Helper class to render full screen quads
@@ -2790,6 +3157,14 @@
             <param name="transform">The transform.</param>
             <param name="vertices">The vertices.</param>
             <param name="indices">The indices.</param>
+        </member>
+        <member name="M:PloobsEngine.Modelo.ModelBuilderHelper.ExtractModelRadiusAndCenter(PloobsEngine.Modelo.BatchInformation,System.Single@,Microsoft.Xna.Framework.Vector3@)">
+            <summary>
+            Extracts the model radius and center.
+            </summary>
+            <param name="bi">The bi.</param>
+            <param name="radius">The radius.</param>
+            <param name="center">The center.</param>
         </member>
         <member name="T:PloobsEngine.Modelo.OnTextureChange">
             <summary>
@@ -3319,6 +3694,73 @@
             Gets the bounding box IN WORLD COORDINATES
             </summary>
         </member>
+        <member name="T:PloobsEngine.Modelo2D.SpriteFarseer">
+            <summary>
+            Specific model for farseer physics
+            MOST WIDELY USED +P
+            </summary>
+        </member>
+        <member name="T:PloobsEngine.Modelo2D.IModelo2D">
+            <summary>
+            2D model specification
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Modelo2D.IModelo2D.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Updates the modelo.
+            </summary>
+            <param name="gameTime">The game time.</param>
+        </member>
+        <member name="P:PloobsEngine.Modelo2D.IModelo2D.SourceRectangle">
+            <summary>
+            Gets or sets the source rectangle (if texture type)
+            Null otherwise
+            </summary>
+            <value>
+            The source rectangle.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.Modelo2D.IModelo2D.ModelType">
+            <summary>
+            Gets the type of the model.
+            </summary>
+            <value>
+            The type of the model.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.Modelo2D.IModelo2D.Rotation">
+            <summary>
+            Gets or sets the rotation.
+            </summary>
+            <value>
+            The rotation.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.Modelo2D.IModelo2D.Texture">
+            <summary>
+            Gets or sets the texture.
+            </summary>
+            <value>
+            The texture.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.Modelo2D.IModelo2D.Origin">
+            <summary>
+            Gets or sets the origin of the model (center of the object normally, in local coordinates)
+            </summary>
+            <value>
+            The origin.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.Modelo2D.IModelo2D.LayerDepth">
+            <summary>
+            Gets or sets the layer depth.
+            same concept of Photoshop =P
+            </summary>
+            <value>
+            The layer depth.
+            </value>
+        </member>
         <member name="M:PloobsEngine.Modelo2D.SpriteFarseer.#ctor(PloobsEngine.Engine.GraphicFactory,FarseerPhysics.Common.Vertices,Microsoft.Xna.Framework.Color,System.Boolean)">
             <summary>
             
@@ -3336,6 +3778,11 @@
             <param name="shape"></param>
             <param name="color"></param>
             <param name="isInSimulationUnits"></param>        
+        </member>
+        <member name="T:PloobsEngine.Modelo2D.ModelType">
+            <summary>
+            Type of the model
+            </summary>
         </member>
         <member name="T:PloobsEngine.Loader.ObjectInformation">
             <summary>
@@ -3412,6 +3859,11 @@
             <param name="name">The name of the File - assume that models is in /Models, textures in /Textures and ModelInfos (when needed) in /ModelInfos</param>
             <returns></returns>
         </member>
+        <member name="T:PloobsEngine.Loader.ExtractMeshesFromMoldelLoader">
+            <summary>
+            Extracts meshes from a scene model
+            </summary>
+        </member>
         <member name="T:PloobsEngine.Features.TaskCommand">
             <summary>
             Command that encapsulates a task
@@ -3441,6 +3893,23 @@
             <value>
             The name of the target.
             </value>
+        </member>
+        <member name="T:PloobsEngine.Features.DebugDraw.Primitive2DDraw">
+            <summary>
+            Component to draw 2D primitives on the top of the screen
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Features.DebugDraw.Primitive2DDraw.Add2DPrimitive(PloobsEngine.Features.DebugDraw.I2DPrimitive)">
+            <summary>
+            Add the 2D primitive.
+            </summary>
+            <param name="I2DPrimitive">The i2 D primitive.</param>
+        </member>
+        <member name="M:PloobsEngine.Features.DebugDraw.Primitive2DDraw.Remove2DPrimitive(PloobsEngine.Features.DebugDraw.I2DPrimitive)">
+            <summary>
+            Remove the 2D primitive.
+            </summary>
+            <param name="I2DPrimitive">The i2 D primitive.</param>
         </member>
         <member name="T:PloobsEngine.IA.NeuralNetwork.LearningAlgorithm">
             <summary>
@@ -4173,6 +4642,17 @@
             </summary>
             <param name="writer">The <see cref="T:System.Xml.XmlWriter"/> stream to which the object is serialized.</param>
         </member>
+        <member name="T:PloobsEngine.SceneControl._2DScene.RenderTechnich2D">
+            <summary>
+            Render technic for 2D specification
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.SceneControl._2DScene.RenderTechnich2D.#ctor(PloobsEngine.SceneControl.PostEffectType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.SceneControl._2DScene.RenderTechnich2D"/> class.
+            </summary>
+            <param name="PostEffectType">Type of the post effect.</param>
+        </member>
         <member name="F:PloobsEngine.SceneControl._2DScene.RenderTechnich2D.PostEffects">
             <summary>
             List off all PostEffects
@@ -4226,9 +4706,104 @@
             The name of the technic.
             </value>
         </member>
+        <member name="T:PloobsEngine.SceneControl._2DScene.Camera2D">
+            <summary>
+            2D camera System
+            </summary>
+        </member>
+        <member name="T:PloobsEngine.SceneControl._2DScene.ICamera2D">
+            <summary>
+            2D camera specification
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.SceneControl._2DScene.ICamera2D.ConvertScreenToWorld(Microsoft.Xna.Framework.Vector2,System.Boolean,System.Boolean)">
+            <summary>
+            Converts the screen to world coordinates.
+            </summary>
+            <param name="location">The location.</param>
+            <param name="useSimulatedProjection">if set to <c>true</c> [use simulated projection].</param>
+            <param name="returnInDisplayUnits">if set to <c>true</c> [return in display units].</param>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.SceneControl._2DScene.ICamera2D.ConvertWorldToScreen(Microsoft.Xna.Framework.Vector2,System.Boolean,System.Boolean)">
+            <summary>
+            Converts the world to screen coordinates.
+            </summary>
+            <param name="location">The location.</param>
+            <param name="useSimulatedProjection">if set to <c>true</c> [use simulated projection].</param>
+            <param name="convertToSimUnits">if set to <c>true</c> [convert to sim units].</param>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.SceneControl._2DScene.ICamera2D.MoveCamera(Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Moves the camera.
+            </summary>
+            <param name="amount">The amount.</param>
+        </member>
+        <member name="M:PloobsEngine.SceneControl._2DScene.ICamera2D.RotateCamera(System.Single)">
+            <summary>
+            Rotates the camera.
+            </summary>
+            <param name="amount">The amount.</param>
+        </member>
+        <member name="M:PloobsEngine.SceneControl._2DScene.ICamera2D.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Updates
+            </summary>
+            <param name="gameTime">The game time.</param>
+        </member>
+        <member name="P:PloobsEngine.SceneControl._2DScene.ICamera2D.Position">
+            <summary>
+            Gets or sets the position.
+            </summary>
+            <value>
+            The position.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.SceneControl._2DScene.ICamera2D.Rotation">
+            <summary>
+            Gets or sets the rotation.
+            </summary>
+            <value>
+            The rotation.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.SceneControl._2DScene.ICamera2D.SimProjection">
+            <summary>
+            Gets the sim projection.
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.SceneControl._2DScene.ICamera2D.Projection">
+            <summary>
+            Gets the projection.
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.SceneControl._2DScene.ICamera2D.SimView">
+            <summary>
+            Gets the sim view.
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.SceneControl._2DScene.ICamera2D.View">
+            <summary>
+            Gets the view.
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.SceneControl._2DScene.ICamera2D.Zoom">
+            <summary>
+            Gets or sets the zoom.
+            </summary>
+            <value>
+            The zoom.
+            </value>
+        </member>
         <member name="P:PloobsEngine.SceneControl._2DScene.ICamera2D.ScreenPortion">
             <summary>
             Piece of the screen seen by the camera
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.SceneControl._2DScene.ICamera2D.BoundingFrustrum">
+            <summary>
+            Gets the bounding frustrum.
             </summary>
         </member>
         <member name="M:PloobsEngine.SceneControl._2DScene.Camera2D.#ctor(PloobsEngine.Engine.GraphicInfo)">
@@ -4246,6 +4821,56 @@
             <summary>
             Moves the camera forward one timestep.
             </summary>
+        </member>
+        <member name="E:PloobsEngine.SceneControl._2DScene.Camera2D.ReachedTheTrackingPosition">
+            <summary>
+            Occurs when [reached the tracking position].
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.SceneControl._2DScene.Camera2D.DistanceToReach">
+            <summary>
+            Gets or sets the distance to reach the target.
+            default 2
+            </summary>
+            <value>
+            The distance to reach.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.SceneControl._2DScene.Camera2D.SpeedUpDistance">
+            <summary>
+            Gets or sets the speed up distance.
+            default 10
+            </summary>
+            <value>
+            The speed up distance.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.SceneControl._2DScene.Camera2D.IntertiaController">
+            <summary>
+            Gets or sets the intertia controller value
+            default 1
+            </summary>
+            <value>
+            The intertia controller.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.SceneControl._2DScene.Camera2D.IntertiaControllerDivider">
+            <summary>
+            Gets or sets the intertia controller divider value.
+            deafault 10
+            </summary>
+            <value>
+            The intertia controller divider.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.SceneControl._2DScene.Camera2D.IntertiaControllerExp">
+            <summary>
+            Gets or sets the intertia controller exp value.
+            default 2
+            </summary>
+            <value>
+            The intertia controller exp.
+            </value>
         </member>
         <member name="P:PloobsEngine.SceneControl._2DScene.Camera2D.Position">
             <summary>
@@ -4306,6 +4931,45 @@
             
             XXX this should define generic methods for querying the obstacle shape
             </summary>
+        </member>
+        <member name="T:PloobsEngine.Particles.DPFSParticleSystem">
+            <summary>
+            DPSF particle system implementation
+            </summary>
+        </member>
+        <member name="T:PloobsEngine.Particles.IParticleSystem">
+            <summary>
+            Particle system specification
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Particles.IParticleSystem.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Particles.IParticleSystem"/> class.
+            </summary>
+            <param name="name">The name.</param>
+        </member>
+        <member name="P:PloobsEngine.Particles.IParticleSystem.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>
+            The name.
+            </value>
+        </member>
+        <member name="M:PloobsEngine.Particles.DPFSParticleSystem.#ctor(System.String,DPSF.IDPSFParticleSystem)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Particles.DPFSParticleSystem"/> class.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="IDPSFParticleSystem">The IDPSF particle system.</param>
+        </member>
+        <member name="P:PloobsEngine.Particles.DPFSParticleSystem.IDPSFParticleSystem">
+            <summary>
+            Gets or sets the IDPSF particle system.
+            </summary>
+            <value>
+            The IDPSF particle system.
+            </value>
         </member>
         <member name="T:PloobsEngine.Material.IShader">
             <summary>
@@ -4420,10 +5084,34 @@
             The type of the material.
             </value>
         </member>
+        <member name="T:PloobsEngine.Loader.WorldLoader">
+            <summary>
+            Used to build the world from a loaded source (like our 3ds exporter script )
+            </summary>
+        </member>
         <member name="F:PloobsEngine.Loader.WorldLoader.objects">
             <summary>
             Used to retrieve objects
             </summary>
+        </member>
+        <member name="T:PloobsEngine.Features.DebugDraw.DebugShapesDrawer">
+            <summary>
+            Responsible for a collection of Debug primitives Draw
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Features.DebugDraw.DebugShapesDrawer.AddShape(PloobsEngine.Features.DebugDraw.IDebugDrawShape)">
+            <summary>
+            Adds a shape to this drawer.
+            </summary>
+            <param name="shape">The shape.</param>
+        </member>
+        <member name="P:PloobsEngine.Features.DebugDraw.DebugShapesDrawer.DrawAllShapesEachFrame">
+            <summary>
+            Gets a value indicating whether [draw all shapes each frame].
+            </summary>
+            <value>
+            	<c>true</c> if [draw all shapes each frame]; otherwise, <c>false</c>.
+            </value>
         </member>
         <member name="T:PloobsEngine.Components.ComponentManager">
             <summary>
@@ -4520,6 +5208,11 @@
             </summary>
             <param name="name">The name.</param>
             <returns>TRUE is the component exist and was remove, false otherwise</returns>
+        </member>
+        <member name="T:PloobsEngine.Audio.ObjectFollower3DSound">
+            <summary>
+            3D sound that follows a 3D object
+            </summary>
         </member>
         <member name="T:PloobsEngine.Audio.ISoundEmitter3D">
             <summary>
@@ -4766,6 +5459,238 @@
             Use Get... To load something and Create... to create something
             </summary>
         </member>
+        <member name="M:PloobsEngine.Engine.GraphicFactory.GetBasicEffect">
+            <summary>
+            Gets the basic effect.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Engine.GraphicFactory.GetAlphaTestEffect">
+            <summary>
+            Gets the alpha test effect.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Engine.GraphicFactory.GetSkinnedEffect">
+            <summary>
+            Gets the skinned effect.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Engine.GraphicFactory.GetEnvironmentMapEffect">
+            <summary>
+            Gets the environment map effect.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Engine.GraphicFactory.GetDualTextureEffect">
+            <summary>
+            Gets the dual texture effect.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Engine.GraphicFactory.GetEffect(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Gets a user created effect.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="clone">if set to <c>true</c> [clone].</param>
+            <param name="isInternal">if set to <c>true</c> [is internal].</param>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Engine.GraphicFactory.GetSpriteBatch">
+            <summary>
+            Gets the shared sprite batch instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Engine.GraphicFactory.GetModel(System.String,System.Boolean)">
+            <summary>
+            Gets a model
+            </summary>
+            <param name="name">The name.</param>
+            <param name="isinternal">if set to <c>true</c> [isinternal].</param>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Engine.GraphicFactory.GetAnimatedModel(System.String,System.Boolean)">
+            <summary>
+            Gets an animated model.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="isinternal">if set to <c>true</c> [isinternal].</param>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Engine.GraphicFactory.CreateRenderTarget(System.Int32,System.Int32,Microsoft.Xna.Framework.Graphics.SurfaceFormat,System.Boolean,Microsoft.Xna.Framework.Graphics.DepthFormat,System.Int32,Microsoft.Xna.Framework.Graphics.RenderTargetUsage)">
+            <summary>
+            Creates the render target.
+            </summary>
+            <param name="width">The width.</param>
+            <param name="height">The height.</param>
+            <param name="SurfaceFormat">The surface format.</param>
+            <param name="mipmap">if set to <c>true</c> [mipmap].</param>
+            <param name="DepthFormat">The depth format.</param>
+            <param name="preferedMultisampleCount">The prefered multisample count.</param>
+            <param name="RenderTargetUsage">The render target usage.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Engine.GraphicFactory.GetRenderTargetFromPool(System.Int32,System.Int32,Microsoft.Xna.Framework.Graphics.SurfaceFormat,System.Boolean,Microsoft.Xna.Framework.Graphics.DepthFormat,System.Int32,Microsoft.Xna.Framework.Graphics.RenderTargetUsage)">
+            <summary>
+            Gets the render target from pool.
+            </summary>
+            <param name="width">The width.</param>
+            <param name="height">The height.</param>
+            <param name="SurfaceFormat">The surface format.</param>
+            <param name="mipmap">if set to <c>true</c> [mipmap].</param>
+            <param name="DepthFormat">The depth format.</param>
+            <param name="preferedMultisampleCount">The prefered multisample count.</param>
+            <param name="RenderTargetUsage">The render target usage.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Engine.GraphicFactory.GetSpriteFont(System.String,System.Boolean)">
+            <summary>
+            Gets the sprite font.
+            </summary>
+            <param name="fontName">Name of the font.</param>
+            <param name="isInternal">if set to <c>true</c> [is internal].</param>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Engine.GraphicFactory.GetTexture2D(System.String,System.Boolean)">
+            <summary>
+            Gets the texture2D from file
+            </summary>
+            <param name="textureName">Name of the texture.</param>
+            <param name="isInternal">if set to <c>true</c> [is internal].</param>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Engine.GraphicFactory.GetTextureCube(System.String,System.Boolean)">
+            <summary>
+            Gets the texture cube from file
+            </summary>
+            <param name="textureName">Name of the texture.</param>
+            <param name="isInternal">if set to <c>true</c> [is internal].</param>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Engine.GraphicFactory.CreateTexture2D(System.Int32,System.Int32,System.Boolean,Microsoft.Xna.Framework.Graphics.SurfaceFormat)">
+            <summary>
+            Creates the texture2D.
+            </summary>
+            <param name="width">The width.</param>
+            <param name="height">The height.</param>
+            <param name="mipmap">if set to <c>true</c> [mipmap].</param>
+            <param name="format">The format.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Engine.GraphicFactory.CreateTexture2DColor(System.Int32,System.Int32,Microsoft.Xna.Framework.Color,System.Boolean)">
+            <summary>
+            Creates the color of the texture2D.
+            </summary>
+            <param name="width">The width.</param>
+            <param name="height">The height.</param>
+            <param name="color">The color.</param>
+            <param name="mipmap">if set to <c>true</c> [mipmap].</param>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Engine.GraphicFactory.CreateTexture2DRandom(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Creates the texture2D random color
+            </summary>
+            <param name="width">The width.</param>
+            <param name="height">The height.</param>
+            <param name="mipmap">if set to <c>true</c> [mipmap].</param>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Engine.GraphicFactory.CreateTexture2DBlackAndWhite(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Creates the texture2D black and white.
+            </summary>
+            <param name="width">The width.</param>
+            <param name="height">The height.</param>
+            <param name="mipmap">if set to <c>true</c> [mipmap].</param>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Engine.GraphicFactory.CreateTexture2DPerlinNoise(System.Int32,System.Int32,System.Single,System.Single,System.Single,System.Int32,System.Boolean)">
+            <summary>
+            Creates the texture2D with perlin noise.
+            </summary>
+            <param name="width">The width.</param>
+            <param name="height">The height.</param>
+            <param name="frequencia">The frequencia.</param>
+            <param name="amplitude">The amplitude.</param>
+            <param name="persistence">The persistence.</param>
+            <param name="octave">The octave.</param>
+            <param name="mipmap">if set to <c>true</c> [mipmap].</param>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Engine.GraphicFactory.CreateIndexBuffer(Microsoft.Xna.Framework.Graphics.IndexElementSize,System.Int32,Microsoft.Xna.Framework.Graphics.BufferUsage)">
+            <summary>
+            Creates the index buffer.
+            </summary>
+            <param name="elementSize">Size of the element.</param>
+            <param name="indexCount">The index count.</param>
+            <param name="usage">The usage.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Engine.GraphicFactory.CreateDynamicIndexBuffer(Microsoft.Xna.Framework.Graphics.IndexElementSize,System.Int32,Microsoft.Xna.Framework.Graphics.BufferUsage)">
+            <summary>
+            Creates the dynamic index buffer.
+            </summary>
+            <param name="elementSize">Size of the element.</param>
+            <param name="indexCount">The index count.</param>
+            <param name="usage">The usage.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Engine.GraphicFactory.CreateVertexBuffer(Microsoft.Xna.Framework.Graphics.VertexDeclaration,System.Int32,Microsoft.Xna.Framework.Graphics.BufferUsage)">
+            <summary>
+            Creates the vertex buffer.
+            </summary>
+            <param name="vertexDeclaration">The vertex declaration.</param>
+            <param name="vertexCount">The vertex count.</param>
+            <param name="usage">The usage.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Engine.GraphicFactory.CreateDynamicVertexBuffer(Microsoft.Xna.Framework.Graphics.VertexDeclaration,System.Int32,Microsoft.Xna.Framework.Graphics.BufferUsage)">
+            <summary>
+            Creates the dynamic vertex buffer.
+            </summary>
+            <param name="vertexDeclaration">The vertex declaration.</param>
+            <param name="vertexCount">The vertex count.</param>
+            <param name="usage">The usage.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Engine.GraphicFactory.GetAsset``1(System.String,System.Boolean)">
+            <summary>
+            Gets an arbitrary asset.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="assetName">Name of the asset.</param>
+            <param name="isInternal">if set to <c>true</c> [is internal].</param>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Engine.GraphicFactory.GetScaledTexture(Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Gets the scaled texture.
+            </summary>
+            <param name="texture">The texture.</param>
+            <param name="Scale">The scale.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Engine.GraphicFactory.GetScaledTexture(Microsoft.Xna.Framework.Graphics.Texture2D,System.Int32,System.Int32)">
+            <summary>
+            Gets the scaled texture.
+            </summary>
+            <param name="texture">The texture.</param>
+            <param name="width">The width.</param>
+            <param name="height">The height.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Engine.GraphicFactory.GetTexturePart(Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Rectangle)">
+            <summary>
+            Gets a texture part from a bigger texture.
+            </summary>
+            <param name="texture">The texture.</param>
+            <param name="rectangle">The rectangle.</param>
+            <returns></returns>
+        </member>
         <member name="T:PloobsEngine.SceneControl._2DScene.BeingRemoved">
             <summary>
             Called when the object is being removed
@@ -4790,6 +5715,11 @@
             Called when the object moves
             </summary>
             <param name="Reciever">The reciever.</param>
+        </member>
+        <member name="T:PloobsEngine.SceneControl._2DScene.I2DObject">
+            <summary>
+            2D Object
+            </summary>
         </member>
         <member name="T:PloobsEngine.MessageSystem.IRecieveMessageEntity">
             <summary>
@@ -4878,6 +5808,22 @@
             The physic object.
             </value>
         </member>
+        <member name="P:PloobsEngine.SceneControl._2DScene.I2DObject.Material">
+            <summary>
+            Gets or sets the material.
+            </summary>
+            <value>
+            The material.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.SceneControl._2DScene.I2DObject.Modelo">
+            <summary>
+            Gets or sets the modelo.
+            </summary>
+            <value>
+            The modelo.
+            </value>
+        </member>
         <member name="P:PloobsEngine.SceneControl._2DScene.I2DObject.Name">
             <summary>
             Gets or sets the name of the object.
@@ -4893,6 +5839,74 @@
             <value>
             The I object atachtment.
             </value>
+        </member>
+        <member name="T:PloobsEngine.Modelo2D.SpriteAnimated">
+            <summary>
+            Model used for sprite animation
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Modelo2D.SpriteAnimated.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Modelo2D.SpriteAnimated"/> class.
+            </summary>
+            <param name="Texture">The texture.</param>
+            <param name="Frames">number of frames.</param>
+            <param name="animations">number of animations.</param>
+        </member>
+        <member name="M:PloobsEngine.Modelo2D.SpriteAnimated.AddAnimation(System.String,System.Int32,System.Int32,System.Single,System.Boolean,System.Single)">
+            <summary>
+            Adds a specific sprite animation
+            </summary>
+            <param name="name">The name.</param>
+            <param name="row">The row.</param>
+            <param name="frames">The frames.</param>
+            <param name="rotation">The rotation.</param>
+            <param name="isLooping">if set to <c>true</c> [is looping].</param>
+            <param name="fps">The FPS.</param>
+        </member>
+        <member name="M:PloobsEngine.Modelo2D.SpriteAnimated.ChangeAnimation(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Changes the current animation.
+            </summary>
+            <param name="animationName">Name of the animation.</param>
+            <param name="frameToStart">The frame to start.</param>
+            <param name="start">if set to <c>true</c> [start].</param>
+        </member>
+        <member name="M:PloobsEngine.Modelo2D.SpriteAnimated.PauseCurrentAnimation">
+            <summary>
+            Pauses the current animation.
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Modelo2D.SpriteAnimated.PlayCurrentAnimation">
+            <summary>
+            Plays the current animation.
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Modelo2D.SpriteAnimated.SetCurrentFrameIndex(System.Int32)">
+            <summary>
+            Sets the index of the current frame.
+            </summary>
+            <param name="frameIndex">Index of the frame.</param>
+        </member>
+        <member name="M:PloobsEngine.Modelo2D.SpriteAnimated.GetCurrentFrameIndex">
+            <summary>
+            Gets the index of the current frame.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Modelo2D.SpriteAnimated.GetCurrentAnimation">
+            <summary>
+            Gets the current animation.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Modelo2D.SpriteAnimated.GetFrameRectangle(System.String,System.Int32)">
+            <summary>
+            Gets the frame rectangle of the current animation.
+            </summary>
+            <param name="animationName">Name of the animation.</param>
+            <param name="frame">The frame.</param>
+            <returns></returns>
         </member>
         <member name="T:PloobsEngine.Input.SimpleConcreteGestureInputPlayable">
             <summary>
@@ -4984,10 +5998,45 @@
             None of the methods will be called
             </summary>
         </member>
+        <member name="T:PloobsEngine.Cameras.InterpolationType">
+            <summary>
+            How to interpolate cameras
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Cameras.InterpolationType.BYTIME">
+            <summary>
+            Using fixed time (speed)
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Cameras.InterpolationType.BYSTEP">
+            <summary>
+            By fixed distance
+            </summary>
+        </member>
+        <member name="T:PloobsEngine.Cameras.TransitionMode">
+            <summary>
+            If should or not interpolate between camera transitions
+            </summary>
+        </member>
+        <member name="T:PloobsEngine.Cameras.State">
+            <summary>
+            State of the Camera
+            </summary>
+        </member>
+        <member name="T:PloobsEngine.Cameras.CameraDescription">
+            <summary>
+            Camera holding interface
+            </summary>
+        </member>
+        <member name="T:PloobsEngine.Cameras.CameraManager">
+            <summary>
+            Handle 3D cameras transitions and storage
+            </summary>
+        </member>
         <member name="M:PloobsEngine.Cameras.CameraManager.AddCamera(PloobsEngine.Cameras.ICamera,System.String)">
             <summary>
-            Adiciona uma camera
-            Se a camera tiver o nome DEFAULTCAMERA ela vira a camera atual tb
+            Add a camera
+            if camera name is DEFAULTCAMERA it becomes the active one
             </summary>
             <param name="cam"></param>
             <param name="name"></param>
@@ -5000,8 +6049,8 @@
         </member>
         <member name="M:PloobsEngine.Cameras.CameraManager.RemoveCamera(System.String)">
             <summary>
-            Remove uma Camera
-            Cuidado, pois ela pode estar Ativa !!!
+            Remove a camera
+            WARNING, IF IT IS ACTIVE AN EXCEPTION WILL BE RAISED
             </summary>
             <param name="name">nome da camera</param>
         </member>
@@ -5016,15 +6065,14 @@
         </member>
         <member name="M:PloobsEngine.Cameras.CameraManager.SetActiveCamera(System.String)">
             <summary>
-            Seta uma camera ativa
-            modo de transicao Imediata
+            Set Active camera
+            Imediate transition
             </summary>
             <param name="name"></param>
         </member>
         <member name="M:PloobsEngine.Cameras.CameraManager.SetActiveCamera(System.String,PloobsEngine.Cameras.InterpolationType,System.Single)">
             <summary>
-            Seta uma camera ativa
-            modo de transicao Imediata
+            Set active camera
             </summary>
             <param name="name"></param>
             <param name="time">tempo de demora ou velocidade  -> para controlar o interpolador</param>
@@ -5037,13 +6085,33 @@
         </member>
         <member name="M:PloobsEngine.Cameras.CameraManager.GetCamerasDescription">
             <summary>
-            Retorna uma lista das cameras ativas
+            Cameras added
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Cameras.CameraManager.GetCamera(System.String)">
+            <summary>
+            Gets the camera by name.
+            </summary>
+            <param name="name">The name.</param>
             <returns></returns>
         </member>
         <member name="P:PloobsEngine.Cameras.CameraManager.ActiveCamera">
             <summary>
-            Retorna a Camera ativa
+            Active Camera
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.Cameras.CameraManager.ActiveCameraType">
+            <summary>
+            Gets the type of the active camera.
+            </summary>
+            <value>
+            The type of the active camera.
+            </value>
+        </member>
+        <member name="T:PloobsEngine.IA.IWaypointConnector">
+            <summary>
+            Interface to define how to connect waypoints (used in the handler)
             </summary>
         </member>
         <member name="T:PloobsEngine.IA.NeuralNetwork.Neuron">
@@ -5211,6 +6279,69 @@
         <member name="P:PloobsEngine.IA.NeuralNetwork.Neuron.Randomization_Max">
             <summary>
             Get or set the maximum value for randomization of weights and threshold
+            </summary>
+        </member>
+        <member name="T:PloobsEngine.IA.StateMachine">
+            <summary>
+            Ploobs State Machine
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.IA.StateMachine.AddState(PloobsEngine.IA.IState)">
+            <summary>
+            Add a state to the FSM
+            The first added state will be the current state (call SetCurrentState to change it)
+            </summary>
+            <param name="state"></param>
+        </member>
+        <member name="M:PloobsEngine.IA.StateMachine.SetCurrentState(System.String)">
+            <summary>
+            Set the current state
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:PloobsEngine.IA.StateMachine.GetCurrentState">
+            <summary>
+            Get current state
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.IA.StateMachine.UpdateFSM(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Updates the FSM.
+            </summary>
+            <param name="gameTime">The game time.</param>
+        </member>
+        <member name="T:PloobsEngine.IA.IState">
+            <summary>
+            Interface to represent an abstract State in the ploobs finite state machine
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.IA.IState.Init">
+            <summary>
+            called on this state is entered
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.IA.IState.NextState">
+            <summary>
+            called to find a state change is needed.
+            Return null if no state change is needed
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.IA.IState.UpdateState(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Called all the frames
+            </summary>
+            <param name="gameTime"></param>
+        </member>
+        <member name="M:PloobsEngine.IA.IState.Finish">
+            <summary>
+            Called when leaving this state
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.IA.IState.Name">
+            <summary>
+            Name of the state (unique)
             </summary>
         </member>
         <member name="T:PloobsEngine.Utils.Triangulator2D">
@@ -5415,9 +6546,66 @@
             <param name="world">The world.</param>
             <param name="render">The render.</param>
         </member>
+        <member name="T:PloobsEngine.Particles.IParticleManager">
+            <summary>
+            Abstract particle manager
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Particles.IParticleManager.AddAndInitializeParticleSystem(PloobsEngine.Particles.IParticleSystem)">
+            <summary>
+            Adds the and initialize particle system.
+            </summary>
+            <param name="particleSystem">The particle system.</param>
+        </member>
+        <member name="M:PloobsEngine.Particles.IParticleManager.RemoveParticleSystem(PloobsEngine.Particles.IParticleSystem)">
+            <summary>
+            Removes the particle system.
+            </summary>
+            <param name="particleSystem">The particle system.</param>
+        </member>
+        <member name="M:PloobsEngine.Particles.IParticleManager.GetParticleSystem(System.String)">
+            <summary>
+            Gets the particle system.
+            </summary>
+            <param name="particleSystemName">Name of the particle system.</param>
+            <returns></returns>
+        </member>
+        <member name="P:PloobsEngine.Particles.IParticleManager.GraphicFactory">
+            <summary>
+            Gets the graphic factory.
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.Particles.IParticleManager.GraphicInfo">
+            <summary>
+            Gets the graphic info.
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.Particles.IParticleManager.Enabled">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:PloobsEngine.Particles.IParticleManager"/> is enabled.
+            </summary>
+            <value>
+              <c>true</c> if enabled; otherwise, <c>false</c>.
+            </value>
+        </member>
         <member name="T:PloobsEngine.Events.GroupedEvent`1">
             <summary>
             Evento que tem como alvo um grupo , nao precisa adicionar targets
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.IA.IAPathfinderNode.F">
+            <summary>
+            fitness
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.IA.IAPathfinderNode.G">
+            <summary>
+            goal
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.IA.IAPathfinderNode.H">
+            <summary>
+            heuristic
             </summary>
         </member>
         <member name="T:PloobsEngine.IA.NeuralNetwork.Layer">
@@ -5530,9 +6718,21 @@
             Return last output vector of the layer
             </summary>
         </member>
+        <member name="T:PloobsEngine.IA.IMap">
+            <summary>
+            AI Map interface
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.IA.IMap.GetClosestWaypoint(Microsoft.Xna.Framework.Vector3)">
+            <summary>
+            Gets the closest waypoint to a position
+            </summary>
+            <param name="Position">The position.</param>
+            <returns></returns>
+        </member>
         <member name="P:PloobsEngine.IA.IMap.Waypoints">
             <summary>
-            Waypoints do Mapa
+            Waypoints of the map
             </summary>
         </member>
         <member name="T:PloobsEngine.Utils.PerlinNoise">
@@ -5913,6 +7113,11 @@
             Gets the constraint objects.
             </summary>
         </member>
+        <member name="T:PloobsEngine.Physic2D.I2DPhysicWorld">
+            <summary>
+            2D physic world specification
+            </summary>
+        </member>
         <member name="M:PloobsEngine.Physic2D.I2DPhysicWorld.Update(Microsoft.Xna.Framework.GameTime)">
             <summary>
             Updates 
@@ -5946,6 +7151,60 @@
             <param name="max">The max.</param>
             <returns></returns>
         </member>
+        <member name="T:PloobsEngine.Physic2D.Farseer.FarseerWorld">
+            <summary>
+            2D farseer physic world implementation
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Physic2D.Farseer.FarseerWorld.#ctor(Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Physic2D.Farseer.FarseerWorld"/> class.
+            </summary>
+            <param name="gravity">The gravity.</param>
+        </member>
+        <member name="M:PloobsEngine.Physic2D.Farseer.FarseerWorld.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Updates
+            </summary>
+            <param name="gt">The gt.</param>
+        </member>
+        <member name="M:PloobsEngine.Physic2D.Farseer.FarseerWorld.AddObject(PloobsEngine.Physic2D.I2DPhysicObject)">
+            <summary>
+            Adds the object.
+            </summary>
+            <param name="obj">The obj.</param>
+        </member>
+        <member name="M:PloobsEngine.Physic2D.Farseer.FarseerWorld.RemoveObject(PloobsEngine.Physic2D.I2DPhysicObject)">
+            <summary>
+            Removes the object.
+            </summary>
+            <param name="obj">The obj.</param>
+        </member>
+        <member name="M:PloobsEngine.Physic2D.Farseer.FarseerWorld.Picking(Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Test a Point agains the world
+            </summary>
+            <param name="point">The point.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Physic2D.Farseer.FarseerWorld.TestAABB(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Tests the AABB against the world.
+            </summary>
+            <param name="min">The min.</param>
+            <param name="max">The max.</param>
+            <returns></returns>
+        </member>
+        <member name="T:PloobsEngine.Light2D.SpotLight2D">
+            <summary>
+            2D sport light
+            </summary>
+        </member>
+        <member name="T:PloobsEngine.Light2D.Light2D">
+            <summary>
+            Abstract class to define a 2D light
+            </summary>
+        </member>
         <member name="M:PloobsEngine.Light2D.SpotLight2D.#ctor(Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Color,Microsoft.Xna.Framework.Vector2,System.Single,System.Single,PloobsEngine.Light2D.ShadowmapSize)">
             <summary>
             Initializes a new instance of the <see cref="T:PloobsEngine.Light2D.SpotLight2D"/> class.
@@ -5956,6 +7215,11 @@
             <param name="angle">The angle. IN RADIANS !!!!!!!!!!!!!!!</param>
             <param name="intensity">The intensity.</param>
             <param name="ShadowmapSize">Size of the shadowmap.</param>
+        </member>
+        <member name="T:PloobsEngine.Light2D.PointLight2D">
+            <summary>
+            2D point light
+            </summary>
         </member>
         <member name="F:PloobsEngine.Features.DebugDraw.DebugLines.effect">
             <summary>
@@ -5991,7 +7255,7 @@
         </member>
         <member name="T:PloobsEngine.Audio.ISoundEmitter2D">
             <summary>
-            Generic Sound 3D Emiter 
+            Generic Sound 2D Emiter 
             </summary>
         </member>
         <member name="M:PloobsEngine.Audio.ISoundEmitter2D.Update(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl._2DScene.ICamera2D)">
@@ -6900,6 +8164,11 @@
             Gets the song collection.
             </summary>
         </member>
+        <member name="T:PloobsEngine.Audio.Static2DSound">
+            <summary>
+            Static 2D sound
+            </summary>
+        </member>
         <member name="T:PloobsEngine.MessageSystem.SystemMessageFactory">
             <summary>
             Helper to create system messages
@@ -7185,6 +8454,11 @@
             Final image
             </summary>
         </member>
+        <member name="T:PloobsEngine.SceneControl._2DScene.Basic2DRenderTechnich">
+            <summary>
+            2D render technic
+            </summary>
+        </member>
         <member name="F:PloobsEngine.SceneControl._2DScene.Basic2DRenderTechnich.UsePreDrawPhase">
             <summary>
             Default false
@@ -7234,6 +8508,84 @@
             DEfault Object in 0,0,0 identity rotation and 1,1,1 scale
             </summary>
         </member>
+        <member name="T:PloobsEngine.Physic2D.Farseer.FarseerObject">
+            <summary>
+            Farseer 2D physic object implementation
+            </summary>
+        </member>
+        <member name="T:PloobsEngine.Particles.DPSFParticleManager">
+            <summary>
+            DPSF particle manager implementation
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Particles.DPSFParticleManager.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Particles.DPSFParticleManager"/> class.
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Particles.DPSFParticleManager.ParticleSystem">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.Particles.DPSFParticleManager.AddAndInitializeParticleSystem(PloobsEngine.Particles.IParticleSystem)">
+            <summary>
+            Adds the and initialize particle system.
+            </summary>
+            <param name="particleSystem">The particle system.</param>
+        </member>
+        <member name="M:PloobsEngine.Particles.DPSFParticleManager.RemoveParticleSystem(PloobsEngine.Particles.IParticleSystem)">
+            <summary>
+            Removes the particle system.
+            </summary>
+            <param name="particleSystem">The particle system.</param>
+        </member>
+        <member name="M:PloobsEngine.Particles.DPSFParticleManager.Update3D(Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Vector3)">
+            <summary>
+            Update3D particle systems
+            </summary>
+            <param name="gt">The gt.</param>
+            <param name="view">The view.</param>
+            <param name="Projection">The projection.</param>
+            <param name="camPosition">The cam position.</param>
+        </member>
+        <member name="M:PloobsEngine.Particles.DPSFParticleManager.Update2D(Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix)">
+            <summary>
+            Updates 2D particle systems
+            </summary>
+            <param name="gt">The gt.</param>
+            <param name="view">The view.</param>
+            <param name="Projection">The projection.</param>
+        </member>
+        <member name="M:PloobsEngine.Particles.DPSFParticleManager.Draw(Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix,PloobsEngine.SceneControl.RenderHelper)">
+            <summary>
+            Draws all particles
+            </summary>
+            <param name="gt">The gt.</param>
+            <param name="view">The view.</param>
+            <param name="Projection">The projection.</param>
+            <param name="render">The render.</param>
+        </member>
+        <member name="M:PloobsEngine.Particles.DPSFParticleManager.GetParticleSystem(System.String)">
+            <summary>
+            Gets the particle system.
+            </summary>
+            <param name="particleSystemName">Name of the particle system.</param>
+            <returns></returns>
+        </member>
+        <member name="P:PloobsEngine.Particles.DPSFParticleManager.ParticleSystemManager">
+            <summary>
+            Gets the particle system manager.
+            </summary>
+        </member>
+        <member name="P:PloobsEngine.Particles.DPSFParticleManager.Enabled">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:PloobsEngine.Particles.IParticleManager"/> is enabled.
+            </summary>
+            <value>
+              <c>true</c> if enabled; otherwise, <c>false</c>.
+            </value>
+        </member>
         <member name="T:PloobsEngine.Cameras.CameraFirstPerson">
             <summary>
             First Person Camera
@@ -7258,6 +8610,21 @@
             <value>
               <c>true</c> if [use acelerometer]; otherwise, <c>false</c>.
             </value>
+        </member>
+        <member name="T:PloobsEngine.IA.ConnectorType">
+            <summary>
+            Type of connections
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.IA.ConnectorType.BETWEEN_COLLECTIONS_CONNECTEC">
+            <summary>
+            Between islands
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.IA.ConnectorType.BETWEEN_WAYPOINTS_UNCONNECTED">
+            <summary>
+            Between waypoints
+            </summary>
         </member>
         <member name="T:PloobsEngine.IA.Genetic.GA">
             <summary>
@@ -7778,6 +9145,30 @@
             Bloom Post Effect
             </summary>
         </member>
+        <member name="M:PloobsEngine.SceneControl.BloomPostEffect.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.SceneControl.BloomPostEffect"/> class.
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.SceneControl.BloomPostEffect.Draw(Microsoft.Xna.Framework.Graphics.Texture2D,PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime,PloobsEngine.Engine.GraphicInfo,PloobsEngine.SceneControl.IWorld,System.Boolean)">
+            <summary>
+            Draws
+            </summary>
+            <param name="ImageToProcess">The image to process.</param>
+            <param name="render">The render.</param>
+            <param name="gt">The gt.</param>
+            <param name="GraphicInfo">The graphic info.</param>
+            <param name="world">The world.</param>
+            <param name="useFloatingBuffer">if set to <c>true</c> [use floating buffer].</param>
+        </member>
+        <member name="M:PloobsEngine.SceneControl.BloomPostEffect.Init(PloobsEngine.Engine.GraphicInfo,PloobsEngine.Engine.GraphicFactory)">
+            <summary>
+            Initiates the specified Post Effect.
+            Called by the engine
+            </summary>
+            <param name="ginfo">The ginfo.</param>
+            <param name="factory">The factory.</param>
+        </member>
         <!-- Badly formed XML comment ignored for member "P:PloobsEngine.SceneControl.BloomPostEffect.BrightNess" -->
         <member name="P:PloobsEngine.SceneControl.BloomPostEffect.BloomThreshold">
             <summary>
@@ -8042,6 +9433,11 @@
             </summary>
             <param name="ent"></param>
         </member>
+        <member name="T:PloobsEngine.Engine.Logger.ILogger">
+            <summary>
+            Interface to define a Ploobs Logger
+            </summary>
+        </member>
         <member name="T:PloobsEngine.Engine.Logger.LogLevel">
             <summary>
             Log Levels
@@ -8062,11 +9458,18 @@
             When something happens that can be an error
             </summary>
         </member>
-        <member name="T:PloobsEngine.Engine.OnGraphicInfoChange">
+        <member name="T:PloobsEngine.Engine.Logger.ActiveLogger">
             <summary>
-            When GraphicInfo changes
+            Static Class responsible for Ploobs logging 
             </summary>
-            <param name="newGraphicInfo">The new graphic info.</param>
+        </member>
+        <member name="M:PloobsEngine.Engine.Logger.ActiveLogger.LogMessage(System.String,PloobsEngine.Engine.Logger.LogLevel)">
+            <summary>
+            Logs a message.
+            In Release, warning messages are not logged
+            </summary>
+            <param name="message">The message.</param>
+            <param name="level">The level.</param>
         </member>
         <member name="T:PloobsEngine.Engine.GraphicInfo">
             <summary>
@@ -8174,6 +9577,26 @@
             Viewport
             </summary>
         </member>
+        <member name="T:PloobsEngine.SceneControl.GUI.IGui">
+            <summary>
+            Specification for a GUI system
+            </summary>
+        </member>
+        <member name="T:PloobsEngine.Physic2D.Physic2DType">
+            <summary>
+            Physic object type
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physic2D.Physic2DType.Ghost">
+            <summary>
+            Do not exists in physic world (no collision detection, no ray intersections ......)
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.Physic2D.Physic2DType.Physic">
+            <summary>
+            Real physic object
+            </summary>
+        </member>
         <member name="T:PloobsEngine.Material.ForwardDualTextureShader">
             <summary>
             USes the TextureType.MULTITEX1 and the TextureType.Difuse as textures
@@ -8204,6 +9627,11 @@
             <value>
             The type of the material.
             </value>
+        </member>
+        <member name="T:PloobsEngine.Engine.IntermediateRenderTarget">
+            <summary>
+            Instance of a render target that belongs to a pool
+            </summary>
         </member>
         <member name="T:PloobsEngine.Audio.SoundAudioPlayer">
             <summary>
@@ -8250,6 +9678,7 @@
         <member name="M:PloobsEngine.Audio.SoundAudioPlayer.AddSoundToRepository(System.String,System.String,System.Single,System.Single,System.Single,System.Boolean)">
             <summary>
             Add A Sound Effect to the Repo
+            Sounds are shared here
             </summary>
             <param name="musicNamePath">filepath</param>
             <param name="musicName">Name used to refer to this effect latter</param>
@@ -8286,6 +9715,71 @@
             <summary>
             Removes all sounds.
             </summary>
+        </member>
+        <member name="T:PloobsEngine.IA.AStar">
+            <summary>
+            Ploobs Astar Pathfinding implementation
+            </summary>
+        </member>
+        <member name="F:PloobsEngine.IA.AStar.CostToCross">
+            <summary>
+            Delegate called to evaluate the cost to cross a determined waypoint type
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.IA.AStar.#ctor(PloobsEngine.IA.IMap)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.IA.AStar"/> class.
+            </summary>
+            <param name="map">The map.</param>
+        </member>
+        <member name="M:PloobsEngine.IA.AStar.CostToCrossImplementation(PloobsEngine.IA.WAYPOINTTYPE)">
+            <summary>
+            Costs to cross implementation. (used if no delegate costtowalk is provided)
+            </summary>
+            <param name="type">The type.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.IA.AStar.GetPath(Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Vector3,System.Single)">
+            <summary>
+            Compute and return the path
+            </summary>
+            <param name="Start">The start.</param>
+            <param name="End">The end.</param>
+            <param name="iterations">The iterations.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.IA.AStar.GetPath(PloobsEngine.IA.Waypoint,PloobsEngine.IA.Waypoint,System.Single)">
+            <summary>
+            Compute and return the path
+            </summary>
+            <param name="Start">The start.</param>
+            <param name="End">The end.</param>
+            <param name="iterations">The iterations.</param>
+            <returns></returns>
+        </member>
+        <member name="P:PloobsEngine.IA.AStar.Ended">
+            <summary>
+            Gets a value indicating whether Astar <see cref="T:PloobsEngine.IA.AStar"/> is ended.
+            </summary>
+            <value>
+              <c>true</c> if ended; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.IA.AStar.HeuristicEstimateValue">
+            <summary>
+            Gets or sets the heuristic estimate value.
+            </summary>
+            <value>
+            The heuristic estimate value.
+            </value>
+        </member>
+        <member name="P:PloobsEngine.IA.AStar.Map">
+            <summary>
+            Gets or sets the map.
+            </summary>
+            <value>
+            The map.
+            </value>
         </member>
         <member name="T:PloobsEngine.SceneControl.BeingRemoved">
             <summary>
@@ -8566,6 +10060,11 @@
             Spherical
             </summary>
         </member>
+        <member name="T:PloobsEngine.SceneControl._2DScene.IObject2DAtachtment">
+            <summary>
+            2D object attachement
+            </summary>
+        </member>
         <member name="M:PloobsEngine.SceneControl._2DScene.IObject2DAtachtment.Update(PloobsEngine.SceneControl._2DScene.I2DObject,Microsoft.Xna.Framework.GameTime)">
             <summary>
             Updates the atachment.
@@ -8573,12 +10072,24 @@
             <param name="obj">The obj.</param>
             <param name="gt">The gt.</param>
         </member>
+        <member name="T:PloobsEngine.Modelo.TextureInformation">
+            <summary>
+            Handles the textures of a IModelo.
+            Similar to BatchInformation, but for textures only
+            </summary>
+        </member>
         <member name="M:PloobsEngine.Modelo.TextureInformation.getTexture(PloobsEngine.Modelo.TextureType)">
             <summary>
             Gets one texture of the model.
             </summary>
             <param name="type">The type.</param>
             <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Modelo.TextureInformation.SetNullTexture(PloobsEngine.Modelo.TextureType)">
+            <summary>
+            Sets the passed texture type to null.
+            </summary>
+            <param name="type">The type.</param>
         </member>
         <member name="M:PloobsEngine.Modelo.TextureInformation.SetTexture(System.String,PloobsEngine.Modelo.TextureType)">
             <summary>
@@ -8746,6 +10257,11 @@
             </summary>
             <param name="points">Points that are in world space with origin at the centre</param>
         </member>
+        <member name="T:PloobsEngine.SceneControl._2DScene.Culler.Simple2DCuller">
+            <summary>
+            Dummy 2D culler system 
+            </summary>
+        </member>
         <member name="M:PloobsEngine.Physic.PhysicObjects.BepuObject.GravitationalFieldObject.#ctor(BEPUphysics.UpdateableSystems.ForceFields.ForceFieldShape,Microsoft.Xna.Framework.Vector3,System.Single,System.Single,PloobsEngine.Physics.BepuPhysicWorld)">
             <summary>
             Creates a gravitational field.
@@ -8779,6 +10295,11 @@
             Gets or sets the center of the field that entities will be pushed toward.
             </summary>
         </member>
+        <member name="T:PloobsEngine.Material2D.Basic2DTextureMaterial">
+            <summary>
+            Basic 2D Material
+            </summary>
+        </member>
         <member name="P:PloobsEngine.Material2D.Basic2DTextureMaterial.CastShadow">
             <summary>
             Gets or sets a value indicating whether [cast shadow].
@@ -8787,6 +10308,11 @@
             <value>
               <c>true</c> if [cast shadow]; otherwise, <c>false</c>.
             </value>
+        </member>
+        <member name="T:PloobsEngine.Material2D.Basic2DTextureMaterialProcessor">
+            <summary>
+            Basic Processor for the 2D basic Material
+            </summary>
         </member>
         <member name="T:PloobsEngine.Light.SpotLightPE">
             <summary>
@@ -8909,6 +10435,14 @@
             </summary>
             <param name="view">The viewing matrix.</param>
             <param name="projection">The projection matrix.</param>
+        </member>
+        <member name="P:PloobsEngine.IA.Waypoint.Node">
+            <summary>
+            Gets or sets the node attached
+            </summary>
+            <value>
+            The node.
+            </value>
         </member>
         <member name="T:PloobsEngine.IA.WAYPOINTTYPE">
             <summary>
@@ -9284,6 +10818,22 @@
             <value>
             The type of the material.
             </value>
+        </member>
+        <member name="T:PloobsEngine.Features.FPSCounter">
+            <summary>
+            Component to count fps
+            </summary>
+        </member>
+        <member name="T:PloobsEngine.Audio.Static3DSound">
+            <summary>
+            Static 3D sound
+            </summary>
+        </member>
+        <member name="T:PloobsEngine.Audio.SimpleSoundEffect">
+            <summary>
+            Simple effect Sound effect class
+            This instance is not shared. It is completely independent
+            </summary>
         </member>
         <member name="M:PloobsEngine.Audio.SimpleSoundEffect.#ctor(PloobsEngine.SceneControl.IContentManager,System.String,System.Single,System.Single,System.Single,System.Boolean)">
             <summary>
@@ -9724,6 +11274,19 @@
             <param name="maxShadowmapSize">Size of the max shadowmap.</param>
             <param name="maxDepthBufferSize">Size of the max depth buffer.</param>
         </member>
+        <member name="T:PloobsEngine.IA.SimpleMap">
+            <summary>
+            SImple implementation of a map
+            Brutal force one. Do not scale for HUGE number of waypoints
+            </summary>
+        </member>
+        <member name="M:PloobsEngine.IA.SimpleMap.GetClosestWaypoint(Microsoft.Xna.Framework.Vector3)">
+            <summary>
+            Gets the closest waypoint to a position
+            </summary>
+            <param name="Position">The position.</param>
+            <returns></returns>
+        </member>
         <member name="T:PloobsEngine.IA.NeuralNetwork.NeuralNetwork">
             <summary>
             Implementation of artificial neural network
@@ -9864,6 +11427,16 @@
         <member name="P:PloobsEngine.IA.NeuralNetwork.NeuralNetwork.Item(System.Int32)">
             <summary>
             Get the n th Layer of the network 
+            </summary>
+        </member>
+        <member name="T:PloobsEngine.Utils.SmartWeakEvent`1">
+            <summary>
+            A class for managing a weak event.
+            </summary>
+        </member>
+        <member name="T:PloobsEngine.Utils.FastSmartWeakEvent`1">
+            <summary>
+            A class for managing a weak event.
             </summary>
         </member>
     </members>

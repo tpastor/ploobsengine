@@ -24,6 +24,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Audio;
 using PloobsEngine.SceneControl;
 using Microsoft.Xna.Framework;
+using PloobsEngine.Engine;
 
 namespace PloobsEngine.Audio
 {
@@ -32,7 +33,7 @@ namespace PloobsEngine.Audio
     /// </summary>
     public class Static2DSound : ISoundEmitter2D
     {
-        public Static2DSound(IContentManager cmanager, string audioname, Vector2 Position)
+        public Static2DSound(GraphicFactory cmanager, string audioname, Vector2 Position)
             : base(cmanager,audioname)
         {
             EmiterPosition = Position;

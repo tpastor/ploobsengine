@@ -93,6 +93,12 @@ namespace PloobsEngine.Utils
 
 
 
+        /// <summary>
+        /// Serializes the quaternion.
+        /// </summary>
+        /// <param name="quaternion">The quaternion.</param>
+        /// <param name="fieldName">Name of the field.</param>
+        /// <param name="textWriter">The text writer.</param>
         public static void SerializeQuaternion(Quaternion? quaternion, String fieldName, System.Xml.XmlTextWriter textWriter)
         {
             if (quaternion.HasValue)

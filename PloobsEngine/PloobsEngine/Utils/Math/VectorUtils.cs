@@ -328,7 +328,8 @@ namespace PloobsEngine.Utils
                 return (vector * (maxLength / (float)Math.Sqrt(vecLengthSquared)));
         }
 
-        
+
+
         /// <summary>
         //// forces a 3d position onto the XZ (aka y=0) plane
         /// </summary>
@@ -466,7 +467,7 @@ namespace PloobsEngine.Utils
 
 
         /// <summary>
-        // used by limitMaxDeviationAngle / limitMinDeviationAngle below
+        /// used by limitMaxDeviationAngle / limitMinDeviationAngle below
         /// </summary>
         /// <param name="insideOrOutside">if set to <c>true</c> [inside or outside].</param>
         /// <param name="source">The source.</param>

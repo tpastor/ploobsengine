@@ -101,5 +101,10 @@ namespace PloobsEnginePhone7Template
 
         }
 
+        protected override void CleanUp(EngineStuff engine)
+        {
+            border.CleanUp();
+            base.CleanUp(engine);
+        }
     }
 }

@@ -30,17 +30,33 @@ namespace PloobsEngine.Features
     /// </summary>
     public abstract class ITask
     {
+#if !WINDOWS_PHONE
         public event Action<ITask, IAsyncResult> Ended;
+#else
+        public event Action<ITask> Ended;
+#endif
 
+#if !WINDOWS_PHONE
         /// <summary>
         /// Called when the task ends
         /// </summary>
         /// <param name="result">The result.</param>
         public virtual void Result(IAsyncResult result) 
         { 
+            
             if (Ended != null) 
                 Ended(this,result); 
         }
+#else
+        /// <summary>
+        /// Called when the task ends
+        /// </summary>
+        public virtual void Result()
+        {
+            if (Ended != null)
+                Ended(this);
+        }
+#endif
 
         /// <summary>
         /// Processes the task.

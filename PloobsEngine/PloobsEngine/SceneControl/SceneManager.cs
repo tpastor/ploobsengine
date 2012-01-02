@@ -38,8 +38,7 @@ namespace PloobsEngine.SceneControl
     /// The screen manager is a component which manages one or more GameScreen
     /// instances. It maintains a stack of screens, calls their Update and Draw
     /// methods at the appropriate times
-    /// </summary>    
-    /// </remarks>
+    /// </summary>        
     public class ScreenManager 
     {
         /// <summary>
@@ -50,7 +49,7 @@ namespace PloobsEngine.SceneControl
         /// <param name="contentManager">The content manager.</param>
         /// <param name="render">The render.</param>
         /// <param name="engine">The engine.</param>
-        internal ScreenManager(ref GraphicInfo GraphicInfo, GraphicFactory factory,IContentManager contentManager, RenderHelper render,EngineStuff engine)
+        internal ScreenManager(ref GraphicInfo GraphicInfo, GraphicFactory factory, IContentManager contentManager, RenderHelper render, EngineStuff engine)
         {
             this.GraphicInfo = GraphicInfo;
             this.GraphicFactory = factory;

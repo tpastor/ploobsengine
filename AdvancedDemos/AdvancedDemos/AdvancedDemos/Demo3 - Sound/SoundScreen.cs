@@ -84,6 +84,7 @@ namespace AdvancedDemo4._0
                 ///Create the xml file model extractor
                 ///Loads a XML file that was export by our 3DS MAX plugin
                 ExtractXmlModelLoader ext = new ExtractXmlModelLoader("Content//ModelInfos//", "Model//", "Textures//");
+                this.AttachCleanUpAble(ext);
                 ///Extract all the XML info (Model,Cameras, ...)
                 ModelLoaderData data = ext.Load(factory, GraphicInfo, "ilha");
                 ///Create the WOrld Loader
@@ -94,11 +95,11 @@ namespace AdvancedDemo4._0
 
 
             ///Create and add a sound to the SoundAudioPlayer
-            ap = new SoundAudioPlayer(contentManager);
+            ap = new SoundAudioPlayer(factory);
             ap.AddSoundToRepository("Songs/bye", "bye");
 
             ///Create a sound effect without the SoundAudioPlayer (internaly the SoundAudioPlayer is a container of SimpleSoundEffect -- and some stuffs more)
-            se = new SimpleSoundEffect(contentManager, "Songs/alarm");
+            se = new SimpleSoundEffect(factory, "Songs/alarm");
 
             ///Load the Sounds that you hear in your Microsoft Media Player
             ///Just loading the first album found =P
@@ -107,7 +108,7 @@ namespace AdvancedDemo4._0
             lm.PlayAlbum(ac[0]);
             
             ///Creating a static 3D sound in the 0,0,0 (Bellow the island tree, go there and hear the sound getting louder)
-            sound = new Static3DSound(contentManager, "Songs/pianosong", Vector3.Zero);            
+            sound = new Static3DSound(factory, "Songs/pianosong", Vector3.Zero);            
             this.World.AddSoundEmitter(sound, true);
 
             #region NormalLight

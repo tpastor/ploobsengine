@@ -281,9 +281,7 @@ namespace PloobsEngine.Cameras
         private Quaternion _rotation = Quaternion.Identity;        
         private Matrix _view;
         private Matrix _projection;
-        private BoundingBox _box;
-        private BoundingFrustum _frustrum;
-        private int _id;
+        private BoundingFrustum _frustrum;        
         public event InterpolationFinished OnInterpolationFinished = null;
         cameraInternalInterpolator cii;
         #endregion

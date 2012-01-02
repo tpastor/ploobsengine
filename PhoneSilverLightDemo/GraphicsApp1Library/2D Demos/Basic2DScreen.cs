@@ -169,7 +169,13 @@ namespace EngineTestes
             border.Draw(render, this.World.Camera2D);
             render.RenderTextComplete("PloobsEngine 2D Sample on Windows Phone7", new Vector2(20, 10), Color.Red, Matrix.Identity);
 
-        }        
+        }
+
+        protected override void CleanUp(EngineStuff engine)
+        {
+            base.CleanUp(engine);
+            border.CleanUp();
+        }
 
     }
 }

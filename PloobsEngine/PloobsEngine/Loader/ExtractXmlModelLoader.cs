@@ -118,6 +118,9 @@ namespace PloobsEngine.Loader
         string modelPath = "..\\Content\\Model\\";
         string texturePath = "..\\Content\\Textures\\";
 
+        List<String> modelNames = new List<string>();
+        List<String> texturesNames = new List<string>();
+
         /// <summary>
         /// Combine the xmlBasePath + Name + .xml
         /// when using load, just pass the Name
@@ -134,9 +137,9 @@ namespace PloobsEngine.Loader
 
         /// <summary>
         /// Use the default Path for everything
-        //string xmlpath = "Content\\ModelInfos\\";
-        //string modelPath = "..\\Content\\Model\\";
-        //string texturePath = "..\\Content\\Textures\\";
+        /// string xmlpath = "Content\\ModelInfos\\";
+        /// string modelPath = "..\\Content\\Model\\";
+        /// string texturePath = "..\\Content\\Textures\\";
         /// </summary>
         public ExtractXmlModelLoader()
         {
@@ -145,7 +148,7 @@ namespace PloobsEngine.Loader
         #region IModelLoader Members
 
         public ModelLoaderData Load(GraphicFactory factory, GraphicInfo ginfo, String Name)
-        {
+        {            
             ModelLoaderData elements = new ModelLoaderData();
             Dictionary<String, XmlModelMeshInfo> infos = new Dictionary<string, XmlModelMeshInfo>();
             Dictionary<String, targetInfo> targets = new Dictionary<string, targetInfo>();
@@ -405,6 +408,7 @@ namespace PloobsEngine.Loader
 
 
             Model model = factory.GetModel(modelPath + Name);
+            modelNames.Add(modelPath + Name);
             Matrix[] m = new Matrix[model.Bones.Count];
             model.CopyAbsoluteBoneTransformsTo(m);
 
@@ -448,21 +452,35 @@ namespace PloobsEngine.Loader
                         if (inf.material.reflectionName != null)
                         {
                             mi.textureInformation.SetCubeTexture(factory.GetTextureCube(texturePath + inf.material.reflectionName), TextureType.ENVIRONMENT);
+                            texturesNames.Add(texturePath + inf.material.reflectionName);
                         }
 
                         else
                         {
                             if (inf.material.difuseName != null)
+                            {
                                 mi.textureInformation.SetTexture(factory.GetTexture2D(texturePath + inf.material.difuseName), TextureType.DIFFUSE);
+                                texturesNames.Add(texturePath + inf.material.difuseName);
+                            }
 
                             if (inf.material.glowName != null)
+                            {
                                 mi.textureInformation.SetTexture(factory.GetTexture2D(texturePath + inf.material.glowName), TextureType.GLOW);
+                                texturesNames.Add(texturePath + inf.material.glowName);
+                            }
 
                             if (inf.material.specularName != null)
+                            {
                                 mi.textureInformation.SetTexture(factory.GetTexture2D(texturePath + inf.material.specularName), TextureType.SPECULAR);
+                                texturesNames.Add(texturePath + inf.material.specularName);
+                            }
 
                             if (inf.material.bumpName != null)
+                            {
                                 mi.textureInformation.SetTexture(factory.GetTexture2D(texturePath + inf.material.bumpName), TextureType.BUMP);
+                                texturesNames.Add(texturePath + inf.material.bumpName);
+                            }
+
                         }
 
                         if (inf.collisionType != null)
@@ -480,7 +498,7 @@ namespace PloobsEngine.Loader
             }
 
             SerializerHelper.ChangeDecimalSymbolToSystemDefault();
-            ///Clear Stuffs
+            //Clear Stuffs
             infos.Clear();
             targets.Clear();
             spotLights.Clear();
@@ -493,6 +511,30 @@ namespace PloobsEngine.Loader
         {
             return str.Split('.')[0];
         }
+
+        #region IModelLoader Members
+
+
+        /// <summary>
+        /// Cleans up.
+        /// </summary>
+        /// <param name="factory">The factory.</param>
+        public void CleanUp(GraphicFactory factory)
+        {
+            foreach (var item in modelNames)
+            {
+                factory.ReleaseAsset(item);
+            }
+            modelNames.Clear();
+
+            foreach (var item in texturesNames)
+            {
+                factory.ReleaseAsset(item);
+            }
+            texturesNames.Clear();
+        }
+
+        #endregion
     }
 
         #endregion

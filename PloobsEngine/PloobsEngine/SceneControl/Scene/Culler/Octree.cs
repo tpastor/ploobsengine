@@ -47,6 +47,12 @@ namespace PloobsEngine.SceneControl
 
         private static DebugShapesDrawer debugDraw = null;
 
+        /// <summary>
+        /// Gets or sets the debug draw.
+        /// </summary>
+        /// <value>
+        /// The debug draw.
+        /// </value>
         public DebugShapesDrawer DebugDraw
         {
             get { return debugDraw; }
@@ -129,16 +135,35 @@ namespace PloobsEngine.SceneControl
             }
         }
 
+        /// <summary>
+        /// Removes the specified obj.
+        /// </summary>
+        /// <param name="obj">The obj.</param>
         public void Remove(T obj)
         {
             objects.Remove(obj);
         }
 
+        /// <summary>
+        /// Determines whether the specified obj has changed.
+        /// </summary>
+        /// <param name="obj">The obj.</param>
+        /// <param name="transformebbox">The transformebbox.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified obj has changed; otherwise, <c>false</c>.
+        /// </returns>
         public bool HasChanged(T obj, BoundingBox transformebbox)
         {
             return this.bounds.Contains(transformebbox) == ContainmentType.Contains;
         }
 
+        /// <summary>
+        /// Stills inside ?
+        /// </summary>
+        /// <param name="o">The o.</param>
+        /// <param name="center">The center.</param>
+        /// <param name="radius">The radius.</param>
+        /// <returns></returns>
         public bool StillInside(T o, Vector3 center, float radius)
         {
             Vector3 min = center - new Vector3(radius);

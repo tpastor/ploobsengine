@@ -35,7 +35,7 @@ namespace PloobsEngine.MessageSystem
         /// <param name="reciever">The reciever.</param>
         /// <param name="notfoundid">The notfoundid.</param>
         /// <returns></returns>
-        public static Message NotFoundReciever(int reciever,int notfoundid)
+        public static Message NotFoundReciever(long reciever, long notfoundid)
         {
             return new Message(PrincipalConstants.MessageDeliverId,reciever,null,Priority.VERYLOW,0,SenderType.SYSTEM,notfoundid,PrincipalConstants.RecieverNotFound);            
         }

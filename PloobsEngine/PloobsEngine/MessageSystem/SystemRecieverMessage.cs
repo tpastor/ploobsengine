@@ -39,7 +39,7 @@ namespace PloobsEngine.MessageSystem
             EntityMapper.getInstance().AddEntity(this);
         }
 
-        public SystemRecieverMessage(int id)
+        public SystemRecieverMessage(long id)
         {
             this.id = id;
             EntityMapper.getInstance().AddEntity(this);
@@ -72,14 +72,14 @@ namespace PloobsEngine.MessageSystem
         #endregion
 
         #region IEntity Members
-        int id;
+        long id;
         /// <summary>
         /// return the entity id
         /// </summary>
         /// <returns>
         /// the id
         /// </returns>
-        public int GetId()
+        public long GetId()
         {
             return id;
         }
@@ -88,7 +88,7 @@ namespace PloobsEngine.MessageSystem
         /// sets the id
         /// </summary>
         /// <param name="id"></param>
-        public void SetId(int id)
+        public void SetId(long id)
         {
             this.id = id;
         }

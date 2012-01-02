@@ -184,7 +184,7 @@ namespace PloobsEngine.IA
 
                     for (int j = 0; j < openQueue.Count; j++)
                     {
-                        ///ve se ele ta na open list
+                        //ve se ele ta na open list
                         if (openQueue[j].WorldPos.Equals(way.WorldPos))
                         {
                             foundInOpenIndex = j;
@@ -192,7 +192,7 @@ namespace PloobsEngine.IA
                             break;
                         }
                     }
-                    ///se tiver na openlist e o custo pelo atual caminho for maior entao descarta
+                    //se tiver na openlist e o custo pelo atual caminho for maior entao descarta
                     if (foundInOpenIndex != -1 &&   openQueue[foundInOpenIndex].Node.G <= newG)
                     {
                         continue;

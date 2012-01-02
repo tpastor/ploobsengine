@@ -33,6 +33,9 @@ using PloobsEngine.Engine;
 
 namespace PloobsEngine.SceneControl
 {
+    /// <summary>
+    /// Directional Shadow Filter Options
+    /// </summary>
     public enum DirectionalShadowFilteringType
     {
         PCF2x2 = 0,
@@ -61,8 +64,7 @@ namespace PloobsEngine.SceneControl
         Matrix[] lightProjectionMatrices = new Matrix[NumSplits];
         Matrix[] lightViewMatrices = new Matrix[NumSplits];
         Vector2[] lightClipPlanes = new Vector2[NumSplits];
-        float[] splitDepths = new float[NumSplits + 1];
-        private QuadRender quadRenderer;        
+        float[] splitDepths = new float[NumSplits + 1];        
         bool showCascadeSplits = false;
         DirectionalShadowFilteringType filteringType = DirectionalShadowFilteringType.PCF3x3;
         EffectTechnique[] shadowOcclusionTechniques = new EffectTechnique[4];
@@ -193,14 +195,19 @@ namespace PloobsEngine.SceneControl
 				RenderShadowOcclusion(render,mainCamera,light,deferredGBuffer);                
 				return shadowOcclusion;						
 			
-		}        
+		}
 
-		/// <summary>
-		/// Determines the size of the frustum needed to cover the viewable area,
-		/// then creates an appropriate orthographic projection.
-		/// </summary>
-		/// <param name="light">The directional light to use</param>
-		/// <param name="mainCamera">The camera viewing the scene</param>
+        /// <summary>
+        /// Determines the size of the frustum needed to cover the viewable area,
+        /// then creates an appropriate orthographic projection.
+        /// </summary>
+        /// <param name="light">The directional light to use</param>
+        /// <param name="mainCamera">The camera viewing the scene</param>
+        /// <param name="minZ">The min Z.</param>
+        /// <param name="maxZ">The max Z.</param>
+        /// <param name="Projection">The projection.</param>
+        /// <param name="view">The view.</param>
+        /// <param name="ViewProjection">The view projection.</param>
         protected void CalculateFrustum(DirectionalLightPE light, ICamera mainCamera, float minZ, float maxZ, out Matrix Projection, out Matrix view, out Matrix ViewProjection)
 		{
             // Shorten the view frustum according to the shadow view distance
@@ -252,13 +259,16 @@ namespace PloobsEngine.SceneControl
             Projection = Matrix.CreateOrthographicOffCenter(mins.X, maxes.X, mins.Y, maxes.Y, -maxes.Z - light.NearClipOffset, -mins.Z);
             ViewProjection = view * Projection;
             
-		}       
+		}
 
-		/// <summary>
-		/// Renders the shadow map using the orthographic camera created in
-		/// CalculateFrustum.
-		/// </summary>
-		/// <param name="modelList">The list of models to be rendered</param>        
+        /// <summary>
+        /// Renders the shadow map using the orthographic camera created in
+        /// CalculateFrustum.
+        /// </summary>
+        /// <param name="gameTime">The game time.</param>
+        /// <param name="render">The render.</param>
+        /// <param name="splitIndex">Index of the split.</param>
+        /// <param name="world">The world.</param>
         protected void RenderShadowMap(GameTime gameTime, RenderHelper render, int splitIndex, IWorld world)
 		{
             // Set the viewport for the current split            

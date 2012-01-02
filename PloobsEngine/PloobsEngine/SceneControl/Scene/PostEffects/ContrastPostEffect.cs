@@ -62,7 +62,7 @@ namespace PloobsEngine.SceneControl
 
         public override void Init(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
         {
-            ///Load the asset
+            //Load the asset
             effect = factory.GetEffect("contrast",false,true);            
         }
         

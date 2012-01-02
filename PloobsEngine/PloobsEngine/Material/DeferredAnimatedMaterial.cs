@@ -36,6 +36,7 @@ namespace PloobsEngine.Material
         /// <summary>
         /// Initializes a new instance of the <see cref="ForwardMaterial"/> class.
         /// </summary>
+        /// <param name="controller">The controller.</param>
         /// <param name="shader">The shader.</param>
         public DeferredAnimatedMaterial(IAnimatedController controller, DeferredSimpleAnimationShader shader)
         {
@@ -112,7 +113,14 @@ namespace PloobsEngine.Material
             shader.Draw(gt, obj, render, cam,lights);
         }
 
-
+        /// <summary>
+        /// Cleans up.
+        /// </summary>
+        /// <param name="factory"></param>
+        public void CleanUp(PloobsEngine.Engine.GraphicFactory factory)
+        {
+            shader.Cleanup(factory);
+        }
 
         /// <summary>
         /// Update.
@@ -172,7 +180,7 @@ namespace PloobsEngine.Material
             set;
         }
 
-        #endregion
+#endregion
 
 #region ISerializable Members
 
@@ -188,7 +196,7 @@ namespace PloobsEngine.Material
             ActiveLogger.LogMessage("Serialization not implemented", LogLevel.Warning);
         }
 #endif
-        #endregion
+#endregion
         
 
         public bool CanAppearOfReflectionRefraction
@@ -207,7 +215,7 @@ namespace PloobsEngine.Material
             set;
         }
 
-        #endregion
+#endregion
     }
 }
 #endif

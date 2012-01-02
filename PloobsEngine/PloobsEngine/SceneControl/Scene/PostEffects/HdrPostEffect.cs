@@ -37,8 +37,7 @@ namespace PloobsEngine.SceneControl
         long lastTime = 0;
         float dt = 0;                
         Effect effect ;
-        Effect tone;
-        Effect toScreen;
+        Effect tone;        
         Effect fULLGPUBlur;
         Effect luminance;
         Effect threshold;        
@@ -158,7 +157,7 @@ namespace PloobsEngine.SceneControl
                
                
                for (int i = 1; i < luminanceChain.Length; i++)
-                   tex = DownScale(rHelper, tex, luminanceChain[i], "Downscale4", useFloatingBuffer);   ///possivelmente mudar para o efeito Downscale4Luminance
+                   tex = DownScale(rHelper, tex, luminanceChain[i], "Downscale4", useFloatingBuffer);   //possivelmente mudar para o efeito Downscale4Luminance
                
                // Final downscale                           
                tex = DownScale(rHelper, tex, currentFrameLuminance, "Downscale4Luminance", useFloatingBuffer);
@@ -169,7 +168,7 @@ namespace PloobsEngine.SceneControl
                luminance.Parameters["SourceTexture1"].SetValue(lastFrameAdaptedLuminance);
                tex = Luminance(rHelper, tex, currentFrameAdaptedLuminance, "CalcAdaptedLuminance");
 
-               ///Bloom               
+               //Bloom               
                IntermediateRenderTarget thresholdTex = factory.GetRenderTargetFromPool(d16.Width, d16.Height, SurfaceFormat.HalfVector4);
                threshold.CurrentTechnique = threshold.Techniques["Threshold"];
                threshold.Parameters["g_fThreshold"].SetValue(bloomThreshold);

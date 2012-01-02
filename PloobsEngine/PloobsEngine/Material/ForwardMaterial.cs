@@ -181,8 +181,6 @@ namespace PloobsEngine.Material
         #endif
         #endregion
 
-
-
         #region IMaterial Members
 
 
@@ -190,6 +188,19 @@ namespace PloobsEngine.Material
         {
             get;
             set;
+        }
+
+        #endregion
+
+        #region IMaterial Members
+
+        /// <summary>
+        /// Cleans up.
+        /// </summary>
+        /// <param name="factory"></param>
+        public void CleanUp(PloobsEngine.Engine.GraphicFactory factory)
+        {
+            shader.Cleanup(factory);
         }
 
         #endregion

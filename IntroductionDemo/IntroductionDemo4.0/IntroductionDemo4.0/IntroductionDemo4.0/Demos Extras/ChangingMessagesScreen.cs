@@ -84,7 +84,7 @@ namespace IntroductionDemo4._0
                 ///Set the Id, forcing it  (you can only force ids less than 1000)
                 obj3.SetId(77);
                 this.World.AddObject(obj3);
-                int id = obj3.GetId();
+                long id = obj3.GetId();
                 ///Testa se o Id atribuido eh o forcado 
                 ///Internamente a Engine atribui Ids acima de 1000 (valores abaixo funcionarao, a menos que alguem ja tenha forcado este Id antes)                
                 ///Como neste caso nao forcamos o id de ninguem para 77, entao o obj3 tera id 77
@@ -224,7 +224,7 @@ namespace IntroductionDemo4._0
                 (Reciever.Modelo as SimpleModel).SetTexture(tex, TextureType.DIFFUSE);
 
                 ///Recuperar quem enviou a mensagem 
-                int senderId = mes.Sender;
+                long senderId = mes.Sender;
                 if (senderId != PrincipalConstants.InvalidId)
                 {
                     if (mes.SenderType == SenderType.OBJECT)
@@ -242,7 +242,7 @@ namespace IntroductionDemo4._0
         /// entao a bola fica subindo e descendo e a cada movimento deste uma nova colisao eh criada
         /// Para evitar isto, apenas a primeira iteracao das bolas com a superficies sera considerada
         /// </summary>
-        List<int> alreadProcessed = new List<int>();
+        List<long> alreadProcessed = new List<long>();
 
         bool shouldDraw;
         string objNameTemp;

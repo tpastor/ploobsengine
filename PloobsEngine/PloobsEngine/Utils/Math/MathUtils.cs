@@ -295,7 +295,13 @@ namespace PloobsEngine.Utils
             smoothedAccumulator = Interpolate(Clip(smoothRate, 0, 1), smoothedAccumulator, newValue);
         }
 
-               
+
+        /// <summary>
+        /// Creates the rotation from line.
+        /// </summary>
+        /// <param name="start">The start.</param>
+        /// <param name="end">The end.</param>
+        /// <returns></returns>
        public static Matrix CreateRotationFromLine(Vector3 start, Vector3 end)
        {
            Vector3 p = new Vector3() ; // this vector should not be between start and end

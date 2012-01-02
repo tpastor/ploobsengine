@@ -58,6 +58,7 @@ namespace PloobsEngine.Components
         /// Pres draw.
         /// Its called deppending of the ComponentType
         /// </summary>
+        /// <param name="render">The render.</param>
         /// <param name="gt">The gt.</param>
         /// <param name="activeView">The active view.</param>
         /// <param name="activeProjection">The active projection.</param>
@@ -72,10 +73,18 @@ namespace PloobsEngine.Components
         /// Pos With Depth draw.
         /// Its called deppending of the ComponentType
         /// </summary>
+        /// <param name="render">The render.</param>
         /// <param name="gt">The gt.</param>
         /// <param name="activeView">The active view.</param>
         /// <param name="activeProjection">The active projection.</param>
         protected virtual void PosWithDepthDraw(RenderHelper render, GameTime gt, Matrix activeView, Matrix activeProjection) { }
+        /// <summary>
+        /// Is the pos with depth draw.
+        /// </summary>
+        /// <param name="render">The render.</param>
+        /// <param name="gt">The gt.</param>
+        /// <param name="activeView">The active view.</param>
+        /// <param name="activeProjection">The active projection.</param>
         internal void iPosWithDepthDraw(RenderHelper render, GameTime gt, Matrix activeView, Matrix activeProjection)
         {
             PosWithDepthDraw(render, gt, activeView, activeProjection);
@@ -85,6 +94,7 @@ namespace PloobsEngine.Components
         /// Afters draw.
         /// Its called deppending of the ComponentType
         /// </summary>
+        /// <param name="render">The render.</param>
         /// <param name="gt">The gt.</param>
         /// <param name="activeView">The active view.</param>
         /// <param name="activeProjection">The active projection.</param>
@@ -97,7 +107,8 @@ namespace PloobsEngine.Components
         /// <summary>
         /// Loads the content.
         /// </summary>
-        /// <param name="engine">The engine.</param>
+        /// <param name="GraphicInfo">The graphic info.</param>
+        /// <param name="factory">The factory.</param>
         protected virtual void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory) { }
         internal void iLoadContent(GraphicInfo GraphicInfo,GraphicFactory factory)
         {
@@ -116,14 +127,14 @@ namespace PloobsEngine.Components
         }
 
         #region IEntity Members
-        private int id;
+        private long id;
         /// <summary>
         /// return the entity id
         /// </summary>
         /// <returns>
         /// the id
         /// </returns>
-        public int GetId()
+        public long GetId()
         {
             return id;
         }
@@ -132,7 +143,7 @@ namespace PloobsEngine.Components
         /// sets the id
         /// </summary>
         /// <param name="id"></param>
-        public void SetId(int id)
+        public void SetId(long id)
         {
             this.id = id;
         }

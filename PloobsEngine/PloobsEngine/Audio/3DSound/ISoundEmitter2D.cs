@@ -29,6 +29,7 @@ using PloobsEngine.SceneControl;
 using PloobsEngine.Cameras;
 using PloobsEngine.Engine.Logger;
 using PloobsEngine.SceneControl._2DScene;
+using PloobsEngine.Engine;
 
 namespace PloobsEngine.Audio
 {
@@ -37,11 +38,13 @@ namespace PloobsEngine.Audio
     /// </summary>
     public abstract class ISoundEmitter2D 
     {
-        public ISoundEmitter2D(IContentManager cmanager, String SoundName)
+        String internalName;
+        public ISoundEmitter2D(GraphicFactory cmanager, String SoundName)
         {
             System.Diagnostics.Debug.Assert(cmanager != null);
             System.Diagnostics.Debug.Assert(!String.IsNullOrEmpty(SoundName));
-            
+
+            this.internalName = SoundName;
             SoundEffect se = cmanager.GetAsset<SoundEffect>(SoundName);                        
             soundEngineInstance = se.CreateInstance();
 
@@ -50,6 +53,21 @@ namespace PloobsEngine.Audio
             listener = new AudioListener();
             emiter = new AudioEmitter();
         }
+
+        /// <summary>
+        /// Cleans up.
+        /// </summary>
+        /// <param name="factory">The factory.</param>
+        /// <param name="removeSoundGeneratorAlso">if set to <c>true</c> [remove sound generator also].</param>
+        public void CleanUp(GraphicFactory factory, bool removeSoundGeneratorAlso = true)
+        {
+            if (removeSoundGeneratorAlso)
+            {
+                factory.ReleaseAsset(internalName);
+            }
+            soundEngineInstance.Dispose();
+        }
+
 
 #if DEBUG
         bool isAdded = false;

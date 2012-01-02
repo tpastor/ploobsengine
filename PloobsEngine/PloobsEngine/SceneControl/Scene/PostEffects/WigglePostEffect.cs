@@ -27,14 +27,29 @@ using Microsoft.Xna.Framework;
 
 namespace PloobsEngine.SceneControl
 {
+    /// <summary>
+    /// Wiggle Post effect
+    /// </summary>
     public class WigglePostEffect : IPostEffect
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WigglePostEffect"/> class.
+        /// </summary>
         public WigglePostEffect() : base(PostEffectType.All) { }
         private Effect wiggle;
         private float m_Timer = 0;        
 
 #region IPostEffect Members
 
+        /// <summary>
+        /// Draws 
+        /// </summary>
+        /// <param name="ImageToProcess">The image to process.</param>
+        /// <param name="rHelper">The r helper.</param>
+        /// <param name="gt">The gt.</param>
+        /// <param name="GraphicInfo">The graphic info.</param>
+        /// <param name="world">The world.</param>
+        /// <param name="useFloatingBuffer">if set to <c>true</c> [use floating buffer].</param>
         public override void Draw(Texture2D ImageToProcess, RenderHelper rHelper, GameTime gt, Engine.GraphicInfo GraphicInfo, IWorld world, bool useFloatingBuffer)
         {
 

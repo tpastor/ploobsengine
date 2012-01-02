@@ -55,6 +55,7 @@ namespace AdvancedDemo4._0
             ///Create the xml file model extractor
             ///Loads a XML file that was export by our 3DS MAX plugin
             ExtractXmlModelLoader ext = new ExtractXmlModelLoader("Content//ModelInfos//", "Model//", "Textures//");
+            this.AttachCleanUpAble(ext);
             ///Extract all the XML info (Model,Cameras, ...)
             ModelLoaderData data = ext.Load(factory, GraphicInfo, "leonScene");
             ///Create the WOrld Loader
@@ -69,6 +70,7 @@ namespace AdvancedDemo4._0
             ///when a camera is created, the default just add the camera
             wl.OnCreateICamera += new CreateICamera(wl_OnCreateICamera);
             wl.LoadWorld(factory, GraphicInfo, World, data);
+            
 
             ///the classical light throw
             lt = new LightThrowBepu(this.World, factory);

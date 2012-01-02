@@ -27,6 +27,7 @@ using PloobsEngine.Light;
 using PloobsEngine.Modelo;
 using PloobsEngine.Engine;
 using PloobsEngine.Physics;
+using PloobsEngine.SceneControl;
 
 namespace PloobsEngine.Loader
 {
@@ -212,12 +213,14 @@ namespace PloobsEngine.Loader
     /// <summary>
     /// Specification for Classes that can Load a Model from a file/stream ...
     /// </summary>
-    public interface IModelLoader
-    {                
+    public interface IModelLoader : ICleanupAble
+    {
         /// <summary>
         /// Extract infos about models
         /// </summary>
-        /// <param name="name">The name of the File - assume that models is in /Models, textures in /Textures and ModelInfos (when needed) in /ModelInfos</param>
+        /// <param name="factory">The factory.</param>
+        /// <param name="info">The info.</param>
+        /// <param name="Name">The name.</param>
         /// <returns></returns>
         ModelLoaderData Load(GraphicFactory factory, GraphicInfo info, String Name);
     }

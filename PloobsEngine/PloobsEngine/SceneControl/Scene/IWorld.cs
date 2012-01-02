@@ -49,13 +49,13 @@ namespace PloobsEngine.SceneControl
     public class IWorld 
 #endif
     {
+#if WINDOWS
         /// <summary>
         /// Initializes a new instance of the <see cref="IWorld"/> class.
         /// </summary>
         /// <param name="PhysicWorld">The physic world.</param>
         /// <param name="Culler">The culler.</param>
         /// <param name="particleManager">The particle manager.</param>
-#if WINDOWS
         /// <param name="multiThread">if set to <c>true</c> [mult thread].</param>
         public IWorld(IPhysicWorld PhysicWorld, ICuller Culler, IParticleManager particleManager = null,bool multiThread = false)
 #else
@@ -85,6 +85,7 @@ namespace PloobsEngine.SceneControl
             SoundEmiters3D = new List<ISoundEmitter3D>();
             this.Culler = Culler;
             this.culler.world = this;
+            CleanUpObjectsOnDispose = true;
 #if WINDOWS
             this.multThreading = multiThread;
 #endif
@@ -113,10 +114,13 @@ namespace PloobsEngine.SceneControl
 
         protected ICuller culler;
         protected GraphicInfo graphicsInfo;
-        protected GraphicFactory graphicsFactory;
+        protected GraphicFactory graphicFactory;
         protected IContentManager contentManager;
         protected IParticleManager particleManager;
 
+        /// <summary>
+        /// Gets the particle manager.
+        /// </summary>
         public IParticleManager ParticleManager
         {
             get {                
@@ -124,12 +128,18 @@ namespace PloobsEngine.SceneControl
             }            
         }
 
+        public bool CleanUpObjectsOnDispose
+        {
+            set;
+            get;
+        }
+
         protected virtual void InitWorld()
         {
             if (particleManager != null)
             {
                 particleManager.GraphicInfo = graphicsInfo;
-                particleManager.GraphicFactory = graphicsFactory;
+                particleManager.GraphicFactory = graphicFactory;
             }
         }
         internal void iInitWorld()
@@ -169,8 +179,8 @@ namespace PloobsEngine.SceneControl
         /// </value>
         internal GraphicFactory GraphicsFactory
         {
-            get { return graphicsFactory; }
-            set { graphicsFactory = value; }
+            get { return graphicFactory; }
+            set { graphicFactory = value; }
         }
                 
 
@@ -192,7 +202,7 @@ namespace PloobsEngine.SceneControl
             PhysicWorld.AddObject(obj.PhysicObject);
             obj.PhysicObject.ObjectOwner = obj;
             Objects.Add(obj);            
-            obj.Material.Initialization(graphicsInfo, graphicsFactory, obj);
+            obj.Material.Initialization(graphicsInfo, graphicFactory, obj);
             Culler.onObjectAdded(obj);
         }
 
@@ -235,6 +245,9 @@ namespace PloobsEngine.SceneControl
         }
 
 #if WINDOWS
+        /// <summary>
+        /// Mulyi threading enabled ?
+        /// </summary>
         protected bool multThreading = true;
         TaskFactory factory = new TaskFactory(TaskScheduler.Default);        
         List<Task> tasks = new List<Task>();
@@ -539,7 +552,7 @@ namespace PloobsEngine.SceneControl
         /// <summary>
         /// Removes the sound emitter.
         /// </summary>
-        /// <param name="e">The e.</param>
+        /// <param name="em">The em.</param>
         public virtual void RemoveSoundEmitter(ISoundEmitter3D em)
         {
             if (em == null)
@@ -554,6 +567,40 @@ namespace PloobsEngine.SceneControl
                 ActiveLogger.LogMessage("Emitter not found: " + em.ToString(), LogLevel.Warning);
             }
 
+        }
+
+        /// <summary>
+        /// Cleans up.
+        /// </summary>
+        public virtual void CleanUp()
+        {
+            foreach (var item in this.CameraManager.GetCamerasDescription())
+            {
+                item.cam.CleanUp();
+            }
+
+            if (CleanUpObjectsOnDispose)
+            {
+                foreach (var item in Objects)
+                {
+                    item.CleanUp(graphicFactory);
+                }
+            }
+
+            foreach (var item in SoundEmiters3D)
+            {
+                item.CleanUp(graphicFactory);
+            }
+
+            Objects.Clear();
+            Lights.Clear();
+            PhysicWorld = null;
+            Dummies.Clear();
+            this.culler = null;
+            SoundEmiters3D.Clear();
+            CameraManager = null;
+            Triggers.Clear();
+            particleManager = null;
         }
 
         #region ISerializable Members

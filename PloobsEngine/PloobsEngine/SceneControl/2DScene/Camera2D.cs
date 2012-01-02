@@ -139,7 +139,7 @@ namespace PloobsEngine.SceneControl._2DScene
         public Camera2D(GraphicInfo graphics)
         {
             _graphics = graphics;
-            _graphics.OnGraphicInfoChange += new OnGraphicInfoChange(_graphics_OnGraphicInfoChange);
+            _graphics.OnGraphicInfoChange+=_graphics_OnGraphicInfoChange;
             _simprojection = Matrix.CreateOrthographicOffCenter(0f, ConvertUnits.ToSimUnits(_graphics.Viewport.Width),
                                                              ConvertUnits.ToSimUnits(_graphics.Viewport.Height), 0f, 0f,
                                                              1f);
@@ -156,8 +156,9 @@ namespace PloobsEngine.SceneControl._2DScene
             ResetCamera();
         }
 
-        void _graphics_OnGraphicInfoChange(GraphicInfo newGraphicInfo)
+        void _graphics_OnGraphicInfoChange(object sender, EventArgs e)
         {
+            _graphics = (GraphicInfo)sender;
             _simprojection = Matrix.CreateOrthographicOffCenter(0f, ConvertUnits.ToSimUnits(_graphics.Viewport.Width),
                                                              ConvertUnits.ToSimUnits(_graphics.Viewport.Height), 0f, 0f,
                                                              1f);
@@ -168,8 +169,9 @@ namespace PloobsEngine.SceneControl._2DScene
 
             _translateCenter = new Vector2(ConvertUnits.ToSimUnits(_graphics.Viewport.Width / 2f),
                                            ConvertUnits.ToSimUnits(_graphics.Viewport.Height / 2f));
-
+            
         }
+
 
         public Matrix View
         {
@@ -478,7 +480,7 @@ namespace PloobsEngine.SceneControl._2DScene
             _currentRotation += 80f * rotDelta * rotInertia * (float)gameTime.ElapsedGameTime.TotalSeconds * intertiaController;
 
             SetView();
-            ///naiiiiiiiive =P
+            //naiiiiiiiive =P
             updatefrustrum = true;
 
 
@@ -570,6 +572,20 @@ namespace PloobsEngine.SceneControl._2DScene
             get { return _projection; }
         }
         
+        #endregion
+
+        #region ICamera2D Members
+
+
+        /// <summary>
+        /// Called when the attached screen is removed
+        /// If this camera is not attached to a screen, this method is not called =P
+        /// </summary>
+        public void CleanUp()
+        {
+            _graphics.OnGraphicInfoChange -= _graphics_OnGraphicInfoChange;
+        }
+
         #endregion
     }
 

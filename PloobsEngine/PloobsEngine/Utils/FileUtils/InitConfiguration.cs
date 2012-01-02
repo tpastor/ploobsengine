@@ -45,7 +45,7 @@ namespace PloobsEngine.Utils
                 keyConf = BundleHandler.getBundle(PrincipalConstants.DefaultInitConfFileName);
             }
 
-            ///para nao soltar exception se nao encontrar a key
+            //para nao soltar exception se nao encontrar a key
             string conf = null;
             keyConf.TryGetValue(confName, out conf);
             return conf;

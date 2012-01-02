@@ -101,12 +101,24 @@ namespace PloobsEngine.SceneControl
             set { density = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the type of the fog.
+        /// </summary>
+        /// <value>
+        /// The type of the fog.
+        /// </value>
         public FogType FogType
         {
             get { return fogType; }
             set { fogType = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the color of the fog.
+        /// </summary>
+        /// <value>
+        /// The color of the fog.
+        /// </value>
         public Color FogColor
         {
             get { return fogColor; }

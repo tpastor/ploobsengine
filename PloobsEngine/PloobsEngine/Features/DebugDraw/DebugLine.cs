@@ -28,6 +28,9 @@ using PloobsEngine.Modelo;
 
 namespace PloobsEngine.Features.DebugDraw
 {
+    /// <summary>
+    /// Debig Line
+    /// </summary>
     public class DebugLine : IDebugDrawShape
     {
         VertexPositionColor[] verts = new VertexPositionColor[2];        
@@ -41,7 +44,8 @@ namespace PloobsEngine.Features.DebugDraw
         /// Creates a new box.
         /// Visible by default
         /// </summary>
-        /// <param name="BoundingBox">The bounding box.</param>
+        /// <param name="StartPoint">The start point.</param>
+        /// <param name="EndPoint">The end point.</param>
         /// <param name="color">The box's color.</param>
         public DebugLine(Vector3 StartPoint, Vector3 EndPoint, Color color)
         {            
@@ -50,7 +54,12 @@ namespace PloobsEngine.Features.DebugDraw
             this.EndPoint = EndPoint;
             Visible = true;
         }
-         
+
+        /// <summary>
+        /// Initializes
+        /// </summary>
+        /// <param name="factory">The factory.</param>
+        /// <param name="ginfo">The ginfo.</param>
         public void  Initialize(Engine.GraphicFactory factory, Engine.GraphicInfo ginfo)
         {
             if (effect == null)
@@ -62,13 +71,23 @@ namespace PloobsEngine.Features.DebugDraw
             }        
         }
 
+        /// <summary>
+        /// Startpoint
+        /// </summary>
         public Vector3 StartPoint;
+        /// <summary>
+        /// Endpoint
+        /// </summary>
         public Vector3 EndPoint;
-        public Color Color;        
+        /// <summary>
+        /// Color
+        /// </summary>
+        public Color Color;
 
         /// <summary>
         /// Draws the box.
         /// </summary>
+        /// <param name="render">The render.</param>
         /// <param name="view">The viewing matrix.</param>
         /// <param name="projection">The projection matrix.</param>
         public void Draw(RenderHelper render, Matrix view, Matrix projection)

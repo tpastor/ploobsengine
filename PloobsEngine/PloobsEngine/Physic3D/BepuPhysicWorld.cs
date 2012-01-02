@@ -340,7 +340,7 @@ namespace PloobsEngine.Physics
         /// <param name="cam">The cam.</param>
         protected override void DebugDrawn(GameTime gt, ICamera cam)
         {           
-            ///to be done
+            //to be done
         }
 
 
@@ -528,7 +528,7 @@ namespace PloobsEngine.Physics
         /// will be much, much rarer.  This actually doesn't have a huge performance cost.
         /// The increased iterations put this as a midpoint between the normal and high stability settings.
         /// </summary>
-        /// <param name="space">Space to configure.</param>
+        /// <param name="world">The world.</param>
         public static void ApplyMediumHighStabilitySettings(BepuPhysicWorld world)
         {
             MotionSettings.DefaultPositionUpdateMode = PositionUpdateMode.Continuous;
@@ -545,7 +545,7 @@ namespace PloobsEngine.Physics
         /// will incur a pretty hefty overhead.
         /// On the upside, pretty much every simulation will be rock-solid.
         /// </summary>
-        /// <param name="space">Space to configure.</param>
+        /// <param name="world">The world.</param>
         public static void ApplyHighStabilitySettings(BepuPhysicWorld world)
         {
             MotionSettings.DefaultPositionUpdateMode = PositionUpdateMode.Continuous;

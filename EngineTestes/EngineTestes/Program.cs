@@ -29,7 +29,7 @@ namespace EngineTestes
 
         static void LoadScreen(ScreenManager manager)
         {
-            manager.AddScreen(new SerializationScreen());
+            //manager.AddScreen(new SerializationScreen());
             //manager.AddScreen(new ActionScriptScreen());
             //manager.AddScreen(new ScriptScreen());
             //manager.AddScreen(new Basic2DNeoforce());
@@ -60,7 +60,7 @@ namespace EngineTestes
             //manager.AddScreen(new FGUIScreen());
             //manager.AddScreen(new ForwardLoadScreen());
             //manager.AddScreen(new ForwardMeshesFromModelLoadScreen());
-            //manager.AddScreen(new DeferredLoadScreen(),new LoadScene());
+            manager.AddScreen(new DeferredLoadScreen(),new LoadScene());
             //manager.AddScreen(new DebugDrawScreen());
             //manager.AddScreen(new OctreeScreen());
             //manager.AddScreen(new HybridDeferred());

@@ -127,10 +127,11 @@ namespace PloobsEngine.Physics
         /// <summary>
         /// Gets the physic object type.
         /// </summary>
-        public abstract PhysicObjectTypes PhysicObjectTypes { get; }        
+        public abstract PhysicObjectTypes PhysicObjectTypes { get; }
         /// <summary>
         /// Applies an impulse.
         /// </summary>
+        /// <param name="position">The position.</param>
         /// <param name="force">The force.</param>
         public abstract void ApplyImpulse(Vector3 position, Vector3 force);        
         /// <summary>

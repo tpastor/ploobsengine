@@ -39,9 +39,21 @@ namespace PloobsEngine.Trigger
         private IObject contactEntity;
         private TriggerEvent evt;
 
+        /// <summary>
+        /// FireBeginsTouching 
+        /// </summary>
         public const string FireBeginsTouching = "FBT";
+        /// <summary>
+        /// FireEndsTouching 
+        /// </summary>
         public const string FireEndsTouching = "FET";
+        /// <summary>
+        /// FireBeginsContaining 
+        /// </summary>
         public const string FireBeginsContaining = "FBC";
+        /// <summary>
+        /// FireEndsContaining
+        /// </summary>
         public const string FireEndsContaining = "FEC";
 
         /// <summary>

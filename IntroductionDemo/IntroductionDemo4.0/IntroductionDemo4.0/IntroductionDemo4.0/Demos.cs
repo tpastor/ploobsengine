@@ -46,7 +46,6 @@ namespace IntroductionDemo4._0
 
     /// <summary>
     /// Custom log class
-    /// When using the Release version of the engine, the log wont be used by the engine.
     /// </summary>
     class SimpleLogger : ILogger
     {

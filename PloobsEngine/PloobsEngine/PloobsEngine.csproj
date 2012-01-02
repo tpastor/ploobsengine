@@ -62,6 +62,9 @@
     <PlatformTarget>x86</PlatformTarget>
     <XnaCompressContent>true</XnaCompressContent>
     <DocumentationFile>bin\x86\Release\PloobsEngine.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>BasicDesignGuidelineRules.ruleset</CodeAnalysisRuleSet>
+    <NoWarn>
+    </NoWarn>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -213,6 +216,7 @@
     <Compile Include="Features\Tasks\TaskCommand.cs" />
     <Compile Include="Features\Tasks\TaskProcessor.cs" />
     <Compile Include="Input\BindGestureCommand.cs" />
+    <Compile Include="Input\IInput.cs" />
     <Compile Include="Input\InputPlaybleGesture.cs" />
     <Compile Include="Input\SimpleConcreteGestureInputPlayable.cs" />
     <Compile Include="Light2D\Light2D.cs" />
@@ -314,6 +318,12 @@
     <Compile Include="SceneControl\2DScene\Culler\Simple2DCuller.cs" />
     <Compile Include="SceneControl\2DScene\Culler\I2DCuller.cs" />
     <Compile Include="SceneControl\2DScene\Culler\Physic2DCuller.cs" />
+    <Compile Include="Engine\ContentManager\AssetTracker.cs" />
+    <Compile Include="Engine\ContentManager\ContentTracker.cs" />
+    <Compile Include="Engine\ContentManager\ContentTrackerAsync.cs" />
+    <Compile Include="Engine\ContentManager\Extensions.cs" />
+    <Compile Include="Engine\ContentManager\SourceAssetLoader.cs" />
+    <Compile Include="SceneControl\ICleanUpable.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\HeatPostEffect.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\NightPostEffect.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\RadialBlurPostEffect.cs" />
@@ -395,7 +405,6 @@
     <Compile Include="Input\BindKeyCommand.cs" />
     <Compile Include="Input\BindMouseCommand.cs" />
     <Compile Include="Input\ClearInputsCommand.cs" />
-    <Compile Include="Input\IInput.cs" />
     <Compile Include="Input\InputAdvanced.cs" />
     <Compile Include="Input\InputPlayableKeyBoard.cs" />
     <Compile Include="Input\InputPlaybleMouseBottom.cs" />
@@ -427,7 +436,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SceneControl\EngineContentManager.cs" />
     <Compile Include="SceneControl\IContentManager.cs" />
     <Compile Include="SceneControl\IScreen.cs" />
     <Compile Include="SceneControl\SceneManager.cs" />
@@ -472,6 +480,7 @@
     <Compile Include="SceneControl\Scene\QuadRender.cs" />
     <Compile Include="SceneControl\Scene\ForwardRender\ForwardRenderTecnich.cs" />
     <Compile Include="Utils\EnumerableExtension.cs" />
+    <Compile Include="Utils\Events\SmartWeakEvent.cs" />
     <Compile Include="Utils\Math\Circle.cs" />
     <Compile Include="Utils\PolygonUnion.cs" />
     <Compile Include="Utils\Primitives.cs" />
@@ -501,6 +510,9 @@
     <Compile Include="Utils\Serializer\SerializerHelper.cs" />
     <Compile Include="Utils\TimePassed.cs" />
     <Compile Include="Utils\Triangulator.cs" />
+    <Compile Include="Utils\WeakReference\EnumerableExtensions.cs" />
+    <Compile Include="Utils\WeakReference\WeakList.cs" />
+    <Compile Include="Utils\WeakReference\WeakReference.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">

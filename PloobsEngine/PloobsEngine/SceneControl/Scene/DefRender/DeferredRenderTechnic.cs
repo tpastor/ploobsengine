@@ -480,6 +480,21 @@ namespace PloobsEngine.SceneControl
         
         #endregion
 
+
+        public override void CleanUp()
+        {
+            if(target!= null)
+                target.Dispose();
+            if(PostEffectTarget!= null)
+                PostEffectTarget.Dispose();
+            if(target2!= null)
+                target2.Dispose();
+
+            for (int i = 0; i < PostEffects.Count; i++)
+            {
+                PostEffects[i].CleanUp();
+            }
+        }
     }    
 
 }

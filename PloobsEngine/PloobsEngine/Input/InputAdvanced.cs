@@ -69,7 +69,6 @@ namespace PloobsEngine.Input
         private Dictionary<Keys, float> keyCache;
         private KeyboardState currentKeyState;
         private KeyboardState previousKeyState;
-        private int _id;
 
         private Dictionary<MouseButtons, float> mouseCache;
         private MouseState currentMouseState;
@@ -129,7 +128,6 @@ namespace PloobsEngine.Input
         /// <summary>
         /// Initializes a new instance of the <see cref="InputAdvanced"/> class.
         /// </summary>
-        /// <param name="es">The es.</param>
         public InputAdvanced()
             
         {                    
@@ -203,7 +201,7 @@ namespace PloobsEngine.Input
             // When iterating through the enumeration of type 'Keys',
             // we find if the key is down; if it is then we add
             // the elapsed game time to it, otherwise we set to zero.
-            foreach (Keys key in Enum.GetValues(typeof(Keys)))
+            foreach (Keys key in keyCache.Keys)
             {
                 if (IsKeyDown(key))
                     keyCache[key] += elapsedTime;
@@ -212,7 +210,7 @@ namespace PloobsEngine.Input
             }
 
             // The same thing is done with the 'MouseButtons' enum.
-            foreach (MouseButtons mb in Enum.GetValues(typeof(MouseButtons)))
+            foreach (MouseButtons mb in mouseCache.Keys)
             {
                 if (IsMouseButtonDown(mb))
                     mouseCache[mb] += elapsedTime;

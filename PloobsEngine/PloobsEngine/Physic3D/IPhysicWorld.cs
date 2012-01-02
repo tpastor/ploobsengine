@@ -107,12 +107,12 @@ namespace PloobsEngine.Physics
 
 
 
-        
+
         /// <summary>
         /// Raycast
         /// </summary>
         /// <param name="raio">The raio.</param>
-        /// <param name="method">The method.</param>
+        /// <param name="filter">The filter.</param>
         /// <param name="maxDistance">The max distance.</param>
         /// <returns></returns>
         public abstract SegmentInterceptInfo SegmentIntersect(Ray raio, Func<IPhysicObject,bool> filter, float maxDistance);
