@@ -33,9 +33,7 @@ namespace PloobsEngine.Loader
 {
 
     /// <summary>
-    /// Struct that represents a Model
-    /// By Now, It creates just pieces of a model, 
-    /// IN THE NEXT RELEASE IT WILL CREATE THE FULL MODEL, RETURN AN IMODELO AND A TRANSFORMATION
+    /// Struct that represents a Model    
     /// </summary>
     public struct ObjectInformation
     {
@@ -122,6 +120,9 @@ namespace PloobsEngine.Loader
         public Vector3 Position;
     }
 
+    /// <summary>
+    /// Constraint info
+    /// </summary>
     public struct ConstraintInfo
     {
         public String Name;
@@ -158,12 +159,24 @@ namespace PloobsEngine.Loader
         }
 
 
+        /// <summary>
+        /// Gets or sets the particle info.
+        /// </summary>
+        /// <value>
+        /// The particle info.
+        /// </value>
         public List<ParticleInfo> ParticleInfo
         {
             get { return particleInfo; }
             set { particleInfo = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the constraint info.
+        /// </summary>
+        /// <value>
+        /// The constraint info.
+        /// </value>
         public List<ConstraintInfo> ConstraintInfo
         {
             get { return constraintInfo; }

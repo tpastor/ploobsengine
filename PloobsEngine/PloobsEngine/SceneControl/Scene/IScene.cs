@@ -39,13 +39,20 @@ namespace PloobsEngine.SceneControl
     public abstract class IScene : IScreen
     {
 #if !WINDOWS_PHONE
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IScene"/> class.
+        /// </summary>
+        /// <param name="gui">The GUI Component, if null you cant use GUI in this screen.</param>
         public IScene(IGui gui = null) : base(gui) {  }
 #else
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IScene"/> class.
+        /// </summary>
         public IScene() : base() {  }
 #endif
 
         #region properties
-        
+
         private IRenderTechnic _renderTecnic = null;        
         private bool _isFirstTimeTechnic = true;
 
