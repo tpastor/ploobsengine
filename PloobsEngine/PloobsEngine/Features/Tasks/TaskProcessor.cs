@@ -116,6 +116,11 @@ namespace PloobsEngine.Features
         }
 #endif
 
+        /// <summary>
+        /// Update
+        /// Its called deppending of the ComponentType
+        /// </summary>
+        /// <param name="gt">The gt.</param>
         protected override void Update(GameTime gt)
         {
             base.Update(gt);

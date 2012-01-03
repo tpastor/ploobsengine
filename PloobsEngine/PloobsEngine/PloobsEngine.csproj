@@ -484,8 +484,8 @@
     <Compile Include="Utils\Math\Circle.cs" />
     <Compile Include="Utils\PolygonUnion.cs" />
     <Compile Include="Utils\Primitives.cs" />
+    <Compile Include="Utils\RPN\Calculator.cs" />
     <Compile Include="Utils\RPN\InfixTransformer.cs" />
-    <Compile Include="Utils\RPN\rpn.cs" />
     <Compile Include="Utils\RPN\TokenHelper.cs" />
     <Compile Include="Utils\TextureCreator.cs" />
     <Compile Include="Trigger\BepuTrigger.cs" />
