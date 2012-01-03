@@ -38,7 +38,7 @@ namespace IntroductionDemo4._0
 
         int index = 0;
 
-        static int totalDemos = 9;
+        static int totalDemos = 10;
         EngineStuff engine;
 
         private int[] screenList = new int[totalDemos];
@@ -65,6 +65,8 @@ namespace IntroductionDemo4._0
                     return new ParticleScreen();
                 case 8:
                     return new TaskSampleScreen();
+                case 9:
+                    return new MotionForwardScreen();
                 default:
                     break;
             }
