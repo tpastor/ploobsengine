@@ -67,10 +67,13 @@ namespace PloobsEngine.Input
 #elif WINDOWS
         private IDictionary<Keys, InputPlayableKeyBoard> _Mapper = new Dictionary<Keys, InputPlayableKeyBoard>();
         private Dictionary<Keys, float> keyCache;
+        private List<Keys> kcache = new List<Keys>();
         private KeyboardState currentKeyState;
         private KeyboardState previousKeyState;
 
         private Dictionary<MouseButtons, float> mouseCache;
+        private List<MouseButtons> mcache = new List<MouseButtons>();
+
         private MouseState currentMouseState;
         private MouseState previousMouseState;
 #elif WINDOWS_PHONE
@@ -155,9 +158,15 @@ namespace PloobsEngine.Input
             mousePosition = new Vector2(currentMouseState.X, currentMouseState.Y);
 
             foreach (Keys key in Enum.GetValues(typeof(Keys)))
+            {
                 keyCache.Add(key, 0.0f);
+                kcache.Add(key);
+            }
             foreach (MouseButtons mb in Enum.GetValues(typeof(MouseButtons)))
+            {
                 mouseCache.Add(mb, 0.0f);
+                mcache.Add(mb);
+            }
 #elif WINDOWS_PHONE
 #endif
         }
@@ -201,7 +210,7 @@ namespace PloobsEngine.Input
             // When iterating through the enumeration of type 'Keys',
             // we find if the key is down; if it is then we add
             // the elapsed game time to it, otherwise we set to zero.
-            foreach (Keys key in keyCache.Keys)
+            foreach (Keys key in kcache)
             {
                 if (IsKeyDown(key))
                     keyCache[key] += elapsedTime;
@@ -210,7 +219,7 @@ namespace PloobsEngine.Input
             }
 
             // The same thing is done with the 'MouseButtons' enum.
-            foreach (MouseButtons mb in mouseCache.Keys)
+            foreach (MouseButtons mb in mcache)
             {
                 if (IsMouseButtonDown(mb))
                     mouseCache[mb] += elapsedTime;
