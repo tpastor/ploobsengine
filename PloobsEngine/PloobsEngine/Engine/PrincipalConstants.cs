@@ -88,11 +88,7 @@ namespace PloobsEngine
         /// <summary>
         /// Separator character used when parsing files
         /// </summary>
-        public const string SEPARATOR_CHARACTER = "%";
-        /// <summary>
-        /// SHADER ID bigger than this value is Not affect by light
-        /// </summary>
-        public const float NotEffectByLightIdBiggerThan =0.9f;
+        public const string SEPARATOR_CHARACTER = "%";        
 
     }
 }

@@ -75,6 +75,7 @@ namespace PloobsEngine.SceneControl
             effect.Parameters["oldViewProjection"].SetValue(oldViewProjection);
             effect.Parameters["numSamples"].SetValue(NumSamples);
             effect.Parameters["depth"].SetValue(rHelper[PrincipalConstants.DephRT]);
+            effect.Parameters["extra"].SetValue(rHelper[PrincipalConstants.extra1RT]);
             effect.Parameters["cena"].SetValue(ImageToProcess);
 
             oldViewProjection = world.CameraManager.ActiveCamera.ViewProjection;
