@@ -840,7 +840,7 @@ namespace PloobsEngine.SceneControl
                 if (objListException != null && objListException.Contains(obj))
                     continue;
 
-                Matrix wvp = obj.WorldMatrix *view * projection;                
+                Matrix vp = view * projection;                
 
                 for (int i = 0; i < obj.Modelo.MeshNumber; i++)
                 {
@@ -849,7 +849,7 @@ namespace PloobsEngine.SceneControl
 
                     for (int j = 0; j < bi.Count(); j++)
                     {
-                        setupShaderCallback(effect, obj, bi[j], ti[j], view, projection, wvp);
+                        setupShaderCallback(effect, obj, bi[j], ti[j], view, projection, vp);
                         this.RenderBatch(bi[j], effect);
                         
                     }
@@ -965,8 +965,10 @@ namespace PloobsEngine.SceneControl
     /// <param name="effect">The effect.</param>
     /// <param name="obj">The obj.</param>
     /// <param name="bi">The bi.</param>
+    /// <param name="ti">The ti.</param>
     /// <param name="view">The view.</param>
     /// <param name="projection">The projection.</param>
-    public delegate void OnDrawingSceneCustomMaterial(Effect effect,IObject obj, BatchInformation bi, TextureInformation ti,Matrix view,Matrix projection, Matrix wvp );
+    /// <param name="vp">The vp.</param>
+    public delegate void OnDrawingSceneCustomMaterial(Effect effect,IObject obj, BatchInformation bi, TextureInformation ti,Matrix view,Matrix projection, Matrix vp );
 
 }

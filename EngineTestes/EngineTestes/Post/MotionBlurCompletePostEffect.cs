@@ -6,6 +6,7 @@ using PloobsEngine.SceneControl;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using PloobsEngine;
+using PloobsEngine.Engine.Logger;
 
 namespace EngineTestes.Post
 {
@@ -14,14 +15,22 @@ namespace EngineTestes.Post
         public MotionBlurCompletePostEffect()
             : base(PostEffectType.AllHidef)
         {
-            NumSamples = 6;
+            NumSamples = 4;
+            Attenuation = 0.2f;
         }
         
         public override void Init(PloobsEngine.Engine.GraphicInfo ginfo, PloobsEngine.Engine.GraphicFactory factory)
         {
             eff = factory.GetEffect("Effects/MotionBlurComplete");
             effectvelocity = factory.GetEffect("Effects/VelocityTextureMotionBlur");
-            rt = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
+            if (ginfo.CheckIfRenderTargetFormatIsSupported(SurfaceFormat.Vector2, DepthFormat.None, false, 0))
+            {
+                rt = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Vector2);
+            }
+            else
+            {
+                throw new Exception("required Buffer precision not found (Vector 2)");
+            }
         }
         Effect effectvelocity;
         Effect eff;
@@ -29,6 +38,12 @@ namespace EngineTestes.Post
         RenderTarget2D rt;
 
         public int NumSamples
+        {
+            set;
+            get;
+        }
+
+        public float Attenuation
         {
             set;
             get;
@@ -61,6 +76,8 @@ namespace EngineTestes.Post
             eff.Parameters["numSamples"].SetValue(NumSamples);
             eff.Parameters["velocity"].SetValue(tex);
             eff.Parameters["cena"].SetValue(ImageToProcess);
+            eff.Parameters["Attenuation"].SetValue(Attenuation);
+            
 
             oldViewProjection = world.CameraManager.ActiveCamera.ViewProjection;                        
 
