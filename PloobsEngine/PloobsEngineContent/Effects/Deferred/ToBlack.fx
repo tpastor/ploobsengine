@@ -1,5 +1,4 @@
 float2 halfPixel;
-const float BACKGROUND = 0.95f;
 
 texture EXTRA;
 sampler depthSampler = sampler_state
@@ -46,8 +45,9 @@ float4 PixelShaderFunctionNormal(VertexShaderOutput input) : COLOR0
 {	
 	float depthVal = tex2D(depthSampler,input.TexCoord).a;
     float4 c = tex2D(colorSampler ,input.TexCoord );        
+	bool isBackGround = fmod(depthVal, 4) == 1; 
     
-    if(depthVal == BACKGROUND )
+    if(isBackGround)
     {
        return c;
     }
