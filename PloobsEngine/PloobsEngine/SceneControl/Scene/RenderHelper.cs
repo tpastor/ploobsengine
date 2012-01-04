@@ -167,6 +167,7 @@ namespace PloobsEngine.SceneControl
         /// <param name="index">The index.</param>
         public void SetSamplerState(SamplerState SamplerState, int index)
         {
+            System.Diagnostics.Debug.Assert(index >= 0);
             device.SamplerStates[index] = SamplerState;                    
         }
 
@@ -177,6 +178,7 @@ namespace PloobsEngine.SceneControl
         /// <param name="index">The index.</param>
         public void SetVertexSamplerStates(SamplerState SamplerState, int index)
         {
+            System.Diagnostics.Debug.Assert(index >= 0);
             device.VertexSamplerStates[index] = SamplerState;
         }
 
