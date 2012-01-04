@@ -5,6 +5,7 @@ using System.Text;
 using PloobsEngine.SceneControl;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using PloobsEngine.Engine;
 
 namespace PloobsEngine.SceneControl
 {
@@ -58,11 +59,36 @@ namespace PloobsEngine.SceneControl
         Texture2D tex;
         RenderTarget2D rt;
         RenderTarget2D rtend;
+        GraphicFactory factory;
+        GraphicInfo info;
         public override void Init(PloobsEngine.Engine.GraphicInfo ginfo, PloobsEngine.Engine.GraphicFactory factory)
         {
+            this.info = ginfo;
+            this.factory = factory;
             rt = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
             rtend = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
+            ginfo.OnGraphicInfoChange += ginfo_OnGraphicInfoChange;
             Amount = 100;
+            
         }
+
+        void ginfo_OnGraphicInfoChange(object sender, EventArgs e)
+        {
+            GraphicInfo newGraphicInfo = (GraphicInfo)sender;
+            if (rt != null)
+            {
+                rt.Dispose();
+                rt = factory.CreateRenderTarget(newGraphicInfo.BackBufferWidth, newGraphicInfo.BackBufferHeight);
+            }
+        }
+
+        public override void CleanUp()
+        {
+            info.OnGraphicInfoChange -= ginfo_OnGraphicInfoChange;
+            base.CleanUp();
+        }
+
+
+
     }
 }
