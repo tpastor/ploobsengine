@@ -489,6 +489,7 @@
     <Compile Include="Utils\RPN\Calculator.cs" />
     <Compile Include="Utils\RPN\InfixTransformer.cs" />
     <Compile Include="Utils\RPN\TokenHelper.cs" />
+    <Compile Include="Utils\ShaderUtil\ShaderUtils.cs" />
     <Compile Include="Utils\TextureCreator.cs" />
     <Compile Include="Trigger\BepuTrigger.cs" />
     <Compile Include="Trigger\GenericEventHandler.cs" />
@@ -678,6 +679,7 @@
     <Content Include="License.txt" />
     <Content Include="Logo Ploobs.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <PropertyGroup>

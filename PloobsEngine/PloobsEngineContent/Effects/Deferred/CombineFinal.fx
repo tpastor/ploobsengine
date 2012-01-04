@@ -57,7 +57,11 @@ float4 PixelShaderFunctionNormal(VertexShaderOutput input) : COLOR0
 {	
 	float procces = tex2D(extraSampler,input.TexCoord).a;
 	float3 diffuseColor = tex2D(colorSampler,input.TexCoord).rgba;	
-	if(procces > 0.9)
+	
+	bool DoNotIlluminate = fmod(procces, 2) == 1; 
+	bool isBackGround = fmod(procces, 4) == 1; 
+
+	if(DoNotIlluminate || isBackGround)
 	{
 		return float4(diffuseColor,0);
 	}

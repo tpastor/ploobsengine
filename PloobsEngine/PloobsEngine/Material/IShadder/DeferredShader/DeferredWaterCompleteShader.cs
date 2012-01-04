@@ -29,6 +29,7 @@ using PloobsEngine;
 using PloobsEngine.Modelo;
 using PloobsEngine.SceneControl;
 using PloobsEngine.Cameras;
+using PloobsEngine.Utils;
 
 namespace PloobsEngine.Material
 {
@@ -149,7 +150,7 @@ namespace PloobsEngine.Material
             if (affectedByLight)
                 this.shaderId = 0;
             else
-                this.shaderId = 0.95f;
+                this.shaderId = ShaderUtils.CreateSpecificBitField(true,false);
         }
 
         /// <summary>
