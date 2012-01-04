@@ -63,10 +63,17 @@ namespace PloobsEngine.SceneControl._2DScene
     {
         public I2DObject(I2DPhysicObject physicObject, I2DMaterial material,IModelo2D Modelo)
         {
+            System.Diagnostics.Debug.Assert(physicObject != null);
+            System.Diagnostics.Debug.Assert(material != null);
+            System.Diagnostics.Debug.Assert(Modelo != null);
             this.Material = material;
             this.PhysicObject = physicObject;
             this.Modelo = Modelo;
             I2DObjectAtachtment = new List<IObject2DAtachtment>();
+        }
+
+        protected I2DObject()
+        {
         }
 
         I2DPhysicObject physicObject;

@@ -129,6 +129,7 @@ namespace PloobsEngine.SceneControl._2DScene
         /// <param name="Light">The light.</param>
         public void AddLight(PloobsEngine.Light2D.Light2D Light)
         {
+            System.Diagnostics.Debug.Assert(Light != null);
             Light.RenderTarget = graphicsFactory.CreateRenderTarget(Light.baseSize, Light.baseSize);
             Lights2D.Add(Light);
         }
