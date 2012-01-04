@@ -325,8 +325,10 @@
     <Compile Include="Engine\ContentManager\SourceAssetLoader.cs" />
     <Compile Include="SceneControl\ICleanUpable.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\HeatPostEffect.cs" />
+    <Compile Include="SceneControl\Scene\PostEffects\MotionBlurPostEffect.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\NightPostEffect.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\RadialBlurPostEffect.cs" />
+    <Compile Include="SceneControl\Scene\PostEffects\SimpleMotionBlurPostEffect.cs" />
     <Compile Include="SteeringSharperIa\AbstractVehicle.cs" />
     <Compile Include="SteeringSharperIa\AnnotationService.cs" />
     <Compile Include="SteeringSharperIa\BruteForceProximityDatabase.cs" />
@@ -668,6 +670,7 @@
     <None Include="bin\x86\Debug\Content\Textures\waves2.xnb" />
     <None Include="bin\x86\Debug\Content\Textures\white.xnb" />
     <None Include="bin\x86\Release\Content\Effects\Deferred\HSV.xnb" />
+    <None Include="bin\x86\Release\Content\Effects\Deferred\MotionBlur.xnb" />
     <None Include="PloobsEngine.licenseheader" />
     <None Include="Resources\ConsoleFont.spritefont" />
   </ItemGroup>
