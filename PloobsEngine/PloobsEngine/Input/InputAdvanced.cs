@@ -57,7 +57,9 @@ namespace PloobsEngine.Input
     /// </summary>
     public class InputAdvanced : IComponent
     {
-
+        /// <summary>
+        /// Name of the Component
+        /// </summary>
         public static readonly String MyName = "InputAdvanced";
         
 #if XBOX360

@@ -98,6 +98,7 @@ namespace PloobsEngine.SceneControl
 
         public T GetAsset<T>(string fileName, bool isInternal = false, bool fromDisk = false)
         {
+            System.Diagnostics.Debug.Assert(fileName != null);
             if (isInternal)
             {
                 if (_modelDicInt.ContainsKey(fileName))
@@ -124,7 +125,9 @@ namespace PloobsEngine.SceneControl
         }
 
         public ModelMesh GetModelParts(string fileName, int indexInModel)
-        {   
+        {
+                System.Diagnostics.Debug.Assert(fileName != null);
+                System.Diagnostics.Debug.Assert(indexInModel > 0);
                 return LoadAsset<Model>(fileName).Meshes[indexInModel];
         }
       
@@ -139,7 +142,8 @@ namespace PloobsEngine.SceneControl
         /// <param name="fileName">Name of the file.</param>
         /// <returns></returns>
         public Matrix[] GetTransformationMatrix(string fileName)
-        {        
+        {
+                System.Diagnostics.Debug.Assert(fileName != null);
                 Model m = LoadAsset<Model>(fileName);
                 Matrix[] m2 = new Matrix[m.Bones.Count];
                 m.CopyAbsoluteBoneTransformsTo(m2);
@@ -153,10 +157,12 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="fileName">Name of the file.</param>
-        /// <param name="AssetLoaded">The onassetloaded method.</param>
+        /// <param name="AssetLoaded">The onassetloaded method. -- cant be null</param>
         /// <returns></returns>
         public AssetTracker GetAssetAssync<T>(String fileName, PloobsEngine.Engine.ContentTracker.AssetLoaded AssetLoaded)
         {
+            System.Diagnostics.Debug.Assert(fileName != null);
+            System.Diagnostics.Debug.Assert(AssetLoaded != null);
             return externalContentManager.LoadAsync<T>(fileName, AssetLoaded);
         }
 
@@ -167,6 +173,7 @@ namespace PloobsEngine.SceneControl
         /// <param name="releaseChildren">if set to <c>true</c> [release children].</param>
         public void UnloadAsset(string assetName, bool releaseChildren = true)
         {
+            System.Diagnostics.Debug.Assert(assetName != null);
             externalContentManager.Unload(assetName, releaseChildren);
         }
 
@@ -184,6 +191,7 @@ namespace PloobsEngine.SceneControl
         /// <param name="assetName">Name of the asset.</param>
         public void ReleaseAsset(String assetName)
         {
+            System.Diagnostics.Debug.Assert(assetName != null);
             externalContentManager.Release(assetName);
         }
     }
