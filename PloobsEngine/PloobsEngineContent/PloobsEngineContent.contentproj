@@ -564,6 +564,11 @@
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
     </Compile>
+    <Compile Include="Effects\Deferred\MotionBlur.fx">
+      <Name>MotionBlur</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+    </Compile>
     <None Include="Effects\Water.fx">
       <Name>Water</Name>
       <Importer>EffectImporter</Importer>

@@ -417,6 +417,13 @@ namespace PloobsEngine {
             }
         }
         
+        internal static byte[] MotionBlur {
+            get {
+                object obj = ResourceManager.GetObject("MotionBlur", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
         internal static byte[] Night {
             get {
                 object obj = ResourceManager.GetObject("Night", resourceCulture);

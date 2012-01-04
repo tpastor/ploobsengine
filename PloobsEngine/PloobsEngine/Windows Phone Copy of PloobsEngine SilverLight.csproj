@@ -245,6 +245,8 @@
     <Compile Include="SceneControl\2DScene\Culler\Simple2DCuller.cs" />
     <Compile Include="SceneControl\ICleanUpable.cs" />
     <Compile Include="SceneControl\IContentManager.cs" />
+    <Compile Include="SceneControl\Scene\PostEffects\MotionBlurPostEffect.cs" />
+    <Compile Include="SceneControl\Scene\PostEffects\SimpleMotionBlurPostEffect.cs" />
     <Compile Include="SteeringSharperIa\AbstractVehicle.cs" />
     <Compile Include="SteeringSharperIa\AnnotationService.cs" />
     <Compile Include="SteeringSharperIa\BruteForceProximityDatabase.cs" />
