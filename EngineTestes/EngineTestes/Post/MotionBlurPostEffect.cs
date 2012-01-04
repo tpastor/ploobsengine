@@ -14,7 +14,8 @@ namespace EngineTestes.Post
         public MotionBlurPostEffect()
             : base(PostEffectType.Deferred)
         {
-            NumSamples = 6;
+            NumSamples = 10;
+            Attenuation = 0.2f;
         }
         
         public override void Init(PloobsEngine.Engine.GraphicInfo ginfo, PloobsEngine.Engine.GraphicFactory factory)
@@ -24,6 +25,13 @@ namespace EngineTestes.Post
         Effect effect;
         Matrix oldViewProjection;
 
+        /// <summary>
+        /// Gets or sets the num samples.
+        /// Default 10
+        /// </summary>
+        /// <value>
+        /// The num samples.
+        /// </value>
         public int NumSamples
         {
             set;
@@ -31,6 +39,19 @@ namespace EngineTestes.Post
         }
 
         bool firstTime = true;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="MotionBlurPostEffect"/> is attenuation.
+        /// Default 0.2f
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if attenuation; otherwise, <c>false</c>.
+        /// </value>
+        public float Attenuation
+        {
+            set;
+            get;
+        }
 
         public override void Draw(Microsoft.Xna.Framework.Graphics.Texture2D ImageToProcess, RenderHelper rHelper, Microsoft.Xna.Framework.GameTime gt, PloobsEngine.Engine.GraphicInfo GraphicInfo, IWorld world, bool useFloatBuffer)
         {
@@ -40,7 +61,8 @@ namespace EngineTestes.Post
                 oldViewProjection = world.CameraManager.ActiveCamera.ViewProjection;
                 firstTime = false;
             }
-            
+
+            effect.Parameters["attenuation"].SetValue(Attenuation);
             effect.Parameters["halfPixel"].SetValue(GraphicInfo.HalfPixel);
             effect.Parameters["InvertViewProjection"].SetValue(Matrix.Invert(world.CameraManager.ActiveCamera.ViewProjection));
             effect.Parameters["oldViewProjection"].SetValue(oldViewProjection);            

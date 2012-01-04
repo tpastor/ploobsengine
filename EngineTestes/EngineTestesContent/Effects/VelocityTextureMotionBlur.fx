@@ -20,19 +20,21 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
     VertexShaderOutput output;
     
     output.Position = mul(float4(input.Position,1),wvp);
-	output.p1 = output.Position ;
-	output.p2 = mul(float4(input.Position,1),oldwvp);
+	output.p1 = output.Position ;	
+	output.p2 = mul(float4(input.Position,1),oldwvp);	
     output.TexCoord = input.TexCoord;    
     return output;
 }
 
 float4 PixelShaderFunctionNormal(VertexShaderOutput input) : COLOR0
 {
-	input.p1 = input.p1 / input.p1.w;
-	input.p2 = input.p2 / input.p2.w;
-	float4 r = (input.p1 - input.p2) / 2;
-	r = (r + 1)/2;
+	input.p1 /= input.p1.w;
+	input.p2 /= input.p2.w;
+	//[-1,1] -> [-2,2] -> [0,1]
+	float4 r = (input.p1 - input.p2) / 2.f;	
 	return r;
+
+	
 }
 
 technique NormalTechnich

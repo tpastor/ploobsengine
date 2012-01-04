@@ -10,80 +10,95 @@ using PloobsEngine.Engine;
 using PloobsEngine.Physics.Bepu;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Cameras;
+using PloobsEngine.Light;
 using Microsoft.Xna.Framework.Input;
+using PloobsEngine.Features;
+using PloobsEngine.Commands;
+using PloobsEngine.Loader;
+using PloobsEngine.Input;
+using PloobsEngine.Physic.PhysicObjects.BepuObject;
+using BEPUphysics.UpdateableSystems.ForceFields;
 using EngineTestes.Post;
 
-namespace ProjectTemplate
+namespace EngineTestes
 {
-    /// <summary>
-    /// Basic Forward Screen
-    /// </summary>
-
     public class MotionBluScreen : IScene
     {
-        /// <summary>
-        /// Sets the world and render technich.
-        /// </summary>
-        /// <param name="renderTech">The render tech.</param>
-        /// <param name="world">The world.</param>
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            ///create the IWorld
-            world = new IWorld(new BepuPhysicWorld(-0.97f, true, 1), new SimpleCuller());
+            world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
 
-            ///Create the deferred technich
-            ForwardRenderTecnichDescription desc = new ForwardRenderTecnichDescription();
-            desc.UsePostEffect = true;
-            renderTech = new ForwardRenderTecnich(desc);
+            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
+            desc.UseFloatingBufferForLightMap = true;
+            renderTech = new DeferredRenderTechnic(desc);
         }
 
-        /// <summary>
-        /// Load content for the screen.
-        /// </summary>
-        /// <param name="GraphicInfo"></param>
-        /// <param name="factory"></param>
-        /// <param name="contentManager"></param>
+        protected override void InitScreen(GraphicInfo GraphicInfo, EngineStuff engine)
+        {
+            base.InitScreen(GraphicInfo, engine);
+
+            SkyBox skybox = new SkyBox();
+            engine.AddComponent(skybox);
+
+            InputAdvanced ia = new InputAdvanced();
+            engine.AddComponent(ia);
+        }
+
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory, IContentManager contentManager)
         {
             base.LoadContent(GraphicInfo, factory, contentManager);
-                        
-            SimpleModel simpleModel = new SimpleModel(factory, "Model/cenario");
-            ///Physic info (position, rotation and scale are set here)
-            TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
-            ///Forward Shader (look at this shader construction for more info)
-            ForwardXNABasicShader shader = new ForwardXNABasicShader();      
-            ///Deferred material
-            ForwardMaterial fmaterial = new ForwardMaterial(shader);            
-            ///The object itself
-            IObject obj = new IObject(fmaterial,simpleModel,tmesh);
-            ///Add to the world
-            this.World.AddObject(obj);
+            {
+                SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
+                TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
+                DeferredNormalShader shader = new DeferredNormalShader();
+                DeferredMaterial fmaterial = new DeferredMaterial(shader);
+                IObject obj = new IObject(fmaterial, simpleModel, tmesh);
+                this.World.AddObject(obj);
+            }
 
-            this.RenderTechnic.AddPostEffect(new MotionBlurPostEffect());
+            {
+                SimpleModel sm = new SimpleModel(factory, "..\\Content\\Model\\block");
+                sm.SetTexture(factory.CreateTexture2DColor(1, 1, Color.White), TextureType.DIFFUSE);
+                BoxObject pi = new BoxObject(new Vector3(100, 40, 0), 1, 1, 1, 25, new Vector3(100, 10, 100), Matrix.Identity, MaterialDescription.DefaultBepuMaterial());
+                DeferredNormalShader shader = new DeferredNormalShader();
+                IMaterial mat = new DeferredMaterial(shader);
+                IObject obj3 = new IObject(mat, sm, pi);
+                this.World.AddObject(obj3);
+            }
 
-            ///add a camera
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo));
-        }
 
-        protected override void Update(GameTime gameTime)
-        {
-           
-            base.Update(gameTime);
-        }
 
-        /// <summary>
-        /// This is called when the screen should draw itself.
-        /// </summary>
-        /// <param name="gameTime"></param>
-        /// <param name="render"></param>
-        protected override void Draw(GameTime gameTime, RenderHelper render)
-        {
-            base.Draw(gameTime, render);
+            #region NormalLight
+            DirectionalLightPE ld1 = new DirectionalLightPE(Vector3.Left, Color.White);
+            DirectionalLightPE ld2 = new DirectionalLightPE(Vector3.Right, Color.White);
+            DirectionalLightPE ld3 = new DirectionalLightPE(Vector3.Backward, Color.White);
+            DirectionalLightPE ld4 = new DirectionalLightPE(Vector3.Forward, Color.White);
+            DirectionalLightPE ld5 = new DirectionalLightPE(Vector3.Down, Color.White);
+            float li = 0.5f;
+            ld1.LightIntensity = li;
+            ld2.LightIntensity = li;
+            ld3.LightIntensity = li;
+            ld4.LightIntensity = li;
+            ld5.LightIntensity = li;
+            this.World.AddLight(ld1);
+            this.World.AddLight(ld2);
+            this.World.AddLight(ld3);
+            this.World.AddLight(ld4);
+            this.World.AddLight(ld5);
+            #endregion
 
-            ///Draw some text on the screen
-            render.RenderTextComplete("Demo: Basic Screen Forward", new Vector2(GraphicInfo.Viewport.Width - 315, 15), Color.White, Matrix.Identity);
+            
+            CameraFirstPerson cam = new CameraFirstPerson(GraphicInfo);
+            cam.MoveSpeed *= 5;
+            this.World.CameraManager.AddCamera(cam);
+
+            //this.RenderTechnic.AddPostEffect(new MotionBlurPostEffect());
+            this.RenderTechnic.AddPostEffect(new MotionBlurCompletePostEffect());
+
+            //SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grasscube");
+            //CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
+
         }
 
     }
 }
-

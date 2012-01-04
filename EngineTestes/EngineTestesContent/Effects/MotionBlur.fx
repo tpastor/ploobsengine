@@ -2,6 +2,7 @@ float2 halfPixel;
 float4x4 InvertViewProjection;
 float4x4 oldViewProjection;
 float numSamples = 6;
+float attenuation = 0.4;
 
 texture cena;
 sampler cenaSampler = sampler_state
@@ -45,7 +46,7 @@ float4 Pshader(VertexShaderOutput input) : COLOR
     //compute screen-space position
     float4 position;
     position.x = input.TexCoord.x * 2.0f - 1.0f;
-    position.y = -(input.TexCoord.x * 2.0f - 1.0f);
+    position.y = -(input.TexCoord.y * 2.0f - 1.0f);
     position.z = depthVal;
     position.w = 1.0f;
 	float4 H = position;
@@ -63,12 +64,12 @@ float4 Pshader(VertexShaderOutput input) : COLOR
 	   // Use this frame's position and last frame's to compute the pixel   
 	   // velocity.   
 	   float2 velocity = (currentPos - previousPos)/2.f;  
-
+	   velocity = velocity * attenuation;
 
 	    // Get the initial color at this pixel.   
 		float4 color = tex2D(cenaSampler, input.TexCoord);   
 		input.TexCoord += velocity;   
-		for(int i = 1; i < numSamples && i < 50 ; ++i, input.TexCoord += velocity)   
+		for(int i = 1; i < numSamples && i < 25 ; ++i, input.TexCoord += velocity)   
 		{   
 		  // Sample the color buffer along the velocity vector.   
 		   float4 currentColor = tex2D(cenaSampler, input.TexCoord);   
