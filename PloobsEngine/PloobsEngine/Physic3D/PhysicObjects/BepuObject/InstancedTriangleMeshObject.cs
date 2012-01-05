@@ -42,6 +42,7 @@ namespace PloobsEngine.Physics.Bepu
             instancedMesh.Material = new BEPUphysics.Materials.Material(materialDescription.StaticFriction, materialDescription.DinamicFriction, materialDescription.Bounciness);
             instancedMesh.Sidedness = TriangleSidedness;
             this.rotation = rotation;
+            this.scale = scale;
         }
 
         /// <summary>
