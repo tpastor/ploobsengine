@@ -172,6 +172,10 @@ namespace PloobsEngine.Physics
         MobilePhysicObject,
 
         /// <summary>
+        /// InstancedTriangleMeshObject
+        /// </summary>
+        InstancedTriangleMeshObject,
+        /// <summary>
         /// Terrain
         /// </summary>
         TERRAIN,
