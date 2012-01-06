@@ -165,6 +165,13 @@ namespace PloobsEngine.Physics
                 space.Add(bo.StaticMesh);
                 objs.Add(obj);
             }
+            else if (obj.PhysicObjectTypes == PhysicObjectTypes.InstancedTriangleMeshObject)
+            {
+                InstancedTriangleMeshObject bo = (InstancedTriangleMeshObject)obj;
+                bo.InstancedMesh.Tag = obj;
+                space.Add(bo.InstancedMesh);
+                objs.Add(obj);
+            }
             else if (obj.PhysicObjectTypes == PhysicObjectTypes.MobilePhysicObject)
             {
                 MobileMeshObject bo = (MobileMeshObject)obj;
@@ -241,6 +248,13 @@ namespace PloobsEngine.Physics
                 TriangleMeshObject bo = (TriangleMeshObject)obj;
                 bo.StaticMesh.Tag = null;
                 space.Remove(bo.StaticMesh);
+                objs.Remove(obj);
+            }
+            else if (obj.PhysicObjectTypes == PhysicObjectTypes.InstancedTriangleMeshObject)
+            {
+                InstancedTriangleMeshObject bo = (InstancedTriangleMeshObject)obj;
+                bo.InstancedMesh.Tag = null;
+                space.Remove(bo.InstancedMesh);
                 objs.Remove(obj);
             }
             else if (obj.PhysicObjectTypes == PhysicObjectTypes.MobilePhysicObject)
