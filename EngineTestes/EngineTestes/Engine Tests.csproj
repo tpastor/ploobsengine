@@ -197,6 +197,7 @@
     <Compile Include="Post\MotionBlurCompletePostEffect.cs" />
     <Compile Include="Post\MotionBlurPostEffect.cs" />
     <Compile Include="Post\MotionBluScreen.cs" />
+    <Compile Include="Post\MotionForwardScreen.cs" />
     <Compile Include="Post\ProjectiveTexturingPostEffect.cs" />
     <Compile Include="Post\SharpenPostEffect.cs" />
     <Compile Include="Post\DreamPostEffect.cs" />

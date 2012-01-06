@@ -30,6 +30,7 @@ namespace EngineTestes
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
             desc.UseFloatingBufferForLightMap = true;
+            
             renderTech = new DeferredRenderTechnic(desc);
         }
 
@@ -92,11 +93,11 @@ namespace EngineTestes
             cam.MoveSpeed *= 5;
             this.World.CameraManager.AddCamera(cam);
 
-            //this.RenderTechnic.AddPostEffect(new MotionBlurPostEffect());
-            this.RenderTechnic.AddPostEffect(new MotionBlurCompletePostEffect());
+            this.RenderTechnic.AddPostEffect(new PloobsEngine.SceneControl.SimpleMotionBlurPostEffect());
+            //this.RenderTechnic.AddPostEffect(new MotionBlurCompletePostEffect());
 
-            //SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grasscube");
-            //CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
+            SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grasscube");
+            CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
 
         }
 

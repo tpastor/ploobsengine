@@ -29,7 +29,8 @@ namespace EngineTestes
 
         static void LoadScreen(ScreenManager manager)
         {
-            manager.AddScreen(new MotionBluScreen());
+            //manager.AddScreen(new MotionForwardScreen());
+            //manager.AddScreen(new MotionBluScreen());
             //manager.AddScreen(new SerializationScreen());
             //manager.AddScreen(new ActionScriptScreen());
             //manager.AddScreen(new ScriptScreen());
@@ -43,7 +44,7 @@ namespace EngineTestes
             //manager.AddScreen(new MultScreen());
             //manager.AddScreen(new FirstScreen());
             //manager.AddScreen(new DeferredScreen());
-            //manager.AddScreen(new DeferredLoadScreen());
+            manager.AddScreen(new DeferredLoadScreen());
             //manager.AddScreen(new DeferredAnimatedScreen());
             //manager.AddScreen(new ForwardAnimatedScreen());
             //manager.AddScreen(new CharacterScreen());
