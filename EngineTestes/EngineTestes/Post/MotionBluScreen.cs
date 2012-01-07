@@ -93,8 +93,8 @@ namespace EngineTestes
             cam.MoveSpeed *= 5;
             this.World.CameraManager.AddCamera(cam);
 
-            this.RenderTechnic.AddPostEffect(new PloobsEngine.SceneControl.SimpleMotionBlurPostEffect());
-            //this.RenderTechnic.AddPostEffect(new MotionBlurCompletePostEffect());
+            //this.RenderTechnic.AddPostEffect(new PloobsEngine.SceneControl.SimpleMotionBlurPostEffect());
+            this.RenderTechnic.AddPostEffect(new MotionBlurCompletePostEffect());
 
             SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grasscube");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
