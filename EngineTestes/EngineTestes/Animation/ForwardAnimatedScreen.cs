@@ -28,7 +28,7 @@ namespace AdvancedDemo4._0
     {
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            BepuPhysicWorld BepuPhysicWorld = new BepuPhysicWorld(-9.7f);
+            BepuPhysicWorld BepuPhysicWorld = new BepuPhysicWorld(-90.7f);
             SimpleCuller SimpleCuller = new SimpleCuller();
             world = new IWorld(BepuPhysicWorld, SimpleCuller);
 
