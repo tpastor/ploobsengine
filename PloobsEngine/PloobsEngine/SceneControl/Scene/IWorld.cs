@@ -270,7 +270,7 @@ namespace PloobsEngine.SceneControl
                 IObject[] toPass = Objects.ToArray();
                 for (int i = 0; i < toPass.Count(); i++)
                 {
-                    toPass[i].iUpdateObject(gt, CameraManager.ActiveCamera, Lights);
+                    toPass[i].iUpdateObject(gt, CameraManager.ActiveCamera, this);
                 }
 
                 if (ParticleManager != null)
@@ -303,7 +303,7 @@ namespace PloobsEngine.SceneControl
                         {
                             for (int i = initial; i > initial - perThread && i >= 0; i--)
                             {
-                                toPass[i].iUpdateObject(gt, CameraManager.ActiveCamera,lights );
+                                toPass[i].iUpdateObject(gt, CameraManager.ActiveCamera,this );
                             }
                         }
                     ));

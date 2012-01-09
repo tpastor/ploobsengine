@@ -30,9 +30,9 @@ using PloobsEngine.Physics.Bepu;
 
 namespace PloobsEngine.Modelo
 {
-    public class TerrainModel : IModelo
+    public class QuadTerrainModel : IModelo
     {
-        public TerrainModel(GraphicFactory factory, TerrainObject terrainObject, String TerrainName, String BaseTexture, String NivelBaixo = null, String NivelMedio = null, String NivelAlto = null)
+        public QuadTerrainModel(GraphicFactory factory, TerrainObject terrainObject, String TerrainName, String BaseTexture, String NivelBaixo = null, String NivelMedio = null, String NivelAlto = null)
             : base(factory, TerrainName,false)
         {   
             this.terrainObject = terrainObject;
@@ -49,50 +49,27 @@ namespace PloobsEngine.Modelo
         TerrainObject terrainObject;
         private float modelRadius;
 
+        internal List<VertexPositionNormalTexture> vertexList;
+
         protected override void LoadModel(GraphicFactory factory, out BatchInformation[][] BatchInformations, out TextureInformation[][] TextureInformations)
         {
-            List<VertexPositionNormalTexture> vertexList = new List<VertexPositionNormalTexture>();
-#if WINDOWS_PHONE || REACH
-            ////gambi shortcut
-            List<int> indexList2 = new List<int>();
-            GetVertexData(vertexList, indexList2, terrainObject);
-            List<short> indexList = new List<short>();
-            foreach (var item in indexList2)
-            {
-                indexList.Add( (short) item);
-            }
-            indexList2.Clear();
-#else
+            vertexList = new List<VertexPositionNormalTexture>();
             List<int> indexList = new List<int>();
             GetVertexData(vertexList, indexList, terrainObject);
-#endif
             modelRadius = (terrainObject.BoundingBox.Max - terrainObject.BoundingBox.Max).Length() / 2;
 
             var newVertices = new VertexPositionNormalTexture[vertexList.Count];
             vertexList.CopyTo(newVertices);
 
-#if WINDOWS_PHONE|| REACH
-            var newIndices = new short[indexList.Count];
-#else
             var newIndices = new int[indexList.Count];
-#endif
-            
             indexList.CopyTo(newIndices);
-
-            VertexBuffer vertexBufferS = factory.CreateVertexBuffer(VertexPositionNormalTexture.VertexDeclaration, newVertices.Count(), BufferUsage.WriteOnly);
-            vertexBufferS.SetData(newVertices);
-#if WINDOWS_PHONE || REACH
-            IndexBuffer indexBufferS = factory.CreateIndexBuffer(IndexElementSize.SixteenBits,newIndices.Count(),BufferUsage.WriteOnly);
-#else
-            IndexBuffer indexBufferS = factory.CreateIndexBuffer(IndexElementSize.ThirtyTwoBits, newIndices.Count(), BufferUsage.WriteOnly);
-#endif
-            indexBufferS.SetData(newIndices);
-            
+                        
+            ///will be filled soon
             BatchInformations = new BatchInformation[1][];
             BatchInformation[] b = new BatchInformation[1];
-            b[0] = new BatchInformation(0, newVertices.Count(), newIndices.Count() / 3, 0, 0, VertexPositionNormalTexture.VertexDeclaration,VertexPositionNormalTexture.VertexDeclaration.VertexStride);
-            b[0].VertexBuffer = vertexBufferS;
-            b[0].IndexBuffer = indexBufferS;
+            b[0] = new BatchInformation(0, 0, 0, 0, 0, VertexPositionNormalTexture.VertexDeclaration,VertexPositionNormalTexture.VertexDeclaration.VertexStride);
+            b[0].VertexBuffer = null;
+            b[0].IndexBuffer = null;
             b[0].ModelLocalTransformation = Matrix.Identity;
             BatchInformations[0] = b;
 
