@@ -118,16 +118,14 @@ float3 uv_to_eye(float2 uv, float eye_z)
     //compute screen-space position
     float4 position = mul(float4(uv.x * 2.0f - 1.0f,-(uv.y * 2.0f - 1.0f),eye_z,1.0f), InvertViewProjection);    
     position /= position.w;
-    return float3(position.xyz);
+    return position.xyz;
 }
-
 
 float3 fetch_eye_pos(float2 uv)
 {
 	//read depth
-    float depthVal = tex2D(depthSampler,uv).r;
+    float depthVal = tex2Dlod(depthSampler,float4(uv,0,0)).r;
 	return uv_to_eye(uv,depthVal);
-
 }
 
 // I don't use face normals, but it works!!
