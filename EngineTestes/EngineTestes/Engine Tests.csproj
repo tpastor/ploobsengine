@@ -170,6 +170,8 @@
     <Compile Include="Custom Model\CustomModelScreen.cs" />
     <Compile Include="Custom Model\TerrainModel.cs" />
     <Compile Include="DebugDrawer\DebugDrawScreen.cs" />
+    <Compile Include="Decal\Decal.cs" />
+    <Compile Include="Decal\DecalComponent.cs" />
     <Compile Include="Explosion\ExplosionDebrisPS.cs" />
     <Compile Include="Explosion\ExplosionFireSmokePS.cs" />
     <Compile Include="Explosion\ExplosionFlash.cs" />

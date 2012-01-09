@@ -122,7 +122,7 @@ float3 uv_to_eye(float2 uv, float depthVal)
 
 float3 fetch_eye_pos(float2 uv)
 {
-	float z = tex2D(depthSampler, uv).r; // Single channel zbuffer texture
+	float z = tex2Dlod(depthSampler, float4(uv,0,0)).r; // Single channel zbuffer texture
     return uv_to_eye(uv, z);
 }
 
