@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="eca770db-afcb-4ccb-a250-5201f8688d64" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">    
+    <introduction>      
+      <para>Tutorials Section</para>
+    </introduction>    
+    <section address="Section1">
+      <title>PloobsEngine Tutorials</title>
+      <content>        
+      	<para>
+      	After installing the PloobsEngine, you will see one shortcut in your Desktop called <legacyBold>PloobsDemos Code</legacyBold>. There you will find the source code of all of our demos. Just open then in Visual Studio and Run.      	
+      	</para>
+      	<para>
+      	To Compile/Run the demos the users must have the XNA 4.0 Framework and the Windows Phone SDK 7.1
+      	</para>
+        <para>We also have lots of tutorials ranging from very basic stuffs to more complicated ones in our website.
+        <externalLink>
+          <linkText>Check them here</linkText>          
+          <linkUri>http://ploobs.com.br/?page_id=1379</linkUri>
+      </externalLink>              
+      .
+      </para>
+      <para>
+      <legacyBold>We strongly suggest you to read at least the first 6 ones<legacyUnderline></legacyUnderline></legacyBold> before using PloobsEngine for real. 
+      </para>
+      <alert>
+      <legacyBold>All of the Contents showed in these tutorials are included in the Introduction and in the Advanced Demos that you installed with the PloobsInstaller. </legacyBold>
+      </alert>      
+      </content>      
+    </section>    
+        
+     <section address="Section5">
+      <title>PloobsEngine Windows Phone 7 Demos</title>
+      <content>        
+      <para>
+      There are more than 10 demos + a small tutorial game in WP7. <legacyBold>Be aware that most of the features showed in the PC demos can be used in WP7 version also</legacyBold>.
+      </para>       
+      </content>          
+    </section>
+    
+    <section address="Section5">
+      <title>More Demos ???!!!!</title>
+      <content>        
+      <para>
+      There are some features that we did not make specific demos. For more informations about them, check our 
+      <externalLink>
+          <linkText>EngineTest Project </linkText>          
+          <linkUri>http://code.google.com/p/port-ploobsengine/source/browse/#hg%2FEngineTestes%2FEngineTestes</linkUri>
+      </externalLink>              
+      (located in our repo, used to test new features).
+      </para>       
+      <para>
+      Remember that you can download the full repo with all the PloobsEngine Code from there =P
+      </para>
+      </content>          
+    </section>
+    
+    
+    <section address="Sectio3">
+      <title>Engine Components</title>
+      <content>        
+        <para>Explain the PloobsEngine Components architecture: <link xlink:href="258feb2d-6ec3-4273-ae1e-24b339b0be81">check it </link></para>
+      </content>      
+    </section>
+ 
+    
+    <relatedTopics>
+      <!-- One or more of the following:
+           - A local link
+           - An external link
+           - A code entity reference
+
+      <link xlink:href="Other Topic's ID"/>
+      <link xlink:href="Other Topic's ID">Link inner text</link>
+
+      <externalLink>
+          <linkText>Link text</linkText>
+          <linkAlternateText>Optional alternate link text</linkAlternateText>
+          <linkUri>URI</linkUri>
+      </externalLink>
+
+      <codeEntityReference>API member ID</codeEntityReference>
+
+      Examples:
+
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8270" />
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8278">Some other topic</link>
+
+      <externalLink>
+          <linkText>SHFB on CodePlex</linkText>
+          <linkAlternateText>Go to CodePlex</linkAlternateText>
+          <linkUri>http://shfb.codeplex.com</linkUri>
+      </externalLink>
+
+      <codeEntityReference>T:TestDoc.TestClass</codeEntityReference>
+      <codeEntityReference>P:TestDoc.TestClass.SomeProperty</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor(System.String,System.Int32)</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.ToString</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.FirstMethod</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.SecondMethod(System.Int32,System.String)</codeEntityReference>
+      -->
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

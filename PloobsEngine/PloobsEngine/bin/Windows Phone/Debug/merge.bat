@@ -1,0 +1,3 @@
+ilmerge /out:PloobsEngineDebug.dll PloobsEngine.dll XNAnimation.dll FarseerPhysicsXNA.dll BEPUphysics.dll DPSFPhone.dll /lib:" C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\Silverlight\v4.0\Profile\WindowsPhone71" /lib:"C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86" /targetplatform:v4,"C:\Windows\Microsoft.NET\Framework\v4.0.30319" /keyfile:XNAnimation.snk  /xmldocs  /ver:0.0.0.1 /log 
+pause
+

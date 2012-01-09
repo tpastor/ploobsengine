@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="5260262b-6583-47fb-97d5-5802238f3c64" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">    
+    <introduction>      
+      <para>PLoobsEngine Dual License</para>
+    </introduction>    
+    <section address="Section1">
+      <title>License Information</title>
+      <content>                    
+	
+	<para>
+	PloobsEngine is available under two licenses:
+	</para>
+	
+	
+<list class="bullet">
+  <listItem><para>The GNU General Public License</para></listItem>
+  <listItem><para>An individually tailored, commercial License</para></listItem>
+</list>
+
+<para>
+The source code is in both cases are exactly the same, and it depends on your goals and requirements which of the two licenses is the most suitable for you.
+</para>
+
+<para>
+<legacyBold>The GNU General Public License</legacyBold>
+</para>
+
+<para>
+PloobsEngine is available to everyone as 100 percent free software under the GNU General Public License (GPL).
+</para>
+<para>
+It can be obtained in the Releases pages or from our Mercurial repository.
+</para>
+<para>
+If your software is 100 percent free software under the GPL as well, then you never have to pay us for the licenses. (In all other instances, you are better served by our commercial license.)
+</para>
+<para>
+Please refer to the official GNU GPL website for a detailed explanation of the rights that the GPL grants you and the (very few) obligations that it can impose on you. There you also find the definition of free software, answers to frequently asked questions, and many other pieces of worthwhile information about the GPL.
+</para>
+
+
+<para>
+<legacyBold>Commercial License</legacyBold>
+</para>
+
+<para>
+The one thing that is not possible with PloobsEngine under the GPL is combining it with proprietary (non-free) code and distributing the result publicly (non-public use such as private or company internal is ok).
+</para>
+<para>
+That is, you can not use the free PloobsEngine source code in order to create a new program (e.g. a computer game) that is publicly sold (distributed) without releasing the full source code (including all of your previously closed, proprietary parts) under the GPL as well. Please consult the GPL text and the GPL FAQs for details.
+</para>
+
+<para>
+The solution is to get PloobsEngine directly from Ploobs under a custom license that is tailored to your needs:
+</para>
+
+
+<list class="bullet">
+  <listItem><para>Get free from the restrictions and compliance requirements of the GPL. Link in any code or libraries (including proprietary) that you need. Modify as your heart desires, combine and merge as much or as little as you want. And preserve the chance to sell that great new game while keeping your company source code assets confidential.
+</para></listItem>
+  <listItem><para>Let us know what works best for you: Do you prefer a one-time license fee? Or rather a percentage per sold copy? You can relate this to the number of developers in your team, or the sales price of the items, or anything else you wish. As we usually do not know your company or your team and are unfamiliar with your business details, you can even suggest the height of the licensing fee that you’re willing to pay – we’re (not totally but) very flexible even here.
+</para></listItem>
+  <listItem><para>We are not lawyers and we don’t pretend to know the ins and outs of the international right, the right in your country or state, as well as the full details in ours. It is our goal to provide you with a simple, fair and correct license agreement that accounts both for your requirements as well as ours. We’re happy to consider and include any special wish that you may come up with.
+</para></listItem>
+  <listItem><para>The license agreement can optionally cover support and consulting right from the start, but you can leave it out as well. If you find that you want to consult us later, setting up a separate agreement is no problem at all, and the price is the same</para></listItem>
+</list>
+
+<para>
+In summary, just let us know that you want a custom license, and what you want the license to look like. Mention any detail that is important to you. We’re looking forward to work out the details together with you!
+</para>
+
+<para>
+<legacyBold>WE ARE VERY FLEXIBLE. (If you are an independent developer, we will probably give you a comercial license without any cost =P)</legacyBold>
+</para>
+
+
+
+      </content>
+      <!-- If a section contains a sections element, its content creates
+           sub-sections.  These are not collapsible.
+      <sections>
+          <section address="SubSection1">
+              <title>Sub-section 1</title>
+              <content>
+                  <para>Sub-section content.</para>
+              </content>
+          </section>
+          <section address="SubSection2">
+              <title>Sub-section 2</title>
+              <content>
+                  <para>Sub-section content.</para>
+              </content>
+          </section>
+      </sections> -->
+    </section>
+    <relatedTopics>
+      <!-- One or more of the following:
+           - A local link
+           - An external link
+           - A code entity reference
+
+      <link xlink:href="Other Topic's ID"/>
+      <link xlink:href="Other Topic's ID">Link inner text</link>
+
+      <externalLink>
+          <linkText>Link text</linkText>
+          <linkAlternateText>Optional alternate link text</linkAlternateText>
+          <linkUri>URI</linkUri>
+      </externalLink>
+
+      <codeEntityReference>API member ID</codeEntityReference>
+
+      Examples:
+
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8270" />
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8278">Some other topic</link>
+
+      <externalLink>
+          <linkText>SHFB on CodePlex</linkText>
+          <linkAlternateText>Go to CodePlex</linkAlternateText>
+          <linkUri>http://shfb.codeplex.com</linkUri>
+      </externalLink>
+
+      <codeEntityReference>T:TestDoc.TestClass</codeEntityReference>
+      <codeEntityReference>P:TestDoc.TestClass.SomeProperty</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor(System.String,System.Int32)</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.ToString</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.FirstMethod</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.SecondMethod(System.Int32,System.String)</codeEntityReference>
+      -->
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>
