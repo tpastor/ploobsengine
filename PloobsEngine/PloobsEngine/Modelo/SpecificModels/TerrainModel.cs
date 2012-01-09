@@ -206,7 +206,7 @@ namespace PloobsEngine.Modelo
             base.CleanUp(factory);
             BatchInformations[0][0].VertexBuffer.Dispose();
             BatchInformations[0][0].IndexBuffer.Dispose();            
-            TextureInformations[0][0].ClenaUp(factory);
+            TextureInformations[0][0].CleanUp(factory);
         }
 
         public override int MeshNumber

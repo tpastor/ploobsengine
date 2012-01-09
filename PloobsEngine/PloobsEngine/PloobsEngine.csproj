@@ -189,6 +189,7 @@
     <Compile Include="Components\ComponentManager.cs" />
     <Compile Include="Components\IComponent.cs" />
     <Compile Include="DataStructure\QuadTree.cs" />
+    <Compile Include="DataStructure\SortableList.cs" />
     <Compile Include="Engine\ContentCompiler\ContentBuilder.cs" />
     <Compile Include="Engine\ContentCompiler\ErrorLogger.cs" />
     <Compile Include="Features\Primitive2D\Primitive2DDraw.cs" />
@@ -234,9 +235,11 @@
     <Compile Include="Material2D\Basic2DTextureMaterial.cs" />
     <Compile Include="Material2D\I2DMaterial.cs" />
     <Compile Include="Material2D\MaterialProcessor.cs" />
+    <Compile Include="Material\DeferredTerrainMaterial.cs" />
     <Compile Include="Material\DeferredAnimatedMaterial.cs" />
     <Compile Include="Material\DeferredMaterial.cs" />
     <Compile Include="Material\ForwardAnimatedMaterial.cs" />
+    <Compile Include="Material\ForwardTerrainMaterial.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredInstancedBilboardShader.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredAnimatedTextureShader.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredCilindricGPUBilboardShader.cs" />
@@ -258,6 +261,19 @@
     <Compile Include="Material\IShadder\ForwardShader\ForwardTransparenteShader.cs" />
     <Compile Include="Material\IShadder\ForwardShader\ForwardTreeShader.cs" />
     <Compile Include="Material\TreeMaterial.cs" />
+    <Compile Include="Material\Terrain\BufferManager.cs" />
+    <Compile Include="Material\Terrain\Culling\ClippingFrustrum.cs" />
+    <Compile Include="Material\Terrain\Culling\ClipPlane.cs" />
+    <Compile Include="Material\Terrain\Culling\Intersection.cs" />
+    <Compile Include="Material\Terrain\Culling\PlaneIntersectType.cs" />
+    <Compile Include="Material\Terrain\Culling\Rectangle.cs" />
+    <Compile Include="Material\Terrain\Culling\Utils.cs" />
+    <Compile Include="Material\Terrain\Culling\ViewClipShape.cs" />
+    <Compile Include="Material\Terrain\NodeType.cs" />
+    <Compile Include="Material\Terrain\QuadNode.cs" />
+    <Compile Include="Material\Terrain\QuadNodeVertex.cs" />
+    <Compile Include="Material\Terrain\QuadTree.cs" />
+    <Compile Include="Material\Terrain\TreeVertexCollection.cs" />
     <Compile Include="Modelo2D\Animation\AnimationClass.cs" />
     <Compile Include="Modelo2D\IModelo2D.cs" />
     <Compile Include="Modelo2D\SpriteFarseer.cs" />
@@ -265,6 +281,7 @@
     <Compile Include="Modelo\Animation\AnimatedController.cs" />
     <Compile Include="Modelo\Animation\AnimatedModel.cs" />
     <Compile Include="Modelo\CustomModel.cs" />
+    <Compile Include="Modelo\SpecificModels\QuadTerrainModel.cs" />
     <Compile Include="Modelo\SpecificModels\TerrainModel.cs" />
     <Compile Include="Modelo\SpecificModels\InstancedBilboardModel.cs" />
     <Compile Include="Modelo\SpecificModels\StaticBilboardModel.cs" />
@@ -684,7 +701,8 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <PropertyGroup>
-    <PostBuildEvent>merge.bat</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!--
       To modify your build process, add your task inside one of the targets below and uncomment it. 

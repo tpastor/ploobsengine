@@ -36,6 +36,30 @@ namespace PloobsEngine.Components
     /// </summary>
     public abstract class IComponent : IReciever , IEntity 
     {
+        public IComponent(int drawpriority = 0, int updatepriority = 0)
+        {
+            DrawPriority = drawpriority;
+            UpdatePriority = updatepriority;
+        }
+
+        /// <summary>
+        /// Defines the Components order when drawing (ALL draws types)
+        /// </summary>
+        public int DrawPriority
+        {
+            private set;
+            get;
+        }
+
+        /// <summary>
+        /// Defines the Components order when updating
+        /// </summary>
+        public int UpdatePriority
+        {
+            private  set;
+            get;
+        }
+
         /// <summary>
         /// Initializes this instance.
         /// </summary>
@@ -147,12 +171,7 @@ namespace PloobsEngine.Components
         {
             this.id = id;
         }
-
-        #endregion   
-
-    
-        #region IReciever Members
-
+        
         public abstract string getMyName();        
 
         #endregion

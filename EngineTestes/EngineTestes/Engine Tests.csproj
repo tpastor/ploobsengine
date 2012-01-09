@@ -170,6 +170,8 @@
     <Compile Include="Custom Model\CustomModelScreen.cs" />
     <Compile Include="Custom Model\TerrainModel.cs" />
     <Compile Include="DebugDrawer\DebugDrawScreen.cs" />
+    <Compile Include="Decal\Decal.cs" />
+    <Compile Include="Decal\DecalComponent.cs" />
     <Compile Include="Explosion\ExplosionDebrisPS.cs" />
     <Compile Include="Explosion\ExplosionFireSmokePS.cs" />
     <Compile Include="Explosion\ExplosionFlash.cs" />
@@ -194,9 +196,12 @@
     <Compile Include="OctreeScreen\OctreeScreen.cs" />
     <Compile Include="Physic\MobilePhysicScreen.cs" />
     <Compile Include="Post\BackgroundTexture.cs" />
+    <Compile Include="Post\HBAOScreen.cs" />
+    <Compile Include="Post\HBAOPostEffect.cs" />
     <Compile Include="Post\MotionBlurCompletePostEffect.cs" />
     <Compile Include="Post\MotionBlurPostEffect.cs" />
     <Compile Include="Post\MotionBluScreen.cs" />
+    <Compile Include="Post\MotionForwardScreen.cs" />
     <Compile Include="Post\ProjectiveTexturingPostEffect.cs" />
     <Compile Include="Post\SharpenPostEffect.cs" />
     <Compile Include="Post\DreamPostEffect.cs" />
@@ -231,6 +236,7 @@
     <Compile Include="Sponza\SponzaScreen.cs" />
     <Compile Include="TechDemo\TechDemoScreenModel.cs" />
     <Compile Include="TechDemo\TechDemoScreen.cs" />
+    <Compile Include="Terrain\QuadTerrainScreen.cs" />
     <Compile Include="Terrain\TerrainScreen.cs" />
     <Compile Include="TransparencyOnBorders\ForwardEMTransparentShader.cs" />
     <Compile Include="TransparencyOnBorders\ForwardGradativeAlphaShader.cs" />

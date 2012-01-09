@@ -887,7 +887,7 @@ namespace PloobsEngine.SceneControl
                     continue;
                              
                 if(obj.Material.CanCreateShadow)
-                    obj.Material.Shadder.DepthExtractor(gt, obj, view,projection, this);                
+                    obj.Material.Shader.DepthExtractor(gt, obj, view,projection, this);                
             }
         }
 
@@ -915,7 +915,7 @@ namespace PloobsEngine.SceneControl
             foreach (var obj in objs)
             {
                 if (obj.Material.CanCreateShadow && obj.Material.IsVisible)
-                    obj.Material.Shadder.DepthExtractor(gt, obj, view, projection, this);
+                    obj.Material.Shader.DepthExtractor(gt, obj, view, projection, this);
             }
         }
 
@@ -955,7 +955,7 @@ namespace PloobsEngine.SceneControl
                     continue;
 
                 if(obj.Material.CanAppearOfReflectionRefraction && obj.Material.IsVisible)
-                    obj.Material.Shadder.BasicDraw(gt, obj, view,projection, world.Lights, this, clippingPlane, useAlphaBlend);
+                    obj.Material.Shader.BasicDraw(gt, obj, view,projection, world.Lights, this, clippingPlane, useAlphaBlend);
             }
         }
 #endif

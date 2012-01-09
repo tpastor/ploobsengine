@@ -21,6 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using PloobsEngine.SceneControl;
 
 namespace PloobsEngine.Material
 {
@@ -38,7 +39,7 @@ namespace PloobsEngine.Material
         public ForwardMaterial(IShader shader)
         {
             System.Diagnostics.Debug.Assert(shader.MaterialType == Material.MaterialType.FORWARD);
-            this.Shadder = shader;
+            this.Shader = shader;
             CanAppearOfReflectionRefraction = true;
             CanCreateShadow = true;
             IsVisible = true;
@@ -114,9 +115,9 @@ namespace PloobsEngine.Material
         /// <param name="gametime">The gametime.</param>
         /// <param name="obj">The obj.</param>
         /// <param name="lights">The lights.</param>
-        public void Update(Microsoft.Xna.Framework.GameTime gametime, SceneControl.IObject obj, IList<Light.ILight> lights)
-        {            
-            shader.Update(gametime, obj, lights);
+        public void Update(Microsoft.Xna.Framework.GameTime gametime, SceneControl.IObject obj, IWorld world)
+        {
+            shader.Update(gametime, obj, world.Lights);
         }
 
         /// <summary>
@@ -125,7 +126,7 @@ namespace PloobsEngine.Material
         /// <value>
         /// The shadder.
         /// </value>
-        public IShader Shadder
+        public IShader Shader
         {
             get
             {
