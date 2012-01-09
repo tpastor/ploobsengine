@@ -9,14 +9,6 @@ using PloobsEngine;
 using PloobsEngine.Engine.Logger;
 namespace EngineTestes.Post
 {
-        public enum QualityType
-            {
-                LowQuality,
-                MiddleQuality,
-                HighQuality,
-            } // QualityType
-
-    
         public class HorizonBasedAmbientOcclusionShader : IPostEffect
         {
             public HorizonBasedAmbientOcclusionShader()
@@ -47,20 +39,8 @@ namespace EngineTestes.Post
             // Angle Bias (grades).
             private float angleBias = 30f * 3.1416f / 180f;
 
-            // High quality is the best and the faster I think.
-            private QualityType quality = QualityType.HighQuality;
-
             #region Properties
-
-            /// <summary>
-            /// Quality.
-            /// </summary>
-            public QualityType Quality
-            {
-                get { return quality; }
-                set { quality = value; }
-            } // Quality
-
+                        
             /// <summary>
             /// Number of Steps
             /// The far samplers have a lower effect in the result. This controls how faster their weight decay.
