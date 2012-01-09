@@ -48,7 +48,7 @@
                     <ScrollViewer.Content>
                         <StackPanel>
                             <TextBlock Text="3D Samples" FontSize="48" />
-                            <Image Tap="particles3D_Tap" Height="200" HorizontalAlignment="center"  Name="particles3D" Stretch="Fill" VerticalAlignment="Top" Width="400" Source="/PloobsFeatures;component/modelmanipulationplate.jpg" Margin="0,10" />
+                            <Image Tap="particles3D_Tap" Height="200" HorizontalAlignment="center"  Name="particles3D" Stretch="Fill" VerticalAlignment="Top" Width="400" Source="/PloobsFeatures;component/3dparticles.jpg" Margin="0,10" />
                             <Image Height="200" HorizontalAlignment="Center" Name="imageAnimation" Stretch="Fill" Width="400" Source="/PloobsFeatures;component/AnimationPlate.jpg" Tap="imageAnimation_Tap" Margin="0,10" />
                             <Image Height="200" HorizontalAlignment="Center"  Name="image2" Stretch="Fill" VerticalAlignment="Top" Width="400" Source="/PloobsFeatures;component/stressplate.jpg" Tap="image2_Tap" Margin="0,10" />
                             <Image Height="200" HorizontalAlignment="Center"  Name="image3" Stretch="Fill" VerticalAlignment="Top" Width="400" Source="/PloobsFeatures;component/environmentplate.jpg" Tap="image3_Tap" Margin="0,10" />
