@@ -194,6 +194,8 @@
     <Compile Include="OctreeScreen\OctreeScreen.cs" />
     <Compile Include="Physic\MobilePhysicScreen.cs" />
     <Compile Include="Post\BackgroundTexture.cs" />
+    <Compile Include="Post\HBAOScreen.cs" />
+    <Compile Include="Post\HBAOPostEffect.cs" />
     <Compile Include="Post\MotionBlurCompletePostEffect.cs" />
     <Compile Include="Post\MotionBlurPostEffect.cs" />
     <Compile Include="Post\MotionBluScreen.cs" />

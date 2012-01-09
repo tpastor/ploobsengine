@@ -117,7 +117,8 @@ namespace PloobsEngine.SceneControl
 
 
             intermediateTex  = rHelper.PopRenderTargetAsSingleRenderTarget2D();
-            
+            rHelper.Clear(Color.Black, ClearOptions.Target);
+
              SetParameters(GaussianBlurDirection.Vertical); // Set vertical parameters
              rHelper.RenderTextureToFullScreenSpriteBatch(intermediateTex, gblur, GraphicInfo.FullScreenRectangle);             
         }

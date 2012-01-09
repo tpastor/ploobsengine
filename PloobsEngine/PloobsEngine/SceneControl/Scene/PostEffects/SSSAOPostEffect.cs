@@ -38,7 +38,7 @@ namespace PloobsEngine.SceneControl
 
     public class SSAOPostEffect : IPostEffect
     {
-        public SSAOPostEffect() : base(PostEffectType.Deferred) { }
+        public SSAOPostEffect() : base(PostEffectType.Deferred) { Weight = 1; }
 
         Effect effect = null;
         Effect ssaofinal = null;        
@@ -139,11 +139,17 @@ namespace PloobsEngine.SceneControl
              
              ssaofinal.Parameters["SceneTexture"].SetValue(ImageToProcess);
              ssaofinal.Parameters["halfPixel"].SetValue(GraphicInfo.HalfPixel);
-             ssaofinal.Parameters["weight"].SetValue(1);
+             ssaofinal.Parameters["weight"].SetValue(Weight);
              if (useFloatingBuffer)
                  rHelper.RenderFullScreenQuadVertexPixel(ssaofinal, SamplerState.PointClamp);
              else
                  rHelper.RenderFullScreenQuadVertexPixel(ssaofinal, GraphicInfo.SamplerState);              
+        }
+
+        public float Weight
+        {
+            set;
+            get;
         }
 
         public override void Init(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
