@@ -16,9 +16,9 @@ namespace EngineTestes
         static void Main(string[] args)
         {
             InitialEngineDescription desc = InitialEngineDescription.Default();
-            desc.useMipMapWhenPossible = true;
-            desc.UseAnisotropicFiltering = true;
-            desc.isMultiSampling = true;            
+            desc.useMipMapWhenPossible = false;
+            desc.UseAnisotropicFiltering = false;
+            desc.isMultiSampling = false;            
 
             using (EngineStuff engine = new EngineStuff(ref desc, LoadScreen))
             {
@@ -29,7 +29,9 @@ namespace EngineTestes
 
         static void LoadScreen(ScreenManager manager)
         {
-            manager.AddScreen(new MotionBluScreen());
+            manager.AddScreen(new HBAOScreen());
+            //manager.AddScreen(new MotionForwardScreen());
+            //manager.AddScreen(new MotionBluScreen());
             //manager.AddScreen(new SerializationScreen());
             //manager.AddScreen(new ActionScriptScreen());
             //manager.AddScreen(new ScriptScreen());

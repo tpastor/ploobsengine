@@ -62,7 +62,8 @@ float3	PosFromDepth (float2 UV)
 	float	Depth=tex2D(DepthSampler,UV).r;	
 	float4	Pos=float4((UV.x-0.5)*2,(0.5-UV.y)*2,Depth,1);
 	float4	Ray=mul(Pos,InvProj);	
-	return	Ray.xyz;
+	//Ray /= Ray.w
+	return	Ray.xyz ;
 }
 
 float3	ReadNormal (float2 UV)
@@ -151,8 +152,10 @@ float4 main (VertexShaderOutput input):COLOR
 VertexShaderOutput VertexShaderFunction(VertexShaderInput input)  
 {  
     VertexShaderOutput output;
+	input.Position.x =  input.Position.x - 2*halfPixel.x;
+	input.Position.y =  input.Position.y + 2*halfPixel.y;
     output.Position = float4(input.Position,1);
-    output.TextCoord = input.UV - halfPixel;
+    output.TextCoord = input.UV;
     return output;
 }  				
 

@@ -179,6 +179,7 @@
     <Resource Include="stressplate.jpg" />
     <Resource Include="Terrain.jpg" />
     <Resource Include="AnimationPlate.jpg" />
+    <Resource Include="3dparticles.jpg" />
     <Content Include="ApplicationIcon.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

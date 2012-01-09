@@ -89,6 +89,7 @@
     <Compile Include="Commands\IReciever.cs" />
     <Compile Include="Components\ComponentManager.cs" />
     <Compile Include="Components\IComponent.cs" />
+    <Compile Include="DataStructure\SortableList.cs" />
     <Compile Include="Engine\ContentManager\AssetTracker.cs" />
     <Compile Include="Engine\ContentManager\ContentTracker.cs" />
     <Compile Include="Engine\ContentManager\ContentTrackerAsync.cs" />
@@ -167,6 +168,7 @@
     <Compile Include="Modelo\Animation\AnimatedController.cs" />
     <Compile Include="Modelo\Animation\AnimatedModel.cs" />
     <Compile Include="Modelo\CustomModel.cs" />
+    <Compile Include="Modelo\SpecificModels\QuadTerrainModel.cs" />
     <Compile Include="Modelo\SpecificModels\TerrainModel.cs" />
     <Compile Include="Modelo\SpecificModels\InstancedBilboardModel.cs" />
     <Compile Include="Modelo\SpecificModels\StaticBilboardModel.cs" />

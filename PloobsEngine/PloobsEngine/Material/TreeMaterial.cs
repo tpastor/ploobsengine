@@ -159,7 +159,7 @@ namespace PloobsEngine.Material
          
         }        
 
-        public IShader Shadder
+        public IShader Shader
         {
             get
             {
@@ -171,9 +171,9 @@ namespace PloobsEngine.Material
             }
         }
 
-        public void Update(Microsoft.Xna.Framework.GameTime gametime, IObject obj, IList<ILight> lights)
+        public void Update(Microsoft.Xna.Framework.GameTime gametime, IObject obj, IWorld world)
         {
-            shader.Update(gametime, obj, lights);
+            shader.Update(gametime, obj, world.Lights);
             wsource.Update(gametime);
             SimpleTree tree = (obj.Modelo as TreeModel).Tree;
             animator.Animate(tree.Skeleton, tree.AnimationState, gametime);            

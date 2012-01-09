@@ -194,14 +194,14 @@ namespace PloobsEngine.SceneControl
         /// <param name="gt">The gt.</param>
         /// <param name="cam">The cam.</param>
         /// <param name="luzes">The luzes.</param>
-        protected virtual void UpdateObject(GameTime gt, ICamera cam, IList<ILight> luzes) { }
-        internal void iUpdateObject(GameTime gt, ICamera cam, IList<ILight> luzes)
+        protected virtual void UpdateObject(GameTime gt, ICamera cam, IWorld world) { }
+        internal void iUpdateObject(GameTime gt, ICamera cam, IWorld world)
         {
 
             lock (materialLock)
             {
                 if (material != null)
-                    material.Update(gt, this, luzes);
+                    material.Update(gt, this, world);
             }
             
             worldMatrix = physicObject.WorldMatrix;
@@ -214,7 +214,7 @@ namespace PloobsEngine.SceneControl
                 lastFrameWorld = WorldMatrix;
             }
 
-                UpdateObject(gt, cam, luzes);
+                UpdateObject(gt, cam, world);
 
                 foreach (var item in IObjectAttachment)
                 {

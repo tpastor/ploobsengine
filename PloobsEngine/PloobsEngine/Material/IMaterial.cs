@@ -88,16 +88,16 @@ namespace PloobsEngine.Material
         /// Update.
         /// </summary>
         /// <param name="gametime">The gametime.</param>
-        /// <param name="obj">The obj.</param>
-        /// <param name="lights">The lights.</param>
-        void Update(GameTime gametime, IObject obj, IList<ILight> lights);
+        /// <param name="obj">The obj.</param>        
+        /// /// <param name="world">The world.</param>
+        void Update(GameTime gametime, IObject obj, IWorld world);
         /// <summary>
         /// Gets or sets the shadder.
         /// </summary>
         /// <value>
         /// The shadder.
         /// </value>
-        IShader Shadder { set; get; }
+        IShader Shader { set; get; }
         /// <summary>
         /// Gets or sets the type of the material.
         /// </summary>

@@ -33,7 +33,36 @@ namespace PloobsEngine.Components
     /// Handles the Components
     /// </summary>
     public class ComponentManager 
-    {        
+    {
+
+        private class DrawComparer : IComparer<IComponent>
+        {
+            public int Compare(IComponent x, IComponent y)
+            {
+                if (x.DrawPriority > y.DrawPriority)
+                    return 1;
+                else if (x.DrawPriority < y.DrawPriority)
+                    return -1;
+                else
+                    return 0;
+            }
+        }
+
+        private class UpdateComparer : IComparer<IComponent>
+        {
+            public int Compare(IComponent x, IComponent y)
+            {
+                if (x.UpdatePriority > y.UpdatePriority)
+                    return 1;
+                else if (x.UpdatePriority < y.UpdatePriority)
+                    return -1;
+                else
+                    return 0;
+            }
+        }
+
+        private UpdateComparer updateComparer = new UpdateComparer();
+        private DrawComparer drawComparer = new DrawComparer();
         private IDictionary<String, IComponent> _comps = new Dictionary<String, IComponent>();
         private List<IComponent> _updateables = new List<IComponent>();        
         private List<IComponent> _preDrawables = new List<IComponent>();
@@ -208,11 +237,21 @@ namespace PloobsEngine.Components
                             break;
                         default:
                             break;
-                    }                                
+                    }   
+                             
                   _comps.Add(comp.getMyName(), comp);
                   _comps[comp.getMyName()].iInitialize();
                   _comps[comp.getMyName()].iLoadContent(this.GraphicInfo,factory);
                   CommandProcessor.getCommandProcessor().Register(_comps[comp.getMyName()]);
+
+                ///cold code 
+                ///does not need to be optimized
+                _preDrawables.Sort(this.drawComparer);
+                _updateables.Sort(this.updateComparer);
+                _preDrawables.Sort(this.drawComparer);
+                _posDrawables.Sort(this.drawComparer);
+                _posWithDepthDrawables.Sort(this.drawComparer);
+
                   return true;
         }
 
