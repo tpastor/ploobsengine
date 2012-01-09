@@ -433,18 +433,17 @@ namespace EngineTestes.Post
                 SetSquareRadius(AngleBias * AngleBias);
                 SetInverseRadius(1 / AngleBias);
                 SetTanAngleBias((float)Math.Tan(AngleBias));                
-
-
+                
                 rHelper.PushRenderTarget(RenderTarget2D);
                 rHelper.Clear(Color.White);
-                rHelper.RenderFullScreenQuadVertexPixel(shader);
+                rHelper.RenderFullScreenQuadVertexPixel(shader,SamplerState.PointClamp);
                 Texture2D t = rHelper.PopRenderTargetAsSingleRenderTarget2D();
 
                 rHelper.PushRenderTarget(RenderTarget2D2);
                 rHelper.Clear(Color.Black);
                 g.Draw(t, rHelper, gt, GraphicInfo, world, useFloatBuffer);
                 t = rHelper.PopRenderTargetAsSingleRenderTarget2D();
-
+                
                 ssaofinal.Parameters["SSAOTex"].SetValue(t);
                 ssaofinal.Parameters["SceneTexture"].SetValue(ImageToProcess);
                 ssaofinal.Parameters["halfPixel"].SetValue(GraphicInfo.HalfPixel);
