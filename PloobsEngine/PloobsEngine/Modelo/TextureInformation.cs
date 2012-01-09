@@ -98,7 +98,7 @@ namespace PloobsEngine.Modelo
         /// Disposes all.
         /// </summary>
         /// <param name="factory">The factory.</param>
-        public void ClenaUp(GraphicFactory factory)
+        public void CleanUp(GraphicFactory factory)
         {
             if (bump != null)
                 factory.ReleaseAsset(BumpMapName);

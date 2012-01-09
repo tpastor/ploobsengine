@@ -166,12 +166,12 @@ namespace PloobsEngine.Modelo
         /// <summary>
         /// Num Vertices
         /// </summary>
-        public readonly int NumVertices;
+        public  int NumVertices;
 
         /// <summary>
         /// Primitive COunt
         /// </summary>
-        public readonly int PrimitiveCount;
+        public  int PrimitiveCount;
 
         /// <summary>
         /// Start Index

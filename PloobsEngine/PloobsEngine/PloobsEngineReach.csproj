@@ -167,6 +167,7 @@
     <Compile Include="Modelo\Animation\AnimatedController.cs" />
     <Compile Include="Modelo\Animation\AnimatedModel.cs" />
     <Compile Include="Modelo\CustomModel.cs" />
+    <Compile Include="Modelo\SpecificModels\QuadTerrainModel.cs" />
     <Compile Include="Modelo\SpecificModels\TerrainModel.cs" />
     <Compile Include="Modelo\SpecificModels\InstancedBilboardModel.cs" />
     <Compile Include="Modelo\SpecificModels\StaticBilboardModel.cs" />
