@@ -119,6 +119,7 @@
     <Compile Include="Components\ComponentManager.cs" />
     <Compile Include="Components\IComponent.cs" />
     <Compile Include="DataStructure\QuadTree.cs" />
+    <Compile Include="DataStructure\SortableList.cs" />
     <Compile Include="Engine\ContentManager\AssetTracker.cs" />
     <Compile Include="Engine\ContentManager\ContentTracker.cs" />
     <Compile Include="Engine\ContentManager\ContentTrackerAsync.cs" />

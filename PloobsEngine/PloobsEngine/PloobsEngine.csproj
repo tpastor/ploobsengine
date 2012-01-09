@@ -189,6 +189,7 @@
     <Compile Include="Components\ComponentManager.cs" />
     <Compile Include="Components\IComponent.cs" />
     <Compile Include="DataStructure\QuadTree.cs" />
+    <Compile Include="DataStructure\SortableList.cs" />
     <Compile Include="Engine\ContentCompiler\ContentBuilder.cs" />
     <Compile Include="Engine\ContentCompiler\ErrorLogger.cs" />
     <Compile Include="Features\Primitive2D\Primitive2DDraw.cs" />
