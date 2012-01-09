@@ -50,6 +50,9 @@ namespace ProjectTemplate
             //manager.AddScreen(new Basic2DScreen());
             //manager.AddScreen(new TemplateForwardScreen());
             //manager.AddScreen(new AnimationScreen());
+            //manager.AddScreen(new MilkShakeFormatScreen());
+            //manager.AddScreen(new ColladaFormatScreen());
+            
 
         }
 
