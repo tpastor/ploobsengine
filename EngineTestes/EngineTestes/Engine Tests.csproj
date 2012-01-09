@@ -234,6 +234,7 @@
     <Compile Include="Sponza\SponzaScreen.cs" />
     <Compile Include="TechDemo\TechDemoScreenModel.cs" />
     <Compile Include="TechDemo\TechDemoScreen.cs" />
+    <Compile Include="Terrain\QuadTerrainScreen.cs" />
     <Compile Include="Terrain\TerrainScreen.cs" />
     <Compile Include="TransparencyOnBorders\ForwardEMTransparentShader.cs" />
     <Compile Include="TransparencyOnBorders\ForwardGradativeAlphaShader.cs" />
