@@ -13,17 +13,16 @@ namespace PloobsEngine.Material
 {
     public class DeferredTerrainMaterial : IMaterial
     {
-        public DeferredTerrainMaterial(GraphicFactory factory, IShader shader, ICamera camera, QuadTerrainModel QuadTerrainModel, Vector3 position)
+        public DeferredTerrainMaterial(IShader shader, ICamera camera)
         {
-            QuadTree = new Tutorial1.Terrain.QuadTree(position, QuadTerrainModel.vertexList, QuadTerrainModel.GetTextureInformation(0)[0].getTexture(TextureType.HEIGHTMAP), camera.View, camera.Projection, factory.device);
-            QuadTerrainModel.vertexList.Clear();
-            QuadTerrainModel.vertexList = null;
             CanAppearOfReflectionRefraction = true;
             CanCreateShadow = true;
             IsVisible = true;
             this.Shader = shader;
+            this.camera = camera;
         }
 
+        ICamera camera;
         public Tutorial1.Terrain.QuadTree QuadTree
         {
             set;
@@ -32,6 +31,10 @@ namespace PloobsEngine.Material
 
         public void Initialization(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, SceneControl.IObject obj)
         {
+            QuadTerrainModel QuadTerrainModel = (QuadTerrainModel)obj.Modelo;
+            QuadTree = new Tutorial1.Terrain.QuadTree(obj.PhysicObject.Position, QuadTerrainModel.vertexList, QuadTerrainModel.GetTextureInformation(0)[0].getTexture(TextureType.HEIGHTMAP), camera.View, camera.Projection, factory.device);
+            QuadTerrainModel.vertexList.Clear();
+            QuadTerrainModel.vertexList = null;
             Shader.Initialize(ginfo, factory, obj);
         }
 
