@@ -29,10 +29,14 @@ namespace PloobsEngine.SceneControl
 {
     public class GaussianBlurPostEffect : IPostEffect
     {
-        public GaussianBlurPostEffect() : base(PostEffectType.All) { }
+        public GaussianBlurPostEffect(bool useHalfSingleRenderTarget = false) : base(PostEffectType.All) 
+        {
+            this.useHalfSingleRenderTarget = useHalfSingleRenderTarget;
+        }
 
 #region IPostEffect Members
 
+        bool useHalfSingleRenderTarget = false;
         private Effect gblur;        
         private RenderTarget2D target;
         private Vector2[] sampleOffsetsH = new Vector2[15];
@@ -109,18 +113,18 @@ namespace PloobsEngine.SceneControl
             SetParameters(GaussianBlurDirection.Horizontal);
             if (useFloatingBuffer)
 
-                rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, gblur, GraphicInfo.FullScreenRectangle, SamplerState.PointClamp);
+                rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, gblur, GraphicInfo.FullScreenRectangle, SamplerState.PointClamp, BlendState.Opaque);
             else
-                rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, gblur, GraphicInfo.FullScreenRectangle, GraphicInfo.SamplerState);
+                rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, gblur, GraphicInfo.FullScreenRectangle, GraphicInfo.SamplerState, BlendState.Opaque);
                         
             intermediateTex  = rHelper.PopRenderTargetAsSingleRenderTarget2D();
             rHelper.Clear(Color.Black, ClearOptions.Target);
 
              SetParameters(GaussianBlurDirection.Vertical); // Set vertical parameters
              if (useFloatingBuffer)
-                 rHelper.RenderTextureToFullScreenSpriteBatch(intermediateTex, gblur, GraphicInfo.FullScreenRectangle, SamplerState.PointClamp);             
+                 rHelper.RenderTextureToFullScreenSpriteBatch(intermediateTex, gblur, GraphicInfo.FullScreenRectangle, SamplerState.PointClamp, BlendState.Opaque);             
              else
-                 rHelper.RenderTextureToFullScreenSpriteBatch(intermediateTex, gblur, GraphicInfo.FullScreenRectangle, GraphicInfo.SamplerState);             
+                 rHelper.RenderTextureToFullScreenSpriteBatch(intermediateTex, gblur, GraphicInfo.FullScreenRectangle, GraphicInfo.SamplerState, BlendState.Opaque);             
                  
              
         }
@@ -132,8 +136,15 @@ namespace PloobsEngine.SceneControl
 
         public override void Init(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
         {
-            gblur = factory.GetEffect("gblur",true,true);            
-            target = factory.CreateRenderTarget(ginfo.BackBufferWidth,ginfo.BackBufferHeight,SurfaceFormat.Color,ginfo.UseMipMap,DepthFormat.None,ginfo.MultiSample);
+            gblur = factory.GetEffect("gblur",true,true);
+            if (useHalfSingleRenderTarget)
+            {
+                target = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.HalfSingle, ginfo.UseMipMap, DepthFormat.None, ginfo.MultiSample);
+            }
+            else
+            {
+                target = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.None, ginfo.MultiSample);
+            }
 
             Vector2 texelSize = new Vector2(1f / ginfo.BackBufferWidth, 1f / ginfo.BackBufferHeight);
             SetBlurParameters(texelSize.X, 0, ref sampleOffsetsH, ref sampleWeightsH);

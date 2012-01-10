@@ -21,7 +21,7 @@ namespace EngineTestes.Decal
             get { return PloobsEngine.Components.ComponentType.POS_WITHDEPTH_DRAWABLE; }
         }
 
-        public static const String MyName = "Decal";
+        public static readonly String MyName = "Decal";
         public override string getMyName()
         {
             return MyName;

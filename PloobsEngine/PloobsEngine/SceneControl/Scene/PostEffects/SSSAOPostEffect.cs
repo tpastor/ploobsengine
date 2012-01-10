@@ -41,10 +41,11 @@ namespace PloobsEngine.SceneControl
         public SSAOPostEffect() : base(PostEffectType.Deferred) { Weight = 1; }
 
         Effect effect = null;
-        Effect ssaofinal = null;        
+        Effect ssaofinal = null;
         Texture2D RandomTexture;
         RenderTarget2D target;
         RenderTarget2D target2;
+        RenderTarget2D target3;
         GaussianBlurPostEffect gbp;
         BlurMode blurMode = BlurMode.SINGLE;
 
@@ -97,53 +98,57 @@ namespace PloobsEngine.SceneControl
         public override void Draw(Texture2D ImageToProcess, RenderHelper rHelper, GameTime gt, Engine.GraphicInfo GraphicInfo, IWorld world, bool useFloatingBuffer)
         {
 
-             effect.Parameters["Params"].SetValue(new Vector4(GraphicInfo.BackBufferWidth, GraphicInfo.BackBufferHeight, world.CameraManager.ActiveCamera.FarPlane, intensity));
-             effect.Parameters["DepthBuffer"].SetValue(rHelper[PrincipalConstants.DephRT]);
-             effect.Parameters["NormalBuffer"].SetValue(rHelper[PrincipalConstants.normalRt]);
-             effect.Parameters["RandomTexture"].SetValue(RandomTexture);
-             effect.Parameters["InvProj"].SetValue(Matrix.Transpose( Matrix.Invert(world.CameraManager.ActiveCamera.Projection)));
-             effect.Parameters["View"].SetValue(world.CameraManager.ActiveCamera.View);
-             effect.Parameters["jitter"].SetValue(jitter);
-             effect.Parameters["halfPixel"].SetValue(GraphicInfo.HalfPixel);
-             effect.Parameters["diffScale"].SetValue(diffscale);
-             effect.Parameters["whiteCorrection"].SetValue(whiteCorrection);
+            effect.Parameters["Params"].SetValue(new Vector4(GraphicInfo.BackBufferWidth, GraphicInfo.BackBufferHeight, world.CameraManager.ActiveCamera.FarPlane, intensity));
+            effect.Parameters["DepthBuffer"].SetValue(rHelper[PrincipalConstants.DephRT]);
+            effect.Parameters["NormalBuffer"].SetValue(rHelper[PrincipalConstants.normalRt]);
+            effect.Parameters["RandomTexture"].SetValue(RandomTexture);
+            effect.Parameters["InvProj"].SetValue(Matrix.Transpose(Matrix.Invert(world.CameraManager.ActiveCamera.Projection)));
+            effect.Parameters["View"].SetValue(world.CameraManager.ActiveCamera.View);
+            effect.Parameters["jitter"].SetValue(jitter);
+            effect.Parameters["halfPixel"].SetValue(GraphicInfo.HalfPixel);
+            effect.Parameters["diffScale"].SetValue(diffscale);
+            effect.Parameters["whiteCorrection"].SetValue(whiteCorrection);
 
-             if (outputONLYSSAOMAP)
-             {                 
-                 rHelper.RenderFullScreenQuadVertexPixel(effect);
-                 return;
-             }
+            if (outputONLYSSAOMAP)
+            {
+                rHelper.RenderFullScreenQuadVertexPixel(effect);
+                return;
+            }
 
-             rHelper.PushRenderTarget(target);
-             rHelper.RenderFullScreenQuadVertexPixel(effect);
-             Texture2D r = rHelper.PopRenderTargetAsSingleRenderTarget2D();
+            rHelper.PushRenderTarget(target);
+            rHelper.Clear(Color.Black, ClearOptions.Target);
+            rHelper.RenderFullScreenQuadVertexPixel(effect);
+            Texture2D r = rHelper.PopRenderTargetAsSingleRenderTarget2D();
 
-             if (blurMode == BlurMode.SINGLE || blurMode == BlurMode.DOUBLE)
-             {
-                 rHelper.PushRenderTarget(target2);
-                 gbp.Draw(r, rHelper, gt, GraphicInfo, world, useFloatingBuffer);
-                 Texture2D x = rHelper.PopRenderTargetAsSingleRenderTarget2D();                
+            if (blurMode == BlurMode.SINGLE || blurMode == BlurMode.DOUBLE)
+            {
+                rHelper.PushRenderTarget(target2);
+                rHelper.Clear(Color.Black, ClearOptions.Target);
+                gbp.Draw(r, rHelper, gt, GraphicInfo, world, useFloatingBuffer);
+                Texture2D x = rHelper.PopRenderTargetAsSingleRenderTarget2D();
 
-                 if (blurMode == BlurMode.DOUBLE)
-                 {
-                     rHelper.PushRenderTarget(target2);
-                     gbp.Draw(x, rHelper, gt,GraphicInfo, world,useFloatingBuffer);
-                     x = rHelper.PopRenderTargetAsSingleRenderTarget2D();                     
-                 }
-                 ssaofinal.Parameters["SSAOTex"].SetValue(x);
-             }
-             else if(blurMode == BlurMode.NONE)
-             {
-                 ssaofinal.Parameters["SSAOTex"].SetValue(r);
-             }
-             
-             ssaofinal.Parameters["SceneTexture"].SetValue(ImageToProcess);
-             ssaofinal.Parameters["halfPixel"].SetValue(GraphicInfo.HalfPixel);
-             ssaofinal.Parameters["weight"].SetValue(Weight);
-             if (useFloatingBuffer)
-                 rHelper.RenderFullScreenQuadVertexPixel(ssaofinal, SamplerState.PointClamp);
-             else
-                 rHelper.RenderFullScreenQuadVertexPixel(ssaofinal, GraphicInfo.SamplerState);              
+                if (blurMode == BlurMode.DOUBLE)
+                {
+                    rHelper.PushRenderTarget(target3);
+                    rHelper.Clear(Color.Black, ClearOptions.Target);
+                    gbp.Draw(x, rHelper, gt, GraphicInfo, world, useFloatingBuffer);
+                    x = rHelper.PopRenderTargetAsSingleRenderTarget2D();
+                }
+                ssaofinal.Parameters["SSAOTex"].SetValue(x);
+            }
+            else if (blurMode == BlurMode.NONE)
+            {
+                ssaofinal.Parameters["SSAOTex"].SetValue(r);
+            }
+
+            rHelper.Clear(Color.Black, ClearOptions.Target);
+            ssaofinal.Parameters["SceneTexture"].SetValue(ImageToProcess);
+            ssaofinal.Parameters["halfPixel"].SetValue(GraphicInfo.HalfPixel);
+            ssaofinal.Parameters["weight"].SetValue(Weight);
+            if (useFloatingBuffer)
+                rHelper.RenderFullScreenQuadVertexPixel(ssaofinal, SamplerState.PointClamp);
+            else
+                rHelper.RenderFullScreenQuadVertexPixel(ssaofinal, GraphicInfo.SamplerState);
         }
 
         public float Weight
@@ -154,16 +159,18 @@ namespace PloobsEngine.SceneControl
 
         public override void Init(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
         {
-            target = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color,ginfo.UseMipMap,DepthFormat.None,ginfo.MultiSample);
+            target = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.None, ginfo.MultiSample);
 
             target2 = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.None, ginfo.MultiSample);
-            
-            effect = factory.GetEffect("SSAOPOST",false,true);
-            ssaofinal = factory.GetEffect("ssaofinal",false,true);
 
-            RandomTexture = factory.GetTexture2D("random",true);
+            target3 = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.None, ginfo.MultiSample);
+
+            effect = factory.GetEffect("SSAOPOST", false, true);
+            ssaofinal = factory.GetEffect("ssaofinal", false, true);
+
+            RandomTexture = factory.GetTexture2D("random", true);
             gbp = new GaussianBlurPostEffect();
-            gbp.Init(ginfo,factory);            
+            gbp.Init(ginfo, factory);
         }
 
     }

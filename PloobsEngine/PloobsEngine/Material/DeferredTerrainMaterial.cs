@@ -11,7 +11,7 @@ using PloobsEngine.SceneControl;
 
 namespace PloobsEngine.Material
 {
-    public class DeferredTerrainMaterial : IMaterial
+    internal class DeferredTerrainMaterial : IMaterial
     {
         public DeferredTerrainMaterial(IShader shader, ICamera camera)
         {
@@ -83,6 +83,7 @@ namespace PloobsEngine.Material
         
         public void Update(Microsoft.Xna.Framework.GameTime gametime, SceneControl.IObject obj, IWorld world)
         {
+            Shader.Update(gametime, obj, world.Lights);
             QuadTree.Update(gametime, world.CameraManager.ActiveCamera);
             QuadTree.UpdateBatchInformation(obj.Modelo.GetBatchInformation(0)[0]);
         }

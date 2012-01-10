@@ -394,7 +394,7 @@ namespace EngineTestes.Post
                 RenderTarget2D = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
                 RenderTarget2D2 = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
 
-                g = new GaussianBlurPostEffect();
+                g = new GaussianBlurPostEffect(false);
                 g.Init(ginfo, factory);
 
                 ssaofinal = factory.GetEffect("ssaofinal", false, true);

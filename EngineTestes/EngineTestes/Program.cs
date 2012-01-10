@@ -29,6 +29,7 @@ namespace EngineTestes
 
         static void LoadScreen(ScreenManager manager)
         {
+            //manager.AddScreen(new QuadTerrainScreen());
             manager.AddScreen(new HBAOScreen());
             //manager.AddScreen(new MotionForwardScreen());
             //manager.AddScreen(new MotionBluScreen());
