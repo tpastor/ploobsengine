@@ -427,7 +427,7 @@ namespace EngineTestes.Post
                 // Set shader atributes
                 //SetNormalTexture(rHelper[PrincipalConstants.normalRt]);
                 //shader.Parameters["depthMap"].SetValue(rHelper[PrincipalConstants.DephRT]);
-                shader.Parameters["depthMap"].SetValue(depth);
+                shader.Parameters["depthTexture"].SetValue(depth);
 
                 
                 //shader.Parameters["InvertViewProjection"].SetValue(Matrix.Invert(world.CameraManager.ActiveCamera.Projection));

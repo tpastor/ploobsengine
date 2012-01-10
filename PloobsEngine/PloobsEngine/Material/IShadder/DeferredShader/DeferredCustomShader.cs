@@ -218,7 +218,7 @@ namespace PloobsEngine.Material
         /// <param name="lights"></param>
         public override void  Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<Light.ILight> lights)
         {                 
-                this._shader.Parameters["id"].SetValue(shaderId);
+               this._shader.Parameters["id"].SetValue(shaderId);
                this._shader.Parameters["useParalax"].SetValue(useParalax);
                this._shader.Parameters["useGlow"].SetValue(useGlow);
                this._shader.Parameters["useBump"].SetValue(useBump);

@@ -53,6 +53,8 @@
   <ItemGroup>
     <Compile Include="ContentProcessor1.cs" />
     <Compile Include="ContentProcessor2.cs" />
+    <Compile Include="ContentProcessor3.cs" />
+    <Compile Include="ContentProcessor4.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

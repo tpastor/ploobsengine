@@ -47,7 +47,7 @@
     <Compile Include="cubeMap.dds">
       <Name>cubeMap</Name>
       <Importer>TextureImporter</Importer>
-      <Processor>ContentProcessor2</Processor>
+      <Processor>ContentProcessor4</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
