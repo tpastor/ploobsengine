@@ -57,7 +57,8 @@ namespace Tutorial1.Terrain
 
             //Construct an array large enough to hold all of the indices we'll need
             Indices = new int[((heightMap.Width + 1) * (heightMap.Height + 1)) * 3];
-            
+
+            Cull = false;
         }
 
         internal void Update(GameTime gameTime, ICamera Camera)

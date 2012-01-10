@@ -10,7 +10,7 @@ using PloobsEngine.SceneControl;
 
 namespace PloobsEngine.Material
 {
-    public class ForwardTerrainMaterial : IMaterial
+    internal class ForwardTerrainMaterial : IMaterial
     {        
         public ForwardTerrainMaterial(GraphicFactory factory, IShader shader ,ICamera camera,QuadTerrainModel QuadTerrainModel,Vector3 position)
         {
