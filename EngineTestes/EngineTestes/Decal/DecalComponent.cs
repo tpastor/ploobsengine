@@ -4,8 +4,11 @@ using System.Linq;
 using System.Text;
 using PloobsEngine.Components;
 using Microsoft.Xna.Framework.Graphics;
+using PloobsEngine;
+using PloobsEngine.Engine;
+using Microsoft.Xna.Framework;
 
-namespace EngineTestes.Decal
+namespace EngineTestes
 {
     public class DecalComponent : IComponent
     {
@@ -14,6 +17,7 @@ namespace EngineTestes.Decal
         {
         }
 
+        private Effect effect;
         public List<Decal> Decals = new List<Decal>();
         
         public override ComponentType ComponentType
@@ -27,20 +31,31 @@ namespace EngineTestes.Decal
             return MyName;
         }
 
-        protected override void Initialize()
+        GraphicInfo GraphicInfo;
+        protected override void LoadContent(PloobsEngine.Engine.GraphicInfo GraphicInfo, PloobsEngine.Engine.GraphicFactory factory)
         {
-            base.Initialize();
+            effect =  factory.GetEffect("Effects/decal"); 
+            base.LoadContent(GraphicInfo, factory);
+            this.GraphicInfo = GraphicInfo;
         }
 
         protected override void PosWithDepthDraw(PloobsEngine.SceneControl.RenderHelper render, Microsoft.Xna.Framework.GameTime gt, Microsoft.Xna.Framework.Matrix activeView, Microsoft.Xna.Framework.Matrix activeProjection)
-        {
+        {                        
+            effect.Parameters["InvProj"].SetValue(Matrix.Invert(activeView * activeProjection));
+            effect.Parameters["halfPixel"].SetValue(GraphicInfo.HalfPixel);
+            effect.Parameters["DepthBuffer"].SetValue(render[PrincipalConstants.DephRT]);
+
             render.PushBlendState(BlendState.Additive);
             foreach (var item in Decals)
             {
-                
+                effect.Parameters["ProjectedTexture"].SetValue(item.tex);
+                effect.Parameters["ProjectorViewProjection"].SetValue(item.view * item.Projection);
+                render.RenderFullScreenQuadVertexPixel(effect);
             }
             render.PopBlendState();
+
             base.PosWithDepthDraw(render, gt, activeView, activeProjection);
         }
     }
 }
+

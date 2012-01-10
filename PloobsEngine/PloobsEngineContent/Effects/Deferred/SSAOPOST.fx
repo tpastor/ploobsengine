@@ -62,7 +62,7 @@ float3	PosFromDepth (float2 UV)
 	float	Depth=tex2D(DepthSampler,UV).r;	
 	float4	Pos=float4((UV.x-0.5)*2,(0.5-UV.y)*2,Depth,1);
 	float4	Ray=mul(Pos,InvProj);	
-	//Ray /= Ray.w
+	Ray /= Ray.w;
 	return	Ray.xyz ;
 }
 

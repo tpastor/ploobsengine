@@ -368,9 +368,10 @@ namespace EngineTestes.Post
             Effect shader;
             RenderTarget2D RenderTarget2D;
             RenderTarget2D RenderTarget2D2;
+            RenderTarget2D depthrender;
             public override void Init(PloobsEngine.Engine.GraphicInfo ginfo, PloobsEngine.Engine.GraphicFactory factory)
             {
-                shader = factory.GetEffect("HBAO\\teste");
+                shader = factory.GetEffect("HBAO\\HorizonBasedAmbientOcclusion");
                 Texture randomNormalTexture = factory.GetTexture2D("HBAO\\RandomNormal");
                 shader.Parameters["randomTexture"].SetValue(randomNormalTexture);
 
@@ -393,24 +394,43 @@ namespace EngineTestes.Post
 
                 RenderTarget2D = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
                 RenderTarget2D2 = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
+                depthrender = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
 
                 g = new GaussianBlurPostEffect(false);
                 g.Init(ginfo, factory);
-
+                renderdepth = factory.GetEffect("HBAO\\generateDepth");
                 ssaofinal = factory.GetEffect("ssaofinal", false, true);
             }
 
+            Effect renderdepth;
             Effect ssaofinal;
             GaussianBlurPostEffect g;
             #region Render
 
             public override void Draw(Texture2D ImageToProcess, RenderHelper rHelper, GameTime gt, PloobsEngine.Engine.GraphicInfo GraphicInfo, IWorld world, bool useFloatBuffer)
-            {
+            {                
+                rHelper.PushRenderTarget(depthrender);
+                rHelper.Clear(Color.Black);
+                rHelper.RenderSceneWithCustomMaterial(renderdepth,
+                    (effect, obj, bi, ti, s, er, wvp) =>
+                    {
+                        Matrix w1 = Matrix.Multiply(obj.WorldMatrix, bi.ModelLocalTransformation);
+                        effect.Parameters["wvp"].SetValue(w1 * wvp);
+                        effect.Parameters["WorldView"].SetValue(s * er);
+                        effect.Parameters["farPlane"].SetValue(world.CameraManager.ActiveCamera.FarPlane);
+                        
+                    }, world, gt, null, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection, false, true);
+
+                Texture2D depth = rHelper.PopRenderTargetAsSingleRenderTarget2D();
+
 
                 // Set shader atributes
                 //SetNormalTexture(rHelper[PrincipalConstants.normalRt]);
-                shader.Parameters["depthMap"].SetValue(rHelper[PrincipalConstants.DephRT]);
-                shader.Parameters["InvertViewProjection"].SetValue(Matrix.Invert(world.CameraManager.ActiveCamera.Projection));
+                //shader.Parameters["depthMap"].SetValue(rHelper[PrincipalConstants.DephRT]);
+                shader.Parameters["depthMap"].SetValue(depth);
+
+                
+                //shader.Parameters["InvertViewProjection"].SetValue(Matrix.Invert(world.CameraManager.ActiveCamera.Projection));
 
                 // It works a the depth texture resolution. Use a downsampled version of the G-Buffer.
                 SetResolution(new Vector2(GraphicInfo.BackBufferWidth, GraphicInfo.BackBufferHeight));

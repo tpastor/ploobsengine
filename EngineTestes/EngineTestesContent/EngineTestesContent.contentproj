@@ -252,6 +252,16 @@
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
     </Compile>
+    <Compile Include="Effects\decal.fx">
+      <Name>decal</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+    </Compile>
+    <Compile Include="HBAO\generateDepth.fx">
+      <Name>generateDepth</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+    </Compile>
     <None Include="ModelInfos\shadow.xml">
       <Name>shadow</Name>
       <Importer>XmlImporter</Importer>
