@@ -1,5 +1,6 @@
 float4x4 InvProj;
 float4x4 ProjectorViewProjection;
+float numDecals;
 float2 halfPixel;
 
 texture2D ProjectedTexture;
@@ -8,6 +9,12 @@ texture2D DepthBuffer;
 sampler2D ProjectorSampler = sampler_state
 {
 	texture = <ProjectedTexture>;
+	MinFilter = Anisotropic;
+	MipFilter = LINEAR;
+	MagFilter = LINEAR;
+	
+	AddressU = CLAMP;
+	AddressV = CLAMP;
 };
 
 
@@ -33,7 +40,7 @@ float2 ProjectionToScreen(float4 position)
 float4 Project(float2 UV)
 {
 	if (UV.x < 0 || UV.x > 1 || UV.y < 0 || UV.y > 1)
-		return float4(0,0,0,1);
+		return float4(0,0,0,0);
 
 	return tex2D(ProjectorSampler, UV);
 }
@@ -73,8 +80,12 @@ float4	PosFromDepth (float2 UV)
 float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 {
 	float4 pos  = PosFromDepth(input.TextCoord);
+	float4 color = float4(0,0,0,0);	
 	float4 posproj = mul(pos, ProjectorViewProjection);
-    return Project(ProjectionToScreen(posproj));
+	color = Project(ProjectionToScreen(posproj));
+	clip(color.w - 0.5f); 		
+	color.w = 0.5f;
+    return color;
 }
 
 technique Technique1

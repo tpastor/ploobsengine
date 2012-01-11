@@ -96,19 +96,15 @@ namespace EngineTestes
             //cam.FarPlane = 100;
             this.World.CameraManager.AddCamera(cam);
 
-            Texture2D texture = factory.GetTexture2D("Textures//goo");
-            var scale = 10.0f;
-            var projection = Matrix.CreateOrthographicOffCenter(
-                (-texture.Width / 2) * scale,
-                (texture.Width / 2) * scale,
-                (-texture.Height / 2) * scale,
-                (texture.Height / 2) * scale,
-                -100000, 100000);
+            Texture2D texture = factory.GetTexture2D("Textures//goo");            
+            
+            LightThrowBepu lt = new LightThrowBepu(this.World, factory);
 
+            var projection = Matrix.CreatePerspectiveFieldOfView(cam.FieldOfView / 20, cam.AspectRatio, 1, 1000);
 
             var view = Matrix.CreateLookAt(
-                new Vector3(1500, 1500, 1500),
-                new Vector3(0, 150, 0),
+                new Vector3(200, 200, 200),
+                new Vector3(0, 0, 0),
                 Vector3.Up
                 );
 
