@@ -223,7 +223,23 @@ namespace PloobsEngine.SceneControl
             DepthStencilState rt2 = DepthStencilStateStack.Peek();
             device.DepthStencilState = rt2;
             return rt;
-        }        
+        }
+
+
+        public void PushRenderTargetBinding(RenderTargetBinding[] binding)
+        {
+            if (binding == null)
+            {
+                RenderStatesStack.Push(null);
+                device.SetRenderTargets(null);
+            }
+            else
+            {
+                RenderStatesStack.Push(binding);
+                device.SetRenderTargets(binding);
+            }
+        }
+
         /// <summary>
         /// Pushes the render target.
         /// </summary>
