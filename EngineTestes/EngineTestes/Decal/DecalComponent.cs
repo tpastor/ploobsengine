@@ -45,7 +45,7 @@ namespace EngineTestes
             effect.Parameters["halfPixel"].SetValue(GraphicInfo.HalfPixel);
             effect.Parameters["DepthBuffer"].SetValue(render[PrincipalConstants.DephRT]);
 
-            render.PushBlendState(BlendState.Additive);
+            render.PushBlendState(BlendState.AlphaBlend);
             foreach (var item in Decals)
             {
                 effect.Parameters["ProjectedTexture"].SetValue(item.tex);
