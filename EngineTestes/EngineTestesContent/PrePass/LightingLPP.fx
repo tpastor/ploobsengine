@@ -110,7 +110,8 @@ PixelShaderOutput DirectionalLightPS(VertexShaderOutput input)
 	float4 normalMap = tex2D(normalSampler,  input.TexCoord);
 	float3 normal = DecodeNormal(normalMap);
 
-	float nl = max(0,(dot(normal, LightDir)));
+	float3 lightVector= -normalize(LightDir);
+	float nl = max(0,(dot(normal, lightVector)));
 	
 	clip(nl - 0.00001f);
 	
@@ -121,10 +122,11 @@ PixelShaderOutput DirectionalLightPS(VertexShaderOutput input)
 	//nl*= LightBufferScale;
 
 	// Calculate specular term
-	float3 h = normalize(reflect(LightDir, normal)); 
+	float3 h = normalize(reflect(lightVector, normal)); 
 	float spec = nl*pow(saturate(dot(camDir, h)), normalMap.b*100);
 	
 	output.Diffuse.rgb = LightColor * nl;
+
 	output.Specular.rgb = (LightColor.a*spec)* LightColor.rgb;
 
 	//output light

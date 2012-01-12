@@ -190,7 +190,7 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         /// <param name="obj">The obj.</param>
         /// <returns></returns>
-        public virtual void AddObject(IObject obj)
+        public virtual void AddObject(IObject obj, bool InitMaterial = true)
         {
             if (obj == null)
             {
@@ -201,9 +201,11 @@ namespace PloobsEngine.SceneControl
             EntityMapper.getInstance().AddEntity(obj);
             PhysicWorld.AddObject(obj.PhysicObject);
             obj.PhysicObject.ObjectOwner = obj;
-            Objects.Add(obj);            
-            obj.Material.Initialization(graphicsInfo, graphicFactory, obj);
+            Objects.Add(obj);
+            if (InitMaterial)
+                obj.Material.Initialization(graphicsInfo, graphicFactory, obj);
             Culler.onObjectAdded(obj);
+            obj.FireOnBeingAdd(this);
         }
 
         /// <summary>
