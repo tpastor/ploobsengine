@@ -320,11 +320,13 @@ namespace EngineTestes.LightPrePassIdea.Imp
 
             for (int i = 0; i < world.Lights.Count; i++)
             {
-                DirectionalLightPE dl = (DirectionalLightPE)world.Lights[i];
-                _lighting.Parameters["LightColor"].SetValue(dl.Color.ToVector4());
-                _lighting.Parameters["LightDir"].SetValue(dl.LightDirection);
-                render.RenderFullScreenQuadVertexPixel(_lighting);
-
+                if (world.Lights[i] is DirectionalLightPE)
+                {
+                    DirectionalLightPE dl = (DirectionalLightPE)world.Lights[i];
+                    _lighting.Parameters["LightColor"].SetValue(dl.Color.ToVector4());
+                    _lighting.Parameters["LightDir"].SetValue(dl.LightDirection);
+                    render.RenderFullScreenQuadVertexPixel(_lighting);
+                }
             }
         }
 

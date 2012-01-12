@@ -39,8 +39,6 @@ namespace EngineTestes.Bilboard
 
             foreach (var item in Billboards)
             {
-                Vector3 textPosition = new Vector3(0, 45, 0);
-
                 Vector3 viewSpaceTextPosition = Vector3.Transform(item.Position, activeView * invertY);                                
                 spriteBatch.Draw(item.Texture,new Vector2(viewSpaceTextPosition.X, viewSpaceTextPosition.Y),item.Texture.Bounds,Color.White,0,Vector2.Zero,item.Scale,SpriteEffects.None,viewSpaceTextPosition.Z);                
             }
