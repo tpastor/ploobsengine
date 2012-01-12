@@ -225,7 +225,10 @@ namespace PloobsEngine.SceneControl
             return rt;
         }
 
-
+        /// <summary>
+        /// Pushed a Render Target Bindings
+        /// </summary>
+        /// <param name="binding"></param>
         public void PushRenderTargetBinding(RenderTargetBinding[] binding)
         {
             if (binding == null)

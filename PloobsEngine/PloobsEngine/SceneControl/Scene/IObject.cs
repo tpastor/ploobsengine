@@ -123,6 +123,8 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         public event BeingRemoved OnBeingRemoved = null;
 
+        public event Action<IObject, IWorld> OnBeingAdd = null;
+
         /// <summary>
         /// Raised when objects moves
         /// </summary>
@@ -132,6 +134,12 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         public event OnUpdate OnUpdate = null;        
         
+        internal void FireOnBeingAdd(IWorld world)
+        {
+            if(OnBeingAdd!=null)
+                OnBeingAdd(this,world);
+        }
+
         /// <summary>
         /// Gets or sets the physic object.
         /// </summary>
