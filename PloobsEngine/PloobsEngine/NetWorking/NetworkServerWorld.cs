@@ -47,7 +47,7 @@ namespace PloobsEngine.NetWorking
 #endif
         }
 
-        public override void AddObject(IObject obj)
+        public override void AddObject(IObject obj,bool initializeMaterial = false)
         {
             if (obj == null)
             {
