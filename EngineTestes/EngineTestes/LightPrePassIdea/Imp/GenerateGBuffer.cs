@@ -228,7 +228,7 @@ namespace EngineTestes.LightPrePassIdea.Imp
             _reconstructZBuffer = factory.GetEffect("PrePass/ReconstructDepth");
         }
 
-        public RenderTarget2D RenderScene(RenderHelper render, ICamera camera, IWorld world, GameTime gameTime)
+        public RenderTarget2D RenderScene(RenderHelper render, ICamera camera, IWorld world, GameTime gameTime, GraphicInfo ginfo)
         {
             
             ComputeFrustumCorners(camera);
@@ -272,7 +272,7 @@ namespace EngineTestes.LightPrePassIdea.Imp
             //and as we use alpha channel as the specular intensity, we have to create our own blend state here
             render.PushBlendState(_lightAddBlendState);           
  
-            RenderLights(camera,world,render);
+            RenderLights(camera,world,render,ginfo);
 
             render[PrincipalConstants.lightRt] = render.PopRenderTarget()[0].RenderTarget as Texture2D;
             render.PopDepthStencilState();
@@ -303,9 +303,9 @@ namespace EngineTestes.LightPrePassIdea.Imp
             return _outputTexture;
         }
 
-        private void RenderLights(ICamera camera, IWorld world, RenderHelper render)
-        {            
-            _lighting.Parameters["GBufferPixelSize"].SetValue(new Vector2(0.5f / _width, 0.5f / _height));
+        private void RenderLights(ICamera camera, IWorld world, RenderHelper render, GraphicInfo ginfo)
+        {
+            _lighting.Parameters["halfPixel"].SetValue(ginfo.HalfPixel);
             _lighting.Parameters["DepthBuffer"].SetValue(_depthBuffer);
             _lighting.Parameters["NormalBuffer"].SetValue(_normalBuffer);
 
@@ -375,12 +375,11 @@ namespace EngineTestes.LightPrePassIdea.Imp
             {
                 _currentFrustumCorners[i] = _cornersViewSpace[i + 4];
             }
-            //Vector3 temp = _currentFrustumCorners[3];
-            //_currentFrustumCorners[3] = _currentFrustumCorners[2];
-            //_currentFrustumCorners[2] = temp;
-        }
+            Vector3 temp = _currentFrustumCorners[3];
+            _currentFrustumCorners[3] = _currentFrustumCorners[2];
+            _currentFrustumCorners[2] = temp;
+        }       
+
         
-
-
     }
 }
