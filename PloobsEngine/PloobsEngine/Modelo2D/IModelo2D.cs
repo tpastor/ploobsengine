@@ -115,6 +115,7 @@ namespace PloobsEngine.Modelo2D
         /// <summary>
         /// Gets or sets the layer depth.
         /// same concept of Photoshop =P
+        /// 0 for near and 1 for last
         /// </summary>
         /// <value>
         /// The layer depth.
