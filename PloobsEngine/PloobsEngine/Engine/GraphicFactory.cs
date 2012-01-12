@@ -118,9 +118,16 @@ namespace PloobsEngine.Engine
         /// Gets the shared sprite batch instance.
         /// </summary>
         /// <returns></returns>
-        public SpriteBatch GetSpriteBatch()
+        public SpriteBatch GetSpriteBatch(bool createOneFresh = false)
         {
-            return SpriteBatch;
+            if (createOneFresh)
+            {
+                return new SpriteBatch(device);
+            }
+            else
+            {
+                return SpriteBatch;
+            }
         }
 
         /// <summary>

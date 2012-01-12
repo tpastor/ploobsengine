@@ -93,6 +93,7 @@ namespace PloobsEngine.Material
         public override void Initialize(GraphicInfo ginfo, GraphicFactory factory, IObject obj)
         {
             _shader = factory.GetEffect("TransparentEffect",true,true);
+            base.Initialize(ginfo, factory, obj);
         }
 
         public override void  PosDrawPhase(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<ILight> lights)
