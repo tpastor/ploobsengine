@@ -1,0 +1,6 @@
+﻿System.Console.WriteLine("BEGIN");
+using System.IO;
+global: int thiago = 0;
+thiago += 5;
+using System;
+System.Console.WriteLine("VAlue" + thiago);

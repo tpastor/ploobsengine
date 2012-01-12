@@ -156,23 +156,20 @@ namespace PloobsScripts
             derived.Members.Add(derivedClassConstructor);            
         }
 
-        public String GetCode(string functionsMethod)
+        
+        public String GetCode(ScriptParsed ScriptParsed)
         {
-                String resp = GetCode();
+
+            String resp = GetCode();
             int index = IndexOfNth(resp, "{", 2);
 
             String begin = resp.Substring(0, index + 1);
             begin += Environment.NewLine;
             String end = resp.Substring(index + 1);
 
-            String full = begin + functionsMethod + Environment.NewLine + end;
+            String full = begin + ScriptParsed.AuxiliarFunctionsCode + Environment.NewLine + ScriptParsed.AuxiliarVariableCode + Environment.NewLine + end;
             return full;
             
-        }
-
-        public String GetCode(ScriptParsed ScriptParsed)
-        {
-            return this.GetCode(ScriptParsed.AuxiliarFunctionsCode);
         }
 
         public String GetCode()
