@@ -94,21 +94,21 @@ VertexShaderOutput DirectionalLightVS(VertexShaderInput input)
 
 PixelShaderOutput DirectionalLightPS(VertexShaderOutput input)
 {
-	PixelShaderOutput output = (PixelShaderOutput)0;
+	PixelShaderOutput output = (PixelShaderOutput)0;	
 
 	// If we want the WorldPosition, we have to multiply by the world camera matrix
 	float depthValue = tex2D(depthSampler, input.TexCoord).r;
 	
 	//if depth value == 1, we can assume its a background value, so skip it
-	clip(-depthValue + 0.9999f);
-
+	clip(-depthValue + 0.9999f);	
+	
     float3 pos = input.FrustumRay * depthValue;
 	
 	// Convert normal back with the decoding function
 	float4 normalMap = tex2D(normalSampler,  input.TexCoord);
 	float3 normal = DecodeNormal(normalMap);
 
-	float nl = saturate(dot(normal, LightDir));
+	float nl = max(0,(dot(normal, LightDir)));
 	
 	clip(nl - 0.00001f);
 	
@@ -116,7 +116,7 @@ PixelShaderOutput DirectionalLightPS(VertexShaderOutput input)
 	float3 camDir = normalize(pos);
 		
 	//scale by our constant
-	nl*= LightBufferScale;
+	//nl*= LightBufferScale;
 
 	// Calculate specular term
 	float3 h = normalize(reflect(LightDir, normal)); 

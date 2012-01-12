@@ -186,12 +186,14 @@
     <Compile Include="Gamma Correction\GammaCorrectionScreen.cs" />
     <Compile Include="GUI\FGUIScreen.cs" />
     <Compile Include="GUI\GUIScreen.cs" />
+    <Compile Include="LightPrePassIdea\Imp\PrePassScreen.cs" />
     <Compile Include="LightPrePassIdea\HybridDeferred.cs" />
     <Compile Include="LightPrePassIdea\Imp\GenerateGBuffer.cs" />
     <Compile Include="LightPrePassIdea\Imp\LightPrePassRenderTechnic.cs" />
     <Compile Include="LightPrePassIdea\LightPrePassCombination.cs" />
     <Compile Include="LightPrePassIdea\LightPrePassGBuffer.cs" />
     <Compile Include="LightPrePassIdea\obj\PrePassShader.cs" />
+    <Compile Include="LightPrePassIdea\DefPassScreen.cs" />
     <Compile Include="Loader\ForwardMeshesFromModelLoadScreen.cs" />
     <Compile Include="Loader\ForwardLoadScreen.cs" />
     <Compile Include="LoadingScreen\LoadScene.cs" />
