@@ -260,8 +260,9 @@ namespace EngineTestes.LightPrePassIdea.Imp
                     item.Material.Drawn(gameTime, item, world.CameraManager.ActiveCamera, world.Lights, render);
             }
 
-            _depthBuffer = render.PopRenderTarget()[1].RenderTarget as RenderTarget2D;
-
+            render[PrincipalConstants.DephRT] = _depthBuffer;
+            render[PrincipalConstants.normalRt] = _normalBuffer; 
+            
             render.PushRenderTargetBinding(_lightAccumBinding);
             render.Clear(new Color(0, 0, 0, 0));
 
@@ -275,6 +276,7 @@ namespace EngineTestes.LightPrePassIdea.Imp
             RenderLights(camera,world,render,ginfo);
 
             render[PrincipalConstants.lightRt] = render.PopRenderTarget()[0].RenderTarget as Texture2D;
+            
             render.PopDepthStencilState();
             render.PopBlendState();
 

@@ -55,6 +55,17 @@ namespace PloobsScripts
                 return functions;
             }
         }
+
+        internal String variables;
+
+        public String AuxiliarVariableCode
+        {
+            get
+            {
+                return variables;
+            }
+        }
+
     }
 
     public static class Parser
@@ -69,8 +80,9 @@ namespace PloobsScripts
         {
             ScriptParsed ScriptParsed = new ScriptParsed();
             bool insideFunction = false;
-            int isusing = 0;
-            int brackets = 0;
+            bool isVariable = false;
+            int isusing = 0;            
+            int brackets = 0;            
             foreach (var item2 in code.Split('\n'))
             {
                 String iter = item2.Replace("\r", "");
@@ -111,6 +123,37 @@ namespace PloobsScripts
                         continue;
                     }
 
+                    if (item.ToUpperInvariant() == "GLOBAL:")
+                    {
+                        isVariable = true;                        
+                        continue;
+                    }
+
+                    if (isVariable)
+                    {
+                        if (item.IndexOf(";") >= 0)
+                        {
+                            isVariable = false;
+                            if (item.Count() != 1)
+                            {
+                                ScriptParsed.variables += item.Substring(0, item.IndexOf(";"));
+                                ScriptParsed.variables += ";\n";
+                            }
+                            else
+                            {
+                                ScriptParsed.variables += item;
+                                ScriptParsed.variables += "\n";
+                            }
+                            continue;
+                        }
+                        else
+                        {
+                           ScriptParsed.variables += item;
+                           ScriptParsed.variables += " ";
+                        }
+
+                    }
+
                     if (insideFunction)
                     {
                         if (brackets == -1)
@@ -138,11 +181,12 @@ namespace PloobsScripts
 
                         ScriptParsed.functions += item + " ";
                     }
-                    else
+                    else if(!isVariable)
                     {
                         ScriptParsed.newCode += item + " ";
                     }
                 }
+
                 if (insideFunction)
                 {
                     ScriptParsed.functions += "\n";
