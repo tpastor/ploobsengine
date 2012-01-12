@@ -9,6 +9,7 @@ using PloobsEngine.SceneControl;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Material;
 using PloobsEngine.Light;
+using PloobsEngine;
 
 namespace EngineTestes.LightPrePassIdea.Imp
 {
@@ -86,7 +87,6 @@ namespace EngineTestes.LightPrePassIdea.Imp
         private RenderTargetBinding[] _lightAccumBinding = new RenderTargetBinding[2];
         private RenderTargetBinding[] _gBufferBinding = new RenderTargetBinding[2];
 
-        IWorld world;
 
         /// <summary>
         /// GBuffer height
@@ -187,7 +187,7 @@ namespace EngineTestes.LightPrePassIdea.Imp
             //only the normal texture's alpha channel multiplied by a const value (100),
             //so we have specular power in the range [1..100].
             //Currently, A is not used (2bit).
-            _normalBuffer = factory.CreateRenderTarget(_width, _height, SurfaceFormat.Rgba1010102, false,
+            _normalBuffer = factory.CreateRenderTarget(_width, _height, SurfaceFormat.Color, false,
                                                DepthFormat.Depth24Stencil8, 0, RenderTargetUsage.DiscardContents);
 
             //This buffer stores all the "pure" lighting on the scene, no albedo applied to it. We use an floating
@@ -231,13 +231,13 @@ namespace EngineTestes.LightPrePassIdea.Imp
         public RenderTarget2D RenderScene(RenderHelper render, ICamera camera, IWorld world, GameTime gameTime)
         {
             
-            _depthDownsampledThisFrame = false;
             ComputeFrustumCorners(camera);
             
             //first of all, we must bind our GBuffer and reset all states
             render.PushRenderTargetBinding(_gBufferBinding);
-            render.Clear(Color.Black,ClearOptions.DepthBuffer | ClearOptions.Stencil, 1.0f, 0);
-            render.PushBlendState(BlendState.Opaque);
+
+            render.Clear(Color.Black,ClearOptions.DepthBuffer | ClearOptions.Stencil, 1.0f, 0);           
+
             render.PushDepthStencilState(DepthStencilState.None);
             render.PushRasterizerState(RasterizerState.CullNone);
 
@@ -260,15 +260,11 @@ namespace EngineTestes.LightPrePassIdea.Imp
                     item.Material.Drawn(gameTime, item, world.CameraManager.ActiveCamera, world.Lights, render);
             }
 
-            render.PopRenderTarget();
-            //resolve our GBuffer and render the lights
-            //clear the light buffer with black
-            
+            _depthBuffer = render.PopRenderTarget()[1].RenderTarget as RenderTarget2D;
+
             render.PushRenderTargetBinding(_lightAccumBinding);
-            //dont be fooled by Color.Black, as its alpha is 255 (or 1.0f)
             render.Clear(new Color(0, 0, 0, 0));
 
-            //dont use depth/stencil test...we dont have a depth buffer, anyway
             render.PushDepthStencilState(DepthStencilState.None);            
 
             //draw using additive blending. 
@@ -276,9 +272,9 @@ namespace EngineTestes.LightPrePassIdea.Imp
             //and as we use alpha channel as the specular intensity, we have to create our own blend state here
             render.PushBlendState(_lightAddBlendState);           
  
-            RenderLights(camera);
+            RenderLights(camera,world,render);
 
-            render.PopRenderTarget();
+            render[PrincipalConstants.lightRt] = render.PopRenderTarget()[0].RenderTarget as Texture2D;
             render.PopDepthStencilState();
             render.PopBlendState();
 
@@ -307,7 +303,7 @@ namespace EngineTestes.LightPrePassIdea.Imp
             return _outputTexture;
         }
 
-        private void RenderLights(ICamera camera)
+        private void RenderLights(ICamera camera, IWorld world, RenderHelper render)
         {            
             _lighting.Parameters["GBufferPixelSize"].SetValue(new Vector2(0.5f / _width, 0.5f / _height));
             _lighting.Parameters["DepthBuffer"].SetValue(_depthBuffer);
@@ -316,16 +312,18 @@ namespace EngineTestes.LightPrePassIdea.Imp
             //just comment this line if you dont want to reconstruct the zbuffer
             //ReconstructZBuffer(camera);
 
-            float tang = (float)Math.Tan(camera.FieldOfView * 0.5f);
-            _lighting.Parameters["TanAspect"].SetValue(new Vector2(tang * camera.AspectRatio, -tang));
+            //float tang = (float)Math.Tan(camera.FieldOfView * 0.5f);
+            //_lighting.Parameters["TanAspect"].SetValue(new Vector2(tang * camera.AspectRatio, -tang));
+
 
             ApplyFrustumCorners(_lighting, -Vector2.One, Vector2.One);
 
-            ApplyFrustumCorners(_lighting, -Vector2.One, Vector2.One);
             for (int i = 0; i < world.Lights.Count; i++)
             {
-                DirectionalLightPE DirectionalLightPE = (DirectionalLightPE)world.Lights[i];
-
+                DirectionalLightPE dl = (DirectionalLightPE)world.Lights[i];
+                _lighting.Parameters["LightColor"].SetValue(dl.Color.ToVector4());
+                _lighting.Parameters["LightDir"].SetValue(dl.LightDirection);
+                render.RenderFullScreenQuadVertexPixel(_lighting);
 
             }
         }
@@ -377,9 +375,9 @@ namespace EngineTestes.LightPrePassIdea.Imp
             {
                 _currentFrustumCorners[i] = _cornersViewSpace[i + 4];
             }
-            Vector3 temp = _currentFrustumCorners[3];
-            _currentFrustumCorners[3] = _currentFrustumCorners[2];
-            _currentFrustumCorners[2] = temp;
+            //Vector3 temp = _currentFrustumCorners[3];
+            //_currentFrustumCorners[3] = _currentFrustumCorners[2];
+            //_currentFrustumCorners[2] = temp;
         }
         
 

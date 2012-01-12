@@ -69,20 +69,20 @@ ReconstructVertexShaderOutput ReconstructVertexShader(ReconstructVertexShaderInp
 
 
 float4 ReconstructPixelShader(ReconstructVertexShaderOutput input):COLOR0
-{
-	
+{	
 	//read from our diffuse, specular and emissive maps
 	half4 diffuseMap = tex2D(diffuseMapSampler, input.TexCoord);
+
 	// Find the screen space texture coordinate and offset it
 	float2 screenPos = PostProjectionSpaceToScreenSpace(input.TexCoordScreenSpace) + LightBufferPixelSize;
 	
 	//half3 emissiveMap = tex2D(emissiveMapSampler, input.TexCoord).rgb;
 	//half3 specularMap = tex2D(specularMapSampler, input.TexCoord).rgb;
 		
-	float4 lightColor =  tex2D(lightSampler, screenPos) * LightBufferScaleInv;
-
+	float4 lightColor =  tex2D(lightSampler, screenPos) ;	
+	
 	//our specular intensity is stored in a separate texture
-	float4 specular =  tex2D(lightSpecularSampler, screenPos) * LightBufferScaleInv;
+	//float4 specular =  tex2D(lightSpecularSampler, screenPos) * LightBufferScaleInv;
 	
 	//float4 finalColor = float4(diffuseMap*lightColor.rgb + specular*specularMap + emissiveMap,1);
 	float4 finalColor = float4(diffuseMap*lightColor.rgb , 1);

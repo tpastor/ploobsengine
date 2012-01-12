@@ -203,8 +203,7 @@ float AccumulatedHorizonOcclusionHighQuality(float2 deltaUV,
 
     float ao = 0;
     float h0 = 0;
-	float3 occluderRadiance;
-	[unroll]
+	float3 occluderRadiance;	
     for(float j = 0; j < 8/*numSteps*/; ++j)
 	{
         float2 snapped_uv = snap_uv_coord(uv);
