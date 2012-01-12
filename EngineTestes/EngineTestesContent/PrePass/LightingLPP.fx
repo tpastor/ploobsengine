@@ -1,3 +1,4 @@
+float2 halfPixel;
 //-----------------------------------------
 // Parameters
 //-----------------------------------------
@@ -84,9 +85,10 @@ struct VertexShaderOutput
 VertexShaderOutput DirectionalLightVS(VertexShaderInput input)
 {
     VertexShaderOutput output = (VertexShaderOutput)0;
-	
+	input.Position.x =  input.Position.x - 2*halfPixel.x;
+	input.Position.y =  input.Position.y + 2*halfPixel.y;
 	output.Position = input.Position;
-	output.TexCoord = input.TexCoord +GBufferPixelSize;
+	output.TexCoord = input.TexCoord;
 	output.FrustumRay = GetFrustumRay(input.TexCoord);
 	return output;
 }
