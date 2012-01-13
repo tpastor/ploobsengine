@@ -46,7 +46,7 @@ namespace PloobsEngine.Physics
         /// <value>
         /// 	<c>true</c> if this instance is debug draw; otherwise, <c>false</c>.
         /// </value>
-        public bool isDebugDraw { get; set; }
+        public virtual bool isDebugDraw { get; set; }
 
         /// <summary>
         /// Gets the physic objects.
@@ -63,10 +63,10 @@ namespace PloobsEngine.Physics
         /// </summary>
         /// <param name="gt">The gt.</param>
         /// <param name="cam">The cam.</param>
-        protected abstract void DebugDrawn(GameTime gt, ICamera cam);
-        internal void iDebugDrawn(GameTime gt, ICamera cam)
+        protected abstract void DebugDrawn(RenderHelper render,GameTime gt, ICamera cam);
+        internal void iDebugDrawn(RenderHelper render,GameTime gt, ICamera cam)
         {
-            DebugDrawn(gt,cam);
+            DebugDrawn(render,gt,cam);
         }
 
 

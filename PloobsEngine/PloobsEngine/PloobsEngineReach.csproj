@@ -192,6 +192,16 @@
     <Compile Include="Physic3D\Constraints\BepuConstraint\BepuPhysicConstraint.cs" />
     <Compile Include="Physic3D\Constraints\BepuConstraint\PointPointConstraint.cs" />
     <Compile Include="Physic3D\Constraints\IPhysicConstraint.cs" />
+    <Compile Include="Physic3D\DebugDraw\DisplayBox.cs" />
+    <Compile Include="Physic3D\DebugDraw\DisplayCapsule.cs" />
+    <Compile Include="Physic3D\DebugDraw\DisplayCone.cs" />
+    <Compile Include="Physic3D\DebugDraw\DisplayConvexHull.cs" />
+    <Compile Include="Physic3D\DebugDraw\DisplayCylinder.cs" />
+    <Compile Include="Physic3D\DebugDraw\DisplayMinkowskiSum.cs" />
+    <Compile Include="Physic3D\DebugDraw\DisplayMobileMesh.cs" />
+    <Compile Include="Physic3D\DebugDraw\DisplaySphere.cs" />
+    <Compile Include="Physic3D\DebugDraw\DisplayTransformable.cs" />
+    <Compile Include="Physic3D\DebugDraw\DisplayWrappedBody.cs" />
     <Compile Include="Physic3D\IPhysicWorld.cs" />
     <Compile Include="Physic3D\PhysicObjects\BepuObject\BepuEntityObject.cs" />
     <Compile Include="Physic3D\PhysicObjects\BepuObject\BoxObject.cs" />
