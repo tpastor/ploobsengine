@@ -260,6 +260,7 @@ namespace EngineTestes.LightPrePassIdea.Imp
                     item.Material.Drawn(gameTime, item, world.CameraManager.ActiveCamera, world.Lights, render);
             }
 
+            render.PopRenderTarget();
             render[PrincipalConstants.DephRT] = _depthBuffer;
             render[PrincipalConstants.normalRt] = _normalBuffer; 
             
@@ -326,6 +327,7 @@ namespace EngineTestes.LightPrePassIdea.Imp
                 {
                     DirectionalLightPE dl = (DirectionalLightPE)world.Lights[i];
                     _lighting.Parameters["LightColor"].SetValue(dl.Color.ToVector4());
+                    _lighting.Parameters["LightIntensity"].SetValue(dl.LightIntensity);
                     _lighting.Parameters["LightDir"].SetValue(dl.LightDirection);
                     render.RenderFullScreenQuadVertexPixel(_lighting);
                 }

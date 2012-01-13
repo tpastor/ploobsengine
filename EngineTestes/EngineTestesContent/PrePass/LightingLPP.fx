@@ -6,7 +6,7 @@ float4 LightColor;
 float3 LightDir;
 float3 FrustumCorners[4];
 float2 GBufferPixelSize;
-
+float LightIntensity;
 
 //we use this to avoid clamping our results into [0..1]. 
 //this way, we can fake a [0..10] range, since we are using a
@@ -118,15 +118,11 @@ PixelShaderOutput DirectionalLightPS(VertexShaderOutput input)
 	//As our position is relative to camera position, we dont need to use (ViewPosition - pos) here
 	float3 camDir = normalize(pos);
 		
-	//scale by our constant
-	//nl*= LightBufferScale;
-
 	// Calculate specular term
 	float3 h = normalize(reflect(lightVector, normal)); 
 	float spec = nl*pow(saturate(dot(camDir, h)), normalMap.b*100);
 	
-	output.Diffuse.rgb = LightColor * nl;
-
+	output.Diffuse.rgb = LightColor * nl * LightIntensity;
 	output.Specular.rgb = (LightColor.a*spec)* LightColor.rgb;
 
 	//output light

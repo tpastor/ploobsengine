@@ -199,6 +199,10 @@ namespace PloobsEngine.Modelo
             }
         }
 
+        public virtual void Update(GameTime gameTime, IWorld world)
+        {
+        }
+
         /// <summary>
         /// Cleans up the IModelo
         /// </summary>

@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using PloobsEngine.SceneControl;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace PloobsEngine.Material
 {
@@ -43,6 +44,14 @@ namespace PloobsEngine.Material
             CanAppearOfReflectionRefraction = true;
             CanCreateShadow = true;
             IsVisible = true;
+        }
+
+        RasterizerState rasterizerState = null;
+
+        public RasterizerState RasterizerState
+        {
+            get { return rasterizerState; }
+            set { rasterizerState = value; }
         }
 
         public bool CanAppearOfReflectionRefraction
@@ -106,7 +115,17 @@ namespace PloobsEngine.Material
         /// <param name="render">The render.</param>
         public void Drawn(Microsoft.Xna.Framework.GameTime gt, SceneControl.IObject obj, Cameras.ICamera cam, IList<Light.ILight> lights, SceneControl.RenderHelper render)
         {
+            if (rasterizerState!= null && rasterizerState != render.PeekRasterizerState())
+            {
+                render.PushRasterizerState(rasterizerState);
+            }
+
             shader.Draw(gt, obj, render, cam,lights);
+
+            if (rasterizerState != null &&  rasterizerState != render.PeekRasterizerState())
+            {
+                render.PopRasterizerState();
+            }
         }
         
         /// <summary>

@@ -253,6 +253,7 @@
     <Compile Include="Material\IShadder\DeferredShader\DeferredSphericalBilboardShader.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredProceduralAnimatedBilboardShader.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredTerrainShader.cs" />
+    <Compile Include="Material\IShadder\ForwardShader\ForwardAlphaTestShader.cs" />
     <Compile Include="Material\IShadder\ForwardShader\ForwardEnvironmentShader.cs" />
     <Compile Include="Material\IShadder\ForwardShader\ForwardDualTextureShader.cs" />
     <Compile Include="Material\IShadder\ForwardShader\ForwardGenericBuildInShader.cs" />
@@ -280,6 +281,7 @@
     <Compile Include="Modelo\Animation\AnimatedController.cs" />
     <Compile Include="Modelo\Animation\AnimatedModel.cs" />
     <Compile Include="Modelo\CustomModel.cs" />
+    <Compile Include="Modelo\SpecificModels\CPUBilboardModel.cs" />
     <Compile Include="Modelo\SpecificModels\QuadTerrainModel.cs" />
     <Compile Include="Modelo\SpecificModels\TerrainModel.cs" />
     <Compile Include="Modelo\SpecificModels\InstancedBilboardModel.cs" />

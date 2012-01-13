@@ -23,7 +23,7 @@ namespace EngineTestes.Bilboard
             base.LoadContent(GraphicInfo, factory);
         }
                 
-        public List<Bilboard3D> Billboards = new List<Bilboard3D>();
+        public List<SphericalBillboard3D> Billboards = new List<SphericalBillboard3D>();
         BasicEffect basicEffect;
         SpriteBatch spriteBatch;
 
@@ -32,20 +32,24 @@ namespace EngineTestes.Bilboard
             Matrix invertY = Matrix.CreateScale(1, -1, 1);
 
             basicEffect.World = invertY;
-            basicEffect.View = activeView;
+            basicEffect.View = Matrix.Identity;
             basicEffect.Projection = activeProjection;
 
             spriteBatch.Begin(0, null, null, DepthStencilState.DepthRead, RasterizerState.CullNone, basicEffect);
 
             foreach (var item in Billboards)
             {
-                Vector3 viewSpaceTextPosition = Vector3.Transform(item.Position, activeView * invertY);                                
-                spriteBatch.Draw(item.Texture,new Vector2(viewSpaceTextPosition.X, viewSpaceTextPosition.Y),item.Texture.Bounds,Color.White,0,Vector2.Zero,item.Scale,SpriteEffects.None,viewSpaceTextPosition.Z);                
-            }
+                Vector3 viewSpaceTextPosition = Vector3.Transform(item.Position, activeView * invertY);
+                spriteBatch.Draw(item.Texture, new Vector2(viewSpaceTextPosition.X, viewSpaceTextPosition.Y), item.Texture.Bounds, Color.White, 0, new Vector2(item.Texture.Bounds.Center.X,item.Texture.Bounds.Center.Y), item.Scale, SpriteEffects.None, viewSpaceTextPosition.Z);                
+            }            
+    
 
             spriteBatch.End();
             render.ResyncStates();
         }
+
+
+
 
         public static readonly String MyName = "Billboard";
         public override string getMyName()

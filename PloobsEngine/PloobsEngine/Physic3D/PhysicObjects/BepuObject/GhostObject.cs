@@ -67,6 +67,18 @@ namespace PloobsEngine.Physics.Bepu
      private Matrix internalWorld;
      private BoundingBox bb = new BoundingBox();
 
+     public override Vector3 Scale
+     {
+         get
+         {
+             return scale;
+         }
+         set
+         {
+             this.scale = value;
+         }
+     }
+    
      public override Vector3 Position
      {
          get
