@@ -31,12 +31,20 @@ namespace PloobsEngine.Modelo
 {
 
     /// <summary>
-    /// Represent each bilboard
+    /// Represent each billboard
     /// </summary>
     public struct BilboardInstance
     {
+        public BilboardInstance(Vector3 Position,Vector2 Scale)
+        {
+            this.Position = Position;
+            this.Scale = Scale;
+    
+        }
+
         public Vector3 Position;
         public Vector2 Scale;        
+    
     }
 
     public class InstancedBilboardModel : IModelo
@@ -73,7 +81,7 @@ namespace PloobsEngine.Modelo
             }
             else
             {
-                ActiveLogger.LogMessage("this is not recomended, lot of performance penalty here", LogLevel.Warning);
+                ActiveLogger.LogMessage("Calling SetBilboardInstances with different BilboardInstance size is not recomended, lot of performance penalty here", LogLevel.Warning);
                 this.instances = instances;
                 VertexBuffer InstancedvertexBufferS = factory.CreateDynamicVertexBuffer(vd, instances.Count(), BufferUsage.WriteOnly);
                 InstancedvertexBufferS.SetData(instances);

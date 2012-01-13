@@ -434,6 +434,9 @@ namespace PloobsEngine.SceneControl
         /// <param name="bi">The BatchInformation .</param>
         private void RenderBatch(BatchInformation bi)
         {
+            if(bi.PrimitiveCount ==0)
+                return;
+
             switch ( bi.BatchType)
 	            {
 		            case BatchType.INDEXED:

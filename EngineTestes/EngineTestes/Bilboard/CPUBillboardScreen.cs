@@ -52,7 +52,7 @@ namespace EngineTestes
             BillboardComponent.Billboards.Add(Billboard3D);
 
             {
-                List<Vector3> poss = new List<Vector3>();
+                List<Billboard> poss = new List<Billboard>();
                 for (int i = 0; i < 10; i++)
                 {
                     for (int j = 0; j < 10; j++)
@@ -60,11 +60,18 @@ namespace EngineTestes
                         float x, y;
                         x = i * 10;
                         y = j * 10;
-                        poss.Add(new Vector3(x, 50 , y));
+                        poss.Add(
+                            new Billboard()
+                            {
+                               Position = new Vector3(x, 50 , y),
+                               Scale = Vector2.One * 0.01f,
+                               Enabled = true
+                            }
+                            );
                     }
                 }
 
-                CPUBilboardModel bm = new CPUBilboardModel(factory, "Bilbs", "..\\Content\\Textures\\tree", poss, Vector2.One * 0.01f);
+                CPUBillboardModel bm = new CPUBillboardModel(factory, "Bilbs", "..\\Content\\Textures\\tree", poss.ToArray());
                 ForwardAlphaTestShader cb = new ForwardAlphaTestShader(128,CompareFunction.GreaterEqual);                                
                 ForwardMaterial matfor = new ForwardMaterial(cb);
                 matfor.RasterizerState = RasterizerState.CullNone;

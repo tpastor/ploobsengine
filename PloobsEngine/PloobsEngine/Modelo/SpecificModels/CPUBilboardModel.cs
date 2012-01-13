@@ -30,28 +30,58 @@ using PloobsEngine.Cameras;
 
 namespace PloobsEngine.Modelo
 {
-    public class CPUBilboardModel : IModelo
+    /// <summary>
+    /// Represents each billboard
+    /// </summary>
+    public struct Billboard
     {
-        public CPUBilboardModel(GraphicFactory factory, String BilboardsName, String diffuseTextureName, List<Vector3> positions, Vector2 ScaleTexture)
+        public Billboard(Vector3 Position, Vector2 Scale, bool Enabled = true)
+        {
+            this.Position = Position;
+            this.Scale = Scale;
+            this.Enabled = Enabled;
+        }
+
+        public Vector3 Position;
+        public Vector2 Scale;
+        public bool Enabled;
+    }
+
+    public class CPUBillboardModel : IModelo
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CPUBillboardModel"/> class.
+        /// </summary>
+        /// <param name="factory">The factory.</param>
+        /// <param name="BilboardsName">Name of the bilboards.</param>
+        /// <param name="diffuseTextureName">Name of the diffuse texture.</param>
+        /// <param name="bilboards">The bilboards.</param>
+        public CPUBillboardModel(GraphicFactory factory, String BilboardsName, String diffuseTextureName, Billboard[] bilboards)
             : base(factory, BilboardsName,false)
         {
 
-            System.Diagnostics.Debug.Assert(positions != null && positions.Count != 0);
-            this.positions = positions;
+            System.Diagnostics.Debug.Assert(bilboards != null && bilboards.Count() != 0);
+            this.bilboards = bilboards;
             this.diffuseTextureName = diffuseTextureName;
             LoadModelo(factory);
-            this.Scaletexture = ScaleTexture;
+            
         }
 
-        private Vector2 Scaletexture;
         string diffuseTextureName;
         private float modelRadius = 0;
-        List<Vector3> positions;
+        Billboard[] bilboards;
+        bool forceUpdate = true;
 
+        /// <summary>
+        /// Loads the model.
+        /// </summary>
+        /// <param name="factory">The factory.</param>
+        /// <param name="BatchInformations">The batch informations.</param>
+        /// <param name="TextureInformations">The texture informations.</param>
         protected override void LoadModel(GraphicFactory factory, out BatchInformation[][] BatchInformations, out TextureInformation[][] TextureInformations)
         {
-            int vertCount = positions.Count * 4;
-            int indexCount = positions.Count * 6;
+            int vertCount = bilboards.Count() * 4;
+            int indexCount = bilboards.Count() * 6;
             int noVertices = vertCount;
             int noTriangles = indexCount / 3;
 
@@ -73,22 +103,76 @@ namespace PloobsEngine.Modelo
             TextureInformations[0][0].LoadTexture();
         }
 
+        /// <summary>
+        /// Force Billboards Update in this frame
+        /// Even if the Camera does not move
+        /// </summary>
+        public void ForceUpdate()
+        {
+            forceUpdate = true;
+        }
+
+
+        /// <summary>
+        /// Gets the bilboard instances.
+        /// </summary>
+        public Billboard[] BilboardInstances
+        {
+            get
+            {
+                return bilboards;
+            }
+        }
+
+        /// <summary>
+        /// Updates the Model
+        /// </summary>
+        /// <param name="gameTime">The game time.</param>
+        /// <param name="world">The world.</param>
         public override void Update(GameTime gameTime, IWorld world)
         {
             ICamera cam = world.CameraManager.ActiveCamera;
-            Texture2D tex= TextureInformations[0][0].getTexture(TextureType.DIFFUSE);
-            // Create billboard vertices.
-            VertexPositionTexture[] vertices = new VertexPositionTexture[positions.Count * 4];
-            int index = 0;
+            if (forceUpdate || cam.Hasmoved)
+            {
+                forceUpdate = false;
+                int active = 0;
+                for (int i = 0; i < bilboards.Count(); i++)
+                {                
+                    if (bilboards[i].Enabled == true)
+                    {
+                        active++;
+                    }
+                }
 
-            float width = tex.Width * Scaletexture.X;
-            float height = tex.Height* Scaletexture.Y;
-            
-            foreach (var item in positions)
-	        {
-	                
+                int vertCount = active * 4;
+                int indexCount = active * 6;
+                int noVertices = vertCount;
+                int noTriangles = indexCount / 3;
+                BatchInformations[0][0].NumVertices = noVertices;
+                BatchInformations[0][0].PrimitiveCount = noTriangles;                
+                
+                if (active == 0)
+                {
+                    ActiveLogger.LogMessage("CPUBillboard with 0 active billboard ... Disable its material, or remve it from the world", LogLevel.Warning);
+                    return;
+                }                    
+                
+
+                Texture2D tex = TextureInformations[0][0].getTexture(TextureType.DIFFUSE);                
+                // Create billboard vertices.
+                VertexPositionTexture[] vertices = new VertexPositionTexture[active * 4];
+                int index = 0;                
+
+                foreach (var item in bilboards)
+                {
+                    if (item.Enabled == false)
+                        continue;
+
+                    float width = tex.Width * item.Scale.X;
+                    float height = tex.Height * item.Scale.Y;
+
                     Matrix billboard = Matrix.CreateConstrainedBillboard(
-                      item, cam.Position, Vector3.Up, cam.Target - cam.Position, null);
+                      item.Position, cam.Position, Vector3.Up, cam.Target - cam.Position, null);
 
                     vertices[index].Position =
                       Vector3.Transform(new Vector3(width, height, 0), billboard);
@@ -105,28 +189,29 @@ namespace PloobsEngine.Modelo
                     vertices[index].Position =
                       Vector3.Transform(new Vector3(width, -height, 0), billboard);
                     vertices[index++].TextureCoordinate = new Vector2(0, 1);
+                }
+
+                // Create billboard indices.
+                short[] indices = new short[active * 6];
+                short currentVertex = 0;
+                index = 0;
+
+                while (index < indices.Length)
+                {
+                    indices[index++] = currentVertex;
+                    indices[index++] = (short)(currentVertex + 1);
+                    indices[index++] = (short)(currentVertex + 2);
+
+                    indices[index++] = currentVertex;
+                    indices[index++] = (short)(currentVertex + 2);
+                    indices[index++] = (short)(currentVertex + 3);
+
+                    currentVertex += 4;
+                }
+
+                BatchInformations[0][0].VertexBuffer.SetData<VertexPositionTexture>(vertices);
+                BatchInformations[0][0].IndexBuffer.SetData<short>(indices);
             }
-
-            // Create billboard indices.
-            short[] indices = new short[positions.Count  * 6];
-            short currentVertex = 0;
-            index = 0;
-
-            while (index < indices.Length)
-            {
-                indices[index++] = currentVertex;
-                indices[index++] = (short)(currentVertex + 1);
-                indices[index++] = (short)(currentVertex + 2);
-
-                indices[index++] = currentVertex;
-                indices[index++] = (short)(currentVertex + 2);
-                indices[index++] = (short)(currentVertex + 3);
-
-                currentVertex += 4;
-            }
-
-            BatchInformations[0][0].VertexBuffer.SetData<VertexPositionTexture>(vertices);
-            BatchInformations[0][0].IndexBuffer.SetData<short>(indices);
             
         } 
 
