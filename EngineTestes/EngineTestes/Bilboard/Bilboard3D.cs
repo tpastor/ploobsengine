@@ -7,9 +7,9 @@ using Microsoft.Xna.Framework;
 
 namespace EngineTestes.Bilboard
 {
-    public class Bilboard3D
+    public class SphericalBillboard3D
     {
-        public Bilboard3D(Texture2D tex, Vector3 pos, Vector2 scale)
+        public SphericalBillboard3D(Texture2D tex, Vector3 pos, Vector2 scale)
         {
             this.Texture = tex;
             this.Position = pos;

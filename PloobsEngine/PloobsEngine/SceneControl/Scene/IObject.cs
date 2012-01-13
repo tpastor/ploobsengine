@@ -110,7 +110,8 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         protected Matrix worldMatrix;
 
-        private object materialLock = new object();        
+        private object materialLock = new object();
+        private object modelLock = new object();        
              
 
         /// <summary>
@@ -168,11 +169,13 @@ namespace PloobsEngine.SceneControl
         {
             set
             {
-                this.modelo = value;
+                lock(modelLock)
+                    this.modelo = value;
             }
             get
             {
-                return modelo;
+                lock (modelLock)
+                    return modelo;
             }
         }
         
@@ -210,6 +213,12 @@ namespace PloobsEngine.SceneControl
             {
                 if (material != null)
                     material.Update(gt, this, world);
+            }
+
+            lock (modelLock)
+            {
+                if (modelo != null)
+                    modelo.Update(gt, world);
             }
             
             worldMatrix = physicObject.WorldMatrix;
