@@ -37,9 +37,18 @@ using BEPUphysics.PositionUpdating;
 using BEPUphysics.CollisionTests.CollisionAlgorithms;
 using PloobsEngine.Physic.Constraints;
 using PloobsEngine.Physic.Constraints.BepuConstraint;
+using BEPUphysics.CollisionShapes.ConvexShapes;
+using Microsoft.Xna.Framework.Graphics;
+using BEPUphysics.MathExtensions;
+using BEPUphysics.CollisionShapes;
 
 namespace PloobsEngine.Physics
 {
+    internal class DebugInfo
+    {
+        public VertexPositionColor[] vertices;
+        public short[] indices;
+    }
 
     /// <summary>
     /// Bepu Implementation of a Physic World
@@ -347,13 +356,111 @@ namespace PloobsEngine.Physics
             ctns.Remove(bctn);
          }
 
+
+        private Dictionary<BEPUphysics.Entities.Entity, DebugInfo> debugents = new Dictionary<BEPUphysics.Entities.Entity, DebugInfo>();
+        private  BasicEffect BasicEffect;
+        public override bool isDebugDraw
+        {
+            get
+            {
+                return base.isDebugDraw;
+            }
+            set
+            {
+                base.isDebugDraw = value;
+                if (isDebugDraw == false)
+                {
+                    if (BasicEffect != null && !BasicEffect.IsDisposed)
+                    {
+                        BasicEffect.Dispose();
+                    }
+                    debugents.Clear();
+                }
+            }
+        }
         /// <summary>
         /// Draw the physic world in debug mode.
         /// </summary>
         /// <param name="gt">The gt.</param>
         /// <param name="cam">The cam.</param>
-        protected override void DebugDrawn(GameTime gt, ICamera cam)
-        {           
+        protected override void DebugDrawn(RenderHelper render, GameTime gt, ICamera cam)
+        {
+            if (BasicEffect == null)
+            {
+                BasicEffect = new BasicEffect(render.device);
+                BasicEffect.VertexColorEnabled = true;
+                BasicEffect.TextureEnabled = false;
+            }
+
+            BasicEffect.View = cam.View;
+            BasicEffect.Projection = cam.Projection;
+            
+
+            foreach (var item in space.Entities)
+            {
+                if (item.CollisionInformation != null)
+                {
+                    if (!debugents.ContainsKey(item))
+                    {
+                            if (item.CollisionInformation.Shape is BoxShape)
+                            {
+                                debugents.Add(item, DisplayBox.GetDebugInfo(item, Color.Blue));
+                            }
+
+                            if (item.CollisionInformation.Shape is CapsuleShape)
+                            {
+                                debugents.Add(item, DisplayCapsule.GetDebugInfo(item, Color.Blue));
+                            }
+                            if (item.CollisionInformation.Shape is SphereShape)
+                            {
+                                debugents.Add(item, DisplaySphere.GetDebugInfo(item, Color.Blue));
+                            }
+
+                            if (item.CollisionInformation.Shape is ConeShape)
+                            {
+                                debugents.Add(item, DisplayCone.GetDebugInfo(item, Color.Blue));
+                            }
+
+                            if (item.CollisionInformation.Shape is CylinderShape)
+                            {
+                                debugents.Add(item, DisplayCylinder.GetDebugInfo(item, Color.Blue));
+                            }
+
+                            if (item.CollisionInformation.Shape is MobileMeshShape)
+                            {
+                                debugents.Add(item, DisplayMobileMesh.GetDebugInfo(item, Color.Blue));
+                            }
+                            if (item.CollisionInformation.Shape is WrappedShape)
+                            {
+                                debugents.Add(item, DisplayWrappedBody.GetDebugInfo(item, Color.Blue));
+                            }
+                            if (item.CollisionInformation.Shape is TransformableShape)
+                            {
+                                debugents.Add(item, DisplayTransformable.GetDebugInfo(item, Color.Blue));
+                            }
+                            if (item.CollisionInformation.Shape is MinkowskiSumShape)
+                            {
+                                debugents.Add(item, DisplayMinkowskiSum.GetDebugInfo(item, Color.Blue));
+                            }
+                            if (item.CollisionInformation.Shape is ConvexHullShape)
+                            {
+                                debugents.Add(item, DisplayConvexHull.GetDebugInfo(item, Color.Blue));
+                            }
+                    }
+
+                    if (debugents.ContainsKey(item))
+                    {
+                        Vector3 translation = Matrix3X3.Transform(item.CollisionInformation.LocalPosition, item.BufferedStates.InterpolatedStates.OrientationMatrix);
+                        translation += item.BufferedStates.InterpolatedStates.Position;
+                        Matrix worldTransform = Matrix3X3.ToMatrix4X4(item.BufferedStates.InterpolatedStates.OrientationMatrix);
+                        worldTransform.Translation = translation;
+                        BasicEffect.World = worldTransform;
+
+                        render.RenderUserIndexedPrimitive<VertexPositionColor>(BasicEffect, PrimitiveType.TriangleList, debugents[item].vertices, 0, debugents[item].vertices.Count(), debugents[item].indices, 0, debugents[item].indices.Count() / 3);
+                    }
+                }
+
+            }
             //to be done
         }
 

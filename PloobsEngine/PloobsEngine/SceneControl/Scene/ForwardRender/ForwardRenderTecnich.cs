@@ -141,6 +141,9 @@ namespace PloobsEngine.SceneControl
                     item.Material.Drawn(gameTime,item, world.CameraManager.ActiveCamera, world.Lights, render);                
             }
 
+            if (world.PhysicWorld.isDebugDraw)
+                world.PhysicWorld.iDebugDrawn(render, gameTime, world.CameraManager.ActiveCamera);
+
             if (desc.UsePostDrawPhase)
             {
                 foreach (var item in objList)
