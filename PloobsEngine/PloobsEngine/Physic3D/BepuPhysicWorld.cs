@@ -359,6 +359,19 @@ namespace PloobsEngine.Physics
 
         private Dictionary<BEPUphysics.Entities.Entity, DebugInfo> debugents = new Dictionary<BEPUphysics.Entities.Entity, DebugInfo>();
         private  BasicEffect BasicEffect;
+        private RasterizerState rasterizerState;
+        public RasterizerState DebugRasterizerState
+        {
+            get
+            {
+                return rasterizerState;
+            }
+            set
+            {
+                this.rasterizerState = value;
+            }
+        }
+
         public override bool isDebugDraw
         {
             get
@@ -381,6 +394,7 @@ namespace PloobsEngine.Physics
         /// <summary>
         /// Draw the physic world in debug mode.
         /// </summary>
+        /// <param name="render">The render helper.</param>
         /// <param name="gt">The gt.</param>
         /// <param name="cam">The cam.</param>
         protected override void DebugDrawn(RenderHelper render, GameTime gt, ICamera cam)
@@ -389,12 +403,21 @@ namespace PloobsEngine.Physics
             {
                 BasicEffect = new BasicEffect(render.device);
                 BasicEffect.VertexColorEnabled = true;
-                BasicEffect.TextureEnabled = false;
+                BasicEffect.TextureEnabled = false;                
             }
 
+            if (rasterizerState == null)
+            {
+                rasterizerState = new RasterizerState();
+                rasterizerState.CullMode = CullMode.None;
+                rasterizerState.FillMode = FillMode.WireFrame;
+            }
+
+            render.PushRasterizerState(rasterizerState);
+
+
             BasicEffect.View = cam.View;
-            BasicEffect.Projection = cam.Projection;
-            
+            BasicEffect.Projection = cam.Projection;            
 
             foreach (var item in space.Entities)
             {
@@ -461,7 +484,7 @@ namespace PloobsEngine.Physics
                 }
 
             }
-            //to be done
+            render.PopRasterizerState();
         }
 
 
