@@ -17,7 +17,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
-#if !WINDOWS_PHONE
+#if WINDOWS
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,7 +42,7 @@ namespace PloobsEngine.Input
             this.ba = ba;
         }
         
-        #region ICommand Members
+#region ICommand Members
                 
         private InputAdvanced ia;
 
@@ -58,7 +58,7 @@ namespace PloobsEngine.Input
 
         #endregion
 
-        #region ICommand Members
+#region ICommand Members
 
 
         public override string TargetName

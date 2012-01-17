@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-#if !WINDOWS_PHONE
+#if WINDOWS
 using System.Runtime.Serialization;
 #endif
 namespace PloobsEngine.Utils
@@ -15,7 +15,9 @@ namespace PloobsEngine.Utils
     /// Weak reference Strong type
     /// </summary>
     /// <typeparam name="T"></typeparam>
+#if WINDOWS
     [Serializable]
+#endif
     public class WeakReference<T> : System.WeakReference
     {
         /// <summary>
@@ -36,7 +38,7 @@ namespace PloobsEngine.Utils
             : base(target, trackResurrection)
         {
         }
-#if !WINDOWS_PHONE
+#if WINDOWS
         /// <summary>
         /// Initializes a new instance of the <see cref="WeakReference&lt;T&gt;"/> class.
         /// </summary>

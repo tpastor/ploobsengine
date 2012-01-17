@@ -41,11 +41,11 @@ namespace PloobsEngine.IA.NeuralNetwork
 	///     SYNAPSES      WEIGHT             THRESHOLD       ACTIVATION       OUTPUT
 	///
 	/// </code>
-	///</remarks>
-	#if !WINDOWS_PHONE
+    ///</remarks>
+#if WINDOWS
     [Serializable]
 #endif
-	public class Neuron
+    public class Neuron
 	{
 		
 		

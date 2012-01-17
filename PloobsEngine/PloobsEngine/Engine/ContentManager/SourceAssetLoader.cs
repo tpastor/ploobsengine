@@ -63,9 +63,9 @@ namespace PloobsEngine.Engine
                 searchFolder = Path.Combine(this.RootDirectory, Path.GetDirectoryName(assetName));
 
             // Get all files in folder with same name as asset
-#if !WINDOWS_PHONE
+#if WINDOWS
             string[] files = Directory.GetFiles(searchFolder, Path.GetFileName(assetName) + ".*", SearchOption.TopDirectoryOnly);
-#else 
+#else
             string[] files = Directory.GetFiles(searchFolder, Path.GetFileName(assetName) + ".*");
 #endif
             foreach (string f in files)

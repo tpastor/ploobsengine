@@ -88,12 +88,12 @@ public IScreen()
         }
 #endif
 
-#if !WINDOWS_PHONE
+#if WINDOWS
         private Dictionary<IInput, BindKeyCommand> KeyBinds = new Dictionary<IInput, BindKeyCommand>();
         private Dictionary<IInput, BindMouseCommand> MouseBinds = new Dictionary<IInput, BindMouseCommand>();        
-        #else
+#elif !XBOX
         private Dictionary<IInput, BindGestureCommand> GestureBinds= new Dictionary<IInput, BindGestureCommand>();
-        #endif
+#endif
         /// <summary>
         /// called on OnScreenStateChange 
         /// </summary>
@@ -121,7 +121,7 @@ public IScreen()
             set;
         }
 
-        #if !WINDOWS_PHONE 
+#if WINDOWS
         /// <summary>
         /// Binds the KeyBoard input.
         /// </summary>
@@ -204,7 +204,7 @@ public IScreen()
                 CommandProcessor.getCommandProcessor().SendCommandAssyncronous(bc);
             }
         }
-        #endif
+#endif
 
         /// <summary>
         /// Gets a value indicating whether this instance is loaded.

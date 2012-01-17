@@ -17,7 +17,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
-#if !WINDOWS_PHONE
+#if WINDOWS
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -197,7 +197,7 @@ namespace PloobsEngine.SceneControl
         }
     }
 }
-#else
+#elif !XBOX
 using System;
 using System.Collections.Generic;
 using System.Linq;

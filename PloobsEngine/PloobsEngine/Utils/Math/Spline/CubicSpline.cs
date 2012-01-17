@@ -21,8 +21,8 @@
 //-----------------------------------------------------------------------------
 // CubicSpline.cs
 //-----------------------------------------------------------------------------
- 
-#if !WINDOWS_PHONE
+
+#if WINDOWS
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -223,7 +223,7 @@ namespace PloobsEngine.Utils.Spline
             return y;
         }
  
-        #region private_methods
+#region private_methods
  
         /// <summary>
         /// Binary search for the lowest index where values[i] lte x.

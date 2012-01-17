@@ -274,6 +274,42 @@ namespace BEPUphysicsDemos.AlternateMovement.Character
         /// </summary>
         public SupportRayData? SupportRayData { get; private set; }
 
+#if XBOX
+        /// <summary>
+        /// Gets the character's supports.
+        /// </summary>
+        public List<SupportContact> Supports
+        {
+            get
+            {
+                return new List<SupportContact>(supports);
+            }
+        }
+
+        /// <summary>
+        /// Gets the contacts on the side of the character.
+        /// </summary>
+        public List<OtherContact> SideContacts
+        {
+            get
+            {
+                return new List<OtherContact>(sideContacts);
+            }
+        }
+
+        /// <summary>
+        /// Gets the contacts on the top of the character.
+        /// </summary>
+        public List<OtherContact> HeadContacts
+        {
+            get
+            {
+                return new List<OtherContact>(headContacts);
+            }
+        }
+
+#else
+
         /// <summary>
         /// Gets the character's supports.
         /// </summary>
@@ -284,7 +320,6 @@ namespace BEPUphysicsDemos.AlternateMovement.Character
                 return new ReadOnlyList<SupportContact>(supports);
             }
         }
-
         /// <summary>
         /// Gets the contacts on the side of the character.
         /// </summary>
@@ -306,6 +341,10 @@ namespace BEPUphysicsDemos.AlternateMovement.Character
                 return new ReadOnlyList<OtherContact>(headContacts);
             }
         }
+
+#endif
+
+
 
         /// <summary>
         /// Gets a collection of the character's supports that provide traction.

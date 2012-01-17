@@ -34,7 +34,7 @@ using PloobsEngine.Entity;
 using PloobsEngine.Engine;
 using PloobsEngine.Particles;
 using System;
-#if !WINDOWS_PHONE
+#if WINDOWS
 using System.Threading.Tasks;
 #endif
 
@@ -43,7 +43,7 @@ namespace PloobsEngine.SceneControl
     /// <summary>
     /// Specification of a world
     /// </summary>
-    #if !WINDOWS_PHONE
+#if WINDOWS
     public class IWorld : ISerializable
 #else
     public class IWorld 
@@ -90,17 +90,8 @@ namespace PloobsEngine.SceneControl
             this.multThreading = multiThread;
 #endif
         }
-        #if !WINDOWS_PHONE
-
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="IWorld"/> class.
-        /// TO let the IWorld implementations free from the formal constructor
-        /// </summary>
-        protected IWorld()
-        {
-        }
-
+#if WINDOWS
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="IWorld"/> class.
         /// Desserialization
@@ -110,7 +101,15 @@ namespace PloobsEngine.SceneControl
         internal IWorld(SerializationInfo info, StreamingContext context)
         {
         }
-        #endif
+#endif
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IWorld"/> class.
+        /// TO let the IWorld implementations free from the formal constructor
+        /// </summary>
+        protected IWorld()
+        {
+        }
 
         protected ICuller culler;
         protected GraphicInfo graphicsInfo;
@@ -626,7 +625,7 @@ namespace PloobsEngine.SceneControl
         }
 
         #region ISerializable Members
-        #if !WINDOWS_PHONE
+#if WINDOWS
         /// <summary>
         /// TODO
         /// Populates a <see cref="T:System.Runtime.Serialization.SerializationInfo"/> with the data needed to serialize the target object.
@@ -645,7 +644,7 @@ namespace PloobsEngine.SceneControl
             //info.AddValue("PhysicWorld", PhysicWorld, PhysicWorld.GetType());
         }        
 
-        #endif
+#endif
         #endregion
     }
 }

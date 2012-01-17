@@ -68,7 +68,7 @@ namespace PloobsEngine.NetWorking
         /// </summary>
         public static Vector2 ReadVector2(this NetIncomingMessage message)
         {
-            Vector2 retval;
+            Vector2 retval = new Vector2() ;
             retval.X = message.ReadSingle();
             retval.Y = message.ReadSingle();
             return retval;
@@ -99,7 +99,7 @@ namespace PloobsEngine.NetWorking
         /// </summary>
         public static Vector3 ReadVector3(this NetIncomingMessage message)
         {
-            Vector3 retval;
+            Vector3 retval = new Vector3();
             retval.X = message.ReadSingle();
             retval.Y = message.ReadSingle();
             retval.Z = message.ReadSingle();
@@ -120,7 +120,7 @@ namespace PloobsEngine.NetWorking
             HalfSingle hz = new HalfSingle();
             hz.PackedValue = message.ReadUInt16();
 
-            Vector3 retval;
+            Vector3 retval = new Vector3();
             retval.X = hx.ToSingle();
             retval.Y = hy.ToSingle();
             retval.Z = hz.ToSingle();
@@ -143,7 +143,7 @@ namespace PloobsEngine.NetWorking
         /// </summary>
         public static Vector4 ReadVector4(this NetIncomingMessage message)
         {
-            Vector4 retval;
+            Vector4 retval = new Vector4();
             retval.X = message.ReadSingle();
             retval.Y = message.ReadSingle();
             retval.Z = message.ReadSingle();
@@ -179,7 +179,7 @@ namespace PloobsEngine.NetWorking
             float phi = message.ReadSignedSingle(halfBits) * (float)Math.PI;
             float theta = message.ReadSignedSingle(numberOfBits - halfBits) * (float)(Math.PI * 0.5);
 
-            Vector3 retval;
+            Vector3 retval = new Vector3();
             retval.X = (float)(Math.Sin(phi) * Math.Cos(theta));
             retval.Y = (float)(Math.Cos(phi) * Math.Cos(theta));
             retval.Z = (float)Math.Sin(theta);
@@ -221,7 +221,7 @@ namespace PloobsEngine.NetWorking
         /// </summary>
         public static Quaternion ReadRotation(this NetIncomingMessage message, int bitsPerElement = 24)
         {
-            Quaternion retval;
+            Quaternion retval = new Quaternion();
             retval.X = message.ReadSignedSingle(bitsPerElement);
             retval.Y = message.ReadSignedSingle(bitsPerElement);
             retval.Z = message.ReadSignedSingle(bitsPerElement);
@@ -294,7 +294,7 @@ namespace PloobsEngine.NetWorking
         /// </summary>
         public static BoundingSphere ReadBoundingSphere(this NetIncomingMessage message)
         {
-            BoundingSphere retval;
+            BoundingSphere retval = new BoundingSphere();
             retval.Center.X = message.ReadSingle();
             retval.Center.Y = message.ReadSingle();
             retval.Center.Z = message.ReadSingle();

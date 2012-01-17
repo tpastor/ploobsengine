@@ -138,6 +138,7 @@
   <ItemGroup>
     <None Include="bin\x86\Debug\Content\SkinnedModelEffect.xnb" />
     <None Include="Resources\SkinnedModelEffect.bin" />
+    <None Include="Resources\SkinnedModelEffect2.bin" />
     <None Include="XNAnimation.snk" />
   </ItemGroup>
   <ItemGroup>

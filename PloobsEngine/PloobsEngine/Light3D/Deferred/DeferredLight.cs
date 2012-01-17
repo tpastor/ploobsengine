@@ -174,12 +174,12 @@ namespace PloobsEngine.Light
         #endregion
 
         #region ISerializable Members
-        #if !WINDOWS_PHONE
+#if WINDOWS
         public virtual void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
         {
             ActiveLogger.LogMessage("Serialization not implemented yet", LogLevel.RecoverableError);
         }
-        #endif
+#endif
         #endregion
 
         #region ILight Members

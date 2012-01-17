@@ -251,7 +251,7 @@ namespace PloobsEngine.Modelo.Animation
 
         #endregion
 
-#if !WINDOWS_PHONE
+#if WINDOWS
         #region ISerializable Members
 
         public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)

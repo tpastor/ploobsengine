@@ -1,3 +1,4 @@
+#if WINDOWS
 #region Using Statements
 using System;
 using System.IO;
@@ -358,3 +359,4 @@ namespace PloobsEngine.AssetLoader
         #endregion
     }
 }
+#endif

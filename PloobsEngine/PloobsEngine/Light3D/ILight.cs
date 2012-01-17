@@ -30,9 +30,9 @@ namespace PloobsEngine.Light
     /// <summary>
     /// Specification of a Light
     /// </summary>
-    #if !WINDOWS_PHONE
+#if WINDOWS
     public interface ILight : ISerializable
-    #else
+#else
     public interface ILight 
     #endif
     {

@@ -313,7 +313,7 @@ namespace PloobsEngine.Physics.Bepu
             get { return instancedMesh.BoundingBox; }
         }
 
-#if !WINDOWS_PHONE
+#if WINDOWS
         /// <summary>
         /// Serialization
         /// </summary>
@@ -326,6 +326,6 @@ namespace PloobsEngine.Physics.Bepu
 #endif
 
         #endregion
-        
+
     }
 }

@@ -223,7 +223,11 @@ namespace XNAnimation.Effects
             GraphicsDevice graphicsDevice = graphicsDeviceService.GraphicsDevice;
 
             //ResourceContentManager cnt = new ResourceContentManager(input.ContentManager.ServiceProvider, Resource1.ResourceManager);            z
+#if WINDOWS           
             SkinnedModelBasicEffect basicEffect = new SkinnedModelBasicEffect(graphicsDevice, Resource1.SkinnedModelEffect);
+#else
+            SkinnedModelBasicEffect basicEffect = new SkinnedModelBasicEffect(graphicsDevice, Resource1.SkinnedModelEffect2);
+#endif
             
 
             input.ReadVector3();

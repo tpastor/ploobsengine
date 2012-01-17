@@ -1,3 +1,4 @@
+#if WINDOWS
 #region File Description
 //-----------------------------------------------------------------------------
 // ErrorLogger.cs
@@ -90,3 +91,4 @@ namespace PloobsEngine.AssetLoader
         #endregion
     }
 }
+#endif

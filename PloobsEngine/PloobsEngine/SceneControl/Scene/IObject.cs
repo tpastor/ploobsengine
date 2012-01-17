@@ -65,7 +65,7 @@ namespace PloobsEngine.SceneControl
     /// <summary>
     /// Basic Object 
     /// </summary>
-    #if !WINDOWS_PHONE
+#if WINDOWS
     public class IObject : IRecieveMessageEntity, ISerializable
 #else
     public class IObject : IRecieveMessageEntity
@@ -348,7 +348,7 @@ namespace PloobsEngine.SceneControl
         #endregion
 
         #region ISerializable Members
-        #if !WINDOWS_PHONE
+#if WINDOWS
         /// <summary>
         /// Populates a <see cref="T:System.Runtime.Serialization.SerializationInfo"/> with the data needed to serialize the target object.
         /// </summary>
@@ -359,7 +359,7 @@ namespace PloobsEngine.SceneControl
         {
             ActiveLogger.LogMessage("Serialization is not implemented yet", LogLevel.RecoverableError);
         }
-        #endif
+#endif
         #endregion
     }
 }

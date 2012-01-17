@@ -130,17 +130,17 @@ namespace PloobsEngine.SceneControl._2DScene
             if (_renderTecnic == null )
             {
                     ActiveLogger.LogMessage("IScene must have a renderTechnic", LogLevel.FatalError);
-                #if !WINDOWS_PHONE
+#if WINDOWS
                     System.Diagnostics.Debug.Fail("IScene must have a renderTechnic");
-                #endif
+#endif
                     throw new Exception("IScene must have a renderTechnic");
             }
             if (_world == null)
             {
                     ActiveLogger.LogMessage("World cannot be null", LogLevel.FatalError);
-                #if !WINDOWS_PHONE
+#if WINDOWS
                     System.Diagnostics.Debug.Fail("World cannot be null");
-                #endif
+#endif
                     throw new Exception("World cannot be null");
             }
             
