@@ -159,11 +159,11 @@ namespace PloobsEngine.Physics.Bepu
             ActiveLogger.LogMessage("Cant Apply Impulse to Detector object", LogLevel.Warning);
         }
 
-        #if !WINDOWS_PHONE
+#if WINDOWS
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
         {
             ActiveLogger.LogMessage("Serializable not implemented", LogLevel.Warning);
         }
-        #endif
+#endif
     }
 }

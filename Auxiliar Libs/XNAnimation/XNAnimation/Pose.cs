@@ -19,7 +19,7 @@ using System.Globalization;
 
 namespace XNAnimation
 {
-#if !WINDOWS_PHONE
+#if WINDOWS
     [Serializable]
 #endif
     public struct Pose : IEquatable<Pose>

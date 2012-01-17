@@ -522,7 +522,7 @@ namespace PloobsEngine.Cameras
         private void UpdateCamera(MouseState currentMouseState, KeyboardState keyState)
         {
             _hasmoved = false;
-            #if WINDOWS
+#if WINDOWS
             if (currentMouseState != originalMouseState && useMouse == true)
             {
                 float xDifference = currentMouseState.X - originalMouseState.X;
@@ -564,7 +564,7 @@ namespace PloobsEngine.Cameras
                 AddToCameraPosition(new Vector3(0, -sensibility, 0));
                 _hasmoved = true;
             }
-#else
+#elif SILVER
             TouchCollection tc = TouchPanel.GetState();
             if (tc.Count > 0)
             {
@@ -681,7 +681,7 @@ namespace PloobsEngine.Cameras
 
 
         #region ISerializable Members
-#if !WINDOWS_PHONE
+#if WINDOWS
 	
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
         {

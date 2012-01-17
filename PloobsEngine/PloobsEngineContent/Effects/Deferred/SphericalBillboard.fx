@@ -62,7 +62,11 @@ BBPixelToFrame BillboardPS(BBVertexToPixel PSIn)
     output.Color = tex2D(textureSampler, PSIn.TexCoord) ;        					        
 	if(output.Color.a <= alphaTest)
 	{
+	   #ifdef XBOX
+		clip(-1);
+	#else
 	   discard;
+	#endif
 	}
 
 	output.Color = output.Color  * atenuation;

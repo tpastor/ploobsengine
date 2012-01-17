@@ -54,7 +54,7 @@ namespace PloobsEngine.Physics.Bepu
             }
         }
 
-#if !WINDOWS_PHONE
+#if WINDOWS
 
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
         {

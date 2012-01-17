@@ -158,9 +158,9 @@ namespace PloobsEngine.Engine
             internal set { multiSample = value; }
         }
 
-        
 
-#if !WINDOWS_PHONE
+
+#if WINDOWS
         /// <summary>
         /// Occurs when [on graphic info change].
         /// </summary>

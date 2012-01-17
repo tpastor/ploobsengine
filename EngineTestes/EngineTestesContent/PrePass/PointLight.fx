@@ -115,10 +115,6 @@ PixelShaderOutput PointLightMeshPS(VertexShaderOutputMeshBased input)
 	float depthValue = tex2D(depthSampler, screenPos).r;
 	
 	//if depth value == 1, we can assume its a background value, so skip it
-	//we need this only if we are using back-face culling on our light volumes. Otherwise, our z-buffer
-	//will reject this pixel anyway
-	
-	//if depth value == 1, we can assume its a background value, so skip it
 	clip(-depthValue + 0.9999f);
 	
     // Reconstruct position from the depth value, the FOV, aspect and pixel position

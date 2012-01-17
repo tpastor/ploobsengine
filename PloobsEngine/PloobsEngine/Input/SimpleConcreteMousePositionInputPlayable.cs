@@ -17,7 +17,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
-#if !WINDOWS_PHONE
+#if WINDOWS
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,7 +43,7 @@ namespace PloobsEngine.Input
         }
 
 
-        #region InputPlaybleMouseBottom Members
+#region InputPlaybleMouseBottom Members
 
         private StateKey sk;
         private EntityType et;

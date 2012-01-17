@@ -52,7 +52,9 @@ namespace PloobsEngine.SceneControl
         public IContentManager(Game game)
 #endif
         {
-#if REACH 
+#if XBOX360
+            cmanagerInternal = new ResourceContentManager(game.Services, Resources.ResourceManager);
+#elif REACH 
             cmanagerInternal = new ResourceContentManager(game.Services, PloobsEngineReach.Resource2.ResourceManager);
 #elif WINDOWS_PHONE && !SILVER
             cmanagerInternal = new ResourceContentManager(game.Services, Resource3.ResourceManager);

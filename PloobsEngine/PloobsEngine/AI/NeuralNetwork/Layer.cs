@@ -42,11 +42,11 @@ namespace PloobsEngine.IA.NeuralNetwork
 	/// inputs, this is the number of inputs of the layer
 	/// itself.
 	/// </remarks>
-	/// 
-    #if !WINDOWS_PHONE
+    /// 
+#if WINDOWS
 	[Serializable]
-    #endif
-	public class Layer
+#endif
+    public class Layer
 	{
 		
 		#region PROTECTED FIELDS (State of the layer)

@@ -27,7 +27,7 @@ using System.Xml.Serialization;
 
 namespace PloobsEngine.Cameras
 {
-#if !WINDOWS_PHONE
+#if WINDOWS
     [Serializable]
 #endif
     public class CameraPathData

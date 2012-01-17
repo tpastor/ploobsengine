@@ -34,9 +34,9 @@ namespace PloobsEngine.Physics
     /// <summary>
     /// 3D Physic World Specification
     /// </summary>
-    #if !WINDOWS_PHONE
+#if WINDOWS
     public abstract class IPhysicWorld : ISerializable
-    #else
+#else
     public abstract class IPhysicWorld 
     #endif
     {        
@@ -136,10 +136,10 @@ namespace PloobsEngine.Physics
 
         #region ISerializable Members
 
-#if !WINDOWS_PHONE
+#if WINDOWS
 	    public abstract void GetObjectData(SerializationInfo info, StreamingContext context);
 #endif
-        
+
         #endregion
     }
     

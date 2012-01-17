@@ -23,7 +23,7 @@ using System.Text;
 
 namespace PloobsEngine.IA
 {
-    #if !WINDOWS_PHONE
+#if WINDOWS
     /// <summary>
     /// Node in the Astar algorithm
     /// </summary>

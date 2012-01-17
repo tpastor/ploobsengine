@@ -121,4 +121,7 @@
   <data name="SkinnedModelEffect" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\SkinnedModelEffect.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="SkinnedModelEffect2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\SkinnedModelEffect2.bin;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
 </root>

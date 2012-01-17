@@ -260,12 +260,12 @@ namespace PloobsEngine.IA
         }
     }
 
-    #if !WINDOWS_PHONE
+#if WINDOWS
     /// <summary>
     /// Handler Waypoints state
     /// </summary>
     [Serializable]
-    #endif
+#endif
     public enum WaypointsState
     {
         Connected,UnConnected,Empty

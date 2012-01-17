@@ -17,14 +17,36 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
-#if WINDOWS_PHONE
+#if !WINDOWS
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Reflection;
 
 namespace PloobsEngine.Utils
 {
+
+    public static class EnumExtension
+    {
+        public static IEnumerable<T> GetValues<T>()
+        {
+            return (from x in typeof(T).GetFields(BindingFlags.Static | BindingFlags.Public)
+                    select (T)x.GetValue(null));
+        }  
+
+
+        public static T RandomEnum<T>()
+        {
+            List<T> values = new List<T>(
+                from x in typeof(T).GetFields(BindingFlags.Static | BindingFlags.Public)
+                select (T)x.GetValue(null));
+            return values[new Random().Next(0, values.Count)];
+        }  
+
+    }
+
+
     public static class EnumerableExtension
     {
         // Finds an item matching a predicate in the enumeration, much like List<T>.FindIndex()

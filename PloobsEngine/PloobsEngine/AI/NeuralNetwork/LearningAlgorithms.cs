@@ -34,11 +34,11 @@ namespace PloobsEngine.IA.NeuralNetwork
 	/// <summary>
 	/// The abstract class describing a learning
 	/// algorithm for a neural network
-	/// </summary>
-    #if !WINDOWS_PHONE
+    /// </summary>
+#if WINDOWS
 	[Serializable]
-    #endif
-	public abstract class LearningAlgorithm
+#endif
+    public abstract class LearningAlgorithm
 	{
 
 		#region PROTECTED FIELDS
@@ -178,11 +178,11 @@ namespace PloobsEngine.IA.NeuralNetwork
 	/// NOTE : This is stockastic version of the algorithm because the error
 	/// is back-propaged after every learning case. There is another version
 	/// of this algorithm which works on global error.
-	/// </remarks>
-	#if !WINDOWS_PHONE
+    /// </remarks>
+#if WINDOWS
     [Serializable]
-    #endif
-	public class BackPropagationLearningAlgorithm : LearningAlgorithm
+#endif
+    public class BackPropagationLearningAlgorithm : LearningAlgorithm
 	{
 
 		#region PRETECTED FIELDS
@@ -346,11 +346,11 @@ namespace PloobsEngine.IA.NeuralNetwork
 	///    -- apply mutation operator on new generation
 	///	  Until error > error_threshold  	   
 	/// </code>
-	///</remarks>
-    #if !WINDOWS_PHONE
+    ///</remarks>
+#if WINDOWS
 	[Serializable]
-    #endif
-	public class GeneticLearningAlgorithm : LearningAlgorithm 
+#endif
+    public class GeneticLearningAlgorithm : LearningAlgorithm 
 	{
 
 		#region PROTECTED FIELDS AND PROPERTIES
@@ -599,11 +599,11 @@ namespace PloobsEngine.IA.NeuralNetwork
 		#region GeneticNeuralNetwork
 		/// <summary>
 		/// Representation of a neural network for the genetic algorithm
-		/// </summary>
-        #if !WINDOWS_PHONE
+        /// </summary>
+#if WINDOWS
 		[Serializable]
-        #endif
-		protected class GeneticNeuralNetwork : IComparable
+#endif
+        protected class GeneticNeuralNetwork : IComparable
 		{
 			/// <summary>
 			/// The genes : all neurons weight and threshold

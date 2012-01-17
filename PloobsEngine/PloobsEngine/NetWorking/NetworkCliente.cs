@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Lidgren.Network;
-using System.Threading.Tasks;
+
 using System.Threading;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Physics;
@@ -115,7 +115,8 @@ namespace PloobsEngine.NetWorking
                 waitConnection();
 
             if (servercon.Status == NetConnectionStatus.Disconnected)
-            {
+            {                
+                
                 PloobsEngine.Engine.Logger.ActiveLogger.LogMessage("Connection lost " + servercon.ToString(), Engine.Logger.LogLevel.Warning);
                 client.Connect(servercon.RemoteEndpoint);
                 waitConnection();

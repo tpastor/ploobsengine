@@ -28,7 +28,7 @@
 using System;
 using System.IO;
 using System.Runtime.Serialization;
-#if !WINDOWS_PHONE
+#if WINDOWS
 using System.Runtime.Serialization.Formatters.Binary;
 #endif
 
@@ -55,11 +55,11 @@ namespace PloobsEngine.IA.NeuralNetwork
 	/// At the begining the neural network needs to
 	/// learn using couples (INPUT, EXPECTED OUTPUT)
 	/// and a learnig algorithm.
-	/// </remarks>
-    #if !WINDOWS_PHONE
+    /// </remarks>
+#if WINDOWS
 	[Serializable]
-    #endif
-	public class NeuralNetwork
+#endif
+    public class NeuralNetwork
 	{
 
 		#region PROTECTED FIELDS (STATE OF THE NETWORK)
@@ -274,7 +274,7 @@ namespace PloobsEngine.IA.NeuralNetwork
 		#endregion
 
 		#region PERSISTANCE IMPLEMENTATION
-        #if !WINDOWS_PHONE
+#if WINDOWS
 		/// <summary>
 		/// Save the Neural Network in a binary formated file
 		/// </summary>
@@ -309,7 +309,7 @@ namespace PloobsEngine.IA.NeuralNetwork
 			return result;
 		}
 #endif
-		#endregion
+        #endregion
 
-	}
+    }
 }

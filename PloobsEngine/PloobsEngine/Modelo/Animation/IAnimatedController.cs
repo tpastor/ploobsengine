@@ -32,7 +32,7 @@ namespace PloobsEngine.Modelo.Animation
     /// Animation Controler Interface
     /// User interact with animated model by this controller
     /// </summary>
-    #if !WINDOWS_PHONE
+#if WINDOWS
     public interface IAnimatedController : ISerializable
 #else
     public interface IAnimatedController 

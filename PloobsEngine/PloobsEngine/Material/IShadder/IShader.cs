@@ -39,7 +39,7 @@ namespace PloobsEngine.Material
     /// <summary>
     /// Base Class For all Shaders
     /// </summary>
-#if !WINDOWS_PHONE
+#if WINDOWS
     public abstract class IShader : ISerializable
 #else
     public abstract class IShader 
@@ -247,7 +247,7 @@ namespace PloobsEngine.Material
         #endif
 
 
-#if !WINDOWS_PHONE
+#if WINDOWS
               public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             

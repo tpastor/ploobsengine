@@ -23,7 +23,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Engine.Logger;
-#if WINDOWS_PHONE
+#if !WINDOWS
 using PloobsEngine.Utils;
 #endif
 

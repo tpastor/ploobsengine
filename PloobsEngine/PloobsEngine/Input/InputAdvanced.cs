@@ -63,9 +63,9 @@ namespace PloobsEngine.Input
         public static readonly String MyName = "InputAdvanced";
         
 #if XBOX360
-        private Dictionary<Buttons, float>[] buttonCache;
-        private GamePadState[] currentPadState;
-        private GamePadState[] previousPadState;
+        //private Dictionary<Buttons, float>[] buttonCache;
+        //private GamePadState[] currentPadState;
+        //private GamePadState[] previousPadState;
 #elif WINDOWS
         private IDictionary<Keys, InputPlayableKeyBoard> _Mapper = new Dictionary<Keys, InputPlayableKeyBoard>();
         private Dictionary<Keys, float> keyCache;
@@ -138,20 +138,20 @@ namespace PloobsEngine.Input
         {                    
 
 #if XBOX360
-            buttonCache = new Dictionary<Buttons, float>[4]
-            {
-                new Dictionary<Buttons, float>(), new Dictionary<Buttons, float>(),
-                new Dictionary<Buttons, float>(), new Dictionary<Buttons, float>()
-            };
-            currentPadState = previousPadState = new GamePadState[4];
-            for (int i = 0; i < 4; i++)
-            {
-                previousPadState[i] = currentPadState[i] = 
-                    GamePad.GetState(((PlayerIndex)Enum.GetValues(PlayerIndex)[i]));
-            }
+            //buttonCache = new Dictionary<Buttons, float>[4]
+            //{
+            //    new Dictionary<Buttons, float>(), new Dictionary<Buttons, float>(),
+            //    new Dictionary<Buttons, float>(), new Dictionary<Buttons, float>()
+            //};
+            //currentPadState = previousPadState = new GamePadState[4];
+            //for (int i = 0; i < 4; i++)
+            //{
+            //    previousPadState[i] = currentPadState[i] = 
+            //        GamePad.GetState(((PlayerIndex)Enum.GetValues(PlayerIndex)[i]));
+            //}
 
-            foreach (Buttons button in Enum.GetValues(Buttons))
-                buttonCache.Add(button, 0.0f);
+            //foreach (Buttons button in Enum.GetValues(Buttons))
+            //    buttonCache.Add(button, 0.0f);
 #elif WINDOWS
             keyCache = new Dictionary<Keys, float>();
             previousKeyState = currentKeyState = Keyboard.GetState();
@@ -182,20 +182,20 @@ namespace PloobsEngine.Input
             float elapsedTime =
                 (float)(gameTime.ElapsedGameTime.TotalSeconds);
 #if XBOX360
-            previousPadState = currentPadState;
-            for (int i = 0; i < currentPadState.Length; i++)
-            {
-                currentPadState[i] = 
-                    GamePad.GetState(((PlayerIndex)Enum.GetValues(PlayerIndex)[i]));
-            }
+            //previousPadState = currentPadState;
+            //for (int i = 0; i < currentPadState.Length; i++)
+            //{
+            //    currentPadState[i] = 
+            //        GamePad.GetState(((PlayerIndex)Enum.GetValues(PlayerIndex)[i]));
+            //}
 
-            foreach (Buttons b in Enum.GetValues(typeof(Buttons)))
-            {
-                if (IsButtonDown(b))
-                    buttonCache[b] += elapsedTime;
-                else
-                    buttonCache[b] = 0.0f;
-            }
+            //foreach (Buttons b in Enum.GetValues(typeof(Buttons)))
+            //{
+            //    if (IsButtonDown(b))
+            //        buttonCache[b] += elapsedTime;
+            //    else
+            //        buttonCache[b] = 0.0f;
+            //}
 #elif WINDOWS
             // We set the Previous states to the Current states
             // since the Current states will be updated with
@@ -241,42 +241,42 @@ namespace PloobsEngine.Input
         }
 
 #if XBOX360
-        public float TimePressed(Buttons button, PlayerIndex player)
-        {
-            return buttonCache[(int)player][button];
-        }
+        //public float TimePressed(Buttons button, PlayerIndex player)
+        //{
+        //    return buttonCache[(int)player][button];
+        //}
 
-        public bool IsButtonPress(Buttons button, PlayerIndex player)
-        {
-            return (currentPadState[(int)player].IsButtonDown(button) &&
-                    previousPadState[(int)player].IsButtonUp(button));
-        }
+        //public bool IsButtonPress(Buttons button, PlayerIndex player)
+        //{
+        //    return (currentPadState[(int)player].IsButtonDown(button) &&
+        //            previousPadState[(int)player].IsButtonUp(button));
+        //}
 
-        public bool IsButtonRelease(Buttons button, PlayerIndex player)
-        {
-            return (currentPadState[(int)player].IsButtonUp(button) &&
-                    previousPadState[(int)player].IsButtonDown(button));
-        }
+        //public bool IsButtonRelease(Buttons button, PlayerIndex player)
+        //{
+        //    return (currentPadState[(int)player].IsButtonUp(button) &&
+        //            previousPadState[(int)player].IsButtonDown(button));
+        //}
 
-        public bool IsButtonDown(Buttons button, PlayerIndex player)
-        {
-            return currentPadState[(int)player].IsButtonDown(button);
-        }
+        //public bool IsButtonDown(Buttons button, PlayerIndex player)
+        //{
+        //    return currentPadState[(int)player].IsButtonDown(button);
+        //}
 
-        public bool IsButtonUp(Buttons button, PlayerIndex player)
-        {
-            return currentPadState[(int)player].IsButtonUp(button);
-        }
+        //public bool IsButtonUp(Buttons button, PlayerIndex player)
+        //{
+        //    return currentPadState[(int)player].IsButtonUp(button);
+        //}
 
-        public Vector2 LeftThumbstick(PlayerIndex player)
-        {
-            return currentPadState[(int)player].Thumbsticks.Left;
-        }
+        //public Vector2 LeftThumbstick(PlayerIndex player)
+        //{
+        //    return currentPadState[(int)player].Thumbsticks.Left;
+        //}
 
-        public Vector2 RightThumbstick(PlayerIndex player)
-        {
-            return currentPadState[(int)player].Thumbsticks.Right;
-        }
+        //public Vector2 RightThumbstick(PlayerIndex player)
+        //{
+        //    return currentPadState[(int)player].Thumbsticks.Right;
+        //}
 #elif WINDOWS
         #region Mouse Input
         // Mouse Buttons Elapsed Time

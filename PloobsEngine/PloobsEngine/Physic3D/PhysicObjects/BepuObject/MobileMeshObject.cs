@@ -356,7 +356,7 @@ namespace PloobsEngine.Physics.Bepu
             get { return triangleGroup.CollisionInformation.BoundingBox; }
         }
 
-        #if !WINDOWS_PHONE
+#if WINDOWS
         /// <summary>
         /// Serialization
         /// </summary>
@@ -366,9 +366,9 @@ namespace PloobsEngine.Physics.Bepu
         {
             ActiveLogger.LogMessage("Serialization not implemented yet", LogLevel.RecoverableError);
         }
-        #endif
+#endif
 
         #endregion
-        
+
     }
 }

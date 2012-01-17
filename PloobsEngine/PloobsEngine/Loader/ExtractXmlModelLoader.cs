@@ -17,7 +17,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
-#if !WINDOWS_PHONE
+#if WINDOWS
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -145,7 +145,7 @@ namespace PloobsEngine.Loader
         {
         }
 
-        #region IModelLoader Members
+#region IModelLoader Members
 
         public ModelLoaderData Load(GraphicFactory factory, GraphicInfo ginfo, String Name)
         {            
@@ -512,7 +512,7 @@ namespace PloobsEngine.Loader
             return str.Split('.')[0];
         }
 
-        #region IModelLoader Members
+#region IModelLoader Members
 
 
         /// <summary>

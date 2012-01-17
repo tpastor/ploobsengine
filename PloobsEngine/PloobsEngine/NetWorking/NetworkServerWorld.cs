@@ -24,7 +24,7 @@ namespace PloobsEngine.NetWorking
         /// <param name="multiThread">if set to <c>true</c> [mult thread].</param>
         public NetworkServerWorld(IPhysicWorld PhysicWorld,bool multiThread = false)
 #else
-        public IWorld(IPhysicWorld PhysicWorld)
+        public NetworkServerWorld(IPhysicWorld PhysicWorld)
 #endif
         {
             if (PhysicWorld == null)

@@ -87,7 +87,11 @@ BBPixelToFrame BillboardPS(BBVertexToPixel PSIn)
 
 	if(output.Color.a <= alphaTest)
 	{
+	#ifdef XBOX
+		clip(-1);
+	#else
 	   discard;
+	#endif
 	}
 
 	output.Color  = output.Color  * atenuation;

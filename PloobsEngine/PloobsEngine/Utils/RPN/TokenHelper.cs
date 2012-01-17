@@ -32,7 +32,7 @@ namespace PloobsEngine.Utils
         /// </returns>
         public bool IsOperator(string token)
         {
-            if (string.IsNullOrWhiteSpace(token))
+            if (token == null || token == " "  || token == "" )
             {
                 return false;
             }
@@ -106,7 +106,7 @@ namespace PloobsEngine.Utils
         /// </returns>
         public bool IsLeftAssociative(string token)
         {
-            if (string.IsNullOrWhiteSpace(token) || token.Length != 1)
+            if (String.IsNullOrEmpty(token) || token.Length != 1)
             {
                 throw new ArgumentException("Incorrect token! Correct should be one character only", token);
             }
@@ -122,7 +122,7 @@ namespace PloobsEngine.Utils
         /// </returns>
         public bool IsRightAssociative(string token)
         {
-            if (string.IsNullOrWhiteSpace(token) || token.Length != 1)
+            if (token == null || token == " " || token == "" || token.Length != 1)            
             {
                 throw new ArgumentException("Incorrect token! Correct should be one character only", token);
             }

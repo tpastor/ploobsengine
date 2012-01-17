@@ -93,7 +93,7 @@ namespace PloobsEngine.Physic.Constraints.BepuConstraint
             get;
         }
 
-#if !WINDOWS_PHONE
+#if WINDOWS
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
         {
             ActiveLogger.LogMessage("Serialization not implemented yet", LogLevel.RecoverableError);
