@@ -39,8 +39,8 @@ namespace test
         public void teste2()
         {
             String text = File.ReadAllText("script2.txt");
-            String[] references = new String[] { "System.dll", "mscorlib.dll", "test.exe" };
-            String[] imports = new String[] { "test" };
+            List<String> references = new List<String> { "System.dll", "mscorlib.dll", "test.exe" };
+            List<String> imports = new List<String> { "test" };
 
             Generator GenerateClassCode = new PloobsScripts.Generator(references, imports, "TesteInter");
             GenerateClassCode.GenerateClass("teste", "interteste");
@@ -125,7 +125,7 @@ namespace test
 
             List<String> usings = new List<string>()
             {
-                "test"
+                "test","System","System.Collections.Generic"
             };
             usings.AddRange(ScriptParsed.UsingStatements);
 
