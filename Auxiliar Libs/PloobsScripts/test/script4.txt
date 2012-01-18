@@ -1,6 +1,10 @@
-﻿System.Console.WriteLine("BEGIN");
+﻿global: List<int> lint;
+System.Console.WriteLine("BEGIN");
 using System.IO;
 global: int thiago = 0;
+global: int tt;
 thiago += 5;
 using System;
 System.Console.WriteLine("VAlue" + thiago);
+
+
