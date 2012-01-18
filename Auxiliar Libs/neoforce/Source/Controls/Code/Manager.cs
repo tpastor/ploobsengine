@@ -624,8 +624,7 @@ namespace TomShane.Neoforce.Controls
         /// <param name="game">The Game class.</param>
         /// <param name="graphics">The GraphicsDeviceManager class provided by the Game class.</param>
         /// <param name="skin">The name of the skin being loaded at the start.</param>
-        public Manager(Game game, GraphicsDeviceManager graphics, string skin)
-            : base(game)
+        public Manager(Game game, GraphicsDeviceManager graphics, string skin)            
         {
             disposing = false;
 

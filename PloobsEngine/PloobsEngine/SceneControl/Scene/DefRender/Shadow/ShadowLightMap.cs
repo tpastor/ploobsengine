@@ -17,7 +17,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
-#if !WINDOWS_PHONE && !REACH
+#if !WINDOWS_PHONE && !REACH && !XBOX360
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -192,7 +192,9 @@ namespace PloobsEngine.SceneControl
 
                         break;
                     case LightType.Deferred_Point:
+#if WINDOWS
                         System.Diagnostics.Debug.Fail("Point Light Shadow not supported, in production no error will be created, the light just wont cast any shadow");
+#endif
                         render.PushBlendState(BlendState.AlphaBlend);
                         DrawPointLight(render, ginfo, world.CameraManager.ActiveCamera, light as PointLightPE, deferredGBuffer, true);
                         render.PopBlendState();
