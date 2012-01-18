@@ -76,9 +76,11 @@
   <ItemGroup>
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.TextureImporter, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
-    <Reference Include="TomShane.Neoforce.Importers, Version=0.5.1718.1210, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Bin\TomShane.Neoforce.Importers.dll</HintPath>
-    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Importers\Importers.csproj">
+      <Project>{8ED9B288-C739-4A73-A0A3-0382587B771D}</Project>
+      <Name>Importers</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

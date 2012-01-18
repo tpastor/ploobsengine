@@ -17,14 +17,16 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
-#if !WINDOWS_PHONE && !REACH
+#if !WINDOWS_PHONE && !REACH 
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TomShane.Neoforce.Controls;
 using Microsoft.Xna.Framework.Graphics;
+#if !XBOX360
 using System.Windows.Forms;
+#endif
 
 namespace PloobsEngine.SceneControl.GUI
 {
@@ -67,11 +69,10 @@ namespace PloobsEngine.SceneControl.GUI
             else
                 manager = new Manager(engine, ginfo.Window);     
 #else
-
             if(skin != null)
-                manager = new Manager(engine, skin,null );     
+                manager = new Manager(engine, skin);     
             else
-                manager = new Manager(engine,null);     
+                manager = new Manager(engine);     
 #endif
 
             if(skin!= null)
