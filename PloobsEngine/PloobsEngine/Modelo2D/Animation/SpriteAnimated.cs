@@ -43,9 +43,41 @@ namespace PloobsEngine.Modelo2D
         private int FrameIndex = 0;
         private bool running = false;
         private int height;
+        public int Height
+        {
+            get
+            {
+                return height;
+            }
+        }
         private int width;
+        public int Width
+        {
+            get
+            {
+                return width;
+            }
+        }
+
         private float timeElapsed;
         private string animation;
+
+        private int frames;
+        public int Frame
+        {
+            get
+            {
+                return frames;
+            }
+        }
+        private int numberanimations;
+        public int NumberAnimations
+        {
+            get
+            {
+                return numberanimations;
+            }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SpriteAnimated"/> class.
@@ -55,6 +87,8 @@ namespace PloobsEngine.Modelo2D
         /// <param name="animations">number of animations.</param>
         public SpriteAnimated(Texture2D Texture, int Frames, int animations) : base(ModelType.Texture)
         {
+            this.numberanimations = animations;
+            this.frames = Frames;
             this.Texture = Texture;
             width = Texture.Width / Frames;
             height = Texture.Height / animations;
