@@ -78,8 +78,7 @@ namespace PloobsEngine.SceneControl
         /// <param name="Modelo">The modelo.</param>
         /// <param name="PhysicObject">The physic object.</param>
         public IObject(IMaterial Material, IModelo Modelo, IPhysicObject PhysicObject)
-        {
-            System.Diagnostics.Debug.Assert(Modelo != null);
+        {            
             System.Diagnostics.Debug.Assert(Material != null);
             System.Diagnostics.Debug.Assert(PhysicObject != null);            
 

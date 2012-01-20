@@ -260,6 +260,7 @@
     <Compile Include="Material\IShadder\ForwardShader\ForwardSimpleAnimationShader.cs" />
     <Compile Include="Material\IShadder\ForwardShader\ForwardTransparenteShader.cs" />
     <Compile Include="Material\IShadder\ForwardShader\ForwardTreeShader.cs" />
+    <Compile Include="Material\Terrain\QuadTerrain.cs" />
     <Compile Include="Material\TreeMaterial.cs" />
     <Compile Include="Material\Terrain\BufferManager.cs" />
     <Compile Include="Material\Terrain\Culling\ClippingFrustrum.cs" />
