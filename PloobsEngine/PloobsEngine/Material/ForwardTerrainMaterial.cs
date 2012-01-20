@@ -1,127 +1,152 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using PloobsEngine.Modelo;
-//using Microsoft.Xna.Framework;
-//using PloobsEngine.Cameras;
-//using PloobsEngine.Engine;
-//using PloobsEngine.SceneControl;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using PloobsEngine.Modelo;
+using Microsoft.Xna.Framework;
+using PloobsEngine.Cameras;
+using PloobsEngine.Engine;
+using PloobsEngine.SceneControl;
+using Microsoft.Xna.Framework.Graphics;
 
-//namespace PloobsEngine.Material
-//{
-//    internal class ForwardTerrainMaterial : IMaterial
-//    {        
-//        public ForwardTerrainMaterial(GraphicFactory factory, IShader shader ,ICamera camera,QuadTerrainModel QuadTerrainModel,Vector3 position)
-//        {
-//            QuadTree = new Tutorial1.Terrain.QuadTree(position, QuadTerrainModel.vertexList, QuadTerrainModel.GetTextureInformation(0)[0].getTexture(TextureType.HEIGHTMAP), camera.View, camera.Projection, factory.device);
-//            QuadTerrainModel.vertexList.Clear();
-//            QuadTerrainModel.vertexList = null;
-//            CanAppearOfReflectionRefraction = true;
-//            CanCreateShadow = true;
-//            IsVisible = true;
-//            this.Shader = shader;
-//        }
+namespace PloobsEngine.Material
+{
+    public class ForwardTerrainMaterial : IMaterial
+    {
+        public ForwardTerrainMaterial(QuadTerrain QuadTerrain)
+        {
+            this.QuadTerrain = QuadTerrain;
+            CanAppearOfReflectionRefraction = false;
+            CanCreateShadow = false;
+            IsVisible = true;
+            this.Shader = null;
+            LOD = 3.5f;
 
-//        public Tutorial1.Terrain.QuadTree QuadTree
-//        {
-//            set;
-//            get;
-//        }
+            WorldMatrix = QuadTerrain.TerrainShader.Parameters["World"];
+            ViewMatrix = QuadTerrain.TerrainShader.Parameters["View"];
+            ProjectionMatrix = QuadTerrain.TerrainShader.Parameters["Projection"];
+        }
 
-//        public void Initialization(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, SceneControl.IObject obj)
-//        {
-//            Shader.Initialize(ginfo, factory, obj);
-//        }
+        EffectParameter WorldMatrix;
+        EffectParameter ViewMatrix;
+        EffectParameter ProjectionMatrix;
+
+        public QuadTerrain QuadTerrain
+        {
+            internal set;
+            get;
+        }
+
+        public float LOD
+        {
+            set;
+            get;
+        }
+
+        public void Initialization(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, SceneControl.IObject obj)
+        {
+            
+        }
 
 
-//        /// <summary>
-//        /// Pre drawn Function.
-//        /// Called before all the objects are draw
-//        /// </summary>
-//        /// <param name="gt">The gt.</param>
-//        /// <param name="mundo">The mundo.</param>
-//        /// <param name="obj">The obj.</param>
-//        /// <param name="cam">The cam.</param>
-//        /// <param name="lights">The lights.</param>
-//        /// <param name="render">The render.</param>
-//        public void PreDrawnPhase(Microsoft.Xna.Framework.GameTime gt, SceneControl.IWorld mundo, SceneControl.IObject obj, Cameras.ICamera cam, IList<Light.ILight> lights, SceneControl.RenderHelper render)
-//        {
-//            Shader.PreDrawPhase(gt, mundo, obj, render, cam);
-//        }
+        /// <summary>
+        /// Pre drawn Function.
+        /// Called before all the objects are draw
+        /// </summary>
+        /// <param name="gt">The gt.</param>
+        /// <param name="mundo">The mundo.</param>
+        /// <param name="obj">The obj.</param>
+        /// <param name="cam">The cam.</param>
+        /// <param name="lights">The lights.</param>
+        /// <param name="render">The render.</param>
+        public void PreDrawnPhase(Microsoft.Xna.Framework.GameTime gt, SceneControl.IWorld mundo, SceneControl.IObject obj, Cameras.ICamera cam, IList<Light.ILight> lights, SceneControl.RenderHelper render)
+        {
+            
+        }
 
-//        /// <summary>
-//        /// Pos drawn Function.
-//        /// Called after all objects are Draw
-//        /// </summary>
-//        /// <param name="gt">The gt.</param>
-//        /// <param name="obj">The obj.</param>
-//        /// <param name="cam">The cam.</param>
-//        /// <param name="lights">The lights.</param>
-//        /// <param name="render">The render.</param>
-//        public void PosDrawnPhase(Microsoft.Xna.Framework.GameTime gt, SceneControl.IObject obj, Cameras.ICamera cam, IList<Light.ILight> lights, SceneControl.RenderHelper render)
-//        {
-//            Shader.PosDrawPhase(gt, obj, render, cam, lights);
-//        }
+        /// <summary>
+        /// Pos drawn Function.
+        /// Called after all objects are Draw
+        /// </summary>
+        /// <param name="gt">The gt.</param>
+        /// <param name="obj">The obj.</param>
+        /// <param name="cam">The cam.</param>
+        /// <param name="lights">The lights.</param>
+        /// <param name="render">The render.</param>
+        public void PosDrawnPhase(Microsoft.Xna.Framework.GameTime gt, SceneControl.IObject obj, Cameras.ICamera cam, IList<Light.ILight> lights, SceneControl.RenderHelper render)
+        {
+            
+        }
 
-//        /// <summary>
-//        /// Normal Drawn Function.
-//        /// </summary>
-//        /// <param name="gt">The gt.</param>
-//        /// <param name="obj">The obj.</param>
-//        /// <param name="cam">The cam.</param>
-//        /// <param name="lights">The lights.</param>
-//        /// <param name="render">The render.</param>
-//        public void Drawn(Microsoft.Xna.Framework.GameTime gt, SceneControl.IObject obj, Cameras.ICamera cam, IList<Light.ILight> lights, SceneControl.RenderHelper render)
-//        {            
-//            Shader.Draw(gt, obj, render, cam, lights);
-//        }                
-        
-//        public void Update(Microsoft.Xna.Framework.GameTime gametime, SceneControl.IObject obj, IWorld world)
-//        {
-//            QuadTree.Update(gametime, world.CameraManager.ActiveCamera);
-//            QuadTree.UpdateBatchInformation(obj.Modelo.GetBatchInformation(0)[0]);
-//        }
+        /// <summary>
+        /// Normal Drawn Function.
+        /// </summary>
+        /// <param name="gt">The gt.</param>
+        /// <param name="obj">The obj.</param>
+        /// <param name="cam">The cam.</param>
+        /// <param name="lights">The lights.</param>
+        /// <param name="render">The render.</param>
+        public void Drawn(Microsoft.Xna.Framework.GameTime gt, SceneControl.IObject obj, Cameras.ICamera cam, IList<Light.ILight> lights, SceneControl.RenderHelper render)
+        {
+            WorldMatrix.SetValue(obj.PhysicObject.WorldMatrix);
+            ViewMatrix.SetValue(cam.View);
+            ProjectionMatrix.SetValue(cam.Projection);
 
-//        public IShader Shader
-//        {
-//            get;
-//            set;
-//        }
+            QuadTerrain.DrawTerrain(render.device);
+            render.ResyncStates();
+        }
 
-//        public MaterialType MaterialType
-//        {
-//            get { return Material.MaterialType.FORWARD; }
-//        }
+        public void Update(Microsoft.Xna.Framework.GameTime gametime, SceneControl.IObject obj, IWorld world)
+        {
+            ICamera cam =  world.CameraManager.ActiveCamera;
+            QuadTerrain.UpdateTerrain(cam.Position, cam.BoundingFrustum, LOD);
+        }
 
-//        public bool CanCreateShadow
-//        {
-//            get;
-//            set;
-//        }
+        public IShader Shader
+        {
+            get
+            {
+                return null;
+            }
+            set
+            {
+                throw new Exception("Cant set Shader of Terrain Material");
+            }
+        }
 
-//        public bool CanAppearOfReflectionRefraction
-//        {
-//            set;
-//            get;
-//        }
+        public MaterialType MaterialType
+        {
+            get { return Material.MaterialType.FORWARD; }
+        }
 
-//        public bool IsVisible
-//        {
-//            get;
-//            set;
-//        }
+        public bool CanCreateShadow
+        {
+            get;
+            set;
+        }
 
-//        public void CleanUp(Engine.GraphicFactory factory)
-//        {
-//            Shader.Cleanup(factory);
-//        }
+        public bool CanAppearOfReflectionRefraction
+        {
+            set;
+            get;
+        }
 
-//#if !WINDOWS_PHONE        
-//        public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
-//        {
-//        }
-//#endif
+        public bool IsVisible
+        {
+            get;
+            set;
+        }
 
-//    }
-//}
+        public void CleanUp(Engine.GraphicFactory factory)
+        {
+            QuadTerrain.CleanUp();
+        }
+
+#if !WINDOWS_PHONE
+        public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
+        {
+        }
+#endif
+
+    }
+}

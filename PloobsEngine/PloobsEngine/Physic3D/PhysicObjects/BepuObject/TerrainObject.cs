@@ -115,7 +115,7 @@ namespace PloobsEngine.Physics.Bepu
         /// <param name="ZSpacing">The Z spacing.</param>
         /// <param name="heightMultipler">Default 10 - controla a altura, menor mais alto</param>
         public TerrainObject(GraphicFactory gfactory, String heighmapName, Vector3 translation, Matrix rotation, MaterialDescription materialDesc, float XSpacing = 1, float ZSpacing = 1, float heightMultipler = 10)
-        {            
+        {          
             
 
             this.heightMultipler = heightMultipler;
@@ -157,6 +157,17 @@ namespace PloobsEngine.Physics.Bepu
 
             SetMaterialDescription(materialDesc);
                         
+        }
+
+        public TerrainObject(GraphicFactory gfactory, Vector3 translation, Matrix rotation,float[,] heights , MaterialDescription materialDesc)
+        {
+            //Create the terrain.
+            BEPUphysics.CollisionShapes.TerrainShape shape = new BEPUphysics.CollisionShapes.TerrainShape(heights, BEPUphysics.CollisionShapes.QuadTriangleOrganization.BottomLeftUpperRight);
+
+            terrain = new Terrain(shape, new BEPUphysics.MathExtensions.AffineTransform(Vector3.One, Quaternion.CreateFromRotationMatrix(rotation),  translation));
+            terrain.ImproveBoundaryBehavior = true;
+
+            SetMaterialDescription(materialDesc);
         }
 
         #region IPhysicObject Members

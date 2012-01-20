@@ -163,6 +163,7 @@
     <Compile Include="Bilboard\Bilboard3D.cs" />
     <Compile Include="Bilboard\BillboardComponent.cs" />
     <Compile Include="Bilboard\CPUBillboardScreen.cs" />
+    <Compile Include="Bilboard\CylindricBillboardComponent.cs" />
     <Compile Include="Bolt\BoltObject.cs" />
     <Compile Include="Bolt\BoltSample.cs" />
     <Compile Include="Bolt\BoltShader.cs" />
