@@ -183,6 +183,15 @@ namespace PloobsEngine.Modelo2D
         }
 
         /// <summary>
+        /// Status of the animation
+        /// </summary>
+        /// <returns></returns>
+        public bool IsPlaying()
+        {
+            return running;
+        }
+
+        /// <summary>
         /// Sets the index of the current frame.
         /// </summary>
         /// <param name="frameIndex">Index of the frame.</param>

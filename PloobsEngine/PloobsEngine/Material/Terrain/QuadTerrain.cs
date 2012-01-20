@@ -403,7 +403,7 @@ namespace PloobsEngine.Material
                         normalVector = normX + normY;
                         normalVector.Normalize();
 
-                        Vector3 texVector;
+                        Vector3 texVector = new Vector3();
                         texVector.X = (normalVector.X + 1) / 2f;
                         texVector.Y = (normalVector.Y + 1) / 2f;
                         texVector.Z = (normalVector.Z + 1) / 2f;
@@ -419,7 +419,7 @@ namespace PloobsEngine.Material
                         normalVector.Normalize();
 
 
-                        Vector3 texVector;
+                        Vector3 texVector = new Vector3();
                         texVector.X = (normalVector.X + 1) / 2f;
                         texVector.Y = (normalVector.Y + 1) / 2f;
                         texVector.Z = (normalVector.Z + 1) / 2f;
@@ -767,7 +767,11 @@ namespace PloobsEngine.Material
                     }
                     else
                     {
+#if WINDOWS
                         System.Diagnostics.Debug.Fail("debug problem1");
+#else
+                        throw new Exception("debug problem1");
+#endif
                     }
                 }
                 else
@@ -794,7 +798,11 @@ namespace PloobsEngine.Material
                     }
                     else
                     {
+#if WINDOWS
                         System.Diagnostics.Debug.Fail("debug problem2");
+#else
+                        throw new Exception("debug problem2");
+#endif
                     }
                 }
 

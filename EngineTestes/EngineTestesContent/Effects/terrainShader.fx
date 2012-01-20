@@ -194,11 +194,11 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 		}
 	}
 	 
-    sunlightVector = normalize(sunlightVector);    
+    float lv = normalize(sunlightVector);    
 	float3 lightLevel;
-	lightLevel[0] = max(dot(Normal, sunlightVector), 0)*lightColour[0]*2+ambientColour[0];
-	lightLevel[1] = max(dot(Normal, sunlightVector), 0)*lightColour[1]*2+ambientColour[1];
-	lightLevel[2] = max(dot(Normal, sunlightVector), 0)*lightColour[2]*2+ambientColour[2];
+	lightLevel[0] = max(dot(Normal, lv), 0)*lightColour[0]*2+ambientColour[0];
+	lightLevel[1] = max(dot(Normal, lv), 0)*lightColour[1]*2+ambientColour[1];
+	lightLevel[2] = max(dot(Normal, lv), 0)*lightColour[2]*2+ambientColour[2];
 	
     float3 blender = tex2D(BlendSampler, input.TextureUV);
     
