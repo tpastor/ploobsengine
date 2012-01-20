@@ -70,8 +70,7 @@ namespace ProjectTemplate
             
             Picking pick = new Picking(this);
             pick.OnPickedLeftButton += new OnPicked(pick_OnPickedLeftButton);
-
-            wh = new WaypointHandler();
+                        
             {
                 SimpleModel simpleModel = new SimpleModel(factory, "Model//block");
                 simpleModel.SetTexture(factory.CreateTexture2DColor(1, 1, Color.White), TextureType.DIFFUSE);                

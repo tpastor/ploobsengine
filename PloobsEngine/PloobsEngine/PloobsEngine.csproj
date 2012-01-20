@@ -144,6 +144,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AI\Behaviors\Action.cs" />
+    <Compile Include="AI\Behaviors\Composite.cs" />
+    <Compile Include="AI\Behaviors\Condition.cs" />
+    <Compile Include="AI\Behaviors\Deactivator.cs" />
+    <Compile Include="AI\Behaviors\Decorator.cs" />
+    <Compile Include="AI\Behaviors\Entity.cs" />
+    <Compile Include="AI\Behaviors\ForceFailure.cs" />
+    <Compile Include="AI\Behaviors\ForceSuccess.cs" />
+    <Compile Include="AI\Behaviors\Limiter.cs" />
+    <Compile Include="AI\Behaviors\Node.cs" />
+    <Compile Include="AI\Behaviors\Parallel.cs" />
+    <Compile Include="AI\Behaviors\ProbabilitySelector.cs" />
+    <Compile Include="AI\Behaviors\Repeater.cs" />
+    <Compile Include="AI\Behaviors\Selector.cs" />
+    <Compile Include="AI\Behaviors\Sequence.cs" />
+    <Compile Include="AI\Behaviors\Task.cs" />
+    <Compile Include="AI\Behaviors\Wait.cs" />
+    <Compile Include="AI\Behaviors\Watch.cs" />
     <Compile Include="AI\FSM\IState.cs" />
     <Compile Include="AI\FSM\StateMachine.cs" />
     <Compile Include="AI\GeneticAlgoritms\GA.cs" />
