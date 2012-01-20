@@ -73,7 +73,9 @@ namespace PloobsEngine.Physics.Bepu
         {
             get
             {
-                return characterController.Position;
+                Vector3 pos = characterController.Position;
+                pos.Y = this.YAlignement;
+                return pos;
             }
             set
             {
