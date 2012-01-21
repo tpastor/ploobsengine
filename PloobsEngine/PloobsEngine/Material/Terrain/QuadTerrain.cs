@@ -87,9 +87,7 @@ namespace PloobsEngine.Material
             allIndices = null;
             allVertices = null;
             if(normalTexture!=null)
-                normalTexture.Dispose();
-
-            TerrainShader.Dispose();
+                normalTexture.Dispose();            
          }
 
         ////////////////////////////////////////////////////////////////////
@@ -114,79 +112,11 @@ namespace PloobsEngine.Material
         private VertexBuffer[] allVBs;
         private DynamicIndexBuffer[] allIBs;
 
-        //A reference to the shader
-        internal Effect TerrainShader;
-
+         
         ////////////////////////////////////////////////////////////////////
-        //Various Shader parameters.
-        public Texture2D textureDetail
-        {
-            set { TerrainShader.Parameters["detailTexture"].SetValue(value); }
-        }
-        public Texture2D textureBlend
-        {
-            set { TerrainShader.Parameters["BlendTexture"].SetValue(value); }
-        }
-        public Texture2D textureRed
-        {
-            set { TerrainShader.Parameters["RTexture"].SetValue(value); }
-        }
-        public Texture2D textureGreen
-        {
-            set { TerrainShader.Parameters["GTexture"].SetValue(value); }
-        }
-        public Texture2D textureBlue
-        {
-            set { TerrainShader.Parameters["BTexture"].SetValue(value); }
-        }
-        public Texture2D textureBlack
-        {
-            set { TerrainShader.Parameters["BaseTexture"].SetValue(value); }
-        }
+        
 
-        public float diffuseScale
-        {
-            set { TerrainShader.Parameters["diffuseScale"].SetValue(value); }
-        }
-        public float detailScale
-        {
-            set { TerrainShader.Parameters["detailScale"].SetValue(value); }
-        }
-        public float detailMapStrength
-        {
-            set { TerrainShader.Parameters["detailMapStrength"].SetValue(value); }
-        }
-
-        ////////////////////////////////////////////////////////////////////
-        //These shader parameters are more dynamic, so they function through a reference.
-        //This means they can be set every frame without noticable slowdown.
-        //Sun direction needs to be converted to work correctly in the shader, because the normal maps use Blue as the Up vector.
-        private EffectParameter sunDir;
-        private Vector3 sunlightRealVector;
-        private float tempZ;
-        public Vector3 sunlightVector
-        {
-
-            set
-            {
-                sunlightRealVector = value;
-                tempZ = sunlightRealVector.Z;
-                sunlightRealVector.Z = sunlightRealVector.Y;
-                sunlightRealVector.Y = tempZ;
-                sunDir.SetValue(sunlightRealVector);
-            }
-        }
-        private EffectParameter sunCol;
-        public Vector3 sunlightColour
-        {
-            set { sunCol.SetValue(value); }
-        }
-        private EffectParameter ambCol;
-        public Vector3 ambientColour
-        {
-            set { ambCol.SetValue(value); }
-        }
-
+        
 
         //These are taken from the heightmap, and are pretty self explanatory.
         public int TerrainWidth
@@ -253,7 +183,7 @@ namespace PloobsEngine.Material
         }
         private Texture2D normalTexture;
 
-
+        internal GraphicFactory factory;
 
         /// <summary>
         /// Initialises a complete QuadTerrain.
@@ -268,16 +198,14 @@ namespace PloobsEngine.Material
         /// <param name="height">The Y scale to multiply the terrain by.</param>
         public QuadTerrain(GraphicFactory factory ,Texture2D heightMap, int squareSize, int vertexBufferSize, float scale, float height)
         {
-            TerrainShader= factory.GetEffect("terrainShader",false,true);
+            this.factory = factory;
             //I'm not entirely sure what this does, but it is used in updateTerrain.
             //I think it is used to prevent the Vertex Buffers being filled during the initialisation UpdateTerrain call.
             first = true;
 
             LODHeightImpact = 1.0f;                        
              
-            sunDir = TerrainShader.Parameters["sunlightVector"];
-            sunCol = TerrainShader.Parameters["lightColour"];
-            ambCol = TerrainShader.Parameters["ambientColour"];
+            
 
             //Set terrain width and height from heightmap.
             terrainHeight = heightMap.Height;
@@ -542,11 +470,7 @@ namespace PloobsEngine.Material
             normalTexture.SetData<Color>(normalData);
 
             factory.MipMapTexture(ref normalTexture);            
-
-            //Add the normal texture to the shader
-            TerrainShader.Parameters["NormalTexture"].SetValue(normalTexture);
-            //Set the Global Scale (used for the normal and blending textures) value in the shader.
-            TerrainShader.Parameters["globalScale"].SetValue(Scale * HeightMap.Height);
+                       
 
             ////////////////////////////////////////////////////////////
             //Add to vertex buffer
@@ -689,9 +613,8 @@ namespace PloobsEngine.Material
             {
                 allIBs[l] = factory.CreateDynamicIndexBuffer(IndexElementSize.ThirtyTwoBits, (allVertices[l].Length), BufferUsage.WriteOnly);
             }
-
         }
-
+        
         //////////////////////////////////////////////
         /// <summary>
         /// This function creates a quad nodes four component children. These child nodes then have this function applied to them. 
@@ -965,6 +888,10 @@ namespace PloobsEngine.Material
 #endif
 
 
+        /// <summary>
+        /// Gets the height map.
+        /// </summary>
+        /// <returns></returns>
         public float[,] getHeightMap()
         {
             float[,] map = new float[terrainWidth, terrainHeight];
@@ -1596,21 +1523,20 @@ namespace PloobsEngine.Material
         /// <summary>
         /// Draws the terrain. Uses the Terrain Shader to draw the indices which should have been compiled and sorted during the update call.
         /// </summary>
+        /// <param name="TerrainShader">The terrain shader.</param>
         /// <param name="device">Current graphics device to draw to.</param>
-        internal void DrawTerrain(GraphicsDevice device)
+        internal void DrawTerrain(Effect TerrainShader, GraphicsDevice device)
         {
 
 #if DEBUG
             debugTimer.Start();
-#endif
+#endif           
             
-            TerrainShader.CurrentTechnique = TerrainShader.Techniques["Technique1"];
-            TerrainShader.CurrentTechnique.Passes[0].Apply();
-
             /////////////////////////////////////////////////
             //Draw the terrain for the compiled index and vertex buffers.
             for (int i = 0; i < allVertices.Length; i++)
             {
+                
                 device.Indices = allIBs[i];
                 device.SetVertexBuffer(allVBs[i]);
                 if (renderedindices[i] > 0)

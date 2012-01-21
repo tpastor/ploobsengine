@@ -4,6 +4,11 @@ float4x4 World;
 float4x4 View;
 float4x4 Projection;
 
+float specularIntensity = 0;
+float specularPower = 0;
+float id = 0;
+
+
 //////////////////////////////////////////////////////
 //The direction vector the terrain will be lit from
 float3 sunlightVector = float3(.5,.5,.8);
@@ -131,6 +136,15 @@ struct VertexShaderOutput
     float4 Position : POSITION0;
     float2 TextureUV  : TEXCOORD0;
 };
+
+struct VertexShaderOutput2
+{
+    float4 Position : POSITION0;
+    float2 TextureUV  : TEXCOORD0;
+	float2 Depth : TEXCOORD1; 
+};
+   
+
 //////////////////////////////////////////////////////
 //VERTEX SHADER
 VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
@@ -143,6 +157,23 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
     output.Position = mul(viewPosition, Projection);
 	output.TextureUV[0] = input.Position.x/globalScale;
 	output.TextureUV[1] = input.Position.z/globalScale;
+	
+    return output;
+}
+
+VertexShaderOutput2 VertexShaderFunction2(VertexShaderInput input)
+{
+    VertexShaderOutput2 output;
+	
+	//Create vertex Position and UV Coordinates
+    float4 worldPosition = mul(input.Position, World);
+    float4 viewPosition = mul(worldPosition, View);
+    output.Position = mul(viewPosition, Projection);
+	output.TextureUV[0] = input.Position.x/globalScale;
+	output.TextureUV[1] = input.Position.z/globalScale;
+
+	output.Depth.x = output.Position.z;
+    output.Depth.y = output.Position.w;
 	
     return output;
 }
@@ -220,6 +251,99 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
     return Output;
 }
 
+
+
+/////////////////////
+
+struct BBPixelToFrame
+{
+    float4 Color : COLOR0;
+    float4 Normal : COLOR1;
+    float4 Depth : COLOR2;
+    float4 EXTRA1 : COLOR3;
+};
+
+BBPixelToFrame PixelShaderFunction2(VertexShaderOutput2 input) 
+{
+	BBPixelToFrame output;
+	//Get Global Normal from the full terrain normal map
+	float3 Normal = tex2D(NormalSampler, input.TextureUV);
+	Normal[0] -= .5;
+	Normal[1] -= .5;
+	Normal[2] -= .5;
+	Normal = normalize(Normal);
+	
+	
+	if(detailMapStrength>0)
+	{
+	
+		//Get Detail Normal from the detail map
+		float3 detailNormalMap = (tex2D(DetailSampler, input.TextureUV*100/detailScale));
+		detailNormalMap[0] -= .5;
+		detailNormalMap[1] -= .5;
+		detailNormalMap[2] -= .5;
+		//Multiply Detail Normal by detailMapStrength
+		detailNormalMap[0] = mul(detailNormalMap[0], detailMapStrength);
+		detailNormalMap[1] = mul(detailNormalMap[1], detailMapStrength);
+	
+		//Normalize detail Normal
+		detailNormalMap = normalize(detailNormalMap);
+		
+		if(HighQualityDetailMapping == true)
+		{
+			//Generate the Tangent Basis for the Detail Normal Map.
+			float3x3 tangentBasis;
+			
+			tangentBasis[0] = cross(Normal, float3(1,0,0));
+			tangentBasis[1] = cross(Normal, tangentBasis[0]);
+			tangentBasis[2] = Normal;
+			
+			detailNormalMap = detailNormalMap, detailMapStrength;
+		    
+			Normal = mul(detailNormalMap, tangentBasis);
+			Normal = normalize(Normal);
+		} 
+		else
+		{
+			Normal = normalize(Normal*2+detailNormalMap*detailMapStrength);
+		}
+	}	 
+    
+    float3 blender = tex2D(BlendSampler, input.TextureUV);
+    
+    //MultiTexturing
+    float RWeight = blender[0];
+    float GWeight = blender[1];
+    float BWeight = blender[2];    
+    float BaseWeight = 1-((RWeight+BWeight+GWeight));
+    
+    float3 RColour = tex2D(RSampler, input.TextureUV*100/diffuseScale);
+    float3 GColour = tex2D(GSampler, input.TextureUV*100/diffuseScale);
+    float3 BColour = tex2D(BSampler, input.TextureUV*100/diffuseScale);
+    float3 BaseColour = tex2D(BaseSampler, input.TextureUV*100/diffuseScale);
+    
+    float3 diffuse = (((RColour*RWeight)+(BColour*BWeight)+(GColour*GWeight)+(BaseColour*BaseWeight))/4);
+	
+
+	float nz = Normal.z;
+	Normal.z = Normal.y;
+	Normal.y = nz;
+	output.Normal.rgb = 0.5f * (Normal  + 1.0f);	    
+    output.Normal.a = specularPower;   
+
+	output.Color.rgb =  diffuse;
+	output.Color.a = specularIntensity;                                              
+	
+	output.EXTRA1 = float4(0,0,0,id);  
+	
+    
+    output.Depth = input.Depth.x / input.Depth.y;  
+		
+	
+    return output;
+}
+
+
 technique Technique1
 {
     pass Pass1
@@ -232,5 +356,21 @@ technique Technique1
 		
         VertexShader = compile vs_2_0 VertexShaderFunction();
         PixelShader = compile ps_2_0 PixelShaderFunction();
+    }
+}
+
+
+technique Technique2
+{
+    pass Pass1
+    {
+        // TODO: set renderstates here.
+        AlphaBlendEnable = FALSE;
+		ZEnable = TRUE;
+		CullMode = CW; 
+		
+		
+        VertexShader = compile vs_2_0 VertexShaderFunction2();
+        PixelShader = compile ps_2_0 PixelShaderFunction2();
     }
 }

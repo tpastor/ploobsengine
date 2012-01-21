@@ -105,6 +105,8 @@ namespace PloobsEngine.Material
         /// The type of the material.
         /// </value>
         MaterialType MaterialType { get; }
+
+#if !WINDOWS_PHONE && !REACH
         /// <summary>
         /// Gets or sets a value indicating whether this material is [Create shadow on others objects].
         /// </summary>
@@ -120,7 +122,7 @@ namespace PloobsEngine.Material
         /// 	<c>true</c> if this instance can appear of reflection/refraction; otherwise, <c>false</c>.
         /// </value>
         bool CanAppearOfReflectionRefraction { set; get; }
-
+#endif
         /// <summary>
         /// Gets or sets a value indicating whether this instance is visible.
         /// </summary>

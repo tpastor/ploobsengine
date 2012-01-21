@@ -13,18 +13,55 @@ namespace PloobsEngine.Material
 {
     public class ForwardTerrainMaterial : IMaterial
     {
+        Effect TerrainShader;
+
         public ForwardTerrainMaterial(QuadTerrain QuadTerrain,float lod = 3.5f)
         {
+            TerrainShader = QuadTerrain.factory.GetEffect("terrainShader", false, true);
             this.QuadTerrain = QuadTerrain;
             CanAppearOfReflectionRefraction = false;
             CanCreateShadow = false;
             IsVisible = true;            
             LOD = lod;
 
-            WorldMatrix = QuadTerrain.TerrainShader.Parameters["World"];
-            ViewMatrix = QuadTerrain.TerrainShader.Parameters["View"];
-            ProjectionMatrix = QuadTerrain.TerrainShader.Parameters["Projection"];
+            WorldMatrix = TerrainShader.Parameters["World"];
+            ViewMatrix = TerrainShader.Parameters["View"];
+            ProjectionMatrix = TerrainShader.Parameters["Projection"];
+            sunDir = TerrainShader.Parameters["sunlightVector"];
+            sunCol = TerrainShader.Parameters["lightColour"];
+            ambCol = TerrainShader.Parameters["ambientColour"];
         }
+
+        ////////////////////////////////////////////////////////////////////
+        //These shader parameters are more dynamic, so they function through a reference.
+        //This means they can be set every frame without noticable slowdown.
+        //Sun direction needs to be converted to work correctly in the shader, because the normal maps use Blue as the Up vector.
+        private EffectParameter sunDir;
+        private Vector3 sunlightRealVector;
+        private float tempZ;
+        public Vector3 sunlightVector
+        {
+
+            set
+            {
+                sunlightRealVector = value;
+                tempZ = sunlightRealVector.Z;
+                sunlightRealVector.Z = sunlightRealVector.Y;
+                sunlightRealVector.Y = tempZ;
+                sunDir.SetValue(sunlightRealVector);
+            }
+        }
+        private EffectParameter sunCol;
+        public Vector3 sunlightColour
+        {
+            set { sunCol.SetValue(value); }
+        }
+        private EffectParameter ambCol;
+        public Vector3 ambientColour
+        {
+            set { ambCol.SetValue(value); }
+        }
+
 
         EffectParameter WorldMatrix;
         EffectParameter ViewMatrix;
@@ -42,9 +79,51 @@ namespace PloobsEngine.Material
             get;
         }
 
+        //Various Shader parameters.
+        public Texture2D textureDetail
+        {
+            set { TerrainShader.Parameters["detailTexture"].SetValue(value); }
+        }
+        public Texture2D textureBlend
+        {
+            set { TerrainShader.Parameters["BlendTexture"].SetValue(value); }
+        }
+        public Texture2D textureRed
+        {
+            set { TerrainShader.Parameters["RTexture"].SetValue(value); }
+        }
+        public Texture2D textureGreen
+        {
+            set { TerrainShader.Parameters["GTexture"].SetValue(value); }
+        }
+        public Texture2D textureBlue
+        {
+            set { TerrainShader.Parameters["BTexture"].SetValue(value); }
+        }
+        public Texture2D textureBlack
+        {
+            set { TerrainShader.Parameters["BaseTexture"].SetValue(value); }
+        }
+
+        public float diffuseScale
+        {
+            set { TerrainShader.Parameters["diffuseScale"].SetValue(value); }
+        }
+        public float detailScale
+        {
+            set { TerrainShader.Parameters["detailScale"].SetValue(value); }
+        }
+        public float detailMapStrength
+        {
+            set { TerrainShader.Parameters["detailMapStrength"].SetValue(value); }
+        }
+
         public void Initialization(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, SceneControl.IObject obj)
         {
-            
+            //Add the normal texture to the shader
+            TerrainShader.Parameters["NormalTexture"].SetValue(QuadTerrain.globalNormalTexture);
+            //Set the Global Scale (used for the normal and blending textures) value in the shader.
+            TerrainShader.Parameters["globalScale"].SetValue(QuadTerrain.flatScale * QuadTerrain.TerrainHeight); 
         }
 
 
@@ -91,7 +170,11 @@ namespace PloobsEngine.Material
             ViewMatrix.SetValue(cam.View);
             ProjectionMatrix.SetValue(cam.Projection);
 
-            QuadTerrain.DrawTerrain(render.device);
+            TerrainShader.CurrentTechnique = TerrainShader.Techniques["Technique1"];
+            TerrainShader.CurrentTechnique.Passes[0].Apply();
+
+            QuadTerrain.DrawTerrain(TerrainShader, render.device);
+
             render.ResyncStates();
         }
 

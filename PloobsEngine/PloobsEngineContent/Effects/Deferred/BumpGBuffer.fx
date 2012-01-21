@@ -68,10 +68,10 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 }
 struct PixelShaderOutput
 {
-    half4 Color : COLOR0;
-    half4 Normal : COLOR1;
-    half4 Depth : COLOR2;
-    half4 EXTRA1 : COLOR3;
+    float4 Color : COLOR0;
+    float4 Normal : COLOR1;
+    float4 Depth : COLOR2;
+    float4 EXTRA1 : COLOR3;
 };
 
 PixelShaderOutput PixelShaderFunction(VertexShaderOutput input)
