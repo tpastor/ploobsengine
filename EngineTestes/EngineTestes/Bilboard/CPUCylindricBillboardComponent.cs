@@ -9,7 +9,7 @@ using PloobsEngine.Engine;
 
 namespace EngineTestes.Bilboard
 {
-    public class CylindricBillboardComponent : IComponent
+    public class CPUCylindricBillboardComponent : IComponent
     {
         public override ComponentType ComponentType
         {

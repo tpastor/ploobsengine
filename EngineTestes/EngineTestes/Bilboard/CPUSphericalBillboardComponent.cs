@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace EngineTestes.Bilboard
 {
-    public class BillboardComponent : IComponent
+    public class CPUSphericalBillboardComponent : IComponent
     {
         public override ComponentType ComponentType
         {
