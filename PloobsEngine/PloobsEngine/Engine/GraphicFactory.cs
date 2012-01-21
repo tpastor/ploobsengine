@@ -390,9 +390,13 @@ namespace PloobsEngine.Engine
             return render.PopRenderTargetAsSingleRenderTarget2D();
         }
 
+        /// <summary>
+        /// Generate mipmap for the given texture
+        /// </summary>
+        /// <param name="texture"></param>
         public void MipMapTexture(ref Texture2D texture)
         {
-            RenderTarget2D cNewRenderTarget = CreateRenderTarget(texture.Width, texture.Height, SurfaceFormat.Color, true, DepthFormat.None, ginfo.MultiSample);
+            RenderTarget2D cNewRenderTarget = CreateRenderTarget(texture.Width, texture.Height, texture.Format, true, DepthFormat.None, ginfo.MultiSample);
             render.Clear(Color.Black, ClearOptions.Target);
             render.PushRenderTarget(cNewRenderTarget);
 
@@ -403,6 +407,26 @@ namespace PloobsEngine.Engine
             render.PopRenderTarget();
             render.ResyncStates();
             texture = cNewRenderTarget;
+        }
+
+        /// <summary>
+        /// Mipmaps texture passed.
+        /// </summary>
+        /// <param name="texture">The texture.</param>
+        /// <returns></returns>
+        public Texture2D MipMapTexture(Texture2D texture)
+        {
+            RenderTarget2D cNewRenderTarget = CreateRenderTarget(texture.Width, texture.Height, texture.Format, true, DepthFormat.None, ginfo.MultiSample);
+            render.Clear(Color.Black, ClearOptions.Target);
+            render.PushRenderTarget(cNewRenderTarget);
+
+            SpriteBatch.Begin();
+            SpriteBatch.Draw(texture, Vector2.Zero, Color.White);
+            SpriteBatch.End();
+
+            render.PopRenderTarget();
+            render.ResyncStates();
+            return cNewRenderTarget;
         }
 
         /// <summary>

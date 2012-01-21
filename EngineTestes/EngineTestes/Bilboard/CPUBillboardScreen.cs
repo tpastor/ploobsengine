@@ -27,11 +27,11 @@ namespace EngineTestes
             renderTech = new ForwardRenderTecnich(desc);
         }
 
-        BillboardComponent BillboardComponent;
+        CPUSphericalBillboardComponent BillboardComponent;
         protected override void InitScreen(GraphicInfo GraphicInfo, EngineStuff engine)
         {
             base.InitScreen(GraphicInfo, engine);
-            BillboardComponent = new BillboardComponent();
+            BillboardComponent = new CPUSphericalBillboardComponent();
             engine.AddComponent(BillboardComponent);
         }
 

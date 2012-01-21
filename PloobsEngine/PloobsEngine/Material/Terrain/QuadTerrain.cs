@@ -539,8 +539,7 @@ namespace PloobsEngine.Material
             //Generate the normal texture from the normal data generated a second ago.
             normalTexture.SetData<Color>(normalData);
 
-            factory.MipMapTexture(ref normalTexture);
-            //normalTexture.GenerateMipMaps(TextureFilter.Anisotropic);
+            factory.MipMapTexture(ref normalTexture);            
 
             //Add the normal texture to the shader
             TerrainShader.Parameters["NormalTexture"].SetValue(normalTexture);
