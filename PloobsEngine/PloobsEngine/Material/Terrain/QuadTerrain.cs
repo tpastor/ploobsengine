@@ -253,16 +253,12 @@ namespace PloobsEngine.Material
         }
         private Texture2D normalTexture;
 
-
-
-
-
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //This is the Constructor method. As you might have guessed, it constructs a quad terrain.
         /// <summary>
-        /// Initialises a complete QuadTerrain. 
+        /// Initialises a complete QuadTerrain.
+        ///This is the Constructor method. As you might have guessed, it constructs a quad terrain.
         /// Quasar.
         /// </summary>
+        /// <param name="factory">The factory.</param>
         /// <param name="heightMap">The Texture2D to use as a heightmap. Must have square dimensions of (2^n)+1, where n is an integer.</param>
         /// <param name="squareSize">The edge size of each individual LOD square. Lower values increase CPU Load, decrease GPU Load, and increase Loading times. Must be (2^n)+1, and larger than 5.</param>
         /// <param name="vertexBufferSize">The size of Vertex buffer to use. Lower Values increase the number of draw calls by splitting the terrain into several Vertex Buffers. Must be (2^n)+1, and larger than squareSize.</param>
@@ -270,7 +266,7 @@ namespace PloobsEngine.Material
         /// <param name="height">The Y scale to multiply the terrain by.</param>
         public QuadTerrain(GraphicFactory factory ,Texture2D heightMap, int squareSize, int vertexBufferSize, float scale, float height)
         {
-            TerrainShader= factory.GetEffect("Effects/TerrainShader");
+            TerrainShader= factory.GetEffect("terrainShader",false,true);
             //I'm not entirely sure what this does, but it is used in updateTerrain.
             //I think it is used to prevent the Vertex Buffers being filled during the initialisation UpdateTerrain call.
             first = true;
@@ -542,6 +538,8 @@ namespace PloobsEngine.Material
             }
             //Generate the normal texture from the normal data generated a second ago.
             normalTexture.SetData<Color>(normalData);
+
+            factory.MipMapTexture(ref normalTexture);
             //normalTexture.GenerateMipMaps(TextureFilter.Anisotropic);
 
             //Add the normal texture to the shader
@@ -964,6 +962,20 @@ namespace PloobsEngine.Material
         /// </summary>
         public long elapsedTicks6;
 #endif
+
+
+        public float[,] getHeightMap()
+        {
+            float[,] map = new float[terrainWidth, terrainHeight];
+            for (int y = 0; y < terrainHeight; y++)
+            {
+                for (int x = 0; x < terrainWidth; x++)
+                {
+                    map[x, y] = getHeight(x, y);
+                }
+            }
+            return map;
+        }
 
         /// <summary>
         /// The terrains update method. Used to generate the index array that will be used to render the terrain.
@@ -1578,6 +1590,7 @@ namespace PloobsEngine.Material
             }
         }
 
+        
         ///////////////////////////////////////////////////////
         /// <summary>
         /// Draws the terrain. Uses the Terrain Shader to draw the indices which should have been compiled and sorted during the update call.
@@ -1589,6 +1602,7 @@ namespace PloobsEngine.Material
 #if DEBUG
             debugTimer.Start();
 #endif
+            
             TerrainShader.CurrentTechnique = TerrainShader.Techniques["Technique1"];
             TerrainShader.CurrentTechnique.Passes[0].Apply();
 

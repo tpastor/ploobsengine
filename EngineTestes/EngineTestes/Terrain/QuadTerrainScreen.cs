@@ -50,11 +50,11 @@ namespace EngineTestes
             CameraFirstPerson CameraFirstPerson = new CameraFirstPerson(true, GraphicInfo);
 
             Texture2D tMap = factory.GetTexture2D("Textures//hmap_10243");
-            QuadTerrain q = new PloobsEngine.Material.QuadTerrain(factory, tMap,33, 513, 10, 3f);
+            QuadTerrain q = new PloobsEngine.Material.QuadTerrain(factory, tMap,65, 1025, 1, 1f);
 
             //Set various terrain stats.
             q.diffuseScale = q.flatScale / 4;
-            q.detailScale = q.flatScale / 100;
+            q.detailScale = q.flatScale / 10;
             q.detailMapStrength = 2;
             q.textureBlend = factory.GetTexture2D("Textures//hmap_256blend");
             q.textureDetail = factory.GetTexture2D("Textures//coolgrass2DOT3");
@@ -62,11 +62,12 @@ namespace EngineTestes
             q.textureGreen = factory.GetTexture2D("Textures//TexG");
             q.textureBlue = factory.GetTexture2D("Textures//TexB");
             q.textureBlack = factory.GetTexture2D("Textures//TexBase");
+            
             q.sunlightVector = Vector3.Normalize(new Vector3(.5f, .5f, .8f));
             q.sunlightColour = new Vector3(2.3f, 2f, 1.8f);
 
             ForwardTerrainMaterial mat = new ForwardTerrainMaterial(q);
-            TerrainObject to = new TerrainObject(factory,Vector3.Zero, Matrix.Identity, q.HeightStore ,MaterialDescription.DefaultBepuMaterial());            
+            TerrainObject to = new TerrainObject(factory,Vector3.Zero, Matrix.Identity, q.getHeightMap() ,MaterialDescription.DefaultBepuMaterial());            
                         
             IObject obj3 = new IObject(mat, null, to);
             this.World.AddObject(obj3);
@@ -92,7 +93,9 @@ namespace EngineTestes
             this.World.AddLight(ld5);
             #endregion
 
+
             this.World.CameraManager.AddCamera(CameraFirstPerson);
+            
 
             SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//cubemap");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);

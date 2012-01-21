@@ -18,9 +18,8 @@ namespace PloobsEngine.Material
             this.QuadTerrain = QuadTerrain;
             CanAppearOfReflectionRefraction = false;
             CanCreateShadow = false;
-            IsVisible = true;
-            this.Shader = null;
-            LOD = 3.5f;
+            IsVisible = true;            
+            LOD = 4f;
 
             WorldMatrix = QuadTerrain.TerrainShader.Parameters["World"];
             ViewMatrix = QuadTerrain.TerrainShader.Parameters["View"];

@@ -46,6 +46,7 @@
     <Optimize>true</Optimize>
     <DefineConstants>TRACE;XBOX;XBOX360</DefineConstants>
     <XnaCompressContent>true</XnaCompressContent>
+    <LangVersion>default</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Xbox 360' ">
     <OutputPath>bin\Xbox 360\Debug</OutputPath>
@@ -133,6 +134,11 @@
     <Compile Include="Commands\IReciever.cs" />
     <Compile Include="Components\ComponentManager.cs" />
     <Compile Include="Components\IComponent.cs" />
+    <Compile Include="ResourcesPC.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourcesPC.resx</DependentUpon>
+    </Compile>
     <Compile Include="DataStructure\QuadTree.cs" />
     <Compile Include="Engine\ContentCompiler\ContentBuilder.cs" />
     <Compile Include="Engine\ContentCompiler\ErrorLogger.cs" />
@@ -399,10 +405,10 @@
     <Compile Include="Modelo\ModelBuilderHelper.cs" />
     <Compile Include="Modelo\SimpleModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources.Designer.cs">
+    <Compile Include="ResourcesXbox.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
+      <DependentUpon>ResourcesXbox.resx</DependentUpon>
     </Compile>
     <Compile Include="SceneControl\IContentManager.cs" />
     <Compile Include="SceneControl\IScreen.cs" />
@@ -511,127 +517,17 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources.resx">
+    <EmbeddedResource Include="ResourcesPC.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <LastGenOutput>ResourcesPC.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResourcesXbox.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourcesXbox.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <None Include="bin\Windows Phone\Debug\EnginePhoneContent\Models\block.xnb" />
-    <None Include="bin\Windows Phone\Debug\EnginePhoneContent\Models\dome.xnb" />
-    <None Include="bin\Windows Phone\Debug\EnginePhoneContent\Models\Dsphere.xnb" />
-    <None Include="bin\Windows Phone\Debug\EnginePhoneContent\Models\sphere.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\AllBuffer.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\AnimatedBillboard.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\AntiAliasing.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\AntiAliasingtabulastalker.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\BlackWhite.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\BlinkGBuffer.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\blur.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\BumpGBuffer.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\cilBilboard.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\cilBilboardForward.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\ClearGBuffer.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\clippingPlane.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\colorCorrection.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\Combine.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\CombineFinal.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\contrast.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\CopyToScreen.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\CuingDepth.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\DeferredAA.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\depth.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\DirectionalLight.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\DownScaling.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\Embossed.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\EMSHADER.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\Fog.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\FULLGPUBlur.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\gamma.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\gblur.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\gcpublur.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\glow.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\glowPost.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\GrassBillboard.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\Heat.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\HSV.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\InstancedBilboard.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\InstanceRenderGBuffer.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\Inverse.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\LineDetection.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\Luminance.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\Night.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\noise.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\opacity.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\PlanarOriented.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\PointLight.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\Posterize.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\RadialBlur.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\Reflection.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\RenderGBuffer.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\RenderGlowBuffer.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\RestoreDepth.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\Ripple.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\Saturate.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\saturation.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\Scatter.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\ShadowDepth.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\ShadowDirectional.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\ShadowMap.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\ShadowPoint.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\ShadowSpot.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\SimpleAlphaDraw.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\SpecularBumpBuffer.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\SpecularMapBuffer.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\SphericalBillboard.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\SpotLight.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\ssaoblur.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\SSAOBlur1.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\SSAOBlur2.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\ssaofinal.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\SSAOPOST.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\Sun.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\Terrain.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\Threshold.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\Tilling.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\ToBlack.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\ToneHdr.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\ToneMapping.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\toon1.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\TransparentEffect.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\Vidro.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\Water.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\WaterComplete.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\Deferred\wiggle.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\reductionEffect.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\resolveShadowsEffect.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\ShadowDirectionalCascade.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\ShadowMap.xnb" />
-    <None Include="bin\x86\Debug\Content\Effects\skybox.xnb" />
-    <None Include="bin\x86\Debug\Content\Font\ConsoleFont.xnb" />
-    <None Include="bin\x86\Debug\Content\Models\block.xnb" />
-    <None Include="bin\x86\Debug\Content\Models\dome.xnb" />
-    <None Include="bin\x86\Debug\Content\Models\Dsphere.xnb" />
-    <None Include="bin\x86\Debug\Content\Models\sphere.xnb" />
-    <None Include="bin\x86\Debug\Content\Textures\checker.xnb" />
-    <None Include="bin\x86\Debug\Content\Textures\explosion.xnb" />
-    <None Include="bin\x86\Debug\Content\Textures\fire.xnb" />
-    <None Include="bin\x86\Debug\Content\Textures\flare.xnb" />
-    <None Include="bin\x86\Debug\Content\Textures\noise_tex6.xnb" />
-    <None Include="bin\x86\Debug\Content\Textures\normal.xnb" />
-    <None Include="bin\x86\Debug\Content\Textures\random.xnb" />
-    <None Include="bin\x86\Debug\Content\Textures\RANDOMNORMAL.xnb" />
-    <None Include="bin\x86\Debug\Content\Textures\smoke.xnb" />
-    <None Include="bin\x86\Debug\Content\Textures\Sunset.xnb" />
-    <None Include="bin\x86\Debug\Content\Textures\teste.xnb" />
-    <None Include="bin\x86\Debug\Content\Textures\Toon.xnb" />
-    <None Include="bin\x86\Debug\Content\Textures\wave0.xnb" />
-    <None Include="bin\x86\Debug\Content\Textures\wave1.xnb" />
-    <None Include="bin\x86\Debug\Content\Textures\waves2.xnb" />
-    <None Include="bin\x86\Debug\Content\Textures\white.xnb" />
-    <None Include="bin\x86\Release\Content\Effects\Deferred\HSV.xnb" />
-    <None Include="bin\x86\Release\Content\Effects\Deferred\MotionBlur.xnb" />
     <None Include="GameThumbnail.png">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
     </None>

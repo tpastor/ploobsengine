@@ -53,7 +53,7 @@ namespace PloobsEngine.SceneControl
 #endif
         {
 #if XBOX360
-            cmanagerInternal = new ResourceContentManager(game.Services, Resources.ResourceManager);
+            cmanagerInternal = new ResourceContentManager(game.Services, ResourcesXbox.ResourceManager);
 #elif REACH 
             cmanagerInternal = new ResourceContentManager(game.Services, PloobsEngineReach.Resource2.ResourceManager);
 #elif WINDOWS_PHONE && !SILVER
@@ -61,7 +61,7 @@ namespace PloobsEngine.SceneControl
 #elif SILVER
             cmanagerInternal = new ResourceContentManager(ContentManager.ServiceProvider, Resource3.ResourceManager);
 #else
-            cmanagerInternal = new ResourceContentManager(game.Services, Resources.ResourceManager);
+            cmanagerInternal = new ResourceContentManager(game.Services, ResourcesPC.ResourceManager);
      
 #endif
 

@@ -22,14 +22,14 @@ namespace PloobsEngine {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    internal class ResourcesPC {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal ResourcesPC() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace PloobsEngine {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PloobsEngine.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PloobsEngine.ResourcesPC", typeof(ResourcesPC).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -109,13 +109,6 @@ namespace PloobsEngine {
             }
         }
         
-        internal static byte[] block1 {
-            get {
-                object obj = ResourceManager.GetObject("block1", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
         internal static byte[] blur {
             get {
                 object obj = ResourceManager.GetObject("blur", resourceCulture);
@@ -126,6 +119,13 @@ namespace PloobsEngine {
         internal static byte[] BumpGBuffer {
             get {
                 object obj = ResourceManager.GetObject("BumpGBuffer", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        internal static byte[] ByPassEffect {
+            get {
+                object obj = ResourceManager.GetObject("ByPassEffect", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -165,6 +165,13 @@ namespace PloobsEngine {
             }
         }
         
+        internal static byte[] color_map {
+            get {
+                object obj = ResourceManager.GetObject("color_map", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
         internal static byte[] colorCorrection {
             get {
                 object obj = ResourceManager.GetObject("colorCorrection", resourceCulture);
@@ -189,13 +196,6 @@ namespace PloobsEngine {
         internal static byte[] ConsoleFont {
             get {
                 object obj = ResourceManager.GetObject("ConsoleFont", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        internal static byte[] ConsoleFont1 {
-            get {
-                object obj = ResourceManager.GetObject("ConsoleFont1", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -228,9 +228,16 @@ namespace PloobsEngine {
             }
         }
         
-        internal static byte[] depth {
+        internal static byte[] Depth {
             get {
-                object obj = ResourceManager.GetObject("depth", resourceCulture);
+                object obj = ResourceManager.GetObject("Depth", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        internal static byte[] depth1 {
+            get {
+                object obj = ResourceManager.GetObject("depth1", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -249,13 +256,6 @@ namespace PloobsEngine {
             }
         }
         
-        internal static byte[] dome1 {
-            get {
-                object obj = ResourceManager.GetObject("dome1", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
         internal static byte[] DownScaling {
             get {
                 object obj = ResourceManager.GetObject("DownScaling", resourceCulture);
@@ -266,13 +266,6 @@ namespace PloobsEngine {
         internal static byte[] Dsphere {
             get {
                 object obj = ResourceManager.GetObject("Dsphere", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        internal static byte[] Dsphere1 {
-            get {
-                object obj = ResourceManager.GetObject("Dsphere1", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -329,6 +322,13 @@ namespace PloobsEngine {
         internal static byte[] gamma {
             get {
                 object obj = ResourceManager.GetObject("gamma", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        internal static byte[] GaussianBlur {
+            get {
+                object obj = ResourceManager.GetObject("GaussianBlur", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -459,6 +459,20 @@ namespace PloobsEngine {
             }
         }
         
+        internal static byte[] ParticleEffect {
+            get {
+                object obj = ResourceManager.GetObject("ParticleEffect", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        internal static byte[] particles {
+            get {
+                object obj = ResourceManager.GetObject("particles", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
         internal static byte[] PlanarOriented {
             get {
                 object obj = ResourceManager.GetObject("PlanarOriented", resourceCulture);
@@ -546,6 +560,13 @@ namespace PloobsEngine {
         internal static byte[] Ripple {
             get {
                 object obj = ResourceManager.GetObject("Ripple", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        internal static byte[] RoundLine {
+            get {
+                object obj = ResourceManager.GetObject("RoundLine", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -662,13 +683,6 @@ namespace PloobsEngine {
             }
         }
         
-        internal static byte[] sphere1 {
-            get {
-                object obj = ResourceManager.GetObject("sphere1", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
         internal static byte[] SphericalBillboard {
             get {
                 object obj = ResourceManager.GetObject("SphericalBillboard", resourceCulture);
@@ -735,6 +749,13 @@ namespace PloobsEngine {
         internal static byte[] Terrain {
             get {
                 object obj = ResourceManager.GetObject("Terrain", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        internal static byte[] terrainShader {
+            get {
+                object obj = ResourceManager.GetObject("terrainShader", resourceCulture);
                 return ((byte[])(obj));
             }
         }
