@@ -13,13 +13,13 @@ namespace PloobsEngine.Material
 {
     public class ForwardTerrainMaterial : IMaterial
     {
-        public ForwardTerrainMaterial(QuadTerrain QuadTerrain)
+        public ForwardTerrainMaterial(QuadTerrain QuadTerrain,float lod = 3.5f)
         {
             this.QuadTerrain = QuadTerrain;
             CanAppearOfReflectionRefraction = false;
             CanCreateShadow = false;
             IsVisible = true;            
-            LOD = 4f;
+            LOD = lod;
 
             WorldMatrix = QuadTerrain.TerrainShader.Parameters["World"];
             ViewMatrix = QuadTerrain.TerrainShader.Parameters["View"];
