@@ -161,9 +161,9 @@
     <Compile Include="Animation\ForwardAnimatedScreen.cs" />
     <Compile Include="BilboardsSamples\BilboardScreen.cs" />
     <Compile Include="Bilboard\Bilboard3D.cs" />
-    <Compile Include="Bilboard\BillboardComponent.cs" />
+    <Compile Include="Bilboard\CPUSphericalBillboardComponent.cs" />
     <Compile Include="Bilboard\CPUBillboardScreen.cs" />
-    <Compile Include="Bilboard\CylindricBillboardComponent.cs" />
+    <Compile Include="Bilboard\CPUCylindricBillboardComponent.cs" />
     <Compile Include="Bolt\BoltObject.cs" />
     <Compile Include="Bolt\BoltSample.cs" />
     <Compile Include="Bolt\BoltShader.cs" />

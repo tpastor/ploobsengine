@@ -42,9 +42,9 @@ sampler_state
 {
   Texture = <BlendTexture>;
   MipFilter = LINEAR;
-  MinFilter = LINEAR;
-  MagFilter = LINEAR;
-  MaxAnisotropy = 2;
+  MinFilter = anisotropic;
+  MagFilter = anisotropic;
+  MaxAnisotropy = 4;
   AddressU = wrap; 
   AddressV = wrap;
 };
@@ -53,8 +53,8 @@ sampler_state
 {
   Texture = <NormalTexture>;
   MipFilter = LINEAR;
-  MinFilter = LINEAR;
-  MagFilter = LINEAR;
+  MinFilter = anisotropic;
+  MagFilter = anisotropic;
   MaxAnisotropy = 2;
   AddressU = wrap; 
   AddressV = wrap;
@@ -66,9 +66,9 @@ sampler_state
 {
   Texture = <RTexture>;
   MipFilter = LINEAR;
-  MinFilter = LINEAR;
-  MagFilter = LINEAR;
-  MaxAnisotropy = 2;
+  MinFilter = anisotropic;
+  MagFilter = anisotropic;
+  MaxAnisotropy = 4;
   AddressU = wrap; 
   AddressV = wrap;
 };
@@ -77,9 +77,9 @@ sampler_state
 {
   Texture = <GTexture>;
   MipFilter = LINEAR;
-  MinFilter = LINEAR;
-  MagFilter = LINEAR;
-  MaxAnisotropy = 2;
+  MinFilter = anisotropic;
+  MagFilter = anisotropic;
+  MaxAnisotropy = 4;
   AddressU = wrap; 
   AddressV = wrap;
 };
@@ -99,9 +99,9 @@ sampler_state
 {
   Texture = <BaseTexture>;
   MipFilter = LINEAR;
-  MinFilter = LINEAR;
-  MagFilter = LINEAR;
-  MaxAnisotropy = 2;
+  MinFilter = anisotropic;
+  MagFilter = anisotropic;
+  MaxAnisotropy = 4;
   AddressU = wrap; 
   AddressV = wrap;
 };
@@ -112,9 +112,9 @@ sampler_state
 {
   Texture = <detailTexture>;
   MipFilter = LINEAR;
-  MinFilter = LINEAR;
-  MagFilter = LINEAR;
-  MaxAnisotropy = 2;
+  MinFilter = anisotropic;
+  MagFilter = anisotropic;
+  MaxAnisotropy = 4;
   AddressU = wrap; 
   AddressV = wrap;
 };
@@ -196,9 +196,9 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 	 
     float lv = normalize(sunlightVector);    
 	float3 lightLevel;
-	lightLevel[0] = max(dot(Normal, lv), 0)*lightColour[0]*2+ambientColour[0];
-	lightLevel[1] = max(dot(Normal, lv), 0)*lightColour[1]*2+ambientColour[1];
-	lightLevel[2] = max(dot(Normal, lv), 0)*lightColour[2]*2+ambientColour[2];
+	lightLevel[0] = max(dot(Normal, lv ), 0)*lightColour[0]*2+ambientColour[0];
+	lightLevel[1] = max(dot(Normal, lv ), 0)*lightColour[1]*2+ambientColour[1];
+	lightLevel[2] = max(dot(Normal, lv ), 0)*lightColour[2]*2+ambientColour[2];
 	
     float3 blender = tex2D(BlendSampler, input.TextureUV);
     

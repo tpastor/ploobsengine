@@ -26,10 +26,8 @@ namespace EngineTestes
         {
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
 
-            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
-            desc.DefferedDebug = false;
-            desc.UseFloatingBufferForLightMap = true;
-            renderTech = new DeferredRenderTechnic(desc);
+            ForwardRenderTecnichDescription desc = ForwardRenderTecnichDescription.Default();
+            renderTech = new ForwardRenderTecnich(desc);
         }
 
         protected override void InitScreen(GraphicInfo GraphicInfo, EngineStuff engine)
@@ -50,11 +48,11 @@ namespace EngineTestes
             CameraFirstPerson CameraFirstPerson = new CameraFirstPerson(true, GraphicInfo);
 
             Texture2D tMap = factory.GetTexture2D("Textures//hmap_10243");
-            QuadTerrain q = new PloobsEngine.Material.QuadTerrain(factory, tMap,65, 1025, 1, 1f);
+            QuadTerrain q = new PloobsEngine.Material.QuadTerrain(factory, tMap, 33, 513, 10, 3f);
 
             //Set various terrain stats.
             q.diffuseScale = q.flatScale / 4;
-            q.detailScale = q.flatScale / 10;
+            q.detailScale = q.flatScale / 100;
             q.detailMapStrength = 2;
             q.textureBlend = factory.GetTexture2D("Textures//hmap_256blend");
             q.textureDetail = factory.GetTexture2D("Textures//coolgrass2DOT3");
@@ -95,7 +93,7 @@ namespace EngineTestes
 
 
             this.World.CameraManager.AddCamera(CameraFirstPerson);
-            
+            CameraFirstPerson.FarPlane = 20000;
 
             SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//cubemap");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);

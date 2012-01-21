@@ -253,6 +253,8 @@ namespace PloobsEngine.Material
         }
         private Texture2D normalTexture;
 
+
+
         /// <summary>
         /// Initialises a complete QuadTerrain.
         ///This is the Constructor method. As you might have guessed, it constructs a quad terrain.
