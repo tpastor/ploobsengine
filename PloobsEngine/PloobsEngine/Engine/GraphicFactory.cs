@@ -386,7 +386,23 @@ namespace PloobsEngine.Engine
             render.PushRenderTarget(cNewRenderTarget);
             render.Clear(Color.Transparent, ClearOptions.Target);
             render.RenderTextureComplete(texture,Color.White,new Rectangle(0,0,width, height),Matrix.Identity,null, true,SpriteSortMode.Deferred,SamplerState.AnisotropicClamp);
+            render.ResyncStates();
             return render.PopRenderTargetAsSingleRenderTarget2D();
+        }
+
+        public void MipMapTexture(ref Texture2D texture)
+        {
+            RenderTarget2D cNewRenderTarget = CreateRenderTarget(texture.Width, texture.Height, SurfaceFormat.Color, true, DepthFormat.None, ginfo.MultiSample);
+            render.Clear(Color.Black, ClearOptions.Target);
+            render.PushRenderTarget(cNewRenderTarget);
+
+            SpriteBatch.Begin();
+            SpriteBatch.Draw(texture, Vector2.Zero, Color.White);
+            SpriteBatch.End();
+
+            render.PopRenderTarget();
+            render.ResyncStates();
+            texture = cNewRenderTarget;
         }
 
         /// <summary>
