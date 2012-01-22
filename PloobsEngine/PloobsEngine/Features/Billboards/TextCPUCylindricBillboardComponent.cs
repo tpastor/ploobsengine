@@ -7,26 +7,29 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using PloobsEngine.Engine;
 
-namespace EngineTestes.Bilboard
+namespace PloobsEngine.Features.Billboard
 {
-    public class CPUCylindricBillboardComponent : IComponent
+    public class TextCPUCylindricBillboardComponent : IComponent
     {
         public override ComponentType ComponentType
         {
             get { return PloobsEngine.Components.ComponentType.POS_WITHDEPTH_DRAWABLE; }
         }
 
+        SpriteFont SpriteFont;
         GraphicInfo GraphicInfo;
         protected override void LoadContent(PloobsEngine.Engine.GraphicInfo GraphicInfo, PloobsEngine.Engine.GraphicFactory factory)
         {
             this.GraphicInfo = GraphicInfo;
             basicEffect = factory.GetBasicEffect();
             basicEffect.TextureEnabled = true;
+            basicEffect.VertexColorEnabled = true;
             spriteBatch = factory.GetSpriteBatch();
+            SpriteFont = factory.GetAsset<SpriteFont>("ConsoleFont", true);
             base.LoadContent(GraphicInfo, factory);
         }
-                
-        public List<SphericalBillboard3D> Billboards = new List<SphericalBillboard3D>();
+
+        public List<TextBillboard3D> Billboards = new List<TextBillboard3D>();
         BasicEffect basicEffect;
         SpriteBatch spriteBatch;
 
@@ -37,19 +40,25 @@ namespace EngineTestes.Bilboard
 
             foreach (var item in Billboards)
             {
-                basicEffect.World = Matrix.CreateConstrainedBillboard(item.Position, position, Vector3.Up, null, null);
+                SpriteFont font = item.SpriteFont == null ? SpriteFont : item.SpriteFont;
+
+                basicEffect.World = Matrix.CreateConstrainedBillboard(item.Position, position, Vector3.Down, null, null);
 
                 basicEffect.View = activeView;
                 basicEffect.Projection = activeProjection;
 
                 spriteBatch.Begin(0, null, null, DepthStencilState.DepthRead, RasterizerState.CullNone, basicEffect);
-                spriteBatch.Draw(item.Texture, Vector2.Zero, item.Texture.Bounds, Color.White, 0, new Vector2(item.Texture.Bounds.Center.X, item.Texture.Bounds.Center.Y), item.Scale, SpriteEffects.None, 1);
+
+                Vector2 textOrigin = font.MeasureString(item.Message) / 2;
+                
+                spriteBatch.DrawString(font, item.Message, Vector2.Zero, item.Color, 0, textOrigin, item.Scale, 0, 0);
+
                 spriteBatch.End();
             }
             render.ResyncStates();
         }
 
-        public static readonly String MyName = "CylindricBillboard";
+        public static readonly String MyName = "TextCylindricBillboard";
         public override string getMyName()
         {
             return MyName;

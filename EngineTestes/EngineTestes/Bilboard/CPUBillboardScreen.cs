@@ -11,7 +11,7 @@ using PloobsEngine.Physics.Bepu;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Cameras;
 using Microsoft.Xna.Framework.Graphics;
-using EngineTestes.Bilboard;
+using PloobsEngine.Features.Billboard;
 
 namespace EngineTestes
 {
@@ -28,11 +28,20 @@ namespace EngineTestes
         }
 
         CPUSphericalBillboardComponent BillboardComponent;
+
+        TextCPUSphericalBillboardComponent  sBillboardComponent;
+        TextCPUCylindricBillboardComponent  cBillboardComponent;
         protected override void InitScreen(GraphicInfo GraphicInfo, EngineStuff engine)
         {
             base.InitScreen(GraphicInfo, engine);
             BillboardComponent = new CPUSphericalBillboardComponent();
             engine.AddComponent(BillboardComponent);
+
+            sBillboardComponent = new TextCPUSphericalBillboardComponent();
+            engine.AddComponent(sBillboardComponent);
+
+            cBillboardComponent = new TextCPUCylindricBillboardComponent();
+            engine.AddComponent(cBillboardComponent);
         }
 
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory ,IContentManager contentManager)
@@ -48,7 +57,7 @@ namespace EngineTestes
                 this.World.AddObject(obj);
             }
 
-            SphericalBillboard3D Billboard3D = new SphericalBillboard3D(factory.GetTexture2D("Textures\\grama1"), new Vector3(100, 20, 100), Vector2.One * 0.2f);
+            Billboard3D Billboard3D = new Billboard3D(factory.GetTexture2D("Textures\\grama1"), new Vector3(100, 20, 100), Vector2.One * 0.2f);
             BillboardComponent.Billboards.Add(Billboard3D);
 
             {
@@ -78,6 +87,17 @@ namespace EngineTestes
                 GhostObject go = new GhostObject();                
                 IObject obj2 = new IObject(matfor, bm, go);
                 this.World.AddObject(obj2);
+
+
+
+
+                TextBillboard3D TextBillboard3D = new TextBillboard3D("TEST 123 SPHERICAL", Color.Black, new Vector3(100), 0.5f);
+                sBillboardComponent.Billboards.Add(TextBillboard3D);
+
+
+                TextBillboard3D = new TextBillboard3D("TEST 123 Cylinder", Color.Black, new Vector3(200, 50, 200), 0.5f);
+                cBillboardComponent.Billboards.Add(TextBillboard3D);
+
             }
 
 

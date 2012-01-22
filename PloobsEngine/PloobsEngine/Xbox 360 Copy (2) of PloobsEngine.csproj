@@ -134,6 +134,11 @@
     <Compile Include="Commands\IReciever.cs" />
     <Compile Include="Components\ComponentManager.cs" />
     <Compile Include="Components\IComponent.cs" />
+    <Compile Include="Features\Billboards\Bilboard3D.cs" />
+    <Compile Include="Features\Billboards\CPUCylindricBillboardComponent.cs" />
+    <Compile Include="Features\Billboards\CPUSphericalBillboardComponent.cs" />
+    <Compile Include="Features\Billboards\TextCPUCylindricBillboardComponent.cs" />
+    <Compile Include="Features\Billboards\TextCPUSphericalBillboardComponent.cs" />
     <Compile Include="ResourcesPC.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
