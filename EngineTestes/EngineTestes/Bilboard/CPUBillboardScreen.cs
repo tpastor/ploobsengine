@@ -89,8 +89,6 @@ namespace EngineTestes
                 this.World.AddObject(obj2);
 
 
-
-
                 TextBillboard3D TextBillboard3D = new TextBillboard3D("TEST 123 SPHERICAL", Color.Black, new Vector3(100), 0.5f);
                 sBillboardComponent.Billboards.Add(TextBillboard3D);
 

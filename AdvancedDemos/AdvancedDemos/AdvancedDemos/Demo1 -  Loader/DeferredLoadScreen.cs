@@ -155,7 +155,7 @@ namespace AdvancedDemo4._0
             ///Change object property here !!!
             foreach (var obj in objs)
             {
-                DeferredCustomShader cd = (obj.Material.Shadder as DeferredCustomShader); ///the world loader uses deferredCustomShader for all objects
+                DeferredCustomShader cd = (obj.Material.Shader as DeferredCustomShader); ///the world loader uses deferredCustomShader for all objects
                 System.Diagnostics.Debug.Assert(cd != null);
                 ///if the obj does not use specular map
                 if (!cd.UseSpecular)

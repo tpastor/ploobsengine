@@ -122,17 +122,18 @@ namespace PloobsEngine.Material
             _shader.Parameters["xWorld"].SetValue(obj.PhysicObject.WorldMatrix);
             _shader.Parameters["xBillboardTexture"].SetValue(obj.Modelo.getTexture(TextureType.DIFFUSE,0,0));
             _shader.Parameters["atenuation"].SetValue(atenuation);
+            _shader.Parameters["forward"].SetValue(Vector3.Normalize(cam.Target - cam.Position));
 
             if (bilboardType == BilboardType.Cilindric)
             {
                 _shader.Parameters["xAllowedRotDir"].SetValue(allowRotDir);
                 _shader.Parameters["cilindric"].SetValue(true);
+                
             }
             else
             {
                 _shader.Parameters["cilindric"].SetValue(false);
-                _shader.Parameters["xAllowedRotDir"].SetValue(cam.Up);
-                _shader.Parameters["forward"].SetValue(Vector3.Normalize(cam.Target - cam.Position));
+                _shader.Parameters["xAllowedRotDir"].SetValue(cam.Up);                
             }
 
             _shader.Parameters["xProjection"].SetValue(cam.Projection);                                   
@@ -141,13 +142,14 @@ namespace PloobsEngine.Material
 
 
             render.PushRasterizerState(RasterizerState.CullNone);
+            render.PushDepthStencilState(DepthStencilState.None);
 
             BatchInformation batchInfo = obj.Modelo.GetBatchInformation(0)[0];
             {
                 _shader.Parameters["alphaTest"].SetValue(alphaTestLimit);
                 render.RenderBatch(batchInfo, _shader);
             }
-
+            render.PopDepthStencilState();
             render.PopRasterizerState();
         }
 

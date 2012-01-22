@@ -135,7 +135,7 @@ namespace AdvancedDemo4._0
         {
             foreach (var item in withBump)
             {
-                DeferredCustomShader shader = item.Material.Shadder as DeferredCustomShader;
+                DeferredCustomShader shader = item.Material.Shader as DeferredCustomShader;
                 System.Diagnostics.Debug.Assert(shader != null);
                 shader.UseBump = !shader.UseBump;
                 bump = shader.UseBump;
@@ -146,7 +146,7 @@ namespace AdvancedDemo4._0
         {
             foreach (var item in withSpecular)
             {
-                DeferredCustomShader shader = item.Material.Shadder as DeferredCustomShader;
+                DeferredCustomShader shader = item.Material.Shader as DeferredCustomShader;
                 System.Diagnostics.Debug.Assert(shader != null);
                 shader.UseSpecular = !shader.UseSpecular;
                 specular = shader.UseSpecular;

@@ -163,6 +163,7 @@ namespace PloobsEngine.Material
             _shader.Parameters["xWorld"].SetValue(obj.PhysicObject.WorldMatrix);
             _shader.Parameters["xBillboardTexture"].SetValue(aniTex);
             _shader.Parameters["atenuation"].SetValue(atenuation);
+            _shader.Parameters["forward"].SetValue(Vector3.Normalize(cam.Target - cam.Position));
             if (bilboardType == BilboardType.Cilindric)
             {
                 _shader.Parameters["xAllowedRotDir"].SetValue(allowRotDir);
@@ -171,8 +172,7 @@ namespace PloobsEngine.Material
             else
             {
                 _shader.Parameters["cilindric"].SetValue(false);
-                _shader.Parameters["xAllowedRotDir"].SetValue(cam.Up);
-                _shader.Parameters["forward"].SetValue(Vector3.Normalize(cam.Target - cam.Position));
+                _shader.Parameters["xAllowedRotDir"].SetValue(cam.Up);                
             }
 
             _shader.Parameters["xProjection"].SetValue(cam.Projection);                                   
