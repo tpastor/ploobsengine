@@ -35,16 +35,8 @@ namespace PloobsEngine.Modelo
     /// </summary>
     public struct BilboardInstance
     {
-        public BilboardInstance(Vector3 Position,Vector2 Scale)
-        {
-            this.Position = Position;
-            this.Scale = Scale;
-    
-        }
-
         public Vector3 Position;
-        public Vector2 Scale;        
-    
+        public Vector2 Scale;            
     }
 
     public class InstancedBilboardModel : IModelo

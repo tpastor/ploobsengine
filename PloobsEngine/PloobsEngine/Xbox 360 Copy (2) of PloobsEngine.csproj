@@ -138,12 +138,7 @@
     <Compile Include="Features\Billboards\CPUCylindricBillboardComponent.cs" />
     <Compile Include="Features\Billboards\CPUSphericalBillboardComponent.cs" />
     <Compile Include="Features\Billboards\TextCPUCylindricBillboardComponent.cs" />
-    <Compile Include="Features\Billboards\TextCPUSphericalBillboardComponent.cs" />
-    <Compile Include="ResourcesPC.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ResourcesPC.resx</DependentUpon>
-    </Compile>
+    <Compile Include="Features\Billboards\TextCPUSphericalBillboardComponent.cs" />    
     <Compile Include="DataStructure\QuadTree.cs" />
     <Compile Include="Engine\ContentCompiler\ContentBuilder.cs" />
     <Compile Include="Engine\ContentCompiler\ErrorLogger.cs" />
@@ -521,11 +516,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="ResourcesPC.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ResourcesPC.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+  <ItemGroup>    
     <EmbeddedResource Include="ResourcesXbox.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourcesXbox.Designer.cs</LastGenOutput>

@@ -145,6 +145,7 @@ namespace PloobsEngine.SceneControl
             ssaofinal.Parameters["SceneTexture"].SetValue(ImageToProcess);
             ssaofinal.Parameters["halfPixel"].SetValue(GraphicInfo.HalfPixel);
             ssaofinal.Parameters["weight"].SetValue(Weight);
+
             if (useFloatingBuffer)
                 rHelper.RenderFullScreenQuadVertexPixel(ssaofinal, SamplerState.PointClamp);
             else

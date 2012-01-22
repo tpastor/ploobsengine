@@ -163,6 +163,7 @@
     <Compile Include="Animation\ForwardAnimatedScreen.cs" />
     <Compile Include="BilboardsSamples\BilboardScreen.cs" />
     <Compile Include="Bilboard\CPUBillboardScreen.cs" />
+    <Compile Include="Bilboard\InstancedBilboardScreen.cs" />
     <Compile Include="Bolt\BoltObject.cs" />
     <Compile Include="Bolt\BoltSample.cs" />
     <Compile Include="Bolt\BoltShader.cs" />
