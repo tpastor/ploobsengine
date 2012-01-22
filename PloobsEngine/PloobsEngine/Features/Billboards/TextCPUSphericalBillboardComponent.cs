@@ -6,9 +6,9 @@ using PloobsEngine.Components;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace EngineTestes.Bilboard
+namespace PloobsEngine.Features.Billboard
 {
-    public class CPUSphericalBillboardComponent : IComponent
+    public class TextCPUSphericalBillboardComponent : IComponent
     {
         public override ComponentType ComponentType
         {
@@ -17,15 +17,18 @@ namespace EngineTestes.Bilboard
 
         protected override void LoadContent(PloobsEngine.Engine.GraphicInfo GraphicInfo, PloobsEngine.Engine.GraphicFactory factory)
         {
+            SpriteFont = factory.GetAsset<SpriteFont>("ConsoleFont", true);
             basicEffect = factory.GetBasicEffect();
             basicEffect.TextureEnabled = true;
+            basicEffect.VertexColorEnabled = true;
             spriteBatch = factory.GetSpriteBatch();
             base.LoadContent(GraphicInfo, factory);
         }
-                
-        public List<SphericalBillboard3D> Billboards = new List<SphericalBillboard3D>();
+
+        public List<TextBillboard3D> Billboards = new List<TextBillboard3D>();
         BasicEffect basicEffect;
         SpriteBatch spriteBatch;
+        SpriteFont SpriteFont;
 
         protected override void PosWithDepthDraw(PloobsEngine.SceneControl.RenderHelper render, Microsoft.Xna.Framework.GameTime gt, Microsoft.Xna.Framework.Matrix activeView, Microsoft.Xna.Framework.Matrix activeProjection)
         {
@@ -39,10 +42,11 @@ namespace EngineTestes.Bilboard
 
             foreach (var item in Billboards)
             {
+                SpriteFont font = item.SpriteFont == null ? SpriteFont : item.SpriteFont;
                 Vector3 viewSpaceTextPosition = Vector3.Transform(item.Position, activeView * invertY);
-                spriteBatch.Draw(item.Texture, new Vector2(viewSpaceTextPosition.X, viewSpaceTextPosition.Y), item.Texture.Bounds, Color.White, 0, new Vector2(item.Texture.Bounds.Center.X,item.Texture.Bounds.Center.Y), item.Scale, SpriteEffects.None, viewSpaceTextPosition.Z);                
-            }            
-    
+                Vector2 textOrigin = font.MeasureString(item.Message) / 2;                
+                spriteBatch.DrawString(font, item.Message, new Vector2(viewSpaceTextPosition.X, viewSpaceTextPosition.Y), item.Color, 0, textOrigin, item.Scale, 0, viewSpaceTextPosition.Z);                    
+            }                
 
             spriteBatch.End();
             render.ResyncStates();
@@ -51,7 +55,7 @@ namespace EngineTestes.Bilboard
 
 
 
-        public static readonly String MyName = "Billboard";
+        public static readonly String MyName = "SphericalBillboard";
         public override string getMyName()
         {
             return MyName;

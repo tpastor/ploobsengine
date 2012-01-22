@@ -112,6 +112,11 @@
     <Compile Include="Engine\ContentManager\ContentTrackerAsync.cs" />
     <Compile Include="Engine\ContentManager\Extensions.cs" />
     <Compile Include="Engine\ContentManager\SourceAssetLoader.cs" />
+    <Compile Include="Features\Billboards\Bilboard3D.cs" />
+    <Compile Include="Features\Billboards\CPUCylindricBillboardComponent.cs" />
+    <Compile Include="Features\Billboards\CPUSphericalBillboardComponent.cs" />
+    <Compile Include="Features\Billboards\TextCPUCylindricBillboardComponent.cs" />
+    <Compile Include="Features\Billboards\TextCPUSphericalBillboardComponent.cs" />
     <Compile Include="Features\Primitive2D\Primitive2DDraw.cs" />
     <Compile Include="Features\SkyBox\SkyBoxEnableDisableCommand.cs" />
     <Compile Include="Features\SkyBox\Skybox.cs" />
