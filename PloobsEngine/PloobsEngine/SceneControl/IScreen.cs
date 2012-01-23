@@ -28,6 +28,9 @@ using PloobsEngine.Engine;
 using PloobsEngine.SceneControl.GUI;
 using PloobsEngine.Input;
 using PloobsEngine.Commands;
+#if WINDOWS_PHONE
+using Microsoft.Phone.Controls;
+#endif
 #endregion
 
 namespace PloobsEngine.SceneControl
@@ -79,12 +82,20 @@ namespace PloobsEngine.SceneControl
             CleanupAbles = new List<ICleanupAble>();
         }
         #else
-public IScreen()
+
+        public IScreen(PhoneApplicationPage Page)
         {
             this.gui = null;
             IsLoaded = false;
             CleanupAbles = new List<ICleanupAble>();
             CleanUpWhenRemoved = true;
+            this.Page = Page;
+        }
+
+        public PhoneApplicationPage Page
+        {
+            get;
+            private set;
         }
 #endif
 
