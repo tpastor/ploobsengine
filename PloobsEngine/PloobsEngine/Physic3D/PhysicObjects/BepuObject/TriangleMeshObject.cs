@@ -355,7 +355,7 @@ namespace PloobsEngine.Physics.Bepu
         /// <summary>
         /// Gets the bounding box IN WORLD COORDINATES
         /// </summary>
-        public override BoundingBox BoundingBox
+        public override BoundingBox? BoundingBox
         {
             get { return triangleGroup.BoundingBox; }
         }

@@ -52,7 +52,7 @@ namespace Bnoerj.AI.Steering
 
         public void AddCircularObstacle(IObject obj)
         {
-            BoundingSphere bs = BoundingSphere.CreateFromBoundingBox(obj.PhysicObject.BoundingBox);
+            BoundingSphere bs = BoundingSphere.CreateFromBoundingBox(obj.PhysicObject.BoundingBox.Value);
             SphericalObstacle so = new SphericalObstacle(bs.Radius, obj.PhysicObject.Position);
             obstacles.Add(so);
         }

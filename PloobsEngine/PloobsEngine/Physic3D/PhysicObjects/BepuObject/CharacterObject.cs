@@ -203,7 +203,7 @@ namespace PloobsEngine.Physics.Bepu
             ActiveLogger.LogMessage("Cant Apply impulse in Character Object", LogLevel.Warning);   
         }
 
-        public override BoundingBox BoundingBox
+        public override BoundingBox? BoundingBox
         {
             get { return characterController.Body.CollisionInformation.BoundingBox; }
         }

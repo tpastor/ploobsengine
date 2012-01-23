@@ -54,7 +54,7 @@ namespace PloobsEngine.Particles
         /// <summary>
         /// 
         /// </summary>
-        public readonly Dictionary<String, IParticleSystem> ParticleSystem = new Dictionary<string,IParticleSystem>();
+        public readonly Dictionary<String, DPFSParticleSystem> ParticleSystem = new Dictionary<string, DPFSParticleSystem>();
 
 
         /// <summary>
@@ -66,8 +66,8 @@ namespace PloobsEngine.Particles
             System.Diagnostics.Debug.Assert(particleSystem != null, "Particle System cannot be null");            
 
             if(ParticleSystem.ContainsKey(particleSystem.Name))
-                ActiveLogger.LogMessage("Particle System already exist, overwriting", LogLevel.Warning);            
-            ParticleSystem[particleSystem.Name] = particleSystem;
+                ActiveLogger.LogMessage("Particle System already exist, overwriting", LogLevel.Warning);
+            ParticleSystem[particleSystem.Name] = particleSystem as DPFSParticleSystem;
             if(particleSystem is DPFSParticleSystem)
             {
                 DPFSParticleSystem ps = particleSystem as DPFSParticleSystem;                
@@ -166,7 +166,15 @@ namespace PloobsEngine.Particles
         /// <param name="render">The render.</param>
         protected override void Draw(GameTime gt, Matrix view, Matrix Projection, RenderHelper render)
         {
-            manager.DrawAllParticleSystems();
+            //manager.DrawAllParticleSystems();
+            BoundingFrustum bf = new BoundingFrustum(view * Projection);            
+            foreach (var item in ParticleSystem.Values)
+            {
+                if (item.BoundingBox != null && (bf.Contains(item.BoundingBox.Value) == ContainmentType.Disjoint))
+                {
+                    item.IDPSFParticleSystem.Draw();
+                }
+            }
         }
 
         /// <summary>

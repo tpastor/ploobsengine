@@ -66,7 +66,7 @@ namespace PloobsEngine.Modelo
             List<int> indexList = new List<int>();
             GetVertexData(vertexList, indexList, terrainObject);
 #endif
-            modelRadius = (terrainObject.BoundingBox.Max - terrainObject.BoundingBox.Max).Length() / 2;
+            modelRadius = (terrainObject.BoundingBox.Value.Max - terrainObject.BoundingBox.Value.Max).Length() / 2;
 
             var newVertices = new VertexPositionNormalTexture[vertexList.Count];
             vertexList.CopyTo(newVertices);

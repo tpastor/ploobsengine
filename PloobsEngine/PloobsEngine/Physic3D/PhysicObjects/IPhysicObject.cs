@@ -137,7 +137,7 @@ namespace PloobsEngine.Physics
         /// <summary>
         /// Gets the bounding box IN WORLD COORDINATES
         /// </summary>
-        public abstract BoundingBox BoundingBox
+        public abstract BoundingBox? BoundingBox
         {
             get;
         }
