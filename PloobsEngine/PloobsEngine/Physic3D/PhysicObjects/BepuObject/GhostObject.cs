@@ -42,30 +42,32 @@ namespace PloobsEngine.Physics.Bepu
         /// <param name="position">The position.</param>
         /// <param name="orientation">The orientation.</param>
         /// <param name="scale">The scale.</param>
-     public GhostObject(Vector3 position, Matrix orientation, Vector3 scale) : base(MaterialDescription.DefaultBepuMaterial(), 0)
+     public GhostObject(Vector3 position, Matrix orientation, Vector3 scale, BoundingBox? bb = null) : base(MaterialDescription.DefaultBepuMaterial(), 0)
      {
          this.pos = position;
          this.ori = orientation;
-         this.scale = scale;         
+         this.scale = scale;
+         this.bb = bb;
      }
 
      /// <summary>
      /// Initializes a new instance of the <see cref="GhostObject"/> class.
      /// DEfault Object in 0,0,0 identity rotation and 1,1,1 scale
      /// </summary>
-     public GhostObject()
+     public GhostObject(BoundingBox? bb = null)
          : base(MaterialDescription.DefaultBepuMaterial(), 0)
      {
          this.pos = Vector3.Zero;
          this.ori = Matrix.Identity;
          this.scale = Vector3.One;
+         this.bb = bb;
      }
 
      bool internalMatrix = false;
      private Vector3 pos;
      private Matrix ori;
      private Matrix internalWorld;
-     private BoundingBox bb = new BoundingBox();
+     private BoundingBox? bb =null;
 
      public override Vector3 Scale
      {
@@ -101,13 +103,25 @@ namespace PloobsEngine.Physics.Bepu
              this.ori = value;
          }
      }
-     public override BoundingBox BoundingBox
+     public override BoundingBox? BoundingBox
      {
          get
          {
+             if (bb.HasValue)
+             {
+                 Vector3 min =  bb.Value.Min;
+                 Vector3 max =  bb.Value.Max;
+                 return new BoundingBox(Vector3.Transform(min, WorldMatrix), Vector3.Transform(max, WorldMatrix));
+             }
              return bb;
          }         
      }
+
+     public void SetBoundingBox(BoundingBox bb)
+     {
+         this.bb = bb;
+     }
+
      public override bool isMotionLess
      {
          get

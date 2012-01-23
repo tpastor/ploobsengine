@@ -102,7 +102,7 @@ namespace PloobsEngine.SceneControl
 
         public override void onObjectAdded(IObject obj)
         {
-            if (obj.PhysicObject.PhysicObjectTypes == PloobsEngine.Physics.PhysicObjectTypes.GHOST || obj.PhysicObject.PhysicObjectTypes == PloobsEngine.Physics.PhysicObjectTypes.NONE)
+            if ((obj.PhysicObject.PhysicObjectTypes == PloobsEngine.Physics.PhysicObjectTypes.GHOST && obj.PhysicObject.BoundingBox.HasValue == false) || obj.PhysicObject.PhysicObjectTypes == PloobsEngine.Physics.PhysicObjectTypes.NONE)
             {
                 if (obj.Material.MaterialType == PloobsEngine.Material.MaterialType.FORWARD)
                     ghostForward.Add(obj);
@@ -111,7 +111,8 @@ namespace PloobsEngine.SceneControl
                 return;
             }
 
-            var octAdd = oct.Add(obj, obj.PhysicObject.Position, obj.Modelo.GetModelRadius());
+
+            var octAdd = oct.Add(obj, obj.PhysicObject.BoundingBox.Value);
             if (octAdd == null)
             {
                 return;
@@ -133,7 +134,7 @@ namespace PloobsEngine.SceneControl
             {
                 objOctree[obj].Remove(obj);
                 objOctree.Remove(obj);
-                var octAdd = oct.Add(obj, obj.PhysicObject.Position, obj.Modelo.GetModelRadius());
+                var octAdd = oct.Add(obj, obj.PhysicObject.BoundingBox.Value);
                 if (octAdd == null)
                 {
                     return;
@@ -144,7 +145,7 @@ namespace PloobsEngine.SceneControl
 
         public override void onObjectRemoved(IObject obj)
         {
-            if (obj.PhysicObject.PhysicObjectTypes == PloobsEngine.Physics.PhysicObjectTypes.GHOST || obj.PhysicObject.PhysicObjectTypes == PloobsEngine.Physics.PhysicObjectTypes.NONE)
+            if ((obj.PhysicObject.PhysicObjectTypes == PloobsEngine.Physics.PhysicObjectTypes.GHOST && obj.PhysicObject.BoundingBox.HasValue == false) || obj.PhysicObject.PhysicObjectTypes == PloobsEngine.Physics.PhysicObjectTypes.NONE)
             {
                 if (obj.Material.MaterialType == PloobsEngine.Material.MaterialType.FORWARD)
                     ghostForward.Remove(obj);

@@ -37,8 +37,9 @@ namespace PloobsEngine.Particles
         /// Initializes a new instance of the <see cref="IParticleSystem"/> class.
         /// </summary>
         /// <param name="name">The name.</param>
-        public IParticleSystem(String name)
+        public IParticleSystem(String name, BoundingBox? BoundingBox = null)
         {
+            this.BoundingBox = BoundingBox;
             if (String.IsNullOrEmpty(name))
             {
                 ActiveLogger.LogMessage("ParticleSystem name cannot be null/empty", LogLevel.FatalError);
@@ -55,6 +56,12 @@ namespace PloobsEngine.Particles
         /// The name.
         /// </value>
         public String Name
+        {
+            get;
+            set;
+        }
+
+        public BoundingBox? BoundingBox
         {
             get;
             set;

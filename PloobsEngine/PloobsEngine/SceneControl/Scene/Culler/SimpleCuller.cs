@@ -55,26 +55,26 @@ namespace PloobsEngine.SceneControl
             {
                 if (item.Material.MaterialType == MaterialType.DEFERRED)
                 {
-                    if (item.PhysicObject.PhysicObjectTypes == PhysicObjectTypes.GHOST || item.PhysicObject.PhysicObjectTypes == PhysicObjectTypes.NONE)
+                    if ( (item.PhysicObject.PhysicObjectTypes == PhysicObjectTypes.GHOST && item.PhysicObject.BoundingBox.HasValue == false ) || item.PhysicObject.PhysicObjectTypes == PhysicObjectTypes.NONE)
                     {
                         deferred.Add(item);
                         continue;
                     }
 
-                    if (frustrum.Contains(item.PhysicObject.BoundingBox) != Microsoft.Xna.Framework.ContainmentType.Disjoint)
+                    if (frustrum.Contains(item.PhysicObject.BoundingBox.Value) != Microsoft.Xna.Framework.ContainmentType.Disjoint)
                     {
                         deferred.Add(item);
                     }
                 }
                 else
                 {
-                    if (item.PhysicObject.PhysicObjectTypes == PhysicObjectTypes.GHOST || item.PhysicObject.PhysicObjectTypes == PhysicObjectTypes.NONE)
+                    if ( (item.PhysicObject.PhysicObjectTypes == PhysicObjectTypes.GHOST && item.PhysicObject.BoundingBox.HasValue == false ) || item.PhysicObject.PhysicObjectTypes == PhysicObjectTypes.NONE)
                     {
                         forward.Add(item);
                         continue;
                     }
 
-                    if (frustrum.Contains(item.PhysicObject.BoundingBox) != Microsoft.Xna.Framework.ContainmentType.Disjoint)
+                    if (frustrum.Contains(item.PhysicObject.BoundingBox.Value) != Microsoft.Xna.Framework.ContainmentType.Disjoint)
                     {
                         forward.Add(item);
                     }    

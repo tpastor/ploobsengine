@@ -275,7 +275,7 @@ namespace PloobsEngine.Physics.Bepu
         }
 
         
-        public override  BoundingBox BoundingBox
+        public override  BoundingBox? BoundingBox
         {
             get { return terrain.BoundingBox; }
         }
