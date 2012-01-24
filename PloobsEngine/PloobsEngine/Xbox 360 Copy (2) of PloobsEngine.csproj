@@ -521,10 +521,12 @@
     <EmbeddedResource Include="ResourcesXbox.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourcesXbox.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="bin\Xbox 360\Release\Content\Effects\Deferred\AllBufferEnvironment.xnb" />
     <None Include="GameThumbnail.png">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
     </None>
