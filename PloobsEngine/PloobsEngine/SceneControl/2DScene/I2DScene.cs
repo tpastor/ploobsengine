@@ -36,7 +36,7 @@ namespace PloobsEngine.SceneControl._2DScene
        #if !WINDOWS_PHONE
         public I2DScene(IGui gui = null) : base(gui) { }
 #else
-        public I2DScene() : base() {  }
+        public I2DScene(Microsoft.Phone.Controls.PhoneApplicationPage Page) : base(Page) { }
 #endif
 
         #region properties
