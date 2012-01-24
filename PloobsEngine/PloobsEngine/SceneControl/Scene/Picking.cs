@@ -130,9 +130,7 @@ namespace PloobsEngine.SceneControl
         }
 
         private void UpdatePickRay(MouseState ms)
-        {
-            Matrix projection = world.CameraManager.ActiveCamera.Projection;
-            Matrix viewProjection = world.CameraManager.ActiveCamera.View * world.CameraManager.ActiveCamera.Projection;
+        {           
             Matrix viewInverse = Matrix.Invert(world.CameraManager.ActiveCamera.View);
             Matrix projectionInverse = Matrix.Invert(world.CameraManager.ActiveCamera.Projection);
             Matrix viewProjectionInverse = projectionInverse * viewInverse;

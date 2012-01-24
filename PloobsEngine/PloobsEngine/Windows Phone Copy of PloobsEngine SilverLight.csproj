@@ -489,12 +489,6 @@
     <None Include="Background.png">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
     </None>
-    <None Include="bin\Windows Phone\Debug\EnginePhoneContent\Font\ConsoleFont.xnb" />
-    <None Include="bin\Windows Phone\Debug\EnginePhoneContent\Models\block.xnb" />
-    <None Include="bin\Windows Phone\Debug\EnginePhoneContent\Models\dome.xnb" />
-    <None Include="bin\Windows Phone\Debug\EnginePhoneContent\Models\Dsphere.xnb" />
-    <None Include="bin\Windows Phone\Debug\EnginePhoneContent\Models\sphere.xnb" />
-    <None Include="bin\x86\Debug\Content\Font\ConsoleFont.xnb" />
     <None Include="PhoneGameThumb.png">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
     </None>
@@ -538,9 +532,7 @@
       <HintPath>Dlls\Phone7\XNAnimation.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\x86\Debug\Content\Effects\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="License.txt" />
   </ItemGroup>

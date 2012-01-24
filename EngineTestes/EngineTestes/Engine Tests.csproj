@@ -201,6 +201,7 @@
     <Compile Include="Loader\ForwardMeshesFromModelLoadScreen.cs" />
     <Compile Include="Loader\ForwardLoadScreen.cs" />
     <Compile Include="LoadingScreen\LoadScene.cs" />
+    <Compile Include="Material\EnvironmenpBumpScreen.cs" />
     <Compile Include="Material\ParalaxScreen.cs" />
     <Compile Include="MultThreading\MultScreen.cs" />
     <Compile Include="OctreeScreen\OctreeScreen.cs" />

@@ -67,6 +67,13 @@ namespace PloobsEngine {
             }
         }
         
+        internal static byte[] AllBufferEnvironment {
+            get {
+                object obj = ResourceManager.GetObject("AllBufferEnvironment", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
         internal static byte[] AnimatedBillboard {
             get {
                 object obj = ResourceManager.GetObject("AnimatedBillboard", resourceCulture);

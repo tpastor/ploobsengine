@@ -138,7 +138,7 @@
     <Compile Include="Features\Billboards\CPUCylindricBillboardComponent.cs" />
     <Compile Include="Features\Billboards\CPUSphericalBillboardComponent.cs" />
     <Compile Include="Features\Billboards\TextCPUCylindricBillboardComponent.cs" />
-    <Compile Include="Features\Billboards\TextCPUSphericalBillboardComponent.cs" />    
+    <Compile Include="Features\Billboards\TextCPUSphericalBillboardComponent.cs" />
     <Compile Include="DataStructure\QuadTree.cs" />
     <Compile Include="Engine\ContentCompiler\ContentBuilder.cs" />
     <Compile Include="Engine\ContentCompiler\ErrorLogger.cs" />
@@ -190,6 +190,7 @@
     <Compile Include="Material\DeferredMaterial.cs" />
     <Compile Include="Material\ForwardAnimatedMaterial.cs" />
     <Compile Include="Material\ForwardTerrainMaterial.cs" />
+    <Compile Include="Material\IShadder\DeferredShader\DeferredEnvironmentCustomShader.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredInstancedBilboardShader.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredAnimatedTextureShader.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredCilindricGPUBilboardShader.cs" />
@@ -516,7 +517,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>    
+  <ItemGroup>
     <EmbeddedResource Include="ResourcesXbox.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourcesXbox.Designer.cs</LastGenOutput>

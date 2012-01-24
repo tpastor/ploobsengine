@@ -475,4 +475,7 @@
   <data name="wiggle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>bin\Xbox 360\Release\Content\Effects\Deferred\wiggle.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
   </data>
+  <data name="AllBufferEnvironment" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Debug\Content\Effects\Deferred\AllBufferEnvironment.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
 </root>

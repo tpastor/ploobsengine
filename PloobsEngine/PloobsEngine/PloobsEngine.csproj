@@ -262,6 +262,7 @@
     <Compile Include="Material\DeferredMaterial.cs" />
     <Compile Include="Material\ForwardAnimatedMaterial.cs" />
     <Compile Include="Material\ForwardTerrainMaterial.cs" />
+    <Compile Include="Material\IShadder\DeferredShader\DeferredEnvironmentCustomShader.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredInstancedBilboardShader.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredAnimatedTextureShader.cs" />
     <Compile Include="Material\IShadder\DeferredShader\DeferredCilindricGPUBilboardShader.cs" />
@@ -372,7 +373,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ResourcesPC.resx</DependentUpon>
-    </Compile>    
+    </Compile>
     <Compile Include="SceneControl\2DScene\Culler\Simple2DCuller.cs" />
     <Compile Include="SceneControl\2DScene\Culler\I2DCuller.cs" />
     <Compile Include="SceneControl\2DScene\Culler\Physic2DCuller.cs" />
@@ -603,7 +604,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourcesPC.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PloobsEngineContent\PloobsEngineContent.contentproj">

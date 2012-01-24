@@ -29,6 +29,7 @@ namespace EngineTestes
 
         static void LoadScreen(ScreenManager manager)
         {
+            manager.AddScreen(new EnvironmenpBumpScreen());
             //manager.AddScreen(new InstancedBilboardScreen());
             //manager.AddScreen(new DeferredDirectionaldShadowScreen());
             //manager.AddScreen(new BehaviorTreeScreen());
@@ -38,7 +39,7 @@ namespace EngineTestes
             //manager.AddScreen(new PrePassScreen());
             //manager.AddScreen(new DefPassScreen());
             //manager.AddScreen(new DecalScreen());
-            manager.AddScreen(new HBAOScreen());
+            //manager.AddScreen(new HBAOScreen());
             //manager.AddScreen(new MotionForwardScreen());
             //manager.AddScreen(new MotionBluScreen());
             //manager.AddScreen(new SerializationScreen());

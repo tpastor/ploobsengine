@@ -129,6 +129,20 @@ namespace PloobsEngine.Modelo
         }
 
         /// <summary>
+        /// Set Cube Texture of a mesh
+        /// </summary>
+        /// <param name="textureCube"></param>
+        /// <param name="meshIndex"></param>
+        /// <param name="meshPartIndex"></param>
+        public void SetCubeTexture(TextureCube textureCube, int meshIndex = 0, int meshPartIndex = 0)
+        {
+            TextureInformation ti = TextureInformations[meshIndex][meshPartIndex];
+            ti.SetCubeTexture(textureCube, TextureType.ENVIRONMENT);
+        }
+
+
+
+        /// <summary>
         /// Load the model
         /// </summary>
         /// <param name="factory">The factory.</param>

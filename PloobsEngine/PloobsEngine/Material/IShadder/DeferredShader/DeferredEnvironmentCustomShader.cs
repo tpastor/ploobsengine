@@ -35,26 +35,14 @@ namespace PloobsEngine.Material
     /// Shader that uses branching to use Glow,Bump, Specular and Paralax
     /// Dont need to use all of them at once
     /// </summary>
-    public class DeferredCustomShader : IShader
+    public class DeferredEnvironmentCustomShader : IShader
     {
         private string effect;
         private Effect _shader;
-        private bool useGlow;
-        private bool useParalax;
+        private bool useGlow;        
         private bool useBump;
         private bool useSpecular;
 
-        /// <summary>
-        /// Gets or sets a value indicating whether [use paralax].
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if [use paralax]; otherwise, <c>false</c>.
-        /// </value>
-        public bool UseParalax
-        {
-            get { return useParalax; }
-            set { useParalax = value; }
-        }
 
         /// <summary>
         /// Gets or sets a value indicating whether [use glow].
@@ -135,11 +123,10 @@ namespace PloobsEngine.Material
         /// </summary>
         /// <param name="useGlow">if set to <c>true</c> [use glow].</param>
         /// <param name="useBump">if set to <c>true</c> [use bump].</param>
-        /// <param name="useSpecular">if set to <c>true</c> [use specular].</param>
-        /// <param name="useParalax">if set to <c>true</c> [use paralax].</param>
+        /// <param name="useSpecular">if set to <c>true</c> [use specular].</param>        
         /// <param name="specularIntensity">The specular intensity.</param>
         /// <param name="specularPower">The specular power.</param>
-        public DeferredCustomShader(bool useGlow,bool useBump,bool useSpecular,bool useParalax, float specularIntensity = 0, float specularPower = 0)
+        public DeferredEnvironmentCustomShader(bool useGlow, bool useBump, bool useSpecular, float specularIntensity = 0, float specularPower = 0)
         {
             if (specularPower < 0)
             {
@@ -152,19 +139,14 @@ namespace PloobsEngine.Material
                 specularIntensity = 0;
             }
 
-            this.effect = "AllBuffer";
+            this.effect = "AllBufferEnvironment";
             this.specularIntensity = specularIntensity;
             this.specularPower = specularPower;
             this.useGlow = useGlow;
             this.useSpecular = useSpecular;
-            this.useBump = useBump;
-            this.useParalax = useParalax;
+            this.useBump = useBump;            
             specularPowerMapScale = 1;
-            specularIntensityMapScale = 1;
-            if (useParalax == true && useBump == false)
-            {
-                ActiveLogger.LogMessage("Are you sure you will use only Paralax without BUMP, the paralax expects bump", LogLevel.Warning);                
-            }
+            specularIntensityMapScale = 1;            
         }
 
         private Vector2 scaleBias = new Vector2(0.04f, -0.03f);
@@ -208,6 +190,20 @@ namespace PloobsEngine.Material
             }
         }
 
+        private float reflectionIndex = 1;
+        public float ReflectionIndex
+        {
+            get
+            {
+                return reflectionIndex;
+            }
+            set
+            {
+                this.reflectionIndex = value;
+            }
+        }
+        
+
         /// <summary>
         /// Draw
         /// </summary>
@@ -218,17 +214,15 @@ namespace PloobsEngine.Material
         /// <param name="lights"></param>
         public override void  Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<Light.ILight> lights)
         {                 
-               Pid.SetValue(shaderId);
-               PuseParalax.SetValue(useParalax);
+               Pid.SetValue(shaderId);            
                PuseGlow.SetValue(useGlow);
                PuseBump.SetValue(useBump);
                PuseSpecular.SetValue(useSpecular);                                                   
                PView.SetValue(cam.View);
                PProjection.SetValue(cam.Projection);
+               PCameraPos.SetValue(cam.Position);
+               PreflectionIndex.SetValue(reflectionIndex);
 
-                if(useParalax)
-                    this._shader.Parameters["CameraPos"].SetValue(cam.Position);                               
-                
                 Matrix wld = obj.WorldMatrix;
 
                 for (int i = 0; i < obj.Modelo.MeshNumber; i++)
@@ -236,21 +230,15 @@ namespace PloobsEngine.Material
                     BatchInformation[] bi = obj.Modelo.GetBatchInformation(i);                    
                     for (int j = 0; j < bi.Count(); j++)
                     {
-                        PTexture.SetValue(obj.Modelo.getTexture(TextureType.DIFFUSE, i, j));
+                        PDiffuse.SetValue(obj.Modelo.getTexture(TextureType.DIFFUSE,i,j));
+                        PTexture.SetValue(obj.Modelo.GetTextureInformation(i)[j].getCubeTexture(TextureType.ENVIRONMENT));
                         if (useBump)
                         {
-                            if (useParalax)
-                            {
-                                this._shader.Parameters["HeightMap"].SetValue(obj.Modelo.getTexture(TextureType.PARALAX,i,j));
-                                this._shader.Parameters["scaleBias"].SetValue(scaleBias);
-                            }
-
                             PNormalMap.SetValue(obj.Modelo.getTexture(TextureType.BUMP, i, j));
-
                         }
                         if (useSpecular)
                         {
-                            PSpecularMap.SetValue(obj.Modelo.getTexture(TextureType.SPECULAR, i, j));
+                            PSpecularMap.SetValue(obj.Modelo.getTexture(TextureType.SPECULAR, i, j));                            
                             PspecularIntensityScale.SetValue(SpecularIntensityMapScale);
                             PspecularPowerScale.SetValue(SpecularPowerMapScale);                            
                         }
@@ -258,6 +246,7 @@ namespace PloobsEngine.Material
                         {
                             PspecularIntensity.SetValue(specularIntensity);
                             PspecularPower.SetValue(specularPower);                            
+                            
                         }
 
                         if (useGlow)
@@ -289,7 +278,7 @@ namespace PloobsEngine.Material
             PuseSpecular = this._shader.Parameters["useSpecular"];
             PuseBump = this._shader.Parameters["useBump"];
             PuseGlow = this._shader.Parameters["useGlow"];
-            PuseParalax = this._shader.Parameters["useParalax"];
+            PCameraPos = this._shader.Parameters["CameraPos"];
             Pid = this._shader.Parameters["id"];
             PTexture = this._shader.Parameters["Texture"];
             PspecularPowerScale = this._shader.Parameters["specularPowerScale"]; 
@@ -301,7 +290,11 @@ namespace PloobsEngine.Material
             PNormalMap = this._shader.Parameters["NormalMap"];
             PSpecularMap = this._shader.Parameters["SpecularMap"];
             Pglow = this._shader.Parameters["glow"];
+            PreflectionIndex = this._shader.Parameters["reflectionIndex"];
+            PDiffuse = this._shader.Parameters["DifTex"];
         }
+        EffectParameter PDiffuse;
+        EffectParameter PreflectionIndex; 
         EffectParameter Pglow; 
         EffectParameter PSpecularMap; 
         EffectParameter  PNormalMap; 
@@ -311,15 +304,15 @@ namespace PloobsEngine.Material
         EffectParameter  PspecularPowerScale; 
         EffectParameter  PspecularIntensityScale; 
         EffectParameter  PspecularPower; 
-        EffectParameter  PspecularIntensity; 
+        EffectParameter  PspecularIntensity;
+        EffectParameter  PCameraPos;
 
         EffectParameter  PTexture; 
         EffectParameter PProjection;
         EffectParameter PView;
         EffectParameter PuseSpecular;
         EffectParameter PuseBump;
-        EffectParameter PuseGlow;
-        EffectParameter PuseParalax;
+        EffectParameter PuseGlow;        
         EffectParameter Pid;
         
     }
