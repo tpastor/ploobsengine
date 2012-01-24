@@ -480,6 +480,10 @@
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Net" />
+    <Reference Include="TomShane.Neoforce.Controls, Version=0.7.2407.1915, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dlls\TomShane.Neoforce.Controls.dll</HintPath>
+    </Reference>
     <Reference Include="XNAnimation, Version=0.7.0.0, Culture=neutral, PublicKeyToken=0c21691816f8c6d0, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Dlls\Reach\XNAnimation.dll</HintPath>
