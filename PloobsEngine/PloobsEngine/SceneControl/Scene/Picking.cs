@@ -104,7 +104,7 @@ namespace PloobsEngine.SceneControl
             set { noneButtonIntercept = value; }
         }
 
-        private bool CullNothing(IPhysicObject phy)
+        private static bool CullNothing(IPhysicObject phy)
         {
             return true;
         }
@@ -127,6 +127,38 @@ namespace PloobsEngine.SceneControl
                     return;
                 OnPickedNoneButton(rti);
             }
+        }
+
+        /// <summary>
+        /// Picking in x/y screen coordinates
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="info"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="pickingDistance"></param>
+        /// <param name="intercept"></param>
+        /// <returns></returns>
+        public static SegmentInterceptInfo Pick(IWorld world, GraphicInfo info, float x, float y, float pickingDistance = 500, Func<IPhysicObject, bool> intercept = null)
+        {
+            if (intercept == null)
+                intercept = CullNothing;
+
+            Matrix viewInverse = Matrix.Invert(world.CameraManager.ActiveCamera.View);
+            Matrix projectionInverse = Matrix.Invert(world.CameraManager.ActiveCamera.Projection);
+            Matrix viewProjectionInverse = projectionInverse * viewInverse;
+
+            Vector3 v = new Vector3();
+            v.X = (((2.0f * x) / info.Viewport.Width) - 1);
+            v.Y = -(((2.0f * y) / info.Viewport.Height) - 1);
+            v.Z = 0.0f;
+
+            Ray pickRay = new Ray();
+            pickRay.Position.X = viewInverse.M41;
+            pickRay.Position.Y = viewInverse.M42;
+            pickRay.Position.Z = viewInverse.M43;
+            pickRay.Direction = Vector3.Normalize(Vector3.Transform(v, viewProjectionInverse) - pickRay.Position);
+            return world.PhysicWorld.SegmentIntersect(pickRay, intercept, pickingDistance);
         }
 
         private void UpdatePickRay(MouseState ms)
@@ -288,7 +320,7 @@ namespace PloobsEngine.SceneControl
             set { noneButtonIntercept = value; }
         }
 
-        private bool CullNothing(IPhysicObject phy)
+        private static bool CullNothing(IPhysicObject phy)
         {
             return true;
         }
@@ -297,6 +329,28 @@ namespace PloobsEngine.SceneControl
         {
             get { return pickingRayDistance; }
             set { pickingRayDistance = value; }
+        }
+
+        public static SegmentInterceptInfo Pick(IWorld world, GraphicInfo info, float x, float y, float pickingDistance = 500, Func<IPhysicObject, bool> intercept = null)
+        {
+            if (intercept == null)
+                intercept = CullNothing;
+
+            Matrix viewInverse = Matrix.Invert(world.CameraManager.ActiveCamera.View);
+            Matrix projectionInverse = Matrix.Invert(world.CameraManager.ActiveCamera.Projection);
+            Matrix viewProjectionInverse = projectionInverse * viewInverse;
+
+            Vector3 v = new Vector3();
+            v.X = (((2.0f * x) / info.Viewport.Width) - 1);
+            v.Y = -(((2.0f * y) / info.Viewport.Height) - 1);
+            v.Z = 0.0f;
+
+            Ray pickRay = new Ray();
+            pickRay.Position.X = viewInverse.M41;
+            pickRay.Position.Y = viewInverse.M42;
+            pickRay.Position.Z = viewInverse.M43;
+            pickRay.Direction = Vector3.Normalize(Vector3.Transform(v, viewProjectionInverse) - pickRay.Position);
+            return world.PhysicWorld.SegmentIntersect(pickRay, intercept, pickingDistance);
         }
 
         protected override void Update(GameTime gt)
