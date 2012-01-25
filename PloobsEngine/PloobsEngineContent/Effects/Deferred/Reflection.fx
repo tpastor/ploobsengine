@@ -100,7 +100,7 @@ PixelShaderOutput PixelShaderFunctionReflexiveSurfacePerfect(VertexShaderOutput 
     output.Depth = input.Depth.x / input.Depth.y;                              //output Depth  
   
 	output.LightOcclusion =  0; 
-	output.LightOcclusion.a =  id; 
+	output.LightOcclusion.a =  id/ 255.0f; 
 	
     float4 reflectiveColor = tex2D(ReflectionSampler, ProjectedTexCoords);
     float4 color = tex2D(FloorSampler, input.TexCoord);

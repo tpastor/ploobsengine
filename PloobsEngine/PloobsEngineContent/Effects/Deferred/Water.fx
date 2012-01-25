@@ -322,7 +322,7 @@ PixelShaderOutput PS_Water( VSOUTPUT IN )  {
 	output.Normal.rgb = 0.5f * (normalize(vWorldNormal ) + 1.0f);
 	output.Normal.a = 0.01;
 	output.LightOcclusion.rgb = 0;
-	output.LightOcclusion.a = id;
+	output.LightOcclusion.a = id/ 255.0f;
 	return output;
 }
 

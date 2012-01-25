@@ -152,10 +152,9 @@ float4 PixelShaderFunctionNormal(VertexShaderOutput input) : COLOR0
 	ScreenPosition.x = ScreenPosition.x/2.0f+0.5f;
 	ScreenPosition.y = (-ScreenPosition.y/2.0f+0.5f);
 	
-	///nao sobrescreve modelos que nao estao no pano de fundo
-	float flag =  tex2D(ExtraSampler, input.texCoord).a ;
-	bool DoNotIlluminate = fmod(flag, 2) == 1; 
-	bool isBackGround = fmod(flag, 4) == 1; 
+	///nao sobrescreve modelos que nao estao no pano de fundo	
+	int flag = round(tex2D(ExtraSampler,input.texCoord).a * 255 );	
+	bool isBackGround = fmod(flag, 4) >= 2; 
 
 	if(isBackGround)
 	{

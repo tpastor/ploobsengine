@@ -92,7 +92,7 @@ PixelShaderOutput PixelShaderFunctionReflexiveSurface(VertexShaderOutput input)
     output.Normal.a = specularPower;                                           //output SpecularPower
     output.Depth = input.Depth.x / input.Depth.y;                              //output Depth  
 	output.LightOcclusion =  0;       
-	output.LightOcclusion.a =  id;       
+	output.LightOcclusion.a =  id/ 255.0f;        
         
     return output;
 }

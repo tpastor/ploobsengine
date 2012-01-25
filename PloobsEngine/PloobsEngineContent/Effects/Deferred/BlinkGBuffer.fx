@@ -63,7 +63,7 @@ PixelShaderOutput PixelShaderFunction(VertexShaderOutput input)
     output.Normal.a = specularPower;                                            //output SpecularPower
     output.Depth = input.Depth.x / input.Depth.y;                           //output Depth    
 	output.EXTRA1 =  0;       
-	output.EXTRA1.a = id;
+	output.EXTRA1.a = id / 255.0f;
     return output;
 }
 

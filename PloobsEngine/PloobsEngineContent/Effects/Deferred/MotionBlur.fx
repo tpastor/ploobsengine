@@ -49,7 +49,7 @@ VertexShaderOutput VShader( float4 Pos: POSITION, float2 Tex : TEXCOORD)
 float4 Pshader(VertexShaderOutput input) : COLOR
 {	    
 
-	float ex = tex2D(extraSampler,input.TexCoord).a;
+	int ex = round(tex2D(extraSampler,input.TexCoord).a * 255 );
 	bool notmotionblur = fmod(ex, 8) >= 4;
 	if(!notmotionblur)
 	{

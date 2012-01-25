@@ -613,7 +613,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="bin\Xbox 360\Release\Content\Effects\Deferred\AllBufferEnvironment.xnb" />
     <None Include="PloobsEngine.licenseheader" />
     <None Include="Resources\ConsoleFont.spritefont" />
   </ItemGroup>

@@ -156,7 +156,7 @@ PixelShaderOutput PixelShaderFunctionReflexiveSurface(VertexShaderOutput input)
     output.Normal.a = specularPower;                                
     output.Depth = input.Depth.x / input.Depth.y;                   
 	output.LightOcclusion =  0;           
-	output.LightOcclusion.a =  id;           	 
+	output.LightOcclusion.a =  id / 255.0f;           	 
     
     float4 reflectiveColor = tex2D(ReflectionSampler, ProjectedTexCoordsReflection + perturbation );
     float4 refractiveColor = tex2D(RefractionSampler, ProjectedTexCoordsRefraction + perturbation );    

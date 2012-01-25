@@ -13,13 +13,14 @@ using PloobsEngine.Commands;
 using PloobsEngine.Light;
 using Microsoft.Xna.Framework.Input;
 using PloobsEngine.Engine;
+using PloobsEngine.Utils;
 
 namespace EngineTestes
 {
     /// <summary>
     /// Paralax Effect and Normal Mapping Screen
     /// </summary>
-    public class EnvironmentBumpScreen : IScene
+    public class ShaderIDScreen : IScene
     {
         /// <summary>
         /// Sets the world and render technich.
@@ -71,6 +72,7 @@ namespace EngineTestes
                 DeferredEnvironmentCustomShader DeferredEnvironmentCustomShader = new DeferredEnvironmentCustomShader(false, true, false);
                 DeferredEnvironmentCustomShader.SpecularIntensity = 0.2f;
                 DeferredEnvironmentCustomShader.SpecularPower = 30;
+                DeferredEnvironmentCustomShader.ShaderId = ShaderUtils.CreateSpecificBitField(true);
                 IMaterial mat = new DeferredMaterial(DeferredEnvironmentCustomShader);
                 IObject obj3 = new IObject(mat, sm, pi);
                 this.World.AddObject(obj3);
@@ -110,6 +112,9 @@ namespace EngineTestes
             this.World.CameraManager.AddCamera(cam);
 
             new LightThrowBepu(this.World, GraphicFactory);
+
+            SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//cubemap");
+            CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
         }
     
 

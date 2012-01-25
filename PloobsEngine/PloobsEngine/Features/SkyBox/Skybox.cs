@@ -232,7 +232,7 @@ namespace PloobsEngine.Features
             get { return ComponentType.PRE_DRAWABLE; }
         }
 
-        protected override void  PreDraw(RenderHelper render,GameTime gt, Matrix activeView, Matrix activeProjection)
+        protected override void PreDraw(RenderHelper render,GameTime gt, Matrix activeView, Matrix activeProjection)
         {
             if (!enable)
                 return;
@@ -248,7 +248,9 @@ namespace PloobsEngine.Features
 
             render.PushDepthStencilState(DepthStencilState.None);
             render.PushRasterizerState(RasterizerState.CullNone);
+
             render.RenderBatch(bi, effect);
+
             render.PopRasterizerState();
             render.PopDepthStencilState();
 
