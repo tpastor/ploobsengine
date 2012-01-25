@@ -19,14 +19,10 @@ namespace EngineTestes.LightPrePassIdea.Imp
         public LightPrePassRenderTechnic()
             :base(PostEffectType.Forward3D)
         {
-        }
+        }        
 
-        
-
-        GraphicInfo ginfo;
-        
+        GraphicInfo ginfo;      
                 
-
         private const String name = "LightPrePass";
         public override string TechnicName
         {
@@ -37,21 +33,20 @@ namespace EngineTestes.LightPrePassIdea.Imp
         {
         }
 
-
         /// <summary>
         /// Our final corners, the 4 farthest points on the view space frustum
         /// </summary>
         private Vector3[] _currentFrustumCorners = new Vector3[4];
         private Vector3[] _localFrustumCorners = new Vector3[4];
+        SimpleModel sphereModel;
+        Effect pointLightEffect;
+
         public ForwardPass ForwardPass
         {
             get;
             set;
         }
-
-        SimpleModel sphereModel;
-        Effect pointLightEffect;
-
+        
         protected override void AfterLoadContent(IContentManager manager, PloobsEngine.Engine.GraphicInfo ginfo, PloobsEngine.Engine.GraphicFactory factory)
         {
             base.AfterLoadContent(manager, ginfo, factory);
@@ -99,7 +94,9 @@ namespace EngineTestes.LightPrePassIdea.Imp
                 };
 
             CreateGBuffer(factory);
-            LoadShaders(factory);
+
+            _clearGBuffer = factory.GetEffect("PrePass/ClearGBuffer");
+            _lighting = factory.GetEffect("PrePass/LightingLpp");            
         }
 
 
@@ -180,11 +177,6 @@ namespace EngineTestes.LightPrePassIdea.Imp
         private RenderTarget2D _halfBuffer1;
 
         /// <summary>
-        /// Effect to reconstruct Z buffer from linear depth buffer
-        /// </summary>
-        private Effect _reconstructZBuffer;
-
-        /// <summary>
         /// Effect that clears our GBuffer
         /// </summary>
         private Effect _clearGBuffer;
@@ -193,11 +185,6 @@ namespace EngineTestes.LightPrePassIdea.Imp
         /// Effect that performs the lighting 
         /// </summary>
         private Effect _lighting;
-
-        /// <summary>
-        /// Use screen-aligned quads for point lights
-        /// </summary>
-        private bool _useQuads = true;
 
         private void CreateGBuffer(GraphicFactory factory)
         {
@@ -257,13 +244,7 @@ namespace EngineTestes.LightPrePassIdea.Imp
             
 
         }
-
-        private void LoadShaders(GraphicFactory factory)
-        {
-            _clearGBuffer = factory.GetEffect("PrePass/ClearGBuffer");
-            _lighting = factory.GetEffect("PrePass/LightingLpp");
-            _reconstructZBuffer = factory.GetEffect("PrePass/ReconstructDepth");
-        }
+              
 
         protected override void ExecuteTechnic(Microsoft.Xna.Framework.GameTime gameTime, RenderHelper render, IWorld world)
         {
