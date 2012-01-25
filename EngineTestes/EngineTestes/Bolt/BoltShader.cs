@@ -51,15 +51,15 @@ namespace EngineTestes.Bolt
                render.RenderBatch(obj.Modelo.GetBatchInformation(0)[0], effect);
                render.PopBlendState();
         }
-        public override void BasicDraw(GameTime gt, PloobsEngine.SceneControl.IObject obj, Matrix view, Matrix projection, IList<PloobsEngine.Light.ILight> lights, PloobsEngine.SceneControl.RenderHelper render, Plane? clippingPlane, bool useAlphaBlending = false)
+        public override void BasicDraw(GameTime gt, PloobsEngine.SceneControl.IObject obj, ref Matrix view, ref Matrix projection, IList<PloobsEngine.Light.ILight> lights, PloobsEngine.SceneControl.RenderHelper render, Plane? clippingPlane, bool useAlphaBlending = false)
         {
             if(CastShadowAndReflection)
-                base.BasicDraw(gt, obj, view, projection, lights, render, clippingPlane, useAlphaBlending);
+                base.BasicDraw(gt, obj, ref view, ref projection, lights, render, clippingPlane, useAlphaBlending);
         }
-        public override void DepthExtractor(GameTime gt, PloobsEngine.SceneControl.IObject obj, Matrix View, Matrix projection, PloobsEngine.SceneControl.RenderHelper render)
+        public override void DepthExtractor(GameTime gt, PloobsEngine.SceneControl.IObject obj, ref Matrix View, ref Matrix projection, PloobsEngine.SceneControl.RenderHelper render)
         {
             if(CastShadowAndReflection)
-                base.DepthExtractor(gt, obj, View, projection, render);
+                base.DepthExtractor(gt, obj, ref View, ref projection, render);
         }
 
         public override MaterialType MaterialType

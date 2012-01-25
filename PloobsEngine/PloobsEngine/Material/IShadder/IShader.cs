@@ -181,7 +181,7 @@ namespace PloobsEngine.Material
         /// <param name="View">The view.</param>
         /// <param name="projection">The projection.</param>
         /// <param name="render">The render.</param>
-        public virtual void DepthExtractor(GameTime gt, IObject obj, Matrix View, Matrix projection, RenderHelper render)
+        public virtual void DepthExtractor(GameTime gt, IObject obj, ref Matrix View, ref Matrix projection, RenderHelper render)
         {
             Matrix wld = obj.WorldMatrix;            
             for (int i = 0; i < obj.Modelo.MeshNumber; i++)
@@ -210,7 +210,7 @@ namespace PloobsEngine.Material
         /// <param name="render">The render.</param>
         /// <param name="clippingPlane">The clipping plane.</param>
         /// <param name="useAlphaBlending">if set to <c>true</c> [use alpha blending].</param>
-        public virtual void BasicDraw(GameTime gt, IObject obj, Matrix view, Matrix projection, IList<ILight> lights, RenderHelper render,Plane? clippingPlane, bool useAlphaBlending = false)
+        public virtual void BasicDraw(GameTime gt, IObject obj, ref Matrix view, ref Matrix projection, IList<ILight> lights, RenderHelper render,Plane? clippingPlane, bool useAlphaBlending = false)
         {
             Matrix wld = obj.WorldMatrix;
             if (clippingPlane != null)

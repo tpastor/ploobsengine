@@ -223,7 +223,7 @@ namespace PloobsEngine.Material
             QuadTerrain.CleanUp();            
         }
                 
-        public override void DepthExtractor(GameTime gt, IObject obj, Matrix View, Matrix projection, RenderHelper render)
+        public override void DepthExtractor(GameTime gt, IObject obj, ref Matrix View, ref Matrix projection, RenderHelper render)
         {
             isupdated = false;
             Matrix x = Matrix.Invert(View);
@@ -234,7 +234,7 @@ namespace PloobsEngine.Material
             QuadTerrain.DrawTerrain(getDepth, render.device);
         }
 
-        public override void BasicDraw(GameTime gt, IObject obj, Matrix view, Matrix projection, IList<Light.ILight> lights, RenderHelper render, Plane? clippingPlane, bool useAlphaBlending = false)
+        public override void BasicDraw(GameTime gt, IObject obj, ref Matrix view, ref Matrix projection, IList<Light.ILight> lights, RenderHelper render, Plane? clippingPlane, bool useAlphaBlending = false)
         {
             isupdated = false;
             Matrix x = Matrix.Invert(view);

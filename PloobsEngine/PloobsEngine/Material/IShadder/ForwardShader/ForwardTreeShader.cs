@@ -51,7 +51,7 @@ namespace PloobsEngine.Material
             render.ResyncStates();
         }
 
-        public override void DepthExtractor(Microsoft.Xna.Framework.GameTime gt, SceneControl.IObject obj, Microsoft.Xna.Framework.Matrix View, Microsoft.Xna.Framework.Matrix projection, SceneControl.RenderHelper render)
+        public override void DepthExtractor(Microsoft.Xna.Framework.GameTime gt, SceneControl.IObject obj, ref Microsoft.Xna.Framework.Matrix View, ref Microsoft.Xna.Framework.Matrix projection, SceneControl.RenderHelper render)
         {
             SimpleTree tree = (obj.Modelo as TreeModel).Tree;
             tree.DrawTrunk(obj.WorldMatrix, View, projection, false, true);

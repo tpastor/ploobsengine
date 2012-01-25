@@ -909,7 +909,7 @@ namespace PloobsEngine.SceneControl
                     continue;
                              
                 if(obj.Material.CanCreateShadow)
-                    obj.Material.Shader.DepthExtractor(gt, obj, view,projection, this);                
+                    obj.Material.Shader.DepthExtractor(gt, obj, ref view,ref  projection, this);                
             }
         }
 
@@ -937,7 +937,7 @@ namespace PloobsEngine.SceneControl
             foreach (var obj in objs)
             {
                 if (obj.Material.CanCreateShadow && obj.Material.IsVisible)
-                    obj.Material.Shader.DepthExtractor(gt, obj, view, projection, this);
+                    obj.Material.Shader.DepthExtractor(gt, obj, ref view, ref projection, this);
             }
         }
 
@@ -953,7 +953,7 @@ namespace PloobsEngine.SceneControl
         /// <param name="useCuller">if set to <c>true</c> [use culler].</param>
         /// <param name="clippingPlane">The clipping plane.</param>
         /// <param name="useAlphaBlend">if set to <c>true</c> [use alpha blend].</param>
-        public void RenderSceneReflectionRefration(IWorld world, GameTime gt, List<IObject> objListException, Matrix view, Matrix projection,bool drawComponentsPreDraw = true ,bool useCuller = false,Plane? clippingPlane = null,bool useAlphaBlend = false)
+        public void RenderSceneReflectionRefration(IWorld world, GameTime gt, List<IObject> objListException, ref Matrix view, ref Matrix projection,bool drawComponentsPreDraw = true ,bool useCuller = false,Plane? clippingPlane = null,bool useAlphaBlend = false)
         {
             if (drawComponentsPreDraw)
             {
@@ -977,7 +977,7 @@ namespace PloobsEngine.SceneControl
                     continue;
 
                 if(obj.Material.CanAppearOfReflectionRefraction && obj.Material.IsVisible)
-                    obj.Material.Shader.BasicDraw(gt, obj, view,projection, world.Lights, this, clippingPlane, useAlphaBlend);
+                    obj.Material.Shader.BasicDraw(gt, obj, ref  view,ref projection, world.Lights, this, clippingPlane, useAlphaBlend);
             }
         }
 #endif

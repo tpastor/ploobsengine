@@ -115,11 +115,11 @@ namespace PloobsEngine.SceneControl
                 render.SetSamplerState(ginfo.SamplerState, 2);                
             }
 
-            finalCombineEffect.Parameters["halfPixel"].SetValue(ginfo.HalfPixel);
-            finalCombineEffect.Parameters["EXTRA1"].SetValue(gbuffer[GBufferTypes.Extra1]);
-            finalCombineEffect.Parameters["ambientColor"].SetValue(ambientColor.ToVector3());
-            finalCombineEffect.Parameters["colorMap"].SetValue(gbuffer[GBufferTypes.COLOR]);
-            finalCombineEffect.Parameters["lightMap"].SetValue(lightmap[DeferredLightMapType.LIGHTMAP]);            
+            
+            PEXTRA1.SetValue(gbuffer[GBufferTypes.Extra1]);
+            PambientColor.SetValue(ambientColor.ToVector3());
+            PcolorMap.SetValue(gbuffer[GBufferTypes.COLOR]);
+            PlightMap.SetValue(lightmap[DeferredLightMapType.LIGHTMAP]);            
 
             render.RenderFullScreenQuadVertexPixel(finalCombineEffect);
 
@@ -131,6 +131,11 @@ namespace PloobsEngine.SceneControl
             
         }
 
+        EffectParameter PhalfPixel;
+        EffectParameter PEXTRA1;
+        EffectParameter PambientColor;
+        EffectParameter PcolorMap;
+        EffectParameter PlightMap;
 
         #endregion
 
@@ -143,6 +148,12 @@ namespace PloobsEngine.SceneControl
             this.ginfo = ginfo;
             this.saveToTexture = saveToTexture;
             finalCombineEffect = manager.GetAsset<Effect>("CombineFinal",true);
+            PhalfPixel = finalCombineEffect.Parameters["halfPixel"];
+            PEXTRA1 = finalCombineEffect.Parameters["EXTRA1"];
+            PambientColor = finalCombineEffect.Parameters["ambientColor"];
+            PcolorMap = finalCombineEffect.Parameters["colorMap"];
+            PlightMap = finalCombineEffect.Parameters["lightMap"];
+            PhalfPixel.SetValue(ginfo.HalfPixel);
             if (saveToTexture)
             {
                 if (useFloatBuffer)
