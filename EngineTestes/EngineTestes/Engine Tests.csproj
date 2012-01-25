@@ -192,7 +192,6 @@
     <Compile Include="GUI\GUIScreen.cs" />
     <Compile Include="LightPrePassIdea\Imp\PrePassScreen.cs" />
     <Compile Include="LightPrePassIdea\HybridDeferred.cs" />
-    <Compile Include="LightPrePassIdea\Imp\GenerateGBuffer.cs" />
     <Compile Include="LightPrePassIdea\Imp\LightPrePassRenderTechnic.cs" />
     <Compile Include="LightPrePassIdea\LightPrePassCombination.cs" />
     <Compile Include="LightPrePassIdea\LightPrePassGBuffer.cs" />
