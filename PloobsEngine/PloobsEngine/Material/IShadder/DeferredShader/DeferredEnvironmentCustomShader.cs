@@ -132,7 +132,8 @@ namespace PloobsEngine.Material
             {
                 ActiveLogger.LogMessage("specularPower cannot be negative, setting to 0", LogLevel.RecoverableError);
                 specularPower = 0;
-            }
+            }               
+
             if (specularIntensity < 0)
             {
                 ActiveLogger.LogMessage("specularIntensity cannot be negative, setting to 0", LogLevel.RecoverableError);

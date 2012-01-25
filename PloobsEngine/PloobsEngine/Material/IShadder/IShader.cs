@@ -59,7 +59,7 @@ namespace PloobsEngine.Material
         /// <remarks>
         /// This parameter lets the object not be affect by light, or be recovered in a post proccess phase
         /// </remarks>
-        protected float shaderId = 0;
+        protected int shaderId = 0;
 
         
         /// <summary>
@@ -75,10 +75,8 @@ namespace PloobsEngine.Material
 
         /// <summary>
         /// Used to Recover the object in PostProcces
-        /// between 0 and 0.9f it will be illuminated, 
-        /// bigger than 0.9 it wont be
         /// </summary>
-        public float ShaderId
+        public int ShaderId
         {
             get { return shaderId; }
             set { shaderId = value; }

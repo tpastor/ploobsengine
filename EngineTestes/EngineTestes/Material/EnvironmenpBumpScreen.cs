@@ -65,7 +65,7 @@ namespace EngineTestes
                 ///Need to load the height, the normal texture and the difuse texture
                 SimpleModel sm = new SimpleModel(factory, "..\\Content\\Model\\block", "..\\Content\\Textures\\color_map");
                 sm.SetTexture("Textures\\normal_map", TextureType.BUMP);                
-                sm.SetCubeTexture(factory.GetTextureCube("Textures//cubemap"));
+                sm.SetCubeTexture(factory.GetTextureCube("Textures//cubemap"),TextureType.ENVIRONMENT);
 
                 BoxObject pi = new BoxObject(new Vector3(200, 110, 0), 1, 1, 1, 5, new Vector3(100, 100, 100), Matrix.Identity, MaterialDescription.DefaultBepuMaterial());
                 DeferredEnvironmentCustomShader DeferredEnvironmentCustomShader = new DeferredEnvironmentCustomShader(false, true, false);

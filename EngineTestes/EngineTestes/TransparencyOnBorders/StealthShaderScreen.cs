@@ -11,6 +11,7 @@ using PloobsEngine.Physics.Bepu;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Cameras;
 using EngineTestes.TransparencyOnBorders;
+using PloobsEngine.Utils;
 
 namespace ProjectTemplate
 {
@@ -56,8 +57,7 @@ namespace ProjectTemplate
                 ///Physic info (position, rotation and scale are set here)
                 GhostObject pi = new GhostObject(new Vector3(200, 10, 0), Matrix.Identity, new Vector3(4));
                 ///Shader info (must be a deferred type)
-                ForwardGradativeAlphaShader shader = new ForwardGradativeAlphaShader();
-                shader.ShaderId = 0.4f;
+                ForwardGradativeAlphaShader shader = new ForwardGradativeAlphaShader();                
                 ///Material info (must be a deferred type also)
                 ForwardMaterial fmaterial = new ForwardMaterial(shader);
                 

@@ -148,9 +148,10 @@ PixelShaderOutput PixelShaderFunction(VertexShaderOutput input)
     }
     else
     {
-	float refl = reflect(normalize(input.Pos - CameraPos),input.Normal);           
+	float3 nnormal = normalize(input.Normal);
+	float refl = reflect(normalize(input.Pos - CameraPos),nnormal);           
 	output.Color = reflectionIndex * texCUBE(map_diffuse,refl) + (1 - reflectionIndex)* tex2D(diffuseSampler, input.TexCoord);   
-	output.Normal.rgb = 0.5f * (normalize(input.Normal) + 1.0f);             
+	output.Normal.rgb = 0.5f * (nnormal + 1.0f);             
     }
     
 
@@ -185,6 +186,9 @@ PixelShaderOutput PixelShaderFunction(VertexShaderOutput input)
     
     return output;
 }
+
+
+
 
 technique Technique1
 {

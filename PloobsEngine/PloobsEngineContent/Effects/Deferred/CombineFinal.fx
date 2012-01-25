@@ -53,16 +53,25 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 
 float4 PixelShaderFunctionNormal(VertexShaderOutput input) : COLOR0
 {	
-	int procces = round(tex2D(extraSampler,input.TexCoord).a * 255 );
+	float4 extra =  tex2D(extraSampler,input.TexCoord).rgba;
+	int procces = round(extra.a * 255 );
 	float3 diffuseColor = tex2D(colorSampler,input.TexCoord).rgb;	
 	
 	bool DoNotIlluminate = fmod(procces, 2) == 1; 
 	bool isBackGround = fmod(procces, 4) >= 2; 
+	bool isAmbienteCubeMap = fmod(procces, 16) >= 8; 
 
 	
 	if(DoNotIlluminate  || isBackGround)
 	{
 		return float4(diffuseColor,1);
+	}
+	else if(isAmbienteCubeMap)
+	{
+		float4 light = tex2D(lightSampler,input.TexCoord);		
+		float3 diffuseLight = light.rgb;
+		float specularLight = light.a;
+		return float4((diffuseColor * (diffuseLight + extra.rgb)+ specularLight),1);
 	}
 	else	
 	{		

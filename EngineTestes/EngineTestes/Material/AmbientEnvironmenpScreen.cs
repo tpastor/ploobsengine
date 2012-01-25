@@ -13,14 +13,13 @@ using PloobsEngine.Commands;
 using PloobsEngine.Light;
 using Microsoft.Xna.Framework.Input;
 using PloobsEngine.Engine;
-using PloobsEngine.Utils;
 
 namespace EngineTestes
 {
     /// <summary>
-    /// Paralax Effect and Normal Mapping Screen
+    /// AmbientEnvironment
     /// </summary>
-    public class ShaderIDScreen : IScene
+    public class AmbientEnvironmenpScreen : IScene
     {
         /// <summary>
         /// Sets the world and render technich.
@@ -65,23 +64,25 @@ namespace EngineTestes
             {
                 ///Need to load the height, the normal texture and the difuse texture
                 SimpleModel sm = new SimpleModel(factory, "..\\Content\\Model\\block", "..\\Content\\Textures\\color_map");
-                sm.SetTexture("Textures\\normal_map", TextureType.BUMP);                
-                sm.SetCubeTexture(factory.GetTextureCube("Textures//cubemap"),TextureType.ENVIRONMENT);
+                sm.SetTexture("Textures\\normal_map", TextureType.BUMP);                                
+                sm.SetCubeTexture(factory.GetTextureCube("Textures//cubemap"), TextureType.AMBIENT_CUBE_MAP);
 
                 BoxObject pi = new BoxObject(new Vector3(200, 110, 0), 1, 1, 1, 5, new Vector3(100, 100, 100), Matrix.Identity, MaterialDescription.DefaultBepuMaterial());
-                DeferredEnvironmentCustomShader DeferredEnvironmentCustomShader = new DeferredEnvironmentCustomShader(false, true, false);
-                DeferredEnvironmentCustomShader.SpecularIntensity = 0.2f;
-                DeferredEnvironmentCustomShader.SpecularPower = 30;
-                DeferredEnvironmentCustomShader.ShaderId = ShaderUtils.CreateSpecificBitField(true);
-                IMaterial mat = new DeferredMaterial(DeferredEnvironmentCustomShader);
+                DeferredCustomShader DeferredCustomShader = new DeferredCustomShader(false, true, false,false,true);
+                DeferredCustomShader.SpecularIntensity = 0.2f;
+                DeferredCustomShader.SpecularPower = 30;
+                DeferredCustomShader.AmbientCubeMapScale = 0.2f;
+                IMaterial mat = new DeferredMaterial(DeferredCustomShader);
                 IObject obj3 = new IObject(mat, sm, pi);
                 this.World.AddObject(obj3);
             }
 
             {
                 SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
+                simpleModel.SetCubeTexture(factory.GetTextureCube("Textures//cubemap"), TextureType.AMBIENT_CUBE_MAP);
+
                 TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
-                DeferredCustomShader shader = new DeferredCustomShader(false,false,false,false);
+                DeferredNormalShader shader = new DeferredNormalShader(0,0,true,0.2f);
                 DeferredMaterial fmaterial = new DeferredMaterial(shader);
                 IObject obj = new IObject(fmaterial, simpleModel, tmesh);
                 this.World.AddObject(obj);
@@ -112,9 +113,6 @@ namespace EngineTestes
             this.World.CameraManager.AddCamera(cam);
 
             new LightThrowBepu(this.World, GraphicFactory);
-
-            SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//cubemap");
-            CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
         }
     
 

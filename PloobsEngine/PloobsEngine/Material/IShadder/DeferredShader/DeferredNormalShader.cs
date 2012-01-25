@@ -46,11 +46,13 @@ namespace PloobsEngine.Material
         EffectParameter SpecularIntensityParameter;
         EffectParameter IdParameter;  
         EffectParameter WorldParameter;
+        EffectParameter PAmbientCubeMapScale;
+        EffectParameter PAmbientCubeTexture;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DeferredNormalShader"/> class.
         /// </summary>
-        public DeferredNormalShader(float specularIntensity = 0, float specularPower = 0)
+        public DeferredNormalShader(float specularIntensity = 0, float specularPower = 0, bool useAmbientCubeMap = false,  float AmbientCubeMapScale = 0.1f)
         {
             if (specularPower < 0)
             {
@@ -62,9 +64,55 @@ namespace PloobsEngine.Material
                 ActiveLogger.LogMessage("specularIntensity cannot be negative, setting to 0", LogLevel.RecoverableError);
                 specularIntensity = 0;
             }
+
+            if (AmbientCubeMapScale< 0)
+            {
+                ActiveLogger.LogMessage("ambientCubeMapScale cannot be negative, setting to 0.1f", LogLevel.RecoverableError);
+                AmbientCubeMapScale = 0.1f;
+            }
+
             this.specularIntensity = specularIntensity;
             this.specularPower = specularPower;
+            this.AmbientCubeMapScale = AmbientCubeMapScale;
+            this.UseAmbientCubeMap = useAmbientCubeMap;
         }
+
+        public float AmbientCubeMapScale
+        {
+            get;
+            set;
+        }
+
+        bool useAmbientCubeMap = false;
+
+        public bool UseAmbientCubeMap
+        {
+            get
+            {
+                return useAmbientCubeMap;
+            }
+            set
+            {
+                this.useAmbientCubeMap = value;
+                if (value == true)
+                {
+                    shaderId |= ShaderUtils.CreateSpecificBitField(false, false, false, true);
+                }
+                else
+                {
+                    shaderId &= ~ShaderUtils.CreateSpecificBitField(false, false, false, true);
+                }
+                if (value == true && this._shader != null)
+                {
+                    this._shader.CurrentTechnique = this._shader.Techniques["Technique2"];
+                }
+                else if (value == false && this._shader != null)
+                {
+                    this._shader.CurrentTechnique = this._shader.Techniques["Technique1"];
+                }
+            }
+        }
+
 
         private float specularIntensity = 0f;
         /// <summary>
@@ -107,12 +155,18 @@ namespace PloobsEngine.Material
                 SpecularIntensityParameter.SetValue(specularIntensity);
                 SpecularPowerParameter.SetValue(specularPower);                
                 ViewProjectionParameter.SetValue(camera.ViewProjection);
-
+            
                 for (int i = 0; i < modelo.MeshNumber; i++)
                 {                    
                     BatchInformation[] bi = modelo.GetBatchInformation(i);                                        
                     for (int j = 0; j < bi.Count(); j++)
                     {
+
+                        if (useAmbientCubeMap)
+                        {
+                            PAmbientCubeTexture.SetValue(modelo.GetCubeTexture(TextureType.AMBIENT_CUBE_MAP, i, j));
+                            PAmbientCubeMapScale.SetValue(AmbientCubeMapScale);
+                        }
                         TextureParameter.SetValue(modelo.getTexture(TextureType.DIFFUSE,i,j));
                         WorldParameter.SetValue(bi[j].ModelLocalTransformation * obj.WorldMatrix);
                         render.RenderBatch(bi[j], _shader);                        
@@ -127,15 +181,29 @@ namespace PloobsEngine.Material
         /// <param name="factory"></param>
         /// <param name="obj"></param>
         public override void Initialize(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, IObject obj)
-        {                     
+        {
+            base.Initialize(ginfo, factory, obj);      
             this._shader = factory.GetEffect("RenderGBuffer",false,true);            
+
             ViewProjectionParameter = this._shader.Parameters["ViewProjection"];              
             TextureParameter = this._shader.Parameters["Texture"];
             IdParameter = this._shader.Parameters["id"];
             SpecularIntensityParameter = this._shader.Parameters["specularIntensity"];
             SpecularPowerParameter = this._shader.Parameters["specularPower"];  
             WorldParameter = this._shader.Parameters["World"];
-            base.Initialize(ginfo, factory, obj);
+            
+
+            PAmbientCubeTexture = this._shader.Parameters["ambientcube"];
+            PAmbientCubeMapScale = this._shader.Parameters["ambientScale"];
+
+            if (useAmbientCubeMap == true)
+            {
+                this._shader.CurrentTechnique = this._shader.Techniques["Technique2"];
+            }
+            else
+            {
+                this._shader.CurrentTechnique = this._shader.Techniques["Technique1"];
+            }
         }
 
         /// <summary>

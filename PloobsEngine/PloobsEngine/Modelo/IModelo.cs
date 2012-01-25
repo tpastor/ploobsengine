@@ -134,10 +134,16 @@ namespace PloobsEngine.Modelo
         /// <param name="textureCube"></param>
         /// <param name="meshIndex"></param>
         /// <param name="meshPartIndex"></param>
-        public void SetCubeTexture(TextureCube textureCube, int meshIndex = 0, int meshPartIndex = 0)
+        public void SetCubeTexture(TextureCube textureCube, TextureType TextureType, int meshIndex = 0, int meshPartIndex = 0)
         {
             TextureInformation ti = TextureInformations[meshIndex][meshPartIndex];
-            ti.SetCubeTexture(textureCube, TextureType.ENVIRONMENT);
+            ti.SetCubeTexture(textureCube, TextureType);
+        }
+
+        public TextureCube GetCubeTexture(TextureType TextureType, int meshIndex = 0, int meshPartIndex = 0)
+        {
+            TextureInformation ti = TextureInformations[meshIndex][meshPartIndex];
+            return ti.getCubeTexture(TextureType);
         }
 
 
@@ -241,6 +247,7 @@ namespace PloobsEngine.Modelo
     /// </summary>
     public enum TextureType
     {
+        AMBIENT_CUBE_MAP,
         /// <summary>
         /// EnvironmentMap
         /// </summary>
