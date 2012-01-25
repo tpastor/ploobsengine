@@ -53,7 +53,7 @@ namespace EngineTestes.LightPrePassIdea.Imp
             this.ginfo = ginfo;
 
             pointLightEffect = factory.GetEffect("PrePass/plight");
-             sphereModel = new SimpleModel(factory, "Dsphere"); 
+             sphereModel = new SimpleModel(factory, "Model/Dsphere"); 
             ForwardPass = new ForwardPass(ForwardPassDescription.Default());
             _width = ginfo.BackBufferWidth;
             _height = ginfo.BackBufferHeight;            
