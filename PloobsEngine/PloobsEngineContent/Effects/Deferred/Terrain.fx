@@ -163,7 +163,7 @@ PixelShaderOutput PixelShaderFunction(VertexShaderOutput input)
     output.Normal.rgb = 0.5f * (normalize(input.Normal) + 1.0f);                   //transform normal domain
     output.Normal.a = 0;													       //output SpecularPower    
     output.Extra1.rgb =  0;  
-    output.Extra1.a =  id;  
+    output.Extra1.a =  id / 255.0f;  
     return output;
 }
 

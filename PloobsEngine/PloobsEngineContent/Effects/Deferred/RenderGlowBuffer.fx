@@ -73,7 +73,7 @@ PixelShaderOutput PixelShaderFunction(VertexShaderOutput input)
     output.Normal.a = specularPower;                                           //output SpecularPower
     output.Depth = input.Depth.x / input.Depth.y;                              //output Depth
     output.Extra = output.Color * tex2D(glowSampler, input.TexCoord).r;		   //output Glow     
-    output.Extra.a = id;
+    output.Extra.a = id/ 255.0f;
     return output;
 }
 

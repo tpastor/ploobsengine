@@ -15,9 +15,7 @@ sampler extraSampler = sampler_state
     Texture = (EXTRA1);
     AddressU = CLAMP;
     AddressV = CLAMP;
-    MagFilter = LINEAR;
-    MinFilter = LINEAR;
-    Mipfilter = LINEAR;
+    
 };
 
 sampler colorSampler = sampler_state
@@ -55,22 +53,23 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 
 float4 PixelShaderFunctionNormal(VertexShaderOutput input) : COLOR0
 {	
-	float procces = tex2D(extraSampler,input.TexCoord).a;
-	float3 diffuseColor = tex2D(colorSampler,input.TexCoord).rgba;	
+	int procces = round(tex2D(extraSampler,input.TexCoord).a * 255 );
+	float3 diffuseColor = tex2D(colorSampler,input.TexCoord).rgb;	
 	
 	bool DoNotIlluminate = fmod(procces, 2) == 1; 
-	bool isBackGround = fmod(procces, 4) == 1; 
+	bool isBackGround = fmod(procces, 4) >= 2; 
 
-	if(DoNotIlluminate || isBackGround)
+	
+	if(DoNotIlluminate  || isBackGround)
 	{
-		return float4(diffuseColor,0);
+		return float4(diffuseColor,1);
 	}
 	else	
 	{		
 		float4 light = tex2D(lightSampler,input.TexCoord);		
 		float3 diffuseLight = light.rgb;
 		float specularLight = light.a;
-		return float4((diffuseColor * (diffuseLight + ambientColor)+ specularLight),0);
+		return float4((diffuseColor * (diffuseLight + ambientColor)+ specularLight),1);
     }
     
 }

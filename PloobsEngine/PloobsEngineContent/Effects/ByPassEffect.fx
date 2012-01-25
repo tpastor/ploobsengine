@@ -62,7 +62,7 @@ TexPixelToFrame TexturedPS(TexVertexToPixel PSIn)
     Output.Normal.a = 0.0f;    
     Output.Depth = 1.0f;	
     Output.EXTRA1.rgb = 0;	
-    Output.EXTRA1.a = 0.95f;
+    Output.EXTRA1.a = 3.0f / 255.0f;;
 	return Output;	
 }
 

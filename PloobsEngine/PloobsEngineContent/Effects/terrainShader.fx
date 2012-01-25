@@ -334,7 +334,7 @@ BBPixelToFrame PixelShaderFunction2(VertexShaderOutput2 input)
 	output.Color.rgb =  diffuse;
 	output.Color.a = specularIntensity;                                              
 	
-	output.EXTRA1 = float4(0,0,0,id);  
+	output.EXTRA1 = float4(0,0,0,id) / 255.0f;;  
 	
     
     output.Depth = input.Depth.x / input.Depth.y;  

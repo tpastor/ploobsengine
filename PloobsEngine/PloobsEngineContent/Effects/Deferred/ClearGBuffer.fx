@@ -37,7 +37,7 @@ PixelShaderOutput PixelShaderFunction(VertexShaderOutput input)
     //max depth
     output.Depth = 1.0f;
     output.Light.rgb = 0.0f;
-    output.Light.a = 1;    
+    output.Light.a = 3.0f / 255.0f;    
     return output;
 }
 

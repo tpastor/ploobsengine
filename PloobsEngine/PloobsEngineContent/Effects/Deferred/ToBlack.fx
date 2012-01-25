@@ -43,9 +43,9 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 
 float4 PixelShaderFunctionNormal(VertexShaderOutput input) : COLOR0
 {	
-	float depthVal = tex2D(depthSampler,input.TexCoord).a;
+	int depthVal = round(tex2D(depthSampler,input.TexCoord).a * 255 );
     float4 c = tex2D(colorSampler ,input.TexCoord );        
-	bool isBackGround = fmod(depthVal, 4) == 1; 
+	bool isBackGround = fmod(depthVal, 4) >= 2; 
     
     if(isBackGround)
     {
