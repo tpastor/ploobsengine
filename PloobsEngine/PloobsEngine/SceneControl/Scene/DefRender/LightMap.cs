@@ -43,16 +43,28 @@ namespace PloobsEngine.SceneControl
         private bool cullPointLight = true;
         GraphicInfo ginfo;
         SamplerState samplerState;
+
+
+        EffectParameter DirectionalcolorMap;
+        EffectParameter DirectionalnormalMap;
+        EffectParameter DirectionaldepthMap;
+        EffectParameter DirectionalInvertViewProjection;
+        EffectParameter DirectionalhalfPixel;
+        EffectParameter DirectionalcameraPosition;        
+
+        EffectParameter DirectionallightDirection;
+        EffectParameter DirectionalColor;
+        EffectParameter DirectionallightIntensity;
         
 #region IDeferredLightMap Members        
         protected void DrawDirectionalLight(ICamera camera, IList<ILight> lights, IDeferredGBuffer DeferredGBuffer,RenderHelper render)
         {
-            directionalLightEffect.Parameters["colorMap"].SetValue(DeferredGBuffer[GBufferTypes.COLOR]);
-            directionalLightEffect.Parameters["normalMap"].SetValue(DeferredGBuffer[GBufferTypes.NORMAL]);
-            directionalLightEffect.Parameters["depthMap"].SetValue(DeferredGBuffer[GBufferTypes.DEPH]);
-            directionalLightEffect.Parameters["cameraPosition"].SetValue(camera.Position);
-            directionalLightEffect.Parameters["InvertViewProjection"].SetValue(Matrix.Invert(camera.ViewProjection));
-            directionalLightEffect.Parameters["halfPixel"].SetValue(ginfo.HalfPixel);
+            DirectionalcolorMap.SetValue(DeferredGBuffer[GBufferTypes.COLOR]);
+            DirectionalnormalMap.SetValue(DeferredGBuffer[GBufferTypes.NORMAL]);
+            DirectionaldepthMap.SetValue(DeferredGBuffer[GBufferTypes.DEPH]);
+            DirectionalcameraPosition.SetValue(camera.Position);
+            DirectionalInvertViewProjection.SetValue(Matrix.Invert(camera.ViewProjection));
+            DirectionalhalfPixel.SetValue(ginfo.HalfPixel);
                         
             foreach (ILight item in lights)
             {
@@ -60,25 +72,42 @@ namespace PloobsEngine.SceneControl
                 {
                     PloobsEngine.Light.DirectionalLightPE dl = item as PloobsEngine.Light.DirectionalLightPE;
 
-                    directionalLightEffect.Parameters["lightDirection"].SetValue(dl.LightDirection);
-                    directionalLightEffect.Parameters["Color"].SetValue(dl.Color.ToVector3());
-                    directionalLightEffect.Parameters["lightIntensity"].SetValue(dl.LightIntensity);
+                    DirectionallightDirection.SetValue(dl.LightDirection);
+                    DirectionalColor.SetValue(dl.Color.ToVector3());
+                    DirectionallightIntensity.SetValue(dl.LightIntensity);
 
                     render.RenderFullScreenQuadVertexPixel(directionalLightEffect);
                 }
             }
         }
 
+        EffectParameter PointcolorMap;
+        EffectParameter PointnormalMap;
+        EffectParameter PointdepthMap;
+        EffectParameter PointProjection;
+        EffectParameter PointView;
+        EffectParameter PointInvertViewProjection;
+        EffectParameter PointcameraPosition;
+
+        EffectParameter PointWorld;
+        EffectParameter PointlightPosition;
+        EffectParameter PointColor;
+        EffectParameter PointlightRadius;
+        EffectParameter PointlightIntensity;
+        EffectParameter Pointquadratic;
+
+        
+
         protected void DrawPointLight(ICamera camera, IList<ILight> lights, IDeferredGBuffer DeferredGBuffer,RenderHelper render)
         {
 
-            pointLightEffect.Parameters["colorMap"].SetValue(DeferredGBuffer[GBufferTypes.COLOR]);
-            pointLightEffect.Parameters["normalMap"].SetValue(DeferredGBuffer[GBufferTypes.NORMAL]);
-            pointLightEffect.Parameters["depthMap"].SetValue(DeferredGBuffer[GBufferTypes.DEPH]);
-            pointLightEffect.Parameters["Projection"].SetValue(camera.Projection);
-            pointLightEffect.Parameters["View"].SetValue(camera.View);
-            pointLightEffect.Parameters["cameraPosition"].SetValue(camera.Position);
-            pointLightEffect.Parameters["InvertViewProjection"].SetValue(Matrix.Invert(camera.ViewProjection));            
+            PointcolorMap.SetValue(DeferredGBuffer[GBufferTypes.COLOR]);
+            PointnormalMap.SetValue(DeferredGBuffer[GBufferTypes.NORMAL]);
+            PointdepthMap.SetValue(DeferredGBuffer[GBufferTypes.DEPH]);
+            PointProjection.SetValue(camera.Projection);
+            PointView.SetValue(camera.View);
+            PointcameraPosition.SetValue(camera.Position);
+            PointInvertViewProjection.SetValue(Matrix.Invert(camera.ViewProjection));            
 
             foreach (ILight item in lights)
             {
@@ -93,12 +122,12 @@ namespace PloobsEngine.SceneControl
                         ct = camera.BoundingFrustum.Contains(new BoundingSphere(pl.LightPosition, pl.LightRadius ));
                     if (ct == ContainmentType.Contains || ct == ContainmentType.Intersects)
                     {
-                        pointLightEffect.Parameters["World"].SetValue(sphereWorldMatrix);
-                        pointLightEffect.Parameters["lightPosition"].SetValue(pl.LightPosition);
-                        pointLightEffect.Parameters["Color"].SetValue(pl.Color.ToVector3());
-                        pointLightEffect.Parameters["lightRadius"].SetValue(pl.LightRadius);
-                        pointLightEffect.Parameters["lightIntensity"].SetValue(pl.LightIntensity);
-                        pointLightEffect.Parameters["quadratic"].SetValue(pl.UsePointLightQuadraticAttenuation);
+                        PointWorld.SetValue(sphereWorldMatrix);
+                        PointlightPosition.SetValue(pl.LightPosition);
+                        PointColor.SetValue(pl.Color.ToVector3());
+                        PointlightRadius.SetValue(pl.LightRadius);
+                        PointlightIntensity.SetValue(pl.LightIntensity);
+                        Pointquadratic.SetValue(pl.UsePointLightQuadraticAttenuation);
 
                         float cameraToCenter = Vector3.Distance(camera.Position, pl.LightPosition);
 
@@ -111,9 +140,7 @@ namespace PloobsEngine.SceneControl
 
                         render.PopRasterizerState();
                     }
-                    else
-                    {
-                    }
+                  
                 }
             }
         }
@@ -232,6 +259,34 @@ namespace PloobsEngine.SceneControl
             
             spotLightEffect.Parameters["halfPixel"].SetValue(ginfo.HalfPixel);
             pointLightEffect.Parameters["halfPixel"].SetValue(ginfo.HalfPixel);
+
+            DirectionalcolorMap = directionalLightEffect.Parameters["colorMap"];
+            DirectionalnormalMap = directionalLightEffect.Parameters["normalMap"];
+            DirectionaldepthMap = directionalLightEffect.Parameters["depthMap"];
+            DirectionalInvertViewProjection = directionalLightEffect.Parameters["InvertViewProjection"];
+            DirectionalhalfPixel = directionalLightEffect.Parameters["halfPixel"];
+            DirectionalcameraPosition = directionalLightEffect.Parameters["cameraPosition"];
+            
+
+            DirectionallightDirection = directionalLightEffect.Parameters["lightDirection"];
+            DirectionalColor = directionalLightEffect.Parameters["Color"];
+            DirectionallightIntensity = directionalLightEffect.Parameters["lightIntensity"];
+
+
+            PointcolorMap = pointLightEffect.Parameters["colorMap"];
+            PointnormalMap = pointLightEffect.Parameters["normalMap"];
+            PointdepthMap = pointLightEffect.Parameters["depthMap"];
+            PointProjection = pointLightEffect.Parameters["Projection"];
+            PointView = pointLightEffect.Parameters["View"];
+            PointInvertViewProjection = pointLightEffect.Parameters["InvertViewProjection"];
+
+            PointWorld = pointLightEffect.Parameters["World"];
+            PointlightPosition = pointLightEffect.Parameters["lightPosition"];
+            PointColor = pointLightEffect.Parameters["Color"];
+            PointlightRadius = pointLightEffect.Parameters["lightRadius"];
+            PointlightIntensity = pointLightEffect.Parameters["lightIntensity"];
+            Pointquadratic = pointLightEffect.Parameters["quadratic"];
+            PointcameraPosition = pointLightEffect.Parameters["cameraPosition"];
             
         }
 

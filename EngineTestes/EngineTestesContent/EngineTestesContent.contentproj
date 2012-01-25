@@ -1200,8 +1200,8 @@
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
     </Compile>
-    <Compile Include="PrePass\PointLight.fx">
-      <Name>PointLight</Name>
+    <Compile Include="PrePass\plight.fx">
+      <Name>plight</Name>
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
     </Compile>
