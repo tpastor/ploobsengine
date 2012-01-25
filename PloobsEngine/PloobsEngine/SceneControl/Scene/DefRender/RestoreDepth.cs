@@ -35,6 +35,8 @@ namespace PloobsEngine.SceneControl
     internal class RestoreDepth
     {
         private bool usefloatBuffer;
+        EffectParameter Depth;
+        EffectParameter Color;
         /// <summary>
         /// Initializes a new instance of the <see cref="RestoreDepth"/> class.
         /// </summary>
@@ -46,7 +48,10 @@ namespace PloobsEngine.SceneControl
         {
             this.usefloatBuffer = useFloatBuffer;
             this.restore = manager.GetAsset<Effect>("RestoreDepth",true);
-            this.restore.Parameters["halfPixel"].SetValue(ginfo.HalfPixel);                
+            this.restore.Parameters["halfPixel"].SetValue(ginfo.HalfPixel);
+            Depth = restore.Parameters["DepthTexture"];
+            Color = restore.Parameters["ColorTexture"];
+
             if (useFloatBuffer)
                 target = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.HdrBlendable, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
             else
@@ -55,7 +60,7 @@ namespace PloobsEngine.SceneControl
 
         private RenderTarget2D target;
         private Effect restore;
-
+        
         /// <summary>
         /// Performs the forward pass.
         /// </summary>
@@ -66,8 +71,8 @@ namespace PloobsEngine.SceneControl
         public void PerformForwardPass(Texture2D combined, Texture2D depth, RenderHelper render,GraphicInfo ginfo)
         {
             render.PushRenderTarget(target);                           
-            restore.Parameters["DepthTexture"].SetValue(depth);                
-            restore.Parameters["ColorTexture"].SetValue(combined);
+            Depth.SetValue(depth);                
+            Color.SetValue(combined);
             if (usefloatBuffer)
             {
                 render.SetSamplerState(SamplerState.PointClamp, 0);

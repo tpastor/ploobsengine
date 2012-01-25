@@ -193,7 +193,7 @@ namespace PloobsEngine.Material
             Plane finalPlane = new Plane(planeCoeffs);
             return finalPlane;
         }
-        private Plane CreateReflectionPlane(float height, Vector3 planeNormalDirection, Matrix currentViewMatrix, Matrix camProj, bool clipSide)
+        private Plane CreateReflectionPlane(float height, ref Vector3 planeNormalDirection, ref Matrix currentViewMatrix, ref Matrix camProj, bool clipSide)
         {
             planeNormalDirection.Normalize();
             Vector4 planeCoeffs = new Vector4(planeNormalDirection, height);
@@ -214,19 +214,21 @@ namespace PloobsEngine.Material
 
         public override void PreDrawPhase(GameTime gt, IWorld world, IObject obj, RenderHelper render, ICamera cam)
         {
+            Matrix view = cam.View;
+            Matrix projection = cam.Projection;
             //REFRACAO
             Plane refractionClipPlane;
             if (cam.Position.Y > -plane.D)
             {
-                refractionClipPlane = CreateReflectionPlane(plane.D, plane.Normal, cam.View, cam.Projection, true);
+                refractionClipPlane = CreateReflectionPlane(plane.D, ref plane.Normal, ref view, ref projection, true);
             }
             else
             {
-                refractionClipPlane = CreateReflectionPlane(plane.D, plane.Normal, cam.View, cam.Projection, false);
+                refractionClipPlane = CreateReflectionPlane(plane.D, ref plane.Normal, ref view, ref projection, false);
             }            
             render.PushRenderTarget(refractionRT);
             render.Clear(Color.Black);
-            render.RenderSceneReflectionRefration(world, gt, new List<IObject>() { obj }, cam.View, cam.Projection, true, true,refractionClipPlane);
+            render.RenderSceneReflectionRefration(world, gt, new List<IObject>() { obj }, ref view, ref projection, true, true,refractionClipPlane);
             refractionMap = render.PopRenderTarget()[0].RenderTarget as Texture2D;            
 
             //REFLEXAO
@@ -238,11 +240,11 @@ namespace PloobsEngine.Material
             target = Vector3.Transform(cam.Target, m);
             up = Vector3.Transform(cam.Up, m);
             reflectiveViewMatrix = Matrix.CreateLookAt(pos, target, up);
-            Plane reflectionClipPlane = CreateReflectionPlane(plane.D, plane.Normal, reflectiveViewMatrix, cam.Projection, false);
+            Plane reflectionClipPlane = CreateReflectionPlane(plane.D, ref plane.Normal, ref reflectiveViewMatrix, ref projection, false);
             render.PushRenderTarget(reflectionRT);
             render.Clear(Color.Black);
             render.PushRasterizerState(RasterizerState.CullClockwise);
-            render.RenderSceneReflectionRefration(world, gt, new List<IObject>() { obj }, reflectiveViewMatrix, cam.Projection, true, true,reflectionClipPlane);
+            render.RenderSceneReflectionRefration(world, gt, new List<IObject>() { obj }, ref reflectiveViewMatrix, ref projection, true, true,reflectionClipPlane);
             render.PopRasterizerState();
             reflectionMap = render.PopRenderTarget()[0].RenderTarget as Texture2D;                                   
 

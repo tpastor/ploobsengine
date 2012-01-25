@@ -111,7 +111,7 @@ namespace PloobsEngine.Material
             this.WorldMatrix = ent.WorldMatrix;         
         }
 
-        public override void DepthExtractor(GameTime gt, IObject obj, Matrix View, Matrix projection, RenderHelper render)
+        public override void DepthExtractor(GameTime gt, IObject obj, ref Matrix View, ref Matrix projection, RenderHelper render)
         {
             AnimatedModel modelo = obj.Modelo as AnimatedModel;
             foreach (ModelMesh modelMesh in modelo.GetAnimatedModel().Meshes)
@@ -139,7 +139,7 @@ namespace PloobsEngine.Material
 
         }
 
-        public override void BasicDraw(GameTime gt, IObject obj, Matrix view, Matrix projection, IList<Light.ILight> lights, RenderHelper render, Plane? clippingPlane, bool useAlphaBlending = false)
+        public override void BasicDraw(GameTime gt, IObject obj, ref Matrix view, ref Matrix projection, IList<Light.ILight> lights, RenderHelper render, Plane? clippingPlane, bool useAlphaBlending = false)
         {
             AnimatedModel modelo = obj.Modelo as AnimatedModel;
 
