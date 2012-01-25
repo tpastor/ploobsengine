@@ -140,13 +140,21 @@ namespace PloobsEngine.Modelo
             ti.SetCubeTexture(textureCube, TextureType);
         }
 
+
+        /// <summary>
+        /// Get texture cube 
+        /// (Only Environment and AmbientCubeMap)
+        /// </summary>
+        /// <param name="TextureType"></param>
+        /// <param name="meshIndex"></param>
+        /// <param name="meshPartIndex"></param>
+        /// <returns></returns>
         public TextureCube GetCubeTexture(TextureType TextureType, int meshIndex = 0, int meshPartIndex = 0)
         {
             TextureInformation ti = TextureInformations[meshIndex][meshPartIndex];
             return ti.getCubeTexture(TextureType);
         }
-
-
+        
 
         /// <summary>
         /// Load the model

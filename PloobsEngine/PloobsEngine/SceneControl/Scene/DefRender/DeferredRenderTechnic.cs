@@ -66,7 +66,7 @@ namespace PloobsEngine.SceneControl
         /// <returns></returns>
         public static DeferredRenderTechnicInitDescription Default()
         {
-            return new DeferredRenderTechnicInitDescription(new GBuffer(),new LightMap(),new FinalCombination(Color.Black),new ForwardPass(ForwardPassDescription.Default()),Color.Black,false,false,false,true,true,true,new string[] { PrincipalConstants.CurrentImage,PrincipalConstants.colorRT,PrincipalConstants.normalRt,PrincipalConstants.lightRt  } ,RestoreDepthOption.BEFORE_POSTEFFECT);
+            return new DeferredRenderTechnicInitDescription(new GBuffer(),new LightMap(),new FinalCombination(Color.Black),new ForwardPass(ForwardPassDescription.Default()),Color.Black,false,false,true,true,true,new string[] { PrincipalConstants.CurrentImage,PrincipalConstants.colorRT,PrincipalConstants.normalRt,PrincipalConstants.lightRt  } ,RestoreDepthOption.BEFORE_POSTEFFECT);
         }
 
         /// <summary>
@@ -76,8 +76,7 @@ namespace PloobsEngine.SceneControl
         /// <param name="DeferredLightMap">The deferred light map.</param>
         /// <param name="DeferredFinalCombination">The deferred final combination.</param>
         /// <param name="ForwardPass">The forward pass.</param>
-        /// <param name="BackGroundColor">Color of the back ground.</param>
-        /// <param name="PhysicDebug">if set to <c>true</c> [physic debug].</param>
+        /// <param name="BackGroundColor">Color of the back ground.</param>        
         /// <param name="LightDebug">if set to <c>true</c> [light debug].</param>
         /// <param name="DefferedDebug">if set to <c>true</c> [deffered debug].</param>
         /// <param name="UseFloatingBufferForLightMap">if set to <c>true</c> [use floating buffer for light map].</param>
@@ -86,10 +85,9 @@ namespace PloobsEngine.SceneControl
         /// <param name="RenderTargetsNameToDefferedDebug">The render targets name to deffered debug.</param>
         /// <param name="RestoreDepthOption">The restore depth option.</param>
         public DeferredRenderTechnicInitDescription(IDeferredGBuffer DeferredGBuffer, IDeferredLightMap DeferredLightMap, IDeferredFinalCombination DeferredFinalCombination,
-            ForwardPass ForwardPass, Color BackGroundColor, bool PhysicDebug, bool LightDebug, bool DefferedDebug, bool UseFloatingBufferForLightMap,
+            ForwardPass ForwardPass, Color BackGroundColor, bool LightDebug, bool DefferedDebug, bool UseFloatingBufferForLightMap,
             bool CullPointLight, bool ExtraForwardPass, String[] RenderTargetsNameToDefferedDebug, RestoreDepthOption RestoreDepthOption)
-        {
-            this.PhysicDebug = PhysicDebug;            
+        {            
             this.DefferedDebug = DefferedDebug;
             this.UseFloatingBufferForLightMap = UseFloatingBufferForLightMap;
             this.LightDebug = LightDebug;
@@ -106,11 +104,7 @@ namespace PloobsEngine.SceneControl
             OrderDeferredObjectsBeforeDraw = null;
             OrderForwardObjectsBeforeDraw = null;
         }
-
-        /// <summary>
-        /// not yet avaliable
-        /// </summary>
-        public bool PhysicDebug ;
+        
         /// <summary>
         /// not yet avaliable
         /// </summary>
@@ -326,7 +320,7 @@ namespace PloobsEngine.SceneControl
                 if (desc.RestoreDepthOption == RestoreDepthOption.BEFORE_POSTEFFECT)
                 {
                     restoreDepth.PerformForwardPass(render[PrincipalConstants.CombinedImage], render[PrincipalConstants.DephRT], render,ginfo);
-                    if (desc.PhysicDebug)
+                    if (world.PhysicWorld.isDebugDraw)
                     {
                         world.PhysicWorld.iDebugDrawn(render, gameTime, world.CameraManager.ActiveCamera);
                     }
@@ -383,7 +377,7 @@ namespace PloobsEngine.SceneControl
                     }
 
                     restoreDepth.PerformForwardPass(render[PrincipalConstants.CurrentImage], render[PrincipalConstants.DephRT], render, ginfo);
-                    if (desc.PhysicDebug)
+                    if (world.PhysicWorld.isDebugDraw)
                     {
                         world.PhysicWorld.iDebugDrawn(render, gameTime, world.CameraManager.ActiveCamera);
                     }
