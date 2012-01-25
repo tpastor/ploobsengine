@@ -8,6 +8,7 @@ float specularIntensityScale;
 float specularPowerScale ; 
 float id;
 
+float ambientScale;
 float2 scaleBias;
 float3   CameraPos;
 
@@ -15,6 +16,20 @@ const uniform bool useParalax;
 const uniform bool useGlow;
 const uniform bool useBump;
 const uniform bool useSpecular;
+
+// Propriedades da Textura
+texture ambientcube;
+samplerCUBE map_diffuse = 
+sampler_state
+{
+	Texture = <ambientcube>;
+	MipFilter = LINEAR;
+	MinFilter = LINEAR;
+	MagFilter = LINEAR;
+
+	AddressU = Clamp;
+	AddressV = Clamp;
+};
 
 texture Texture;
 sampler diffuseSampler = sampler_state
@@ -190,6 +205,66 @@ PixelShaderOutput PixelShaderFunction(VertexShaderOutput input)
     return output;
 }
 
+PixelShaderOutput PixelShaderFunctionAmbient(VertexShaderOutput input)
+{	
+	if(useParalax)
+	{
+		input.vViewWS = mul(input.vViewWS, input.tangentToWorld);
+		float3 h   = normalize( input.vViewWS  );
+		float height = tex2D(heightSampler, input.TexCoord ).r;        
+        height = height * scaleBias.x + scaleBias.y;
+        input.TexCoord = input.TexCoord + (height * h.xy);				
+	}
+
+    PixelShaderOutput output;
+    output.Color = tex2D(diffuseSampler, input.TexCoord);
+    
+    if(useBump)
+    {       
+	// read the normal from the normal map
+    float3 normalFromMap = tex2D(normalSampler, input.TexCoord);
+    //tranform to [-1,1]
+    normalFromMap = 2.0f * normalFromMap - 1.0f;
+    //transform into world space
+    normalFromMap = mul(normalFromMap, input.tangentToWorld);
+    //normalize the result
+    normalFromMap = normalize(normalFromMap);
+    //output the normal, in [0,1] space
+    output.Normal.rgb = 0.5f * (normalFromMap + 1.0f);
+	output.EXTRA1 = texCUBE(map_diffuse , normalFromMap ) * ambientScale;
+    }
+    else
+    {
+	float3 nnormal = normalize(input.Normal);
+	output.Normal.rgb = 0.5f * (nnormal  + 1.0f); 
+	output.EXTRA1 = texCUBE(map_diffuse , nnormal ) * ambientScale;
+    }
+    
+
+	if(useSpecular)
+	{
+	    float4 specularAttributes = tex2D(specularSampler, input.TexCoord);  
+		//specular Intensity
+		output.Color.a = specularAttributes.r * specularIntensityScale;
+		//specular Power
+		output.Normal.a = specularAttributes.a * specularPowerScale;  
+    }
+    else
+    {
+		//specular Intensity
+		output.Color.a = specularIntensity;
+		//specular Power
+		output.Normal.a = specularPower;
+    }         
+    
+    
+	output.Depth = input.Depth.x / input.Depth.y;                           //output Depth
+	output.EXTRA1.a =  id / 255.0f;    
+    
+    return output;
+}
+
+
 technique Technique1
 {
     pass Pass1
@@ -198,3 +273,13 @@ technique Technique1
         PixelShader = compile ps_3_0 PixelShaderFunction();
     }
 }
+
+technique Technique2
+{
+    pass Pass1
+    {
+        VertexShader = compile vs_3_0 VertexShaderFunction();
+        PixelShader = compile ps_3_0 PixelShaderFunctionAmbient();
+    }
+}
+

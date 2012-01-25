@@ -68,6 +68,7 @@ namespace PloobsEngine.Modelo
         protected string _bumpName = null;
         protected string _specularName = null;
         private string _reflectionName = null;
+        private string _ambientName = null;
         protected string _mult1 = null;
         protected string _mult2 = null;
         protected string _mult3 = null;
@@ -75,6 +76,7 @@ namespace PloobsEngine.Modelo
         protected string _heightMap = null;
         protected Texture2D diffuse = null;
         protected TextureCube reflection = null;
+        protected TextureCube ambient = null;
 
         protected Texture2D bump = null;
         protected Texture2D specular = null;
@@ -148,6 +150,10 @@ namespace PloobsEngine.Modelo
             {
                 return this.reflection;
             }
+            else if(type == TextureType.AMBIENT_CUBE_MAP)
+            {
+                return this.ambient;
+            }
             else
             {
                 return null;
@@ -217,7 +223,10 @@ namespace PloobsEngine.Modelo
         {
             switch (type)
             {
-
+                case TextureType.AMBIENT_CUBE_MAP:
+                    this._ambientName = "CUSTOM";
+                    this.ambient = null;
+                    break;
                 case TextureType.ENVIRONMENT:
                      this._reflectionName = "CUSTOM";
                     this.reflection = null;
@@ -280,6 +289,9 @@ namespace PloobsEngine.Modelo
             switch (type)
             {
 
+                case TextureType.AMBIENT_CUBE_MAP:
+                    this._ambientName = textureName;
+                    break;
                 case TextureType.ENVIRONMENT:
                     this._reflectionName = textureName;
                     break;
@@ -333,6 +345,11 @@ namespace PloobsEngine.Modelo
                 this.reflection = factory.GetTextureCube(_reflectionName, isInternal);
             }
 
+            if (!String.IsNullOrEmpty(_ambientName) && _ambientName != CUSTOM)
+            {
+                this.ambient = factory.GetTextureCube(_ambientName, isInternal);
+            }
+
             if (!String.IsNullOrEmpty(_diffuseName) && _diffuseName != CUSTOM)
             {
                 this.diffuse = factory.GetTexture2D(_diffuseName, isInternal);
@@ -384,6 +401,11 @@ namespace PloobsEngine.Modelo
         {
             switch (type)
             {
+
+                case TextureType.AMBIENT_CUBE_MAP:
+                    this._ambientName = "CUSTOM";
+                    this.ambient = tex;
+                    break;
                 case TextureType.ENVIRONMENT:
                     this._reflectionName = "CUSTOM";
                     this.reflection = tex;

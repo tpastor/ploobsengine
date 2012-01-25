@@ -28,9 +28,11 @@ using PloobsEngine.Modelo;
 using PloobsEngine.SceneControl;
 using PloobsEngine.Cameras;
 using PloobsEngine.Engine.Logger;
+using PloobsEngine.Utils;
 
 namespace PloobsEngine.Material
 {
+    
     /// <summary>
     /// Shader that uses branching to use Glow,Bump, Specular and Paralax
     /// Dont need to use all of them at once
@@ -40,9 +42,44 @@ namespace PloobsEngine.Material
         private string effect;
         private Effect _shader;
         private bool useGlow;
+        private bool useAmbientCubeMap;
         private bool useParalax;
         private bool useBump;
         private bool useSpecular;
+
+        public float AmbientCubeMapScale
+        {
+            get;
+            set;
+        }
+
+        public bool UseAmbientCubeMap
+        {
+            get
+            {
+                return useAmbientCubeMap;
+            }
+            set
+            {
+                this.useAmbientCubeMap = value;
+                if (value == true)
+                {
+                    shaderId |= ShaderUtils.CreateSpecificBitField(false, false, false, true);
+                }
+                else
+                {
+                    shaderId &= ~ShaderUtils.CreateSpecificBitField(false, false, false, true);
+                }
+                if (value == true && this._shader != null)
+                {
+                    this._shader.CurrentTechnique = this._shader.Techniques["Technique2"];
+                }
+                else if (value == false && this._shader != null)
+                {
+                    this._shader.CurrentTechnique = this._shader.Techniques["Technique1"];
+                }
+            }
+        }
 
         /// <summary>
         /// Gets or sets a value indicating whether [use paralax].
@@ -137,9 +174,11 @@ namespace PloobsEngine.Material
         /// <param name="useBump">if set to <c>true</c> [use bump].</param>
         /// <param name="useSpecular">if set to <c>true</c> [use specular].</param>
         /// <param name="useParalax">if set to <c>true</c> [use paralax].</param>
+        /// /// <param name="useAmbientCubeMap">if set to <c>true</c> [use AmbientCubeMap].</param>
         /// <param name="specularIntensity">The specular intensity.</param>
         /// <param name="specularPower">The specular power.</param>
-        public DeferredCustomShader(bool useGlow,bool useBump,bool useSpecular,bool useParalax, float specularIntensity = 0, float specularPower = 0)
+        /// <param name="ambientCubeMapScale ">The ambientCubeMap Scale.</param>
+        public DeferredCustomShader(bool useGlow, bool useBump, bool useSpecular, bool useParalax, bool useAmbientCubeMap = false, float specularIntensity = 0, float specularPower = 0, float ambientCubeMapScale = 0.1f)
         {
             if (specularPower < 0)
             {
@@ -152,6 +191,13 @@ namespace PloobsEngine.Material
                 specularIntensity = 0;
             }
 
+            if (ambientCubeMapScale< 0)
+            {
+                ActiveLogger.LogMessage("ambientCubeMapScale cannot be negative, setting to 0.1f", LogLevel.RecoverableError);
+                ambientCubeMapScale = 0.1f;
+            }
+
+            this.AmbientCubeMapScale = ambientCubeMapScale;
             this.effect = "AllBuffer";
             this.specularIntensity = specularIntensity;
             this.specularPower = specularPower;
@@ -160,7 +206,16 @@ namespace PloobsEngine.Material
             this.useBump = useBump;
             this.useParalax = useParalax;
             specularPowerMapScale = 1;
-            specularIntensityMapScale = 1;
+            specularIntensityMapScale = 1;            
+
+            if (useAmbientCubeMap == true && useGlow == true)
+            {
+                ActiveLogger.LogMessage("Cant enable GLow and AmbientCubeMap together, AmbientCubeMap being disabled", LogLevel.RecoverableError);
+                useAmbientCubeMap = false;
+            }
+
+            this.UseAmbientCubeMap = useAmbientCubeMap;
+
             if (useParalax == true && useBump == false)
             {
                 ActiveLogger.LogMessage("Are you sure you will use only Paralax without BUMP, the paralax expects bump", LogLevel.Warning);                
@@ -236,6 +291,9 @@ namespace PloobsEngine.Material
                     BatchInformation[] bi = obj.Modelo.GetBatchInformation(i);                    
                     for (int j = 0; j < bi.Count(); j++)
                     {
+                        Matrix w1 = Matrix.Multiply(bi[j].ModelLocalTransformation, wld);
+                        PWorld.SetValue(w1);                       
+
                         PTexture.SetValue(obj.Modelo.getTexture(TextureType.DIFFUSE, i, j));
                         if (useBump)
                         {
@@ -245,6 +303,7 @@ namespace PloobsEngine.Material
                                 this._shader.Parameters["scaleBias"].SetValue(scaleBias);
                             }
 
+                            PWorldInverseTranspose.SetValue(Matrix.Transpose(Matrix.Invert(w1))); 
                             PNormalMap.SetValue(obj.Modelo.getTexture(TextureType.BUMP, i, j));
 
                         }
@@ -262,12 +321,13 @@ namespace PloobsEngine.Material
 
                         if (useGlow)
                             Pglow.SetValue(obj.Modelo.getTexture(TextureType.GLOW, i, j));
-                 
 
-                        Matrix w1 = Matrix.Multiply(bi[j].ModelLocalTransformation,wld);                    
-                        PWorld.SetValue(w1);
-                        PWorldInverseTranspose.SetValue(Matrix.Transpose(Matrix.Invert(w1))); 
-
+                        if (useAmbientCubeMap)
+                        {
+                            PAmbientCube.SetValue(obj.Modelo.GetCubeTexture(TextureType.AMBIENT_CUBE_MAP, i, j));
+                            PAmbientCubeMapScale.SetValue(AmbientCubeMapScale);
+                        }
+                        
                         render.RenderBatch(bi[j],_shader);
                     }
                 }               
@@ -301,12 +361,26 @@ namespace PloobsEngine.Material
             PNormalMap = this._shader.Parameters["NormalMap"];
             PSpecularMap = this._shader.Parameters["SpecularMap"];
             Pglow = this._shader.Parameters["glow"];
+            PAmbientCube = this._shader.Parameters["ambientcube"];
+            PAmbientCubeMapScale = this._shader.Parameters["ambientScale"];
+
+            if (useAmbientCubeMap == true )
+            {
+                this._shader.CurrentTechnique = this._shader.Techniques["Technique2"];
+            }
+            else
+            {
+                this._shader.CurrentTechnique = this._shader.Techniques["Technique1"];
+            }
+
         }
         EffectParameter Pglow; 
         EffectParameter PSpecularMap; 
         EffectParameter  PNormalMap; 
         EffectParameter  PWorld; 
         EffectParameter  PWorldInverseTranspose; 
+        EffectParameter  PAmbientCube;
+        EffectParameter  PAmbientCubeMapScale;        
         
         EffectParameter  PspecularPowerScale; 
         EffectParameter  PspecularIntensityScale; 

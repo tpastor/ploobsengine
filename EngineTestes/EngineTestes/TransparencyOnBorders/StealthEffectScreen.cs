@@ -10,6 +10,7 @@ using EngineTestes.TransparencyOnBorders;
 using PloobsEngine.Commands;
 using PloobsEngine.Features;
 using PloobsEngine.Engine;
+using PloobsEngine.Utils;
 
 namespace ProjectTemplate
 {
@@ -67,7 +68,7 @@ namespace ProjectTemplate
                 GhostObject pi = new GhostObject(new Vector3(200, 10, 0), Matrix.Identity, new Vector3(4));
                 ///Shader info (must be a deferred type)
                 DeferredNormalShader shader = new DeferredNormalShader();
-                shader.ShaderId = 0.4f;
+                shader.ShaderId = ShaderUtils.CreateBitField(false,false,false,false,true);
                 ///Material info (must be a deferred type also)
                 DeferredMaterial fmaterial = new DeferredMaterial(shader);
                 fmaterial.IsVisible = false;

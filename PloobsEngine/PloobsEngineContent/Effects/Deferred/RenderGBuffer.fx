@@ -3,6 +3,20 @@ float4x4 ViewProjection;
 float specularIntensity = 0;
 float specularPower = 0; 
 float id;
+float ambientScale;
+
+texture ambientcube;
+samplerCUBE map_diffuse = 
+sampler_state
+{
+	Texture = <ambientcube>;
+	MipFilter = LINEAR;
+	MinFilter = LINEAR;
+	MagFilter = LINEAR;
+
+	AddressU = Clamp;
+	AddressV = Clamp;
+};
 
 texture Texture;
 sampler diffuseSampler = sampler_state
@@ -59,11 +73,36 @@ PixelShaderOutput PixelShaderFunction(VertexShaderOutput input)
     return output;
 }
 
+PixelShaderOutput PixelShaderFunction2(VertexShaderOutput input)
+{
+    PixelShaderOutput output;
+    output.Color = tex2D(diffuseSampler, input.TexCoord);					   //output Color
+    output.Color.a = specularIntensity;                                        //output SpecularIntensity
+	float3 nnormal = normalize(input.Normal);
+    output.Normal.rgb = 0.5f * (nnormal + 1.0f);               //transform normal domain
+    output.Normal.a = specularPower;                                           //output SpecularPower
+    output.Depth = input.Depth.x / input.Depth.y;                              //output Depth      
+	output.Extra1.rgb = texCUBE(map_diffuse , nnormal ) * ambientScale;
+    output.Extra1.a =  id/ 255.0f;  
+        
+    return output;
+}
+
+
 technique Technique1
 {
     pass Pass1
     {
         VertexShader = compile vs_2_0 VertexShaderFunction();
         PixelShader = compile ps_2_0 PixelShaderFunction();
+    }
+}
+
+technique Technique2
+{
+    pass Pass1
+    {
+        VertexShader = compile vs_2_0 VertexShaderFunction();
+        PixelShader = compile ps_2_0 PixelShaderFunction2();
     }
 }
