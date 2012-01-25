@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework;
 using PloobsEngine.Material;
 using PloobsEngine;
 using PloobsEngine.Light;
+using PloobsEngine.Modelo;
 
 namespace EngineTestes.LightPrePassIdea.Imp
 {
@@ -47,19 +48,21 @@ namespace EngineTestes.LightPrePassIdea.Imp
             get;
             set;
         }
-        
+
+        SimpleModel sphereModel;
+        Effect pointLightEffect;
+
         protected override void AfterLoadContent(IContentManager manager, PloobsEngine.Engine.GraphicInfo ginfo, PloobsEngine.Engine.GraphicFactory factory)
         {
             base.AfterLoadContent(manager, ginfo, factory);
             this.ginfo = ginfo;
-            
+
+            pointLightEffect = factory.GetEffect("PrePass/plight");
+             sphereModel = new SimpleModel(factory, "Dsphere"); 
             ForwardPass = new ForwardPass(ForwardPassDescription.Default());
             _width = ginfo.BackBufferWidth;
             _height = ginfo.BackBufferHeight;            
-            //_quadRenderer = new QuadRenderer();
-            //_sphereRenderer = new MeshRenderer(contentManager.Load<Model>("defaultMeshes/sphere"));
-            //_spotRenderer = new MeshRenderer(contentManager.Load<Model>("defaultMeshes/cone"));
-
+            
             _cwDepthState = new DepthStencilState();
             _cwDepthState.DepthBufferWriteEnable = false;
             _cwDepthState.DepthBufferFunction = CompareFunction.LessEqual;
@@ -317,7 +320,6 @@ namespace EngineTestes.LightPrePassIdea.Imp
             
             render.PopDepthStencilState();
             render.PopBlendState();
-
             
             render.PushRenderTarget(_outputTexture);
 
@@ -331,12 +333,12 @@ namespace EngineTestes.LightPrePassIdea.Imp
 
             if (world.PhysicWorld.isDebugDraw)
             {
-                world.PhysicWorld.iDebugDrawn(render, gameTime, world.CameraManager.ActiveCamera);
+                //world.PhysicWorld.iDebugDrawn(render, gameTime, world.CameraManager.ActiveCamera);
             }
             if (world.ParticleManager != null)
             {
-                world.ParticleManager.iDraw(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection, render);
-                render.ResyncStates();
+                //world.ParticleManager.iDraw(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection, render);
+                //render.ResyncStates();
             }
 
             ForwardPass.Draw(gameTime, world, render, DeferrednotCulledObjectsList, ForwardnotCulledObjectsList);
@@ -381,25 +383,57 @@ namespace EngineTestes.LightPrePassIdea.Imp
             _lighting.Parameters["halfPixel"].SetValue(ginfo.HalfPixel);
             _lighting.Parameters["DepthBuffer"].SetValue(_depthBuffer);
             _lighting.Parameters["NormalBuffer"].SetValue(_normalBuffer);
-
-            //just comment this line if you dont want to reconstruct the zbuffer
-            //ReconstructZBuffer(camera);
-
-            //float tang = (float)Math.Tan(camera.FieldOfView * 0.5f);
-            //_lighting.Parameters["TanAspect"].SetValue(new Vector2(tang * camera.AspectRatio, -tang));
-
-
-            ApplyFrustumCorners(_lighting, -Vector2.One, Vector2.One);
+            
+            ApplyFrustumCorners(_lighting, -Vector2.One, Vector2.One);  
 
             for (int i = 0; i < world.Lights.Count; i++)
             {
-                if (world.Lights[i] is DirectionalLightPE)
+                if (world.Lights[i].LightType == LightType.Deferred_Directional)
                 {
                     DirectionalLightPE dl = (DirectionalLightPE)world.Lights[i];
                     _lighting.Parameters["LightColor"].SetValue(dl.Color.ToVector4());
                     _lighting.Parameters["LightIntensity"].SetValue(dl.LightIntensity);
                     _lighting.Parameters["LightDir"].SetValue(dl.LightDirection);
                     render.RenderFullScreenQuadVertexPixel(_lighting);
+                }
+
+                else if (world.Lights[i].LightType == LightType.Deferred_Point)
+                {
+
+                    PointLightPE pl = world.Lights[i] as PointLightPE;
+                    Matrix sphereWorldMatrix = Matrix.CreateScale(pl.LightRadius) * Matrix.CreateTranslation(pl.LightPosition);
+                    ContainmentType ct = camera.BoundingFrustum.Contains(new BoundingSphere(pl.LightPosition, pl.LightRadius));
+
+                    pointLightEffect.Parameters["cameraPos"].SetValue(camera.Position);
+                    pointLightEffect.Parameters["LightColor"].SetValue(pl.Color.ToVector4());
+                    pointLightEffect.Parameters["LightPosition"].SetValue(pl.LightPosition);
+                    pointLightEffect.Parameters["lightRadius"].SetValue(pl.LightRadius);
+                    pointLightEffect.Parameters["LightPosition"].SetValue(pl.LightPosition);
+                    
+                    pointLightEffect.Parameters["WorldViewProjection"].SetValue(sphereWorldMatrix * camera.ViewProjection);
+                    pointLightEffect.Parameters["FarClip"].SetValue(camera.FarPlane);
+
+                    float _tanFovy = (float)Math.Tan(camera.FieldOfView);
+                    pointLightEffect.Parameters["TanAspect"].SetValue(new Vector2(_tanFovy * camera.AspectRatio, -_tanFovy));
+                    pointLightEffect.Parameters["GBufferPixelSize"].SetValue(new Vector2(0.5f / _width, 0.5f / _height));                                        
+                    
+                    pointLightEffect.Parameters["lightIntensity"].SetValue(pl.LightIntensity);
+                                        
+                    if (ct == ContainmentType.Contains || ct == ContainmentType.Intersects)
+                    {                       
+                        
+                        float cameraToCenter = Vector3.Distance(camera.Position, pl.LightPosition);
+
+                        if (cameraToCenter < pl.LightRadius + camera.NearPlane)
+                            render.PushRasterizerState(RasterizerState.CullClockwise);
+                        else
+                            render.PushRasterizerState(RasterizerState.CullCounterClockwise);
+
+                        render.RenderBatch(sphereModel.GetBatchInformation(0)[0], pointLightEffect);
+
+                        render.PopRasterizerState();
+                    }
+
                 }
             }
         }

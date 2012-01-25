@@ -44,7 +44,12 @@ namespace PloobsEngine.SceneControl
         public Color BackGroundColor
         {
             get { return backGroundColor; }
-            set { backGroundColor = value; }
+            set { backGroundColor = value;
+            if (clearBufferEffect != null)
+            {
+                clearBufferEffect.Parameters["BackColor"].SetValue(backGroundColor.ToVector3());
+            }
+            }
         }         
 
         public Microsoft.Xna.Framework.Graphics.Texture2D this[GBufferTypes type]
@@ -85,8 +90,7 @@ namespace PloobsEngine.SceneControl
         public void ClearGBuffer(RenderHelper render)
         {
             render.PushDepthStencilState(DepthStencilState.None);
-            render.SetSamplerState(SamplerState.PointWrap, 0);
-            clearBufferEffect.Parameters["BackColor"].SetValue(backGroundColor.ToVector3());
+            render.SetSamplerState(SamplerState.PointWrap, 0);            
             render.RenderFullScreenQuadVertexPixel(clearBufferEffect);
             render.PopDepthStencilState();
         }
@@ -121,12 +125,15 @@ namespace PloobsEngine.SceneControl
         public void LoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, Color BackGroundColor)
         {
             this.backGroundColor = BackGroundColor;
+                        
             const int multisample = 0;
             colorRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, multisample, RenderTargetUsage.DiscardContents);
             normalRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.None, multisample, RenderTargetUsage.DiscardContents);
             depthRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Single, ginfo.UseMipMap, DepthFormat.None, multisample, RenderTargetUsage.DiscardContents);
             lightOclusionRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.None, multisample, RenderTargetUsage.DiscardContents);            
             clearBufferEffect = manager.GetAsset<Effect>("ClearGBuffer",true);
+
+            clearBufferEffect.Parameters["BackColor"].SetValue(backGroundColor.ToVector3());
         }
 
         #endregion
