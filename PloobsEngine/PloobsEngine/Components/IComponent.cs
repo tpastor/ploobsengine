@@ -86,10 +86,10 @@ namespace PloobsEngine.Components
         /// <param name="gt">The gt.</param>
         /// <param name="activeView">The active view.</param>
         /// <param name="activeProjection">The active projection.</param>
-        protected virtual void PreDraw(RenderHelper render,GameTime gt, Matrix activeView, Matrix activeProjection) { }
-        internal void iPreDraw(RenderHelper render,GameTime gt, Matrix activeView, Matrix activeProjection)
+        protected virtual void PreDraw(RenderHelper render,GameTime gt, ref Matrix activeView, ref Matrix activeProjection) { }
+        internal void iPreDraw(RenderHelper render,GameTime gt, ref Matrix activeView, ref Matrix activeProjection)
         {
-            PreDraw(render, gt, activeView, activeProjection);
+            PreDraw(render, gt, ref activeView, ref activeProjection);
         }
 
 
@@ -101,7 +101,7 @@ namespace PloobsEngine.Components
         /// <param name="gt">The gt.</param>
         /// <param name="activeView">The active view.</param>
         /// <param name="activeProjection">The active projection.</param>
-        protected virtual void PosWithDepthDraw(RenderHelper render, GameTime gt, Matrix activeView, Matrix activeProjection) { }
+        protected virtual void PosWithDepthDraw(RenderHelper render, GameTime gt, ref Matrix activeView, ref Matrix activeProjection) { }
         /// <summary>
         /// Is the pos with depth draw.
         /// </summary>
@@ -109,9 +109,9 @@ namespace PloobsEngine.Components
         /// <param name="gt">The gt.</param>
         /// <param name="activeView">The active view.</param>
         /// <param name="activeProjection">The active projection.</param>
-        internal void iPosWithDepthDraw(RenderHelper render, GameTime gt, Matrix activeView, Matrix activeProjection)
+        internal void iPosWithDepthDraw(RenderHelper render, GameTime gt, ref Matrix activeView, ref Matrix activeProjection)
         {
-            PosWithDepthDraw(render, gt, activeView, activeProjection);
+            PosWithDepthDraw(render, gt, ref activeView, ref activeProjection);
         }
 
         /// <summary>
@@ -122,10 +122,10 @@ namespace PloobsEngine.Components
         /// <param name="gt">The gt.</param>
         /// <param name="activeView">The active view.</param>
         /// <param name="activeProjection">The active projection.</param>
-        protected virtual void AfterDraw(RenderHelper render,GameTime gt, Matrix activeView, Matrix activeProjection) { }
-        internal void iAfterDraw(RenderHelper render,GameTime gt, Matrix activeView, Matrix activeProjection)
+        protected virtual void AfterDraw(RenderHelper render,GameTime gt, ref Matrix activeView, ref Matrix activeProjection) { }
+        internal void iAfterDraw(RenderHelper render,GameTime gt, ref Matrix activeView, ref Matrix activeProjection)
         {
-            AfterDraw(render,gt, activeView, activeProjection);
+            AfterDraw(render,gt, ref activeView, ref activeProjection);
         }
 
         /// <summary>

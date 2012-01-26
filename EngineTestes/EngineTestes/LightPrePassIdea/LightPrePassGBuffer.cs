@@ -92,9 +92,12 @@ namespace PloobsEngine.SceneControl
 
         public void DrawScene(GameTime gameTime, IWorld world, RenderHelper render, GraphicInfo ginfo, List<IObject> objs)
         {
+            Matrix v = world.CameraManager.ActiveCamera.View;
+            Matrix p = world.CameraManager.ActiveCamera.Projection;
+                    
             render.PushRenderTarget(colorRT, normalRT, depthRT, lightOclusionRT);
             
-            render.RenderPreComponents(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection);
+            render.RenderPreComponents(gameTime, ref v, ref p);
             System.Diagnostics.Debug.Assert(render.PeekBlendState() == BlendState.Opaque);
             System.Diagnostics.Debug.Assert(render.PeekDepthState() == DepthStencilState.Default);
             System.Diagnostics.Debug.Assert(render.PeekRasterizerState() == RasterizerState.CullCounterClockwise);

@@ -166,11 +166,11 @@ namespace PloobsEngine.SceneControl
                     render.PopDepthStencilState();
         }
 
-        private void RenderShadowMap(GameTime gt, RenderHelper render, Matrix view, Matrix proj, IWorld world, IDeferredGBuffer deferredGBuffer)
+        private void RenderShadowMap(GameTime gt, RenderHelper render, ref Matrix view, ref Matrix proj, IWorld world, IDeferredGBuffer deferredGBuffer)
         {
             render.PushRenderTarget(shadowRT);             
             render.Clear(Color.Transparent,ClearOptions.Target | ClearOptions.DepthBuffer,1,0);
-            render.RenderSceneDepth(world, gt, view, proj, true);
+            render.RenderSceneDepth(world, gt, ref view, ref  proj, true);
             shadowMap = render.PopRenderTargetAsSingleRenderTarget2D();
         }
 
@@ -201,7 +201,9 @@ namespace PloobsEngine.SceneControl
                         break;
                     case LightType.Deferred_Spot:
                         SpotLightPE sl = light as SpotLightPE;
-                        RenderShadowMap(gameTime, render, sl.ViewMatrix, sl.ProjMatrix, world, deferredGBuffer);
+                        Matrix v = sl.ViewMatrix;
+                        Matrix p =sl.ProjMatrix;
+                        RenderShadowMap(gameTime, render, ref v, ref p, world, deferredGBuffer);
                         render.PushBlendState(BlendState.AlphaBlend);
                         DrawnSpotLight(render, ginfo, world.CameraManager.ActiveCamera, sl, deferredGBuffer);
                         render.PopBlendState();
@@ -280,7 +282,7 @@ namespace PloobsEngine.SceneControl
 
         }
 
-        #endregion
+#endregion
 
 #region IDeferredLightMap Members
 
@@ -300,7 +302,7 @@ namespace PloobsEngine.SceneControl
             }
         }
 
-        #endregion
+#endregion
 
 #region IDeferredLightMap Members
 
@@ -314,7 +316,7 @@ namespace PloobsEngine.SceneControl
             content = render.PopRenderTargetAsSingleRenderTarget2D();
         }
 
-        #endregion
+#endregion
 
         
     }

@@ -232,12 +232,12 @@ namespace PloobsEngine.Features
             get { return ComponentType.PRE_DRAWABLE; }
         }
 
-        protected override void PreDraw(RenderHelper render,GameTime gt, Matrix activeView, Matrix activeProjection)
+        protected override void PreDraw(RenderHelper render,GameTime gt, ref Matrix activeView, ref Matrix activeProjection)
         {
             if (!enable)
                 return;
 
- 	        base.PreDraw(render,gt, activeView, activeProjection);
+ 	        base.PreDraw(render,gt, ref activeView, ref activeProjection);
             
             Matrix x = Matrix.Invert(activeView);
             Vector3 camPos = new Vector3(x.M41, x.M42, x.M43);
@@ -323,7 +323,7 @@ namespace PloobsEngine.Features
             get { return PloobsEngine.Components.ComponentType.PRE_DRAWABLE; }
         }
 
-        protected override void PreDraw(RenderHelper render, GameTime gt, Matrix activeView, Matrix activeProjection)
+        protected override void PreDraw(RenderHelper render, GameTime gt, ref Matrix activeView, ref Matrix activeProjection)
         {
             if (!enable || Cube == null)
                 return;
