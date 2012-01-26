@@ -51,7 +51,7 @@ namespace PloobsEngine.Features.Billboard
 
 
 
-        public static readonly String MyName = "Billboard";
+        public static readonly String MyName = "SphericalBillboard";
         public override string getMyName()
         {
             return MyName;
