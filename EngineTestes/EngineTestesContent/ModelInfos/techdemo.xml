@@ -1,0 +1,1615 @@
+<!-- Comments: -->
+<SCENE>
+	<body 	 name="Plane32" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="asphalt.jpg" />
+			<bump name ="asphalt.jpg" />
+		</material>
+	</body> 
+	<body 	 name="esquina_corner20" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas39" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="Plane35" >
+		<collision type="Editable_mesh"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="asphalt.jpg" />
+			<bump name ="asphalt.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas01" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio01" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio02" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="Plane03" >
+		<collision type="Editable_mesh"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="asphalt.jpg" />
+			<bump name ="asphalt.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas40" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="Plane40" >
+		<collision type="Editable_mesh"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="asphalt.jpg" />
+			<bump name ="asphalt.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas41" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio03" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio04" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio05" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="esquina_corner21" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="esquina_corner22" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas42" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas43" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio06" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio07" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio08" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="Plane44" >
+		<collision type="Editable_mesh"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="asphalt.jpg" />
+			<bump name ="asphalt.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas44" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas45" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio09" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio10" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio11" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="esquina_corner23" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="Plane06" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="asphalt.jpg" />
+			<bump name ="asphalt.jpg" />
+		</material>
+	</body> 
+	<body 	 name="esquina_corner24" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas46" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="Plane47" >
+		<collision type="Editable_mesh"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="asphalt.jpg" />
+			<bump name ="asphalt.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas47" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio12" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio13" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio14" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="Plane51" >
+		<collision type="Editable_mesh"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="asphalt.jpg" />
+			<bump name ="asphalt.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas48" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="Plane52" >
+		<collision type="Editable_mesh"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="asphalt.jpg" />
+			<bump name ="asphalt.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas49" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio15" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio16" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio17" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="esquina_corner25" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="esquina_corner26" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas50" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas51" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio18" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio19" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio20" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="Plane56" >
+		<collision type="Editable_mesh"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="asphalt.jpg" />
+			<bump name ="asphalt.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas52" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas53" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio21" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio22" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio23" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="esquina_corner27" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="Plane57" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="asphalt.jpg" />
+			<bump name ="asphalt.jpg" />
+		</material>
+	</body> 
+	<body 	 name="esquina_corner28" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas54" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="Plane58" >
+		<collision type="Editable_mesh"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="asphalt.jpg" />
+			<bump name ="asphalt.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas55" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio24" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio25" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio26" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="Plane59" >
+		<collision type="Editable_mesh"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="asphalt.jpg" />
+			<bump name ="asphalt.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas56" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="Plane60" >
+		<collision type="Editable_mesh"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="asphalt.jpg" />
+			<bump name ="asphalt.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas57" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio27" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio28" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio29" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="esquina_corner29" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="esquina_corner30" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas58" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas59" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio30" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio31" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio32" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="Plane61" >
+		<collision type="Editable_mesh"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="asphalt.jpg" />
+			<bump name ="asphalt.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas60" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas61" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio33" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio34" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio35" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="esquina_corner31" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="Plane62" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="asphalt.jpg" />
+			<bump name ="asphalt.jpg" />
+		</material>
+	</body> 
+	<body 	 name="esquina_corner32" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas62" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="Plane63" >
+		<collision type="Editable_mesh"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="asphalt.jpg" />
+			<bump name ="asphalt.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas63" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio36" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio37" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio38" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="Plane64" >
+		<collision type="Editable_mesh"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="asphalt.jpg" />
+			<bump name ="asphalt.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas64" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="Plane65" >
+		<collision type="Editable_mesh"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="asphalt.jpg" />
+			<bump name ="asphalt.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas65" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio39" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio40" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio41" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="esquina_corner33" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="esquina_corner34" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas66" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas67" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio42" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio43" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio44" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="Plane66" >
+		<collision type="Editable_mesh"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="asphalt.jpg" />
+			<bump name ="asphalt.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas68" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="calcadas69" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio45" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio46" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="meiofio47" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+	<body 	 name="esquina_corner35" >
+		<collision type="PolyMeshObject"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="Concrete.jpg" />
+			<bump name ="Concrete.jpg" />
+		</material>
+	</body> 
+	<body 	 name="Plane02" >
+		<collision type="Plane"/>
+	</body> 
+	<body 	 name="Cylinder01" >
+		<collision type="Editable_Poly"/>
+	</body> 
+	<body 	 name="Omni01" >
+		<collision type="freeSpot"/>
+	</body> 
+	<body 	 name="Omni02" >
+		<collision type="freeSpot"/>
+	</body> 
+	<body 	 name="Cylinder02" >
+		<collision type="Editable_Poly"/>
+	</body> 
+	<body 	 name="Omni03" >
+		<collision type="freeSpot"/>
+	</body> 
+	<body 	 name="Cylinder03" >
+		<collision type="Editable_Poly"/>
+	</body> 
+	<body 	 name="Omni04" >
+		<collision type="freeSpot"/>
+	</body> 
+	<body 	 name="Cylinder04" >
+		<collision type="Editable_Poly"/>
+	</body> 
+	<body 	 name="Omni05" >
+		<collision type="freeSpot"/>
+	</body> 
+	<body 	 name="Cylinder05" >
+		<collision type="Editable_Poly"/>
+	</body> 
+	<body 	 name="Omni06" >
+		<collision type="freeSpot"/>
+	</body> 
+	<body 	 name="Cylinder06" >
+		<collision type="Editable_Poly"/>
+	</body> 
+	<body 	 name="Omni07" >
+		<collision type="freeSpot"/>
+	</body> 
+	<body 	 name="Cylinder07" >
+		<collision type="Editable_Poly"/>
+	</body> 
+		<spotlight name="Spot01">
+		<enabled>true</enabled>
+		<fallof>80.2</fallof>
+		<castShadows>true</castShadows>
+		<position>
+			<x> 5892.79 </x>
+			<y> -2883.77 </y>
+			<z> 8219.63 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="0.3" />
+			<decay value ="0.0" />
+	</spotlight>
+		<target name="Spot01.Target">
+		<position>
+			<x> 5079.25 </x>
+			<y> -1036.58 </y>
+			<z> 8242.64 </z>
+		</position>
+		</target>
+	<body 	 name="Torus Knot01" >
+		<collision type="Torus_Knot"/>
+		<material>
+			<SpecularIntensity>
+			53.0
+			</SpecularIntensity>
+			<SpecularPower>
+			83.0
+			</SpecularPower>
+		</material>
+	</body> 
+	<body 	 name="Box01" >
+		<collision type="Editable_mesh"/>
+		<material>
+			<SpecularIntensity>
+			95.0
+			</SpecularIntensity>
+			<SpecularPower>
+			46.0
+			</SpecularPower>
+		</material>
+	</body> 
+	<body 	 name="Teapot001" >
+		<collision type="Teapot"/>
+		<material>
+			<SpecularIntensity>
+			30.0
+			</SpecularIntensity>
+			<SpecularPower>
+			25.0
+			</SpecularPower>
+			<diffuse name ="meiofio.jpg" />
+			<bump name ="meiofio.jpg" />
+		</material>
+	</body> 
+</SCENE>
