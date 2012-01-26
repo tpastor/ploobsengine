@@ -46,7 +46,7 @@ namespace PloobsEngine.SceneControl
         #region ICuller Members
         List<IObject> deferred = new List<IObject>();
         List<IObject> forward = new List<IObject>();
-        public override void StartFrame(Matrix view, Matrix projection, BoundingFrustum frustrum)
+        public override void StartFrame(ref Matrix view, ref Matrix projection, BoundingFrustum frustrum)
         {
             forward.Clear();
             deferred.Clear();

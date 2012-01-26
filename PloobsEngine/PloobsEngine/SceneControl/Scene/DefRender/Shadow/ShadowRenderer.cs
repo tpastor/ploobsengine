@@ -286,7 +286,7 @@ namespace PloobsEngine.SceneControl
             //shadowMapEffect.Parameters["g_matViewProj"].SetValue(lightViewProjectionMatrices[splitIndex]);
                         
             // Draw the models            
-            render.RenderSceneDepth(world, gameTime, lightViewMatrices[splitIndex], lightProjectionMatrices[splitIndex], true);
+            render.RenderSceneDepth(world, gameTime, ref lightViewMatrices[splitIndex], ref lightProjectionMatrices[splitIndex], true);
 		}
 
 		/// <summary>

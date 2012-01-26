@@ -60,9 +60,9 @@ namespace PloobsEngine.Features.DebugDraw
 
         public static readonly String MyName = "DebugDraw";
 
-        protected override void PosWithDepthDraw(SceneControl.RenderHelper render, Microsoft.Xna.Framework.GameTime gt, Microsoft.Xna.Framework.Matrix activeView, Microsoft.Xna.Framework.Matrix activeProjection)
+        protected override void PosWithDepthDraw(SceneControl.RenderHelper render, Microsoft.Xna.Framework.GameTime gt, ref Microsoft.Xna.Framework.Matrix activeView, ref Microsoft.Xna.Framework.Matrix activeProjection)
         {
-            base.PosWithDepthDraw(render, gt, activeView, activeProjection);
+            base.PosWithDepthDraw(render, gt, ref activeView, ref activeProjection);
 
             foreach (var item in debugDrawers)
             {

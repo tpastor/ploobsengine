@@ -39,7 +39,7 @@ namespace EngineTestes
             this.GraphicInfo = GraphicInfo;
         }
 
-        protected override void PosWithDepthDraw(PloobsEngine.SceneControl.RenderHelper render, Microsoft.Xna.Framework.GameTime gt, Microsoft.Xna.Framework.Matrix activeView, Microsoft.Xna.Framework.Matrix activeProjection)
+        protected override void PosWithDepthDraw(PloobsEngine.SceneControl.RenderHelper render, Microsoft.Xna.Framework.GameTime gt, ref Microsoft.Xna.Framework.Matrix activeView, ref Microsoft.Xna.Framework.Matrix activeProjection)
         {                        
             effect.Parameters["InvProj"].SetValue(Matrix.Invert(activeView * activeProjection));
             effect.Parameters["halfPixel"].SetValue(GraphicInfo.HalfPixel);
@@ -54,7 +54,7 @@ namespace EngineTestes
             }
             render.PopBlendState();
 
-            base.PosWithDepthDraw(render, gt, activeView, activeProjection);
+            base.PosWithDepthDraw(render, gt, ref activeView, ref activeProjection);
         }
     }
 }

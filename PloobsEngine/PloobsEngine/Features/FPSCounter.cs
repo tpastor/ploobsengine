@@ -54,9 +54,9 @@ namespace PloobsEngine.Features
             return MyName;
         }
 
-        protected override void AfterDraw(SceneControl.RenderHelper render, GameTime gt, Matrix activeView, Matrix activeProjection)
+        protected override void AfterDraw(SceneControl.RenderHelper render, GameTime gt, ref Matrix activeView, ref Matrix activeProjection)
         {
-            base.AfterDraw(render, gt, activeView, activeProjection);
+            base.AfterDraw(render, gt, ref activeView, ref  activeProjection);
         
             _TotalTime += (float)gt.ElapsedGameTime.TotalSeconds;
             _Fps += 1;

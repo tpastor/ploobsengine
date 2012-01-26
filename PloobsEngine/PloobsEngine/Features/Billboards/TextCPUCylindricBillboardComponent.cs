@@ -33,7 +33,7 @@ namespace PloobsEngine.Features.Billboard
         BasicEffect basicEffect;
         SpriteBatch spriteBatch;
 
-        protected override void PosWithDepthDraw(PloobsEngine.SceneControl.RenderHelper render, Microsoft.Xna.Framework.GameTime gt, Microsoft.Xna.Framework.Matrix activeView, Microsoft.Xna.Framework.Matrix activeProjection)
+        protected override void PosWithDepthDraw(PloobsEngine.SceneControl.RenderHelper render, Microsoft.Xna.Framework.GameTime gt, ref Microsoft.Xna.Framework.Matrix activeView, ref Microsoft.Xna.Framework.Matrix activeProjection)
         {        
             Matrix viewIT = Matrix.Invert(Matrix.Transpose(activeView));
             Vector3 position = new Vector3(viewIT.M14, viewIT.M24, viewIT.M34);

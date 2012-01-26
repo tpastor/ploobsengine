@@ -136,11 +136,11 @@ namespace PloobsEngine.Components
         /// <param name="gt">The gt.</param>
         /// <param name="activeView">The active view.</param>
         /// <param name="activeProjection">The active projection.</param>
-        internal void PreDraw(RenderHelper render,GameTime gt, Matrix activeView, Matrix activeProjection)
+        internal void PreDraw(RenderHelper render,GameTime gt, ref Matrix activeView, ref Matrix activeProjection)
         {
             foreach (IComponent item in _preDrawables)
             {
-                item.iPreDraw(render,gt,activeView,activeProjection);
+                item.iPreDraw(render,gt,ref activeView,ref activeProjection);
             }
         }
         /// <summary>
@@ -150,11 +150,11 @@ namespace PloobsEngine.Components
         /// <param name="gt">The gt.</param>
         /// <param name="activeView">The active view.</param>
         /// <param name="activeProjection">The active projection.</param>
-        internal void AfterDraw(RenderHelper render,GameTime gt, Matrix activeView, Matrix activeProjection)
+        internal void AfterDraw(RenderHelper render,GameTime gt, ref Matrix activeView, ref Matrix activeProjection)
         {
             foreach (IComponent item in _posDrawables)
             {
-                item.iAfterDraw(render,gt,activeView,activeProjection);
+                item.iAfterDraw(render,gt,ref activeView,ref activeProjection);
             }
         }
 
@@ -165,11 +165,11 @@ namespace PloobsEngine.Components
         /// <param name="gt">The gt.</param>
         /// <param name="activeView">The active view.</param>
         /// <param name="activeProjection">The active projection.</param>
-        internal void PosWithDepthDraw(RenderHelper render, GameTime gt, Matrix activeView, Matrix activeProjection)
+        internal void PosWithDepthDraw(RenderHelper render, GameTime gt, ref Matrix activeView, ref Matrix activeProjection)
         {
             foreach (IComponent item in _posWithDepthDrawables)
             {
-                item.iPosWithDepthDraw(render, gt, activeView, activeProjection);
+                item.iPosWithDepthDraw(render, gt, ref activeView, ref activeProjection);
             }
         }
 
