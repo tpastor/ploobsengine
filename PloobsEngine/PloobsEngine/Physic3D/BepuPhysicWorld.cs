@@ -543,7 +543,7 @@ namespace PloobsEngine.Physics
             space.BroadPhase.QueryAccelerator.GetEntries(new BoundingSphere(po.Position, distance), ent);
             foreach (var item in ent)
             {
-                    IPhysicObject phyObj  =BepuEntityObject.RecoverIPhysicObjectFromBroadPhase(item);                
+                    IPhysicObject phyObj  = BepuEntityObject.RecoverIPhysicObjectFromBroadPhase(item);                
                     if (phyObj != null)
                     {
                         if (condition(phyObj, phyObj.ObjectOwner))
