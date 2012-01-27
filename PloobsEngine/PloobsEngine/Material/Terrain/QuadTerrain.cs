@@ -894,10 +894,10 @@ namespace PloobsEngine.Material
         /// <returns></returns>
         public float[,] getHeightMap()
         {
-            float[,] map = new float[terrainWidth, terrainHeight];
-            for (int y = 0; y < terrainHeight; y++)
+            float[,] map = new float[terrainWidth * (int)Scale, terrainHeight * (int)Scale];
+            for (int x = 0; x < terrainWidth * Scale; x++) 
             {
-                for (int x = 0; x < terrainWidth; x++)
+                for (int y = 0; y < terrainHeight * Scale; y++)
                 {
                     map[x, y] = getHeight(x, y);
                 }
