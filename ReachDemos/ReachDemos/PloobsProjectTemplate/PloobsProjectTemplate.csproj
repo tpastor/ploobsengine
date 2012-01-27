@@ -121,6 +121,14 @@
     <Compile Include="2D Demos\Helpers\JointUpdateable.cs" />
     <Compile Include="2D Demos\Helpers\SpriteParticle.cs" />
     <Compile Include="Animation\AnimationScreen.cs" />
+    <Compile Include="Crowed\Agent.cs" />
+    <Compile Include="Crowed\KdTree.cs" />
+    <Compile Include="Crowed\Line.cs" />
+    <Compile Include="Crowed\Obstacle.cs" />
+    <Compile Include="Crowed\RVOMath.cs" />
+    <Compile Include="Crowed\Simulator.cs" />
+    <Compile Include="Crowed\CrowedScreen.cs" />
+    <Compile Include="Crowed\Vector2.cs" />
     <Compile Include="DemosHomeScreen.cs" />
     <Compile Include="Particle3D\ParticleScreen.cs" />
     <Compile Include="Particle3D\SnowPS.cs" />

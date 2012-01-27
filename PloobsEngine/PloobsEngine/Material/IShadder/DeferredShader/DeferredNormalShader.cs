@@ -183,7 +183,7 @@ namespace PloobsEngine.Material
         public override void Initialize(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, IObject obj)
         {
             base.Initialize(ginfo, factory, obj);      
-            this._shader = factory.GetEffect("RenderGBuffer",false,true);            
+            this._shader = factory.GetEffect("RenderGBuffer",true,true);            
 
             ViewProjectionParameter = this._shader.Parameters["ViewProjection"];              
             TextureParameter = this._shader.Parameters["Texture"];

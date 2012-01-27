@@ -41,7 +41,7 @@ namespace PloobsEngine.SceneControl._2DScene.Culler
             return MaterialSortedObjects;
         }
 
-        public override void StartFrame(Microsoft.Xna.Framework.Matrix view, Microsoft.Xna.Framework.Matrix projection, Microsoft.Xna.Framework.BoundingFrustum frustrum)
+        public override void StartFrame(ref Microsoft.Xna.Framework.Matrix view, ref Microsoft.Xna.Framework.Matrix projection, Microsoft.Xna.Framework.BoundingFrustum frustrum)
         {            
             
             

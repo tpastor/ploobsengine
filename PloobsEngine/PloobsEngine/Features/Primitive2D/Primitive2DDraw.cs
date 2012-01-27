@@ -58,14 +58,14 @@ namespace PloobsEngine.Features.DebugDraw
             return myName;
         }
 
-        protected override void AfterDraw(PloobsEngine.SceneControl.RenderHelper render, Microsoft.Xna.Framework.GameTime gt, Microsoft.Xna.Framework.Matrix activeView, Microsoft.Xna.Framework.Matrix activeProjection)
+        protected override void AfterDraw(PloobsEngine.SceneControl.RenderHelper render, Microsoft.Xna.Framework.GameTime gt, ref Microsoft.Xna.Framework.Matrix activeView, ref Microsoft.Xna.Framework.Matrix activeProjection)
         {
             foreach (var item in primitives)
             {
                 item.iDraw(activeView, activeProjection, render, batch);
             }
 
-            base.AfterDraw(render, gt, activeView, activeProjection);
+            base.AfterDraw(render, gt, ref activeView, ref activeProjection);
         }
     }
 }

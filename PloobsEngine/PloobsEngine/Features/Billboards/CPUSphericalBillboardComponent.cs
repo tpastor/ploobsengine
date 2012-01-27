@@ -27,7 +27,7 @@ namespace PloobsEngine.Features.Billboard
         BasicEffect basicEffect;
         SpriteBatch spriteBatch;
 
-        protected override void PosWithDepthDraw(PloobsEngine.SceneControl.RenderHelper render, Microsoft.Xna.Framework.GameTime gt, Microsoft.Xna.Framework.Matrix activeView, Microsoft.Xna.Framework.Matrix activeProjection)
+        protected override void PosWithDepthDraw(PloobsEngine.SceneControl.RenderHelper render, Microsoft.Xna.Framework.GameTime gt, ref Microsoft.Xna.Framework.Matrix activeView, ref Microsoft.Xna.Framework.Matrix activeProjection)
         {
             Matrix invertY = Matrix.CreateScale(1, -1, 1);
 

@@ -70,15 +70,15 @@ float4 PixelShaderFunctionNormal(VertexShaderOutput input) : COLOR0
 	{
 		float4 light = tex2D(lightSampler,input.TexCoord);		
 		float3 diffuseLight = light.rgb;
-		float specularLight = light.a;
-		return float4((diffuseColor * (diffuseLight + extra.rgb)+ specularLight),1);
+		float specularLight = light.a;		
+		return float4( extra.rgb + (diffuseColor * (diffuseLight)+ specularLight),1);
 	}
 	else	
 	{		
 		float4 light = tex2D(lightSampler,input.TexCoord);		
 		float3 diffuseLight = light.rgb;
 		float specularLight = light.a;
-		return float4((diffuseColor * (diffuseLight + ambientColor)+ specularLight),1);
+		return float4(ambientColor + (diffuseColor * (diffuseLight)+ specularLight),1);
     }
     
 }
