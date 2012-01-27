@@ -45,7 +45,7 @@ namespace PloobsEngine.SceneControl._2DScene.Culler
         /// <param name="view">The view.</param>
         /// <param name="projection">The projection.</param>
         /// <param name="frustrum">The frustrum.</param>
-        public abstract void StartFrame(Matrix view, Matrix projection, BoundingFrustum frustrum);
+        public abstract void StartFrame(ref Matrix view, ref Matrix projection, BoundingFrustum frustrum);
 
         /// <summary>
         /// Called when an object is added to the world

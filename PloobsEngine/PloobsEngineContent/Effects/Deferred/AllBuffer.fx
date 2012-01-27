@@ -17,19 +17,7 @@ const uniform bool useGlow;
 const uniform bool useBump;
 const uniform bool useSpecular;
 
-// Propriedades da Textura
-texture ambientcube;
-samplerCUBE map_diffuse = 
-sampler_state
-{
-	Texture = <ambientcube>;
-	MipFilter = LINEAR;
-	MinFilter = LINEAR;
-	MagFilter = LINEAR;
 
-	AddressU = Clamp;
-	AddressV = Clamp;
-};
 
 texture Texture;
 sampler diffuseSampler = sampler_state
@@ -73,6 +61,19 @@ sampler normalSampler = sampler_state
 	ADDRESSV = WRAP;	
 };
 
+// Propriedades da Textura
+texture ambientcube;
+samplerCUBE map_diffuse = 
+sampler_state
+{
+	Texture = <ambientcube>;
+	MipFilter = LINEAR;
+	MinFilter = anisotropic;
+	MagFilter = anisotropic;
+
+	AddressU = Clamp;
+	AddressV = Clamp;
+};
 
 struct VertexShaderInput
 {
@@ -277,7 +278,7 @@ technique Technique1
 technique Technique2
 {
     pass Pass1
-    {
+    { 
         VertexShader = compile vs_3_0 VertexShaderFunction();
         PixelShader = compile ps_3_0 PixelShaderFunctionAmbient();
     }

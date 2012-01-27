@@ -341,7 +341,7 @@ namespace PloobsEngine.Material
         /// <param name="obj"></param>
         public override void Initialize(PloobsEngine.Engine.GraphicInfo ginfo, PloobsEngine.Engine.GraphicFactory factory, PloobsEngine.SceneControl.IObject obj)
         {
-            this._shader = factory.GetEffect(effect,false,true);            
+            this._shader = factory.GetEffect(effect,true,true);            
             base.Initialize(ginfo, factory, obj);
 
             PProjection = this._shader.Parameters["Projection"];

@@ -158,7 +158,13 @@ namespace PloobsEngine.SceneControl._2DScene
 
         protected override void ExecuteTechnic(Microsoft.Xna.Framework.GameTime gameTime, RenderHelper render, I2DWorld world)
         {
-            world.Culler.StartFrame(world.Camera2D.SimView, world.Camera2D.SimProjection, world.Camera2D.BoundingFrustrum);
+            Matrix simview = world.Camera2D.SimView;
+            Matrix simprojection = world.Camera2D.SimProjection;
+            Matrix view = world.Camera2D.View;
+            Matrix projection = world.Camera2D.Projection;
+
+
+            world.Culler.StartFrame(ref simview, ref simprojection, world.Camera2D.BoundingFrustrum);
             Dictionary<Type, List<I2DObject>> objs = world.Culler.GetNotCulledObjectsList();
 
             if (UsePreDrawPhase)
@@ -259,7 +265,7 @@ namespace PloobsEngine.SceneControl._2DScene
                 RenderBackGround(ginfo,render);
 #endif
             if (UseDrawComponents)
-                render.RenderPreComponents(gameTime, world.Camera2D.View, world.Camera2D.Projection);
+                render.RenderPreComponents(gameTime, ref view, ref projection);
 
             if (BeforeDraw != null)
                 BeforeDraw(ginfo, render);
@@ -285,7 +291,7 @@ namespace PloobsEngine.SceneControl._2DScene
             }
 
             if (UseDrawComponents)
-                render.RenderPosWithDepthComponents(gameTime, world.Camera2D.View, world.Camera2D.SimProjection);
+                render.RenderPosWithDepthComponents(gameTime, ref view, ref projection);
 
             if (world.ParticleManager != null)
                 world.ParticleManager.iDraw(gameTime, world.Camera2D.View, world.Camera2D.SimProjection, render);
@@ -312,7 +318,7 @@ namespace PloobsEngine.SceneControl._2DScene
             }
 
             if (UseDrawComponents)
-                render.RenderPosComponents(gameTime, world.Camera2D.View, world.Camera2D.Projection);            
+                render.RenderPosComponents(gameTime, ref view, ref projection);            
         }
 
         public override string TechnicName

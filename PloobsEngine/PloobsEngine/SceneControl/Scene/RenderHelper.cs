@@ -69,9 +69,9 @@ namespace PloobsEngine.SceneControl
         /// <param name="gametime">The gametime.</param>
         /// <param name="view">The view.</param>
         /// <param name="projection">The projection.</param>
-        public void RenderPreComponents(GameTime gametime, Matrix view, Matrix projection)
+        public void RenderPreComponents(GameTime gametime, ref Matrix view, ref Matrix projection)
         {
-            componentManager.PreDraw(this,gametime, view, projection);
+            componentManager.PreDraw(this,gametime, ref view, ref projection);
         }
         /// <summary>
         /// Renders the pos components.
@@ -79,9 +79,9 @@ namespace PloobsEngine.SceneControl
         /// <param name="gametime">The gametime.</param>
         /// <param name="view">The view.</param>
         /// <param name="projection">The projection.</param>
-        public void RenderPosComponents(GameTime gametime, Matrix view, Matrix projection)
+        public void RenderPosComponents(GameTime gametime, ref Matrix view, ref Matrix projection)
         {
-            componentManager.AfterDraw(this,gametime, view, projection);
+            componentManager.AfterDraw(this,gametime, ref view, ref projection);
         }
 
         /// <summary>
@@ -90,9 +90,9 @@ namespace PloobsEngine.SceneControl
         /// <param name="gametime">The gametime.</param>
         /// <param name="view">The view.</param>
         /// <param name="projection">The projection.</param>
-        public void RenderPosWithDepthComponents(GameTime gametime, Matrix view, Matrix projection)
+        public void RenderPosWithDepthComponents(GameTime gametime, ref Matrix view, ref Matrix projection)
         {
-            componentManager.PosWithDepthDraw(this, gametime, view, projection);
+            componentManager.PosWithDepthDraw(this, gametime, ref view,ref projection);
         }
 
         /// <summary>
@@ -779,11 +779,11 @@ namespace PloobsEngine.SceneControl
         /// <param name="projection">The projection.</param>
         /// <param name="drawComponentsPreDraw">if set to <c>true</c> [draw components with pre draw setting also].</param>
         /// <param name="useCuller">if set to <c>true</c> [use culler].</param>
-        public void RenderSceneWithBasicMaterial(IWorld world, GameTime gt, List<IObject> objListException, Matrix view, Matrix projection, bool drawComponentsPreDraw = true,bool useCuller = false)
+        public void RenderSceneWithBasicMaterial(IWorld world, GameTime gt, List<IObject> objListException, ref Matrix view, ref Matrix projection, bool drawComponentsPreDraw = true,bool useCuller = false)
         {
             if (drawComponentsPreDraw)
             {
-                 componentManager.PreDraw(this,gt, view, projection);
+                 componentManager.PreDraw(this,gt, ref view, ref projection);
         
             }
             
@@ -794,7 +794,7 @@ namespace PloobsEngine.SceneControl
             IEnumerable<IObject> objs;
             if (useCuller)
             {
-                world.Culler.StartFrame(view, projection, new BoundingFrustum(view * projection));
+                world.Culler.StartFrame(ref view, ref projection, new BoundingFrustum(view * projection));
                 objs = world.Culler.GetNotCulledObjectsList(null);                
             }
             else
@@ -841,17 +841,17 @@ namespace PloobsEngine.SceneControl
         /// <param name="projection">The projection.</param>
         /// <param name="drawComponentsPreDraw">if set to <c>true</c> [draw components pre draw].</param>
         /// <param name="useCuller">if set to <c>true</c> [use culler].</param>
-        public void RenderSceneWithCustomMaterial(Effect effect,OnDrawingSceneCustomMaterial setupShaderCallback, IWorld world, GameTime gt, List<IObject> objListException, Matrix view, Matrix projection, bool drawComponentsPreDraw = true, bool useCuller = false)
+        public void RenderSceneWithCustomMaterial(Effect effect,OnDrawingSceneCustomMaterial setupShaderCallback, IWorld world, GameTime gt, List<IObject> objListException, ref Matrix view, ref Matrix projection, bool drawComponentsPreDraw = true, bool useCuller = false)
         {
             if (drawComponentsPreDraw)
             {
-                componentManager.PreDraw(this,gt, view, projection);             
+                componentManager.PreDraw(this,gt, ref view, ref projection);             
             }
             
             IEnumerable<IObject> objs;
             if (useCuller)
             {
-                world.Culler.StartFrame(view, projection, new BoundingFrustum(view * projection));
+                world.Culler.StartFrame(ref view, ref projection, new BoundingFrustum(view * projection));
                 objs = world.Culler.GetNotCulledObjectsList(null);
             }
             else
@@ -890,12 +890,12 @@ namespace PloobsEngine.SceneControl
         /// <param name="view">The view.</param>
         /// <param name="projection">The projection.</param>
         /// <param name="useCuller">if set to <c>true</c> [use culler].</param>
-        public void RenderSceneDepth(IWorld world, GameTime gt, List<IObject> objListException, Matrix view, Matrix projection, bool useCuller = false)
+        public void RenderSceneDepth(IWorld world, GameTime gt, List<IObject> objListException, ref Matrix view, ref Matrix projection, bool useCuller = false)
         {            
             IEnumerable<IObject> objs;
             if (useCuller)
             {
-                world.Culler.StartFrame(view, projection, new BoundingFrustum(view * projection));
+                world.Culler.StartFrame(ref view, ref projection, new BoundingFrustum(view * projection));
                 objs = world.Culler.GetNotCulledObjectsList(null);
             }
             else
@@ -921,12 +921,12 @@ namespace PloobsEngine.SceneControl
         /// <param name="view">The view.</param>
         /// <param name="projection">The projection.</param>
         /// <param name="useCuller">if set to <c>true</c> [use culler].</param>
-        public void RenderSceneDepth(IWorld world, GameTime gt, Matrix view, Matrix projection, bool useCuller = false)
+        public void RenderSceneDepth(IWorld world, GameTime gt, ref Matrix view, ref Matrix projection, bool useCuller = false)
         {
             IEnumerable<IObject> objs;
             if (useCuller)
             {
-                world.Culler.StartFrame(view, projection, new BoundingFrustum(view * projection));
+                world.Culler.StartFrame(ref view, ref projection, new BoundingFrustum(view * projection));
                 objs = world.Culler.GetNotCulledObjectsList(null);
             }
             else
@@ -957,13 +957,13 @@ namespace PloobsEngine.SceneControl
         {
             if (drawComponentsPreDraw)
             {
-                componentManager.PreDraw(this, gt, view, projection);
+                componentManager.PreDraw(this, gt, ref view, ref projection);
             }
 
             IEnumerable<IObject> objs;
             if (useCuller)
             {
-                world.Culler.StartFrame(view, projection, new BoundingFrustum(view * projection));
+                world.Culler.StartFrame(ref view, ref projection, new BoundingFrustum(view * projection));
                 objs = world.Culler.GetNotCulledObjectsList(null);
             }
             else

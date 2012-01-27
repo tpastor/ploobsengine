@@ -53,22 +53,24 @@ namespace EngineTestes.Post
 
 
         public override void Draw(Microsoft.Xna.Framework.Graphics.Texture2D ImageToProcess, RenderHelper rHelper, Microsoft.Xna.Framework.GameTime gt, PloobsEngine.Engine.GraphicInfo GraphicInfo, IWorld world, bool useFloatBuffer)
-        {            
+        {
+            Matrix v = world.CameraManager.ActiveCamera.View;
+            Matrix p = world.CameraManager.ActiveCamera.Projection;
+                    
             if (firstTime)
             {
                 oldViewProjection = world.CameraManager.ActiveCamera.ViewProjection;
                 firstTime = false;
             }
-
             rHelper.PushRenderTarget(rt);
             rHelper.Clear(Color.Black);
             rHelper.RenderSceneWithCustomMaterial(effectvelocity,
                 (effect, obj, bi,ti,s,er,wvp) =>
-                {                    
+                {                   
                     Matrix w1 = Matrix.Multiply(obj.WorldMatrix, bi.ModelLocalTransformation);
                     effect.Parameters["wvp"].SetValue(w1 * wvp);
                     effect.Parameters["oldwvp"].SetValue(w1 * oldViewProjection);
-                }, world, gt, null, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection, false, true);
+                }, world, gt, null, ref v, ref p, false, true);
 
             Texture2D tex = rHelper.PopRenderTargetAsSingleRenderTarget2D();
 

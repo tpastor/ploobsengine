@@ -408,7 +408,10 @@ namespace EngineTestes.Post
             #region Render
 
             public override void Draw(Texture2D ImageToProcess, RenderHelper rHelper, GameTime gt, PloobsEngine.Engine.GraphicInfo GraphicInfo, IWorld world, bool useFloatBuffer)
-            {                
+            {
+                Matrix v = world.CameraManager.ActiveCamera.View;
+                Matrix p = world.CameraManager.ActiveCamera.Projection;
+                    
                 rHelper.PushRenderTarget(depthrender);
                 rHelper.Clear(Color.Black);
                 rHelper.RenderSceneWithCustomMaterial(renderdepth,
@@ -419,7 +422,7 @@ namespace EngineTestes.Post
                         effect.Parameters["WorldView"].SetValue(s * er);
                         effect.Parameters["farPlane"].SetValue(world.CameraManager.ActiveCamera.FarPlane);
                         
-                    }, world, gt, null, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection, false, true);
+                    }, world, gt, null, ref v, ref p, false, true);
 
                 Texture2D depth = rHelper.PopRenderTargetAsSingleRenderTarget2D();
 

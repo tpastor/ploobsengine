@@ -249,9 +249,12 @@ namespace EngineTestes.LightPrePassIdea.Imp
         protected override void ExecuteTechnic(Microsoft.Xna.Framework.GameTime gameTime, RenderHelper render, IWorld world)
         {
             ICamera camera = world.CameraManager.ActiveCamera;
+            Matrix view = world.CameraManager.ActiveCamera.View;
+            Matrix projection = world.CameraManager.ActiveCamera.Projection;
+
             ComputeFrustumCorners(camera);
 
-            world.Culler.StartFrame(world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection, world.CameraManager.ActiveCamera.BoundingFrustum);
+            world.Culler.StartFrame(ref view, ref projection, world.CameraManager.ActiveCamera.BoundingFrustum);
             List<IObject> AllnotCulledObjectsList = world.Culler.GetNotCulledObjectsList(null);
             List<IObject> DeferrednotCulledObjectsList = world.Culler.GetNotCulledObjectsList(MaterialType.DEFERRED);
             List<IObject> ForwardnotCulledObjectsList = world.Culler.GetNotCulledObjectsList(MaterialType.FORWARD);
@@ -324,7 +327,7 @@ namespace EngineTestes.LightPrePassIdea.Imp
 
             ForwardPass.Draw(gameTime, world, render, DeferrednotCulledObjectsList, ForwardnotCulledObjectsList);
 
-            render.RenderPosWithDepthComponents(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection);
+            render.RenderPosWithDepthComponents(gameTime, ref view, ref projection);
 
             render[PrincipalConstants.CurrentImage] = render.PopRenderTargetAsSingleRenderTarget2D();
 
@@ -345,7 +348,7 @@ namespace EngineTestes.LightPrePassIdea.Imp
             render.Clear(Color.Black);
             render.RenderTextureComplete(render[PrincipalConstants.CurrentImage], Color.White, ginfo.FullScreenRectangle, Matrix.Identity, null, true, SpriteSortMode.Deferred, SamplerState.PointClamp);                     
 
-            render.RenderPosComponents(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection);                        
+            render.RenderPosComponents(gameTime, ref view, ref projection);                        
         }
 
         private RenderTarget2D target;
