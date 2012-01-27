@@ -1,0 +1,74 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="PloobsFeatures.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="False">
+
+    <!--LayoutRoot contains the root grid where all other page content is placed-->
+    <Grid x:Name="LayoutRoot">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="179*" />
+            <ColumnDefinition Width="301*" />
+        </Grid.ColumnDefinitions>
+        <controls:Panorama Title="ploobsEngine features" Margin="0,12,0,-40" Grid.ColumnSpan="2">
+
+            <!--Panorama 2D one-->
+            <controls:PanoramaItem >
+                
+                <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
+                    <ScrollViewer.Content>
+                        <StackPanel>
+                            <TextBlock Text="2D Samples" FontSize="48" />
+                            <Image Tap="imageBasic2D_Tap" Height="200" HorizontalAlignment="Center" Name="imageBasic2D" Stretch="Fill" VerticalAlignment="Top" Width="400" Source="/PloobsFeatures;component/particle.jpg"   Margin="0,10" />
+                            <Image  Tap="Basic2DPositioning_Tap" Height="200"  HorizontalAlignment="Center"  Name="Basic2DPositioning" Stretch="Fill" VerticalAlignment="Top" Width="400" Source="/PloobsFeatures;component/positioning2d.jpg" Margin="0,10" />
+                            <Image   Tap="Basic2DCamera_Tap" Height="200" HorizontalAlignment="center"  Name="Basic2DCamera" Stretch="Fill" VerticalAlignment="Top" Width="400" Source="/PloobsFeatures;component/camera2d.jpg" Margin="0,10" />
+                            <Image Tap="Basic2DSprite_Tap"  Height="200"  HorizontalAlignment="Center"  Name="Basic2DSprite" Stretch="Fill" VerticalAlignment="Top" Width="400" Source="/PloobsFeatures;component/spriteanimation.jpg" Margin="0,10" />
+                            <Image  Tap="Basic2DParticle_Tap" Height="200" HorizontalAlignment="center"  Name="Basic2DParticle" Stretch="Fill" VerticalAlignment="Top" Width="400" Source="/PloobsFeatures;component/particles2d.jpg" Margin="0,10" />
+                            <Image Tap="Basic2DPhysic_Tap" Height="200"  HorizontalAlignment="Center"  Name="Basic2DPhysic" Stretch="Fill" VerticalAlignment="Top" Width="400" Source="/PloobsFeatures;component/Physics2D.jpg" Margin="0,10" />
+                        </StackPanel>
+                    </ScrollViewer.Content>
+                </ScrollViewer>
+
+            </controls:PanoramaItem>
+
+            <!--Panorama 3D one-->
+            <controls:PanoramaItem >
+
+                <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled">
+                    <ScrollViewer.Content>
+                        <StackPanel>
+                            <TextBlock Text="3D Samples" FontSize="48" />
+                            <Image Tap="particles3D_Tap" Height="200" HorizontalAlignment="center"  Name="particles3D" Stretch="Fill" VerticalAlignment="Top" Width="400" Source="/PloobsFeatures;component/3dparticles.jpg" Margin="0,10" />
+                            <Image Height="200" HorizontalAlignment="Center" Name="imageAnimation" Stretch="Fill" Width="400" Source="/PloobsFeatures;component/AnimationPlate.jpg" Tap="imageAnimation_Tap" Margin="0,10" />
+                            <Image Height="200" HorizontalAlignment="Center"  Name="image2" Stretch="Fill" VerticalAlignment="Top" Width="400" Source="/PloobsFeatures;component/stressplate.jpg" Tap="image2_Tap" Margin="0,10" />
+                            <Image Height="200" HorizontalAlignment="Center"  Name="image3" Stretch="Fill" VerticalAlignment="Top" Width="400" Source="/PloobsFeatures;component/environmentplate.jpg" Tap="image3_Tap" Margin="0,10" />
+                            <Image Height="200" HorizontalAlignment="center"  Name="imagepicking3D" Stretch="Fill" VerticalAlignment="Top" Width="400" Source="/PloobsFeatures;component/modelmanipulationplate.jpg" Tap="ModelManipulationTap" Margin="0,10" />
+                            <Image  Height="200" Tap="imagepicking2D_Tap" HorizontalAlignment="Center"  Name="imagepicking2D" Stretch="Fill" VerticalAlignment="Top" Width="400" Source="/PloobsFeatures;component/Terrain.jpg" Margin="0,10" />
+                        </StackPanel>
+                    </ScrollViewer.Content>
+                </ScrollViewer>
+
+            </controls:PanoramaItem>
+
+            
+
+
+        </controls:Panorama>
+
+        
+        
+    </Grid>
+
+    <!--Panorama-based applications should not show an ApplicationBar-->
+
+</phone:PhoneApplicationPage>
