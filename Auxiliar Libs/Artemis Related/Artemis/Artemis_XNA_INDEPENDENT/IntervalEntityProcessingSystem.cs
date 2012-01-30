@@ -20,9 +20,11 @@ namespace Artemis
 
         protected override void ProcessEntities(Dictionary<int, Entity> entities)
         {
-			for (int i = 0, s = entities.Count; s > i; i++) {
-				Process(entities[i]);
-			}
+            foreach (var item in entities.Values)
+            {
+                Process(item);
+            }
+			
 		}
 	
 	}

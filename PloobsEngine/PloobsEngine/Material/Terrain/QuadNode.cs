@@ -70,7 +70,7 @@ namespace Tutorial1.Terrain
 
 		public bool IsActive { get { return _isActive; } internal set { _isActive = value; } }
 
-		public QuadNode(NodeType nodeType, int nodeSize, int nodeDepth, QuadNode parent, QuadTree parentTree, int positionIndex)
+		internal QuadNode(NodeType nodeType, int nodeSize, int nodeDepth, QuadNode parent, QuadTree parentTree, int positionIndex)
 		{
 			NodeType = nodeType;
 			_nodeSize = nodeSize;

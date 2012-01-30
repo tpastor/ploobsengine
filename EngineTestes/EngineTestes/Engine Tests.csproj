@@ -155,6 +155,8 @@
     <Compile Include="AI\Pathfinding and Waypoints\IaPathFinding.cs" />
     <Compile Include="AI\Pathfinding and Waypoints\IaWaypoints.cs" />
     <Compile Include="AI\Pathfinding and Waypoints\moverAtachment.cs" />
+    <Compile Include="AI\RVO\RVOObject.cs" />
+    <Compile Include="AI\RVO\RVOScreen.cs" />
     <Compile Include="AI\Steering\Globals.cs" />
     <Compile Include="AI\Steering\SteerAtachment.cs" />
     <Compile Include="AI\Steering\Pedestrian.cs" />
