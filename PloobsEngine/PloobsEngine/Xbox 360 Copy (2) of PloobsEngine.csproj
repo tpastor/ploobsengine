@@ -104,6 +104,12 @@
     <Compile Include="AI\PathFind\AStar.cs" />
     <Compile Include="AI\PathFind\IANodeComparer.cs" />
     <Compile Include="AI\PathFind\IAPathfinderNode.cs" />
+    <Compile Include="AI\RVO\Agent.cs" />
+    <Compile Include="AI\RVO\KdTree.cs" />
+    <Compile Include="AI\RVO\Line.cs" />
+    <Compile Include="AI\RVO\Obstacle.cs" />
+    <Compile Include="AI\RVO\RVOMath.cs" />
+    <Compile Include="AI\RVO\Simulator.cs" />
     <Compile Include="AI\SimpleMap.cs" />
     <Compile Include="AI\Waypoints\ClosestWaypointConnector.cs" />
     <Compile Include="AI\Waypoints\IWaypointConnector.cs" />
@@ -526,7 +532,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <None Include="bin\Xbox 360\Release\Content\Effects\Deferred\AllBufferEnvironment.xnb" />
     <None Include="GameThumbnail.png">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
     </None>

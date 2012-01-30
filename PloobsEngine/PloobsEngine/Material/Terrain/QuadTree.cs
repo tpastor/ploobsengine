@@ -7,7 +7,7 @@ using PloobsEngine.Cameras;
 
 namespace Tutorial1.Terrain
 {
-    public class QuadTree
+    internal class QuadTree
     {
         private QuadNode _rootNode;
         private QuadNode _activeNode;
