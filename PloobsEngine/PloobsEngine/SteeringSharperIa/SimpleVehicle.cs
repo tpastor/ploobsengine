@@ -145,10 +145,10 @@ namespace Bnoerj.AI.Steering
 		// adjusting our orientation to maintain velocity-alignment.
         public void ApplySteeringForce(Vector3 force, float elapsedTime)
 		{
-			Vector3 adjustedForce = AdjustRawSteeringForce(force, elapsedTime);
+			//Vector3 adjustedForce = AdjustRawSteeringForce(force, elapsedTime);
 
 			// enforce limit on magnitude of steering force
-            ClippedForce = VectorUtils.TruncateLength(adjustedForce, MaxForce);
+            ClippedForce = VectorUtils.TruncateLength(force, MaxForce);
 
 			// compute acceleration and velocity
             Vector3 newAcceleration = (ClippedForce / Mass);
