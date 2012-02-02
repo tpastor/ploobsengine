@@ -653,7 +653,7 @@ namespace Bnoerj.AI.Steering
 			Vector3 target = quarry.PredictFuturePosition(etl);
 
 			// annotation
-			annotation.Line(this.Position, target, GaudyPursuitAnnotation ? color : Color.DarkGray);
+			//annotation.Line(this.Position, target, GaudyPursuitAnnotation ? color : Color.DarkGray);
 
 			return SteerForSeek(target);
 		}

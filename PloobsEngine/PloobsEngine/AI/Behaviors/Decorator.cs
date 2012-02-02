@@ -24,7 +24,7 @@ namespace BehaviorTrees
 	/// and executes them with some other decorations.
 	/// </summary>
 	/// <typeparam name="E"></typeparam>
-	abstract class DecoratorTask<E> : Task<E> where E : Entity
+	public abstract class DecoratorTask<E> : Task<E> where E : Entity
 	{
 		// reference to decorated node
 		//protected Node<E> node;
