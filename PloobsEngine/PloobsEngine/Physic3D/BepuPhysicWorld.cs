@@ -700,5 +700,23 @@ namespace PloobsEngine.Physics
         }
 
         #endregion
+
+        public override void GetPhysicsObjectsInRange(Vector3 position, float distance, CullerConditionAvaliator<IPhysicObject, IObject> CullerAvaliator, List<IPhysicObject> resp)
+        {
+            resp.Clear();
+            List<BroadPhaseEntry> ent = new List<BroadPhaseEntry>();
+            space.BroadPhase.QueryAccelerator.GetEntries(new BoundingSphere(position, distance), ent);
+            foreach (var item in ent)
+            {
+                IPhysicObject phyObj = BepuEntityObject.RecoverIPhysicObjectFromBroadPhase(item);
+                if (phyObj != null)
+                {
+                    if (CullerAvaliator(phyObj, phyObj.ObjectOwner))
+                    {
+                        resp.Add(phyObj);
+                    }
+                }
+            }
+        }
     }
 }

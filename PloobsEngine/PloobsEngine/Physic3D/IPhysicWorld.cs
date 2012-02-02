@@ -133,6 +133,15 @@ namespace PloobsEngine.Physics
         /// <param name="resp">The resp.</param>
         public abstract void GetPhysicsObjectsInRange(IPhysicObject po, float distance, CullerConditionAvaliator<IPhysicObject, IObject> CullerAvaliator,List<IPhysicObject> resp);
 
+        /// <summary>
+        /// Get the objects near the position passed as parameter
+        /// </summary>
+        /// <param name="position">The position.</param>
+        /// <param name="distance">The distance.</param>
+        /// <param name="CullerAvaliator">The culler avaliator.</param>
+        /// <param name="resp">The resp.</param>
+        public abstract void GetPhysicsObjectsInRange(Vector3 position, float distance, CullerConditionAvaliator<IPhysicObject, IObject> CullerAvaliator, List<IPhysicObject> resp);
+
 
         #region ISerializable Members
 
