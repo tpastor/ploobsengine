@@ -219,7 +219,8 @@
     <Compile Include="Particles\IParticleManager.cs" />
     <Compile Include="Particles\IParticleSystem.cs" />
     <Compile Include="Physic3D\BepuPhysicWorld.cs" />
-    <Compile Include="Physic3D\Constraints\BepuConstraint\BepuPhysicConstraint.cs" />
+    <Compile Include="Physic3D\Constraints\BepuConstraint\JointConstraint.cs" />
+    <Compile Include="Physic3D\Constraints\BepuConstraint\MultipleSubConstraints.cs" />
     <Compile Include="Physic3D\Constraints\BepuConstraint\PointPointConstraint.cs" />
     <Compile Include="Physic3D\Constraints\IPhysicConstraint.cs" />
     <Compile Include="Physic3D\DebugDraw\DisplayBox.cs" />

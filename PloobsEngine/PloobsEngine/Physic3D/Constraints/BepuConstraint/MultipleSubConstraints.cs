@@ -23,17 +23,15 @@ using System.Linq;
 using System.Text;
 using BEPUphysics.Constraints.TwoEntity.Joints;
 using PloobsEngine.Engine.Logger;
+using PloobsEngine.Physics.Bepu;
+using BEPUphysics.Constraints.SolverGroups;
 
 namespace PloobsEngine.Physic.Constraints.BepuConstraint
 {
-    /// <summary>
-    /// Bepu Constraint Type
-    /// Extend this class to implement any constraint in bepu
-    /// </summary>
-    public class BepuPhysicConstraint : IPhysicConstraint
+    public abstract class MultipleSubConstraints : IPhysicConstraint
     {
 
-        protected Joint joint;
+        protected SolverGroup multipleSubConstraints;
 
         /// <summary>
         /// Gets or sets the joint.
@@ -41,26 +39,16 @@ namespace PloobsEngine.Physic.Constraints.BepuConstraint
         /// <value>
         /// The joint.
         /// </value>
-        public Joint Joint
+        public SolverGroup Constraint
         {
-            get { return joint; }
-            set { joint = value; }
+            get { return multipleSubConstraints; }            
         }
 
-
-
-
-        public override Microsoft.Xna.Framework.Vector3 Position
+        public override PhysicConstraintType PhysicConstraintType
         {
-            get
-            {
-                return Position;
-            }
-            set
-            {
-                Position = value;
-            }
+            get { return Constraints.PhysicConstraintType.SOLVER; }
         }
+       
 
         /// <summary>
         /// Gets or sets the body A.
@@ -68,7 +56,7 @@ namespace PloobsEngine.Physic.Constraints.BepuConstraint
         /// <value>
         /// The body A.
         /// </value>
-        public override Physics.IPhysicObject BodyA
+        public BepuEntityObject BodyA
         {
             set;
             get;
@@ -80,19 +68,12 @@ namespace PloobsEngine.Physic.Constraints.BepuConstraint
         /// <value>
         /// The body B.
         /// </value>
-        public override Physics.IPhysicObject BodyB
+        public BepuEntityObject BodyB
         {
             set;
             get;
         }
-
-
-        public override String PhysicConstraintType
-        {
-            set;
-            get;
-        }
-
+        
 #if WINDOWS
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
         {
