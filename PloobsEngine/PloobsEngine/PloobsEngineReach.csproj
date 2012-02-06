@@ -428,6 +428,10 @@
     <Compile Include="SceneControl\Scene\ForwardRender\ForwardRenderTecnich.cs" />
     <Compile Include="Utils\EnumerableExtension.cs" />
     <Compile Include="Utils\Events\SmartWeakEvent.cs" />
+    <Compile Include="Utils\FileUtils\ConfigReader.cs" />
+    <Compile Include="Utils\FileUtils\ConfigWriter.cs" />
+    <Compile Include="Utils\FileUtils\Reader.cs" />
+    <Compile Include="Utils\FileUtils\Writer.cs" />
     <Compile Include="Utils\Math\Circle.cs" />
     <Compile Include="Utils\PolygonUnion.cs" />
     <Compile Include="Utils\Primitives.cs" />

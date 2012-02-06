@@ -172,6 +172,7 @@
     <Compile Include="Bolt\ColorTable.cs" />
     <Compile Include="CharacterControllerInput.cs" />
     <Compile Include="CharacterSample\CharacterScreen.cs" />
+    <Compile Include="FileUtils\FileUtilsScreen.cs" />
     <Compile Include="SphereCharacterControllerInput.cs" />
     <Compile Include="FullCharacterControllerInput.cs" />
     <Compile Include="Constraint\ConstraintScreen.cs" />
