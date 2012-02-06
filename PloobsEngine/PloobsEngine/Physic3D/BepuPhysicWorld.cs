@@ -219,6 +219,20 @@ namespace PloobsEngine.Physics
                 space.Add(cc.CharacterController);
                 objs.Add(obj);
             }
+            else if (obj.PhysicObjectTypes == PhysicObjectTypes.FULLCHARACTEROBJECT)
+            {
+                FullCharacterObject cc = (FullCharacterObject)obj;
+                cc.CharacterController.Body.CollisionInformation.Tag = obj;
+                space.Add(cc.CharacterController);
+                objs.Add(obj);
+            }
+            else if (obj.PhysicObjectTypes == PhysicObjectTypes.SPHERECHARACTEROBJECT)
+            {
+                SphereCharacterObject cc = (SphereCharacterObject)obj;
+                cc.CharacterController.Body.CollisionInformation.Tag = obj;
+                space.Add(cc.CharacterController);
+                objs.Add(obj);
+            }
             else if (obj.PhysicObjectTypes == PhysicObjectTypes.GHOST)
             {
                 //if (obj is AgregatedPhysicObject)
@@ -299,6 +313,20 @@ namespace PloobsEngine.Physics
             else if (obj.PhysicObjectTypes == PhysicObjectTypes.CHARACTEROBJECT)
             {
                 CharacterObject cc = (CharacterObject)obj;
+                cc.CharacterController.Body.CollisionInformation.Tag = null;
+                space.Remove(cc.CharacterController);
+                objs.Remove(obj);
+            }
+            else if (obj.PhysicObjectTypes == PhysicObjectTypes.FULLCHARACTEROBJECT)
+            {
+                FullCharacterObject cc = (FullCharacterObject)obj;
+                cc.CharacterController.Body.CollisionInformation.Tag = null;
+                space.Remove(cc.CharacterController);
+                objs.Remove(obj);
+            }
+            else if (obj.PhysicObjectTypes == PhysicObjectTypes.SPHERECHARACTEROBJECT)
+            {
+                SphereCharacterObject cc = (SphereCharacterObject)obj;
                 cc.CharacterController.Body.CollisionInformation.Tag = null;
                 space.Remove(cc.CharacterController);
                 objs.Remove(obj);

@@ -516,6 +516,7 @@ namespace PloobsEngine.Engine
             if ( (initialDescription.isFullScreen == true && this.IsActive) || initialDescription.isFullScreen == false)
             {
                 ComponentManager.Update(gameTime);
+                PloobsDispatcher.Update();
                 ScreenManager.Update(gameTime);
                 CommandProcessor.getCommandProcessor().ProcessCommands();
             }
@@ -1228,6 +1229,7 @@ namespace PloobsEngine.Engine
         private void Update(GameTime gameTime)
         {
                 ComponentManager.Update(gameTime);
+                PloobsDispatcher.Update();
                 ScreenManager.Update(gameTime);
                 CommandProcessor.getCommandProcessor().ProcessCommands();
         }
@@ -1725,6 +1727,7 @@ namespace PloobsEngine.Engine
             if ((initialDescription.isFullScreen == true && this.game.IsActive) || initialDescription.isFullScreen == false)
             {
                 ComponentManager.Update(gameTime);
+                PloobsDispatcher.Update();
                 ScreenManager.Update(gameTime);
                 CommandProcessor.getCommandProcessor().ProcessCommands();
             }            

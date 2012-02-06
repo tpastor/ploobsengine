@@ -208,6 +208,14 @@ namespace PloobsEngine.Physics
         /// </summary>
         CHARACTEROBJECT,
         /// <summary>
+        /// FULLCHARACTER OBJECT
+        /// </summary>
+        FULLCHARACTEROBJECT,
+        /// <summary>
+        /// Sphere Character Object
+        /// </summary>
+        SPHERECHARACTEROBJECT,
+        /// <summary>
         /// Plane
         /// </summary>
         PLANEOBJECT,
