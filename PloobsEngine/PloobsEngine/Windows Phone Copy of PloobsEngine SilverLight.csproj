@@ -148,6 +148,7 @@
     <Compile Include="Engine\ContentManager\ContentTrackerAsync.cs" />
     <Compile Include="Engine\ContentManager\Extensions.cs" />
     <Compile Include="Engine\ContentManager\SourceAssetLoader.cs" />
+    <Compile Include="Engine\PloobsDispatcher.cs" />
     <Compile Include="Features\Billboards\Bilboard3D.cs" />
     <Compile Include="Features\Billboards\CPUCylindricBillboardComponent.cs" />
     <Compile Include="Features\Billboards\CPUSphericalBillboardComponent.cs" />
@@ -263,6 +264,14 @@
     <Compile Include="Physic3D\PhysicObjects\BepuObject\CapsuleObject.cs" />
     <Compile Include="Physic3D\PhysicObjects\BepuObject\CharacterController.cs" />
     <Compile Include="Physic3D\PhysicObjects\BepuObject\CharacterObject.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\Character\CharacterController.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\Character\FullCharacterObject.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\Character\HorizontalMotionConstraint.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\Character\QueryManager.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\Character\StanceManager.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\Character\StepManager.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\Character\SupportFinder.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\Character\VerticalMotionConstraint.cs" />
     <Compile Include="Physic3D\PhysicObjects\BepuObject\CylinderObject.cs" />
     <Compile Include="Physic3D\PhysicObjects\BepuObject\DetectorVolumeObject.cs" />
     <Compile Include="Physic3D\PhysicObjects\BepuObject\GhostObject.cs" />
@@ -270,6 +279,12 @@
     <Compile Include="Physic3D\PhysicObjects\BepuObject\InstancedTriangleMeshObject.cs" />
     <Compile Include="Physic3D\PhysicObjects\BepuObject\MobileMeshObject.cs" />
     <Compile Include="Physic3D\PhysicObjects\BepuObject\ObjectMover.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\SphereCharacter\HorizontalMotionConstraint.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\SphereCharacter\QueryManager.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\SphereCharacter\SphereCharacterController.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\SphereCharacter\SphereCharacterObject.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\SphereCharacter\SupportFinder.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\SphereCharacter\VerticalMotionConstraint.cs" />
     <Compile Include="Physic3D\PhysicObjects\BepuObject\SphereObject.cs" />
     <Compile Include="Physic3D\PhysicObjects\BepuObject\TerrainObject.cs" />
     <Compile Include="Physic3D\PhysicObjects\BepuObject\TriangleMeshObject.cs" />

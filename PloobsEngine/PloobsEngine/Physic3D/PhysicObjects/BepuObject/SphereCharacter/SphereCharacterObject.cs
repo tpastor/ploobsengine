@@ -25,25 +25,26 @@ using BEPUphysics.Collidables.MobileCollidables;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Engine.Logger;
 using BEPUphysics.Entities.Prefabs;
+using BEPUphysicsDemos.AlternateMovement.SphereCharacter;
 
 namespace PloobsEngine.Physics.Bepu
 {
-    public class FullCharacterObject : BepuEntityObject
+    public class SphereCharacterObject : BepuEntityObject
     {
-        BEPUphysicsDemos.AlternateMovement.Character.CharacterController characterController;
+        SphereCharacterController characterController;
         float YAlignement;
         Matrix rotation;
 
-        public FullCharacterObject(Vector3 position, Matrix rotation, float height, float radius, Vector3 scale, float YAlignement = 0, float mass = 10)
+        public SphereCharacterObject(Vector3 position, Matrix rotation, float radius, float scale = 1, float YAlignement = 0, float mass = 10)
         {
-            this.scale = scale;
+            this.scale = new Vector3(scale);
             this.rotation = rotation;
-            this.YAlignement = YAlignement * scale.Y;
-            this.characterController = new BEPUphysicsDemos.AlternateMovement.Character.CharacterController(position,height* scale.Y,radius * scale.X,mass);            
+            this.YAlignement = YAlignement * scale;
+            this.characterController = new SphereCharacterController(position, radius * scale, mass);            
             this.entity = characterController.Body;
         }
 
-        public BEPUphysicsDemos.AlternateMovement.Character.CharacterController CharacterController
+        public SphereCharacterController CharacterController
         {
             get { return characterController; }
             set { characterController = value; }
@@ -54,7 +55,7 @@ namespace PloobsEngine.Physics.Bepu
         {
             get
             {
-                return PhysicObjectTypes.FULLCHARACTEROBJECT;
+                return PhysicObjectTypes.SPHERECHARACTEROBJECT;
             }            
         }
 
@@ -121,15 +122,7 @@ namespace PloobsEngine.Physics.Bepu
         {
             CharacterController.Jump();
         }
-
-        public void Duck()
-        {
-            CharacterController.StanceManager.DesiredStance = BEPUphysicsDemos.AlternateMovement.Character.Stance.Crouching ;
-        }
-        public void StandUp()
-        {
-            CharacterController.StanceManager.DesiredStance = BEPUphysicsDemos.AlternateMovement.Character.Stance.Standing;
-        }
+        
         public override Vector3 FaceVector
         {
             get { return rotation.Forward; }

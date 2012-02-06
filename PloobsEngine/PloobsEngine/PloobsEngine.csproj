@@ -215,6 +215,7 @@
     <Compile Include="DataStructure\QuadTree.cs" />
     <Compile Include="Engine\ContentCompiler\ContentBuilder.cs" />
     <Compile Include="Engine\ContentCompiler\ErrorLogger.cs" />
+    <Compile Include="Engine\PloobsDispatcher.cs" />
     <Compile Include="Features\Billboards\Bilboard3D.cs" />
     <Compile Include="Features\Billboards\CPUCylindricBillboardComponent.cs" />
     <Compile Include="Features\Billboards\CPUSphericalBillboardComponent.cs" />
@@ -369,6 +370,12 @@
     <Compile Include="Physic3D\PhysicObjects\BepuObject\GhostObject.cs" />
     <Compile Include="Physic3D\PhysicObjects\BepuObject\GravitationFieldObject.cs" />
     <Compile Include="Physic3D\PhysicObjects\BepuObject\ObjectMover.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\SphereCharacter\SphereCharacterObject.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\SphereCharacter\HorizontalMotionConstraint.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\SphereCharacter\QueryManager.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\SphereCharacter\SphereCharacterController.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\SphereCharacter\SupportFinder.cs" />
+    <Compile Include="Physic3D\PhysicObjects\BepuObject\SphereCharacter\VerticalMotionConstraint.cs" />
     <Compile Include="Physic3D\PhysicObjects\BepuObject\SphereObject.cs" />
     <Compile Include="Physic3D\PhysicObjects\BepuObject\TerrainObject.cs" />
     <Compile Include="Physic3D\PhysicObjects\BepuObject\TriangleMeshObject.cs" />
