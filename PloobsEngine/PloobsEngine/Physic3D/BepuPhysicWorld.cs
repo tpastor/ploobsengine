@@ -360,14 +360,24 @@ namespace PloobsEngine.Physics
 
         public override void AddConstraint(IPhysicConstraint ctn)
         {
-
-            BepuPhysicConstraint co = (BepuPhysicConstraint)ctn;
-
+            if (ctn.PhysicConstraintType == PhysicConstraintType.JOINT)
+            {
+                JointConstraint co = (JointConstraint)ctn;
                 if (co != null)
                 {
                     space.Add(co.Joint);
                     ctns.Add(co);
                 }
+            }
+            else if (ctn.PhysicConstraintType == PhysicConstraintType.SOLVER)
+            {
+                MultipleSubConstraints co = (MultipleSubConstraints)ctn;
+                if (co != null)
+                {
+                    space.Add(co.Constraint);
+                    ctns.Add(co);
+                }
+            }
           
             
             
@@ -379,9 +389,21 @@ namespace PloobsEngine.Physics
         /// <param name="ctn">The CTN.</param>
         public override void RemoveConstraint(IPhysicConstraint ctn)
         {
-            BepuPhysicConstraint bctn = ctn as BepuPhysicConstraint;
-            space.Remove(bctn.Joint);
-            ctns.Remove(bctn);
+            if (ctn.PhysicConstraintType == PhysicConstraintType.JOINT)
+            {
+                JointConstraint bctn = ctn as JointConstraint;
+                space.Remove(bctn.Joint);
+                ctns.Remove(bctn);
+            }
+            else if (ctn.PhysicConstraintType == PhysicConstraintType.SOLVER)
+            {
+                MultipleSubConstraints co = (MultipleSubConstraints)ctn;
+                if (co != null)
+                {
+                    space.Remove(co.Constraint);
+                    ctns.Remove(co); ;
+                }
+            }
          }
 
 

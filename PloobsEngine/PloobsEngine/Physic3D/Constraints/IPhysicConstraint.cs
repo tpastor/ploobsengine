@@ -35,20 +35,8 @@ namespace PloobsEngine.Physic.Constraints
 #else
     public abstract class IPhysicConstraint 
 #endif
-    {
-        /// <summary>
-        /// Gets or sets the position.
-        /// </summary>
-        /// <value>
-        /// The position.
-        /// </value>
-        public abstract Vector3 Position { set; get; }
-        public abstract IPhysicObject BodyA { set; get; }
-        public abstract IPhysicObject BodyB { set; get; }
-
-        public abstract String PhysicConstraintType { set; get; }
-
-
+    {   
+        public abstract PhysicConstraintType PhysicConstraintType { get; }
 
         #region ISerializable Members
 #if WINDOWS
@@ -56,6 +44,11 @@ namespace PloobsEngine.Physic.Constraints
 #endif
 
         #endregion
+    }
+    public enum PhysicConstraintType
+    {
+        JOINT,
+        SOLVER,
     }
 
 

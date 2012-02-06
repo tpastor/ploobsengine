@@ -22,34 +22,62 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using BEPUphysics.Constraints.TwoEntity.Joints;
-using Microsoft.Xna.Framework;
-using PloobsEngine.Physics;
-using PloobsEngine.Physics.Bepu;
 using PloobsEngine.Engine.Logger;
+using PloobsEngine.Physics.Bepu;
 
 namespace PloobsEngine.Physic.Constraints.BepuConstraint
 {
     /// <summary>
-    /// Point to Point Constraint
+    /// Bepu Constraint Type
+    /// Extend this class to implement any constraint in bepu
     /// </summary>
-    public class PointPointConstraint : JointConstraint
-    {        
+    public abstract class JointConstraint : IPhysicConstraint
+    {
 
-        public PointPointConstraint(Vector3 position, IPhysicObject obA, IPhysicObject obB)
+        protected Joint joint;
+
+        /// <summary>
+        /// Gets or sets the joint.
+        /// </summary>
+        /// <value>
+        /// The joint.
+        /// </value>
+        public Joint Joint
         {
-            if (obA.PhysicObjectTypes != PhysicObjectTypes.TRIANGLEMESHOBJECT && obB.PhysicObjectTypes != PhysicObjectTypes.TRIANGLEMESHOBJECT)
-            {
-                BodyA = (BepuEntityObject)obA;
-                BodyB = (BepuEntityObject)obB;
-                joint = new BallSocketJoint(BodyA.Entity, BodyB.Entity, position);
-            }
-            else
-            {
-                throw new Exception("Cannot apply this Constraint on Triangle Meshes");
-            }            
+            get { return joint; }
+            set { joint = value; }
+        }       
+       
+
+        /// <summary>
+        /// Gets or sets the body A.
+        /// </summary>
+        /// <value>
+        /// The body A.
+        /// </value>
+        public BepuEntityObject BodyA
+        {
+            set;
+            get;
+        }
+
+        public override PhysicConstraintType PhysicConstraintType
+        {
+            get { return Constraints.PhysicConstraintType.JOINT; }
+        }
+
+        /// <summary>
+        /// Gets or sets the body B.
+        /// </summary>
+        /// <value>
+        /// The body B.
+        /// </value>
+        public BepuEntityObject BodyB
+        {
+            set;
+            get;
         }
         
-
 #if WINDOWS
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
         {

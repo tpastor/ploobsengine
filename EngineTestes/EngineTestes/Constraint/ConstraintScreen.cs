@@ -23,7 +23,7 @@ namespace ProjectTemplate
     {
 
         private GraphicFactory gf;
-        private BepuPhysicConstraint constraint;
+        private JointConstraint constraint;
         
         private bool constraintstate = true;
         
