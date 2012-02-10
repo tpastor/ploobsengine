@@ -212,6 +212,9 @@
     <Compile Include="Commands\IReciever.cs" />
     <Compile Include="Components\ComponentManager.cs" />
     <Compile Include="Components\IComponent.cs" />
+    <Compile Include="DataStructure\BinaryNode.cs" />
+    <Compile Include="DataStructure\BinaryTree.cs" />
+    <Compile Include="DataStructure\BinarySearchTree.cs" />
     <Compile Include="DataStructure\QuadTree.cs" />
     <Compile Include="Engine\ContentCompiler\ContentBuilder.cs" />
     <Compile Include="Engine\ContentCompiler\ErrorLogger.cs" />

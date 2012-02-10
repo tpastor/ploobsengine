@@ -397,8 +397,7 @@ namespace PloobsEngine.Physics
             }
             else if (ctn.PhysicConstraintType == PhysicConstraintType.SOLVER)
             {
-                MultipleSubConstraints co = (MultipleSubConstraints)ctn;
-                if (co != null)
+                MultipleSubConstraints co = ctn as MultipleSubConstraints;                 
                 {
                     space.Remove(co.Constraint);
                     ctns.Remove(co); ;
