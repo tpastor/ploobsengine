@@ -140,6 +140,9 @@
     <Compile Include="Commands\IReciever.cs" />
     <Compile Include="Components\ComponentManager.cs" />
     <Compile Include="Components\IComponent.cs" />
+    <Compile Include="DataStructure\BinaryNode.cs" />
+    <Compile Include="DataStructure\BinarySearchTree.cs" />
+    <Compile Include="DataStructure\BinaryTree.cs" />
     <Compile Include="Engine\PloobsDispatcher.cs" />
     <Compile Include="Features\Billboards\Bilboard3D.cs" />
     <Compile Include="Features\Billboards\CPUCylindricBillboardComponent.cs" />
