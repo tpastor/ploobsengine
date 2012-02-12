@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContentProcessor5.cs" />
     <Compile Include="ContentProcessor1.cs" />
     <Compile Include="ContentProcessor2.cs" />
     <Compile Include="ContentProcessor3.cs" />
