@@ -15,7 +15,7 @@
     <RootNamespace>Documentation</RootNamespace>
     <Name>Documentation</Name>
     <!-- SHFB properties -->
-    <OutputPath>C:\Users\thiago.dias.pastor\Documents\Helper\</OutputPath>
+    <OutputPath>.\</OutputPath>
     <HtmlHelpName>Ploobs Engine Help</HtmlHelpName>
     <Language>en-US</Language>
     <FrameworkVersion>.NET 4.0.30319</FrameworkVersion>
