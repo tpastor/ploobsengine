@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="4130e8d1-be66-4937-bf59-8bfb37b9dbab" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">    
+    <introduction>      
+      <para>Tutorials Code</para>
+    </introduction>    
+    
+    <section address="Section1">
+      <title>Basic Tutorials</title>
+      <content>        
+        <para>We have two big classes of functionaity tutorials, showing how use the engine
+        from beginner to advanced</para>
+        <para>You can find the code in our 
+        <externalLink>
+          <linkText>download site</linkText>          
+          <linkUri>https://sourceforge.net/projects/ploobsengine/files/</linkUri>
+      </externalLink>
+      </para>
+      
+      <para>
+      In this site you will find two examples packages, the Introduction EngineDemos.rar and
+      the Advanced EngineDemos.rar
+      </para>
+      <para>
+      The Introduction Examples shows some very basic examples about the basic features of the engine. The code
+      is very commented in portuguese and sometimes in english.
+      </para>
+      
+      <para>Here we show a list of the examples in this file:</para>
+            
+		<list class="bullet">
+		  <listItem>
+		  <para>BasicScreenDemo.cs</para>
+		  <para>Shows how to set up the engine and load a basic scene.</para>
+		  </listItem>
+		  
+		  <listItem>
+		  <para>BasicScreenDemo.cs</para>
+		  <para>Shows how to works with Keyboard using our managed system (Mouse works in a similar way).</para>
+		  </listItem>
+		  
+		  <listItem>
+		  <para>LightInterpolationScreen.cs , PointLightScreen.cs and SpotLightScreen.cs</para>
+		  <para>Shows how to create basic lights of each type and how they can interact with the environment.</para>
+		  </listItem>
+		  
+		  <listItem>
+		  <para>CollisionTypesBepuScreen.cs and CollisionTypesJigLibXScreen.cs</para>
+		  <para>Shows how to create the basic Physic types using Bepu and JigLibX (of course you can use only one at time).</para>
+		  </listItem>	
+		  
+		  <listItem>
+		  <para>GravitationalBepuScreen.cs</para>
+		  <para>An basic demo showing how to simulate a planet gravity.</para>
+		  </listItem>	
+		  
+		  <listItem>
+		  <para>MovementScreen.cs</para>
+		  <para>Example showing the character controller in action (it can controls animated and not animated objects).</para>
+		  </listItem>	
+		  
+		  <listItem>
+		  <para>StressBepuScreen.css</para>
+		  <para>A stress test using BEPU</para>
+		  </listItem>	
+		  
+		  <listItem>
+		  <para>CameraPathScreen.cs and CameraScreens.cs</para>
+		  <para>Basic Camera management.</para>
+		  </listItem>	
+		  
+		  <listItem>
+		  <para>TriggerBepuScreen.cs</para>
+		  <para>Shows how to use the triggers with Bepu.</para>
+		  </listItem>	
+		  
+		  <listItem>
+		  <para>ChangingMessagesScreen.cs</para>
+		  <para>Show how the Object entities can exchange messages.</para>
+		  </listItem>	
+		  
+		  <listItem>
+		  <para>DrawingScreen.cs</para>
+		  <para>Show how to draw simple lines, cubes and text in the screen.</para>
+		  </listItem>	
+		  
+		  <listItem>
+		  <para>PickingScreen.cs</para>
+		  <para>How (using mouse) to pick a 3D Object in the environment.</para>
+		  </listItem>		  
+		  
+		</list>	
+
+      </content>
+      
+      </section>
+      <section address="Section2">
+      <title>Advanced Tutorials</title>
+      <content>      
+      <para>This can be found in the 
+      <externalLink>
+          <linkText>download site</linkText>          
+          <linkUri>https://sourceforge.net/projects/ploobsengine/files/</linkUri>
+      </externalLink>
+      </para>
+      <para> It contains lot of examples about some advanced Features of 
+      the engine. It has more than 15 examples about Graphics, Triggers, 
+      Particles ...
+      </para>       
+      
+      </content>
+    
+      
+      <!-- If a section contains a sections element, its content creates
+           sub-sections.  These are not collapsible.
+      <sections>
+          <section address="SubSection1">
+              <title>Sub-section 1</title>
+              <content>
+                  <para>Sub-section content.</para>
+              </content>
+          </section>
+          <section address="SubSection2">
+              <title>Sub-section 2</title>
+              <content>
+                  <para>Sub-section content.</para>
+              </content>
+          </section>
+      </sections> -->
+    </section>
+    <relatedTopics>
+      <!-- One or more of the following:
+           - A local link
+           - An external link
+           - A code entity reference
+
+      <link xlink:href="Other Topic's ID"/>
+      <link xlink:href="Other Topic's ID">Link inner text</link>
+
+      <externalLink>
+          <linkText>Link text</linkText>
+          <linkAlternateText>Optional alternate link text</linkAlternateText>
+          <linkUri>URI</linkUri>
+      </externalLink>
+
+      <codeEntityReference>API member ID</codeEntityReference>
+
+      Examples:
+
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8270" />
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8278">Some other topic</link>
+
+      <externalLink>
+          <linkText>SHFB on CodePlex</linkText>
+          <linkAlternateText>Go to CodePlex</linkAlternateText>
+          <linkUri>http://shfb.codeplex.com</linkUri>
+      </externalLink>
+
+      <codeEntityReference>T:TestDoc.TestClass</codeEntityReference>
+      <codeEntityReference>P:TestDoc.TestClass.SomeProperty</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor(System.String,System.Int32)</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.ToString</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.FirstMethod</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.SecondMethod(System.Int32,System.String)</codeEntityReference>
+      -->
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

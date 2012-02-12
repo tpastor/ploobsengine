@@ -1,0 +1,127 @@
+<!-- Demo 23-23: SSAO -->
+<SCENE>
+	<body name="Plane01" >
+		<mass value="0.0" />
+		<ellasticity value="0.3" />
+	</body> 
+	<body name="Box01" >
+		<mass value="3.8" />
+		<ellasticity value="0.3" />
+	</body> 
+	<body name="Box02" >
+		<mass value="3.8" />
+		<ellasticity value="0.3" />
+	</body> 
+	<body name="Box03" >
+		<mass value="3.8" />
+		<ellasticity value="0.3" />
+	</body> 
+	<body name="Box04" >
+		<mass value="3.8" />
+		<ellasticity value="0.3" />
+	</body> 
+	<body name="Box05" >
+		<mass value="3.8" />
+		<ellasticity value="0.3" />
+	</body> 
+	<body name="Box06" >
+		<mass value="3.8" />
+		<ellasticity value="0.3" />
+	</body> 
+	<body name="Box07" >
+		<mass value="3.8" />
+		<ellasticity value="0.3" />
+	</body> 
+	<body name="Box08" >
+		<mass value="3.8" />
+		<ellasticity value="0.3" />
+	</body> 
+	<body name="Box09" >
+		<mass value="3.8" />
+		<ellasticity value="0.3" />
+	</body> 
+	<body name="Box10" >
+		<mass value="3.8" />
+		<ellasticity value="0.3" />
+	</body> 
+	<body name="Box11" >
+		<mass value="3.8" />
+		<ellasticity value="0.3" />
+	</body> 
+	<body name="Box12" >
+		<mass value="3.8" />
+		<ellasticity value="0.3" />
+	</body> 
+	<body name="Box13" >
+		<mass value="3.8" />
+		<ellasticity value="0.3" />
+	</body> 
+	<body name="Box14" >
+		<mass value="3.8" />
+		<ellasticity value="0.3" />
+	</body> 
+	<body name="Box15" >
+		<mass value="3.8" />
+		<ellasticity value="0.3" />
+	</body> 
+	<body name="Box16" >
+		<mass value="3.8" />
+		<ellasticity value="0.3" />
+	</body> 
+	<body name="Box17" >
+		<mass value="3.8" />
+		<ellasticity value="0.3" />
+	</body> 
+	<body name="Box18" >
+		<mass value="3.8" />
+		<ellasticity value="0.3" />
+	</body> 
+	<body name="Box19" >
+		<mass value="3.8" />
+		<ellasticity value="0.3" />
+	</body> 
+	<body name="Box20" >
+		<mass value="3.8" />
+		<ellasticity value="0.3" />
+	</body> 
+	<body name="Box21" >
+		<mass value="3.8" />
+		<ellasticity value="0.3" />
+	</body> 
+	<body name="Box22" >
+		<mass value="3.8" />
+		<ellasticity value="0.3" />
+	</body> 
+	<body name="Box23" >
+		<mass value="3.8" />
+		<ellasticity value="0.3" />
+	</body> 
+	<body name="Box24" >
+		<mass value="3.8" />
+		<ellasticity value="0.3" />
+	</body> 
+	<body name="Box25" >
+		<mass value="3.8" />
+		<ellasticity value="0.3" />
+	</body> 
+	<body name="Box26" >
+		<mass value="3.8" />
+		<ellasticity value="0.3" />
+	</body> 
+	<body name="Box27" >
+		<mass value="3.8" />
+		<ellasticity value="0.3" />
+	</body> 
+	<body name="Box28" >
+		<mass value="3.8" />
+		<ellasticity value="0.3" />
+	</body> 
+	<body name="Box29" >
+		<mass value="3.8" />
+		<ellasticity value="0.3" />
+	</body> 
+	<body name="Box30" >
+		<mass value="3.8" />
+		<ellasticity value="0.3" />
+	</body> 
+</SCENE>
