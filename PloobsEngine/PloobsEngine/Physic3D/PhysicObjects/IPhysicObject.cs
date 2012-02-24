@@ -37,7 +37,7 @@ namespace PloobsEngine.Physics
         public MaterialDescription(float StaticFriction, float DinamicFriction, float Bounciness)
         {
             this.StaticFriction = StaticFriction;
-            this.DinamicFriction = DinamicFriction;
+            this.DynamicFriction = DinamicFriction;
             this.Bounciness = Bounciness;
         }
 
@@ -51,6 +51,12 @@ namespace PloobsEngine.Physics
             return md;           
         }
 
+        public static MaterialDescription DefaultPhysxMaterial()
+        {
+            MaterialDescription md = new MaterialDescription(0.7f,0.7f,0.1f);
+            return md;
+        }
+
         /// <summary>
         /// Static Friction
         /// </summary>
@@ -58,7 +64,7 @@ namespace PloobsEngine.Physics
         /// <summary>
         /// Dynamic Friction
         /// </summary>
-        public float DinamicFriction;
+        public float DynamicFriction;
         /// <summary>
         /// Bounciness
         /// </summary>
