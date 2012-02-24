@@ -89,7 +89,7 @@ namespace PloobsEngine.Physics.Bepu
         public void SetMaterialDescription(MaterialDescription materialDescription)
         {
             this.materialDecription = materialDescription;
-            terrain.Material = new BEPUphysics.Materials.Material(materialDescription.StaticFriction, materialDescription.DinamicFriction, materialDescription.Bounciness);
+            terrain.Material = new BEPUphysics.Materials.Material(materialDescription.StaticFriction, materialDescription.DynamicFriction, materialDescription.Bounciness);
         }
 
         /// <summary>

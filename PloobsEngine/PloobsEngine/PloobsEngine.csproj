@@ -73,6 +73,9 @@
     <Reference Include="BEPUphysics">
       <HintPath>Dlls\BEPUphysics.dll</HintPath>
     </Reference>
+    <Reference Include="BulletSharp">
+      <HintPath>Dlls\BulletSharp.dll</HintPath>
+    </Reference>
     <Reference Include="DPSF">
       <HintPath>Dlls\DPSF.dll</HintPath>
     </Reference>
@@ -118,6 +121,12 @@
     </Reference>
     <Reference Include="mscorlib">
       <Private>False</Private>
+    </Reference>
+    <Reference Include="PhysX.Net">
+      <HintPath>Dlls\PhysX.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="StillDesign.PhysX.Net">
+      <HintPath>Dlls\StillDesign.PhysX.Net.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Private>False</Private>
@@ -339,10 +348,19 @@
     <Compile Include="Particles\IParticleManager.cs" />
     <Compile Include="Particles\IParticleSystem.cs" />
     <Compile Include="Physic3D\BepuPhysicWorld.cs" />
+    <Compile Include="Physic3D\Bullet\BulletPhysicObject.cs" />
+    <Compile Include="Physic3D\Bullet\BulletPhysicWorld.cs" />
+    <Compile Include="Physic3D\Bullet\BulletTriangleMesh.cs" />
+    <Compile Include="Physic3D\Bullet\BulletConstraint.cs" />
     <Compile Include="Physic3D\Constraints\BepuConstraint\JointConstraint.cs" />
     <Compile Include="Physic3D\Constraints\BepuConstraint\MultipleSubConstraints.cs" />
     <Compile Include="Physic3D\Constraints\BepuConstraint\PointPointConstraint.cs" />
     <Compile Include="Physic3D\Constraints\IPhysicConstraint.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\Extensions\UserOutput.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\Extensions\PhysxExtension.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\PhysxPhysicObject.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\PhysxPhysicWorld.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\PhysxTriangleMesh.cs" />
     <Compile Include="Physic3D\DebugDraw\DisplayBox.cs" />
     <Compile Include="Physic3D\DebugDraw\DisplayCapsule.cs" />
     <Compile Include="Physic3D\DebugDraw\DisplayCone.cs" />
@@ -384,6 +402,11 @@
     <Compile Include="Physic3D\PhysicObjects\BepuObject\TerrainObject.cs" />
     <Compile Include="Physic3D\PhysicObjects\BepuObject\TriangleMeshObject.cs" />
     <Compile Include="Physic3D\PhysicObjects\IPhysicObject.cs" />
+    <Compile Include="Physic3D\Physx 3.x\PhysxStaticActor.cs" />
+    <Compile Include="Physic3D\Physx 3.x\PhysxTriangleMesh.cs" />
+    <Compile Include="Physic3D\Physx 3.x\PhysxPhysicObject.cs" />
+    <Compile Include="Physic3D\Physx 3.x\Extensions\PhysxExtension.cs" />
+    <Compile Include="Physic3D\Physx 3.x\PhysxPhysicWorld.cs" />
     <Compile Include="Physic3D\SegmentInterceptInfo.cs" />
     <Compile Include="Physic2D\Farseer\GhostObject.cs" />
     <Compile Include="ResourcesPC.Designer.cs">

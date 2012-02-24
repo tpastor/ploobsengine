@@ -257,6 +257,10 @@
     <Compile Include="Particles\IParticleManager.cs" />
     <Compile Include="Particles\IParticleSystem.cs" />
     <Compile Include="Physic3D\BepuPhysicWorld.cs" />
+    <Compile Include="Physic3D\Bullet\BulletConstraint.cs" />
+    <Compile Include="Physic3D\Bullet\BulletPhysicObject.cs" />
+    <Compile Include="Physic3D\Bullet\BulletPhysicWorld.cs" />
+    <Compile Include="Physic3D\Bullet\BulletTriangleMesh.cs" />
     <Compile Include="Physic3D\Constraints\BepuConstraint\JointConstraint.cs" />
     <Compile Include="Physic3D\Constraints\BepuConstraint\MultipleSubConstraints.cs" />
     <Compile Include="Physic3D\Constraints\BepuConstraint\PointPointConstraint.cs" />
@@ -302,6 +306,16 @@
     <Compile Include="Physic3D\PhysicObjects\BepuObject\TerrainObject.cs" />
     <Compile Include="Physic3D\PhysicObjects\BepuObject\TriangleMeshObject.cs" />
     <Compile Include="Physic3D\PhysicObjects\IPhysicObject.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\Extensions\PhysxExtension.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\Extensions\UserOutput.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\PhysxPhysicObject.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\PhysxPhysicWorld.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\PhysxTriangleMesh.cs" />
+    <Compile Include="Physic3D\Physx 3.x\Extensions\PhysxExtension.cs" />
+    <Compile Include="Physic3D\Physx 3.x\PhysxPhysicObject.cs" />
+    <Compile Include="Physic3D\Physx 3.x\PhysxPhysicWorld.cs" />
+    <Compile Include="Physic3D\Physx 3.x\PhysxStaticActor.cs" />
+    <Compile Include="Physic3D\Physx 3.x\PhysxTriangleMesh.cs" />
     <Compile Include="Physic3D\SegmentInterceptInfo.cs" />
     <Compile Include="Physic2D\Farseer\GhostObject.cs" />
     <Compile Include="SceneControl\2DScene\Culler\Simple2DCuller.cs" />
@@ -545,7 +559,10 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Physic3D\Copy of Physx 3.x\Extensions\" />
+    <Folder Include="Physic3D\Physx\Extensions\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="GameThumbnail.png">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>

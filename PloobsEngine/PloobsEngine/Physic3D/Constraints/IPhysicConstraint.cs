@@ -49,6 +49,7 @@ namespace PloobsEngine.Physic.Constraints
     {
         JOINT,
         SOLVER,
+        OTHER,
     }
 
 

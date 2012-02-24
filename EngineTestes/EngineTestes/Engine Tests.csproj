@@ -66,6 +66,10 @@
     <Reference Include="BEPUphysics">
       <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\BEPUphysics.dll</HintPath>
     </Reference>
+    <Reference Include="BulletSharp, Version=2.79.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\BulletSharp.dll</HintPath>
+    </Reference>
     <Reference Include="DPSF">
       <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\DPSF.dll</HintPath>
     </Reference>
@@ -108,11 +112,18 @@
     <Reference Include="mscorlib">
       <Private>False</Private>
     </Reference>
+    <Reference Include="PhysX.Net, Version=0.1.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\PhysX.Net.dll</HintPath>
+    </Reference>
     <Reference Include="PloobsScripts">
       <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\PloobsScripts.dll</HintPath>
     </Reference>
     <Reference Include="PloobsSerializator">
       <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\PloobsSerializator.dll</HintPath>
+    </Reference>
+    <Reference Include="StillDesign.PhysX.Net">
+      <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\StillDesign.PhysX.Net.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Private>False</Private>
@@ -170,9 +181,15 @@
     <Compile Include="Bolt\BoltSample.cs" />
     <Compile Include="Bolt\BoltShader.cs" />
     <Compile Include="Bolt\ColorTable.cs" />
+    <Compile Include="Bullet\BulletScreen.cs" />
+    <Compile Include="Bullet\BallThrowBullet.cs" />
     <Compile Include="CharacterControllerInput.cs" />
     <Compile Include="CharacterSample\CharacterScreen.cs" />
+    <Compile Include="Physx 3.x\BallThrowPhysx.cs" />
+    <Compile Include="Physx 3.x\PhysxScreen.cs" />
     <Compile Include="FileUtils\FileUtilsScreen.cs" />
+    <Compile Include="Physx 2.8.x\BallThrowPhysx28.cs" />
+    <Compile Include="Physx 2.8.x\Physx28Screen.cs" />
     <Compile Include="SphereCharacterControllerInput.cs" />
     <Compile Include="FullCharacterControllerInput.cs" />
     <Compile Include="Constraint\ConstraintScreen.cs" />
@@ -268,6 +285,36 @@
     <Compile Include="Vegetation\VegetationForwardScreen.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="cudart32_30_9.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NxCharacter.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PhysX3Cooking_x86.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PhysX3Gpu_x86.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PhysX3_x86.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PhysXCooking.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PhysXCore.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PhysXDevice.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PhysXLoader.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PxTaskCuda.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
