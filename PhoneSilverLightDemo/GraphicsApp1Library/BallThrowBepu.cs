@@ -41,7 +41,7 @@ namespace EngineTestes
                    physObj.PhysicObject.Velocity = (_mundo.CameraManager.ActiveCamera.Target - _mundo.CameraManager.ActiveCamera.Position) * 10.0f;
                    physObj.Name = "FlyingBall " + ++i;
                    _mundo.AddObject(physObj);
-                   (physObj.Material.Shadder as ForwardXNABasicShader).BasicEffect.EnableDefaultLighting();
+                   (physObj.Material.Shader as ForwardXNABasicShader).BasicEffect.EnableDefaultLighting();
                }
            );
             scene.BindInput(SimpleConcreteGestureInputPlayable);
