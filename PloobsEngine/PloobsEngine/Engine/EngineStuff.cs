@@ -713,7 +713,7 @@ namespace PloobsEngine.Engine
         /// </summary>
         public readonly GraphicsDevice GraphicsDevice;
         GameTimer timer;
-        PhoneApplicationPage PhoneApplicationPage;
+        internal PhoneApplicationPage PhoneApplicationPage;
         UIElementRenderer elementRenderer;
         EventHandler EventHandler = null;
         
