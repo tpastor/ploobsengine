@@ -120,7 +120,7 @@ namespace PloobsEngine.SceneControl
 
 
         #region Public Methods
-
+      
         /// <summary>
         /// Adds a new screen to the screen manager.
         /// </summary>
@@ -129,7 +129,11 @@ namespace PloobsEngine.SceneControl
         /// <param name="loadAndInitScreen">if set to <c>true</c> [load and init definitiveScreen].</param>
         public void AddScreen(IScreen definitiveScreen, IScreen LoadingScreen = null, bool loadAndInitScreen = true)
         {
-            System.Diagnostics.Debug.Assert(definitiveScreen != null);
+            
+            System.Diagnostics.Debug.Assert(definitiveScreen != null);            
+#if WINDOWS_PHONE
+            definitiveScreen.Page = engine.PhoneApplicationPage;
+#endif
             if (LoadingScreen != null)
             {
                 LoadingScreen.screenManager = this;
