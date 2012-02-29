@@ -20,7 +20,7 @@ namespace IntroductionDemo4._0
     /// </summary>
     public class ConstraintScreen : IScene
     {                
-        private BepuPhysicConstraint constraint;
+        private PointPointConstraint constraint;
         LightThrowBepu lt;
         
         private bool constraintstate = true;

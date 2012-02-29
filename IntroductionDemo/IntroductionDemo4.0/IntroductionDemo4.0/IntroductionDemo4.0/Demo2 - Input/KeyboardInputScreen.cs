@@ -116,17 +116,17 @@ namespace IntroductionDemo4._0
  	        base.Draw(gameTime, render);
 
             render.RenderBegin(Matrix.Identity);
-            render.RenderText("Demo: Keyboard Input", new Vector2(GraphicInfo.Viewport.Width - 515, 15),Vector2.One ,Color.White);
+            render.RenderText("Demo: Keyboard Input Masks", new Vector2(GraphicInfo.Viewport.Width - 515, 15),Vector2.One ,Color.White);
             render.RenderText("Press Space to change the Active Input Mask (G1 or G2)", new Vector2(GraphicInfo.Viewport.Width - 515, 40), Vector2.One, Color.White);
-            render.RenderText("Press T to use a G1 InputMask Input", new Vector2(GraphicInfo.Viewport.Width - 515, 60), Vector2.One, Color.White);
-            render.RenderText("Press Y to use a G2 InputMask Input", new Vector2(GraphicInfo.Viewport.Width - 515, 80), Vector2.One, Color.White);
+            render.RenderText("Press T when G1 or ALL InputMask Input is active", new Vector2(GraphicInfo.Viewport.Width - 515, 60), Vector2.One, Color.White);
+            render.RenderText("Press Y when G2 or ALL InputMask Input is active", new Vector2(GraphicInfo.Viewport.Width - 515, 80), Vector2.One, Color.White);
             render.RenderText("Press Ctrl + U TO use a Combo (Registered in all Masks)", new Vector2(GraphicInfo.Viewport.Width - 515, 100), Vector2.One, Color.White);
             if(isAllActive)
-                render.RenderText("Group ALL Active", new Vector2(20, 40),Vector2.One, Color.White);
+                render.RenderText("Group Mask ALL Active", new Vector2(20, 40),Vector2.One, Color.White);
             if (isGroup1)
-                render.RenderText("Group1", new Vector2(20, 20), Vector2.One, Color.White);
+                render.RenderText("T is Pressed", new Vector2(20, 20), Vector2.One, Color.White);
             if(isGroup2)
-                render.RenderText("Group2", new Vector2(100, 20),Vector2.One, Color.White);
+                render.RenderText("Y is Pressed", new Vector2(100, 20),Vector2.One, Color.White);
             if(isChangeGroup)
                 render.RenderText("Active InputMask " + Groups[index], new Vector2(20, 40),Vector2.One, Color.White);
             if(isComboPressed)
