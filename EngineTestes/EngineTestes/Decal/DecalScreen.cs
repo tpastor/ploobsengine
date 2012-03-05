@@ -103,12 +103,13 @@ namespace EngineTestes
             var projection = Matrix.CreatePerspectiveFieldOfView(cam.FieldOfView / 20, cam.AspectRatio, 1, 1000);
 
             var view = Matrix.CreateLookAt(
-                new Vector3(200, 200, 200),
+                new Vector3(1500, 200, 200),
                 new Vector3(0, 0, 0),
                 Vector3.Up
                 );
 
             Decal decal = new Decal(texture,view,projection);
+            
             DecalComponent.Decals.Add(decal);
 
             SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grasscube");
