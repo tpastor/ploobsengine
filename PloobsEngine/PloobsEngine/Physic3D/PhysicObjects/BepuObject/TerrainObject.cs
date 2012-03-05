@@ -103,6 +103,62 @@ namespace PloobsEngine.Physics.Bepu
 
         MaterialDescription materialDecription;
 
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TerrainObject"/> class.
+        /// </summary>
+        /// <param name="gfactory">The gfactory.</param>
+        /// <param name="heightmapTexture">The heighmap texture.</param>
+        /// <param name="translation">The translation.</param>
+        /// <param name="rotation">The rotation.</param>
+        /// <param name="materialDesc">The material desc.</param>
+        /// <param name="XSpacing">The X spacing.</param>
+        /// <param name="ZSpacing">The Z spacing.</param>
+        /// <param name="heightMultipler">The height multipler.</param>
+        public TerrainObject(GraphicFactory gfactory, Texture2D heightmapTexture, Vector3 translation, Matrix rotation, MaterialDescription materialDesc, float XSpacing = 1, float ZSpacing = 1, float heightMultipler = 10)
+        {
+
+            this.heightMultipler = heightMultipler;
+
+
+            sourceImage = heightmapTexture;
+            int xLength = sourceImage.Width;
+            int yLength = sourceImage.Height;
+            this.rotation = rotation;
+            //this.scale = scale;
+
+            Color[] colorData = new Color[xLength * yLength];
+            sourceImage.GetData<Color>(colorData);
+
+            var heights = new float[xLength, yLength];
+            for (int i = 0; i < xLength; i++)
+            {
+                for (int j = 0; j < yLength; j++)
+                {
+                    Color color = colorData[j * xLength + i];
+                    heights[i, j] = (color.R) / heightMultipler;
+
+                    if (heights[i, j] > maxHeight)
+                    {
+                        maxHeight = heights[i, j];
+                    }
+                    if (heights[i, j] < minHeight)
+                    {
+                        minHeight = heights[i, j];
+                    }
+
+                }
+            }
+            //Create the terrain.
+            BEPUphysics.CollisionShapes.TerrainShape shape = new BEPUphysics.CollisionShapes.TerrainShape(heights, BEPUphysics.CollisionShapes.QuadTriangleOrganization.BottomLeftUpperRight);
+
+            terrain = new Terrain(shape, new BEPUphysics.MathExtensions.AffineTransform(new Vector3(XSpacing, 1, ZSpacing), Quaternion.CreateFromRotationMatrix(rotation), new Vector3(-xLength * XSpacing / 2, 0, -yLength * ZSpacing / 2) + translation));
+            terrain.ImproveBoundaryBehavior = true;
+
+            SetMaterialDescription(materialDesc);
+        }
+
+
         /// <summary>
         /// Create a Terrain Physic Object
         /// </summary>

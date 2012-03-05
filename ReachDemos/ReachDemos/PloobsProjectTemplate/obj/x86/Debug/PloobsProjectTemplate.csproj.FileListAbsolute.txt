@@ -24,3 +24,7 @@ C:\Users\thiago.dias.pastor\Desktop\port\ReachDemos\ReachDemos\PloobsProjectTemp
 C:\Users\thiago.dias.pastor\Desktop\port\ReachDemos\ReachDemos\PloobsProjectTemplate\bin\x86\Debug\Content\duck.xnb
 C:\Users\thiago.dias.pastor\Desktop\port\ReachDemos\ReachDemos\PloobsProjectTemplate\bin\x86\Debug\Content\duckCM_0.xnb
 C:\Users\thiago.dias.pastor\Desktop\port\ReachDemos\ReachDemos\PloobsProjectTemplate\bin\x86\Debug\Content\cube.xnb
+F:\GameProgramming\port-ploobsengine\port-ploobsengine\ReachDemos\ReachDemos\PloobsProjectTemplate\obj\x86\Debug\ResolveAssemblyReference.cache
+F:\GameProgramming\port-ploobsengine\port-ploobsengine\ReachDemos\ReachDemos\PloobsProjectTemplate\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+F:\GameProgramming\port-ploobsengine\port-ploobsengine\ReachDemos\ReachDemos\PloobsProjectTemplate\obj\x86\Debug\PloobsProjectTemplate.exe
+F:\GameProgramming\port-ploobsengine\port-ploobsengine\ReachDemos\ReachDemos\PloobsProjectTemplate\obj\x86\Debug\PloobsProjectTemplate.pdb
