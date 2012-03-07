@@ -2,7 +2,7 @@
 <XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics" xmlns:Framework="Microsoft.Xna.Framework">
   <Asset Type="Graphics:NodeContent">
     <Identity>
-      <SourceFilename>C:\Users\thiago.dias.pastor\Desktop\port\ReachDemos\ReachDemos\PloobsProjectTemplateContent\cube.dae</SourceFilename>
+      <SourceFilename>F:\GameProgramming\port-ploobsengine\port-ploobsengine\ReachDemos\ReachDemos\PloobsProjectTemplateContent\cube.dae</SourceFilename>
     </Identity>
     <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>
     <Children>
