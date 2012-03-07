@@ -3,7 +3,7 @@
   <Asset Type="Graphics:NodeContent">
     <Name>Plane01</Name>
     <Identity>
-      <SourceFilename>C:\Users\thiago.dias.pastor\Desktop\port\ReachDemos\ReachDemos\PloobsProjectTemplateContent\Model\cenario.X</SourceFilename>
+      <SourceFilename>F:\GameProgramming\port-ploobsengine\port-ploobsengine\ReachDemos\ReachDemos\PloobsProjectTemplateContent\Model\cenario.X</SourceFilename>
       <SourceTool>XImporter</SourceTool>
     </Identity>
     <Transform>1 0 0 0 0 1 0 0 0 0 1 0 15.3155441 67.49462 12.428731 1</Transform>
@@ -38,7 +38,7 @@
   <Resources>
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Identity>
-        <SourceFilename>C:\Users\thiago.dias.pastor\Desktop\port\ReachDemos\ReachDemos\PloobsProjectTemplateContent\Model\cenario.X</SourceFilename>
+        <SourceFilename>F:\GameProgramming\port-ploobsengine\port-ploobsengine\ReachDemos\ReachDemos\PloobsProjectTemplateContent\Model\cenario.X</SourceFilename>
         <SourceTool>XImporter</SourceTool>
       </Identity>
       <OpaqueData>
