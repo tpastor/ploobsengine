@@ -24,6 +24,13 @@ namespace PloobsEngine.Physics
         }
 
         protected PhysxPhysicObject() { }
+
+        public PhysxPhysicObject(Actor actor, Vector3 scale)
+        {            
+            Scale = scale;
+            this.Actor = actor;         
+        }
+
         public PhysxPhysicObject(ShapeDescription ShapeDescription, float density, Matrix worldTransformation, Vector3 scale, String name = null)
         {            
             Scale = scale;

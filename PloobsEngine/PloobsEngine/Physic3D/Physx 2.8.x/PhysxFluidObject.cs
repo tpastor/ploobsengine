@@ -46,7 +46,7 @@ namespace PloobsEngine.Physics
         {
             get
             {
-                throw new NotSupportedException();
+                return Vector3.One;
             }
             set
             {
@@ -58,7 +58,7 @@ namespace PloobsEngine.Physics
         {
             get
             {
-                throw new NotSupportedException();
+                return Matrix.Identity;
             }
             set
             {
@@ -68,7 +68,7 @@ namespace PloobsEngine.Physics
 
         public override Vector3 FaceVector
         {
-            get { throw new NotSupportedException(); }
+            get { return Vector3.Forward; }
         }
 
         public override Matrix WorldMatrix
@@ -97,7 +97,7 @@ namespace PloobsEngine.Physics
             set
             {
                 if(value == false)
-                    ActiveLogger.LogMessage("Cloth is always motion less", LogLevel.Warning);
+                    ActiveLogger.LogMessage("Fluid is always motion less", LogLevel.Warning);
             }
         }
 

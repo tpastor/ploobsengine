@@ -27,6 +27,7 @@ using PloobsEngine.Physics;
 using StillDesign.PhysX;
 using System;
 using PloobsEngine.Trigger;
+using StillDesign.PhysX.Utilities;
 
 namespace PloobsEngine.Physics
 {    
@@ -114,6 +115,7 @@ namespace PloobsEngine.Physics
             ctns = new List<IPhysicConstraint>();
             TriggerReport = new Physics.TriggerReport();
             Scene.UserTriggerReport = TriggerReport;
+            Utilities.ErrorReport = errorReport;
         }
 
         
@@ -153,6 +155,7 @@ namespace PloobsEngine.Physics
 
             TriggerReport = new Physics.TriggerReport();
             Scene.UserTriggerReport = TriggerReport;
+            Utilities.ErrorReport = errorReport;
         }
 
         public override List<IPhysicObject> PhysicObjects
@@ -256,12 +259,15 @@ namespace PloobsEngine.Physics
             if (obj is PhysxPhysicObject)
             {
                 PhysxPhysicObject PhysxPhysicObject = obj as PhysxPhysicObject;
-                PhysxPhysicObject.Actor = Scene.CreateActor(PhysxPhysicObject.ActorDesc,int.MaxValue);
-                PhysxPhysicObject.Actor.UserData = obj;
-
-                for (int i = 0; i < PhysxPhysicObject.ActorDesc.Shapes.Count; i++)
+                if (PhysxPhysicObject.Actor == null)
                 {
-                    PhysxPhysicObject.Actor.Shapes[i].UserData = PhysxPhysicObject.ActorDesc.Shapes[i].UserData;
+                    PhysxPhysicObject.Actor = Scene.CreateActor(PhysxPhysicObject.ActorDesc, int.MaxValue);
+                    PhysxPhysicObject.Actor.UserData = obj;
+
+                    for (int i = 0; i < PhysxPhysicObject.ActorDesc.Shapes.Count; i++)
+                    {
+                        PhysxPhysicObject.Actor.Shapes[i].UserData = PhysxPhysicObject.ActorDesc.Shapes[i].UserData;
+                    }
                 }
 
             }
@@ -467,6 +473,37 @@ namespace PloobsEngine.Physics
             return SegmentInterceptInfo;
         }
 
+        public bool SaveCore(String fileName, UtilitiesFileType UtilitiesFileType = UtilitiesFileType.Xml)
+        {
+            return Utilities.CoreDump(Core, fileName, UtilitiesFileType);
+        }
+
+        public PhysicsCollection ExtractCollection()
+        {
+            return Utilities.ExtractCollectionFromScene(Scene);
+        }
+
+        public bool SaveCollection(String fileName, PhysicsCollection PhysicsCollection = null, UtilitiesFileType UtilitiesFileType = UtilitiesFileType.Xml, bool saveDefaults = false, bool saveCookedData = true)
+        {
+            if (PhysicsCollection == null)
+                PhysicsCollection = ExtractCollection();
+            return Utilities.SaveCollection(PhysicsCollection, fileName, UtilitiesFileType, saveDefaults, saveCookedData);
+        }
+
+        public PhysicsCollection LoadCollection(String fileName, UtilitiesFileType UtilitiesFileType = UtilitiesFileType.Xml)
+        {
+            return Utilities.LoadCollection(fileName, UtilitiesFileType);
+        }
+
+
+        iErrorReport errorReport = new iErrorReport();
+        internal class iErrorReport : ErrorReport
+        {
+            public override void ErrorMessage(bool isError, string message)
+            {
+                PloobsEngine.Engine.Logger.ActiveLogger.LogMessage(message, isError ? Engine.Logger.LogLevel.FatalError : Engine.Logger.LogLevel.Warning);
+            }
+        }
 
         public override void DetectCollisions(IPhysicObject po, List<IPhysicObject> resp)
         {

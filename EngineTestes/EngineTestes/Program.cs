@@ -30,7 +30,9 @@ namespace EngineTestes
 
         static void LoadScreen(ScreenManager manager)
         {
+
             manager.AddScreen(new Physx28MaterialScreen());
+            //manager.AddScreen(new Physx28VehicleScreen());            
             //manager.AddScreen(new Physx28TriggerScreen());
             //manager.AddScreen(new PhysxTerrain28Screen());
             //manager.AddScreen(new PhysxCharacter28Screen());

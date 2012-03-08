@@ -54,7 +54,7 @@ namespace EngineTestes
                 desc.SlopeLimit = 0;
                 desc.SkinWidth = 0.2f;
                 desc.StepOffset = 0.5f;
-                desc.InteractionFlag = CCTInteractionFlag.Include;                
+                desc.InteractionFlag = CCTInteractionFlag.Include | CCTInteractionFlag.UseFilter;                
 
                 SimpleModel sm = new SimpleModel(factory, "..\\Content\\Model\\block");
                 sm.SetTexture(factory.CreateTexture2DColor(1, 1, Color.Blue), TextureType.DIFFUSE);
