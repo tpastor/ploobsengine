@@ -58,35 +58,27 @@ namespace PloobsEngine.Physics
 
         internal void fireEvent(TriggerFlag status,IPhysicObject obj)
         {
-            switch (status)
-            {
-                case TriggerFlag.OnEnter:
-                    if (FireOnBeginsTouching)
+
+            if(FireOnBeginsTouching && ((status & TriggerFlag.OnEnter) == TriggerFlag.OnEnter))
                     {
                         ContactEntity = obj.ObjectOwner;
                         Event.Code = FireBeginsTouching;
                         Event.FireEvent(this);
                     }
-                    break;
-                case TriggerFlag.OnLeave:
-                    if (FireOnEndsTouching)
+
+           if(FireOnEndsTouching && ((status & TriggerFlag.OnLeave) == TriggerFlag.OnLeave))                
                     {
                         ContactEntity = obj.ObjectOwner;
                         Event.Code = FireEndsTouching;
                         Event.FireEvent(this);
                     }
-                    break;
-                case TriggerFlag.OnStay:
-                    if (FireOnContaining)
+           
+                if(FireOnContaining && ((status & TriggerFlag.OnStay) == TriggerFlag.OnStay))                
                     {
                         ContactEntity = obj.ObjectOwner;
                         Event.Code = FireContaining;
                         Event.FireEvent(this);
                     }
-                    break;
-                default:
-                    break;
-            }
         }
 
         public Events.IEvent<ITrigger> Event
