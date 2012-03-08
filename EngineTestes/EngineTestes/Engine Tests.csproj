@@ -199,6 +199,7 @@
     <Compile Include="Physx 2.8.x\Fluids\FluidMaterial.cs" />
     <Compile Include="Physx 2.8.x\Fluids\DeferredFluids28Screen.cs" />
     <Compile Include="Physx 2.8.x\Fluids\Fluids28Screen.cs" />
+    <Compile Include="Physx 2.8.x\Material\Physx28MaterialScreen.cs" />
     <Compile Include="Physx 2.8.x\Terrain\PhysxTerrain28Screen.cs" />
     <Compile Include="Physx 2.8.x\Trigger\Physx28TriggerScreen.cs" />
     <Compile Include="Physx 3.x\BallThrowPhysx.cs" />

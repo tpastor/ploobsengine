@@ -82,6 +82,10 @@ namespace PloobsEngine.Physics
             }
         }
 
+        public StillDesign.PhysX.Material CreatePhysicMaterial(StillDesign.PhysX.MaterialDescription MaterialDescription)
+        {
+            return Scene.CreateMaterial(MaterialDescription);
+        }
 
         public PhysxPhysicWorld(CoreDescription CoreDescription ,SceneDescription SceneDescription, bool connectToRemoteDebugger = false)
         {
