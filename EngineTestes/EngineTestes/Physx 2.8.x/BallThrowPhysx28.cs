@@ -29,8 +29,10 @@ namespace EngineTestes
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(mm1);
         }
 
-        public BallThrowPhysx28(IWorld mundo, GraphicFactory factory)
-        {            
+        bool forward = true;
+        public BallThrowPhysx28(IWorld mundo, GraphicFactory factory, bool forwardrender = true)
+        {
+            this.forward = forwardrender;
             this.factory = factory;
             _mundo = mundo;            
             {
@@ -47,7 +49,7 @@ namespace EngineTestes
             ///Create an object
             IObject physObj = SpawnPrimitive(_mundo.CameraManager.ActiveCamera.Position, Matrix.CreateRotationX(0.5f));
             _mundo.AddObject(physObj);
-            physObj.PhysicObject.Velocity = (_mundo.CameraManager.ActiveCamera.Target - _mundo.CameraManager.ActiveCamera.Position) * 55.0f;
+            physObj.PhysicObject.Velocity = (_mundo.CameraManager.ActiveCamera.Target - _mundo.CameraManager.ActiveCamera.Position) * 100.0f;
             physObj.Name = "FlyingBall " + ++i;
             
       
@@ -63,14 +65,23 @@ namespace EngineTestes
             ///Load a Model with a custom texture
             SimpleModel sm2 = new SimpleModel(factory,"Model\\ball");
             sm2.SetTexture(factory.CreateTexture2DColor(1,1,Color.White,false), TextureType.DIFFUSE);
-            ForwardXNABasicShader nd = new ForwardXNABasicShader();                        
-            IMaterial m = new ForwardMaterial(nd);
+            IMaterial m;
+            if (forward)
+            {
+                ForwardXNABasicShader nd = new ForwardXNABasicShader();
+                m = new ForwardMaterial(nd);
+            }
+            else
+            {
+                DeferredNormalShader nd = new DeferredNormalShader();
+                m = new DeferredMaterial(nd);
+            }
 
             PhysxPhysicWorld PhysxPhysicWorld = _mundo.PhysicWorld as PhysxPhysicWorld;
 
-            SphereShapeDescription SphereGeometry = new SphereShapeDescription(1);
+            SphereShapeDescription SphereGeometry = new SphereShapeDescription(5f);
             PhysxPhysicObject PhysxPhysicObject = new PhysxPhysicObject(SphereGeometry,
-                10, Matrix.CreateTranslation(pos), Vector3.One);
+                0.5f, Matrix.CreateTranslation(pos), Vector3.One * 5f);
             
             IObject o = new IObject(m, sm2, PhysxPhysicObject);
             return o;

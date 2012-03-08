@@ -19,6 +19,18 @@ namespace PloobsEngine.Physics
             return new Vector3(vector.X, vector.Y, vector.Z);
         }
 
+
+        public static StillDesign.PhysX.MathPrimitives.Vector2 AsPhysX(this Vector2 vector)
+        {
+            return new StillDesign.PhysX.MathPrimitives.Vector2(vector.X, vector.Y);
+        }
+
+        public static Vector2 AsXNA(this StillDesign.PhysX.MathPrimitives.Vector2 vector)
+        {
+            return new Vector2(vector.X, vector.Y);
+        }
+
+
         public static Matrix AsXNA(this StillDesign.PhysX.MathPrimitives.Matrix m)
         {
             return new Matrix

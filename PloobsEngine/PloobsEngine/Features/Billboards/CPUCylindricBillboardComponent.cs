@@ -34,17 +34,20 @@ namespace PloobsEngine.Features.Billboard
         {        
             Matrix viewIT = Matrix.Invert(Matrix.Transpose(activeView));
             Vector3 position = new Vector3(viewIT.M14, viewIT.M24, viewIT.M34);
-
+            
             foreach (var item in Billboards)
             {
-                basicEffect.World = Matrix.CreateConstrainedBillboard(item.Position, position, Vector3.Up, null, null);
+                if (item.Enabled)
+                {
+                    basicEffect.World = Matrix.CreateConstrainedBillboard(item.Position, position, Vector3.Up, null, null);
 
-                basicEffect.View = activeView;
-                basicEffect.Projection = activeProjection;
+                    basicEffect.View = activeView;
+                    basicEffect.Projection = activeProjection;
 
-                spriteBatch.Begin(0, null, null, DepthStencilState.DepthRead, RasterizerState.CullNone, basicEffect);
-                spriteBatch.Draw(item.Texture, Vector2.Zero, item.Texture.Bounds, Color.White, 0, new Vector2(item.Texture.Bounds.Center.X, item.Texture.Bounds.Center.Y), item.Scale, SpriteEffects.None, 1);
-                spriteBatch.End();
+                    spriteBatch.Begin(0, null, null, DepthStencilState.DepthRead, RasterizerState.CullNone, basicEffect);
+                    spriteBatch.Draw(item.Texture, Vector2.Zero, item.Texture.Bounds, Color.White, 0, new Vector2(item.Texture.Bounds.Center.X, item.Texture.Bounds.Center.Y), item.Scale, SpriteEffects.None, 1);
+                    spriteBatch.End();
+                }
             }
             render.ResyncStates();
         }

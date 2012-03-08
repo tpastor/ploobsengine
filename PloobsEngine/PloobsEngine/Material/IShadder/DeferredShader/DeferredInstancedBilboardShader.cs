@@ -142,14 +142,14 @@ namespace PloobsEngine.Material
 
 
             render.PushRasterizerState(RasterizerState.CullNone);
-            render.PushDepthStencilState(DepthStencilState.None);
-
+            //render.PushDepthStencilState(DepthStencilState.None);
+            
             BatchInformation batchInfo = obj.Modelo.GetBatchInformation(0)[0];
             {
                 _shader.Parameters["alphaTest"].SetValue(alphaTestLimit);
                 render.RenderBatch(batchInfo, _shader);
             }
-            render.PopDepthStencilState();
+            //render.PopDepthStencilState();
             render.PopRasterizerState();
         }
 

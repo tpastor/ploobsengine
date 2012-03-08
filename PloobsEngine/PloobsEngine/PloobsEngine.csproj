@@ -131,6 +131,7 @@
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Data" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml">
       <Private>False</Private>
@@ -176,6 +177,7 @@
     <Compile Include="AI\GeneticAlgoritms\GA.cs" />
     <Compile Include="AI\GeneticAlgoritms\Genome.cs" />
     <Compile Include="AI\GeneticAlgoritms\GenomeComparer.cs" />
+    <Compile Include="AI\ID3\DecisionTreeID3.cs" />
     <Compile Include="AI\IMap.cs" />
     <Compile Include="AI\NeuralNetwork\ActivationFunctions.cs" />
     <Compile Include="AI\NeuralNetwork\Layer.cs" />
@@ -276,6 +278,7 @@
     <Compile Include="Material2D\Basic2DTextureMaterial.cs" />
     <Compile Include="Material2D\I2DMaterial.cs" />
     <Compile Include="Material2D\MaterialProcessor.cs" />
+    <Compile Include="Material\BasicMaterialDecorator.cs" />
     <Compile Include="Material\DeferredTerrainMaterial.cs" />
     <Compile Include="Material\DeferredAnimatedMaterial.cs" />
     <Compile Include="Material\DeferredMaterial.cs" />
@@ -356,8 +359,23 @@
     <Compile Include="Physic3D\Constraints\BepuConstraint\MultipleSubConstraints.cs" />
     <Compile Include="Physic3D\Constraints\BepuConstraint\PointPointConstraint.cs" />
     <Compile Include="Physic3D\Constraints\IPhysicConstraint.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\PhysxGhostObject.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\Joint\PhysxPulleyJoint.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\Joint\PhysxPointOnLineJoint.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\Joint\PhysxPointInPlaneJoint.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\Joint\PhysxDistanceJoint.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\Joint\PhysxCylindricalJoint.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\Joint\PhysxSphericalJoint.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\Joint\PhysxD6Joint.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\Joint\PhysxFixedJoint.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\Joint\PhysxPrismaticJoint.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\Joint\PhysxRevoluteJoint.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\PhysxBoxCharacterObject.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\PhysxCapsuleCharacterObject.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\PhysxFluidObject.cs" />
     <Compile Include="Physic3D\Physx 2.8.x\Extensions\UserOutput.cs" />
     <Compile Include="Physic3D\Physx 2.8.x\Extensions\PhysxExtension.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\PhysxClothObject.cs" />
     <Compile Include="Physic3D\Physx 2.8.x\PhysxPhysicObject.cs" />
     <Compile Include="Physic3D\Physx 2.8.x\PhysxPhysicWorld.cs" />
     <Compile Include="Physic3D\Physx 2.8.x\PhysxTriangleMesh.cs" />
@@ -402,6 +420,7 @@
     <Compile Include="Physic3D\PhysicObjects\BepuObject\TerrainObject.cs" />
     <Compile Include="Physic3D\PhysicObjects\BepuObject\TriangleMeshObject.cs" />
     <Compile Include="Physic3D\PhysicObjects\IPhysicObject.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\Trigger\PhysxTrigger.cs" />
     <Compile Include="Physic3D\Physx 3.x\PhysxStaticActor.cs" />
     <Compile Include="Physic3D\Physx 3.x\PhysxTriangleMesh.cs" />
     <Compile Include="Physic3D\Physx 3.x\PhysxPhysicObject.cs" />

@@ -39,8 +39,11 @@ namespace PloobsEngine.Features.Billboard
 
             foreach (var item in Billboards)
             {
-                Vector3 viewSpaceTextPosition = Vector3.Transform(item.Position, activeView * invertY);
-                spriteBatch.Draw(item.Texture, new Vector2(viewSpaceTextPosition.X, viewSpaceTextPosition.Y), item.Texture.Bounds, Color.White, 0, new Vector2(item.Texture.Bounds.Center.X,item.Texture.Bounds.Center.Y), item.Scale, SpriteEffects.None, viewSpaceTextPosition.Z);                
+                if (item.Enabled)
+                {
+                    Vector3 viewSpaceTextPosition = Vector3.Transform(item.Position, activeView * invertY);
+                    spriteBatch.Draw(item.Texture, new Vector2(viewSpaceTextPosition.X, viewSpaceTextPosition.Y), item.Texture.Bounds, Color.White, 0, new Vector2(item.Texture.Bounds.Center.X, item.Texture.Bounds.Center.Y), item.Scale, SpriteEffects.None, viewSpaceTextPosition.Z);
+                }
             }            
     
 

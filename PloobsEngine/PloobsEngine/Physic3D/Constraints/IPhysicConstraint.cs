@@ -40,7 +40,7 @@ namespace PloobsEngine.Physic.Constraints
 
         #region ISerializable Members
 #if WINDOWS
-        public abstract void GetObjectData(SerializationInfo info, StreamingContext context);
+        public virtual void GetObjectData(SerializationInfo info, StreamingContext context) { }
 #endif
 
         #endregion
