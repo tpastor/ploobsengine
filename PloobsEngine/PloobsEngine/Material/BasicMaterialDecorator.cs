@@ -8,31 +8,41 @@ namespace PloobsEngine.Material
 {
     public class BasicMaterialDecorator : IMaterial
     {
-        public BasicMaterialDecorator(IMaterial material, RasterizerState RasterizerState, SamplerState[] SamplerState = null, int[] samplePositions = null)
+        public BasicMaterialDecorator(IMaterial material, RasterizerState RasterizerState = null, BlendState BlenderState = null, SamplerState[] SamplerState = null, int[] samplePositions = null)
         {
             System.Diagnostics.Debug.Assert(SamplerState.Count() == samplePositions.Count());
             this.material = material;
             this.RasterizerState = RasterizerState;
             this.SamplerState = SamplerState;
             this.SamplePositions = samplePositions;
+            this.BlendState = BlendState;
         }
 
-        SamplerState[] SamplerState
-        {
-            set;
-            get;
-        }
-        int[] SamplePositions
+        public BlendState BlendState
         {
             get;
             set;
         }
 
-        RasterizerState RasterizerState
+        public SamplerState[] SamplerState
+        {
+            set;
+            get;
+        }
+        public int[] SamplePositions
         {
             get;
             set;
         }
+
+        public RasterizerState RasterizerState
+        {
+            get;
+            set;
+        }
+
+
+
         IMaterial material;
 
         #region IMaterial Members
@@ -62,9 +72,16 @@ namespace PloobsEngine.Material
                 }
             }
 
-            render.PushRasterizerState(RasterizerState);
+            if(BlendState != null)
+                render.PushBlendState(BlendState);
+            if(RasterizerState!= null)
+                render.PushRasterizerState(RasterizerState);
             material.Drawn(gt, obj, cam, lights, render);
-            render.PopRasterizerState();
+
+            if(RasterizerState!= null)
+                render.PopRasterizerState();
+            if(BlendState!=null)
+                render.PopBlendState();
 
             if (SamplePositions != null)
             {
@@ -151,5 +168,14 @@ namespace PloobsEngine.Material
 
         #endregion
 #endif
+
+        #region IMaterial Members
+
+
+        public void AfterAdded(SceneControl.IObject obj)
+        {
+        }
+
+        #endregion
     }
 }

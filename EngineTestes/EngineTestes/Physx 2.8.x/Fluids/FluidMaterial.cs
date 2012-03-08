@@ -211,5 +211,9 @@ namespace PloobsEngine.Material
         }
 
         #endregion
+
+        public void AfterAdded(SceneControl.IObject obj)
+        {
+        }
     }
 }

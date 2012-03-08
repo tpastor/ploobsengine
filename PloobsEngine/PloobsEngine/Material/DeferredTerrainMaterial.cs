@@ -250,6 +250,10 @@ namespace PloobsEngine.Material
             QuadTerrain.DrawTerrain(TerrainShader, render.device);            
         }
 
+        public void AfterAdded(SceneControl.IObject obj)
+        {
+        }
+
 #if WINDOWS
         public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
         {

@@ -288,6 +288,26 @@ namespace PloobsEngine.SceneControl
             IObjectAttachment = null;
         }
 
+        internal void afterAddedToTheWorld()
+        {
+            AfterAddedToTheWorld();
+        }
+
+        /// <summary>
+        /// Called after object is added to the world.
+        /// </summary>
+        protected virtual void AfterAddedToTheWorld()
+        {
+            if(PhysicObject != null)
+                PhysicObject.afterAdded(this);
+
+            if (Modelo != null)
+                Modelo.afterAdded(this);
+
+            if (Material != null)
+                Material.AfterAdded(this);
+        }
+
         #region IRecieveMessageEntity Members
 
         /// <summary>

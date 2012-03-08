@@ -49,7 +49,13 @@ namespace PloobsEngine.Material
         /// <param name="factory">The factory.</param>
         /// <param name="obj">The obj.</param>
         void Initialization(GraphicInfo ginfo, GraphicFactory factory, IObject obj);
-        
+
+
+        /// <summary>
+        /// Called After the IObject is Added.
+        /// </summary>
+        /// <param name="obj">The obj.</param>
+        void AfterAdded(IObject obj);
 
         /// <summary>
         /// Pre drawn Function.

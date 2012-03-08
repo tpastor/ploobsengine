@@ -219,6 +219,10 @@ namespace PloobsEngine.Material
             shader.Cleanup(factory);
         }
 
+        public void AfterAdded(SceneControl.IObject obj)
+        {
+        }
+
         #endregion
     }
 }
