@@ -182,7 +182,7 @@ namespace PloobsEngine.Modelo
         /// <param name="type">The type.</param>
         /// <param name="meshIndex">Index of the mesh.</param>S
         /// <param name="meshPartIndex">Index of the mesh part.</param>
-        public void SetTexture(Texture2D tex, TextureType type, int meshIndex = 0, int meshPartIndex = 0)
+        public void SetTexture(Texture2D tex, TextureType type = TextureType.DIFFUSE, int meshIndex = 0, int meshPartIndex = 0)
         {
             TextureInformations[meshIndex][meshPartIndex].SetTexture(tex, type);
         }

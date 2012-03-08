@@ -72,7 +72,7 @@ namespace PloobsEngine.Physics.Bepu
             ExtractData(ref vertices, ref indices, model);
             triangleGroup = new StaticMesh(vertices, indices, new AffineTransform(scale, Quaternion.CreateFromRotationMatrix(rotation), position));
             faceVector = Vector3.Transform(Vector3.Forward, triangleGroup.WorldTransform.Matrix);
-            triangleGroup.Material = new BEPUphysics.Materials.Material(materialDescription.StaticFriction, materialDescription.DinamicFriction, materialDescription.Bounciness);
+            triangleGroup.Material = new BEPUphysics.Materials.Material(materialDescription.StaticFriction, materialDescription.DynamicFriction, materialDescription.Bounciness);
             
         }
 
@@ -97,7 +97,7 @@ namespace PloobsEngine.Physics.Bepu
             TriangleMesh.GetVerticesAndIndicesFromModel(model, out vertices, out indices);
             triangleGroup = new StaticMesh(vertices, indices, new AffineTransform(scale, Quaternion.CreateFromRotationMatrix(rotation), position));
             faceVector = Vector3.Transform(Vector3.Forward, triangleGroup.WorldTransform.Matrix);            
-            triangleGroup.Material = new BEPUphysics.Materials.Material(materialDescription.StaticFriction,materialDescription.DinamicFriction,materialDescription.Bounciness);
+            triangleGroup.Material = new BEPUphysics.Materials.Material(materialDescription.StaticFriction,materialDescription.DynamicFriction,materialDescription.Bounciness);
         }
 
 

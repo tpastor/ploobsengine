@@ -48,17 +48,20 @@ namespace PloobsEngine.Modelo
         /// <param name="BilboardsName">Name of the bilboards.</param>
         /// <param name="diffuseTextureName">Name of the diffuse texture.</param>
         /// <param name="instances">The instances.</param>
-        public InstancedBilboardModel(GraphicFactory factory, String BilboardsName, String diffuseTextureName, BilboardInstance[] instances)
+        /// <param name="dynamicBufferSize">Size of the dynamic buffer, use this if you want something different from number of instances</param>
+        public InstancedBilboardModel(GraphicFactory factory, String BilboardsName, String diffuseTextureName, BilboardInstance[] instances, int  dynamicBufferSize = -1 )
             : base(factory, BilboardsName  ,false)
         {
             this.instances = instances;
-            this.diffuseTextureName = diffuseTextureName;
-            LoadModelo(factory);            
+            this.diffuseTextureName = diffuseTextureName;            
+            this.dynamicBufferSize = dynamicBufferSize;
+            LoadModelo(factory);
         }
 
         string diffuseTextureName;
         private float modelRadius = -1;
         BilboardInstance[] instances;
+        int dynamicBufferSize = -1;
 
         /// <summary>
         /// Sets the bilboard instances.
@@ -66,9 +69,10 @@ namespace PloobsEngine.Modelo
         /// <param name="instances">The instances.</param>
         public void SetBilboardInstances(BilboardInstance[] instances)
         {
-            if(this.instances.Count() == instances.Count())
+            if(instances.Count() < dynamicBufferSize)
             {
                 this.instances = instances;
+                BatchInformations[0][0].InstanceCount = instances.Count();
                 BatchInformations[0][0].InstancedVertexBuffer.SetData(instances);
             }
             else
@@ -77,6 +81,7 @@ namespace PloobsEngine.Modelo
                 this.instances = instances;
                 VertexBuffer InstancedvertexBufferS = factory.CreateDynamicVertexBuffer(vd, instances.Count(), BufferUsage.WriteOnly);
                 InstancedvertexBufferS.SetData(instances);
+                BatchInformations[0][0].InstanceCount = instances.Count();
                 BatchInformations[0][0].InstancedVertexBuffer = InstancedvertexBufferS;
             }            
         }
@@ -106,7 +111,16 @@ namespace PloobsEngine.Modelo
 
              vd = new VertexDeclaration(v0, v1);
 
-            VertexBuffer InstancedvertexBufferS = factory.CreateDynamicVertexBuffer(vd, instances.Count(), BufferUsage.WriteOnly);
+             VertexBuffer InstancedvertexBufferS;
+             if (dynamicBufferSize != -1)
+             {
+                 InstancedvertexBufferS = factory.CreateDynamicVertexBuffer(vd, dynamicBufferSize, BufferUsage.WriteOnly);
+             }
+             else
+             {
+                 InstancedvertexBufferS = factory.CreateDynamicVertexBuffer(vd, instances.Count(), BufferUsage.WriteOnly);
+             }            
+        
             InstancedvertexBufferS.SetData(instances);
 
             VertexBuffer vertexBufferS = factory.CreateVertexBuffer(VertexPositionTexture.VertexDeclaration, billboardVertices.Count(), BufferUsage.WriteOnly);
