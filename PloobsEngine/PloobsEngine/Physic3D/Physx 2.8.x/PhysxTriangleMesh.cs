@@ -24,7 +24,7 @@ namespace PloobsEngine.Physics
         /// <param name="worldTransformation">The world transformation.</param>
         /// <param name="scale">The scale.</param>
         /// <param name="density">The density.</param>
-        public PhysxTriangleMesh(PhysxPhysicWorld PhysxPhysicWorld, IModelo model, Microsoft.Xna.Framework.Matrix worldTransformation, Microsoft.Xna.Framework.Vector3 scale, float density = 1)
+        public PhysxTriangleMesh(PhysxPhysicWorld PhysxPhysicWorld, IModelo model, Microsoft.Xna.Framework.Matrix worldTransformation, Microsoft.Xna.Framework.Vector3 scale, float density = 1,StillDesign.PhysX.Material material = null)
         {
             Microsoft.Xna.Framework.Vector3[] vertices = null;
             int[] indices = null;
@@ -51,11 +51,13 @@ namespace PloobsEngine.Physics
             ms.Position = 0;
             TriangleMesh triangleMesh = PhysxPhysicWorld.Core.CreateTriangleMesh(ms);
             TriangleMeshShapeDescription bunnyShapeDesc = new TriangleMeshShapeDescription();
+            if (material != null)
+                bunnyShapeDesc.Material = material;
             bunnyShapeDesc.TriangleMesh = triangleMesh;                
             ActorDesc = new ActorDescription();
             ActorDesc.Shapes.Add(bunnyShapeDesc);            
             ActorDesc.BodyDescription= null;
-            ActorDesc.GlobalPose = worldTransformation.AsPhysX();
+            ActorDesc.GlobalPose = worldTransformation.AsPhysX();            
             this.Scale = scale;
         }
 
