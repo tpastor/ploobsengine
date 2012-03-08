@@ -234,6 +234,10 @@ namespace PloobsEngine.Physics
         /// </summary>
         TRIANGLEMESHOBJECT,
         /// <summary>
+        /// Trigger
+        /// </summary>
+        TRIGGER,
+        /// <summary>
         /// HeightMap
         /// </summary>
         HEIGHMAPOBJECT,
@@ -248,8 +252,12 @@ namespace PloobsEngine.Physics
         SPECIALIZEDMOVER,
         /// <summary>
         /// None of those before
-        /// </summary>
+        /// </summary>        
         OTHER,
+        /// <summary>
+        /// Fluid
+        /// </summary>
+        FLUID,
         /// <summary>
         /// Should not be used, here for compatibility
         /// </summary>

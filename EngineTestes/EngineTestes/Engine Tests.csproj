@@ -128,6 +128,7 @@
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Data" />
     <Reference Include="System.Xml">
       <Private>False</Private>
     </Reference>
@@ -161,6 +162,7 @@
     <Compile Include="AA\MLAntiAliasingPostEffect.cs" />
     <Compile Include="AI\Behavior Tree\BaseObject.cs" />
     <Compile Include="AI\Behavior Tree\BehaviorTreeScreen.cs" />
+    <Compile Include="AI\DecisionTree\ID3Test.cs" />
     <Compile Include="AI\FSM\FSMScreen.cs" />
     <Compile Include="AI\FSM\StateSample.cs" />
     <Compile Include="AI\Pathfinding and Waypoints\IaPathFinding.cs" />
@@ -185,6 +187,20 @@
     <Compile Include="Bullet\BallThrowBullet.cs" />
     <Compile Include="CharacterControllerInput.cs" />
     <Compile Include="CharacterSample\CharacterScreen.cs" />
+    <Compile Include="Physx 2.8.x\Character\PhysxCharacter28Screen.cs" />
+    <Compile Include="Physx 2.8.x\Cloth\ClothModel.cs" />
+    <Compile Include="Physx 2.8.x\Cloth\ClothMaterial.cs" />
+    <Compile Include="Physx 2.8.x\Cloth\Screens\PressureCloth28Screen.cs" />
+    <Compile Include="Physx 2.8.x\Cloth\Screens\FlagCloth28Screen.cs" />
+    <Compile Include="Physx 2.8.x\Cloth\VertexGrid.cs" />
+    <Compile Include="Physx 2.8.x\Cloth\Screens\BasicCloth28Screen.cs" />
+    <Compile Include="Physx 2.8.x\Fluids\DeferredEmitterFluids28Screen.cs" />
+    <Compile Include="Physx 2.8.x\Fluids\DeferredFluids28Screen2.cs" />
+    <Compile Include="Physx 2.8.x\Fluids\FluidMaterial.cs" />
+    <Compile Include="Physx 2.8.x\Fluids\DeferredFluids28Screen.cs" />
+    <Compile Include="Physx 2.8.x\Fluids\Fluids28Screen.cs" />
+    <Compile Include="Physx 2.8.x\Terrain\PhysxTerrain28Screen.cs" />
+    <Compile Include="Physx 2.8.x\Trigger\Physx28TriggerScreen.cs" />
     <Compile Include="Physx 3.x\BallThrowPhysx.cs" />
     <Compile Include="Physx 3.x\PhysxScreen.cs" />
     <Compile Include="FileUtils\FileUtilsScreen.cs" />
@@ -317,6 +333,9 @@
     </Content>
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
+    <Content Include="StillDesign.PhysX.Net.dll" />
+    <None Include="StillDesign.PhysX.Net.xml" />
+    <Content Include="StillDesign.PhysX.Tests.dll" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\PloobsEngine\PloobsEngine\PloobsEngine.csproj">

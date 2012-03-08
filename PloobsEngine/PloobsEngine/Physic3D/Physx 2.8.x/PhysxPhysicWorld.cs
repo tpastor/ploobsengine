@@ -26,14 +26,30 @@ using Microsoft.Xna.Framework.Graphics;
 using PloobsEngine.Physics;
 using StillDesign.PhysX;
 using System;
+using PloobsEngine.Trigger;
 
 namespace PloobsEngine.Physics
 {    
     public class PhysxPhysicWorld : PloobsEngine.Physics.IPhysicWorld
     {
+        ~PhysxPhysicWorld()
+        {
+            if (ControllerManager != null && !ControllerManager.IsDisposed)
+                ControllerManager.Dispose();
+            if (Scene != null && !Scene.IsDisposed)
+                Scene.Dispose();
+            if(Core!= null && !Core.IsDisposed)
+                Core.Dispose();
+        }
+
+        private TriggerReport TriggerReport;
         private List<IPhysicObject> objs;
         private List<IPhysicConstraint> ctns;
-    
+        public ControllerManager ControllerManager
+        {
+            set;
+            get;
+        }
         public Scene Scene
         {
             get;
@@ -89,10 +105,14 @@ namespace PloobsEngine.Physics
             if (connectToRemoteDebugger)
                 core.Foundation.RemoteDebugger.Connect("localhost");
 
+            ControllerManager = Scene.CreateControllerManager();
             objs = new List<IPhysicObject>();
             ctns = new List<IPhysicConstraint>();
-
+            TriggerReport = new Physics.TriggerReport();
+            Scene.UserTriggerReport = TriggerReport;
         }
+
+        
         public PhysxPhysicWorld(Vector3 gravity, bool connectToRemoteDebugger = false)
         {
 
@@ -114,7 +134,7 @@ namespace PloobsEngine.Physics
 
             SceneDescription sceneDesc = new SceneDescription()
             {
-                Gravity = gravity.AsPhysX(),                                
+                Gravity = gravity.AsPhysX()     ,                
             };
 
             this.Scene = core.CreateScene(sceneDesc);
@@ -122,11 +142,13 @@ namespace PloobsEngine.Physics
             // Connect to the remote debugger if it's there
             if(connectToRemoteDebugger)
                 core.Foundation.RemoteDebugger.Connect("localhost");
-            
+
+            ControllerManager = Scene.CreateControllerManager();
             objs = new List<IPhysicObject>();
             ctns = new List<IPhysicConstraint>();
 
-            
+            TriggerReport = new Physics.TriggerReport();
+            Scene.UserTriggerReport = TriggerReport;
         }
 
         public override List<IPhysicObject> PhysicObjects
@@ -150,7 +172,7 @@ namespace PloobsEngine.Physics
                 BasicEffect.TextureEnabled = false;
             }
 
-            if (_fetchedResults == false)
+            //if (_fetchedResults == false)
             {
                 DebugRenderable RenderBuffer = Scene.GetDebugRenderable();
                 if (RenderBuffer == null || (RenderBuffer.TriangleCount == 0 && RenderBuffer.LineCount == 0))
@@ -204,24 +226,70 @@ namespace PloobsEngine.Physics
         }
 
 
-        private bool _fetchedResults = true;
+        //private bool _fetchedResults = true;
         protected override void Update(GameTime gt)
         {
-            _fetchedResults = !this.Scene.FetchResults(SimulationStatus.RigidBodyFinished,false);
-            
-            if (_fetchedResults)
+            //_fetchedResults = !this.Scene.FetchResults(SimulationStatus.RigidBodyFinished, false);
+
+            while (this.Scene.FetchResults(SimulationStatus.RigidBodyFinished, false)) ;
+
+            //if (_fetchedResults)
+            //{
                 this.Scene.Simulate((float)gt.ElapsedGameTime.TotalSeconds);
+                this.Scene.FlushStream();
+                //this.Scene.FlushCaches();
+            //}
+
+            // Update Physics
+            //this.Scene.Simulate((float)gt.ElapsedGameTime.TotalSeconds);
+            //this.Scene.FlushStream();
+            //this.Scene.FetchResults(SimulationStatus.RigidBodyFinished, true);
+
         }
 
         public override void AddObject(IPhysicObject obj)
-        {
+        {           
             if (obj is PhysxPhysicObject)
             {
                 PhysxPhysicObject PhysxPhysicObject = obj as PhysxPhysicObject;
-                PhysxPhysicObject.Actor = Scene.CreateActor(PhysxPhysicObject.ActorDesc);
+                PhysxPhysicObject.Actor = Scene.CreateActor(PhysxPhysicObject.ActorDesc,int.MaxValue);
                 PhysxPhysicObject.Actor.UserData = obj;
+
+                for (int i = 0; i < PhysxPhysicObject.ActorDesc.Shapes.Count; i++)
+                {
+                    PhysxPhysicObject.Actor.Shapes[i].UserData = PhysxPhysicObject.ActorDesc.Shapes[i].UserData;
+                }
+
+            }
+
+            else if (obj is PhysxClothObject)
+            {
+                PhysxClothObject PhysxPhysicObject = obj as PhysxClothObject;
+                PhysxPhysicObject.Cloth = Scene.CreateCloth(PhysxPhysicObject.ClothDesc);
+                PhysxPhysicObject.Cloth.UserData = obj;
+            }
+
+            else if (obj is PhysxFluidObject)
+            {
+                PhysxFluidObject PhysxPhysicObject = obj as PhysxFluidObject;
+                PhysxPhysicObject.Fluid = Scene.CreateFluid(PhysxPhysicObject.FluidDesc);
+                PhysxPhysicObject.Fluid.UserData = obj;
+            }
+
+            else if (obj is PhysxCapsuleCharacterObject)
+            {
+                PhysxCapsuleCharacterObject PhysxPhysicObject = obj as PhysxCapsuleCharacterObject;
+                PhysxPhysicObject.Controller = ControllerManager.CreateController<CapsuleController>(PhysxPhysicObject.CapsuleControllerDescription);
+                PhysxPhysicObject.Controller.UserData = obj;
+            }      
+
+            else if (obj is PhysxBoxCharacterObject)
+            {
+                PhysxBoxCharacterObject PhysxPhysicObject = obj as PhysxBoxCharacterObject;
+                PhysxPhysicObject.Controller = ControllerManager.CreateController<BoxController>((PhysxPhysicObject.BoxControllerDescription));
+                PhysxPhysicObject.Controller.UserData = obj;
             }            
-            
+
             objs.Add(obj);
         }
 
@@ -232,64 +300,192 @@ namespace PloobsEngine.Physics
                 PhysxPhysicObject PhysxPhysicObject = obj as PhysxPhysicObject;
                 PhysxPhysicObject.Actor.UserData = null;
                 PhysxPhysicObject.Actor.Dispose();
-            }            
+            }
+            else if (obj is PhysxClothObject)
+            {
+                PhysxClothObject PhysxPhysicObject = obj as PhysxClothObject;
+                PhysxPhysicObject.Cloth.UserData = null;
+                PhysxPhysicObject.Cloth.Dispose();
+            }
+            else if (obj is PhysxFluidObject)
+            {
+                PhysxFluidObject PhysxPhysicObject = obj as PhysxFluidObject;
+                PhysxPhysicObject.Fluid.UserData = null;
+                PhysxPhysicObject.Fluid.Dispose();
+            }
+
+            else if (obj is PhysxCapsuleCharacterObject)
+            {
+                PhysxCapsuleCharacterObject PhysxPhysicObject = obj as PhysxCapsuleCharacterObject;                
+                PhysxPhysicObject.Controller.UserData = null;
+                PhysxPhysicObject.Controller.Dispose();
+            }
+
+            else if (obj is PhysxBoxCharacterObject)
+            {
+                PhysxBoxCharacterObject PhysxPhysicObject = obj as PhysxBoxCharacterObject;
+                PhysxPhysicObject.Controller.UserData = null;
+                PhysxPhysicObject.Controller.Dispose();
+            }   
             
             objs.Remove(obj);
         }
 
         public override void AddConstraint(IPhysicConstraint ctn)
         {
-            throw new System.NotImplementedException();
+            if (ctn is PhysxCylindricalJoint)
+            {
+                PhysxCylindricalJoint PhysxCylindricalJoint = ctn as PhysxCylindricalJoint;
+                PhysxCylindricalJoint.CylindricalJoint = Scene.CreateJoint<CylindricalJoint>(PhysxCylindricalJoint.CylindricalJointDescription);
+            }
+            else if (ctn is PhysxD6Joint)
+            {
+                PhysxD6Joint PhysxCylindricalJoint = ctn as PhysxD6Joint;
+                PhysxCylindricalJoint.D6Joint = Scene.CreateJoint<D6Joint>(PhysxCylindricalJoint.D6JointDescription);
+            }
+            else if (ctn is PhysxDistanceJoint)
+            {
+                PhysxDistanceJoint PhysxCylindricalJoint = ctn as PhysxDistanceJoint;
+                PhysxCylindricalJoint.DistanceJoint = Scene.CreateJoint<DistanceJoint>(PhysxCylindricalJoint.DistanceJointDescription);
+            }
+            else if (ctn is PhysxFixedJoint)
+            {
+                PhysxFixedJoint PhysxCylindricalJoint = ctn as PhysxFixedJoint;
+                PhysxCylindricalJoint.FixedJoint = Scene.CreateJoint<FixedJoint>(PhysxCylindricalJoint.FixedJointDescription);
+            }
+
+            else if (ctn is PhysxPointOnLineJoint)
+            {
+                PhysxPointOnLineJoint PhysxCylindricalJoint = ctn as PhysxPointOnLineJoint;
+                PhysxCylindricalJoint.PointOnLineJoint = Scene.CreateJoint<PointOnLineJoint>(PhysxCylindricalJoint.PointOnLineJointDescription);
+            }
+
+            else if (ctn is PhysxPrismaticJoint)
+            {
+                PhysxPrismaticJoint PhysxCylindricalJoint = ctn as PhysxPrismaticJoint;
+                PhysxCylindricalJoint.PrismaticJoint = Scene.CreateJoint<PrismaticJoint>(PhysxCylindricalJoint.PrismaticJointDescription);
+            }
+
+            else if (ctn is PhysxPulleyJoint)
+            {
+                PhysxPulleyJoint PhysxCylindricalJoint = ctn as PhysxPulleyJoint;
+                PhysxCylindricalJoint.PulleyJoint = Scene.CreateJoint<PulleyJoint>(PhysxCylindricalJoint.PulleyJointDescription);
+            }
+
+            else if (ctn is PhysxRevoluteJoint)
+            {
+                PhysxRevoluteJoint PhysxCylindricalJoint = ctn as PhysxRevoluteJoint;
+                PhysxCylindricalJoint.RevoluteJoint = Scene.CreateJoint<RevoluteJoint>(PhysxCylindricalJoint.RevoluteJointDescription);
+            }
+
+            else if (ctn is PhysxSphericalJoint)
+            {
+                PhysxSphericalJoint PhysxCylindricalJoint = ctn as PhysxSphericalJoint;
+                PhysxCylindricalJoint.SphericalJoint = Scene.CreateJoint<SphericalJoint>(PhysxCylindricalJoint.SphericalJointDescription);
+            }
+
+            ctns.Add(ctn);
         }
 
         public override void RemoveConstraint(IPhysicConstraint ctn)
         {
-            throw new System.NotImplementedException();
+            if (ctn is PhysxCylindricalJoint)
+            {
+                PhysxCylindricalJoint PhysxCylindricalJoint = ctn as PhysxCylindricalJoint;
+                PhysxCylindricalJoint.CylindricalJoint.Dispose();
+            }
+            else if (ctn is PhysxD6Joint)
+            {
+                PhysxD6Joint PhysxCylindricalJoint = ctn as PhysxD6Joint;
+                PhysxCylindricalJoint.D6Joint.Dispose();
+            }
+            else if (ctn is PhysxDistanceJoint)
+            {
+                PhysxDistanceJoint PhysxCylindricalJoint = ctn as PhysxDistanceJoint;
+                PhysxCylindricalJoint.DistanceJoint.Dispose();
+            }
+            else if (ctn is PhysxFixedJoint)
+            {
+                PhysxFixedJoint PhysxCylindricalJoint = ctn as PhysxFixedJoint;
+                PhysxCylindricalJoint.FixedJoint.Dispose();
+            }
+
+            else if (ctn is PhysxPointOnLineJoint)
+            {
+                PhysxPointOnLineJoint PhysxCylindricalJoint = ctn as PhysxPointOnLineJoint;
+                PhysxCylindricalJoint.PointOnLineJoint.Dispose();
+            }
+
+            else if (ctn is PhysxPrismaticJoint)
+            {
+                PhysxPrismaticJoint PhysxCylindricalJoint = ctn as PhysxPrismaticJoint;
+                PhysxCylindricalJoint.PrismaticJoint.Dispose();
+            }
+
+            else if (ctn is PhysxPulleyJoint)
+            {
+                PhysxPulleyJoint PhysxCylindricalJoint = ctn as PhysxPulleyJoint;
+                PhysxCylindricalJoint.PulleyJoint.Dispose();
+            }
+
+            else if (ctn is PhysxRevoluteJoint)
+            {
+                PhysxRevoluteJoint PhysxCylindricalJoint = ctn as PhysxRevoluteJoint;
+                PhysxCylindricalJoint.RevoluteJoint.Dispose();
+            }
+
+            else if (ctn is PhysxSphericalJoint)
+            {
+                PhysxSphericalJoint PhysxCylindricalJoint = ctn as PhysxSphericalJoint;
+                PhysxCylindricalJoint.SphericalJoint.Dispose();
+            }
+            ctns.Remove(ctn);
         }
 
-        private class InternalUserRaycastReport : UserRaycastReport
+        public override SegmentInterceptInfo SegmentIntersect(Microsoft.Xna.Framework.Ray raio, System.Func<IPhysicObject, bool> filter, float maxDistance)
         {
-            public System.Func<IPhysicObject, bool> filter;
-            public SegmentInterceptInfo SegmentInterceptInfo;
-            public override bool OnHit(RaycastHit hits)
+
+            SegmentInterceptInfo SegmentInterceptInfo = null;
+            foreach (var hits in Scene.RaycastAllShapes(new StillDesign.PhysX.Ray(raio.Position.AsPhysX(), raio.Direction.AsPhysX()), ShapesType.All))
             {
-                if (hits.Shape.Actor.UserData is IPhysicObject)
+                if (filter(hits.Shape.Actor.UserData as IPhysicObject))
                 {
-                    if (filter(hits.Shape.Actor.UserData as IPhysicObject))
+                    if (SegmentInterceptInfo == null || SegmentInterceptInfo.Distance > hits.Distance)
                     {
                         SegmentInterceptInfo = new SegmentInterceptInfo();
                         SegmentInterceptInfo.Distance = hits.Distance;
                         SegmentInterceptInfo.ImpactNormal = hits.WorldNormal.AsXNA();
                         SegmentInterceptInfo.ImpactPosition = hits.WorldImpact.AsXNA();
-                        SegmentInterceptInfo.PhysicObject = hits.Shape.Actor.UserData as IPhysicObject;                        
-                        return false;
+                        SegmentInterceptInfo.PhysicObject = hits.Shape.Actor.UserData as IPhysicObject;                     
                     }
                 }
-                return true;
             }
+            return SegmentInterceptInfo;
         }
 
-        InternalUserRaycastReport internalUserRaycastReport = new InternalUserRaycastReport();
-        public override SegmentInterceptInfo SegmentIntersect(Microsoft.Xna.Framework.Ray raio, System.Func<IPhysicObject, bool> filter, float maxDistance)
-        {
-            internalUserRaycastReport.filter = filter;
-            internalUserRaycastReport.SegmentInterceptInfo = null;
-            Scene.RaycastAllShapes(new StillDesign.PhysX.Ray(raio.Position.AsPhysX(), raio.Direction.AsPhysX()),internalUserRaycastReport, ShapesType.All,0 ,maxDistance,RaycastBit.Distance | RaycastBit.Normal | RaycastBit.Shape | RaycastBit.Impact,null);
-            return internalUserRaycastReport.SegmentInterceptInfo;
-        }
 
         public override void DetectCollisions(IPhysicObject po, List<IPhysicObject> resp)
         {
-            throw new Exception("not implemented, attach the callback to the Right Actor");            
+            if (po.BoundingBox.HasValue)
+            {
+                foreach (var item in Scene.OverlappedShapes(new Bounds3(po.BoundingBox.Value.Min.AsPhysX(), po.BoundingBox.Value.Max.AsPhysX()), ShapesType.All))
+                {
+                    if (item.Actor.UserData is IPhysicObject)
+                    {
+                        IPhysicObject IPhysicObject = item.Actor.UserData as IPhysicObject;
+                        resp.Add(IPhysicObject);
+                    }
+                }
+            }
         }
 
         public override void GetPhysicsObjectsInRange(IPhysicObject po, float distance, CullerConditionAvaliator<IPhysicObject, SceneControl.IObject> CullerAvaliator, List<IPhysicObject> resp)
-        {                
-            foreach (var item in  Scene.OverlappedShapes(new Sphere(distance,po.Position.AsPhysX()),ShapesType.All))
+        {
+            foreach (var item in Scene.OverlappedShapes(new Sphere(distance, po.Position.AsPhysX()), ShapesType.All))
             {
-                if (item.UserData is IPhysicObject)
+                if (item.Actor.UserData is IPhysicObject)
                 {
-                    IPhysicObject IPhysicObject =item.UserData as IPhysicObject;
+                    IPhysicObject IPhysicObject = item.Actor.UserData as IPhysicObject;
                     if (CullerAvaliator(IPhysicObject, IPhysicObject.ObjectOwner))
                     {
                         resp.Add(IPhysicObject);
@@ -302,9 +498,9 @@ namespace PloobsEngine.Physics
         {
             foreach (var item in Scene.OverlappedShapes(new Sphere(distance, position.AsPhysX()), ShapesType.All))
             {
-                if (item.UserData is IPhysicObject)
+                if (item.Actor.UserData is IPhysicObject)
                 {
-                    IPhysicObject IPhysicObject = item.UserData as IPhysicObject;
+                    IPhysicObject IPhysicObject = item.Actor.UserData as IPhysicObject;
                     if (CullerAvaliator(IPhysicObject, IPhysicObject.ObjectOwner))
                     {
                         resp.Add(IPhysicObject);
@@ -316,6 +512,18 @@ namespace PloobsEngine.Physics
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
         {
             throw new System.NotImplementedException();
+        }
+    }
+
+    internal class TriggerReport : UserTriggerReport
+    {
+        public override void OnTrigger(Shape triggerShape, Shape otherShape, TriggerFlag status)
+        {
+            if (triggerShape.UserData != null)
+            {
+                PhysxTrigger PhysxTrigger = triggerShape.UserData as PhysxTrigger;
+                PhysxTrigger.fireEvent(status, otherShape.Actor.UserData as IPhysicObject);                
+            }
         }
     }
 }

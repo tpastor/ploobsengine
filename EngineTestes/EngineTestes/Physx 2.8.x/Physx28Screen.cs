@@ -40,7 +40,7 @@ namespace EngineTestes
                 ForwardXNABasicShader shader = new ForwardXNABasicShader(ForwardXNABasicShaderDescription.Default());
                 ForwardMaterial fmaterial = new ForwardMaterial(shader);
                 IObject obj = new IObject(fmaterial, simpleModel, tmesh);
-                //this.World.AddObject(obj);
+                this.World.AddObject(obj);
             }
 
             BallThrowPhysx28 BallThrowBullet = new BallThrowPhysx28(this.World, GraphicFactory);

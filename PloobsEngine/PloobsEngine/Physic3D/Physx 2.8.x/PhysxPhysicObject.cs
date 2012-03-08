@@ -37,6 +37,22 @@ namespace PloobsEngine.Physics
             };                        
         }
 
+        public PhysxPhysicObject(ShapeDescription ShapeDescription, Matrix worldTransformation, Vector3 scale, String name = null)
+        {
+            Scale = scale;
+            ActorDesc = new ActorDescription()
+            {                
+                Name = name,                
+                GlobalPose = worldTransformation.AsPhysX(),
+                Shapes = { ShapeDescription },
+            };
+        }
+
+        internal void BeTrigger()
+        {
+            this.type = Physics.PhysicObjectTypes.TRIGGER;
+        }
+
         public override Vector3 Position
         {
             get
@@ -107,9 +123,10 @@ namespace PloobsEngine.Physics
             set;
         }
 
+        Physics.PhysicObjectTypes type = PhysicObjectTypes.OTHER;
         public override PhysicObjectTypes PhysicObjectTypes
         {
-            get { return Physics.PhysicObjectTypes.OTHER; }
+            get { return type; }
         }
 
         public override void ApplyImpulse(Vector3 position, Vector3 force)
