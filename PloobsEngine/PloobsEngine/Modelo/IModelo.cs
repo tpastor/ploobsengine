@@ -102,6 +102,14 @@ namespace PloobsEngine.Modelo
             get;
         }
 
+        internal void afterAdded(IObject obj)
+        {
+            this.AfterAdded(obj);
+        }
+
+        protected virtual void AfterAdded(IObject obj)
+        {
+        }
 
         /// <summary>
         /// Gets one texture of the model.

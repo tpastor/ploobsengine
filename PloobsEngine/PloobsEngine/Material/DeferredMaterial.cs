@@ -197,6 +197,10 @@ namespace PloobsEngine.Material
             set;
         }
 
+        public void AfterAdded(SceneControl.IObject obj)
+        {
+        }
+
 
 
 #region IMaterial Members

@@ -156,6 +156,21 @@ namespace PloobsEngine.Physics
         /// </value>
         public abstract Vector3 AngularVelocity { get; set; }
 
+
+        internal void afterAdded(IObject obj)
+        {
+            this.AfterAdded(obj);
+        }
+
+        /// <summary>
+        /// Called after the object is added to the world
+        /// </summary>
+        /// <param name="obj">The obj.</param>
+        protected virtual void AfterAdded(IObject obj)
+        {
+        }
+
+
         #region ISerializable Members
 
 #if WINDOWS

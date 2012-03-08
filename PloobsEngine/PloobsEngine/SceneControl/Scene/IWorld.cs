@@ -205,6 +205,8 @@ namespace PloobsEngine.SceneControl
                 obj.Material.Initialization(graphicsInfo, graphicFactory, obj);
             Culler.onObjectAdded(obj);
             obj.FireOnBeingAdd(this);
+
+            obj.afterAddedToTheWorld();
         }
 
         /// <summary>
