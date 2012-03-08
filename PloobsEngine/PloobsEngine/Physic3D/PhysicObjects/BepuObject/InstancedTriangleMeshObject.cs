@@ -39,7 +39,7 @@ namespace PloobsEngine.Physics.Bepu
         public InstancedTriangleMeshObject(InstancedMeshShape InstancedMeshShape, Vector3 pos, Matrix rotation, Vector3 scale, MaterialDescription materialDescription, TriangleSidedness TriangleSidedness = TriangleSidedness.Counterclockwise)
         {
             instancedMesh = new InstancedMesh(InstancedMeshShape,new BEPUphysics.MathExtensions.AffineTransform(scale,Quaternion.CreateFromRotationMatrix(rotation),pos));
-            instancedMesh.Material = new BEPUphysics.Materials.Material(materialDescription.StaticFriction, materialDescription.DinamicFriction, materialDescription.Bounciness);
+            instancedMesh.Material = new BEPUphysics.Materials.Material(materialDescription.StaticFriction, materialDescription.DynamicFriction, materialDescription.Bounciness);
             instancedMesh.Sidedness = TriangleSidedness;
             this.rotation = rotation;
             this.scale = scale;

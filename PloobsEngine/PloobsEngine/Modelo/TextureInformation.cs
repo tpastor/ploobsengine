@@ -335,10 +335,7 @@ namespace PloobsEngine.Modelo
                 OnTextureChange(type,this);
         }
 
-        /// <summary>
-        /// Load the model
-        /// </summary>
-        internal void LoadTexture()
+        public  void LoadTexture()
         {
             if (!String.IsNullOrEmpty(_reflectionName) && _reflectionName != CUSTOM)
             {

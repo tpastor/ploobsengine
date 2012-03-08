@@ -321,7 +321,7 @@ namespace PloobsEngine.NetWorking
             message.Write(mass);
             message.Write(scale);
             message.Write(MaterialDescription.Bounciness);
-            message.Write(MaterialDescription.DinamicFriction);
+            message.Write(MaterialDescription.DynamicFriction);
             message.Write(MaterialDescription.StaticFriction);
             
         }
@@ -393,7 +393,7 @@ namespace PloobsEngine.NetWorking
             mes.WriteRotation(Quaternion.CreateFromRotationMatrix(oro));
             mes.Write(scale);
             mes.Write(MaterialDescription.Bounciness);
-            mes.Write(MaterialDescription.DinamicFriction);
+            mes.Write(MaterialDescription.DynamicFriction);
             mes.Write(MaterialDescription.StaticFriction);
         }
 

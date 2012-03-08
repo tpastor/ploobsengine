@@ -24,6 +24,7 @@ namespace PloobsEngine.Features.Billboard
             this.obj = obj;
             this.Scale = scale;
         }
+        public bool Enabled = true;
         public Vector2 Scale;
         public Texture2D Texture;
         private Vector3 position;
@@ -64,6 +65,7 @@ namespace PloobsEngine.Features.Billboard
             this.Scale = scale;
             this.SpriteFont = SpriteFont;
         }
+        public bool Enabled = true;
         public SpriteFont SpriteFont;
         public Color Color;
         public float Scale;

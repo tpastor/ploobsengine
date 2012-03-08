@@ -40,20 +40,23 @@ namespace PloobsEngine.Features.Billboard
 
             foreach (var item in Billboards)
             {
-                SpriteFont font = item.SpriteFont == null ? SpriteFont : item.SpriteFont;
+                if (item.Enabled)
+                {
+                    SpriteFont font = item.SpriteFont == null ? SpriteFont : item.SpriteFont;
 
-                basicEffect.World = Matrix.CreateConstrainedBillboard(item.Position, position, Vector3.Down, null, null);
+                    basicEffect.World = Matrix.CreateConstrainedBillboard(item.Position, position, Vector3.Down, null, null);
 
-                basicEffect.View = activeView;
-                basicEffect.Projection = activeProjection;
+                    basicEffect.View = activeView;
+                    basicEffect.Projection = activeProjection;
 
-                spriteBatch.Begin(0, null, null, DepthStencilState.DepthRead, RasterizerState.CullNone, basicEffect);
+                    spriteBatch.Begin(0, null, null, DepthStencilState.DepthRead, RasterizerState.CullNone, basicEffect);
 
-                Vector2 textOrigin = font.MeasureString(item.Message) / 2;
-                
-                spriteBatch.DrawString(font, item.Message, Vector2.Zero, item.Color, 0, textOrigin, item.Scale, 0, 0);
+                    Vector2 textOrigin = font.MeasureString(item.Message) / 2;
 
-                spriteBatch.End();
+                    spriteBatch.DrawString(font, item.Message, Vector2.Zero, item.Color, 0, textOrigin, item.Scale, 0, 0);
+
+                    spriteBatch.End();
+                }
             }
             render.ResyncStates();
         }
