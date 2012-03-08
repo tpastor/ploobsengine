@@ -202,6 +202,8 @@
     <Compile Include="Physx 2.8.x\Material\Physx28MaterialScreen.cs" />
     <Compile Include="Physx 2.8.x\Terrain\PhysxTerrain28Screen.cs" />
     <Compile Include="Physx 2.8.x\Trigger\Physx28TriggerScreen.cs" />
+    <Compile Include="Physx 2.8.x\Vehicle\Physx28VehicleScreen.cs" />
+    <Compile Include="Physx 2.8.x\Vehicle\Vehicle.cs" />
     <Compile Include="Physx 3.x\BallThrowPhysx.cs" />
     <Compile Include="Physx 3.x\PhysxScreen.cs" />
     <Compile Include="FileUtils\FileUtilsScreen.cs" />

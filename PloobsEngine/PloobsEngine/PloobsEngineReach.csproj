@@ -283,6 +283,7 @@
     <Compile Include="SceneControl\Scene\PostEffects\NightPostEffect.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\RadialBlurPostEffect.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\SimpleMotionBlurPostEffect.cs" />
+    <Compile Include="SceneControl\Scene\UserObject.cs" />
     <Compile Include="SteeringSharperIa\AbstractVehicle.cs" />
     <Compile Include="SteeringSharperIa\AnnotationService.cs" />
     <Compile Include="SteeringSharperIa\BruteForceProximityDatabase.cs" />
