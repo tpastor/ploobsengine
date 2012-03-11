@@ -30,7 +30,7 @@ namespace EngineTestes
 
         static void LoadScreen(ScreenManager manager)
         {
-            manager.AddScreen(new ModeloScreen());
+            //manager.AddScreen(new ModeloScreen());
             //manager.AddScreen(new RVO3DScreen());
             //manager.AddScreen(new Physx28MaterialScreen());
             //manager.AddScreen(new Physx28VehicleScreen());            
@@ -97,7 +97,7 @@ namespace EngineTestes
             //manager.AddScreen(new ForwardMeshesFromModelLoadScreen());
             //manager.AddScreen(new DeferredLoadScreen(),new LoadScene());
             //manager.AddScreen(new DebugDrawScreen());
-            //manager.AddScreen(new OctreeScreen());
+            manager.AddScreen(new OctreeScreen());
             //manager.AddScreen(new HybridDeferred());
             //manager.AddScreen(new VegetationForwardScreen());
             //manager.AddScreen(new VegetationDeferredScreen());            

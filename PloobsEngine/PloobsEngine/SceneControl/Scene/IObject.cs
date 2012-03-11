@@ -290,6 +290,7 @@ namespace PloobsEngine.SceneControl
 
         internal void afterAddedToTheWorld()
         {
+            lastFrameWorld = physicObject.WorldMatrix;
             AfterAddedToTheWorld();
         }
 

@@ -229,12 +229,12 @@ namespace PloobsEngine.SceneControl
         /// </summary>    
         public Octree<T> Add(T o, BoundingBox transformebbox)
         {
-            float radius = (transformebbox.Max - transformebbox.Min).Length();
+            float radius = (transformebbox.Max - transformebbox.Min).Length() / 2;
             Vector3 center = (transformebbox.Max + transformebbox.Min) / 2;
 
             if (this.bounds.Contains(transformebbox) == ContainmentType.Contains)
             {
-                return this.Add(o, bounds, center, radius / 2);
+                return this.Add(o, transformebbox, center, radius);
             }
             return null;
         }
