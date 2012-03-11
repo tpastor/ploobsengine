@@ -184,6 +184,27 @@ namespace PloobsEngine.SceneControl
         }
 
         /// <summary>
+        /// Stills inside ?.
+        /// </summary>
+        /// <param name="o">The obj.</param>
+        /// <param name="bounds">Its bounds.</param>
+        /// <returns></returns>
+        public bool StillInside(T o, BoundingBox bounds)
+        {
+            if (this.children != null)
+                return false;
+
+            if (this.bounds.Contains(bounds) == ContainmentType.Contains)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
         /// Adds the given object to the octree.
         /// </summary>
         /// <param name="o">The object to add.</param>

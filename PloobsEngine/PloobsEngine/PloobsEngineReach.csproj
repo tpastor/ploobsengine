@@ -206,7 +206,9 @@
     <Compile Include="Modelo\SpecificModels\StaticBilboardModel.cs" />
     <Compile Include="Modelo\SpecificModels\TreeModel.cs" />
     <Compile Include="Modelo\SpecificModels\WaterModel.cs" />
+    <Compile Include="Modelo\TConstructiveModelo.cs" />
     <Compile Include="Modelo\TextureInformation.cs" />
+    <Compile Include="Modelo\TModelo.cs" />
     <Compile Include="NetWorking\NetWorkEchoMessageServer.cs" />
     <Compile Include="NetWorking\NetWorkEchoMessageClient.cs" />
     <Compile Include="NetWorking\NetWorkServerObject.cs" />

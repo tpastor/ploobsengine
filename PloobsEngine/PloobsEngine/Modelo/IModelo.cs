@@ -47,6 +47,8 @@ namespace PloobsEngine.Modelo
                         
         }
 
+        protected IModelo() { }
+
         public IModelo(bool isinternal, GraphicFactory factory, String modelName, bool callLoadContent = true)
         {
             this.isInternal = isinternal;
@@ -253,6 +255,24 @@ namespace PloobsEngine.Modelo
                     factory.ReleaseAsset(item.BumpMapName);
                     factory.ReleaseAsset(item.GlowName);
                     factory.ReleaseAsset(item.SpecularMapName);
+                }
+
+                foreach (var item in BatchInformations[i])
+                {
+                    if (item.VertexBuffer != null && item.VertexBuffer.IsDisposed == false)
+                    {
+                        item.VertexBuffer.Dispose();
+                    }
+
+                    if (item.IndexBuffer != null && item.IndexBuffer.IsDisposed == false)
+                    {
+                        item.IndexBuffer.Dispose();
+                    }
+
+                    if (item.InstancedVertexBuffer != null && item.InstancedVertexBuffer.IsDisposed == false)
+                    {
+                        item.InstancedVertexBuffer.Dispose();
+                    }
                 }
             }
         }

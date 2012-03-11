@@ -122,6 +122,14 @@
     <Reference Include="PloobsSerializator">
       <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\PloobsSerializator.dll</HintPath>
     </Reference>
+    <Reference Include="RVO2DWrapper, Version=1.0.4452.2407, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\RVO2DWrapper.dll</HintPath>
+    </Reference>
+    <Reference Include="RVO3D, Version=1.0.4451.39782, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\RVO3D.dll</HintPath>
+    </Reference>
     <Reference Include="StillDesign.PhysX.Net">
       <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\StillDesign.PhysX.Net.dll</HintPath>
     </Reference>
@@ -162,6 +170,10 @@
     <Compile Include="AA\MLAntiAliasingPostEffect.cs" />
     <Compile Include="AI\Behavior Tree\BaseObject.cs" />
     <Compile Include="AI\Behavior Tree\BehaviorTreeScreen.cs" />
+    <Compile Include="AI\RVO2D\RVO2DObject.cs" />
+    <Compile Include="AI\RVO2D\RVO2DScreen.cs" />
+    <Compile Include="AI\RVO3D\RVO3DObject.cs" />
+    <Compile Include="AI\RVO3D\RVO3DScreen.cs" />
     <Compile Include="AI\DecisionTree\ID3Test.cs" />
     <Compile Include="AI\FSM\FSMScreen.cs" />
     <Compile Include="AI\FSM\StateSample.cs" />
@@ -187,6 +199,7 @@
     <Compile Include="Bullet\BallThrowBullet.cs" />
     <Compile Include="CharacterControllerInput.cs" />
     <Compile Include="CharacterSample\CharacterScreen.cs" />
+    <Compile Include="Modelo\ModeloScreen.cs" />
     <Compile Include="Physx 2.8.x\Character\PhysxCharacter28Screen.cs" />
     <Compile Include="Physx 2.8.x\Cloth\ClothModel.cs" />
     <Compile Include="Physx 2.8.x\Cloth\ClothMaterial.cs" />
@@ -337,6 +350,10 @@
     </Content>
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
+    <Content Include="RVO2DWrapper.dll" />
+    <Content Include="RVO3D.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="StillDesign.PhysX.Net.dll" />
     <None Include="StillDesign.PhysX.Net.xml" />
     <Content Include="StillDesign.PhysX.Tests.dll" />

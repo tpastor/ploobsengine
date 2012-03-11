@@ -159,28 +159,39 @@ namespace PloobsEngine.Physics.Bepu
                     }
                     vertices.AddRange(a);
 
-                    if (info.IndexBuffer.IndexElementSize != IndexElementSize.SixteenBits)
+                    if (info.IndexBuffer != null)
                     {
-                        int[] s = new int[info.PrimitiveCount * 3];
-                        info.IndexBuffer.GetData<int>(info.StartIndex * 2, s, 0, info.PrimitiveCount * 3);
-                        for (int k = 0; k != info.PrimitiveCount; ++k)
+                        if (info.IndexBuffer.IndexElementSize != IndexElementSize.SixteenBits)
                         {
-                            indices.Add(s[k * 3 + 2] + offset);
-                            indices.Add(s[k * 3 + 1] + offset);
-                            indices.Add(s[k * 3 + 0] + offset);
+                            int[] s = new int[info.PrimitiveCount * 3];
+                            info.IndexBuffer.GetData<int>(info.StartIndex * 2, s, 0, info.PrimitiveCount * 3);
+                            for (int k = 0; k != info.PrimitiveCount; ++k)
+                            {
+                                indices.Add(s[k * 3 + 2] + offset);
+                                indices.Add(s[k * 3 + 1] + offset);
+                                indices.Add(s[k * 3 + 0] + offset);
+                            }
+                        }
+                        else
+                        {
+                            short[] s = new short[info.PrimitiveCount * 3];
+                            info.IndexBuffer.GetData<short>(info.StartIndex * 2, s, 0, info.PrimitiveCount * 3);
+                            for (int k = 0; k != info.PrimitiveCount; ++k)
+                            {
+                                indices.Add(s[k * 3 + 2] + offset);
+                                indices.Add(s[k * 3 + 1] + offset);
+                                indices.Add(s[k * 3 + 0] + offset);
+                            }
                         }
                     }
                     else
                     {
-                        short[] s = new short[info.PrimitiveCount * 3];
-                        info.IndexBuffer.GetData<short>(info.StartIndex * 2, s, 0, info.PrimitiveCount * 3);
-                        for (int k = 0; k != info.PrimitiveCount; ++k)
-                        {
-                            indices.Add(s[k * 3 + 2] + offset);
-                            indices.Add(s[k * 3 + 1] + offset);
-                            indices.Add(s[k * 3 + 0] + offset);
-                        }
-                    }                        
+                        for (int t = 0; t < vertices.Count; t++)
+			            {
+                            indices.Add(t);
+			            }
+                        
+                    }
                 }
             }    
 

@@ -327,6 +327,7 @@
     <Compile Include="Modelo2D\Animation\SpriteAnimated.cs" />
     <Compile Include="Modelo\Animation\AnimatedController.cs" />
     <Compile Include="Modelo\Animation\AnimatedModel.cs" />
+    <Compile Include="Modelo\TConstructiveModelo.cs" />
     <Compile Include="Modelo\CustomModel.cs" />
     <Compile Include="Modelo\SpecificModels\CPUBilboardModel.cs" />
     <Compile Include="Modelo\SpecificModels\QuadTerrainModel.cs" />
@@ -336,6 +337,7 @@
     <Compile Include="Modelo\SpecificModels\TreeModel.cs" />
     <Compile Include="Modelo\SpecificModels\WaterModel.cs" />
     <Compile Include="Modelo\TextureInformation.cs" />
+    <Compile Include="Modelo\TModelo.cs" />
     <Compile Include="NetWorking\NetWorkEchoMessageServer.cs" />
     <Compile Include="NetWorking\NetWorkEchoMessageClient.cs" />
     <Compile Include="NetWorking\NetWorkServerObject.cs" />

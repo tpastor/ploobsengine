@@ -30,6 +30,12 @@ namespace PloobsEngine.Physic.Constraints.BepuConstraint
 {
     public abstract class MultipleSubConstraints : IPhysicConstraint
     {
+        protected MultipleSubConstraints(SolverGroup multipleSubConstraints)
+        {
+            this.multipleSubConstraints = multipleSubConstraints;
+        }
+
+        protected MultipleSubConstraints() { }
 
         protected SolverGroup multipleSubConstraints;
 
