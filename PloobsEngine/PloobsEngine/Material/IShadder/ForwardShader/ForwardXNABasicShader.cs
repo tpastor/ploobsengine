@@ -110,7 +110,12 @@ namespace PloobsEngine.Material
 
         public BasicEffect BasicEffect
         {
-            get { return effect; }            
+            get {
+
+                if (effect == null)
+                    throw new Exception("you must add the Associated IObject to the World before setting the effect properties");
+                return effect; 
+            }            
         }
 
         /// <summary>

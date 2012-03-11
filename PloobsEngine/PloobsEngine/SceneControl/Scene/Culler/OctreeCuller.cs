@@ -126,7 +126,7 @@ namespace PloobsEngine.SceneControl
             if (!objOctree.ContainsKey(obj))
                 return;
 
-            if (objOctree[obj].StillInside(obj, obj.PhysicObject.Position, obj.Modelo.GetModelRadius()))
+            if (objOctree[obj].StillInside(obj, obj.PhysicObject.BoundingBox.Value))
             {
                 return;
             }
