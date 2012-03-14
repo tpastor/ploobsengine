@@ -98,6 +98,7 @@ namespace IntroductionDemo4._0
             #endregion
 
             lt = new LightThrowBepu(this.World, factory);
+            lt.force = 60;
 
             ///add a camera
             this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo));
