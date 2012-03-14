@@ -323,7 +323,7 @@ namespace EngineTestes
         protected override void Draw(GameTime gameTime, PloobsEngine.SceneControl.RenderHelper render)
         {
             base.Draw(gameTime, render);
-            render.RenderTextComplete("PloobsEngine 2D Angry Birds Physic Clone Sample", new Vector2(20, 10), Color.Red, Matrix.Identity);
+            render.RenderTextComplete("PloobsEngine 2D Physic Sample", new Vector2(20, 10), Color.Red, Matrix.Identity);
             render.RenderTextComplete("Hold the left mouse bottom near the ball to fire", new Vector2(20, 30), Color.Red, Matrix.Identity);
         }   
 
