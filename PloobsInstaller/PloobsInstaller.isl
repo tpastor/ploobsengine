@@ -4970,6 +4970,7 @@
 		<row><td>ID_STRING13</td><td>1033</td><td>LAUNCH~1.EXE|Launch AdvancedDemos.exe</td><td>0</td><td/><td>-710996490</td></row>
 		<row><td>ID_STRING14</td><td>1033</td><td>PloobsEngine Installer</td><td>0</td><td/><td>-710946569</td></row>
 		<row><td>ID_STRING15</td><td>1033</td><td>PloobsEngine Game Engine</td><td>0</td><td/><td>-710999785</td></row>
+		<row><td>ID_STRING16</td><td>1033</td><td>LAUNCH~1.EXE|Launch AdvancedDemos.exe</td><td>0</td><td/><td>1906353056</td></row>
 		<row><td>ID_STRING2</td><td>1033</td><td>http://www.Ploobs.com</td><td>0</td><td/><td>1629536951</td></row>
 		<row><td>ID_STRING3</td><td>1033</td><td>Ploobs</td><td>0</td><td/><td>1629536951</td></row>
 		<row><td>ID_STRING4</td><td>1033</td><td>http://www.ploobs.com.br/forum</td><td>0</td><td/><td>1629536951</td></row>
@@ -5081,6 +5082,7 @@
 		<col def="I2">ISIconIndex</col>
 		<row><td>ARPPRODUCTICON.exe</td><td/><td>C:\PloobsPackages\Extra\Logo Ploobs.ico</td><td>0</td></row>
 		<row><td>AdvancedDemos.exe1_9DB5D6AEFA124E3DA8CF530CF2CC721A.exe</td><td/><td>C:\Users\tpastor\Desktop\Dlls\Demos\AdvancedDemos\AdvancedDemos\AdvancedDemos\obj\x86\Debug\AdvancedDemos.exe</td><td>0</td></row>
+		<row><td>AdvancedDemos.exe1_B40AEFBA2B34475AB951A1FB015F9B75.exe</td><td/><td>C:\PloobsPackages\AdvDemosBin\AdvancedDemos.exe</td><td>0</td></row>
 		<row><td>AdvancedDemos.exe1_C27B04AF4D7B4D5183530DD025DE344C.exe</td><td/><td>C:\Dlls\Windows HiDef\PloobsEngineDebug.dll</td><td>0</td></row>
 		<row><td>AdvancedDemos.exe1_E23014CDA5E04106B55219C7FDBC614A.exe</td><td/><td>C:\Users\tpastor\Desktop\Dlls\AdvDemosBinaries\AdvancedDemos.exe</td><td>0</td></row>
 		<row><td>AdvancedDemos.exe_5CDF6576053D4A4C906E0F5EB48406D2.exe</td><td/><td>C:\Users\tpastor\Desktop\Dlls\Demos\AdvancedDemos\AdvancedDemos\AdvancedDemos\bin\x86\Debug\AdvancedDemos.exe</td><td>0</td></row>
@@ -5675,7 +5677,7 @@ UgBlAGwAZQBhAHMAZQABAEUAeABwAHIAZQBzAHMA
 		<col def="I4">ISAttributes</col>
 		<row><td>Registry1</td><td>2</td><td>Software\Wow6432Node\Microsoft\.NETFramework\v4.0.30319\AssemblyFoldersEx</td><td/><td/><td>ISX_DEFAULTCOMPONENT</td><td>1</td></row>
 		<row><td>Registry2</td><td>2</td><td>Software\Ploobs\PloobsEngine</td><td>Location</td><td>[INSTALLDIR]</td><td>ISX_DEFAULTCOMPONENT</td><td>0</td></row>
-		<row><td>Registry3</td><td>2</td><td>Software\Ploobs\PloobsEngine</td><td>Version</td><td>0.4.0</td><td>ISX_DEFAULTCOMPONENT</td><td>0</td></row>
+		<row><td>Registry3</td><td>2</td><td>Software\Ploobs\PloobsEngine</td><td>Version</td><td>0.4.1</td><td>ISX_DEFAULTCOMPONENT</td><td>0</td></row>
 	</table>
 
 	<table name="RemoveFile">
@@ -5774,6 +5776,7 @@ UgBlAGwAZQBhAHMAZQABAEUAeABwAHIAZQBzAHMA
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
 		<row><td>AdvancedDemos.exe</td><td>ploobs_1_ploobsengine</td><td>##IDS_SHORTCUT_DISPLAY_NAME9##</td><td>AdvancedDemos.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>AdvancedDemos.exe_6CC9FEA39ABF4BD090C0B67E5AC76FD4.exe</td><td>1</td><td>1</td><td>ADVDEMOSBIN</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>AdvancedDemos.exe1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME9##</td><td>AdvancedDemos.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>AdvancedDemos.exe1_B40AEFBA2B34475AB951A1FB015F9B75.exe</td><td>1</td><td>1</td><td>ADVDEMOSBIN</td><td/><td/><td/><td/><td/><td/><td/></row>
 		<row><td>NewShortcut1</td><td>ploobs_1_ploobsengine</td><td>##ID_STRING9##</td><td>ISX_DEFAULTCOMPONENT</td><td>[DEMOSSOURCECODE]</td><td/><td/><td/><td/><td/><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
 		<row><td>NewShortcut11</td><td>DesktopFolder</td><td>##ID_STRING9##</td><td>ISX_DEFAULTCOMPONENT</td><td>[DEMOSSOURCECODE]</td><td/><td/><td/><td/><td/><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
 		<row><td>NewShortcut2</td><td>ploobs_1_ploobsengine</td><td>##ID_STRING10##</td><td>ISX_DEFAULTCOMPONENT</td><td>[HELP]</td><td/><td/><td/><td/><td/><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
