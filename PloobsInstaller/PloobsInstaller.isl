@@ -2594,7 +2594,6 @@
 		<row><td>ploobsengine_forward_screen_</td><td>ISX_DEFAULTCOMPONENT5</td><td>PLOOBS~1.ZIP|PloobsEngine Forward Screen Template.zip</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\Templates\PloobsEngine Forward Screen Template.zip</td><td>1</td><td/></row>
 		<row><td>ploobsengine_project_reach_t</td><td>ISX_DEFAULTCOMPONENT4</td><td>PLOOBS~1.ZIP|PloobsEngine Project Reach Template.zip</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\Templates\PloobsEngine Project Reach Template.zip</td><td>1</td><td/></row>
 		<row><td>ploobsengine_project_templat</td><td>ISX_DEFAULTCOMPONENT4</td><td>PLOOBS~1.ZIP|PloobsEngine Project Template.zip</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\Templates\PloobsEngine Project Template.zip</td><td>1</td><td/></row>
-		<row><td>ploobsengine_project_templat1</td><td>ISX_DEFAULTCOMPONENT4</td><td>PLOOBS~1.ZIP|PloobsEngine Project TemplatePhone7.zip</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\Templates\PloobsEngine Project TemplatePhone7.zip</td><td>1</td><td/></row>
 		<row><td>ploobsengine_wp7_silverlight</td><td>ISX_DEFAULTCOMPONENT4</td><td>PLOOBS~1.ZIP|PloobsEngine WP7 SilverLight XNA.zip</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\Templates\PloobsEngine WP7 SilverLight XNA.zip</td><td>1</td><td/></row>
 		<row><td>ploobsenginedebug.dll</td><td>PloobsEngineDebug.dll</td><td>PLOOBS~1.DLL|PloobsEngineDebug.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\PloobsEngineDebug.dll</td><td>1</td><td/></row>
 		<row><td>ploobsenginedebug.dll1</td><td>PloobsEngineDebug.dll1</td><td>PLOOBS~1.DLL|PloobsEngineDebug.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\Dll\PloobsEngineDebug.dll</td><td>1</td><td/></row>
@@ -5677,7 +5676,7 @@ UgBlAGwAZQBhAHMAZQABAEUAeABwAHIAZQBzAHMA
 		<col def="I4">ISAttributes</col>
 		<row><td>Registry1</td><td>2</td><td>Software\Wow6432Node\Microsoft\.NETFramework\v4.0.30319\AssemblyFoldersEx</td><td/><td/><td>ISX_DEFAULTCOMPONENT</td><td>1</td></row>
 		<row><td>Registry2</td><td>2</td><td>Software\Ploobs\PloobsEngine</td><td>Location</td><td>[INSTALLDIR]</td><td>ISX_DEFAULTCOMPONENT</td><td>0</td></row>
-		<row><td>Registry3</td><td>2</td><td>Software\Ploobs\PloobsEngine</td><td>Version</td><td>0.4.1</td><td>ISX_DEFAULTCOMPONENT</td><td>0</td></row>
+		<row><td>Registry3</td><td>2</td><td>Software\Ploobs\PloobsEngine</td><td>Version</td><td>0.4.2</td><td>ISX_DEFAULTCOMPONENT</td><td>0</td></row>
 	</table>
 
 	<table name="RemoveFile">
