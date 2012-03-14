@@ -1014,7 +1014,10 @@ namespace PloobsEngine.Engine
         /// <param name="removeComponents">if set to <c>true</c> [remove components].</param>
         /// <param name="removeAllEventSubscribers">if set to <c>true</c> [remove all event subscribers].</param>
         public void LeaveScene(bool removeComponents = false, bool removeAllEventSubscribers = false)
-        {
+        {            
+            PloobsDispatcher.Update();
+            CommandProcessor.getCommandProcessor().ProcessCommands();
+
             SharedGraphicsDeviceManager.Current.GraphicsDevice.SetSharingMode(false);
             if (timer != null)
             {
