@@ -59,11 +59,12 @@ namespace IntroductionDemo4._0
         }
         
         int i = 0;
+        public float force = 10;
         public void mousebuttonteste(MouseState ms)
         {
             ///Create an object
             IObject physObj = SpawnPrimitive(_mundo.CameraManager.ActiveCamera.Position, Matrix.CreateRotationX(0.5f));
-            physObj.PhysicObject.Velocity = (_mundo.CameraManager.ActiveCamera.Target - _mundo.CameraManager.ActiveCamera.Position) * 10.0f;
+            physObj.PhysicObject.Velocity = (_mundo.CameraManager.ActiveCamera.Target - _mundo.CameraManager.ActiveCamera.Position) * force;
             
             ///Create a light that follow an object
             MoveablePointLight mvp = new MoveablePointLight(physObj.PhysicObject as SphereObject, new Color((float)rd.NextDouble(),(float) rd.NextDouble(),(float) rd.NextDouble()),25, 5);
