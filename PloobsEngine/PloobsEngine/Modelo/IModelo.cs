@@ -40,11 +40,11 @@ namespace PloobsEngine.Modelo
     /// Model Specification
     /// </summary>
     public abstract class IModelo 
-    {
+    {        
         public IModelo(GraphicFactory factory, String modelName,bool callLoadContent = true)
             : this(false,factory,modelName,callLoadContent)
         {
-                        
+               
         }
 
         protected IModelo() { }
@@ -257,6 +257,7 @@ namespace PloobsEngine.Modelo
                     factory.ReleaseAsset(item.SpecularMapName);
                 }
 
+                ///Automatic handled
                 foreach (var item in BatchInformations[i])
                 {
                     if (item.VertexBuffer != null && item.VertexBuffer.IsDisposed == false)

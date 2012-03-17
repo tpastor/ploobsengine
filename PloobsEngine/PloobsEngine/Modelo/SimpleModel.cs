@@ -42,9 +42,11 @@ namespace PloobsEngine.Modelo
         /// <param name="bumpTextureName">Name of the bump texture.</param>
         /// <param name="specularTextureName">Name of the specular texture.</param>
         /// <param name="glowTextureName">Name of the glow texture.</param>
-       public SimpleModel(GraphicFactory factory,String modelName, String diffuseTextureName = null, String bumpTextureName = null, String specularTextureName = null, String glowTextureName = null)
+        /// <param name="forceFromDisk">if set to <c>true</c> [force from disk].</param>
+       public SimpleModel(GraphicFactory factory,String modelName, String diffuseTextureName = null, String bumpTextureName = null, String specularTextureName = null, String glowTextureName = null, bool forceFromDisk = false)
             : base(factory, modelName, false)
         {
+            this.forceFromDisk = forceFromDisk;            
             this._diffuseName = diffuseTextureName;
             this._bumpName = bumpTextureName;
             this._glowName = glowTextureName;
@@ -52,9 +54,10 @@ namespace PloobsEngine.Modelo
             LoadModel(factory, out BatchInformations, out TextureInformations);
         }
 
-        internal SimpleModel(GraphicFactory factory, String modelName, bool isInternal, String diffuseTextureName = null)
+       internal SimpleModel(GraphicFactory factory, String modelName, bool isInternal, String diffuseTextureName = null, bool forceFromDisk = false)
             : base(isInternal,factory, modelName,false)
         {
+            this.forceFromDisk = forceFromDisk;
             this._diffuseName = diffuseTextureName;
             LoadModel(factory, out BatchInformations, out TextureInformations);
         }
@@ -64,11 +67,12 @@ namespace PloobsEngine.Modelo
         string _specularName = null;
         private Model model;        
         private float modelRadius;
+        bool forceFromDisk ;
 
         protected override void LoadModel(GraphicFactory factory, out BatchInformation[][] BatchInformations, out TextureInformation[][] TextureInformation)
         {
-            model = factory.GetModel(this.Name,isInternal);
-            ModelBuilderHelper.Extract(factory,out BatchInformations, out TextureInformation,this.Name,_diffuseName,_bumpName,_specularName,_glowName,isInternal);            
+            model = factory.GetModel(this.Name, isInternal, forceFromDisk);
+            ModelBuilderHelper.Extract(factory,out BatchInformations, out TextureInformation,model,_diffuseName,_bumpName,_specularName,_glowName,isInternal);            
             
             BoundingSphere sphere = new BoundingSphere();
             foreach (var item in model.Meshes)
@@ -86,6 +90,21 @@ namespace PloobsEngine.Modelo
         public override float GetModelRadius()
         {
             return modelRadius;
-        }        
+        }
+
+        public override void CleanUp(GraphicFactory factory)
+        {
+            for (int i = 0; i < MeshNumber; i++)
+            {
+                foreach (var item in TextureInformations[i])
+                {
+                    factory.ReleaseAsset(item.DiffuseMapName);
+                    factory.ReleaseAsset(item.BumpMapName);
+                    factory.ReleaseAsset(item.GlowName);
+                    factory.ReleaseAsset(item.SpecularMapName);
+                }
+            }
+            factory.ReleaseAsset(Name);            
+        }
     }
 }

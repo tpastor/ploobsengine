@@ -16,6 +16,7 @@ using System.Runtime.InteropServices;
 
 namespace EngineTestes
 {
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class PressureCloth28Screen : IScene
     {
 
@@ -97,6 +98,7 @@ namespace EngineTestes
 
 
             BallThrowPhysx28 BallThrowBullet = new BallThrowPhysx28(this.World, GraphicFactory);
+            this.AttachCleanUpAble(BallThrowBullet);
             this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo));
         }
 

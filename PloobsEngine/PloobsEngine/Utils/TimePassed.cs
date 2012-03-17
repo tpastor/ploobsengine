@@ -99,6 +99,7 @@ namespace PloobsEngine.Utils
                 if ((gt.TotalGameTime.TotalSeconds - last) > interval)
                 {
                     last = gt.TotalGameTime.TotalSeconds;
+                    on = false;
                     return true;
                 }
                 else

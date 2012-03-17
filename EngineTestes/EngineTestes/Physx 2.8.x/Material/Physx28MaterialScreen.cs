@@ -15,6 +15,7 @@ using StillDesign.PhysX;
 
 namespace EngineTestes
 {
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class Physx28MaterialScreen : IScene
     {
 
@@ -54,6 +55,7 @@ namespace EngineTestes
             }
 
             BallThrowPhysx28 BallThrowBullet = new BallThrowPhysx28(this.World, GraphicFactory);
+            this.AttachCleanUpAble(BallThrowBullet);
 
             for (int i = 0; i < 10; i++)
             {

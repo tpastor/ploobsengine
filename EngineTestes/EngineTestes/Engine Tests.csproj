@@ -222,6 +222,7 @@
     <Compile Include="FileUtils\FileUtilsScreen.cs" />
     <Compile Include="Physx 2.8.x\BallThrowPhysx28.cs" />
     <Compile Include="Physx 2.8.x\Physx28Screen.cs" />
+    <Compile Include="ScreenTests\InterTest\AlgoTest.cs" />
     <Compile Include="SphereCharacterControllerInput.cs" />
     <Compile Include="FullCharacterControllerInput.cs" />
     <Compile Include="Constraint\ConstraintScreen.cs" />

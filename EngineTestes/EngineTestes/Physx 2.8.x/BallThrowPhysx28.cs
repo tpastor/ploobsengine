@@ -12,21 +12,17 @@ using StillDesign.PhysX;
 
 namespace EngineTestes
 {
-    public class BallThrowPhysx28
+    public class BallThrowPhysx28 : ICleanupAble
     {
         IWorld _mundo;                          
         Random rd = new Random();                
         BindMouseCommand mm0 = null;
-        BindMouseCommand mm1 = null;
         GraphicFactory factory;
         
         public void CleanUp()
         {
             mm0.BindAction = BindAction.REMOVE;
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(mm0);
-
-            mm1.BindAction = BindAction.REMOVE;
-            CommandProcessor.getCommandProcessor().SendCommandAssyncronous(mm1);
         }
 
         bool forward = true;
@@ -54,6 +50,8 @@ namespace EngineTestes
             
       
         }
+
+        SimpleModel sm2;
         /// <summary>
         /// Create a simple Sphere object
         /// </summary>
@@ -63,7 +61,7 @@ namespace EngineTestes
         private IObject SpawnPrimitive(Vector3 pos, Matrix ori)
         {
             ///Load a Model with a custom texture
-            SimpleModel sm2 = new SimpleModel(factory,"Model\\ball");
+            sm2 = new SimpleModel(factory,"Model\\ball");
             sm2.SetTexture(factory.CreateTexture2DColor(1,1,Color.White,false), TextureType.DIFFUSE);
             IMaterial m;
             if (forward)
@@ -87,5 +85,14 @@ namespace EngineTestes
             return o;
         }
 
+
+        #region ICleanupAble Members
+
+        public void CleanUp(GraphicFactory factory)
+        {
+            CleanUp();
+        }
+
+        #endregion
     }
 }

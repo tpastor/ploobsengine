@@ -18,6 +18,7 @@ using PloobsEngine.Light;
 
 namespace EngineTestes
 {
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class DeferredFluids28Screen2 : IScene
     {
 
@@ -127,6 +128,7 @@ namespace EngineTestes
 
 
             BallThrowPhysx28 BallThrowBullet = new BallThrowPhysx28(this.World, GraphicFactory,false);
+            this.AttachCleanUpAble(BallThrowBullet);
 
             this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo));
         }

@@ -474,6 +474,9 @@
     <Compile Include="SteeringSharperIa\SphericalObstacle.cs" />
     <Compile Include="SteeringSharperIa\SteerLibrary.cs" />
     <Compile Include="SteeringSharperIa\Trail.cs" />
+    <Compile Include="TestSuit\IAlgoTest.cs" />
+    <Compile Include="TestSuit\TestProcessor.cs" />
+    <Compile Include="TestSuit\TestScreenAtt.cs" />
     <Compile Include="Utils\Debug 2D Primitives\I2DPrimitive.cs" />
     <Compile Include="Utils\Debug 2D Primitives\Lines.cs" />
     <Compile Include="Utils\Debug 2D Primitives\PrimitiveBatch.cs" />

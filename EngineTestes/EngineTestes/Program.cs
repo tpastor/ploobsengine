@@ -5,6 +5,8 @@ using EngineTestes.LoadingScreen;
 using ProjectTemplate;
 using EngineTestes._2DSamples;
 using AdvancedDemo4._0;
+using EngineTestes.ScreenTests;
+using PloobsEngine.TestSuite;
 
 namespace EngineTestes
 {
@@ -15,22 +17,25 @@ namespace EngineTestes
         /// </summary>
         static void Main(string[] args)
         {
-            InitialEngineDescription desc = InitialEngineDescription.Default();
-            desc.useMipMapWhenPossible = true;
-            desc.UseAnisotropicFiltering = true;
-            desc.UseAnisotropicFiltering = true;
-            //desc.isMultiSampling = true;                        
+            TestProcessor TestProcessor = new TestProcessor();
+            TestProcessor.EvaluateTestes("EngineTestes.exe");
 
-            using (EngineStuff engine = new EngineStuff(ref desc, LoadScreen))
-            {
-                engine.Run();
-            }
+            //InitialEngineDescription desc = InitialEngineDescription.Default();
+            //desc.useMipMapWhenPossible = true;
+            //desc.UseAnisotropicFiltering = true;
+            //desc.UseAnisotropicFiltering = true;
+            //desc.isMultiSampling = true;
+
+            //using (EngineStuff engine = new EngineStuff(ref desc, LoadScreen))
+            //{
+            //    engine.Run();
+            //}
 
         }
 
         static void LoadScreen(ScreenManager manager)
         {
-            //manager.AddScreen(new ModeloScreen());
+            manager.AddScreen(new ModeloScreen());
             //manager.AddScreen(new RVO3DScreen());
             //manager.AddScreen(new Physx28MaterialScreen());
             //manager.AddScreen(new Physx28VehicleScreen());            
@@ -97,7 +102,7 @@ namespace EngineTestes
             //manager.AddScreen(new ForwardMeshesFromModelLoadScreen());
             //manager.AddScreen(new DeferredLoadScreen(),new LoadScene());
             //manager.AddScreen(new DebugDrawScreen());
-            manager.AddScreen(new OctreeScreen());
+            //manager.AddScreen(new OctreeScreen());
             //manager.AddScreen(new HybridDeferred());
             //manager.AddScreen(new VegetationForwardScreen());
             //manager.AddScreen(new VegetationDeferredScreen());            

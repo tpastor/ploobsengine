@@ -33,16 +33,6 @@ namespace PloobsEngine.Physics
 {    
     public class PhysxPhysicWorld : PloobsEngine.Physics.IPhysicWorld
     {
-        ~PhysxPhysicWorld()
-        {
-            if (ControllerManager != null && !ControllerManager.IsDisposed)
-                ControllerManager.Dispose();
-            if (Scene != null && !Scene.IsDisposed)
-                Scene.Dispose();
-            if(Core!= null && !Core.IsDisposed)
-                Core.Dispose();
-        }
-
         private TriggerReport TriggerReport;
         private List<IPhysicObject> objs;
         private List<IPhysicConstraint> ctns;
@@ -83,13 +73,16 @@ namespace PloobsEngine.Physics
             }
         }
 
-        public StillDesign.PhysX.Material CreatePhysicMaterial(StillDesign.PhysX.MaterialDescription MaterialDescription)
+        bool safeAndSlowUpdate = true;
+        public StillDesign.PhysX.Material CreatePhysicMaterial(StillDesign.PhysX.MaterialDescription MaterialDescription, bool safeAndSlowUpdate = true)
         {
+            this.safeAndSlowUpdate = safeAndSlowUpdate;
             return Scene.CreateMaterial(MaterialDescription);
         }
 
-        public PhysxPhysicWorld(CoreDescription CoreDescription ,SceneDescription SceneDescription, bool connectToRemoteDebugger = false)
+        public PhysxPhysicWorld(CoreDescription CoreDescription, SceneDescription SceneDescription, bool connectToRemoteDebugger = false, bool safeAndSlowUpdate = true)
         {
+            this.safeAndSlowUpdate = safeAndSlowUpdate;
             UserOutput output = new UserOutput();
             this.Core = new Core(CoreDescription, output);
 
@@ -118,10 +111,10 @@ namespace PloobsEngine.Physics
             Utilities.ErrorReport = errorReport;
         }
 
-        
-        public PhysxPhysicWorld(Vector3 gravity, bool connectToRemoteDebugger = false)
-        {
 
+        public PhysxPhysicWorld(Vector3 gravity, bool connectToRemoteDebugger = false, bool safeAndSlowUpdate = true)
+        {
+            this.safeAndSlowUpdate = safeAndSlowUpdate;
             CoreDescription coreDesc = new CoreDescription();
             UserOutput output = new UserOutput();
 
@@ -232,26 +225,38 @@ namespace PloobsEngine.Physics
 
         }
 
-
-        //private bool _fetchedResults = true;
+        
+        bool simulated = false;
+        bool ended = true;
         protected override void Update(GameTime gt)
         {
-            //_fetchedResults = !this.Scene.FetchResults(SimulationStatus.RigidBodyFinished, false);
-
-            while (this.Scene.FetchResults(SimulationStatus.RigidBodyFinished, false)) ;
-
-            //if (_fetchedResults)
-            //{
+            if (safeAndSlowUpdate)
+            {
                 this.Scene.Simulate((float)gt.ElapsedGameTime.TotalSeconds);
                 this.Scene.FlushStream();
-                //this.Scene.FlushCaches();
-            //}
+                while (!this.Scene.FetchResults(SimulationStatus.RigidBodyFinished, false)) ;
+            }
+            else
+            {
+                if (simulated)
+                {
+                    this.Scene.FlushStream();
+                    this.Scene.FlushCaches();
+                    while (!this.Scene.FetchResults(SimulationStatus.RigidBodyFinished, false)) ;
+                    ended = true;
+                    simulated = false;
+                }
 
-            // Update Physics
-            //this.Scene.Simulate((float)gt.ElapsedGameTime.TotalSeconds);
-            //this.Scene.FlushStream();
-            //this.Scene.FetchResults(SimulationStatus.RigidBodyFinished, true);
+                if (ended == true)
+                {
 
+                    this.Scene.Simulate((float)gt.ElapsedGameTime.TotalSeconds);
+
+                    simulated = true;
+                }
+            }                
+
+            
         }
 
         public override void AddObject(IPhysicObject obj)
@@ -548,6 +553,20 @@ namespace PloobsEngine.Physics
                     }
                 }
             }
+        }
+
+        protected override void CleanUp()
+        {
+            if(this.ControllerManager!= null && !this.ControllerManager.IsDisposed)
+                this.ControllerManager.Dispose();
+
+            if (this.Scene != null && !this.Scene.IsDisposed)
+                this.Scene.Dispose();
+            
+            if(this.Core != null && !this.Core.IsDisposed)
+                this.Core.Dispose();
+            
+            base.CleanUp();
         }
 
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)

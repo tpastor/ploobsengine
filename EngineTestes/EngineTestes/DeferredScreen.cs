@@ -14,9 +14,12 @@ using PloobsEngine.Light;
 using Microsoft.Xna.Framework.Input;
 using PloobsEngine.Features;
 using PloobsEngine.Commands;
+using EngineTestes.ScreenTests;
+using PloobsEngine.TestSuite;
 
 namespace EngineTestes
 {
+    [TesteVisualScreen]
     public class DeferredScreen : IScene
     {
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
