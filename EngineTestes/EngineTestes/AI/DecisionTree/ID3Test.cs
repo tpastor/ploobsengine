@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using PloobsEngine.IA;
 using System.Data;
+using EngineTestes.ScreenTests;
+using PloobsEngine.TestSuite;
 
 namespace EngineTestes.AI.DecisionTree
 {
+    [TesteAlgorithmClass]
     public class ID3Test
     {
-        static void TesteID3()
+        [TesteAlgorithmMethod]
+        public void TesteID3()
         {
             Attribute ceu = new Attribute("ceu", new string[] { "sol", "nublado", "chuva" });
             Attribute temperatura = new Attribute("temperatura", new string[] { "alta", "baixa", "suave" });
@@ -25,7 +29,7 @@ namespace EngineTestes.AI.DecisionTree
 
         }
 
-        static DataTable getDataTable()
+        public DataTable getDataTable()
         {
             DataTable result = new DataTable("samples");
             DataColumn column = result.Columns.Add("ceu");
@@ -62,7 +66,7 @@ namespace EngineTestes.AI.DecisionTree
 
         }
 
-        public static void printNode(TreeNode root, string tabs)
+        public void printNode(TreeNode root, string tabs)
         {
             System.Console.WriteLine(tabs + '|' + root.attribute + '|');
 

@@ -70,6 +70,7 @@ namespace EngineTestes
         #endregion
     }
 
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class Physx28TriggerScreen : IScene
     {
 
@@ -138,6 +139,7 @@ namespace EngineTestes
             
 
             BallThrowPhysx28 BallThrowBullet = new BallThrowPhysx28(this.World, GraphicFactory);
+            this.AttachCleanUpAble(BallThrowBullet);
             this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo));
 
             ReciveMessage ReciveMessage = new ReciveMessage();

@@ -96,7 +96,15 @@ namespace PloobsEngine.Particles
             set;
             get;
         }
-        
+
+        internal void iCleanUp()
+        {
+            CleanUp();
+        }
+        protected virtual void CleanUp()
+        {
+        }
+
 
     }
 }

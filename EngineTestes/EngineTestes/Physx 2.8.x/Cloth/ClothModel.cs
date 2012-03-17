@@ -131,7 +131,7 @@ namespace PloobsEngine.Modelo
         {
             this._diffuseName = diffuseTextureName;
             Model model = factory.GetModel(ModelName);
-            SimpleModel SimpleModel = new Modelo.SimpleModel(factory, ModelName);
+            SimpleModel SimpleModel = new Modelo.SimpleModel(factory, ModelName,null,null,null,null,false);
 
             Vector3[] verts = null;
             Vector2[] tex = null;
@@ -146,7 +146,7 @@ namespace PloobsEngine.Modelo
             clothMeshDesc.AllocateTriangles<int>(IndicesNum / 3);
 
             clothMeshDesc.VertexCount = VerticesNum;
-            clothMeshDesc.TriangleCount = IndicesNum / 3;
+            clothMeshDesc.TriangleCount = IndicesNum / 3;            
 
             BatchInformation = new PloobsEngine.Modelo.BatchInformation(0, VerticesNum, IndicesNum / 3, 0, 0,
                 VertexPositionNormalTexture.VertexDeclaration, VertexPositionNormalTexture.VertexDeclaration.VertexStride, PrimitiveType.TriangleList);
@@ -405,6 +405,11 @@ namespace PloobsEngine.Modelo
             ind = indices.ToArray();
             vert = vertices.ToArray();
             tex =  texcoords.ToArray();
+        }
+
+        public override void CleanUp(GraphicFactory factory)
+        {
+            base.CleanUp(factory);
         }
     }
 }

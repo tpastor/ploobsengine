@@ -279,7 +279,8 @@ namespace PloobsEngine.SceneControl
         /// <param name="factory">The factory.</param>
         public virtual void CleanUp(PloobsEngine.Engine.GraphicFactory factory)
         {
-            Modelo.CleanUp(factory);
+            if(Modelo!= null)
+                Modelo.CleanUp(factory);
             Material.CleanUp(factory);
             Modelo = null;
             Material = null;

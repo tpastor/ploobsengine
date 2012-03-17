@@ -187,13 +187,24 @@ namespace PloobsEngine.SceneControl
             externalContentManager.Unload();
         }
 
+        public Dictionary<String, int> DumpAssetReferenceCount()
+        {
+            Dictionary<String, int> refs = new Dictionary<string, int>();
+            foreach (var item in externalContentManager.GetLoadedAssetNames())
+            {
+                refs.Add(item, externalContentManager.GetReferenceCount(item));
+            }
+            return refs;
+        }
+
         /// <summary>
         /// Releases the asset.
         /// </summary>
         /// <param name="assetName">Name of the asset.</param>
         public void ReleaseAsset(String assetName)
         {
-            System.Diagnostics.Debug.Assert(assetName != null);
+            if (String.IsNullOrEmpty(assetName))
+                return;
             externalContentManager.Release(assetName);
         }
     }

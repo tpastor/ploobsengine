@@ -515,10 +515,10 @@ namespace PloobsEngine.Engine
         {
             if ( (initialDescription.isFullScreen == true && this.IsActive) || initialDescription.isFullScreen == false)
             {
+                CommandProcessor.getCommandProcessor().ProcessCommands();
                 ComponentManager.Update(gameTime);
                 PloobsDispatcher.Update();
-                ScreenManager.Update(gameTime);
-                CommandProcessor.getCommandProcessor().ProcessCommands();
+                ScreenManager.Update(gameTime);                
             }
             base.Update(gameTime);
         }
@@ -1231,10 +1231,10 @@ namespace PloobsEngine.Engine
         /// <param name="gameTime">Time passed since the last call to Update.</param>
         private void Update(GameTime gameTime)
         {
+                CommandProcessor.getCommandProcessor().ProcessCommands();
                 ComponentManager.Update(gameTime);
                 PloobsDispatcher.Update();
-                ScreenManager.Update(gameTime);
-                CommandProcessor.getCommandProcessor().ProcessCommands();
+                ScreenManager.Update(gameTime);                
         }
 
         /// <summary>
@@ -1729,10 +1729,11 @@ namespace PloobsEngine.Engine
         {
             if ((initialDescription.isFullScreen == true && this.game.IsActive) || initialDescription.isFullScreen == false)
             {
+                CommandProcessor.getCommandProcessor().ProcessCommands();
                 ComponentManager.Update(gameTime);
                 PloobsDispatcher.Update();
                 ScreenManager.Update(gameTime);
-                CommandProcessor.getCommandProcessor().ProcessCommands();
+                
             }            
         }
 

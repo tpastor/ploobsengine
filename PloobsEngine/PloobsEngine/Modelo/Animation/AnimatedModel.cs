@@ -115,7 +115,8 @@ namespace PloobsEngine.Modelo.Animation
         }
 
         public override void CleanUp(GraphicFactory factory)
-        {
+        {            
+
             base.CleanUp(factory);
         }
                       

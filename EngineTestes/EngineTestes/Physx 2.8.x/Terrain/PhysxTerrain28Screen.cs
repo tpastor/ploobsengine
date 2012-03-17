@@ -101,16 +101,23 @@ namespace EngineTestes
                 Shapes = { heightFieldShapeDesc },                
             };
 
-            var actor = PhysxPhysicWorld.Scene.CreateActor(actorDesc);
+            actor = PhysxPhysicWorld.Scene.CreateActor(actorDesc);
 
             IObject obj3 = new IObject(mat, null, new PhysxGhostObject());
             this.World.AddObject(obj3);            
             
             BallThrowPhysx28 BallThrowBullet = new BallThrowPhysx28(this.World, GraphicFactory);
+            this.AttachCleanUpAble(BallThrowBullet);
 
             CameraFirstPerson CameraFirstPerson = new CameraFirstPerson(GraphicInfo);
             CameraFirstPerson.FarPlane = 20000;
             this.World.CameraManager.AddCamera(CameraFirstPerson);
+        }
+        Actor actor;
+        protected override void CleanUp(EngineStuff engine)
+        {
+            actor.Dispose();
+            base.CleanUp(engine);
         }
 
     }

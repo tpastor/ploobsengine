@@ -53,7 +53,12 @@ namespace PloobsEngine.Engine.Logger
         /// <summary>
         /// When something happens that can be an error
         /// </summary>
-        Warning
+        Warning,
+
+        /// <summary>
+        /// Information only
+        /// </summary>
+        Info
     }
 
     /// <summary>
@@ -74,7 +79,7 @@ namespace PloobsEngine.Engine.Logger
 
             if (logger != null)
             {
-                if (level == LogLevel.Warning )
+                if (level == LogLevel.Warning || level == LogLevel.Info)
                 {
 #if DEBUG
                     logger.Log(message, level);

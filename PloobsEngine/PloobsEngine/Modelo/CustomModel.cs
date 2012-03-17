@@ -175,5 +175,9 @@ namespace PloobsEngine.Modelo
             return modelRadius;
         }
 
+        public override void CleanUp(GraphicFactory factory)
+        {            
+        }
+
     }
 }
