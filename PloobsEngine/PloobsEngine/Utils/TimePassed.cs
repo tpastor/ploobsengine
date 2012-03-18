@@ -41,18 +41,8 @@ namespace PloobsEngine.Utils
             this.interval = intervalInSeconds;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TimePassed"/> class.
-        /// </summary>
-        /// <param name="intervalInSeconds">The interval in seconds.</param>
-        /// <param name="startOn">if set to <c>true</c> [start on].</param>
-        public TimePassed(float intervalInSeconds, bool startOn)
-        {
-            this.interval = intervalInSeconds;
-            on = startOn;
-        }
 
-        bool on = true;
+        bool on = false;
 
         /// <summary>
         /// On or Off

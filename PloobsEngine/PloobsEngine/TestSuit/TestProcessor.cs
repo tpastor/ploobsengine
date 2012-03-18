@@ -119,8 +119,8 @@ namespace PloobsEngine.TestSuite
                 this.IScreen = IScreen;                                
             }
 
-            TimePassed TimePassed = new TimePassed(5, false);
-            TimePassed bet = new TimePassed(1, false);
+            TimePassed TimePassed = new TimePassed(5);
+            TimePassed bet = new TimePassed(1);
             int i = -1;
             bool firstTime = true;
             IContentManager contentManager;
