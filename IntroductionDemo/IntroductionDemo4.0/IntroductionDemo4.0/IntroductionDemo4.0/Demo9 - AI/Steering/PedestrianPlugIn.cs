@@ -5,13 +5,14 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 using PloobsEngine.SceneControl;
-using PloobsEngine;              
-    
+using PloobsEngine;
 
-namespace Bnoerj.AI.Steering.Pedestrian
+
+namespace IntroductionDemo4._0
 {
-	using ProximityDatabase = IProximityDatabase<IVehicle>;
-	using ProximityToken = ITokenForProximityDatabase<IVehicle>;
+	using ProximityDatabase = Bnoerj.AI.Steering.IProximityDatabase<Bnoerj.AI.Steering.IVehicle>;
+	using ProximityToken = Bnoerj.AI.Steering.ITokenForProximityDatabase<Bnoerj.AI.Steering.IVehicle>;
+    using Bnoerj.AI.Steering;
     
 
 	public class PedestrianPlugIn : IPlugIn

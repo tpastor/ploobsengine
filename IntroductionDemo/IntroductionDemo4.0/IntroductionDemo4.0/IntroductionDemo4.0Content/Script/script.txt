@@ -6,8 +6,6 @@ AddToWorld(cam);
 
 CreateLights();
 
-AddSkyBox("Textures//cubemap");
-
 function: void CreateLights()
 {
 	var l1 = CreateDirectionalLight(Vector3.Left, Color.White,0.5f);

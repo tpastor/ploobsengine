@@ -17,25 +17,25 @@ namespace EngineTestes
         /// </summary>
         static void Main(string[] args)
         {
-            TestProcessor TestProcessor = new TestProcessor();
-            TestProcessor.EvaluateTestes("EngineTestes.exe");
+            //TestProcessor TestProcessor = new TestProcessor();
+            //TestProcessor.EvaluateTestes("EngineTestes.exe");
 
-            //InitialEngineDescription desc = InitialEngineDescription.Default();
+            InitialEngineDescription desc = InitialEngineDescription.Default();
             //desc.useMipMapWhenPossible = true;
             //desc.UseAnisotropicFiltering = true;
             //desc.UseAnisotropicFiltering = true;
             //desc.isMultiSampling = true;
 
-            //using (EngineStuff engine = new EngineStuff(ref desc, LoadScreen))
-            //{
-            //    engine.Run();
-            //}
+            using (EngineStuff engine = new EngineStuff(ref desc, LoadScreen))
+            {
+                engine.Run();
+            }
 
         }
 
         static void LoadScreen(ScreenManager manager)
         {
-            manager.AddScreen(new ModeloScreen());
+            //manager.AddScreen(new ModeloScreen());
             //manager.AddScreen(new RVO3DScreen());
             //manager.AddScreen(new Physx28MaterialScreen());
             //manager.AddScreen(new Physx28VehicleScreen());            
@@ -70,7 +70,7 @@ namespace EngineTestes
             //manager.AddScreen(new MotionForwardScreen());
             //manager.AddScreen(new MotionBluScreen());
             //manager.AddScreen(new SerializationScreen());
-            //manager.AddScreen(new ActionScriptScreen());
+            manager.AddScreen(new ActionScriptScreen());
             //manager.AddScreen(new ScriptScreen());
             //manager.AddScreen(new Basic2DNeoforce());
             //manager.AddScreen(new Primitive2D());

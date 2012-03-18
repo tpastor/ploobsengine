@@ -82,10 +82,10 @@ namespace IntroductionDemo4._0
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);
-            render.RenderTextComplete("Demo Behavior Tree: Adding Behavior to an object", new Vector2(GraphicInfo.Viewport.Width - 515, 15), Color.White, Matrix.Identity);
-            render.RenderTextComplete("When the controlled object is far from the Scene center, it changes its textures", new Vector2(GraphicInfo.Viewport.Width - 515, 25), Color.White, Matrix.Identity);
-            render.RenderTextComplete("To control the object use TFGH", new Vector2(GraphicInfo.Viewport.Width - 515, 35), Color.White, Matrix.Identity);
-            render.RenderTextComplete("There are LOTS of build in Behaviors Nodes, check the BehaviorTrees namespace", new Vector2(GraphicInfo.Viewport.Width - 515, 45), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Demo Behavior Tree: Adding Behavior to an object", new Vector2(GraphicInfo.Viewport.Width - 715, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("When the controlled object is NEAR the tree, it changes randomly its textures", new Vector2(GraphicInfo.Viewport.Width - 715, 35), Color.White, Matrix.Identity);
+            render.RenderTextComplete("To control the object use TFGH", new Vector2(GraphicInfo.Viewport.Width - 715, 55), Color.White, Matrix.Identity);
+            render.RenderTextComplete("There are LOTS of build in Behaviors Nodes, check the BehaviorTrees namespace", new Vector2(GraphicInfo.Viewport.Width - 715, 75), Color.White, Matrix.Identity);
         }
     }
 } 

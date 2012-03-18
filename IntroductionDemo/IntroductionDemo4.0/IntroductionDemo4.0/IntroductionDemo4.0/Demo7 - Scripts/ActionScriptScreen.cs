@@ -31,22 +31,24 @@ namespace IntroductionDemo4._0
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
-            desc.DefferedDebug = false;
             desc.UseFloatingBufferForLightMap = false;            
             renderTech = new DeferredRenderTechnic(desc);
         }
 
         protected override void InitScreen(GraphicInfo GraphicInfo, EngineStuff engine)
         {
-            base.InitScreen(GraphicInfo, engine);
-
-            SkyBox skybox = new SkyBox();
-            engine.AddComponent(skybox);
-
             engine.AddComponent(new PloobsEngine.MessageSystem.MessageDeliver());           
-
+            base.InitScreen(GraphicInfo, engine);            
         }
 
+        protected override void CleanUp(EngineStuff engine)
+        {
+            engine.RemoveComponent(MessageDeliver.MyName);
+            base.CleanUp(engine);
+        }
+
+        SystemRecieverMessage SystemRecieverMessage;
+        InterScriptTalking interteste;
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory ,IContentManager contentManager)
         {
             base.LoadContent(GraphicInfo, factory, contentManager);
@@ -54,13 +56,14 @@ namespace IntroductionDemo4._0
             ///script to build the scene
             {
                 ScriptParsed ScriptParsed = Parser.ParseScriptFile("Content//Script//script.txt");
-                ScriptParsed.References.AddRange(new String[] { "EngineTestes.exe", "PloobsEngine.dll" });
-            
+                ScriptParsed.References.AddRange(new String[] {"IntroductionDemo4.0.exe", "PloobsEngineDebug.dll"                
+            });
 
-                ScriptParsed.UsingStatements.AddRange(new String[] { "EngineTestes.Scripts" , "System" , "System.Collections.Generic" , "System.Text"
+                ScriptParsed.UsingStatements.AddRange(new String[] { "IntroductionDemo4._0" , "System" , "System.Collections.Generic" , "System.Text"
             , "PloobsEngine.Engine", "PloobsEngine.Modelo" , "PloobsEngine.Physics.Bepu", "PloobsEngine.Material", "PloobsEngine.SceneControl"
             , "Microsoft.Xna.Framework" , "PloobsEngine.Physics" , "PloobsEngine.Utils" , "PloobsEngine.Light"
-            , "Microsoft.Xna.Framework.Graphics" , "PloobsEngine.Cameras" , "PloobsEngine.Features", "PloobsEngine.Commands"});
+            , "Microsoft.Xna.Framework.Graphics" , "PloobsEngine.Cameras" , "PloobsEngine.Features", "PloobsEngine.Commands"
+            });
             
 
                 Generator GenerateClassCode = new PloobsScripts.Generator(ScriptParsed, "TesteInter", true, true);
@@ -85,21 +88,18 @@ namespace IntroductionDemo4._0
                 interteste.BuildScene();
             }
 
-
-
-
             ///script to handle messages
             {
                 ScriptParsed ScriptParsed = Parser.ParseScriptFile("Content//Script//talk1.txt");
-                ScriptParsed.References.AddRange(new String[] {"EngineTestes.exe", "PloobsEngine.dll"});
+                ScriptParsed.References.AddRange(new String[] {"IntroductionDemo4.0.exe", "PloobsEngineDebug.dll"});
 
-                ScriptParsed.UsingStatements.AddRange(new String[] { "EngineTestes.Scripts" , "System" , "System.Collections.Generic" , "System.Text"
+                ScriptParsed.UsingStatements.AddRange(new String[] { "IntroductionDemo4._0" , "System" , "System.Collections.Generic" , "System.Text"
             , "PloobsEngine.Engine", "PloobsEngine.Modelo" , "PloobsEngine.Physics.Bepu", "PloobsEngine.Material", "PloobsEngine.SceneControl"
             , "Microsoft.Xna.Framework" , "PloobsEngine.Physics" , "PloobsEngine.Utils" , "PloobsEngine.Light"
-            , "Microsoft.Xna.Framework.Graphics" , "PloobsEngine.Cameras" , "PloobsEngine.Features", "PloobsEngine.Commands", "PloobsEngine.MessageSystem"
-            , "EngineTestes.Scripts" });
+            , "Microsoft.Xna.Framework.Graphics" , "PloobsEngine.Cameras" ,"PloobsEngine.MessageSystem", "PloobsEngine.Features", "PloobsEngine.Commands"
+            });
 
-                Generator GenerateClassCode = new PloobsScripts.Generator(ScriptParsed, "talking", true, true);
+                Generator GenerateClassCode = new PloobsScripts.Generator(ScriptParsed, "IntroductionDemo4._0", true, true);
                 GenerateClassCode.GenerateClass("talk", "InterScriptTalking");
                 GenerateClassCode.GenerateMethod("execute", ScriptParsed.MethodCode, typeof(void), System.CodeDom.MemberAttributes.Public | System.CodeDom.MemberAttributes.Override);
                 String srt = GenerateClassCode.GetCode(ScriptParsed);
@@ -111,7 +111,7 @@ namespace IntroductionDemo4._0
                     throw new Exception(erro);
                 }
 
-                InterScriptTalking interteste = Executor.BindTypeFromAssembly<InterScriptTalking>(Assembly, GenerateClassCode.TypeName);
+                interteste = Executor.BindTypeFromAssembly<InterScriptTalking>(Assembly, GenerateClassCode.TypeName);
 
                 interteste.graphicFactory = GraphicFactory;
                 interteste.graphicInfo = GraphicInfo;
@@ -121,7 +121,7 @@ namespace IntroductionDemo4._0
                 interteste.execute();
                 EntityMapper.getInstance().AddEntity(interteste);                
 
-                SystemRecieverMessage SystemRecieverMessage = new SystemRecieverMessage();
+                SystemRecieverMessage = new SystemRecieverMessage();
                 SystemRecieverMessage.OnMessage += new Action<Message>(SystemRecieverMessage_OnMessage);
                 EntityMapper.getInstance().AddgrouptagRecieveEntity("teste", SystemRecieverMessage);
 
@@ -145,9 +145,9 @@ namespace IntroductionDemo4._0
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);
-            render.RenderTextComplete("Demo Scripts 2 -> Scrips", new Vector2(GraphicInfo.Viewport.Width - 515, 15), Color.White, Matrix.Identity);
-            render.RenderTextComplete("Scripts Advanced Usage: Press Space to send a message to be handled by a scrip", new Vector2(GraphicInfo.Viewport.Width - 515, 25), Color.White, Matrix.Identity);
-            render.RenderTextComplete("Messages recieved: " + recievedMessage, new Vector2(GraphicInfo.Viewport.Width - 515, 35), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Demo Scripts 2 -> Scrips", new Vector2(GraphicInfo.Viewport.Width - 715, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Scripts Advanced Usage: Press Space to send a message to be handled by a script", new Vector2(GraphicInfo.Viewport.Width - 715, 35), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Messages recieved: " + recievedMessage, new Vector2(GraphicInfo.Viewport.Width - 715, 55), Color.White, Matrix.Identity);
         }
     }
 }

@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using PloobsEngine.IA;
 using Bnoerj.AI.Steering;
 
-namespace EngineTestes.AI
+namespace IntroductionDemo4._0
 {
     class SteerAtachment : IObjectAttachment
     {

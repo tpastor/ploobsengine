@@ -11,11 +11,10 @@ using PloobsEngine.Physics.Bepu;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Cameras;
 using Microsoft.Xna.Framework.Graphics;
-using EngineTestes.AI.Behavior_Tree;
 using PloobsEngine.Utils;
 using RVO3D;
 
-namespace EngineTestes
+namespace IntroductionDemo4._0
 {
     public class RVO3DScreen : IScene
     {
@@ -56,8 +55,8 @@ namespace EngineTestes
             }
             
             
-            Simulator.setTimeStep(0.05f);
-            Simulator.setAgentDefaults(10.0f, 100, 10.0f, 5.0f, 2.0f,new Vector3());
+            Simulator.setTimeStep(0.10f);
+            Simulator.setAgentDefaults(15.0f, 25, 5.0f, 5.0f, 2.0f,new Vector3());
 
             for (int i = 0; i < 20; i++)
             {
@@ -104,8 +103,11 @@ namespace EngineTestes
         }
 
         protected override void Draw(GameTime gameTime, RenderHelper render)
-        {   
-            base.Draw(gameTime, render);         
+        {
+            base.Draw(gameTime, render);
+            render.RenderTextComplete("Demo: RVO2 3D Crowd Simulation", new Vector2(GraphicInfo.Viewport.Width - 515, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Only for PC Plataform. Native Implementation", new Vector2(GraphicInfo.Viewport.Width - 515, 35), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Left Mouse bottom to set a destination", new Vector2(GraphicInfo.Viewport.Width - 515, 55), Color.White, Matrix.Identity);
         }
 
     }

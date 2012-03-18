@@ -31,8 +31,7 @@ namespace IntroductionDemo4._0
         }
 
         int index = 0;
-
-        static int totalDemos = 22;
+        static int totalDemos = 30;
         EngineStuff engine;
 
         private int[] screenList = new int[totalDemos];
@@ -85,6 +84,22 @@ namespace IntroductionDemo4._0
                   return new ActionScriptScreen();
                 case 21:
                   return new SerializationScreen();
+                case 22:
+                  return new BehaviorTreeScreen();
+                case 23:
+                  return new FSMScreen();
+                case 24:
+                  return new IaWaypointsScreen();
+                case 25:
+                  return new IaPathFindingScreen();
+                case 26:
+                  return new RVOScreen();
+                case 27:
+                  return new RVO2DScreen();
+                case 28:
+                  return new RVO3DScreen();
+                case 29:
+                  return new SteerScreen();                
                 default:
                     break;
             }

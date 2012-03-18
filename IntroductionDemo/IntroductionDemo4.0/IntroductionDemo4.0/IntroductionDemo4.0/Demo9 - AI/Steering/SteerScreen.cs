@@ -11,16 +11,12 @@ using PloobsEngine.Physics.Bepu;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Cameras;
 using Bnoerj.AI.Steering;
-using Bnoerj.AI.Steering.Pedestrian;
 using EngineTestes.AI;
 using PloobsEngine.Features.DebugDraw;
 using PloobsEngine.Commands;
 
-namespace ProjectTemplate
+namespace IntroductionDemo4._0
 {
-    /// <summary>
-    /// Basic Forward Screen
-    /// </summary>
     public class SteerScreen : IScene
     {
         IPlugIn PlugIn;
@@ -47,7 +43,13 @@ namespace ProjectTemplate
             base.InitScreen(GraphicInfo, engine);
             engine.AddComponent(new DebugDraw());
             engine.IsMouseVisible = true;
-        }        
+        }
+
+        protected override void CleanUp(EngineStuff engine)
+        {
+            engine.RemoveComponent(DebugDraw.MyName);
+            base.CleanUp(engine);
+        }
 
 
         /// <summary>
@@ -131,7 +133,7 @@ namespace ProjectTemplate
             base.Draw(gameTime, render); 
 
             ///Draw some text on the screen
-            render.RenderTextComplete("Demo: Basic Screen Forward", new Vector2(GraphicInfo.Viewport.Width - 315, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Demo Steer Behaviors: Pedestrian Simulation", new Vector2(GraphicInfo.Viewport.Width - 315, 15), Color.White, Matrix.Identity);
         }
 
     }

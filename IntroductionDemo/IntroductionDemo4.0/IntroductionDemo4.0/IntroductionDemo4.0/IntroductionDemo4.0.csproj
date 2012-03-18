@@ -100,6 +100,14 @@
     <Reference Include="PloobsSerializator">
       <HintPath>..\Dll\PloobsSerializator.dll</HintPath>
     </Reference>
+    <Reference Include="RVO2DWrapper, Version=1.0.4452.2407, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\RVO2DWrapper.dll</HintPath>
+    </Reference>
+    <Reference Include="RVO3D, Version=1.0.4451.39782, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\RVO3D.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
@@ -124,9 +132,7 @@
     <Compile Include="Demo9 - AI\Pathfinding and Waypoints\IaPathFindingScreen.cs" />
     <Compile Include="Demo9 - AI\Pathfinding and Waypoints\IaWaypointsScreen.cs" />
     <Compile Include="Demo9 - AI\Pathfinding and Waypoints\moverAtachment.cs" />
-    <Compile Include="Demo9 - AI\RVO2D\RVO2DObject.cs" />
-    <Compile Include="Demo9 - AI\RVO2D\RVO2DScreen.cs" />
-    <Compile Include="Demo9 - AI\RVO3D\RVO3DObject.cs" />
+    <Compile Include="Demo9 - AI\RVO2\RVO2DScreen.cs" />
     <Compile Include="Demo9 - AI\RVO3D\RVO3DScreen.cs" />
     <Compile Include="Demo9 - AI\RVO\RVOObject.cs" />
     <Compile Include="Demo9 - AI\RVO\RVOScreen.cs" />
@@ -184,6 +190,9 @@
     <Content Include="RVO3D.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="waypoints.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IntroductionDemo4.0Content\IntroductionDemo4.0Content.contentproj">
