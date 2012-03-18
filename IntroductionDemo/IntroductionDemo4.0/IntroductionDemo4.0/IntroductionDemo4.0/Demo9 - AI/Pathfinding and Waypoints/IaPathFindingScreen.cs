@@ -16,12 +16,9 @@ using PloobsEngine.Features.DebugDraw;
 using PloobsEngine.Commands;
 using EngineTestes.AI;
 
-namespace ProjectTemplate
+namespace IntroductionDemo4._0
 {
-    /// <summary>
-    /// Basic Forward Screen
-    /// </summary>
-    public class IaPathFinding : IScene
+    public class IaPathFindingScreen : IScene
     {
         DebugShapesDrawer ddrawer = new DebugShapesDrawer(true);
         DebugLines dlines;
@@ -68,12 +65,12 @@ namespace ProjectTemplate
             dlines = new DebugLines();
             ddrawer.AddShape(dlines);
             
-            Picking pick = new Picking(this);
+            Picking pick = new Picking(this,2000);
             pick.OnPickedLeftButton += new OnPicked(pick_OnPickedLeftButton);
                         
             {
                 SimpleModel simpleModel = new SimpleModel(factory, "Model//block");
-                simpleModel.SetTexture(factory.CreateTexture2DColor(1, 1, Color.White), TextureType.DIFFUSE);                
+                simpleModel.SetTexture(factory.CreateTexture2DColor(1, 1, Color.White), TextureType.DIFFUSE);
                 ///Physic info (position, rotation and scale are set here)
                 BoxObject tmesh = new BoxObject(Vector3.Zero, 1, 1, 1, 10, new Vector3(1000, 1, 1000), Matrix.Identity, MaterialDescription.DefaultBepuMaterial());
                 tmesh.isMotionLess = true;
@@ -97,7 +94,6 @@ namespace ProjectTemplate
                 sm.SetTexture(factory.CreateTexture2DColor(1, 1, Color.Yellow), TextureType.DIFFUSE);
                 ///physic Ghost object(no collision)
                 GhostObject pi = new GhostObject(start.WorldPos, Matrix.Identity, new Vector3(5));
-                pi.isMotionLess = true;
                 ForwardXNABasicShader s = new ForwardXNABasicShader();                
                 ForwardMaterial mat = new ForwardMaterial(s);
                 IObject obj4 = new IObject(mat, sm, pi);
@@ -108,7 +104,6 @@ namespace ProjectTemplate
             this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo));
 
             {
-                ///Procedural yellow diffuse texture
                 SimpleModel sm = new SimpleModel(factory, "Model\\block");
                 sm.SetTexture(factory.CreateTexture2DColor(1, 1, Color.Blue), TextureType.DIFFUSE);                
                 GhostObject pi = new GhostObject(start.WorldPos, Matrix.Identity, new Vector3(5));
@@ -173,7 +168,10 @@ namespace ProjectTemplate
             base.Draw(gameTime, render);
 
             ///Draw some text on the screen
-            render.RenderTextComplete("Demo: Basic Screen Forward", new Vector2(GraphicInfo.Viewport.Width - 315, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Demo: PathFinding", new Vector2(GraphicInfo.Viewport.Width - 715, 15), Color.Red, Matrix.Identity);
+            render.RenderTextComplete("It uses the Waypoints generated in the last Screen", new Vector2(GraphicInfo.Viewport.Width - 715, 35), Color.Red, Matrix.Identity);
+            render.RenderTextComplete("Left Mouse Bottom to place an endpoint for the BlockObject", new Vector2(GraphicInfo.Viewport.Width - 715, 55), Color.Red, Matrix.Identity);
+            
         }
 
     }

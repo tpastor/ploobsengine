@@ -25,7 +25,8 @@ namespace IntroductionDemo4._0
 
         protected void SendMessage(String tag, object content)
         {
-            Message mes = new Message(id, -1, tag, Priority.MEDIUM, 0, SenderType.NORMAL, content,null);
+            ///Create a system message (SenderType.SYSTEM), cause the listener SystemRecieverMessage is configured to watch this types of messages
+            Message mes = new Message(id, -1, tag, Priority.MEDIUM, 0, SenderType.SYSTEM, content,null);
             MessageDeliver.SendMessage(mes);
         }
 

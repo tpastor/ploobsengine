@@ -44,11 +44,11 @@ namespace IntroductionDemo4._0
         {
             base.LoadContent(GraphicInfo,factory, contentManager);
 
-            ScriptParsed ScriptParsed = Parser.ParseScriptFile("Content//Script//script.txt");                        
-            ScriptParsed.References.AddRange( new String[] {"EngineTestes.exe", "PloobsEngine.dll"                
-            });            
+            ScriptParsed ScriptParsed = Parser.ParseScriptFile("Content//Script//script.txt");
+            ScriptParsed.References.AddRange(new String[] {"IntroductionDemo4.0.exe", "PloobsEngineDebug.dll"                
+            });
 
-            ScriptParsed.UsingStatements.AddRange(new String[] { "EngineTestes.Scripts" , "System" , "System.Collections.Generic" , "System.Text"
+            ScriptParsed.UsingStatements.AddRange(new String[] { "IntroductionDemo4._0" , "System" , "System.Collections.Generic" , "System.Text"
             , "PloobsEngine.Engine", "PloobsEngine.Modelo" , "PloobsEngine.Physics.Bepu", "PloobsEngine.Material", "PloobsEngine.SceneControl"
             , "Microsoft.Xna.Framework" , "PloobsEngine.Physics" , "PloobsEngine.Utils" , "PloobsEngine.Light"
             , "Microsoft.Xna.Framework.Graphics" , "PloobsEngine.Cameras" , "PloobsEngine.Features", "PloobsEngine.Commands"
@@ -80,8 +80,8 @@ namespace IntroductionDemo4._0
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);
-            render.RenderTextComplete("Demo Scripts 1 -> Scene generated on script file", new Vector2(GraphicInfo.Viewport.Width - 515, 15), Color.White, Matrix.Identity);
-            render.RenderTextComplete("Check the Code", new Vector2(GraphicInfo.Viewport.Width - 515, 25), Color.White, Matrix.Identity);            
+            render.RenderTextComplete("Demo Scripts 1 -> Scene generated on script file", new Vector2(GraphicInfo.Viewport.Width - 715, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Check the Code", new Vector2(GraphicInfo.Viewport.Width - 715, 35), Color.White, Matrix.Identity);            
         }
 
     }

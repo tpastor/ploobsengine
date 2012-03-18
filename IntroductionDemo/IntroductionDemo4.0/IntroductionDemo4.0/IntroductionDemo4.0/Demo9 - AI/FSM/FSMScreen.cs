@@ -120,8 +120,11 @@ namespace IntroductionDemo4._0
             base.Draw(gameTime, render);
 
             ///Draw some text on the screen
-            render.RenderTextComplete("Demo: Finite State Machine Basic sample", new Vector2(GraphicInfo.Viewport.Width - 315, 15), Color.White, Matrix.Identity);            
-            render.RenderTextComplete("Current State: " + fsm.GetCurrentState().Name, new Vector2(GraphicInfo.Viewport.Width - 315, 35), Color.White, Matrix.Identity);            
+            render.RenderTextComplete("Demo: Finite State Machine Basic Sample", new Vector2(GraphicInfo.Viewport.Width - 715, 15), Color.Red, Matrix.Identity);            
+            render.RenderTextComplete("Current State: " + fsm.GetCurrentState().Name, new Vector2(GraphicInfo.Viewport.Width - 715, 35), Color.Red, Matrix.Identity);
+            render.RenderTextComplete("Space to go to state 2 from state 1 ", new Vector2(GraphicInfo.Viewport.Width - 715, 55), Color.Red, Matrix.Identity);            
+            render.RenderTextComplete("Enter to go to state 1 from state 2", new Vector2(GraphicInfo.Viewport.Width - 715, 75), Color.Red, Matrix.Identity);            
+            
         }
 
     }

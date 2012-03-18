@@ -22,7 +22,7 @@ namespace IntroductionDemo4._0
 
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
+            world = new IWorld(new BepuPhysicWorld(-0.098f), new SimpleCuller());
 
             ForwardRenderTecnichDescription desc = ForwardRenderTecnichDescription.Default();
             desc.BackGroundColor = Color.CornflowerBlue;
@@ -33,16 +33,21 @@ namespace IntroductionDemo4._0
         {
             base.LoadContent(GraphicInfo, factory, contentManager);
 
+
+            ///Serializing a basic type
             SerializatorWrapper SerializatorWrapper = new SerializatorWrapper();
             SerializatorWrapper.Serialize(new Vector3(10, 20, 30), "vetor.xml");
+            
+            ///loading it
             Vector3 vec = (Vector3) SerializatorWrapper.Desserialize<Vector3>("vetor.xml", null);
             Debug.Assert(vec.X == 10);
             Debug.Assert(vec.Y == 20);
             Debug.Assert(vec.Z == 30);
 
-
+            ///same to PloobsMockType
             ObjectMock ObjectMock = new ObjectMock(GraphicFactory, "Model/cenario", Vector3.Zero, Matrix.Identity, Vector3.One);
             SerializatorWrapper.Serialize(ObjectMock, "cena.xml");
+
             ObjectMock mloaded = (ObjectMock)SerializatorWrapper.Desserialize<ObjectMock>("cena.xml", GraphicFactory);
             this.World.AddObject(mloaded);
 
@@ -51,7 +56,7 @@ namespace IntroductionDemo4._0
             {
                 SimpleModel simpleModel = new SimpleModel(factory, "Model//ball");
                 simpleModel.SetTexture(factory.CreateTexture2DColor(1,1,Color.Green),TextureType.DIFFUSE);
-                SphereObject tmesh = new SphereObject(new Vector3(100, 200, 10), 1 ,10, 5, MaterialDescription.DefaultBepuMaterial());
+                SphereObject tmesh = new SphereObject(new Vector3(100, 200, 10), 1 ,5, 5, MaterialDescription.DefaultBepuMaterial());
                 ForwardXNABasicShader shader = new ForwardXNABasicShader(ForwardXNABasicShaderDescription.Default());
                 ForwardMaterial fmaterial = new ForwardMaterial(shader);
                 obj = new IObject(fmaterial, simpleModel, tmesh);
@@ -80,8 +85,6 @@ namespace IntroductionDemo4._0
                     saved++;
                 }
                 ));
-
-
             
             this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo));
 
@@ -90,8 +93,8 @@ namespace IntroductionDemo4._0
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {        
             base.Draw(gameTime, render);
-            render.RenderTextComplete("Demo Serialization: Press Space to Serialize/Desserialize the Ball Object", new Vector2(GraphicInfo.Viewport.Width - 515, 15), Color.White, Matrix.Identity);
-            render.RenderTextComplete("Times Ball was Serialized/Desserialized: " + saved, new Vector2(GraphicInfo.Viewport.Width - 515, 25), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Demo Serialization: Press Space to Serialize/Desserialize the Ball Object", new Vector2(GraphicInfo.Viewport.Width - 715, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Times Ball was Serialized/Desserialized: " + saved, new Vector2(GraphicInfo.Viewport.Width - 715, 35), Color.White, Matrix.Identity);
         }
 
 

@@ -13,11 +13,14 @@ using Microsoft.Xna.Framework;
 using PloobsEngine.Cameras;
 using Microsoft.Xna.Framework.Graphics;
 using RVO;
-using EngineTestes.AI.Behavior_Tree;
 using PloobsEngine.Utils;
 
-namespace EngineTestes
+namespace IntroductionDemo4._0
 {
+    /// <summary>
+    /// Can run in PC/Windows and Phone 7
+    /// Implemented in C#
+    /// </summary>
     public class RVOScreen : IScene
     {
 
@@ -133,7 +136,9 @@ namespace EngineTestes
 
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {   
-            base.Draw(gameTime, render);         
+            base.Draw(gameTime, render);
+            render.RenderTextComplete("Demo: RVO 2D XNA Crowd Simulation", new Vector2(GraphicInfo.Viewport.Width - 515, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Left Mouse bottom to set a destination", new Vector2(GraphicInfo.Viewport.Width - 515, 35), Color.White, Matrix.Identity);            
         }
 
     }

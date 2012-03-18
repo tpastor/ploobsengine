@@ -34,11 +34,12 @@ namespace PloobsEngine.MessageSystem
         /// <summary>
         /// Initializes a new instance of the <see cref="SystemRecieverMessage"/> class.
         /// </summary>
-        public SystemRecieverMessage()
+        public SystemRecieverMessage(SenderType AcceptableMessagesTypes = SenderType.SYSTEM)
         {
+            this.AcceptableMessagesTypes = AcceptableMessagesTypes;
             EntityMapper.getInstance().AddEntity(this);
         }
-
+        SenderType AcceptableMessagesTypes;
         public SystemRecieverMessage(long id)
         {
             this.id = id;
@@ -54,7 +55,7 @@ namespace PloobsEngine.MessageSystem
         /// <returns></returns>
         public bool HandleThisMessageType(SenderType type)
         {
-            return type == SenderType.SYSTEM;
+            return type == AcceptableMessagesTypes;
         }
 
         /// <summary>

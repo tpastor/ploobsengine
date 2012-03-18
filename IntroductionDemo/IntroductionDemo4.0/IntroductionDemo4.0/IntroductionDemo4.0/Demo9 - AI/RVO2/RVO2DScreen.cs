@@ -11,12 +11,17 @@ using PloobsEngine.Physics.Bepu;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Cameras;
 using Microsoft.Xna.Framework.Graphics;
-using EngineTestes.AI.Behavior_Tree;
 using PloobsEngine.Utils;
 using RVO2D;
 
-namespace EngineTestes
+namespace IntroductionDemo4._0
 {
+    /// <summary>
+    /// Very Similar to the Last RVO2D
+    /// More Robust and Faster Approach
+    /// Uses Native Code Wrapper 
+    /// Runs only in PC
+    /// </summary>
     public class RVO2DScreen : IScene
     {
 
@@ -129,8 +134,11 @@ namespace EngineTestes
         }
 
         protected override void Draw(GameTime gameTime, RenderHelper render)
-        {   
-            base.Draw(gameTime, render);         
+        {
+            base.Draw(gameTime, render);
+            render.RenderTextComplete("Demo: RVO2 2D Crowd Simulation", new Vector2(GraphicInfo.Viewport.Width - 515, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Only for PC Plataform. Native Implementation", new Vector2(GraphicInfo.Viewport.Width - 515, 35), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Left Mouse bottom to set a destination", new Vector2(GraphicInfo.Viewport.Width - 515, 55), Color.White, Matrix.Identity);            
         }
 
     }

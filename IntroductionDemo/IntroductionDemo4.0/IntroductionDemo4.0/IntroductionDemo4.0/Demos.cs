@@ -35,6 +35,9 @@ namespace IntroductionDemo4._0
         {            
             ///add the title screen
             manager.AddScreen(new TitleScreen());                                    
+            //manager.AddScreen(new ActionScriptScreen());                                                
+            //manager.AddScreen(new IaPathFindingScreen());                                                
+            //manager.AddScreen(new IaWaypointsScreen());                                                
         }
 
         static void UnhandledException(object sender, UnhandledExceptionEventArgs e)

@@ -18,7 +18,7 @@ using PloobsEngine.Commands;
 
 namespace IntroductionDemo4._0
 {
-    public class IaWaypoints : IScene
+    public class IaWaypointsScreen : IScene
     {
         DebugShapesDrawer ddrawer = new DebugShapesDrawer(true);
         DebugLines dlines;
@@ -68,16 +68,16 @@ namespace IntroductionDemo4._0
             dlines = new DebugLines();
             ddrawer.AddShape(dlines);
 
-            Picking pick = new Picking(this);
+            Picking pick = new Picking(this,2000);
             pick.OnPickedLeftButton += new OnPicked(pick_OnPickedLeftButton);
 
             wh = new WaypointHandler();
 
-            ///Uncoment to add your model
             SimpleModel simpleModel = new SimpleModel(factory, "Model//block");
             simpleModel.SetTexture(factory.CreateTexture2DColor(1, 1, Color.White), TextureType.DIFFUSE);
             ///Physic info (position, rotation and scale are set here)
             BoxObject tmesh = new BoxObject(Vector3.Zero, 1, 1, 1, 10, new Vector3(1000, 1, 1000), Matrix.Identity, MaterialDescription.DefaultBepuMaterial());
+            tmesh.isMotionLess = true;
             ///Forward Shader (look at this shader construction for more info)
             ForwardXNABasicShader shader = new ForwardXNABasicShader();
             ///Deferred material
@@ -165,13 +165,11 @@ namespace IntroductionDemo4._0
             base.Draw(gameTime, render);
 
             ///Draw some text on the screen
-            render.RenderTextComplete("IA: Placing Waypoints Demo", new Vector2(GraphicInfo.Viewport.Width - 315, 15), Color.White, Matrix.Identity);
-            render.RenderTextComplete("WaypointsState: " + wh.CurrentWaypointsCollection.State, new Vector2(GraphicInfo.Viewport.Width - 315, 35), Color.White, Matrix.Identity);
-            render.RenderTextComplete("Quantity: " + wh.CurrentWaypointsCollection.GetWaypointsList().Count , new Vector2(GraphicInfo.Viewport.Width - 315, 55), Color.White, Matrix.Identity);
-            render.RenderTextComplete("Saved: " + saved, new Vector2(GraphicInfo.Viewport.Width - 315, 75), Color.White, Matrix.Identity);
-            render.RenderTextComplete("Left Mouse Bottom to place Waypoint, Space to Connect them and Enter to save to a file", new Vector2(GraphicInfo.Viewport.Width - 315, 95), Color.White, Matrix.Identity);
-
-
+            render.RenderTextComplete("IA: Placing Waypoints Demo", new Vector2(GraphicInfo.Viewport.Width - 715, 15), Color.Red, Matrix.Identity);
+            render.RenderTextComplete("WaypointsState: " + wh.CurrentWaypointsCollection.State, new Vector2(GraphicInfo.Viewport.Width - 715, 35), Color.Red, Matrix.Identity);
+            render.RenderTextComplete("Quantity: " + wh.CurrentWaypointsCollection.GetWaypointsList().Count, new Vector2(GraphicInfo.Viewport.Width - 715, 55), Color.Red, Matrix.Identity);
+            render.RenderTextComplete("Saved: " + saved, new Vector2(GraphicInfo.Viewport.Width - 715, 75), Color.Red, Matrix.Identity);
+            render.RenderTextComplete("Left Mouse Bottom to place Waypoint, Space to Connect them and Enter to save to a file", new Vector2(GraphicInfo.Viewport.Width - 715, 95), Color.Red, Matrix.Identity);
             
             
         }

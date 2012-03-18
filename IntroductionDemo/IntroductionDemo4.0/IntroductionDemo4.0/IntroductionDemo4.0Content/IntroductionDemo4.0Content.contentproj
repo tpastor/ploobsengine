@@ -102,6 +102,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\block.X">
+      <Name>block</Name>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
     <None Include="Script\script.txt">
       <Name>script</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
