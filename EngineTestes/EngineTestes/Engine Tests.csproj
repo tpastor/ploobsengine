@@ -170,6 +170,12 @@
     <Compile Include="AA\MLAntiAliasingPostEffect.cs" />
     <Compile Include="AI\Behavior Tree\BaseObject.cs" />
     <Compile Include="AI\Behavior Tree\BehaviorTreeScreen.cs" />
+    <Compile Include="AI\Planner\Action\BeArmedAction.cs" />
+    <Compile Include="AI\Planner\Action\BeProtectedAction.cs" />
+    <Compile Include="AI\Planner\Action\GotoAction.cs" />
+    <Compile Include="AI\Planner\Action\KillAction.cs" />
+    <Compile Include="AI\Planner\Action\TestGoal.cs" />
+    <Compile Include="AI\Planner\PlannerTest.cs" />
     <Compile Include="AI\RVO2D\RVO2DObject.cs" />
     <Compile Include="AI\RVO2D\RVO2DScreen.cs" />
     <Compile Include="AI\RVO3D\RVO3DObject.cs" />
