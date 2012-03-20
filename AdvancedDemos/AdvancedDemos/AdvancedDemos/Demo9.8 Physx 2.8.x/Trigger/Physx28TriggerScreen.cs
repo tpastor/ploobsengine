@@ -164,7 +164,8 @@ namespace AdvancedDemo4._0
 
             ///Draw some text to the screen
             render.RenderTextComplete("Demo: Physx Trigger", new Vector2(20, 15), Color.White, Matrix.Identity);
-            render.RenderTextComplete("Trigger State: " + ReciveMessage.mesRec.Cod, new Vector2(20, 35), Color.White, Matrix.Identity);
+            if(ReciveMessage!= null)
+                render.RenderTextComplete("Trigger State: " + ReciveMessage.mesRec.Cod, new Vector2(20, 35), Color.White, Matrix.Identity);
         }
     }
 }
