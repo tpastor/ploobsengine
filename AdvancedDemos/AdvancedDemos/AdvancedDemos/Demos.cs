@@ -18,8 +18,8 @@ namespace AdvancedDemo4._0
             //desc.UseVerticalSyncronization = true;
             //desc.isFixedGameTime = true;
             //desc.isMultiSampling = true;
-            desc.useMipMapWhenPossible = false;
-            desc.UseAnisotropicFiltering = false;
+            //desc.useMipMapWhenPossible = false;
+            //desc.UseAnisotropicFiltering = false;
             desc.Logger = new SimpleLogger();
             desc.UnhandledException_Handler = UnhandledException;
             ///start the engine
@@ -58,6 +58,24 @@ namespace AdvancedDemo4._0
             //manager.AddScreen(new DeferredDirectionaldShadowScreen());            
             //manager.AddScreen(new SSAOScreen());
             //manager.AddScreen(new DemosHomeScreen());
+            //manager.AddScreen(new CPUBillboardScreen());
+            //manager.AddScreen(new DecalScreen());
+            //manager.AddScreen(new ExplosionScreen());
+            //manager.AddScreen(new StealthEffectScreen());
+            //manager.AddScreen(new AmbientEnvironmenpScreen());
+            //manager.AddScreen(new ShaderIDScreen());
+
+            //manager.AddScreen(new Physx28Screen());
+            //manager.AddScreen(new Physx28MaterialScreen());
+            //manager.AddScreen(new Physx28TriggerScreen());
+            //manager.AddScreen(new PhysxCharacter28Screen());
+            //manager.AddScreen(new BasicCloth28Screen());
+            //manager.AddScreen(new FlagCloth28Screen());
+            //manager.AddScreen(new PressureCloth28Screen());
+            //manager.AddScreen(new Fluids28Screen());
+            //manager.AddScreen(new EngineTestes.DeferredEmitterFluids28Screen());
+           
+
         }
 
         static void UnhandledException(object sender, UnhandledExceptionEventArgs e)
@@ -70,7 +88,6 @@ namespace AdvancedDemo4._0
 
     /// <summary>
     /// Custom log class
-    /// When using the Release version of the engine, the log wont be used by the engine.
     /// </summary>
     class SimpleLogger : ILogger
     {

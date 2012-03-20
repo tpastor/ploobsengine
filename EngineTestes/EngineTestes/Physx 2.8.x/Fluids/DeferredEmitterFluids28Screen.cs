@@ -11,14 +11,12 @@ using PloobsEngine.Cameras;
 using Microsoft.Xna.Framework.Graphics;
 using PloobsEngine.Physics;
 using StillDesign.PhysX;
-
 using Phyx = StillDesign.PhysX.MathPrimitives;
 using PloobsEngine.Features.Billboard;
 using PloobsEngine.Light;
 
 namespace EngineTestes
-{
-    [PloobsEngine.TestSuite.TesteVisualScreen]
+{    
     public class DeferredEmitterFluids28Screen : IScene
     {
 

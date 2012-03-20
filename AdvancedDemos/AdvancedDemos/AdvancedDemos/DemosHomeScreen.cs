@@ -29,7 +29,7 @@ namespace AdvancedDemo4._0
 
         EngineStuff engine;
 
-        private int[] screenList = new int[22];
+        private int[] screenList = new int[36];
 
         private IScreen GetScreen(int screenNumber)
         {            
@@ -79,10 +79,41 @@ namespace AdvancedDemo4._0
                     return new SSAOScreen();
                 case 21:
                     return new OctreeScreen();
+                case 22:
+                    return new CPUBillboardScreen();
+                case 23:
+                    return new DecalScreen();
+                case 24:
+                    return new ExplosionScreen();
+                case 25:
+                    return new StealthEffectScreen();
+                case 26:
+                    return new AmbientEnvironmenpScreen();
+                case 27:
+                    return new ShaderIDScreen();
+                case 28:          
+                    return new Physx28Screen();
+                case 29:       
+                    return new Physx28MaterialScreen();
+                case 30:       
+                    return new Physx28TriggerScreen();
+                case 31:       
+                    return new PhysxCharacter28Screen();
+                case 32:       
+                    return new BasicCloth28Screen();
+                case 33:       
+                    return new FlagCloth28Screen();
+                case 34:       
+                    return new PressureCloth28Screen();
+                case 35:
+                    return new Fluids28Screen();
+                case 36:
+                    return new DeferredEmitterFluids28Screen();
                 default:
                     break;
             }
-            return null;
+            return null;                       
+
         }
 
         IScreen active = null;

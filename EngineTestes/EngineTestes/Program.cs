@@ -42,7 +42,7 @@ namespace EngineTestes
             //manager.AddScreen(new Physx28TriggerScreen());
             //manager.AddScreen(new PhysxTerrain28Screen());
             //manager.AddScreen(new PhysxCharacter28Screen());
-            //manager.AddScreen(new DeferredEmitterFluids28Screen());
+            manager.AddScreen(new DeferredEmitterFluids28Screen());
             //manager.AddScreen(new DeferredFluids28Screen2());
             //manager.AddScreen(new DeferredFluids28Screen());
             //manager.AddScreen(new Fluids28Screen());
@@ -70,7 +70,7 @@ namespace EngineTestes
             //manager.AddScreen(new MotionForwardScreen());
             //manager.AddScreen(new MotionBluScreen());
             //manager.AddScreen(new SerializationScreen());
-            manager.AddScreen(new ActionScriptScreen());
+            //manager.AddScreen(new ActionScriptScreen());
             //manager.AddScreen(new ScriptScreen());
             //manager.AddScreen(new Basic2DNeoforce());
             //manager.AddScreen(new Primitive2D());
