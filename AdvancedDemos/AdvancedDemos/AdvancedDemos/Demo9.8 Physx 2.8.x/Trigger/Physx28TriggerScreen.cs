@@ -130,8 +130,8 @@ namespace AdvancedDemo4._0
                  ForwardXNABasicShader nd = new ForwardXNABasicShader();
                  IMaterial m =new ForwardMaterial(nd);                                 
                  
-                 SphereShapeDescription SphereGeometry = new SphereShapeDescription(5f);
-                 PhysxGhostObject PhysxPhysicObject = new PhysxGhostObject(new Vector3(100,100,100),Matrix.Identity, Vector3.One * 5f);
+                 SphereShapeDescription SphereGeometry = new SphereShapeDescription(15f);
+                 PhysxGhostObject PhysxPhysicObject = new PhysxGhostObject(new Vector3(100,100,100),Matrix.Identity, Vector3.One * 15f);
                  
                  IObject o = new IObject(m, sm2, PhysxPhysicObject);
                  this.World.AddObject(o);
@@ -142,7 +142,7 @@ namespace AdvancedDemo4._0
                  ///LOOK AT INTRODUCTION DEMOS
                  PhysxTrigger PhysxTrigger = new PloobsEngine.Physics.PhysxTrigger(
                      SphereGeometry, Matrix.CreateTranslation(new Vector3(100, 100, 100)),
-                     new PloobsEngine.Trigger.TriggerEvent("TriggerEvent", "TriggerEvent"), null, true);
+                     new PloobsEngine.Trigger.TriggerEvent("TriggerEvent", "TriggerEvent"), null, true,true,true);
 
                  World.AddTrigger(PhysxTrigger);
 
@@ -164,8 +164,9 @@ namespace AdvancedDemo4._0
 
             ///Draw some text to the screen
             render.RenderTextComplete("Demo: Physx Trigger", new Vector2(20, 15), Color.White, Matrix.Identity);
-            if(ReciveMessage!= null)
-                render.RenderTextComplete("Trigger State: " + ReciveMessage.mesRec.Cod, new Vector2(20, 35), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Throw bal to the blue ball", new Vector2(20, 35), Color.White, Matrix.Identity);
+            if (ReciveMessage.mesRec != null)
+                render.RenderTextComplete("Trigger State: " + ReciveMessage.mesRec.Cod, new Vector2(20, 55), Color.White, Matrix.Identity);
         }
     }
 }

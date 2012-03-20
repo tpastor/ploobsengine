@@ -116,7 +116,7 @@ namespace AdvancedDemo4._0
                 ///The view Matrix
                 var view = Matrix.CreateLookAt(
                     new Vector3(500, 500, 700),
-                    new Vector3(x, 50, z),
+                    new Vector3(-200, 50, -10),
                     Vector3.Up
                     );
                 Decal decal = new Decal(texture, view, projection);
