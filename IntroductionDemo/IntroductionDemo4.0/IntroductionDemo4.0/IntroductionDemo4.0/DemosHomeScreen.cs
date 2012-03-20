@@ -143,7 +143,7 @@ namespace IntroductionDemo4._0
             render.RenderTextComplete("The focus here is not in the visual, it is in the funcionalities (Check the Source Code =P)", new Vector2(40, 50), Color.Red, Matrix.Identity);            
             render.RenderTextComplete("(Press F1 to cycle through demos)", new Vector2(40, 75), Color.White, Matrix.Identity);
             render.RenderTextComplete("(Press Escape to exit)", new Vector2(40, 95), Color.White, Matrix.Identity);
-            render.RenderTextComplete("All Demos uses BEpu Physic Engine, For Nvidia Physx See Advanced Demos", new Vector2(40, 115), Color.White, Matrix.Identity);           
+            render.RenderTextComplete("All Demos uses Bepu Physic Engine, For Nvidia Physx See Advanced Demos", new Vector2(40, 115), Color.White, Matrix.Identity);           
 
         }
 
