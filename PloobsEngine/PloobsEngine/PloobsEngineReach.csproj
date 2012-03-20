@@ -77,6 +77,16 @@
     <Compile Include="AI\PathFind\AStar.cs" />
     <Compile Include="AI\PathFind\IANodeComparer.cs" />
     <Compile Include="AI\PathFind\IAPathfinderNode.cs" />
+    <Compile Include="AI\Planner\Action.cs" />
+    <Compile Include="AI\Planner\AstarPlanner.cs" />
+    <Compile Include="AI\Planner\BasicPlanner.cs" />
+    <Compile Include="AI\Planner\DepthPlanner.cs" />
+    <Compile Include="AI\Planner\Goal.cs" />
+    <Compile Include="AI\Planner\IPlanner.cs" />
+    <Compile Include="AI\Planner\PlanSet.cs" />
+    <Compile Include="AI\Planner\WidthPlanner.cs" />
+    <Compile Include="AI\Planner\WorldState.cs" />
+    <Compile Include="AI\Planner\WorldSymbol.cs" />
     <Compile Include="AI\RVO\Agent.cs" />
     <Compile Include="AI\RVO\KdTree.cs" />
     <Compile Include="AI\RVO\Line.cs" />

@@ -176,7 +176,7 @@ namespace AdvancedDemo4._0
             ///Draw some text to the screen
             render.RenderTextComplete("Demo Environment Mapping as Ambient Color", new Vector2(20, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("Use O and P to change AmbientColor Amount of the box", new Vector2(20, 35), Color.White, Matrix.Identity);
-            render.RenderTextComplete("Use K and L to change AmbientColor Amount of the sphere", new Vector2(20, 35), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Use K and L to change AmbientColor Amount of the sphere", new Vector2(20, 55), Color.White, Matrix.Identity);
         }
     
 

@@ -87,8 +87,8 @@ namespace EngineTestes
             this.World.AddLight(ld5);
             #endregion
 
-            HSVEffect hsv = new HSVEffect(new Vector4(), new Vector4(1.5f,1,1,1));
-            this.RenderTechnic.AddPostEffect(hsv);
+            //HSVEffect hsv = new HSVEffect(new Vector4(), new Vector4(1.5f,1,1,1));
+            //this.RenderTechnic.AddPostEffect(hsv);
 
             //BackgroundTexture bt = new BackgroundTexture("Textures//Bubble");
             //this.RenderTechnic.AddPostEffect(bt);
@@ -133,12 +133,13 @@ namespace EngineTestes
             //HdrPostEffect hdr = new HdrPostEffect();
             //this.RenderTechnic.AddPostEffect(hdr);
 
-            //SSAOPostEffect ssao = new SSAOPostEffect();
-            ////ssao.OutputONLYSSAOMAP = true;
-            //ssao.WhiteCorrection = 0.7f;
-            //ssao.Intensity = 5;
-            //ssao.Diffscale = 0.5f;            
-            //this.RenderTechnic.AddPostEffect(ssao);
+            SSAOPostEffect ssao = new SSAOPostEffect();
+            //ssao.OutputONLYSSAOMAP = true;
+            ssao.WhiteCorrection = 0.7f;
+            ssao.Intensity = 5;
+            ssao.Diffscale = 0.5f;
+            ssao.BlurMode = BlurMode.NONE;
+            this.RenderTechnic.AddPostEffect(ssao);
 
             //SunPostEffect sun = new SunPostEffect();            
             //this.RenderTechnic.AddPostEffect(sun);
