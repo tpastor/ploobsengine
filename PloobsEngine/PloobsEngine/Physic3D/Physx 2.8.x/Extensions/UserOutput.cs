@@ -10,7 +10,7 @@ namespace PloobsEngine.Physics
 	{
 		public override void Print(string message)
 		{
-			ActiveLogger.LogMessage("PhysX: " + message,LogLevel.Warning);
+			ActiveLogger.LogMessage("PhysX: " + message,LogLevel.Info);
 		}
 		public override AssertResponse ReportAssertionViolation(string message, string file, int lineNumber)
 		{
@@ -20,7 +20,10 @@ namespace PloobsEngine.Physics
 		}
 		public override void ReportError(ErrorCode errorCode, string message, string file, int lineNumber)
 		{
-            ActiveLogger.LogMessage("PhysX: " + message, LogLevel.FatalError);
+            if(errorCode == ErrorCode.Assertion || errorCode == ErrorCode.InternalError || errorCode == ErrorCode.OutOfMemory )
+                ActiveLogger.LogMessage("PhysX: " + message, LogLevel.FatalError);
+            else
+                ActiveLogger.LogMessage("PhysX: " + message, LogLevel.RecoverableError);
 		}
 
         

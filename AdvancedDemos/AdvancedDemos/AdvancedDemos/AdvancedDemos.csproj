@@ -95,6 +95,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dll\PloobsEngineDebug.dll</HintPath>
     </Reference>
+    <Reference Include="StillDesign.PhysX.Net, Version=0.12.1.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\StillDesign.PhysX.Net.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
@@ -113,7 +117,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Demo2 - Materials\AmbientEnvironmenpScreen.cs" />
+    <Compile Include="Demo2 - Materials\ShaderIDScreen.cs" />
+    <Compile Include="Demo6 - BilboardsSamples\CPUBillboardScreen.cs" />
+    <Compile Include="Demo9.5 Decal\Decal.cs" />
+    <Compile Include="Demo9.5 Decal\DecalComponent.cs" />
+    <Compile Include="Demo9.5 Decal\DecalScreen.cs" />
     <Compile Include="Demo9.4 Octree Culling\OctreeScreen.cs" />
+    <Compile Include="Demo9.6 Explosion\ExplosionDebrisPS.cs" />
+    <Compile Include="Demo9.6 Explosion\ExplosionFireSmokePS.cs" />
+    <Compile Include="Demo9.6 Explosion\ExplosionFlash.cs" />
+    <Compile Include="Demo9.6 Explosion\ExplosionFlyingSparksPS.cs" />
+    <Compile Include="Demo9.6 Explosion\ExplosionPS.cs" />
+    <Compile Include="Demo9.6 Explosion\ExplosionRoundSparksPS.cs" />
+    <Compile Include="Demo9.6 Explosion\ExplosionScreen.cs" />
+    <Compile Include="Demo9.6 Explosion\ExplosionShockwavePS.cs" />
+    <Compile Include="Demo9.6 Explosion\ExplosionSmokeTrailsPS.cs" />
     <Compile Include="LoadingScreen.cs" />
     <Compile Include="Demo9.3 SSAO\SSAOScreen.cs" />
     <Compile Include="Demo3 - Sound\FollowerObjectSoundScreen.cs" />
@@ -129,10 +148,10 @@
     <Compile Include="Demo6 - BilboardsSamples\InstancedBilboardScreen.cs" />
     <Compile Include="Commons\LightThrowBepu.cs" />
     <Compile Include="Commons\MoveablePointLight.cs" />
-    <Compile Include="Demo2 - Specific Deferred\Demo1 Materials\BumpSpecularDemo.cs" />
-    <Compile Include="Demo2 - Specific Deferred\Demo1 Materials\EnvMapScreen.cs" />
-    <Compile Include="Demo2 - Specific Deferred\Demo1 Materials\ParalaxScreen.cs" />
-    <Compile Include="Demo2 - Specific Deferred\Demo1 Materials\TransparentDeferredScreen.cs" />
+    <Compile Include="Demo2 - Materials\BumpSpecularDemo.cs" />
+    <Compile Include="Demo2 - Materials\EnvMapScreen.cs" />
+    <Compile Include="Demo2 - Materials\ParalaxScreen.cs" />
+    <Compile Include="Demo2 - Materials\TransparentDeferredScreen.cs" />
     <Compile Include="Demo1 -  Loader\DeferredLoadScreen.cs" />
     <Compile Include="Demo9 -  Noise Textures\NoiseScreen.cs" />
     <Compile Include="Demo9 -  Noise Textures\PerlinNoiseScreen.cs" />
@@ -145,15 +164,55 @@
     <Compile Include="Demo5 - ParticleSamples\SnowPS.cs" />
     <Compile Include="Demo8 - GUI\FGUIScreen.cs" />
     <Compile Include="Demo8 - GUI\DGUIScreen.cs" />
+    <Compile Include="Demo9.8 Physx 2.8.x\BallThrowPhysx28.cs" />
+    <Compile Include="Demo9.8 Physx 2.8.x\Character\PhysxCharacter28Screen.cs" />
+    <Compile Include="Demo9.8 Physx 2.8.x\Cloth\ClothMaterial.cs" />
+    <Compile Include="Demo9.8 Physx 2.8.x\Cloth\ClothModel.cs" />
+    <Compile Include="Demo9.8 Physx 2.8.x\Cloth\Screens\BasicCloth28Screen.cs" />
+    <Compile Include="Demo9.8 Physx 2.8.x\Cloth\Screens\FlagCloth28Screen.cs" />
+    <Compile Include="Demo9.8 Physx 2.8.x\Cloth\Screens\PressureCloth28Screen.cs" />
+    <Compile Include="Demo9.8 Physx 2.8.x\Cloth\VertexGrid.cs" />
+    <Compile Include="Demo9.8 Physx 2.8.x\Fluids\DeferredEmitterFluids28Screen.cs" />
+    <Compile Include="Demo9.8 Physx 2.8.x\Fluids\FluidMaterial.cs" />
+    <Compile Include="Demo9.8 Physx 2.8.x\Fluids\Fluids28Screen.cs" />
+    <Compile Include="Demo9.8 Physx 2.8.x\Material\Physx28MaterialScreen.cs" />
+    <Compile Include="Demo9.8 Physx 2.8.x\Physx28Screen.cs" />
+    <Compile Include="Demo9.8 Physx 2.8.x\Trigger\Physx28TriggerScreen.cs" />
+    <Compile Include="Demo9.8 Physx 2.8.x\Vehicle\Physx28VehicleScreen.cs" />
+    <Compile Include="Demo9.8 Physx 2.8.x\Vehicle\Vehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Demo3 - Sound\SoundScreen.cs" />
     <Compile Include="Demo4 - Terrain\TerrainScreen.cs" />
     <Compile Include="TitleScreen.cs" />
+    <Compile Include="Demo9.7 Stealth\ForwardEMTransparentShader.cs" />
+    <Compile Include="Demo9.7 Stealth\StealthEffectScreen.cs" />
+    <Compile Include="Demo9.7 Stealth\StealthPostEffect.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="cudart32_30_9.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
+    <Content Include="NxCharacter.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PhysXCooking.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PhysXCore.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PhysXDevice.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PhysXLoader.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StillDesign.PhysX.Net.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AdvancedDemosContent\AdvancedDemosContent.contentproj">
