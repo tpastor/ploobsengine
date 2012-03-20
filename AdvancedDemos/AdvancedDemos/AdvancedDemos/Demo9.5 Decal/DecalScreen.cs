@@ -116,7 +116,7 @@ namespace AdvancedDemo4._0
                 ///The view Matrix
                 var view = Matrix.CreateLookAt(
                     new Vector3(500, 500, 700),
-                    new Vector3(-200, 50, -10),
+                    new Vector3(x, 50, z),
                     Vector3.Up
                     );
                 Decal decal = new Decal(texture, view, projection);
@@ -135,13 +135,49 @@ namespace AdvancedDemo4._0
             lt.CleanUp();
             base.CleanUp(engine);
         }
-
+        int x = 0;
+        int z = 0;
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);
             render.RenderTextComplete("Demo : Simple Deferred Decal System ", new Vector2(20, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Shows how to \"hack\" the Deferred Render System", new Vector2(20, 35), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Use O P and K L to change Decal View matrix target", new Vector2(20, 55), Color.White, Matrix.Identity);
         }
+        protected override void Update(GameTime gameTime)
+        {
+            if (Keyboard.GetState().IsKeyDown(Keys.O))
+            {
+                z += 1;
+            }
+            if (Keyboard.GetState().IsKeyDown(Keys.P))
+            {
+                z -= 1;
+            }
 
+
+            if (Keyboard.GetState().IsKeyDown(Keys.K))
+            {
+                x += 1;
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.L))
+            {
+                x -= 1;
+            }
+
+
+            ///The view Matrix
+            var view = Matrix.CreateLookAt(
+                new Vector3(500, 500, 700),
+                new Vector3(x, 50, z),
+                Vector3.Up
+                );
+
+            DecalComponent.Decals[0].view = view;
+
+            base.Update(gameTime);
+        }
 
     }
 }
