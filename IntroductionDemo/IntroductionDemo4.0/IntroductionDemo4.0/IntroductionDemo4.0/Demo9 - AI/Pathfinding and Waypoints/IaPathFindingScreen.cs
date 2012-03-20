@@ -48,7 +48,13 @@ namespace IntroductionDemo4._0
             base.InitScreen(GraphicInfo, engine);
             engine.AddComponent(new DebugDraw());
             engine.IsMouseVisible = true;
-        }        
+        }
+
+        protected override void CleanUp(EngineStuff engine)
+        {
+            engine.RemoveComponent(DebugDraw.MyName);
+            base.CleanUp(engine);
+        }
 
         /// <summary>
         /// Load content for the screen.

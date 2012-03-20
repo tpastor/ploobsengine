@@ -132,7 +132,7 @@ namespace IntroductionDemo4._0
         {
             if (wh.CurrentWaypointsCollection.State == WaypointsState.Connected)
             {
-                wh.SaveConnectedWaypoints("waypoints.xml");
+                wh.SaveConnectedWaypoints("savedwaypoints.xml");
                 saved = true;
             }            
         }
@@ -155,6 +155,8 @@ namespace IntroductionDemo4._0
             }
         }
 
+        
+
         /// <summary>
         /// This is called when the screen should draw itself.
         /// </summary>
@@ -169,7 +171,9 @@ namespace IntroductionDemo4._0
             render.RenderTextComplete("WaypointsState: " + wh.CurrentWaypointsCollection.State, new Vector2(GraphicInfo.Viewport.Width - 715, 35), Color.Red, Matrix.Identity);
             render.RenderTextComplete("Quantity: " + wh.CurrentWaypointsCollection.GetWaypointsList().Count, new Vector2(GraphicInfo.Viewport.Width - 715, 55), Color.Red, Matrix.Identity);
             render.RenderTextComplete("Saved: " + saved, new Vector2(GraphicInfo.Viewport.Width - 715, 75), Color.Red, Matrix.Identity);
-            render.RenderTextComplete("Left Mouse Bottom to place Waypoint, Space to Connect them and Enter to save to a file", new Vector2(GraphicInfo.Viewport.Width - 715, 95), Color.Red, Matrix.Identity);
+            render.RenderTextComplete("Left Mouse Bottom to place Waypoint, Space to Connect them", new Vector2(GraphicInfo.Viewport.Width - 715, 95), Color.Red, Matrix.Identity);
+            render.RenderTextComplete("and Enter to save them to the file savedwaypoints.xml", new Vector2(GraphicInfo.Viewport.Width - 715, 115), Color.Red, Matrix.Identity);
+            
             
             
         }
