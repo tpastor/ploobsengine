@@ -125,7 +125,7 @@ namespace IntroductionDemo4._0
                 SystemRecieverMessage.OnMessage += new Action<Message>(SystemRecieverMessage_OnMessage);
                 EntityMapper.getInstance().AddgrouptagRecieveEntity("teste", SystemRecieverMessage);
 
-                this.BindInput(new SimpleConcreteKeyboardInputPlayable(StateKey.DOWN,Keys.Space,                
+                this.BindInput(new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS,Keys.Space,                
                 (a) => 
                     {                        
                         ///5000 is the id of the script

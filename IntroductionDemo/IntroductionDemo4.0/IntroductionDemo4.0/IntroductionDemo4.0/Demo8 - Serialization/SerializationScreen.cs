@@ -22,7 +22,7 @@ namespace IntroductionDemo4._0
 
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            world = new IWorld(new BepuPhysicWorld(-0.098f), new SimpleCuller());
+            world = new IWorld(new BepuPhysicWorld(-0.98f), new SimpleCuller());
 
             ForwardRenderTecnichDescription desc = ForwardRenderTecnichDescription.Default();
             desc.BackGroundColor = Color.CornflowerBlue;
@@ -34,7 +34,7 @@ namespace IntroductionDemo4._0
             base.LoadContent(GraphicInfo, factory, contentManager);
 
 
-            ///Serializing a basic type
+            ///Serializing a basic type 
             SerializatorWrapper SerializatorWrapper = new SerializatorWrapper();
             SerializatorWrapper.Serialize(new Vector3(10, 20, 30), "vetor.xml");
             
@@ -57,6 +57,7 @@ namespace IntroductionDemo4._0
                 SimpleModel simpleModel = new SimpleModel(factory, "Model//ball");
                 simpleModel.SetTexture(factory.CreateTexture2DColor(1,1,Color.Green),TextureType.DIFFUSE);
                 SphereObject tmesh = new SphereObject(new Vector3(100, 200, 10), 1 ,5, 5, MaterialDescription.DefaultBepuMaterial());
+                tmesh.isMotionLess = false;
                 ForwardXNABasicShader shader = new ForwardXNABasicShader(ForwardXNABasicShaderDescription.Default());
                 ForwardMaterial fmaterial = new ForwardMaterial(shader);
                 obj = new IObject(fmaterial, simpleModel, tmesh);
