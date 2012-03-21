@@ -1,0 +1,30 @@
+E:\source\_priv\Neoforce\Samples\Bin\Content\Skins\Default\Addons\Custom\Cursors\Custom.Cursor.xnb
+E:\source\_priv\Neoforce\Samples\Bin\Content\Skins\Default\Addons\Custom\Fonts\Custom.Font.xnb
+E:\source\_priv\Neoforce\Samples\Bin\Content\Skins\Default\Addons\Custom\Images\Custom.Button.xnb
+E:\source\_priv\Neoforce\Samples\Bin\Content\Skins\Default\Addons\Custom\Skin.xnb
+E:\source\_priv\Neoforce\Samples\Bin\TomShane.Neoforce.Samples.AddonControls.exe
+E:\source\_priv\Neoforce\Samples\Bin\TomShane.Neoforce.Samples.AddonControls.pdb
+E:\source\_priv\Neoforce\Samples\AddonControls\obj\x86\Release\ResolveAssemblyReference.cache
+E:\source\_priv\Neoforce\Samples\AddonControls\obj\x86\Release\Microsoft.Xna.Framework.RuntimeProfile.txt
+E:\source\_priv\Neoforce\Samples\AddonControls\obj\x86\Release\TomShane.Neoforce.Samples.AddonControls.exe
+E:\source\_priv\Neoforce\Samples\AddonControls\obj\x86\Release\TomShane.Neoforce.Samples.AddonControls.pdb
+G:\tom shane\projects\Neoforce\Samples\Bin\Content\Skins\Default\Addons\Custom\Cursors\Custom.Cursor.xnb
+G:\tom shane\projects\Neoforce\Samples\Bin\Content\Skins\Default\Addons\Custom\Fonts\Custom.Font.xnb
+G:\tom shane\projects\Neoforce\Samples\Bin\Content\Skins\Default\Addons\Custom\Images\Custom.Button.xnb
+G:\tom shane\projects\Neoforce\Samples\Bin\Content\Skins\Default\Addons\Custom\Skin.xnb
+G:\tom shane\projects\Neoforce\Samples\Bin\TomShane.Neoforce.Samples.AddonControls.exe
+G:\tom shane\projects\Neoforce\Samples\Bin\TomShane.Neoforce.Samples.AddonControls.pdb
+G:\tom shane\projects\Neoforce\Samples\AddonControls\obj\x86\Release\ResolveAssemblyReference.cache
+G:\tom shane\projects\Neoforce\Samples\AddonControls\obj\x86\Release\Microsoft.Xna.Framework.RuntimeProfile.txt
+G:\tom shane\projects\Neoforce\Samples\AddonControls\obj\x86\Release\TomShane.Neoforce.Samples.AddonControls.exe
+G:\tom shane\projects\Neoforce\Samples\AddonControls\obj\x86\Release\TomShane.Neoforce.Samples.AddonControls.pdb
+E:\tom shane\Neoforce\Samples\Bin\Content\Skins\Default\Addons\Custom\Cursors\Custom.Cursor.xnb
+E:\tom shane\Neoforce\Samples\Bin\Content\Skins\Default\Addons\Custom\Fonts\Custom.Font.xnb
+E:\tom shane\Neoforce\Samples\Bin\Content\Skins\Default\Addons\Custom\Images\Custom.Button.xnb
+E:\tom shane\Neoforce\Samples\Bin\Content\Skins\Default\Addons\Custom\Skin.xnb
+E:\tom shane\Neoforce\Samples\Bin\TomShane.Neoforce.Samples.AddonControls.exe
+E:\tom shane\Neoforce\Samples\Bin\TomShane.Neoforce.Samples.AddonControls.pdb
+E:\tom shane\Neoforce\Samples\AddonControls\obj\x86\Release\ResolveAssemblyReference.cache
+E:\tom shane\Neoforce\Samples\AddonControls\obj\x86\Release\Microsoft.Xna.Framework.RuntimeProfile.txt
+E:\tom shane\Neoforce\Samples\AddonControls\obj\x86\Release\TomShane.Neoforce.Samples.AddonControls.exe
+E:\tom shane\Neoforce\Samples\AddonControls\obj\x86\Release\TomShane.Neoforce.Samples.AddonControls.pdb

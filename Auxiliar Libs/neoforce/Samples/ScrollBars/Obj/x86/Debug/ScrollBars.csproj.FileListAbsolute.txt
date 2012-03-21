@@ -1,0 +1,7 @@
+C:\Users\tpastor\Desktop\neofrce\Samples\Bin\Content\Image.xnb
+C:\Users\tpastor\Desktop\neofrce\Samples\Bin\TomShane.Neoforce.Samples.ScrollBars.exe
+C:\Users\tpastor\Desktop\neofrce\Samples\Bin\TomShane.Neoforce.Samples.ScrollBars.pdb
+C:\Users\tpastor\Desktop\neofrce\Samples\ScrollBars\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\tpastor\Desktop\neofrce\Samples\ScrollBars\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\tpastor\Desktop\neofrce\Samples\ScrollBars\obj\x86\Debug\TomShane.Neoforce.Samples.ScrollBars.exe
+C:\Users\tpastor\Desktop\neofrce\Samples\ScrollBars\obj\x86\Debug\TomShane.Neoforce.Samples.ScrollBars.pdb
