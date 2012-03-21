@@ -63,7 +63,7 @@ namespace PloobsEngine.SceneControl
         List<IObject> ghostDeferred = new List<IObject>();
         List<IObject> deferred = new List<IObject>();
         List<IObject> forward = new List<IObject>();
-
+        comparer comparer = new comparer();
         public override void StartFrame(ref Matrix view, ref Matrix projection, BoundingFrustum frustrum)
         {
                 forward.Clear();
@@ -82,7 +82,16 @@ namespace PloobsEngine.SceneControl
                 deferred.AddRange(ghostDeferred);
                 forward.AddRange(ghostForward);
 
-                num = deferred.Count + forward.Count;                
+                num = deferred.Count + forward.Count;
+
+                if (this.SortObjectsByDistanceToCamera)
+                {
+                    Matrix viewIT = Matrix.Invert(Matrix.Transpose(view));
+                    comparer.CameraPosition = new Vector3(viewIT.M14, viewIT.M24, viewIT.M34);
+                    forward.Sort(comparer);
+                    deferred.Sort(comparer);
+
+                }                
         }
 
         public override List<IObject> GetNotCulledObjectsList(PloobsEngine.Material.MaterialType? Filter)

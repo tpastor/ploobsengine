@@ -32,6 +32,11 @@ namespace PloobsEngine.SceneControl
     /// </summary>
     public abstract class ICuller
     {
+        public ICuller()
+        {
+            SortObjectsByDistanceToCamera = false;
+        }
+
         internal IWorld world = null;
 
         /// <summary>
@@ -66,6 +71,16 @@ namespace PloobsEngine.SceneControl
         public abstract int RenderedObjectThisFrame
         {
             get;
+        }
+
+        /// <summary>
+        /// Roughly sort objects by their distance to the camera
+        /// Default False
+        /// </summary>
+        public bool SortObjectsByDistanceToCamera
+        {
+            get;
+            set;
         }
         
     }

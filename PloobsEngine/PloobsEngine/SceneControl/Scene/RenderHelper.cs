@@ -243,6 +243,18 @@ namespace PloobsEngine.SceneControl
             }
         }
 
+        public void SetCubeRenderTarget(RenderTargetCube RenderTargetCube,CubeMapFace face)
+        {
+            device.SetRenderTarget(RenderTargetCube,face);
+        }
+
+        public RenderTargetBinding[] RestorePreviousRenderTarget()
+        {
+            RenderTargetBinding[] rt = RenderStatesStack.Peek();                        
+            device.SetRenderTargets(rt);
+            return rt;            
+        }
+
         /// <summary>
         /// Pushes the render target.
         /// </summary>
@@ -766,7 +778,65 @@ namespace PloobsEngine.SceneControl
             if (sync)
                 ResyncStates();
         }
+                
+        
+        public void RenderSceneToTextureCube(RenderTargetCube renderTargetCube, Color backGroundColor, IWorld world,
+            ref Vector3 camPos, ref Matrix projection, GameTime gt,bool drawComponentsPreDraw = true,bool useCuller = false
+            , List<IObject> objListException = null
+            )
+        {
+            System.Diagnostics.Debug.Assert(renderTargetCube != null);
 
+            Matrix viewMatrix = new Matrix();
+            // Render our cube map, once for each cube face( 6 times ).
+            for (int i = 0; i < 6; i++)
+            {
+                // render the scene to all cubemap faces
+                CubeMapFace cubeMapFace = (CubeMapFace)i;
+
+                switch (cubeMapFace)
+                {
+                    case CubeMapFace.NegativeX:
+                        {
+                            viewMatrix = Matrix.CreateLookAt(camPos, Vector3.Left, Vector3.Up);
+                            break;
+                        }
+                    case CubeMapFace.NegativeY:
+                        {
+                            viewMatrix = Matrix.CreateLookAt(camPos, Vector3.Down, Vector3.Forward);
+                            break;
+                        }
+                    case CubeMapFace.NegativeZ:
+                        {
+                            viewMatrix = Matrix.CreateLookAt(camPos, Vector3.Backward, Vector3.Up);
+                            break;
+                        }
+                    case CubeMapFace.PositiveX:
+                        {
+                            viewMatrix = Matrix.CreateLookAt(camPos, Vector3.Right, Vector3.Up);
+                            break;
+                        }
+                    case CubeMapFace.PositiveY:
+                        {
+                            viewMatrix = Matrix.CreateLookAt(camPos, Vector3.Up, Vector3.Backward);
+                            break;
+                        }
+                    case CubeMapFace.PositiveZ:
+                        {
+                            viewMatrix = Matrix.CreateLookAt(camPos, Vector3.Forward, Vector3.Up);
+                            break;
+                        }
+                }
+
+                
+                // Set the cubemap render target, using the selected face
+                SetCubeRenderTarget(renderTargetCube, cubeMapFace);
+                Clear(backGroundColor);
+                RenderSceneWithBasicMaterial(world, gt, objListException, ref viewMatrix, ref projection, drawComponentsPreDraw, useCuller);            
+            }
+            RestorePreviousRenderTarget();
+            
+        }
 
         /// <summary>
         /// Renders the scene without material.
@@ -994,5 +1064,8 @@ namespace PloobsEngine.SceneControl
     /// <param name="projection">The projection.</param>
     /// <param name="vp">The vp.</param>
     public delegate void OnDrawingSceneCustomMaterial(Effect effect,IObject obj, BatchInformation bi, TextureInformation ti,Matrix view,Matrix projection, Matrix vp );
+
+
+
 
 }

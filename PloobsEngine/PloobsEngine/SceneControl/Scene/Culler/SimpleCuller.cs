@@ -35,17 +35,12 @@ namespace PloobsEngine.SceneControl
     /// Culler that uses the bepu scene control
     /// </summary>
     public class SimpleCuller : ICuller
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SimpleCuller"/> class.
-        /// </summary>
-        public SimpleCuller()
-        {            
-        }       
+    {           
 
         #region ICuller Members
         List<IObject> deferred = new List<IObject>();
         List<IObject> forward = new List<IObject>();
+        comparer comparer = new comparer();
         public override void StartFrame(ref Matrix view, ref Matrix projection, BoundingFrustum frustrum)
         {
             forward.Clear();
@@ -80,7 +75,17 @@ namespace PloobsEngine.SceneControl
                     }    
                 }
             }
-            num = forward.Count + deferred.Count;            
+            num = forward.Count + deferred.Count;
+
+            if (this.SortObjectsByDistanceToCamera)
+            {
+                Matrix viewIT = Matrix.Invert( Matrix.Transpose( view ) );
+                comparer.CameraPosition = new Vector3( viewIT.M14, viewIT.M24, viewIT.M34 );
+                forward.Sort(comparer);
+                deferred.Sort(comparer);
+
+            }
+
         }
 
         public override List<IObject> GetNotCulledObjectsList(MaterialType? Filter)
