@@ -9,7 +9,7 @@ namespace Osiris.Terrain.Content.Pipeline.Serialization.Compiler
 	{
 		public override string GetRuntimeReader(TargetPlatform targetPlatform)
 		{
-			return "Osiris.Content.HeightMapReader, Osiris";
+            return "Osiris.Content.HeightMapReader, PloobsEngineDebug";            
 		}
 
 		protected override void Write(ContentWriter output, HeightMapContent value)

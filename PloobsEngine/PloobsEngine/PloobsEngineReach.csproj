@@ -217,6 +217,16 @@
     <Compile Include="NetWorking\NetWorkClientObject.cs" />
     <Compile Include="NetWorking\NetworkServer.cs" />
     <Compile Include="NetWorking\NetworkServerWorld.cs" />
+    <Compile Include="Osiris\Content\HeightMapReader.cs" />
+    <Compile Include="Osiris\Content\LevelReader.cs" />
+    <Compile Include="Osiris\Content\PatchReader.cs" />
+    <Compile Include="Osiris\Content\TerrainModelReader.cs" />
+    <Compile Include="Osiris\Graphics\Terrain\HeightMap.cs" />
+    <Compile Include="Osiris\Graphics\Terrain\Level.cs" />
+    <Compile Include="Osiris\Graphics\Terrain\Patch.cs" />
+    <Compile Include="Osiris\Graphics\Terrain\TerrainMaterial.cs" />
+    <Compile Include="Osiris\Graphics\Terrain\TerrainModel.cs" />
+    <Compile Include="Osiris\MathHelper.cs" />
     <Compile Include="Particles\DPFSParticleSystem.cs" />
     <Compile Include="Particles\DPSFParticleManager.cs" />
     <Compile Include="Particles\IParticleManager.cs" />
