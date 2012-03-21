@@ -135,6 +135,7 @@
     <Compile Include="PostEffect\MotionBlurPostEffect.cs" />
     <Compile Include="PostEffect\MotionForwardScreen.cs" />
     <Compile Include="TemplateScreens\ColladaFormatScreen.cs" />
+    <Compile Include="TemplateScreens\TerrainGeoClipMap.cs" />
     <Compile Include="TemplateScreens\MilkShakeFormatScreen.cs" />
     <Compile Include="TemplateScreens\TaskApiSample.cs" />
     <Compile Include="TemplateScreens\TemplateForwardScreen.cs" />

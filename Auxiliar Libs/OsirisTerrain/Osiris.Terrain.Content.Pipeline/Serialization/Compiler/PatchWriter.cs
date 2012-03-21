@@ -9,7 +9,7 @@ namespace Osiris.Terrain.Content.Pipeline.Serialization.Compiler
 	{
 		public override string GetRuntimeReader(TargetPlatform targetPlatform)
 		{
-			return "Osiris.Content.PatchReader, Osiris";
+            return "Osiris.Content.PatchReader, PloobsEngineDebug";
 		}
 
 		protected override void Write(ContentWriter output, PatchContent value)

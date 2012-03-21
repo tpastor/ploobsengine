@@ -61,9 +61,11 @@
     <Compile Include="Processors\TerrainModelContentBuilder.cs" />
     <Compile Include="Processors\TerrainProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serialization\Compiler\FloatingPointTextureProcessor.cs" />
     <Compile Include="Serialization\Compiler\HeightMapWriter.cs" />
     <Compile Include="Serialization\Compiler\LevelWriter.cs" />
     <Compile Include="Serialization\Compiler\PatchWriter.cs" />
+    <Compile Include="Serialization\Compiler\RawImporter.cs" />
     <Compile Include="Serialization\Compiler\TerrainModelWriter.cs" />
   </ItemGroup>
   <ItemGroup>
