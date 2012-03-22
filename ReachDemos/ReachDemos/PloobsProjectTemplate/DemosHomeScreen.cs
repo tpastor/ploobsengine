@@ -71,6 +71,8 @@ namespace IntroductionDemo4._0
                     return new ColladaFormatScreen();
                 case 11:
                     return new MilkShakeFormatScreen();
+                case 12:
+                    return new TerrainGeoClipMap();
                 default:
                     break;
             }
