@@ -48,6 +48,7 @@ namespace EngineTestes
 
         }
 
+        SystemRecieverMessage SystemRecieverMessage;
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory ,IContentManager contentManager)
         {
             base.LoadContent(GraphicInfo, factory, contentManager);
@@ -120,13 +121,13 @@ namespace EngineTestes
                 interteste.renderTechnic = RenderTechnic;
 
                 interteste.execute();
-                EntityMapper.getInstance().AddEntity(interteste);                
+                EntityMapper.getInstance().AddEntity(interteste);
 
-                SystemRecieverMessage SystemRecieverMessage = new SystemRecieverMessage();
+                SystemRecieverMessage = new SystemRecieverMessage(SenderType.NORMAL);
                 SystemRecieverMessage.OnMessage += new Action<Message>(SystemRecieverMessage_OnMessage);
                 EntityMapper.getInstance().AddgrouptagRecieveEntity("teste", SystemRecieverMessage);
 
-                this.BindInput(new SimpleConcreteKeyboardInputPlayable(StateKey.DOWN,Keys.Space,                
+                this.BindInput(new SimpleConcreteKeyboardInputPlayable(StateKey.PRESS,Keys.Space,                
                 (a) => 
                     {                        
                         ///5000 is the id of the script

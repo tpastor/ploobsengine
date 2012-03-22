@@ -170,7 +170,7 @@ namespace PloobsEngine.Particles
             BoundingFrustum bf = new BoundingFrustum(view * Projection);            
             foreach (var item in ParticleSystem.Values)
             {
-                if (item.BoundingBox != null && (bf.Contains(item.BoundingBox.Value) == ContainmentType.Disjoint))
+                if (item.BoundingBox == null || (bf.Contains(item.BoundingBox.Value) == ContainmentType.Disjoint))
                 {
                     item.IDPSFParticleSystem.Draw();
                 }

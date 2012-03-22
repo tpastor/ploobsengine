@@ -41,7 +41,7 @@ namespace DPSF.ParticleSystems
 			base.SetEffectParameters();
 
 			// Specify to not use the Color component when drawing (Texture color is not tinted)
-			Effect.Parameters["xColorBlendAmount"].SetValue(mfColorBlendAmount);
+			//Effect.Parameters["xColorBlendAmount"].SetValue(mfColorBlendAmount);
 		}
 
 		//===========================================================

@@ -205,6 +205,8 @@ namespace PloobsEngine.SceneControl
                 obj.Material.Initialization(graphicsInfo, graphicFactory, obj);
             Culler.onObjectAdded(obj);
             obj.FireOnBeingAdd(this);
+
+            obj.afterAddedToTheWorld();
         }
 
         /// <summary>
@@ -579,12 +581,7 @@ namespace PloobsEngine.SceneControl
             {
                 item.cam.CleanUp();
             }
-
-            foreach (var item in Objects.ToArray())
-            {
-                this.RemoveObject(item);
-            }
-
+            
             foreach (var item in SoundEmiters3D.ToArray())
             {
                 this.RemoveSoundEmitter(item);
@@ -600,13 +597,25 @@ namespace PloobsEngine.SceneControl
                 this.RemoveLight(item);
             }
 
+
             if (CleanUpObjectsOnDispose)
             {
-                foreach (var item in Objects)
+                foreach (var item in Objects.ToArray())
                 {
+                    this.RemoveObject(item);
                     item.CleanUp(graphicFactory);
+
                 }
             }
+            else
+            {
+                foreach (var item in Objects.ToArray())
+                {
+                    this.RemoveObject(item);
+                }
+            }
+
+            
 
             foreach (var item in SoundEmiters3D)
             {
@@ -614,14 +623,19 @@ namespace PloobsEngine.SceneControl
             }
 
             Objects.Clear();
-            Lights.Clear();
-            PhysicWorld = null;
+            Lights.Clear();            
             Dummies.Clear();
             this.culler = null;
             SoundEmiters3D.Clear();
             CameraManager = null;
             Triggers.Clear();
-            particleManager = null;
+            if (particleManager != null)
+            {
+                particleManager.iCleanUp();
+                particleManager = null;
+            }
+            this.PhysicWorld.iCleanUp();
+            this.PhysicWorld = null;
         }
 
         #region ISerializable Members

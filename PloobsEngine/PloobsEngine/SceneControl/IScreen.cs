@@ -83,19 +83,18 @@ namespace PloobsEngine.SceneControl
         }
         #else
 
-        public IScreen(PhoneApplicationPage Page)
+        public IScreen()
         {
             this.gui = null;
             IsLoaded = false;
             CleanupAbles = new List<ICleanupAble>();
-            CleanUpWhenRemoved = true;
-            this.Page = Page;
+            CleanUpWhenRemoved = true;            
         }
 
         public PhoneApplicationPage Page
         {
             get;
-            private set;
+            internal set;
         }
 #endif
 

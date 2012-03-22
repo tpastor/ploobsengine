@@ -101,7 +101,7 @@ namespace PloobsEnginePhone7Template
 
             border.Draw(render, this.World.Camera2D);
 
-            render.RenderTextComplete("PloobsEngine 2D Sample on Windows Phone7", new Vector2(20, 10), Color.Red, Matrix.Identity);
+            render.RenderTextComplete("PloobsEngine 2D Particle Demos", new Vector2(20, 20), Color.Red, Matrix.Identity);
 
         }
 

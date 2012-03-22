@@ -31,8 +31,7 @@ namespace IntroductionDemo4._0
         }
 
         int index = 0;
-
-        static int totalDemos = 19;
+        static int totalDemos = 30;
         EngineStuff engine;
 
         private int[] screenList = new int[totalDemos];
@@ -79,6 +78,28 @@ namespace IntroductionDemo4._0
                   return new MobilePhysicScreen();                   
                 case 18:
                   return new ConstraintScreen();
+                case 19:
+                  return new ScriptScreen();
+                case 20:
+                  return new ActionScriptScreen();
+                case 21:
+                  return new SerializationScreen();
+                case 22:
+                  return new BehaviorTreeScreen();
+                case 23:
+                  return new FSMScreen();
+                case 24:
+                  return new IaWaypointsScreen();
+                case 25:
+                  return new IaPathFindingScreen();
+                case 26:
+                  return new RVOScreen();
+                case 27:
+                  return new RVO2DScreen();
+                case 28:
+                  return new RVO3DScreen();
+                case 29:
+                  return new SteerScreen();                
                 default:
                     break;
             }
@@ -121,7 +142,8 @@ namespace IntroductionDemo4._0
             render.RenderTextComplete("Welcome to the Ploobs Game Engine Funcionality Introduction Demos", new Vector2(40, 30), Color.White, Matrix.Identity);
             render.RenderTextComplete("The focus here is not in the visual, it is in the funcionalities (Check the Source Code =P)", new Vector2(40, 50), Color.Red, Matrix.Identity);            
             render.RenderTextComplete("(Press F1 to cycle through demos)", new Vector2(40, 75), Color.White, Matrix.Identity);
-            render.RenderTextComplete("(Press Escape to exit)", new Vector2(40, 95), Color.White, Matrix.Identity);           
+            render.RenderTextComplete("(Press Escape to exit)", new Vector2(40, 95), Color.White, Matrix.Identity);
+            render.RenderTextComplete("All Demos uses Bepu Physic Engine, For Nvidia Physx See Advanced Demos", new Vector2(40, 115), Color.White, Matrix.Identity);           
 
         }
 

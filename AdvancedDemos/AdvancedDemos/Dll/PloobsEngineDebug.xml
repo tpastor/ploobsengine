@@ -253,7 +253,7 @@
       <returns>
       </returns>
     </member>
-    <member name="M:PloobsEngine.SceneControl.ICuller.StartFrame(Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.BoundingFrustum)">
+    <member name="M:PloobsEngine.SceneControl.ICuller.StartFrame(Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.BoundingFrustum)">
       <summary>
             Called by the engine Once in the start of each rendering pass
             </summary>
@@ -618,7 +618,7 @@
       <returns>
       </returns>
     </member>
-    <member name="M:PloobsEngine.SceneControl._2DScene.Culler.I2DCuller.StartFrame(Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.BoundingFrustum)">
+    <member name="M:PloobsEngine.SceneControl._2DScene.Culler.I2DCuller.StartFrame(Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.BoundingFrustum)">
       <summary>
             Called by the engine Once in the start of each rendering pass
             </summary>
@@ -649,6 +649,108 @@
             Very effective
             </summary>
     </member>
+    <member name="T:PloobsEngine.Physics.IPhysicWorld">
+      <summary>
+            3D Physic World Specification
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.Physics.IPhysicWorld.DebugDrawn(PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime,PloobsEngine.Cameras.ICamera)">
+      <summary>
+            Draw the physic world in debug mode.
+            </summary>
+      <param name="gt">The gt.</param>
+      <param name="cam">The cam.</param>
+    </member>
+    <member name="M:PloobsEngine.Physics.IPhysicWorld.Update(Microsoft.Xna.Framework.GameTime)">
+      <summary>
+            Updates 
+            </summary>
+      <param name="gt">The gt.</param>
+    </member>
+    <member name="M:PloobsEngine.Physics.IPhysicWorld.AddObject(PloobsEngine.Physics.IPhysicObject)">
+      <summary>
+            Adds the object.
+            </summary>
+      <param name="obj">The obj.</param>
+    </member>
+    <member name="M:PloobsEngine.Physics.IPhysicWorld.RemoveObject(PloobsEngine.Physics.IPhysicObject)">
+      <summary>
+            Removes the object.
+            </summary>
+      <param name="obj">The obj.</param>
+    </member>
+    <member name="M:PloobsEngine.Physics.IPhysicWorld.AddConstraint(PloobsEngine.Physic.Constraints.IPhysicConstraint)">
+      <summary>
+             Adds the constraint
+            </summary>
+      <param name="ctn">
+      </param>
+    </member>
+    <member name="M:PloobsEngine.Physics.IPhysicWorld.RemoveConstraint(PloobsEngine.Physic.Constraints.IPhysicConstraint)">
+      <summary>
+            Removes the constraints
+            </summary>
+      <param name="ctn">
+      </param>
+    </member>
+    <member name="M:PloobsEngine.Physics.IPhysicWorld.SegmentIntersect(Microsoft.Xna.Framework.Ray,System.Func{PloobsEngine.Physics.IPhysicObject,System.Boolean},System.Single)">
+      <summary>
+            Raycast
+            </summary>
+      <param name="raio">The raio.</param>
+      <param name="filter">The filter.</param>
+      <param name="maxDistance">The max distance.</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:PloobsEngine.Physics.IPhysicWorld.DetectCollisions(PloobsEngine.Physics.IPhysicObject,System.Collections.Generic.List{PloobsEngine.Physics.IPhysicObject})">
+      <summary>
+            Detects the collisions of a physic object
+            </summary>
+      <param name="po">The po.</param>
+      <param name="resp">The resp.</param>
+    </member>
+    <member name="M:PloobsEngine.Physics.IPhysicWorld.GetPhysicsObjectsInRange(PloobsEngine.Physics.IPhysicObject,System.Single,PloobsEngine.Physics.CullerConditionAvaliator{PloobsEngine.Physics.IPhysicObject,PloobsEngine.SceneControl.IObject},System.Collections.Generic.List{PloobsEngine.Physics.IPhysicObject})">
+      <summary>
+            Get the objects near the object passed as parameter
+            </summary>
+      <param name="po">The po.</param>
+      <param name="distance">The distance.</param>
+      <param name="CullerAvaliator">The culler avaliator.</param>
+      <param name="resp">The resp.</param>
+    </member>
+    <member name="M:PloobsEngine.Physics.IPhysicWorld.GetPhysicsObjectsInRange(Microsoft.Xna.Framework.Vector3,System.Single,PloobsEngine.Physics.CullerConditionAvaliator{PloobsEngine.Physics.IPhysicObject,PloobsEngine.SceneControl.IObject},System.Collections.Generic.List{PloobsEngine.Physics.IPhysicObject})">
+      <summary>
+            Get the objects near the position passed as parameter
+            </summary>
+      <param name="position">The position.</param>
+      <param name="distance">The distance.</param>
+      <param name="CullerAvaliator">The culler avaliator.</param>
+      <param name="resp">The resp.</param>
+    </member>
+    <member name="M:PloobsEngine.Physics.IPhysicWorld.CleanUp">
+      <summary>
+            Cleans up.
+            </summary>
+    </member>
+    <member name="P:PloobsEngine.Physics.IPhysicWorld.isDebugDraw">
+      <summary>
+            Gets or sets a value indicating whether this instance is debug draw.
+            </summary>
+      <value>
+        <c>true</c> if this instance is debug draw; otherwise, <c>false</c>.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Physics.IPhysicWorld.PhysicObjects">
+      <summary>
+            Gets the physic objects.
+            </summary>
+    </member>
+    <member name="P:PloobsEngine.Physics.IPhysicWorld.PhysicConstraints">
+      <summary>
+            Gets the physic constraints.
+            </summary>
+    </member>
     <member name="T:PloobsEngine.Physics.IPhysicObject">
       <summary>
             Specification of a physic Object
@@ -660,6 +762,12 @@
             </summary>
       <param name="position">The position.</param>
       <param name="force">The force.</param>
+    </member>
+    <member name="M:PloobsEngine.Physics.IPhysicObject.AfterAdded(PloobsEngine.SceneControl.IObject)">
+      <summary>
+            Called after the object is added to the world
+            </summary>
+      <param name="obj">The obj.</param>
     </member>
     <member name="P:PloobsEngine.Physics.IPhysicObject.Position">
       <summary>
@@ -750,6 +858,19 @@
       <returns>
       </returns>
     </member>
+    <member name="M:PloobsEngine.Physics.Bepu.TerrainObject.#ctor(PloobsEngine.Engine.GraphicFactory,Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Matrix,PloobsEngine.Physics.MaterialDescription,System.Single,System.Single,System.Single)">
+      <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Physics.Bepu.TerrainObject" /> class.
+            </summary>
+      <param name="gfactory">The gfactory.</param>
+      <param name="heightmapTexture">The heighmap texture.</param>
+      <param name="translation">The translation.</param>
+      <param name="rotation">The rotation.</param>
+      <param name="materialDesc">The material desc.</param>
+      <param name="XSpacing">The X spacing.</param>
+      <param name="ZSpacing">The Z spacing.</param>
+      <param name="heightMultipler">The height multipler.</param>
+    </member>
     <member name="M:PloobsEngine.Physics.Bepu.TerrainObject.#ctor(PloobsEngine.Engine.GraphicFactory,System.String,Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Matrix,PloobsEngine.Physics.MaterialDescription,System.Single,System.Single,System.Single)">
       <summary>
             Create a Terrain Physic Object
@@ -787,6 +908,104 @@
     <member name="P:PloobsEngine.Physics.Bepu.TerrainObject.HeightMap">
       <summary>
             Gets the height map.
+            </summary>
+    </member>
+    <member name="T:BEPUphysicsDemos.AlternateMovement.SphereCharacter.HorizontalMotionConstraint">
+      <summary>
+            Manages the horizontal movement of a character.
+            </summary>
+    </member>
+    <member name="M:BEPUphysicsDemos.AlternateMovement.SphereCharacter.HorizontalMotionConstraint.#ctor(BEPUphysicsDemos.AlternateMovement.SphereCharacter.SphereCharacterController)">
+      <summary>
+            Constructs a new horizontal motion constraint.
+            </summary>
+      <param name="characterController">Character to be governed by this constraint.</param>
+    </member>
+    <member name="M:BEPUphysicsDemos.AlternateMovement.SphereCharacter.HorizontalMotionConstraint.Update(System.Single)">
+      <summary>
+            Computes per-frame information necessary for the constraint.
+            </summary>
+      <param name="dt">Time step duration.</param>
+    </member>
+    <member name="M:BEPUphysicsDemos.AlternateMovement.SphereCharacter.HorizontalMotionConstraint.ExclusiveUpdate">
+      <summary>
+            Performs any per-frame initialization needed by the constraint that must be done with exclusive access
+            to the connected objects.
+            </summary>
+    </member>
+    <member name="M:BEPUphysicsDemos.AlternateMovement.SphereCharacter.HorizontalMotionConstraint.SolveIteration">
+      <summary>
+            Computes a solution to the constraint.
+            </summary>
+      <returns>Impulse magnitude computed by the iteration.</returns>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.HorizontalMotionConstraint.SupportData">
+      <summary>
+            Gets or sets the support data used by the constraint.
+            </summary>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.HorizontalMotionConstraint.MovementDirection">
+      <summary>
+            Gets or sets the goal movement direction.
+            </summary>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.HorizontalMotionConstraint.Speed">
+      <summary>
+            Gets or sets the maximum speed at which the character can move while standing with a support that provides traction.
+            Relative velocities with a greater magnitude will be decelerated.
+            </summary>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.HorizontalMotionConstraint.SlidingSpeed">
+      <summary>
+            Gets or sets the maximum speed at which the character can move while on a support that does not provide traction.
+            Relative velocities with a greater magnitude will be decelerated.
+            </summary>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.HorizontalMotionConstraint.AirSpeed">
+      <summary>
+            Gets or sets the maximum speed at which the character can move with no support.
+            The character will not be decelerated while airborne.
+            </summary>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.HorizontalMotionConstraint.MaximumForce">
+      <summary>
+            Gets or sets the maximum force that the character can apply while on a support which provides traction.
+            </summary>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.HorizontalMotionConstraint.MaximumSlidingForce">
+      <summary>
+            Gets or sets the maximum force that the character can apply while on a support which does not provide traction.
+            </summary>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.HorizontalMotionConstraint.MaximumAirForce">
+      <summary>
+            Gets or sets the maximum force that the character can apply with no support.
+            </summary>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.HorizontalMotionConstraint.SupportForceFactor">
+      <summary>
+            Gets or sets the scaling factor of forces applied to the supporting object if it is a dynamic entity.
+            Low values (below 1) reduce the amount of motion imparted to the support object; it acts 'heavier' as far as horizontal motion is concerned.
+            High values (above 1) increase the force applied to support objects, making them appear lighter.
+            Be careful when changing this- it can create impossible situations! Imagine the character standing on a compound object.  If the support force
+            factor is less than 1, then the character can push the compound around while standing on it!
+            </summary>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.HorizontalMotionConstraint.MovementMode">
+      <summary>
+            Gets the movement mode that the character is currently in.
+            </summary>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.HorizontalMotionConstraint.RelativeVelocity">
+      <summary>
+            Gets the current velocity between the character and its support in constraint space.
+            The X component corresponds to velocity along the movement direction.
+            The Y component corresponds to velocity perpendicular to the movement direction and support normal.
+            </summary>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.HorizontalMotionConstraint.RelativeWorldVelocity">
+      <summary>
+            Gets the current velocity between the character and its support.
             </summary>
     </member>
     <member name="T:PloobsEngine.Material.IShader">
@@ -870,7 +1089,7 @@
             Cleanups this instance.
             </summary>
     </member>
-    <member name="M:PloobsEngine.Material.IShader.DepthExtractor(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IObject,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix,PloobsEngine.SceneControl.RenderHelper)">
+    <member name="M:PloobsEngine.Material.IShader.DepthExtractor(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IObject,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@,PloobsEngine.SceneControl.RenderHelper)">
       <summary>
             Exctract the depth from an object
             </summary>
@@ -880,7 +1099,7 @@
       <param name="projection">The projection.</param>
       <param name="render">The render.</param>
     </member>
-    <member name="M:PloobsEngine.Material.IShader.BasicDraw(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IObject,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix,System.Collections.Generic.IList{PloobsEngine.Light.ILight},PloobsEngine.SceneControl.RenderHelper,System.Nullable{Microsoft.Xna.Framework.Plane},System.Boolean)">
+    <member name="M:PloobsEngine.Material.IShader.BasicDraw(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IObject,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@,System.Collections.Generic.IList{PloobsEngine.Light.ILight},PloobsEngine.SceneControl.RenderHelper,System.Nullable{Microsoft.Xna.Framework.Plane},System.Boolean)">
       <summary>
             Draw the object in a simple way (WITH MINIMUM EFFECTS,....)
             USED IN RELECTIONS, REFRACTION .....
@@ -905,8 +1124,6 @@
     <member name="P:PloobsEngine.Material.IShader.ShaderId">
       <summary>
             Used to Recover the object in PostProcces
-            between 0 and 0.9f it will be illuminated, 
-            bigger than 0.9 it wont be
             </summary>
     </member>
     <member name="T:PloobsEngine.Material.DeferredCustomAnimationShader">
@@ -1292,7 +1509,7 @@
             </summary>
       <param name="gt">The gt.</param>
     </member>
-    <member name="M:PloobsEngine.Components.IComponent.PreDraw(PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix)">
+    <member name="M:PloobsEngine.Components.IComponent.PreDraw(PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@)">
       <summary>
             Pres draw.
             Its called deppending of the ComponentType
@@ -1302,7 +1519,7 @@
       <param name="activeView">The active view.</param>
       <param name="activeProjection">The active projection.</param>
     </member>
-    <member name="M:PloobsEngine.Components.IComponent.PosWithDepthDraw(PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix)">
+    <member name="M:PloobsEngine.Components.IComponent.PosWithDepthDraw(PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@)">
       <summary>
             Pos With Depth draw.
             Its called deppending of the ComponentType
@@ -1312,7 +1529,7 @@
       <param name="activeView">The active view.</param>
       <param name="activeProjection">The active projection.</param>
     </member>
-    <member name="M:PloobsEngine.Components.IComponent.iPosWithDepthDraw(PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix)">
+    <member name="M:PloobsEngine.Components.IComponent.iPosWithDepthDraw(PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@)">
       <summary>
             Is the pos with depth draw.
             </summary>
@@ -1321,7 +1538,7 @@
       <param name="activeView">The active view.</param>
       <param name="activeProjection">The active projection.</param>
     </member>
-    <member name="M:PloobsEngine.Components.IComponent.AfterDraw(PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix)">
+    <member name="M:PloobsEngine.Components.IComponent.AfterDraw(PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@)">
       <summary>
             Afters draw.
             Its called deppending of the ComponentType
@@ -1467,6 +1684,12 @@
             </summary>
       <param name="ginfo">The ginfo.</param>
       <param name="factory">The factory.</param>
+      <param name="obj">The obj.</param>
+    </member>
+    <member name="M:PloobsEngine.Material.IMaterial.AfterAdded(PloobsEngine.SceneControl.IObject)">
+      <summary>
+            Called After the IObject is Added.
+            </summary>
       <param name="obj">The obj.</param>
     </member>
     <member name="M:PloobsEngine.Material.IMaterial.PreDrawnPhase(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IWorld,PloobsEngine.SceneControl.IObject,PloobsEngine.Cameras.ICamera,System.Collections.Generic.IList{PloobsEngine.Light.ILight},PloobsEngine.SceneControl.RenderHelper)">
@@ -1770,6 +1993,51 @@
             Indicates whether the local space is right handed.
             </summary>
     </member>
+    <member name="T:BEPUphysicsDemos.AlternateMovement.SphereCharacter.QueryManager">
+      <summary>
+            Helps a character identify supports by finding contacts and ray cast intersections with its immediate surroundings.
+            </summary>
+    </member>
+    <member name="M:BEPUphysicsDemos.AlternateMovement.SphereCharacter.QueryManager.#ctor(BEPUphysicsDemos.AlternateMovement.SphereCharacter.SphereCharacterController)">
+      <summary>
+            Constructs the query manager for a character.
+            </summary>
+      <param name="character">Character to manage queries for.</param>
+    </member>
+    <member name="M:BEPUphysicsDemos.AlternateMovement.SphereCharacter.QueryManager.RayCast(Microsoft.Xna.Framework.Ray,System.Single,BEPUphysics.RayHit@)">
+      <summary>
+            Computes the intersection, if any, between a ray and the objects in the character's bounding box.
+            </summary>
+      <param name="ray">Ray to test.</param>
+      <param name="length">Length of the ray to use in units of the ray's length.</param>
+      <param name="earliestHit">Earliest intersection location and information.</param>
+      <returns>Whether or not the ray hit anything.</returns>
+    </member>
+    <member name="M:BEPUphysicsDemos.AlternateMovement.SphereCharacter.QueryManager.RayCast(Microsoft.Xna.Framework.Ray,System.Single,BEPUphysics.RayHit@,BEPUphysics.Collidables.Collidable@)">
+      <summary>
+            Computes the intersection, if any, between a ray and the objects in the character's bounding box.
+            </summary>
+      <param name="ray">Ray to test.</param>
+      <param name="length">Length of the ray to use in units of the ray's length.</param>
+      <param name="earliestHit">Earliest intersection location and information.</param>
+      <param name="hitObject">Collidable intersected by the ray, if any.</param>
+      <returns>Whether or not the ray hit anything.</returns>
+    </member>
+    <member name="M:BEPUphysicsDemos.AlternateMovement.SphereCharacter.QueryManager.RayCastHitAnything(Microsoft.Xna.Framework.Ray,System.Single)">
+      <summary>
+            Determines if a ray intersects any object in the character's bounding box.
+            </summary>
+      <param name="ray">Ray to test.</param>
+      <param name="length">Length of the ray to use in units of the ray's length.</param>
+      <returns>Whether or not the ray hit anything.</returns>
+    </member>
+    <member name="M:BEPUphysicsDemos.AlternateMovement.SphereCharacter.QueryManager.QueryContacts(Microsoft.Xna.Framework.Vector3)">
+      <summary>
+            Tests a collision object with the same shape as the current character at the given position for contacts.
+            Output data is stored in the query manager's supporting lists.
+            </summary>
+      <param name="position">Position to use for the query.</param>
+    </member>
     <member name="T:PloobsEngine.Physics.DisplayWrappedBody">
       <summary>
             Helper class that can create shape mesh data.
@@ -1785,21 +2053,13 @@
             Specification of a physic Constraint
             </summary>
     </member>
-    <member name="P:PloobsEngine.Physic.Constraints.IPhysicConstraint.Position">
-      <summary>
-            Gets or sets the position.
-            </summary>
-      <value>
-            The position.
-            </value>
-    </member>
-    <member name="T:PloobsEngine.Physic.Constraints.BepuConstraint.BepuPhysicConstraint">
+    <member name="T:PloobsEngine.Physic.Constraints.BepuConstraint.JointConstraint">
       <summary>
             Bepu Constraint Type
             Extend this class to implement any constraint in bepu
             </summary>
     </member>
-    <member name="P:PloobsEngine.Physic.Constraints.BepuConstraint.BepuPhysicConstraint.Joint">
+    <member name="P:PloobsEngine.Physic.Constraints.BepuConstraint.JointConstraint.Joint">
       <summary>
             Gets or sets the joint.
             </summary>
@@ -1807,7 +2067,7 @@
             The joint.
             </value>
     </member>
-    <member name="P:PloobsEngine.Physic.Constraints.BepuConstraint.BepuPhysicConstraint.BodyA">
+    <member name="P:PloobsEngine.Physic.Constraints.BepuConstraint.JointConstraint.BodyA">
       <summary>
             Gets or sets the body A.
             </summary>
@@ -1815,7 +2075,7 @@
             The body A.
             </value>
     </member>
-    <member name="P:PloobsEngine.Physic.Constraints.BepuConstraint.BepuPhysicConstraint.BodyB">
+    <member name="P:PloobsEngine.Physic.Constraints.BepuConstraint.JointConstraint.BodyB">
       <summary>
             Gets or sets the body B.
             </summary>
@@ -1827,6 +2087,30 @@
       <summary>
             Point to Point Constraint
             </summary>
+    </member>
+    <member name="P:PloobsEngine.Physic.Constraints.BepuConstraint.MultipleSubConstraints.Constraint">
+      <summary>
+            Gets or sets the joint.
+            </summary>
+      <value>
+            The joint.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Physic.Constraints.BepuConstraint.MultipleSubConstraints.BodyA">
+      <summary>
+            Gets or sets the body A.
+            </summary>
+      <value>
+            The body A.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Physic.Constraints.BepuConstraint.MultipleSubConstraints.BodyB">
+      <summary>
+            Gets or sets the body B.
+            </summary>
+      <value>
+            The body B.
+            </value>
     </member>
     <member name="F:PloobsEngine.NetWorking.NetWorkClientObject.CreateRemoteObjectOrder">
       <summary>
@@ -1993,6 +2277,31 @@
       <param name="type">The type.</param>
       <param name="meshIndex">Index of the mesh.</param>
       <param name="meshPartIndex">Index of the mesh part.</param>
+    </member>
+    <member name="M:PloobsEngine.Modelo.IModelo.SetCubeTexture(Microsoft.Xna.Framework.Graphics.TextureCube,PloobsEngine.Modelo.TextureType,System.Int32,System.Int32)">
+      <summary>
+            Set Cube Texture of a mesh
+            </summary>
+      <param name="textureCube">
+      </param>
+      <param name="meshIndex">
+      </param>
+      <param name="meshPartIndex">
+      </param>
+    </member>
+    <member name="M:PloobsEngine.Modelo.IModelo.GetCubeTexture(PloobsEngine.Modelo.TextureType,System.Int32,System.Int32)">
+      <summary>
+            Get texture cube 
+            (Only Environment and AmbientCubeMap)
+            </summary>
+      <param name="TextureType">
+      </param>
+      <param name="meshIndex">
+      </param>
+      <param name="meshPartIndex">
+      </param>
+      <returns>
+      </returns>
     </member>
     <member name="M:PloobsEngine.Modelo.IModelo.LoadModelo(PloobsEngine.Engine.GraphicFactory)">
       <summary>
@@ -2676,6 +2985,17 @@
       <param name="pearson">Pearson X,Y</param>
       <param name="multiplierX">The multiplier X.</param>
       <param name="multiplierY">The multiplier Y.</param>
+    </member>
+    <member name="M:PloobsEngine.Utils.Reader.Read(System.Char,System.Char,System.Char)">
+      <summary>
+            Liest das gesamte Dokument
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.Utils.Reader.ReadValue(System.String)">
+      <summary>
+            Liest den Wert eines Keys aus dem Dokument heraus.
+            </summary>
+      <param name="key">der Schlüssel: "resolution = 'Wert'"</param>
     </member>
     <member name="P:PloobsEngine.SceneControl.ScatterPostEffect.Density">
       <summary>
@@ -3657,6 +3977,29 @@
             Gets and sets the position of the character.
             </summary>
     </member>
+    <member name="M:PloobsEngine.Physics.PhysxTriangleMesh.#ctor(PloobsEngine.Physics.PhysxPhysicWorld,PloobsEngine.Modelo.IModelo,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Vector3,System.Single,StillDesign.PhysX.Material)">
+      <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Physics.PhysxTriangleMesh" /> class.
+            Cooks the Model on the fly
+            </summary>
+      <param name="PhysxPhysicWorld">The physx physic world.</param>
+      <param name="model">The model.</param>
+      <param name="worldTransformation">The world transformation.</param>
+      <param name="scale">The scale.</param>
+      <param name="density">The density.</param>
+    </member>
+    <member name="M:PloobsEngine.Physics.PhysxTriangleMesh.#ctor(PloobsEngine.Physics.PhysxPhysicWorld,System.IO.FileStream,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Vector3,PloobsEngine.Physics.MaterialDescription)">
+      <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Physics.PhysxTriangleMesh" /> class.
+            For cooked Models
+            </summary>
+      <param name="PhysxPhysicWorld">The physx physic world.</param>
+      <param name="FileStream">The file stream.</param>
+      <param name="localTransformation">The local transformation.</param>
+      <param name="worldTransformation">The world transformation.</param>
+      <param name="scale">The scale.</param>
+      <param name="MaterialDescription">The material description.</param>
+    </member>
     <member name="T:PloobsEngine.Modelo.CustomModel">
       <summary>
             Model implementation responsible for holding a specific mesh of a larger model
@@ -4015,7 +4358,7 @@
             Implementation of the most simple Model in the engine
             </summary>
     </member>
-    <member name="M:PloobsEngine.Modelo.SimpleModel.#ctor(PloobsEngine.Engine.GraphicFactory,System.String,System.String,System.String,System.String,System.String)">
+    <member name="M:PloobsEngine.Modelo.SimpleModel.#ctor(PloobsEngine.Engine.GraphicFactory,System.String,System.String,System.String,System.String,System.String,System.Boolean)">
       <summary>
             Initializes a new instance of the <see cref="T:PloobsEngine.Modelo.SimpleModel" /> class.
             </summary>
@@ -4025,6 +4368,7 @@
       <param name="bumpTextureName">Name of the bump texture.</param>
       <param name="specularTextureName">Name of the specular texture.</param>
       <param name="glowTextureName">Name of the glow texture.</param>
+      <param name="forceFromDisk">if set to <c>true</c> [force from disk].</param>
     </member>
     <member name="T:PloobsEngine.Commands.ICommand">
       <summary>
@@ -4249,7 +4593,7 @@
             Static Friction
             </summary>
     </member>
-    <member name="F:PloobsEngine.Physics.MaterialDescription.DinamicFriction">
+    <member name="F:PloobsEngine.Physics.MaterialDescription.DynamicFriction">
       <summary>
             Dynamic Friction
             </summary>
@@ -4321,6 +4665,16 @@
             Character
             </summary>
     </member>
+    <member name="F:PloobsEngine.Physics.PhysicObjectTypes.FULLCHARACTEROBJECT">
+      <summary>
+            FULLCHARACTER OBJECT
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Physics.PhysicObjectTypes.SPHERECHARACTEROBJECT">
+      <summary>
+            Sphere Character Object
+            </summary>
+    </member>
     <member name="F:PloobsEngine.Physics.PhysicObjectTypes.PLANEOBJECT">
       <summary>
             Plane
@@ -4334,6 +4688,11 @@
     <member name="F:PloobsEngine.Physics.PhysicObjectTypes.TRIANGLEMESHOBJECT">
       <summary>
             Triangle Mesh
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Physics.PhysicObjectTypes.TRIGGER">
+      <summary>
+            Trigger
             </summary>
     </member>
     <member name="F:PloobsEngine.Physics.PhysicObjectTypes.HEIGHMAPOBJECT">
@@ -4357,97 +4716,14 @@
             None of those before
             </summary>
     </member>
+    <member name="F:PloobsEngine.Physics.PhysicObjectTypes.FLUID">
+      <summary>
+            Fluid
+            </summary>
+    </member>
     <member name="F:PloobsEngine.Physics.PhysicObjectTypes.NONE">
       <summary>
             Should not be used, here for compatibility
-            </summary>
-    </member>
-    <member name="T:PloobsEngine.Physics.IPhysicWorld">
-      <summary>
-            3D Physic World Specification
-            </summary>
-    </member>
-    <member name="M:PloobsEngine.Physics.IPhysicWorld.DebugDrawn(PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime,PloobsEngine.Cameras.ICamera)">
-      <summary>
-            Draw the physic world in debug mode.
-            </summary>
-      <param name="gt">The gt.</param>
-      <param name="cam">The cam.</param>
-    </member>
-    <member name="M:PloobsEngine.Physics.IPhysicWorld.Update(Microsoft.Xna.Framework.GameTime)">
-      <summary>
-            Updates 
-            </summary>
-      <param name="gt">The gt.</param>
-    </member>
-    <member name="M:PloobsEngine.Physics.IPhysicWorld.AddObject(PloobsEngine.Physics.IPhysicObject)">
-      <summary>
-            Adds the object.
-            </summary>
-      <param name="obj">The obj.</param>
-    </member>
-    <member name="M:PloobsEngine.Physics.IPhysicWorld.RemoveObject(PloobsEngine.Physics.IPhysicObject)">
-      <summary>
-            Removes the object.
-            </summary>
-      <param name="obj">The obj.</param>
-    </member>
-    <member name="M:PloobsEngine.Physics.IPhysicWorld.AddConstraint(PloobsEngine.Physic.Constraints.IPhysicConstraint)">
-      <summary>
-             Adds the constraint
-            </summary>
-      <param name="ctn">
-      </param>
-    </member>
-    <member name="M:PloobsEngine.Physics.IPhysicWorld.RemoveConstraint(PloobsEngine.Physic.Constraints.IPhysicConstraint)">
-      <summary>
-            Removes the constraints
-            </summary>
-      <param name="ctn">
-      </param>
-    </member>
-    <member name="M:PloobsEngine.Physics.IPhysicWorld.SegmentIntersect(Microsoft.Xna.Framework.Ray,System.Func{PloobsEngine.Physics.IPhysicObject,System.Boolean},System.Single)">
-      <summary>
-            Raycast
-            </summary>
-      <param name="raio">The raio.</param>
-      <param name="filter">The filter.</param>
-      <param name="maxDistance">The max distance.</param>
-      <returns>
-      </returns>
-    </member>
-    <member name="M:PloobsEngine.Physics.IPhysicWorld.DetectCollisions(PloobsEngine.Physics.IPhysicObject,System.Collections.Generic.List{PloobsEngine.Physics.IPhysicObject})">
-      <summary>
-            Detects the collisions of a physic object
-            </summary>
-      <param name="po">The po.</param>
-      <param name="resp">The resp.</param>
-    </member>
-    <member name="M:PloobsEngine.Physics.IPhysicWorld.GetPhysicsObjectsInRange(PloobsEngine.Physics.IPhysicObject,System.Single,PloobsEngine.Physics.CullerConditionAvaliator{PloobsEngine.Physics.IPhysicObject,PloobsEngine.SceneControl.IObject},System.Collections.Generic.List{PloobsEngine.Physics.IPhysicObject})">
-      <summary>
-            Get the objects near the object passed as parameter
-            </summary>
-      <param name="po">The po.</param>
-      <param name="distance">The distance.</param>
-      <param name="CullerAvaliator">The culler avaliator.</param>
-      <param name="resp">The resp.</param>
-    </member>
-    <member name="P:PloobsEngine.Physics.IPhysicWorld.isDebugDraw">
-      <summary>
-            Gets or sets a value indicating whether this instance is debug draw.
-            </summary>
-      <value>
-        <c>true</c> if this instance is debug draw; otherwise, <c>false</c>.
-            </value>
-    </member>
-    <member name="P:PloobsEngine.Physics.IPhysicWorld.PhysicObjects">
-      <summary>
-            Gets the physic objects.
-            </summary>
-    </member>
-    <member name="P:PloobsEngine.Physics.IPhysicWorld.PhysicConstraints">
-      <summary>
-            Gets the physic constraints.
             </summary>
     </member>
     <member name="T:PloobsEngine.Physics.DisplayCone">
@@ -4674,6 +4950,172 @@
       <summary>
             Command responsible for registering a Shape Drawer
             </summary>
+    </member>
+    <member name="T:PloobsEngine.IA.Attribute">
+      <summary>
+            Classe que representa um atributo utilizado na classe de decisão
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.IA.Attribute.#ctor(System.String,System.String[])">
+      <summary>
+            Inicializa uma nova instância de uma classe Atribute
+            </summary>
+      <param name="name">Indica o nome do atributo</param>
+      <param name="values">Indica os valores possíveis para o atributo</param>
+    </member>
+    <member name="M:PloobsEngine.IA.Attribute.isValidValue(System.String)">
+      <summary>
+            Indica se um valor é permitido para este atributo
+            </summary>
+      <param name="value">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:PloobsEngine.IA.Attribute.indexValue(System.String)">
+      <summary>
+            Retorna o índice de um valor
+            </summary>
+      <param name="value">Valor a ser retornado</param>
+      <returns>O valor do índice na qual a posição do valor se encontra</returns>
+    </member>
+    <member name="M:PloobsEngine.IA.Attribute.ToString">
+      <summary>
+      </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="P:PloobsEngine.IA.Attribute.AttributeName">
+      <summary>
+            Indica o nome do atributo
+            </summary>
+    </member>
+    <member name="P:PloobsEngine.IA.Attribute.values">
+      <summary>
+            Retorna um array com os valores do atributo
+            </summary>
+    </member>
+    <member name="T:PloobsEngine.IA.TreeNode">
+      <summary>
+            Classe que representará a arvore de decisão montada;
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.IA.TreeNode.#ctor(PloobsEngine.IA.Attribute)">
+      <summary>
+            Inicializa uma nova instância de TreeNode
+            </summary>
+      <param name="attribute">Atributo ao qual o node está ligado</param>
+    </member>
+    <member name="M:PloobsEngine.IA.TreeNode.AddTreeNode(PloobsEngine.IA.TreeNode,System.String)">
+      <summary>
+            Adiciona um TreeNode filho a este treenode no galho de nome indicicado pelo ValueName
+            </summary>
+      <param name="treeNode">TreeNode filho a ser adicionado</param>
+      <param name="ValueName">Nome do galho onde o treeNode é criado</param>
+    </member>
+    <member name="M:PloobsEngine.IA.TreeNode.getChild(System.Int32)">
+      <summary>
+            Retorna o nó filho de um nó
+            </summary>
+      <param name="index">Indice do nó filho</param>
+      <returns>Um objeto da classe TreeNode representando o nó</returns>
+    </member>
+    <member name="M:PloobsEngine.IA.TreeNode.getChildByBranchName(System.String)">
+      <summary>
+            Retorna o filho de um nó pelo nome do galho que leva até ele
+            </summary>
+      <param name="branchName">Nome do galho</param>
+      <returns>O nó</returns>
+    </member>
+    <member name="P:PloobsEngine.IA.TreeNode.totalChilds">
+      <summary>
+            Retorna o nro total de filhos do nó
+            </summary>
+    </member>
+    <member name="P:PloobsEngine.IA.TreeNode.attribute">
+      <summary>
+            Atributo que está conectado ao Nó
+            </summary>
+    </member>
+    <member name="T:PloobsEngine.IA.DecisionTreeID3">
+      <summary>
+            Classe que implementa uma árvore de Decisão usando o algoritmo ID3
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.IA.DecisionTreeID3.countTotalPositives(System.Data.DataTable)">
+      <summary>
+            Retorna o total de amostras positivas em uma tabela de amostras
+            </summary>
+      <param name="samples">DataTable com as amostras</param>
+      <returns>O nro total de amostras positivas</returns>
+    </member>
+    <member name="M:PloobsEngine.IA.DecisionTreeID3.calcEntropy(System.Int32,System.Int32)">
+      <summary>
+            Calcula a entropia dada a seguinte fórmula
+            -p+log2p+ - p-log2p-
+            
+            onde: p+ é a proporção de valores positivos
+            	  p- é a proporção de valores negativos
+            </summary>
+      <param name="positives">Quantidade de valores positivos</param>
+      <param name="negatives">Quantidade de valores negativos</param>
+      <returns>Retorna o valor da Entropia</returns>
+    </member>
+    <member name="M:PloobsEngine.IA.DecisionTreeID3.getValuesToAttribute(System.Data.DataTable,PloobsEngine.IA.Attribute,System.String,System.Int32@,System.Int32@)">
+      <summary>
+            Varre tabela de amostras verificando um atributo e se o resultado é positivo ou negativo
+            </summary>
+      <param name="samples">DataTable com as amostras</param>
+      <param name="attribute">Atributo a ser pesquisado</param>
+      <param name="value">valor permitido para o atributo</param>
+      <param name="positives">Conterá o nro de todos os atributos com o valor determinado com resultado positivo</param>
+      <param name="negatives">Conterá o nro de todos os atributos com o valor determinado com resultado negativo</param>
+    </member>
+    <member name="M:PloobsEngine.IA.DecisionTreeID3.gain(System.Data.DataTable,PloobsEngine.IA.Attribute)">
+      <summary>
+            Calcula o ganho de um atributo
+            </summary>
+      <param name="attribute">Atributo a ser calculado</param>
+      <returns>O ganho do atributo</returns>
+    </member>
+    <member name="M:PloobsEngine.IA.DecisionTreeID3.getBestAttribute(System.Data.DataTable,PloobsEngine.IA.Attribute[])">
+      <summary>
+            Retorna o melhor atributo.
+            </summary>
+      <param name="attributes">Um vetor com os atributos</param>
+      <returns>Retorna o que tiver maior ganho</returns>
+    </member>
+    <member name="M:PloobsEngine.IA.DecisionTreeID3.allSamplesPositives(System.Data.DataTable,System.String)">
+      <summary>
+            Retorna true caso todos os exemplos da amostragem são positivos
+            </summary>
+      <param name="samples">DataTable com as amostras</param>
+      <param name="targetAttribute">Atributo (coluna) da tabela a qual será verificado</param>
+      <returns>True caso todos os exemplos da amostragem são positivos</returns>
+    </member>
+    <member name="M:PloobsEngine.IA.DecisionTreeID3.allSamplesNegatives(System.Data.DataTable,System.String)">
+      <summary>
+            Retorna true caso todos os exemplos da amostragem são negativos
+            </summary>
+      <param name="samples">DataTable com as amostras</param>
+      <param name="targetAttribute">Atributo (coluna) da tabela a qual será verificado</param>
+      <returns>True caso todos os exemplos da amostragem são negativos</returns>
+    </member>
+    <member name="M:PloobsEngine.IA.DecisionTreeID3.getDistinctValues(System.Data.DataTable,System.String)">
+      <summary>
+            Retorna uma lista com todos os valores distintos de uma tabela de amostragem
+            </summary>
+      <param name="samples">DataTable com as amostras</param>
+      <param name="targetAttribute">Atributo (coluna) da tabela a qual será verificado</param>
+      <returns>Um ArrayList com os valores distintos</returns>
+    </member>
+    <member name="M:PloobsEngine.IA.DecisionTreeID3.getMostCommonValue(System.Data.DataTable,System.String)">
+      <summary>
+            Retorna o valor mais comum dentro de uma amostragem
+            </summary>
+      <param name="samples">DataTable com as amostras</param>
+      <param name="targetAttribute">Atributo (coluna) da tabela a qual será verificado</param>
+      <returns>Retorna o objeto com maior incidência dentro da tabela de amostras</returns>
     </member>
     <member name="T:PloobsEngine.Utils.Spline.UnitTestSpline">
       <summary>
@@ -7069,7 +7511,7 @@
             Particle system specification
             </summary>
     </member>
-    <member name="M:PloobsEngine.Particles.IParticleSystem.#ctor(System.String)">
+    <member name="M:PloobsEngine.Particles.IParticleSystem.#ctor(System.String,System.Nullable{Microsoft.Xna.Framework.BoundingBox})">
       <summary>
             Initializes a new instance of the <see cref="T:PloobsEngine.Particles.IParticleSystem" /> class.
             </summary>
@@ -7224,7 +7666,7 @@
       <returns>
       </returns>
     </member>
-    <member name="M:PloobsEngine.Components.ComponentManager.PreDraw(PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix)">
+    <member name="M:PloobsEngine.Components.ComponentManager.PreDraw(PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@)">
       <summary>
             Draw the Pre Draw components
             </summary>
@@ -7232,7 +7674,7 @@
       <param name="activeView">The active view.</param>
       <param name="activeProjection">The active projection.</param>
     </member>
-    <member name="M:PloobsEngine.Components.ComponentManager.AfterDraw(PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix)">
+    <member name="M:PloobsEngine.Components.ComponentManager.AfterDraw(PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@)">
       <summary>
             Draw the Afters draw.
             </summary>
@@ -7241,7 +7683,7 @@
       <param name="activeView">The active view.</param>
       <param name="activeProjection">The active projection.</param>
     </member>
-    <member name="M:PloobsEngine.Components.ComponentManager.PosWithDepthDraw(PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix)">
+    <member name="M:PloobsEngine.Components.ComponentManager.PosWithDepthDraw(PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@)">
       <summary>
             Draw the Afters with depth draw.
             </summary>
@@ -7736,21 +8178,23 @@
       <returns>
       </returns>
     </member>
-    <member name="M:PloobsEngine.Engine.GraphicFactory.GetModel(System.String,System.Boolean)">
+    <member name="M:PloobsEngine.Engine.GraphicFactory.GetModel(System.String,System.Boolean,System.Boolean)">
       <summary>
             Gets a model
             </summary>
       <param name="name">The name.</param>
       <param name="isinternal">if set to <c>true</c> [isinternal].</param>
+      <param name="forceFromDisk">if set to <c>true</c> [force from disk].</param>
       <returns>
       </returns>
     </member>
-    <member name="M:PloobsEngine.Engine.GraphicFactory.GetAnimatedModel(System.String,System.Boolean)">
+    <member name="M:PloobsEngine.Engine.GraphicFactory.GetAnimatedModel(System.String,System.Boolean,System.Boolean)">
       <summary>
             Gets an animated model.
             </summary>
       <param name="name">The name.</param>
       <param name="isinternal">if set to <c>true</c> [isinternal].</param>
+      <param name="forceFromDisk">if set to <c>true</c> [force from disk].</param>
       <returns>
       </returns>
     </member>
@@ -8148,6 +8592,21 @@
             Called all the time the object is updated
             </summary>
     </member>
+    <member name="F:PloobsEngine.Physics.PhysxTrigger.FireBeginsTouching">
+      <summary>
+            FireBeginsTouching 
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Physics.PhysxTrigger.FireEndsTouching">
+      <summary>
+            FireEndsTouching 
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Physics.PhysxTrigger.FireContaining">
+      <summary>
+            FireBeginsContaining 
+            </summary>
+    </member>
     <member name="T:PloobsEngine.Modelo2D.SpriteAnimated">
       <summary>
             Model used for sprite animation
@@ -8295,6 +8754,103 @@
       <summary>
             Returns true of the node contains enough vertices to split
             </summary>
+    </member>
+    <member name="T:PloobsEngine.Material.DeferredEnvironmentCustomShader">
+      <summary>
+            Shader that uses branching to use Glow,Bump, Specular and Paralax
+            Dont need to use all of them at once
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.Material.DeferredEnvironmentCustomShader.#ctor(System.Boolean,System.Boolean,System.Boolean,System.Single,System.Single)">
+      <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Material.DeferredCustomShader" /> class.
+            </summary>
+      <param name="useGlow">if set to <c>true</c> [use glow].</param>
+      <param name="useBump">if set to <c>true</c> [use bump].</param>
+      <param name="useSpecular">if set to <c>true</c> [use specular].</param>
+      <param name="specularIntensity">The specular intensity.</param>
+      <param name="specularPower">The specular power.</param>
+    </member>
+    <member name="M:PloobsEngine.Material.DeferredEnvironmentCustomShader.Draw(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IObject,PloobsEngine.SceneControl.RenderHelper,PloobsEngine.Cameras.ICamera,System.Collections.Generic.IList{PloobsEngine.Light.ILight})">
+      <summary>
+            Draw
+            </summary>
+      <param name="gt">
+      </param>
+      <param name="obj">
+      </param>
+      <param name="render">The render.</param>
+      <param name="cam">The cam.</param>
+      <param name="lights">
+      </param>
+    </member>
+    <member name="M:PloobsEngine.Material.DeferredEnvironmentCustomShader.Initialize(PloobsEngine.Engine.GraphicInfo,PloobsEngine.Engine.GraphicFactory,PloobsEngine.SceneControl.IObject)">
+      <summary>
+            Initializes this instance.
+            </summary>
+      <param name="ginfo">
+      </param>
+      <param name="factory">
+      </param>
+      <param name="obj">
+      </param>
+    </member>
+    <member name="P:PloobsEngine.Material.DeferredEnvironmentCustomShader.UseGlow">
+      <summary>
+            Gets or sets a value indicating whether [use glow].
+            </summary>
+      <value>
+        <c>true</c> if [use glow]; otherwise, <c>false</c>.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Material.DeferredEnvironmentCustomShader.UseBump">
+      <summary>
+            Gets or sets a value indicating whether [use bump].
+            </summary>
+      <value>
+        <c>true</c> if [use bump]; otherwise, <c>false</c>.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Material.DeferredEnvironmentCustomShader.UseSpecular">
+      <summary>
+            Gets or sets a value indicating whether [use specular].
+            </summary>
+      <value>
+        <c>true</c> if [use specular]; otherwise, <c>false</c>.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Material.DeferredEnvironmentCustomShader.SpecularIntensity">
+      <summary>
+            Gets or sets the specular intensity. Default 0
+            </summary>
+      <value>
+            The specular intensity.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Material.DeferredEnvironmentCustomShader.SpecularPower">
+      <summary>
+            Gets or sets the specular power. Default 0
+            </summary>
+      <value>
+            The specular power.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Material.DeferredEnvironmentCustomShader.MaterialType">
+      <summary>
+            Gets the type of the material.
+            </summary>
+      <value>
+            The type of the material.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Material.DeferredEnvironmentCustomShader.ScaleBias">
+      <summary>
+            Default  Vector2(0.04f, -0.03f);
+            used for paralax
+            </summary>
+      <value>
+            The scale bias.
+            </value>
     </member>
     <member name="T:PloobsEngine.Loader.ExtractXmlModelLoader">
       <summary>
@@ -8937,13 +9493,6 @@
       <param name="intervalInSeconds">
       </param>
     </member>
-    <member name="M:PloobsEngine.Utils.TimePassed.#ctor(System.Single,System.Boolean)">
-      <summary>
-            Initializes a new instance of the <see cref="T:PloobsEngine.Utils.TimePassed" /> class.
-            </summary>
-      <param name="intervalInSeconds">The interval in seconds.</param>
-      <param name="startOn">if set to <c>true</c> [start on].</param>
-    </member>
     <member name="M:PloobsEngine.Utils.TimePassed.InitOrRestart(Microsoft.Xna.Framework.GameTime)">
       <summary>
             Inits or restart.
@@ -9233,7 +9782,7 @@
             Dont need to use all of them at once
             </summary>
     </member>
-    <member name="M:PloobsEngine.Material.DeferredCustomShader.#ctor(System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Single,System.Single)">
+    <member name="M:PloobsEngine.Material.DeferredCustomShader.#ctor(System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Single,System.Single,System.Single)">
       <summary>
             Initializes a new instance of the <see cref="T:PloobsEngine.Material.DeferredCustomShader" /> class.
             </summary>
@@ -9241,9 +9790,7 @@
       <param name="useBump">if set to <c>true</c> [use bump].</param>
       <param name="useSpecular">if set to <c>true</c> [use specular].</param>
       <param name="useParalax">if set to <c>true</c> [use paralax].</param>
-      <param name="specularIntensity">The specular intensity.</param>
-      <param name="specularPower">The specular power.</param>
-    </member>
+            /// <param name="useAmbientCubeMap">if set to <c>true</c> [use AmbientCubeMap].</param><param name="specularIntensity">The specular intensity.</param><param name="specularPower">The specular power.</param><param name="ambientCubeMapScale ">The ambientCubeMap Scale.</param></member>
     <member name="M:PloobsEngine.Material.DeferredCustomShader.Draw(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IObject,PloobsEngine.SceneControl.RenderHelper,PloobsEngine.Cameras.ICamera,System.Collections.Generic.IList{PloobsEngine.Light.ILight})">
       <summary>
             Draw
@@ -10315,6 +10862,11 @@
             </summary>
       <param name="factory">The factory.</param>
     </member>
+    <member name="M:PloobsEngine.SceneControl.IObject.AfterAddedToTheWorld">
+      <summary>
+            Called after object is added to the world.
+            </summary>
+    </member>
     <member name="M:PloobsEngine.SceneControl.IObject.HandleThisMessageType(PloobsEngine.MessageSystem.SenderType)">
       <summary>
             Handles a message from determined sender type.
@@ -10441,7 +10993,7 @@
             Most Basic Deferred Shader (uses only diffuse texture and specular power/intensity properties)
             </summary>
     </member>
-    <member name="M:PloobsEngine.Material.DeferredNormalShader.#ctor(System.Single,System.Single)">
+    <member name="M:PloobsEngine.Material.DeferredNormalShader.#ctor(System.Single,System.Single,System.Boolean,System.Single)">
       <summary>
             Initializes a new instance of the <see cref="T:PloobsEngine.Material.DeferredNormalShader" /> class.
             </summary>
@@ -10913,6 +11465,30 @@
     <member name="T:PloobsEngine.Physics.DisplayBox">
       <summary>
             Helper class that can create shape mesh data.
+            </summary>
+    </member>
+    <member name="T:PloobsEngine.Physics.PhysxGhostObject">
+      <summary>
+            Fake Physic object, not simulated
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.Physics.PhysxGhostObject.#ctor(Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Vector3,System.Nullable{Microsoft.Xna.Framework.BoundingBox})">
+      <summary>
+            Initializes a new instance of the <see cref="!:GhostObject" /> class.
+            </summary>
+      <param name="position">The position.</param>
+      <param name="orientation">The orientation.</param>
+      <param name="scale">The scale.</param>
+    </member>
+    <member name="M:PloobsEngine.Physics.PhysxGhostObject.#ctor(System.Nullable{Microsoft.Xna.Framework.BoundingBox})">
+      <summary>
+            Initializes a new instance of the <see cref="!:GhostObject" /> class.
+            DEfault Object in 0,0,0 identity rotation and 1,1,1 scale
+            </summary>
+    </member>
+    <member name="T:PloobsEngine.Physics.BulletPhysicWorld">
+      <summary>
+            Bepu Implementation of a Physic World
             </summary>
     </member>
     <member name="T:PloobsEngine.Modelo.VertexMultitextured">
@@ -11551,6 +12127,15 @@
       <returns>
       </returns>
     </member>
+    <member name="M:PloobsEngine.SceneControl.Octree`1.StillInside(`0,Microsoft.Xna.Framework.BoundingBox)">
+      <summary>
+            Stills inside ?.
+            </summary>
+      <param name="o">The obj.</param>
+      <param name="bounds">Its bounds.</param>
+      <returns>
+      </returns>
+    </member>
     <member name="M:PloobsEngine.SceneControl.Octree`1.Add(`0,Microsoft.Xna.Framework.Vector3,System.Single)">
       <summary>
             Adds the given object to the octree.
@@ -11709,6 +12294,25 @@
       <param name="owner">The owner.</param>
       <param name="pickingRayDistance">The picking ray distance.</param>
     </member>
+    <member name="M:PloobsEngine.SceneControl.Picking.Pick(PloobsEngine.SceneControl.IWorld,PloobsEngine.Engine.GraphicInfo,System.Single,System.Single,System.Single,System.Func{PloobsEngine.Physics.IPhysicObject,System.Boolean})">
+      <summary>
+            Picking in x/y screen coordinates
+            </summary>
+      <param name="world">
+      </param>
+      <param name="info">
+      </param>
+      <param name="x">
+      </param>
+      <param name="y">
+      </param>
+      <param name="pickingDistance">
+      </param>
+      <param name="intercept">
+      </param>
+      <returns>
+      </returns>
+    </member>
     <member name="T:PloobsEngine.SceneControl.IDeferredGBuffer">
       <summary>
             GBUffer generation specification
@@ -11793,11 +12397,6 @@
             Deferred Render Technic Init Description
             </summary>
     </member>
-    <member name="F:PloobsEngine.SceneControl.DeferredRenderTechnicInitDescription.PhysicDebug">
-      <summary>
-            not yet avaliable
-            </summary>
-    </member>
     <member name="F:PloobsEngine.SceneControl.DeferredRenderTechnicInitDescription.LightDebug">
       <summary>
             not yet avaliable
@@ -11843,7 +12442,7 @@
       <returns>
       </returns>
     </member>
-    <member name="M:PloobsEngine.SceneControl.DeferredRenderTechnicInitDescription.#ctor(PloobsEngine.SceneControl.IDeferredGBuffer,PloobsEngine.SceneControl.IDeferredLightMap,PloobsEngine.SceneControl.IDeferredFinalCombination,PloobsEngine.SceneControl.ForwardPass,Microsoft.Xna.Framework.Color,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.String[],PloobsEngine.SceneControl.RestoreDepthOption)">
+    <member name="M:PloobsEngine.SceneControl.DeferredRenderTechnicInitDescription.#ctor(PloobsEngine.SceneControl.IDeferredGBuffer,PloobsEngine.SceneControl.IDeferredLightMap,PloobsEngine.SceneControl.IDeferredFinalCombination,PloobsEngine.SceneControl.ForwardPass,Microsoft.Xna.Framework.Color,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.String[],PloobsEngine.SceneControl.RestoreDepthOption)">
       <summary>
             Initializes a new instance of the <see cref="T:PloobsEngine.SceneControl.DeferredRenderTechnicInitDescription" /> struct.
             </summary>
@@ -11852,7 +12451,6 @@
       <param name="DeferredFinalCombination">The deferred final combination.</param>
       <param name="ForwardPass">The forward pass.</param>
       <param name="BackGroundColor">Color of the back ground.</param>
-      <param name="PhysicDebug">if set to <c>true</c> [physic debug].</param>
       <param name="LightDebug">if set to <c>true</c> [light debug].</param>
       <param name="DefferedDebug">if set to <c>true</c> [deffered debug].</param>
       <param name="UseFloatingBufferForLightMap">if set to <c>true</c> [use floating buffer for light map].</param>
@@ -12174,7 +12772,7 @@
             Represent each billboard
             </summary>
     </member>
-    <member name="M:PloobsEngine.Modelo.InstancedBilboardModel.#ctor(PloobsEngine.Engine.GraphicFactory,System.String,System.String,PloobsEngine.Modelo.BilboardInstance[])">
+    <member name="M:PloobsEngine.Modelo.InstancedBilboardModel.#ctor(PloobsEngine.Engine.GraphicFactory,System.String,System.String,PloobsEngine.Modelo.BilboardInstance[],System.Int32)">
       <summary>
             Initializes a new instance of the <see cref="T:PloobsEngine.Modelo.InstancedBilboardModel" /> class.
             </summary>
@@ -12182,6 +12780,7 @@
       <param name="BilboardsName">Name of the bilboards.</param>
       <param name="diffuseTextureName">Name of the diffuse texture.</param>
       <param name="instances">The instances.</param>
+      <param name="dynamicBufferSize">Size of the dynamic buffer, use this if you want something different from number of instances</param>
     </member>
     <member name="M:PloobsEngine.Modelo.InstancedBilboardModel.SetBilboardInstances(PloobsEngine.Modelo.BilboardInstance[])">
       <summary>
@@ -12917,12 +13516,185 @@
             point and a cylinder along each segment.
             </summary>
     </member>
+    <member name="T:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SupportFinder">
+      <summary>
+            Analyzes the contacts on the character's body to find supports.
+            </summary>
+    </member>
+    <member name="M:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SupportFinder.#ctor(BEPUphysicsDemos.AlternateMovement.SphereCharacter.SphereCharacterController)">
+      <summary>
+            Constructs a new support finder.
+            </summary>
+      <param name="character">Character to analyze.</param>
+    </member>
+    <member name="M:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SupportFinder.UpdateSupports">
+      <summary>
+            Updates the collection of supporting contacts.
+            </summary>
+    </member>
+    <member name="M:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SupportFinder.ClearSupportData">
+      <summary>
+            Cleans up the support finder.
+            </summary>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SupportFinder.MaximumAssistedDownStepHeight">
+      <summary>
+            Gets or sets the maximum distance from the character to the support that will be assisted by downstepping.
+            If the character walks off a step with height less than this value, the character will retain traction despite
+            being temporarily airborne according to its contacts.
+            </summary>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SupportFinder.RayLengthToBottom">
+      <summary>
+            Gets the length from the ray start to the bottom of the character.
+            </summary>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SupportFinder.SupportData">
+      <summary>
+            Computes a combined support contact from all available supports (contacts or ray).
+            </summary>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SupportFinder.TractionData">
+      <summary>
+            Computes a combined traction contact from all available supports with traction (contacts or ray).
+            </summary>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SupportFinder.HasSupport">
+      <summary>
+            Gets whether or not at least one of the character's body's contacts provide support to the character.
+            </summary>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SupportFinder.HasTraction">
+      <summary>
+            Gets whether or not at least one of the character's supports, if any, are flat enough to allow traction.
+            </summary>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SupportFinder.SupportRayData">
+      <summary>
+            Gets the data about the supporting ray, if any.
+            </summary>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SupportFinder.Supports">
+      <summary>
+            Gets the character's supports.
+            </summary>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SupportFinder.TractionSupports">
+      <summary>
+            Gets a collection of the character's supports that provide traction.
+            Traction means that the surface's slope is flat enough to stand on normally.
+            </summary>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SupportFinder.MaximumSlope">
+      <summary>
+            Gets or sets the maximum slope on which the character will have traction.
+            </summary>
+    </member>
+    <member name="T:BEPUphysicsDemos.AlternateMovement.SphereCharacter.TractionSupportCollection">
+      <summary>
+            Convenience collection for finding the subset of contacts in a supporting contact list that have traction.
+            </summary>
+    </member>
+    <member name="T:BEPUphysicsDemos.AlternateMovement.SphereCharacter.TractionSupportCollection.Enumerator">
+      <summary>
+            Enumerator type for the TractionSupportCollection.
+            </summary>
+    </member>
+    <member name="M:BEPUphysicsDemos.AlternateMovement.SphereCharacter.TractionSupportCollection.Enumerator.#ctor(BEPUphysics.DataStructures.RawList{BEPUphysicsDemos.AlternateMovement.SphereCharacter.SupportContact})">
+      <summary>
+            Constructs the enumerator.
+            </summary>
+      <param name="supports">Support list to enumerate.</param>
+    </member>
+    <member name="M:BEPUphysicsDemos.AlternateMovement.SphereCharacter.TractionSupportCollection.Enumerator.MoveNext">
+      <summary>
+            Moves to the next traction contact.  It skips contacts with normals that cannot provide traction.
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.TractionSupportCollection.Enumerator.Current">
+      <summary>
+            Gets the current contact data.
+            </summary>
+    </member>
+    <member name="T:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SupportContact">
+      <summary>
+            Contact which acts as a support for the character controller.
+            </summary>
+    </member>
+    <member name="F:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SupportContact.Contact">
+      <summary>
+            Contact information at the support.
+            </summary>
+    </member>
+    <member name="F:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SupportContact.Support">
+      <summary>
+            Object that created this contact with the character.
+            </summary>
+    </member>
+    <member name="F:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SupportContact.HasTraction">
+      <summary>
+            Whether or not the contact was found to have traction.
+            </summary>
+    </member>
+    <member name="T:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SupportRayData">
+      <summary>
+            Result of a ray cast which acts as a support for the character controller.
+            </summary>
+    </member>
+    <member name="F:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SupportRayData.HitData">
+      <summary>
+            Ray hit information of the support.
+            </summary>
+    </member>
+    <member name="F:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SupportRayData.HitObject">
+      <summary>
+            Object hit by the ray.
+            </summary>
+    </member>
+    <member name="F:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SupportRayData.HasTraction">
+      <summary>
+            Whether or not the support has traction.
+            </summary>
+    </member>
+    <member name="T:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SupportData">
+      <summary>
+            Contact which acts as a support for the character controller.
+            </summary>
+    </member>
+    <member name="F:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SupportData.Position">
+      <summary>
+            Position of the support.
+            </summary>
+    </member>
+    <member name="F:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SupportData.Normal">
+      <summary>
+            Normal of the support.
+            </summary>
+    </member>
+    <member name="F:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SupportData.HasTraction">
+      <summary>
+            Whether or not the contact was found to have traction.
+            </summary>
+    </member>
+    <member name="F:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SupportData.Depth">
+      <summary>
+            Depth of the supporting location.
+            Can be negative in the case of raycast supports.
+            </summary>
+    </member>
+    <member name="F:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SupportData.SupportObject">
+      <summary>
+            The object which the character is standing on.
+            </summary>
+    </member>
     <member name="T:PloobsEngine.Physics.Bepu.GhostObject">
       <summary>
             Fake Physic object, not simulated
             </summary>
     </member>
-    <member name="M:PloobsEngine.Physics.Bepu.GhostObject.#ctor(Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Vector3)">
+    <member name="M:PloobsEngine.Physics.Bepu.GhostObject.#ctor(Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Vector3,System.Nullable{Microsoft.Xna.Framework.BoundingBox})">
       <summary>
             Initializes a new instance of the <see cref="T:PloobsEngine.Physics.Bepu.GhostObject" /> class.
             </summary>
@@ -12930,7 +13702,7 @@
       <param name="orientation">The orientation.</param>
       <param name="scale">The scale.</param>
     </member>
-    <member name="M:PloobsEngine.Physics.Bepu.GhostObject.#ctor">
+    <member name="M:PloobsEngine.Physics.Bepu.GhostObject.#ctor(System.Nullable{Microsoft.Xna.Framework.BoundingBox})">
       <summary>
             Initializes a new instance of the <see cref="T:PloobsEngine.Physics.Bepu.GhostObject" /> class.
             DEfault Object in 0,0,0 identity rotation and 1,1,1 scale
@@ -13483,7 +14255,7 @@
       <param name="componentManager">The component manager.</param>
       <param name="cmanager">The cmanager.</param>
     </member>
-    <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderPreComponents(Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix)">
+    <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderPreComponents(Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@)">
       <summary>
             Renders the pre components.
             </summary>
@@ -13491,7 +14263,7 @@
       <param name="view">The view.</param>
       <param name="projection">The projection.</param>
     </member>
-    <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderPosComponents(Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix)">
+    <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderPosComponents(Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@)">
       <summary>
             Renders the pos components.
             </summary>
@@ -13499,7 +14271,7 @@
       <param name="view">The view.</param>
       <param name="projection">The projection.</param>
     </member>
-    <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderPosWithDepthComponents(Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix)">
+    <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderPosWithDepthComponents(Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@)">
       <summary>
             Renders the pos with depth components.
             </summary>
@@ -13910,7 +14682,7 @@
       <param name="blenderState">State of the blender.</param>
       <param name="sync">if set to <c>true</c> [sync].</param>
     </member>
-    <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderSceneWithBasicMaterial(PloobsEngine.SceneControl.IWorld,Microsoft.Xna.Framework.GameTime,System.Collections.Generic.List{PloobsEngine.SceneControl.IObject},Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix,System.Boolean,System.Boolean)">
+    <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderSceneWithBasicMaterial(PloobsEngine.SceneControl.IWorld,Microsoft.Xna.Framework.GameTime,System.Collections.Generic.List{PloobsEngine.SceneControl.IObject},Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@,System.Boolean,System.Boolean)">
       <summary>
             Renders the scene without material.
             Uses XNA Basic Effect
@@ -13923,7 +14695,7 @@
       <param name="drawComponentsPreDraw">if set to <c>true</c> [draw components with pre draw setting also].</param>
       <param name="useCuller">if set to <c>true</c> [use culler].</param>
     </member>
-    <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderSceneWithCustomMaterial(Microsoft.Xna.Framework.Graphics.Effect,PloobsEngine.SceneControl.OnDrawingSceneCustomMaterial,PloobsEngine.SceneControl.IWorld,Microsoft.Xna.Framework.GameTime,System.Collections.Generic.List{PloobsEngine.SceneControl.IObject},Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix,System.Boolean,System.Boolean)">
+    <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderSceneWithCustomMaterial(Microsoft.Xna.Framework.Graphics.Effect,PloobsEngine.SceneControl.OnDrawingSceneCustomMaterial,PloobsEngine.SceneControl.IWorld,Microsoft.Xna.Framework.GameTime,System.Collections.Generic.List{PloobsEngine.SceneControl.IObject},Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@,System.Boolean,System.Boolean)">
       <summary>
             Renders the scene with custom material.
             </summary>
@@ -13937,7 +14709,7 @@
       <param name="drawComponentsPreDraw">if set to <c>true</c> [draw components pre draw].</param>
       <param name="useCuller">if set to <c>true</c> [use culler].</param>
     </member>
-    <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderSceneDepth(PloobsEngine.SceneControl.IWorld,Microsoft.Xna.Framework.GameTime,System.Collections.Generic.List{PloobsEngine.SceneControl.IObject},Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix,System.Boolean)">
+    <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderSceneDepth(PloobsEngine.SceneControl.IWorld,Microsoft.Xna.Framework.GameTime,System.Collections.Generic.List{PloobsEngine.SceneControl.IObject},Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@,System.Boolean)">
       <summary>
             Renders the scene depth.
             </summary>
@@ -13948,7 +14720,7 @@
       <param name="projection">The projection.</param>
       <param name="useCuller">if set to <c>true</c> [use culler].</param>
     </member>
-    <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderSceneDepth(PloobsEngine.SceneControl.IWorld,Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix,System.Boolean)">
+    <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderSceneDepth(PloobsEngine.SceneControl.IWorld,Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@,System.Boolean)">
       <summary>
             Renders the scene depth.
             </summary>
@@ -13958,7 +14730,7 @@
       <param name="projection">The projection.</param>
       <param name="useCuller">if set to <c>true</c> [use culler].</param>
     </member>
-    <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderSceneReflectionRefration(PloobsEngine.SceneControl.IWorld,Microsoft.Xna.Framework.GameTime,System.Collections.Generic.List{PloobsEngine.SceneControl.IObject},Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix,System.Boolean,System.Boolean,System.Nullable{Microsoft.Xna.Framework.Plane},System.Boolean)">
+    <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderSceneReflectionRefration(PloobsEngine.SceneControl.IWorld,Microsoft.Xna.Framework.GameTime,System.Collections.Generic.List{PloobsEngine.SceneControl.IObject},Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@,System.Boolean,System.Boolean,System.Nullable{Microsoft.Xna.Framework.Plane},System.Boolean)">
       <summary>
             Renders the scene reflection refration.
             </summary>
@@ -14121,7 +14893,7 @@
     </member>
     <member name="M:PloobsEngine.Material.ForwardMaterial.Drawn(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IObject,PloobsEngine.Cameras.ICamera,System.Collections.Generic.IList{PloobsEngine.Light.ILight},PloobsEngine.SceneControl.RenderHelper)">
       <summary>
-            Normal Drawn Function.
+            Normal Draw Function.
             </summary>
       <param name="gt">The gt.</param>
       <param name="obj">The obj.</param>
@@ -14327,6 +15099,11 @@
             When something happens that can be an error
             </summary>
     </member>
+    <member name="F:PloobsEngine.Engine.Logger.LogLevel.Info">
+      <summary>
+            Information only
+            </summary>
+    </member>
     <member name="T:PloobsEngine.Engine.Logger.ActiveLogger">
       <summary>
             Static Class responsible for Ploobs logging 
@@ -14468,13 +15245,81 @@
             Real physic object
             </summary>
     </member>
+    <member name="T:BEPUphysicsDemos.AlternateMovement.SphereCharacter.VerticalMotionConstraint">
+      <summary>
+            Keeps a character glued to the ground, if possible.
+            </summary>
+    </member>
+    <member name="M:BEPUphysicsDemos.AlternateMovement.SphereCharacter.VerticalMotionConstraint.#ctor(BEPUphysicsDemos.AlternateMovement.SphereCharacter.SphereCharacterController)">
+      <summary>
+            Constructs a new vertical motion constraint.
+            </summary>
+      <param name="characterController">Character governed by the constraint.</param>
+    </member>
+    <member name="M:BEPUphysicsDemos.AlternateMovement.SphereCharacter.VerticalMotionConstraint.UpdateSolverActivity">
+      <summary>
+            Updates the activity state of the constraint.
+            Called automatically by the solver.
+            </summary>
+    </member>
+    <member name="M:BEPUphysicsDemos.AlternateMovement.SphereCharacter.VerticalMotionConstraint.Update(System.Single)">
+      <summary>
+            Performs any per-frame computation needed by the constraint.
+            </summary>
+      <param name="dt">Time step duration.</param>
+    </member>
+    <member name="M:BEPUphysicsDemos.AlternateMovement.SphereCharacter.VerticalMotionConstraint.ExclusiveUpdate">
+      <summary>
+            Performs any per-frame computations needed by the constraint that require exclusive access to the involved entities.
+            </summary>
+    </member>
+    <member name="M:BEPUphysicsDemos.AlternateMovement.SphereCharacter.VerticalMotionConstraint.SolveIteration">
+      <summary>
+            Computes a solution to the constraint.
+            </summary>
+      <returns>Magnitude of the applied impulse.</returns>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.VerticalMotionConstraint.SupportData">
+      <summary>
+            Gets or sets the support data used by the constraint.
+            </summary>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.VerticalMotionConstraint.MaximumGlueForce">
+      <summary>
+            Gets or sets the maximum force that the constraint will apply in attempting to keep the character stuck to the ground.
+            </summary>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.VerticalMotionConstraint.SupportForceFactor">
+      <summary>
+            Gets or sets the scaling factor of forces applied to the supporting object if it is a dynamic entity.
+            Low values (below 1) reduce the amount of motion imparted to the support object; it acts 'heavier' as far as horizontal motion is concerned.
+            High values (above 1) increase the force applied to support objects, making them appear lighter.
+            </summary>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.VerticalMotionConstraint.EffectiveMass">
+      <summary>
+            Gets the effective mass felt by the constraint.
+            </summary>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.VerticalMotionConstraint.RelativeVelocity">
+      <summary>
+            Gets the relative velocity between the character and its support along the support normal.
+            </summary>
+    </member>
     <member name="T:BEPUphysicsDemos.AlternateMovement.Character.CharacterController">
       <summary>
             Gives a physical object FPS-like control, including stepping and jumping.
             This is more robust/expensive than the SimpleCharacterController.
             </summary>
     </member>
-    <member name="M:BEPUphysicsDemos.AlternateMovement.Character.CharacterController.#ctor(BEPUphysics.Entities.Prefabs.Cylinder)">
+    <member name="F:BEPUphysicsDemos.AlternateMovement.Character.CharacterController.ConstraintAccessLocker">
+      <summary>
+            This is used to control the access to simulation islands when there are multiple character controllers updating in parallel.
+            If other parts of the program are modifying simulation islands during the IBeforeSolverUpdateable.Update stage, the synchronization
+            umbrella will need to be widened.
+            </summary>
+    </member>
+    <member name="M:BEPUphysicsDemos.AlternateMovement.Character.CharacterController.#ctor(Microsoft.Xna.Framework.Vector3,System.Single,System.Single,System.Single)">
       <summary>
             Constructs a new character controller with the default configuration.
             </summary>
@@ -14581,6 +15426,43 @@
     <member name="T:PloobsEngine.Engine.IntermediateRenderTarget">
       <summary>
             Instance of a render target that belongs to a pool
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.DataStructure.BinaryNode`1.#ctor(`0)">
+      <summary>
+            Create a new binary node.
+            </summary>
+      <param name="userData">Optional data to store in the node.</param>
+    </member>
+    <member name="M:PloobsEngine.DataStructure.BinaryNode`1.Dispose">
+      <summary>
+            Disposes of this node and it's user data.
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.DataStructure.BinaryNode`1.Dispose(System.Boolean)">
+      <summary>
+            Called when this node is being disposed of.
+            </summary>
+      <param name="disposing">Should managed resources be disposed of as well.</param>
+    </member>
+    <member name="P:PloobsEngine.DataStructure.BinaryNode`1.UserData">
+      <summary>
+            User data stored in this node, this could be anything from a number, to a spatial node.
+            </summary>
+    </member>
+    <member name="P:PloobsEngine.DataStructure.BinaryNode`1.Left">
+      <summary>
+            Gets the left child of this node.
+            </summary>
+    </member>
+    <member name="P:PloobsEngine.DataStructure.BinaryNode`1.Right">
+      <summary>
+            Gets the right child of this node.
+            </summary>
+    </member>
+    <member name="P:PloobsEngine.DataStructure.BinaryNode`1.IsLeaf">
+      <summary>
+            Gets a value indicating whether this node has child nodes.
             </summary>
     </member>
     <member name="T:PloobsEngine.Audio.SoundAudioPlayer">
@@ -15091,11 +15973,6 @@
             </summary>
       <param name="textureName">Name of the texture.</param>
       <param name="type">The type.</param>
-    </member>
-    <member name="M:PloobsEngine.Modelo.TextureInformation.LoadTexture">
-      <summary>
-            Load the model
-            </summary>
     </member>
     <member name="M:PloobsEngine.Modelo.TextureInformation.SetCubeTexture(Microsoft.Xna.Framework.Graphics.TextureCube,PloobsEngine.Modelo.TextureType)">
       <summary>
@@ -15692,6 +16569,14 @@
             Gets the bounding box IN WORLD COORDINATES
             </summary>
     </member>
+    <member name="T:PloobsEngine.Modelo.TConstructiveModelo`1">
+      <summary>
+            Model Constructed by adding vertices / indices
+            Cant be change after building it
+            </summary>
+      <typeparam name="T">
+      </typeparam>
+    </member>
     <member name="T:PloobsEngine.Material2D.Basic2DTextureMaterial">
       <summary>
             Basic 2D Material
@@ -15893,6 +16778,89 @@
       <param name="render">The render.</param>
       <param name="view">The viewing matrix.</param>
       <param name="projection">The projection matrix.</param>
+    </member>
+    <member name="T:PloobsEngine.DataStructure.BinaryTreeTraversal">
+      <summary>
+            Determines the pattern used to visit nodes in a binary tree.
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.DataStructure.BinaryTreeTraversal.Inorder">
+      <summary>
+            Move into the left sub-tree.
+            Visit the node.
+            Move into the right sub-tree.
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.DataStructure.BinaryTreeTraversal.Preorder">
+      <summary>
+            Visit the node.
+            Move into the left sub-tree.
+            Move into the right sub-tree.
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.DataStructure.BinaryTreeTraversal.Postorder">
+      <summary>
+            Move into the left sub-tree.
+            Move into the right sub-tree.
+            Visit the node.
+            </summary>
+    </member>
+    <member name="T:PloobsEngine.DataStructure.BinaryTreeVisitDelegate`1">
+      <summary>
+            Delegate used when visiting a node in the binary tree.
+            </summary>
+      <typeparam name="UserType">Type of data stored in the nodes.</typeparam>
+      <param name="node">The node being visited.</param>
+      <param name="cancel">True if the traversal should stop.</param>
+    </member>
+    <member name="T:PloobsEngine.DataStructure.BinaryTree`1">
+      <summary>
+      </summary>
+      <typeparam name="UserType">Type of data stored in the nodes.</typeparam>
+    </member>
+    <member name="M:PloobsEngine.DataStructure.BinaryTree`1.#ctor(PloobsEngine.DataStructure.BinaryTree{`0})">
+      <summary>
+            Create a new binary tree.
+            </summary>
+      <param name="cloneSource">A binary tree to copy into this tree.</param>
+    </member>
+    <member name="M:PloobsEngine.DataStructure.BinaryTree`1.Traverse(PloobsEngine.DataStructure.BinaryTreeVisitDelegate{`0},PloobsEngine.DataStructure.BinaryTreeTraversal)">
+      <summary>
+            Traverses the binary tree calling a visit method on each node.
+            </summary>
+      <param name="visitMethod">A method to be called on each visited node.</param>
+      <param name="traversalMode">Mode of traversal to perform.</param>
+    </member>
+    <member name="M:PloobsEngine.DataStructure.BinaryTree`1.Dispose">
+      <summary>
+            Dispose of this binary tree, it's nodes and their data.
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.DataStructure.BinaryTree`1.Dispose(System.Boolean)">
+      <summary>
+            Called when this binary tree is being disposed of.
+            </summary>
+      <param name="disposing">Should managed resources be disposed of as well.</param>
+    </member>
+    <member name="P:PloobsEngine.DataStructure.BinaryTree`1.Height">
+      <summary>
+            Number of nodes traversed from the root to the deepest part of the tree.
+            </summary>
+    </member>
+    <member name="P:PloobsEngine.DataStructure.BinaryTree`1.NodeCount">
+      <summary>
+            Number of nodes in the tree.
+            </summary>
+    </member>
+    <member name="P:PloobsEngine.DataStructure.BinaryTree`1.LeafCount">
+      <summary>
+            Number of nodes without children in the tree.
+            </summary>
+    </member>
+    <member name="P:PloobsEngine.DataStructure.BinaryTree`1.IsEmpty">
+      <summary>
+            Does the tree even have any nodes?
+            </summary>
     </member>
     <member name="T:PloobsEngine.IA.Waypoint">
       <summary>
@@ -16467,6 +17435,96 @@
             Gets or sets the <see cref="!:T" /> at the specified index.
             </summary>
     </member>
+    <member name="M:PloobsEngine.SceneControl.UserObject`1.#ctor(PloobsEngine.Material.IMaterial,PloobsEngine.Modelo.IModelo,PloobsEngine.Physics.IPhysicObject,`0)">
+      <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.SceneControl.IObject" /> class.
+            </summary>
+      <param name="Material">The material.</param>
+      <param name="Modelo">The modelo.</param>
+      <param name="PhysicObject">The physic object.</param>
+      <param name="UserData">The user data.</param>
+    </member>
+    <member name="P:PloobsEngine.SceneControl.UserObject`1.UserData">
+      <summary>
+            Gets or sets the user data.
+            </summary>
+      <value>
+            The user data.
+            </value>
+    </member>
+    <member name="T:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SphereCharacterController">
+      <summary>
+            Gives a physical object simple and cheap FPS-like control.
+            This character has less features than the full CharacterController but offers
+            an alternative to the SimpleCharacterController.
+            </summary>
+    </member>
+    <member name="F:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SphereCharacterController.ConstraintAccessLocker">
+      <summary>
+            This is used to control the access to simulation islands when there are multiple character controllers updating in parallel.
+            If other parts of the program are modifying simulation islands during the IBeforeSolverUpdateable.Update stage, the synchronization
+            umbrella will need to be widened.
+            </summary>
+    </member>
+    <member name="M:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SphereCharacterController.#ctor(Microsoft.Xna.Framework.Vector3,System.Single,System.Single)">
+      <summary>
+            Constructs a new character controller with the default configuration.
+            </summary>
+    </member>
+    <member name="M:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SphereCharacterController.ApplyJumpVelocity(BEPUphysicsDemos.AlternateMovement.SphereCharacter.SupportData@,Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Vector3@)">
+      <summary>
+            Changes the relative velocity between the character and its support.
+            </summary>
+      <param name="supportData">Support data to use to jump.</param>
+      <param name="velocityChange">Change to apply to the character and support relative velocity.</param>
+      <param name="relativeVelocity">Relative velocity to update.</param>
+    </member>
+    <member name="M:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SphereCharacterController.ChangeVelocityUnilaterally(Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Vector3@)">
+      <summary>
+            In some cases, an applied velocity should only modify the character.
+            This allows partially non-physical behaviors, like gluing the character to the ground.
+            </summary>
+      <param name="velocityChange">Change to apply to the character.</param>
+      <param name="relativeVelocity">Relative velocity to update.</param>
+    </member>
+    <member name="M:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SphereCharacterController.Jump">
+      <summary>
+            Jumps the character off of whatever it's currently standing on.  If it has traction, it will go straight up.
+            If it doesn't have traction, but is still supported by something, it will jump in the direction of the surface normal.
+            </summary>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SphereCharacterController.Body">
+      <summary>
+            Gets the physical body of the character.
+            </summary>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SphereCharacterController.QueryManager">
+      <summary>
+            Gets the support system which other systems use to perform local ray casts and contact queries.
+            </summary>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SphereCharacterController.HorizontalMotionConstraint">
+      <summary>
+            Gets the constraint used by the character to handle horizontal motion.  This includes acceleration due to player input and deceleration when the relative velocity
+            between the support and the character exceeds specified maximums.
+            </summary>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SphereCharacterController.VerticalMotionConstraint">
+      <summary>
+            Gets the constraint used by the character to stay glued to surfaces it stands on.
+            </summary>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SphereCharacterController.JumpForceFactor">
+      <summary>
+            Gets or sets the amount of force to apply to supporting dynamic entities as a fraction of the force used to reach the jump speed.
+            </summary>
+    </member>
+    <member name="P:BEPUphysicsDemos.AlternateMovement.SphereCharacter.SphereCharacterController.SupportFinder">
+      <summary>
+            Gets the support finder used by the character.
+            The support finder analyzes the character's contacts to see if any of them provide support and/or traction.
+            </summary>
+    </member>
     <member name="T:BEPUphysicsDemos.AlternateMovement.Character.StepManager">
       <summary>
             Checks to see if a character is capable of stepping up or down onto a new support object.
@@ -16945,6 +18003,43 @@
             Component to count fps
             </summary>
     </member>
+    <member name="T:PloobsEngine.DataStructure.BinarySearchTree`1">
+      <summary>
+            A binary tree which assist with inserting, removing, and finding whether data exist in
+            the tree.
+            </summary>
+      <typeparam name="UserType">Type of data stored in the binary nodes.</typeparam>
+    </member>
+    <member name="M:PloobsEngine.DataStructure.BinarySearchTree`1.#ctor(System.Collections.Generic.IComparer{`0},PloobsEngine.DataStructure.BinaryTree{`0})">
+      <summary>
+            Create a new binary search tree.
+            </summary>
+      <param name="comparer">A comparer to use for determining which nodes are greater/less
+            than other nodes.</param>
+      <param name="cloneSource">A binary tree to copy into this tree.</param>
+    </member>
+    <member name="M:PloobsEngine.DataStructure.BinarySearchTree`1.Contains(`0)">
+      <summary>
+            Checks whether the specified item exist in this binary tree.
+            </summary>
+      <param name="searchItem">
+      </param>
+      <returns>True if the item exist in this tree; false if it does not.</returns>
+    </member>
+    <member name="M:PloobsEngine.DataStructure.BinarySearchTree`1.Insert(`0)">
+      <summary>
+            Inserts an item into this binary tree.
+            </summary>
+      <param name="insertItem">
+      </param>
+    </member>
+    <member name="M:PloobsEngine.DataStructure.BinarySearchTree`1.Remove(`0)">
+      <summary>
+            Removes an itemf rom this binary tree.
+            </summary>
+      <param name="removeItem">
+      </param>
+    </member>
     <member name="T:PloobsEngine.Audio.Static3DSound">
       <summary>
             Static 3D sound
@@ -17257,7 +18352,7 @@
             Helper to Handle some message
             </summary>
     </member>
-    <member name="M:PloobsEngine.MessageSystem.SystemRecieverMessage.#ctor">
+    <member name="M:PloobsEngine.MessageSystem.SystemRecieverMessage.#ctor(PloobsEngine.MessageSystem.SenderType)">
       <summary>
             Initializes a new instance of the <see cref="T:PloobsEngine.MessageSystem.SystemRecieverMessage" /> class.
             </summary>

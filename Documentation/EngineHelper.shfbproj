@@ -15,14 +15,13 @@
     <RootNamespace>Documentation</RootNamespace>
     <Name>Documentation</Name>
     <!-- SHFB properties -->
-    <OutputPath>C:\Users\thiago.dias.pastor\Documents\Helper\</OutputPath>
+    <OutputPath>.\</OutputPath>
     <HtmlHelpName>Ploobs Engine Help</HtmlHelpName>
     <Language>en-US</Language>
     <FrameworkVersion>.NET 4.0.30319</FrameworkVersion>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\PloobsEngine\PloobsEngine\bin\x86\Debug\PloobsEngineDebug.dll" />
-      <DocumentationSource sourceFile="..\PloobsEngine\PloobsEngine\bin\x86\Debug\PloobsEngineDebug.xml" />
-    </DocumentationSources>
+      <DocumentationSource sourceFile="..\PloobsEngine\PloobsEngine\bin\x86\Release\PloobsEngineDebug.dll" />
+<DocumentationSource sourceFile="..\PloobsEngine\PloobsEngine\bin\x86\Release\PloobsEngineDebug.xml" /></DocumentationSources>
     <MissingTags>AutoDocumentCtors, AutoDocumentDispose</MissingTags>
     <PlugInConfigurations>
       <PlugInConfig id="Additional Content Only" enabled="False">

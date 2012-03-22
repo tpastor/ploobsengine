@@ -135,10 +135,11 @@ namespace PloobsEngine.Engine
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="isinternal">if set to <c>true</c> [isinternal].</param>
+        /// <param name="forceFromDisk">if set to <c>true</c> [force from disk].</param>
         /// <returns></returns>
-        public Model GetModel(String name,bool isinternal = false)
+        public Model GetModel(String name, bool isinternal = false, bool forceFromDisk = false)
         {
-            return contentManager.GetAsset<Model>(name, isinternal);
+            return contentManager.GetAsset<Model>(name, isinternal, forceFromDisk);
         }
 
         /// <summary>
@@ -146,10 +147,11 @@ namespace PloobsEngine.Engine
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="isinternal">if set to <c>true</c> [isinternal].</param>
+        /// <param name="forceFromDisk">if set to <c>true</c> [force from disk].</param>
         /// <returns></returns>
-        public SkinnedModel GetAnimatedModel(String name, bool isinternal = false)
+        public SkinnedModel GetAnimatedModel(String name, bool isinternal = false, bool forceFromDisk = false)
         {
-            return contentManager.GetAsset<SkinnedModel>(name, isinternal);
+            return contentManager.GetAsset<SkinnedModel>(name, isinternal,forceFromDisk);
         }
 
         /// <summary>

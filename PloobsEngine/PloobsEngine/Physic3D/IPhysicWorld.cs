@@ -143,6 +143,19 @@ namespace PloobsEngine.Physics
         public abstract void GetPhysicsObjectsInRange(Vector3 position, float distance, CullerConditionAvaliator<IPhysicObject, IObject> CullerAvaliator, List<IPhysicObject> resp);
 
 
+        /// <summary>
+        /// Cleans up.
+        /// </summary>
+        protected virtual void CleanUp()
+        {
+        }
+
+        internal void iCleanUp()
+        {
+            CleanUp();
+        }
+
+
         #region ISerializable Members
 
 #if WINDOWS

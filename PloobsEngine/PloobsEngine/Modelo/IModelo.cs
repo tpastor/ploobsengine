@@ -40,12 +40,14 @@ namespace PloobsEngine.Modelo
     /// Model Specification
     /// </summary>
     public abstract class IModelo 
-    {
+    {        
         public IModelo(GraphicFactory factory, String modelName,bool callLoadContent = true)
             : this(false,factory,modelName,callLoadContent)
         {
-                        
+               
         }
+
+        protected IModelo() { }
 
         public IModelo(bool isinternal, GraphicFactory factory, String modelName, bool callLoadContent = true)
         {
@@ -102,6 +104,14 @@ namespace PloobsEngine.Modelo
             get;
         }
 
+        internal void afterAdded(IObject obj)
+        {
+            this.AfterAdded(obj);
+        }
+
+        protected virtual void AfterAdded(IObject obj)
+        {
+        }
 
         /// <summary>
         /// Gets one texture of the model.
@@ -182,7 +192,7 @@ namespace PloobsEngine.Modelo
         /// <param name="type">The type.</param>
         /// <param name="meshIndex">Index of the mesh.</param>S
         /// <param name="meshPartIndex">Index of the mesh part.</param>
-        public void SetTexture(Texture2D tex, TextureType type, int meshIndex = 0, int meshPartIndex = 0)
+        public void SetTexture(Texture2D tex, TextureType type = TextureType.DIFFUSE, int meshIndex = 0, int meshPartIndex = 0)
         {
             TextureInformations[meshIndex][meshPartIndex].SetTexture(tex, type);
         }
@@ -245,6 +255,25 @@ namespace PloobsEngine.Modelo
                     factory.ReleaseAsset(item.BumpMapName);
                     factory.ReleaseAsset(item.GlowName);
                     factory.ReleaseAsset(item.SpecularMapName);
+                }
+
+                ///Automatic handled
+                foreach (var item in BatchInformations[i])
+                {
+                    if (item.VertexBuffer != null && item.VertexBuffer.IsDisposed == false)
+                    {
+                        item.VertexBuffer.Dispose();
+                    }
+
+                    if (item.IndexBuffer != null && item.IndexBuffer.IsDisposed == false)
+                    {
+                        item.IndexBuffer.Dispose();
+                    }
+
+                    if (item.InstancedVertexBuffer != null && item.InstancedVertexBuffer.IsDisposed == false)
+                    {
+                        item.InstancedVertexBuffer.Dispose();
+                    }
                 }
             }
         }

@@ -5,6 +5,8 @@ using EngineTestes.LoadingScreen;
 using ProjectTemplate;
 using EngineTestes._2DSamples;
 using AdvancedDemo4._0;
+using EngineTestes.ScreenTests;
+using PloobsEngine.TestSuite;
 
 namespace EngineTestes
 {
@@ -15,11 +17,14 @@ namespace EngineTestes
         /// </summary>
         static void Main(string[] args)
         {
+            //TestProcessor TestProcessor = new TestProcessor();
+            //TestProcessor.EvaluateTestes("EngineTestes.exe");
+
             InitialEngineDescription desc = InitialEngineDescription.Default();
-            desc.useMipMapWhenPossible = true;
-            desc.UseAnisotropicFiltering = true;
-            desc.UseAnisotropicFiltering = true;
-            //desc.isMultiSampling = true;                        
+            //desc.useMipMapWhenPossible = true;
+            //desc.UseAnisotropicFiltering = true;
+            //desc.UseAnisotropicFiltering = true;
+            //desc.isMultiSampling = true;
 
             using (EngineStuff engine = new EngineStuff(ref desc, LoadScreen))
             {
@@ -30,7 +35,25 @@ namespace EngineTestes
 
         static void LoadScreen(ScreenManager manager)
         {
-            manager.AddScreen(new RVOScreen());
+            //manager.AddScreen(new ModeloScreen());
+            //manager.AddScreen(new RVO3DScreen());
+            //manager.AddScreen(new Physx28MaterialScreen());
+            //manager.AddScreen(new Physx28VehicleScreen());            
+            //manager.AddScreen(new Physx28TriggerScreen());
+            //manager.AddScreen(new PhysxTerrain28Screen());
+            //manager.AddScreen(new PhysxCharacter28Screen());
+            //manager.AddScreen(new DeferredEmitterFluids28Screen());
+            //manager.AddScreen(new DeferredFluids28Screen2());
+            //manager.AddScreen(new DeferredFluids28Screen());
+            //manager.AddScreen(new Fluids28Screen());
+            //manager.AddScreen(new PressureCloth28Screen());
+            //manager.AddScreen(new FlagCloth28Screen());
+            //manager.AddScreen(new BasicCloth28Screen());
+            //manager.AddScreen(new Physx28Screen());
+            //manager.AddScreen(new PhysxScreen());
+            //manager.AddScreen(new BulletScreen());
+
+            //manager.AddScreen(new RVOScreen());
             //manager.AddScreen(new AmbientEnvironmenpScreen());
             //manager.AddScreen(new ShaderIDScreen());
             //manager.AddScreen(new EnvironmentBumpScreen());
@@ -54,7 +77,7 @@ namespace EngineTestes
             //manager.AddScreen(new Teste2D());
             //manager.AddScreen(new SponzaScreen());
             //manager.AddScreen(new ForwardMaterialsScreen());
-            //manager.AddScreen(new PostEffectScreen());            
+            manager.AddScreen(new PostEffectScreen());            
             //manager.AddScreen(new MobilePhysicScreen());
             //manager.AddScreen(new MultScreen());
             //manager.AddScreen(new FirstScreen());

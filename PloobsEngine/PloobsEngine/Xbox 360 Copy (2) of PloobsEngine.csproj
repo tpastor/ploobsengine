@@ -95,6 +95,7 @@
     <Compile Include="AI\GeneticAlgoritms\GA.cs" />
     <Compile Include="AI\GeneticAlgoritms\Genome.cs" />
     <Compile Include="AI\GeneticAlgoritms\GenomeComparer.cs" />
+    <Compile Include="AI\ID3\DecisionTreeID3.cs" />
     <Compile Include="AI\IMap.cs" />
     <Compile Include="AI\NeuralNetwork\ActivationFunctions.cs" />
     <Compile Include="AI\NeuralNetwork\Layer.cs" />
@@ -104,6 +105,16 @@
     <Compile Include="AI\PathFind\AStar.cs" />
     <Compile Include="AI\PathFind\IANodeComparer.cs" />
     <Compile Include="AI\PathFind\IAPathfinderNode.cs" />
+    <Compile Include="AI\Planner\Action.cs" />
+    <Compile Include="AI\Planner\AstarPlanner.cs" />
+    <Compile Include="AI\Planner\BasicPlanner.cs" />
+    <Compile Include="AI\Planner\DepthPlanner.cs" />
+    <Compile Include="AI\Planner\Goal.cs" />
+    <Compile Include="AI\Planner\IPlanner.cs" />
+    <Compile Include="AI\Planner\PlanSet.cs" />
+    <Compile Include="AI\Planner\WidthPlanner.cs" />
+    <Compile Include="AI\Planner\WorldState.cs" />
+    <Compile Include="AI\Planner\WorldSymbol.cs" />
     <Compile Include="AI\RVO\Agent.cs" />
     <Compile Include="AI\RVO\KdTree.cs" />
     <Compile Include="AI\RVO\Line.cs" />
@@ -195,6 +206,7 @@
     <Compile Include="Material2D\Basic2DTextureMaterial.cs" />
     <Compile Include="Material2D\I2DMaterial.cs" />
     <Compile Include="Material2D\MaterialProcessor.cs" />
+    <Compile Include="Material\BasicMaterialDecorator.cs" />
     <Compile Include="Material\DeferredTerrainMaterial.cs" />
     <Compile Include="Material\DeferredAnimatedMaterial.cs" />
     <Compile Include="Material\DeferredMaterial.cs" />
@@ -251,7 +263,9 @@
     <Compile Include="Modelo\SpecificModels\StaticBilboardModel.cs" />
     <Compile Include="Modelo\SpecificModels\TreeModel.cs" />
     <Compile Include="Modelo\SpecificModels\WaterModel.cs" />
+    <Compile Include="Modelo\TConstructiveModelo.cs" />
     <Compile Include="Modelo\TextureInformation.cs" />
+    <Compile Include="Modelo\TModelo.cs" />
     <Compile Include="Osiris\Content\HeightMapReader.cs" />
     <Compile Include="Osiris\Content\LevelReader.cs" />
     <Compile Include="Osiris\Content\PatchReader.cs" />
@@ -267,6 +281,10 @@
     <Compile Include="Particles\IParticleManager.cs" />
     <Compile Include="Particles\IParticleSystem.cs" />
     <Compile Include="Physic3D\BepuPhysicWorld.cs" />
+    <Compile Include="Physic3D\Bullet\BulletConstraint.cs" />
+    <Compile Include="Physic3D\Bullet\BulletPhysicObject.cs" />
+    <Compile Include="Physic3D\Bullet\BulletPhysicWorld.cs" />
+    <Compile Include="Physic3D\Bullet\BulletTriangleMesh.cs" />
     <Compile Include="Physic3D\Constraints\BepuConstraint\JointConstraint.cs" />
     <Compile Include="Physic3D\Constraints\BepuConstraint\MultipleSubConstraints.cs" />
     <Compile Include="Physic3D\Constraints\BepuConstraint\PointPointConstraint.cs" />
@@ -312,6 +330,32 @@
     <Compile Include="Physic3D\PhysicObjects\BepuObject\TerrainObject.cs" />
     <Compile Include="Physic3D\PhysicObjects\BepuObject\TriangleMeshObject.cs" />
     <Compile Include="Physic3D\PhysicObjects\IPhysicObject.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\Joint\PhysxCylindricalJoint.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\Joint\PhysxD6Joint.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\Joint\PhysxDistanceJoint.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\Joint\PhysxFixedJoint.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\Joint\PhysxPointInPlaneJoint.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\Joint\PhysxPointOnLineJoint.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\Joint\PhysxPrismaticJoint.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\Joint\PhysxPulleyJoint.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\Joint\PhysxRevoluteJoint.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\Joint\PhysxSphericalJoint.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\PhysxBoxCharacterObject.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\PhysxCapsuleCharacterObject.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\PhysxClothObject.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\Extensions\PhysxExtension.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\Extensions\UserOutput.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\PhysxFluidObject.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\PhysxGhostObject.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\PhysxPhysicObject.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\PhysxPhysicWorld.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\PhysxTriangleMesh.cs" />
+    <Compile Include="Physic3D\Physx 2.8.x\Trigger\PhysxTrigger.cs" />
+    <Compile Include="Physic3D\Physx 3.x\Extensions\PhysxExtension.cs" />
+    <Compile Include="Physic3D\Physx 3.x\PhysxPhysicObject.cs" />
+    <Compile Include="Physic3D\Physx 3.x\PhysxPhysicWorld.cs" />
+    <Compile Include="Physic3D\Physx 3.x\PhysxStaticActor.cs" />
+    <Compile Include="Physic3D\Physx 3.x\PhysxTriangleMesh.cs" />
     <Compile Include="Physic3D\SegmentInterceptInfo.cs" />
     <Compile Include="Physic2D\Farseer\GhostObject.cs" />
     <Compile Include="SceneControl\2DScene\Culler\Simple2DCuller.cs" />
@@ -329,6 +373,7 @@
     <Compile Include="SceneControl\Scene\PostEffects\NightPostEffect.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\RadialBlurPostEffect.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\SimpleMotionBlurPostEffect.cs" />
+    <Compile Include="SceneControl\Scene\UserObject.cs" />
     <Compile Include="SteeringSharperIa\AbstractVehicle.cs" />
     <Compile Include="SteeringSharperIa\AnnotationService.cs" />
     <Compile Include="SteeringSharperIa\BruteForceProximityDatabase.cs" />
@@ -352,6 +397,9 @@
     <Compile Include="SteeringSharperIa\SphericalObstacle.cs" />
     <Compile Include="SteeringSharperIa\SteerLibrary.cs" />
     <Compile Include="SteeringSharperIa\Trail.cs" />
+    <Compile Include="TestSuit\IAlgoTest.cs" />
+    <Compile Include="TestSuit\TestProcessor.cs" />
+    <Compile Include="TestSuit\TestScreenAtt.cs" />
     <Compile Include="Utils\Debug 2D Primitives\I2DPrimitive.cs" />
     <Compile Include="Utils\Debug 2D Primitives\Lines.cs" />
     <Compile Include="Utils\Debug 2D Primitives\PrimitiveBatch.cs" />
@@ -555,7 +603,10 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Physic3D\Copy of Physx 3.x\Extensions\" />
+    <Folder Include="Physic3D\Physx\Extensions\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="GameThumbnail.png">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>

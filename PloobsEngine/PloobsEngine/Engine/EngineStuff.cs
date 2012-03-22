@@ -515,10 +515,10 @@ namespace PloobsEngine.Engine
         {
             if ( (initialDescription.isFullScreen == true && this.IsActive) || initialDescription.isFullScreen == false)
             {
+                CommandProcessor.getCommandProcessor().ProcessCommands();
                 ComponentManager.Update(gameTime);
                 PloobsDispatcher.Update();
-                ScreenManager.Update(gameTime);
-                CommandProcessor.getCommandProcessor().ProcessCommands();
+                ScreenManager.Update(gameTime);                
             }
             base.Update(gameTime);
         }
@@ -713,7 +713,7 @@ namespace PloobsEngine.Engine
         /// </summary>
         public readonly GraphicsDevice GraphicsDevice;
         GameTimer timer;
-        PhoneApplicationPage PhoneApplicationPage;
+        internal PhoneApplicationPage PhoneApplicationPage;
         UIElementRenderer elementRenderer;
         EventHandler EventHandler = null;
         
@@ -1014,7 +1014,10 @@ namespace PloobsEngine.Engine
         /// <param name="removeComponents">if set to <c>true</c> [remove components].</param>
         /// <param name="removeAllEventSubscribers">if set to <c>true</c> [remove all event subscribers].</param>
         public void LeaveScene(bool removeComponents = false, bool removeAllEventSubscribers = false)
-        {
+        {            
+            PloobsDispatcher.Update();
+            CommandProcessor.getCommandProcessor().ProcessCommands();
+
             SharedGraphicsDeviceManager.Current.GraphicsDevice.SetSharingMode(false);
             if (timer != null)
             {
@@ -1228,10 +1231,10 @@ namespace PloobsEngine.Engine
         /// <param name="gameTime">Time passed since the last call to Update.</param>
         private void Update(GameTime gameTime)
         {
+                CommandProcessor.getCommandProcessor().ProcessCommands();
                 ComponentManager.Update(gameTime);
                 PloobsDispatcher.Update();
-                ScreenManager.Update(gameTime);
-                CommandProcessor.getCommandProcessor().ProcessCommands();
+                ScreenManager.Update(gameTime);                
         }
 
         /// <summary>
@@ -1726,10 +1729,11 @@ namespace PloobsEngine.Engine
         {
             if ((initialDescription.isFullScreen == true && this.game.IsActive) || initialDescription.isFullScreen == false)
             {
+                CommandProcessor.getCommandProcessor().ProcessCommands();
                 ComponentManager.Update(gameTime);
                 PloobsDispatcher.Update();
                 ScreenManager.Update(gameTime);
-                CommandProcessor.getCommandProcessor().ProcessCommands();
+                
             }            
         }
 
