@@ -104,12 +104,12 @@ namespace Osiris.Graphics.Terrain
 
         public float[,] GetHeights()
         {
-            float[,] map = new float[HeightMap.Width * HeightMap.HorizontalScale, HeightMap.Width * HeightMap.HorizontalScale];
-            for (int x = 0; x < HeightMap.Width * HeightMap.HorizontalScale; x++)
+            float[,] map = new float[HeightMap.Width * HeightMap.HorizontalScale, HeightMap.Height* HeightMap.HorizontalScale];
+            for (float x = 0; x < HeightMap.Width * HeightMap.HorizontalScale; x++)
             {
-                for (int y = 0; y < HeightMap.Width * HeightMap.HorizontalScale; y++)
+                for (float y = 0; y < HeightMap.Height * HeightMap.HorizontalScale; y++)
                 {
-                    map[x, y] = HeightMap[x,y];
+                    map[(int)x, (int)y] = HeightMap[x, y];
                 }
             }
             return map;

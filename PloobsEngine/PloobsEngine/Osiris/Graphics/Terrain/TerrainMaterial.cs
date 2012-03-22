@@ -9,8 +9,7 @@ namespace PloobsEngine.Material
     public class TerrainMaterial : IMaterial
 	{
 		#region Variables
-
-		private readonly string _terrainModelAssetName;
+        		
 		private TerrainModel _terrainModel;
 
 		#endregion
@@ -26,12 +25,9 @@ namespace PloobsEngine.Material
 
 		#region Constructors
 
-        public TerrainMaterial(GraphicFactory factory, string terrainModelAssetName, string diffuseTexture)		
+        public TerrainMaterial(GraphicFactory factory, string terrainModelAssetName)		
 		{
-			_terrainModelAssetName = terrainModelAssetName;
-
-            _terrainModel = factory.GetAsset<TerrainModel>(_terrainModelAssetName);
-            
+            _terrainModel = factory.GetAsset<TerrainModel>(terrainModelAssetName);            
             IsVisible = true;
 		}
 

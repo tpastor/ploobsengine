@@ -47,14 +47,36 @@ namespace ProjectTemplate
 
             
             ///Forward Shader (look at this shader construction for more info)
-            TerrainMaterial material = new TerrainMaterial(factory, "Terrain//HeightMap","Terrain");
+            TerrainMaterial material = new TerrainMaterial(factory, "Terrain//HeightMap");
             ///The object itself
-            IObject obj = new IObject(material, null,new GhostObject());
+            TerrainObject to = new TerrainObject(factory, Vector3.Zero, Matrix.Identity, material.Model.GetHeights(), MaterialDescription.DefaultBepuMaterial());
+            IObject obj = new IObject(material, null, to);
             ///Add to the world
             this.World.AddObject(obj); 
 
             ///add a camera
             this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo));
+
+            Texture2D t = factory.CreateTexture2DColor(1,1,Color.Red);
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                     SimpleModel simpleModel = new SimpleModel(factory, "Model/block");
+                     simpleModel.SetTexture(t);
+                    ///Physic info (position, rotation and scale are set here)
+                     BoxObject tmesh = new BoxObject(new Vector3(j * 10 + 200,100,i * 10 + 200), 1, 1, 1, 10, Vector3.One * 2, Matrix.Identity, MaterialDescription.DefaultBepuMaterial());
+                    ///Forward Shader (look at this shader construction for more info)
+                    ForwardXNABasicShader shader = new ForwardXNABasicShader();
+                    ///Forward material
+                    ForwardMaterial fmaterial = new ForwardMaterial(shader);
+                    ///The object itself
+                    obj = new IObject(fmaterial, simpleModel, tmesh);
+                    ///Add to the world
+                    this.World.AddObject(obj); 
+
+                }
+            }
 
         }
 

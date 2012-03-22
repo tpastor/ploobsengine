@@ -13,15 +13,15 @@ namespace Osiris.Graphics.Terrain
             }
         }
 
-        //public float this[int x, int z]
-        //{
-        //    get
-        //    {
-        //        if (x < 0 || x >= Width || z < 0 || z >= Height)
-        //            return 0;
-        //        return _values[x, z];
-        //    }
-        //}
+        private float this[int x, int z]
+        {
+            get
+            {
+                if (x < 0 || x >= Width || z < 0 || z >= Height)
+                    return 0;
+                return _values[x, z];
+            }
+        }
 
 		public float this[float x, float z]
 		{
