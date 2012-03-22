@@ -30,7 +30,8 @@ namespace AdvancedDemo4._0
                 render.Clear(Color.Black);
                 effect.CurrentTechnique = effect.Techniques["PerlinNoise"];
                 effect.Parameters["xTexture"].SetValue(staticRandomTex);
-                effect.Parameters["xOvercast"].SetValue(1.1f);
+                //effect.Parameters["xOvercast"].SetValue(1.1f);
+                effect.Parameters["xOvercast"].SetValue(3.1f);
                 effect.Parameters["xTime"].SetValue(time / 1000.0f);                
                 render.RenderFullScreenQuadVertexPixel (effect);                
                 perlinNoise = render.PopRenderTargetAsSingleRenderTarget2D();                

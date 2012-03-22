@@ -279,13 +279,35 @@ namespace PloobsEngine.SceneControl
         /// <param name="factory">The factory.</param>
         public virtual void CleanUp(PloobsEngine.Engine.GraphicFactory factory)
         {
-            Modelo.CleanUp(factory);
+            if(Modelo!= null)
+                Modelo.CleanUp(factory);
             Material.CleanUp(factory);
             Modelo = null;
             Material = null;
             PhysicObject = null;
             IObjectAttachment.Clear();
             IObjectAttachment = null;
+        }
+
+        internal void afterAddedToTheWorld()
+        {
+            lastFrameWorld = physicObject.WorldMatrix;
+            AfterAddedToTheWorld();
+        }
+
+        /// <summary>
+        /// Called after object is added to the world.
+        /// </summary>
+        protected virtual void AfterAddedToTheWorld()
+        {
+            if(PhysicObject != null)
+                PhysicObject.afterAdded(this);
+
+            if (Modelo != null)
+                Modelo.afterAdded(this);
+
+            if (Material != null)
+                Material.AfterAdded(this);
         }
 
         #region IRecieveMessageEntity Members

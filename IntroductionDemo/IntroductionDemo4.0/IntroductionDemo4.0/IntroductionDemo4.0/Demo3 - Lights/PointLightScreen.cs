@@ -74,6 +74,12 @@ namespace IntroductionDemo4._0
             this.RenderTechnic.AddPostEffect(new AntiAliasingPostEffect());
         }
 
+        protected override void CleanUp(PloobsEngine.Engine.EngineStuff engine)
+        {
+            lt.CleanUp();
+            base.CleanUp(engine);
+        }
+
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);

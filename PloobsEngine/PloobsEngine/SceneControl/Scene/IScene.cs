@@ -48,7 +48,7 @@ namespace PloobsEngine.SceneControl
         /// <summary>
         /// Initializes a new instance of the <see cref="IScene"/> class.
         /// </summary>
-        public IScene(Microsoft.Phone.Controls.PhoneApplicationPage Page) : base(Page) { }
+        public IScene() : base() { }
 #endif
 
         #region properties

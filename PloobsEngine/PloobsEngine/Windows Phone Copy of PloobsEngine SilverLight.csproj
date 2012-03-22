@@ -106,6 +106,16 @@
     <Compile Include="AI\PathFind\AStar.cs" />
     <Compile Include="AI\PathFind\IANodeComparer.cs" />
     <Compile Include="AI\PathFind\IAPathfinderNode.cs" />
+    <Compile Include="AI\Planner\Action.cs" />
+    <Compile Include="AI\Planner\AstarPlanner.cs" />
+    <Compile Include="AI\Planner\BasicPlanner.cs" />
+    <Compile Include="AI\Planner\DepthPlanner.cs" />
+    <Compile Include="AI\Planner\Goal.cs" />
+    <Compile Include="AI\Planner\IPlanner.cs" />
+    <Compile Include="AI\Planner\PlanSet.cs" />
+    <Compile Include="AI\Planner\WidthPlanner.cs" />
+    <Compile Include="AI\Planner\WorldState.cs" />
+    <Compile Include="AI\Planner\WorldSymbol.cs" />
     <Compile Include="AI\RVO\Agent.cs" />
     <Compile Include="AI\RVO\KdTree.cs" />
     <Compile Include="AI\RVO\Line.cs" />
@@ -235,7 +245,9 @@
     <Compile Include="Modelo\SpecificModels\StaticBilboardModel.cs" />
     <Compile Include="Modelo\SpecificModels\TreeModel.cs" />
     <Compile Include="Modelo\SpecificModels\WaterModel.cs" />
+    <Compile Include="Modelo\TConstructiveModelo.cs" />
     <Compile Include="Modelo\TextureInformation.cs" />
+    <Compile Include="Modelo\TModelo.cs" />
     <Compile Include="Osiris\Content\HeightMapReader.cs" />
     <Compile Include="Osiris\Content\LevelReader.cs" />
     <Compile Include="Osiris\Content\PatchReader.cs" />
@@ -316,6 +328,7 @@
     <Compile Include="SceneControl\IContentManager.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\MotionBlurPostEffect.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\SimpleMotionBlurPostEffect.cs" />
+    <Compile Include="SceneControl\Scene\UserObject.cs" />
     <Compile Include="SteeringSharperIa\AbstractVehicle.cs" />
     <Compile Include="SteeringSharperIa\AnnotationService.cs" />
     <Compile Include="SteeringSharperIa\BruteForceProximityDatabase.cs" />

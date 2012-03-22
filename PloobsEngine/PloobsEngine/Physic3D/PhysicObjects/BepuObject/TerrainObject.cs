@@ -32,12 +32,12 @@ using PloobsEngine.Engine;
 
 namespace PloobsEngine.Physics.Bepu
 {
-    public class TerrainObject : IPhysicObject    
+    public class TerrainObject : IPhysicObject
     {
         String image;
-        Terrain terrain;        
+        Terrain terrain;
         float heightMultipler = 10f;
-        float maxHeight = float.MaxValue;        
+        float maxHeight = float.MaxValue;
         Matrix rotation;
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace PloobsEngine.Physics.Bepu
         /// </value>
         public float MaxHeight
         {
-            get { return maxHeight; }            
+            get { return maxHeight; }
         }
         float minHeight = float.MinValue;
 
@@ -60,7 +60,7 @@ namespace PloobsEngine.Physics.Bepu
         /// </value>
         public float MinHeight
         {
-            get { return minHeight; }            
+            get { return minHeight; }
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace PloobsEngine.Physics.Bepu
         public void SetMaterialDescription(MaterialDescription materialDescription)
         {
             this.materialDecription = materialDescription;
-            terrain.Material = new BEPUphysics.Materials.Material(materialDescription.StaticFriction, materialDescription.DinamicFriction, materialDescription.Bounciness);
+            terrain.Material = new BEPUphysics.Materials.Material(materialDescription.StaticFriction, materialDescription.DynamicFriction, materialDescription.Bounciness);
         }
 
         /// <summary>
@@ -103,6 +103,71 @@ namespace PloobsEngine.Physics.Bepu
 
         MaterialDescription materialDecription;
 
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TerrainObject"/> class.
+        /// </summary>
+        /// <param name="gfactory">The gfactory.</param>
+        /// <param name="heightmapTexture">The heighmap texture.</param>
+        /// <param name="translation">The translation.</param>
+        /// <param name="rotation">The rotation.</param>
+        /// <param name="materialDesc">The material desc.</param>
+        /// <param name="XSpacing">The X spacing.</param>
+        /// <param name="ZSpacing">The Z spacing.</param>
+        /// <param name="heightMultipler">The height multipler.</param>
+        public TerrainObject(GraphicFactory gfactory, Texture2D heightmapTexture, Vector3 translation, Matrix rotation, MaterialDescription materialDesc, float XSpacing = 1, float ZSpacing = 1, float heightMultipler = 10)
+        {
+
+            this.heightMultipler = heightMultipler;
+
+
+
+            //Used to calculate ther proportion of the xNormalized in the getHeightFast method
+            xScale = XSpacing;
+            zScale = ZSpacing;
+
+            sourceImage = heightmapTexture;
+            int xLength = sourceImage.Width;
+            int yLength = sourceImage.Height;
+
+            terrainWidth = xLength;
+            terrainHeight = yLength;
+
+            this.rotation = rotation;
+            //this.scale = scale;
+
+            Color[] colorData = new Color[xLength * yLength];
+            sourceImage.GetData<Color>(colorData);
+
+            var heightStore = new float[xLength, yLength];
+            for (int i = 0; i < xLength; i++)
+            {
+                for (int j = 0; j < yLength; j++)
+                {
+                    Color color = colorData[j * xLength + i];
+                    heightStore[i, j] = (color.R) / heightMultipler;
+
+                    if (heightStore[i, j] > maxHeight)
+                    {
+                        maxHeight = heightStore[i, j];
+                    }
+                    if (heightStore[i, j] < minHeight)
+                    {
+                        minHeight = heightStore[i, j];
+                    }
+
+                }
+            }
+            //Create the terrain.
+            BEPUphysics.CollisionShapes.TerrainShape shape = new BEPUphysics.CollisionShapes.TerrainShape(heightStore, BEPUphysics.CollisionShapes.QuadTriangleOrganization.BottomLeftUpperRight);
+
+            terrain = new Terrain(shape, new BEPUphysics.MathExtensions.AffineTransform(new Vector3(XSpacing, 1, ZSpacing), Quaternion.CreateFromRotationMatrix(rotation), new Vector3(-xLength * XSpacing / 2, 0, -yLength * ZSpacing / 2) + translation));
+            terrain.ImproveBoundaryBehavior = true;
+
+            SetMaterialDescription(materialDesc);
+        }
+
+
         /// <summary>
         /// Create a Terrain Physic Object
         /// </summary>
@@ -115,8 +180,13 @@ namespace PloobsEngine.Physics.Bepu
         /// <param name="ZSpacing">The Z spacing.</param>
         /// <param name="heightMultipler">Default 10 - controla a altura, menor mais alto</param>
         public TerrainObject(GraphicFactory gfactory, String heighmapName, Vector3 translation, Matrix rotation, MaterialDescription materialDesc, float XSpacing = 1, float ZSpacing = 1, float heightMultipler = 10)
-        {          
-            
+        {
+
+
+            //Used to calculate ther proportion of the xNormalized in the getHeightFast method
+            xScale = XSpacing;
+            zScale = ZSpacing;
+
 
             this.heightMultipler = heightMultipler;
             this.image = heighmapName;
@@ -124,47 +194,58 @@ namespace PloobsEngine.Physics.Bepu
             sourceImage = gfactory.GetTexture2D(image);
             int xLength = sourceImage.Width;
             int yLength = sourceImage.Height;
+
+            terrainWidth = xLength;
+            terrainHeight = yLength;
+
+
             this.rotation = rotation;
             //this.scale = scale;
 
             Color[] colorData = new Color[xLength * yLength];
-            sourceImage.GetData<Color>(colorData);            
+            sourceImage.GetData<Color>(colorData);
 
-            var heights = new float[xLength, yLength];
+            var heightStore = new float[xLength, yLength];
             for (int i = 0; i < xLength; i++)
             {
                 for (int j = 0; j < yLength; j++)
                 {
-                    Color color = colorData[j * xLength + i];                    
-                    heights[i, j] = (color.R) / heightMultipler;
+                    Color color = colorData[j * xLength + i];
+                    heightStore[i, j] = (color.R) / heightMultipler;
 
-                    if (heights[i, j] > maxHeight)
+                    if (heightStore[i, j] > maxHeight)
                     {
-                        maxHeight = heights[i, j];
+                        maxHeight = heightStore[i, j];
                     }
-                    if (heights[i, j] < minHeight)
+                    if (heightStore[i, j] < minHeight)
                     {
-                        minHeight = heights[i, j];
+                        minHeight = heightStore[i, j];
                     }
 
                 }
             }
             //Create the terrain.
-            BEPUphysics.CollisionShapes.TerrainShape shape = new BEPUphysics.CollisionShapes.TerrainShape(heights,BEPUphysics.CollisionShapes.QuadTriangleOrganization.BottomLeftUpperRight);
-            
-            terrain = new Terrain(shape, new BEPUphysics.MathExtensions.AffineTransform(new Vector3(XSpacing, 1, ZSpacing),Quaternion.CreateFromRotationMatrix(rotation), new Vector3(-xLength * XSpacing / 2, 0, -yLength * ZSpacing / 2) + translation));
+            BEPUphysics.CollisionShapes.TerrainShape shape = new BEPUphysics.CollisionShapes.TerrainShape(heightStore, BEPUphysics.CollisionShapes.QuadTriangleOrganization.BottomLeftUpperRight);
+
+            terrain = new Terrain(shape, new BEPUphysics.MathExtensions.AffineTransform(new Vector3(XSpacing, 1, ZSpacing), Quaternion.CreateFromRotationMatrix(rotation), new Vector3(-xLength * XSpacing / 2, 0, -yLength * ZSpacing / 2) + translation));
             terrain.ImproveBoundaryBehavior = true;
 
             SetMaterialDescription(materialDesc);
-                        
+
         }
 
-        public TerrainObject(GraphicFactory gfactory, Vector3 translation, Matrix rotation,float[,] heights , MaterialDescription materialDesc)
+        public TerrainObject(GraphicFactory gfactory, Vector3 translation, Matrix rotation, float[,] heights, MaterialDescription materialDesc)
         {
+
+
+
+            terrainWidth = heights.GetLength(0);
+            terrainHeight = heights.GetLength(1);
+
             //Create the terrain.
             BEPUphysics.CollisionShapes.TerrainShape shape = new BEPUphysics.CollisionShapes.TerrainShape(heights, BEPUphysics.CollisionShapes.QuadTriangleOrganization.BottomLeftUpperRight);
 
-            terrain = new Terrain(shape, new BEPUphysics.MathExtensions.AffineTransform(Vector3.One, Quaternion.CreateFromRotationMatrix(rotation),  translation));
+            terrain = new Terrain(shape, new BEPUphysics.MathExtensions.AffineTransform(Vector3.One, Quaternion.CreateFromRotationMatrix(rotation), translation));
             terrain.ImproveBoundaryBehavior = true;
 
             SetMaterialDescription(materialDesc);
@@ -172,7 +253,7 @@ namespace PloobsEngine.Physics.Bepu
 
         #region IPhysicObject Members
 
-        public override  Vector3 Position
+        public override Vector3 Position
         {
             get
             {
@@ -196,7 +277,7 @@ namespace PloobsEngine.Physics.Bepu
             }
         }
 
-        public override  Matrix Rotation
+        public override Matrix Rotation
         {
             get
             {
@@ -208,11 +289,12 @@ namespace PloobsEngine.Physics.Bepu
             }
         }
 
-        public override  Vector3 FaceVector
+        public override Vector3 FaceVector
         {
-            get {               
-                
-                return Vector3.TransformNormal(Vector3.Forward,terrain.WorldTransform.Matrix);
+            get
+            {
+
+                return Vector3.TransformNormal(Vector3.Forward, terrain.WorldTransform.Matrix);
             }
         }
 
@@ -231,7 +313,7 @@ namespace PloobsEngine.Physics.Bepu
                 ActiveLogger.LogMessage("Cant Set Terrain Velocity", LogLevel.RecoverableError);
             }
         }
-       
+
         public override Vector3 Velocity
         {
             get
@@ -257,7 +339,11 @@ namespace PloobsEngine.Physics.Bepu
         }
 
         IObject owner;
-        public override  IObject ObjectOwner
+        private int terrainHeight;
+        private int terrainWidth;
+        private float xScale;
+        private float zScale;
+        public override IObject ObjectOwner
         {
             get
             {
@@ -269,13 +355,13 @@ namespace PloobsEngine.Physics.Bepu
             }
         }
 
-        public override  PhysicObjectTypes PhysicObjectTypes
+        public override PhysicObjectTypes PhysicObjectTypes
         {
             get { return PhysicObjectTypes.TERRAIN; }
         }
 
-        
-        public override  BoundingBox? BoundingBox
+
+        public override BoundingBox? BoundingBox
         {
             get { return terrain.BoundingBox; }
         }
@@ -287,6 +373,54 @@ namespace PloobsEngine.Physics.Bepu
             ActiveLogger.LogMessage("Cant apply force in terrain", LogLevel.RecoverableError);
         }
 
+
+        //private float[,] heightStore;
+
+        private float getHeight(int x, int y)
+        {
+            Vector3 pos;
+            terrain.GetPosition(x, y, out pos);
+            return pos.Y;
+        }
+
+        public float getHeightFast(float xPos, float zPos)
+        {
+            int left, top;
+
+            xPos += (terrainHeight / 2);
+            zPos += (terrainWidth / 2);
+            //Considering no Rotation or Scale
+            left = (int)(xPos);
+            top = (int)(zPos);
+
+            float cZ;
+
+            if (top > 0 && left > 0 && top < terrainHeight - 1 && left < terrainWidth - 1)
+            {
+
+
+                float xNormalized = (xPos % xScale) / xScale;
+                float zNormalized = (zPos % zScale) / zScale;
+
+                float topHeight = MathHelper.Lerp(
+                  getHeight(left, top),
+                  getHeight(left + 1, top), xNormalized);
+
+                float bottomHeight = MathHelper.Lerp(
+                    getHeight(left, top + 1),
+                    getHeight(left + 1, top + 1), xNormalized);
+
+                cZ = MathHelper.Lerp(topHeight, bottomHeight, zNormalized);
+            }
+            else
+            {
+                cZ = 0;
+            }
+            //cZ *= heightMultipler;
+
+            return cZ;
+
+        }
 #if WINDOWS
         public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
         {

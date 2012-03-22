@@ -105,8 +105,9 @@ namespace PloobsEngine.Material
             shader.PosDrawPhase(gt, obj, render, cam, lights);      
         }
 
+        private bool rasterStateFlag = false;
         /// <summary>
-        /// Normal Drawn Function.
+        /// Normal Draw Function.
         /// </summary>
         /// <param name="gt">The gt.</param>
         /// <param name="obj">The obj.</param>
@@ -117,14 +118,16 @@ namespace PloobsEngine.Material
         {
             if (rasterizerState!= null && rasterizerState != render.PeekRasterizerState())
             {
+                rasterStateFlag = true;
                 render.PushRasterizerState(rasterizerState);
             }
 
             shader.Draw(gt, obj, render, cam,lights);
 
-            if (rasterizerState != null &&  rasterizerState != render.PeekRasterizerState())
+            if (rasterStateFlag)
             {
                 render.PopRasterizerState();
+                rasterStateFlag = false;
             }
         }
         
@@ -221,6 +224,10 @@ namespace PloobsEngine.Material
         public void CleanUp(PloobsEngine.Engine.GraphicFactory factory)
         {
             shader.Cleanup(factory);
+        }
+
+        public void AfterAdded(SceneControl.IObject obj)
+        {
         }
 
         #endregion

@@ -125,6 +125,10 @@ namespace PloobsEngine.Material
             IsVisible = true;
         }
 
+        public void AfterAdded(SceneControl.IObject obj)
+        {
+        }
+
         IShader shader;
 #region IMaterial Members
 

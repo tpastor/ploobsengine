@@ -11,9 +11,12 @@ using PloobsEngine.Physics.Bepu;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Cameras;
 using Microsoft.Xna.Framework.Graphics;
+using EngineTestes.ScreenTests;
+using PloobsEngine.TestSuite;
 
 namespace EngineTestes
 {
+    [TesteVisualScreen]
     public class FirstScreen : IScene
     {
 

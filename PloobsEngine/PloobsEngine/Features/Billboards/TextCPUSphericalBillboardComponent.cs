@@ -42,10 +42,13 @@ namespace PloobsEngine.Features.Billboard
 
             foreach (var item in Billboards)
             {
-                SpriteFont font = item.SpriteFont == null ? SpriteFont : item.SpriteFont;
-                Vector3 viewSpaceTextPosition = Vector3.Transform(item.Position, activeView * invertY);
-                Vector2 textOrigin = font.MeasureString(item.Message) / 2;                
-                spriteBatch.DrawString(font, item.Message, new Vector2(viewSpaceTextPosition.X, viewSpaceTextPosition.Y), item.Color, 0, textOrigin, item.Scale, 0, viewSpaceTextPosition.Z);                    
+                if (item.Enabled)
+                {
+                    SpriteFont font = item.SpriteFont == null ? SpriteFont : item.SpriteFont;
+                    Vector3 viewSpaceTextPosition = Vector3.Transform(item.Position, activeView * invertY);
+                    Vector2 textOrigin = font.MeasureString(item.Message) / 2;
+                    spriteBatch.DrawString(font, item.Message, new Vector2(viewSpaceTextPosition.X, viewSpaceTextPosition.Y), item.Color, 0, textOrigin, item.Scale, 0, viewSpaceTextPosition.Z);
+                }
             }                
 
             spriteBatch.End();

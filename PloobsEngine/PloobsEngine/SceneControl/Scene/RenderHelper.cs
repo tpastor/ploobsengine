@@ -168,7 +168,17 @@ namespace PloobsEngine.SceneControl
         public void SetSamplerState(SamplerState SamplerState, int index)
         {
             System.Diagnostics.Debug.Assert(index >= 0);
-            device.SamplerStates[index] = SamplerState;                    
+            samplers[index] = device.SamplerStates[index];
+            device.SamplerStates[index] = SamplerState;   
+        }
+
+        Dictionary<int, SamplerState> samplers = new Dictionary<int, SamplerState>();
+
+        public void RestoreSamplerState(int index)
+        {
+            System.Diagnostics.Debug.Assert(index >= 0);
+            device.SamplerStates[index] = samplers[index];
+            samplers.Remove(index);
         }
 
         /// <summary>

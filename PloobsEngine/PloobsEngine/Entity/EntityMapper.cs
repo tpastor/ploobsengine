@@ -251,6 +251,7 @@ namespace PloobsEngine.Entity
                 {
                     return tagRecieveEntity[tag];
                 }
+                ActiveLogger.LogMessage("Tag does not exists: " + tag, LogLevel.FatalError);                
                 throw new Exception("Tag does not exists: " + tag);
             }
 

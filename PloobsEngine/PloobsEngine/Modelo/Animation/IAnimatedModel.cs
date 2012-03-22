@@ -56,17 +56,18 @@ namespace PloobsEngine.Modelo.Animation
 
         public override void CleanUp(GraphicFactory factory)
         {
-            if (_glowName != null)
-                factory.ReleaseAsset(_glowName);
+            for (int i = 0; i < MeshNumber; i++)
+            {
+                foreach (var item in TextureInformations[i])
+                {
+                    factory.ReleaseAsset(item.DiffuseMapName);
+                    factory.ReleaseAsset(item.BumpMapName);
+                    factory.ReleaseAsset(item.GlowName);
+                    factory.ReleaseAsset(item.SpecularMapName);
+                }
+            }
 
-            if (_diffuseName != null)
-                factory.ReleaseAsset(_diffuseName);
-
-            if (_bumpName != null)
-                factory.ReleaseAsset(_bumpName);
-
-            if (_specularName != null)
-                factory.ReleaseAsset(_specularName);
+            factory.ReleaseAsset(Name);
 
             base.CleanUp(factory);
         }
