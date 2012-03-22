@@ -128,8 +128,9 @@ namespace PloobsEngine.Material
             throw new System.NotImplementedException();
         }
 #endif
-
-                
-
+        
+        public void AfterAdded(SceneControl.IObject obj)
+        {
+        }
     }
 }
