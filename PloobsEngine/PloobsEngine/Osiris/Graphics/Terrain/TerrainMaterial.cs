@@ -37,7 +37,7 @@ namespace PloobsEngine.Material
          
 
 		#endregion
-
+        GeoclipShader GeoclipShader = new GeoclipShader();
         public void Initialization(GraphicInfo ginfo, GraphicFactory factory, PloobsEngine.SceneControl.IObject obj)
         {
             
@@ -83,7 +83,7 @@ namespace PloobsEngine.Material
         {
             get
             {
-                return null;
+                return new GeoclipShader();
             }
             set
             {                
@@ -127,6 +127,39 @@ namespace PloobsEngine.Material
         
         public void AfterAdded(SceneControl.IObject obj)
         {
+        }
+    }
+
+    /// <summary>
+    /// Dummy Dummy Dummy
+    /// </summary>
+    public class GeoclipShader : IShader
+    {        
+        internal GeoclipShader()
+        {
+            
+        }
+
+
+        public override void Draw(GameTime gt, SceneControl.IObject obj, SceneControl.RenderHelper render, Cameras.ICamera cam, System.Collections.Generic.IList<Light.ILight> lights)
+        {
+        }
+#if !REACH && !WINDOWS_PHONE
+        public override void BasicDraw(GameTime gt, SceneControl.IObject obj, ref Matrix view, ref Matrix projection, System.Collections.Generic.IList<Light.ILight> lights, SceneControl.RenderHelper render, Plane? clippingPlane, bool useAlphaBlending = false)
+        {
+        }
+
+        public override void DepthExtractor(GameTime gt, SceneControl.IObject obj, ref Matrix View, ref Matrix projection, SceneControl.RenderHelper render)
+        {
+        }
+#endif
+        public override void Initialize(GraphicInfo ginfo, GraphicFactory factory, SceneControl.IObject obj)
+        {
+        }
+
+        public override MaterialType MaterialType
+        {
+            get { return Material.MaterialType.FORWARD; }
         }
     }
 }

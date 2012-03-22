@@ -808,32 +808,32 @@ namespace PloobsEngine.SceneControl
                 {
                     case CubeMapFace.NegativeX:
                         {
-                            viewMatrix = Matrix.CreateLookAt(camPos, Vector3.Left, Vector3.Up);
+                            viewMatrix = Matrix.CreateLookAt(camPos, camPos + Vector3.Left, Vector3.Up);
                             break;
                         }
                     case CubeMapFace.NegativeY:
                         {
-                            viewMatrix = Matrix.CreateLookAt(camPos, Vector3.Down, Vector3.Forward);
+                            viewMatrix = Matrix.CreateLookAt(camPos, camPos + Vector3.Down, Vector3.Forward);
                             break;
                         }
                     case CubeMapFace.NegativeZ:
                         {
-                            viewMatrix = Matrix.CreateLookAt(camPos, Vector3.Backward, Vector3.Up);
+                            viewMatrix = Matrix.CreateLookAt(camPos, camPos + Vector3.Backward, Vector3.Up);
                             break;
                         }
                     case CubeMapFace.PositiveX:
                         {
-                            viewMatrix = Matrix.CreateLookAt(camPos, Vector3.Right, Vector3.Up);
+                            viewMatrix = Matrix.CreateLookAt(camPos, camPos + Vector3.Right, Vector3.Up);
                             break;
                         }
                     case CubeMapFace.PositiveY:
                         {
-                            viewMatrix = Matrix.CreateLookAt(camPos, Vector3.Up, Vector3.Backward);
+                            viewMatrix = Matrix.CreateLookAt(camPos, camPos + Vector3.Up, Vector3.Backward);
                             break;
                         }
                     case CubeMapFace.PositiveZ:
                         {
-                            viewMatrix = Matrix.CreateLookAt(camPos, Vector3.Forward, Vector3.Up);
+                            viewMatrix = Matrix.CreateLookAt(camPos, camPos + Vector3.Forward, Vector3.Up);
                             break;
                         }
                 }
@@ -842,10 +842,10 @@ namespace PloobsEngine.SceneControl
                 // Set the cubemap render target, using the selected face
                 SetCubeRenderTarget(renderTargetCube, cubeMapFace);
                 Clear(backGroundColor);
-                RenderSceneWithBasicMaterial(world, gt, objListException, ref viewMatrix, ref projection, drawComponentsPreDraw, useCuller);            
+                RenderSceneWithBasicMaterial(world, gt, objListException, ref viewMatrix, ref projection, drawComponentsPreDraw, useCuller);
+                RestorePreviousRenderTarget();
             }
-            RestorePreviousRenderTarget();
-            
+                        
         }
 
         /// <summary>
@@ -888,6 +888,9 @@ namespace PloobsEngine.SceneControl
                     continue;
 
                 if (!obj.Material.IsVisible)
+                    continue;
+
+                if (obj.Modelo == null)
                     continue;
                 
                 Matrix wld = obj.WorldMatrix;
@@ -1060,6 +1063,7 @@ namespace PloobsEngine.SceneControl
                     obj.Material.Shader.BasicDraw(gt, obj, ref  view,ref projection, world.Lights, this, clippingPlane, useAlphaBlend);
             }
         }
+
 #endif
     }
 

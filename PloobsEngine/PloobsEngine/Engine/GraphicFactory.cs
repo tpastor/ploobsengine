@@ -171,6 +171,22 @@ namespace PloobsEngine.Engine
         }
 
         /// <summary>
+        /// Creates the Render Target Cube
+        /// </summary>
+        /// <param name="size"></param>
+        /// <param name="SurfaceFormat"></param>
+        /// <param name="mipmap"></param>
+        /// <param name="DepthFormat"></param>
+        /// <param name="preferedMultisampleCount"></param>
+        /// <param name="RenderTargetUsage"></param>
+        /// <returns></returns>
+        public RenderTargetCube CreateRenderTargetCube(int size, SurfaceFormat SurfaceFormat = SurfaceFormat.Color, bool mipmap = false, DepthFormat DepthFormat = DepthFormat.Depth24Stencil8, int preferedMultisampleCount = 0, RenderTargetUsage RenderTargetUsage = RenderTargetUsage.DiscardContents)
+        {
+            return new RenderTargetCube(device, size, mipmap, SurfaceFormat, DepthFormat, preferedMultisampleCount, RenderTargetUsage);
+        }
+
+
+        /// <summary>
         /// Gets the render target from pool.
         /// </summary>
         /// <param name="width">The width.</param>
