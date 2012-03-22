@@ -234,16 +234,13 @@ namespace PloobsEngine.Physics.Bepu
 
         }
 
-        public TerrainObject(GraphicFactory gfactory, Vector3 translation, Matrix rotation, float[,] heights, MaterialDescription materialDesc)
+        public TerrainObject(GraphicFactory gfactory, Vector3 translation, Matrix rotation, float[,] heights, MaterialDescription materialDesc,BEPUphysics.CollisionShapes.QuadTriangleOrganization triangleorientation = BEPUphysics.CollisionShapes.QuadTriangleOrganization.BottomLeftUpperRight )
         {
-
-
-
             terrainWidth = heights.GetLength(0);
             terrainHeight = heights.GetLength(1);
 
             //Create the terrain.
-            BEPUphysics.CollisionShapes.TerrainShape shape = new BEPUphysics.CollisionShapes.TerrainShape(heights, BEPUphysics.CollisionShapes.QuadTriangleOrganization.BottomLeftUpperRight);
+            BEPUphysics.CollisionShapes.TerrainShape shape = new BEPUphysics.CollisionShapes.TerrainShape(heights, triangleorientation);
 
             terrain = new Terrain(shape, new BEPUphysics.MathExtensions.AffineTransform(Vector3.One, Quaternion.CreateFromRotationMatrix(rotation), translation));
             terrain.ImproveBoundaryBehavior = true;
