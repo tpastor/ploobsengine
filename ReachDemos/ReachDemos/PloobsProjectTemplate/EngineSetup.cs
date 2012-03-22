@@ -39,7 +39,7 @@ namespace ProjectTemplate
         static void LoadScreen(ScreenManager manager)
         {
             
-            //manager.AddScreen(new DemosHomeScreen());
+            manager.AddScreen(new DemosHomeScreen());
 
             ///add the first screen here        
             //manager.AddScreen(new Basic2DParticle());
@@ -52,7 +52,8 @@ namespace ProjectTemplate
             //manager.AddScreen(new AnimationScreen());
             //manager.AddScreen(new MilkShakeFormatScreen());
             //manager.AddScreen(new ColladaFormatScreen());
-            manager.AddScreen(new TerrainGeoClipMap());
+            //manager.AddScreen(new TerrainGeoClipMap());
+            //manager.AddScreen(new DynamicEnvMapScreen());            
 
         }
 

@@ -38,7 +38,7 @@ namespace IntroductionDemo4._0
 
         int index = 0;
 
-        static int totalDemos = 12;
+        static int totalDemos = 13;
         EngineStuff engine;
 
         private int[] screenList = new int[totalDemos];
@@ -73,6 +73,8 @@ namespace IntroductionDemo4._0
                     return new MilkShakeFormatScreen();
                 case 12:
                     return new TerrainGeoClipMap();
+                case 13:
+                    return new DynamicEnvMapScreen();
                 default:
                     break;
             }
