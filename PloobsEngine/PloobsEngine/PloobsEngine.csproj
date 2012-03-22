@@ -124,6 +124,7 @@
     </Reference>
     <Reference Include="PhysX.Net">
       <HintPath>Dlls\PhysX.Net.dll</HintPath>
+    </Reference>
     <Reference Include="SharedOsiris">
       <HintPath>Dlls\SharedOsiris.dll</HintPath>
     </Reference>
