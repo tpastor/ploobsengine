@@ -24,6 +24,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+
 using PloobsEngine.Material;
 using PloobsEngine.Engine.Logger;
 using System.IO;
@@ -89,25 +90,28 @@ namespace PloobsEngine.SceneControl
 
         public void ClearGBuffer(RenderHelper render)
         {
+            render.ValidateSamplerStates();      
             render.PushDepthStencilState(DepthStencilState.None);
-            render.SetSamplerState(SamplerState.PointWrap, 0);            
             render.RenderFullScreenQuadVertexPixel(clearBufferEffect);
-            render.PopDepthStencilState();
+            render.PopDepthStencilState();      
+            render.ValidateSamplerStates();
         }
 
         public void PreDrawScene(GameTime gameTime, IWorld world, RenderHelper render, GraphicInfo ginfo, List<IObject> objectsToPreDraw)
         {
-            render.SetSamplerState(ginfo.SamplerState, 0);
-
+            render.ValidateSamplerStates();
             foreach (IObject item in objectsToPreDraw)
             {
                 if(item.Material.IsVisible)
-                    item.Material.PreDrawnPhase(gameTime,world, item,world.CameraManager.ActiveCamera, world.Lights, render);
-            }
+                    item.Material.PreDrawnPhase(gameTime,world, item,world.CameraManager.ActiveCamera, world.Lights, render);                
+            }            
+            render.ValidateSamplerStates();
         }
 
         public void DrawScene(GameTime gameTime, IWorld world, RenderHelper render, GraphicInfo ginfo, List<IObject> objectsToDraw)
         {
+            render.ValidateSamplerStates();
+
             Matrix view = world.CameraManager.ActiveCamera.View;
             Matrix projection = world.CameraManager.ActiveCamera.Projection;
 
@@ -115,18 +119,24 @@ namespace PloobsEngine.SceneControl
             System.Diagnostics.Debug.Assert(render.PeekBlendState() == BlendState.Opaque);
             System.Diagnostics.Debug.Assert(render.PeekDepthState() == DepthStencilState.Default);
             System.Diagnostics.Debug.Assert(render.PeekRasterizerState() == RasterizerState.CullCounterClockwise);
-                        
-            render.SetSamplerState(ginfo.SamplerState, 0);
+
+            render.ValidateSamplerStates();
 
             foreach (IObject item in objectsToDraw)
             {
                 if(item.Material.IsVisible)
-                    item.Material.Drawn(gameTime,item, world.CameraManager.ActiveCamera, world.Lights, render);
-            }                    
+                    item.Material.Drawn(gameTime,item, world.CameraManager.ActiveCamera, world.Lights, render);                
+            }
+
+            render.ValidateSamplerStates();     
+            
+
         }
 
-        public void LoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, Color BackGroundColor)
+        bool useFloatBuffer;
+        public void LoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, Color BackGroundColor,bool useFloatBuffer)
         {
+            this.useFloatBuffer = useFloatBuffer;
             this.backGroundColor = BackGroundColor;
                         
             const int multisample = 0;

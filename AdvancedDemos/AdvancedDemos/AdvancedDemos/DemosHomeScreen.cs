@@ -29,7 +29,7 @@ namespace AdvancedDemo4._0
 
         EngineStuff engine;
 
-        private int[] screenList = new int[36];
+        private int[] screenList = new int[37];
 
         private IScreen GetScreen(int screenNumber)
         {            
@@ -109,6 +109,9 @@ namespace AdvancedDemo4._0
                     return new Fluids28Screen();
                 case 36:
                     return new DeferredEmitterFluids28Screen();
+                case 37:
+                    return new AnimScreen();
+                    
                 default:
                     break;
             }

@@ -53,7 +53,7 @@ namespace PloobsEngine.Modelo.Animation
         #region IModelo Members
 
         private float modelRadius;
-        private SkinnedModel skinnedModel;
+        protected SkinnedModel skinnedModel;
 
         protected override void LoadModel(GraphicFactory factory, out BatchInformation[][] BatchInformations, out TextureInformation[][] TextureInformations)
         {

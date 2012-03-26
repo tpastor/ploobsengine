@@ -35,6 +35,8 @@ namespace EngineTestes
 
         static void LoadScreen(ScreenManager manager)
         {
+            manager.AddScreen(new MixReflection());
+
             //manager.AddScreen(new ModeloScreen());
             //manager.AddScreen(new RVO3DScreen());
             //manager.AddScreen(new Physx28MaterialScreen());
@@ -77,7 +79,7 @@ namespace EngineTestes
             //manager.AddScreen(new Teste2D());
             //manager.AddScreen(new SponzaScreen());
             //manager.AddScreen(new ForwardMaterialsScreen());
-            manager.AddScreen(new PostEffectScreen());            
+            //manager.AddScreen(new PostEffectScreen());            
             //manager.AddScreen(new MobilePhysicScreen());
             //manager.AddScreen(new MultScreen());
             //manager.AddScreen(new FirstScreen());

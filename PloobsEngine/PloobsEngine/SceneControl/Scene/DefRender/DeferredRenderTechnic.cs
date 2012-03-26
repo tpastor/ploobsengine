@@ -238,7 +238,7 @@ namespace PloobsEngine.SceneControl
             }
 
 
-            deferredGBuffer.LoadContent(manager,ginfo,factory,desc.BackGroundColor);
+            deferredGBuffer.LoadContent(manager, ginfo, factory, desc.BackGroundColor, desc.UseFloatingBufferForLightMap);
             deferredLightMap.LoadContent(manager, ginfo, factory, desc.CullPointLight,desc.UseFloatingBufferForLightMap);
             deferredFinalCombination.LoadContent(manager, ginfo, factory, desc.UseFloatingBufferForLightMap, desc.ExtraForwardPass);
 
@@ -297,19 +297,35 @@ namespace PloobsEngine.SceneControl
             if (desc.OrderForwardObjectsBeforeDraw != null)
                 ForwardnotCulledObjectsList = desc.OrderForwardObjectsBeforeDraw(ForwardnotCulledObjectsList);
 
-            deferredGBuffer.PreDrawScene(gameTime, world, render, ginfo, AllnotCulledObjectsList);                        
+            render.SetSamplerStates(ginfo.SamplerState);
+            render.DettachBindedTextures();
+
+            deferredGBuffer.PreDrawScene(gameTime, world, render, ginfo, AllnotCulledObjectsList);
+
+            render.SetSamplerStates(ginfo.SamplerState);
+            render.DettachBindedTextures();
+
             deferredGBuffer.SetGBuffer(render);            
             deferredGBuffer.ClearGBuffer(render);
             deferredGBuffer.DrawScene(gameTime, world, render, ginfo, DeferrednotCulledObjectsList);
             deferredGBuffer.ResolveGBuffer(render);
-            
+
+            render.DettachBindedTextures();
+            render.ValidateSamplerStates();            
+
             deferredLightMap.SetLightMap(render);
             deferredLightMap.DrawLights(gameTime, world, deferredGBuffer, render);
             deferredLightMap.ResolveLightMap(render);
 
+            render.DettachBindedTextures(3);
+            render.ValidateSamplerStates();
+
             deferredFinalCombination.SetFinalCombination(render);
-            deferredFinalCombination.DrawScene(gameTime, world, deferredGBuffer, deferredLightMap,render);                                   
-            
+            deferredFinalCombination.DrawScene(gameTime, world, deferredGBuffer, deferredLightMap,render);
+
+            render.DettachBindedTextures(3);
+            render.ValidateSamplerStates();
+
             if (desc.ExtraForwardPass)
             {
                 render[PrincipalConstants.colorRT] = deferredGBuffer[GBufferTypes.COLOR];
@@ -323,6 +339,10 @@ namespace PloobsEngine.SceneControl
                 if (desc.RestoreDepthOption == RestoreDepthOption.BEFORE_POSTEFFECT)
                 {
                     restoreDepth.PerformForwardPass(render[PrincipalConstants.CombinedImage], render[PrincipalConstants.DephRT], render,ginfo);
+
+                    render.DettachBindedTextures(2);
+                    render.ValidateSamplerStates();
+
                     if (world.PhysicWorld.isDebugDraw)
                     {
                         world.PhysicWorld.iDebugDrawn(render, gameTime, world.CameraManager.ActiveCamera);
@@ -331,11 +351,21 @@ namespace PloobsEngine.SceneControl
                     {
                         world.ParticleManager.iDraw(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection, render);
                         render.ResyncStates();
+                        render.SetSamplerStates(ginfo.SamplerState);
                     }
+
+                    render.DettachBindedTextures(16);
+                    render.ValidateSamplerStates();
 
                     forwardPass.Draw(gameTime, world, render,DeferrednotCulledObjectsList,ForwardnotCulledObjectsList);
 
+                    render.DettachBindedTextures(16);
+                    render.ValidateSamplerStates();
+
                     render.RenderPosWithDepthComponents(gameTime, ref view, ref projection);
+
+                    render.DettachBindedTextures(16);
+                    render.ValidateSamplerStates();
 
                     render[PrincipalConstants.CurrentImage] = restoreDepth.EndForwardPass(render);
                     render[PrincipalConstants.CombinedImage] = render[PrincipalConstants.CurrentImage];
@@ -349,9 +379,9 @@ namespace PloobsEngine.SceneControl
                             PostEffects[i].Draw(render[PrincipalConstants.CurrentImage], render, gameTime, ginfo, world, desc.UseFloatingBufferForLightMap);
                             Texture2D tex = render.PopRenderTarget()[0].RenderTarget as Texture2D;
                             render[PrincipalConstants.CurrentImage] = tex;
-                            SwapTargetBuffers();
+                            SwapTargetBuffers();                            
                         }
-                    }
+                    }                    
                                         
                     if (desc.UseFloatingBufferForLightMap)
                     {                        
@@ -362,10 +392,10 @@ namespace PloobsEngine.SceneControl
                     {                        
                         render.Clear(Color.Black);                        
                         render.RenderTextureComplete(render[PrincipalConstants.CurrentImage], Color.White, ginfo.FullScreenRectangle, Matrix.Identity,null,true,SpriteSortMode.Deferred,ginfo.SamplerState);                    
-                    }
+                    }                    
                 }
                 else if (desc.RestoreDepthOption == RestoreDepthOption.AFTER_POSTEFFECT)
-                {
+                {                    
                     for (int i = 0; i < PostEffects.Count; i++)
                     {
                         if (PostEffects[i].Enabled)
@@ -380,6 +410,9 @@ namespace PloobsEngine.SceneControl
                     }
 
                     restoreDepth.PerformForwardPass(render[PrincipalConstants.CurrentImage], render[PrincipalConstants.DephRT], render, ginfo);
+
+                    render.DettachBindedTextures(2);
+
                     if (world.PhysicWorld.isDebugDraw)
                     {
                         world.PhysicWorld.iDebugDrawn(render, gameTime, world.CameraManager.ActiveCamera);
@@ -388,9 +421,16 @@ namespace PloobsEngine.SceneControl
                     {
                         world.ParticleManager.iDraw(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection, render);
                         render.ResyncStates();
+                        render.SetSamplerStates(ginfo.SamplerState);
                     }
+
+                    render.DettachBindedTextures(16);
                     forwardPass.Draw(gameTime, world, render,DeferrednotCulledObjectsList,ForwardnotCulledObjectsList);
+
+                    render.DettachBindedTextures(16);
                     render.RenderPosWithDepthComponents(gameTime, ref view, ref projection);
+                    render.DettachBindedTextures(16);
+
                     render[PrincipalConstants.CurrentImage] = restoreDepth.EndForwardPass(render);
 
                     if (desc.UseFloatingBufferForLightMap)
@@ -422,6 +462,7 @@ namespace PloobsEngine.SceneControl
                             SwapTargetBuffers();
                         }
                     }
+                    
                     if (desc.UseFloatingBufferForLightMap)
                     {
                         render.Clear(Color.Black);
@@ -458,7 +499,7 @@ namespace PloobsEngine.SceneControl
                 render.RenderPosComponents(gameTime, ref view, ref projection);
             }
 
-
+            render.ValidateSamplerStates();
         }
 
 #region IRenderTechnic Members

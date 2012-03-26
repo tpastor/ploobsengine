@@ -16,7 +16,7 @@ using StillDesign.PhysX;
 
 namespace AdvancedDemo4._0
 {
-
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class Physx28VehicleScreen : IScene
     {
 
@@ -75,12 +75,12 @@ namespace AdvancedDemo4._0
 
         void obj_OnUserUpdate(UserObject<Vehicle> obj)
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            if (Keyboard.GetState().IsKeyDown(Keys.Y))
             {
                 obj.UserData.Accelerate(10);
             }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.LeftControl))
+            if (Keyboard.GetState().IsKeyDown(Keys.H))
             {
                 obj.UserData.Accelerate(-10);
             }
@@ -90,11 +90,22 @@ namespace AdvancedDemo4._0
                 obj.UserData.Turn(MathHelper.ToRadians(1));
             }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.H))
+            if (Keyboard.GetState().IsKeyDown(Keys.G))
             {
                 obj.UserData.Turn(MathHelper.ToRadians(-1));
             }
         }
+
+        protected override void Draw(GameTime gameTime, RenderHelper render)
+        {
+            ///must be called before
+            base.Draw(gameTime, render);
+
+            ///Draw some text to the screen
+            render.RenderTextComplete("Demo: Vehicle Physx", new Vector2(20, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Use GHJY To Control", new Vector2(20, 35), Color.White, Matrix.Identity);
+        }
+
 
     }
 }

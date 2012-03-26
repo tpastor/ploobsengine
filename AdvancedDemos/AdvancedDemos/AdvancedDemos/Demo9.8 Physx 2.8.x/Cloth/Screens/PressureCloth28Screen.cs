@@ -15,7 +15,8 @@ using System.IO;
 using System.Runtime.InteropServices;
 
 namespace AdvancedDemo4._0
-{    
+{
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class PressureCloth28Screen : IScene
     {
 

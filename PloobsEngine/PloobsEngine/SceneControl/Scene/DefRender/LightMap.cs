@@ -45,9 +45,9 @@ namespace PloobsEngine.SceneControl
         SamplerState samplerState;
 
 
-        EffectParameter DirectionalcolorMap;
-        EffectParameter DirectionalnormalMap;
-        EffectParameter DirectionaldepthMap;
+        //EffectParameter DirectionalcolorMap;
+        //EffectParameter DirectionalnormalMap;
+        //EffectParameter DirectionaldepthMap;
         EffectParameter DirectionalInvertViewProjection;
         EffectParameter DirectionalhalfPixel;
         EffectParameter DirectionalcameraPosition;        
@@ -59,9 +59,11 @@ namespace PloobsEngine.SceneControl
 #region IDeferredLightMap Members        
         protected void DrawDirectionalLight(ICamera camera, IList<ILight> lights, IDeferredGBuffer DeferredGBuffer,RenderHelper render)
         {
-            DirectionalcolorMap.SetValue(DeferredGBuffer[GBufferTypes.COLOR]);
-            DirectionalnormalMap.SetValue(DeferredGBuffer[GBufferTypes.NORMAL]);
-            DirectionaldepthMap.SetValue(DeferredGBuffer[GBufferTypes.DEPH]);
+            render.device.Textures[0] = DeferredGBuffer[GBufferTypes.COLOR];
+            render.device.Textures[1] = DeferredGBuffer[GBufferTypes.NORMAL];
+            render.device.Textures[2] = DeferredGBuffer[GBufferTypes.DEPH];
+            SamplerState s2 = render.SetSamplerState(SamplerState.PointClamp, 2);
+
             DirectionalcameraPosition.SetValue(camera.Position);
             DirectionalInvertViewProjection.SetValue(Matrix.Invert(camera.ViewProjection));
             DirectionalhalfPixel.SetValue(ginfo.HalfPixel);
@@ -79,6 +81,7 @@ namespace PloobsEngine.SceneControl
                     render.RenderFullScreenQuadVertexPixel(directionalLightEffect);
                 }
             }
+            render.SetSamplerState(s2, 2);
         }
 
         EffectParameter PointcolorMap;
@@ -224,10 +227,7 @@ namespace PloobsEngine.SceneControl
         {
             render.Clear(Color.Transparent,ClearOptions.Target);
             render.PushBlendState(BlendState.AlphaBlend);
-            render.PushDepthStencilState(DepthStencilState.None);
-
-            render.SetSamplerState(samplerState, 0);
-            render.SetSamplerState(samplerState, 1);
+            render.PushDepthStencilState(DepthStencilState.None);                        
 
             DrawDirectionalLight(world.CameraManager.ActiveCamera, world.Lights, deferredGBuffer,render);
             DrawPointLight(world.CameraManager.ActiveCamera, world.Lights, deferredGBuffer,render);
@@ -260,9 +260,9 @@ namespace PloobsEngine.SceneControl
             spotLightEffect.Parameters["halfPixel"].SetValue(ginfo.HalfPixel);
             pointLightEffect.Parameters["halfPixel"].SetValue(ginfo.HalfPixel);
 
-            DirectionalcolorMap = directionalLightEffect.Parameters["colorMap"];
-            DirectionalnormalMap = directionalLightEffect.Parameters["normalMap"];
-            DirectionaldepthMap = directionalLightEffect.Parameters["depthMap"];
+            //DirectionalcolorMap = directionalLightEffect.Parameters["colorMap"];
+            //DirectionalnormalMap = directionalLightEffect.Parameters["normalMap"];
+            //DirectionaldepthMap = directionalLightEffect.Parameters["depthMap"];
             DirectionalInvertViewProjection = directionalLightEffect.Parameters["InvertViewProjection"];
             DirectionalhalfPixel = directionalLightEffect.Parameters["halfPixel"];
             DirectionalcameraPosition = directionalLightEffect.Parameters["cameraPosition"];

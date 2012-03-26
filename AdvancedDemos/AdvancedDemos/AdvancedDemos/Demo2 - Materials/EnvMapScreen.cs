@@ -23,6 +23,7 @@ namespace AdvancedDemo4._0
     /// <summary>
     /// Env Map Screen    
     /// </summary>
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class EnvMapScreen : IScene
     {
         LightThrowBepu lt;

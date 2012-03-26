@@ -14,53 +14,12 @@ const uniform bool useGlow;
 const uniform bool useBump;
 const uniform bool useSpecular;
 
-texture Texture;
-samplerCUBE map_diffuse = 
-sampler_state
-{
-	Texture = <Texture>;
-	MipFilter = LINEAR;
-	MinFilter = LINEAR;
-	MagFilter = LINEAR;
 
-	AddressU = Clamp;
-	AddressV = Clamp;
-};
-
-
-texture glow;
-sampler glowSampler = sampler_state
-{
-    Texture = (glow);   
-	ADDRESSU = WRAP;
-	ADDRESSV = WRAP;	     
-};
-
-texture SpecularMap;
-sampler specularSampler = sampler_state
-{
-    Texture = (SpecularMap);    
-	ADDRESSU = WRAP;
-	ADDRESSV = WRAP;	
-};
-
-
-texture DifTex;
-sampler diffuseSampler = sampler_state
-{
-    Texture = (DifTex);    
-	ADDRESSU = WRAP;
-	ADDRESSV = WRAP;	
-};
-
-texture NormalMap;
-sampler normalSampler = sampler_state
-{
-    Texture = (NormalMap);    
-	ADDRESSU = WRAP;
-	ADDRESSV = WRAP;	
-};
-
+samplerCUBE map_diffuse : register(s7);
+sampler normalSampler : register(s8);
+sampler glowSampler : register(s9);
+sampler specularSampler : register(s10);
+sampler diffuseSampler : register(s11);
 
 struct VertexShaderInput
 {

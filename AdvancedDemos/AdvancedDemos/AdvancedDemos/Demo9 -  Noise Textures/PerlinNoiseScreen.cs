@@ -10,6 +10,7 @@ namespace AdvancedDemo4._0
     /// <summary>
     /// Most basic sample about texture
     /// </summary>
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class PerlinNoiseScreen : IScreen
     {
         Texture2D staticRandomTex;

@@ -17,6 +17,7 @@ namespace AdvancedDemo4._0
     /// <summary>
     /// Basic Deferred Scene
     /// </summary>
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class StealthEffectScreen : IScene
     {
         protected override void InitScreen(GraphicInfo GraphicInfo, EngineStuff engine)

@@ -22,6 +22,7 @@ namespace AdvancedDemo4._0
     /// <summary>
     /// GUI on forward rendering
     /// </summary>
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class FGUIScreen : IScene
     {
         bool okClicked = false;

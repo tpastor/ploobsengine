@@ -231,15 +231,21 @@ namespace PloobsEngine.Material
                     BatchInformation[] bi = obj.Modelo.GetBatchInformation(i);                    
                     for (int j = 0; j < bi.Count(); j++)
                     {
-                        PDiffuse.SetValue(obj.Modelo.getTexture(TextureType.DIFFUSE,i,j));
-                        PTexture.SetValue(obj.Modelo.GetTextureInformation(i)[j].getCubeTexture(TextureType.ENVIRONMENT));
+                        //PDiffuse.SetValue(obj.Modelo.getTexture(TextureType.DIFFUSE,i,j));
+                        //PTexture.SetValue(obj.Modelo.GetTextureInformation(i)[j].getCubeTexture(TextureType.ENVIRONMENT));
+
+                        render.device.Textures[11] = obj.Modelo.GetTextureInformation(i)[j].getCubeTexture(TextureType.DIFFUSE);                        
+                        render.device.Textures[7] = obj.Modelo.GetTextureInformation(i)[j].getCubeTexture(TextureType.ENVIRONMENT);
+                        
                         if (useBump)
                         {
-                            PNormalMap.SetValue(obj.Modelo.getTexture(TextureType.BUMP, i, j));
+                            //PNormalMap.SetValue(obj.Modelo.getTexture(TextureType.BUMP, i, j));
+                            render.device.Textures[8] = obj.Modelo.GetTextureInformation(i)[j].getCubeTexture(TextureType.BUMP);
                         }
                         if (useSpecular)
                         {
-                            PSpecularMap.SetValue(obj.Modelo.getTexture(TextureType.SPECULAR, i, j));                            
+                            //PSpecularMap.SetValue(obj.Modelo.getTexture(TextureType.SPECULAR, i, j));                            
+                            render.device.Textures[10] = obj.Modelo.GetTextureInformation(i)[j].getCubeTexture(TextureType.SPECULAR);
                             PspecularIntensityScale.SetValue(SpecularIntensityMapScale);
                             PspecularPowerScale.SetValue(SpecularPowerMapScale);                            
                         }
@@ -251,7 +257,8 @@ namespace PloobsEngine.Material
                         }
 
                         if (useGlow)
-                            Pglow.SetValue(obj.Modelo.getTexture(TextureType.GLOW, i, j));
+                            //Pglow.SetValue(obj.Modelo.getTexture(TextureType.GLOW, i, j));
+                            render.device.Textures[9] = obj.Modelo.GetTextureInformation(i)[j].getCubeTexture(TextureType.GLOW);
                  
 
                         Matrix w1 = Matrix.Multiply(bi[j].ModelLocalTransformation,wld);                    
@@ -281,24 +288,24 @@ namespace PloobsEngine.Material
             PuseGlow = this._shader.Parameters["useGlow"];
             PCameraPos = this._shader.Parameters["CameraPos"];
             Pid = this._shader.Parameters["id"];
-            PTexture = this._shader.Parameters["Texture"];
+            //PTexture = this._shader.Parameters["Texture"];
             PspecularPowerScale = this._shader.Parameters["specularPowerScale"]; 
             PspecularIntensityScale = this._shader.Parameters["specularIntensityScale"];
             PspecularPower = this._shader.Parameters["specularPower"];
             PspecularIntensity = this._shader.Parameters["specularIntensity"];
             PWorld = this._shader.Parameters["World"];
             PWorldInverseTranspose = this._shader.Parameters["WorldInverseTranspose"];
-            PNormalMap = this._shader.Parameters["NormalMap"];
-            PSpecularMap = this._shader.Parameters["SpecularMap"];
-            Pglow = this._shader.Parameters["glow"];
+            //PNormalMap = this._shader.Parameters["NormalMap"];
+            //PSpecularMap = this._shader.Parameters["SpecularMap"];
+            //Pglow = this._shader.Parameters["glow"];
             PreflectionIndex = this._shader.Parameters["reflectionIndex"];
-            PDiffuse = this._shader.Parameters["DifTex"];
+            //PDiffuse = this._shader.Parameters["DifTex"];
         }
-        EffectParameter PDiffuse;
+        //EffectParameter PDiffuse;
         EffectParameter PreflectionIndex; 
-        EffectParameter Pglow; 
-        EffectParameter PSpecularMap; 
-        EffectParameter  PNormalMap; 
+        //EffectParameter Pglow; 
+        //EffectParameter PSpecularMap; 
+        //EffectParameter  PNormalMap; 
         EffectParameter  PWorld; 
         EffectParameter  PWorldInverseTranspose; 
         
@@ -308,7 +315,7 @@ namespace PloobsEngine.Material
         EffectParameter  PspecularIntensity;
         EffectParameter  PCameraPos;
 
-        EffectParameter  PTexture; 
+        //EffectParameter  PTexture; 
         EffectParameter PProjection;
         EffectParameter PView;
         EffectParameter PuseSpecular;

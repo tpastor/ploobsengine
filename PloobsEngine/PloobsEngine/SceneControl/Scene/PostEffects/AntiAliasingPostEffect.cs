@@ -63,12 +63,16 @@ namespace PloobsEngine.SceneControl
         {
                 effect.Parameters["weight"].SetValue(weight);
                 effect.Parameters["pixel_size"].SetValue(GraphicInfo.HalfPixel * 2 * pixelSizeMultiplier);
-                effect.Parameters["normal"].SetValue(rHelper[PrincipalConstants.normalRt]);
+                //effect.Parameters["normal"].SetValue(rHelper[PrincipalConstants.normalRt]);
+                rHelper.device.Textures[1] = rHelper[PrincipalConstants.normalRt];
+                SamplerState s1 = rHelper.SetSamplerState(SamplerState.PointClamp,1);
                 
                 if (useFloatingBuffer)
                     rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, effect, GraphicInfo.FullScreenRectangle,SamplerState.PointClamp,BlendState.Opaque);
                 else
                     rHelper.RenderTextureToFullScreenSpriteBatch(ImageToProcess, effect, GraphicInfo.FullScreenRectangle, GraphicInfo.SamplerState, BlendState.Opaque);
+
+                rHelper.SetSamplerState(s1, 1);
         }
 
         public override void Init(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)

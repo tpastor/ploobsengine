@@ -61,7 +61,7 @@ namespace PloobsEngine.Material
         {
             material.PosDrawnPhase(gt, obj, cam, lights, render);
         }
-
+        Dictionary<int, SamplerState> samplers = new Dictionary<int, SamplerState>();
         public void Drawn(Microsoft.Xna.Framework.GameTime gt, SceneControl.IObject obj, Cameras.ICamera cam, IList<Light.ILight> lights, SceneControl.RenderHelper render)
         {
             if (SamplePositions != null)
@@ -69,6 +69,7 @@ namespace PloobsEngine.Material
                 for (int i = 0; i < SamplePositions.Count(); i++)
                 {
                     render.SetSamplerState(SamplerState[i], SamplePositions[i]);
+                    samplers[SamplePositions[i]] =  SamplerState[i];
                 }
             }
 
@@ -87,7 +88,7 @@ namespace PloobsEngine.Material
             {
                 for (int i = 0; i < SamplePositions.Count(); i++)
                 {
-                    render.RestoreSamplerState(SamplePositions[i]);
+                    render.SetSamplerState(samplers[SamplePositions[i]], SamplePositions[i]);
                 }
             }
 

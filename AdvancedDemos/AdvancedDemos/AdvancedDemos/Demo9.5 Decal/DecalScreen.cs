@@ -23,6 +23,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace AdvancedDemo4._0
 {
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class DecalScreen : IScene
     {
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)

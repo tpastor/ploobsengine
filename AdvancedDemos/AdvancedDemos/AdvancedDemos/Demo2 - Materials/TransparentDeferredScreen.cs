@@ -23,6 +23,7 @@ namespace AdvancedDemo4._0
     /// <summary>
     /// Deferred Transparent Screen
     /// </summary>
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class TransparentDeferredScreen : IScene
     {
 

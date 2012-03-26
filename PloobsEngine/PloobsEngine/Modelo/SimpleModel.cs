@@ -65,7 +65,7 @@ namespace PloobsEngine.Modelo
         string _diffuseName = null;
         string _bumpName = null;
         string _specularName = null;
-        private Model model;        
+        protected Model model;        
         private float modelRadius;
         bool forceFromDisk ;
 

@@ -20,6 +20,7 @@ using PloobsEngine.Utils;
 
 namespace AdvancedDemo4._0
 {
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class DeferredDirectionaldShadowScreen : IScene
     {
 

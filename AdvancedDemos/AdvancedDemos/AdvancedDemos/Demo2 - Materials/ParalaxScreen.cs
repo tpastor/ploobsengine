@@ -19,6 +19,7 @@ namespace AdvancedDemo4._0
     /// <summary>
     /// Paralax Effect and Normal Mapping Screen
     /// </summary>
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class ParalaxScreen : IScene
     {
         LightThrowBepu lt;

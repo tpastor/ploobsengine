@@ -120,6 +120,8 @@
     <Compile Include="Demo2 - Materials\AmbientEnvironmenpScreen.cs" />
     <Compile Include="Demo2 - Materials\ShaderIDScreen.cs" />
     <Compile Include="Demo6 - BilboardsSamples\CPUBillboardScreen.cs" />
+    <Compile Include="Demo7 - AnimationSample\ModelAnim\AnimScreen.cs" />
+    <Compile Include="Demo7 - AnimationSample\ModelAnim\FullAnimatedModel.cs" />
     <Compile Include="Demo9.5 Decal\Decal.cs" />
     <Compile Include="Demo9.5 Decal\DecalComponent.cs" />
     <Compile Include="Demo9.5 Decal\DecalScreen.cs" />

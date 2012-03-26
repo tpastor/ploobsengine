@@ -32,7 +32,7 @@ namespace AdvancedDemo4._0
 
         static void LoadScreen(ScreenManager manager)
         {            
-            ///add the title screen            
+            ///add the title screen                        
             manager.AddScreen(new TitleScreen());
             //manager.AddScreen(new DeferredLoadScreen());
             //manager.AddScreen(new BumpSpecularDemo());                        
@@ -74,6 +74,7 @@ namespace AdvancedDemo4._0
             //manager.AddScreen(new PressureCloth28Screen());
             //manager.AddScreen(new Fluids28Screen());
             //manager.AddScreen(new EngineTestes.DeferredEmitterFluids28Screen());
+            //manager.AddScreen(new AnimScreen());
            
 
         }

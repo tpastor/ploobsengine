@@ -1,4 +1,5 @@
 using System;
+using PloobsEngine.TestSuite;
 
 namespace AdvancedDemo4._0
 {
@@ -9,7 +10,15 @@ namespace AdvancedDemo4._0
         /// </summary>
         static void Main(string[] args)
         {
-            Demos game = new Demos();            
+            if (args.Length > 0)
+            {
+                TestProcessor TestProcessor = new TestProcessor();
+                TestProcessor.EvaluateTestes("AdvancedDemos.exe");
+            }
+            else
+            {
+                Demos game = new Demos();
+            }
             
         }
     }

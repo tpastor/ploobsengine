@@ -17,6 +17,7 @@ using PloobsEngine.Commands;
 
 namespace AdvancedDemo4._0
 {
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class OceanScreen : IScene
     {
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)

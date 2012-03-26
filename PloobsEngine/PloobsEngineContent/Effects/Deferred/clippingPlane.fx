@@ -2,16 +2,7 @@ float4x4 WVP;
 float4 clippingPlane; 
 bool isClip;
 
-Texture diffuse;
-sampler DiffuseSampler = sampler_state 
-{ 
-	texture = <diffuse> ; 
-	magfilter = ANISOTROPIC; 
-	minfilter = ANISOTROPIC; 
-	mipfilter = LINEAR; 
-	AddressU = wrap; 
-	AddressV = wrap;
-};
+sampler DiffuseSampler : register(s0);
 
 
 struct VertexShaderInput

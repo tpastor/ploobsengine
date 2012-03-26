@@ -24,6 +24,7 @@ namespace AdvancedDemo4._0
     /// <summary>
     /// SoundScreen, Second Sample About 3D Follower Object
     /// </summary>
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class FollowerObjectSoundScreen : IScene
     {
         LightThrowBepu lt;

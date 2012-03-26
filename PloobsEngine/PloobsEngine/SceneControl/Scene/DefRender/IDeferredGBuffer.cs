@@ -73,7 +73,8 @@ namespace PloobsEngine.SceneControl
         /// <param name="ginfo">The ginfo.</param>
         /// <param name="factory">The factory.</param>
         /// <param name="BackGroundColor">Color of the back ground.</param>
-        void LoadContent(IContentManager manager, GraphicInfo ginfo, GraphicFactory factory,Color BackGroundColor);
+        /// <param name="useFloatBuffer">if set to <c>true</c> [use float buffer].</param>
+        void LoadContent(IContentManager manager, GraphicInfo ginfo, GraphicFactory factory,Color BackGroundColor,bool useFloatBuffer);
 
 
         /// <summary>

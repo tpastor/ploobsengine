@@ -32,7 +32,7 @@ namespace EngineTestes
             world = new IWorld(new BepuPhysicWorld(-0.97f, true), new SimpleCuller());
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
-            desc.UseFloatingBufferForLightMap = true;            
+            desc.UseFloatingBufferForLightMap = false;            
             renderTech = new DeferredRenderTechnic(desc);
         }
 

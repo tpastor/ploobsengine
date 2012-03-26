@@ -23,6 +23,7 @@ namespace AdvancedDemo4._0
     /// <summary>
     /// Animation Screen
     /// </summary>
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class DeferredAnimatedScreen : IScene
     {
         LightThrowBepu lt;

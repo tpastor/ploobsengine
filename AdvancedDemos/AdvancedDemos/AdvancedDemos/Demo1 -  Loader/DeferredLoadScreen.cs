@@ -23,6 +23,7 @@ namespace AdvancedDemo4._0
     /// <summary>
     /// Basic Load Screen
     /// </summary>
+   [PloobsEngine.TestSuite.TesteVisualScreen]
     public class DeferredLoadScreen : IScene
     {
         LightThrowBepu lt;

@@ -19,6 +19,7 @@ using DPSF.ParticleSystems;
 
 namespace AdvancedDemo4._0
 {
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class ExplosionScreen : IScene
     {
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
