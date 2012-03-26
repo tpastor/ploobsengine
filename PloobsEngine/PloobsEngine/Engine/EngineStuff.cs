@@ -899,7 +899,7 @@ namespace PloobsEngine.Engine
             };
 
             contentManager = new IContentManager(SilverLightContentManager);
-            GraphicInfo = new GraphicInfo(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount, GraphicsDevice.PresentationParameters.DepthStencilFormat, initialDescription.useMipMapWhenPossible, this, initialDescription.);
+            GraphicInfo = new GraphicInfo(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount, GraphicsDevice.PresentationParameters.DepthStencilFormat, initialDescription.useMipMapWhenPossible, this, initialDescription.SamplerState);
             GraphicsDevice.DeviceReset += new EventHandler<EventArgs>(GraphicsDevice_DeviceReset);
             GraphicFactory = new Engine.GraphicFactory(GraphicInfo, GraphicsDevice, contentManager);
             ComponentManager = new ComponentManager(GraphicInfo, GraphicFactory);
