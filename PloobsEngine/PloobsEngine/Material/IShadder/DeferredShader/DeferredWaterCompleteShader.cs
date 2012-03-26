@@ -214,6 +214,8 @@ namespace PloobsEngine.Material
 
         public override void PreDrawPhase(GameTime gt, IWorld world, IObject obj, RenderHelper render, ICamera cam)
         {
+            render.ValidateSamplerStates();
+
             Matrix view = cam.View;
             Matrix projection = cam.Projection;
             //REFRACAO
@@ -274,6 +276,11 @@ namespace PloobsEngine.Material
                 this._shader.Parameters["id"].SetValue(shaderId);
 
                 render.PushRasterizerState(RasterizerState.CullNone);
+
+                SamplerState s0 = render.SetSamplerState(SamplerState.LinearWrap, 0);
+                SamplerState s1 = render.SetSamplerState(SamplerState.LinearWrap, 1);
+                SamplerState s2 = render.SetSamplerState(SamplerState.PointClamp, 2);
+                SamplerState s3 = render.SetSamplerState(SamplerState.PointClamp, 3);
                 
                 Matrix wld = obj.WorldMatrix;
                 for (int i = 0; i < obj.Modelo.MeshNumber; i++)
@@ -285,12 +292,14 @@ namespace PloobsEngine.Material
                         Matrix w1 = Matrix.Multiply(wld, bi[j].ModelLocalTransformation);
                         this._shader.Parameters["World"].SetValue(w1);
                         render.RenderBatch(bi[j], _shader);
-
                     }
-
                 }
-
                 render.PopRasterizerState();
+
+                render.SetSamplerState(s0, 0);
+                render.SetSamplerState(s1, 1);
+                render.SetSamplerState(s2, 2);
+                render.SetSamplerState(s3, 3);
         }
 
         public override void  Initialize(PloobsEngine.Engine.GraphicInfo ginfo, PloobsEngine.Engine.GraphicFactory factory, PloobsEngine.SceneControl.IObject obj)

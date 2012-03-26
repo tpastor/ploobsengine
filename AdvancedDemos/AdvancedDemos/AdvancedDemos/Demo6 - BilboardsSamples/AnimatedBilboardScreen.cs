@@ -21,6 +21,7 @@ namespace AdvancedDemo4._0
     /// <summary>
     /// Animated Bilboard Sample
     /// </summary>
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class AnimatedBilboardScreen : IScene
     {
         /// <summary>

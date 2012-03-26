@@ -24,6 +24,7 @@ namespace AdvancedDemo4._0
     /// SoundScreen
     /// Mess of Sounds =P    
     /// </summary>
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class SoundScreen : IScene
     {
         /// <summary>

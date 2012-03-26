@@ -231,7 +231,8 @@ namespace PloobsEngine.Material
                 BatchInformation[] bi = obj.Modelo.GetBatchInformation(i);
                 for (int j = 0; j < bi.Count(); j++)
                 {
-                    basicDraw.Parameters["diffuse"].SetValue(obj.Modelo.getTexture(TextureType.DIFFUSE,i,j));
+                    //basicDraw.Parameters["diffuse"].SetValue(obj.Modelo.getTexture(TextureType.DIFFUSE,i,j));
+                    render.device.Textures[0] =  obj.Modelo.getTexture(TextureType.DIFFUSE, i, j);
                     Matrix w1 = Matrix.Multiply(wld, bi[j].ModelLocalTransformation);
                     this.basicDraw.Parameters["WVP"].SetValue(w1 * view * projection);
 

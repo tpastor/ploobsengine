@@ -15,7 +15,8 @@ using System.IO;
 using System.Runtime.InteropServices;
 
 namespace AdvancedDemo4._0
-{    
+{
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class BasicCloth28Screen : IScene
     {
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
@@ -140,3 +141,100 @@ namespace AdvancedDemo4._0
     }
 }
 
+
+
+#region License
+/*
+    PloobsEngine Game Engine Version 0.3 Beta
+    Copyright (C) 2011  Ploobs
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+#endregion
+
+namespace PloobsEngine.Modelox
+{
+    /// <summary>
+    /// Implementation of the most simple Model in the engine
+    /// </summary>
+    public class SimpleModelx : IModelo
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SimpleModel"/> class.
+        /// </summary>
+        /// <param name="factory">The graphic factory.</param>
+        /// <param name="modelName">Name of the model.</param>
+        /// <param name="diffuseTextureName">Name of the diffuse texture.</param>
+        /// <param name="bumpTextureName">Name of the bump texture.</param>
+        /// <param name="specularTextureName">Name of the specular texture.</param>
+        /// <param name="glowTextureName">Name of the glow texture.</param>
+        /// <param name="forceFromDisk">if set to <c>true</c> [force from disk].</param>
+       public SimpleModelx(GraphicFactory factory,String modelName, String diffuseTextureName = null, String bumpTextureName = null, String specularTextureName = null, String glowTextureName = null, bool forceFromDisk = false)
+            : base(factory, modelName, false)
+        {
+            this.forceFromDisk = forceFromDisk;            
+            this._diffuseName = diffuseTextureName;
+            this._bumpName = bumpTextureName;
+            this._glowName = glowTextureName;
+            this._specularName = specularTextureName;
+            LoadModel(factory, out BatchInformations, out TextureInformations);
+        }
+       
+        string _glowName = null;
+        string _diffuseName = null;
+        string _bumpName = null;
+        string _specularName = null;
+        private Model model;        
+        private float modelRadius;
+        bool forceFromDisk ;
+
+        protected override void LoadModel(GraphicFactory factory, out BatchInformation[][] BatchInformations, out TextureInformation[][] TextureInformation)
+        {
+            model = factory.GetModel(this.Name, false, false);
+            ModelBuilderHelper.Extract(factory,out BatchInformations, out TextureInformation,model,_diffuseName,_bumpName,_specularName,_glowName,false);            
+            
+            BoundingSphere sphere = new BoundingSphere();
+            foreach (var item in model.Meshes)
+            {
+                sphere = BoundingSphere.CreateMerged(sphere, item.BoundingSphere);
+            }
+            modelRadius = sphere.Radius;         
+        }
+
+        public override int MeshNumber
+        {
+            get { return model.Meshes.Count; }
+        }
+
+        public override float GetModelRadius()
+        {
+            return modelRadius;
+        }
+
+        public override void CleanUp(GraphicFactory factory)
+        {
+            for (int i = 0; i < MeshNumber; i++)
+            {
+                foreach (var item in TextureInformations[i])
+                {
+                    factory.ReleaseAsset(item.DiffuseMapName);
+                    factory.ReleaseAsset(item.BumpMapName);
+                    factory.ReleaseAsset(item.GlowName);
+                    factory.ReleaseAsset(item.SpecularMapName);
+                }
+            }
+            factory.ReleaseAsset(Name);            
+        }
+    }
+}

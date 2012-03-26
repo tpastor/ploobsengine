@@ -19,6 +19,7 @@ namespace AdvancedDemo4._0
     ///IMPORTANT
     ///In physx you CANT access the prperty ACTOR of the Physic Objects before it is added to the world
     /// </summary>
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class Physx28Screen : IScene
     {
 

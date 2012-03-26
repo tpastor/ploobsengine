@@ -168,6 +168,7 @@ Global
 		{4DB11830-D1DC-4BD2-931D-11ADEAFA8BEA}.DVD-5|Xbox 360.ActiveCfg = Debug|x86
 		{4DB11830-D1DC-4BD2-931D-11ADEAFA8BEA}.Release|Any CPU.ActiveCfg = Release|x86
 		{4DB11830-D1DC-4BD2-931D-11ADEAFA8BEA}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{4DB11830-D1DC-4BD2-931D-11ADEAFA8BEA}.Release|Mixed Platforms.Build.0 = Release|x86
 		{4DB11830-D1DC-4BD2-931D-11ADEAFA8BEA}.Release|Windows Phone.ActiveCfg = Release|x86
 		{4DB11830-D1DC-4BD2-931D-11ADEAFA8BEA}.Release|x86.ActiveCfg = Release|x86
 		{4DB11830-D1DC-4BD2-931D-11ADEAFA8BEA}.Release|Xbox 360.ActiveCfg = Release|x86

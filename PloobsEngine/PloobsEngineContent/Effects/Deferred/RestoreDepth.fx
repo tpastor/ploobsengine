@@ -1,24 +1,8 @@
-texture ColorTexture;
-texture DepthTexture;
+
 float2 halfPixel;
 
-sampler ColorSampler : register(s0) = sampler_state
-{
-    Texture = (ColorTexture);    
-	AddressU = CLAMP;
-    AddressV = CLAMP;
-};
-
-sampler DepthSampler : register(s1) = sampler_state
-{
-    Texture = (DepthTexture);
-    MinFilter = POINT;
-    MagFilter = POINT;
-    MipFilter = POINT;
-    AddressU = CLAMP;
-    AddressV = CLAMP;
-};
-
+sampler ColorSampler : register(s0) ;
+sampler DepthSampler : register(s1) ;
 
 struct VertexShaderOutput
 {

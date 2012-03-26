@@ -56,7 +56,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="PloobsEnginePipelineDebug">
-      <HintPath>..\..\PloobsEngine\PloobsEngine\bin\x86\Debug\PloobsEnginePipelineDebug.dll</HintPath>
+      <HintPath>..\..\AdvancedDemos\AdvancedDemos\Dll\PloobsEnginePipelineDebug.dll</HintPath>
     </Reference>
     <Reference Include="ShatterProcessor">
       <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\ShatterProcessor.dll</HintPath>

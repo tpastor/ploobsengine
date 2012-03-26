@@ -73,6 +73,7 @@ namespace AdvancedDemo4._0
     /// <summary>
     /// Trigger Demo with Physx
     /// </summary>
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class Physx28TriggerScreen : IScene
     {
 

@@ -18,6 +18,7 @@ namespace AdvancedDemo4._0
     /// <summary>
     /// BumpSpecular Deferred Scene Demo
     /// </summary>
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class BumpSpecularDemo : IScene
     {
 

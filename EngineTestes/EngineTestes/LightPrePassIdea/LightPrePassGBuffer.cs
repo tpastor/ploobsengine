@@ -137,7 +137,7 @@ namespace PloobsEngine.SceneControl
 
         }
 
-        public void LoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, Color BackGroundColor)
+        public void LoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, Color BackGroundColor, bool useFloatBuffer)
         {
             this.backGroundColor = BackGroundColor;
             colorRT2 = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, 8, RenderTargetUsage.DiscardContents);

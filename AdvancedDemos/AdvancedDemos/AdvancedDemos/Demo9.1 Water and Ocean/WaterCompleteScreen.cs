@@ -18,6 +18,7 @@ using PloobsEngine.Loader;
 
 namespace AdvancedDemo4._0
 {
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class WaterCompleteScreen : IScene
     {
         LightThrowBepu lt;

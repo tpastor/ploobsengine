@@ -23,6 +23,7 @@ namespace AdvancedDemo4._0
     /// <summary>
     /// Gui on Deferred Rendering
     /// </summary>
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class DGUIScreen : IScene
     {
         bool okClicked = false;

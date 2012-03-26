@@ -19,8 +19,9 @@ namespace AdvancedDemo4._0
 {
     /// <summary>
     /// Instanced Bilboards
-    /// The technich presented lets you add looooooots (yeah, looooooots) of bilboards in a scene
+    /// The technich presented lets you add looooooots (yeah, looooooots) of bilboards in a scene    
     /// </summary>
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class InstancedBilboardScreen : IScene
     {
         /// <summary>

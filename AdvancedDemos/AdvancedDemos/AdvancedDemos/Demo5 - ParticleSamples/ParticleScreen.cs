@@ -27,6 +27,7 @@ namespace AdvancedDemo4._0
     /// The integration is VERY simple, just copy and past those samples here and it is working
     /// We showed how to do it for 2 samples, the Smoke and the Snow =P
     /// </summary>
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class ParticleScreen : IScene
     {
         /// <summary>
@@ -39,7 +40,7 @@ namespace AdvancedDemo4._0
             world = new IWorld(new BepuPhysicWorld(-0.097f,true), new SimpleCuller(),new DPSFParticleManager());
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
-            desc.UseFloatingBufferForLightMap = true;
+            //desc.UseFloatingBufferForLightMap = true;
             renderTech = new DeferredRenderTechnic(desc);
         }   
 
@@ -55,15 +56,15 @@ namespace AdvancedDemo4._0
         {
             base.LoadContent(GraphicInfo, factory, contentManager);
 
-            {
-                SnowParticleSystem snow = new SnowParticleSystem();
-                DPFSParticleSystem ps = new DPFSParticleSystem("snow", snow);
-                this.World.ParticleManager.AddAndInitializeParticleSystem(ps);
+            //{
+            //    SnowParticleSystem snow = new SnowParticleSystem();
+            //    DPFSParticleSystem ps = new DPFSParticleSystem("snow", snow);
+            //    this.World.ParticleManager.AddAndInitializeParticleSystem(ps);
 
-                ///cant set emiter position before adding the particle
-                ///IF YOU DO SO, IT WILL NOT WORK
-                snow.Emitter.PositionData.Position = new Vector3(500, 0, 0);
-            }            
+            //    ///cant set emiter position before adding the particle
+            //    ///IF YOU DO SO, IT WILL NOT WORK
+            //    snow.Emitter.PositionData.Position = new Vector3(500, 0, 0);
+            //}            
 
             ObjectThrowSmokeParticle ot = new ObjectThrowSmokeParticle(this);
             this.AddScreenUpdateable(ot);

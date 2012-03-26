@@ -9,17 +9,8 @@ const float2 delta[8] =
  float2(-1,0),float2(1,0),float2(0,-1),float2(0,1)
  };
 
+sampler normalSampler : register(s1);
 
-texture normal;
-sampler normalSampler = sampler_state
-{
-   Texture = <normal>;
-   MinFilter = POINT;
-   MagFilter = POINT;
-   MipFilter = POINT;   
-   AddressU  = Clamp;
-   AddressV  = Clamp;
-};
 
 float4 PShader(float2 texCoord : TEXCOORD0) : COLOR0
  {

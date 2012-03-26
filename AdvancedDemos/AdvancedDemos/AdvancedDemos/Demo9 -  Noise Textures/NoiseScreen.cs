@@ -11,6 +11,7 @@ namespace AdvancedDemo4._0
     /// How can you use the ordinary XNA draw tools with the engine
     /// "Also the Noise Effect that is nice" - Its a modified version of Riemers code
     /// </summary>
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class NoiseScreen : IScreen
     {
 

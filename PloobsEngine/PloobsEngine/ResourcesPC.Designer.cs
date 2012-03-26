@@ -235,16 +235,16 @@ namespace PloobsEngine {
             }
         }
         
-        internal static byte[] Depth {
+        internal static byte[] depth {
             get {
-                object obj = ResourceManager.GetObject("Depth", resourceCulture);
+                object obj = ResourceManager.GetObject("depth", resourceCulture);
                 return ((byte[])(obj));
             }
         }
         
-        internal static byte[] depth1 {
+        internal static byte[] Depth1 {
             get {
-                object obj = ResourceManager.GetObject("depth1", resourceCulture);
+                object obj = ResourceManager.GetObject("Depth1", resourceCulture);
                 return ((byte[])(obj));
             }
         }

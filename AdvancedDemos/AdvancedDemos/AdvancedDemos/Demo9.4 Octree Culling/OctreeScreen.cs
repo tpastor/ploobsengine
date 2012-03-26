@@ -14,6 +14,7 @@ namespace AdvancedDemo4._0
     /// <summary>
     /// Basic Deferred Scene
     /// </summary>
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class OctreeScreen : IScene
     {
         DebugShapesDrawer ddrawer = new DebugShapesDrawer();

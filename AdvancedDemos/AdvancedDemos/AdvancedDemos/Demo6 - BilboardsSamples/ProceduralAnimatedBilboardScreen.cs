@@ -20,6 +20,7 @@ namespace AdvancedDemo4._0
     /// <summary>
     /// Procedural Animated Bilboard
     /// </summary>
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class ProceduralAnimatedBilboardScreen : IScene
     {
         /// <summary>

@@ -21,6 +21,7 @@ namespace AdvancedDemo4._0
     /// <summary>
     /// Simplest Bilboard Sample
     /// </summary>
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class NormalBilboardScreen : IScene
     {
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)

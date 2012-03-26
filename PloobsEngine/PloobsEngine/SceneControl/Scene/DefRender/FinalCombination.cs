@@ -104,24 +104,19 @@ namespace PloobsEngine.SceneControl
         {
             render.PushDepthStencilState(DepthStencilState.None);
 
-            if (useFloatBuffer)
-            {
-                render.SetSamplerState(SamplerState.PointClamp, 0);            
-            }
-            else
-            {
-                render.SetSamplerState(ginfo.SamplerState, 0);
-                render.SetSamplerState(ginfo.SamplerState, 1);
-                render.SetSamplerState(ginfo.SamplerState, 2);                
-            }
-
-            
-            PEXTRA1.SetValue(gbuffer[GBufferTypes.Extra1]);
             PambientColor.SetValue(ambientColor.ToVector3());
-            PcolorMap.SetValue(gbuffer[GBufferTypes.COLOR]);
-            PlightMap.SetValue(lightmap[DeferredLightMapType.LIGHTMAP]);            
+            render.device.Textures[0] = lightmap[DeferredLightMapType.LIGHTMAP];
+            SamplerState s0 = render.SetSamplerState(SamplerState.PointClamp, 0);
+
+            render.device.Textures[1] = gbuffer[GBufferTypes.Extra1];
+            render.device.Textures[2] = gbuffer[GBufferTypes.COLOR];
+            //PEXTRA1.SetValue(gbuffer[GBufferTypes.Extra1]);            
+            //PcolorMap.SetValue(gbuffer[GBufferTypes.COLOR]);
+            //PlightMap.SetValue(lightmap[DeferredLightMapType.LIGHTMAP]);            
 
             render.RenderFullScreenQuadVertexPixel(finalCombineEffect);
+
+            render.SetSamplerState(s0, 0);            
 
             if (saveToTexture)
             {
@@ -132,10 +127,10 @@ namespace PloobsEngine.SceneControl
         }
 
         EffectParameter PhalfPixel;
-        EffectParameter PEXTRA1;
+        //EffectParameter PEXTRA1;
         EffectParameter PambientColor;
-        EffectParameter PcolorMap;
-        EffectParameter PlightMap;
+        //EffectParameter PcolorMap;
+        //EffectParameter PlightMap;
 
         #endregion
 
@@ -148,11 +143,13 @@ namespace PloobsEngine.SceneControl
             this.ginfo = ginfo;
             this.saveToTexture = saveToTexture;
             finalCombineEffect = manager.GetAsset<Effect>("CombineFinal",true);
-            PhalfPixel = finalCombineEffect.Parameters["halfPixel"];
-            PEXTRA1 = finalCombineEffect.Parameters["EXTRA1"];
+            PhalfPixel = finalCombineEffect.Parameters["halfPixel"];            
             PambientColor = finalCombineEffect.Parameters["ambientColor"];
-            PcolorMap = finalCombineEffect.Parameters["colorMap"];
-            PlightMap = finalCombineEffect.Parameters["lightMap"];
+            //PEXTRA1 = finalCombineEffect.Parameters["EXTRA1"];
+            //PcolorMap = finalCombineEffect.Parameters["colorMap"];
+            //PlightMap = finalCombineEffect.Parameters["lightMap"];
+            
+
             PhalfPixel.SetValue(ginfo.HalfPixel);
             if (saveToTexture)
             {

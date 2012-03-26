@@ -16,47 +16,27 @@ static const float	  R0 = 0.02037f;
 float4 waterColor;
 
 Texture normalMap0;
-sampler NormalSampler0 = sampler_state 
+sampler NormalSampler0 : register(s1) = sampler_state 
 { 
-	texture = <normalMap0> ; 
-	magfilter = LINEAR; 
-	minfilter = LINEAR; 
-	mipfilter = LINEAR; 
-	AddressU = wrap; 
-	AddressV = wrap;
+	texture = <normalMap0> ; 	
 };
 
 Texture normalMap1;
-sampler NormalSampler1 = sampler_state 
+sampler NormalSampler1 : register(s2)= sampler_state 
 { 
-	texture = <normalMap1> ; 
-	magfilter = LINEAR; 
-	minfilter = LINEAR; 
-	mipfilter = LINEAR; 
-	AddressU = wrap; 
-	AddressV = wrap;
+	texture = <normalMap1> ; 	
 };
 
 Texture RefractionMap;
-sampler RefractionSampler = sampler_state 
+sampler RefractionSampler : register(s3)= sampler_state 
 { 
-	texture = <RefractionMap> ; 
-	magfilter = LINEAR; 
-	minfilter = LINEAR; 
-	mipfilter = LINEAR; 
-	AddressU = Clamp; 
-	AddressV = Clamp;
+	texture = <RefractionMap> ; 	
 };
 
 Texture ReflectionMap;
-sampler ReflectionSampler = sampler_state 
+sampler ReflectionSampler : register(s4) = sampler_state 
 { 
-	texture = <ReflectionMap> ; 
-	magfilter = LINEAR; 
-	minfilter = LINEAR; 
-	mipfilter = LINEAR; 
-	AddressU = Clamp; 
-	AddressV = Clamp;
+	texture = <ReflectionMap> ; 	
 };
 
 

@@ -15,6 +15,7 @@ using PloobsEngine.Features.Billboard;
 
 namespace AdvancedDemo4._0
 {
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class CPUBillboardScreen : IScene
     {
 

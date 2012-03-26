@@ -77,13 +77,16 @@ namespace PloobsEngine.Material
             _shader.Parameters["xProjection"].SetValue(cam.Projection);
             _shader.Parameters["xCamPos"].SetValue(cam.Position);
             _shader.Parameters["xAllowedRotDir"].SetValue(allowRotationDirection);
-            _shader.Parameters["xBillboardTexture"].SetValue(obj.Modelo.getTexture(TextureType.DIFFUSE,0,0));
+            //_shader.Parameters["xBillboardTexture"].SetValue(obj.Modelo.getTexture(TextureType.DIFFUSE,0,0));
+            render.device.Textures[7] = obj.Modelo.getTexture(TextureType.DIFFUSE, 0, 0);
             _shader.Parameters["atenuation"].SetValue(atenuation);
             
             BatchInformation batchInfo = obj.Modelo.GetBatchInformation(0)[0];            
             {                
                 _shader.Parameters["alphaTest"].SetValue(alphaTestLimit);
-                render.RenderBatch(batchInfo, _shader);                
+                SamplerState s7 = render.SetSamplerState(SamplerState.LinearClamp, 7);
+                render.RenderBatch(batchInfo, _shader);
+                render.SetSamplerState(s7, 7);
             }
             
         }

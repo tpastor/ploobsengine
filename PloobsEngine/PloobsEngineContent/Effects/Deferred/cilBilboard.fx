@@ -10,17 +10,8 @@ float scaleY = 1;
 float4 atenuation = float4(1,1,1,1);
 bool applyLight;
 //------- Texture Samplers --------
-Texture xBillboardTexture;
+sampler textureSampler : register(s7);
 
-sampler textureSampler = sampler_state 
-{ 
-texture = <xBillboardTexture> ;
- magfilter = LINEAR; 
- minfilter = LINEAR; 
- mipfilter =  LINEAR; 
- AddressU = CLAMP; 
- AddressV = CLAMP;
-};
 struct BBVertexToPixel
 {
     float4 Position : POSITION;

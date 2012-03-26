@@ -26,6 +26,7 @@ using Microsoft.Xna.Framework;
 using PloobsEngine.Modelo;
 using PloobsEngine.Components;
 using PloobsEngine.Engine.Logger;
+using System.Diagnostics;
 
 namespace PloobsEngine.SceneControl
 {
@@ -165,22 +166,41 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         /// <param name="SamplerState">State of the sampler.</param>
         /// <param name="index">The index.</param>
-        public void SetSamplerState(SamplerState SamplerState, int index)
+        /// <returns></returns>
+        public SamplerState SetSamplerState(SamplerState SamplerState, int index)
         {
             System.Diagnostics.Debug.Assert(index >= 0);
-            samplers[index] = device.SamplerStates[index];
+            System.Diagnostics.Debug.Assert(device.SamplerStates[index] != null);
+            SamplerState ss = device.SamplerStates[index] ;
             device.SamplerStates[index] = SamplerState;   
+            return ss;                
         }
 
-        Dictionary<int, SamplerState> samplers = new Dictionary<int, SamplerState>();
-
-        public void RestoreSamplerState(int index)
+        /// <summary>
+        /// Sets the sampler states for all slots
+        /// </summary>
+        /// <param name="SamplerState">State of the sampler.</param>
+        public void SetSamplerStates(SamplerState SamplerState)
         {
-            System.Diagnostics.Debug.Assert(index >= 0);
-            device.SamplerStates[index] = samplers[index];
-            samplers.Remove(index);
+            for (int i = 0; i < 16; i++)
+            {
+                device.SamplerStates[i] = SamplerState;
+            }            
         }
 
+        [Conditional("DEBUG")]
+        public void ValidateSamplerStates()
+        {
+            for (int i = 0; i < 16; i++)
+            {
+                System.Diagnostics.Debug.Assert(device.SamplerStates[i] != null);
+                //if (device.SamplerStates[i] == null)
+                //{
+                //    throw new Exception();
+                //}
+            }
+        }
+        
         /// <summary>
         /// Sets the vertex sampler states.
         /// </summary>
@@ -678,7 +698,15 @@ namespace PloobsEngine.SceneControl
             device.RasterizerState = RasterizerStateStack.Peek();            
             device.SetRenderTargets(RenderStatesStack.Peek());                        
         }
-        
+
+        public void DettachBindedTextures(int numberofTextures = 16)
+        {
+            for (int i = 0; i < numberofTextures; i++)
+            {
+                device.Textures[i] = null;
+            }
+        }
+
         /// <summary>
         /// Gets or sets a scene with the specified name.
         /// </summary>

@@ -16,7 +16,7 @@ using System.Runtime.InteropServices;
 
 namespace AdvancedDemo4._0
 {
-    
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class FlagCloth28Screen : IScene
     {
 

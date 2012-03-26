@@ -22,6 +22,7 @@ namespace AdvancedDemo4._0
     /// <summary>
     /// Terrain Sample
     /// </summary>
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class TerrainScreen : IScene
     {
         LightThrowBepu lt;

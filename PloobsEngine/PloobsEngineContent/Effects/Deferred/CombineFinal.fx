@@ -1,32 +1,8 @@
-texture colorMap;
-texture lightMap;
-texture EXTRA1;
 float3 ambientColor;
 
-sampler lightSampler = sampler_state
-{
-    Texture = (lightMap);
-	AddressU = CLAMP;
-    AddressV = CLAMP;	
-};
-
-sampler extraSampler = sampler_state
-{
-    Texture = (EXTRA1);
-    AddressU = CLAMP;
-    AddressV = CLAMP;
-    
-};
-
-sampler colorSampler = sampler_state
-{
-    Texture = (colorMap);
-    AddressU = CLAMP;
-    AddressV = CLAMP;
-    MagFilter = LINEAR;
-    MinFilter = LINEAR;
-    Mipfilter = LINEAR;
-};
+sampler lightSampler :register(s0);
+sampler extraSampler :register(s1);
+sampler colorSampler :register(s2);
 
 struct VertexShaderInput
 {

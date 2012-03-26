@@ -3,31 +3,10 @@ float  lightIntensity = 1;
 float3 Color; 
 float3 cameraPosition; 
 float4x4 InvertViewProjection; 
-texture colorMap; 
-texture normalMap;
-texture depthMap;
 
-sampler colorSampler = sampler_state
-{
-    Texture = (colorMap);
-    AddressU = CLAMP;
-    AddressV = CLAMP;    
-};
-
-sampler normalSampler = sampler_state
-{
-    Texture = (normalMap);    
-};
-
-sampler depthSampler = sampler_state
-{
-    Texture = (depthMap);
-    AddressU = CLAMP;
-    AddressV = CLAMP;
-    MagFilter = POINT;
-    MinFilter = POINT;
-    Mipfilter = POINT;
-};
+sampler colorSampler : register(s0);
+sampler normalSampler : register(s1);
+sampler depthSampler : register(s2);
 
 struct VertexShaderInput
 {

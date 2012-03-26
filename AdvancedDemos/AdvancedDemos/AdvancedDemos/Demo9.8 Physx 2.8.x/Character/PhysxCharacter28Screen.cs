@@ -21,6 +21,7 @@ namespace AdvancedDemo4._0
     /// PHYSX Character is NOT AFFECTED by the gravity
     /// if needed you must move the character "down" each frame
     /// </summary>
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class PhysxCharacter28Screen : IScene
     {
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)

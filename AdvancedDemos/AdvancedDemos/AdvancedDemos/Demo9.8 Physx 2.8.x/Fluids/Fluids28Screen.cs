@@ -16,7 +16,8 @@ using Phyx = StillDesign.PhysX.MathPrimitives;
 using PloobsEngine.Features.Billboard;
 
 namespace AdvancedDemo4._0
-{    
+{
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class Fluids28Screen : IScene
     {
 

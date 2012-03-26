@@ -19,6 +19,7 @@ namespace AdvancedDemo4._0
     /// <summary>
     /// AmbientEnvironment
     /// </summary>
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class AmbientEnvironmenpScreen : IScene
     {
         /// <summary>
