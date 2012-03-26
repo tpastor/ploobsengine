@@ -38,7 +38,6 @@ namespace ProjectTemplate
             renderTech = new ForwardRenderTecnich(desc);
         }
 
-
         /// <summary>
         /// Load content for the screen.
         /// </summary>
@@ -48,7 +47,7 @@ namespace ProjectTemplate
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory, IContentManager contentManager)
         {
             base.LoadContent(GraphicInfo, factory, contentManager);
-
+            
             ///Uncoment to add your model
             SimpleModel simpleModel = new SimpleModel(factory, "Model/cenario");
             ///Physic info (position, rotation and scale are set here)

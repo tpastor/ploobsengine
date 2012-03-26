@@ -102,14 +102,18 @@ namespace PloobsEngine.Engine
             this.isMultiSampling = isMultiSampling;
             this.GraphicsProfile = graphicsProfile;
             this.isFullScreen = isFullScreen;
-            UnhandledException_Handler = null;
+            UnhandledException_Handler = null;  
             this.isFixedGameTime = isFixedGameTime;
             UnhandledExceptionEventHandler = null;
             OnExit = null;
             onExitHandler = null;
             this.ScreenName = ScreenName;
             this.useMipMapWhenPossible = useMipMapWhenPossible;
+#if REACH
+            this.DefaultFiltering = SamplerState.LinearClamp;
+#else
             this.DefaultFiltering = SamplerState.LinearWrap;
+#endif
             this.SupportedOrientations = supportedOrientation;
             
         }
@@ -345,6 +349,8 @@ namespace PloobsEngine.Engine
 
             GraphicInfo.ChangeProps(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount, GraphicsDevice.PresentationParameters.DepthStencilFormat, initialDescription.useMipMapWhenPossible,initialDescription.DefaultFiltering);
             GraphicInfo.FireEvent(GraphicInfo);
+
+            render.SetSamplerStates(GraphicInfo.SamplerState);
         }
 
         /// <summary>
@@ -607,7 +613,7 @@ namespace PloobsEngine.Engine
             this.GraphicsProfile = graphicsProfile;
             this.ScreenName = ScreenName;
             this.useMipMapWhenPossible = useMipMapWhenPossible;
-            this.SamplerState = SamplerState.LinearWrap;
+            this.SamplerState = SamplerState.LinearClamp;
             UpdateInterval = TimeSpan.FromTicks(333333);
         }
 

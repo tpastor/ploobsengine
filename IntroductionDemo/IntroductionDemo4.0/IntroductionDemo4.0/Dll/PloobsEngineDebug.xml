@@ -278,6 +278,12 @@
             Gets the number of objects rendered in this frame.
             </summary>
     </member>
+    <member name="P:PloobsEngine.SceneControl.ICuller.SortObjectsByDistanceToCamera">
+      <summary>
+            Roughly sort objects by their distance to the camera
+            Default False
+            </summary>
+    </member>
     <member name="T:PloobsEngine.SceneControl.OctreeCuller">
       <summary>
             Octree culler for 3D
@@ -1472,11 +1478,6 @@
             Culler that uses the bepu scene control
             </summary>
     </member>
-    <member name="M:PloobsEngine.SceneControl.SimpleCuller.#ctor">
-      <summary>
-            Initializes a new instance of the <see cref="T:PloobsEngine.SceneControl.SimpleCuller" /> class.
-            </summary>
-    </member>
     <member name="T:PloobsEngine.Commands.IReciever">
       <summary>
             Specification for everyone that recieves ICommands    
@@ -1865,6 +1866,36 @@
             Separator character used when parsing files
             </summary>
     </member>
+    <member name="F:PloobsEngine.PrincipalConstants.DiffuseRegister">
+      <summary>
+            Sampler Register for Diffuse Texture
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.PrincipalConstants.NormalRegister">
+      <summary>
+            Sampler Register for Normal Texture
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.PrincipalConstants.SpecularRegister">
+      <summary>
+            Sampler Register for Specular Texture
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.PrincipalConstants.GlowRegister">
+      <summary>
+            Sampler Register for Glow Texture
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.PrincipalConstants.EnvironmentRegister">
+      <summary>
+            Sampler Register for Environment Texture
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.PrincipalConstants.HeighRegister">
+      <summary>
+            Sampler Register for Heigh Texture
+            </summary>
+    </member>
     <member name="T:PloobsEngine.Physic2D.Farseer.ConvertUnits">
       <summary>
             Convert units between display and simulation units.
@@ -2111,6 +2142,11 @@
       <value>
             The body B.
             </value>
+    </member>
+    <member name="T:Osiris.Graphics.Terrain.Level">
+      <summary>
+            Summary description for Level.
+            </summary>
     </member>
     <member name="F:PloobsEngine.NetWorking.NetWorkClientObject.CreateRemoteObjectOrder">
       <summary>
@@ -7670,9 +7706,12 @@
       <summary>
             Draw the Pre Draw components
             </summary>
+      <param name="render">The render.</param>
       <param name="gt">The gt.</param>
       <param name="activeView">The active view.</param>
       <param name="activeProjection">The active projection.</param>
+      <returns>
+      </returns>
     </member>
     <member name="M:PloobsEngine.Components.ComponentManager.AfterDraw(PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@)">
       <summary>
@@ -7682,6 +7721,8 @@
       <param name="gt">The gt.</param>
       <param name="activeView">The active view.</param>
       <param name="activeProjection">The active projection.</param>
+      <returns>
+      </returns>
     </member>
     <member name="M:PloobsEngine.Components.ComponentManager.PosWithDepthDraw(PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@)">
       <summary>
@@ -8212,6 +8253,25 @@
       <returns>
       </returns>
     </member>
+    <member name="M:PloobsEngine.Engine.GraphicFactory.CreateRenderTargetCube(System.Int32,Microsoft.Xna.Framework.Graphics.SurfaceFormat,System.Boolean,Microsoft.Xna.Framework.Graphics.DepthFormat,System.Int32,Microsoft.Xna.Framework.Graphics.RenderTargetUsage)">
+      <summary>
+            Creates the Render Target Cube
+            </summary>
+      <param name="size">
+      </param>
+      <param name="SurfaceFormat">
+      </param>
+      <param name="mipmap">
+      </param>
+      <param name="DepthFormat">
+      </param>
+      <param name="preferedMultisampleCount">
+      </param>
+      <param name="RenderTargetUsage">
+      </param>
+      <returns>
+      </returns>
+    </member>
     <member name="M:PloobsEngine.Engine.GraphicFactory.GetRenderTargetFromPool(System.Int32,System.Int32,Microsoft.Xna.Framework.Graphics.SurfaceFormat,System.Boolean,Microsoft.Xna.Framework.Graphics.DepthFormat,System.Int32,Microsoft.Xna.Framework.Graphics.RenderTargetUsage)">
       <summary>
             Gets the render target from pool.
@@ -8605,6 +8665,11 @@
     <member name="F:PloobsEngine.Physics.PhysxTrigger.FireContaining">
       <summary>
             FireBeginsContaining 
+            </summary>
+    </member>
+    <member name="T:PloobsEngine.Material.GeoclipShader">
+      <summary>
+            Dummy Dummy Dummy
             </summary>
     </member>
     <member name="T:PloobsEngine.Modelo2D.SpriteAnimated">
@@ -11491,6 +11556,75 @@
             Bepu Implementation of a Physic World
             </summary>
     </member>
+    <member name="M:Osiris.MathHelper.ComputeWeight(System.Single,System.Single,System.Single)">
+      <summary>
+            Calculates the weight of a given value between the min and max specified
+            </summary>
+      <param name="fValue">
+      </param>
+      <param name="fMin">
+      </param>
+      <param name="fMax">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Osiris.MathHelper.InterpolateCosine(System.Single,System.Single,System.Single)">
+      <summary>
+            http://local.wasp.uwa.edu.au/~pbourke/other/interpolation/
+            Cosine interpolation
+            </summary>
+      <param name="a">
+      </param>
+      <param name="b">
+      </param>
+      <param name="x">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Osiris.MathHelper.InterpolateCubic(System.Single,System.Single,System.Single,System.Single,System.Single)">
+      <summary>
+            v(u) = v(0) - (3u^2 - 2u^3)*(v(0) - v(1))
+            
+            y0 and y3 are points either side of y1 and y2, which represent the range we're interpolating
+            </summary>
+      <param name="y0">
+      </param>
+      <param name="y1">
+      </param>
+      <param name="y2">
+      </param>
+      <param name="y3">
+      </param>
+      <param name="mu">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:Osiris.MathHelper.InterpolateHermite(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+      <summary>
+      </summary>
+      <param name="y0">
+      </param>
+      <param name="y1">
+      </param>
+      <param name="y2">
+      </param>
+      <param name="y3">
+      </param>
+      <param name="mu">
+      </param>
+      <param name="tension">1 is high, 0 normal, -1 is low</param>
+      <param name="bias">0 is even, positive towards first segment, negative towards the other</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="T:Osiris.Graphics.Terrain.Patch">
+      <summary>
+            Summary description for Patch.
+            </summary>
+    </member>
     <member name="T:PloobsEngine.Modelo.VertexMultitextured">
       <summary>
             Vertex Struct used in the Water shader
@@ -12355,7 +12489,7 @@
       <param name="ginfo">The ginfo.</param>
       <param name="objectsToPreDraw">The objects to pre draw.</param>
     </member>
-    <member name="M:PloobsEngine.SceneControl.IDeferredGBuffer.LoadContent(PloobsEngine.SceneControl.IContentManager,PloobsEngine.Engine.GraphicInfo,PloobsEngine.Engine.GraphicFactory,Microsoft.Xna.Framework.Color)">
+    <member name="M:PloobsEngine.SceneControl.IDeferredGBuffer.LoadContent(PloobsEngine.SceneControl.IContentManager,PloobsEngine.Engine.GraphicInfo,PloobsEngine.Engine.GraphicFactory,Microsoft.Xna.Framework.Color,System.Boolean)">
       <summary>
             Loads the content.
             </summary>
@@ -12363,6 +12497,7 @@
       <param name="ginfo">The ginfo.</param>
       <param name="factory">The factory.</param>
       <param name="BackGroundColor">Color of the back ground.</param>
+      <param name="useFloatBuffer">if set to <c>true</c> [use float buffer].</param>
     </member>
     <member name="P:PloobsEngine.SceneControl.IDeferredGBuffer.Item(PloobsEngine.SceneControl.GBufferTypes)">
       <summary>
@@ -14262,6 +14397,8 @@
       <param name="gametime">The gametime.</param>
       <param name="view">The view.</param>
       <param name="projection">The projection.</param>
+      <returns>
+      </returns>
     </member>
     <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderPosComponents(Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@)">
       <summary>
@@ -14270,6 +14407,8 @@
       <param name="gametime">The gametime.</param>
       <param name="view">The view.</param>
       <param name="projection">The projection.</param>
+      <returns>
+      </returns>
     </member>
     <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderPosWithDepthComponents(Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@)">
       <summary>
@@ -14278,6 +14417,8 @@
       <param name="gametime">The gametime.</param>
       <param name="view">The view.</param>
       <param name="projection">The projection.</param>
+      <returns>
+      </returns>
     </member>
     <member name="M:PloobsEngine.SceneControl.RenderHelper.PushRasterizerState(Microsoft.Xna.Framework.Graphics.RasterizerState)">
       <summary>
@@ -14325,6 +14466,15 @@
             </summary>
       <param name="SamplerState">State of the sampler.</param>
       <param name="index">The index.</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:PloobsEngine.SceneControl.RenderHelper.SetSamplerStates(Microsoft.Xna.Framework.Graphics.SamplerState,System.Int32)">
+      <summary>
+            Sets the sampler states for all slots
+            </summary>
+      <param name="SamplerState">State of the sampler.</param>
+      <param name="registers">The registers to change.</param>
     </member>
     <member name="M:PloobsEngine.SceneControl.RenderHelper.SetVertexSamplerStates(Microsoft.Xna.Framework.Graphics.SamplerState,System.Int32)">
       <summary>
@@ -14743,6 +14893,11 @@
       <param name="useCuller">if set to <c>true</c> [use culler].</param>
       <param name="clippingPlane">The clipping plane.</param>
       <param name="useAlphaBlend">if set to <c>true</c> [use alpha blend].</param>
+    </member>
+    <member name="P:PloobsEngine.SceneControl.RenderHelper.Textures">
+      <summary>
+            Gets the textures binded to the device
+            </summary>
     </member>
     <member name="P:PloobsEngine.SceneControl.RenderHelper.Item(System.String)">
       <summary>

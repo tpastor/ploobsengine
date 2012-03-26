@@ -38,9 +38,10 @@ namespace PloobsEngine.Material
 
 		#endregion
         GeoclipShader GeoclipShader = new GeoclipShader();
+        GraphicInfo ginfo;
         public void Initialization(GraphicInfo ginfo, GraphicFactory factory, PloobsEngine.SceneControl.IObject obj)
         {
-            
+            this.ginfo = ginfo;
         }
 
         public void PreDrawnPhase(GameTime gt, PloobsEngine.SceneControl.IWorld mundo, PloobsEngine.SceneControl.IObject obj, PloobsEngine.Cameras.ICamera cam, System.Collections.Generic.IList<PloobsEngine.Light.ILight> lights, PloobsEngine.SceneControl.RenderHelper render)
@@ -67,10 +68,12 @@ namespace PloobsEngine.Material
                 IEffectMatrices effectMatrices = (IEffectMatrices)_terrainModel.Effect;
                 effectMatrices.World = obj.WorldMatrix;
                 effectMatrices.View = cam.View;
-                effectMatrices.Projection = cam.Projection;
+                effectMatrices.Projection = cam.Projection;                
             }
-                        
+
+            render.SetSamplerStates(SamplerState.LinearWrap, 6);
             _terrainModel.Draw();
+            render.SetSamplerStates(ginfo.SamplerState, 6);
 
         }
 
@@ -152,9 +155,10 @@ namespace PloobsEngine.Material
         public override void DepthExtractor(GameTime gt, SceneControl.IObject obj, ref Matrix View, ref Matrix projection, SceneControl.RenderHelper render)
         {
         }
-#endif
+#endif        
         public override void Initialize(GraphicInfo ginfo, GraphicFactory factory, SceneControl.IObject obj)
         {
+            
         }
 
         public override MaterialType MaterialType

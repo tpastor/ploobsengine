@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PloobsProjectTemplate", "ReachDemos\PloobsProjectTemplate\PloobsProjectTemplate.csproj", "{B071A3EC-D15B-483C-8021-6E91FBF4494E}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "PloobsProjectTemplateContent", "ReachDemos\PloobsProjectTemplateContent\PloobsProjectTemplateContent.contentproj", "{2E07DE1B-A5DD-4127-A21B-2077814A6DC2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PloobsProjectTemplateContent", "ReachDemos\PloobsProjectTemplateContent\PloobsProjectTemplateContent.contentproj", "{2E07DE1B-A5DD-4127-A21B-2077814A6DC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

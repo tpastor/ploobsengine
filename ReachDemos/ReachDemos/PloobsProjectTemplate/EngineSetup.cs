@@ -6,6 +6,7 @@ using EngineTestes;
 using PloobsEnginePhone7Template;
 using IntroductionDemo4._0;
 using AdvancedDemo4._0;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace ProjectTemplate
 {
@@ -18,7 +19,7 @@ namespace ProjectTemplate
         {
             ///Create the default Engine Description
             InitialEngineDescription desc = InitialEngineDescription.Default();
-            ///optional parameters, the default is good for most situations            
+            ///optional parameters, the default is good for most situations                                    
             desc.isFixedGameTime = true;                
             desc.UseVerticalSyncronization = true;
             desc.isMultiSampling = true;
@@ -54,6 +55,7 @@ namespace ProjectTemplate
             //manager.AddScreen(new ColladaFormatScreen());
             //manager.AddScreen(new TerrainGeoClipMap());
             //manager.AddScreen(new DynamicEnvMapScreen());            
+            //manager.AddScreen(new MotionForwardScreen());            
 
         }
 
