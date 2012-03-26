@@ -284,8 +284,11 @@ namespace PloobsEngine.Material
 
                 render.PushRasterizerState(RasterizerState.CullNone);
 
-                SamplerState s2 = render.SetSamplerState(SamplerState.PointClamp, 2);
-                SamplerState s3 = render.SetSamplerState(SamplerState.PointClamp, 3);
+                SamplerState s0 = render.SetSamplerState(SamplerState.LinearWrap, 0);
+                SamplerState s1 = render.SetSamplerState(SamplerState.LinearWrap, 1);
+
+                SamplerState s2 = render.SetSamplerState(SamplerState.LinearWrap, 2);
+                SamplerState s3 = render.SetSamplerState(SamplerState.LinearWrap, 3);
                 
                 Matrix wld = obj.WorldMatrix;
                 for (int i = 0; i < obj.Modelo.MeshNumber; i++)
@@ -301,6 +304,8 @@ namespace PloobsEngine.Material
                 }
                 render.PopRasterizerState();
 
+                render.SetSamplerState(s0, 0);
+                render.SetSamplerState(s1, 1);
                 render.SetSamplerState(s2, 2);
                 render.SetSamplerState(s3, 3);
         }

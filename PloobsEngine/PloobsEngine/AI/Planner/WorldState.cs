@@ -84,7 +84,7 @@ namespace PloobsEngine.IA
             return diff;
         }
 
-        protected Dictionary<string, WorldSymbol> Symbols = new Dictionary<string, WorldSymbol>();
+        Dictionary<string, WorldSymbol> Symbols = new Dictionary<string, WorldSymbol>();
 
         public IEnumerable<WorldSymbol> GetSymbols()
         {

@@ -20,8 +20,6 @@ sampler NormalSampler1 : register(s3);
 sampler RefractionSampler : register(s0);
 sampler ReflectionSampler : register(s1);
 
-
-
 struct VertexShaderInput
 {
     float4 Position : POSITION0;
