@@ -13,38 +13,9 @@ float3 Color;
 float lightAngleCosine;
 float lightIntensity;
 
-
-// diffuse color, and specularIntensity in the alpha channel
-texture colorMap; 
-// normals, and specularPower in the alpha channel
-texture normalMap;
-//depth
-texture depthMap;
-
-sampler colorSampler = sampler_state
-{
-    Texture = (colorMap);
-    AddressU = CLAMP;
-    AddressV = CLAMP;    
-};
-
-sampler normalSampler = sampler_state
-{
-    Texture = (normalMap);    
-};
-
-sampler depthSampler = sampler_state
-{
-    Texture = (depthMap);
-    AddressU = CLAMP;
-    AddressV = CLAMP;
-    MagFilter = POINT;
-    MinFilter = POINT;
-    Mipfilter = POINT;
-};
-
-
-
+sampler colorSampler : register(s0);
+sampler normalSampler : register(s1);
+sampler depthSampler : register(s2);
 
 struct VertexShaderInput
 {

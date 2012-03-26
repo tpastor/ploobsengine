@@ -78,7 +78,7 @@ namespace PloobsEngine.Material
             _shader.Parameters["xCamPos"].SetValue(cam.Position);
             _shader.Parameters["xAllowedRotDir"].SetValue(allowRotationDirection);
             //_shader.Parameters["xBillboardTexture"].SetValue(obj.Modelo.getTexture(TextureType.DIFFUSE,0,0));
-            render.device.Textures[7] = obj.Modelo.getTexture(TextureType.DIFFUSE, 0, 0);
+            render.device.Textures[0] = obj.Modelo.getTexture(TextureType.DIFFUSE, 0, 0);
             _shader.Parameters["atenuation"].SetValue(atenuation);
             
             BatchInformation batchInfo = obj.Modelo.GetBatchInformation(0)[0];            

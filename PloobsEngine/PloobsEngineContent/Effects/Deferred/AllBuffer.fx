@@ -17,63 +17,12 @@ const uniform bool useGlow;
 const uniform bool useBump;
 const uniform bool useSpecular;
 
-
-
-texture Texture;
-sampler diffuseSampler = sampler_state
-{
-    Texture = (Texture);
-	ADDRESSU = WRAP;
-	ADDRESSV = WRAP;	  
-};
-
-texture HeightMap;
-sampler2D heightSampler = sampler_state
-{
-	Texture = <HeightMap>;
-    ADDRESSU = WRAP;
-	ADDRESSV = WRAP;	
-};
-
-
-texture glow;
-sampler glowSampler = sampler_state
-{
-    Texture = (glow);   
-	ADDRESSU = WRAP;
-	ADDRESSV = WRAP;	     
-};
-
-texture SpecularMap;
-sampler specularSampler = sampler_state
-{
-    Texture = (SpecularMap);    
-	ADDRESSU = WRAP;
-	ADDRESSV = WRAP;	
-};
-
-
-texture NormalMap;
-sampler normalSampler = sampler_state
-{
-    Texture = (NormalMap);    
-	ADDRESSU = WRAP;
-	ADDRESSV = WRAP;	
-};
-
-// Propriedades da Textura
-texture ambientcube;
-samplerCUBE map_diffuse = 
-sampler_state
-{
-	Texture = <ambientcube>;
-	MipFilter = LINEAR;
-	MinFilter = anisotropic;
-	MagFilter = anisotropic;
-
-	AddressU = Clamp;
-	AddressV = Clamp;
-};
+sampler diffuseSampler : register(s0);
+sampler normalSampler : register(s1);
+sampler specularSampler : register(s2);
+sampler glowSampler : register(s3);
+samplerCUBE map_diffuse : register(s4);
+sampler2D heightSampler : register(s5);
 
 struct VertexShaderInput
 {

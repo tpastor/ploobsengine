@@ -16,9 +16,8 @@ float timeScale = 5;
 float start;
 float size;
 //------- Texture Samplers --------
-Texture xBillboardTexture;
-
-sampler textureSampler = sampler_state { texture = <xBillboardTexture> ; magfilter = LINEAR; minfilter = LINEAR; mipfilter=LINEAR; AddressU = CLAMP; AddressV = CLAMP;};
+//Texture xBillboardTexture;
+sampler textureSampler : register(s0);
 struct BBVertexToPixel
 {
     float4 Position : POSITION;

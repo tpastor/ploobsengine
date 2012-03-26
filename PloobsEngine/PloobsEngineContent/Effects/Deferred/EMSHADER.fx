@@ -6,26 +6,8 @@ float specularPower = 0.5f;
 float reflectionIndex = 0.5f;
 float id;
 
-texture Cubemap;
-sampler SamplerCubemap = sampler_state
-{
-	Texture = <Cubemap>;
-	MinFilter = LINEAR;
-	MagFilter = LINEAR;
-	MipFilter = LINEAR;
-};
-
-
-texture Texture;
-sampler diffuseSampler = sampler_state
-{
-    Texture = (Texture);
-    MAGFILTER = LINEAR;
-    MINFILTER = LINEAR;
-    MIPFILTER = LINEAR;
-    AddressU = Wrap;
-    AddressV = Wrap;
-};
+sampler SamplerCubemap : register(s4);
+sampler diffuseSampler : register(s0);
 
 struct VertexShaderInput
 {

@@ -9,9 +9,7 @@ float scaleX = 1;
 float scaleY = 1;
 float4 atenuation = float4(1,1,1,1);
 //------- Texture Samplers --------
-Texture xBillboardTexture;
-
-sampler textureSampler = sampler_state { texture = <xBillboardTexture> ; magfilter = LINEAR; minfilter = LINEAR; mipfilter=LINEAR; AddressU = CLAMP; AddressV = CLAMP;};
+sampler textureSampler : register(s0);
 struct BBVertexToPixel
 {
     float4 Position : POSITION;

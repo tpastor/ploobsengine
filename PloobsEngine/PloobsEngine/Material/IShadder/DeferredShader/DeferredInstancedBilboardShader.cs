@@ -120,7 +120,9 @@ namespace PloobsEngine.Material
         {
             System.Diagnostics.Debug.Assert(obj.Modelo is InstancedBilboardModel, "This shader expects a InstancedBilboardModel");
             _shader.Parameters["xWorld"].SetValue(obj.PhysicObject.WorldMatrix);
-            _shader.Parameters["xBillboardTexture"].SetValue(obj.Modelo.getTexture(TextureType.DIFFUSE,0,0));
+            //_shader.Parameters["xBillboardTexture"].SetValue(obj.Modelo.getTexture(TextureType.DIFFUSE,0,0));
+            render.device.Textures[0] = obj.Modelo.getTexture(TextureType.DIFFUSE, 0, 0);
+
             _shader.Parameters["atenuation"].SetValue(atenuation);
             _shader.Parameters["forward"].SetValue(Vector3.Normalize(cam.Target - cam.Position));
 

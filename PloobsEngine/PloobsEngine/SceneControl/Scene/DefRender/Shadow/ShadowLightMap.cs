@@ -75,13 +75,23 @@ namespace PloobsEngine.SceneControl
         {    
             directionalLightEffect.Parameters["shadowBufferSize"].SetValue(shadownBufferSize);
             if(dl.CastShadown)
-                directionalLightEffect.Parameters["xShadowMap"].SetValue(shadowMap);
+                //directionalLightEffect.Parameters["xShadowMap"].SetValue(shadowMap);
+                render.device.Textures[3] = shadowMap;
             else
-                directionalLightEffect.Parameters["xShadowMap"].SetValue(blank);
+                //directionalLightEffect.Parameters["xShadowMap"].SetValue(blank);
+                render.device.Textures[3] = blank;
 
-            directionalLightEffect.Parameters["colorMap"].SetValue(DeferredGBuffer[GBufferTypes.COLOR]);
-            directionalLightEffect.Parameters["normalMap"].SetValue(DeferredGBuffer[GBufferTypes.NORMAL]);
-            directionalLightEffect.Parameters["depthMap"].SetValue(DeferredGBuffer[GBufferTypes.DEPH]);            
+            //directionalLightEffect.Parameters["colorMap"].SetValue(DeferredGBuffer[GBufferTypes.COLOR]);
+            //directionalLightEffect.Parameters["normalMap"].SetValue(DeferredGBuffer[GBufferTypes.NORMAL]);
+            //directionalLightEffect.Parameters["depthMap"].SetValue(DeferredGBuffer[GBufferTypes.DEPH]);            
+
+            render.device.Textures[0] = DeferredGBuffer[GBufferTypes.COLOR];
+            render.device.Textures[1] = DeferredGBuffer[GBufferTypes.NORMAL];
+            render.device.Textures[2] = DeferredGBuffer[GBufferTypes.DEPH];
+            SamplerState s2 = render.SetSamplerState(SamplerState.PointClamp, 2);
+            SamplerState s3 = render.SetSamplerState(SamplerState.PointClamp, 3);
+
+
             directionalLightEffect.Parameters["View"].SetValue(camera.View);
             directionalLightEffect.Parameters["Projection"].SetValue(camera.Projection);
             directionalLightEffect.Parameters["cameraPosition"].SetValue(camera.Position);
@@ -94,19 +104,24 @@ namespace PloobsEngine.SceneControl
             render.PushDepthStencilState(DepthStencilState.None);
             render.RenderFullScreenQuadVertexPixel(directionalLightEffect);
             render.PopDepthStencilState();
+
+            render.SetSamplerState(s2, 2);
+            render.SetSamplerState(s3, 3);
            }
 
         private void DrawPointLight(RenderHelper render, GraphicInfo ginfo, ICamera camera, PointLightPE pl, IDeferredGBuffer DeferredGBuffer,bool cullPointLight)
         {
 
-            pointLightEffect.Parameters["halfPixel"].SetValue(ginfo.HalfPixel);
-            pointLightEffect.Parameters["colorMap"].SetValue(DeferredGBuffer[GBufferTypes.COLOR]);
-            pointLightEffect.Parameters["normalMap"].SetValue(DeferredGBuffer[GBufferTypes.NORMAL]);
-            pointLightEffect.Parameters["depthMap"].SetValue(DeferredGBuffer[GBufferTypes.DEPH]);
-            pointLightEffect.Parameters["Projection"].SetValue(camera.Projection);
-            pointLightEffect.Parameters["View"].SetValue(camera.View);
-            pointLightEffect.Parameters["cameraPosition"].SetValue(camera.Position);
-            pointLightEffect.Parameters["InvertViewProjection"].SetValue(Matrix.Invert(camera.ViewProjection));
+                    pointLightEffect.Parameters["halfPixel"].SetValue(ginfo.HalfPixel);
+                    render.device.Textures[0] = DeferredGBuffer[GBufferTypes.COLOR];
+                    render.device.Textures[1] = DeferredGBuffer[GBufferTypes.NORMAL];
+                    render.device.Textures[2] = DeferredGBuffer[GBufferTypes.DEPH];
+                    SamplerState s2 = render.SetSamplerState(SamplerState.PointClamp, 2);
+
+                    pointLightEffect.Parameters["Projection"].SetValue(camera.Projection);
+                    pointLightEffect.Parameters["View"].SetValue(camera.View);
+                    pointLightEffect.Parameters["cameraPosition"].SetValue(camera.Position);
+                    pointLightEffect.Parameters["InvertViewProjection"].SetValue(Matrix.Invert(camera.ViewProjection));
 
                     
                     Matrix sphereWorldMatrix = Matrix.CreateScale(pl.LightRadius) * Matrix.CreateTranslation(pl.LightPosition);
@@ -134,19 +149,34 @@ namespace PloobsEngine.SceneControl
 
                         render.PopRasterizerState();
                     }
+
+                    render.SetSamplerState(s2, 2);
           }                    
 
         private void DrawnSpotLight(RenderHelper render, GraphicInfo ginfo, ICamera camera, SpotLightPE sl, IDeferredGBuffer DeferredGBuffer)
         {
-                    if(sl.CastShadown)
-                        spotLightEffect.Parameters["xShadowMap"].SetValue(shadowMap);
+                    //if(sl.CastShadown)
+                    //    spotLightEffect.Parameters["xShadowMap"].SetValue(shadowMap);
+                    //else
+                    //    spotLightEffect.Parameters["xShadowMap"].SetValue(blank);
+
+                    if (sl.CastShadown)
+                        render.device.Textures[3] = shadowMap;
                     else
-                        spotLightEffect.Parameters["xShadowMap"].SetValue(blank);
+                        render.device.Textures[3] = blank;
+
                     spotLightEffect.Parameters["shadowBufferSize"].SetValue(shadownBufferSize);
                     spotLightEffect.Parameters["BIAS"].SetValue(sl.SHADOWBIAS);                    
-                    spotLightEffect.Parameters["colorMap"].SetValue(DeferredGBuffer[GBufferTypes.COLOR]);
-                    spotLightEffect.Parameters["normalMap"].SetValue(DeferredGBuffer[GBufferTypes.NORMAL]);
-                    spotLightEffect.Parameters["depthMap"].SetValue(DeferredGBuffer[GBufferTypes.DEPH]);            
+
+                    //spotLightEffect.Parameters["colorMap"].SetValue(DeferredGBuffer[GBufferTypes.COLOR]);
+                    //spotLightEffect.Parameters["normalMap"].SetValue(DeferredGBuffer[GBufferTypes.NORMAL]);
+                    //spotLightEffect.Parameters["depthMap"].SetValue(DeferredGBuffer[GBufferTypes.DEPH]);            
+                    render.device.Textures[0] = DeferredGBuffer[GBufferTypes.COLOR];
+                    render.device.Textures[1] = DeferredGBuffer[GBufferTypes.NORMAL];
+                    render.device.Textures[2] = DeferredGBuffer[GBufferTypes.DEPH];
+                    SamplerState s2 = render.SetSamplerState(SamplerState.PointClamp, 2);
+                    SamplerState s3 = render.SetSamplerState(SamplerState.PointClamp, 3);
+
                     spotLightEffect.Parameters["xLightViewProjection"].SetValue(sl.ViewMatrix * sl.ProjMatrix);
                     spotLightEffect.Parameters["View"].SetValue(camera.View);
                     spotLightEffect.Parameters["Projection"].SetValue(camera.Projection);
@@ -164,6 +194,8 @@ namespace PloobsEngine.SceneControl
                     render.PushDepthStencilState(DepthStencilState.None);     
                     render.RenderFullScreenQuadVertexPixel(spotLightEffect);
                     render.PopDepthStencilState();
+                    render.SetSamplerState(s2, 2);
+                    render.SetSamplerState(s3, 3);
         }
 
         private void RenderShadowMap(GameTime gt, RenderHelper render, ref Matrix view, ref Matrix proj, IWorld world, IDeferredGBuffer deferredGBuffer)
@@ -213,6 +245,9 @@ namespace PloobsEngine.SceneControl
                 }
             }
 
+            render.DettachBindedTextures();
+            render.SetSamplerStates(ginfo.SamplerState);
+
             render.PushBlendState(BlendState.AlphaBlend);
 
             foreach (ILight light in world.Lights.Where((a) => a.CastShadown != true && a.Enabled == true))
@@ -235,7 +270,7 @@ namespace PloobsEngine.SceneControl
                 }
             }      
                   
-            render.PopBlendState();   
+            render.PopBlendState();            
         }
 
         public void LoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, bool cullPointLight, bool useFloatingBufferForLightning)

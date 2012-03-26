@@ -125,9 +125,9 @@ namespace AdvancedDemo4._0
             cam.NearPlane = 1;
             this.World.CameraManager.AddCamera(cam);
 
-            AntiAliasingPostEffectTabula aa = new AntiAliasingPostEffectTabula();
-            aa.Weights = 2;
-            this.RenderTechnic.AddPostEffect(aa);
+            //AntiAliasingPostEffectTabula aa = new AntiAliasingPostEffectTabula();
+            //aa.Weights = 2;
+            //this.RenderTechnic.AddPostEffect(aa);
         }
 
         void tea_OnUpdate(IObject obj, GameTime gt, ICamera cam)

@@ -13,9 +13,11 @@ float amplitude;
 float gTime;
 float timeScale = 5;
 //------- Texture Samplers --------
-Texture xBillboardTexture;
+//Texture xBillboardTexture;
+//sampler textureSampler = sampler_state { texture = <xBillboardTexture> ; magfilter = LINEAR; minfilter = LINEAR; mipfilter=LINEAR; AddressU = CLAMP; AddressV = CLAMP;};
 
-sampler textureSampler = sampler_state { texture = <xBillboardTexture> ; magfilter = LINEAR; minfilter = LINEAR; mipfilter=LINEAR; AddressU = CLAMP; AddressV = CLAMP;};
+sampler textureSampler : register(s0);
+
 struct BBVertexToPixel
 {
     float4 Position : POSITION;

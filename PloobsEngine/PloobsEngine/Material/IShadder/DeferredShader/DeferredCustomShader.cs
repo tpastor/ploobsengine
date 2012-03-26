@@ -292,24 +292,28 @@ namespace PloobsEngine.Material
                     for (int j = 0; j < bi.Count(); j++)
                     {
                         Matrix w1 = Matrix.Multiply(bi[j].ModelLocalTransformation, wld);
-                        PWorld.SetValue(w1);                       
+                        PWorld.SetValue(w1);
 
-                        PTexture.SetValue(obj.Modelo.getTexture(TextureType.DIFFUSE, i, j));
+                        render.device.Textures[0] = obj.Modelo.getTexture(TextureType.DIFFUSE, i, j);
+                        //PTexture.SetValue(obj.Modelo.getTexture(TextureType.DIFFUSE, i, j));
                         if (useBump)
                         {
                             if (useParalax)
                             {
-                                this._shader.Parameters["HeightMap"].SetValue(obj.Modelo.getTexture(TextureType.PARALAX,i,j));
+                                //this._shader.Parameters["HeightMap"].SetValue(obj.Modelo.getTexture(TextureType.PARALAX,i,j));
+                                render.device.Textures[5] = obj.Modelo.getTexture(TextureType.PARALAX, i, j);
                                 this._shader.Parameters["scaleBias"].SetValue(scaleBias);
                             }
 
                             PWorldInverseTranspose.SetValue(Matrix.Transpose(Matrix.Invert(w1))); 
-                            PNormalMap.SetValue(obj.Modelo.getTexture(TextureType.BUMP, i, j));
+                            //PNormalMap.SetValue(obj.Modelo.getTexture(TextureType.BUMP, i, j));
+                            render.device.Textures[1] = obj.Modelo.getTexture(TextureType.BUMP, i, j);
 
                         }
                         if (useSpecular)
                         {
-                            PSpecularMap.SetValue(obj.Modelo.getTexture(TextureType.SPECULAR, i, j));
+                            //PSpecularMap.SetValue(obj.Modelo.getTexture(TextureType.SPECULAR, i, j));
+                            render.device.Textures[2] = obj.Modelo.getTexture(TextureType.SPECULAR, i, j);
                             PspecularIntensityScale.SetValue(SpecularIntensityMapScale);
                             PspecularPowerScale.SetValue(SpecularPowerMapScale);                            
                         }
@@ -320,11 +324,13 @@ namespace PloobsEngine.Material
                         }
 
                         if (useGlow)
-                            Pglow.SetValue(obj.Modelo.getTexture(TextureType.GLOW, i, j));
+                            //Pglow.SetValue(obj.Modelo.getTexture(TextureType.GLOW, i, j));
+                            render.device.Textures[3] = obj.Modelo.getTexture(TextureType.GLOW, i, j);
 
                         if (useAmbientCubeMap)
                         {
-                            PAmbientCube.SetValue(obj.Modelo.GetCubeTexture(TextureType.AMBIENT_CUBE_MAP, i, j));
+                            //PAmbientCube.SetValue(obj.Modelo.GetCubeTexture(TextureType.AMBIENT_CUBE_MAP, i, j));
+                            render.device.Textures[4] = obj.Modelo.GetCubeTexture(TextureType.AMBIENT_CUBE_MAP, i, j);
                             PAmbientCubeMapScale.SetValue(AmbientCubeMapScale);
                         }
                         
@@ -351,17 +357,17 @@ namespace PloobsEngine.Material
             PuseGlow = this._shader.Parameters["useGlow"];
             PuseParalax = this._shader.Parameters["useParalax"];
             Pid = this._shader.Parameters["id"];
-            PTexture = this._shader.Parameters["Texture"];
+            //PTexture = this._shader.Parameters["Texture"];
             PspecularPowerScale = this._shader.Parameters["specularPowerScale"]; 
             PspecularIntensityScale = this._shader.Parameters["specularIntensityScale"];
             PspecularPower = this._shader.Parameters["specularPower"];
             PspecularIntensity = this._shader.Parameters["specularIntensity"];
             PWorld = this._shader.Parameters["World"];
             PWorldInverseTranspose = this._shader.Parameters["WorldInverseTranspose"];
-            PNormalMap = this._shader.Parameters["NormalMap"];
-            PSpecularMap = this._shader.Parameters["SpecularMap"];
-            Pglow = this._shader.Parameters["glow"];
-            PAmbientCube = this._shader.Parameters["ambientcube"];
+            //PNormalMap = this._shader.Parameters["NormalMap"];
+            //PSpecularMap = this._shader.Parameters["SpecularMap"];
+            //Pglow = this._shader.Parameters["glow"];
+            //PAmbientCube = this._shader.Parameters["ambientcube"];
             PAmbientCubeMapScale = this._shader.Parameters["ambientScale"];
 
             if (useAmbientCubeMap == true )
@@ -374,12 +380,12 @@ namespace PloobsEngine.Material
             }
 
         }
-        EffectParameter Pglow; 
-        EffectParameter PSpecularMap; 
-        EffectParameter  PNormalMap; 
+        //EffectParameter Pglow; 
+        //EffectParameter PSpecularMap; 
+        //EffectParameter  PNormalMap; 
         EffectParameter  PWorld; 
         EffectParameter  PWorldInverseTranspose; 
-        EffectParameter  PAmbientCube;
+        //EffectParameter  PAmbientCube;
         EffectParameter  PAmbientCubeMapScale;        
         
         EffectParameter  PspecularPowerScale; 
@@ -387,7 +393,7 @@ namespace PloobsEngine.Material
         EffectParameter  PspecularPower; 
         EffectParameter  PspecularIntensity; 
 
-        EffectParameter  PTexture; 
+        //EffectParameter  PTexture; 
         EffectParameter PProjection;
         EffectParameter PView;
         EffectParameter PuseSpecular;

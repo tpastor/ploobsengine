@@ -128,20 +128,23 @@ namespace PloobsEngine.Components
         {
             return _posWithDepthDrawables;
         }
-        
+
 
         /// <summary>
         /// Draw the Pre Draw components
         /// </summary>
+        /// <param name="render">The render.</param>
         /// <param name="gt">The gt.</param>
         /// <param name="activeView">The active view.</param>
         /// <param name="activeProjection">The active projection.</param>
-        internal void PreDraw(RenderHelper render,GameTime gt, ref Matrix activeView, ref Matrix activeProjection)
-        {
+        /// <returns></returns>
+        internal int PreDraw(RenderHelper render,GameTime gt, ref Matrix activeView, ref Matrix activeProjection)
+        { 
             foreach (IComponent item in _preDrawables)
             {
                 item.iPreDraw(render,gt,ref activeView,ref activeProjection);
             }
+            return _preDrawables.Count;
         }
         /// <summary>
         /// Draw the Afters draw.
@@ -150,12 +153,14 @@ namespace PloobsEngine.Components
         /// <param name="gt">The gt.</param>
         /// <param name="activeView">The active view.</param>
         /// <param name="activeProjection">The active projection.</param>
-        internal void AfterDraw(RenderHelper render,GameTime gt, ref Matrix activeView, ref Matrix activeProjection)
+        /// <returns></returns>
+        internal int AfterDraw(RenderHelper render,GameTime gt, ref Matrix activeView, ref Matrix activeProjection)
         {
             foreach (IComponent item in _posDrawables)
             {
                 item.iAfterDraw(render,gt,ref activeView,ref activeProjection);
             }
+            return _posDrawables.Count;
         }
 
         /// <summary>
@@ -165,12 +170,13 @@ namespace PloobsEngine.Components
         /// <param name="gt">The gt.</param>
         /// <param name="activeView">The active view.</param>
         /// <param name="activeProjection">The active projection.</param>
-        internal void PosWithDepthDraw(RenderHelper render, GameTime gt, ref Matrix activeView, ref Matrix activeProjection)
+        internal int PosWithDepthDraw(RenderHelper render, GameTime gt, ref Matrix activeView, ref Matrix activeProjection)
         {
             foreach (IComponent item in _posWithDepthDrawables)
             {
                 item.iPosWithDepthDraw(render, gt, ref activeView, ref activeProjection);
             }
+            return _posWithDepthDrawables.Count;
         }
 
         /// <summary>

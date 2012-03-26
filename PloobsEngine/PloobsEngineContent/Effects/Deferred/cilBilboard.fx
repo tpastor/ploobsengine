@@ -10,7 +10,7 @@ float scaleY = 1;
 float4 atenuation = float4(1,1,1,1);
 bool applyLight;
 //------- Texture Samplers --------
-sampler textureSampler : register(s7);
+sampler textureSampler : register(s0);
 
 struct BBVertexToPixel
 {

@@ -27,7 +27,6 @@ namespace AdvancedDemo4._0
     [PloobsEngine.TestSuite.TesteVisualScreen]
     public class AnimScreen : IScene
     {
-        LightThrowBepu lt;
 
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
@@ -194,7 +193,6 @@ namespace AdvancedDemo4._0
 
         protected override void CleanUp(EngineStuff engine)
         {
-            lt.CleanUp();
             engine.RemoveComponent("SkyBox");
             base.CleanUp(engine);
         }

@@ -68,7 +68,7 @@ namespace PloobsEngine.Engine
         public static InitialEngineDescription Default()
         {
 #if !REACH
-            return new InitialEngineDescription("PloobsEngine",800,600,false,GraphicsProfile.HiDef,false,false,true,null,false,false);
+            return new InitialEngineDescription("PloobsEngine",800,600,false,GraphicsProfile.HiDef,false,false,true,null,false);
 #else
             return new InitialEngineDescription("PloobsEngine",800,600,false,GraphicsProfile.Reach,false,false,true,null,false,false);
 #endif
@@ -87,11 +87,10 @@ namespace PloobsEngine.Engine
         /// <param name="isMultiSampling">if set to <c>true</c> [is multi sampling].</param>
         /// <param name="isFixedGameTime">if set to <c>true</c> [is fixed game time].</param>
         /// <param name="logger">The logger.</param>
-        /// <param name="useMipMapWhenPossible">if set to <c>true</c> [use mip map when possible].</param>
-        /// <param name="UseAnisotropicFiltering">if set to <c>true</c> [use anisotropic filtering].</param>
+        /// <param name="useMipMapWhenPossible">if set to <c>true</c> [use mip map when possible].</param>        
         /// <param name="supportedOrientation">The supported orientation.</param>
         #if !REACH
-        internal InitialEngineDescription(String ScreenName = "PloobsEngine", int BackBufferWidth = 800, int BackBufferHeight = 600, bool isFullScreen = false, GraphicsProfile graphicsProfile = GraphicsProfile.HiDef, bool useVerticalSyncronization = false, bool isMultiSampling = false, bool isFixedGameTime = false, ILogger logger = null, bool useMipMapWhenPossible = false, bool UseAnisotropicFiltering = false, DisplayOrientation supportedOrientation = DisplayOrientation.Portrait | DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight)
+        internal InitialEngineDescription(String ScreenName = "PloobsEngine", int BackBufferWidth = 800, int BackBufferHeight = 600, bool isFullScreen = false, GraphicsProfile graphicsProfile = GraphicsProfile.HiDef, bool useVerticalSyncronization = false, bool isMultiSampling = false, bool isFixedGameTime = false, ILogger logger = null, bool useMipMapWhenPossible = false, DisplayOrientation supportedOrientation = DisplayOrientation.Portrait | DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight)
 #else
         internal InitialEngineDescription(String ScreenName = "PloobsEngine", int BackBufferWidth = 800, int BackBufferHeight = 600, bool isFullScreen = false, GraphicsProfile graphicsProfile = GraphicsProfile.Reach, bool useVerticalSyncronization = false, bool isMultiSampling = false, bool isFixedGameTime = false, ILogger logger = null, bool useMipMapWhenPossible = false, bool UseAnisotropicFiltering = false, DisplayOrientation supportedOrientation = DisplayOrientation.Default | DisplayOrientation.Portrait | DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight)
 #endif
@@ -110,15 +109,16 @@ namespace PloobsEngine.Engine
             onExitHandler = null;
             this.ScreenName = ScreenName;
             this.useMipMapWhenPossible = useMipMapWhenPossible;
-            this.UseAnisotropicFiltering = UseAnisotropicFiltering;
+            this.DefaultFiltering = SamplerState.LinearWrap;
             this.SupportedOrientations = supportedOrientation;
             
         }
 
         /// <summary>
-        /// Use Anisotropic Filtering when possible
+        /// Texture Filtering 
+        /// Default SamplerState.LinearWrap
         /// </summary>
-        public bool UseAnisotropicFiltering;
+        public SamplerState DefaultFiltering;
         
         /// <summary>
         /// Screen Name
@@ -343,7 +343,7 @@ namespace PloobsEngine.Engine
             halfPixel.X = 0.5f / (float)GraphicsDevice.PresentationParameters.BackBufferWidth;
             halfPixel.Y = 0.5f / (float)GraphicsDevice.PresentationParameters.BackBufferHeight;
 
-            GraphicInfo.ChangeProps(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount, GraphicsDevice.PresentationParameters.DepthStencilFormat, initialDescription.useMipMapWhenPossible,initialDescription.UseAnisotropicFiltering);
+            GraphicInfo.ChangeProps(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount, GraphicsDevice.PresentationParameters.DepthStencilFormat, initialDescription.useMipMapWhenPossible,initialDescription.DefaultFiltering);
             GraphicInfo.FireEvent(GraphicInfo);
         }
 
@@ -387,7 +387,7 @@ namespace PloobsEngine.Engine
 
             this.Content = new ContentTracker(this.Services,"Content");            
             contentManager = new IContentManager(this);
-            GraphicInfo = new GraphicInfo(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount, GraphicsDevice.PresentationParameters.DepthStencilFormat,initialDescription.useMipMapWhenPossible,this,initialDescription.UseAnisotropicFiltering);
+            GraphicInfo = new GraphicInfo(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount, GraphicsDevice.PresentationParameters.DepthStencilFormat,initialDescription.useMipMapWhenPossible,this,initialDescription.DefaultFiltering);
             this.GraphicsDevice.DeviceReset += new EventHandler<EventArgs>(GraphicsDevice_DeviceReset);            
             GraphicFactory = new Engine.GraphicFactory(GraphicInfo, GraphicsDevice, contentManager);
             ComponentManager = new ComponentManager(GraphicInfo, GraphicFactory);
@@ -580,7 +580,7 @@ namespace PloobsEngine.Engine
         /// <returns></returns>
         public static InitialEngineDescription Default()
         {
-            return new InitialEngineDescription("PloobsEngine", 800, 480, false, GraphicsProfile.Reach, false, false, true, null, false, false);
+            return new InitialEngineDescription("PloobsEngine", 800, 480, false, GraphicsProfile.Reach, false, false, true, null, false);
         }
 
 
@@ -598,7 +598,7 @@ namespace PloobsEngine.Engine
         /// <param name="logger">The logger.</param>
         /// <param name="useMipMapWhenPossible">if set to <c>true</c> [use mip map when possible].</param>
         /// <param name="UseAnisotropicFiltering">if set to <c>true</c> [use anisotropic filtering].</param>
-        internal InitialEngineDescription(String ScreenName = "PloobsEngine", int BackBufferWidth = 800, int BackBufferHeight = 600, bool isFullScreen = false, GraphicsProfile graphicsProfile = GraphicsProfile.HiDef, bool useVerticalSyncronization = false, bool isMultiSampling = false, bool isFixedGameTime = false, ILogger logger = null, bool useMipMapWhenPossible = false, bool UseAnisotropicFiltering = false, DisplayOrientation supportedOrientation = DisplayOrientation.Default | DisplayOrientation.Portrait | DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight)
+        internal InitialEngineDescription(String ScreenName = "PloobsEngine", int BackBufferWidth = 800, int BackBufferHeight = 600, bool isFullScreen = false, GraphicsProfile graphicsProfile = GraphicsProfile.HiDef, bool useVerticalSyncronization = false, bool isMultiSampling = false, bool isFixedGameTime = false, ILogger logger = null, bool useMipMapWhenPossible = false, DisplayOrientation supportedOrientation = DisplayOrientation.Default | DisplayOrientation.Portrait | DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight)
         {
             this.UseVerticalSyncronization = useVerticalSyncronization;
             this.BackBufferHeight = BackBufferHeight;
@@ -607,7 +607,7 @@ namespace PloobsEngine.Engine
             this.GraphicsProfile = graphicsProfile;
             this.ScreenName = ScreenName;
             this.useMipMapWhenPossible = useMipMapWhenPossible;
-            this.UseAnisotropicFiltering = UseAnisotropicFiltering;
+            this.SamplerState = SamplerState.LinearWrap;
             UpdateInterval = TimeSpan.FromTicks(333333);
         }
 
@@ -618,9 +618,9 @@ namespace PloobsEngine.Engine
         public TimeSpan UpdateInterval ;
 
         /// <summary>
-        /// Use Anisotropic Filtering when possible
+        /// Default SamplerState
         /// </summary>
-        public bool UseAnisotropicFiltering;
+        public SamplerState SamplerState;
 
         /// <summary>
         /// Screen Name
@@ -744,7 +744,7 @@ namespace PloobsEngine.Engine
             this.graphics = SharedGraphicsDeviceManager;
             GraphicsDevice = SharedGraphicsDeviceManager.Current.GraphicsDevice;
             InitialEngineDescription initialDescription = InitialEngineDescription.Default();
-            initialDescription.UseAnisotropicFiltering = UseAnisotropicFiltering;
+            initialDescription.SamplerState = SamplerState.LinearWrap;
             initialDescription.useMipMapWhenPossible = useMipMapWhenPossible;
             initialDescription.UseVerticalSyncronization = SharedGraphicsDeviceManager.SynchronizeWithVerticalRetrace;
             initialDescription.BackBufferHeight = SharedGraphicsDeviceManager.DefaultBackBufferHeight;
@@ -858,7 +858,7 @@ namespace PloobsEngine.Engine
             halfPixel.X = 0.5f / (float)GraphicsDevice.PresentationParameters.BackBufferWidth;
             halfPixel.Y = 0.5f / (float)GraphicsDevice.PresentationParameters.BackBufferHeight;
 
-            GraphicInfo.ChangeProps(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount, GraphicsDevice.PresentationParameters.DepthStencilFormat, initialDescription.useMipMapWhenPossible, initialDescription.UseAnisotropicFiltering);
+            GraphicInfo.ChangeProps(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount, GraphicsDevice.PresentationParameters.DepthStencilFormat, initialDescription.useMipMapWhenPossible, initialDescription.SamplerState);
             GraphicInfo.FireEvent(GraphicInfo);
         }
 
@@ -899,7 +899,7 @@ namespace PloobsEngine.Engine
             };
 
             contentManager = new IContentManager(SilverLightContentManager);
-            GraphicInfo = new GraphicInfo(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount, GraphicsDevice.PresentationParameters.DepthStencilFormat, initialDescription.useMipMapWhenPossible, this, initialDescription.UseAnisotropicFiltering);
+            GraphicInfo = new GraphicInfo(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount, GraphicsDevice.PresentationParameters.DepthStencilFormat, initialDescription.useMipMapWhenPossible, this, initialDescription.);
             GraphicsDevice.DeviceReset += new EventHandler<EventArgs>(GraphicsDevice_DeviceReset);
             GraphicFactory = new Engine.GraphicFactory(GraphicInfo, GraphicsDevice, contentManager);
             ComponentManager = new ComponentManager(GraphicInfo, GraphicFactory);
@@ -1080,7 +1080,7 @@ namespace PloobsEngine.Engine
                 halfPixel.X = 0.5f / (float)GraphicsDevice.PresentationParameters.BackBufferWidth;
                 halfPixel.Y = 0.5f / (float)GraphicsDevice.PresentationParameters.BackBufferHeight;
 
-                GraphicInfo.ChangeProps(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount, GraphicsDevice.PresentationParameters.DepthStencilFormat, initialDescription.useMipMapWhenPossible, initialDescription.UseAnisotropicFiltering);
+                GraphicInfo.ChangeProps(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount, GraphicsDevice.PresentationParameters.DepthStencilFormat, initialDescription.useMipMapWhenPossible, initialDescription.SamplerState);
                 GraphicInfo.FireEvent(GraphicInfo);
 
                 initialDescription.BackBufferWidth = graphics.PreferredBackBufferWidth;
@@ -1142,7 +1142,7 @@ namespace PloobsEngine.Engine
                     halfPixel.X = 0.5f / (float)GraphicsDevice.PresentationParameters.BackBufferWidth;
                     halfPixel.Y = 0.5f / (float)GraphicsDevice.PresentationParameters.BackBufferHeight;
 
-                    GraphicInfo.ChangeProps(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount, GraphicsDevice.PresentationParameters.DepthStencilFormat, initialDescription.useMipMapWhenPossible, initialDescription.UseAnisotropicFiltering);
+                    GraphicInfo.ChangeProps(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount, GraphicsDevice.PresentationParameters.DepthStencilFormat, initialDescription.useMipMapWhenPossible, initialDescription.SamplerState);
                     GraphicInfo.FireEvent(GraphicInfo);
 
                     PageOrientation = PhoneApplicationPage.Orientation;

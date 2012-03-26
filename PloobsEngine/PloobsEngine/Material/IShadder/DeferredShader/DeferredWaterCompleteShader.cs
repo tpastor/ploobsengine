@@ -262,10 +262,17 @@ namespace PloobsEngine.Material
                 this._shader.Parameters["camPos"].SetValue(camera.Position);
                 this._shader.Parameters["ReflectionView"].SetValue(reflectiveViewMatrix);
                 this._shader.Parameters["RefractionView"].SetValue(camera.View);
-                this._shader.Parameters["ReflectionMap"].SetValue(reflectionMap);
-                this._shader.Parameters["RefractionMap"].SetValue(refractionMap);
-                this._shader.Parameters["normalMap0"].SetValue(normal0);
-                this._shader.Parameters["normalMap1"].SetValue(normal1);
+
+                //this._shader.Parameters["ReflectionMap"].SetValue(reflectionMap);
+                //this._shader.Parameters["RefractionMap"].SetValue(refractionMap);
+                //this._shader.Parameters["normalMap0"].SetValue(normal0);
+                //this._shader.Parameters["normalMap1"].SetValue(normal1);
+                render.Textures[0] = refractionMap;
+                render.Textures[1] = reflectionMap;
+                render.Textures[2] = normal0;
+                render.Textures[3] = normal1;
+
+
                 this._shader.Parameters["xWaveLength"].SetValue(waveLength);
                 this._shader.Parameters["xWaveHeight"].SetValue(waveHeight);
                 this._shader.Parameters["Time"].SetValue(time);
@@ -277,8 +284,6 @@ namespace PloobsEngine.Material
 
                 render.PushRasterizerState(RasterizerState.CullNone);
 
-                SamplerState s0 = render.SetSamplerState(SamplerState.LinearWrap, 0);
-                SamplerState s1 = render.SetSamplerState(SamplerState.LinearWrap, 1);
                 SamplerState s2 = render.SetSamplerState(SamplerState.PointClamp, 2);
                 SamplerState s3 = render.SetSamplerState(SamplerState.PointClamp, 3);
                 
@@ -296,8 +301,6 @@ namespace PloobsEngine.Material
                 }
                 render.PopRasterizerState();
 
-                render.SetSamplerState(s0, 0);
-                render.SetSamplerState(s1, 1);
                 render.SetSamplerState(s2, 2);
                 render.SetSamplerState(s3, 3);
         }

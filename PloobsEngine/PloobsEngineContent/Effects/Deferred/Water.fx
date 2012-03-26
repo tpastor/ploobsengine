@@ -135,22 +135,9 @@ texture tEnvMap : Environment
 	string TextureType 	= "Cube";
 >;
 
-sampler2D s0 = sampler_state {
-	Texture = (tNormalMap);
+sampler2D s0 : register(s0);
+samplerCUBE s1 : register(s1);
 	
-	MipFilter 	= Linear;
-	MinFilter 	= Linear;
-	MagFilter 	= Linear;
-};
-
-samplerCUBE s1 = sampler_state {
-	Texture = (tEnvMap);
-	
-	MinFilter 	= Linear;
-	MagFilter 	= Linear;
-	MipFilter 	= Linear;
-};
-
 //--------------------------------------------------
 // Vertex shader
 //--------------------------------------------------

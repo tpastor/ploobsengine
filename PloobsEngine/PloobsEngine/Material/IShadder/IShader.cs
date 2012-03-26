@@ -97,6 +97,7 @@ namespace PloobsEngine.Material
             #if !WINDOWS_PHONE && !REACH
             basicDraw = factory.GetEffect("clippingPlane", false, true);
             getDepth = factory.GetEffect("ShadowDepth",false,true);
+            BasicDrawSamplerState = SamplerState.LinearWrap;
             #endif
             isInitialized = true;    
         }
@@ -226,6 +227,8 @@ namespace PloobsEngine.Material
             if(useAlphaBlending)
                 render.PushBlendState(BlendState.AlphaBlend);
 
+            SamplerState s0 =  render.SetSamplerState(BasicDrawSamplerState,0);
+
             for (int i = 0; i < obj.Modelo.MeshNumber; i++)
             {
                 BatchInformation[] bi = obj.Modelo.GetBatchInformation(i);
@@ -242,7 +245,16 @@ namespace PloobsEngine.Material
 
             if(useAlphaBlending)
                 render.PopBlendState();
+
+            render.SetSamplerState(s0, 0);
         }
+
+        public SamplerState BasicDrawSamplerState
+        {
+            get;
+            set;
+        }
+
         #endif
 
 

@@ -131,7 +131,10 @@ namespace PloobsEngine.Material
         {                
                 this._shader.Parameters["View"].SetValue(camera.View);
                 this._shader.Parameters["Projection"].SetValue(camera.Projection);
-                this._shader.Parameters["Cubemap"].SetValue(texCube);
+
+                //this._shader.Parameters["Cubemap"].SetValue(texCube);
+                render.device.Textures[4] = texCube;
+
                 this._shader.Parameters["id"].SetValue(shaderId);
                 
                 Matrix wld = obj.WorldMatrix;
@@ -142,7 +145,9 @@ namespace PloobsEngine.Material
                     for (int j = 0; j < bi.Count(); j++)
                     {
                         if (rType == ReflectionType.ReflexiveSurface)
-                            this._shader.Parameters["Texture"].SetValue(obj.Modelo.getTexture(TextureType.ENVIRONMENT, i, j));
+                            //this._shader.Parameters["Texture"].SetValue(obj.Modelo.getTexture(TextureType.DIFFUSE, i, j));
+                            render.device.Textures[0] = obj.Modelo.getTexture(TextureType.DIFFUSE, i, j);
+
                         this._shader.Parameters["World"].SetValue(Matrix.Multiply(wld, bi[j].ModelLocalTransformation));
                         render.RenderBatch(bi[j], _shader);
                     }         

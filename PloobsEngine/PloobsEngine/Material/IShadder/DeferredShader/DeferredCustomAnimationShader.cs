@@ -30,6 +30,7 @@ using PloobsEngine.Cameras;
 using PloobsEngine.Modelo.Animation;
 using PloobsEngine.Light;
 using XNAnimation.Effects;
+using PloobsEngine.Engine;
 
 namespace PloobsEngine.Material
 {
@@ -136,6 +137,7 @@ namespace PloobsEngine.Material
 
                 modelMesh.Draw();
             }
+            render.SetSamplerStates(ginfo.SamplerState);
 
         }
 
@@ -178,6 +180,7 @@ namespace PloobsEngine.Material
 
                 modelMesh.Draw();
             }
+            render.SetSamplerStates(ginfo.SamplerState);
         }
 
 
@@ -229,7 +232,14 @@ namespace PloobsEngine.Material
                 modelMesh.Draw();
             }
 
+            render.SetSamplerStates(ginfo.SamplerState);
+        }
 
+        GraphicInfo ginfo;
+        public override void Initialize(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, IObject obj)
+        {
+            this.ginfo = ginfo;
+            base.Initialize(ginfo, factory, obj);
         }
     }
 }

@@ -88,7 +88,31 @@ namespace PloobsEngine
         /// <summary>
         /// Separator character used when parsing files
         /// </summary>
-        public const string SEPARATOR_CHARACTER = "%";        
+        public const string SEPARATOR_CHARACTER = "%";
 
+        /// <summary>
+        /// Sampler Register for Diffuse Texture
+        /// </summary>
+        public const int DiffuseRegister = 0;
+        /// <summary>
+        /// Sampler Register for Normal Texture
+        /// </summary>
+        public const int NormalRegister = 1;
+        /// <summary>
+        /// Sampler Register for Specular Texture
+        /// </summary>
+        public const int SpecularRegister = 2;
+        /// <summary>
+        /// Sampler Register for Glow Texture
+        /// </summary>
+        public const int GlowRegister = 3;
+        /// <summary>
+        /// Sampler Register for Environment Texture
+        /// </summary>
+        public const int EnvironmentRegister = 4;
+        /// <summary>
+        /// Sampler Register for Heigh Texture
+        /// </summary>
+        public const int HeighRegister = 5;
     }
 }

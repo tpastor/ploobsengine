@@ -14,12 +14,11 @@ const uniform bool useGlow;
 const uniform bool useBump;
 const uniform bool useSpecular;
 
-
-samplerCUBE map_diffuse : register(s7);
-sampler normalSampler : register(s8);
-sampler glowSampler : register(s9);
-sampler specularSampler : register(s10);
-sampler diffuseSampler : register(s11);
+sampler diffuseSampler : register(s0);
+sampler normalSampler : register(s1);
+sampler specularSampler : register(s2);
+sampler glowSampler : register(s3);
+samplerCUBE map_diffuse : register(s4);
 
 struct VertexShaderInput
 {

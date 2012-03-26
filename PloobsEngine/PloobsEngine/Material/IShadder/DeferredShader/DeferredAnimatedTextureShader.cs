@@ -161,7 +161,9 @@ namespace PloobsEngine.Material
             _shader.Parameters["scaleX"].SetValue(scale.X);
             _shader.Parameters["scaleY"].SetValue(scale.Y);
             _shader.Parameters["xWorld"].SetValue(obj.PhysicObject.WorldMatrix);
-            _shader.Parameters["xBillboardTexture"].SetValue(aniTex);
+            //_shader.Parameters["xBillboardTexture"].SetValue(aniTex);
+            render.device.Textures[0] = aniTex;
+
             _shader.Parameters["atenuation"].SetValue(atenuation);
             _shader.Parameters["forward"].SetValue(Vector3.Normalize(cam.Target - cam.Position));
             if (bilboardType == BilboardType.Cilindric)

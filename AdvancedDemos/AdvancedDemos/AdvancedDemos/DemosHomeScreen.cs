@@ -318,7 +318,10 @@ namespace AdvancedDemo4._0
             ini.UseVerticalSyncronization  = verticalsync;
             ini.isMultiSampling = multisampling;
             ini.useMipMapWhenPossible = mipmap;
-            ini.UseAnisotropicFiltering = anisotropic;
+            if (anisotropic)
+                ini.DefaultFiltering = Microsoft.Xna.Framework.Graphics.SamplerState.AnisotropicWrap;
+            else
+                ini.DefaultFiltering = Microsoft.Xna.Framework.Graphics.SamplerState.LinearWrap;
             engine.ApplyEngineDescription(ref ini);
         }        
 

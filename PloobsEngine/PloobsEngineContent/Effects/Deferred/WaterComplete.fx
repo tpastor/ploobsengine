@@ -15,29 +15,11 @@ float id;
 static const float	  R0 = 0.02037f;
 float4 waterColor;
 
-Texture normalMap0;
-sampler NormalSampler0 : register(s1) = sampler_state 
-{ 
-	texture = <normalMap0> ; 	
-};
+sampler NormalSampler0 : register(s2);
+sampler NormalSampler1 : register(s3);
+sampler RefractionSampler : register(s0);
+sampler ReflectionSampler : register(s1);
 
-Texture normalMap1;
-sampler NormalSampler1 : register(s2)= sampler_state 
-{ 
-	texture = <normalMap1> ; 	
-};
-
-Texture RefractionMap;
-sampler RefractionSampler : register(s3)= sampler_state 
-{ 
-	texture = <RefractionMap> ; 	
-};
-
-Texture ReflectionMap;
-sampler ReflectionSampler : register(s4) = sampler_state 
-{ 
-	texture = <ReflectionMap> ; 	
-};
 
 
 struct VertexShaderInput

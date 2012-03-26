@@ -5,25 +5,8 @@ float specularPower = 0;
 float id;
 float ambientScale;
 
-texture Texture;
-sampler diffuseSampler = sampler_state
-{
-    Texture = (Texture);    
-};
-
-texture ambientcube;
-samplerCUBE map_diffuse = 
-sampler_state
-{
-	Texture = <ambientcube>;
-	MipFilter = LINEAR;
-	MinFilter = anisotropic;
-	MagFilter = anisotropic;
-
-	AddressU = Clamp;
-	AddressV = Clamp;
-};
-
+sampler diffuseSampler : register(s0);
+samplerCUBE map_diffuse : register(s4);
 
 struct VertexShaderInput
 {

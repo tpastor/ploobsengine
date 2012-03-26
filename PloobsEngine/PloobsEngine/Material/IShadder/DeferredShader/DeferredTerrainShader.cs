@@ -219,6 +219,8 @@ namespace PloobsEngine.Material
                 //render.PushRasterizerState(RasterizerState.CullNone);
                 render.RenderBatch(batchInfo, this._shader);
                 //render.PopRasterizerState();
+
+                render.SetSamplerStates(ginfo.SamplerState);
       }       
 
         public override MaterialType MaterialType
@@ -226,8 +228,10 @@ namespace PloobsEngine.Material
             get { return MaterialType.DEFERRED; }
         }
 
+        Engine.GraphicInfo ginfo;
         public override void Initialize(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, IObject obj)        
         {
+            this.ginfo = ginfo;
             this._shader = factory.GetEffect("Terrain",true,true);            
             if (terrainType == TerrainType.SINGLETEXTURE)
             {
