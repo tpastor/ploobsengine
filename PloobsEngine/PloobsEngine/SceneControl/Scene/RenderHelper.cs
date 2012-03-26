@@ -192,16 +192,16 @@ namespace PloobsEngine.SceneControl
             }            
         }
 
-        //[Conditional("DEBUG")]
+        [Conditional("DEBUG")]
         public void ValidateSamplerStates()
         {
             for (int i = 0; i < 16; i++)
             {
-                System.Diagnostics.Debug.Assert(device.SamplerStates[i] != null);
-                if (device.SamplerStates[i] == null)
-                {
-                    throw new Exception();
-                }
+                System.Diagnostics.Debug.Assert(device.SamplerStates[i] != null,"Invalid SamplerStates found");
+                //if (device.SamplerStates[i] == null)
+                //{
+                //    throw new Exception("Invalid State Found");
+                //}
             }
         }
         

@@ -95,6 +95,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dll\PloobsEngineDebug.dll</HintPath>
     </Reference>
+    <Reference Include="SkinnedModel">
+      <HintPath>..\Dll\Skinned\SkinnedModel.dll</HintPath>
+    </Reference>
     <Reference Include="StillDesign.PhysX.Net, Version=0.12.1.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\StillDesign.PhysX.Net.dll</HintPath>
@@ -120,6 +123,10 @@
     <Compile Include="Demo2 - Materials\AmbientEnvironmenpScreen.cs" />
     <Compile Include="Demo2 - Materials\ShaderIDScreen.cs" />
     <Compile Include="Demo6 - BilboardsSamples\CPUBillboardScreen.cs" />
+    <Compile Include="Demo7 - AnimationSample\CustomSkinnedAnimation\ForwardSkinnedShader.cs" />
+    <Compile Include="Demo7 - AnimationSample\CustomSkinnedAnimation\SkinnedIObject.cs" />
+    <Compile Include="Demo7 - AnimationSample\CustomSkinnedAnimation\SkinnedModel.cs" />
+    <Compile Include="Demo7 - AnimationSample\CustomSkinnedAnimation\XnaSkinnedScreen.cs" />
     <Compile Include="Demo7 - AnimationSample\ModelAnim\AnimScreen.cs" />
     <Compile Include="Demo7 - AnimationSample\ModelAnim\FullAnimatedModel.cs" />
     <Compile Include="Demo9.5 Decal\Decal.cs" />

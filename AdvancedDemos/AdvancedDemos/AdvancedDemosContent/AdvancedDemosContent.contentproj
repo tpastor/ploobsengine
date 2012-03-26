@@ -43,6 +43,9 @@
     <Reference Include="PloobsEnginePipelineDebug">
       <HintPath>..\Dll\PloobsEnginePipelineDebug.dll</HintPath>
     </Reference>
+    <Reference Include="SkinnedModelPipeline">
+      <HintPath>..\Dll\Skinned\SkinnedModelPipeline.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Songs\alarm.wav">
@@ -565,6 +568,31 @@
     </Compile>
     <Compile Include="Model\turret_alt_diff_tex.tga">
       <Name>turret_alt_diff_tex</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Model\Dude\dude.fbx">
+      <Name>dude</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>XnaSkinnedModelProcessor</Processor>
+    </Compile>
+    <Compile Include="Model\Dude\head.tga">
+      <Name>head</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Model\Dude\jacket.tga">
+      <Name>jacket</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Model\Dude\pants.tga">
+      <Name>pants</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Model\Dude\upBodyC.tga">
+      <Name>upBodyC</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

@@ -75,7 +75,7 @@ namespace AdvancedDemo4._0
             //manager.AddScreen(new Fluids28Screen());
             //manager.AddScreen(new EngineTestes.DeferredEmitterFluids28Screen());
             //manager.AddScreen(new AnimScreen());
-           
+            //manager.AddScreen(new XnaSkinnedScreen());
 
         }
 
@@ -88,7 +88,7 @@ namespace AdvancedDemo4._0
     }
 
     /// <summary>
-    /// Custom log class
+    /// Custom log class    
     /// </summary>
     class SimpleLogger : ILogger
     {

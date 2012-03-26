@@ -55,7 +55,9 @@ namespace ProjectTemplate
             //manager.AddScreen(new ColladaFormatScreen());
             //manager.AddScreen(new TerrainGeoClipMap());
             //manager.AddScreen(new DynamicEnvMapScreen());            
-            //manager.AddScreen(new MotionForwardScreen());            
+            //manager.AddScreen(new MotionForwardScreen());           
+            //manager.AddScreen(new XnaSkinnedScreen());           
+ 
 
         }
 

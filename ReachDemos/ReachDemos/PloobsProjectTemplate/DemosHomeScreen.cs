@@ -74,7 +74,7 @@ namespace IntroductionDemo4._0
                 case 12:
                     return new TerrainGeoClipMap();
                 case 13:
-                    return new DynamicEnvMapScreen();
+                    return new DynamicEnvMapScreen();                
                 default:
                     break;
             }

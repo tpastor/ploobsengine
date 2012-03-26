@@ -47,6 +47,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\PloobsEnginePipelineDebug.dll</HintPath>
     </Reference>
+    <Reference Include="SkinnedModelPipeline">
+      <HintPath>..\Dlls\Skinned\SkinnedModelPipeline.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\islandmap.png">
