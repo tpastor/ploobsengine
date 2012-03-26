@@ -1866,6 +1866,36 @@
             Separator character used when parsing files
             </summary>
     </member>
+    <member name="F:PloobsEngine.PrincipalConstants.DiffuseRegister">
+      <summary>
+            Sampler Register for Diffuse Texture
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.PrincipalConstants.NormalRegister">
+      <summary>
+            Sampler Register for Normal Texture
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.PrincipalConstants.SpecularRegister">
+      <summary>
+            Sampler Register for Specular Texture
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.PrincipalConstants.GlowRegister">
+      <summary>
+            Sampler Register for Glow Texture
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.PrincipalConstants.EnvironmentRegister">
+      <summary>
+            Sampler Register for Environment Texture
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.PrincipalConstants.HeighRegister">
+      <summary>
+            Sampler Register for Heigh Texture
+            </summary>
+    </member>
     <member name="T:PloobsEngine.Physic2D.Farseer.ConvertUnits">
       <summary>
             Convert units between display and simulation units.
@@ -7676,9 +7706,12 @@
       <summary>
             Draw the Pre Draw components
             </summary>
+      <param name="render">The render.</param>
       <param name="gt">The gt.</param>
       <param name="activeView">The active view.</param>
       <param name="activeProjection">The active projection.</param>
+      <returns>
+      </returns>
     </member>
     <member name="M:PloobsEngine.Components.ComponentManager.AfterDraw(PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@)">
       <summary>
@@ -7688,6 +7721,8 @@
       <param name="gt">The gt.</param>
       <param name="activeView">The active view.</param>
       <param name="activeProjection">The active projection.</param>
+      <returns>
+      </returns>
     </member>
     <member name="M:PloobsEngine.Components.ComponentManager.PosWithDepthDraw(PloobsEngine.SceneControl.RenderHelper,Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@)">
       <summary>
@@ -14362,6 +14397,8 @@
       <param name="gametime">The gametime.</param>
       <param name="view">The view.</param>
       <param name="projection">The projection.</param>
+      <returns>
+      </returns>
     </member>
     <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderPosComponents(Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@)">
       <summary>
@@ -14370,6 +14407,8 @@
       <param name="gametime">The gametime.</param>
       <param name="view">The view.</param>
       <param name="projection">The projection.</param>
+      <returns>
+      </returns>
     </member>
     <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderPosWithDepthComponents(Microsoft.Xna.Framework.GameTime,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@)">
       <summary>
@@ -14378,6 +14417,8 @@
       <param name="gametime">The gametime.</param>
       <param name="view">The view.</param>
       <param name="projection">The projection.</param>
+      <returns>
+      </returns>
     </member>
     <member name="M:PloobsEngine.SceneControl.RenderHelper.PushRasterizerState(Microsoft.Xna.Framework.Graphics.RasterizerState)">
       <summary>
@@ -14425,6 +14466,15 @@
             </summary>
       <param name="SamplerState">State of the sampler.</param>
       <param name="index">The index.</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:PloobsEngine.SceneControl.RenderHelper.SetSamplerStates(Microsoft.Xna.Framework.Graphics.SamplerState,System.Int32)">
+      <summary>
+            Sets the sampler states for all slots
+            </summary>
+      <param name="SamplerState">State of the sampler.</param>
+      <param name="registers">The registers to change.</param>
     </member>
     <member name="M:PloobsEngine.SceneControl.RenderHelper.SetVertexSamplerStates(Microsoft.Xna.Framework.Graphics.SamplerState,System.Int32)">
       <summary>
@@ -14843,6 +14893,11 @@
       <param name="useCuller">if set to <c>true</c> [use culler].</param>
       <param name="clippingPlane">The clipping plane.</param>
       <param name="useAlphaBlend">if set to <c>true</c> [use alpha blend].</param>
+    </member>
+    <member name="P:PloobsEngine.SceneControl.RenderHelper.Textures">
+      <summary>
+            Gets the textures binded to the device
+            </summary>
     </member>
     <member name="P:PloobsEngine.SceneControl.RenderHelper.Item(System.String)">
       <summary>

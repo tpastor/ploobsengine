@@ -244,7 +244,8 @@ namespace PloobsEngine.Features
             
             effect.CurrentTechnique = effect.Techniques["RenderScene"];
             effect.Parameters["WorldViewProjection"].SetValue(Matrix.CreateTranslation(camPos) * activeView * activeProjection);
-            effect.Parameters["textureDiffuse"].SetValue(texture);
+            //effect.Parameters["textureDiffuse"].SetValue(texture);
+            render.device.Textures[0] = texture;            
 
             render.PushDepthStencilState(DepthStencilState.None);
             render.PushRasterizerState(RasterizerState.CullNone);

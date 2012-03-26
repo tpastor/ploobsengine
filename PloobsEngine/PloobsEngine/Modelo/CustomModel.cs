@@ -141,7 +141,7 @@ namespace PloobsEngine.Modelo
            }           
        }         
         
-        private Model model;        
+        protected Model model;        
         private float modelRadius;
 
         protected override void LoadModel(GraphicFactory factory, out BatchInformation[][] BatchInformations, out TextureInformation[][] TextureInformations)

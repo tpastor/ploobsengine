@@ -1,5 +1,4 @@
 float4x4 WorldViewProjection;  // Matrix World View Projection
-texture textureDiffuse;        // Textura do SkyBox    
 
 //--Estrutura de Entrada para o vertex Shader
 struct VS_INPUT
@@ -30,17 +29,7 @@ VS_OUTPUT VShader( VS_INPUT vin )
 }
 
 // Propriedades da Textura
-samplerCUBE map_diffuse = 
-sampler_state
-{
-	Texture = <textureDiffuse>;
-	MipFilter = LINEAR;
-	MinFilter = LINEAR;
-	MagFilter = LINEAR;
-
-	AddressU = Clamp;
-	AddressV = Clamp;
-};
+samplerCUBE map_diffuse : register(s0);
 
 // Estrutura de Entrada para o Pixel Shader
 struct PS_INPUT

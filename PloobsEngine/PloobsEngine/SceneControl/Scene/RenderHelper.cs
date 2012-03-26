@@ -70,9 +70,10 @@ namespace PloobsEngine.SceneControl
         /// <param name="gametime">The gametime.</param>
         /// <param name="view">The view.</param>
         /// <param name="projection">The projection.</param>
-        public void RenderPreComponents(GameTime gametime, ref Matrix view, ref Matrix projection)
+        /// <returns></returns>
+        public int RenderPreComponents(GameTime gametime, ref Matrix view, ref Matrix projection)
         {
-            componentManager.PreDraw(this,gametime, ref view, ref projection);
+            return componentManager.PreDraw(this,gametime, ref view, ref projection);
         }
         /// <summary>
         /// Renders the pos components.
@@ -80,9 +81,10 @@ namespace PloobsEngine.SceneControl
         /// <param name="gametime">The gametime.</param>
         /// <param name="view">The view.</param>
         /// <param name="projection">The projection.</param>
-        public void RenderPosComponents(GameTime gametime, ref Matrix view, ref Matrix projection)
+        /// <returns></returns>
+        public int RenderPosComponents(GameTime gametime, ref Matrix view, ref Matrix projection)
         {
-            componentManager.AfterDraw(this,gametime, ref view, ref projection);
+            return componentManager.AfterDraw(this,gametime, ref view, ref projection);
         }
 
         /// <summary>
@@ -91,9 +93,10 @@ namespace PloobsEngine.SceneControl
         /// <param name="gametime">The gametime.</param>
         /// <param name="view">The view.</param>
         /// <param name="projection">The projection.</param>
-        public void RenderPosWithDepthComponents(GameTime gametime, ref Matrix view, ref Matrix projection)
+        /// <returns></returns>
+        public int RenderPosWithDepthComponents(GameTime gametime, ref Matrix view, ref Matrix projection)
         {
-            componentManager.PosWithDepthDraw(this, gametime, ref view,ref projection);
+            return componentManager.PosWithDepthDraw(this, gametime, ref view,ref projection);
         }
 
         /// <summary>
@@ -180,24 +183,25 @@ namespace PloobsEngine.SceneControl
         /// Sets the sampler states for all slots
         /// </summary>
         /// <param name="SamplerState">State of the sampler.</param>
-        public void SetSamplerStates(SamplerState SamplerState)
+        /// <param name="registers">The registers to change.</param>
+        public void SetSamplerStates(SamplerState SamplerState, int registers = 16)
         {
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < registers; i++)
             {
                 device.SamplerStates[i] = SamplerState;
             }            
         }
 
-        [Conditional("DEBUG")]
+        //[Conditional("DEBUG")]
         public void ValidateSamplerStates()
         {
             for (int i = 0; i < 16; i++)
             {
                 System.Diagnostics.Debug.Assert(device.SamplerStates[i] != null);
-                //if (device.SamplerStates[i] == null)
-                //{
-                //    throw new Exception();
-                //}
+                if (device.SamplerStates[i] == null)
+                {
+                    throw new Exception();
+                }
             }
         }
         
@@ -361,6 +365,16 @@ namespace PloobsEngine.SceneControl
             device.Clear(options, color, depth, stencil);
         }
 
+        /// <summary>
+        /// Gets the textures binded to the device
+        /// </summary>
+        public TextureCollection Textures
+        {
+            get
+            {
+                return device.Textures;
+            }
+        }
         
         /// <summary>
         /// Renders the batch.

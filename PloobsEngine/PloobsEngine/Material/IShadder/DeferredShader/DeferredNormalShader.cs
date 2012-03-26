@@ -41,13 +41,13 @@ namespace PloobsEngine.Material
     {
         private Effect _shader;        
         EffectParameter ViewProjectionParameter;          
-        EffectParameter TextureParameter;  
+        //EffectParameter TextureParameter;  
         EffectParameter SpecularPowerParameter;  
         EffectParameter SpecularIntensityParameter;
         EffectParameter IdParameter;  
         EffectParameter WorldParameter;
         EffectParameter PAmbientCubeMapScale;
-        EffectParameter PAmbientCubeTexture;
+        //EffectParameter PAmbientCubeTexture;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DeferredNormalShader"/> class.
@@ -164,10 +164,12 @@ namespace PloobsEngine.Material
 
                         if (useAmbientCubeMap)
                         {
-                            PAmbientCubeTexture.SetValue(modelo.GetCubeTexture(TextureType.AMBIENT_CUBE_MAP, i, j));
+                            render.Textures[4] = modelo.GetCubeTexture(TextureType.AMBIENT_CUBE_MAP, i, j);
+                            //PAmbientCubeTexture.SetValue(modelo.GetCubeTexture(TextureType.AMBIENT_CUBE_MAP, i, j));
                             PAmbientCubeMapScale.SetValue(AmbientCubeMapScale);
                         }
-                        TextureParameter.SetValue(modelo.getTexture(TextureType.DIFFUSE,i,j));
+                        render.Textures[0] = modelo.getTexture(TextureType.DIFFUSE, i, j);
+                        //TextureParameter.SetValue(modelo.getTexture(TextureType.DIFFUSE,i,j));
                         WorldParameter.SetValue(bi[j].ModelLocalTransformation * obj.WorldMatrix);
                         render.RenderBatch(bi[j], _shader);                        
                     }
@@ -186,14 +188,14 @@ namespace PloobsEngine.Material
             this._shader = factory.GetEffect("RenderGBuffer",true,true);            
 
             ViewProjectionParameter = this._shader.Parameters["ViewProjection"];              
-            TextureParameter = this._shader.Parameters["Texture"];
+            //TextureParameter = this._shader.Parameters["Texture"];
             IdParameter = this._shader.Parameters["id"];
             SpecularIntensityParameter = this._shader.Parameters["specularIntensity"];
             SpecularPowerParameter = this._shader.Parameters["specularPower"];  
             WorldParameter = this._shader.Parameters["World"];
             
 
-            PAmbientCubeTexture = this._shader.Parameters["ambientcube"];
+            //PAmbientCubeTexture = this._shader.Parameters["ambientcube"];
             PAmbientCubeMapScale = this._shader.Parameters["ambientScale"];
 
             if (useAmbientCubeMap == true)

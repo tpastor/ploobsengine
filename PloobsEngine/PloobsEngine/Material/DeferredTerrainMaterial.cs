@@ -105,8 +105,10 @@ namespace PloobsEngine.Material
             set { TerrainShader.Parameters["detailMapStrength"].SetValue(value); }
         }
 
+        Engine.GraphicInfo ginfo;
         public void Initialization(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, SceneControl.IObject obj)
         {
+            this.ginfo = ginfo;
             //Add the normal texture to the shader
             TerrainShader.Parameters["NormalTexture"].SetValue(QuadTerrain.globalNormalTexture);
             //Set the Global Scale (used for the normal and blending textures) value in the shader.
@@ -169,6 +171,7 @@ namespace PloobsEngine.Material
 
             render.ResyncStates();
             isupdated = false;
+            render.SetSamplerStates(ginfo.SamplerState,6);
         }
 
         public void Update(Microsoft.Xna.Framework.GameTime gametime, SceneControl.IObject obj, IWorld world)
@@ -247,7 +250,8 @@ namespace PloobsEngine.Material
 
             TerrainShader.CurrentTechnique = TerrainShader.Techniques["Technique1"];
             TerrainShader.CurrentTechnique.Passes[0].Apply();
-            QuadTerrain.DrawTerrain(TerrainShader, render.device);            
+            QuadTerrain.DrawTerrain(TerrainShader, render.device);
+            render.SetSamplerStates(ginfo.SamplerState, 8);
         }
 
         public void AfterAdded(SceneControl.IObject obj)

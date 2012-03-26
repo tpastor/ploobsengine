@@ -52,12 +52,14 @@ namespace PloobsEngine.Material
             tree.DrawTrunk(obj.WorldMatrix, cam.View, cam.Projection,false);            
             
             render.ResyncStates();
+            render.SetSamplerStates(ginfo.SamplerState);
         }
         public override void PosDrawPhase(Microsoft.Xna.Framework.GameTime gt, SceneControl.IObject obj, SceneControl.RenderHelper render, Cameras.ICamera cam, IList<Light.ILight> lights)
         {
             SimpleTree tree = (obj.Modelo as TreeModel).Tree;
             tree.DrawLeaves(obj.WorldMatrix, cam.View, cam.Projection, false);
             render.ResyncStates();
+            render.SetSamplerStates(ginfo.SamplerState);
         }
 
         public override void DepthExtractor(Microsoft.Xna.Framework.GameTime gt, SceneControl.IObject obj, ref Microsoft.Xna.Framework.Matrix View, ref Microsoft.Xna.Framework.Matrix projection, SceneControl.RenderHelper render)
@@ -67,7 +69,16 @@ namespace PloobsEngine.Material
             render.ResyncStates();
             tree.DrawLeaves(obj.WorldMatrix, View, projection, false,true);
             render.ResyncStates();
-        }         
+
+            render.SetSamplerStates(ginfo.SamplerState);
+        }
+
+        PloobsEngine.Engine.GraphicInfo ginfo;
+        public override void Initialize(PloobsEngine.Engine.GraphicInfo ginfo, PloobsEngine.Engine.GraphicFactory factory, PloobsEngine.SceneControl.IObject obj)
+        {
+            this.ginfo = ginfo;
+            base.Initialize(ginfo, factory, obj);
+        }
 
     }
 }

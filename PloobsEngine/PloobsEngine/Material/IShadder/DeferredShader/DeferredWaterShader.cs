@@ -47,10 +47,6 @@ namespace PloobsEngine.Material
             get { return environmentTexture; }
             set { 
                 environmentTexture = value;
-                TexureName = null;
-                if(isInitialized)
-                    effect.Parameters["tEnvMap"].SetValue(value); 
-
             }
         }
 
@@ -273,30 +269,30 @@ namespace PloobsEngine.Material
             effect.Parameters["fTime"].SetValue((float)gt.TotalGameTime.TotalSeconds);
             effect.Parameters["fTimeM"].SetValue((float)gt.TotalGameTime.TotalSeconds % 100);
 
+            render.Textures[0] = normal;
+            render.Textures[1] = environmentTexture;
             
             BatchInformation[] bi = obj.Modelo.GetBatchInformation(0);                
             render.RenderBatch(bi[0], effect);                            
 
-        }        
-        
+        }
+
+        Texture2D normal;
         public override void  Initialize(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, IObject obj)        
         {
             base.Initialize(ginfo, factory, obj);
-            effect = factory.GetEffect("Water",true,true);        
-            effect.Parameters["tNormalMap"].SetValue(factory.GetTexture2D("waves2",true));
+            effect = factory.GetEffect("Water",true,true);
+            normal = factory.GetTexture2D("waves2", true);
+            //effect.Parameters["tNormalMap"].SetValue(factory.GetTexture2D("waves2",true));
+
             if (String.IsNullOrEmpty(TexureName) && environmentTexture == null)
             {
                 ActiveLogger.LogMessage("WaterModel: TextCubeName cannot be null/empty", LogLevel.FatalError);
                 throw new Exception("WaterModel: TextCubeName cannot be null/empty");
             }
-            if (environmentTexture != null)
+            if (environmentTexture == null)
             {
-                effect.Parameters["tEnvMap"].SetValue(environmentTexture);
-            }
-            else
-            {
-                environmentTexture = factory.GetTextureCube(TexureName);
-                effect.Parameters["tEnvMap"].SetValue(environmentTexture);
+                environmentTexture = factory.GetTextureCube(TexureName);                
             }
         }
 

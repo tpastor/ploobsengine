@@ -84,9 +84,9 @@ namespace PloobsEngine.SceneControl
             render.SetSamplerState(s2, 2);
         }
 
-        EffectParameter PointcolorMap;
-        EffectParameter PointnormalMap;
-        EffectParameter PointdepthMap;
+        //EffectParameter PointcolorMap;
+        //EffectParameter PointnormalMap;
+        //EffectParameter PointdepthMap;
         EffectParameter PointProjection;
         EffectParameter PointView;
         EffectParameter PointInvertViewProjection;
@@ -103,10 +103,11 @@ namespace PloobsEngine.SceneControl
 
         protected void DrawPointLight(ICamera camera, IList<ILight> lights, IDeferredGBuffer DeferredGBuffer,RenderHelper render)
         {
+            render.device.Textures[0] = DeferredGBuffer[GBufferTypes.COLOR];
+            render.device.Textures[1] = DeferredGBuffer[GBufferTypes.NORMAL];
+            render.device.Textures[2] = DeferredGBuffer[GBufferTypes.DEPH];
+            SamplerState s2 = render.SetSamplerState(SamplerState.PointClamp, 2);
 
-            PointcolorMap.SetValue(DeferredGBuffer[GBufferTypes.COLOR]);
-            PointnormalMap.SetValue(DeferredGBuffer[GBufferTypes.NORMAL]);
-            PointdepthMap.SetValue(DeferredGBuffer[GBufferTypes.DEPH]);
             PointProjection.SetValue(camera.Projection);
             PointView.SetValue(camera.View);
             PointcameraPosition.SetValue(camera.Position);
@@ -146,6 +147,7 @@ namespace PloobsEngine.SceneControl
                   
                 }
             }
+            render.SetSamplerState(s2, 2);
         }
 
         protected void DrawnSpotLight(ICamera camera, IList<ILight> lights, IDeferredGBuffer DeferredGBuffer,RenderHelper render)
@@ -153,9 +155,11 @@ namespace PloobsEngine.SceneControl
             render.PushRasterizerState(RasterizerState.CullNone);
             render.PushDepthStencilState(DepthStencilState.None);            
 
-            spotLightEffect.Parameters["colorMap"].SetValue(DeferredGBuffer[GBufferTypes.COLOR]);
-            spotLightEffect.Parameters["normalMap"].SetValue(DeferredGBuffer[GBufferTypes.NORMAL]);
-            spotLightEffect.Parameters["depthMap"].SetValue(DeferredGBuffer[GBufferTypes.DEPH]);
+            render.device.Textures[0] = DeferredGBuffer[GBufferTypes.COLOR];
+            render.device.Textures[1] = DeferredGBuffer[GBufferTypes.NORMAL];
+            render.device.Textures[2] = DeferredGBuffer[GBufferTypes.DEPH];
+            SamplerState s2 = render.SetSamplerState(SamplerState.PointClamp, 2);
+
             spotLightEffect.Parameters["View"].SetValue(camera.View);
             spotLightEffect.Parameters["Projection"].SetValue(camera.Projection);
             spotLightEffect.Parameters["cameraPosition"].SetValue(camera.Position);
@@ -181,6 +185,7 @@ namespace PloobsEngine.SceneControl
 
             render.PopDepthStencilState();
             render.PopRasterizerState();
+            render.SetSamplerState(s2, 2);
         }       
 
         #endregion
@@ -273,9 +278,9 @@ namespace PloobsEngine.SceneControl
             DirectionallightIntensity = directionalLightEffect.Parameters["lightIntensity"];
 
 
-            PointcolorMap = pointLightEffect.Parameters["colorMap"];
-            PointnormalMap = pointLightEffect.Parameters["normalMap"];
-            PointdepthMap = pointLightEffect.Parameters["depthMap"];
+            //PointcolorMap = pointLightEffect.Parameters["colorMap"];
+            //PointnormalMap = pointLightEffect.Parameters["normalMap"];
+            //PointdepthMap = pointLightEffect.Parameters["depthMap"];
             PointProjection = pointLightEffect.Parameters["Projection"];
             PointView = pointLightEffect.Parameters["View"];
             PointInvertViewProjection = pointLightEffect.Parameters["InvertViewProjection"];

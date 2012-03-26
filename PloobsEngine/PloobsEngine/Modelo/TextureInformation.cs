@@ -156,6 +156,9 @@ namespace PloobsEngine.Modelo
             }
             else
             {
+#if WINDOWS
+                System.Diagnostics.Debug.Fail("Invalid Parameter, Can only pass ENVIRONMENT and AMBIENT_CUBE_MAP to ths function");
+#endif
                 return null;
             }
         }

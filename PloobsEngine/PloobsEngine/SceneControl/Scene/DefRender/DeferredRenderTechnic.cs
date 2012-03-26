@@ -317,7 +317,7 @@ namespace PloobsEngine.SceneControl
             deferredLightMap.DrawLights(gameTime, world, deferredGBuffer, render);
             deferredLightMap.ResolveLightMap(render);
 
-            render.DettachBindedTextures(3);
+            render.DettachBindedTextures(5);
             render.ValidateSamplerStates();
 
             deferredFinalCombination.SetFinalCombination(render);
@@ -354,17 +354,17 @@ namespace PloobsEngine.SceneControl
                         render.SetSamplerStates(ginfo.SamplerState);
                     }
 
-                    render.DettachBindedTextures(16);
+                    render.DettachBindedTextures(6);
                     render.ValidateSamplerStates();
 
                     forwardPass.Draw(gameTime, world, render,DeferrednotCulledObjectsList,ForwardnotCulledObjectsList);
 
-                    render.DettachBindedTextures(16);
+                    render.DettachBindedTextures(6);
                     render.ValidateSamplerStates();
 
                     render.RenderPosWithDepthComponents(gameTime, ref view, ref projection);
 
-                    render.DettachBindedTextures(16);
+                    render.DettachBindedTextures(6);
                     render.ValidateSamplerStates();
 
                     render[PrincipalConstants.CurrentImage] = restoreDepth.EndForwardPass(render);
@@ -381,7 +381,10 @@ namespace PloobsEngine.SceneControl
                             render[PrincipalConstants.CurrentImage] = tex;
                             SwapTargetBuffers();                            
                         }
-                    }                    
+                    }
+
+                    render.SetSamplerStates(ginfo.SamplerState);
+                    render.DettachBindedTextures(6);
                                         
                     if (desc.UseFloatingBufferForLightMap)
                     {                        
@@ -408,6 +411,9 @@ namespace PloobsEngine.SceneControl
                             SwapTargetBuffers();
                         }
                     }
+
+                    render.SetSamplerStates(ginfo.SamplerState);
+                    render.DettachBindedTextures(16);
 
                     restoreDepth.PerformForwardPass(render[PrincipalConstants.CurrentImage], render[PrincipalConstants.DephRT], render, ginfo);
 

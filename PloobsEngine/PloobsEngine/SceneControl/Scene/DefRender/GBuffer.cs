@@ -115,12 +115,16 @@ namespace PloobsEngine.SceneControl
             Matrix view = world.CameraManager.ActiveCamera.View;
             Matrix projection = world.CameraManager.ActiveCamera.Projection;
 
-            render.RenderPreComponents(gameTime, ref view, ref projection);
+            if (render.RenderPreComponents(gameTime, ref view, ref projection) > 0)
+            {
+                render.SetSamplerStates(ginfo.SamplerState);                
+            }
+
             System.Diagnostics.Debug.Assert(render.PeekBlendState() == BlendState.Opaque);
             System.Diagnostics.Debug.Assert(render.PeekDepthState() == DepthStencilState.Default);
             System.Diagnostics.Debug.Assert(render.PeekRasterizerState() == RasterizerState.CullCounterClockwise);
 
-            render.ValidateSamplerStates();
+            render.DettachBindedTextures(5);
 
             foreach (IObject item in objectsToDraw)
             {
@@ -128,8 +132,7 @@ namespace PloobsEngine.SceneControl
                     item.Material.Drawn(gameTime,item, world.CameraManager.ActiveCamera, world.Lights, render);                
             }
 
-            render.ValidateSamplerStates();     
-            
+            render.ValidateSamplerStates();                 
 
         }
 

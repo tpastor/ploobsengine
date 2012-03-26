@@ -55,6 +55,8 @@ namespace AdvancedDemo4._0
             render.PopBlendState();
 
             base.PosWithDepthDraw(render, gt, ref activeView, ref activeProjection);
+
+            render.SetSamplerStates(GraphicInfo.SamplerState, 6);
         }
     }
 }

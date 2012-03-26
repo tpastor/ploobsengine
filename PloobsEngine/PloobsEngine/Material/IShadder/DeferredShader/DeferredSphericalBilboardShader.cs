@@ -77,7 +77,8 @@ namespace PloobsEngine.Material
             _shader.Parameters["xWorld"].SetValue(obj.PhysicObject.WorldMatrix);
             _shader.Parameters["xView"].SetValue(cam.View);
             _shader.Parameters["xProjection"].SetValue(cam.Projection);                        
-            _shader.Parameters["xBillboardTexture"].SetValue(obj.Modelo.getTexture(TextureType.DIFFUSE,0,0));
+            //_shader.Parameters["xBillboardTexture"].SetValue(obj.Modelo.getTexture(TextureType.DIFFUSE,0,0));
+            render.Textures[0] = obj.Modelo.getTexture(TextureType.DIFFUSE, 0, 0);
             _shader.Parameters["atenuation"].SetValue(atenuation);
 
             render.PushRasterizerState(RasterizerState.CullNone);

@@ -1,12 +1,4 @@
 float shadowBufferSize = 2048;
-Texture xShadowMap;
-sampler ShadowMapSampler = sampler_state
- {
-   texture = <xShadowMap> ;
-    MinFilter = Point;
-    MagFilter = Point;
-    MipFilter = Point;    
- }; 
 
 float4x4 World;
 float4x4 View;
@@ -21,38 +13,10 @@ float3 Color;
 float lightIntensity;
 bool shadown;
 
-// diffuse color, and specularIntensity in the alpha channel
-texture colorMap; 
-// normals, and specularPower in the alpha channel
-texture normalMap;
-//depth
-texture depthMap;
-
-sampler colorSampler = sampler_state
-{
-    Texture = (colorMap);
-    AddressU = CLAMP;
-    AddressV = CLAMP;    
-};
-sampler depthSampler = sampler_state
-{
-    Texture = (depthMap);
-    AddressU = CLAMP;
-    AddressV = CLAMP;
-    MagFilter = POINT;
-    MinFilter = POINT;
-    Mipfilter = POINT;
-};
-sampler normalSampler = sampler_state
-{
-    Texture = (normalMap);
-    AddressU = CLAMP;
-    AddressV = CLAMP;
-    MagFilter = LINEAR;
-    MinFilter = LINEAR;
-    Mipfilter = LINEAR;
-};
-
+sampler colorSampler : register(s0);
+sampler normalSampler : register(s1);
+sampler depthSampler : register(s2);
+sampler ShadowMapSampler : register(s3);
 
 struct VertexShaderInput
 {

@@ -234,18 +234,18 @@ namespace PloobsEngine.Material
                         //PDiffuse.SetValue(obj.Modelo.getTexture(TextureType.DIFFUSE,i,j));
                         //PTexture.SetValue(obj.Modelo.GetTextureInformation(i)[j].getCubeTexture(TextureType.ENVIRONMENT));
 
-                        render.device.Textures[11] = obj.Modelo.GetTextureInformation(i)[j].getCubeTexture(TextureType.DIFFUSE);                        
-                        render.device.Textures[7] = obj.Modelo.GetTextureInformation(i)[j].getCubeTexture(TextureType.ENVIRONMENT);
+                        render.device.Textures[0] = obj.Modelo.GetTextureInformation(i)[j].getTexture(TextureType.DIFFUSE);                        
+                        render.device.Textures[4] = obj.Modelo.GetTextureInformation(i)[j].getCubeTexture(TextureType.ENVIRONMENT);
                         
                         if (useBump)
                         {
                             //PNormalMap.SetValue(obj.Modelo.getTexture(TextureType.BUMP, i, j));
-                            render.device.Textures[8] = obj.Modelo.GetTextureInformation(i)[j].getCubeTexture(TextureType.BUMP);
+                            render.device.Textures[1] = obj.Modelo.GetTextureInformation(i)[j].getTexture(TextureType.BUMP);
                         }
                         if (useSpecular)
                         {
                             //PSpecularMap.SetValue(obj.Modelo.getTexture(TextureType.SPECULAR, i, j));                            
-                            render.device.Textures[10] = obj.Modelo.GetTextureInformation(i)[j].getCubeTexture(TextureType.SPECULAR);
+                            render.device.Textures[2] = obj.Modelo.GetTextureInformation(i)[j].getTexture(TextureType.SPECULAR);
                             PspecularIntensityScale.SetValue(SpecularIntensityMapScale);
                             PspecularPowerScale.SetValue(SpecularPowerMapScale);                            
                         }
@@ -258,7 +258,7 @@ namespace PloobsEngine.Material
 
                         if (useGlow)
                             //Pglow.SetValue(obj.Modelo.getTexture(TextureType.GLOW, i, j));
-                            render.device.Textures[9] = obj.Modelo.GetTextureInformation(i)[j].getCubeTexture(TextureType.GLOW);
+                            render.device.Textures[3] = obj.Modelo.GetTextureInformation(i)[j].getTexture(TextureType.GLOW);
                  
 
                         Matrix w1 = Matrix.Multiply(bi[j].ModelLocalTransformation,wld);                    

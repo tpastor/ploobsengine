@@ -33,7 +33,7 @@ namespace PloobsEngine.Engine
     /// </summary>
     public class GraphicInfo
     {
-        internal GraphicInfo(int BackBufferHeight, int BackBufferWidth, Rectangle FullScreenRectangle, Vector2 halfPixel, GraphicsDevice device, int MultiSample, DepthFormat DepthFormat, bool useMipMap, EngineStuff engine, bool useAnisotropicFiltering = true)
+        internal GraphicInfo(int BackBufferHeight, int BackBufferWidth, Rectangle FullScreenRectangle, Vector2 halfPixel, GraphicsDevice device, int MultiSample, DepthFormat DepthFormat, bool useMipMap, EngineStuff engine, SamplerState DefaultSamplerState)
         {
             this.BackBufferHeight = BackBufferHeight;
             this.BackBufferWidth = BackBufferWidth;
@@ -48,13 +48,9 @@ namespace PloobsEngine.Engine
 #if !XBOX && !WINDOWS_PHONE
             this.window = (System.Windows.Forms.Form) System.Windows.Forms.Form.FromHandle(engine.Window.Handle);
 #endif
-
-            if (useAnisotropicFiltering)
-                SamplerState = SamplerState.AnisotropicClamp;
-            else
-                SamplerState = SamplerState.LinearClamp;
-
-            UseAnisotropicFiltering = useAnisotropicFiltering;
+            
+            SamplerState = DefaultSamplerState;
+        
 #if !WINDOWS_PHONE || SILVER
             GraphicsAdapter = engine.GraphicsDevice.Adapter;
 #else
@@ -62,7 +58,7 @@ namespace PloobsEngine.Engine
 #endif
         }
 
-        internal void ChangeProps(int BackBufferHeight, int BackBufferWidth, Rectangle FullScreenRectangle, Vector2 halfPixel, GraphicsDevice device, int MultiSample, DepthFormat DepthFormat, bool useMipMap,bool useAnisotropicFiltering = true)
+        internal void ChangeProps(int BackBufferHeight, int BackBufferWidth, Rectangle FullScreenRectangle, Vector2 halfPixel, GraphicsDevice device, int MultiSample, DepthFormat DepthFormat, bool useMipMap,SamplerState DefaultSamplerState)
         {
             this.BackBufferHeight = BackBufferHeight;
             this.BackBufferWidth = BackBufferWidth;
@@ -73,12 +69,8 @@ namespace PloobsEngine.Engine
             this.MultiSample = MultiSample;
             this.DepthFormat = DepthFormat;
             this.UseMipMap = useMipMap;
-            if (useAnisotropicFiltering)
-                SamplerState = SamplerState.AnisotropicClamp;
-            else
-                SamplerState = SamplerState.LinearClamp;
-
-            UseAnisotropicFiltering = useAnisotropicFiltering;
+            SamplerState = samplerState;
+        
         }
 
         internal EngineStuff EngineStuff;
@@ -93,21 +85,6 @@ namespace PloobsEngine.Engine
             get { return graphicsAdapter; }
             internal set { graphicsAdapter = value; }
         }
-
-        private bool useAnisotropicFiltering;
-
-        /// <summary>
-        /// Gets a value indicating whether [use anisotropic filtering].
-        /// </summary>
-        /// <value>
-        /// 	<c>true</c> if [use anisotropic filtering]; otherwise, <c>false</c>.
-        /// </value>
-        public bool UseAnisotropicFiltering
-        {
-            get { return useAnisotropicFiltering; }
-            internal set { useAnisotropicFiltering = value; }
-        }
-
 
         private SamplerState samplerState;
 

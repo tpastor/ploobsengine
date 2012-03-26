@@ -19,6 +19,7 @@ namespace EngineTestes
         {
             //TestProcessor TestProcessor = new TestProcessor();
             //TestProcessor.EvaluateTestes("EngineTestes.exe");
+            //return;
 
             InitialEngineDescription desc = InitialEngineDescription.Default();
             //desc.useMipMapWhenPossible = true;
@@ -35,8 +36,7 @@ namespace EngineTestes
 
         static void LoadScreen(ScreenManager manager)
         {
-            manager.AddScreen(new MixReflection());
-
+            //manager.AddScreen(new MixReflection());
             //manager.AddScreen(new ModeloScreen());
             //manager.AddScreen(new RVO3DScreen());
             //manager.AddScreen(new Physx28MaterialScreen());
@@ -60,7 +60,7 @@ namespace EngineTestes
             //manager.AddScreen(new ShaderIDScreen());
             //manager.AddScreen(new EnvironmentBumpScreen());
             //manager.AddScreen(new InstancedBilboardScreen());
-            //manager.AddScreen(new DeferredDirectionaldShadowScreen());
+            manager.AddScreen(new DeferredDirectionaldShadowScreen());
             //manager.AddScreen(new BehaviorTreeScreen());
             //manager.AddScreen(new DefQuadTerrainScreen());
             //manager.AddScreen(new QuadTerrainScreen());
