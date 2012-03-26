@@ -24,7 +24,6 @@ namespace EngineTestes
             InitialEngineDescription desc = InitialEngineDescription.Default();
             //desc.useMipMapWhenPossible = true;
             //desc.UseAnisotropicFiltering = true;
-            //desc.UseAnisotropicFiltering = true;
             //desc.isMultiSampling = true;
 
             using (EngineStuff engine = new EngineStuff(ref desc, LoadScreen))

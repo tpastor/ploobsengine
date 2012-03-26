@@ -142,10 +142,8 @@ namespace AdvancedDemo4._0
             this.World.AddLight(ld4);
             this.World.AddLight(ld5);
             #endregion
-
             
-
-            CameraFirstPerson cam = new CameraFirstPerson(MathHelper.ToRadians(-60), MathHelper.ToRadians(-20), new Vector3(30, 50, 50), GraphicInfo);
+            CameraFirstPerson cam = new CameraFirstPerson(MathHelper.ToRadians(40), MathHelper.ToRadians(-15), new Vector3(500, 500, 500), GraphicInfo);
             cam.MoveSpeed *= 5;
             this.World.CameraManager.AddCamera(cam);
 
@@ -186,6 +184,7 @@ namespace AdvancedDemo4._0
             cannonBone.Transform = cannonRotation * cannonTransform;
             hatchBone.Transform = hatchRotation * hatchTransform;
 
+            ///MUST BE CALLED, to make current changes avaliable to the model
             simpleModel.UpdateTransformations();
 
             base.Update(gameTime);
@@ -201,7 +200,7 @@ namespace AdvancedDemo4._0
         {
             base.Draw(gameTime, render);
 
-            render.RenderTextComplete("Demo :Animation Sample - Non Skinned Meshes Animation", new Vector2(10, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Demo: Animation Sample - Non Skinned Meshes Animation", new Vector2(10, 15), Color.White, Matrix.Identity);
             
         }
 

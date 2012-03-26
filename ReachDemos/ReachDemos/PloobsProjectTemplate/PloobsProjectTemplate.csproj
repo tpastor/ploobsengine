@@ -94,6 +94,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\PloobsEngineDebug.dll</HintPath>
     </Reference>
+    <Reference Include="SkinnedModel">
+      <HintPath>..\Dlls\Skinned\SkinnedModel.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
