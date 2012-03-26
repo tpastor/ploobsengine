@@ -216,11 +216,13 @@ namespace PloobsEngine.Material
                 this._shader.Parameters["ViewProjection"].SetValue(cam.ViewProjection);
                 BatchInformation batchInfo = obj.Modelo.GetBatchInformation(0)[0];
 
+                render.SetSamplerStates(SamplerState.LinearWrap,6);
+
                 //render.PushRasterizerState(RasterizerState.CullNone);
                 render.RenderBatch(batchInfo, this._shader);
                 //render.PopRasterizerState();
 
-                render.SetSamplerStates(ginfo.SamplerState);
+                render.SetSamplerStates(ginfo.SamplerState,6);
       }       
 
         public override MaterialType MaterialType

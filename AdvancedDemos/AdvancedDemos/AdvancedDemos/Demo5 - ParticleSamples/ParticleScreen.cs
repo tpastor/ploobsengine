@@ -56,15 +56,15 @@ namespace AdvancedDemo4._0
         {
             base.LoadContent(GraphicInfo, factory, contentManager);
 
-            //{
-            //    SnowParticleSystem snow = new SnowParticleSystem();
-            //    DPFSParticleSystem ps = new DPFSParticleSystem("snow", snow);
-            //    this.World.ParticleManager.AddAndInitializeParticleSystem(ps);
+            {
+                SnowParticleSystem snow = new SnowParticleSystem();
+                DPFSParticleSystem ps = new DPFSParticleSystem("snow", snow);
+                this.World.ParticleManager.AddAndInitializeParticleSystem(ps);
 
-            //    ///cant set emiter position before adding the particle
-            //    ///IF YOU DO SO, IT WILL NOT WORK
-            //    snow.Emitter.PositionData.Position = new Vector3(500, 0, 0);
-            //}            
+                ///cant set emiter position before adding the particle
+                ///IF YOU DO SO, IT WILL NOT WORK
+                snow.Emitter.PositionData.Position = new Vector3(500, 0, 0);
+            }            
 
             ObjectThrowSmokeParticle ot = new ObjectThrowSmokeParticle(this);
             this.AddScreenUpdateable(ot);
