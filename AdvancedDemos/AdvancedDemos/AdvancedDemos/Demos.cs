@@ -70,12 +70,13 @@ namespace AdvancedDemo4._0
             //manager.AddScreen(new Physx28TriggerScreen());
             //manager.AddScreen(new PhysxCharacter28Screen());
             //manager.AddScreen(new BasicCloth28Screen());
-            //manager.AddScreen(new FlagCloth28Screen());
+            manager.AddScreen(new FlagCloth28Screen());
             //manager.AddScreen(new PressureCloth28Screen());
             //manager.AddScreen(new Fluids28Screen());
             //manager.AddScreen(new EngineTestes.DeferredEmitterFluids28Screen());
             //manager.AddScreen(new AnimScreen());
-            manager.AddScreen(new XnaSkinnedScreen());
+            //manager.AddScreen(new XnaSkinnedScreen());
+            //manager.AddScreen(new BoxCloth28Screen());
 
         }
 

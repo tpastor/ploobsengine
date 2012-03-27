@@ -142,6 +142,7 @@
     <Compile Include="Demo9.6 Explosion\ExplosionScreen.cs" />
     <Compile Include="Demo9.6 Explosion\ExplosionShockwavePS.cs" />
     <Compile Include="Demo9.6 Explosion\ExplosionSmokeTrailsPS.cs" />
+    <Compile Include="Demo9.8 Physx 2.8.x\Cloth\Screens\BoxCloth28Screen.cs" />
     <Compile Include="LoadingScreen.cs" />
     <Compile Include="Demo9.3 SSAO\SSAOScreen.cs" />
     <Compile Include="Demo3 - Sound\FollowerObjectSoundScreen.cs" />

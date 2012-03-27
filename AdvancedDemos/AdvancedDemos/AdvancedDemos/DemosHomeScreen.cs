@@ -32,7 +32,9 @@ namespace AdvancedDemo4._0
         private int[] screenList = new int[39];
 
         private IScreen GetScreen(int screenNumber)
-        {            
+        {
+
+            return new BoxCloth28Screen();
             switch (screenNumber)
             {
                 case 0:

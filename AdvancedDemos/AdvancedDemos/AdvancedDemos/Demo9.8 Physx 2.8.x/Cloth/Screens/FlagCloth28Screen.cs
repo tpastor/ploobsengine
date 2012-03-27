@@ -16,7 +16,7 @@ using System.Runtime.InteropServices;
 
 namespace AdvancedDemo4._0
 {
-    [PloobsEngine.TestSuite.TesteVisualScreen]
+    
     public class FlagCloth28Screen : IScene
     {
 
@@ -42,7 +42,7 @@ namespace AdvancedDemo4._0
             
             ///model
             ClothModel ClothModel = new PloobsEngine.Modelo.ClothModel(factory, PhysxPhysicWorld,
-                new ClothMeshDescription(), grid.Points,grid.TextCoords,grid.Indices, "Textures//meiofio");
+                new ClothMeshDescription(), grid.Points,grid.TextCoords,grid.Indices, "Textures//logo_texture");
 
             ///description
             ///NOW WITH WIND =P
@@ -104,7 +104,7 @@ namespace AdvancedDemo4._0
             base.Draw(gameTime, render);
 
             ///Draw some text to the screen
-            render.RenderTextComplete("Demo: Physx Simple Flag", new Vector2(20, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Physx Simple Flag", new Vector2(20, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("Just a Cloth with Wind =P", new Vector2(20, 35), Color.White, Matrix.Identity);
         }
 
