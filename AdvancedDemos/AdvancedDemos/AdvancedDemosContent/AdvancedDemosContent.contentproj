@@ -574,7 +574,7 @@
     <Compile Include="Model\Dude\dude.fbx">
       <Name>dude</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>XnaSkinnedModelProcessor</Processor>
+      <Processor>XNASkinnedModelProcessor</Processor>
     </Compile>
     <Compile Include="Model\Dude\head.tga">
       <Name>head</Name>
