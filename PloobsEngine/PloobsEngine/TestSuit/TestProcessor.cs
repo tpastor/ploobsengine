@@ -45,6 +45,12 @@ namespace PloobsEngine.TestSuite
 
             InitialEngineDescription InitialEngineDescription= InitialEngineDescription.Default();
             InitialEngineDescription.Logger = new logger();
+            InitialEngineDescription.UnhandledException_Handler =
+                (a,b) =>
+                {
+                    Environment.Exit(-1);
+                };
+
             EngineStuff EngineStuff = new EngineStuff(ref InitialEngineDescription, 
                 (a) =>
                     {
@@ -53,6 +59,7 @@ namespace PloobsEngine.TestSuite
             );
 
             EngineStuff.Run();
+            Environment.Exit(0);
         }
 
         class AlgoMainTest : IScreen
@@ -174,12 +181,22 @@ namespace PloobsEngine.TestSuite
 
         class logger : ILogger
             {
-                #region ILogger Members
+            StreamWriter StreamWriter;
+            public logger()
+            {
+                StreamWriter = new System.IO.StreamWriter("PloobsEngine_Build" + DateTime.Now.ToShortDateString(), true);
+                StreamWriter.WriteLine("Testing PloobsEngine " + DateTime.Now.ToLongTimeString());
+            }
+            ~logger()
+            {
+                StreamWriter.Close();
+            }
 
-                public void Log(string Message, LogLevel logLevel)
+                #region ILogger Members
+                            
+                public override void Log(string Message, LogLevel logLevel)
                 {
-                    Console.WriteLine(logLevel);
-                    Console.WriteLine(Message);
+                    StreamWriter.WriteLine(logLevel + " : " + CurrentSceneType + " : " + Message);
                 }
 
                 #endregion

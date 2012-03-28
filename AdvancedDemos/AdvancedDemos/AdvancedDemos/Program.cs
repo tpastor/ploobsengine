@@ -10,7 +10,7 @@ namespace AdvancedDemo4._0
         /// </summary>
         static void Main(string[] args)
         {
-            if (args.Length != 0)
+            if (args.Length != 0 && args[0] == "VisualUnitTests" )
             {
                 TestProcessor TestProcessor = new TestProcessor();
                 TestProcessor.EvaluateTestes("AdvancedDemos.exe");

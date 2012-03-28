@@ -259,7 +259,7 @@ namespace PloobsEngine.Engine
             this.LoadScreen = LoadScreen;
             this.initialDescription = initialDescription;
             this.IsFixedTimeStep = initialDescription.isFixedGameTime;
-            ActiveLogger.logger = initialDescription.Logger;                        
+            ActiveLogger.logger = initialDescription.Logger;                                    
                 
             if (this.initialDescription.OnExit != null)
             {
@@ -319,7 +319,9 @@ namespace PloobsEngine.Engine
             this.IsFixedTimeStep = initialDescription.isFixedGameTime;
             this.Window.Title = initialDescription.ScreenName;
             
-            ActiveLogger.logger = initialDescription.Logger;                        
+            ActiveLogger.logger = initialDescription.Logger;
+            if (ActiveLogger.logger != null)
+                ActiveLogger.logger.ScreenManager = ScreenManager;
             graphics.GraphicsProfile = initialDescription.GraphicsProfile;
             graphics.IsFullScreen = initialDescription.isFullScreen;
             graphics.SynchronizeWithVerticalRetrace = initialDescription.UseVerticalSyncronization;
@@ -405,7 +407,10 @@ namespace PloobsEngine.Engine
             render.PushRasterizerState(RasterizerState.CullCounterClockwise);
             render.PushRenderTarget(null);
             
-            ScreenManager = new ScreenManager(ref GraphicInfo, GraphicFactory, contentManager,render,this);            
+            ScreenManager = new ScreenManager(ref GraphicInfo, GraphicFactory, contentManager,render,this);
+
+            if (ActiveLogger.logger != null)
+                ActiveLogger.logger.ScreenManager = ScreenManager;
 
             LoadScreen(ScreenManager);
             if (ScreenManager.GetScreens().Count() == 0)
@@ -732,7 +737,6 @@ namespace PloobsEngine.Engine
             this.SilverLightContentManager = ContentManager;
             this.initialDescription = initialDescription;
             ActiveLogger.logger = initialDescription.Logger;
-
             this.graphics = SharedGraphicsDeviceManager;
 
             GraphicsDevice = SharedGraphicsDeviceManager.Current.GraphicsDevice;
@@ -852,6 +856,8 @@ namespace PloobsEngine.Engine
         
             ActiveLogger.logger = initialDescription.Logger;
             graphics.GraphicsProfile = initialDescription.GraphicsProfile;
+            if (ActiveLogger.logger != null)
+                ActiveLogger.logger.ScreenManager = ScreenManager;
         
             graphics.SynchronizeWithVerticalRetrace = initialDescription.UseVerticalSyncronization;        
             graphics.PreferredBackBufferHeight = initialDescription.BackBufferHeight;
@@ -918,6 +924,9 @@ namespace PloobsEngine.Engine
             render.PushRenderTarget(null);
 
             ScreenManager = new ScreenManager(ref GraphicInfo, GraphicFactory, contentManager, render, this);
+
+            if (ActiveLogger.logger != null)
+                ActiveLogger.logger.ScreenManager = ScreenManager;
             
             //THE ONLY COMPONENTS ADDED BY DEFAULT                        
             ComponentManager.AddComponent(new InputAdvanced());
