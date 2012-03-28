@@ -51,7 +51,7 @@ namespace IntroductionDemo4._0
     {
         #region ILogger Members
 
-        public void Log(string Message, LogLevel logLevel)
+        public override void Log(string Message, LogLevel logLevel)
         {
             ///handle messages logs
             Console.WriteLine(Message + "  -  "  + logLevel.ToString());

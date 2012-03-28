@@ -33,7 +33,7 @@ namespace AdvancedDemo4._0
         static void LoadScreen(ScreenManager manager)
         {            
             ///add the title screen                        
-            //manager.AddScreen(new TitleScreen());
+            manager.AddScreen(new TitleScreen());
             //manager.AddScreen(new DeferredLoadScreen());
             //manager.AddScreen(new BumpSpecularDemo());                        
             //manager.AddScreen(new EnvMapScreen());                        
@@ -75,7 +75,7 @@ namespace AdvancedDemo4._0
             //manager.AddScreen(new Fluids28Screen());
             //manager.AddScreen(new EngineTestes.DeferredEmitterFluids28Screen());
             //manager.AddScreen(new AnimScreen());
-            manager.AddScreen(new XnaSkinnedScreen());
+            //manager.AddScreen(new XnaSkinnedScreen());
 
         }
 
@@ -94,7 +94,7 @@ namespace AdvancedDemo4._0
     {
         #region ILogger Members
 
-        public void Log(string Message, LogLevel logLevel)
+        public override void Log(string Message, LogLevel logLevel)
         {
             ///handle messages logs
             if (logLevel == LogLevel.FatalError)

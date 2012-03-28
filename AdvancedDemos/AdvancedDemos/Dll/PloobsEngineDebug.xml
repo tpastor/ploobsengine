@@ -3106,9 +3106,10 @@
             InitialEngineDescription
             </summary>
     </member>
-    <member name="F:PloobsEngine.Engine.InitialEngineDescription.UseAnisotropicFiltering">
+    <member name="F:PloobsEngine.Engine.InitialEngineDescription.DefaultFiltering">
       <summary>
-            Use Anisotropic Filtering when possible
+            Texture Filtering 
+            Default SamplerState.LinearWrap
             </summary>
     </member>
     <member name="F:PloobsEngine.Engine.InitialEngineDescription.ScreenName">
@@ -3189,7 +3190,7 @@
       <returns>
       </returns>
     </member>
-    <member name="M:PloobsEngine.Engine.InitialEngineDescription.#ctor(System.String,System.Int32,System.Int32,System.Boolean,Microsoft.Xna.Framework.Graphics.GraphicsProfile,System.Boolean,System.Boolean,System.Boolean,PloobsEngine.Engine.Logger.ILogger,System.Boolean,System.Boolean,Microsoft.Xna.Framework.DisplayOrientation)">
+    <member name="M:PloobsEngine.Engine.InitialEngineDescription.#ctor(System.String,System.Int32,System.Int32,System.Boolean,Microsoft.Xna.Framework.Graphics.GraphicsProfile,System.Boolean,System.Boolean,System.Boolean,PloobsEngine.Engine.Logger.ILogger,System.Boolean,Microsoft.Xna.Framework.DisplayOrientation)">
       <summary>
             Initializes a new instance of the <see cref="T:PloobsEngine.Engine.InitialEngineDescription" /> struct.
             </summary>
@@ -3203,7 +3204,6 @@
       <param name="isFixedGameTime">if set to <c>true</c> [is fixed game time].</param>
       <param name="logger">The logger.</param>
       <param name="useMipMapWhenPossible">if set to <c>true</c> [use mip map when possible].</param>
-      <param name="UseAnisotropicFiltering">if set to <c>true</c> [use anisotropic filtering].</param>
       <param name="supportedOrientation">The supported orientation.</param>
     </member>
     <member name="T:PloobsEngine.Engine.SoundMasterOptionDescription">
@@ -15313,14 +15313,6 @@
       <summary>
             Graphic Adapter
             </summary>
-    </member>
-    <member name="P:PloobsEngine.Engine.GraphicInfo.UseAnisotropicFiltering">
-      <summary>
-            Gets a value indicating whether [use anisotropic filtering].
-            </summary>
-      <value>
-        <c>true</c> if [use anisotropic filtering]; otherwise, <c>false</c>.
-            </value>
     </member>
     <member name="P:PloobsEngine.Engine.GraphicInfo.SamplerState">
       <summary>

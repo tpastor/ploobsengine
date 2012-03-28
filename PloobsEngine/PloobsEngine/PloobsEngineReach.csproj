@@ -179,6 +179,7 @@
     <Compile Include="Material2D\Basic2DTextureMaterial.cs" />
     <Compile Include="Material2D\I2DMaterial.cs" />
     <Compile Include="Material2D\MaterialProcessor.cs" />
+    <Compile Include="Material\BasicMaterialDecorator.cs" />
     <Compile Include="Material\DeferredAnimatedMaterial.cs" />
     <Compile Include="Material\DeferredMaterial.cs" />
     <Compile Include="Material\ForwardAnimatedMaterial.cs" />
