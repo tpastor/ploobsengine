@@ -27,14 +27,25 @@ namespace PloobsEngine.Engine.Logger
     /// <summary>
     /// Interface to define a Ploobs Logger
     /// </summary>
-    public interface ILogger
+    public abstract class ILogger
     {
         /// <summary>
         /// Logs the specified message.
         /// </summary>
         /// <param name="Message">The message.</param>
         /// <param name="logLevel">The log level.</param>
-        void Log(String Message, LogLevel logLevel);
+        public abstract void Log(String Message, LogLevel logLevel);
+
+
+        internal PloobsEngine.SceneControl.ScreenManager ScreenManager;
+        public String CurrentSceneType
+        {
+            get
+            {
+                return ScreenManager.GetScreens()[0].GetType().Name;
+            }            
+        }
+
     }
 
     /// <summary>
@@ -66,7 +77,7 @@ namespace PloobsEngine.Engine.Logger
     /// </summary>
     public static class ActiveLogger
     {
-        internal static ILogger logger;
+        internal static ILogger logger;        
 
         /// <summary>
         /// Logs a message.
@@ -75,7 +86,7 @@ namespace PloobsEngine.Engine.Logger
         /// <param name="message">The message.</param>
         /// <param name="level">The level.</param>
         public static void LogMessage(String message, LogLevel level)
-        {
+        {            
 
             if (logger != null)
             {

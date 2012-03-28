@@ -115,7 +115,7 @@ namespace PloobsEngine.Material
         {
             get { return material.MaterialType; }
         }
-
+#if (WINDOWS || XBOX) && !REACH
         public bool CanCreateShadow
         {
             get
@@ -139,6 +139,7 @@ namespace PloobsEngine.Material
                 material.CanAppearOfReflectionRefraction = value;
             }
         }
+#endif
 
         public bool IsVisible
         {

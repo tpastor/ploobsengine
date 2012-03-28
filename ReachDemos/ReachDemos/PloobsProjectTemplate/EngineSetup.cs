@@ -38,8 +38,8 @@ namespace ProjectTemplate
 
 
         static void LoadScreen(ScreenManager manager)
-        {
-            
+        {            
+                        
             manager.AddScreen(new DemosHomeScreen());
 
             ///add the first screen here        
@@ -56,8 +56,7 @@ namespace ProjectTemplate
             //manager.AddScreen(new TerrainGeoClipMap());
             //manager.AddScreen(new DynamicEnvMapScreen());            
             //manager.AddScreen(new MotionForwardScreen());           
-            //manager.AddScreen(new XnaSkinnedScreen());           
- 
+            //manager.AddScreen(new XnaSkinnedScreen());            
 
         }
 
@@ -76,7 +75,7 @@ namespace ProjectTemplate
     {
         #region ILogger Members
 
-        public void Log(string Message, LogLevel logLevel)
+        public override void Log(string Message, LogLevel logLevel)
         {
             ///handle messages logs the way you want here
             Console.WriteLine(Message + "  -  " + logLevel.ToString());
