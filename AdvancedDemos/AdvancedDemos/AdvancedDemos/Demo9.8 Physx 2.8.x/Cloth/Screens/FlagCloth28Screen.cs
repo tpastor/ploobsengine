@@ -16,7 +16,7 @@ using System.Runtime.InteropServices;
 
 namespace AdvancedDemo4._0
 {
-    
+    //[PloobsEngine.TestSuite.TesteVisualScreen]
     public class FlagCloth28Screen : IScene
     {
 
@@ -42,7 +42,7 @@ namespace AdvancedDemo4._0
             
             ///model
             ClothModel ClothModel = new PloobsEngine.Modelo.ClothModel(factory, PhysxPhysicWorld,
-                new ClothMeshDescription(), grid.Points,grid.TextCoords,grid.Indices, "Textures//logo_texture");
+                new ClothMeshDescription(), grid.Points,grid.TextCoords,grid.Indices, "Textures//meiofio");
 
             ///description
             ///NOW WITH WIND =P

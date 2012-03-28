@@ -16,6 +16,7 @@ using System.Runtime.InteropServices;
 
 namespace AdvancedDemo4._0
 {
+    [PloobsEngine.TestSuite.TesteVisualScreen]
     public class BoxCloth28Screen : IScene
     {
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
