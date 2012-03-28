@@ -29,7 +29,7 @@ namespace AdvancedDemo4._0
 
         EngineStuff engine;
 
-        private int[] screenList = new int[39];
+        private int[] screenList = new int[40];
 
         private IScreen GetScreen(int screenNumber)
         {
@@ -113,8 +113,8 @@ namespace AdvancedDemo4._0
                     return new AnimScreen();
                     case 38:
                 return new XnaSkinnedScreen();
-                //    case 39:
-                //return new BoxCloth28Screen();
+                    case 39:
+                return new BoxCloth28Screen();
                     
                     
                 default:
