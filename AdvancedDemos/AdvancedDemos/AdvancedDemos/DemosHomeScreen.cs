@@ -33,8 +33,6 @@ namespace AdvancedDemo4._0
 
         private IScreen GetScreen(int screenNumber)
         {
-
-            return new BoxCloth28Screen();
             switch (screenNumber)
             {
                 case 0:
@@ -115,6 +113,8 @@ namespace AdvancedDemo4._0
                     return new AnimScreen();
                     case 38:
                 return new XnaSkinnedScreen();
+                //    case 39:
+                //return new BoxCloth28Screen();
                     
                     
                 default:
