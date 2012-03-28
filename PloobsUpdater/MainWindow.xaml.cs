@@ -168,8 +168,12 @@ namespace PloobsUpdater
         List<String> AvaliableVersions = new List<string>();
         FTP ftp = null;
 
+        bool isDownloading = false;
         private void button1_Click(object sender, RoutedEventArgs e)
         {
+            isDownloading = true;
+            this.remove.Dispatcher.BeginInvoke(DispatcherPriority.Send,
+                                   (Action)(() => { remove.IsEnabled = false; }));            
             HandleXnaVersion();
 
             if (isConnected == false)
@@ -181,10 +185,29 @@ namespace PloobsUpdater
             try
             {
                 String sitem = listBox1.SelectedItem as String;
+                if (String.IsNullOrEmpty(sitem))
+                {
+                    MessageBox.Show("You Must select a version");
+                    this.remove.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
+                                   (Action)(() => { remove.IsEnabled = true; }));
+                    isDownloading = false;
+                    return;
+                }
                 if (sitem != packageName)
                 {
-                    if (packageName != null)
+                    if (!String.IsNullOrEmpty(packageName))
+                    {
                         DeleteCurrentEngineVersion();
+                        GetVersionOnRegistry();
+                        if (!String.IsNullOrEmpty(packageName))
+                        {
+                            MessageBox.Show("You need to unistall current version to be able to install another");
+                            this.remove.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
+                                   (Action)(() => { remove.IsEnabled = true; }));
+                            isDownloading = false;
+                            return;
+                        }
+                    }
                     Random rd = new Random();
                     int rdnum = rd.Next();
 
@@ -239,7 +262,9 @@ namespace PloobsUpdater
                            catch (Exception ex)
                            {
                                MessageBox.Show(ex.ToString());
-                               label2.Content = "ERROR";
+                               label2.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
+                                 (Action)(() => { label2.Content = "ERROR"; }));
+                               
                            }
                            finally
                            {
@@ -260,13 +285,17 @@ namespace PloobsUpdater
                 }
                 else
                 {
-                    MessageBox.Show("You already have this version installed");
+                    MessageBox.Show("You already have this version installed, Unistall it first clicking on Remove Current Version");                    
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-            }            
+            }
+
+            isDownloading = false;
+            this.remove.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
+                                   (Action)(() => { remove.IsEnabled = true; }));            
         }
 
         public void DeleteCurrentEngineVersion()
@@ -277,7 +306,7 @@ namespace PloobsUpdater
                 process.StartInfo.FileName = @"msiexec.exe";
                 process.StartInfo.Arguments = " /x {2AF6A123-A362-4E2B-B23A-D1E952C15A9C}";
                 process.Start();
-                process.WaitForExit();
+                process.WaitForExit();                
             }
             catch (Exception ex)
             {
@@ -344,7 +373,6 @@ namespace PloobsUpdater
 
         private void GetVersionOnRegistry()
         {
-
             String key = null;
             if (Environment.Is64BitOperatingSystem)
             {
@@ -357,12 +385,19 @@ namespace PloobsUpdater
             RegistryKey myKey = Registry.LocalMachine.OpenSubKey(key, false);
             if (myKey != null)
             {
-                packageName = myKey.GetValue("Version") as String;                    
+                packageName = myKey.GetValue("Version") as String;
+            }
+            else
+            {
+                packageName = "";
             }
         }
 
         private void button2_Click(object sender, RoutedEventArgs e)
         {
+            Cursor old = this.Cursor;
+            this.Cursor = Cursors.Wait;
+
             if (isConnected == false)
             {
                 MessageBox.Show("No Internet Connection");
@@ -374,6 +409,12 @@ namespace PloobsUpdater
                 Random rd = new Random();
                 int rdnum = rd.Next();
                 String sitem = listBox1.SelectedItem as String;
+                if (String.IsNullOrEmpty(sitem))
+                {
+                    this.Cursor = old;
+                    MessageBox.Show("You Must select a version");
+                    return;
+                }
                 ftp.ChangeDir("/ploobs/Web/Updater/" + sitem);
                 String temppath = System.IO.Path.GetTempPath() + "Change" + rdnum + ".pdf";
                 ftp.OpenDownload("Changes.pdf", temppath, true);
@@ -391,6 +432,32 @@ namespace PloobsUpdater
             {
                 MessageBox.Show(ex.ToString());
             }
+
+            this.Cursor = old;
+        }
+
+        private void button3_Click(object sender, RoutedEventArgs e)
+        {
+            if (isDownloading)
+            {
+                MessageBox.Show("PloobsEngine is being installed now");
+                return;
+            }
+
+            if (String.IsNullOrEmpty(packageName))
+            {
+                MessageBox.Show("PloobsEngine is not Installed in this machine");
+                return;
+            }
+            else
+            {
+                DeleteCurrentEngineVersion();
+                GetVersionOnRegistry();
+            }            
+
+            label2.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
+                (Action)(() => { label2.Content = "Current Version: " + packageName; }));
+
         }
     }
 }
