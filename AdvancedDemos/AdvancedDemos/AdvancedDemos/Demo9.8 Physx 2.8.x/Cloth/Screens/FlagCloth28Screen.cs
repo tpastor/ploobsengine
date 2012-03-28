@@ -42,7 +42,7 @@ namespace AdvancedDemo4._0
             
             ///model
             ClothModel ClothModel = new PloobsEngine.Modelo.ClothModel(factory, PhysxPhysicWorld,
-                new ClothMeshDescription(), grid.Points,grid.TextCoords,grid.Indices, "Textures//meiofio");
+                new ClothMeshDescription(), grid.Points, grid.TextCoords, grid.Indices, "Textures//logo_texture");
 
             ///description
             ///NOW WITH WIND =P
