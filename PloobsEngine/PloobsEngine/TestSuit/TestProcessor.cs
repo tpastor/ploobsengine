@@ -184,16 +184,17 @@ namespace PloobsEngine.TestSuite
             StreamWriter StreamWriter;
             public logger(string path)
             {
+                string format = "MMM_d_HHmmyyyy";
                 if (!String.IsNullOrEmpty(path))
                 {
-                    path = Path.Combine(path, "PloobsEngine_Build" + DateTime.Now.ToShortDateString() + ".log");
+                    path = Path.Combine(path, "PloobsEngine_Build_" + DateTime.Now.ToString(format) + ".log");
                 }
                 else
                 {
-                    path = "PloobsEngine_Build" + DateTime.Now.ToShortDateString() + ".log";
+                    path = "PloobsEngine_Build_" + DateTime.Now.ToString(format) + ".log";
                 }
                 StreamWriter = new System.IO.StreamWriter(path, true);
-                StreamWriter.WriteLine("Testing PloobsEngine " + DateTime.Now.ToLongTimeString());
+                StreamWriter.WriteLine("Testing PloobsEngine " + DateTime.Now.ToUniversalTime());
             }
             ~logger()
             {
