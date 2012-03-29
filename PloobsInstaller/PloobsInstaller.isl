@@ -430,40 +430,40 @@
 		<row><td>ISX_DEFAULTCOMPONENT49</td><td>{F0678C6A-CFF9-4175-AFEE-89553A043FCF}</td><td>VEHICLE</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT5</td><td>{586D962E-1559-4342-8B47-8D87C66A01B0}</td><td>ITEMTEMPLATES</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT50</td><td>{0B5784D2-2CB3-4523-B49F-382E52D4C022}</td><td>PROPERTIES</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT51</td><td>{459FDE3E-A825-4881-846A-1070055B8627}</td><td>INTRODUCTIONDEMO</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT52</td><td>{11F8C980-974A-4163-98DA-5277DAC714DB}</td><td>INTRODUCTIONDEMO4.0</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT53</td><td>{60ECADF3-E851-422E-9981-F18734A974FC}</td><td>DLL1</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT54</td><td>{8E0C5CE3-5B29-4196-843C-31F90B46E1AE}</td><td>INTRODUCTIONDEMO4.01</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT55</td><td>{C908D2C5-D039-46E5-A510-65597C3D3F2B}</td><td>COMMONS1</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT56</td><td>{3005E967-1C04-4A81-9177-97479A0E1025}</td><td>DEMO1___BASICSCREEN</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT57</td><td>{26199977-70D9-44AC-9941-5FEDEA6563CC}</td><td>DEMO2___INPUT</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT58</td><td>{FAACC5F2-5D13-42B8-945C-32E6138C832F}</td><td>DEMO3___LIGHTS</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT59</td><td>{8CA0D422-6C3F-45FD-A110-0B128E7AF42A}</td><td>HELPERS1</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT51</td><td>{E53A2B47-8856-488E-AD11-97762EA9D241}</td><td>INTRODUCTIONDEMO</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT52</td><td>{BE674A16-99E1-48E1-8D2E-6629CC6275AE}</td><td>INTRODUCTIONDEMO4.0</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT53</td><td>{080EA624-F0EE-4FE2-B541-AFC368198C4A}</td><td>DLL1</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT54</td><td>{53CDE421-DB31-4AA1-AA13-3D0375990756}</td><td>INTRODUCTIONDEMO4.01</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT55</td><td>{10834398-730B-43E1-A99E-38D0965AF7D1}</td><td>COMMONS1</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT56</td><td>{53F3FE65-0522-4FD5-BB5D-179302BB31B4}</td><td>DEMO1___BASICSCREEN</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT57</td><td>{90CCF389-EF89-46EB-9E2B-1DBDF9BAE722}</td><td>DEMO2___INPUT</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT58</td><td>{3E6C619D-BD71-4244-A536-4FEE3039E3FD}</td><td>DEMO3___LIGHTS</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT59</td><td>{8CFC9AFE-7493-42AE-9F92-212C0F186D23}</td><td>HELPERS1</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT6</td><td>{B6D7AD00-0910-4AC4-82E1-5ADA196A9029}</td><td>ADVDEMOSBIN</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT60</td><td>{2453EF36-5D2B-47B7-98A2-F1A9B25D49D0}</td><td>DEMO4___PHYSICS</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT61</td><td>{7B11F94B-62C1-4350-860C-BC0775E34CF2}</td><td>HELPER</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT62</td><td>{BB5EA58C-D4D8-4BFF-872B-85C9B1EFAF51}</td><td>DEMO5___CAMERAS</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT63</td><td>{C977AC02-0BEA-4421-A991-9B90144D45C9}</td><td>DEMO6___TRIGGER</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT64</td><td>{D2DD87D8-C362-40CC-9699-45BFA2D86267}</td><td>DEMO7___SCRIPTS</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT65</td><td>{862C22CC-D29D-4520-A80A-20F50DBE8A6E}</td><td>DEMO8___SERIALIZATION</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT66</td><td>{D502CDC4-2865-4C19-B716-26C67C9669B6}</td><td>DEMO9___AI</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT67</td><td>{13E1A1FC-307B-4E1C-BA21-8C9512B667FF}</td><td>BEHAVIOR_TREE</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT68</td><td>{582DE2DE-225B-4FD6-9860-5EFD899F810B}</td><td>FSM</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT60</td><td>{0DED3AF8-BF1C-4E88-96C1-65E71FEAAACD}</td><td>DEMO4___PHYSICS</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT61</td><td>{3A15446B-9783-49A6-81BF-596C1931C253}</td><td>HELPER</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT62</td><td>{97FDB67C-E16E-4DA9-94DC-CE2B1AF48C56}</td><td>DEMO5___CAMERAS</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT63</td><td>{647143C2-0076-43DD-88B4-9F72D4772D26}</td><td>DEMO6___TRIGGER</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT64</td><td>{A720A0FC-4869-4F49-8515-9E8515C20284}</td><td>DEMO7___SCRIPTS</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT65</td><td>{E6E8BCE9-7840-4EC2-8A22-BFF982557D6A}</td><td>DEMO8___SERIALIZATION</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT66</td><td>{4F825EAE-ABD6-469A-B830-1EE07119727E}</td><td>DEMO9___AI</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT67</td><td>{0EAF1D07-C67A-4793-950C-4540F65B889B}</td><td>BEHAVIOR_TREE</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT68</td><td>{D27AAC89-3B1A-49C0-A1FA-99B2D9056F1A}</td><td>FSM</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT69</td><td>{7B3E36E1-A9EB-4818-A480-FC17E090E0E4}</td><td>TEXTURES</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT7</td><td>{BFC73A97-AFCE-49BE-975D-FC64BA2EFB77}</td><td>CONTENT</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT70</td><td>{3D95DEAE-A27D-4873-945C-33DF7806CA34}</td><td>PATHFINDING_AND_WAYPOINTS</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT71</td><td>{E98D4BF8-FD5E-442E-B825-8CA414255CA5}</td><td>RVO</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT72</td><td>{691F539F-C659-4F8F-A031-476EB02D532C}</td><td>RVO2</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT73</td><td>{AB7552F9-EAE6-4045-AE24-6EF3402DCB05}</td><td>RVO3D</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT74</td><td>{DFCFB76B-8167-46B7-A903-DAEC57C028B1}</td><td>STEERING</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT75</td><td>{22BD6602-7E71-4DA5-96E6-2C2550E3010A}</td><td>DEMOS_EXTRAS</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT76</td><td>{DBCD9D3A-CE50-4F02-A3A5-E1C56A4CD4BB}</td><td>PROPERTIES1</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT77</td><td>{F14156C2-9982-49F2-91CA-FBCD4606B527}</td><td>INTRODUCTIONDEMO4.0CONTENT</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT78</td><td>{C1A899CB-68CC-448A-873B-4039EEB09CED}</td><td>FONT</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT79</td><td>{389BF075-63A9-420A-BA8C-F9BDCED5AF2C}</td><td>MODEL2</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT70</td><td>{FECAE687-E258-42CD-8E7B-258B04177E82}</td><td>RVO</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT71</td><td>{75F84CD2-25C3-44E1-8063-1F2932C44EB2}</td><td>RVO2</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT72</td><td>{B390F22B-81FF-45A1-9917-B6683766B2C9}</td><td>RVO3D</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT73</td><td>{20257C11-8FE5-4CA0-B549-E08193A86E7D}</td><td>STEERING</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT74</td><td>{4716BA5B-3BCB-4167-9673-CB5A141BF69E}</td><td>WAYPOINTS</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT75</td><td>{50F814E5-8B0E-4038-8EC3-A6BC5D99BB9E}</td><td>DEMOS_EXTRAS</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT76</td><td>{C0CFC518-DAF2-4714-8AA1-F4401D454CA4}</td><td>PROPERTIES1</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT77</td><td>{358BAE7E-77F8-4BBD-920F-E128FA1EB41C}</td><td>INTRODUCTIONDEMO4.0CONTENT</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT78</td><td>{BCB1ACE8-E52C-443E-AB6B-F9DCFC7291E7}</td><td>FONT</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT79</td><td>{DD1A156F-47A9-471B-B10A-AB60CB9735CA}</td><td>MODEL2</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT8</td><td>{9D0FF3B7-D441-4BF3-AA32-16686A07283D}</td><td>EFFECTS</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT80</td><td>{AC873B61-5517-45F6-8D54-7980664DAF00}</td><td>SCRIPT</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT81</td><td>{C2361DF2-50EA-41D3-A6A6-28503379D2E0}</td><td>TEXTURES2</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT80</td><td>{5AB282FE-7BC7-4E3F-88F9-5762AB70F752}</td><td>SCRIPT</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT81</td><td>{EBD8EE71-A95E-4711-A0EE-4EBBDC6C587F}</td><td>TEXTURES2</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT82</td><td>{DD0827E8-62EC-4B0A-84CC-3F8C3DCCEB83}</td><td>PHONESILVERLIGHTDEMO</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT83</td><td>{5471367C-5D9F-4572-AF1D-C1E48A76C769}</td><td>GRAPHICSAPP1</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT84</td><td>{EBBE3697-6374-45BC-9DE7-47E3E4DF7BA8}</td><td>PROPERTIES2</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
@@ -498,22 +498,22 @@
 		<row><td>PhysXLoader.dll1</td><td>{3762FF2E-AD5A-40DC-AEB2-68D0110C96EA}</td><td>ADVANCEDDEMOS2</td><td>2</td><td/><td>physxloader.dll1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>PloobsEngineDebug.dll</td><td>{4EBA50A7-A906-4AEE-986F-6B23DB8C1AC0}</td><td>ADVDEMOSBIN</td><td>2</td><td/><td>ploobsenginedebug.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>PloobsEngineDebug.dll1</td><td>{3DFA3423-B3BC-4D3A-AE66-0E53D7C5458B}</td><td>DLL</td><td>2</td><td/><td>ploobsenginedebug.dll1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>PloobsEngineDebug.dll2</td><td>{ED116A46-683F-4B96-A2C6-F4645B677446}</td><td>DLL1</td><td>2</td><td/><td>ploobsenginedebug.dll2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>PloobsEngineDebug.dll2</td><td>{9515F7A3-3579-42DE-9949-4B4A3B12F1D9}</td><td>DLL1</td><td>2</td><td/><td>ploobsenginedebug.dll2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>PloobsEngineDebug.dll3</td><td>{AFBBD6D8-05FF-43B8-BF45-2BA85DE823D4}</td><td>DLLS</td><td>2</td><td/><td>ploobsenginedebug.dll3</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>PloobsEngineDebug.dll4</td><td>{3A22872B-1EEA-48BA-9BD2-DE0158C86DAD}</td><td>WINDOWS_HIDEF</td><td>2</td><td/><td>ploobsenginedebug.dll4</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>PloobsEngineDebug.dll5</td><td>{AC02868B-F9DB-4B87-BDC7-2DA4A4836129}</td><td>WINDOWS_REACH</td><td>2</td><td/><td>ploobsenginedebug.dll5</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>PloobsEnginePhone7.dll</td><td>{AA4B6ED3-FDB5-43A4-9242-AC05D92C3C15}</td><td>PHONE7</td><td>2</td><td/><td>ploobsenginephone7.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>PloobsEnginePhone7.dll1</td><td>{6201A6FF-DAA2-4695-A8C5-EFA8DC6BE937}</td><td>WINDOWS_PHONE_7</td><td>2</td><td/><td>ploobsenginephone7.dll1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>PloobsEnginePipelineDebug.dll</td><td>{60D41F33-3D25-4ABB-A2F6-5E9CFBE30F8E}</td><td>DLL</td><td>2</td><td/><td>ploobsenginepipelinedebug.dl</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>PloobsEnginePipelineDebug.dll1</td><td>{B82D79FF-DAF5-45F3-BD75-5D8BF1747FB1}</td><td>DLL1</td><td>2</td><td/><td>ploobsenginepipelinedebug.dl1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>PloobsEnginePipelineDebug.dll1</td><td>{07339AF6-D877-476B-9308-1B394F7515E2}</td><td>DLL1</td><td>2</td><td/><td>ploobsenginepipelinedebug.dl1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>PloobsEnginePipelineDebug.dll2</td><td>{C7647F98-AB6F-4E83-B88C-2B3CD4CB3D71}</td><td>WINDOWS_HIDEF</td><td>2</td><td/><td>ploobsenginepipelinedebug.dl2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>PloobsEnginePipelineDebug.dll3</td><td>{E9224F74-86CD-4C0A-BB80-944D70180926}</td><td>WINDOWS_REACH</td><td>2</td><td/><td>ploobsenginepipelinedebug.dl3</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>PloobsEnginePipelineDebug.dll4</td><td>{4870EF87-91CA-4CB6-9E28-0DFAEA4918C1}</td><td>DLLS</td><td>2</td><td/><td>ploobsenginepipelinedebug.dl4</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>PloobsScripts.dll</td><td>{351BA0C1-558E-4CB4-B77D-EEF6B4EEEC0D}</td><td>DLL1</td><td>2</td><td/><td>ploobsscripts.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>PloobsSerializator.dll</td><td>{7964A123-9A24-4A6A-9C70-32FD30AE8185}</td><td>DLL1</td><td>2</td><td/><td>ploobsserializator.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>PloobsScripts.dll</td><td>{0CFE17FF-8D89-4D2E-B63E-70EE9A4C6ABE}</td><td>DLL1</td><td>2</td><td/><td>ploobsscripts.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>PloobsSerializator.dll</td><td>{237DF9FF-6745-4095-828F-F00D79783C8C}</td><td>DLL1</td><td>2</td><td/><td>ploobsserializator.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>Ploobs_Engine_Help.chm</td><td>{F7EDF42F-2425-4787-8C5A-F3B618E45C3A}</td><td>HELP</td><td>2</td><td/><td>ploobs_engine_help.chm</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>RVO2DWrapper.dll</td><td>{28BDBF0E-0D06-4B37-A267-C7624885A602}</td><td>INTRODUCTIONDEMO4.01</td><td>2</td><td/><td>rvo2dwrapper.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>RVO3D.dll</td><td>{293C188C-7DF1-4F17-B287-22A1604E6892}</td><td>INTRODUCTIONDEMO4.01</td><td>2</td><td/><td>rvo3d.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>RVO2DWrapper.dll</td><td>{FBC5D236-19A4-4CA3-8020-CE51F4B0DA50}</td><td>INTRODUCTIONDEMO4.01</td><td>2</td><td/><td>rvo2dwrapper.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>RVO3D.dll</td><td>{203D4C82-AE35-46E0-9EB5-E81FA9C11AC7}</td><td>INTRODUCTIONDEMO4.01</td><td>2</td><td/><td>rvo3d.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>SharedOsiris.dll</td><td>{0C193FFC-C745-4375-B64E-38CB5AF530BD}</td><td>PHONE7</td><td>2</td><td/><td>sharedosiris.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>SkinnedModel.dll</td><td>{8AE43D2D-7B0C-4416-AD39-5EB864175631}</td><td>ADVDEMOSBIN</td><td>2</td><td/><td>skinnedmodel.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>SkinnedModel.dll1</td><td>{9812A0C6-E52E-44B3-B8E2-76994395DD65}</td><td>SKINNED</td><td>2</td><td/><td>skinnedmodel.dll1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
@@ -1432,7 +1432,6 @@
 		<row><td>MyPicturesFolder</td><td>TARGETDIR</td><td>.:MyPict~1|MyPictures</td><td/><td>0</td><td/></row>
 		<row><td>NetHoodFolder</td><td>TARGETDIR</td><td>.:NetHood</td><td/><td>0</td><td/></row>
 		<row><td>PARTICLE3D</td><td>PLOOBSPROJECTTEMPLATE</td><td>PARTIC~1|Particle3D</td><td/><td>0</td><td/></row>
-		<row><td>PATHFINDING_AND_WAYPOINTS</td><td>DEMO9___AI</td><td>PATHFI~1|Pathfinding and Waypoints</td><td/><td>0</td><td/></row>
 		<row><td>PHONE7</td><td>PHONESILVERLIGHTDEMO</td><td>Phone7</td><td/><td>0</td><td/></row>
 		<row><td>PHONESILVERLIGHTDEMO</td><td>DEMOSSOURCECODE</td><td>PHONES~1|PhoneSilverLightDemo</td><td/><td>0</td><td/></row>
 		<row><td>PLOOBS</td><td>ProgramFilesFolder</td><td>Ploobs</td><td/><td>0</td><td/></row>
@@ -1485,6 +1484,7 @@
 		<row><td>USERPROFILE</td><td>TARGETDIR</td><td>.:USERPR~1|UserProfile</td><td/><td>0</td><td/></row>
 		<row><td>VEHICLE</td><td>DEMO9.8_PHYSX_2.8.X</td><td>Vehicle</td><td/><td>0</td><td/></row>
 		<row><td>VISUAL_STUDIO_2010</td><td>PersonalFolder</td><td>VISUAL~1|Visual Studio 2010</td><td/><td>0</td><td/></row>
+		<row><td>WAYPOINTS</td><td>DEMO9___AI</td><td>WAYPOI~1|Waypoints</td><td/><td>0</td><td/></row>
 		<row><td>WINDOWS_HIDEF</td><td>INSTALLDIR</td><td>WINDOW~1|Windows HiDef</td><td/><td>0</td><td/></row>
 		<row><td>WINDOWS_PHONE_7</td><td>INSTALLDIR</td><td>WINDOW~1|Windows Phone 7</td><td/><td>0</td><td/></row>
 		<row><td>WINDOWS_REACH</td><td>INSTALLDIR</td><td>WINDOW~1|Windows Reach</td><td/><td>0</td><td/></row>
@@ -2453,7 +2453,7 @@
 		<row><td>basic2dspritescreen.cs1</td><td>ISX_DEFAULTCOMPONENT118</td><td>BASIC2~1.CS|Basic2DSpriteScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplate\2D Demos\Basic2DSpriteScreen.cs</td><td>1</td><td/></row>
 		<row><td>basiccloth28screen.cs</td><td>ISX_DEFAULTCOMPONENT45</td><td>BASICC~1.CS|BasicCloth28Screen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\Demo9.8 Physx 2.8.x\Cloth\Screens\BasicCloth28Screen.cs</td><td>1</td><td/></row>
 		<row><td>basicscreendeferreddemo.cs</td><td>ISX_DEFAULTCOMPONENT56</td><td>BASICS~1.CS|BasicScreenDeferredDemo.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo1 - BasicScreen\BasicScreenDeferredDemo.cs</td><td>1</td><td/></row>
-		<row><td>basicscreenforwarddemo.cs</td><td>ISX_DEFAULTCOMPONENT56</td><td>BASICS~1.CS|BasicScreenForwardDemo.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo1 - BasicScreen\BasicScreenForwardDemo.cs</td><td>1</td><td/></row>
+		<row><td>basicscreenforwarddemo.cs</td><td>ISX_DEFAULTCOMPONENT56</td><td>BASICS~2.CS|BasicScreenForwardDemo.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo1 - BasicScreen\BasicScreenForwardDemo.cs</td><td>1</td><td/></row>
 		<row><td>behaviortreescreen.cs</td><td>ISX_DEFAULTCOMPONENT67</td><td>BEHAVI~1.CS|BehaviorTreeScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo9 - AI\Behavior Tree\BehaviorTreeScreen.cs</td><td>1</td><td/></row>
 		<row><td>bepuphysics.dll</td><td>BEPUphysics.dll</td><td>BEPUPH~1.DLL|BEPUphysics.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\PhoneSilverLightDemo\Phone7\BEPUphysics.dll</td><td>1</td><td/></row>
 		<row><td>bepuphysics.dll1</td><td>BEPUphysics.dll1</td><td>BEPUPH~1.DLL|BEPUphysics.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\PloobsEngineWindowsPhone\BEPUphysics.dll</td><td>1</td><td/></row>
@@ -2478,7 +2478,7 @@
 		<row><td>bye.xnb</td><td>ISX_DEFAULTCOMPONENT17</td><td>bye.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Songs\bye.xnb</td><td>1</td><td/></row>
 		<row><td>camera2d.jpg</td><td>ISX_DEFAULTCOMPONENT83</td><td>camera2d.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\PhoneSilverLightDemo\GraphicsApp1\camera2d.jpg</td><td>1</td><td/></row>
 		<row><td>camerapathscreen.cs</td><td>ISX_DEFAULTCOMPONENT62</td><td>CAMERA~1.CS|CameraPathScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo5 - Cameras\CameraPathScreen.cs</td><td>1</td><td/></row>
-		<row><td>camerascreens.cs</td><td>ISX_DEFAULTCOMPONENT62</td><td>CAMERA~1.CS|CameraScreens.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo5 - Cameras\CameraScreens.cs</td><td>1</td><td/></row>
+		<row><td>camerascreens.cs</td><td>ISX_DEFAULTCOMPONENT62</td><td>CAMERA~2.CS|CameraScreens.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo5 - Cameras\CameraScreens.cs</td><td>1</td><td/></row>
 		<row><td>cena.x</td><td>ISX_DEFAULTCOMPONENT91</td><td>cena.X</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Model\cena.X</td><td>1</td><td/></row>
 		<row><td>cena.x.log</td><td>ISX_DEFAULTCOMPONENT91</td><td>CENAX~1.LOG|cena.X.log</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Model\cena.X.log</td><td>1</td><td/></row>
 		<row><td>cenario.x</td><td>ISX_DEFAULTCOMPONENT105</td><td>cenario.X</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Model\cenario.X</td><td>1</td><td/></row>
@@ -2641,7 +2641,7 @@
 		<row><td>gamethumbnail.png</td><td>ISX_DEFAULTCOMPONENT21</td><td>GAMETH~1.PNG|GameThumbnail.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\GameThumbnail.png</td><td>1</td><td/></row>
 		<row><td>gamethumbnail.png1</td><td>ISX_DEFAULTCOMPONENT54</td><td>GAMETH~1.PNG|GameThumbnail.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\GameThumbnail.png</td><td>1</td><td/></row>
 		<row><td>gamethumbnail.png2</td><td>ISX_DEFAULTCOMPONENT117</td><td>GAMETH~1.PNG|GameThumbnail.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplate\GameThumbnail.png</td><td>1</td><td/></row>
-		<row><td>globals.cs</td><td>ISX_DEFAULTCOMPONENT74</td><td>Globals.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo9 - AI\Steering\Globals.cs</td><td>1</td><td/></row>
+		<row><td>globals.cs</td><td>ISX_DEFAULTCOMPONENT73</td><td>Globals.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo9 - AI\Steering\Globals.cs</td><td>1</td><td/></row>
 		<row><td>goo.png</td><td>ISX_DEFAULTCOMPONENT92</td><td>goo.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\goo.png</td><td>1</td><td/></row>
 		<row><td>goo.png1</td><td>ISX_DEFAULTCOMPONENT130</td><td>goo.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplateContent\Textures\goo.png</td><td>1</td><td/></row>
 		<row><td>goo.png2</td><td>ISX_DEFAULTCOMPONENT114</td><td>goo.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Textures\goo.png</td><td>1</td><td/></row>
@@ -2676,8 +2676,8 @@
 		<row><td>hmap.jpg</td><td>ISX_DEFAULTCOMPONENT92</td><td>hmap.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\hmap.jpg</td><td>1</td><td/></row>
 		<row><td>horizontal.cur</td><td>ISX_DEFAULTCOMPONENT110</td><td>HORIZO~1.CUR|Horizontal.cur</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Skins\Default\Cursors\Horizontal.cur</td><td>1</td><td/></row>
 		<row><td>horizontal.xnb</td><td>ISX_DEFAULTCOMPONENT14</td><td>HORIZO~1.XNB|Horizontal.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Skins\Default\Cursors\Horizontal.xnb</td><td>1</td><td/></row>
-		<row><td>iapathfindingscreen.cs</td><td>ISX_DEFAULTCOMPONENT70</td><td>IAPATH~1.CS|IaPathFindingScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo9 - AI\Pathfinding and Waypoints\IaPathFindingScreen.cs</td><td>1</td><td/></row>
-		<row><td>iawaypointsscreen.cs</td><td>ISX_DEFAULTCOMPONENT70</td><td>IAWAYP~1.CS|IaWaypointsScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo9 - AI\Pathfinding and Waypoints\IaWaypointsScreen.cs</td><td>1</td><td/></row>
+		<row><td>iapathfindingscreen.cs</td><td>ISX_DEFAULTCOMPONENT74</td><td>IAPATH~1.CS|IaPathFindingScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo9 - AI\Waypoints\IaPathFindingScreen.cs</td><td>1</td><td/></row>
+		<row><td>iawaypointsscreen.cs</td><td>ISX_DEFAULTCOMPONENT74</td><td>IAWAYP~1.CS|IaWaypointsScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo9 - AI\Waypoints\IaWaypointsScreen.cs</td><td>1</td><td/></row>
 		<row><td>icon.error.png</td><td>ISX_DEFAULTCOMPONENT112</td><td>ICONER~1.PNG|Icon.Error.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Skins\Default\Images\Icon.Error.png</td><td>1</td><td/></row>
 		<row><td>icon.error.xnb</td><td>ISX_DEFAULTCOMPONENT16</td><td>ICONER~1.XNB|Icon.Error.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Skins\Default\Images\Icon.Error.xnb</td><td>1</td><td/></row>
 		<row><td>icon.information.png</td><td>ISX_DEFAULTCOMPONENT112</td><td>ICONIN~1.PNG|Icon.Information.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Skins\Default\Images\Icon.Information.png</td><td>1</td><td/></row>
@@ -2762,7 +2762,7 @@
 		<row><td>moveablepointlight.cs</td><td>ISX_DEFAULTCOMPONENT22</td><td>MOVEAB~1.CS|MoveablePointLight.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\Commons\MoveablePointLight.cs</td><td>1</td><td/></row>
 		<row><td>moveablepointlight.cs1</td><td>ISX_DEFAULTCOMPONENT55</td><td>MOVEAB~1.CS|MoveablePointLight.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Commons\MoveablePointLight.cs</td><td>1</td><td/></row>
 		<row><td>movementscreen.cs</td><td>ISX_DEFAULTCOMPONENT60</td><td>MOVEME~1.CS|MovementScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo4 - Physics\MovementScreen.cs</td><td>1</td><td/></row>
-		<row><td>moveratachment.cs</td><td>ISX_DEFAULTCOMPONENT70</td><td>MOVERA~1.CS|moverAtachment.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo9 - AI\Pathfinding and Waypoints\moverAtachment.cs</td><td>1</td><td/></row>
+		<row><td>moveratachment.cs</td><td>ISX_DEFAULTCOMPONENT74</td><td>MOVERA~1.CS|moverAtachment.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo9 - AI\Waypoints\moverAtachment.cs</td><td>1</td><td/></row>
 		<row><td>multscreen.cs</td><td>ISX_DEFAULTCOMPONENT75</td><td>MULTSC~1.CS|MultScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demos Extras\MultScreen.cs</td><td>1</td><td/></row>
 		<row><td>noisescreen.cs</td><td>ISX_DEFAULTCOMPONENT34</td><td>NOISES~1.CS|NoiseScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\Demo9 -  Noise Textures\NoiseScreen.cs</td><td>1</td><td/></row>
 		<row><td>normal_map.dds</td><td>ISX_DEFAULTCOMPONENT114</td><td>NORMAL~1.DDS|normal_map.dds</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Textures\normal_map.dds</td><td>1</td><td/></row>
@@ -2770,7 +2770,7 @@
 		<row><td>normalbilboardscreen.cs</td><td>ISX_DEFAULTCOMPONENT29</td><td>NORMAL~1.CS|NormalBilboardScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\Demo6 - BilboardsSamples\NormalBilboardScreen.cs</td><td>1</td><td/></row>
 		<row><td>nxcharacter.dll</td><td>NxCharacter.dll</td><td>NXCHAR~1.DLL|NxCharacter.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\NxCharacter.dll</td><td>1</td><td/></row>
 		<row><td>nxcharacter.dll1</td><td>NxCharacter.dll1</td><td>NXCHAR~1.DLL|NxCharacter.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\NxCharacter.dll</td><td>1</td><td/></row>
-		<row><td>objectmock.cs</td><td>ISX_DEFAULTCOMPONENT65</td><td>OBJECT~1.CS|ObjectMock.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo8 - Serialization\ObjectMock.cs</td><td>1</td><td/></row>
+		<row><td>objectmock.cs</td><td>ISX_DEFAULTCOMPONENT65</td><td>OBJECT~2.CS|ObjectMock.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo8 - Serialization\ObjectMock.cs</td><td>1</td><td/></row>
 		<row><td>objectthrowsmokeparticle.cs</td><td>ISX_DEFAULTCOMPONENT28</td><td>OBJECT~1.CS|ObjectThrowSmokeParticle.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\Demo5 - ParticleSamples\Helpers\ObjectThrowSmokeParticle.cs</td><td>1</td><td/></row>
 		<row><td>oceanscreen.cs</td><td>ISX_DEFAULTCOMPONENT35</td><td>OCEANS~1.CS|OceanScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\Demo9.1 Water and Ocean\OceanScreen.cs</td><td>1</td><td/></row>
 		<row><td>octreescreen.cs</td><td>ISX_DEFAULTCOMPONENT38</td><td>OCTREE~1.CS|OctreeScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\Demo9.4 Octree Culling\OctreeScreen.cs</td><td>1</td><td/></row>
@@ -2792,8 +2792,8 @@
 		<row><td>particlescreen.cs</td><td>ISX_DEFAULTCOMPONENT27</td><td>PARTIC~1.CS|ParticleScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\Demo5 - ParticleSamples\ParticleScreen.cs</td><td>1</td><td/></row>
 		<row><td>particlescreen.cs1</td><td>ISX_DEFAULTCOMPONENT88</td><td>PARTIC~1.CS|ParticleScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\PhoneSilverLightDemo\GraphicsApp1Library\3D Demos\ParticleScreen.cs</td><td>1</td><td/></row>
 		<row><td>particlescreen.cs2</td><td>ISX_DEFAULTCOMPONENT122</td><td>PARTIC~1.CS|ParticleScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplate\Particle3D\ParticleScreen.cs</td><td>1</td><td/></row>
-		<row><td>pedestrian.cs</td><td>ISX_DEFAULTCOMPONENT74</td><td>PEDEST~1.CS|Pedestrian.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo9 - AI\Steering\Pedestrian.cs</td><td>1</td><td/></row>
-		<row><td>pedestrianplugin.cs</td><td>ISX_DEFAULTCOMPONENT74</td><td>PEDEST~1.CS|PedestrianPlugIn.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo9 - AI\Steering\PedestrianPlugIn.cs</td><td>1</td><td/></row>
+		<row><td>pedestrian.cs</td><td>ISX_DEFAULTCOMPONENT73</td><td>PEDEST~1.CS|Pedestrian.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo9 - AI\Steering\Pedestrian.cs</td><td>1</td><td/></row>
+		<row><td>pedestrianplugin.cs</td><td>ISX_DEFAULTCOMPONENT73</td><td>PEDEST~1.CS|PedestrianPlugIn.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo9 - AI\Steering\PedestrianPlugIn.cs</td><td>1</td><td/></row>
 		<row><td>perlin.fx</td><td>ISX_DEFAULTCOMPONENT104</td><td>perlin.fx</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Effects\perlin.fx</td><td>1</td><td/></row>
 		<row><td>perlin.xnb</td><td>ISX_DEFAULTCOMPONENT8</td><td>perlin.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Effects\perlin.xnb</td><td>1</td><td/></row>
 		<row><td>perlinnoisescreen.cs</td><td>ISX_DEFAULTCOMPONENT34</td><td>PERLIN~1.CS|PerlinNoiseScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\Demo9 -  Noise Textures\PerlinNoiseScreen.cs</td><td>1</td><td/></row>
@@ -2853,7 +2853,7 @@
 		<row><td>ploobsenginephone7.xml</td><td>ISX_DEFAULTCOMPONENT93</td><td>PLOOBS~1.XML|PloobsEnginePhone7.XML</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\PhoneSilverLightDemo\Phone7\PloobsEnginePhone7.XML</td><td>1</td><td/></row>
 		<row><td>ploobsenginephone7.xml1</td><td>ISX_DEFAULTCOMPONENT96</td><td>PLOOBS~1.XML|PloobsEnginePhone7.XML</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\PloobsEngineWindowsPhone\PloobsEnginePhone7.XML</td><td>1</td><td/></row>
 		<row><td>ploobsenginepipelinedebug.dl</td><td>PloobsEnginePipelineDebug.dll</td><td>PLOOBS~1.DLL|PloobsEnginePipelineDebug.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\Dll\PloobsEnginePipelineDebug.dll</td><td>1</td><td/></row>
-		<row><td>ploobsenginepipelinedebug.dl1</td><td>PloobsEnginePipelineDebug.dll1</td><td>PLOOBS~1.DLL|PloobsEnginePipelineDebug.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\Dll\PloobsEnginePipelineDebug.dll</td><td>1</td><td/></row>
+		<row><td>ploobsenginepipelinedebug.dl1</td><td>PloobsEnginePipelineDebug.dll1</td><td>PLOOBS~2.DLL|PloobsEnginePipelineDebug.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\Dll\PloobsEnginePipelineDebug.dll</td><td>1</td><td/></row>
 		<row><td>ploobsenginepipelinedebug.dl2</td><td>PloobsEnginePipelineDebug.dll2</td><td>PLOOBS~1.DLL|PloobsEnginePipelineDebug.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\PloobsEngineHiDef\PloobsEnginePipelineDebug.dll</td><td>1</td><td/></row>
 		<row><td>ploobsenginepipelinedebug.dl3</td><td>PloobsEnginePipelineDebug.dll3</td><td>PLOOBS~1.DLL|PloobsEnginePipelineDebug.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\PloobsEngineReach\PloobsEnginePipelineDebug.dll</td><td>1</td><td/></row>
 		<row><td>ploobsenginepipelinedebug.dl4</td><td>PloobsEnginePipelineDebug.dll4</td><td>PLOOBS~2.DLL|PloobsEnginePipelineDebug.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\Dlls\PloobsEnginePipelineDebug.dll</td><td>1</td><td/></row>
@@ -2862,10 +2862,10 @@
 		<row><td>ploobslevelexporter.ms</td><td>ISX_DEFAULTCOMPONENT98</td><td>PLOOBS~1.MS|PloobsLevelExporter.ms</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\Extra\ExporterScripts\PloobsLevelExporter.ms</td><td>1</td><td/></row>
 		<row><td>ploobsprojecttemplate.csproj</td><td>ISX_DEFAULTCOMPONENT117</td><td>PLOOBS~1.CSP|PloobsProjectTemplate.csproj</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplate\PloobsProjectTemplate.csproj</td><td>1</td><td/></row>
 		<row><td>ploobsprojecttemplatecontent</td><td>ISX_DEFAULTCOMPONENT127</td><td>PLOOBS~1.CON|PloobsProjectTemplateContent.contentproj</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplateContent\PloobsProjectTemplateContent.contentproj</td><td>1</td><td/></row>
-		<row><td>ploobsscripts.dll</td><td>PloobsScripts.dll</td><td>PLOOBS~1.DLL|PloobsScripts.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\Dll\PloobsScripts.dll</td><td>1</td><td/></row>
-		<row><td>ploobsserializator.dll</td><td>PloobsSerializator.dll</td><td>PLOOBS~1.DLL|PloobsSerializator.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\Dll\PloobsSerializator.dll</td><td>1</td><td/></row>
+		<row><td>ploobsscripts.dll</td><td>PloobsScripts.dll</td><td>PLOOBS~4.DLL|PloobsScripts.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\Dll\PloobsScripts.dll</td><td>1</td><td/></row>
+		<row><td>ploobsserializator.dll</td><td>PloobsSerializator.dll</td><td>PLOOBS~4.DLL|PloobsSerializator.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\Dll\PloobsSerializator.dll</td><td>1</td><td/></row>
 		<row><td>pointlightcircularupdater.cs</td><td>ISX_DEFAULTCOMPONENT59</td><td>POINTL~1.CS|PointLightCircularUpdater.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo3 - Lights\Helpers\PointLightCircularUpdater.cs</td><td>1</td><td/></row>
-		<row><td>pointlightscreen.cs</td><td>ISX_DEFAULTCOMPONENT58</td><td>POINTL~1.CS|PointLightScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo3 - Lights\PointLightScreen.cs</td><td>1</td><td/></row>
+		<row><td>pointlightscreen.cs</td><td>ISX_DEFAULTCOMPONENT58</td><td>POINTL~2.CS|PointLightScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo3 - Lights\PointLightScreen.cs</td><td>1</td><td/></row>
 		<row><td>ponte_suporte.jpg</td><td>ISX_DEFAULTCOMPONENT92</td><td>PONTE_~1.JPG|ponte_suporte.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\ponte_suporte.jpg</td><td>1</td><td/></row>
 		<row><td>positioning2d.jpg</td><td>ISX_DEFAULTCOMPONENT83</td><td>POSITI~1.JPG|positioning2d.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\PhoneSilverLightDemo\GraphicsApp1\positioning2d.jpg</td><td>1</td><td/></row>
 		<row><td>pressurecloth28screen.cs</td><td>ISX_DEFAULTCOMPONENT45</td><td>PRESSU~1.CS|PressureCloth28Screen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\Demo9.8 Physx 2.8.x\Cloth\Screens\PressureCloth28Screen.cs</td><td>1</td><td/></row>
@@ -2887,12 +2887,12 @@
 		<row><td>rock.dds</td><td>ISX_DEFAULTCOMPONENT114</td><td>rock.dds</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Textures\rock.dds</td><td>1</td><td/></row>
 		<row><td>rock.xnb</td><td>ISX_DEFAULTCOMPONENT69</td><td>rock.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Textures\rock.xnb</td><td>1</td><td/></row>
 		<row><td>rotatingcamera.cs</td><td>ISX_DEFAULTCOMPONENT85</td><td>ROTATI~1.CS|RotatingCamera.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\PhoneSilverLightDemo\GraphicsApp1Library\RotatingCamera.cs</td><td>1</td><td/></row>
-		<row><td>rvo2dscreen.cs</td><td>ISX_DEFAULTCOMPONENT72</td><td>RVO2DS~1.CS|RVO2DScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo9 - AI\RVO2\RVO2DScreen.cs</td><td>1</td><td/></row>
+		<row><td>rvo2dscreen.cs</td><td>ISX_DEFAULTCOMPONENT71</td><td>RVO2DS~1.CS|RVO2DScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo9 - AI\RVO2\RVO2DScreen.cs</td><td>1</td><td/></row>
 		<row><td>rvo2dwrapper.dll</td><td>RVO2DWrapper.dll</td><td>RVO2DW~1.DLL|RVO2DWrapper.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\RVO2DWrapper.dll</td><td>1</td><td/></row>
 		<row><td>rvo3d.dll</td><td>RVO3D.dll</td><td>RVO3D.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\RVO3D.dll</td><td>1</td><td/></row>
-		<row><td>rvo3dscreen.cs</td><td>ISX_DEFAULTCOMPONENT73</td><td>RVO3DS~1.CS|RVO3DScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo9 - AI\RVO3D\RVO3DScreen.cs</td><td>1</td><td/></row>
-		<row><td>rvoobject.cs</td><td>ISX_DEFAULTCOMPONENT71</td><td>RVOOBJ~1.CS|RVOObject.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo9 - AI\RVO\RVOObject.cs</td><td>1</td><td/></row>
-		<row><td>rvoscreen.cs</td><td>ISX_DEFAULTCOMPONENT71</td><td>RVOSCR~1.CS|RVOScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo9 - AI\RVO\RVOScreen.cs</td><td>1</td><td/></row>
+		<row><td>rvo3dscreen.cs</td><td>ISX_DEFAULTCOMPONENT72</td><td>RVO3DS~1.CS|RVO3DScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo9 - AI\RVO3D\RVO3DScreen.cs</td><td>1</td><td/></row>
+		<row><td>rvoobject.cs</td><td>ISX_DEFAULTCOMPONENT70</td><td>RVOOBJ~1.CS|RVOObject.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo9 - AI\RVO\RVOObject.cs</td><td>1</td><td/></row>
+		<row><td>rvoscreen.cs</td><td>ISX_DEFAULTCOMPONENT70</td><td>RVOSCR~1.CS|RVOScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo9 - AI\RVO\RVOScreen.cs</td><td>1</td><td/></row>
 		<row><td>sand.dds</td><td>ISX_DEFAULTCOMPONENT114</td><td>sand.dds</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Textures\sand.dds</td><td>1</td><td/></row>
 		<row><td>sand.xnb</td><td>ISX_DEFAULTCOMPONENT69</td><td>sand.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Textures\sand.xnb</td><td>1</td><td/></row>
 		<row><td>script.txt</td><td>ISX_DEFAULTCOMPONENT80</td><td>script.txt</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0Content\Script\script.txt</td><td>1</td><td/></row>
@@ -2985,7 +2985,7 @@
 		<row><td>sponza_floor_a_diff.xnb</td><td>ISX_DEFAULTCOMPONENT69</td><td>SPONZA~1.XNB|sponza_floor_a_diff.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Textures\sponza_floor_a_diff.xnb</td><td>1</td><td/></row>
 		<row><td>sponza_floor_a_diff_0.xnb</td><td>ISX_DEFAULTCOMPONENT69</td><td>SPONZA~1.XNB|sponza_floor_a_diff_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Textures\sponza_floor_a_diff_0.xnb</td><td>1</td><td/></row>
 		<row><td>spotlightcircularupdater.cs</td><td>ISX_DEFAULTCOMPONENT59</td><td>SPOTLI~1.CS|SpotLightCircularUpdater.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo3 - Lights\Helpers\SpotLightCircularUpdater.cs</td><td>1</td><td/></row>
-		<row><td>spotlightscreen.cs</td><td>ISX_DEFAULTCOMPONENT58</td><td>SPOTLI~1.CS|SpotLightScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo3 - Lights\SpotLightScreen.cs</td><td>1</td><td/></row>
+		<row><td>spotlightscreen.cs</td><td>ISX_DEFAULTCOMPONENT58</td><td>SPOTLI~2.CS|SpotLightScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo3 - Lights\SpotLightScreen.cs</td><td>1</td><td/></row>
 		<row><td>spriteanimation.jpg</td><td>ISX_DEFAULTCOMPONENT83</td><td>SPRITE~1.JPG|spriteanimation.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\PhoneSilverLightDemo\GraphicsApp1\spriteanimation.jpg</td><td>1</td><td/></row>
 		<row><td>spriteparticle.cs</td><td>ISX_DEFAULTCOMPONENT87</td><td>SPRITE~1.CS|SpriteParticle.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\PhoneSilverLightDemo\GraphicsApp1Library\2D Demos\Helpers\SpriteParticle.cs</td><td>1</td><td/></row>
 		<row><td>spriteparticle.cs1</td><td>ISX_DEFAULTCOMPONENT119</td><td>SPRITE~1.CS|SpriteParticle.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplate\2D Demos\Helpers\SpriteParticle.cs</td><td>1</td><td/></row>
@@ -3000,8 +3000,8 @@
 		<row><td>statusbar.xnb</td><td>ISX_DEFAULTCOMPONENT16</td><td>STATUS~1.XNB|StatusBar.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Skins\Default\Images\StatusBar.xnb</td><td>1</td><td/></row>
 		<row><td>stealtheffectscreen.cs</td><td>ISX_DEFAULTCOMPONENT41</td><td>STEALT~1.CS|StealthEffectScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\Demo9.7 Stealth\StealthEffectScreen.cs</td><td>1</td><td/></row>
 		<row><td>stealthposteffect.cs</td><td>ISX_DEFAULTCOMPONENT41</td><td>STEALT~1.CS|StealthPostEffect.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\Demo9.7 Stealth\StealthPostEffect.cs</td><td>1</td><td/></row>
-		<row><td>steeratachment.cs</td><td>ISX_DEFAULTCOMPONENT74</td><td>STEERA~1.CS|SteerAtachment.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo9 - AI\Steering\SteerAtachment.cs</td><td>1</td><td/></row>
-		<row><td>steerscreen.cs</td><td>ISX_DEFAULTCOMPONENT74</td><td>STEERS~1.CS|SteerScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo9 - AI\Steering\SteerScreen.cs</td><td>1</td><td/></row>
+		<row><td>steeratachment.cs</td><td>ISX_DEFAULTCOMPONENT73</td><td>STEERA~1.CS|SteerAtachment.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo9 - AI\Steering\SteerAtachment.cs</td><td>1</td><td/></row>
+		<row><td>steerscreen.cs</td><td>ISX_DEFAULTCOMPONENT73</td><td>STEERS~1.CS|SteerScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo9 - AI\Steering\SteerScreen.cs</td><td>1</td><td/></row>
 		<row><td>stilldesign.physx.net.dll</td><td>StillDesign.PhysX.Net.dll</td><td>STILLD~1.DLL|StillDesign.PhysX.Net.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\StillDesign.PhysX.Net.dll</td><td>1</td><td/></row>
 		<row><td>stilldesign.physx.net.dll1</td><td>StillDesign.PhysX.Net.dll1</td><td>STILLD~1.DLL|StillDesign.PhysX.Net.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\StillDesign.PhysX.Net.dll</td><td>1</td><td/></row>
 		<row><td>stressbepuscreen.cs</td><td>ISX_DEFAULTCOMPONENT60</td><td>STRESS~1.CS|StressBepuScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo4 - Physics\StressBepuScreen.cs</td><td>1</td><td/></row>
@@ -3474,40 +3474,40 @@
 		<row><td>ISX_DEFAULTCOMPONENT49</td><td/><td/><td>_9F231592_3D4D_4545_997B_EE18A8AF3F47_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT5</td><td/><td/><td>_B5763974_13E9_4D65_8897_BBCB4A9B5D16_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT50</td><td/><td/><td>_2A3C00A3_02A9_4375_8805_6FBCF3709922_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT51</td><td/><td/><td>_5050448F_B5FB_4F92_B40A_28A84433E621_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT52</td><td/><td/><td>_A8EB709A_5123_4464_89F3_F95284CAFA4B_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT53</td><td/><td/><td>_6A9CCB07_FA6A_4CFA_9A85_ABB942D364CD_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT54</td><td/><td/><td>_4437DC94_4D30_4445_B127_63583AEE293A_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT55</td><td/><td/><td>_1FF00020_02C1_4053_A851_125475E6C6A2_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT56</td><td/><td/><td>_CB1A3D52_B04F_432F_91AA_64921A7F6986_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT57</td><td/><td/><td>_48A17BC6_61C1_4EFB_83B2_98AE6E3ED000_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT58</td><td/><td/><td>_5342F7B2_9960_4644_B480_92C6D3E8F2CC_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT59</td><td/><td/><td>_AE91CD14_9DB4_479D_89ED_FC5A1C208DC7_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT51</td><td/><td/><td>_190A3D07_2712_48D9_8F01_A4B67DF708BF_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT52</td><td/><td/><td>_382079D7_6D8B_4F4E_BAD4_A9C7590AD89C_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT53</td><td/><td/><td>_D169517E_A9A7_4302_BCA1_3B58E21725AC_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT54</td><td/><td/><td>_1E9B8772_8B8B_4706_9DAD_26483AE38D05_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT55</td><td/><td/><td>_A99E6D53_3117_4EF0_9DDE_5425E31FDBFA_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT56</td><td/><td/><td>_DB187B15_886F_42EA_9E9C_B825698FDBA5_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT57</td><td/><td/><td>_618BD50E_5EA4_4CB2_8D34_77C39121D43F_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT58</td><td/><td/><td>_3DC02188_E873_483F_ABA4_F15DF12B67E5_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT59</td><td/><td/><td>_B8726C2D_5455_431C_B619_2810EEFF6351_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT6</td><td/><td/><td>_2FA20897_9891_40EF_B5D3_7B0690567B41_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT60</td><td/><td/><td>_56461348_F701_44BC_BFC8_EC141011EA16_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT61</td><td/><td/><td>_A0D1A7B7_8AC1_40CB_80F9_372110E29AB6_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT62</td><td/><td/><td>_E29B6725_EC7F_4959_BFCA_D33760D8F6C7_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT63</td><td/><td/><td>_BB0B01F9_904F_4EF3_B4CB_5A11A92C5160_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT64</td><td/><td/><td>_099A146D_8DBD_4BDF_8D27_8B233194E13E_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT65</td><td/><td/><td>_0D111279_EA5C_42E9_B56D_E262027A800F_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT66</td><td/><td/><td>_6E9CE54E_E265_4067_8A36_3FC9B08AD11B_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT67</td><td/><td/><td>_D9F71389_A9FD_4AE1_90EF_08D5E82865E9_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT68</td><td/><td/><td>_2121DBDA_F1DD_4D90_A722_1D24E895FA71_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT60</td><td/><td/><td>_3C9622A2_E271_421C_B83B_220A920B73E9_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT61</td><td/><td/><td>_E7D85ADC_10D0_4A93_A78E_5ADFA9F7711F_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT62</td><td/><td/><td>_A5A88978_5241_4106_983D_D0E85C83D46A_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT63</td><td/><td/><td>_8C07F10D_1098_495B_BDCA_D598C6559BCB_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT64</td><td/><td/><td>_9EE80126_4E42_4333_921E_0E27BC2EA551_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT65</td><td/><td/><td>_5206667E_1591_4981_8220_78E428859608_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT66</td><td/><td/><td>_6B37D52C_C02D_47A4_9607_9795397CCD35_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT67</td><td/><td/><td>_815300E7_ACDD_49E1_BF05_79CDDA89F0EA_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT68</td><td/><td/><td>_A604B50E_021F_4FA6_8C8B_10CC9819F3FE_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT69</td><td/><td/><td>_2D4C690E_6065_483E_844C_E673551A4F3B_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT7</td><td/><td/><td>_83C37F36_C497_4CF8_ACF4_210194249B06_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT70</td><td/><td/><td>_B2B6043C_92EA_4458_B094_C53993AB7A2D_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT71</td><td/><td/><td>_EDC0FB25_D79C_417C_B8C1_2943D1BBC63A_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT72</td><td/><td/><td>_5ED2A62D_1B8B_4262_A848_83E4B818BDFD_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT73</td><td/><td/><td>_0FA5C145_2B75_4AB0_9475_6D487B251D4E_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT74</td><td/><td/><td>_DBE2C8EB_6016_46DD_B48D_2F82E10E4D83_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT75</td><td/><td/><td>_75A09C1A_5E8C_4FA6_BC75_70297ED3236A_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT76</td><td/><td/><td>_983724DE_8992_40DD_ACD9_B8925DBF9A1D_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT77</td><td/><td/><td>_EC61BDB8_25A8_40BC_8B8D_9DB41A2A8D7A_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT78</td><td/><td/><td>_2EC27E33_F8C0_4E08_BF6B_FFAD0ED9C876_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT79</td><td/><td/><td>_E58F2173_89FB_4043_861F_13C392C54AFA_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT70</td><td/><td/><td>_1D394720_D826_4152_A032_8D33A56818A5_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT71</td><td/><td/><td>_8D83FD42_CE53_49A5_8DB3_CF80E80B71AC_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT72</td><td/><td/><td>_158C3559_3C47_473C_A483_0B3F04795798_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT73</td><td/><td/><td>_85063E7B_75BE_4829_9D57_6E20F6597CDB_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT74</td><td/><td/><td>_676A53EE_4D8B_455B_A843_52AE1CA14DAF_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT75</td><td/><td/><td>_179FF5FD_5475_4ED6_9131_02893BC51185_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT76</td><td/><td/><td>_478C5240_7127_4ADC_80FC_28714697724B_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT77</td><td/><td/><td>_1319BE37_2758_4E4F_B6AF_217FB22DE10A_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT78</td><td/><td/><td>_55CDE10E_C49C_4F82_8297_9510921937F8_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT79</td><td/><td/><td>_1855A06C_0392_419A_A8AE_D5C37CE3BC74_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT8</td><td/><td/><td>_3CFEC77F_EEA2_44F9_8060_29D0CEBB48B5_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT80</td><td/><td/><td>_33323482_DA59_4317_90AB_12BD3205ABF6_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT81</td><td/><td/><td>_FEAD0FFC_38D7_46C4_91A2_CB31C60D6F2D_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT80</td><td/><td/><td>_40DE7449_072A_4E8F_9183_54D201F88438_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT81</td><td/><td/><td>_E87A1BF8_820C_4AE7_A267_C0AFF7301908_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT82</td><td/><td/><td>_116D8A1B_370D_425B_9723_4F80F59545DD_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT83</td><td/><td/><td>_4DCC49E9_6C4D_4620_8637_4B2244C631C2_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT84</td><td/><td/><td>_87AC5F40_F876_4597_AC2F_207C8987361B_FILTER</td><td/><td/><td/><td/></row>
@@ -3542,22 +3542,22 @@
 		<row><td>PhysXLoader.dll1</td><td/><td/><td>_160E68EE_15ED_48D3_AE16_A94F6C268511_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>PloobsEngineDebug.dll</td><td/><td/><td>_544E3A79_3052_4232_A72D_CD355760CC6E_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>PloobsEngineDebug.dll1</td><td/><td/><td>_3E25983D_EC91_4C15_B82E_E5CF701D7794_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>PloobsEngineDebug.dll2</td><td/><td/><td>_82E3456F_520D_4A6F_8A78_B0693BFA83D9_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>PloobsEngineDebug.dll2</td><td/><td/><td>_E1CF3326_7DFB_4A62_BA36_3EA3BAA94DC0_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>PloobsEngineDebug.dll3</td><td/><td/><td>_9A7FE0A3_6442_4861_BD20_1EC4DA4AEFD6_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>PloobsEngineDebug.dll4</td><td/><td/><td>_8B10201C_9BDF_449D_A7DB_34328222FF1B_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>PloobsEngineDebug.dll5</td><td/><td/><td>_0ED43E27_81CC_412F_B52E_0D8A79758EA4_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>PloobsEnginePhone7.dll</td><td/><td/><td>_19A2093D_EF96_4FC7_9C07_B8F58A0D7BCA_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>PloobsEnginePhone7.dll1</td><td/><td/><td>_0465CB3B_FBAB_4E68_A8CB_3C78E2565906_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>PloobsEnginePipelineDebug.dll</td><td/><td/><td>_855F2B1E_9E7F_42CC_9C30_F2252FBB1470_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>PloobsEnginePipelineDebug.dll1</td><td/><td/><td>_3064E9C8_6A1F_4543_AB23_3B6F15AC9C8B_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>PloobsEnginePipelineDebug.dll1</td><td/><td/><td>_6668B917_BBE2_44FA_AE18_F9BEA0B2B831_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>PloobsEnginePipelineDebug.dll2</td><td/><td/><td>_555ADEAE_5514_4FEE_BB7C_320E8BC032FA_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>PloobsEnginePipelineDebug.dll3</td><td/><td/><td>_325DDC25_CD78_4563_89A8_6064D2BE5020_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>PloobsEnginePipelineDebug.dll4</td><td/><td/><td>_4D7DD7C3_74DC_43F9_A2DF_55631A35CA43_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>PloobsScripts.dll</td><td/><td/><td>_DF78EF73_A77A_4A9D_85AA_3A4C90D0D055_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>PloobsSerializator.dll</td><td/><td/><td>_B24CF44E_4620_4CB0_8447_9281CEA084C3_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>PloobsScripts.dll</td><td/><td/><td>_38E898A6_5183_40CD_AFBA_DD185FF98D1E_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>PloobsSerializator.dll</td><td/><td/><td>_E1E855EE_52A0_4568_87A4_48A2FF372B22_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>Ploobs_Engine_Help.chm</td><td/><td/><td>_98DD2D38_5A24_4AB2_B332_F22E15A54F42_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>RVO2DWrapper.dll</td><td/><td/><td>_3D363B26_994E_4436_B144_EEC3FE4E6912_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>RVO3D.dll</td><td/><td/><td>_D91FF48E_8871_4962_BD14_FA0004BBA981_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>RVO2DWrapper.dll</td><td/><td/><td>_680E6B5B_EB32_41CE_998D_136213D81743_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>RVO3D.dll</td><td/><td/><td>_CD5C0FB2_33ED_4ECD_969C_98A53FAAF290_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>SharedOsiris.dll</td><td/><td/><td>_5DC719B5_B3B3_4831_A39E_AF29FA8C4E23_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>SkinnedModel.dll</td><td/><td/><td>_948958F5_7A72_4D38_B3CE_78382729DCC5_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>SkinnedModel.dll1</td><td/><td/><td>_767768FF_62E3_49A3_A013_8D656CE91E55_FILTER</td><td/><td/><td/><td/></row>
@@ -4195,7 +4195,7 @@
 		<col def="I2">Encoded</col>
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
-		<row><td>COMPANY_NAME</td><td>1033</td><td>Ploobs</td><td>0</td><td/><td>1629536951</td></row>
+		<row><td>COMPANY_NAME</td><td>1033</td><td>Ploobs</td><td>0</td><td/><td>-375340767</td></row>
 		<row><td>DN_AlwaysInstall</td><td>1033</td><td>Always Install</td><td>0</td><td/><td>-1650505517</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>1033</td><td>The color settings of your system are not adequate for running [ProductName].</td><td>0</td><td/><td>-1650505517</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_OS</td><td>1033</td><td>The operating system is not adequate for running [ProductName].</td><td>0</td><td/><td>-1650505517</td></row>
@@ -5319,9 +5319,9 @@
 		<row><td>ID_STRING14</td><td>1033</td><td>PloobsEngine Installer</td><td>0</td><td/><td>-710946569</td></row>
 		<row><td>ID_STRING15</td><td>1033</td><td>PloobsEngine Game Engine</td><td>0</td><td/><td>-710999785</td></row>
 		<row><td>ID_STRING16</td><td>1033</td><td>LAUNCH~1.EXE|Launch AdvancedDemos.exe</td><td>0</td><td/><td>1906353056</td></row>
-		<row><td>ID_STRING2</td><td>1033</td><td>http://www.Ploobs.com</td><td>0</td><td/><td>1629536951</td></row>
-		<row><td>ID_STRING3</td><td>1033</td><td>Ploobs</td><td>0</td><td/><td>1629536951</td></row>
-		<row><td>ID_STRING4</td><td>1033</td><td>http://www.ploobs.com.br/forum</td><td>0</td><td/><td>1629536951</td></row>
+		<row><td>ID_STRING2</td><td>1033</td><td>http://www.Ploobs.com</td><td>0</td><td/><td>-375340767</td></row>
+		<row><td>ID_STRING3</td><td>1033</td><td>Ploobs</td><td>0</td><td/><td>-375340767</td></row>
+		<row><td>ID_STRING4</td><td>1033</td><td>http://www.ploobs.com.br/forum</td><td>0</td><td/><td>-375340767</td></row>
 		<row><td>ID_STRING5</td><td>1033</td><td>contato@ploobs.com.br</td><td>0</td><td/><td>-1650489037</td></row>
 		<row><td>ID_STRING6</td><td>1033</td><td>55 11 8888 8888</td><td>0</td><td/><td>-1650523821</td></row>
 		<row><td>ID_STRING7</td><td>1033</td><td>http://www.Ploobs.com.br</td><td>0</td><td/><td>-1910530989</td></row>
