@@ -15,7 +15,7 @@ namespace PloobsEngine.TestSuite
 {
     public class TestProcessor
     {
-        public void EvaluateTestes(String path)
+        public void EvaluateTestes(String path, String logPath  =null)
         {
             if(Path.IsPathRooted(path) == false)
                 path = Path.Combine(Environment.CurrentDirectory, path);
@@ -44,7 +44,7 @@ namespace PloobsEngine.TestSuite
             }
 
             InitialEngineDescription InitialEngineDescription= InitialEngineDescription.Default();
-            InitialEngineDescription.Logger = new logger();
+            InitialEngineDescription.Logger = new logger(logPath);
             InitialEngineDescription.UnhandledException_Handler =
                 (a,b) =>
                 {
@@ -182,9 +182,17 @@ namespace PloobsEngine.TestSuite
         class logger : ILogger
             {
             StreamWriter StreamWriter;
-            public logger()
+            public logger(string path)
             {
-                StreamWriter = new System.IO.StreamWriter("PloobsEngine_Build" + DateTime.Now.ToShortDateString(), true);
+                if (!String.IsNullOrEmpty(path) != null)
+                {
+                    path = Path.Combine(path, "PloobsEngine_Build" + DateTime.Now.ToShortDateString() + ".log");
+                }
+                else
+                {
+                    path = "PloobsEngine_Build" + DateTime.Now.ToShortDateString() + ".log";
+                }
+                StreamWriter = new System.IO.StreamWriter(path, true);
                 StreamWriter.WriteLine("Testing PloobsEngine " + DateTime.Now.ToLongTimeString());
             }
             ~logger()
