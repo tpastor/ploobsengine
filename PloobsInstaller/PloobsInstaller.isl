@@ -3639,6 +3639,7 @@
 	<table name="ISDependency">
 		<col key="yes" def="S50">ISDependency</col>
 		<col def="I2">Exclude</col>
+		<row><td>VISUAL C++ 10.0 CRT (IA64)</td><td>1</td></row>
 	</table>
 
 	<table name="ISDisk1File">
