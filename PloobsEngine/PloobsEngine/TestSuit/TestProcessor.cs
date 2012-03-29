@@ -184,7 +184,7 @@ namespace PloobsEngine.TestSuite
             StreamWriter StreamWriter;
             public logger(string path)
             {
-                if (!String.IsNullOrEmpty(path) != null)
+                if (!String.IsNullOrEmpty(path))
                 {
                     path = Path.Combine(path, "PloobsEngine_Build" + DateTime.Now.ToShortDateString() + ".log");
                 }
