@@ -242,6 +242,11 @@ namespace PloobsUpdater
                                    File.Delete(System.IO.Path.GetTempPath() + "PloobsEngine//setup.exe");
                                }
 
+                               if(Directory.Exists(System.IO.Path.GetTempPath() + "PloobsEngine/"))
+                               {
+                                   Directory.Delete(System.IO.Path.GetTempPath() + "PloobsEngine/", true);
+                               }
+
                                RarArchive.WriteToDirectory(temppath, System.IO.Path.GetTempPath(), NUnrar.Common.ExtractOptions.ExtractFullPath);
                                
                                temppath = System.IO.Path.GetTempPath() + "PloobsEngine//setup.exe";
