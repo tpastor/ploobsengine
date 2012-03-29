@@ -256,7 +256,8 @@ namespace PloobsUpdater
                                process.Start();
                                process.WaitForExit();
 
-                               packageName = sitem;                               
+                               packageName = sitem;
+                               GetVersionOnRegistry();
 
                                label2.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
                                    (Action)(() => { label2.Content = "Current Version: " + packageName; }));

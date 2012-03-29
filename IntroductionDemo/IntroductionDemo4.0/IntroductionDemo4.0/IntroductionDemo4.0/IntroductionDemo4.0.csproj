@@ -129,9 +129,9 @@
     <Compile Include="Demo9 - AI\Behavior Tree\BehaviorTreeScreen.cs" />
     <Compile Include="Demo9 - AI\FSM\FSMScreen.cs" />
     <Compile Include="Demo9 - AI\FSM\StateSample.cs" />
-    <Compile Include="Demo9 - AI\Pathfinding and Waypoints\IaPathFindingScreen.cs" />
-    <Compile Include="Demo9 - AI\Pathfinding and Waypoints\IaWaypointsScreen.cs" />
-    <Compile Include="Demo9 - AI\Pathfinding and Waypoints\moverAtachment.cs" />
+    <Compile Include="Demo9 - AI\Waypoints\IaPathFindingScreen.cs" />
+    <Compile Include="Demo9 - AI\Waypoints\IaWaypointsScreen.cs" />
+    <Compile Include="Demo9 - AI\Waypoints\moverAtachment.cs" />
     <Compile Include="Demo9 - AI\RVO2\RVO2DScreen.cs" />
     <Compile Include="Demo9 - AI\RVO3D\RVO3DScreen.cs" />
     <Compile Include="Demo9 - AI\RVO\RVOObject.cs" />

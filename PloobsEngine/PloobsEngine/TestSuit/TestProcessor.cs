@@ -10,12 +10,13 @@ using PloobsEngine.Utils;
 using System.IO;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Engine.Logger;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace PloobsEngine.TestSuite
 {
     public class TestProcessor
     {
-        public void EvaluateTestes(String path, String logPath  =null)
+        public void EvaluateTestes(String path, String logPath = null, String pathToScreenShot = null)
         {
             if(Path.IsPathRooted(path) == false)
                 path = Path.Combine(Environment.CurrentDirectory, path);
@@ -54,7 +55,7 @@ namespace PloobsEngine.TestSuite
             EngineStuff EngineStuff = new EngineStuff(ref InitialEngineDescription, 
                 (a) =>
                     {
-                        a.AddScreen(new AlgoMainTest(AlgClass,screens));
+                        a.AddScreen(new AlgoMainTest(AlgClass, screens, pathToScreenShot));
                     }
             );
 
@@ -67,9 +68,11 @@ namespace PloobsEngine.TestSuite
             IList<Type> AlgClass;
             int i = -1;
             List<IScreen> IScreen;
-            public AlgoMainTest(IList<Type> AlgClass, List<IScreen> IScreen)
+            String pathToScreenShot;
+            public AlgoMainTest(IList<Type> AlgClass, List<IScreen> IScreen,String pathToScreenShot)
             {
                 this.AlgClass = AlgClass;
+                this.pathToScreenShot = pathToScreenShot;
                 this.IScreen = IScreen;
             }
 
@@ -86,7 +89,7 @@ namespace PloobsEngine.TestSuite
                 if (i == AlgClass.Count)
                 {
                     ScreenManager.RemoveScreen(this);
-                    ScreenManager.AddScreen(new ScreenMainTest(IScreen));
+                    ScreenManager.AddScreen(new ScreenMainTest(IScreen, pathToScreenShot));
                 }
                 else
                 {
@@ -121,8 +124,11 @@ namespace PloobsEngine.TestSuite
         class ScreenMainTest : IScreen
         {
             List<IScreen> IScreen;
-            public ScreenMainTest(List<IScreen>  IScreen)
+            String pathToScreenShot;
+
+            public ScreenMainTest(List<IScreen>  IScreen,String pathToScreenShot)
             {
+                this.pathToScreenShot = pathToScreenShot;
                 this.IScreen = IScreen;                                
             }
 
@@ -131,8 +137,11 @@ namespace PloobsEngine.TestSuite
             int i = -1;
             bool firstTime = true;
             IContentManager contentManager;
+            RenderTarget2D RenderTarget2D;
+            bool takeScreen = false;
             protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory, IContentManager contentManager)
             {
+                RenderTarget2D = factory.CreateRenderTarget(GraphicInfo.BackBufferWidth, GraphicInfo.BackBufferHeight);
                 this.contentManager = contentManager;
                 base.LoadContent(GraphicInfo, factory, contentManager);
             }
@@ -153,6 +162,8 @@ namespace PloobsEngine.TestSuite
                     ScreenManager.AddScreen(IScreen[i]);
                     TimePassed.InitOrRestart(gameTime);
                     ActiveLogger.LogMessage("Added Screen: " + IScreen[i].GetType().AssemblyQualifiedName, LogLevel.Info);
+                    if(pathToScreenShot!=null)
+                        takeScreen = true;
                 }
 
                 if (TimePassed.hasPassed(gameTime))
@@ -174,8 +185,17 @@ namespace PloobsEngine.TestSuite
             }
 
             protected override void Draw(Microsoft.Xna.Framework.GameTime gameTime, RenderHelper render)
-            {
-                render.RenderTextComplete("Ploobs Automated Visual Tests",new Microsoft.Xna.Framework.Vector2(50,50),Color.Red,Matrix.Identity);
+            {        
+                if (takeScreen)
+                {
+                    render.PushRenderTarget(RenderTarget2D);
+                    screenManager.GetScreens()[1].iDraw(gameTime, render);
+                    render.PopRenderTarget();
+                    takeScreen = false;
+                    String sabeTo= Path.Combine(pathToScreenShot,screenManager.GetScreens()[1].GetType().Name + ".png");
+                    RenderTarget2D.SaveAsPng(new FileStream(sabeTo, FileMode.Create), GraphicInfo.BackBufferWidth, GraphicInfo.BackBufferHeight);
+                }
+                render.RenderTextComplete("Ploobs Automated Visual Tests", new Microsoft.Xna.Framework.Vector2(50, 50), Color.Red, Matrix.Identity);
             }
         }
 
