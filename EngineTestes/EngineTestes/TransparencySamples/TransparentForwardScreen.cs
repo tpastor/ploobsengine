@@ -22,8 +22,9 @@ namespace EngineTestes
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
-
-            ForwardRenderTecnichDescription desc = ForwardRenderTecnichDescription.Default();            
+            //world.Culler.SortObjectsByDistanceToCamera = true;
+            ForwardRenderTecnichDescription desc = ForwardRenderTecnichDescription.Default();
+            desc.UsePostDrawPhase = true;
             renderTech = new ForwardRenderTecnich(desc);
         }      
 
@@ -57,10 +58,6 @@ namespace EngineTestes
                     ///Objeto fisico Ghost (nao tem colisao, nem formato)
                     GhostObject pi = new GhostObject(new Vector3(i * 10, 50, j * 10), Matrix.Identity, new Vector3(5));
                     pi.isMotionLess = true;
-                    ///Cria o shader de transparencia                    
-                    ///Caso a textura do modelo nao tenha Alpha, ela pode ser setada usando shader.TransparencyLevel
-                    ///OBJETOS TRANSPARENTES NAO SAO AFETADOS PELA LUZ, a sua cor final sera uma combinacao entre a textura difuse e o efeito de transparencia
-                    ///O shader de transparencia eh aplicado no passo Forward
                     ForwardTransparenteShader s = new ForwardTransparenteShader();                    
                     s.TransparencyLevel = 0.3f;
                     ForwardMaterial mat = new ForwardMaterial(s);
