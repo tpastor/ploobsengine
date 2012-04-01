@@ -13,8 +13,8 @@ namespace PloobsEngine.IA
                 
             WorldState goal = destiny.WorldState.Clone();
 
-            WorldState current = actual.Clone();            
-
+            WorldState current = actual.Clone();
+            int iter = 0;
             while (!destiny.WorldState.isCompatibleSource(current))
             {
                 Action act = null;
@@ -42,7 +42,9 @@ namespace PloobsEngine.IA
                 {
                     return null;
                 }
-
+                iter++;
+                if (iter > MaxIteration)
+                    return null;
                 
                 System.Diagnostics.Debug.WriteLine(act.Name);
             }

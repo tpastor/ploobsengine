@@ -28,7 +28,7 @@ namespace PloobsEngine.IA
     {
         public override PlanSet CreatePlan(WorldState actual, Goal destiny)
         {
-
+            int iter = 0;
             PlanSet PlanSet = new PlanSet();
             PriorityQueueB<pathrecnode> processing = new PriorityQueueB<pathrecnode>( new comparer());
             List<WorldState> close = new List<WorldState>();
@@ -105,6 +105,10 @@ namespace PloobsEngine.IA
                     
                 }
                 System.Diagnostics.Debug.WriteLine("---END");
+
+                iter++;
+                if (iter > MaxIteration)
+                    return null;
 
             }
 

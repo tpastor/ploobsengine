@@ -4,14 +4,17 @@ using System.Text;
 
 namespace PloobsEngine.IA
 {
+    /// <summary>
+    /// not thead safe
+    /// </summary>
     public class DepthPlanner : IPlanner
     {
-
+        int iter = 0;
         private bool depthSearch(WorldState WorldState)
         {
             if (destiny.WorldState.isCompatibleSource(WorldState))
                 return true;
-
+            
             List<Action> acts = new List<Action>();
             foreach (var item in Actions)
             {
@@ -35,12 +38,17 @@ namespace PloobsEngine.IA
                         ws.SetSymbol(item2.Clone());
                  }
                  item.ApplyEffects();
+                 
+                 iter++;
+                 if (iter > MaxIteration)
+                     return false;
+
                  if (depthSearch(ws) == true)
                  {
                      act.AddFirst(item);
                      return true;
                  }
-            }
+            }            
 
             return false;
         }
@@ -52,8 +60,8 @@ namespace PloobsEngine.IA
         {
             this.destiny = destiny;
             act.Clear();
-
-            PlanSet PlanSet =null;
+            iter = 0;
+            PlanSet PlanSet =null;                        
             
             if (depthSearch(actual) == true)
             {
@@ -63,6 +71,7 @@ namespace PloobsEngine.IA
                     PlanSet.Actions.Add(item);
                     System.Diagnostics.Debug.WriteLine(item.Name);
                 }
+                
             }
             return PlanSet;
         }
