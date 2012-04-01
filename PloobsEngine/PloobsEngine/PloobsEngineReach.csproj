@@ -63,6 +63,11 @@
     <Compile Include="AI\Behaviors\Task.cs" />
     <Compile Include="AI\Behaviors\Wait.cs" />
     <Compile Include="AI\Behaviors\Watch.cs" />
+    <Compile Include="AI\BlackBoard\BlackBoard.cs" />
+    <Compile Include="AI\BlackBoard\ITask.cs" />
+    <Compile Include="AI\BlackBoard\SimpleTrigger.cs" />
+    <Compile Include="AI\BlackBoard\Trigger.cs" />
+    <Compile Include="AI\BlackBoard\TriggerMultiCondition.cs" />
     <Compile Include="AI\FSM\IState.cs" />
     <Compile Include="AI\FSM\StateMachine.cs" />
     <Compile Include="AI\GeneticAlgoritms\GA.cs" />

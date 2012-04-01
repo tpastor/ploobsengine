@@ -26,6 +26,7 @@ namespace PloobsEngine.IA
                 }
                 );
 
+            int iter = 0;
             pathrec current = null;
             while (processing.Count != 0)
             {
@@ -76,6 +77,10 @@ namespace PloobsEngine.IA
                     
                 }
                 System.Diagnostics.Debug.WriteLine("---END");
+
+                iter++;
+                if (iter > MaxIteration)
+                    return null;
 
             }
 
