@@ -139,7 +139,7 @@ namespace PloobsEngine.SceneControl
             gblur = factory.GetEffect("gblur",true,true);
             if (useHalfSingleRenderTarget)
             {
-                target = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.HalfSingle, ginfo.UseMipMap, DepthFormat.None, ginfo.MultiSample);
+                target = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Single, ginfo.UseMipMap, DepthFormat.None, ginfo.MultiSample);
             }
             else
             {

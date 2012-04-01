@@ -213,11 +213,14 @@
     <Compile Include="Physx 2.8.x\Cloth\Screens\FlagCloth28Screen.cs" />
     <Compile Include="Physx 2.8.x\Cloth\VertexGrid.cs" />
     <Compile Include="Physx 2.8.x\Cloth\Screens\BasicCloth28Screen.cs" />
+    <Compile Include="Physx 2.8.x\Fluids\DeferredFluids28Screen3.cs" />
     <Compile Include="Physx 2.8.x\Fluids\DeferredEmitterFluids28Screen.cs" />
     <Compile Include="Physx 2.8.x\Fluids\DeferredFluids28Screen2.cs" />
     <Compile Include="Physx 2.8.x\Fluids\FluidMaterial.cs" />
     <Compile Include="Physx 2.8.x\Fluids\DeferredFluids28Screen.cs" />
     <Compile Include="Physx 2.8.x\Fluids\Fluids28Screen.cs" />
+    <Compile Include="Physx 2.8.x\Fluids\Rendering\FluidMOdel.cs" />
+    <Compile Include="Physx 2.8.x\Fluids\Rendering\FluidShader.cs" />
     <Compile Include="Physx 2.8.x\Material\Physx28MaterialScreen.cs" />
     <Compile Include="Physx 2.8.x\Terrain\PhysxTerrain28Screen.cs" />
     <Compile Include="Physx 2.8.x\Trigger\Physx28TriggerScreen.cs" />
