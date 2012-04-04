@@ -46,7 +46,7 @@ namespace EngineTestes
             DirectionalLightPE ld3 = new DirectionalLightPE(Vector3.Backward, Color.White);
             DirectionalLightPE ld4 = new DirectionalLightPE(Vector3.Forward, Color.White);
             DirectionalLightPE ld5 = new DirectionalLightPE(Vector3.Down, Color.White);
-            float li = 1;
+            float li = 0.5f;
             ld1.LightIntensity = li;
             ld2.LightIntensity = li;
             ld3.LightIntensity = li;
@@ -58,6 +58,9 @@ namespace EngineTestes
             this.World.AddLight(ld4);
             this.World.AddLight(ld5);
             #endregion
+
+            LightThrowBepu LightThrowBepu = new LightThrowBepu(this.World, factory);
+            this.AttachCleanUpAble(LightThrowBepu);
 
             this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo));
         }

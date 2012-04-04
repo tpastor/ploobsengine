@@ -40,7 +40,7 @@ float4 PixelShaderFunction(float2 TexCoord :TEXCOORD0) : COLOR0
 {
 	TexCoord.x += 1.0/1600.0;
 	TexCoord.y += 1.0/1200.0;
-    float depth = tex2D( DepthMap, TexCoord).r /  farPlane ;
+    float depth = 1-tex2D( DepthMap, TexCoord).r /  farPlane ;
     float3 normal = tex2D( normalsampler, TexCoord).rgb;
     float color = tex2D( baseSampler, TexCoord).r;
    

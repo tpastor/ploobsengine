@@ -124,7 +124,7 @@ PixelShaderOutput PixelShaderFunctionReflexiveSurface(VertexShaderOutput input)
     input.Normal = normalize(input.Normal);
     output.Normal.rgb = 0.5f * (input.Normal + 1.0f);               
     output.Normal.a = specularPower;                                
-    output.Depth = input.Depth.x / input.Depth.y;                   
+    output.Depth = 1-input.Depth.x / input.Depth.y;                   
 	output.LightOcclusion =  0;           
                             
     float2 normal = (tex2D(NormalSampler, input.TexCoord / xWaveLength).rg - 0.5f) * 0.2f * xWaveHeight;

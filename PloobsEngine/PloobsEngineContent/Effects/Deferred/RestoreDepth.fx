@@ -29,7 +29,7 @@ void RestoreBuffersPixelShader2(VertexShaderOutput input ,
 	color = tex2D(ColorSampler, input.TexCoord);
 	
 	//write the depth
-	depth = tex2D(DepthSampler, input.TexCoord).r;
+	depth = 1-tex2D(DepthSampler, input.TexCoord).r;
 	
 }
 

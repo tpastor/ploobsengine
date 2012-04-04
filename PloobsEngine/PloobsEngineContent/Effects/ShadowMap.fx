@@ -69,7 +69,7 @@ void GenerateShadowMapVS(	in float4 in_vPositionOS	: POSITION,
 float4 GenerateShadowMapPS(in float2 in_vDepthCS : TEXCOORD0) : COLOR0
 {
 
-	float fDepth = in_vDepthCS.x / in_vDepthCS.y;					
+	float fDepth = 1-in_vDepthCS.x / in_vDepthCS.y;					
     return float4(fDepth, 1, 1, 1); 
 }
 
@@ -107,10 +107,10 @@ float CalcShadowTermPCF(float fLightDepth, float2 vShadowTexCoord)
 
 	// Read in the 4 samples, doing a depth check for each
 	float fSamples[4];	
-	fSamples[0] = (tex2D(ShadowMapSampler, vShadowTexCoord).x + BIAS < fLightDepth) ? 0.0f: 1.0f;  
-	fSamples[1] = (tex2D(ShadowMapSampler, vShadowTexCoord + float2(1.0/g_vShadowMapSize.x, 0)).x + BIAS < fLightDepth) ? 0.0f: 1.0f;  
-	fSamples[2] = (tex2D(ShadowMapSampler, vShadowTexCoord + float2(0, 1.0/g_vShadowMapSize.y)).x + BIAS < fLightDepth) ? 0.0f: 1.0f;  
-	fSamples[3] = (tex2D(ShadowMapSampler, vShadowTexCoord + float2(1.0/g_vShadowMapSize.x, 1.0/g_vShadowMapSize.y)).x + BIAS < fLightDepth) ? 0.0f: 1.0f;  
+	fSamples[0] = ((1-tex2D(ShadowMapSampler, vShadowTexCoord).x) + BIAS < fLightDepth) ? 0.0f: 1.0f;  
+	fSamples[1] = ((1-tex2D(ShadowMapSampler, vShadowTexCoord + float2(1.0/g_vShadowMapSize.x, 0)).x) + BIAS < fLightDepth) ? 0.0f: 1.0f;  
+	fSamples[2] = ((1-tex2D(ShadowMapSampler, vShadowTexCoord + float2(0, 1.0/g_vShadowMapSize.y)).x) + BIAS < fLightDepth) ? 0.0f: 1.0f;  
+	fSamples[3] = ((1-tex2D(ShadowMapSampler, vShadowTexCoord + float2(1.0/g_vShadowMapSize.x, 1.0/g_vShadowMapSize.y)).x )+ BIAS < fLightDepth) ? 0.0f: 1.0f;  
     
 	// lerp between the shadow values to calculate our light amount
 	fShadowTerm = lerp(lerp(fSamples[0], fSamples[1], vLerps.x), lerp( fSamples[2], fSamples[3], vLerps.x), vLerps.y);							  
@@ -134,7 +134,7 @@ float CalcShadowTermSoftPCF(float fLightDepth, float2 vShadowTexCoord, int iSqrt
 			vOffset = float2(x, y);				
 			vOffset /= g_vShadowMapSize;
 			float2 vSamplePoint = vShadowTexCoord + vOffset;			
-			float fDepth = tex2D(ShadowMapSampler, vSamplePoint).x;
+			float fDepth = 1-tex2D(ShadowMapSampler, vSamplePoint).x;
 			float fSample = (fLightDepth <= fDepth + BIAS);
 			
 			// Edge tap smoothing
@@ -173,7 +173,7 @@ float4 ShadowTermPS(	in float2 in_vTexCoord			: TEXCOORD0,
 	
 	
 	//read depth
-    float depthVal = tex2D(DepthTextureSampler,in_vTexCoord).r;
+    float depthVal = 1-tex2D(DepthTextureSampler,in_vTexCoord).r;
 
     //compute screen-space position
     float4 vPositionVS;
@@ -241,7 +241,7 @@ float4 ShadowTermPS(	in float2 in_vTexCoord			: TEXCOORD0,
 	else
 		fShadowTerm = CalcShadowTermSoftPCF(fLightDepth, vShadowTexCoord, iFilterSize);
 
-	return float4(fShadowTerm * vColor, 1);
+	return float4(1-fShadowTerm * vColor, 1);
 }
 
 

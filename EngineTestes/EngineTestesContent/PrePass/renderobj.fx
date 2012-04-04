@@ -3,16 +3,6 @@ float4x4 View;
 float4x4 Projection;
 float FarClip;
 
-half2 EncodeNormal (half3 n)
-{
-	float kScale = 1.7777;
-	float2 enc;
-	enc = n.xy / (n.z+1);
-	enc /= kScale;
-	enc = enc*0.5+0.5;
-	return enc;
-}
-
 struct VertexShaderInput
 {
     float3 Position : POSITION0;
@@ -39,7 +29,6 @@ VertexShaderOutput RenderToGBufferVertexCommon(VertexShaderInput input)
 	output.Depth = viewSpacePos.z; 
 
     output.Position = mul(pos, worldViewProjection);
-
     output.TexCoord.xy = input.TexCoord; 	
 	output.Normal = mul(input.Normal,worldview );
     return output;
@@ -55,14 +44,10 @@ struct PixelShaderOutput
 PixelShaderOutput RenderToGBufferPixelShader(VertexShaderOutput input)
 {
 	PixelShaderOutput output = (PixelShaderOutput)1;   
-
-    output.Normal.rg =  EncodeNormal (normalize(input.Normal));	//our encoder output in RG channels
-	output.Depth.x = -input.Depth/ FarClip;		//output Depth in linear space, [0..1]		
+    output.Normal.rgb =  (normalize(input.Normal) + 1) * 0.5f;	
+	output.Depth.x = -input.Depth/ FarClip;		
 	return output;
 }
-
-
-
 
 technique RenderToGBuffer
 {

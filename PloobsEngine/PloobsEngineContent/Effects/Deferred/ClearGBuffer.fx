@@ -35,7 +35,7 @@ PixelShaderOutput PixelShaderFunction(VertexShaderOutput input)
     //no specular power
     output.Normal.a = 0.0f;
     //max depth
-    output.Depth = 1.0f;
+    output.Depth = 0;
     output.Light.rgb = 0.0f;
     output.Light.a = 3.0f / 255.0f;    
     return output;
