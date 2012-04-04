@@ -337,7 +337,7 @@ BBPixelToFrame PixelShaderFunction2(VertexShaderOutput2 input)
 	output.EXTRA1 = float4(0,0,0,id) / 255.0f;;  
 	
     
-    output.Depth = input.Depth.x / input.Depth.y;  
+    output.Depth = 1-input.Depth.x / input.Depth.y;  
 		
 	
     return output;

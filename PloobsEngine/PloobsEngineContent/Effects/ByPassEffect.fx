@@ -60,7 +60,7 @@ TexPixelToFrame TexturedPS(TexVertexToPixel PSIn)
     //float4 c1 = tex2D(TextureSampler, PSIn.TextureCoords2);          	
 	Output.Normal.rgb = 0.5f;    
     Output.Normal.a = 0.0f;    
-    Output.Depth = 1.0f;	
+    Output.Depth = 0;	
     Output.EXTRA1.rgb = 0;	
     Output.EXTRA1.a = 3.0f / 255.0f;;
 	return Output;	

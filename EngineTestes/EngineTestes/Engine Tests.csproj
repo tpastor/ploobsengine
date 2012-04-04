@@ -194,6 +194,8 @@
     <Compile Include="AI\Steering\PedestrianPlugIn.cs" />
     <Compile Include="AI\Steering\SteerScreen.cs" />
     <Compile Include="Animation\ForwardAnimatedScreen.cs" />
+    <Compile Include="Baker\BakerShader.cs" />
+    <Compile Include="Baker\BakerScreen.cs" />
     <Compile Include="BilboardsSamples\BilboardScreen.cs" />
     <Compile Include="Bilboard\CPUBillboardScreen.cs" />
     <Compile Include="Bilboard\InstancedBilboardScreen.cs" />
@@ -205,6 +207,11 @@
     <Compile Include="Bullet\BallThrowBullet.cs" />
     <Compile Include="CharacterControllerInput.cs" />
     <Compile Include="CharacterSample\CharacterScreen.cs" />
+    <Compile Include="LightPrePassIdea2\PrePassScreen.cs" />
+    <Compile Include="LightPrePassIdea2\PreRenderTechnic.cs" />
+    <Compile Include="LightPrePassIdea2\PreFinalCombination.cs" />
+    <Compile Include="LightPrePassIdea2\PreGBuffer.cs" />
+    <Compile Include="LightPrePassIdea2\PreLightMap.cs" />
     <Compile Include="Modelo\ModeloScreen.cs" />
     <Compile Include="Physx 2.8.x\Character\PhysxCharacter28Screen.cs" />
     <Compile Include="Physx 2.8.x\Cloth\ClothModel.cs" />
@@ -254,12 +261,12 @@
     <Compile Include="Gamma Correction\GammaCorrectionScreen.cs" />
     <Compile Include="GUI\FGUIScreen.cs" />
     <Compile Include="GUI\GUIScreen.cs" />
-    <Compile Include="LightPrePassIdea\Imp\PrePassScreen.cs" />
+    <Compile Include="LightPrePassIdea\Imp\OldPrePassScreen.cs" />
     <Compile Include="LightPrePassIdea\HybridDeferred.cs" />
     <Compile Include="LightPrePassIdea\Imp\LightPrePassRenderTechnic.cs" />
     <Compile Include="LightPrePassIdea\LightPrePassCombination.cs" />
     <Compile Include="LightPrePassIdea\LightPrePassGBuffer.cs" />
-    <Compile Include="LightPrePassIdea\obj\PrePassShader.cs" />
+    <Compile Include="LightPrePassIdea2\PrePassShader.cs" />
     <Compile Include="LightPrePassIdea\DefPassScreen.cs" />
     <Compile Include="Loader\ForwardMeshesFromModelLoadScreen.cs" />
     <Compile Include="Loader\ForwardLoadScreen.cs" />

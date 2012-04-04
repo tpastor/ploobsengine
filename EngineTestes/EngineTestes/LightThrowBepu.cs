@@ -16,7 +16,7 @@ using PloobsEngine.Physics;
 
 namespace EngineTestes
 {
-    public class LightThrowBepu
+    public class LightThrowBepu : ICleanupAble
     {
         IWorld _mundo;                          
         Random rd = new Random();                
@@ -92,5 +92,14 @@ namespace EngineTestes
             return o;
         }
 
+
+        #region ICleanupAble Members
+
+        public void CleanUp(GraphicFactory factory)
+        {
+            this.CleanUp();
+        }
+
+        #endregion
     }
 }

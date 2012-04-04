@@ -53,6 +53,9 @@ namespace EngineTestes.LightPrePassIdea.Imp
             this.ginfo = ginfo;
 
             pointLightEffect = factory.GetEffect("PrePass/plight");
+            _clearGBuffer = factory.GetEffect("PrePass/ClearGBuffer");
+            _lighting = factory.GetEffect("PrePass/LightingLpp");            
+
              sphereModel = new SimpleModel(factory, "Model/Dsphere"); 
             ForwardPass = new ForwardPass(ForwardPassDescription.Default());
             _width = ginfo.BackBufferWidth;
@@ -93,10 +96,7 @@ namespace EngineTestes.LightPrePassIdea.Imp
                     ColorDestinationBlend = Blend.One,
                 };
 
-            CreateGBuffer(factory);
-
-            _clearGBuffer = factory.GetEffect("PrePass/ClearGBuffer");
-            _lighting = factory.GetEffect("PrePass/LightingLpp");            
+            CreateGBuffer(factory);            
         }
 
 
@@ -266,14 +266,11 @@ namespace EngineTestes.LightPrePassIdea.Imp
             }
                         
             render.PushRenderTargetBinding(_gBufferBinding);
-
             render.Clear(Color.Black,ClearOptions.DepthBuffer | ClearOptions.Stencil, 1.0f, 0);           
 
             render.PushDepthStencilState(DepthStencilState.None);
             render.PushRasterizerState(RasterizerState.CullNone);
-
             render.RenderFullScreenQuadVertexPixel(_clearGBuffer);
-
             render.PopDepthStencilState();
             render.PopRasterizerState();
             
@@ -288,7 +285,7 @@ namespace EngineTestes.LightPrePassIdea.Imp
             render[PrincipalConstants.DephRT] = _depthBuffer;
             render[PrincipalConstants.normalRt] = _normalBuffer; 
             
-            render.PushRenderTargetBinding(_lightAccumBinding);
+            //render.PushRenderTargetBinding(_lightAccumBinding);
             render.Clear(new Color(0, 0, 0, 0));
 
             render.PushDepthStencilState(DepthStencilState.None);            
@@ -299,12 +296,12 @@ namespace EngineTestes.LightPrePassIdea.Imp
             render.PushBlendState(_lightAddBlendState);           
  
             RenderLights(camera,world,render,ginfo);
-
-            render[PrincipalConstants.lightRt] = render.PopRenderTarget()[0].RenderTarget as Texture2D;
+            
+            //render[PrincipalConstants.lightRt] = render.PopRenderTarget()[0].RenderTarget as Texture2D;
             
             render.PopDepthStencilState();
             render.PopBlendState();
-            
+            return;
             render.PushRenderTarget(_outputTexture);
 
             render.Clear(Color.Black);
@@ -368,7 +365,8 @@ namespace EngineTestes.LightPrePassIdea.Imp
             _lighting.Parameters["DepthBuffer"].SetValue(_depthBuffer);
             _lighting.Parameters["NormalBuffer"].SetValue(_normalBuffer);
             
-            ApplyFrustumCorners(_lighting, -Vector2.One, Vector2.One);  
+            ApplyFrustumCorners(_lighting, -Vector2.One, Vector2.One);
+            ApplyFrustumCorners(pointLightEffect, -Vector2.One, Vector2.One);  
 
             for (int i = 0; i < world.Lights.Count; i++)
             {
@@ -388,24 +386,25 @@ namespace EngineTestes.LightPrePassIdea.Imp
                     Matrix sphereWorldMatrix = Matrix.CreateScale(pl.LightRadius) * Matrix.CreateTranslation(pl.LightPosition);
                     ContainmentType ct = camera.BoundingFrustum.Contains(new BoundingSphere(pl.LightPosition, pl.LightRadius));
 
+                    Vector3 viewSpaceLPos = Vector3.Transform(pl.LightPosition,
+                                                            camera.View);
+                    
                     pointLightEffect.Parameters["cameraPos"].SetValue(camera.Position);
                     pointLightEffect.Parameters["LightColor"].SetValue(pl.Color.ToVector4());
-                    pointLightEffect.Parameters["LightPosition"].SetValue(pl.LightPosition);
-                    pointLightEffect.Parameters["lightRadius"].SetValue(pl.LightRadius);
-                    pointLightEffect.Parameters["LightPosition"].SetValue(pl.LightPosition);
+                    pointLightEffect.Parameters["LightPosition"].SetValue(viewSpaceLPos);
+                    pointLightEffect.Parameters["lightRadius"].SetValue(pl.LightRadius);                    
                     
                     pointLightEffect.Parameters["WorldViewProjection"].SetValue(sphereWorldMatrix * camera.ViewProjection);
-                    pointLightEffect.Parameters["FarClip"].SetValue(camera.FarPlane);
+                    //pointLightEffect.Parameters["FarClip"].SetValue(camera.FarPlane);
 
                     float _tanFovy = (float)Math.Tan(camera.FieldOfView);
-                    pointLightEffect.Parameters["TanAspect"].SetValue(new Vector2(_tanFovy * camera.AspectRatio, -_tanFovy));
+                    //pointLightEffect.Parameters["TanAspect"].SetValue(new Vector2(_tanFovy * camera.AspectRatio, -_tanFovy));
                     pointLightEffect.Parameters["GBufferPixelSize"].SetValue(new Vector2(0.5f / _width, 0.5f / _height));                                        
                     
                     pointLightEffect.Parameters["lightIntensity"].SetValue(pl.LightIntensity);
                                         
                     if (ct == ContainmentType.Contains || ct == ContainmentType.Intersects)
-                    {                       
-                        
+                    {   
                         float cameraToCenter = Vector3.Distance(camera.Position, pl.LightPosition);
 
                         if (cameraToCenter < pl.LightRadius + camera.NearPlane)
@@ -426,6 +425,7 @@ namespace EngineTestes.LightPrePassIdea.Imp
         {
             ApplyFrustumCorners(effect.Parameters["FrustumCorners"], topLeftVertex, bottomRightVertex);
         }
+
         private void ApplyFrustumCorners(EffectParameter frustumCorners, Vector2 topLeftVertex, Vector2 bottomRightVertex)
         {
             float dx = _currentFrustumCorners[1].X - _currentFrustumCorners[0].X;

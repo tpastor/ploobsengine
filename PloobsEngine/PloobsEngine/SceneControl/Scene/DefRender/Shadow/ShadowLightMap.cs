@@ -59,7 +59,6 @@ namespace PloobsEngine.SceneControl
         private Effect directionalLightEffect;
         private Effect pointLightEffect;
         private Effect spotLightEffect;
-        private Effect Depth;
         private SimpleModel sphereModel;        
         private Texture2D shadowMap;                
         private Texture2D content;
@@ -68,6 +67,7 @@ namespace PloobsEngine.SceneControl
         RenderTarget2D rt;
         DirectionalShadowRenderer shadow;
         private int shadownBufferSize;
+        BlendState _lightAddBlendState ;
         
 #region IDeferredLightMap Members
 
@@ -218,7 +218,7 @@ namespace PloobsEngine.SceneControl
                         DirectionalLightPE dl = light as DirectionalLightPE;
                         shadowMap = shadow.Render(gameTime, render, ginfo, dl, world.CameraManager.ActiveCamera, world, deferredGBuffer);
 
-                        render.PushBlendState(BlendState.AlphaBlend);
+                        render.PushBlendState(_lightAddBlendState);
                         DrawDirectionalLight(render, ginfo, world.CameraManager.ActiveCamera, dl, deferredGBuffer);
                         render.PopBlendState();
 
@@ -227,7 +227,7 @@ namespace PloobsEngine.SceneControl
 #if WINDOWS
                         System.Diagnostics.Debug.Fail("Point Light Shadow not supported, in production no error will be created, the light just wont cast any shadow");
 #endif
-                        render.PushBlendState(BlendState.AlphaBlend);
+                        render.PushBlendState(_lightAddBlendState);
                         DrawPointLight(render, ginfo, world.CameraManager.ActiveCamera, light as PointLightPE, deferredGBuffer, true);
                         render.PopBlendState();
                         break;
@@ -236,7 +236,7 @@ namespace PloobsEngine.SceneControl
                         Matrix v = sl.ViewMatrix;
                         Matrix p =sl.ProjMatrix;
                         RenderShadowMap(gameTime, render, ref v, ref p, world, deferredGBuffer);
-                        render.PushBlendState(BlendState.AlphaBlend);
+                        render.PushBlendState(_lightAddBlendState);
                         DrawnSpotLight(render, ginfo, world.CameraManager.ActiveCamera, sl, deferredGBuffer);
                         render.PopBlendState();
                         break;
@@ -248,7 +248,7 @@ namespace PloobsEngine.SceneControl
             render.DettachBindedTextures();
             render.SetSamplerStates(ginfo.SamplerState);
 
-            render.PushBlendState(BlendState.AlphaBlend);
+            render.PushBlendState(_lightAddBlendState);
 
             foreach (ILight light in world.Lights.Where((a) => a.CastShadown != true && a.Enabled == true))
             {
@@ -275,6 +275,13 @@ namespace PloobsEngine.SceneControl
 
         public void LoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, bool cullPointLight, bool useFloatingBufferForLightning)
         {
+            _lightAddBlendState = new BlendState()
+            {
+                AlphaSourceBlend = Blend.One,
+                ColorSourceBlend = Blend.One,
+                AlphaDestinationBlend = Blend.One,
+                ColorDestinationBlend = Blend.One,
+            };
             this.ginfo = ginfo;
             shadow = new DirectionalShadowRenderer();
             shadow.ShadowFilteringType = filteringType;
@@ -289,7 +296,6 @@ namespace PloobsEngine.SceneControl
             else
                 lightRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.None, ginfo.MultiSample, RenderTargetUsage.PreserveContents);
 
-            Depth = factory.GetEffect("ShadowDepth",false,true);
             pointLightEffect = factory.GetEffect("PointLight",false,true);
             directionalLightEffect = factory.GetEffect("ShadowDirectionalCascade",false,true);
             spotLightEffect = factory.GetEffect("ShadowSpot",false,true);

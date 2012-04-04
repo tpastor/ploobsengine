@@ -109,7 +109,7 @@ PixelShaderOutput PixelShaderFunction(VertexShaderOutput input)
     output.EXTRA1 =  0;  
     output.EXTRA1.a =  id / 255.0f;  
     
-    output.Depth = input.Depth.x / input.Depth.y;                           //output Depth
+    output.Depth = 1-input.Depth.x / input.Depth.y;                           //output Depth
     return output;
 }
 

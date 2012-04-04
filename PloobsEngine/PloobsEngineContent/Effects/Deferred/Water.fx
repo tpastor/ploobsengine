@@ -305,7 +305,7 @@ PixelShaderOutput PS_Water( VSOUTPUT IN )  {
 
 	output.Color = vWaterColor * fWaterAmount + vReflect * vReflectionColor * fReflectionAmount * fFresnel;
 	output.Color.a = 0.01; 
-	output.Depth = IN.Depth.x / IN.Depth.y;                           //output Depth
+	output.Depth = 1-IN.Depth.x / IN.Depth.y;                           //output Depth
 	output.Normal.rgb = 0.5f * (normalize(vWorldNormal ) + 1.0f);
 	output.Normal.a = 0.01;
 	output.LightOcclusion.rgb = 0;

@@ -43,6 +43,7 @@ namespace PloobsEngine.SceneControl
         private bool cullPointLight = true;
         GraphicInfo ginfo;
         SamplerState samplerState;
+        BlendState _lightAddBlendState;
 
 
         //EffectParameter DirectionalcolorMap;
@@ -227,11 +228,11 @@ namespace PloobsEngine.SceneControl
 
 #region IDeferredLightMap Members
 
-
+                
         public void DrawLights(GameTime gameTime, IWorld world, IDeferredGBuffer deferredGBuffer, RenderHelper render)
         {
             render.Clear(Color.Transparent,ClearOptions.Target);
-            render.PushBlendState(BlendState.AlphaBlend);
+            render.PushBlendState(_lightAddBlendState);
             render.PushDepthStencilState(DepthStencilState.None);                        
 
             DrawDirectionalLight(world.CameraManager.ActiveCamera, world.Lights, deferredGBuffer,render);
@@ -244,6 +245,13 @@ namespace PloobsEngine.SceneControl
 
         public void LoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, bool cullPointLight, bool useFloatingBufferForLightning)
         {
+            _lightAddBlendState = new BlendState()
+            {
+                AlphaSourceBlend = Blend.One,
+                ColorSourceBlend = Blend.One,
+                AlphaDestinationBlend = Blend.One,
+                ColorDestinationBlend = Blend.One,
+            };
             this.ginfo = ginfo;
             this.cullPointLight = cullPointLight;
             if (useFloatingBufferForLightning)

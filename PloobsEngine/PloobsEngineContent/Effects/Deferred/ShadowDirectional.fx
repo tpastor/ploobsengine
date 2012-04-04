@@ -56,7 +56,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
     float specularIntensity = tex2D(colorSampler, input.TexCoord).a;
 
 	//read depth
-    float depthVal = tex2D(depthSampler,input.TexCoord).r;
+    float depthVal = 1-tex2D(depthSampler,input.TexCoord).r;
 
     //compute screen-space position
     float4 position;
@@ -132,7 +132,7 @@ float4 PixelShaderFunctionPCF3x3(VertexShaderOutput input) : COLOR0
     float specularIntensity = tex2D(colorSampler, input.TexCoord).a;
 
 	//read depth
-    float depthVal = tex2D(depthSampler,input.TexCoord).r;
+    float depthVal = 1-tex2D(depthSampler,input.TexCoord).r;
 
     //compute screen-space position
     float4 position;
@@ -204,7 +204,7 @@ float4 PixelShaderFunctionPCF2x2(VertexShaderOutput input) : COLOR0
     float specularIntensity = tex2D(colorSampler, input.TexCoord).a;
 
 	//read depth
-    float depthVal = tex2D(depthSampler,input.TexCoord).r;
+    float depthVal = 1-tex2D(depthSampler,input.TexCoord).r;
 
     //compute screen-space position
     float4 position;
@@ -270,7 +270,7 @@ float4 PixelShaderFunctionPCF2x2Variance(VertexShaderOutput input) : COLOR0
     float specularIntensity = tex2D(colorSampler, input.TexCoord).a;
 
 	//read depth
-    float depthVal = tex2D(depthSampler,input.TexCoord).r;
+    float depthVal = 1-tex2D(depthSampler,input.TexCoord).r;
 
     //compute screen-space position
     float4 position;
@@ -341,7 +341,7 @@ float4 PixelShaderFunctionPCF2x2Variance(VertexShaderOutput input) : COLOR0
 float4 PixelShaderFunctionPCF3x3DEFERRED(VertexShaderOutput input) : COLOR0  
 {  	
 	//read depth
-    float depthVal = tex2D(depthSampler,input.TexCoord).r;
+    float depthVal = 1-tex2D(depthSampler,input.TexCoord).r;
 
     //compute screen-space position
     float4 position;
@@ -396,7 +396,7 @@ float4 PixelShaderFunctionPCF3x3DEFERREDAFTER(VertexShaderOutput input) : COLOR0
     float specularIntensity = tex2D(colorSampler, input.TexCoord).a;
 
 	//read depth
-    float depthVal = tex2D(depthSampler,input.TexCoord).r;
+    float depthVal = 1-tex2D(depthSampler,input.TexCoord).r;
 
     //compute screen-space position
     float4 position;
@@ -438,7 +438,7 @@ float4 PixelShaderFunctionPCF3x3DEFERREDAFTER(VertexShaderOutput input) : COLOR0
 float4 PixelShaderFunctionPCF4x4DEFERRED(VertexShaderOutput input) : COLOR0  
 {  	
 	//read depth
-    float depthVal = tex2D(depthSampler,input.TexCoord).r;
+    float depthVal = 1-tex2D(depthSampler,input.TexCoord).r;
 
     //compute screen-space position
     float4 position;
