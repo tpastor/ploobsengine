@@ -9,19 +9,28 @@ using PloobsEngine;
 
 namespace EngineTestes.Post
 {
+    public enum BlurRadiusSize : int
+    {
+        Fifteen =15,
+        Seven = 7,
+    }
+    
+
     public class SBlurPost : IPostEffect
     {
-        private const int BLUR_RADIUS = 15;
-
-        public SBlurPost(float BLUR_AMOUNT = 1, SurfaceFormat SurfaceFormat = Microsoft.Xna.Framework.Graphics.SurfaceFormat.Color)
+        private int BLUR_RADIUS = 15;
+        BlurRadiusSize BlurRadiusSize;
+        public SBlurPost(float BLUR_AMOUNT = 1, BlurRadiusSize BlurRadiusSize = BlurRadiusSize.Fifteen, SurfaceFormat SurfaceFormat = Microsoft.Xna.Framework.Graphics.SurfaceFormat.Color)
             : base(PostEffectType.Deferred)
         {
             this.BLUR_AMOUNT = BLUR_AMOUNT;
             this.SurfaceFormat = SurfaceFormat;
             ImageSamplerState = SamplerState.LinearClamp;
+            this.BlurRadiusSize = BlurRadiusSize;
+            BLUR_RADIUS = (int)BlurRadiusSize;
         }
 
-        public SBlurPost(Vector2 OriginSize, Vector2 destinySize, SurfaceFormat SurfaceFormat, float BLUR_AMOUNT = 1)
+        public SBlurPost(Vector2 OriginSize, Vector2 destinySize, SurfaceFormat SurfaceFormat,BlurRadiusSize BlurRadiusSize = BlurRadiusSize.Fifteen,float BLUR_AMOUNT = 1)
             : base(PostEffectType.Deferred)
         {
             this.BLUR_AMOUNT = BLUR_AMOUNT;
@@ -29,6 +38,8 @@ namespace EngineTestes.Post
             this.destinySize = destinySize;
             this.SurfaceFormat = SurfaceFormat;
             ImageSamplerState = SamplerState.LinearClamp;
+            this.BlurRadiusSize = BlurRadiusSize;
+            BLUR_RADIUS = (int)BlurRadiusSize;
         }
                 
         float BLUR_AMOUNT = 2f;
@@ -47,7 +58,7 @@ namespace EngineTestes.Post
 
         public override void Init(PloobsEngine.Engine.GraphicInfo ginfo, PloobsEngine.Engine.GraphicFactory factory)
         {
-            effect = factory.GetEffect("SBlurPost\\sblur", true);
+            effect = BlurRadiusSize == Post.BlurRadiusSize.Fifteen ? factory.GetEffect("SBlurPost\\sblur", true) : factory.GetEffect("SBlurPost\\sblur2", true);
 
             if (!destinySize.HasValue)
             {

@@ -11,11 +11,14 @@ namespace EngineTestes.Post
 {
     public class SSAOPost : IPostEffect
     {
-        public SSAOPost()
+        public SSAOPost(float blurAmount = 1, BlurRadiusSize BlurRadiusSize= BlurRadiusSize.Fifteen)
             : base(PostEffectType.Deferred)
         {
+            this.blurAmount = blurAmount;
+            this.BlurRadiusSize = BlurRadiusSize;
         }
-
+        BlurRadiusSize BlurRadiusSize;
+        float blurAmount;
         SBlurPost sBlurPost;
         public SBlurPost SBlurPost
         {
@@ -25,7 +28,7 @@ namespace EngineTestes.Post
         {
             Effect = factory.GetEffect("SSAO\\ssao");
             tex = factory.GetTexture2D("SSAO\\noise");
-            sBlurPost = new SBlurPost(1, SurfaceFormat.Color);
+            sBlurPost = new SBlurPost(blurAmount, BlurRadiusSize);
             sBlurPost.Init(ginfo, factory);
             RenderTarget2D = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
             RenderTarget2D2 = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
