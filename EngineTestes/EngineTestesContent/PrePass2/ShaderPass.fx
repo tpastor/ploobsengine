@@ -14,18 +14,6 @@ sampler diffuseMapSampler = sampler_state
 	AddressV = Wrap;
 };
 
-texture LightSpecularBuffer;
-sampler2D lightSpecularSampler = sampler_state
-{
-	Texture = <LightSpecularBuffer>;
-	MipFilter = NONE;
-	MagFilter = POINT;
-	MinFilter = POINT;
-	AddressU = Clamp;
-	AddressV = Clamp;
-};
-
-
 texture lightSamplerBuffer;
 sampler2D lightSampler = sampler_state
 {
@@ -85,8 +73,9 @@ float4 ReconstructPixelShader(ReconstructVertexShaderOutput input):COLOR0
 	//float4 specular =  tex2D(lightSpecularSampler, screenPos) * LightBufferScaleInv;
 	
 	//float4 finalColor = float4(diffuseMap*lightColor.rgb + specular*specularMap + emissiveMap,1);
-	float4 finalColor = float4(lightColor.rgb , 1);
+	//float4 finalColor = float4(lightColor.rgb , 1);
 	//float4 finalColor = float4(lightColor.a,0,0,1);
+	float4 finalColor = float4(diffuseMap*lightColor.rgb ,1);
 	return finalColor;
 }
 

@@ -5,18 +5,19 @@ Modified by: Schneider, José Ignacio (jis@cs.uns.edu.ar)
 
 ************************************************************************************************************************************************/
 
-#define M_PI 3.14159265f
-
-texture depthTexture   ;
-sampler2D depthSampler = sampler_state
+texture depthTexture;
+sampler2D depthSampler
 {
 	Texture = <depthTexture>;
-    /*ADDRESSU = CLAMP;
+    ADDRESSU = CLAMP;
 	ADDRESSV = CLAMP;
 	MAGFILTER = POINT;
 	MINFILTER = POINT;
-	MIPFILTER = NONE;*/
+	MIPFILTER = NONE;
 };
+
+
+#define M_PI 3.14159265f
 
 
 //////////////////////////////////////////////
@@ -185,71 +186,80 @@ float2 rotate_direction(float2 Dir, float2 CosSin)
     return float2(Dir.x * CosSin.x - Dir.y * CosSin.y, 
                   Dir.x * CosSin.y + Dir.y * CosSin.x);
 }
-float AccumulatedHorizonOcclusionHighQuality(float2 deltaUV, 
-                                             float2 uv0, // uvs for original sample
-                                             float3 P, 
-                                             float numSteps, 
-                                             float randstep,
-                                             float3 dPdu,
-                                             float3 dPdv)
+
+/***********************************************************************************************************************************************
+
+From the NVIDIA DirectX 10 SDK
+Modified by: Schneider, José Ignacio (jis@cs.uns.edu.ar)
+
+************************************************************************************************************************************************/
+
+void integrate_direction(inout float ao, float3 P, float2 uv, float2 deltaUV,
+                         float numSteps, float tanH, float sinH)
 {
-    // Jitter starting point within the first sample distance
-    float2 uv = (uv0 + deltaUV) + randstep * deltaUV;
-    
-    // Snap first sample uv and initialize horizon tangent
-    float2 snapped_duv = snap_uv_offset(uv - uv0);
-    float3 T = tangent_vector(snapped_duv, dPdu, dPdv);
-    float tanH = tangent(T) + tanAngleBias;
-
-    float ao = 0;
-    float h0 = 0;
-	float3 occluderRadiance;	
-    for(float j = 0; j < 8/*numSteps*/; ++j)
-	{
-        float2 snapped_uv = snap_uv_coord(uv);
-        float3 S = fetch_eye_pos(snapped_uv);
-		// next uv in image space.
-		uv += deltaUV;
-
+    for (float j = 1; j <= 8/*numSteps*/; ++j) {
+        uv += deltaUV;
+        float3 S = fetch_eye_pos(uv);
+        
         // Ignore any samples outside the radius of influence
-        float d2 = length2(S - P);
+        float d2  = length2(S - P);
 		[branch]
-        if (d2 < sqrRadius)
-		{ 
+        if (d2 < sqrRadius) 
+		{
             float tanS = tangent(P, S);
 
             [branch]
-            if (tanS > tanH) // Is this height is bigger than the bigger height of this direction so far then
+            if(tanS > tanH) 
 			{
-                // Compute tangent vector associated with snapped_uv
-                float2 snapped_duv = snapped_uv - uv0;
-                float3 T = tangent_vector(snapped_duv, dPdu, dPdv);
-                float tanT = tangent(T) + tanAngleBias;
-
-                // Compute AO between tangent T and sample S
-                float sinS = tan_to_sin(tanS);
-                float sinT = tan_to_sin(tanT);
+                // Accumulate AO between the horizon and the sample
+                float sinS = tanS / sqrt(1.0f + tanS*tanS);
                 float r = sqrt(d2) * invRadius;
-                float h = sinS - sinT;
-				float falloff = Falloff(r);
-                ao += falloff * (h - h0);
-                h0 = h;
-
+                ao += Falloff(r) * (sinS - sinH);
+                
                 // Update the current horizon angle
                 tanH = tanS;
+                sinH = sinS;
             }
         }
-
     }
-    return ao;
 }
 
-float4 HighQualityPixelShaderFunction(VS_OUTPUT input) : COLOR0
+float AccumulatedHorizonOcclusionLowQuality(float2 deltaUV, 
+                                            float2 uv0, 
+                                            float3 P, 
+                                            float numSteps, 
+                                            float randstep)
+{
+    // Randomize starting point within the first sample distance
+    float2 uv = uv0 + snap_uv_offset( randstep * deltaUV );
+    
+    // Snap increments to pixels to avoid disparities between xy 
+    // and z sample locations and sample along a line
+    deltaUV = snap_uv_offset( deltaUV );
+
+    float tanT = tan(-M_PI*0.5 + angleBias);
+    //float sinT = (AngleBias != 0.0) ? tan_to_sin(tanT) : -1.0;
+	float sinT = tan_to_sin(tanT);
+
+    float ao = 0;
+    integrate_direction(ao, P, uv, deltaUV, numSteps, tanT, sinT);
+
+    // Integrate opposite directions together
+    deltaUV = -deltaUV;
+    uv = uv0 + snap_uv_offset( randstep * deltaUV );
+    integrate_direction(ao, P, uv, deltaUV, numSteps, tanT, sinT);
+
+    // Divide by 2 because we have integrated 2 directions together
+    // Subtract 1 and clamp to remove the part below the surface
+    return max(ao * 0.5 - 1.0, 0.0);
+}
+
+float4 LowQualityPixelShaderFunction(VS_OUTPUT input) : COLOR0
 {
 	float depth = tex2D(depthSampler, input.uv).r; // Single channel zbuffer texture
 	if (depth == 1)
 	{
-		discard;
+		
 	}
 	// Retrieve position in view space
 	float3 P = uv_to_eye(input.uv, depth);	
@@ -263,8 +273,8 @@ float4 HighQualityPixelShaderFunction(VS_OUTPUT input) : COLOR0
 
     // Nearest neighbor pixels on the tangent plane
     float3 Pr, Pl, Pt, Pb;
-		 
-	/*[branch]
+
+    /*[branch]
 	if (useNormals)
 	{
 		float3 N = SampleNormal(input.uv);	
@@ -291,20 +301,21 @@ float4 HighQualityPixelShaderFunction(VS_OUTPUT input) : COLOR0
     float3 dPdv = min_diff(P, Pt, Pb) * (resolution.y * invResolution.x);
 
     // (cos(alpha),sin(alpha),jitter)
-    float3 rand = tex2D(randomNormalSampler, input.uv * 20).rgb; // int2((int)IN.pos.x & 63, (int)IN.pos.y & 63)).rgb; This is new in shader model 4, imposible? to replicate in shader model 3.
+    float3 rand = tex2D(randomNormalSampler, input.uv * 200).rgb; // int2((int)IN.pos.x & 63, (int)IN.pos.y & 63)).rgb; This is new in shader model 4, imposible? to replicate in shader model 3.
 		
 	float ao = 0;
     float d;
-    float alpha = 2.0f * M_PI / numberDirections; // Directions step		
-	
-	// High Quality
-	for (d = 0; d < 12; d++) // numberDirections
+    float alpha = 2.0f * M_PI / numberDirections; // Directions step
+		
+	// Low Quality	
+	for (d = 0; d < 12; ++d) // numberDirections
 	{
-		float angle = alpha * d;
-		float2 dir = float2(cos(angle), sin(angle));
-		float2 deltaUV = rotate_direction(dir, rand.xy) * step_size.xy;
-		ao += AccumulatedHorizonOcclusionHighQuality(deltaUV, input.uv, P, numSteps, rand.z, dPdu, dPdv);
+			float angle = alpha * d;
+			float2 dir = float2(cos(angle), sin(angle));
+			float2 deltaUV = rotate_direction(dir, rand.xy) * step_size.xy;
+			ao += AccumulatedHorizonOcclusionLowQuality(deltaUV, input.uv, P, numSteps, rand.z);
 	}
+	ao *= 2.0;
 		
 	return float4(1.0 - ao / numberDirections * contrast, 1, 1, 1);
 }
@@ -313,11 +324,11 @@ float4 HighQualityPixelShaderFunction(VS_OUTPUT input) : COLOR0
 //////////////// Techniques //////////////////
 //////////////////////////////////////////////
 
-technique HighQuality
+technique LowQuality
 {
     pass P0
     {          
         VertexShader = compile vs_3_0 VertexShaderFunction();
-        PixelShader = compile ps_3_0 HighQualityPixelShaderFunction();
+        PixelShader = compile ps_3_0 LowQualityPixelShaderFunction();
     }
 }

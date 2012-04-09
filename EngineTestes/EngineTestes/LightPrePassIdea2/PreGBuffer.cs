@@ -125,11 +125,10 @@ namespace PloobsEngine.SceneControl
         bool useFloatBuffer;
         public void LoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, Color BackGroundColor,bool useFloatBuffer)
         {
-            this.useFloatBuffer = useFloatBuffer;                        
-            const int multisample = 0;
-            normalRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, multisample, RenderTargetUsage.DiscardContents);
-            depthRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Single, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, multisample, RenderTargetUsage.DiscardContents);
-            lightOclusionRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.None, multisample, RenderTargetUsage.DiscardContents);            
+            this.useFloatBuffer = useFloatBuffer;                                    
+            normalRT = factory.CreateRenderTarget(ginfo.BackBufferWidth , ginfo.BackBufferHeight, SurfaceFormat.Color, false, DepthFormat.Depth24, 0, RenderTargetUsage.DiscardContents);
+            depthRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Single, false, DepthFormat.Depth24, 0, RenderTargetUsage.DiscardContents);
+            //lightOclusionRT = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.None, multisample, RenderTargetUsage.DiscardContents);            
             clearBufferEffect = manager.GetAsset<Effect>("PrePass2/ClearGBuffer");
         }
 

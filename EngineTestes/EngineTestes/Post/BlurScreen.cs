@@ -10,29 +10,33 @@ using PloobsEngine.Engine;
 using PloobsEngine.Physics.Bepu;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Cameras;
-using Microsoft.Xna.Framework.Graphics;
-using EngineTestes.LightPrePassIdea.Imp;
-using EngineTestes.LightPrePassIdea.obj;
 using PloobsEngine.Light;
+using Microsoft.Xna.Framework.Input;
+using PloobsEngine.Features;
+using PloobsEngine.Commands;
+using PloobsEngine.Loader;
+using PloobsEngine.Input;
+using PloobsEngine.Physic.PhysicObjects.BepuObject;
+using BEPUphysics.UpdateableSystems.ForceFields;
+using EngineTestes.Post;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace EngineTestes
 {
-    public class DefPassScreen : IScene
+    public class BlurScreen : IScene
     {
-
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
 
-            DeferredRenderTechnicInitDescription DeferredRenderTechnicInitDescription = DeferredRenderTechnicInitDescription.Default();
-            DeferredRenderTechnicInitDescription.DefferedDebug = true;
-            renderTech = new DeferredRenderTechnic(DeferredRenderTechnicInitDescription);
+            DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
+            desc.UseFloatingBufferForLightMap = true;
+            renderTech = new DeferredRenderTechnic(desc);
         }
 
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory ,IContentManager contentManager)
         {
-            base.LoadContent(GraphicInfo, factory, contentManager);
-
+            base.LoadContent(GraphicInfo,factory, contentManager);
             {
                 SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
                 TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
@@ -41,6 +45,16 @@ namespace EngineTestes
                 IObject obj = new IObject(fmaterial, simpleModel, tmesh);
                 this.World.AddObject(obj);
             }
+
+            {
+                SimpleModel sm = new SimpleModel(factory, "..\\Content\\Model\\block");
+                sm.SetTexture(factory.CreateTexture2DColor(1, 1, Color.White), TextureType.DIFFUSE);
+                BoxObject pi = new BoxObject(new Vector3(100, 40, 0), 1, 1, 1, 25, new Vector3(100, 10, 100), Matrix.Identity, MaterialDescription.DefaultBepuMaterial());
+                DeferredNormalShader shader = new DeferredNormalShader();
+                IMaterial mat = new DeferredMaterial(shader);
+                IObject obj3 = new IObject(mat, sm, pi);
+                this.World.AddObject(obj3);
+            }            
 
             #region NormalLight
             DirectionalLightPE ld1 = new DirectionalLightPE(Vector3.Left, Color.White);
@@ -61,16 +75,21 @@ namespace EngineTestes
             this.World.AddLight(ld5);
             #endregion
 
-            LightThrowBepu LightThrowBepu = new LightThrowBepu(this.World, factory);
-            this.AttachCleanUpAble(LightThrowBepu);
+            //SBlurPost hsv = new SBlurPost(1, SurfaceFormat.HdrBlendable);
+            //hsv.ImageSamplerState = SamplerState.PointClamp;
+            //this.RenderTechnic.AddPostEffect(hsv);
 
-            this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo));
-        }
+            DownSamplePostEffect DownSamplePostEffect = new Post.DownSamplePostEffect();
+            this.RenderTechnic.AddPostEffect(DownSamplePostEffect);
+            
+            CameraFirstPerson cam = new CameraFirstPerson(GraphicInfo);
+            cam.MoveSpeed *= 5;
+            this.World.CameraManager.AddCamera(cam);
 
-        protected override void Draw(GameTime gameTime, RenderHelper render)
-        {        
-            base.Draw(gameTime, render);         
-        }
+            LightThrowBepu lt = new LightThrowBepu(this.World, factory);
+
+        }   
+        
 
     }
 }

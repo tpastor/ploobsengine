@@ -46,7 +46,7 @@ namespace PloobsUpdater
             HandleXnaVersion();
 
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
-            dispatcherTimer.Interval = new TimeSpan(3, 0,0 );
+            dispatcherTimer.Interval = new TimeSpan(3,0,0);
             dispatcherTimer.Start();
 
             InternetConnectionState_e flags = 0;
@@ -104,56 +104,70 @@ namespace PloobsUpdater
         /// <param name="e"></param>
         void dispatcherTimer_Tick(object sender, EventArgs e)
         {
-            InternetConnectionState_e flags = 0;
-            isConnected = InternetGetConnectedState(ref flags, 0);
-
-            if (isConnected == false)
-                return;
-
-            String oldLast = AvaliableVersions[AvaliableVersions.Count - 1];
-
             try
             {
 
-                AvaliableVersions.Clear();
-                listBox1.Items.Clear();
+                InternetConnectionState_e flags = 0;
+                isConnected = InternetGetConnectedState(ref flags, 0);
 
-                ftp = new FTP("ftp.ploobs.com.br", "ploobs", "5ruTrus6");
-                ftp.Connect();
-                ftp.ChangeDir("/ploobs/Web/Updater");
+                if (isConnected == false)
+                    return;
 
-                foreach (String item in ftp.List())
+                if (AvaliableVersions.Count == 0)
+                    return;
+
+                String oldLast = AvaliableVersions[AvaliableVersions.Count - 1];
+
+                try
                 {
-                    String[] files = item.Split(' ');
-                    String file = files[files.Count() - 1];
-                    AvaliableVersions.Add(file);
-                    listBox1.Items.Add(file);
+
+                    ftp = new FTP("ftp.ploobs.com.br", "ploobs", "5ruTrus6");
+                    ftp.Connect();
+                    ftp.ChangeDir("/ploobs/Web/Updater");
+
+                    System.Collections.ArrayList fileList = ftp.List();
+
+                    AvaliableVersions.Clear();
+                    listBox1.Items.Clear();
+                    foreach (String item in fileList)
+                    {
+                        String[] files = item.Split(' ');
+                        String file = files[files.Count() - 1];
+                        AvaliableVersions.Add(file);
+                        listBox1.Items.Add(file);
+                    }
+
+                }
+                catch (Exception)
+                {
+                    ///do not show message box here ....
+                    return;
+                }
+                finally
+                {
+                    ftp.Disconnect();
+
                 }
 
-            }
-            catch (Exception ex)
-            {
-                ///do not show message box here ....
-            }
-            finally
-            {
-                ftp.Disconnect();
-            }
+                if (oldLast != AvaliableVersions[AvaliableVersions.Count - 1])
+                {
+                    string title = "PloobsUpdates";
+                    string text = "There is a new Version of PloobsEngine Avaliable";
 
-            if (oldLast != AvaliableVersions[AvaliableVersions.Count - 1])
-            {
-                string title = "PloobsUpdates";
-                string text = "There is a new Version of PloobsEngine Avaliable";
+                    //show balloon with built-in icon
+                    this.MyNotifyIcon.ShowBalloonTip(title, text, BalloonIcon.Info);
+                    this.MyNotifyIcon.TrayBalloonTipClicked += new RoutedEventHandler(MyNotifyIcon_TrayBalloonTipClicked);
+                }
 
-                //show balloon with built-in icon
-                this.MyNotifyIcon.ShowBalloonTip(title, text, BalloonIcon.Info);
-                this.MyNotifyIcon.TrayBalloonTipClicked += new RoutedEventHandler(MyNotifyIcon_TrayBalloonTipClicked);
+                if (AvaliableVersions.Count == 0)
+                {
+                    button1.IsEnabled = false;
+                    button2.IsEnabled = false;
+                }
             }
-
-            if (AvaliableVersions.Count == 0)
+            catch(Exception)
             {
-                button1.IsEnabled = false;
-                button2.IsEnabled = false;
+                ///nothing
             }
 
         }

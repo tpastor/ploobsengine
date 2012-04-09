@@ -22,8 +22,7 @@ namespace EngineTestes
             //return;
 
             InitialEngineDescription desc = InitialEngineDescription.Default();
-            //desc.useMipMapWhenPossible = true;
-            //desc.UseAnisotropicFiltering = true;
+            //desc.useMipMapWhenPossible = true;            
             //desc.isMultiSampling = true;
 
             using (EngineStuff engine = new EngineStuff(ref desc, LoadScreen))
@@ -35,12 +34,13 @@ namespace EngineTestes
 
         static void LoadScreen(ScreenManager manager)
         {
+            manager.AddScreen(new BlurScreen());            
+            //manager.AddScreen(new SSAOScreen());            
+            //manager.AddScreen(new DeferredEmitterFluids28Screen3());
+            //manager.AddScreen(new PrePassScreen());
+            //manager.AddScreen(new BakerScreen());
 
             //manager.AddScreen(new DefPassScreen());
-            //manager.AddScreen(new DeferredEmitterFluids28Screen3());
-            manager.AddScreen(new PrePassScreen());
-
-            //manager.AddScreen(new BakerScreen());
             //manager.AddScreen(new MixReflection());
             //manager.AddScreen(new ModeloScreen());
             //manager.AddScreen(new RVO3DScreen());

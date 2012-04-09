@@ -61,7 +61,7 @@ namespace EngineTestes
 
             this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo));
 
-            LightThrowBepu LightThrowBepu = new LightThrowBepu(this.World, factory);
+            PreLightThrowBepu LightThrowBepu = new PreLightThrowBepu(this.World, factory);
             this.AttachCleanUpAble(LightThrowBepu);
         }
 
