@@ -207,6 +207,7 @@
     <Compile Include="Bullet\BallThrowBullet.cs" />
     <Compile Include="CharacterControllerInput.cs" />
     <Compile Include="CharacterSample\CharacterScreen.cs" />
+    <Compile Include="LightPrePassIdea2\PreLightThrowBepu.cs" />
     <Compile Include="LightPrePassIdea2\PrePassScreen.cs" />
     <Compile Include="LightPrePassIdea2\PreRenderTechnic.cs" />
     <Compile Include="LightPrePassIdea2\PreFinalCombination.cs" />
@@ -238,6 +239,12 @@
     <Compile Include="FileUtils\FileUtilsScreen.cs" />
     <Compile Include="Physx 2.8.x\BallThrowPhysx28.cs" />
     <Compile Include="Physx 2.8.x\Physx28Screen.cs" />
+    <Compile Include="Post\BlurScreen.cs" />
+    <Compile Include="Post\DownSamplePostEffect.cs" />
+    <Compile Include="Post\DownSampler.cs" />
+    <Compile Include="Post\SBlurPost.cs" />
+    <Compile Include="Post\SSAOPost.cs" />
+    <Compile Include="Post\SSAOScreen.cs" />
     <Compile Include="ScreenTests\InterTest\AlgoTest.cs" />
     <Compile Include="SphereCharacterControllerInput.cs" />
     <Compile Include="FullCharacterControllerInput.cs" />

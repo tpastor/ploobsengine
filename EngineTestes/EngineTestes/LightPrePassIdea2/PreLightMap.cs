@@ -103,7 +103,8 @@ namespace PloobsEngine.SceneControl
                 {
                     PloobsEngine.Light.DirectionalLightPE dl = item as PloobsEngine.Light.DirectionalLightPE;
 
-                    DirectionallightDirection.SetValue(dl.LightDirection);
+                    Vector3 vldir = Vector3.Transform(dl.LightDirection, camera.View);
+                    DirectionallightDirection.SetValue(vldir);
                     DirectionalColor.SetValue(dl.Color.ToVector3());
                     DirectionallightIntensity.SetValue(dl.LightIntensity);
 

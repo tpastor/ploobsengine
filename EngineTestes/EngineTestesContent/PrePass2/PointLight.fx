@@ -1,3 +1,4 @@
+#include <..\PrePass2\helper.fxh>
 float4x4 wvp;
 uniform  bool quadratic = true;
 float2 TanAspect;
@@ -56,9 +57,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
     texCoord +=halfPixel;
 
     //get normal data from the normalMap
-    float4 normalData = tex2D(normalSampler,texCoord);
-    //tranform normal back into [-1,1] range
-    float3 normal = 2.0f * normalData.xyz - 1.0f;
+    float3 normal = SampleNormal(texCoord,normalSampler);		
     
     //read depth
     float depthVal = tex2D(depthSampler,texCoord).r;
@@ -104,7 +103,7 @@ technique Technique1
 {
     pass Pass1
     {
-        VertexShader = compile vs_2_0 VertexShaderFunction();
-        PixelShader = compile ps_2_0 PixelShaderFunction();
+        VertexShader = compile vs_3_0 VertexShaderFunction();
+        PixelShader = compile ps_3_0 PixelShaderFunction();
     }
 }

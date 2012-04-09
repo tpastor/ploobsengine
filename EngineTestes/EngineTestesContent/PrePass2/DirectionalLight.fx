@@ -1,3 +1,4 @@
+#include <..\PrePass2\helper.fxh>
 float3 lightDirection;
 float  lightIntensity = 1;
 float3 Color; 
@@ -39,9 +40,8 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 {	
 	//get normal data from the normalMap
-    float4 normalData = tex2D(normalSampler,input.TexCoord);		
-    //tranform normal back into [-1,1] range
-    float3 normal = 2.0f * normalData.xyz - 1.0f;
+    float3 normal = SampleNormal(input.TexCoord,normalSampler);		
+	//return float4(normal,1);
     
     //read depth
     float depthVal = tex2D(depthSampler,input.TexCoord).r;
@@ -70,7 +70,7 @@ technique Technique0
 {
     pass Pass0
     {
-        VertexShader = compile vs_2_0 VertexShaderFunction();
-        PixelShader = compile ps_2_0 PixelShaderFunction();
+        VertexShader = compile vs_3_0 VertexShaderFunction();
+        PixelShader = compile ps_3_0 PixelShaderFunction();
     }
 }

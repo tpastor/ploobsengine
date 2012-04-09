@@ -1,7 +1,9 @@
+#include <..\PrePass2\helper.fxh>
 float4x4 World;
 float4x4 View;
 float4x4 Projection;
 float FarClip;
+matrix VPIT;
 
 struct VertexShaderInput
 {
@@ -23,14 +25,14 @@ VertexShaderOutput RenderToGBufferVertexCommon(VertexShaderInput input)
     VertexShaderOutput output = (VertexShaderOutput)0;	
 	float4 pos = float4(input.Position,1);
 
-	float4x4 worldViewProjection = mul(mul(World ,View ) , Projection);
 	float4x4 worldview =  mul(World ,View);	
+	float4x4 worldViewProjection = mul(worldview, Projection);	
 	float3 viewSpacePos = mul( pos, worldview );
 	output.Depth = viewSpacePos.z; 
+    output.Position = mul(pos, worldViewProjection);     	
+	output.Normal = mul(input.Normal, VPIT );
 
-    output.Position = mul(pos, worldViewProjection);
-    output.TexCoord.xy = input.TexCoord; 	
-	output.Normal = mul(input.Normal,worldview );
+	output.TexCoord.xy = input.TexCoord;
     return output;
 }
 
@@ -43,8 +45,8 @@ struct PixelShaderOutput
 
 PixelShaderOutput RenderToGBufferPixelShader(VertexShaderOutput input)
 {
-	PixelShaderOutput output = (PixelShaderOutput)1;   
-    output.Normal.rgb =  (normalize(input.Normal) + 1) * 0.5f;	
+	PixelShaderOutput output = (PixelShaderOutput)0;   
+    output.Normal.rgb =  CompressNormal(normalize(input.Normal));	
 	output.Depth.x = -input.Depth/ FarClip;		
 	return output;
 }

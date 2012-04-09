@@ -1,3 +1,4 @@
+#include <..\PrePass2\helper.fxh>
 float4x4 World;
 float4x4 View;
 float4x4 Projection;
@@ -68,12 +69,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
     {  
         float spotIntensity = pow(SdL, lightDecayExponent);  
  
-        //get normal data from the normalMap  
-        float4 normalData = tex2D(normalSampler,input.TexCoord);  
-        //tranform normal back into [-1,1] range  
-        float3 normal = 2.0f * normalData.xyz - 1.0f;  
-        //get specular power  
-        float specularPower = normalData.a * 255;          
+        float3 normal = SampleNormal(input.TexCoord,normalSampler);		
  
         //compute diffuse light  
         float NdL = max(0,dot(normal,lightVector));  
@@ -105,7 +101,7 @@ technique Technique1
 {
     pass Pass1
     {
-        VertexShader = compile vs_2_0 VertexShaderFunction();
-        PixelShader = compile ps_2_0 PixelShaderFunction();
+        VertexShader = compile vs_3_0 VertexShaderFunction();
+        PixelShader = compile ps_3_0 PixelShaderFunction();
     }
 }

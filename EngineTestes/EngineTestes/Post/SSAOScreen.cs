@@ -22,7 +22,7 @@ using EngineTestes.Post;
 
 namespace EngineTestes
 {
-    public class HBAOScreen : IScene
+    public class SSAOScreen : IScene
     {
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
@@ -87,22 +87,10 @@ namespace EngineTestes
             #endregion
                         
             CameraFirstPerson cam = new CameraFirstPerson(GraphicInfo);
-            cam.FarPlane = 600;
+            cam.FarPlane = 1000;
             this.World.CameraManager.AddCamera(cam);
-
-            //this.RenderTechnic.AddPostEffect(new PloobsEngine.SceneControl.SimpleMotionBlurPostEffect());
-            this.RenderTechnic.AddPostEffect(new HorizonBasedAmbientOcclusionShader());
-            //this.RenderTechnic.AddPostEffect(new BloomPostEffect());
-
-            //SSAOPostEffect ssao = new SSAOPostEffect();
-            ////ssao.OutputONLYSSAOMAP = true;
-            //ssao.WhiteCorrection = 0.7f;
-            //ssao.Intensity = 5;
-            //ssao.Diffscale = 0.5f;
-            //ssao.BlurMode = BlurMode.DOUBLE;            
-            //this.RenderTechnic.AddPostEffect(ssao);
-
-            //this.RenderTechnic.AddPostEffect(new GaussianBlurPostEffect());
+            
+            this.RenderTechnic.AddPostEffect(new SSAOPost());
 
             SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//grasscube");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);

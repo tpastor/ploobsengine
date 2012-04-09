@@ -282,14 +282,6 @@ namespace PloobsEngine.SceneControl
 
             render.DettachBindedTextures(3);
             render.ValidateSamplerStates();
-
-
-            render[PrincipalConstants.colorRT] = deferredGBuffer[GBufferTypes.COLOR];
-            render[PrincipalConstants.normalRt] = deferredGBuffer[GBufferTypes.NORMAL];
-            render[PrincipalConstants.lightRt] = deferredLightMap[DeferredLightMapType.LIGHTMAP];
-            render[PrincipalConstants.DephRT] = deferredGBuffer[GBufferTypes.DEPH];
-            render[PrincipalConstants.extra1RT] = deferredGBuffer[GBufferTypes.Extra1];
-            
                         
                 if (world.PhysicWorld.isDebugDraw)
                 {
@@ -310,6 +302,11 @@ namespace PloobsEngine.SceneControl
                 render.DettachBindedTextures(6);
                 render.ValidateSamplerStates();
 
+                render[PrincipalConstants.colorRT] = scenerender;
+                render[PrincipalConstants.normalRt] = deferredGBuffer[GBufferTypes.NORMAL];
+                render[PrincipalConstants.lightRt] = deferredLightMap[DeferredLightMapType.LIGHTMAP];
+                render[PrincipalConstants.DephRT] = deferredGBuffer[GBufferTypes.DEPH];
+                render[PrincipalConstants.extra1RT] = deferredGBuffer[GBufferTypes.Extra1];
                 render[PrincipalConstants.CurrentImage] = render[PrincipalConstants.CombinedImage] = render.PopRenderTargetAsSingleRenderTarget2D();
 
                 for (int i = 0; i < PostEffects.Count; i++)
