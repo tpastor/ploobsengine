@@ -11,6 +11,8 @@ float2 g_screen_size;
 matrix invertViewProj;
 matrix View;
 
+float SSAOCombineIntensityity;
+
 
 struct VertexShaderInput
 {
@@ -113,5 +115,20 @@ technique Technique1
     {
         VertexShader = compile vs_3_0 VertexShaderFunction();
         PixelShader = compile ps_3_0 main();
+    }
+}
+///////////////////////////
+
+float4 main2(VertexShaderOutput i) : COLOR0
+{	
+	return tex2D(g_buffer_norm, i.uv) * tex2D(depthSampler, i.uv) * SSAOCombineIntensityity;
+}
+
+technique Technique2
+{
+    pass Pass1
+    {
+        VertexShader = compile vs_3_0 VertexShaderFunction();
+        PixelShader = compile ps_3_0 main2();
     }
 }

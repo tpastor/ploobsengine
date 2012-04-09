@@ -85,6 +85,13 @@ namespace PloobsEngine
         /// Depth Render target name
         /// </summary>
         public const String DephRT = "DEPHRT";
+
+        /// <summary>
+        /// SSAO Render target name
+        /// Created by post effect (fully controlled by the user)
+        /// </summary>
+        public const String SSAORT = "SSAORT";
+
         /// <summary>
         /// Separator character used when parsing files
         /// </summary>
