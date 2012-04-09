@@ -1,36 +1,6 @@
-texture g_buffer_normtex;
-sampler g_buffer_norm = sampler_state
-{
-   Texture = <g_buffer_normtex>;
-   MinFilter = LINEAR;
-   MagFilter = LINEAR;   
-   AddressU  = CLAMP;
-   AddressV  = CLAMP;
-};
-
-
-
-texture depthSamplertex;
-sampler depthSampler = sampler_state
-{
-   Texture = <depthSamplertex>;
-   MinFilter = POINT;
-   MagFilter = POINT;   
-   AddressU  = CLAMP;
-   AddressV  = CLAMP;
-};
-
-
-texture g_randomtex;
-sampler g_random = sampler_state
-{
-   Texture = <g_randomtex>;
-   MinFilter = LINEAR;
-   MagFilter = LINEAR;   
-   AddressU  = WRAP;
-   AddressV  = WRAP;
-};
-
+sampler g_buffer_norm : register(s0);
+sampler depthSampler : register(s1);
+sampler g_random : register(s2);
 
 float random_size;
 float g_sample_rad;
@@ -133,8 +103,6 @@ float4 main(VertexShaderOutput i) : COLOR0
 	}
 	ao/=(float)iterations;
 	//**END**//
-
-	//Do stuff here with your occlusion value “ao”: modulate ambient lighting, write it to a buffer for later //use, etc.
 	return 1 - ao;
 }
 
