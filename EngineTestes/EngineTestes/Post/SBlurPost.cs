@@ -6,6 +6,7 @@ using PloobsEngine.SceneControl;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using PloobsEngine;
+using PloobsEngine.Engine.Logger;
 
 namespace EngineTestes.Post
 {
@@ -13,6 +14,7 @@ namespace EngineTestes.Post
     {
         Fifteen =15,
         Seven = 7,
+        Three = 3,
     }
     
 
@@ -58,7 +60,22 @@ namespace EngineTestes.Post
 
         public override void Init(PloobsEngine.Engine.GraphicInfo ginfo, PloobsEngine.Engine.GraphicFactory factory)
         {
-            effect = BlurRadiusSize == Post.BlurRadiusSize.Fifteen ? factory.GetEffect("SBlurPost\\sblur", true) : factory.GetEffect("SBlurPost\\sblur2", true);
+            switch (BlurRadiusSize)
+            {
+                case BlurRadiusSize.Fifteen:
+                    effect = factory.GetEffect("SBlurPost\\sblur", true); 
+                    break;
+                case BlurRadiusSize.Seven:
+                    effect = factory.GetEffect("SBlurPost\\sblur2", true); 
+                    break;
+                case BlurRadiusSize.Three:
+                    effect = factory.GetEffect("SBlurPost\\sblur3", true); 
+                    break;
+                default:
+                    ActiveLogger.LogMessage("Wrong Blur Radius Size Specified", LogLevel.RecoverableError);
+                    effect = factory.GetEffect("SBlurPost\\sblur", true); 
+                    break;
+            }
 
             if (!destinySize.HasValue)
             {
