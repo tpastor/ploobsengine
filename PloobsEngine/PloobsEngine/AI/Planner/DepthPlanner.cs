@@ -37,7 +37,7 @@ namespace PloobsEngine.IA
                  {
                         ws.SetSymbol(item2.Clone());
                  }
-                 item.ApplyEffects(WorldState);
+                 item.ApplyEffects(ws);
                  
                  iter++;
                  if (iter > MaxIteration)

@@ -51,6 +51,10 @@ namespace PloobsEngine.IA
             set;
         }
 
+        public override string ToString()
+        {
+            return "Name: " + Name + " Cost: " + Cost;
+        }
 
     }
 }

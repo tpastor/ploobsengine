@@ -30,3 +30,24 @@ namespace Agent.Test
         }
     }
 }
+
+
+//public override int GetHeuristic(WorldState WorldState)
+//        {
+//            int diff = 0;
+//            foreach (var item in Goal.GetSymbols())
+//            {
+//                if (this.Symbols.ContainsKey(item.Name))
+//                {
+//                    if (!Symbols[item.Name].CompareTo(item))
+//                    {
+//                        diff++;
+//                    }
+//                }
+//                else
+//                {
+//                    diff++;
+//                }
+//            }
+//            return diff;
+//        }

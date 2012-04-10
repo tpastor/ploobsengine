@@ -62,6 +62,9 @@
     <PlatformTarget>x86</PlatformTarget>
     <XnaCompressContent>true</XnaCompressContent>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BEPUphysics">
       <HintPath>..\..\PloobsEngine\PloobsEngine\Dlls\BEPUphysics.dll</HintPath>
@@ -176,6 +179,14 @@
     <Compile Include="AI\Planner\Action\KillAction.cs" />
     <Compile Include="AI\Planner\Action\TestGoal.cs" />
     <Compile Include="AI\Planner\PlannerTest.cs" />
+    <Compile Include="AI\Planner\Sample\GOAP\Actions\Attack.cs" />
+    <Compile Include="AI\Planner\Sample\GOAP\Actions\Build.cs" />
+    <Compile Include="AI\Planner\Sample\GOAP\Actions\GatherResource.cs" />
+    <Compile Include="AI\Planner\Sample\GOAP\Actions\GoalAttack.cs" />
+    <Compile Include="AI\Planner\Sample\GOAP\Actions\MakeUnit.cs" />
+    <Compile Include="AI\Planner\Sample\GOAP\Actions\Patrol.cs" />
+    <Compile Include="AI\Planner\Sample\GOAP\GoalPlanning.cs" />
+    <Compile Include="AI\Planner\Sample\GOAP\PlanningTest2.cs" />
     <Compile Include="AI\RVO2D\RVO2DObject.cs" />
     <Compile Include="AI\RVO2D\RVO2DScreen.cs" />
     <Compile Include="AI\RVO3D\RVO3DObject.cs" />

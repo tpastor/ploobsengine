@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Text;
 using PloobsEngine.DataStructure;
+using System;
+using System.Diagnostics;
 
 namespace PloobsEngine.IA
 {
@@ -10,15 +12,30 @@ namespace PloobsEngine.IA
         public float f, g, h;
         public List<Action> act = new List<Action>();
         public WorldState WorldState;
+
+        public override string ToString()
+        {
+            StringBuilder resp = new StringBuilder();
+            resp.AppendLine("Current State");
+            resp.AppendLine("f " + f );
+            resp.AppendLine("Actions:");
+            foreach (var item in act)
+            {
+                resp.AppendLine(item.ToString());
+            }
+            resp.AppendLine("WorldState:");
+            resp.AppendLine(WorldState.ToString());
+            return resp.ToString();
+        }
     }
 
     class comparer : IComparer<pathrecnode>
     {
         public int Compare(pathrecnode x, pathrecnode y)
         {
-            if (x.f < y.f)
-                return 1;
             if (x.f > y.f)
+                return 1;
+            if (x.f < y.f)
                 return -1;
             return 0;
         }
@@ -80,10 +97,8 @@ namespace PloobsEngine.IA
                     {
                         ws.SetSymbol(item2.Clone());
                     }
-                    item.ApplyEffects(current.WorldState);
-
-                    System.Diagnostics.Debug.WriteLine(item.Name);
-
+                    item.ApplyEffects(ws);
+                    
                     pathrecnode pathrec = new pathrecnode();
                     pathrec.WorldState = ws;
                     pathrec.act = new List<Action>(current.act.ToArray());
@@ -92,25 +107,16 @@ namespace PloobsEngine.IA
                     pathrec.h = destiny.GetHeuristic(pathrec.WorldState);
                     //pathrec.WorldState.GetHeuristic(destiny.WorldState);
                     pathrec.f = pathrec.g + pathrec.h; 
-                    processing.Push(pathrec);                    
+                    processing.Push(pathrec);                   
+
                 }
 
-                System.Diagnostics.Debug.WriteLine("---START");
-                for (int i = 0; i < processing.Count; i++)
-                {
-                    System.Diagnostics.Debug.WriteLine("-<>-");
-                    foreach (var item2 in processing[i].act)
-                    {
-                        System.Diagnostics.Debug.WriteLine(item2.Name);    
-                    }
-                    
-                }
-                System.Diagnostics.Debug.WriteLine("---END");
-
+              
                 iter++;
                 if (iter > MaxIteration)
                     return null;
 
+                Debug(processing, iter);
             }
 
             if (current != null)
@@ -124,6 +130,17 @@ namespace PloobsEngine.IA
 
             
             return PlanSet;
+        }
+
+        [Conditional("DEBUG")]
+        void Debug(PriorityQueueB<pathrecnode> processing, int iter)
+        {
+            Console.WriteLine("------------------------------------------------");
+            Console.WriteLine("Iteration " + iter);
+            for (int i = 0; i < processing.Count; i++)
+            {
+                Console.WriteLine(processing[i].ToString());
+            }
         }
 
     }
