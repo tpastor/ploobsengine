@@ -10,19 +10,17 @@ namespace PloobsEngine.IA
         public override PlanSet CreatePlan(WorldState actual, Goal destiny)
         {
             PlanSet PlanSet = new PlanSet();
-                
-            WorldState goal = destiny.WorldState.Clone();
-
+                        
             WorldState current = actual.Clone();
             int iter = 0;
-            while (!destiny.WorldState.isCompatibleSource(current))
+            while (!destiny.Evaluate(current))
             {
                 Action act = null;
                 foreach (var item in Actions)
                 {
-                    if (item.GetPreConditions().isCompatibleSource(current))
+                    if (item.GetPreConditions(current).isCompatibleSource(current))
                     {
-                        if (item.ProceduralPreConditions())
+                        if (item.ProceduralPreConditions(current))
                         {
                             act = item;
                             break;
@@ -32,11 +30,11 @@ namespace PloobsEngine.IA
 
                 if (act != null)
                 {
-                    foreach (var item in act.GetEffects().GetSymbols())
+                    foreach (var item in act.GetEffects(current).GetSymbols())
                     {
                         current.SetSymbol(item.Clone());
                     }
-                    act.ApplyEffects();
+                    act.ApplyEffects(current);
                 }
                 else
                 {

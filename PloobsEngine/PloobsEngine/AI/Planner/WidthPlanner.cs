@@ -31,17 +31,17 @@ namespace PloobsEngine.IA
             while (processing.Count != 0)
             {
                 current = processing.First.Value;
-                processing.RemoveFirst();                
+                processing.RemoveFirst();
 
-                if (destiny.WorldState.isCompatibleSource(current.WorldState))
+                if (destiny.Evaluate(current.WorldState) == true)
                     break;
 
                 List<Action> acts = new List<Action>();
                 foreach (var item in Actions)
                 {
-                    if (item.GetPreConditions().isCompatibleSource(current.WorldState))
+                    if (item.GetPreConditions(current.WorldState).isCompatibleSource(current.WorldState))
                     {
-                        if (item.ProceduralPreConditions())
+                        if (item.ProceduralPreConditions(current.WorldState))
                         {
                             acts.Add(item);
                         }
@@ -50,12 +50,12 @@ namespace PloobsEngine.IA
                 
                 foreach (var item in acts)
                 {
-                    WorldState ws = current.WorldState.Clone();                                        
-                    foreach (var item2 in item.GetEffects().GetSymbols())
+                    WorldState ws = current.WorldState.Clone();
+                    foreach (var item2 in item.GetEffects(current.WorldState).GetSymbols())
                     {
                         ws.SetSymbol(item2.Clone());
                     }
-                    item.ApplyEffects();
+                    item.ApplyEffects(current.WorldState);
 
                     System.Diagnostics.Debug.WriteLine(item.Name);
 

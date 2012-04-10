@@ -64,26 +64,6 @@ namespace PloobsEngine.IA
             return w;
         }
 
-        public int GetHeuristic(WorldState Goal)
-        {
-            int diff = 0;
-            foreach (var item in Goal.GetSymbols())
-            {
-                if (this.Symbols.ContainsKey(item.Name))
-                {
-                    if (!Symbols[item.Name].CompareTo(item))
-                    {
-                        diff++;
-                    }
-                }
-                else
-                {
-                    diff++;
-                }                
-            }
-            return diff;
-        }
-
         Dictionary<string, WorldSymbol> Symbols = new Dictionary<string, WorldSymbol>();
 
         public IEnumerable<WorldSymbol> GetSymbols()

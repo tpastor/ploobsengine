@@ -7,12 +7,7 @@ namespace PloobsEngine.IA
 {
     public abstract class Goal
     {
-        public WorldState WorldState
-        {
-            set;
-            get;
-        }
-
+        public abstract int GetHeuristic(WorldState WorldState );
         public abstract bool Evaluate(WorldState state);
         public String Name
         {

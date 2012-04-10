@@ -47,9 +47,9 @@ namespace PloobsEngine.IA
             pathrecnode current = null;
             while (processing.Count != 0)
             {
-                current = processing.Pop(); ;
+                current = processing.Pop(); 
 
-                if (destiny.WorldState.isCompatibleSource(current.WorldState))
+                if (destiny.Evaluate(current.WorldState) == true)
                     break;
 
                 if (close.Contains(current.WorldState))
@@ -64,9 +64,9 @@ namespace PloobsEngine.IA
                 List<Action> acts = new List<Action>();
                 foreach (var item in Actions)
                 {
-                    if (item.GetPreConditions().isCompatibleSource(current.WorldState))
+                    if (item.GetPreConditions(current.WorldState).isCompatibleSource(current.WorldState))
                     {
-                        if (item.ProceduralPreConditions())
+                        if (item.ProceduralPreConditions(current.WorldState))
                         {
                             acts.Add(item);
                         }
@@ -75,12 +75,12 @@ namespace PloobsEngine.IA
                 
                 foreach (var item in acts)
                 {
-                    WorldState ws = current.WorldState.Clone();                                        
-                    foreach (var item2 in item.GetEffects().GetSymbols())
+                    WorldState ws = current.WorldState.Clone();
+                    foreach (var item2 in item.GetEffects(current.WorldState).GetSymbols())
                     {
                         ws.SetSymbol(item2.Clone());
                     }
-                    item.ApplyEffects();
+                    item.ApplyEffects(current.WorldState);
 
                     System.Diagnostics.Debug.WriteLine(item.Name);
 
@@ -89,7 +89,8 @@ namespace PloobsEngine.IA
                     pathrec.act = new List<Action>(current.act.ToArray());
                     pathrec.act.Add(item);
                     pathrec.g += 1 + item.Cost;
-                    pathrec.h = pathrec.WorldState.GetHeuristic(destiny.WorldState);
+                    pathrec.h = destiny.GetHeuristic(pathrec.WorldState);
+                    //pathrec.WorldState.GetHeuristic(destiny.WorldState);
                     pathrec.f = pathrec.g + pathrec.h; 
                     processing.Push(pathrec);                    
                 }

@@ -12,15 +12,15 @@ namespace PloobsEngine.IA
         int iter = 0;
         private bool depthSearch(WorldState WorldState)
         {
-            if (destiny.WorldState.isCompatibleSource(WorldState))
+            if (destiny.Evaluate(WorldState) == true)
                 return true;
             
             List<Action> acts = new List<Action>();
             foreach (var item in Actions)
             {
-                if (item.GetPreConditions().isCompatibleSource(WorldState))
+                if (item.GetPreConditions(WorldState).isCompatibleSource(WorldState))
                 {
-                    if (item.ProceduralPreConditions())
+                    if (item.ProceduralPreConditions(WorldState))
                     {
                         acts.Add(item);
                     }
@@ -33,11 +33,11 @@ namespace PloobsEngine.IA
             foreach (var item in acts)
             {
                  WorldState ws = WorldState.Clone();
-                 foreach (var item2 in item.GetEffects().GetSymbols())
+                 foreach (var item2 in item.GetEffects(WorldState).GetSymbols())
                  {
                         ws.SetSymbol(item2.Clone());
                  }
-                 item.ApplyEffects();
+                 item.ApplyEffects(WorldState);
                  
                  iter++;
                  if (iter > MaxIteration)

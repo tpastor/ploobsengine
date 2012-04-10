@@ -15,22 +15,22 @@ namespace PloobsEngine.IA
             effectWorldState = effectCond;
         }
 
-        public virtual bool ProceduralPreConditions()
+        public virtual bool ProceduralPreConditions(WorldState WorldState)
         {
             return true;
         }
 
-        public WorldState GetPreConditions()
+        public WorldState GetPreConditions(WorldState WorldState)
         {
             return preWorldState;
         }
 
-        public WorldState GetEffects()
+        public WorldState GetEffects(WorldState WorldState)
         {
             return effectWorldState;
         }
 
-        public virtual void ApplyEffects()
+        public virtual void ApplyEffects(WorldState WorldState)
         {
         }
 

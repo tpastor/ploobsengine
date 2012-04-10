@@ -11,8 +11,15 @@ namespace Agent.Test
         public TesteGoal()
         {
             Name = "Goal: killed = true";
-            this.WorldState = new WorldState();
-            this.WorldState .SetSymbol(new WorldSymbol("EnemyKilled",true));
+            //this.WorldState = new WorldState();
+            //this.WorldState.SetSymbol(new WorldSymbol("EnemyKilled", true));
+        }
+
+        public override int GetHeuristic(WorldState WorldState)
+        {
+            if (WorldState.GetSymbol("EnemyKilled").GetSymbol<bool>() == false)
+                return 1;
+            return 0;
         }
 
         public override bool Evaluate(WorldState state)
