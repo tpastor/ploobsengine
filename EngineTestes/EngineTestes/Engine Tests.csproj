@@ -245,6 +245,8 @@
     <Compile Include="Post\SBlurPost.cs" />
     <Compile Include="Post\SSAOPost.cs" />
     <Compile Include="Post\SSAOScreen.cs" />
+    <Compile Include="PRT\MonteCarlo.cs" />
+    <Compile Include="PRT\SphericalHarmonicEvaluator.cs" />
     <Compile Include="ScreenTests\InterTest\AlgoTest.cs" />
     <Compile Include="SphereCharacterControllerInput.cs" />
     <Compile Include="FullCharacterControllerInput.cs" />

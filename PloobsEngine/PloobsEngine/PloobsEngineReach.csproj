@@ -499,6 +499,8 @@
     <Compile Include="Utils\WeakReference\WeakReference.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="bin\x86\Release\PloobsEngineReachContent\block.xnb" />
+    <None Include="bin\x86\Release\PloobsEngineReachContent\Dsphere.xnb" />
     <None Include="PloobsEngine.licenseheader" />
     <None Include="Resources\ConsoleFont.spritefont" />
   </ItemGroup>
