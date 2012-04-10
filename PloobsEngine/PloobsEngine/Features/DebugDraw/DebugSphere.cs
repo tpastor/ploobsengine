@@ -65,9 +65,11 @@ namespace PloobsEngine.Features.DebugDraw
                 effect.TextureEnabled = false;
                 effect.VertexColorEnabled = false;
                 effect.LightingEnabled = lightingEnabled;
+                WireFrameEnabled = true;
             }
         }
 
+        static RasterizerState RasterizerState = null;
         static bool lightingEnabled = false;
         public static bool LightingEnabled 
         {
@@ -83,6 +85,27 @@ namespace PloobsEngine.Features.DebugDraw
                     lightingEnabled = value;
                 }
             }
+        }
+
+        public static bool WireFrameEnabled
+        {
+            get
+            {
+                return RasterizerState == null;
+            }
+            set
+            {
+                if (value == true)
+                {
+                    RasterizerState = new RasterizerState();
+                    RasterizerState.FillMode = FillMode.WireFrame;
+                }
+                else
+                {
+                    RasterizerState = null;
+                }
+            }
+
         }
 
         /// <summary>
@@ -109,8 +132,15 @@ namespace PloobsEngine.Features.DebugDraw
                 effect.View = view;
                 effect.Projection = projection;
                 effect.World = Matrix.CreateScale(Radius) * Matrix.CreateTranslation(Position);                
-                effect.DiffuseColor = Color.ToVector3();                
-                render.RenderBatch(sphereModel.GetBatchInformation(0)[0], effect);                
+                effect.DiffuseColor = Color.ToVector3();
+
+                if(RasterizerState != null)
+                    render.PushRasterizerState(RasterizerState);
+                
+                render.RenderBatch(sphereModel.GetBatchInformation(0)[0], effect);
+                
+                if (RasterizerState != null)
+                    render.PopRasterizerState();
             }
         }
 
