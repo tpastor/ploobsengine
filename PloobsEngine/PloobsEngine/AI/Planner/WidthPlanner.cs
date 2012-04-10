@@ -55,7 +55,7 @@ namespace PloobsEngine.IA
                     {
                         ws.SetSymbol(item2.Clone());
                     }
-                    item.ApplyEffects(current.WorldState);
+                    item.ApplyEffects(ws);
 
                     System.Diagnostics.Debug.WriteLine(item.Name);
 

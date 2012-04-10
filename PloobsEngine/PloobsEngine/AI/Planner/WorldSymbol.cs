@@ -68,5 +68,9 @@ namespace PloobsEngine.IA
             return WorldSymbol; 
                  
         }
+        public override string ToString()
+        {
+            return obj.ToString();
+        }
     }
 }

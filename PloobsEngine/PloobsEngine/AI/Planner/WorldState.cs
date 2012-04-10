@@ -112,5 +112,15 @@ namespace PloobsEngine.IA
         {
             return other.isEqual(this);
         }
+
+        public override string ToString()
+        {
+            StringBuilder StringBuilder = new StringBuilder();
+            foreach (var item in this.Symbols.Keys)
+            {
+                StringBuilder.AppendLine(item + "  " + Symbols[item]);
+            }
+            return StringBuilder.ToString();
+        }
     }
 }
