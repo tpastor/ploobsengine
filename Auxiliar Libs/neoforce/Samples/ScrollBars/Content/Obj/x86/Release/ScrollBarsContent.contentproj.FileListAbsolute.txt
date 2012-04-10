@@ -1,0 +1,2 @@
+E:\tom shane\Neoforce\Samples\ScrollBars\Content\obj\x86\Release\ResolveAssemblyReference.cache
+G:\tom shane\projects\Neoforce\Samples\ScrollBars\Content\obj\x86\Release\ResolveAssemblyReference.cache

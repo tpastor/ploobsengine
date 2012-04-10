@@ -1,0 +1,18 @@
+﻿id = 5000;
+createball(new Vector3(100),Color.Blue);
+
+function: void createball(Vector3 position,Color color)
+{
+	var obj = CreateSphereMeshModel("Model\\ball", position, Matrix.Identity, 1, 5);
+	ChangeModelTexture(obj, color);
+	AddToWorld(obj);
+}
+
+function: public override void RecieveMessage(Message message)
+{
+   /// handle incomming message here
+   createball( (Vector3) message.Content,Color.Red);
+   SendMessage("teste", null);
+}
+
+
