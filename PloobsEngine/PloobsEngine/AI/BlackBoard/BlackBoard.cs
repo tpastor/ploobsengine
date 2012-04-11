@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace PloobsEngine.IA
 {
@@ -10,49 +11,76 @@ namespace PloobsEngine.IA
         private Dictionary<String, object> intelligence = new Dictionary<string, object>();
         private Dictionary<String, List<Trigger>> triggers = new Dictionary<string, List<Trigger>>();
         private Dictionary<String, Queue<ITask>> TaskQueue = new Dictionary<string, Queue<ITask>>();
+        private object objlock = new object();
+        private object entrylock = new object();
 
         public void AddTaskToQueue(ITask Task)
         {
-            if (TaskQueue.ContainsKey(Task.QueueNameHandler))
+            lock (objlock)
             {
-                TaskQueue[Task.QueueNameHandler].Enqueue(Task);
-            }
-            else
-            {
-                TaskQueue[Task.QueueNameHandler] = new Queue<ITask>();
-                TaskQueue[Task.QueueNameHandler].Enqueue(Task);
+                if (TaskQueue.ContainsKey(Task.QueueNameHandler))
+                {
+                    TaskQueue[Task.QueueNameHandler].Enqueue(Task);
+                }
+                else
+                {
+                    TaskQueue[Task.QueueNameHandler] = new Queue<ITask>();
+                    TaskQueue[Task.QueueNameHandler].Enqueue(Task);
+                }
             }
         }
 
         public ITask DeQueueTaskFrom(String name)
         {
-            if(TaskQueue.ContainsKey(name) && TaskQueue[name].Count >0)
-                return TaskQueue[name].Dequeue();
-            return null;
+            lock (objlock)
+            {
+                if (TaskQueue.ContainsKey(name) && TaskQueue[name].Count > 0)
+                    return TaskQueue[name].Dequeue();
+                return null;
+            }
         }
 
         
         public void SetEntry<T>(String name, T intel)
         {
-            TriggerState TriggerState = intelligence.ContainsKey(name) == true ? TriggerState.VALUE_CHANGED : TriggerState.VALUE_ADDED;
-            intelligence[name] = intel;
-            if (triggers.ContainsKey(name))
+            lock (entrylock)
             {
-                foreach (var item in triggers[name])
+                TriggerState TriggerState = intelligence.ContainsKey(name) == true ? TriggerState.VALUE_CHANGED : TriggerState.VALUE_ADDED;
+                intelligence[name] = intel;
+
+
+                if (triggers.ContainsKey(name))
                 {
-                    item.Fire(TriggerState);
+                    foreach (var item in triggers[name])
+                    {
+                        item.Fire(TriggerState);
+                    }
                 }
             }
         }
 
+        public void AtomicOperateOnEntry<T>(Action<BlackBoard> operation)
+        {
+            lock (entrylock)
+            {
+                operation(this);
+            }
+        }
+
+
         public void RemoveEntry(String name)
         {
-            intelligence.Remove(name);
-            if (triggers.ContainsKey(name))
+            lock (entrylock)
             {
-                foreach (var item in triggers[name])
+                intelligence.Remove(name);
+
+
+                if (triggers.ContainsKey(name))
                 {
-                    item.Fire(TriggerState.VALUE_REMOVED);
+                    foreach (var item in triggers[name])
+                    {
+                        item.Fire(TriggerState.VALUE_REMOVED);
+                    }
                 }
             }
         }
@@ -73,31 +101,37 @@ namespace PloobsEngine.IA
 
         public void AddTrigger(Trigger Trigger, bool evaluateNow = false)
         {
-            Trigger.BlackBoard = this;
-            foreach (var IntellName in Trigger.WorldPropertiesMonitored)
+            lock (entrylock)
             {
+                Trigger.BlackBoard = this;
+                foreach (var IntellName in Trigger.WorldPropertiesMonitored)
+                {
 
-                if (triggers.ContainsKey(IntellName))
-                {
-                    triggers[IntellName].Add(Trigger);
+                    if (triggers.ContainsKey(IntellName))
+                    {
+                        triggers[IntellName].Add(Trigger);
+                    }
+                    else
+                    {
+                        triggers[IntellName] = new List<Trigger>();
+                        triggers[IntellName].Add(Trigger);
+                    }
                 }
-                else
+                if (evaluateNow)
                 {
-                    triggers[IntellName] = new List<Trigger>();
-                    triggers[IntellName].Add(Trigger);
+                    Trigger.Fire(TriggerState.TRIGGER_ADDED);
                 }
-            }
-            if (evaluateNow)
-            {
-                Trigger.Fire(TriggerState.TRIGGER_ADDED);
             }
         }
 
         public void RemoveTrigger(Trigger Trigger)
         {
-            foreach (var IntellName in Trigger.WorldPropertiesMonitored)
+            lock (entrylock)
             {
-                triggers[IntellName].Remove(Trigger);
+                foreach (var IntellName in Trigger.WorldPropertiesMonitored)
+                {
+                    triggers[IntellName].Remove(Trigger);
+                }
             }
         }
 
