@@ -52,7 +52,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
     float specularIntensity = tex2D(colorSampler, input.TexCoord).a;
 
 	//read depth
-    float depthVal = tex2D(depthSampler,input.TexCoord).r;
+    float depthVal = 1-tex2D(depthSampler,input.TexCoord).r;
 
     //compute screen-space position
     float4 position;
@@ -66,7 +66,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
     position /= position.w;
 	
 	//determine shadowing criteria
-	float shadowTerm = tex2D(ShadowMapSampler , input.TexCoord  ).r;   
+	float shadowTerm = 1-tex2D(ShadowMapSampler , input.TexCoord  ).r;   
       
     //surface-to-light vector
 	float3 lightVector = -normalize(lightDirection);

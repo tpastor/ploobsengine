@@ -59,7 +59,7 @@ struct VertexShaderOutput
 
 float3	PosFromDepth (float2 UV)
 {
-	float	Depth=tex2D(DepthSampler,UV).r;	
+	float	Depth=1-tex2D(DepthSampler,UV).r;	
 	float4	Pos=float4((UV.x-0.5)*2,(0.5-UV.y)*2,Depth,1);
 	float4	Ray=mul(Pos,InvProj);	
 	//Ray /= Ray.w;
@@ -99,7 +99,7 @@ float4 main (VertexShaderOutput input):COLOR
    float	pw=incx;												
    float	ph=incy;												
 
-    float	Sample=tex2D(DepthSampler,input.TextCoord).r;								
+    float	Sample=1-tex2D(DepthSampler,input.TextCoord).r;								
 	float	CDepth=1.0F/Sample;			
 
 	for (float i=0;i<3;++i)											 

@@ -80,7 +80,7 @@ namespace PloobsEngine.Particles
         }
 
         protected abstract void Draw(GameTime gt, Matrix view, Matrix Projection, RenderHelper render);
-        internal void iDraw(GameTime gt, Matrix view, Matrix Projection, RenderHelper render)
+        public void iDraw(GameTime gt, Matrix view, Matrix Projection, RenderHelper render)
         {
             Draw(gt,view,Projection,render);
         }

@@ -1,17 +1,9 @@
+#include <..\PrePass2\helper.fxh>
 float4x4 World;
 float4x4 View;
 float4x4 Projection;
 float FarClip;
-
-half2 EncodeNormal (half3 n)
-{
-	float kScale = 1.7777;
-	float2 enc;
-	enc = n.xy / (n.z+1);
-	enc /= kScale;
-	enc = enc*0.5+0.5;
-	return enc;
-}
+matrix VPIT;
 
 struct VertexShaderInput
 {
@@ -33,15 +25,14 @@ VertexShaderOutput RenderToGBufferVertexCommon(VertexShaderInput input)
     VertexShaderOutput output = (VertexShaderOutput)0;	
 	float4 pos = float4(input.Position,1);
 
-	float4x4 worldViewProjection = mul(mul(World ,View ) , Projection);
 	float4x4 worldview =  mul(World ,View);	
+	float4x4 worldViewProjection = mul(worldview, Projection);	
 	float3 viewSpacePos = mul( pos, worldview );
 	output.Depth = viewSpacePos.z; 
+    output.Position = mul(pos, worldViewProjection);     	
+	output.Normal = mul(input.Normal, VPIT );
 
-    output.Position = mul(pos, worldViewProjection);
-
-    output.TexCoord.xy = input.TexCoord; 	
-	output.Normal = mul(input.Normal,worldview );
+	output.TexCoord.xy = input.TexCoord;
     return output;
 }
 
@@ -54,15 +45,11 @@ struct PixelShaderOutput
 
 PixelShaderOutput RenderToGBufferPixelShader(VertexShaderOutput input)
 {
-	PixelShaderOutput output = (PixelShaderOutput)1;   
-
-    output.Normal.rg =  EncodeNormal (normalize(input.Normal));	//our encoder output in RG channels
-	output.Depth.x = -input.Depth/ FarClip;		//output Depth in linear space, [0..1]		
+	PixelShaderOutput output = (PixelShaderOutput)0;   
+    output.Normal.rgb =  CompressNormal(normalize(input.Normal));	
+	output.Depth.x = -input.Depth/ FarClip;		
 	return output;
 }
-
-
-
 
 technique RenderToGBuffer
 {

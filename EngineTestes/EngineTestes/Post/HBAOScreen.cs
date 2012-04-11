@@ -87,20 +87,20 @@ namespace EngineTestes
             #endregion
                         
             CameraFirstPerson cam = new CameraFirstPerson(GraphicInfo);
-            //cam.FarPlane = 100;
+            cam.FarPlane = 600;
             this.World.CameraManager.AddCamera(cam);
 
             //this.RenderTechnic.AddPostEffect(new PloobsEngine.SceneControl.SimpleMotionBlurPostEffect());
-            //this.RenderTechnic.AddPostEffect(new HorizonBasedAmbientOcclusionShader());
+            this.RenderTechnic.AddPostEffect(new HorizonBasedAmbientOcclusionShader());
             //this.RenderTechnic.AddPostEffect(new BloomPostEffect());
 
-            SSAOPostEffect ssao = new SSAOPostEffect();
-            //ssao.OutputONLYSSAOMAP = true;
-            ssao.WhiteCorrection = 0.7f;
-            ssao.Intensity = 5;
-            ssao.Diffscale = 0.5f;
-            ssao.BlurMode = BlurMode.NONE;
-            this.RenderTechnic.AddPostEffect(ssao);
+            //SSAOPostEffect ssao = new SSAOPostEffect();
+            ////ssao.OutputONLYSSAOMAP = true;
+            //ssao.WhiteCorrection = 0.7f;
+            //ssao.Intensity = 5;
+            //ssao.Diffscale = 0.5f;
+            //ssao.BlurMode = BlurMode.DOUBLE;            
+            //this.RenderTechnic.AddPostEffect(ssao);
 
             //this.RenderTechnic.AddPostEffect(new GaussianBlurPostEffect());
 

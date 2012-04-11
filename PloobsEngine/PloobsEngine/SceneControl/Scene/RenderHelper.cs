@@ -518,6 +518,16 @@ namespace PloobsEngine.SceneControl
         }
 
         /// <summary>
+        /// Gets the size of the current render target.
+        /// </summary>
+        /// <param name="index">The index.</param>
+        /// <returns></returns>
+        public Rectangle GetCurrentRenderTargetSize(int index = 0)
+        {
+            return (this.RenderStatesStack.Peek()[index].RenderTarget as Texture2D).Bounds;
+        }
+
+        /// <summary>
         /// Renders the text complete. (THIS FUNCTION ALREADY CALLS BEGIN AND END)
         /// </summary>
         /// <param name="text">The text.</param>
@@ -702,6 +712,28 @@ namespace PloobsEngine.SceneControl
         }
 
         /// <summary>
+        /// Renders the texture to the render target
+        /// Shortcut for Down/Up sampling
+        /// </summary>
+        /// <param name="texture">The texture.</param>
+        /// <param name="targetSize">Size of the target.</param>
+        /// <param name="resyncState">if set to <c>true</c> [resync state].</param>
+        /// <param name="SpriteSortMode">The sprite sort mode.</param>
+        /// <param name="samplerState">State of the sampler.</param>
+        /// <param name="blenderState">State of the blender.</param>
+        /// <param name="rasterizerState">State of the rasterizer.</param>
+        /// <param name="depthState">State of the depth.</param>
+        /// <param name="effect">The effect.</param>
+        public void RenderTextureComplete(Texture2D texture, Rectangle targetSize , bool resyncState = true, SpriteSortMode SpriteSortMode = SpriteSortMode.Deferred, SamplerState samplerState = null, BlendState blenderState = null, RasterizerState rasterizerState = null, DepthStencilState depthState = null, Effect effect = null)
+        {
+            spriteBatch.Begin(SpriteSortMode, blenderState, samplerState, depthState, rasterizerState, effect, Matrix.Identity);
+            spriteBatch.Draw(texture, targetSize, texture.Bounds, Color.White);
+            spriteBatch.End();
+            if (resyncState)
+                ResyncStates();
+        }
+
+        /// <summary>
         /// Resyncs the Device States
         /// THIS IS BECAUSE THE SPRITEBATCH KILLS THE RENDER STATES, NO SAVE STATE. XNA DOCUMENTATION FAILS !!!!
         /// </summary>
@@ -830,7 +862,6 @@ namespace PloobsEngine.SceneControl
             if (sync)
                 ResyncStates();
         }
-                
         
         public void RenderSceneToTextureCube(RenderTargetCube renderTargetCube, Color backGroundColor, IWorld world,
             ref Vector3 camPos, ref Matrix projection, GameTime gt,bool drawComponentsPreDraw = true,bool useCuller = false

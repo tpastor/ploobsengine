@@ -3,12 +3,10 @@ float4 LightColor;
 float3 LightPosition;
 float lightRadius;
 float lightIntensity;
+float3 FrustumCorners[4];
 
 float2 GBufferPixelSize;
-float FarClip;
 float4x4 WorldViewProjection;
-float2 TanAspect;
-
 
 texture DepthBuffer;
 sampler2D depthSampler = sampler_state
@@ -50,27 +48,14 @@ struct VertexShaderInput
 struct VertexShaderOutputMeshBased
 {
     float4 Position : POSITION0;
-	float4 TexCoordScreenSpace : TEXCOORD0;
+	float4 TexCoordScreenSpace : TEXCOORD0;	
 };
-
-
-half3 DecodeNormal (half4 enc)
-{
-	float kScale = 1.7777;
-	float3 nn = enc.xyz*float3(2*kScale,2*kScale,0) + float3(-kScale,-kScale,1);
-	float g = 2.0 / dot(nn.xyz,nn.xyz);
-	float3 n;
-	n.xy = g*nn.xy;
-	n.z = g-1;
-	return n;
-}
 
 float2 PostProjectionSpaceToScreenSpace(float4 pos)
 {
 	float2 screenPos = pos.xy / pos.w;
 	return (0.5f * (float2(screenPos.x, -screenPos.y) + 1));
 }
-
 
 
 VertexShaderOutputMeshBased PointLightMeshVS(VertexShaderInput input)
@@ -80,6 +65,7 @@ VertexShaderOutputMeshBased PointLightMeshVS(VertexShaderInput input)
 
 	//we will compute our texture coords based on pixel position further
 	output.TexCoordScreenSpace = output.Position;
+
 	return output;
 }
 
@@ -89,33 +75,33 @@ float4 PointLightMeshPS(VertexShaderOutputMeshBased input) : COLOR0
 	//as we are using a sphere mesh, we need to recompute each pixel position into texture space coords
 	float2 screenPos = PostProjectionSpaceToScreenSpace(input.TexCoordScreenSpace) + GBufferPixelSize;
 	//read the depth value
-	float depthValue = tex2D(depthSampler, screenPos).r;
-	
+	float depthValue = tex2D(depthSampler, screenPos).r;	
+
+	float3 FrustumRay = FrustumCorners[screenPos.x + (screenPos.y * 2)];	
+
 	//if depth value == 1, we can assume its a background value, so skip it
 	clip(-depthValue + 0.9999f);
 	
     // Reconstruct position from the depth value, the FOV, aspect and pixel position
-	depthValue*=FarClip;
-	//convert screenPos to [-1..1] range
-	float3 pos = float3(TanAspect*(screenPos*2 - 1)*depthValue, -depthValue);
+	float3 pos  = FrustumRay * depthValue;
 	
 	// Convert normal back with the decoding function
-	float4 normalMap = tex2D(normalSampler, screenPos);
-	float3 normal = DecodeNormal(normalMap);
+	float3 normalMap = normalize(tex2D(normalSampler, screenPos));
+	float3 normal = 2.0f * normalMap  - 1.0f;	
 			
 	//surface-to-light vector
-    float3 lightVector = LightPosition - pos;
+    float3 lightVector = LightPosition - pos ;	
 	
-	
-	float norm = saturate(length(lightVector)/(lightRadius ));	
-	float attenuation=  pow(1.0f - norm , 2)  ;    	
+	//float norm = saturate(length(lightVector)/(lightRadius ));	
+	//float attenuation=  pow(1.0f -  norm , 2)  ;    	
+	float attenuation = saturate(1.0f - (length(lightVector) )/(lightRadius )); 		
 	
     //normalize light vector
     lightVector = normalize(lightVector); 
 
     //compute diffuse light
     float NdL = max(0,dot(normal,lightVector));
-    float3 diffuseLight = NdL * LightColor.rgb;
+    float3 diffuseLight = NdL * float3(1,0,0);
 	
 	//reflection vector
     float3 reflectionVector = normalize(reflect(-lightVector, normal));
@@ -125,8 +111,9 @@ float4 PointLightMeshPS(VertexShaderOutputMeshBased input) : COLOR0
     float specularLight = 1 * pow( saturate(dot(reflectionVector, directionToCamera)), 50);
 	
     //take into account attenuation and lightIntensity.
-	return float4(diffuseLight.rgb,specularLight) * attenuation * lightIntensity;
+	//return float4(diffuseLight.rgb,specularLight) * attenuation * lightIntensity;
 
+	return float4(diffuseLight.rgb,1) * attenuation ;
 }
 
 technique PointMeshTechnique

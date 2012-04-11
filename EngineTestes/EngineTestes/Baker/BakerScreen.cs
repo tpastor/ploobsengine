@@ -11,20 +11,21 @@ using PloobsEngine.Physics.Bepu;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Cameras;
 using Microsoft.Xna.Framework.Graphics;
-using EngineTestes.LightPrePassIdea.Imp;
-using EngineTestes.LightPrePassIdea.obj;
-using PloobsEngine.Light;
+using EngineTestes.ScreenTests;
+using PloobsEngine.TestSuite;
 
 namespace EngineTestes
 {
-    public class PrePassScreen : IScene
+    [TesteVisualScreen]
+    public class BakerScreen : IScene
     {
-
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
 
-            renderTech = new LightPrePassRenderTechnic();
+            ForwardRenderTecnichDescription desc = ForwardRenderTecnichDescription.Default();
+            desc.BackGroundColor = Color.CornflowerBlue;
+            renderTech = new ForwardRenderTecnich(desc);
         }
 
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory ,IContentManager contentManager)
@@ -34,30 +35,11 @@ namespace EngineTestes
             {
                 SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
                 TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
-                PrePassShader shader = new PrePassShader();
-                DeferredMaterial fmaterial = new DeferredMaterial(shader);
+                BakerShader shader = new BakerShader();
+                ForwardMaterial fmaterial = new ForwardMaterial(shader);
                 IObject obj = new IObject(fmaterial, simpleModel, tmesh);
                 this.World.AddObject(obj);
-            }
-
-            #region NormalLight
-            DirectionalLightPE ld1 = new DirectionalLightPE(Vector3.Left, Color.White);
-            DirectionalLightPE ld2 = new DirectionalLightPE(Vector3.Right, Color.White);
-            DirectionalLightPE ld3 = new DirectionalLightPE(Vector3.Backward, Color.White);
-            DirectionalLightPE ld4 = new DirectionalLightPE(Vector3.Forward, Color.White);
-            DirectionalLightPE ld5 = new DirectionalLightPE(Vector3.Down, Color.White);
-            float li = 0.5f;
-            ld1.LightIntensity = li;
-            ld2.LightIntensity = li;
-            ld3.LightIntensity = li;
-            ld4.LightIntensity = li;
-            ld5.LightIntensity = li;
-            this.World.AddLight(ld1);
-            this.World.AddLight(ld2);
-            this.World.AddLight(ld3);
-            this.World.AddLight(ld4);
-            this.World.AddLight(ld5);
-            #endregion
+            }           
 
             this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo));
         }

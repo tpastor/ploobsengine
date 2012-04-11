@@ -41,7 +41,7 @@ VertexShaderOutput VShader( float4 Pos: POSITION, float2 Tex : TEXCOORD)
 
 float4 Pshader(VertexShaderOutput input) : COLOR
 {	    
-    float depthVal = tex2D(depthSampler,input.TexCoord).r;
+    float depthVal = 1-tex2D(depthSampler,input.TexCoord).r;
     float3 cen = tex2D(cenaSampler ,input.TexCoord );
 
     //compute screen-space position

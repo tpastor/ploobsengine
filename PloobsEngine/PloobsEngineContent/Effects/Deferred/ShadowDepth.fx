@@ -24,7 +24,7 @@ VertexToPixel MyVertexShader(half4 inPos: POSITION0)
 PixelToFrame MyPixelShader(VertexToPixel PSIn) : COLOR0
 {
 	PixelToFrame Output = (PixelToFrame)0;				
-	Output.Color = PSIn.ScreenPos.x/PSIn.ScreenPos.y;			
+	Output.Color = 1-PSIn.ScreenPos.x/PSIn.ScreenPos.y;			
 	return Output;
 }
 

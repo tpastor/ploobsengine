@@ -153,8 +153,7 @@ namespace EngineTestes.Post
                                             epContrast,
                                             epLineAttenuation,
                                             epAngleBias,
-                                            epRadius,
-                                            ivp,
+                                            epRadius,                                            
                 // Others
                                             epFocalLength,
                                             epInvFocalLength,
@@ -374,8 +373,7 @@ namespace EngineTestes.Post
                 shader = factory.GetEffect("HBAO\\HorizonBasedAmbientOcclusion");
                 Texture randomNormalTexture = factory.GetTexture2D("HBAO\\RandomNormal");
                 shader.Parameters["randomTexture"].SetValue(randomNormalTexture);
-
-                ivp = shader.Parameters["InvertViewProjection"];
+                
                 epResolution = shader.Parameters["resolution"];
                 epInverseResolution = shader.Parameters["invResolution"];
                 epNumberSteps = shader.Parameters["numberSteps"];
@@ -394,24 +392,26 @@ namespace EngineTestes.Post
 
                 RenderTarget2D = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
                 RenderTarget2D2 = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
-                depthrender = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
+                depthrender = factory.CreateRenderTarget(ginfo.BackBufferWidth , ginfo.BackBufferHeight, SurfaceFormat.Single,true);
 
                 g = new GaussianBlurPostEffect(false);
                 g.Init(ginfo, factory);
                 renderdepth = factory.GetEffect("HBAO\\generateDepth");
                 ssaofinal = factory.GetEffect("ssaofinal", false, true);
-            }
 
+            }
             Effect renderdepth;
             Effect ssaofinal;
             GaussianBlurPostEffect g;
             #region Render
 
+
             public override void Draw(Texture2D ImageToProcess, RenderHelper rHelper, GameTime gt, PloobsEngine.Engine.GraphicInfo GraphicInfo, IWorld world, bool useFloatBuffer)
             {
+
                 Matrix v = world.CameraManager.ActiveCamera.View;
                 Matrix p = world.CameraManager.ActiveCamera.Projection;
-                    
+
                 rHelper.PushRenderTarget(depthrender);
                 rHelper.Clear(Color.Black);
                 rHelper.RenderSceneWithCustomMaterial(renderdepth,
@@ -419,9 +419,9 @@ namespace EngineTestes.Post
                     {
                         Matrix w1 = Matrix.Multiply(obj.WorldMatrix, bi.ModelLocalTransformation);
                         effect.Parameters["wvp"].SetValue(w1 * wvp);
-                        effect.Parameters["WorldView"].SetValue(s * er);
+                        effect.Parameters["WorldView"].SetValue(w1 * v);
                         effect.Parameters["farPlane"].SetValue(world.CameraManager.ActiveCamera.FarPlane);
-                        
+
                     }, world, gt, null, ref v, ref p, false, true);
 
                 Texture2D depth = rHelper.PopRenderTargetAsSingleRenderTarget2D();
@@ -429,48 +429,63 @@ namespace EngineTestes.Post
 
                 // Set shader atributes
                 //SetNormalTexture(rHelper[PrincipalConstants.normalRt]);
-                //shader.Parameters["depthMap"].SetValue(rHelper[PrincipalConstants.DephRT]);
-                shader.Parameters["depthTexture"].SetValue(depth);
-
-                
+                //shader.Parameters["depthTexture"].SetValue(rHelper[PrincipalConstants.DephRT]);                
+                shader.Parameters["depthTexture"].SetValue(depth);                
                 //shader.Parameters["InvertViewProjection"].SetValue(Matrix.Invert(world.CameraManager.ActiveCamera.Projection));
-
+                
+                NumberSteps = 8;
+                NumberDirections = 12;
+                Radius = 10f;
+                LineAttenuation = 0.75f;
+                Contrast = 1.0f;
+                AngleBias = 0.00218166653f;
+                LineAttenuation = 0.75f;
+                
                 // It works a the depth texture resolution. Use a downsampled version of the G-Buffer.
                 SetResolution(new Vector2(GraphicInfo.BackBufferWidth, GraphicInfo.BackBufferHeight));
-                SetInverseResolution(new Vector2(1 / (float)GraphicInfo.BackBufferWidth, 1 / (float)GraphicInfo.BackBufferHeight));
-                SetNumberSteps(NumberSteps );
-                SetNumberDirections(NumberDirections );
+                SetInverseResolution(new Vector2(1f / (float)GraphicInfo.BackBufferWidth, 1f / (float)GraphicInfo.BackBufferHeight));
+                SetNumberSteps(8);
+                SetNumberDirections(12);
                 SetContrast(Contrast  / (1.0f - (float)Math.Sin(AngleBias)));
                 SetLineAttenuation(LineAttenuation);
                 SetRadius(Radius  );
                 SetAngleBias(AngleBias);
-                SetHalfPixel(new Vector2(-1f / GraphicInfo.BackBufferWidth, 1f / GraphicInfo.BackBufferHeight));
-                float fieldOfView = world.CameraManager.ActiveCamera.FieldOfView;
+                SetHalfPixel(GraphicInfo.HalfPixel);
+
+                float _tanFovy = (float)Math.Tan(world.CameraManager.ActiveCamera.FieldOfView / 2);
                 Vector2 focalLen = new Vector2
                 {
-                    X = 1.0f / (float)Math.Tan(fieldOfView * (3.1416f / 180) * 0.5f) * (float)GraphicInfo.BackBufferHeight / (float)GraphicInfo.BackBufferWidth,
-                    Y = 1.0f / (float)Math.Tan(fieldOfView * (3.1416f / 180) * 0.5f)
-                };
+                    X = world.CameraManager.ActiveCamera.AspectRatio / _tanFovy,
+                    Y = 1.0f / _tanFovy
+                };               
+                
+                //pointLightEffect.Parameters["farPlane"].SetValue(camera.FarPlane);
+
                 SetFocalLength(focalLen);
-                SetInverseFocalLength(new Vector2(1 / focalLen.X, 1 / focalLen.Y));
+                SetInverseFocalLength(new Vector2(_tanFovy * world.CameraManager.ActiveCamera.AspectRatio, -_tanFovy));
+
                 SetSquareRadius(AngleBias * AngleBias);
-                SetInverseRadius(1 / AngleBias);
+                SetInverseRadius(1f / AngleBias);
                 SetTanAngleBias((float)Math.Tan(AngleBias));                
                 
-                rHelper.PushRenderTarget(RenderTarget2D);
+                //rHelper.PushRenderTarget(RenderTarget2D);
+                rHelper.SetSamplerStates(SamplerState.PointWrap);
                 rHelper.Clear(Color.White);
-                rHelper.RenderFullScreenQuadVertexPixel(shader,SamplerState.PointClamp);
-                Texture2D t = rHelper.PopRenderTargetAsSingleRenderTarget2D();
+                rHelper.RenderFullScreenQuadVertexPixel(shader, SamplerState.PointWrap);
+                return;
 
-                rHelper.PushRenderTarget(RenderTarget2D2);
-                rHelper.Clear(Color.Black);
-                g.Draw(t, rHelper, gt, GraphicInfo, world, useFloatBuffer);
-                t = rHelper.PopRenderTargetAsSingleRenderTarget2D();
+                Texture2D t = rHelper.PopRenderTargetAsSingleRenderTarget2D();
+                               
+                //rHelper.PushRenderTarget(RenderTarget2D2);
+                //rHelper.Clear(Color.Black);
+                //g.Draw(t, rHelper, gt, GraphicInfo, world, useFloatBuffer);
+                //t = rHelper.PopRenderTargetAsSingleRenderTarget2D();
                 
                 ssaofinal.Parameters["SSAOTex"].SetValue(t);
                 ssaofinal.Parameters["SceneTexture"].SetValue(ImageToProcess);
                 ssaofinal.Parameters["halfPixel"].SetValue(GraphicInfo.HalfPixel);
                 ssaofinal.Parameters["weight"].SetValue(1);
+                rHelper.SetSamplerStates(SamplerState.PointClamp);
                 if (useFloatBuffer)
                     rHelper.RenderFullScreenQuadVertexPixel(ssaofinal, SamplerState.PointClamp);
                 else

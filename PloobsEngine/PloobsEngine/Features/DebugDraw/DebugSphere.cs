@@ -34,8 +34,7 @@ namespace PloobsEngine.Features.DebugDraw
         /// <summary>
         /// The basic effect used to draw boxes.
         /// </summary>
-        private static BasicEffect effect = null;
-        Texture2D tex;
+        private static BasicEffect effect = null;        
 
         /// <summary>
         /// Creates a new box.
@@ -51,21 +50,62 @@ namespace PloobsEngine.Features.DebugDraw
             this.Position = position;
             Visible = true;
         }
-
+        Color color;
         /// <summary>
         /// Initializes
         /// </summary>
         /// <param name="factory">The factory.</param>
         /// <param name="ginfo">The ginfo.</param>
         public void  Initialize(Engine.GraphicFactory factory, Engine.GraphicInfo ginfo)
-        {
-            tex = factory.CreateTexture2DColor(1, 1, Color);
+        {            
             sphereModel = new SimpleModel(factory, "Dsphere", true);
             if (effect == null)
             {
                 effect = factory.GetBasicEffect();
-                effect.TextureEnabled = true;
+                effect.TextureEnabled = false;
+                effect.VertexColorEnabled = false;
+                effect.LightingEnabled = lightingEnabled;
+                WireFrameEnabled = true;
             }
+        }
+
+        static RasterizerState RasterizerState = null;
+        static bool lightingEnabled = false;
+        public static bool LightingEnabled 
+        {
+            set
+            {
+                if (effect != null)
+                {
+                    effect.LightingEnabled = value;
+                    lightingEnabled = value;
+                }
+                else
+                {
+                    lightingEnabled = value;
+                }
+            }
+        }
+
+        public static bool WireFrameEnabled
+        {
+            get
+            {
+                return RasterizerState == null;
+            }
+            set
+            {
+                if (value == true)
+                {
+                    RasterizerState = new RasterizerState();
+                    RasterizerState.FillMode = FillMode.WireFrame;
+                }
+                else
+                {
+                    RasterizerState = null;
+                }
+            }
+
         }
 
         /// <summary>
@@ -91,9 +131,16 @@ namespace PloobsEngine.Features.DebugDraw
                 //// Setup the effect.                
                 effect.View = view;
                 effect.Projection = projection;
-                effect.World = Matrix.CreateTranslation(Position) * Matrix.CreateScale(Radius);
-                effect.Texture = tex;
-                render.RenderBatch(sphereModel.GetBatchInformation(0)[0], effect);                
+                effect.World = Matrix.CreateScale(Radius) * Matrix.CreateTranslation(Position);                
+                effect.DiffuseColor = Color.ToVector3();
+
+                if(RasterizerState != null)
+                    render.PushRasterizerState(RasterizerState);
+                
+                render.RenderBatch(sphereModel.GetBatchInformation(0)[0], effect);
+                
+                if (RasterizerState != null)
+                    render.PopRasterizerState();
             }
         }
 

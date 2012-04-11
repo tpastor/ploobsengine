@@ -57,7 +57,7 @@ PixelShaderOutput PShader( PS_INPUT pin ) : COLOR0
 	output.Color = oColor;
 	output.Normal.rgb = 0.5f;    
     output.Normal.a = 0.0f;    
-    output.Depth = 1.0f;	
+    output.Depth = 0;	
 
     output.EXTRA1.rgb = 0;	
     output.EXTRA1.a = 3.0f / 255.0f;
