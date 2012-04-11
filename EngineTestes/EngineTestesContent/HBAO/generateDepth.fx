@@ -19,13 +19,13 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 {
     VertexShaderOutput output;
     output.Position = mul(input.Position, wvp);
-	output.depth    = -mul(input.Position, WorldView).z / farPlane;	
+	output.depth    = mul(input.Position, WorldView).z;	
     return output;
 }
 
 float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
-{
-    return float4(input.depth, 0, 0, 1);
+{	
+    return float4(-input.depth/ farPlane, 0, 0, 1);
 }
 
 technique Technique1

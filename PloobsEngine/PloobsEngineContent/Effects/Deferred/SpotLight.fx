@@ -48,7 +48,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 {  
 
     //read depth
-    float depthVal = tex2D(depthSampler,input.TexCoord).r;
+    float depthVal = 1 - tex2D(depthSampler,input.TexCoord).r;
 
     //compute screen-space position
     float4 position;

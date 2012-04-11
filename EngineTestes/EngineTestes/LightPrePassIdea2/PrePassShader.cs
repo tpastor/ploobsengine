@@ -22,8 +22,8 @@ namespace EngineTestes.LightPrePassIdea.obj
         public override void Initialize(PloobsEngine.Engine.GraphicInfo ginfo, PloobsEngine.Engine.GraphicFactory factory, PloobsEngine.SceneControl.IObject obj)
         {
 
-            _shader2 = factory.GetEffect("PrePass/ShaderPass");
-            _shader = factory.GetEffect("PrePass/renderobj");
+            _shader2 = factory.GetEffect("PrePass2/ShaderPass");
+            _shader = factory.GetEffect("PrePass2/renderobj");
             base.Initialize(ginfo, factory, obj);
         }
 
@@ -47,21 +47,23 @@ namespace EngineTestes.LightPrePassIdea.obj
 
         public override void Draw(Microsoft.Xna.Framework.GameTime gt, PloobsEngine.SceneControl.IObject obj, PloobsEngine.SceneControl.RenderHelper render, PloobsEngine.Cameras.ICamera cam, IList<PloobsEngine.Light.ILight> lights)
         {
+            this._shader.Parameters["FarClip"].SetValue(cam.FarPlane);
+            this._shader.Parameters["View"].SetValue(cam.View);
+            this._shader.Parameters["Projection"].SetValue(cam.Projection);            
+
             Matrix wld = obj.WorldMatrix;
             for (int i = 0; i < obj.Modelo.MeshNumber; i++)
             {
                 BatchInformation[] bi = obj.Modelo.GetBatchInformation(i);
                 for (int j = 0; j < bi.Count(); j++)
                 {
-                    this._shader.Parameters["FarClip"].SetValue(cam.FarPlane);
+                    
                     Matrix w1 = Matrix.Multiply(bi[j].ModelLocalTransformation, wld);
                     this._shader.Parameters["World"].SetValue(w1);
-                    this._shader.Parameters["View"].SetValue(cam.View);
-                    this._shader.Parameters["Projection"].SetValue(cam.Projection);                    
+                    this._shader.Parameters["VPIT"].SetValue(Matrix.Transpose(Matrix.Invert(w1 * cam.View)));
                     render.RenderBatch(bi[j], _shader);
                 }
-            }       
-
+            }
         }
 
     }

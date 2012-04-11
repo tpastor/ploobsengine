@@ -50,7 +50,7 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
  
  float inShadowCondition(float lightScreenPos, float2 lightSamplePos,float2 offset)
 {	
-	double distanceStoredInDepthMap = tex2D(ShadowMapSampler, lightSamplePos + offset * 1/(shadowBufferSize * 2 )).r;		
+	double distanceStoredInDepthMap = 1 - tex2D(ShadowMapSampler, lightSamplePos + offset * 1/(shadowBufferSize * 2 )).r;		
 	bool shadowCondition = distanceStoredInDepthMap <= lightScreenPos - BIAS;
 	return shadowCondition ? 0.0f : 1.0f;
 }
@@ -71,7 +71,7 @@ float CalcShadowTermSoftPCF(float fLightDepth, float2 vShadowTexCoord, int iSqrt
 			vOffset = float2(x, y);				
 			vOffset /= shadowBufferSize;
 			float2 vSamplePoint = vShadowTexCoord + vOffset;			
-			float fDepth = tex2D(ShadowMapSampler, vSamplePoint).x;			
+			float fDepth = 1-tex2D(ShadowMapSampler, vSamplePoint).x;			
 			float fSample = (fLightDepth <= fDepth + BIAS);
 			
 			// Edge tap smoothing
@@ -102,7 +102,7 @@ float CalcShadowTermSoftPCF(float fLightDepth, float2 vShadowTexCoord, int iSqrt
 float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0  
 {  
 	//read depth
-    float depthVal = tex2D(depthSampler,input.TexCoord).r;
+    float depthVal = 1-tex2D(depthSampler,input.TexCoord).r;
 
     //compute screen-space position
     float4 position;
@@ -137,7 +137,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 	
 	//determine shadowing criteria
 	double realDistanceToLight = lightScreenPos.z;	
-	double distanceStoredInDepthMap = tex2D(ShadowMapSampler, lightSamplePos).r;	
+	double distanceStoredInDepthMap = 1-tex2D(ShadowMapSampler, lightSamplePos).r;	
 	
 	bool shadowCondition =  distanceStoredInDepthMap <= realDistanceToLight - BIAS;
 	//bool shadowCondition =  distanceStoredInDepthMap <= realDistanceToLight - 1.0f/10000.0f;				
@@ -190,7 +190,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 float4 PixelShaderFunctionPCF3x3(VertexShaderOutput input) : COLOR0  
 {  
 	//read depth
-    float depthVal = tex2D(depthSampler,input.TexCoord).r;
+    float depthVal = 1-tex2D(depthSampler,input.TexCoord).r;
 
     //compute screen-space position
     float4 position;
@@ -295,7 +295,7 @@ float4 PixelShaderFunctionPCF3x3(VertexShaderOutput input) : COLOR0
 float4 PixelShaderFunctionPCFAttenuation(VertexShaderOutput input) : COLOR0  
 {  
 	//read depth
-    float depthVal = tex2D(depthSampler,input.TexCoord).r;
+    float depthVal = 1-tex2D(depthSampler,input.TexCoord).r;
 
     //compute screen-space position
     float4 position;

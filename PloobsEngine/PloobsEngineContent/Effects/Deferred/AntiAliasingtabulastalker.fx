@@ -36,11 +36,11 @@ const float2 delta[8] =
 
  float4 DL_GetDepth(float2 uv)
  {
-	return tex2D(NormalMap  ,uv);
+	return 1 - tex2D(depthMap,uv);
  }
  float4 DL_GetNormal(float2 uv)
  {
-	return tex2D(depthMap ,uv);
+	return tex2D(NormalMap   ,uv);
  }
  
     
@@ -181,25 +181,25 @@ float4 main(float2 uv) : COLOR
 
  // (c-sample1)+(c-sample1_opposite)
 
- float dc = tex2D(depthMap, uv).r;
+ float dc = 1-tex2D(depthMap, uv).r;
 
  float4 dd;
 
- dd.x = tex2D(depthMap, uv + offs[1] * pixel_size).r +
+ dd.x = (1 - tex2D(depthMap, uv + offs[1] * pixel_size).r) +
 
-         tex2D(depthMap, uv + offs[2]* pixel_size).r;
+         (1 - tex2D(depthMap, uv + offs[2]* pixel_size).r);
 
- dd.y = tex2D(depthMap, uv + offs[3]* pixel_size).r +
+ dd.y = (1 - tex2D(depthMap, uv + offs[3]* pixel_size).r) +
 
-        tex2D(depthMap, uv + offs[4]* pixel_size).r;
+        (1 - tex2D(depthMap, uv + offs[4]* pixel_size).r);
 
- dd.z = tex2D(depthMap, uv + offs[5]* pixel_size).r +
+ dd.z = (1 - tex2D(depthMap, uv + offs[5]* pixel_size).r) +
 
-        tex2D(depthMap, uv + tc5r* pixel_size).r;
+        (1 - tex2D(depthMap, uv + tc5r* pixel_size).r);
 
- dd.w = tex2D(depthMap,uv +  offs[6]* pixel_size).r +
+ dd.w = (1 - tex2D(depthMap,uv +  offs[6]* pixel_size).r) +
 
-        tex2D(depthMap,uv +  tc6r* pixel_size).r;
+        (1 - tex2D(depthMap,uv +  tc6r* pixel_size).r);
 
  dd = abs(2 * dc - dd)- e_barrier.y;
 

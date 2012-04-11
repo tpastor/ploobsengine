@@ -64,7 +64,7 @@ namespace PloobsEngine.Physics
         /// <param name="gt">The gt.</param>
         /// <param name="cam">The cam.</param>
         protected abstract void DebugDrawn(RenderHelper render,GameTime gt, ICamera cam);
-        internal void iDebugDrawn(RenderHelper render,GameTime gt, ICamera cam)
+        public void iDebugDrawn(RenderHelper render,GameTime gt, ICamera cam)
         {
             DebugDrawn(render,gt,cam);
         }

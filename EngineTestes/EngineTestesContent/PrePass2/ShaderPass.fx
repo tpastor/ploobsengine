@@ -14,18 +14,6 @@ sampler diffuseMapSampler = sampler_state
 	AddressV = Wrap;
 };
 
-texture LightSpecularBuffer;
-sampler2D lightSpecularSampler = sampler_state
-{
-	Texture = <LightSpecularBuffer>;
-	MipFilter = NONE;
-	MagFilter = POINT;
-	MinFilter = POINT;
-	AddressU = Clamp;
-	AddressV = Clamp;
-};
-
-
 texture lightSamplerBuffer;
 sampler2D lightSampler = sampler_state
 {
@@ -54,7 +42,7 @@ struct ReconstructVertexShaderInput
 struct ReconstructVertexShaderOutput
 {
     float4 Position			: POSITION0;
-    float3 TexCoord			: TEXCOORD0;
+    float2 TexCoord			: TEXCOORD0;
 	float4 TexCoordScreenSpace : TEXCOORD1;
 };
 
@@ -62,7 +50,7 @@ ReconstructVertexShaderOutput ReconstructVertexShader(ReconstructVertexShaderInp
 {
     ReconstructVertexShaderOutput output=(ReconstructVertexShaderOutput)0;			
     output.Position = mul(input.Position, worldViewProjection);
-    output.TexCoord.xy = input.TexCoord; 
+    output.TexCoord = input.TexCoord; 
 	output.TexCoordScreenSpace = output.Position;
     return output;
 }
@@ -71,7 +59,7 @@ ReconstructVertexShaderOutput ReconstructVertexShader(ReconstructVertexShaderInp
 float4 ReconstructPixelShader(ReconstructVertexShaderOutput input):COLOR0
 {	
 	//read from our diffuse, specular and emissive maps
-	half4 diffuseMap = tex2D(diffuseMapSampler, input.TexCoord);
+	float4 diffuseMap = tex2D(diffuseMapSampler, input.TexCoord);
 
 	// Find the screen space texture coordinate and offset it
 	float2 screenPos = PostProjectionSpaceToScreenSpace(input.TexCoordScreenSpace) + LightBufferPixelSize;
@@ -85,7 +73,9 @@ float4 ReconstructPixelShader(ReconstructVertexShaderOutput input):COLOR0
 	//float4 specular =  tex2D(lightSpecularSampler, screenPos) * LightBufferScaleInv;
 	
 	//float4 finalColor = float4(diffuseMap*lightColor.rgb + specular*specularMap + emissiveMap,1);
-	float4 finalColor = float4(diffuseMap*lightColor.rgb , 1);
+	//float4 finalColor = float4(lightColor.rgb , 1);
+	//float4 finalColor = float4(lightColor.a,0,0,1);
+	float4 finalColor = float4(diffuseMap*lightColor.rgb ,1);
 	return finalColor;
 }
 

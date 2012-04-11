@@ -100,7 +100,7 @@ struct PixelShaderOutput
 PixelShaderOutput PixelShaderFunctionMulti(VertexShaderOutput input)
 {
     PixelShaderOutput output;
-    output.Depth = input.Depth.x / input.Depth.y;                                  //output Depth          
+    output.Depth = 1-input.Depth.x / input.Depth.y;                                  //output Depth          
     
     
     float p1 = clamp(1 - abs(input.InPos.y  - nivelBaixoAltura)/nivelBaixoEspalhamento,  0,1);
@@ -146,7 +146,7 @@ PixelShaderOutput PixelShaderFunctionMulti(VertexShaderOutput input)
 PixelShaderOutput PixelShaderFunction(VertexShaderOutput input)
 {
     PixelShaderOutput output;
-    output.Depth = input.Depth.x / input.Depth.y;                                  //output Depth  
+    output.Depth = 1-input.Depth.x / input.Depth.y;                                  //output Depth  
     
     float4 farColor;    
     farColor = tex2D(diffuseSampler, input.TexCoord / farTextureEspalhamento);				

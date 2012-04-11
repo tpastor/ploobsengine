@@ -58,7 +58,7 @@ BBPixelToFrame BillboardPS(BBVertexToPixel PSIn)
     
     if(applyLight == true)
     {    
-		output.Depth = PSIn.Depth.x / PSIn.Depth.y;
+		output.Depth = 1-PSIn.Depth.x / PSIn.Depth.y;
 		output.Extra1.a =  1.0f / 255.0f;		
     }        
     else

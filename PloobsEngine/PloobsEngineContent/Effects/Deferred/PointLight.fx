@@ -70,7 +70,7 @@ float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
     float specularIntensity = tex2D(colorSampler, texCoord).a;
 
     //read depth
-    float depthVal = tex2D(depthSampler,texCoord).r;
+    float depthVal = 1 - tex2D(depthSampler,texCoord).r;
 
     //compute screen-space position
     float4 position;

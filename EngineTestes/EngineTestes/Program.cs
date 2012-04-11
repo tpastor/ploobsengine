@@ -22,8 +22,7 @@ namespace EngineTestes
             //return;
 
             InitialEngineDescription desc = InitialEngineDescription.Default();
-            //desc.useMipMapWhenPossible = true;
-            //desc.UseAnisotropicFiltering = true;
+            //desc.useMipMapWhenPossible = true;            
             //desc.isMultiSampling = true;
 
             using (EngineStuff engine = new EngineStuff(ref desc, LoadScreen))
@@ -35,6 +34,13 @@ namespace EngineTestes
 
         static void LoadScreen(ScreenManager manager)
         {
+            //manager.AddScreen(new BlurScreen());            
+            manager.AddScreen(new SSAOScreen());            
+            //manager.AddScreen(new DeferredEmitterFluids28Screen3());
+            //manager.AddScreen(new PrePassScreen());
+            //manager.AddScreen(new BakerScreen());
+
+            //manager.AddScreen(new DefPassScreen());
             //manager.AddScreen(new MixReflection());
             //manager.AddScreen(new ModeloScreen());
             //manager.AddScreen(new RVO3DScreen());
@@ -43,8 +49,7 @@ namespace EngineTestes
             //manager.AddScreen(new Physx28TriggerScreen());
             //manager.AddScreen(new PhysxTerrain28Screen());
             //manager.AddScreen(new PhysxCharacter28Screen());
-            //manager.AddScreen(new DeferredEmitterFluids28Screen());
-            manager.AddScreen(new DeferredEmitterFluids28Screen3());
+            //manager.AddScreen(new DeferredEmitterFluids28Screen());            
             //manager.AddScreen(new DeferredFluids28Screen2());
             //manager.AddScreen(new DeferredFluids28Screen());
             //manager.AddScreen(new Fluids28Screen());
@@ -64,8 +69,7 @@ namespace EngineTestes
             //manager.AddScreen(new BehaviorTreeScreen());
             //manager.AddScreen(new DefQuadTerrainScreen());
             //manager.AddScreen(new QuadTerrainScreen());
-            //manager.AddScreen(new CPUBillboardScreen());
-            //manager.AddScreen(new PrePassScreen());
+            //manager.AddScreen(new CPUBillboardScreen());            
             //manager.AddScreen(new DefPassScreen());
             //manager.AddScreen(new DecalScreen());
             //manager.AddScreen(new HBAOScreen());

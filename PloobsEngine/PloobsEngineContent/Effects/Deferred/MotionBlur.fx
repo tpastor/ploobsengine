@@ -53,7 +53,7 @@ float4 Pshader(VertexShaderOutput input) : COLOR
 	bool notmotionblur = fmod(ex, 8) >= 4;
 	if(!notmotionblur)
 	{
-		float depthVal = tex2D(depthSampler,input.TexCoord).r;
+		float depthVal = 1-tex2D(depthSampler,input.TexCoord).r;
 		float3 cen = tex2D(cenaSampler ,input.TexCoord );
 
 		//compute screen-space position

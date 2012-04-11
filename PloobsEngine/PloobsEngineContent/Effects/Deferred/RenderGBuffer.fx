@@ -50,7 +50,7 @@ PixelShaderOutput PixelShaderFunction(VertexShaderOutput input)
     output.Color.a = specularIntensity;                                        //output SpecularIntensity
     output.Normal.rgb = 0.5f * (normalize(input.Normal) + 1.0f);               //transform normal domain
     output.Normal.a = specularPower;                                           //output SpecularPower
-    output.Depth = input.Depth.x / input.Depth.y;                              //output Depth  
+    output.Depth = 1 - input.Depth.x / input.Depth.y;                              //output Depth  
     output.Extra1.rgb =  0;  
     output.Extra1.a =  id/ 255.0f;  
         
@@ -65,7 +65,7 @@ PixelShaderOutput PixelShaderFunction2(VertexShaderOutput input)
 	float3 nnormal = normalize(input.Normal);
     output.Normal.rgb = 0.5f * (nnormal + 1.0f);               //transform normal domain
     output.Normal.a = specularPower;                                           //output SpecularPower
-    output.Depth = input.Depth.x / input.Depth.y;                              //output Depth      
+    output.Depth = 1 - input.Depth.x / input.Depth.y;                              //output Depth      
 	output.Extra1.rgb = texCUBE(map_diffuse , nnormal ) * ambientScale;
     output.Extra1.a =  id/ 255.0f;  
         

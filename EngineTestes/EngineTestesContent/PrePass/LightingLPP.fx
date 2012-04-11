@@ -38,20 +38,6 @@ sampler2D normalSampler = sampler_state
 	AddressV = Clamp;
 };
 
-//-------------------------------
-// Helper functions
-//-------------------------------
-half3 DecodeNormal (half4 enc)
-{
-	float kScale = 1.7777;
-	float3 nn = enc.xyz*float3(2*kScale,2*kScale,0) + float3(-kScale,-kScale,1);
-	float g = 2.0 / dot(nn.xyz,nn.xyz);
-	float3 n;
-	n.xy = g*nn.xy;
-	n.z = g-1;
-	return n;
-}
-
 float3 GetFrustumRay(in float2 texCoord)
 {
 	float index = texCoord.x + (texCoord.y * 2);
@@ -94,9 +80,9 @@ VertexShaderOutput DirectionalLightVS(VertexShaderInput input)
 }
 
 
-PixelShaderOutput DirectionalLightPS(VertexShaderOutput input)
+float4 DirectionalLightPS(VertexShaderOutput input) : COLOR0
 {
-	PixelShaderOutput output = (PixelShaderOutput)0;	
+	//PixelShaderOutput output = (PixelShaderOutput)0;	
 
 	// If we want the WorldPosition, we have to multiply by the world camera matrix
 	float depthValue = tex2D(depthSampler, input.TexCoord).r;
@@ -107,8 +93,8 @@ PixelShaderOutput DirectionalLightPS(VertexShaderOutput input)
     float3 pos = input.FrustumRay * depthValue;
 	
 	// Convert normal back with the decoding function
-	float4 normalMap = tex2D(normalSampler,  input.TexCoord);
-	float3 normal = DecodeNormal(normalMap);
+	float3 normalMap = tex2D(normalSampler,  input.TexCoord);
+	float3 normal = 2.0f * normalMap - 1.0f;	
 
 	float3 lightVector= -normalize(LightDir);
 	float nl = max(0,(dot(normal, lightVector)));
@@ -122,11 +108,13 @@ PixelShaderOutput DirectionalLightPS(VertexShaderOutput input)
 	float3 h = normalize(reflect(lightVector, normal)); 
 	float spec = nl*pow(saturate(dot(camDir, h)), normalMap.b*100);
 	
-	output.Diffuse.rgb = LightColor * nl * LightIntensity;
-	output.Specular.rgb = (LightColor.a*spec)* LightColor.rgb;
-
-	//output light
-	return output;
+	return LightColor * nl * LightIntensity;
+	//output.Diffuse.rgb = LightColor * nl * LightIntensity;
+	//output.Diffuse.a = spec;
+	//output.Specular.rgb = (LightColor.a*spec)* LightColor.rgb;
+//
+	////output light
+	//return output;
 }
 
 //tech 2

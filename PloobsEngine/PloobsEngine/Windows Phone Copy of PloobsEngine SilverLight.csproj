@@ -547,6 +547,7 @@
     <None Include="Background.png">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
     </None>
+    <None Include="bin\Windows Phone\Release\EnginePhoneSilverLightContent\Dsphere.xnb" />
     <None Include="PhoneGameThumb.png">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
     </None>
