@@ -53,7 +53,8 @@ namespace PloobsEngine.IA
                 {
                     foreach (var item in triggers[name])
                     {
-                        item.Fire(TriggerState);
+                        if (item.fired == false)
+                            item.Fire(TriggerState);
                     }
                 }
             }
@@ -79,7 +80,8 @@ namespace PloobsEngine.IA
                 {
                     foreach (var item in triggers[name])
                     {
-                        item.Fire(TriggerState.VALUE_REMOVED);
+                        if (item.fired == false)
+                            item.Fire(TriggerState.VALUE_REMOVED);
                     }
                 }
             }
@@ -119,7 +121,8 @@ namespace PloobsEngine.IA
                 }
                 if (evaluateNow)
                 {
-                    Trigger.Fire(TriggerState.TRIGGER_ADDED);
+                    if (Trigger.fired == false)
+                        Trigger.Fire(TriggerState.TRIGGER_ADDED);
                 }
             }
         }
