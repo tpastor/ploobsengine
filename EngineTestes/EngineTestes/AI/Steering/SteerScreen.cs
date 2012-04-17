@@ -63,12 +63,19 @@ namespace ProjectTemplate
             RegisterDebugDrawCommand rc = new RegisterDebugDrawCommand(ddrawer);
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(rc);
 
+            path.AddCircularObstacle(Vector3.Zero, 10);
+
+            path.AddCircularObstacle(new Vector3(0,20,0), 15);
+
+            path.AddCircularObstacle(new Vector3(200), 10);
+
             foreach (var item in path.Obstacles)
             {
                 SphericalObstacle SphericalObstacle = item as SphericalObstacle;
                 DebugSphere s = new DebugSphere(SphericalObstacle.Center, SphericalObstacle.Radius,Color.Blue);
                 ddrawer.AddShape(s);                
             }
+            //DebugSphere.WireFrameEnabled = true;
 
             DebugLines dls = new DebugLines();
             ddrawer.AddShape(dls);

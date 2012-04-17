@@ -79,6 +79,7 @@ namespace PloobsEngine.Features.DebugDraw
         public BoundingBox BoundingBox;
         public Color Color;
 
+
         /// <summary>
         /// Draws the box.
         /// </summary>
@@ -98,10 +99,9 @@ namespace PloobsEngine.Features.DebugDraw
                 {
                     verts[i].Position = corners[i];
                     verts[i].Color = Color;
-                }
-                                                               
-                render.RenderUserIndexedPrimitive<VertexPositionColor>(effect,PrimitiveType.LineList, verts, 0, verts.Count(), indices, 0, indices.Count() / 2);
+                }                                                               
                 
+                render.RenderUserIndexedPrimitive<VertexPositionColor>(effect, PrimitiveType.LineList, verts, 0, verts.Count(), indices, 0, indices.Count() / 2);                                
             }
         }
 

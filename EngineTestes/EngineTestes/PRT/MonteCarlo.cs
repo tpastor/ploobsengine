@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using PloobsEngine.Utils;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace EngineTestes
 {
@@ -133,32 +134,60 @@ namespace EngineTestes
         
     }
 
+    public class LightProbeReader : ILightProbeReader
+    {
+        Texture2D image;
+        Color[] color;
+        public LightProbeReader(Texture2D image)
+        {
+            this.image = image;
+            color = new Color[image.Width * image.Height];
+            image.GetData<Color>(color);
+        }
+
+        public Color LightAccess(Vector3 direction)
+        {
+                double d = Math.Sqrt(direction.X*direction.X + direction.Y*direction.Y);
+                double r = (d == 0) ? 0.0f : (1.0f/Math.PI/2.0f) * Math.Acos(direction.Z) / d;
+                Vector2 tex_coord = new Vector2();
+                tex_coord.X = (float) (0.5f + direction.X * r);
+                tex_coord.Y  =(float) (0.5f + direction.Y * r);
+                int x, y;
+                x = (int) (tex_coord.X * image.Width);
+                y = (int) (tex_coord.Y * image.Height);
+                int pixel_index = x*image.Width + y;
+                return color[pixel_index];                
+        }
+    }
+
     public class MonteCarlo
     {
-        List<float> vResult;
-        MonteCarlo(Func<Sample,float> f, Sampler sampler)
+        
+        public List<Vector3> ProjectLight(ILightProbeReader lreader, Sampler sampler)
         {
             float weight = 4 * (float)Math.PI;
             int T = sampler.samples;
             float n = sampler.bands;
-            vResult = new List<float>();
+            List<Vector3> vResult = new List<Vector3>();
             for (int i = 0; i < n * n; i++)
             {
-                vResult[i] = 0.0f;
+                vResult[i] = new Vector3();
             }
             for (int j = 0; j < T; j++)
             {
                 for (int i = 0; i < n * n; i++)
                 {
                     Sample sample = sampler.vSamples[i];
-                    vResult[i] += f(sample) * sample.vSHEval[i];
+                    vResult[i] += lreader.LightAccess(new Vector3(sample.Dx,sample.Dy,sample.Dz)).ToVector3() * sample.vSHEval[i];
                 }
             }
             for (int i = 0; i < n * n; i++)
             {
                 vResult[i] *= weight / T;
             }
+            return vResult;
         }
+
 
     }
 
