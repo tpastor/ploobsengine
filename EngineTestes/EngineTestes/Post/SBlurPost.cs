@@ -15,8 +15,7 @@ namespace EngineTestes.Post
         Fifteen =15,
         Seven = 7,
         Three = 3,
-    }
-    
+    }    
 
     public class SBlurPost : IPostEffect
     {
