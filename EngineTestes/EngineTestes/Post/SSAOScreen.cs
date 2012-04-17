@@ -19,6 +19,7 @@ using PloobsEngine.Input;
 using PloobsEngine.Physic.PhysicObjects.BepuObject;
 using BEPUphysics.UpdateableSystems.ForceFields;
 using EngineTestes.Post;
+using PloobsEngine.Features.DebugDraw;
 
 namespace EngineTestes
 {
@@ -46,7 +47,7 @@ namespace EngineTestes
         }
 
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory, IContentManager contentManager)
-        {
+        {            
             base.LoadContent(GraphicInfo, factory, contentManager);
             {
                 SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");

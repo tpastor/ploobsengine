@@ -1273,6 +1273,11 @@
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
     </Compile>
+    <Compile Include="SH\AmbientLight.fx">
+      <Name>AmbientLight</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+    </Compile>
     <None Include="Skins\Default\Skin.xml">
       <Name>Skin</Name>
       <Importer>XmlImporter</Importer>
@@ -1509,6 +1514,13 @@
   <ItemGroup>
     <Compile Include="SSAO\noise.jpg">
       <Name>noise</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\probe.png">
+      <Name>probe</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
