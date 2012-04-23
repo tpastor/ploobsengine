@@ -29,6 +29,8 @@ namespace EngineTestes
             renderTech = new ForwardRenderTecnich(desc);
         }
 
+        ForwardXNABasicShader shader1;
+        ForwardXNABasicShader shader2 ;
         protected override void LoadContent(GraphicInfo GraphicInfo, GraphicFactory factory ,IContentManager contentManager)
         {
             base.LoadContent(GraphicInfo, factory, contentManager);
@@ -36,18 +38,18 @@ namespace EngineTestes
             {
                 SimpleModel simpleModel = new SimpleModel(factory, "Model//cenario");
                 TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, Vector3.Zero, Matrix.Identity, Vector3.One, MaterialDescription.DefaultBepuMaterial());
-                ForwardXNABasicShader shader = new ForwardXNABasicShader(ForwardXNABasicShaderDescription.Default());
-                shader.UseOcclusionCulling = true;
+                ForwardXNABasicShader shader = new ForwardXNABasicShader(ForwardXNABasicShaderDescription.Default());                
                 ForwardMaterial fmaterial = new ForwardMaterial(shader);
                 IObject obj = new IObject(fmaterial, simpleModel, tmesh);
                 this.World.AddObject(obj);
             }
+            
             {
                 SimpleModel simpleModel = new SimpleModel(factory, "Model//uzi");
                 TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, new Vector3(100,10,10), Matrix.Identity, Vector3.One * 10, MaterialDescription.DefaultBepuMaterial());
-                ForwardXNABasicShader shader = new ForwardXNABasicShader(ForwardXNABasicShaderDescription.Default());
-                shader.UseOcclusionCulling = true;
-                ForwardMaterial fmaterial = new ForwardMaterial(shader);
+                shader1 = new ForwardXNABasicShader(ForwardXNABasicShaderDescription.Default());
+                shader1.UseOcclusionCulling = true;
+                ForwardMaterial fmaterial = new ForwardMaterial(shader1);
                 IObject obj = new IObject(fmaterial, simpleModel, tmesh);
                 this.World.AddObject(obj); 
             }
@@ -55,9 +57,9 @@ namespace EngineTestes
             {
                 SimpleModel simpleModel = new SimpleModel(factory, "Model//block");
                 TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, new Vector3(100, 20, 200), Matrix.Identity, new Vector3(5,300,300), MaterialDescription.DefaultBepuMaterial());
-                ForwardXNABasicShader shader = new ForwardXNABasicShader(ForwardXNABasicShaderDescription.Default());
-                shader.UseOcclusionCulling = true;
-                ForwardMaterial fmaterial = new ForwardMaterial(shader);
+                shader2 = new ForwardXNABasicShader(ForwardXNABasicShaderDescription.Default());
+                shader2.UseOcclusionCulling = true;
+                ForwardMaterial fmaterial = new ForwardMaterial(shader2);
                 IObject obj = new IObject(fmaterial, simpleModel, tmesh);
                 this.World.AddObject(obj);
             }
@@ -66,7 +68,10 @@ namespace EngineTestes
         }
 
         protected override void Draw(GameTime gameTime, RenderHelper render)
-        {        
+        {
+            render.RenderTextComplete("Uzzi Pixels Rendered: " + shader1.PixelsRendered, new Vector2(10, 20), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Block Pixels Rendered: " + shader2.PixelsRendered, new Vector2(10, 40), Color.White, Matrix.Identity);
+
             base.Draw(gameTime, render);         
         }
 

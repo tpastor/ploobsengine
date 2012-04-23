@@ -228,12 +228,13 @@ namespace PloobsEngine.Modelo
             System.Diagnostics.Debug.Assert(ExtraBatchInformation.Count() > 2);
             for (int i = 0; i < ExtraBatchInformation.Count(); i++)
             {
+                System.Diagnostics.Debug.Assert(ExtraBatchInformation[i].BatchType == BatchType.INDEXED);
                 System.Diagnostics.Debug.Assert(ExtraBatchInformation[i].VertexDeclaration.GetType() == typeof(T));
             }            
         }
 
 
-        public static void MergeBatchInformation<T>(GraphicFactory GraphicFactory, IndexElementSize IndexElementSize, params BatchInformation[] ExtraBatchInformation)
+        public static void MergeIndexedBatchInformation<T>(GraphicFactory GraphicFactory, IndexElementSize IndexElementSize, params BatchInformation[] ExtraBatchInformation)
         where T : struct,IVertexType        
         {   
                 CheckBatchInformationsConsistency<T>(ExtraBatchInformation);
@@ -245,7 +246,7 @@ namespace PloobsEngine.Modelo
                     NumIndexes += ExtraBatchInformation[i].IndexBuffer.IndexCount;
                 }
 
-                ///complete
+                //complete
                 int[] completeindex = new int[NumVerts];
                 T[] completevertex = new T[NumIndexes];
                 VertexDeclaration VertexDeclaration = ExtraBatchInformation[0].VertexDeclaration;
@@ -270,7 +271,7 @@ namespace PloobsEngine.Modelo
                         break;
                 }
         
-                ///mandatory
+                //mandatory
                 T[] vertexBuffer = new T[ExtraBatchInformation[0].VertexBuffer.VertexCount];
                 ExtraBatchInformation[0].VertexBuffer.GetData<T>(vertexBuffer);
 
