@@ -115,6 +115,15 @@ namespace PloobsEngine.Engine
         }
 
         /// <summary>
+        /// Create an OcclusionQuery
+        /// </summary>
+        /// <returns></returns>
+        public OcclusionQuery CreateOcclusionQuery()
+        {
+            return new OcclusionQuery(device);
+        }
+
+        /// <summary>
         /// Gets the shared sprite batch instance.
         /// </summary>
         /// <returns></returns>

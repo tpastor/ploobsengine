@@ -45,7 +45,7 @@ namespace EngineTestes.LightPrePassIdea.obj
             }       
         }
 
-        public override void Draw(Microsoft.Xna.Framework.GameTime gt, PloobsEngine.SceneControl.IObject obj, PloobsEngine.SceneControl.RenderHelper render, PloobsEngine.Cameras.ICamera cam, IList<PloobsEngine.Light.ILight> lights)
+        protected override void Draw(Microsoft.Xna.Framework.GameTime gt, PloobsEngine.SceneControl.IObject obj, PloobsEngine.SceneControl.RenderHelper render, PloobsEngine.Cameras.ICamera cam, IList<PloobsEngine.Light.ILight> lights)
         {
             this._shader.Parameters["FarClip"].SetValue(cam.FarPlane);
             this._shader.Parameters["View"].SetValue(cam.View);

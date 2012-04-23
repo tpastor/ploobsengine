@@ -237,7 +237,7 @@ namespace PloobsEngine.Material
 
 
 
-        public override void  Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<Light.ILight> lights)
+        protected override void Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<Light.ILight> lights)
         {
             
             Matrix World = obj.WorldMatrix;

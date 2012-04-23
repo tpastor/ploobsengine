@@ -126,8 +126,8 @@ namespace PloobsEngine.Material
             this._shader.Parameters["specularPower"].SetValue(specularPower);
 
         }
-       
-        public override void  Draw(GameTime gt, IObject obj, RenderHelper render, ICamera camera, IList<ILight> lights)
+
+        protected override void Draw(GameTime gt, IObject obj, RenderHelper render, ICamera camera, IList<ILight> lights)
         {                
                 this._shader.Parameters["View"].SetValue(camera.View);
                 this._shader.Parameters["Projection"].SetValue(camera.Projection);

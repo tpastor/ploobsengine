@@ -38,7 +38,7 @@ namespace EngineTestes
         }
 
         RenderTarget2D rt;
-        public override void Draw(GameTime gt, IObject obj, RenderHelper render, PloobsEngine.Cameras.ICamera cam, IList<PloobsEngine.Light.ILight> lights)
+        protected override void Draw(GameTime gt, IObject obj, RenderHelper render, PloobsEngine.Cameras.ICamera cam, IList<PloobsEngine.Light.ILight> lights)
         {
             //render.PushRenderTarget(rt);
 

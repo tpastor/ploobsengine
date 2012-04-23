@@ -106,7 +106,7 @@ namespace PloobsEngine.Material
             set { alphaTestLimit = value; }
         }
 
-        public override void Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<ILight> lights)
+        protected override void Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<ILight> lights)
         {
             _shader.Parameters["amplitude"].SetValue(amplitude);
             _shader.Parameters["gTime"].SetValue((float)gt.TotalGameTime.TotalMilliseconds);

@@ -185,7 +185,7 @@ namespace PloobsEngine.Material
             set { blendWidth = value; }
         }
 
-        public override void Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<ILight> lights)
+        protected override void Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<ILight> lights)
         {
                 System.Diagnostics.Debug.Assert(obj.Modelo is TerrainModel, "This shader expects a TerrainModel");
                 this._shader.Parameters["id"].SetValue(shaderId);                

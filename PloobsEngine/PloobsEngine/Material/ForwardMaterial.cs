@@ -122,7 +122,7 @@ namespace PloobsEngine.Material
                 render.PushRasterizerState(rasterizerState);
             }
 
-            shader.Draw(gt, obj, render, cam,lights);
+            shader.iDraw(gt, obj, render, cam, lights);
 
             if (rasterStateFlag)
             {

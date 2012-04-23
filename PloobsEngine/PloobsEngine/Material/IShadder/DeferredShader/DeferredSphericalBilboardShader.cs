@@ -66,7 +66,7 @@ namespace PloobsEngine.Material
         }
 
 
-        public override void Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<ILight> lights)
+        protected override void Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<ILight> lights)
         {
             Vector3 dir = cam.Target - cam.Position;
             dir.Normalize();

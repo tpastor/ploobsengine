@@ -52,6 +52,39 @@ namespace PloobsEngine.Material
         protected bool isInitialized = false;
         protected Effect basicDraw = null;
         protected Effect getDepth = null;
+        protected OcclusionQuery OcclusionQuery;
+        protected bool useOcclusionCulling = false;
+        private static BlendState BlendState;
+        private static IModelo Modelo;
+        private static BasicEffect BasicEffect;
+        GraphicFactory GraphicFactory;
+
+        public  bool UseOcclusionCulling
+        {
+            get { return useOcclusionCulling; }
+            set { useOcclusionCulling = value;
+
+            if (isInitialized)
+            {
+                if (Modelo == null)
+                    Modelo = new SimpleModel(GraphicFactory, "cube", true);
+
+                if (BasicEffect == null)
+                {
+                    BasicEffect = GraphicFactory.GetBasicEffect();
+                    BasicEffect.TextureEnabled = false;
+                    BasicEffect.VertexColorEnabled = false;
+                }
+
+                if (BlendState == null)
+                {
+                    BlendState = new Microsoft.Xna.Framework.Graphics.BlendState();
+                    BlendState.ColorWriteChannels = ColorWriteChannels.None;
+                }
+                OcclusionQuery = GraphicFactory.CreateOcclusionQuery();
+            }
+            }
+        }
         
         /// <summary>
         /// Shader ID that the object rendered by this shader will have        
@@ -97,8 +130,28 @@ namespace PloobsEngine.Material
             #if !WINDOWS_PHONE && !REACH
             basicDraw = factory.GetEffect("clippingPlane", false, true);
             getDepth = factory.GetEffect("ShadowDepth",false,true);
-            BasicDrawSamplerState = SamplerState.LinearWrap;
+            BasicDrawSamplerState = SamplerState.LinearWrap;            
             #endif
+            if (useOcclusionCulling)
+            {
+                if(Modelo==null)
+                    Modelo = new SimpleModel(factory, "cube", true);
+
+                if (BasicEffect == null)
+                {
+                    BasicEffect = factory.GetBasicEffect();
+                    BasicEffect.TextureEnabled = false;
+                    BasicEffect.VertexColorEnabled = false;                    
+                }
+
+                if (BlendState == null)
+                {
+                    BlendState = new Microsoft.Xna.Framework.Graphics.BlendState();
+                    BlendState.ColorWriteChannels = ColorWriteChannels.None;                    
+                }
+                OcclusionQuery = factory.CreateOcclusionQuery();
+            }
+            this.GraphicFactory = factory;
             isInitialized = true;    
         }
 
@@ -154,6 +207,10 @@ namespace PloobsEngine.Material
             
         }
 
+        protected virtual void Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<ILight> lights)
+        {
+        }
+
         /// <summary>
         /// Draw
         /// </summary>
@@ -162,8 +219,47 @@ namespace PloobsEngine.Material
         /// <param name="render">The render.</param>
         /// <param name="cam">The cam.</param>
         /// <param name="lights">The lights.</param>
-        public virtual void Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<ILight> lights)
-        {            
+        public void iDraw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<ILight> lights)
+        {
+            if (OcclusionQuery != null)
+            {
+                if (OcclusionQuery.PixelCount > 0 || obj.PhysicObject.BoundingBox==null)
+                {                    
+                    //Enable rendering to screen.
+                    //Enable or disable writing to depth buffer (depends on whether the object is translucent or opaque).
+                    //Render the object itself.
+                    OcclusionQuery.Begin();
+                    this.Draw(gt, obj, render, cam, lights);
+                    OcclusionQuery.End();
+                }
+                else
+                {
+                    //Disable rendering to screen.
+                    //Disable writing to depth buffer.
+                    //"Render" the object's bounding box.
+
+                    OcclusionQuery.Begin();
+                    render.PushBlendState(BlendState);
+                    render.PushDepthStencilState(DepthStencilState.DepthRead);                    
+                    BoundingBox BoundingBox = obj.PhysicObject.BoundingBox.Value;
+                    BasicEffect.View = cam.View;
+                    BasicEffect.Projection = cam.Projection;
+                    Vector3 centerPos = (BoundingBox.Max + BoundingBox.Min) / 2;
+                    Vector3 scale = BoundingBox.Max - centerPos;
+                    Matrix world = Matrix.CreateScale(scale);
+                    world.Translation = centerPos;
+                    BasicEffect.World = world;
+                    render.RenderBatch(Modelo.GetBatchInformation(0)[0], BasicEffect);
+                    OcclusionQuery.End();
+                    render.PopDepthStencilState();
+                    render.PopBlendState();
+                }
+            }
+            else
+            {
+                this.Draw(gt, obj, render, cam, lights);
+            }
+
         }
 
         /// <summary>
