@@ -40,7 +40,7 @@ namespace EngineTestes.Bolt
         public BlendState laser_blends = BlendState.NonPremultiplied;
         public DepthStencilState laser_depth = DepthStencilState.None;
 
-        public override void Draw(Microsoft.Xna.Framework.GameTime gt, PloobsEngine.SceneControl.IObject obj, PloobsEngine.SceneControl.RenderHelper render, PloobsEngine.Cameras.ICamera cam, IList<PloobsEngine.Light.ILight> lights)
+        protected override void Draw(Microsoft.Xna.Framework.GameTime gt, PloobsEngine.SceneControl.IObject obj, PloobsEngine.SceneControl.RenderHelper render, PloobsEngine.Cameras.ICamera cam, IList<PloobsEngine.Light.ILight> lights)
         {
                render.PushBlendState(laser_blends);
                effect.CurrentTechnique = effect_technique;                            

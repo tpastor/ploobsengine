@@ -213,7 +213,7 @@ namespace PloobsEngine.Material
         /// <param name="render">The render.</param>
         /// <param name="cam">The cam.</param>
         /// <param name="lights"></param>
-        public override void  Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<Light.ILight> lights)
+        protected override void Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<Light.ILight> lights)
         {                 
                Pid.SetValue(shaderId);            
                PuseGlow.SetValue(useGlow);

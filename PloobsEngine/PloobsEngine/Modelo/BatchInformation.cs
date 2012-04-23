@@ -23,6 +23,8 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using System.Diagnostics;
+using PloobsEngine.Engine;
 
 namespace PloobsEngine.Modelo
 {
@@ -171,17 +173,17 @@ namespace PloobsEngine.Modelo
         /// <summary>
         /// Primitive COunt
         /// </summary>
-        public  int PrimitiveCount;
+        public int PrimitiveCount;
 
         /// <summary>
         /// Start Index
         /// </summary>
-        public readonly int StartIndex;
+        public int StartIndex;
 
         /// <summary>
         /// Start Vertex
         /// </summary>
-        public readonly int StartVertex;
+        public int StartVertex;
 
         /// <summary>
         /// Stream Offset
@@ -217,6 +219,118 @@ namespace PloobsEngine.Modelo
         /// Local Transformation
         /// </summary>
         public Matrix ModelLocalTransformation;
+
+
+        //[Conditional("DEBUG")]
+        static void CheckBatchInformationsConsistency<T>(params BatchInformation[] ExtraBatchInformation)
+            where T : IVertexType
+        {
+            System.Diagnostics.Debug.Assert(ExtraBatchInformation.Count() > 2);
+            for (int i = 0; i < ExtraBatchInformation.Count(); i++)
+            {
+                System.Diagnostics.Debug.Assert(ExtraBatchInformation[i].VertexDeclaration.GetType() == typeof(T));
+            }            
+        }
+
+
+        public static void MergeBatchInformation<T>(GraphicFactory GraphicFactory, IndexElementSize IndexElementSize, params BatchInformation[] ExtraBatchInformation)
+        where T : struct,IVertexType        
+        {   
+                CheckBatchInformationsConsistency<T>(ExtraBatchInformation);
+                int NumVerts = 0;
+                int NumIndexes = 0;
+                for (int i = 0; i < ExtraBatchInformation.Count(); i++)
+                {
+                    NumVerts += ExtraBatchInformation[i].VertexBuffer.VertexCount;
+                    NumIndexes += ExtraBatchInformation[i].IndexBuffer.IndexCount;
+                }
+
+                ///complete
+                int[] completeindex = new int[NumVerts];
+                T[] completevertex = new T[NumIndexes];
+                VertexDeclaration VertexDeclaration = ExtraBatchInformation[0].VertexDeclaration;
+
+
+                ///mandatory            
+                int[] indexbuffer = new int[ExtraBatchInformation[0].IndexBuffer.IndexCount];
+                switch (IndexElementSize)
+                {
+                    case IndexElementSize.SixteenBits:
+                        short[] tempindex = new short[ExtraBatchInformation[0].IndexBuffer.IndexCount];
+                        ExtraBatchInformation[0].IndexBuffer.GetData<short>(tempindex);
+                        for (int i = 0; i < tempindex.Count(); i++)
+                        {
+                            indexbuffer[i] = tempindex[i];
+                        }
+                        break;
+                    case IndexElementSize.ThirtyTwoBits:
+                        ExtraBatchInformation[0].IndexBuffer.GetData<int>(indexbuffer);
+                        break;
+                    default:
+                        break;
+                }
         
+                ///mandatory
+                T[] vertexBuffer = new T[ExtraBatchInformation[0].VertexBuffer.VertexCount];
+                ExtraBatchInformation[0].VertexBuffer.GetData<T>(vertexBuffer);
+
+                ExtraBatchInformation[0].VertexBuffer.Dispose();
+                ExtraBatchInformation[0].IndexBuffer.Dispose();
+
+                int VertexOffset = 0;
+                int IndexOffset = 0;
+                for (int i = 1; i < ExtraBatchInformation.Count(); i++)
+                {
+                    ///extra vertex
+                    T[] ExtravertexBuffer = new T[ExtraBatchInformation[i].VertexBuffer.VertexCount];
+                    ExtraBatchInformation[i].VertexBuffer.GetData<T>(vertexBuffer);
+
+                    ///extra index
+                    int[] ExtraindexBuffer = new int[ExtraBatchInformation[i].IndexBuffer.IndexCount];                    
+                    switch (IndexElementSize)
+                    {
+                        case IndexElementSize.SixteenBits:
+                            short[] tempindex = new short[ExtraBatchInformation[0].IndexBuffer.IndexCount];
+                            ExtraBatchInformation[0].IndexBuffer.GetData<short>(tempindex);
+                            for (int q = 0; q < ExtraindexBuffer.Count(); q++)
+                            {
+                                ExtraindexBuffer[q] = tempindex[q];
+                            }
+                            break;
+                        case IndexElementSize.ThirtyTwoBits:
+                            ExtraBatchInformation[i].IndexBuffer.GetData<int>(ExtraindexBuffer);
+                            break;
+                        default:
+                            break;
+                    }
+
+
+                    for (int v = 0; v < ExtraBatchInformation[i].VertexBuffer.VertexCount; v++)
+                    {                        
+                        completevertex[VertexOffset + v] = ExtravertexBuffer[v];
+                    }
+
+                    for (int j = 0; j < ExtraBatchInformation[i].IndexBuffer.IndexCount; j++)
+                    {
+                        completeindex[IndexOffset+i] = ExtraindexBuffer[j] + VertexOffset;
+                    }
+
+                    ExtraBatchInformation[i].VertexBuffer.Dispose();
+                    ExtraBatchInformation[i].IndexBuffer.Dispose();
+                    ExtraBatchInformation[i].StartIndex = IndexOffset;
+                    ExtraBatchInformation[i].StartVertex = VertexOffset;
+                    VertexOffset += ExtravertexBuffer.Count();
+                    IndexOffset += ExtraindexBuffer.Count();
+                }                
+
+                IndexBuffer IndexBuffer = GraphicFactory.CreateIndexBuffer(IndexElementSize.ThirtyTwoBits,NumIndexes,BufferUsage.None);
+                VertexBuffer VertexBuffer = GraphicFactory.CreateVertexBuffer(VertexDeclaration,NumIndexes,BufferUsage.None);
+
+                for (int i = 0; i < ExtraBatchInformation.Count(); i++)
+                {
+                    ExtraBatchInformation[i].IndexBuffer = IndexBuffer;
+                    ExtraBatchInformation[i].VertexBuffer = VertexBuffer;
+                }
+        }
     }
 }

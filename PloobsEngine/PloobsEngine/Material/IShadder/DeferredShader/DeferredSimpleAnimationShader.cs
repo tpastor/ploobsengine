@@ -176,7 +176,7 @@ namespace PloobsEngine.Material
             render.SetSamplerStates(ginfo.SamplerState);
         }
 
-        public override void  Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<Light.ILight> lights)        
+        protected override void Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<Light.ILight> lights)        
  	    {
             AnimatedModel modelo = obj.Modelo as AnimatedModel;
 

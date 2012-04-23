@@ -144,7 +144,7 @@ namespace PloobsEngine.Material
         }
 
 
-        public override void Draw(GameTime gt, SceneControl.IObject obj, SceneControl.RenderHelper render, Cameras.ICamera cam, System.Collections.Generic.IList<Light.ILight> lights)
+        protected override void Draw(GameTime gt, SceneControl.IObject obj, SceneControl.RenderHelper render, Cameras.ICamera cam, System.Collections.Generic.IList<Light.ILight> lights)
         {
         }
 #if !REACH && !WINDOWS_PHONE

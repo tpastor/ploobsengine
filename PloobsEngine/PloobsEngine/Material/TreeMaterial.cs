@@ -140,7 +140,7 @@ namespace PloobsEngine.Material
 
         public void Drawn(Microsoft.Xna.Framework.GameTime gt, IObject obj, Cameras.ICamera cam, IList<ILight> lights, RenderHelper render)
         {
-            shader.Draw(gt, obj, render, cam,lights);
+            shader.iDraw(gt, obj, render, cam,lights);
         }
 
         public void Initialization(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, IObject obj)

@@ -164,7 +164,7 @@ namespace PloobsEngine.Material
 
 
 #if WINDOWS_PHONE || REACH
-        public override void  Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<Light.ILight> lights)        
+        protected override void  Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<Light.ILight> lights)        
  	    {
             AnimatedModel modelo = obj.Modelo as AnimatedModel;
 
@@ -195,7 +195,7 @@ namespace PloobsEngine.Material
             }
         }
 #else
-        public override void Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<Light.ILight> lights)
+        protected override void Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<Light.ILight> lights)
         {
             AnimatedModel modelo = obj.Modelo as AnimatedModel;
 

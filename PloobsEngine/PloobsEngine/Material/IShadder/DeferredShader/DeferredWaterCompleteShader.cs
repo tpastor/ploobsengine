@@ -251,8 +251,8 @@ namespace PloobsEngine.Material
             reflectionMap = render.PopRenderTarget()[0].RenderTarget as Texture2D;                                   
 
         }
-        
-        public override void  Draw(GameTime gt, IObject obj, RenderHelper render, ICamera camera, IList<Light.ILight> lights)
+
+        protected override void Draw(GameTime gt, IObject obj, RenderHelper render, ICamera camera, IList<Light.ILight> lights)
         {
                 float time = (float) gt.TotalGameTime.TotalMilliseconds / timeModulation;
 

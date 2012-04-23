@@ -112,7 +112,7 @@ namespace PloobsEngine.Material
 
             InstancedBilboardModel.SetBilboardInstances(inst);
 
-            shader.Draw(gt, obj, render, cam, lights);
+            shader.iDraw(gt, obj, render, cam, lights);
 
         }
 

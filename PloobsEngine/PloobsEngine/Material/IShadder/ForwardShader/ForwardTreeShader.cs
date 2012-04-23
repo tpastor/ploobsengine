@@ -43,7 +43,7 @@ namespace PloobsEngine.Material
             get { return MaterialType.FORWARD; }
         }
 
-        public override void  Draw(Microsoft.Xna.Framework.GameTime gt, SceneControl.IObject obj, SceneControl.RenderHelper render, Cameras.ICamera cam, IList<Light.ILight> lights)        
+        protected override void Draw(Microsoft.Xna.Framework.GameTime gt, SceneControl.IObject obj, SceneControl.RenderHelper render, Cameras.ICamera cam, IList<Light.ILight> lights)        
  	    {
             SimpleTree tree = (obj.Modelo as TreeModel).Tree;            
             tree.DrawTrunk(obj.WorldMatrix, cam.View, cam.Projection,true);

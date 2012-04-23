@@ -102,7 +102,7 @@ namespace PloobsEngine.Material
         /// <param name="render">The render.</param>
         public void Drawn(Microsoft.Xna.Framework.GameTime gt, SceneControl.IObject obj, Cameras.ICamera cam, IList<Light.ILight> lights, SceneControl.RenderHelper render)
         {
-            shader.Draw(gt, obj, render, cam,lights);
+            shader.iDraw(gt, obj, render, cam,lights);
         }
 
 

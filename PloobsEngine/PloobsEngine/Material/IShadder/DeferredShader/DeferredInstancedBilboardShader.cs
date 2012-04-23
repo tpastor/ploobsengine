@@ -116,7 +116,7 @@ namespace PloobsEngine.Material
             set { movimentSpeedControl = value; }
         }
 
-        public override void Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<ILight> lights)
+        protected override void Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<ILight> lights)
         {
             System.Diagnostics.Debug.Assert(obj.Modelo is InstancedBilboardModel, "This shader expects a InstancedBilboardModel");
             _shader.Parameters["xWorld"].SetValue(obj.PhysicObject.WorldMatrix);

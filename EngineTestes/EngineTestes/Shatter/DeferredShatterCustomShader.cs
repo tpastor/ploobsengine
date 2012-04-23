@@ -213,7 +213,7 @@ namespace PloobsEngine.Material
         /// <param name="render">The render.</param>
         /// <param name="cam">The cam.</param>
         /// <param name="lights"></param>
-        public override void  Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<Light.ILight> lights)
+        protected override void  Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<Light.ILight> lights)
         {
                this._shader.Parameters["TranslationAmount"].SetValue(translationRate * time);
                this._shader.Parameters["RotationAmount"].SetValue(rotationRate * time);

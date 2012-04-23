@@ -153,7 +153,7 @@ namespace PloobsEngine.Material
             }            
         }
 
-        public override void Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<ILight> lights)
+        protected override void Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<ILight> lights)
         {
             _shader.Parameters["size"].SetValue(size);
             _shader.Parameters["amplitude"].SetValue(amplitude);
