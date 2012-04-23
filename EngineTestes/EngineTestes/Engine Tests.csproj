@@ -225,6 +225,7 @@
     <Compile Include="LightPrePassIdea2\PreGBuffer.cs" />
     <Compile Include="LightPrePassIdea2\PreLightMap.cs" />
     <Compile Include="Modelo\ModeloScreen.cs" />
+    <Compile Include="OcclusionCulling\OcclusionScreen.cs" />
     <Compile Include="Physx 2.8.x\Character\PhysxCharacter28Screen.cs" />
     <Compile Include="Physx 2.8.x\Cloth\ClothModel.cs" />
     <Compile Include="Physx 2.8.x\Cloth\ClothMaterial.cs" />
