@@ -54,10 +54,11 @@ namespace PloobsEngine.Material
         protected Effect getDepth = null;
         protected OcclusionQuery OcclusionQuery;
         protected bool useOcclusionCulling = false;
+        protected GraphicFactory GraphicFactory;
+
         private static BlendState BlendState;
         private static IModelo Modelo;
-        private static BasicEffect BasicEffect;
-        GraphicFactory GraphicFactory;
+        private static BasicEffect BasicEffect;        
 
         public  bool UseOcclusionCulling
         {
@@ -66,23 +67,27 @@ namespace PloobsEngine.Material
 
             if (isInitialized)
             {
-                if (Modelo == null)
-                    Modelo = new SimpleModel(GraphicFactory, "cube", true);
-
-                if (BasicEffect == null)
+                if (useOcclusionCulling)
                 {
-                    BasicEffect = GraphicFactory.GetBasicEffect();
-                    BasicEffect.TextureEnabled = false;
-                    BasicEffect.VertexColorEnabled = false;
-                }
+                    if (Modelo == null)
+                        Modelo = new SimpleModel(GraphicFactory, "block", true);
 
-                if (BlendState == null)
-                {
-                    BlendState = new Microsoft.Xna.Framework.Graphics.BlendState();
-                    BlendState.ColorWriteChannels = ColorWriteChannels.None;
-                }
-                OcclusionQuery = GraphicFactory.CreateOcclusionQuery();
+                    if (BasicEffect == null)
+                    {
+                        BasicEffect = GraphicFactory.GetBasicEffect();
+                        BasicEffect.TextureEnabled = false;
+                        BasicEffect.VertexColorEnabled = false;
+                    }
+
+                    if (BlendState == null)
+                    {
+                        BlendState = new Microsoft.Xna.Framework.Graphics.BlendState();
+                        BlendState.ColorWriteChannels = ColorWriteChannels.None;
+                    }
+                    OcclusionQuery = GraphicFactory.CreateOcclusionQuery();
+                }                
             }
+            PixelsRendered = 0;
             }
         }
         
@@ -135,7 +140,7 @@ namespace PloobsEngine.Material
             if (useOcclusionCulling)
             {
                 if(Modelo==null)
-                    Modelo = new SimpleModel(factory, "cube", true);
+                    Modelo = new SimpleModel(factory, "block", true);
 
                 if (BasicEffect == null)
                 {
@@ -211,6 +216,12 @@ namespace PloobsEngine.Material
         {
         }
 
+        public int PixelsRendered
+        {
+            get;
+            private set;
+        }
+
         /// <summary>
         /// Draw
         /// </summary>
@@ -223,6 +234,7 @@ namespace PloobsEngine.Material
         {
             if (OcclusionQuery != null)
             {
+                PixelsRendered = OcclusionQuery.PixelCount;
                 if (OcclusionQuery.PixelCount > 0 || obj.PhysicObject.BoundingBox==null)
                 {                    
                     //Enable rendering to screen.
@@ -253,7 +265,7 @@ namespace PloobsEngine.Material
                     OcclusionQuery.End();
                     render.PopDepthStencilState();
                     render.PopBlendState();
-                }
+                }                
             }
             else
             {
@@ -266,7 +278,11 @@ namespace PloobsEngine.Material
         /// Cleanups this instance.
         /// </summary>
         public virtual void Cleanup(GraphicFactory factory)
-        {            
+        {
+            OcclusionQuery.Dispose();
+            basicDraw.Dispose();
+            getDepth.Dispose();
+
         }
 
 #if !WINDOWS_PHONE && !REACH
