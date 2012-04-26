@@ -178,7 +178,8 @@ namespace EngineTestes
                 if (wireframe)
                     render.PopRasterizerState();
 
-            render.RenderTextComplete("PloobsEngine on Windows Phone7", new Vector2(20, 10), Color.Red, Matrix.Identity);
+            render.RenderTextComplete("PloobsEngine on Windows Phone7", new Vector2(20, 10), Color.Red, Matrix.Identity,null,true
+                ,SpriteSortMode.Deferred,SamplerState.LinearClamp);
         }
 
     }

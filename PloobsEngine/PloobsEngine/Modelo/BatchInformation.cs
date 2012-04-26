@@ -252,7 +252,7 @@ namespace PloobsEngine.Modelo
                 VertexDeclaration VertexDeclaration = ExtraBatchInformation[0].VertexDeclaration;
 
 
-                ///mandatory            
+                //mandatory            
                 int[] indexbuffer = new int[ExtraBatchInformation[0].IndexBuffer.IndexCount];
                 switch (IndexElementSize)
                 {

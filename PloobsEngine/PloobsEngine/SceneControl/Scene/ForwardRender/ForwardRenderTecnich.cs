@@ -128,6 +128,8 @@ namespace PloobsEngine.SceneControl
                 }
             }
 
+            render.DettachBindedTextures(2);
+            render.SetSamplerStates(ginfo.SamplerState);            
 
             if (desc.UsePostEffect)
             {
@@ -144,8 +146,15 @@ namespace PloobsEngine.SceneControl
                     item.Material.Drawn(gameTime,item, world.CameraManager.ActiveCamera, world.Lights, render);                
             }
 
+            render.DettachBindedTextures(2);
+            render.SetSamplerStates(ginfo.SamplerState);
+
             if (world.PhysicWorld.isDebugDraw)
+            {
                 world.PhysicWorld.iDebugDrawn(render, gameTime, world.CameraManager.ActiveCamera);
+                render.DettachBindedTextures(2);
+                render.SetSamplerStates(ginfo.SamplerState);            
+            }
 
             if (desc.UsePostDrawPhase)
             {
@@ -156,10 +165,16 @@ namespace PloobsEngine.SceneControl
             }
 
             if (world.ParticleManager != null)
+            {
                 world.ParticleManager.iDraw(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection, render);
+                render.DettachBindedTextures(2);
+                render.SetSamplerStates(ginfo.SamplerState);            
+            }
 
             render.RenderPosWithDepthComponents(gameTime, ref view,ref projection);
 
+            render.DettachBindedTextures(2);
+            render.SetSamplerStates(ginfo.SamplerState);            
 
             if (desc.UsePostEffect)
             {
@@ -177,10 +192,15 @@ namespace PloobsEngine.SceneControl
                 }
                 render.Clear(Color.Black);
                 render.RenderTextureComplete(render[PrincipalConstants.CurrentImage], Color.White, ginfo.FullScreenRectangle, Matrix.Identity, null, true, SpriteSortMode.Deferred, ginfo.SamplerState);                                             
-            }           
+            }
+
+            render.DettachBindedTextures(2);
+            render.SetSamplerStates(ginfo.SamplerState);            
 
             render.RenderPosComponents(gameTime, ref view, ref projection);
 
+            render.DettachBindedTextures(2);
+            render.SetSamplerStates(ginfo.SamplerState) ;            
         }
 
         

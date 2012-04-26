@@ -22,6 +22,7 @@ namespace AdvancedDemo4._0
             //desc.UseAnisotropicFiltering = false;
             desc.Logger = new SimpleLogger();
             desc.UnhandledException_Handler = UnhandledException;
+            
             ///start the engine
             using (EngineStuff engine = new EngineStuff(ref desc, LoadScreen))
             {

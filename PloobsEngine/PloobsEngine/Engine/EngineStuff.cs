@@ -571,7 +571,6 @@ using Microsoft.Phone.Controls;
 
 namespace PloobsEngine.Engine
 {
-
     /// <summary>
     /// Delegate Called when a unhandle exception is found in the engine
     /// </summary>
@@ -754,7 +753,7 @@ namespace PloobsEngine.Engine
             this.graphics = SharedGraphicsDeviceManager;
             GraphicsDevice = SharedGraphicsDeviceManager.Current.GraphicsDevice;
             InitialEngineDescription initialDescription = InitialEngineDescription.Default();
-            initialDescription.SamplerState = SamplerState.LinearWrap;
+            initialDescription.SamplerState = SamplerState.LinearClamp;
             initialDescription.useMipMapWhenPossible = useMipMapWhenPossible;
             initialDescription.UseVerticalSyncronization = SharedGraphicsDeviceManager.SynchronizeWithVerticalRetrace;
             initialDescription.BackBufferHeight = SharedGraphicsDeviceManager.DefaultBackBufferHeight;
@@ -783,6 +782,9 @@ namespace PloobsEngine.Engine
         /// <param name="ClearAllEventsSubscribers">if set to <c>true</c> [clear all events subscribers].</param>
         public static void InitializePloobsEngine(SharedGraphicsDeviceManager SharedGraphicsDeviceManager, ContentManager ContentManager, ref InitialEngineDescription initialDescription, bool forceRecreating = false, bool removeComponents = false, bool ClearAllEventsSubscribers = false)
         {
+
+            initialDescription = InitialEngineDescription.Default();
+
             if (Current == null || forceRecreating == true)
             {
                 Current = new EngineStuff(SharedGraphicsDeviceManager, ContentManager, ref initialDescription);
@@ -872,6 +874,8 @@ namespace PloobsEngine.Engine
 
             GraphicInfo.ChangeProps(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth, fs, halfPixel, GraphicsDevice, GraphicsDevice.PresentationParameters.MultiSampleCount, GraphicsDevice.PresentationParameters.DepthStencilFormat, initialDescription.useMipMapWhenPossible, initialDescription.SamplerState);
             GraphicInfo.FireEvent(GraphicInfo);
+
+            render.SetSamplerStates(GraphicInfo.SamplerState);
         }
 
         /// <summary>
@@ -931,6 +935,8 @@ namespace PloobsEngine.Engine
             //THE ONLY COMPONENTS ADDED BY DEFAULT                        
             ComponentManager.AddComponent(new InputAdvanced());
             //ComponentManager.AddComponent(new TaskProcessor());
+
+            render.SetSamplerStates(GraphicInfo.SamplerState);
         }
 
         void GraphicsDevice_DeviceReset(object sender, EventArgs e)
