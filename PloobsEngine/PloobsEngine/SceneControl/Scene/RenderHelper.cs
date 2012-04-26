@@ -184,7 +184,11 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         /// <param name="SamplerState">State of the sampler.</param>
         /// <param name="registers">The registers to change.</param>
-        public void SetSamplerStates(SamplerState SamplerState, int registers = 16)
+#if REACH || WINDOWS_PHONE
+       public void SetSamplerStates(SamplerState SamplerState, int registers = 2)
+#else
+       public void SetSamplerStates(SamplerState SamplerState, int registers = 16)
+#endif
         {
             for (int i = 0; i < registers; i++)
             {
@@ -195,7 +199,12 @@ namespace PloobsEngine.SceneControl
         [Conditional("DEBUG")]
         public void ValidateSamplerStates()
         {
-            for (int i = 0; i < 16; i++)
+#if REACH || WINDOWS_PHONE
+            for (int i = 0; i < 2; i++)          
+#else
+       for (int i = 0; i < 16; i++)
+#endif
+
             {
                 System.Diagnostics.Debug.Assert(device.SamplerStates[i] != null,"Invalid SamplerStates found");
                 //if (device.SamplerStates[i] == null)
@@ -745,7 +754,11 @@ namespace PloobsEngine.SceneControl
             device.SetRenderTargets(RenderStatesStack.Peek());                        
         }
 
-        public void DettachBindedTextures(int numberofTextures = 16)
+#if WINDOWS_PHONE || REACH
+        public void DettachBindedTextures(int numberofTextures = 2)
+#else
+         public void DettachBindedTextures(int numberofTextures = 16)
+#endif
         {
             for (int i = 0; i < numberofTextures; i++)
             {

@@ -135,8 +135,7 @@ namespace EngineTestes
             //render.PushRenderTarget(r2);
             //render.Clear(Color.Black);
             //GaussianBlurPostEffect.Draw(r3, render, gt, ginfo, world, false);
-            //render.PopRenderTarget();
-                        
+            //render.PopRenderTarget();                        
 
         }
 

@@ -159,7 +159,7 @@ namespace EngineTestes
                 IModelo2D model = new SpriteFarseer(factory, circle, Color.Orange);
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
                 FarseerObject fs = new FarseerObject(fworld, model);
-                fs.Body.Restitution = 1.0f;
+                fs.Body.Restitution = 0.95f;
                 Tracked = new I2DObject(fs, mat, model);
                 Tracked.PhysicObject.Position = new Vector2(0, -250); /// a middle of the screen + 250 pixels up
                 this.World.AddObject(Tracked);

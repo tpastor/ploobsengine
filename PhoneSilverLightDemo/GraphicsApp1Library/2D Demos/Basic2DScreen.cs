@@ -79,16 +79,6 @@ namespace EngineTestes
             ///border
             border = new Border(fworld, factory, GraphicInfo, factory.CreateTexture2DColor(1, 1, Color.Red));
 
-            ///from texture
-            {
-                Texture2D tex = factory.GetTexture2D("Textures//goo");
-                IModelo2D model = new SpriteFarseer(tex);
-                Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
-                FarseerObject fs = new FarseerObject(fworld, tex);
-                I2DObject o = new I2DObject(fs, mat, model);                
-                this.World.AddObject(o);
-            }
-
             ///from texture, scale usage sample
             {
                 Texture2D tex = factory.GetTexture2D("Textures//goo");
@@ -96,28 +86,32 @@ namespace EngineTestes
                 IModelo2D model = new SpriteFarseer(tex);
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
                 FarseerObject fs = new FarseerObject(fworld, tex);
+                fs.Position = new Vector2(0, 50);
                 partobj = new I2DObject(fs, mat, model);
                 partobj.OnHasMoved += new PloobsEngine.SceneControl._2DScene.OnHasMoved(o_OnHasMoved);
                 this.World.AddObject(partobj);
             }
 
-            ///rectangle
-            Vertices verts = PolygonTools.CreateRectangle(50, 50);
+            Vertices verts = PolygonTools.CreateRectangle(150, 150);
             {
-                IModelo2D model = new SpriteFarseer(factory, verts, Color.Orange);
+                IModelo2D model = new SpriteFarseer(factory, verts, Color.Green);
                 Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
-                FarseerObject fs = new FarseerObject(fworld, verts);
+                FarseerObject fs = new FarseerObject(fworld, model, 1, BodyType.Dynamic);
                 I2DObject o = new I2DObject(fs, mat, model);
+                ///the origin of the created object will be in the center of it, this mean: if we draw it, the center of mass of it will be on the midle of the screen
+                ///We need to translate it a bit down                
+                o.PhysicObject.Position = new Vector2(100, 100);
                 this.World.AddObject(o);
             }
 
-            ///circle
-            CircleShape circle = new CircleShape(50, 1);
+            //circle
+            verts = PolygonTools.CreateCircle(150, 150);
             {
-                IModelo2D model = new SpriteFarseer(factory, circle, Color.Orange);
-                Basic2DTextureMaterial mat = new Basic2DTextureMaterial();                
-                FarseerObject fs = new FarseerObject(fworld, circle);
+                IModelo2D model = new SpriteFarseer(factory, verts, Color.Orange);
+                Basic2DTextureMaterial mat = new Basic2DTextureMaterial();
+                FarseerObject fs = new FarseerObject(fworld, model, 1, BodyType.Dynamic);                
                 I2DObject o = new I2DObject(fs, mat, model);
+                o.PhysicObject.Position = new Vector2(-100, -100);
                 this.World.AddObject(o);
             }
 
