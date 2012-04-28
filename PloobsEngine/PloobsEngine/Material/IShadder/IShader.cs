@@ -50,8 +50,10 @@ namespace PloobsEngine.Material
         /// </summary>
         protected bool firstTime = true;
         protected bool isInitialized = false;
+#if !WINDOWS_PHONE && !REACH
         protected Effect basicDraw = null;
         protected Effect getDepth = null;
+#endif
         protected OcclusionQuery OcclusionQuery;
         protected bool useOcclusionCulling = false;
         protected GraphicFactory GraphicFactory;
@@ -279,9 +281,12 @@ namespace PloobsEngine.Material
         /// </summary>
         public virtual void Cleanup(GraphicFactory factory)
         {
-            OcclusionQuery.Dispose();
+            if(OcclusionQuery!=null)
+                OcclusionQuery.Dispose();
+#if !WINDOWS_PHONE && !REACH
             basicDraw.Dispose();
             getDepth.Dispose();
+#endif
 
         }
 

@@ -103,5 +103,11 @@ namespace PloobsEngine.Material
         {
             get { return Material.MaterialType.FORWARD; }
         }
+
+        public override void Cleanup(GraphicFactory factory)
+        {
+            effect.Dispose();
+            base.Cleanup(factory);
+        }
     }
 }

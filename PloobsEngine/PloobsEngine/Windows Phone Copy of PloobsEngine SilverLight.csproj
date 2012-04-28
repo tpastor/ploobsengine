@@ -332,6 +332,7 @@
     <Compile Include="SceneControl\2DScene\Culler\Simple2DCuller.cs" />
     <Compile Include="SceneControl\ICleanUpable.cs" />
     <Compile Include="SceneControl\IContentManager.cs" />
+    <Compile Include="SceneControl\Scene\PostEffects\ForwardMotionBlurPostEffect.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\MotionBlurPostEffect.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\SimpleMotionBlurPostEffect.cs" />
     <Compile Include="SceneControl\Scene\UserObject.cs" />
