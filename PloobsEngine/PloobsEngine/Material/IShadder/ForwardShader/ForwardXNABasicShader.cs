@@ -193,6 +193,12 @@ namespace PloobsEngine.Material
             }
         }
 
+        public override void Cleanup(GraphicFactory factory)
+        {
+            effect.Dispose();
+            base.Cleanup(factory);
+        }
+
         /// <summary>
         /// Gets the type of the material.
         /// </summary>

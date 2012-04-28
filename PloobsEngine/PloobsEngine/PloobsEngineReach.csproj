@@ -306,6 +306,7 @@
     <Compile Include="SceneControl\2DScene\Culler\I2DCuller.cs" />
     <Compile Include="SceneControl\2DScene\Culler\Physic2DCuller.cs" />
     <Compile Include="SceneControl\ICleanUpable.cs" />
+    <Compile Include="SceneControl\Scene\PostEffects\ForwardMotionBlurPostEffect.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\HeatPostEffect.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\MotionBlurPostEffect.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\NightPostEffect.cs" />
