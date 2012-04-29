@@ -382,5 +382,10 @@ namespace PloobsEngine.SceneControl
         }
 #endif
         #endregion
+
+        public override string ToString()
+        {
+            return "ObjectName: " + Name;
+        }
     }
 }

@@ -41,6 +41,7 @@ namespace EngineTestes
                 ForwardXNABasicShader shader = new ForwardXNABasicShader(ForwardXNABasicShaderDescription.Default());                
                 ForwardMaterial fmaterial = new ForwardMaterial(shader);
                 IObject obj = new IObject(fmaterial, simpleModel, tmesh);
+                obj.Name = "scene";
                 this.World.AddObject(obj);
             }
             
@@ -51,16 +52,19 @@ namespace EngineTestes
                 shader1.UseOcclusionCulling = true;
                 ForwardMaterial fmaterial = new ForwardMaterial(shader1);
                 IObject obj = new IObject(fmaterial, simpleModel, tmesh);
+                obj.Name = "uzzi";
                 this.World.AddObject(obj); 
             }
 
             {
                 SimpleModel simpleModel = new SimpleModel(factory, "Model//block");
-                TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, new Vector3(100, 20, 200), Matrix.Identity, new Vector3(5,300,300), MaterialDescription.DefaultBepuMaterial());
+                simpleModel.SetTexture(factory.CreateTexture2DColor(1, 1, Color.Green), TextureType.DIFFUSE);
+                TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, new Vector3(100, 20, 200), Matrix.Identity, new Vector3(300, 300, 5), MaterialDescription.DefaultBepuMaterial());
                 shader2 = new ForwardXNABasicShader(ForwardXNABasicShaderDescription.Default());
                 shader2.UseOcclusionCulling = true;
                 ForwardMaterial fmaterial = new ForwardMaterial(shader2);
                 IObject obj = new IObject(fmaterial, simpleModel, tmesh);
+                obj.Name = "Block";
                 this.World.AddObject(obj);
             }
 
@@ -69,10 +73,11 @@ namespace EngineTestes
 
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
+            base.Draw(gameTime, render);         
+
             render.RenderTextComplete("Uzzi Pixels Rendered: " + shader1.PixelsRendered, new Vector2(10, 20), Color.White, Matrix.Identity);
             render.RenderTextComplete("Block Pixels Rendered: " + shader2.PixelsRendered, new Vector2(10, 40), Color.White, Matrix.Identity);
-
-            base.Draw(gameTime, render);         
+            
         }
 
     }

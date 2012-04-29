@@ -32,10 +32,6 @@ namespace PloobsEngine.SceneControl
     /// </summary>
     public abstract class ICuller
     {
-        public ICuller()
-        {
-            SortObjectsByDistanceToCamera = false;
-        }
 
         internal IWorld world = null;
 
@@ -44,7 +40,7 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         /// <param name="Filter">Or Filter, null for all</param>
         /// <returns></returns>
-        public abstract List<IObject> GetNotCulledObjectsList(MaterialType? Filter);
+        public abstract List<IObject> GetNotCulledObjectsList(MaterialType? Filter, CullerComparer CullerComparer = CullerComparer.None, Vector3? CameraPosition = null);
 
         /// <summary>
         /// Called by the engine Once in the start of each rendering pass
@@ -73,15 +69,13 @@ namespace PloobsEngine.SceneControl
             get;
         }
 
-        /// <summary>
-        /// Roughly sort objects by their distance to the camera
-        /// Default False
-        /// </summary>
-        public bool SortObjectsByDistanceToCamera
-        {
-            get;
-            set;
-        }
-        
+        protected IObjectComparer ComparerFrontToBack = new ComparerFrontToBack();
+        protected IObjectComparer ComparerBackToFront = new ComparerBackToFront();
+
+    }
+
+    public enum CullerComparer
+    {
+        ComparerFrontToBack,ComparerBackToFront,None
     }
 }

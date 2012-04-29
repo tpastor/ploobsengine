@@ -134,17 +134,17 @@ namespace PloobsEngine.SceneControl
         /// Function called all frames to order all objects that are not culled
         /// Use this to sort objects by material and minimize gpu state changes
         /// </summary>
-        public Func<List<IObject>, List<IObject>> OrderAllObjectsBeforeDraw;
+        public Func<List<IObject>,IWorld, List<IObject>> OrderAllObjectsBeforeDraw;
         /// <summary>
         /// Function called all frames to order all Deferred objects that are not culled
         /// Use this to sort objects by material and minimize gpu state changes
         /// </summary>
-        public Func<List<IObject>, List<IObject>> OrderDeferredObjectsBeforeDraw ;
+        public Func<List<IObject>, IWorld, List<IObject>> OrderDeferredObjectsBeforeDraw;
         /// <summary>
         /// Function called all frames to order all Forward objects that are not culled
         /// Use this to sort objects by material and minimize gpu state changes
         /// </summary>
-        public Func<List<IObject>, List<IObject>> OrderForwardObjectsBeforeDraw ;
+        public Func<List<IObject>, IWorld, List<IObject>> OrderForwardObjectsBeforeDraw;
 
     }
 
@@ -284,18 +284,19 @@ namespace PloobsEngine.SceneControl
             Matrix projection = world.CameraManager.ActiveCamera.Projection;
 
             world.Culler.StartFrame(ref view, ref projection, world.CameraManager.ActiveCamera.BoundingFrustum);
+
             List<IObject> AllnotCulledObjectsList = world.Culler.GetNotCulledObjectsList(null);
-            List<IObject> DeferrednotCulledObjectsList = world.Culler.GetNotCulledObjectsList(MaterialType.DEFERRED);
-            List<IObject> ForwardnotCulledObjectsList = world.Culler.GetNotCulledObjectsList(MaterialType.FORWARD);
+            List<IObject> DeferrednotCulledObjectsList = world.Culler.GetNotCulledObjectsList(MaterialType.DEFERRED, CullerComparer.ComparerFrontToBack,world.CameraManager.ActiveCamera.Position);
+            List<IObject> ForwardnotCulledObjectsList = world.Culler.GetNotCulledObjectsList(MaterialType.FORWARD, CullerComparer.ComparerBackToFront, world.CameraManager.ActiveCamera.Position);
 
             if (desc.OrderAllObjectsBeforeDraw != null)
-                AllnotCulledObjectsList = desc.OrderAllObjectsBeforeDraw(AllnotCulledObjectsList);
+                AllnotCulledObjectsList = desc.OrderAllObjectsBeforeDraw(AllnotCulledObjectsList,world);
 
             if (desc.OrderDeferredObjectsBeforeDraw != null)
-                DeferrednotCulledObjectsList = desc.OrderDeferredObjectsBeforeDraw(DeferrednotCulledObjectsList);
+                DeferrednotCulledObjectsList = desc.OrderDeferredObjectsBeforeDraw(DeferrednotCulledObjectsList, world);
 
             if (desc.OrderForwardObjectsBeforeDraw != null)
-                ForwardnotCulledObjectsList = desc.OrderForwardObjectsBeforeDraw(ForwardnotCulledObjectsList);
+                ForwardnotCulledObjectsList = desc.OrderForwardObjectsBeforeDraw(ForwardnotCulledObjectsList, world);
 
             render.SetSamplerStates(ginfo.SamplerState);
             render.DettachBindedTextures();

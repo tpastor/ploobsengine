@@ -372,7 +372,7 @@
     <Compile Include="Engine\ContentManager\Extensions.cs" />
     <Compile Include="Engine\ContentManager\SourceAssetLoader.cs" />
     <Compile Include="SceneControl\ICleanUpable.cs" />
-    <Compile Include="SceneControl\Scene\PostEffects\ForwardMotionBlurPostEffect.cs" />
+    <Compile Include="SceneControl\Scene\Culler\ObjectComparer.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\HeatPostEffect.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\LightBloomPostEffect.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\MotionBlurPostEffect.cs" />

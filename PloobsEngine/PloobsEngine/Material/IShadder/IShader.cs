@@ -157,6 +157,7 @@ namespace PloobsEngine.Material
                     BlendState.ColorWriteChannels = ColorWriteChannels.None;                    
                 }
                 OcclusionQuery = factory.CreateOcclusionQuery();
+                OcclusionQuery.Tag = "Begin";
             }
             this.GraphicFactory = factory;
             isInitialized = true;    
@@ -236,9 +237,11 @@ namespace PloobsEngine.Material
         {
             if (OcclusionQuery != null)
             {
-                PixelsRendered = OcclusionQuery.PixelCount;
-                if (OcclusionQuery.PixelCount > 0 || obj.PhysicObject.BoundingBox==null)
-                {                    
+                while (OcclusionQuery.Tag == null && OcclusionQuery.IsComplete == false) { }
+                
+                if ( (OcclusionQuery.Tag == null && OcclusionQuery.PixelCount > 0) || obj.PhysicObject.BoundingBox == null)
+                {
+                    PixelsRendered = OcclusionQuery.PixelCount;
                     //Enable rendering to screen.
                     //Enable or disable writing to depth buffer (depends on whether the object is translucent or opaque).
                     //Render the object itself.
@@ -252,6 +255,7 @@ namespace PloobsEngine.Material
                     //Disable writing to depth buffer.
                     //"Render" the object's bounding box.
 
+                    PixelsRendered = 0;
                     OcclusionQuery.Begin();
                     render.PushBlendState(BlendState);
                     render.PushDepthStencilState(DepthStencilState.DepthRead);                    
@@ -267,10 +271,12 @@ namespace PloobsEngine.Material
                     OcclusionQuery.End();
                     render.PopDepthStencilState();
                     render.PopBlendState();
+                    OcclusionQuery.Tag = null;
                 }                
             }
             else
             {
+                PixelsRendered = 0;
                 this.Draw(gt, obj, render, cam, lights);
             }
 
