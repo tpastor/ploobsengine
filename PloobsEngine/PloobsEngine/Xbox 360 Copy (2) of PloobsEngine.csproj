@@ -378,7 +378,9 @@
     <Compile Include="SceneControl\Scene\PostEffects\MotionBlurPostEffect.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\NightPostEffect.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\RadialBlurPostEffect.cs" />
+    <Compile Include="SceneControl\Scene\PostEffects\SBlurPost.cs" />
     <Compile Include="SceneControl\Scene\PostEffects\SimpleMotionBlurPostEffect.cs" />
+    <Compile Include="SceneControl\Scene\PostEffects\SSAOPost.cs" />
     <Compile Include="SceneControl\Scene\UserObject.cs" />
     <Compile Include="SteeringSharperIa\AbstractVehicle.cs" />
     <Compile Include="SteeringSharperIa\AnnotationService.cs" />
@@ -670,6 +672,9 @@
     <None Include="bin\x86\Release\Content\Effects\Deferred\Ripple.xnb" />
     <None Include="bin\x86\Release\Content\Effects\Deferred\Saturate.xnb" />
     <None Include="bin\x86\Release\Content\Effects\Deferred\saturation.xnb" />
+    <None Include="bin\x86\Release\Content\Effects\Deferred\sblur.xnb" />
+    <None Include="bin\x86\Release\Content\Effects\Deferred\sblur2.xnb" />
+    <None Include="bin\x86\Release\Content\Effects\Deferred\sblur3.xnb" />
     <None Include="bin\x86\Release\Content\Effects\Deferred\Scatter.xnb" />
     <None Include="bin\x86\Release\Content\Effects\Deferred\ShadowDepth.xnb" />
     <None Include="bin\x86\Release\Content\Effects\Deferred\ShadowDirectional.xnb" />
@@ -681,6 +686,7 @@
     <None Include="bin\x86\Release\Content\Effects\Deferred\SpecularMapBuffer.xnb" />
     <None Include="bin\x86\Release\Content\Effects\Deferred\SphericalBillboard.xnb" />
     <None Include="bin\x86\Release\Content\Effects\Deferred\SpotLight.xnb" />
+    <None Include="bin\x86\Release\Content\Effects\Deferred\ssao.xnb" />
     <None Include="bin\x86\Release\Content\Effects\Deferred\ssaoblur.xnb" />
     <None Include="bin\x86\Release\Content\Effects\Deferred\SSAOBlur1.xnb" />
     <None Include="bin\x86\Release\Content\Effects\Deferred\SSAOBlur2.xnb" />
@@ -720,6 +726,8 @@
     <None Include="bin\x86\Release\Content\Textures\explosion.xnb" />
     <None Include="bin\x86\Release\Content\Textures\fire.xnb" />
     <None Include="bin\x86\Release\Content\Textures\flare.xnb" />
+    <None Include="bin\x86\Release\Content\Textures\noise.xnb" />
+    <None Include="bin\x86\Release\Content\Textures\noisetex.xnb" />
     <None Include="bin\x86\Release\Content\Textures\noise_tex6.xnb" />
     <None Include="bin\x86\Release\Content\Textures\normal.xnb" />
     <None Include="bin\x86\Release\Content\Textures\random.xnb" />
@@ -732,6 +740,9 @@
     <None Include="bin\x86\Release\Content\Textures\wave1.xnb" />
     <None Include="bin\x86\Release\Content\Textures\waves2.xnb" />
     <None Include="bin\x86\Release\Content\Textures\white.xnb" />
+    <None Include="bin\Xbox 360\Release\Content\Effects\Deferred\sblur.xnb" />
+    <None Include="bin\Xbox 360\Release\Content\Effects\Deferred\sblur2.xnb" />
+    <None Include="bin\Xbox 360\Release\Content\Effects\Deferred\sblur3.xnb" />
     <None Include="GameThumbnail.png">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
     </None>
