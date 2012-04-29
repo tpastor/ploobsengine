@@ -472,4 +472,19 @@
   <data name="wiggle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>bin\x86\Release\Content\Effects\Deferred\wiggle.xnb;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="sblur" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\x86\Release\Content\Effects\Deferred\sblur.xnb;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="sblur2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\x86\Release\Content\Effects\Deferred\sblur2.xnb;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="sblur3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\x86\Release\Content\Effects\Deferred\sblur3.xnb;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ssao" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\x86\Release\Content\Effects\Deferred\ssao.xnb;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="noisetex" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\x86\Release\Content\Textures\noisetex.xnb;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

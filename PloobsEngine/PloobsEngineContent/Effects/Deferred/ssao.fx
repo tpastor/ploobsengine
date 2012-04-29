@@ -80,6 +80,7 @@ return max(0.0,dot(cnorm,v)-g_bias)*(1.0/(1.0+d))*g_intensity;
 
 float4 main(VertexShaderOutput i) : COLOR0
 {	
+#ifndef XBOX360
 	const float2 vec[4] = {float2(1,0),float2(-1,0),
 							float2(0,1),float2(0,-1)};
 
@@ -106,6 +107,9 @@ float4 main(VertexShaderOutput i) : COLOR0
 	ao/=(float)iterations;
 	//**END**//
 	return 1 - ao;
+#else
+return float4(0,0,0,1);
+#endif
 }
 
 

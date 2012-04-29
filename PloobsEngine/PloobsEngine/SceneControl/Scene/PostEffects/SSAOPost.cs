@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if WINDOWS
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using PloobsEngine;
 using Microsoft.Xna.Framework;
 
-namespace EngineTestes.Post
+namespace PloobsEngine.SceneControl
 {
     public class SSAOPost : IPostEffect
     {
@@ -26,8 +27,8 @@ namespace EngineTestes.Post
         }
         public override void Init(PloobsEngine.Engine.GraphicInfo ginfo, PloobsEngine.Engine.GraphicFactory factory)
         {
-            Effect = factory.GetEffect("SSAO\\ssao");
-            tex = factory.GetTexture2D("SSAO\\noise");
+            Effect = factory.GetEffect("ssao",false,true);
+            tex = factory.GetTexture2D("noisetex", true);
             sBlurPost = new SBlurPost(blurAmount, BlurRadiusSize);
             sBlurPost.Init(ginfo, factory);
             RenderTarget2D = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
@@ -130,3 +131,4 @@ namespace EngineTestes.Post
         }
     }
 }
+#endif

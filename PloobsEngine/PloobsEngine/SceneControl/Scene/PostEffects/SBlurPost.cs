@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 using PloobsEngine;
 using PloobsEngine.Engine.Logger;
 
-namespace EngineTestes.Post
+namespace PloobsEngine.SceneControl
 {
     public enum BlurRadiusSize : int
     {
@@ -62,17 +62,17 @@ namespace EngineTestes.Post
             switch (BlurRadiusSize)
             {
                 case BlurRadiusSize.Fifteen:
-                    effect = factory.GetEffect("SBlurPost\\sblur", true); 
+                    effect = factory.GetEffect("sblur", true,true); 
                     break;
                 case BlurRadiusSize.Seven:
-                    effect = factory.GetEffect("SBlurPost\\sblur2", true); 
+                    effect = factory.GetEffect("sblur2", true, true); 
                     break;
                 case BlurRadiusSize.Three:
-                    effect = factory.GetEffect("SBlurPost\\sblur3", true); 
+                    effect = factory.GetEffect("sblur3", true, true); 
                     break;
                 default:
                     ActiveLogger.LogMessage("Wrong Blur Radius Size Specified", LogLevel.RecoverableError);
-                    effect = factory.GetEffect("SBlurPost\\sblur", true); 
+                    effect = factory.GetEffect("sblur", true, true); 
                     break;
             }
 

@@ -675,6 +675,24 @@
       <Processor>EffectProcessor</Processor>
       <ProcessorParameters_DebugMode>Optimize</ProcessorParameters_DebugMode>
     </Compile>
+    <Compile Include="Effects\Deferred\sblur.fx">
+      <Name>sblur</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <ProcessorParameters_DebugMode>Optimize</ProcessorParameters_DebugMode>
+    </Compile>
+    <Compile Include="Effects\Deferred\sblur2.fx">
+      <Name>sblur2</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <ProcessorParameters_DebugMode>Optimize</ProcessorParameters_DebugMode>
+    </Compile>
+    <Compile Include="Effects\Deferred\sblur3.fx">
+      <Name>sblur3</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <ProcessorParameters_DebugMode>Optimize</ProcessorParameters_DebugMode>
+    </Compile>
     <None Include="Effects\Water.fx">
       <Name>Water</Name>
       <Importer>EffectImporter</Importer>
@@ -731,10 +749,23 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="Effects\Deferred\ssao.fx">
+      <Name>ssao</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <ProcessorParameters_DebugMode>Optimize</ProcessorParameters_DebugMode>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\noise_tex6.jpg">
       <Name>noise_tex6</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\noisetex.jpg">
+      <Name>noisetex</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

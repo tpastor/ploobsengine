@@ -662,12 +662,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="SSAO\ssao.fx">
-      <Name>ssao</Name>
-      <Importer>EffectImporter</Importer>
-      <Processor>EffectProcessor</Processor>
-      <ProcessorParameters_DebugMode>Optimize</ProcessorParameters_DebugMode>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\EnemyBeastDiffuse.jpg">
@@ -1252,24 +1246,8 @@
       <Importer>EffectImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
     </None>
-    <Compile Include="SBlurPost\sblur.fx">
-      <Name>sblur</Name>
-      <Importer>EffectImporter</Importer>
-      <Processor>EffectProcessor</Processor>
-      <ProcessorParameters_DebugMode>Optimize</ProcessorParameters_DebugMode>
-    </Compile>
     <Compile Include="SBlurPost\DownsampleDepth.fx">
       <Name>DownsampleDepth</Name>
-      <Importer>EffectImporter</Importer>
-      <Processor>EffectProcessor</Processor>
-    </Compile>
-    <Compile Include="SBlurPost\sblur2.fx">
-      <Name>sblur2</Name>
-      <Importer>EffectImporter</Importer>
-      <Processor>EffectProcessor</Processor>
-    </Compile>
-    <Compile Include="SBlurPost\sblur3.fx">
-      <Name>sblur3</Name>
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
     </Compile>
@@ -1512,19 +1490,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SSAO\noise.jpg">
-      <Name>noise</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Textures\probe.png">
       <Name>probe</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
