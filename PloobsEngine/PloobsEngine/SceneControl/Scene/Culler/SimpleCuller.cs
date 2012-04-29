@@ -39,8 +39,7 @@ namespace PloobsEngine.SceneControl
 
         #region ICuller Members
         List<IObject> deferred = new List<IObject>();
-        List<IObject> forward = new List<IObject>();
-        comparer comparer = new comparer();
+        List<IObject> forward = new List<IObject>();        
         public override void StartFrame(ref Matrix view, ref Matrix projection, BoundingFrustum frustrum)
         {
             forward.Clear();
@@ -76,20 +75,28 @@ namespace PloobsEngine.SceneControl
                 }
             }
             num = forward.Count + deferred.Count;
-
-            if (this.SortObjectsByDistanceToCamera)
-            {
-                Matrix viewIT = Matrix.Invert( Matrix.Transpose( view ) );
-                comparer.CameraPosition = new Vector3( viewIT.M14, viewIT.M24, viewIT.M34 );
-                forward.Sort(comparer);
-                deferred.Sort(comparer);
-
-            }
-
         }
+        
+        public override List<IObject> GetNotCulledObjectsList(MaterialType? Filter, CullerComparer CullerComparer = CullerComparer.None, Vector3? CameraPosition = null)
+        {         
+                switch (CullerComparer)
+                {
+                    case CullerComparer.ComparerFrontToBack:
+                        System.Diagnostics.Debug.Assert(CameraPosition.HasValue);
+                        ComparerFrontToBack.CameraPosition = CameraPosition.Value;
+                        forward.Sort(ComparerFrontToBack);
+                        deferred.Sort(ComparerFrontToBack);
+                        break;
+                    case CullerComparer.ComparerBackToFront:
+                        System.Diagnostics.Debug.Assert(CameraPosition.HasValue);
+                        ComparerBackToFront.CameraPosition = CameraPosition.Value;
+                        forward.Sort(ComparerBackToFront);
+                        deferred.Sort(ComparerBackToFront);
+                        break;
+                    default:
+                        break;
+                }
 
-        public override List<IObject> GetNotCulledObjectsList(MaterialType? Filter)
-        {
             if (Filter == PloobsEngine.Material.MaterialType.DEFERRED)
                 return deferred.ToList();
             else if (Filter == PloobsEngine.Material.MaterialType.FORWARD)

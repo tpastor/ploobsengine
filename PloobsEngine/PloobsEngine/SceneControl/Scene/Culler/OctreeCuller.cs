@@ -27,6 +27,7 @@ using Microsoft.Xna.Framework.Graphics;
 using PloobsEngine;
 using PloobsEngine.Cameras;
 using PloobsEngine.Features.DebugDraw;
+using PloobsEngine.Material;
 
 namespace PloobsEngine.SceneControl
 {
@@ -63,7 +64,7 @@ namespace PloobsEngine.SceneControl
         List<IObject> ghostDeferred = new List<IObject>();
         List<IObject> deferred = new List<IObject>();
         List<IObject> forward = new List<IObject>();
-        comparer comparer = new comparer();
+        
         public override void StartFrame(ref Matrix view, ref Matrix projection, BoundingFrustum frustrum)
         {
                 forward.Clear();
@@ -82,20 +83,30 @@ namespace PloobsEngine.SceneControl
                 deferred.AddRange(ghostDeferred);
                 forward.AddRange(ghostForward);
 
-                num = deferred.Count + forward.Count;
-
-                if (this.SortObjectsByDistanceToCamera)
-                {
-                    Matrix viewIT = Matrix.Invert(Matrix.Transpose(view));
-                    comparer.CameraPosition = new Vector3(viewIT.M14, viewIT.M24, viewIT.M34);
-                    forward.Sort(comparer);
-                    deferred.Sort(comparer);
-
-                }                
+                num = deferred.Count + forward.Count;                
         }
 
-        public override List<IObject> GetNotCulledObjectsList(PloobsEngine.Material.MaterialType? Filter)
+        public override List<IObject> GetNotCulledObjectsList(MaterialType? Filter, CullerComparer CullerComparer = CullerComparer.None, Vector3? CameraPosition = null)
         {
+                switch (CullerComparer)
+                {                        
+                    case CullerComparer.ComparerFrontToBack:
+                        System.Diagnostics.Debug.Assert(CameraPosition.HasValue);
+                        ComparerFrontToBack.CameraPosition = CameraPosition.Value;
+                        forward.Sort(ComparerFrontToBack);
+                        deferred.Sort(ComparerFrontToBack);
+                        break;
+                    case CullerComparer.ComparerBackToFront:
+                        System.Diagnostics.Debug.Assert(CameraPosition.HasValue);
+                        ComparerBackToFront.CameraPosition = CameraPosition.Value;
+                        forward.Sort(ComparerBackToFront);
+                        deferred.Sort(ComparerBackToFront);
+                        break;
+                    default:
+                        break;
+                }
+
+
             if (Filter == PloobsEngine.Material.MaterialType.DEFERRED)
                 return deferred.ToList();
             else if (Filter == PloobsEngine.Material.MaterialType.FORWARD)

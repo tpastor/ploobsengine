@@ -27,33 +27,7 @@ using PloobsEngine.Cameras;
 
 namespace PloobsEngine.SceneControl
 {
-    internal class comparer : IComparer<IObject>
-    {   
-        #region IComparer<IObject> Members
-
-        public  Vector3 CameraPosition;
-
-        public int Compare(IObject x, IObject y)
-        {
-            float d1 = Vector3.DistanceSquared(CameraPosition, x.PhysicObject.Position);
-            float d2 = Vector3.DistanceSquared(CameraPosition, y.PhysicObject.Position);
-            
-            if (d1 > d2)
-            {
-                return 1;
-            }
-            else if (d1 == d2)
-            {
-                return 0;
-            }
-            else
-            {
-                return -1;
-            }
-        }
-
-        #endregion
-    }
+    
 
     public struct ForwardPassDescription
     {
@@ -98,8 +72,8 @@ namespace PloobsEngine.SceneControl
         {
             this.ForwardPassDescription = ForwardPassDescription;
         }
-        
-        comparer c = new comparer();
+
+        ComparerBackToFront c = new ComparerBackToFront();
 
         public void Draw(GameTime gt, IWorld world, RenderHelper render, List<IObject> deferred, List<IObject> forward)        
         {            

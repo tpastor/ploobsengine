@@ -756,10 +756,14 @@ namespace PloobsEngine.SceneControl
 
 #if WINDOWS_PHONE || REACH
         public void DettachBindedTextures(int numberofTextures = 2)
-#else
-         public void DettachBindedTextures(int numberofTextures = 16)
-#endif
         {
+        if(numberofTextures > 2)
+            numberofTextures = 2;
+#else
+        public void DettachBindedTextures(int numberofTextures = 16)
+        {
+#endif
+        
             for (int i = 0; i < numberofTextures; i++)
             {
                 device.Textures[i] = null;

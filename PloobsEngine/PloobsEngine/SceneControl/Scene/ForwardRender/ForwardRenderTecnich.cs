@@ -59,7 +59,8 @@ namespace PloobsEngine.SceneControl
         /// Function called all frames to order all objects that are not culled
         /// Use this to sort objects by material and minimize gpu state changes
         /// </summary>
-        public Func<List<IObject>, List<IObject>> OrderAllObjectsBeforeDraw ;
+        public Func<List<IObject>, IWorld, List<IObject>> OrderAllObjectsBeforeDraw;
+
     }
 
     public class ForwardRenderTecnich : IRenderTechnic
@@ -116,19 +117,20 @@ namespace PloobsEngine.SceneControl
             Matrix projection = world.CameraManager.ActiveCamera.Projection;
 
             world.Culler.StartFrame(ref view, ref projection, world.CameraManager.ActiveCamera.BoundingFrustum);
-            List<IObject> objList = world.Culler.GetNotCulledObjectsList(Material.MaterialType.FORWARD);
+            List<IObject> objList = world.Culler.GetNotCulledObjectsList(Material.MaterialType.FORWARD,CullerComparer.ComparerFrontToBack,world.CameraManager.ActiveCamera.Position);
+
             if (desc.OrderAllObjectsBeforeDraw != null)
-                objList = desc.OrderAllObjectsBeforeDraw(objList);
+                objList = desc.OrderAllObjectsBeforeDraw(objList,world);
 
             if (desc.UsePreDrawPhase)
             {
-                foreach (var item in objList)
+                for (int i = 0; i < objList.Count; i++)
                 {
-                    item.Material.PreDrawnPhase(gameTime, world, item, world.CameraManager.ActiveCamera, world.Lights, render);
+                    objList[i].Material.PreDrawnPhase(gameTime, world, objList[i], world.CameraManager.ActiveCamera, world.Lights, render);    
                 }
             }
 
-            render.DettachBindedTextures(2);
+            render.DettachBindedTextures(6);
             render.SetSamplerStates(ginfo.SamplerState);            
 
             if (desc.UsePostEffect)
@@ -140,40 +142,39 @@ namespace PloobsEngine.SceneControl
             render.RenderPreComponents(gameTime, ref view, ref projection);                        
             foreach (var item in objList)
             {
-                //critical code, no log
                 System.Diagnostics.Debug.Assert(item.Material.MaterialType == Material.MaterialType.FORWARD, "This Technich is just for forward materials and shaders");
                 if(item.Material.IsVisible)
                     item.Material.Drawn(gameTime,item, world.CameraManager.ActiveCamera, world.Lights, render);                
             }
 
-            render.DettachBindedTextures(2);
+            render.DettachBindedTextures(6);
             render.SetSamplerStates(ginfo.SamplerState);
 
             if (world.PhysicWorld.isDebugDraw)
             {
                 world.PhysicWorld.iDebugDrawn(render, gameTime, world.CameraManager.ActiveCamera);
-                render.DettachBindedTextures(2);
+                render.DettachBindedTextures(6);
                 render.SetSamplerStates(ginfo.SamplerState);            
             }
 
             if (desc.UsePostDrawPhase)
             {
-                foreach (var item in objList)
+                for (int i = objList.Count -1; i < 0 ; i--)
                 {
-                    item.Material.PosDrawnPhase(gameTime, item, world.CameraManager.ActiveCamera, world.Lights, render);
+                    objList[i].Material.PosDrawnPhase(gameTime, objList[i], world.CameraManager.ActiveCamera, world.Lights, render);
                 }
             }
 
             if (world.ParticleManager != null)
             {
                 world.ParticleManager.iDraw(gameTime, world.CameraManager.ActiveCamera.View, world.CameraManager.ActiveCamera.Projection, render);
-                render.DettachBindedTextures(2);
+                render.DettachBindedTextures();
                 render.SetSamplerStates(ginfo.SamplerState);            
             }
 
             render.RenderPosWithDepthComponents(gameTime, ref view,ref projection);
 
-            render.DettachBindedTextures(2);
+            render.DettachBindedTextures();
             render.SetSamplerStates(ginfo.SamplerState);            
 
             if (desc.UsePostEffect)
