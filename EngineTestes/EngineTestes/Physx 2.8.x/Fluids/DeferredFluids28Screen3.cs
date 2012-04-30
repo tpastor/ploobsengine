@@ -42,8 +42,8 @@ namespace EngineTestes
                 PhysxTriangleMesh tmesh = new PhysxTriangleMesh(PhysxPhysicWorld, simpleModel,
                     Matrix.Identity, Vector3.One);
 
-                ForwardXNABasicShader shader = new ForwardXNABasicShader(ForwardXNABasicShaderDescription.Default());
-                ForwardMaterial fmaterial = new ForwardMaterial(shader);
+                DeferredNormalShader shader = new DeferredNormalShader();
+                DeferredMaterial fmaterial = new DeferredMaterial(shader);
                 IObject obj = new IObject(fmaterial, simpleModel, tmesh);
                 this.World.AddObject(obj);
             }
@@ -103,7 +103,7 @@ namespace EngineTestes
             FluidMOdel FluidMOdel = new PloobsEngine.Modelo.FluidMOdel(factory, "teste", null, fluidDesc.MaximumParticles);
             PhysxFluidObject PhysxFluidObject = new PloobsEngine.Physics.PhysxFluidObject(fluidDesc);
             FluidShader FluidShader = new FluidShader();
-            ForwardMaterial ForwardMaterial = new PloobsEngine.Material.ForwardMaterial(FluidShader);
+            DeferredMaterial ForwardMaterial = new DeferredMaterial(FluidShader);
             IObject IObject = new IObject(ForwardMaterial, FluidMOdel, PhysxFluidObject);
             this.World.AddObject(IObject);
 

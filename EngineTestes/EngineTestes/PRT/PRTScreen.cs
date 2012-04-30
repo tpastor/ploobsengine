@@ -19,7 +19,6 @@ namespace EngineTestes
     [TesteVisualScreen]
     public class PRTScreen : IScene
     {
-
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             world = new IWorld(new BepuPhysicWorld(), new SimpleCuller());
@@ -33,12 +32,11 @@ namespace EngineTestes
         {
             base.LoadContent(GraphicInfo, factory, contentManager);
 
-            LightProbeReader LightProbeReader = new EngineTestes.LightProbeReader(factory.GetTexture2D("Textures\\proble"));
+            LightProbeReader LightProbeReader = new EngineTestes.LightProbeReader(factory.GetTexture2D("Textures\\probe"));
             Sampler Sampler = new EngineTestes.Sampler(100,3);
 
             MonteCarlo MonteCarlo = new EngineTestes.MonteCarlo();
-            MonteCarlo.ProjectLight(LightProbeReader, Sampler);
-            
+            MonteCarlo.ProjectLight(LightProbeReader, Sampler);            
 
 
             {

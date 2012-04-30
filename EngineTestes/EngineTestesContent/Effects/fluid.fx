@@ -137,6 +137,7 @@ float4 Pshader(VertexShaderOutput input) : COLOR
 	
 		// read eye-space depth from texture
 		float depth = tex2D(depthSampler, input.texCoord).x;
+		clip(depth - 0.00001f);
 		//return float4(depth,depth,depth,1);
 		//if (depth == 1) {
 		//discard;
@@ -186,6 +187,7 @@ float2 blurDir;
 float4 blshader(VertexShaderOutput input) : Color0
 {		
 		float depth = tex2D(depthSampler, input.texCoord).x;
+		clip(depth - 0.00001f);
 		float sum = 0;
 		float wsum = 0;
 		for(float x=-16; x<=16; x+=1.0) {
@@ -213,7 +215,7 @@ float2 offsets[KERNEL_SIZE];
 float4 PS_GaussianBlur(float2 texCoord : TEXCOORD0) : COLOR0
 {
     float color = 0;
-    float depth = tex2D(depthSampler, texCoord).x;				
+    float depth = tex2D(depthSampler, texCoord).x;					
 	float s=0;
     for (int i = 0; i < KERNEL_SIZE; ++i)
 	{
@@ -249,4 +251,44 @@ technique FLUID2
 
 //////////////////////////////////////
 
+struct PS_OUTPUT {
+	float4 Color : COLOR0;
+    float4 Normal : COLOR1;
+    float4 Dep : COLOR2;
+    float4 EXTRA1 : COLOR3;
+	float Depth : DEPTH0;
+};
 
+
+texture Cubemap;
+sampler SamplerCubemap = sampler_state
+{
+	Texture = <Cubemap>;
+	MinFilter = LINEAR;
+	MagFilter = LINEAR;
+	MipFilter = LINEAR;
+};
+
+PS_OUTPUT Pshader2(VertexShaderOutput input) 
+{	    
+	PS_OUTPUT o = (PS_OUTPUT) 0;	
+	float depth = tex2D(depthSampler, input.texCoord).x;
+	clip(depth - 0.00001f);
+
+	float3 normal = tex2D(normalSampler, input.texCoord);
+	o.Color = float4(0,1,0,1);
+	o.Depth = depth;
+	o.Dep = depth;
+	o.Normal = float4(normal,60);
+	o.EXTRA1 = 0;
+	return o;
+}
+
+technique FLUID3
+{
+    pass p0
+    {     
+		VertexShader = compile vs_3_0 VShader();
+        PixelShader = compile ps_3_0 Pshader2();     
+    }
+}

@@ -33,7 +33,7 @@ namespace EngineTestes
 
         public override MaterialType MaterialType
         {
-            get { return PloobsEngine.Material.MaterialType.FORWARD; }
+            get { return PloobsEngine.Material.MaterialType.DEFERRED; }
         }
 
         public override void Update(GameTime gt, PloobsEngine.SceneControl.IObject ent, IList<PloobsEngine.Light.ILight> lights)
@@ -112,13 +112,14 @@ namespace EngineTestes
 
             Effect.Parameters["blurDepthFalloff"].SetValue(20);
             render.PushRenderTarget(r2);
+            render.Clear(Color.Black);
             PerformGaussianBLur(render, r1);
             render.PopRenderTarget();
 
             render.PushRenderTarget(r1);
+            render.Clear(Color.Black);
             PerformGaussianBLur(render, r2);
             render.PopRenderTarget();
-
             
             render.PushRenderTarget(r3);
             render.Clear(Color.Black);
@@ -141,7 +142,13 @@ namespace EngineTestes
 
         protected override void Draw(Microsoft.Xna.Framework.GameTime gt, PloobsEngine.SceneControl.IObject obj, PloobsEngine.SceneControl.RenderHelper render, PloobsEngine.Cameras.ICamera cam, IList<PloobsEngine.Light.ILight> lights)
         {
-            render.RenderTextureComplete(r3);
+            Effect.CurrentTechnique = Effect.Techniques["FLUID3"];
+            Effect.Parameters["depth"].SetValue(r1);
+            Effect.Parameters["normal"].SetValue(r3);
+            render.RenderFullScreenQuadVertexPixel(Effect);
+            //render.RenderTextureComplete(r3);
+
+            render.SetSamplerStates(ginfo.SamplerState);
         }
 
         Effect Effect;

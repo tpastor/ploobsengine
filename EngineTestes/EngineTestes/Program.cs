@@ -34,14 +34,14 @@ namespace EngineTestes
 
         static void LoadScreen(ScreenManager manager)
         {
-            //manager.AddScreen(new OcclusionScreen());
-
-            //manager.AddScreen(new BlurScreen());            
-            manager.AddScreen(new SSAOScreen());            
-            //manager.AddScreen(new DeferredEmitterFluids28Screen3());
+            //manager.AddScreen(new PRTScreen());                                 
+            manager.AddScreen(new DeferredEmitterFluids28Screen3());  
             //manager.AddScreen(new PrePassScreen());
+            
+            //manager.AddScreen(new OcclusionScreen());                       
+            //manager.AddScreen(new BlurScreen());            
+            //manager.AddScreen(new SSAOScreen()); 
             //manager.AddScreen(new BakerScreen());
-
             //manager.AddScreen(new DefPassScreen());
             //manager.AddScreen(new MixReflection());
             //manager.AddScreen(new ModeloScreen());
