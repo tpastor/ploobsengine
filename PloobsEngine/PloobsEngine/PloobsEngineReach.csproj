@@ -208,6 +208,7 @@
     <Compile Include="Material\IShadder\ForwardShader\ForwardSimpleAnimationShader.cs" />
     <Compile Include="Material\IShadder\ForwardShader\ForwardTransparenteShader.cs" />
     <Compile Include="Material\IShadder\ForwardShader\ForwardTreeShader.cs" />
+    <Compile Include="Material\IShadder\TerrainUtils.cs" />
     <Compile Include="Material\TreeMaterial.cs" />
     <Compile Include="Modelo2D\Animation\AnimationClass.cs" />
     <Compile Include="Modelo2D\IModelo2D.cs" />
