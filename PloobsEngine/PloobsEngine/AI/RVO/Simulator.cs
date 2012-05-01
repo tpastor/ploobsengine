@@ -203,6 +203,24 @@ namespace RVO
             }
         }
 
+#if WINDOWS_PHONE
+        bool MyWaitAll(WaitHandle[] waitHandleArray, int timeout = 1000)
+        {
+            int wait = 1000;
+            int startTick = Environment.TickCount;
+            foreach (WaitHandle wh in waitHandleArray)
+            {
+                while (!wh.WaitOne(wait))
+                {
+                    if ((Environment.TickCount - startTick) > timeout)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+#endif
         public float doStep()
         {
             if(_workers == null)
@@ -223,14 +241,22 @@ namespace RVO
                 _doneEvents[block].Reset();
                 ThreadPool.QueueUserWorkItem(_workers[block].step);
             }
+#if WINDOWS_PHONE
+            MyWaitAll(_doneEvents);
+#else
             WaitHandle.WaitAll(_doneEvents);
+#endif
 
             for (int block = 0; block < _workers.Length; ++block)
             {
                 _doneEvents[block].Reset();
                 ThreadPool.QueueUserWorkItem(_workers[block].update);
             }
+#if WINDOWS_PHONE
+            MyWaitAll(_doneEvents);
+#else
             WaitHandle.WaitAll(_doneEvents);
+#endif
 
             time_ += timeStep_;
             return time_;

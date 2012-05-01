@@ -335,7 +335,7 @@ namespace PloobsEngine.Features
             this.Position = position + PositionOffset;
             Effect.View = activeView;
             Effect.Projection = activeProjection;
-            Effect.World = Matrix.Identity;
+            Effect.World = Matrix.CreateTranslation(this.Position);
 
             render.PushDepthStencilState(new DepthStencilState() { DepthBufferEnable = false });
             render.PushRasterizerState(new RasterizerState() { CullMode = CullMode.None });

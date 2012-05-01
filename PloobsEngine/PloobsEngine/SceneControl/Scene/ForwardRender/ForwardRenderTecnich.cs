@@ -55,6 +55,8 @@ namespace PloobsEngine.SceneControl
         public Color BackGroundColor;
         public bool UsePreDrawPhase ;
         public bool UsePostDrawPhase;
+
+
         /// <summary>
         /// Function called all frames to order all objects that are not culled
         /// Use this to sort objects by material and minimize gpu state changes
@@ -78,8 +80,10 @@ namespace PloobsEngine.SceneControl
 
         ForwardRenderTecnichDescription desc;
 
-        RenderTarget2D renderTarget;
-        RenderTarget2D postEffectTarget;
+        private RenderTarget2D target;
+        private RenderTarget2D target2; ///for ping pong with target       
+        private RenderTarget2D PostEffectTarget;                                       
+        RenderTarget2D renderTarget;        
         Engine.GraphicFactory factory;
 
         Engine.GraphicInfo ginfo;
@@ -94,20 +98,33 @@ namespace PloobsEngine.SceneControl
             if (desc.UsePostEffect)
             {
                 renderTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth,ginfo.BackBufferHeight,SurfaceFormat.Color,ginfo.UseMipMap,DepthFormat.Depth24Stencil8,ginfo.MultiSample,RenderTargetUsage.DiscardContents);
-                postEffectTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
-            }            
+                target = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
+                target2 = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
+            }
+
+            PostEffectTarget = target;                        
             base.AfterLoadContent(manager, ginfo, factory);
         }
 
         void ginfo_OnGraphicInfoChange(object sender, EventArgs e)
         {
             GraphicInfo newGraphicInfo = (GraphicInfo)sender;
-            if (renderTarget != null && postEffectTarget != null)
+            if (renderTarget != null && PostEffectTarget != null)
             {
-                renderTarget.Dispose();
-                postEffectTarget.Dispose();
+                bool equal = false;
+                if (PostEffectTarget == target)
+                    equal = true;
+
+                renderTarget.Dispose();                
+                target.Dispose();
+                target2.Dispose();
                 renderTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
-                postEffectTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
+                target = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
+                target2 = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
+                if (equal)
+                    PostEffectTarget = target;
+                else
+                    PostEffectTarget = target2;
             }
         }
         
@@ -182,13 +199,15 @@ namespace PloobsEngine.SceneControl
                 render[PrincipalConstants.CurrentImage] = render.PopRenderTarget()[0].RenderTarget as Texture2D;
                 render[PrincipalConstants.CombinedImage] = render[PrincipalConstants.CurrentImage];
                 for (int i = 0; i < PostEffects.Count; i++)
-                {                    
+                {
                     if (PostEffects[i].Enabled)
                     {
-                        render.PushRenderTarget(postEffectTarget);
+                        render.PushRenderTarget(PostEffectTarget);
+                        render.Clear(Color.Black);
                         PostEffects[i].Draw(render[PrincipalConstants.CurrentImage], render, gameTime, ginfo, world, false);
                         Texture2D tex = render.PopRenderTarget()[0].RenderTarget as Texture2D;
                         render[PrincipalConstants.CurrentImage] = tex;
+                        SwapTargetBuffers();
                     }
                 }
                 render.Clear(Color.Black);
@@ -204,6 +223,13 @@ namespace PloobsEngine.SceneControl
             render.SetSamplerStates(ginfo.SamplerState) ;            
         }
 
+        private void SwapTargetBuffers()
+        {
+            if (PostEffectTarget == target)
+                PostEffectTarget = target2;
+            else
+                PostEffectTarget = target;
+        }
         
         public override string TechnicName
         {
@@ -215,10 +241,11 @@ namespace PloobsEngine.SceneControl
         public override void CleanUp()
         {
             this.ginfo.OnGraphicInfoChange -= ginfo_OnGraphicInfoChange;
-            if (renderTarget != null && postEffectTarget != null)
+            if (renderTarget != null && PostEffectTarget != null)
             {
                 renderTarget.Dispose();
-                postEffectTarget.Dispose();
+                target.Dispose();
+                target2.Dispose();
             }
 
             for (int i = 0; i < PostEffects.Count; i++)

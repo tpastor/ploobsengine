@@ -991,10 +991,10 @@ namespace PloobsEngine.SceneControl
                     for (int j = 0; j < bi.Count(); j++)
                     {                        
                         Matrix w1 = Matrix.Multiply(wld, bi[j].ModelLocalTransformation);
-                        effect.World = w1;
-                        effect.CurrentTechnique.Passes[0].Apply();                        
+                        effect.World = w1;                                               
                         device.SetVertexBuffer(bi[j].VertexBuffer, bi[j].StreamOffset);
                         device.Indices = bi[j].IndexBuffer;
+                        effect.CurrentTechnique.Passes[0].Apply();
                         device.DrawIndexedPrimitives(PrimitiveType.TriangleList, bi[j].BaseVertex, 0, bi[j].NumVertices, bi[j].StartIndex, bi[j].PrimitiveCount);                                                
                     }
                 }
