@@ -2,6 +2,7 @@
 float3 forward;
 float3 upVector;
 float4x4 xView;
+float4x4 invxView;
 float4x4 xProjection;
 float scaleX = 1;
 float scaleY = 1;
@@ -251,6 +252,7 @@ technique FLUID2
 
 //////////////////////////////////////
 
+float3 camPos;
 struct PS_OUTPUT {
 	float4 Color : COLOR0;
     float4 Normal : COLOR1;
@@ -274,8 +276,13 @@ PS_OUTPUT Pshader2(VertexShaderOutput input)
 	PS_OUTPUT o = (PS_OUTPUT) 0;	
 	float depth = tex2D(depthSampler, input.texCoord).x;
 	clip(depth - 0.00001f);
+	
+	float3 posEye = Toeye(input.texCoord);
+	float3 V = posEye - camPos;
 
 	float3 normal = tex2D(normalSampler, input.texCoord);
+	normal = mul(normal,invxView);
+
 	o.Color = float4(0,1,0,1);
 	o.Depth = depth;
 	o.Dep = depth;

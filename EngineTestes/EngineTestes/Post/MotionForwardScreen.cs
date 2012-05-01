@@ -62,6 +62,7 @@ namespace EngineTestes
             this.World.AddObject(obj);
 
             this.RenderTechnic.AddPostEffect(MotionBlurPostEffect);
+            //this.RenderTechnic.AddPostEffect(new BloomPostEffect());
 
             ///add a camera
             this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo));

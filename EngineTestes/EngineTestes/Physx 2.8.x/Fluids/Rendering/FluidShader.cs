@@ -145,6 +145,9 @@ namespace EngineTestes
             Effect.CurrentTechnique = Effect.Techniques["FLUID3"];
             Effect.Parameters["depth"].SetValue(r1);
             Effect.Parameters["normal"].SetValue(r3);
+            Effect.Parameters["camPos"].SetValue(Vector3.Transform(cam.Position,cam.View));
+            Effect.Parameters["invxView"].SetValue(Matrix.Invert(cam.View));            
+            
             render.RenderFullScreenQuadVertexPixel(Effect);
             //render.RenderTextureComplete(r3);
 
