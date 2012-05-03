@@ -70,7 +70,7 @@ namespace PloobsEngine.Material
         /// <param name="render">The render.</param>
         /// <param name="cam">The cam.</param>
         /// <param name="lights"></param>
-        public override void Draw(GameTime gt, IObject obj, RenderHelper render, Cameras.ICamera cam, IList<Light.ILight> lights)
+        protected override void  Draw(GameTime gt, IObject obj, RenderHelper render, Cameras.ICamera cam, IList<Light.ILight> lights)
         {
             if (bones == null)
                 return;
