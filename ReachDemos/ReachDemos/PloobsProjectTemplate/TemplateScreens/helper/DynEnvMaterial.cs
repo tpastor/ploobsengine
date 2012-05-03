@@ -32,7 +32,7 @@ namespace PloobsProjectTemplate.TemplateScreens
 
         public void Drawn(Microsoft.Xna.Framework.GameTime gt, PloobsEngine.SceneControl.IObject obj, PloobsEngine.Cameras.ICamera cam, IList<PloobsEngine.Light.ILight> lights, PloobsEngine.SceneControl.RenderHelper render)
         {
-            ForwardEnvironmentShader.Draw(gt, obj, render, cam, lights);
+            ForwardEnvironmentShader.iDraw(gt, obj, render, cam, lights);
         }
 
         public void Initialization(PloobsEngine.Engine.GraphicInfo ginfo, PloobsEngine.Engine.GraphicFactory factory, PloobsEngine.SceneControl.IObject obj)

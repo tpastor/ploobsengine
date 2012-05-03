@@ -184,7 +184,7 @@
             Culler Specification
             </summary>
     </member>
-    <member name="M:PloobsEngine.SceneControl.ICuller.GetNotCulledObjectsList(System.Nullable{PloobsEngine.Material.MaterialType})">
+    <member name="M:PloobsEngine.SceneControl.ICuller.GetNotCulledObjectsList(System.Nullable{PloobsEngine.Material.MaterialType},PloobsEngine.SceneControl.CullerComparer,System.Nullable{Microsoft.Xna.Framework.Vector3})">
       <summary>
             Get all the objects that pass the culling phase
             </summary>
@@ -215,12 +215,6 @@
     <member name="P:PloobsEngine.SceneControl.ICuller.RenderedObjectThisFrame">
       <summary>
             Gets the number of objects rendered in this frame.
-            </summary>
-    </member>
-    <member name="P:PloobsEngine.SceneControl.ICuller.SortObjectsByDistanceToCamera">
-      <summary>
-            Roughly sort objects by their distance to the camera
-            Default False
             </summary>
     </member>
     <member name="T:PloobsEngine.SceneControl.OctreeCuller">
@@ -1525,6 +1519,12 @@
             Depth Render target name
             </summary>
     </member>
+    <member name="F:PloobsEngine.PrincipalConstants.SSAORT">
+      <summary>
+            SSAO Render target name
+            Created by post effect (fully controlled by the user)
+            </summary>
+    </member>
     <member name="F:PloobsEngine.PrincipalConstants.SEPARATOR_CHARACTER">
       <summary>
             Separator character used when parsing files
@@ -2205,7 +2205,7 @@
       <param name="cam">The camera.</param>
       <param name="lights">The lights.</param>
     </member>
-    <member name="M:PloobsEngine.Material.IShader.Draw(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IObject,PloobsEngine.SceneControl.RenderHelper,PloobsEngine.Cameras.ICamera,System.Collections.Generic.IList{PloobsEngine.Light.ILight})">
+    <member name="M:PloobsEngine.Material.IShader.iDraw(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IObject,PloobsEngine.SceneControl.RenderHelper,PloobsEngine.Cameras.ICamera,System.Collections.Generic.IList{PloobsEngine.Light.ILight})">
       <summary>
             Draw
             </summary>
@@ -2514,6 +2514,16 @@
             Unregister a specified reciever
             </summary>
       <param name="rec">The rec.</param>
+    </member>
+    <member name="P:PloobsEngine.IA.IPlanner.MaxIteration">
+      <summary>
+            Default 250
+            </summary>
+    </member>
+    <member name="T:PloobsEngine.IA.DepthPlanner">
+      <summary>
+            not thead safe
+            </summary>
     </member>
     <member name="T:PloobsEngine.IA.Genetic.Genome">
       <summary>
@@ -7340,6 +7350,13 @@
       <returns>
       </returns>
     </member>
+    <member name="M:PloobsEngine.Engine.GraphicFactory.CreateOcclusionQuery">
+      <summary>
+            Create an OcclusionQuery
+            </summary>
+      <returns>
+      </returns>
+    </member>
     <member name="M:PloobsEngine.Engine.GraphicFactory.GetSpriteBatch(System.Boolean)">
       <summary>
             Gets the shared sprite batch instance.
@@ -8579,6 +8596,9 @@
             The name of the technic.
             </value>
     </member>
+    <member name="F:PloobsEngine.SceneControl.ForwardRenderTecnich.PostEffectTarget">
+            for ping pong with target       
+        </member>
     <member name="T:PloobsEngine.SceneControl.IDeferredFinalCombination">
       <summary>
             Deferred final combination specification
@@ -12503,6 +12523,14 @@
             </summary>
       <param name="bi">The BatchInformation .</param>
     </member>
+    <member name="M:PloobsEngine.SceneControl.RenderHelper.GetCurrentRenderTargetSize(System.Int32)">
+      <summary>
+            Gets the size of the current render target.
+            </summary>
+      <param name="index">The index.</param>
+      <returns>
+      </returns>
+    </member>
     <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderTextComplete(System.String,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Color,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Graphics.SpriteFont,System.Boolean,Microsoft.Xna.Framework.Graphics.SpriteSortMode,Microsoft.Xna.Framework.Graphics.SamplerState,Microsoft.Xna.Framework.Graphics.BlendState,Microsoft.Xna.Framework.Graphics.RasterizerState,Microsoft.Xna.Framework.Graphics.DepthStencilState,Microsoft.Xna.Framework.Graphics.Effect)">
       <summary>
             Renders the text complete. (THIS FUNCTION ALREADY CALLS BEGIN AND END)
@@ -12626,6 +12654,21 @@
       <param name="destination">The destination.</param>
       <param name="transform">The transform.</param>
       <param name="source">The source.</param>
+      <param name="resyncState">if set to <c>true</c> [resync state].</param>
+      <param name="SpriteSortMode">The sprite sort mode.</param>
+      <param name="samplerState">State of the sampler.</param>
+      <param name="blenderState">State of the blender.</param>
+      <param name="rasterizerState">State of the rasterizer.</param>
+      <param name="depthState">State of the depth.</param>
+      <param name="effect">The effect.</param>
+    </member>
+    <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderTextureComplete(Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Rectangle,System.Boolean,Microsoft.Xna.Framework.Graphics.SpriteSortMode,Microsoft.Xna.Framework.Graphics.SamplerState,Microsoft.Xna.Framework.Graphics.BlendState,Microsoft.Xna.Framework.Graphics.RasterizerState,Microsoft.Xna.Framework.Graphics.DepthStencilState,Microsoft.Xna.Framework.Graphics.Effect)">
+      <summary>
+            Renders the texture to the render target
+            Shortcut for Down/Up sampling
+            </summary>
+      <param name="texture">The texture.</param>
+      <param name="targetSize">Size of the target.</param>
       <param name="resyncState">if set to <c>true</c> [resync state].</param>
       <param name="SpriteSortMode">The sprite sort mode.</param>
       <param name="samplerState">State of the sampler.</param>
