@@ -54,6 +54,11 @@
                             <Image Height="200" HorizontalAlignment="Center"  Name="image3" Stretch="Fill" VerticalAlignment="Top" Width="400" Source="/PloobsFeatures;component/environmentplate.jpg" Tap="image3_Tap" Margin="0,10" />
                             <Image Height="200" HorizontalAlignment="center"  Name="imagepicking3D" Stretch="Fill" VerticalAlignment="Top" Width="400" Source="/PloobsFeatures;component/modelmanipulationplate.jpg" Tap="ModelManipulationTap" Margin="0,10" />
                             <Image  Height="200" Tap="imagepicking2D_Tap" HorizontalAlignment="Center"  Name="imagepicking2D" Stretch="Fill" VerticalAlignment="Top" Width="400" Source="/PloobsFeatures;component/Terrain.jpg" Margin="0,10" />
+                            <Image  Height="200" Tap="imageBehaviors_Tap" HorizontalAlignment="Center"  Name="imageBehaviors" Stretch="Fill" VerticalAlignment="Top" Width="400" Source="/PloobsFeatures;component/Behaviors.jpg" Margin="0,10" />
+                            <Image  Height="200" Tap="imageCrowd_Tap" HorizontalAlignment="Center"  Name="imageCrowd" Stretch="Fill" VerticalAlignment="Top" Width="400" Source="/PloobsFeatures;component/Crowd.jpg" Margin="0,10" />
+                            <!--<Image  Height="200" Tap="imageGeoClipMap_Tap" HorizontalAlignment="Center"  Name="imageGeoClipMap" Stretch="Fill" VerticalAlignment="Top" Width="400" Source="/PloobsFeatures;component/GeoClipMap.jpg" Margin="0,10" />-->
+                            <Image  Height="200" Tap="imageGravitation_Tap" HorizontalAlignment="Center"  Name="imageGravitation" Stretch="Fill" VerticalAlignment="Top" Width="400" Source="/PloobsFeatures;component/Gravitation.jpg" Margin="0,10" />
+                            <Image  Height="200" Tap="imagePostEffect_Tap" HorizontalAlignment="Center"  Name="imagePostEffect" Stretch="Fill" VerticalAlignment="Top" Width="400" Source="/PloobsFeatures;component/PostEffect.jpg" Margin="0,10" />
                         </StackPanel>
                     </ScrollViewer.Content>
                 </ScrollViewer>
