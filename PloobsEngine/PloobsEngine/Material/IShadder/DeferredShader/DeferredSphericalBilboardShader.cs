@@ -104,7 +104,8 @@ namespace PloobsEngine.Material
 
         public override void Initialize(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, IObject obj)        
         {
-            this._shader = factory.GetEffect("SphericalBillboard",true,true);            
+            this._shader = factory.GetEffect("SphericalBillboard",true,true);
+            base.Initialize(ginfo, factory, obj);
         }
 
 

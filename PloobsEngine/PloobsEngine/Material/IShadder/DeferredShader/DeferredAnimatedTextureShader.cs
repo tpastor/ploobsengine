@@ -205,6 +205,7 @@ namespace PloobsEngine.Material
 
         public override void Initialize(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, IObject obj)        
         {
+            base.Initialize(ginfo, factory, obj);
             this._shader = factory.GetEffect("AnimatedBillboard",false,true);
             this.aniTex = obj.Modelo.getTexture(TextureType.DIFFUSE,0,0);
             obj.Modelo.GetTextureInformation(0)[0].OnTextureChange += new OnTextureChange(Modelo_OnTextureChange);

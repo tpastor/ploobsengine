@@ -165,6 +165,7 @@ namespace PloobsEngine.Material
 
         public override void Initialize(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, IObject obj)        
         {
+            base.Initialize(ginfo, factory, obj);
             this._shader = factory.GetEffect("InstancedBilboard", true, true);            
         }
 

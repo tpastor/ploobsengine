@@ -233,6 +233,7 @@ namespace PloobsEngine.Material
         Engine.GraphicInfo ginfo;
         public override void Initialize(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, IObject obj)        
         {
+            base.Initialize(ginfo, factory, obj);
             this.ginfo = ginfo;
             this._shader = factory.GetEffect("Terrain",true,true);            
             if (terrainType == TerrainType.SINGLETEXTURE)
