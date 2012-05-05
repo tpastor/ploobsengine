@@ -15,7 +15,7 @@ namespace EngineTestes
         public float Dx;
         public float Dy;
         public float Dz;
-        public List<float> vSHEval;
+        public List<float> vSHEval = new List<float>();
 
         public Sample(float a, float b, int bands)
         {
@@ -108,7 +108,7 @@ namespace EngineTestes
 
         public int samples;
         public int bands;
-        public List<Sample> vSamples;
+        public List<Sample> vSamples = new List<Sample>();
 
         float Random()
         {
@@ -171,7 +171,7 @@ namespace EngineTestes
             List<Vector3> vResult = new List<Vector3>();
             for (int i = 0; i < n * n; i++)
             {
-                vResult[i] = new Vector3();
+                vResult.Add( new Vector3());
             }
             for (int j = 0; j < T; j++)
             {

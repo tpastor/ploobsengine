@@ -4,6 +4,7 @@ Content\Model\cubo.xnb
 Content\Model\teapot.xnb
 Content\Model\cena.xnb
 Content\Model\cilos.xnb
+Content\Model\block.xnb
 Content\Textures\goo.xnb
 Content\Textures\islandmap.xnb
 Content\Textures\Particle.xnb
@@ -35,6 +36,8 @@ Content\Textures\base.xnb
 Content\Textures\Smoke.xnb
 Content\Textures\CloudLight.xnb
 Content\Textures\DudeSheet.xnb
+Content\Terrain\terrain_base_texture.xnb
+Content\Terrain\terrain_detail_texture.xnb
 Content\Model\PlayerMarine.xnb
 Content\Model\EnemyBeast.xnb
 Content\Textures\islandmap_0.xnb
@@ -51,3 +54,4 @@ Content\Textures\pillar_texture_0.xnb
 Content\Textures\piso_core_difusse_0.xnb
 Content\Textures\water_0.xnb
 Content\Textures\wall_texture_diffuse_0.xnb
+Content\Terrain\HeightMap.raw
