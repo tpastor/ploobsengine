@@ -1,0 +1,490 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="AllBuffer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\AllBuffer.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="AnimatedBillboard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\AnimatedBillboard.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="AntiAliasing" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\AntiAliasing.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="AntiAliasingtabulastalker" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\AntiAliasingtabulastalker.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="BlackWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\BlackWhite.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="BlinkGBuffer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\BlinkGBuffer.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="block" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Models\block.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="blur" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\blur.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="BumpGBuffer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\BumpGBuffer.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="ByPassEffect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\ByPassEffect.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="checker" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Textures\checker.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="cilBilboard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\cilBilboard.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="cilBilboardForward" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\cilBilboardForward.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="ClearGBuffer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\ClearGBuffer.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="clippingPlane" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\clippingPlane.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="colorCorrection" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\colorCorrection.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="color_map" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Textures\color_map.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="Combine" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\Combine.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="CombineFinal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\CombineFinal.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="ConsoleFont" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Font\ConsoleFont.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="contrast" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\contrast.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="CopyToScreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\CopyToScreen.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="CuingDepth" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\CuingDepth.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="DeferredAA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\DeferredAA.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="Depth" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Depth.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="depth1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\depth.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="DirectionalLight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\DirectionalLight.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="dome" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Models\dome.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="DownScaling" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\DownScaling.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="Dsphere" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Models\Dsphere.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="Embossed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\Embossed.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="EMSHADER" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\EMSHADER.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="explosion" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Textures\explosion.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="fire" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Textures\fire.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="fire1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Textures\fire.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="flare" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Textures\flare.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="Fog" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\Fog.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="FULLGPUBlur" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\FULLGPUBlur.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="gamma" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\gamma.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="GaussianBlur" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\GaussianBlur.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="gblur" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\gblur.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="gcpublur" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\gcpublur.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="glow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\glow.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="glowPost" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\glowPost.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="GrassBillboard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\GrassBillboard.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="Heat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\Heat.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="HSV" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\HSV.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="InstancedBilboard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\InstancedBilboard.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="InstanceRenderGBuffer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\InstanceRenderGBuffer.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="Inverse" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\Inverse.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="LineDetection" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\LineDetection.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="Luminance" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\Luminance.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="MotionBlur" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\MotionBlur.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="Night" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\Night.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="noise" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\noise.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="noise_tex6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Textures\noise_tex6.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Textures\normal.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="opacity" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\opacity.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="ParticleEffect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\ParticleEffect.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="particles" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\particles.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="PlanarOriented" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\PlanarOriented.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="PointLight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\PointLight.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="Posterize" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\Posterize.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="RadialBlur" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\RadialBlur.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="random" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Textures\random.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="RANDOMNORMAL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Textures\RANDOMNORMAL.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="reductionEffect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\reductionEffect.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="Reflection" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\Reflection.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="RenderGBuffer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\RenderGBuffer.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="RenderGlowBuffer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\RenderGlowBuffer.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="resolveShadowsEffect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\resolveShadowsEffect.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="RestoreDepth" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\RestoreDepth.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="Ripple" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\Ripple.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="RoundLine" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\RoundLine.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="Saturate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\Saturate.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="saturation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\saturation.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="Scatter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\Scatter.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="ShadowDepth" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\ShadowDepth.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="ShadowDirectional" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\ShadowDirectional.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="ShadowDirectionalCascade" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\ShadowDirectionalCascade.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="ShadowMap" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\ShadowMap.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="ShadowMap1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\ShadowMap.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="ShadowPoint" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\ShadowPoint.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="ShadowSpot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\ShadowSpot.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="SimpleAlphaDraw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\SimpleAlphaDraw.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="skybox" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\skybox.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="smoke" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Textures\smoke.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="SpecularBumpBuffer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\SpecularBumpBuffer.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="SpecularMapBuffer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\SpecularMapBuffer.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="sphere" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Models\sphere.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="SphericalBillboard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\SphericalBillboard.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="SpotLight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\SpotLight.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="ssaoblur" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\ssaoblur.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="SSAOBlur1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\SSAOBlur1.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="SSAOBlur2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\SSAOBlur2.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="ssaofinal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\ssaofinal.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="SSAOPOST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\SSAOPOST.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="Sun" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\Sun.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="Sunset" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Textures\Sunset.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="Terrain" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\Terrain.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="terrainShader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\terrainShader.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="terrainShader1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\terrainShader.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="teste" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Textures\teste.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="Threshold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\Threshold.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="Tilling" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\Tilling.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="ToBlack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\ToBlack.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="ToneHdr" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\ToneHdr.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="ToneMapping" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\ToneMapping.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="Toon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Textures\Toon.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="toon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\toon1.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="TransparentEffect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\TransparentEffect.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="Vidro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\Vidro.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="Water" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\Water.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="WaterComplete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\WaterComplete.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="wave0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Textures\wave0.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="wave1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Textures\wave1.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="waves2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Textures\waves2.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="white" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Textures\white.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="wiggle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\wiggle.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="AllBufferEnvironment" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\AllBufferEnvironment.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="sblur" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\sblur.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="sblur2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\sblur2.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+  <data name="sblur3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bin\Xbox 360\Release\Content\Effects\Deferred\sblur3.xnb;System.Byte[], mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e</value>
+  </data>
+</root>

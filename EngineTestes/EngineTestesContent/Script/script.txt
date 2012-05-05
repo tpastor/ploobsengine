@@ -1,0 +1,23 @@
+﻿var obj =  CreateTriangleMeshModel("Model/cenario", Vector3.Zero, Matrix.Identity, Vector3.One);
+AddToWorld(obj);
+
+var cam = CreateDefaultCamera();
+AddToWorld(cam);
+
+CreateLights();
+
+AddSkyBox("Textures//cubemap");
+
+function: void CreateLights()
+{
+	var l1 = CreateDirectionalLight(Vector3.Left, Color.White,0.5f);
+	AddToWorld(l1);
+	var l2 = CreateDirectionalLight(Vector3.Right, Color.White,0.5f);
+	AddToWorld(l2);
+	var l3 = CreateDirectionalLight(Vector3.Backward, Color.White,0.5f);
+	AddToWorld(l3);
+	var l4 = CreateDirectionalLight(Vector3.Forward, Color.White,0.5f);
+	AddToWorld(l4);
+	var l5 = CreateDirectionalLight(Vector3.Down, Color.White,0.5f);
+	AddToWorld(l5);
+}
