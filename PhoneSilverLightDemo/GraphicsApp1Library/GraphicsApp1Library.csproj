@@ -109,12 +109,23 @@
     <Compile Include="BallThrowBepu.cs" />
     <Compile Include="3D Demos\ParticleScreen.cs" />
     <Compile Include="3D Demos\SnowPS.cs" />
+    <Compile Include="3D Demos\Behaviors\BaseObject.cs" />
+    <Compile Include="3D Demos\Behaviors\BehaviorTreeScreen.cs" />
+    <Compile Include="3D Demos\Behaviors\CharacterControllerInput.cs" />
+    <Compile Include="3D Demos\Behaviors\RepeatUntil.cs" />
+    <Compile Include="3D Demos\Crowed\CrowedScreen.cs" />
+    <Compile Include="3D Demos\GravitationalDemo\GravitationalBepuScreen.cs" />
+    <Compile Include="3D Demos\helper\DynEnvMaterial.cs" />
+    <Compile Include="3D Demos\PostEffect\PostEffectScreen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RotatingCamera.cs" />
     <Compile Include="3D Demos\SkyBoxScreen.cs" />
     <Compile Include="3D Demos\StressScreen.cs" />
     <Compile Include="3D Demos\TechTruthScreen.cs" />
     <Compile Include="3D Demos\TerrainScreen.cs" />
+    <Compile Include="3D Demos\RVO\RVOObject.cs" />
+    <Compile Include="3D Demos\RVO\RVOScreen.cs" />
+    <Compile Include="3D Demos\TerrainGeoClipMap.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GraphicsApp1LibraryContent\GraphicsApp1LibraryContent.contentproj">
