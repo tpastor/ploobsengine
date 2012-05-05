@@ -40,7 +40,7 @@ namespace EngineTestes
 
             //manager.AddScreen(new OcclusionScreen());                       
             //manager.AddScreen(new BlurScreen());            
-            manager.AddScreen(new SSAOScreen()); 
+            //manager.AddScreen(new SSAOScreen()); 
             //manager.AddScreen(new BakerScreen());
             //manager.AddScreen(new DefPassScreen());
             //manager.AddScreen(new MixReflection());
@@ -55,7 +55,7 @@ namespace EngineTestes
             //manager.AddScreen(new DeferredFluids28Screen2());
             //manager.AddScreen(new DeferredFluids28Screen());
             //manager.AddScreen(new Fluids28Screen());
-            //manager.AddScreen(new PressureCloth28Screen());
+            manager.AddScreen(new PressureCloth28Screen());
             //manager.AddScreen(new FlagCloth28Screen());
             //manager.AddScreen(new BasicCloth28Screen());
             //manager.AddScreen(new Physx28Screen());
