@@ -380,6 +380,37 @@ namespace PloobsEngine.Physics.Bepu
             return pos.Y;
         }
 
+        public float getLiteHeight(float x, float z)
+        {
+
+            // convert coordinates to heightmap scale
+            x /= heightMultipler;
+            z /= heightMultipler;
+
+            // get integer and fractional parts of coordinates
+            int nIntX0 = (int)Math.Floor(x);
+            int nIntY0 = (int)Math.Floor(z);
+            float fFractionalX = x - nIntX0;
+            float fFractionalY = z - nIntY0;
+
+            // get coordinates for "other" side of quad
+            int nIntX1 = (int)MathHelper.Clamp(nIntX0 + 1, 0, terrainWidth - 1);
+            int nIntY1 = (int)MathHelper.Clamp(nIntY0 + 1, 0,terrainHeight - 1);
+
+            // read 4 map values
+            float f0 = getHeight(nIntX0, nIntY0);
+            float f1 = getHeight(nIntX1, nIntY0);
+            float f2 = getHeight(nIntX0, nIntY1);
+            float f3 = getHeight(nIntX1, nIntY1);
+
+            // calculate averages
+            float fAverageLo = (f1 * fFractionalX) + (f0 * (1.0f - fFractionalX));
+            float fAverageHi = (f3 * fFractionalX) + (f2 * (1.0f - fFractionalX));
+
+            return (fAverageHi * fFractionalY) + (fAverageLo * (1.0f - fFractionalY));
+        
+        }
+
         public float getHeightFast(float xPos, float zPos)
         {
             int left, top;

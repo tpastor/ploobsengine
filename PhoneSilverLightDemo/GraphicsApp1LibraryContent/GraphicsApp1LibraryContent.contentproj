@@ -34,6 +34,9 @@
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.VideoImporters, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL">
       <Private>False</Private>
     </Reference>
+    <Reference Include="Osiris.Terrain.Content.Pipeline">
+      <HintPath>..\Phone7\Osiris.Terrain.Content.Pipeline.dll</HintPath>
+    </Reference>
     <Reference Include="XNAnimationPipeline">
       <HintPath>..\Phone7\XNAnimationPipeline.dll</HintPath>
     </Reference>
@@ -278,6 +281,33 @@
   <ItemGroup>
     <Compile Include="Textures\DudeSheet.png">
       <Name>DudeSheet</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\block.X">
+      <Name>block</Name>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Terrain\HeightMap.raw">
+      <Name>HeightMap</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Importer>RawImporter</Importer>
+      <Processor>TerrainProcessor</Processor>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Terrain\terrain_base_texture.jpg">
+      <Name>terrain_base_texture</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Terrain\terrain_detail_texture.jpg">
+      <Name>terrain_detail_texture</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

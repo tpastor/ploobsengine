@@ -81,5 +81,30 @@ namespace PloobsFeatures
         {
             NavigationService.Navigate(new Uri("/Particles3D.xaml", UriKind.Relative));            
         }
+
+        private void imageBehaviors_Tap(object sender, GestureEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/BehaviorPage.xaml", UriKind.Relative));            
+        }
+
+        private void imageCrowd_Tap(object sender, GestureEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/CrowdPage.xaml", UriKind.Relative));            
+        }
+
+        private void imageGeoClipMap_Tap(object sender, GestureEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/GeoClipTerrainPage.xaml", UriKind.Relative));            
+        }
+
+        private void imageGravitation_Tap(object sender, GestureEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/GravitationPage.xaml", UriKind.Relative));            
+        }
+
+        private void imagePostEffect_Tap(object sender, GestureEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/PostEffectPage.xaml", UriKind.Relative));            
+        }
     }
 }
