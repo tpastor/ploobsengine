@@ -357,45 +357,45 @@
     <Compile Include="Vegetation\VegetationForwardScreen.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Library\cudart32_30_9.dll">
+    <Content Include="cudart32_30_9.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Library\NxCharacter.dll">
+    <Content Include="NxCharacter.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Library\PhysX3Cooking_x86.dll">
+    <Content Include="PhysX3Cooking_x86.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Library\PhysX3Gpu_x86.dll">
+    <Content Include="PhysX3Gpu_x86.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Library\PhysX3_x86.dll">
+    <Content Include="PhysX3_x86.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Library\PhysXCooking.dll">
+    <Content Include="PhysXCooking.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Library\PhysXCore.dll">
+    <Content Include="PhysXCore.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Library\PhysXDevice.dll">
+    <Content Include="PhysXDevice.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Library\PhysXLoader.dll">
+    <Content Include="PhysXLoader.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Library\PxTaskCuda.dll">
+    <Content Include="PxTaskCuda.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
-    <Content Include="Library\RVO2DWrapper.dll" />
-    <Content Include="Library\RVO3D.dll">
+    <Content Include="RVO2DWrapper.dll" />
+    <Content Include="RVO3D.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Library\StillDesign.PhysX.Net.dll" />
+    <Content Include="StillDesign.PhysX.Net.dll" />
     <None Include="StillDesign.PhysX.Net.xml" />
-    <Content Include="Library\StillDesign.PhysX.Tests.dll" />
+    <Content Include="StillDesign.PhysX.Tests.dll" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\PloobsEngine\PloobsEngine\PloobsEngine.csproj">
