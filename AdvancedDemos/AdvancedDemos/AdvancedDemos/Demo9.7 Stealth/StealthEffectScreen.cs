@@ -75,11 +75,14 @@ namespace AdvancedDemo4._0
                 fmaterial.IsVisible = false;
                 ///The object itself
                 IObject obj = new IObject(fmaterial, simpleModel, pi);
+                obj.OnUpdate += new OnUpdate(obj_OnUpdate);
                 ///Add to the world
                 this.World.AddObject(obj);
+
                 StealthPostEffect StealthPostEffect = new StealthPostEffect();
                 StealthPostEffect.objs.Add(obj);
                 this.RenderTechnic.AddPostEffect(StealthPostEffect);
+
             }
 
             
@@ -128,6 +131,11 @@ namespace AdvancedDemo4._0
             SkyBoxSetTextureCube stc = new SkyBoxSetTextureCube("Textures//cubemap");
             CommandProcessor.getCommandProcessor().SendCommandAssyncronous(stc);
             
+        }
+
+        void obj_OnUpdate(IObject obj, GameTime gt, ICamera cam)
+        {
+            obj.PhysicObject.Rotation *= Matrix.CreateRotationY(MathHelper.ToRadians(0.5f));
         }
 
         protected override void CleanUp(EngineStuff engine)

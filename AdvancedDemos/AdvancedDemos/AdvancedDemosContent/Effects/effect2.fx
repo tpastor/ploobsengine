@@ -48,7 +48,7 @@ float4 DisplacementPassthrough_PixelShader(PositionDisplacement input: TEXCOORD)
     //allign texels to pixels
     texCoord +=halfPixel;
 
-	float depth = tex2D(depthSampler,texCoord).r;
+	float depth = 1 - tex2D(depthSampler,texCoord).r;
 	clip(depth - input.ScreenPosition.z );
 
     return float4(input.Displacement, 0, 1);
