@@ -289,6 +289,11 @@ namespace PloobsEngine.Material
         {
             if(OcclusionQuery!=null)
                 OcclusionQuery.Dispose();
+#if !WINDOWS_PHONE && !REACH
+            basicDraw.Dispose();
+            getDepth.Dispose();
+#endif
+
         }
 
 #if !WINDOWS_PHONE && !REACH
