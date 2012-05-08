@@ -106,9 +106,9 @@ namespace AdvancedDemo4._0
 
                 ForwardXNABasicShader shader = new ForwardXNABasicShader(ForwardXNABasicShaderDescription.Default());
                 ForwardMaterial fmaterial = new ForwardMaterial(shader);
-                IObject obj = new IObject(fmaterial, simpleModel, tmesh);
-                shader.BasicEffect.EnableDefaultLighting();
+                IObject obj = new IObject(fmaterial, simpleModel, tmesh);                
                 this.World.AddObject(obj);
+                shader.BasicEffect.EnableDefaultLighting();
             }
             {
 
@@ -135,9 +135,9 @@ namespace AdvancedDemo4._0
                     PhysxPhysicObject PhysxPhysicObject = new PhysxPhysicObject(SphereGeometry,
                         0.5f, Matrix.CreateTranslation(new Vector3(0, 50, 0)), Vector3.One * 5f);
 
-                    IObject o = new IObject(m, sm2, PhysxPhysicObject);
-                    nd.BasicEffect.EnableDefaultLighting();
+                    IObject o = new IObject(m, sm2, PhysxPhysicObject);                    
                     this.World.AddObject(o);
+                    nd.BasicEffect.EnableDefaultLighting();
                     PhysxPhysicObject.isMotionLess = true;
                 }
             }
