@@ -25,7 +25,7 @@ namespace AdvancedDemo4._0
                 firsttime = false;
             }
             render.RenderTextureComplete(staticRandomTex, Color.White, GraphicInfo.FullScreenRectangle, Matrix.Identity);
-            render.RenderTextComplete("Demo 17-22:Texture Generates On the fly ", new Vector2(10, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Demo 17-22:Texture Generated On the fly ", new Vector2(10, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("Perlin Noise Texture generated Precedurally ", new Vector2(10, 35), Color.White, Matrix.Identity);
             render.RenderTextComplete("Hit Space to change the texture", new Vector2(10, 55), Color.White, Matrix.Identity);
         }
