@@ -107,6 +107,7 @@ namespace AdvancedDemo4._0
                 ForwardXNABasicShader shader = new ForwardXNABasicShader(ForwardXNABasicShaderDescription.Default());
                 ForwardMaterial fmaterial = new ForwardMaterial(shader);
                 IObject obj = new IObject(fmaterial, simpleModel, tmesh);
+                shader.BasicEffect.EnableDefaultLighting();
                 this.World.AddObject(obj);
             }
             {
@@ -135,7 +136,7 @@ namespace AdvancedDemo4._0
                         0.5f, Matrix.CreateTranslation(new Vector3(0, 50, 0)), Vector3.One * 5f);
 
                     IObject o = new IObject(m, sm2, PhysxPhysicObject);
-
+                    nd.BasicEffect.EnableDefaultLighting();
                     this.World.AddObject(o);
                     PhysxPhysicObject.isMotionLess = true;
                 }

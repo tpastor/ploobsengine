@@ -48,7 +48,8 @@ namespace PloobsEngine.TestSuite
             InitialEngineDescription.Logger = new logger(logPath);
             InitialEngineDescription.UnhandledException_Handler =
                 (a,b) =>
-                {
+                {                    
+                    ActiveLogger.LogMessage("Fatal Error: " + b.ExceptionObject, LogLevel.FatalError);
                     Environment.Exit(-1);
                 };
 
@@ -218,6 +219,7 @@ namespace PloobsEngine.TestSuite
             }
             ~logger()
             {
+                StreamWriter.Flush();
                 StreamWriter.Close();
             }
 
@@ -226,6 +228,7 @@ namespace PloobsEngine.TestSuite
                 public override void Log(string Message, LogLevel logLevel)
                 {
                     StreamWriter.WriteLine(logLevel + " : " + CurrentSceneType + " : " + Message);
+                    StreamWriter.Flush();
                 }
 
                 #endregion

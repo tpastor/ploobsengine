@@ -289,11 +289,6 @@ namespace PloobsEngine.Material
         {
             if(OcclusionQuery!=null)
                 OcclusionQuery.Dispose();
-#if !WINDOWS_PHONE && !REACH
-            basicDraw.Dispose();
-            getDepth.Dispose();
-#endif
-
         }
 
 #if !WINDOWS_PHONE && !REACH
@@ -336,10 +331,12 @@ namespace PloobsEngine.Material
         /// <param name="useAlphaBlending">if set to <c>true</c> [use alpha blending].</param>
         public virtual void BasicDraw(GameTime gt, IObject obj, ref Matrix view, ref Matrix projection, IList<ILight> lights, RenderHelper render,Plane? clippingPlane, bool useAlphaBlending = false)
         {
+            
             Matrix wld = obj.WorldMatrix;
-            if (clippingPlane != null)
+            if (clippingPlane.HasValue)
             {
-                basicDraw.Parameters["clippingPlane"].SetValue(new Vector4(clippingPlane.Value.Normal, clippingPlane.Value.D));
+                Vector4 plane = new Vector4(clippingPlane.Value.Normal, clippingPlane.Value.D);
+                basicDraw.Parameters["clippingPlane"].SetValue(plane);
                 basicDraw.Parameters["isClip"].SetValue(true);
             }
             else
