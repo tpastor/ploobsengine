@@ -31,7 +31,7 @@ namespace AdvancedDemo4._0
         /// <param name="world">The world.</param>
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            world = new IWorld(new BepuPhysicWorld(-0.97f,true), new SimpleCuller());
+            world = new IWorld(new BepuPhysicWorld(-9.7f,true), new SimpleCuller());
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
             desc.UseFloatingBufferForLightMap = true;
@@ -181,7 +181,7 @@ namespace AdvancedDemo4._0
             base.Draw(gameTime, render);
 
             ///Draw some text to the screen
-            render.RenderTextComplete("Demo 4-22: Paralax effect, look at the brick box", new Vector2(20, 20), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Paralax effect, look at the brick box", new Vector2(20, 20), Color.White, Matrix.Identity);
             render.RenderTextComplete("Paralax " + paralax.UseParalax, new Vector2(20, 40), Color.White, Matrix.Identity);
             render.RenderTextComplete("Paralax ScaleBias " + paralax.ScaleBias, new Vector2(20, 60), Color.White, Matrix.Identity);
             render.RenderTextComplete("Bump " + paralax.UseBump, new Vector2(20, 80), Color.White, Matrix.Identity);

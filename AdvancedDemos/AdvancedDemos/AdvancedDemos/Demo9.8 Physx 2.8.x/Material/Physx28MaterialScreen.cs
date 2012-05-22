@@ -102,7 +102,7 @@ namespace AdvancedDemo4._0
             base.Draw(gameTime, render);
 
             ///Draw some text to the screen
-            render.RenderTextComplete("Demo: Physx Material Properties", new Vector2(20, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Physx Material Properties", new Vector2(20, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("Balls with random physic properties like friction and restituition coeficient", new Vector2(20, 35), Color.White, Matrix.Identity);
         }
 

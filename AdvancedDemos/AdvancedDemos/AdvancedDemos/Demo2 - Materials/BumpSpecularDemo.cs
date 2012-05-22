@@ -37,7 +37,7 @@ namespace AdvancedDemo4._0
         {
             ///create the world using bepu as physic api and a simple culler implementation
             ///IT DOES NOT USE PARTICLE SYSTEMS (see the complete constructor, see the ParticleDemo to know how to add particle support)
-            world = new IWorld(new BepuPhysicWorld(-0.097f,true), new SimpleCuller());
+            world = new IWorld(new BepuPhysicWorld(-9.7f,true), new SimpleCuller());
 
             ///Create the deferred description
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
@@ -75,7 +75,7 @@ namespace AdvancedDemo4._0
             ExtractXmlModelLoader ext = new ExtractXmlModelLoader("Content//ModelInfos//", "Model//", "Textures//");
             this.AttachCleanUpAble(ext);
             ///Extract all the XML info (Model,Cameras, ...)
-            ModelLoaderData data = ext.Load(factory, GraphicInfo, "leonScene");
+            ModelLoaderData data = ext.Load(factory, GraphicInfo, "lionscene");
             ///Create the WOrld Loader
             ///Convert the ModelLoaderData in World Entities
             WorldLoader wl = new WorldLoader();
@@ -166,7 +166,7 @@ namespace AdvancedDemo4._0
             base.Draw(gameTime, render);
 
             ///Draw some text to the screen
-            render.RenderTextComplete("Demo 2-22: Bump And Specular", new Vector2(20, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Bump And Specular", new Vector2(20, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("Use V and B to Enable/Disable Bump and Specular", new Vector2(20, 35), Color.White, Matrix.Identity);
             render.RenderTextComplete("Bump Enabled: " + bump, new Vector2(20, 55), Color.White, Matrix.Identity);
             render.RenderTextComplete("Specular Enabled: " + specular, new Vector2(20, 75), Color.White, Matrix.Identity);

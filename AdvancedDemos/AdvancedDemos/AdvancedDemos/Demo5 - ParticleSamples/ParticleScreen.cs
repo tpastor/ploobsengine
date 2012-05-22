@@ -37,7 +37,7 @@ namespace AdvancedDemo4._0
         /// <param name="world">The world.</param>
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            world = new IWorld(new BepuPhysicWorld(-0.097f,true), new SimpleCuller(),new DPSFParticleManager());
+            world = new IWorld(new BepuPhysicWorld(-9.7f,true), new SimpleCuller(),new DPSFParticleManager());
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
             //desc.UseFloatingBufferForLightMap = true;
@@ -123,7 +123,7 @@ namespace AdvancedDemo4._0
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);
-            render.RenderTextComplete("Demo 9-22:Particle System Integration; Snow and Smoke, check DPFS SAMPLES", new Vector2(10, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Particle System Integration; Snow and Smoke, check DPFS SAMPLES", new Vector2(10, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("Left Mouse Buttom to throw balls that emits smoke", new Vector2(10, 35), Color.White, Matrix.Identity);
         }
 

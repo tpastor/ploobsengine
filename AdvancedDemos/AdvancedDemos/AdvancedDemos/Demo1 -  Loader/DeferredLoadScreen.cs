@@ -35,7 +35,7 @@ namespace AdvancedDemo4._0
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             ///create the world
-            world = new IWorld(new BepuPhysicWorld(-0.097f,true), new SimpleCuller());
+            world = new IWorld(new BepuPhysicWorld(-9.7f,true), new SimpleCuller());
 
             ///Create the render technich
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
@@ -55,10 +55,10 @@ namespace AdvancedDemo4._0
 
             ///Create the xml file model extractor
             ///Loads a XML file that was export by our 3DS MAX plugin
-            ExtractXmlModelLoader ext = new ExtractXmlModelLoader("Content//ModelInfos//", "Model//", "Textures//");
+            ExtractXmlModelLoader ext = new ExtractXmlModelLoader("Content//ModelInfos//", "Model/", "Textures//");
             this.AttachCleanUpAble(ext);
             ///Extract all the XML info (Model,Cameras, ...)
-            ModelLoaderData data = ext.Load(factory, GraphicInfo, "leonScene");
+            ModelLoaderData data = ext.Load(factory, GraphicInfo, "lionscene");
             ///Create the WOrld Loader
             ///Convert the ModelLoaderData in World Entities
             WorldLoader wl = new WorldLoader();
@@ -195,7 +195,7 @@ namespace AdvancedDemo4._0
             base.Draw(gameTime, render);
 
             ///Draw some text to the screen
-            render.RenderTextComplete("Demo 1-22: Scene Loaded from our XML 3DS Max Exporter Plugin", new Vector2(20, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Scene Loaded from our XML 3DS Max Exporter Plugin", new Vector2(20, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("Use mouse and ASDW to move the camera", new Vector2(20, 35), Color.White, Matrix.Identity);
             render.RenderTextComplete("Use Left mouse buttom to throw a light ", new Vector2(20, 55), Color.White, Matrix.Identity);            
             render.RenderTextComplete("Use Right mouse buttom to put a light in the camera actual position", new Vector2(20, 75), Color.White, Matrix.Identity);            

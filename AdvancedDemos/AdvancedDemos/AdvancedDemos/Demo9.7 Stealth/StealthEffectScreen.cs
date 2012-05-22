@@ -147,7 +147,7 @@ namespace AdvancedDemo4._0
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);
-            render.RenderTextComplete("Demo : Stealth Character with Custom Shader and Post Effect", new Vector2(20, 15), Color.White, Matrix.Identity);            
+            render.RenderTextComplete("Stealth Character with Custom Shader and Post Effect", new Vector2(20, 15), Color.White, Matrix.Identity);            
         }
     }
 }

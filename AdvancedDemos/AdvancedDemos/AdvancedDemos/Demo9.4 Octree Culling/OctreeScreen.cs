@@ -29,7 +29,7 @@ namespace AdvancedDemo4._0
         {
             ///create the world using bepu as physic api and a simple culler implementation
             ///IT DOES NOT USE PARTICLE SYSTEMS (see the complete constructor, see the ParticleDemo to know how to add particle support)
-            world = new IWorld(new BepuPhysicWorld(-0.97f,true), new OctreeCuller(2000,1,5,new Vector3(0,-10,0),ddrawer));            
+            world = new IWorld(new BepuPhysicWorld(-9.7f,true), new OctreeCuller(2000,1,5,new Vector3(0,-10,0),ddrawer));            
 
             ///Create the deferred description
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
@@ -122,7 +122,7 @@ namespace AdvancedDemo4._0
             ///must be called before
             base.Draw(gameTime, render);
 
-            render.RenderTextComplete("Demo 22-22: Culling System Octree", new Vector2(20, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Culling System Octree", new Vector2(20, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("Thow a ball and see in what Nodes (Boxes) it is in", new Vector2(20, 35), Color.White, Matrix.Identity);
             render.RenderTextComplete("Objects Rendered: " + this.World.Culler.RenderedObjectThisFrame, new Vector2(20, 55), Color.White, Matrix.Identity);
             

@@ -30,7 +30,7 @@ namespace AdvancedDemo4._0
         /// <param name="world">The world.</param>
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            world = new IWorld(new BepuPhysicWorld(-0.97f, true), new SimpleCuller());
+            world = new IWorld(new BepuPhysicWorld(-9.7f, true), new SimpleCuller());
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
             desc.UseFloatingBufferForLightMap = true;            
@@ -156,7 +156,7 @@ namespace AdvancedDemo4._0
             base.Draw(gameTime, render);
 
             ///Draw some text to the screen
-            render.RenderTextComplete("Demo Shader ID. The Big Box Object is not affected by the Light", new Vector2(20, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Shader ID. The Big Box Object is not affected by the Light", new Vector2(20, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("This can be used to create lots of cool effects, like custom lightining", new Vector2(20, 35), Color.White, Matrix.Identity);
             render.RenderTextComplete("Press Space to toggle, left mouse buttom to throw a ball with a light", new Vector2(20, 55), Color.White, Matrix.Identity);
             render.RenderTextComplete("Box is Affected By Light: " + (DeferredEnvironmentCustomShader.ShaderId != ShaderUtils.CreateSpecificBitField(true)), new Vector2(20, 75), Color.White, Matrix.Identity);

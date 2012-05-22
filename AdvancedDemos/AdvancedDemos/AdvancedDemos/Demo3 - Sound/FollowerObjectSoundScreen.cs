@@ -37,7 +37,7 @@ namespace AdvancedDemo4._0
         /// <param name="world">The world.</param>
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            world = new IWorld(new BepuPhysicWorld(-0.97f,true), new SimpleCuller());
+            world = new IWorld(new BepuPhysicWorld(-9.7f,true), new SimpleCuller());
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
             ///lights wont saturate, try to add lots of light in the same place, it wont be all white 
@@ -139,7 +139,7 @@ namespace AdvancedDemo4._0
         {
             base.Draw(gameTime, render);
 
-            render.RenderTextComplete("Demo 7-22: 3D Sound Attached to an Object ", new Vector2(10, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("3D Sound Attached to an Object ", new Vector2(10, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("The Red Ball emits Sound =P, go near it and far from it", new Vector2(10, 35), Color.White, Matrix.Identity);            
         }
 

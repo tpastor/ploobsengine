@@ -26,7 +26,7 @@ namespace AdvancedDemo4._0
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             ///create the IWorld
-            world = new IWorld(new BepuPhysicWorld(-0.97f, true, 1), new SimpleCuller());
+            world = new IWorld(new BepuPhysicWorld(-9.7f, true, 1), new SimpleCuller());
 
             ///Create the deferred technich
             ForwardRenderTecnichDescription desc = new ForwardRenderTecnichDescription();
@@ -74,7 +74,7 @@ namespace AdvancedDemo4._0
             base.Draw(gameTime, render);
 
             ///Draw some text on the screen
-            render.RenderTextComplete("Demo: Using Custom Animation API with Ploobs", new Vector2(10, 15), Color.Red, Matrix.Identity);
+            render.RenderTextComplete("Using Custom Animation API with Ploobs", new Vector2(10, 15), Color.Red, Matrix.Identity);
             render.RenderTextComplete("In this demo, we used the XNA SkinningSample from Microsoft", new Vector2(10, 35), Color.Red, Matrix.Identity);
         }
 

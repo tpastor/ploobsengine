@@ -109,7 +109,7 @@ namespace AdvancedDemo4._0
             base.Draw(gameTime, render);
 
             ///Draw some text to the screen
-            render.RenderTextComplete("Demo: Physx Character", new Vector2(20, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Physx Character", new Vector2(20, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("To move use Y G H J ", new Vector2(20, 35), Color.White, Matrix.Identity);
         }
 

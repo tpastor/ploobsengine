@@ -30,7 +30,7 @@ namespace AdvancedDemo4._0
 
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            world = new IWorld(new BepuPhysicWorld(-0.98f,true,1), new SimpleCuller());
+            world = new IWorld(new BepuPhysicWorld(-9.8f,true,1), new SimpleCuller());
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
             desc.UseFloatingBufferForLightMap = true;
@@ -200,7 +200,7 @@ namespace AdvancedDemo4._0
         {
             base.Draw(gameTime, render);
 
-            render.RenderTextComplete("Demo: Animation Sample - Non Skinned Meshes Animation", new Vector2(10, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Animation Sample - Non Skinned Meshes Animation", new Vector2(10, 15), Color.White, Matrix.Identity);
             
         }
 

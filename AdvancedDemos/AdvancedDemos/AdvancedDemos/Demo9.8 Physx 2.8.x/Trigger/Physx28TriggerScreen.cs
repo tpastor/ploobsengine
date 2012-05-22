@@ -164,7 +164,7 @@ namespace AdvancedDemo4._0
             base.Draw(gameTime, render);
 
             ///Draw some text to the screen
-            render.RenderTextComplete("Demo: Physx Trigger", new Vector2(20, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Physx Trigger", new Vector2(20, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("Throw bal to the blue ball", new Vector2(20, 35), Color.White, Matrix.Identity);
             if (ReciveMessage.mesRec != null)
                 render.RenderTextComplete("Trigger State: " + ReciveMessage.mesRec.Cod, new Vector2(20, 55), Color.White, Matrix.Identity);

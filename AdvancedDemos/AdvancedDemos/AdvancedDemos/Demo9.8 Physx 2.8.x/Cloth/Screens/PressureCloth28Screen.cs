@@ -110,7 +110,7 @@ namespace AdvancedDemo4._0
             base.Draw(gameTime, render);
 
             ///Draw some text to the screen
-            render.RenderTextComplete("Demo: Physx Pressure", new Vector2(20, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Physx Pressure", new Vector2(20, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("Using a Model to provide the vertices for the Cloth =P", new Vector2(20, 35), Color.White, Matrix.Identity);
             render.RenderTextComplete("Throw balls in the cloth =P", new Vector2(20, 55), Color.White, Matrix.Identity);
         }
