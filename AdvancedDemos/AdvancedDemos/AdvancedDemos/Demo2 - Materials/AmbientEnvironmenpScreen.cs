@@ -29,7 +29,7 @@ namespace AdvancedDemo4._0
         /// <param name="world">The world.</param>
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            world = new IWorld(new BepuPhysicWorld(-0.97f, true), new SimpleCuller());
+            world = new IWorld(new BepuPhysicWorld(-9.7f, true), new SimpleCuller());
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
             desc.UseFloatingBufferForLightMap = true;            
@@ -175,7 +175,7 @@ namespace AdvancedDemo4._0
             base.Draw(gameTime, render);
 
             ///Draw some text to the screen
-            render.RenderTextComplete("Demo Environment Mapping as Ambient Color", new Vector2(20, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Environment Mapping as Ambient Color", new Vector2(20, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("Use O and P to change AmbientColor Amount of the box", new Vector2(20, 35), Color.White, Matrix.Identity);
             render.RenderTextComplete("Use K and L to change AmbientColor Amount of the sphere", new Vector2(20, 55), Color.White, Matrix.Identity);
         }

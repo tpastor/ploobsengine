@@ -30,7 +30,7 @@ namespace AdvancedDemo4._0
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             ///with mult thread support
-            world = new IWorld(new BepuPhysicWorld(-0.97f,true,1,true), new SimpleCuller());
+            world = new IWorld(new BepuPhysicWorld(-9.7f,true,1,true), new SimpleCuller());
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
             desc.UseFloatingBufferForLightMap = true;            
@@ -104,7 +104,7 @@ namespace AdvancedDemo4._0
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);
-            render.RenderTextComplete("Demo 8-22:Terrain Sample", new Vector2(10, 15), Color.White, Matrix.Identity);         
+            render.RenderTextComplete("Terrain Sample", new Vector2(10, 15), Color.White, Matrix.Identity);         
         }
 
 

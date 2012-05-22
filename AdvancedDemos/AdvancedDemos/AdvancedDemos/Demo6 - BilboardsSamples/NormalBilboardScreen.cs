@@ -116,7 +116,7 @@ namespace AdvancedDemo4._0
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);
-            render.RenderTextComplete("Demo 12-22:Normal Bilboard Sample, otimized Cilindrical bilboard", new Vector2(10, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Normal Bilboard Sample, otimized Cilindrical bilboard", new Vector2(10, 15), Color.White, Matrix.Identity);
         }
 
 

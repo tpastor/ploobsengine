@@ -193,7 +193,7 @@ namespace AdvancedDemo4._0
             base.Draw(gameTime, render);
 
             ///Draw some text to the screen
-            render.RenderTextComplete("Demo 21-22: SSAO", new Vector2(20, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("SSAO", new Vector2(20, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("Hit Enter to enable/disable SSAO: " + ssao.Enabled, new Vector2(20, 35), Color.White, Matrix.Identity);
             render.RenderTextComplete("Hit Space to see the SSAO Map: " + ssao.OutputONLYSSAOMAP, new Vector2(20, 55), Color.White, Matrix.Identity);
         }

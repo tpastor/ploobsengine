@@ -1,0 +1,59 @@
+<!-- Comments: -->
+<SCENE>
+	<body name="Box01" >
+		<collision type="Box"/>
+		<mass value="0.0" />
+		<ellasticity value="0.0" />
+		<dinamicfriction value="0.0" />
+		<staticfriction value="0.0" />
+		<material name="Standardmaterial">
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="white.jpg" />
+		</material>
+	</body> 
+	<body name="Box02" >
+		<collision type="Box"/>
+		<mass value="0.0" />
+		<ellasticity value="0.0" />
+		<dinamicfriction value="0.0" />
+		<staticfriction value="0.0" />
+		<material name="Standardmaterial">
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="white.jpg" />
+		</material>
+	</body> 
+	<body name="Plane01" >
+		<collision type="Water">
+			<position>
+				<x> 0.0 </x>
+				<y> 0.0 </y>
+				<z> 0.0 </z>
+			</position>
+			<width value="52.6255"/>
+			<length value="82.0801"/>
+		</collision>
+		<mass value="0.0" />
+		<ellasticity value="0.0" />
+		<dinamicfriction value="0.0" />
+		<staticfriction value="0.0" />
+		<material name="Standardmaterial">
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="white.jpg" />
+		</material>
+	</body> 
+</SCENE>

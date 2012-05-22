@@ -74,10 +74,19 @@ namespace AdvancedDemo4._0
             this.RenderTechnic.AddPostEffect(new AntiAliasingPostEffectStalker());
 
         }
+
+
+        bool waspressed = false;
         protected override void Update(GameTime gameTime)
         {
+
             if (Keyboard.GetState().IsKeyDown(Keys.Space))
             {
+                waspressed = true;
+            }
+            else  if (waspressed &&  Keyboard.GetState().IsKeyUp(Keys.Space))
+            {
+                waspressed = false;
                 ((this.World.ParticleManager.GetParticleSystem("exp") as DPFSParticleSystem).IDPSFParticleSystem as ExplosionParticleSystem).Explode();
             }
             base.Update(gameTime);
@@ -86,7 +95,7 @@ namespace AdvancedDemo4._0
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);
-            render.RenderTextComplete("Demo : Explosion with particles", new Vector2(20, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Explosion with particles", new Vector2(20, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("Press Space", new Vector2(20, 35), Color.White, Matrix.Identity);
         }
 

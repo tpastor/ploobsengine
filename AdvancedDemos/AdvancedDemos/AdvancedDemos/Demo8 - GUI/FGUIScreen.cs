@@ -112,7 +112,7 @@ namespace AdvancedDemo4._0
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);
-            render.RenderTextComplete("Demo 16-22:Gui Forward Sample", new Vector2(10, 15), Color.White, Matrix.Identity);            
+            render.RenderTextComplete("Gui Forward Sample", new Vector2(10, 15), Color.White, Matrix.Identity);            
             if(okClicked)
                 render.RenderTextComplete("Ok Clicked", new Vector2(10, 35), Color.White, Matrix.Identity);
         }

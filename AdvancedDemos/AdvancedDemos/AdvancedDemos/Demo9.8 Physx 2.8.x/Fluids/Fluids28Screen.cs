@@ -159,7 +159,7 @@ namespace AdvancedDemo4._0
 
             base.Draw(gameTime, render);
                         
-            render.RenderTextComplete("Demo: Basic Fuilds with SIMPLE Billboards", new Vector2(20, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Basic Fuilds with simple Billboards", new Vector2(20, 15), Color.White, Matrix.Identity);
         }
 
     }

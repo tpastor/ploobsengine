@@ -25,7 +25,7 @@ namespace AdvancedDemo4._0
 
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            world = new IWorld(new BepuPhysicWorld(-0.97f,true), new SimpleCuller());
+            world = new IWorld(new BepuPhysicWorld(-9.7f,true), new SimpleCuller());
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();            
             desc.UseFloatingBufferForLightMap = true;
@@ -122,7 +122,7 @@ namespace AdvancedDemo4._0
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);
-            render.RenderTextComplete("Demo 19-22:Water Sample", new Vector2(10, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Water Sample", new Vector2(10, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("Dynamic Reflection and Refraction", new Vector2(10, 35), Color.White, Matrix.Identity);
         }
 

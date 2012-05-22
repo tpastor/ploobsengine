@@ -30,7 +30,7 @@ namespace AdvancedDemo4._0
 
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            world = new IWorld(new BepuPhysicWorld(-0.97f,true), new SimpleCuller());
+            world = new IWorld(new BepuPhysicWorld(-9.7f,true), new SimpleCuller());
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
             desc.UseFloatingBufferForLightMap = true;
@@ -143,7 +143,7 @@ namespace AdvancedDemo4._0
             base.Draw(gameTime, render);
 
             ///Draw some text to the screen
-            render.RenderTextComplete("Demo 3-22: Environment Mapping", new Vector2(20, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Environment Mapping", new Vector2(20, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("Used to fake ambient reflection, give metal appearence to an object ....", new Vector2(20, 35), Color.White, Matrix.Identity);            
         }
 

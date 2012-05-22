@@ -141,7 +141,7 @@ namespace AdvancedDemo4._0
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);
-            render.RenderTextComplete("Demo : Simple Deferred Decal System ", new Vector2(20, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Simple Deferred Decal System ", new Vector2(20, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("Shows how to \"hack\" the Deferred Render System", new Vector2(20, 35), Color.White, Matrix.Identity);
             render.RenderTextComplete("Use O P and K L to change Decal View matrix target", new Vector2(20, 55), Color.White, Matrix.Identity);
         }
