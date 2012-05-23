@@ -23,7 +23,7 @@ namespace IntroductionDemo4._0
 
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            world = new IWorld(new BepuPhysicWorld(-0.097f, true), new SimpleCuller(), null, true);
+            world = new IWorld(new BepuPhysicWorld(-9.7f, true), new SimpleCuller(), null, true);
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
             desc.DefferedDebug = false;
             desc.UseFloatingBufferForLightMap = false;                                    
@@ -116,7 +116,7 @@ namespace IntroductionDemo4._0
  	        base.Draw(gameTime, render);
 
             render.RenderBegin(Matrix.Identity);
-            render.RenderText("Demo: Keyboard Input Masks", new Vector2(GraphicInfo.Viewport.Width - 515, 15),Vector2.One ,Color.White);
+            render.RenderText("Keyboard Input Masks", new Vector2(GraphicInfo.Viewport.Width - 515, 15),Vector2.One ,Color.White);
             render.RenderText("Press Space to change the Active Input Mask (G1 or G2)", new Vector2(GraphicInfo.Viewport.Width - 515, 40), Vector2.One, Color.White);
             render.RenderText("Press T when G1 or ALL InputMask Input is active", new Vector2(GraphicInfo.Viewport.Width - 515, 60), Vector2.One, Color.White);
             render.RenderText("Press Y when G2 or ALL InputMask Input is active", new Vector2(GraphicInfo.Viewport.Width - 515, 80), Vector2.One, Color.White);

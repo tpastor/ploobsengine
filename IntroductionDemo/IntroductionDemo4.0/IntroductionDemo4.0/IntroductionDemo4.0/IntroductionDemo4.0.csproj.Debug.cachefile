@@ -6,12 +6,15 @@ Content\Model\cenario.xnb
 Content\Model\trash.xnb
 Content\Model\cubo.xnb
 Content\Model\uzi.xnb
+Content\Model\block.xnb
 Content\opening.xnb
 Content\Textures\islandmap_0.xnb
 Content\Textures\trash_can_0.xnb
 Content\Textures\uzi_0.xnb
-Content\Model\block.xnb
+Content\Textures\engine_logo.xnb
+Content\ploobs_entry.xnb
 Content\opening.wmv
+Content\ploobs_entry.wmv
 Content\Script\script.txt
 Content\Script\talk1.txt
 RVO2DWrapper.dll

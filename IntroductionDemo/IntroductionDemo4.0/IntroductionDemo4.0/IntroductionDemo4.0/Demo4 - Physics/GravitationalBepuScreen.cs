@@ -124,7 +124,7 @@ namespace IntroductionDemo4._0
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);
-            render.RenderTextComplete("Demo: Planetary Gravity (BEPU)", new Vector2(GraphicInfo.Viewport.Width - 315, 15), Color.White,Matrix.Identity);                                    
+            render.RenderTextComplete("Planetary Gravity (BEPU)", new Vector2(GraphicInfo.Viewport.Width - 315, 15), Color.White,Matrix.Identity);                                    
         }
 
         protected override void CleanUp(EngineStuff engine)

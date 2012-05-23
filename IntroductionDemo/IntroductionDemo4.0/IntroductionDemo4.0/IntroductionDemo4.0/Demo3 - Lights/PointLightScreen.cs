@@ -83,7 +83,7 @@ namespace IntroductionDemo4._0
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);
-            render.RenderTextComplete("Demo: Point Lights",new Vector2(GraphicInfo.Viewport.Width - 315, 15), Color.White,Matrix.Identity);
+            render.RenderTextComplete("Point Lights",new Vector2(GraphicInfo.Viewport.Width - 315, 15), Color.White,Matrix.Identity);
         }
     }
 }
