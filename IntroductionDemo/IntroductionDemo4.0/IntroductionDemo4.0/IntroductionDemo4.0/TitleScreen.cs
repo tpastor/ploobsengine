@@ -9,7 +9,7 @@ namespace IntroductionDemo4._0
     public class TitleScreen : MovieScreen
     {
         public TitleScreen()
-            : base("opening",Color.Black)
+            : base("ploobs_entry",Color.Blue)
         {
         }
 

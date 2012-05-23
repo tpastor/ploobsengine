@@ -138,7 +138,7 @@ namespace IntroductionDemo4._0
             render.RenderTextComplete("FPS Draw " + drawfps, new Vector2(40, 20), Color.White, Matrix.Identity);
             render.RenderTextComplete("FPS Combined " + combinedfps, new Vector2(40, 40), Color.White, Matrix.Identity);
 
-            render.RenderTextComplete("Demo: Stress Test (BEPU)", new Vector2(GraphicInfo.Viewport.Width - 315, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Stress Test (BEPU)", new Vector2(GraphicInfo.Viewport.Width - 315, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("Left click to launch balls", new Vector2(GraphicInfo.Viewport.Width - 315, 40), Color.White,Matrix.Identity);            
         }
 

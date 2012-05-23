@@ -29,7 +29,7 @@ namespace IntroductionDemo4._0
 
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            world = new IWorld(new BepuPhysicWorld(-0.98f, true), new SimpleCuller(), null, true);
+            world = new IWorld(new BepuPhysicWorld(-9.8f, true), new SimpleCuller(), null, true);
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
             desc.UseFloatingBufferForLightMap = true;
@@ -170,7 +170,7 @@ namespace IntroductionDemo4._0
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);
-            render.RenderTextComplete("Demo: Trigger (BEPU)", new Vector2(GraphicInfo.Viewport.Width - 515, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Trigger (BEPU)", new Vector2(GraphicInfo.Viewport.Width - 515, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("Launch balls (Left Mouse buttom) at the red box", new Vector2(GraphicInfo.Viewport.Width - 515, 40), Color.White, Matrix.Identity);
             
             if (shouldDraw)

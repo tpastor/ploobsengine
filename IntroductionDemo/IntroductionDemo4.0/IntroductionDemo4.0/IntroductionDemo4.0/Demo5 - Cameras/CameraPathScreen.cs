@@ -94,7 +94,7 @@ namespace IntroductionDemo4._0
         {
             base.Draw(gameTime, render);
 
-            render.RenderTextComplete("Demo: Recording Camera Path", new Vector2(GraphicInfo.Viewport.Width - 315, 15), Color.White, Matrix.Identity);
+            render.RenderTextComplete("Recording Camera Path", new Vector2(GraphicInfo.Viewport.Width - 315, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("Record a Path and Play it after", new Vector2(GraphicInfo.Viewport.Width - 315, 40), Color.White, Matrix.Identity);
             render.RenderTextComplete("R = Record, T = Stop, Y = Load", new Vector2(GraphicInfo.Viewport.Width - 315, 60), Color.White, Matrix.Identity);
 
@@ -144,6 +144,8 @@ namespace IntroductionDemo4._0
 
             ///Carrega um caminho de um arquivo e seta uma camera para segui-lo
             CameraPathData pd = record.LoadCurveFile("teste.bin");
+            
+            
             CameraFollowPath fcp = new CameraFollowPath(pd, this.World, "stdCam");
             fcp.OnLoop = false;
             this.World.CameraManager.AddCamera(fcp,"follow");
