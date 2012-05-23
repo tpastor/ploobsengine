@@ -30,7 +30,7 @@ namespace IntroductionDemo4._0
 
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            world = new IWorld(new BepuPhysicWorld(-0.98f, true), new SimpleCuller(), null, true);
+            world = new IWorld(new BepuPhysicWorld(-9.8f, true), new SimpleCuller(), null, true);
 
             DeferredRenderTechnicInitDescription desc = DeferredRenderTechnicInitDescription.Default();
             desc.UseFloatingBufferForLightMap = true;
@@ -199,6 +199,12 @@ namespace IntroductionDemo4._0
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);
+
+            Texture2D logo = GraphicFactory.GetTexture2D("Textures\\engine_logo");
+            int wd = 64;
+            int hg = 48;
+            render.RenderTextureComplete(logo, new Rectangle(this.GraphicInfo.BackBufferWidth - wd, this.GraphicInfo.BackBufferHeight - hg, wd, hg));
+
             render.RenderTextComplete("Demo: Changing Messages", new Vector2(GraphicInfo.Viewport.Width - 515, 15), Color.White,Matrix.Identity);
             render.RenderTextComplete("Launch balls (Left Mouse Buttom) at the grey platform", new Vector2(GraphicInfo.Viewport.Width - 515, 40), Color.White, Matrix.Identity);
 

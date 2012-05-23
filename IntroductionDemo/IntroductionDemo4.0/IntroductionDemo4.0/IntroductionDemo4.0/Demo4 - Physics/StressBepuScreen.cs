@@ -135,6 +135,12 @@ namespace IntroductionDemo4._0
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);
+
+            Texture2D logo = GraphicFactory.GetTexture2D("Textures\\engine_logo");
+            int wd = 64;
+            int hg = 48;
+            render.RenderTextureComplete(logo, new Rectangle(this.GraphicInfo.BackBufferWidth - wd, this.GraphicInfo.BackBufferHeight - hg, wd, hg));
+
             render.RenderTextComplete("FPS Draw " + drawfps, new Vector2(40, 20), Color.White, Matrix.Identity);
             render.RenderTextComplete("FPS Combined " + combinedfps, new Vector2(40, 40), Color.White, Matrix.Identity);
 

@@ -17,6 +17,7 @@ using PloobsEngine.Commands;
 using PloobsScripts;
 using System.IO;
 using System.Reflection;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace IntroductionDemo4._0
 {
@@ -80,6 +81,12 @@ namespace IntroductionDemo4._0
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);
+
+            Texture2D logo = GraphicFactory.GetTexture2D("Textures\\engine_logo");
+            int wd = 64;
+            int hg = 48;
+            render.RenderTextureComplete(logo, new Rectangle(this.GraphicInfo.BackBufferWidth - wd, this.GraphicInfo.BackBufferHeight - hg, wd, hg));
+
             render.RenderTextComplete("Demo Scripts 1 -> Scene generated on script file", new Vector2(GraphicInfo.Viewport.Width - 715, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("Check the Code", new Vector2(GraphicInfo.Viewport.Width - 715, 35), Color.White, Matrix.Identity);            
         }

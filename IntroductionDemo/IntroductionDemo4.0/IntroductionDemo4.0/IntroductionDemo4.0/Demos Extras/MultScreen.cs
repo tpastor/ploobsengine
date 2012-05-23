@@ -84,7 +84,13 @@ namespace IntroductionDemo4._0
 
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {        
-            base.Draw(gameTime, render);            
+            base.Draw(gameTime, render);
+
+            Texture2D logo = GraphicFactory.GetTexture2D("Textures\\engine_logo");
+            int wd = 64;
+            int hg = 48;
+            render.RenderTextureComplete(logo, new Rectangle(this.GraphicInfo.BackBufferWidth - wd, this.GraphicInfo.BackBufferHeight - hg, wd, hg));
+
             render.RenderTextComplete("Demo: Enabling MultiThreading", new Vector2(GraphicInfo.Viewport.Width - 515, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("FPS: " + fps, new Vector2(GraphicInfo.Viewport.Width - 515, 35), Color.White, Matrix.Identity);
             

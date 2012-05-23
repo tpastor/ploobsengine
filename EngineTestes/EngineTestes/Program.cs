@@ -55,7 +55,7 @@ namespace EngineTestes
             //manager.AddScreen(new DeferredFluids28Screen2());
             //manager.AddScreen(new DeferredFluids28Screen());
             //manager.AddScreen(new Fluids28Screen());
-            manager.AddScreen(new PressureCloth28Screen());
+            //manager.AddScreen(new PressureCloth28Screen());
             //manager.AddScreen(new FlagCloth28Screen());
             //manager.AddScreen(new BasicCloth28Screen());
             //manager.AddScreen(new Physx28Screen());
@@ -90,7 +90,7 @@ namespace EngineTestes
             //manager.AddScreen(new MultScreen());
             //manager.AddScreen(new FirstScreen());
             //manager.AddScreen(new DeferredScreen());
-            //manager.AddScreen(new DeferredLoadScreen());
+            manager.AddScreen(new DeferredLoadScreen());
             //manager.AddScreen(new DeferredAnimatedScreen());
             //manager.AddScreen(new ForwardAnimatedScreen());
             //manager.AddScreen(new CharacterScreen());

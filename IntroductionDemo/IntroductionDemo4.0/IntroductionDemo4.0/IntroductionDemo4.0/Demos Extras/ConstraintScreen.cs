@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using PloobsEngine.Input;
 using PloobsEngine.Commands;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace IntroductionDemo4._0
 {
@@ -144,6 +145,12 @@ namespace IntroductionDemo4._0
         {
             ///must be called before
             base.Draw(gameTime, render);
+
+            Texture2D logo = GraphicFactory.GetTexture2D("Textures\\engine_logo");
+            int wd = 64;
+            int hg = 48;
+            render.RenderTextureComplete(logo, new Rectangle(this.GraphicInfo.BackBufferWidth - wd, this.GraphicInfo.BackBufferHeight - hg, wd, hg));
+
 
             ///Draw some text to the screen
             render.RenderTextComplete("Demo: Constraint Screen", new Vector2(10, 15), Color.White, Matrix.Identity);
