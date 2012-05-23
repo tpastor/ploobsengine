@@ -170,6 +170,12 @@ namespace IntroductionDemo4._0
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);
+
+            Texture2D logo = GraphicFactory.GetTexture2D("Textures\\engine_logo");
+            int wd = 64;
+            int hg = 48;
+            render.RenderTextureComplete(logo, new Rectangle(this.GraphicInfo.BackBufferWidth - wd, this.GraphicInfo.BackBufferHeight - hg, wd, hg));
+
             render.RenderTextComplete("Trigger (BEPU)", new Vector2(GraphicInfo.Viewport.Width - 515, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("Launch balls (Left Mouse buttom) at the red box", new Vector2(GraphicInfo.Viewport.Width - 515, 40), Color.White, Matrix.Identity);
             

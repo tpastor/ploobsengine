@@ -21,6 +21,7 @@ using PloobsEngine.Entity;
 using PloobsEngine.MessageSystem;
 using PloobsEngine.Input;
 using PloobsEngine.Utils;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace IntroductionDemo4._0
 {
@@ -145,6 +146,12 @@ namespace IntroductionDemo4._0
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);
+
+            Texture2D logo = GraphicFactory.GetTexture2D("Textures\\engine_logo");
+            int wd = 64;
+            int hg = 48;
+            render.RenderTextureComplete(logo, new Rectangle(this.GraphicInfo.BackBufferWidth - wd, this.GraphicInfo.BackBufferHeight - hg, wd, hg));
+
             render.RenderTextComplete("Demo Scripts 2 -> Scrips", new Vector2(GraphicInfo.Viewport.Width - 715, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("Scripts Advanced Usage: Press Space to send a message to be handled by a script", new Vector2(GraphicInfo.Viewport.Width - 715, 35), Color.White, Matrix.Identity);
             render.RenderTextComplete("Messages recieved: " + recievedMessage, new Vector2(GraphicInfo.Viewport.Width - 715, 55), Color.White, Matrix.Identity);

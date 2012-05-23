@@ -15,6 +15,7 @@ using PloobsEngine.Input;
 using EngineTestes.AI;
 using PloobsEngine.Features.DebugDraw;
 using PloobsEngine.Commands;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace IntroductionDemo4._0
 {
@@ -33,7 +34,7 @@ namespace IntroductionDemo4._0
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
             ///create the IWorld
-            world = new IWorld(new BepuPhysicWorld(-0.97f, true, 1), new SimpleCuller());
+            world = new IWorld(new BepuPhysicWorld(-9.7f, true, 1), new SimpleCuller());
 
             ///Create the deferred technich
             ForwardRenderTecnichDescription desc = new ForwardRenderTecnichDescription();
@@ -165,6 +166,12 @@ namespace IntroductionDemo4._0
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
             base.Draw(gameTime, render);
+
+
+            Texture2D logo = GraphicFactory.GetTexture2D("Textures\\engine_logo");
+            int wd = 64;
+            int hg = 48;
+            render.RenderTextureComplete(logo, new Rectangle(this.GraphicInfo.BackBufferWidth - wd, this.GraphicInfo.BackBufferHeight - hg, wd, hg));
 
             ///Draw some text on the screen
             render.RenderTextComplete("IA: Placing Waypoints Demo", new Vector2(GraphicInfo.Viewport.Width - 715, 15), Color.Red, Matrix.Identity);

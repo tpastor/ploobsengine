@@ -10,6 +10,7 @@ using PloobsEngine.Material;
 using PloobsEngine.Commands;
 using PloobsEngine.Light;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace IntroductionDemo4._0
 {    
@@ -114,6 +115,12 @@ namespace IntroductionDemo4._0
         protected override void  Draw(GameTime gameTime, RenderHelper render)
         {
  	        base.Draw(gameTime, render);
+
+
+            Texture2D logo = GraphicFactory.GetTexture2D("Textures\\engine_logo");
+            int wd = 64;
+            int hg = 48;
+            render.RenderTextureComplete(logo, new Rectangle(this.GraphicInfo.BackBufferWidth - wd, this.GraphicInfo.BackBufferHeight - hg, wd, hg));
 
             render.RenderBegin(Matrix.Identity);
             render.RenderText("Keyboard Input Masks", new Vector2(GraphicInfo.Viewport.Width - 515, 15),Vector2.One ,Color.White);

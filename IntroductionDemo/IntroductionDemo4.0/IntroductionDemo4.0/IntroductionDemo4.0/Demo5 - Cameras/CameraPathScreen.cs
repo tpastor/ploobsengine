@@ -94,6 +94,12 @@ namespace IntroductionDemo4._0
         {
             base.Draw(gameTime, render);
 
+            Texture2D logo = GraphicFactory.GetTexture2D("Textures\\engine_logo");
+            int wd = 64;
+            int hg = 48;
+            render.RenderTextureComplete(logo, new Rectangle(this.GraphicInfo.BackBufferWidth - wd, this.GraphicInfo.BackBufferHeight - hg, wd, hg));
+
+
             render.RenderTextComplete("Recording Camera Path", new Vector2(GraphicInfo.Viewport.Width - 315, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("Record a Path and Play it after", new Vector2(GraphicInfo.Viewport.Width - 315, 40), Color.White, Matrix.Identity);
             render.RenderTextComplete("R = Record, T = Stop, Y = Load", new Vector2(GraphicInfo.Viewport.Width - 315, 60), Color.White, Matrix.Identity);

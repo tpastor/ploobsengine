@@ -54,7 +54,7 @@ namespace EngineTestes
 
             ExtractXmlModelLoader ext = new ExtractXmlModelLoader("Content//ModelInfos//", "Model//", "Textures//");
             this.AttachCleanUpAble(ext);
-            ModelLoaderData data = ext.Load(factory, GraphicInfo, "shadow");
+            ModelLoaderData data = ext.Load(factory, GraphicInfo, "tree");//shadow
             WorldLoader wl = new WorldLoader();
             wl.OnCreateIObject += new CreateIObject(wl_OnCreateIObject);
             wl.OnCreateILight += new CreateILight(wl_OnCreateILight);            
@@ -79,6 +79,8 @@ namespace EngineTestes
                 IObject obj4 = new IObject(mat, sm, pi);
                 this.World.AddObject(obj4);
             }
+
+            IObject spobj = this.World.Objects[0];
 
 
             LightThrowBepu lt = new LightThrowBepu(this.World, factory);

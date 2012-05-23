@@ -22,7 +22,7 @@ namespace IntroductionDemo4._0
 
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {
-            world = new IWorld(new BepuPhysicWorld(-0.98f), new SimpleCuller());
+            world = new IWorld(new BepuPhysicWorld(-9.8f), new SimpleCuller());
 
             ForwardRenderTecnichDescription desc = ForwardRenderTecnichDescription.Default();
             desc.BackGroundColor = Color.CornflowerBlue;
@@ -94,6 +94,12 @@ namespace IntroductionDemo4._0
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {        
             base.Draw(gameTime, render);
+
+            Texture2D logo = GraphicFactory.GetTexture2D("Textures\\engine_logo");
+            int wd = 64;
+            int hg = 48;
+            render.RenderTextureComplete(logo, new Rectangle(this.GraphicInfo.BackBufferWidth - wd, this.GraphicInfo.BackBufferHeight - hg, wd, hg));
+
             render.RenderTextComplete("Demo Serialization: Press Space to Serialize/Desserialize the Ball Object", new Vector2(GraphicInfo.Viewport.Width - 715, 15), Color.White, Matrix.Identity);
             render.RenderTextComplete("Times Ball was Serialized/Desserialized: " + saved, new Vector2(GraphicInfo.Viewport.Width - 715, 35), Color.White, Matrix.Identity);
         }

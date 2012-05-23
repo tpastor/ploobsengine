@@ -148,7 +148,9 @@ namespace PloobsEngine.Loader
             else if (mi[0].collisionType != null && mi[0].collisionType.Contains("Water"))
             {
                 Vector3 position = (Vector3)(mi[0].extra["position"]);
-                shader = new DeferredWaterCompleteShader((int)(mi[0].extra["width"]),(int)( mi[0].extra["length"]), new Plane(position.X, position.Y, position.Z, 1),10.0f);
+                var width = (mi[0].extra["width"]);
+                var height = (mi[0].extra["length"]);
+                shader = new DeferredWaterCompleteShader((int)width,(int)height, new Plane(position.X, position.Y, position.Z, 1),10.0f);
             }
             
             else
