@@ -35,8 +35,8 @@ namespace AdvancedDemo4._0
         {            
             ///add the title screen       
             ///
-            manager.AddScreen(new DemosHomeScreen());
-            //manager.AddScreen(new TitleScreen());
+            //manager.AddScreen(new DemosHomeScreen());
+            manager.AddScreen(new TitleScreen());
             //manager.AddScreen(new DeferredLoadScreen());
             //manager.AddScreen(new BumpSpecularDemo());                        
             //manager.AddScreen(new EnvMapScreen());                        
