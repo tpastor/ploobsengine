@@ -346,21 +346,12 @@
 		<row><td>AdvancedDemos.exe</td><td>{B180C985-A1B8-4ED2-8D59-5CBC29487FF7}</td><td>ADVDEMOSBIN</td><td>2</td><td/><td>advanceddemos.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>Assimp.Interop.dll</td><td>{1783E17F-554F-43A5-85DC-C8D040367570}</td><td>DLLS</td><td>2</td><td/><td>assimp.interop.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>Assimp.dll</td><td>{E3B16EA2-634D-4B69-B5AF-7D702C50C67D}</td><td>DLLS</td><td>2</td><td/><td>assimp.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>BEPUphysics.dll</td><td>{941B7C35-8320-451B-A5BD-D3321E0F46DD}</td><td>RELEASE</td><td>2</td><td/><td>bepuphysics.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>BEPUphysics.dll1</td><td>{D833D258-2B8A-4E9F-9F46-DFE56C518714}</td><td>WINDOWS_PHONE_7</td><td>2</td><td/><td>bepuphysics.dll1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>BEPUphysics.dll2</td><td>{FA33CB0F-6871-4A48-89AD-9F02C4830F30}</td><td>RELEASE2</td><td>2</td><td/><td>bepuphysics.dll2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>BEPUphysics.dll3</td><td>{0D851514-809A-434E-9F05-CA647D9D066C}</td><td>PHONE7</td><td>2</td><td/><td>bepuphysics.dll3</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>DPSFPhone.dll</td><td>{3982B626-184A-45BF-AFF3-4643940AF8BF}</td><td>RELEASE</td><td>2</td><td/><td>dpsfphone.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DPSFPhone.dll1</td><td>{498C0B76-2634-42D9-BD24-2FB08A38F96B}</td><td>WINDOWS_PHONE_7</td><td>2</td><td/><td>dpsfphone.dll1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>DPSFPhone.dll2</td><td>{2CDFFE2F-0BDC-4F14-8A41-1DC1A71DCA6C}</td><td>RELEASE2</td><td>2</td><td/><td>dpsfphone.dll2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>DPSFPhone.dll3</td><td>{45ADCC23-CCF7-49E3-8924-7B28BA2E2B2D}</td><td>PHONE7</td><td>2</td><td/><td>dpsfphone.dll3</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>FarseerPhysicsXNA.dll</td><td>{270E8AED-436E-4E8A-8B54-AFE1A622FD3D}</td><td>RELEASE</td><td>2</td><td/><td>farseerphysicsxna.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>FarseerPhysicsXNA.dll1</td><td>{7AA13323-D6E7-42A0-8414-55AE37D9D6B7}</td><td>WINDOWS_PHONE_7</td><td>2</td><td/><td>farseerphysicsxna.dll1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>FarseerPhysicsXNA.dll2</td><td>{73758E23-F5B3-48A3-B8AF-0329629F62A8}</td><td>RELEASE2</td><td>2</td><td/><td>farseerphysicsxna.dll2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>FarseerPhysicsXNA.dll3</td><td>{106E3F68-4291-4D3F-A9A8-0A4C4D27D8E0}</td><td>PHONE7</td><td>2</td><td/><td>farseerphysicsxna.dll3</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>GraphicsApp1LibraryTest.dll</td><td>{27F47F3C-996A-4B36-946F-D72B24C424DF}</td><td>RELEASE</td><td>2</td><td/><td>graphicsapp1librarytest.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>GraphicsApp1LibraryTest.dll1</td><td>{C2C198B0-4493-4EC4-B22C-96628D27A259}</td><td>RELEASE2</td><td>2</td><td/><td>graphicsapp1librarytest.dll1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>GraphicsApp1LibraryTest.dll2</td><td>{B6CE122C-2489-4EF5-85DC-11C1B49ED7FE}</td><td>RELEASE3</td><td>2</td><td/><td>graphicsapp1librarytest.dll2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td>{177595C9-FD18-4B21-AC9D-D7523BF8027F}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT1</td><td>{37C0058F-B9CE-42EB-A1C1-28ADDE92195D}</td><td>PersonalFolder</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT10</td><td>{8579A9A3-3042-4800-9034-9E27B7C21689}</td><td>DUDE</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
@@ -398,7 +389,6 @@
 		<row><td>ISX_DEFAULTCOMPONENT129</td><td>{089E4E69-2F2E-40A1-9E57-34D3D5953B09}</td><td>TERRAIN</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT13</td><td>{E365C024-7EED-4DBD-911E-46D471B3E50D}</td><td>DEFAULT</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT130</td><td>{5DE929E0-A9B8-424C-A079-F063A86347C7}</td><td>TEXTURES4</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT131</td><td>{C4494658-BBAF-4CDF-9F82-C2D72827C790}</td><td>TEMPPE1</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT132</td><td>{29320F22-734D-4A28-AE73-2C65743EF17E}</td><td>PROPERTIES2</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT133</td><td>{AB3A240F-E0E3-4BEF-95A6-48DBA3384789}</td><td>GRAPHICSAPP1LIBRARY</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT134</td><td>{D507A12C-7E84-4350-8362-1EDF8882344C}</td><td>_D_DEMOS</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
@@ -411,35 +401,11 @@
 		<row><td>ISX_DEFAULTCOMPONENT140</td><td>{347EF76E-5081-4C3E-8BCC-6C66D79187E4}</td><td>HELPER2</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT141</td><td>{D727E850-B5C2-4A87-8A46-03D838755572}</td><td>POSTEFFECT1</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT142</td><td>{965E8A61-6637-4731-90C5-47353DD2C63B}</td><td>RVO1</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT143</td><td>{B4B54C31-966D-4949-9010-D80B9706F2E8}</td><td>BIN1</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT144</td><td>{9F22487E-C4D8-47FF-90D9-DF3A151E39F4}</td><td>WINDOWS_PHONE</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT145</td><td>{6F049344-585F-43B0-BADE-578A3428B34E}</td><td>DEBUG2</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT146</td><td>{38E7CC1F-763B-4DCF-8C64-9C0884CFCAE2}</td><td>RELEASE2</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT147</td><td>{C535FA2A-E7AA-4DAC-8CCC-B402078BC07B}</td><td>CONTENT2</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT148</td><td>{02A24AA4-9CF3-4FE9-BF4F-C55AA8A04064}</td><td>MODEL5</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT149</td><td>{85CA18C2-CDFB-4C18-9829-6B086816121A}</td><td>TEXTURES5</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT15</td><td>{DD6A13A1-553B-47A1-B5DF-9A1C72901E8D}</td><td>FONTS</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT150</td><td>{EE0FAD4F-B606-4455-9180-C255B5766A95}</td><td>OBJ1</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT151</td><td>{53EF51D6-D128-466A-8136-6EA534E1AAB0}</td><td>WINDOWS_PHONE1</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT152</td><td>{1E595338-F4CB-48DB-974F-0D6A79DCE8FA}</td><td>DEBUG3</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT153</td><td>{9C0441C9-E0AF-4A0A-BF10-4E852A195D29}</td><td>TEMPPE2</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT154</td><td>{AEE7C00C-ACFF-48D5-B2C6-43D93E595843}</td><td>RELEASE3</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT155</td><td>{0894D1B5-959D-45EE-8A66-D959C266B57C}</td><td>MODEL6</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT156</td><td>{B13F9CC7-0F0F-4025-999F-FD06702801D3}</td><td>TEMPPE3</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT157</td><td>{E58D6E38-0B37-46EE-ADD4-330E0E887381}</td><td>PROPERTIES3</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT158</td><td>{74E9FE6F-0E34-44EE-B50B-267D62FC7AFE}</td><td>GRAPHICSAPP1LIBRARYCONTENT</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT159</td><td>{56E05182-26E5-43FA-A27B-2E45D0AC2826}</td><td>BIN2</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT16</td><td>{A98A6B8C-18EA-4BED-8455-DC604475789A}</td><td>IMAGES</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT160</td><td>{CF2F9FB8-2F2B-4591-915E-FEE19A309633}</td><td>ANYCPU</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT161</td><td>{974D4ADE-45CE-4000-A4C0-D56EBD61F280}</td><td>DEBUG4</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT162</td><td>{50B30F4A-6951-4D8D-8AC3-B4542B7D3AD1}</td><td>WINDOWS_PHONE2</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT163</td><td>{4070E2BD-8C59-4A66-AD82-764BD8E0110D}</td><td>RELEASE4</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT164</td><td>{AF56D601-5199-47D8-ABA4-58F3F2B115FF}</td><td>MODEL7</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT165</td><td>{5BB27078-74FF-4385-A908-7AFB34AED670}</td><td>OBJ2</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT166</td><td>{E0CBACFD-82ED-4290-A0DB-9BD897527EF7}</td><td>DEBUG5</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT167</td><td>{79D1B437-65D5-4399-B367-692F24A786BE}</td><td>TEMPPE4</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT168</td><td>{36308590-ADC3-418C-AB5C-9823CF714372}</td><td>WINDOWS_PHONE3</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT169</td><td>{C9800B94-9786-40E4-BE05-391B26599A73}</td><td>RELEASE5</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT17</td><td>{DF0D8DA9-277A-47AD-B9D0-ECFCCE4DA5D7}</td><td>SONGS</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT170</td><td>{5467302A-6055-43AA-A54E-659B31B19C74}</td><td>TERRAIN1</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT171</td><td>{CA2A7548-6490-45FD-8D11-3A4B5115961D}</td><td>TEXTURES6</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
@@ -517,24 +483,13 @@
 		<row><td>ISX_DEFAULTCOMPONENT81</td><td>{8152633A-FD49-49F1-B6DC-E224ED29676B}</td><td>TEXTURES2</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT82</td><td>{1AB70067-A3C5-4585-BA0D-FAA11ECD1E4F}</td><td>PHONESILVERLIGHTDEMO</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT83</td><td>{AE8B2A41-FDAC-4AC4-8A7B-A4B09935B13A}</td><td>GRAPHICSAPP1</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT84</td><td>{C56ADEAF-BC34-467B-8BB9-9260B3F4D7DB}</td><td>BIN</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT85</td><td>{2B52FF48-B18A-40AD-A738-C74DC784D55F}</td><td>DEBUG</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT86</td><td>{5AC32543-1126-4C15-A57F-4A3833527B20}</td><td>RELEASE</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT87</td><td>{55C731F0-6E6E-4268-888A-FF8F73EDD6B9}</td><td>CONTENT1</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT88</td><td>{7EB47B54-9566-4606-885D-B03CF1F9EDE2}</td><td>MODEL3</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT89</td><td>{F81A9A7E-D4F1-4C78-A3EC-0E677A8D746C}</td><td>TEXTURES3</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT9</td><td>{BA9E020D-72E4-47F0-8DD7-FA4FB76179E4}</td><td>MODEL</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT90</td><td>{6E3DBDC3-7FD5-4127-9184-07AA041E8CF1}</td><td>OBJ</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT91</td><td>{1844BC58-50E5-429D-A4ED-6E22A277E8BA}</td><td>DEBUG1</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT92</td><td>{9B747539-904E-4A79-B68B-3B71B9577268}</td><td>TEMPPE</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ISX_DEFAULTCOMPONENT93</td><td>{602C91DC-59CC-41CA-842E-B7B8C9042AE5}</td><td>RELEASE1</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT94</td><td>{569C29C5-34ED-45D3-9045-5029483E0E09}</td><td>HELP</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT95</td><td>{12C5FFC8-247A-46B6-9C14-E79FAE839454}</td><td>WINDOWS_HIDEF</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT96</td><td>{3F858975-F89A-4062-A557-B46A6796E82E}</td><td>WINDOWS_PHONE_7</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT97</td><td>{AED32821-22B7-46DF-A231-FC7D9D01A67D}</td><td>WINDOWS_REACH</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT98</td><td>{8AD442A7-8FDB-49C9-A1BC-FBB44A832323}</td><td>_DS_MAX_SCRIPTS</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT99</td><td>{73A8E622-2899-467D-BEE1-2926A43BFF08}</td><td>_DS_MAX_.X_EXPORTER</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>Microsoft.Phone.Controls.dll</td><td>{CA8D6570-1B05-43A3-8AA8-E85CB67A59AC}</td><td>RELEASE</td><td>2</td><td/><td>microsoft.phone.controls.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ModelImporter.dll</td><td>{1F4007E6-A3A7-470D-8A4C-7005D73C84C3}</td><td>DLLS</td><td>2</td><td/><td>modelimporter.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>NewComponent1</td><td>{73EAFBB1-EFE1-4B65-8940-E21177B7AC0E}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>NxCharacter.dll</td><td>{26E8FC32-565D-418E-A58C-2C086037129A}</td><td>ADVDEMOSBIN</td><td>2</td><td/><td>nxcharacter.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
@@ -554,17 +509,13 @@
 		<row><td>PloobsEngineDebug.dll3</td><td>{1513708E-5C4D-4902-8D4F-455761479738}</td><td>DLLS</td><td>2</td><td/><td>ploobsenginedebug.dll3</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>PloobsEngineDebug.dll4</td><td>{3A22872B-1EEA-48BA-9BD2-DE0158C86DAD}</td><td>WINDOWS_HIDEF</td><td>2</td><td/><td>ploobsenginedebug.dll4</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>PloobsEngineDebug.dll5</td><td>{AC02868B-F9DB-4B87-BDC7-2DA4A4836129}</td><td>WINDOWS_REACH</td><td>2</td><td/><td>ploobsenginedebug.dll5</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>PloobsEnginePhone7.dll</td><td>{5910DF78-7BE1-414F-9B4B-27242023EE3F}</td><td>RELEASE</td><td>2</td><td/><td>ploobsenginephone7.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>PloobsEnginePhone7.dll1</td><td>{6201A6FF-DAA2-4695-A8C5-EFA8DC6BE937}</td><td>WINDOWS_PHONE_7</td><td>2</td><td/><td>ploobsenginephone7.dll1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>PloobsEnginePhone7.dll2</td><td>{869832B1-D036-4191-82D3-23C867B00B16}</td><td>RELEASE2</td><td>2</td><td/><td>ploobsenginephone7.dll2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>PloobsEnginePhone7.dll3</td><td>{D296828C-D01B-4C95-A79E-9EB8BCB49877}</td><td>PHONE7</td><td>2</td><td/><td>ploobsenginephone7.dll3</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>PloobsEnginePipelineDebug.dll</td><td>{D2089E02-0695-4443-B386-CB6A41F4C133}</td><td>DLL</td><td>2</td><td/><td>ploobsenginepipelinedebug.dl</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>PloobsEnginePipelineDebug.dll1</td><td>{4C82F2B0-6D7E-49C9-A94C-7952DC4C3DF1}</td><td>DLL1</td><td>2</td><td/><td>ploobsenginepipelinedebug.dl1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>PloobsEnginePipelineDebug.dll2</td><td>{C7647F98-AB6F-4E83-B88C-2B3CD4CB3D71}</td><td>WINDOWS_HIDEF</td><td>2</td><td/><td>ploobsenginepipelinedebug.dl2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>PloobsEnginePipelineDebug.dll3</td><td>{E9224F74-86CD-4C0A-BB80-944D70180926}</td><td>WINDOWS_REACH</td><td>2</td><td/><td>ploobsenginepipelinedebug.dl3</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>PloobsEnginePipelineDebug.dll4</td><td>{5749A552-87A7-4753-B9E0-A2F7C4B3BCBD}</td><td>DLLS</td><td>2</td><td/><td>ploobsenginepipelinedebug.dl4</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>PloobsFeatures.dll</td><td>{8957A0FE-ADFF-4D58-8CB9-1EA8E15D6334}</td><td>RELEASE</td><td>2</td><td/><td>ploobsfeatures.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>PloobsFeatures.dll1</td><td>{6B701C1D-8E15-4A10-A860-709C27EAF213}</td><td>RELEASE1</td><td>2</td><td/><td>ploobsfeatures.dll1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>PloobsScripts.dll</td><td>{C3C38C82-24DE-4404-9ECC-E0A7ABDC0C80}</td><td>DLL1</td><td>2</td><td/><td>ploobsscripts.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>PloobsSerializator.dll</td><td>{D6D168DD-9F60-4F73-B9F4-DA9188A1251B}</td><td>DLL1</td><td>2</td><td/><td>ploobsserializator.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>Ploobs_Engine_Help.chm</td><td>{F7EDF42F-2425-4787-8C5A-F3B618E45C3A}</td><td>HELP</td><td>2</td><td/><td>ploobs_engine_help.chm</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
@@ -576,9 +527,7 @@
 		<row><td>SkinnedModelPipeline.dll</td><td>{94A6FCB3-9782-47A1-91C7-D8ADAD7B2D73}</td><td>SKINNED</td><td>2</td><td/><td>skinnedmodelpipeline.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>StillDesign.PhysX.Net.dll</td><td>{30F0F758-299C-46BA-A799-20CBBDB4E5E8}</td><td>ADVDEMOSBIN</td><td>2</td><td/><td>stilldesign.physx.net.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>StillDesign.PhysX.Net.dll1</td><td>{397A58B8-5433-4BD6-B60C-C9E58586A422}</td><td>ADVANCEDDEMOS2</td><td>2</td><td/><td>stilldesign.physx.net.dll1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>XNAnimation.dll</td><td>{1A79BA6E-2AAF-4E13-B192-EBDC67376818}</td><td>RELEASE</td><td>2</td><td/><td>xnanimation.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>XNAnimation.dll1</td><td>{AA0BCB91-7296-4959-8759-17257320F5DE}</td><td>WINDOWS_PHONE_7</td><td>2</td><td/><td>xnanimation.dll1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>XNAnimation.dll2</td><td>{E1EB799B-C18C-4FE8-9392-16152F1EE921}</td><td>RELEASE2</td><td>2</td><td/><td>xnanimation.dll2</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>XNAnimation.dll3</td><td>{965E2435-B6E5-4E86-91B4-FC748ED7DD59}</td><td>PHONE7</td><td>2</td><td/><td>xnanimation.dll3</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>XNAnimationPipeline.dll</td><td>{E3E10A49-7EB8-455B-BA20-B38FB87CD77D}</td><td>PHONE7</td><td>2</td><td/><td>xnanimationpipeline.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>XNAnimationPipeline.dll1</td><td>{417028D7-9D3C-4D07-9921-457FF2F0E7F4}</td><td>WINDOWS_PHONE_7</td><td>2</td><td/><td>xnanimationpipeline.dll1</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
@@ -1293,17 +1242,6 @@
 		<col key="yes" def="s72">Directory_</col>
 		<col key="yes" def="s72">Component_</col>
 		<row><td>ADVANCEDDEMOS1</td><td>ISX_DEFAULTCOMPONENT20</td></row>
-		<row><td>ANYCPU</td><td>ISX_DEFAULTCOMPONENT160</td></row>
-		<row><td>BIN</td><td>ISX_DEFAULTCOMPONENT84</td></row>
-		<row><td>BIN1</td><td>ISX_DEFAULTCOMPONENT143</td></row>
-		<row><td>BIN2</td><td>ISX_DEFAULTCOMPONENT159</td></row>
-		<row><td>CONTENT1</td><td>ISX_DEFAULTCOMPONENT87</td></row>
-		<row><td>CONTENT2</td><td>ISX_DEFAULTCOMPONENT147</td></row>
-		<row><td>DEBUG</td><td>ISX_DEFAULTCOMPONENT85</td></row>
-		<row><td>DEBUG1</td><td>ISX_DEFAULTCOMPONENT91</td></row>
-		<row><td>DEBUG2</td><td>ISX_DEFAULTCOMPONENT145</td></row>
-		<row><td>DEBUG3</td><td>ISX_DEFAULTCOMPONENT152</td></row>
-		<row><td>DEBUG4</td><td>ISX_DEFAULTCOMPONENT161</td></row>
 		<row><td>DEMO9___AI</td><td>ISX_DEFAULTCOMPONENT66</td></row>
 		<row><td>DEMOSSOURCECODE</td><td>ISX_DEFAULTCOMPONENT18</td></row>
 		<row><td>FONT</td><td>ISX_DEFAULTCOMPONENT78</td></row>
@@ -1311,26 +1249,13 @@
 		<row><td>INSTALLDIR</td><td>ISX_DEFAULTCOMPONENT</td></row>
 		<row><td>INSTALLDIR</td><td>NewComponent1</td></row>
 		<row><td>INTRODUCTIONDEMO4.0</td><td>ISX_DEFAULTCOMPONENT52</td></row>
-		<row><td>OBJ</td><td>ISX_DEFAULTCOMPONENT90</td></row>
-		<row><td>OBJ1</td><td>ISX_DEFAULTCOMPONENT150</td></row>
-		<row><td>OBJ2</td><td>ISX_DEFAULTCOMPONENT165</td></row>
 		<row><td>PersonalFolder</td><td>ISX_DEFAULTCOMPONENT1</td></row>
 		<row><td>REACHDEMOS1</td><td>ISX_DEFAULTCOMPONENT101</td></row>
-		<row><td>RELEASE4</td><td>ISX_DEFAULTCOMPONENT163</td></row>
 		<row><td>SKINNED</td><td>ISX_DEFAULTCOMPONENT116</td></row>
 		<row><td>SKINS</td><td>ISX_DEFAULTCOMPONENT12</td></row>
 		<row><td>SKINS1</td><td>ISX_DEFAULTCOMPONENT108</td></row>
 		<row><td>TEMPLATES</td><td>ISX_DEFAULTCOMPONENT3</td></row>
-		<row><td>TEMPPE</td><td>ISX_DEFAULTCOMPONENT92</td></row>
-		<row><td>TEMPPE1</td><td>ISX_DEFAULTCOMPONENT131</td></row>
-		<row><td>TEMPPE2</td><td>ISX_DEFAULTCOMPONENT153</td></row>
-		<row><td>TEMPPE3</td><td>ISX_DEFAULTCOMPONENT156</td></row>
-		<row><td>TEMPPE4</td><td>ISX_DEFAULTCOMPONENT167</td></row>
 		<row><td>VISUAL_STUDIO_2010</td><td>ISX_DEFAULTCOMPONENT2</td></row>
-		<row><td>WINDOWS_PHONE</td><td>ISX_DEFAULTCOMPONENT144</td></row>
-		<row><td>WINDOWS_PHONE1</td><td>ISX_DEFAULTCOMPONENT151</td></row>
-		<row><td>WINDOWS_PHONE2</td><td>ISX_DEFAULTCOMPONENT162</td></row>
-		<row><td>WINDOWS_PHONE3</td><td>ISX_DEFAULTCOMPONENT168</td></row>
 	</table>
 
 	<table name="CustomAction">
@@ -1417,22 +1342,16 @@
 		<row><td>ADVDEMOSBIN</td><td>INSTALLDIR</td><td>ADVDEM~1|AdvDemosBin</td><td/><td>0</td><td/></row>
 		<row><td>ALLUSERSPROFILE</td><td>TARGETDIR</td><td>.:ALLUSE~1|All Users</td><td/><td>0</td><td/></row>
 		<row><td>ANIMATION</td><td>PLOOBSPROJECTTEMPLATE</td><td>ANIMAT~1|Animation</td><td/><td>0</td><td/></row>
-		<row><td>ANYCPU</td><td>BIN2</td><td>AnyCPU</td><td/><td>0</td><td/></row>
 		<row><td>AdminToolsFolder</td><td>TARGETDIR</td><td>.:Admint~1|AdminTools</td><td/><td>0</td><td/></row>
 		<row><td>AppDataFolder</td><td>TARGETDIR</td><td>.:APPLIC~1|Application Data</td><td/><td>0</td><td/></row>
 		<row><td>BEHAVIORS</td><td>_D_DEMOS1</td><td>BEHAVI~1|Behaviors</td><td/><td>0</td><td/></row>
 		<row><td>BEHAVIOR_TREE</td><td>DEMO9___AI</td><td>BEHAVI~1|Behavior Tree</td><td/><td>0</td><td/></row>
 		<row><td>BILBOARD</td><td>PLOOBSPROJECTTEMPLATE</td><td>Bilboard</td><td/><td>0</td><td/></row>
-		<row><td>BIN</td><td>GRAPHICSAPP1</td><td>Bin</td><td/><td>0</td><td/></row>
-		<row><td>BIN1</td><td>GRAPHICSAPP1LIBRARY</td><td>bin</td><td/><td>0</td><td/></row>
-		<row><td>BIN2</td><td>GRAPHICSAPP1LIBRARYCONTENT</td><td>bin</td><td/><td>0</td><td/></row>
 		<row><td>CHARACTER</td><td>DEMO9.8_PHYSX_2.8.X</td><td>CHARAC~1|Character</td><td/><td>0</td><td/></row>
 		<row><td>CLOTH</td><td>DEMO9.8_PHYSX_2.8.X</td><td>Cloth</td><td/><td>0</td><td/></row>
 		<row><td>COMMONS</td><td>ADVANCEDDEMOS2</td><td>Commons</td><td/><td>0</td><td/></row>
 		<row><td>COMMONS1</td><td>INTRODUCTIONDEMO4.01</td><td>Commons</td><td/><td>0</td><td/></row>
 		<row><td>CONTENT</td><td>ADVDEMOSBIN</td><td>Content</td><td/><td>0</td><td/></row>
-		<row><td>CONTENT1</td><td>RELEASE</td><td>Content</td><td/><td>0</td><td/></row>
-		<row><td>CONTENT2</td><td>RELEASE2</td><td>Content</td><td/><td>0</td><td/></row>
 		<row><td>CROWED</td><td>_D_DEMOS1</td><td>Crowed</td><td/><td>0</td><td/></row>
 		<row><td>CURSORS</td><td>DEFAULT</td><td>Cursors</td><td/><td>0</td><td/></row>
 		<row><td>CURSORS1</td><td>DEFAULT1</td><td>Cursors</td><td/><td>0</td><td/></row>
@@ -1440,12 +1359,6 @@
 		<row><td>CommonAppDataFolder</td><td>TARGETDIR</td><td>.:Common~1|CommonAppData</td><td/><td>0</td><td/></row>
 		<row><td>CommonFilesFolder</td><td>TARGETDIR</td><td>.:Common</td><td/><td>0</td><td/></row>
 		<row><td>DATABASEDIR</td><td>ISYourDataBaseDir</td><td>.</td><td/><td>0</td><td/></row>
-		<row><td>DEBUG</td><td>BIN</td><td>Debug</td><td/><td>0</td><td/></row>
-		<row><td>DEBUG1</td><td>OBJ</td><td>Debug</td><td/><td>0</td><td/></row>
-		<row><td>DEBUG2</td><td>WINDOWS_PHONE</td><td>Debug</td><td/><td>0</td><td/></row>
-		<row><td>DEBUG3</td><td>WINDOWS_PHONE1</td><td>Debug</td><td/><td>0</td><td/></row>
-		<row><td>DEBUG4</td><td>ANYCPU</td><td>Debug</td><td/><td>0</td><td/></row>
-		<row><td>DEBUG5</td><td>OBJ2</td><td>Debug</td><td/><td>0</td><td/></row>
 		<row><td>DEFAULT</td><td>SKINS</td><td>Default</td><td/><td>0</td><td/></row>
 		<row><td>DEFAULT1</td><td>SKINS1</td><td>Default</td><td/><td>0</td><td/></row>
 		<row><td>DEMO1___BASICSCREEN</td><td>INTRODUCTIONDEMO4.01</td><td>DEMO1-~1|Demo1 - BasicScreen</td><td/><td>0</td><td/></row>
@@ -1521,10 +1434,7 @@
 		<row><td>MODEL</td><td>CONTENT</td><td>Model</td><td/><td>0</td><td/></row>
 		<row><td>MODEL1</td><td>ADVANCEDDEMOSCONTENT</td><td>Model</td><td/><td>0</td><td/></row>
 		<row><td>MODEL2</td><td>INTRODUCTIONDEMO4.0CONTENT</td><td>Model</td><td/><td>0</td><td/></row>
-		<row><td>MODEL3</td><td>CONTENT1</td><td>Model</td><td/><td>0</td><td/></row>
 		<row><td>MODEL4</td><td>PLOOBSPROJECTTEMPLATECONTENT</td><td>Model</td><td/><td>0</td><td/></row>
-		<row><td>MODEL5</td><td>CONTENT2</td><td>Model</td><td/><td>0</td><td/></row>
-		<row><td>MODEL6</td><td>RELEASE3</td><td>Model</td><td/><td>0</td><td/></row>
 		<row><td>MODEL7</td><td>GRAPHICSAPP1LIBRARYCONTENT</td><td>Model</td><td/><td>0</td><td/></row>
 		<row><td>MODELANIM</td><td>DEMO7___ANIMATIONSAMPLE</td><td>MODELA~1|ModelAnim</td><td/><td>0</td><td/></row>
 		<row><td>MODELINFOS</td><td>CONTENT</td><td>MODELI~1|ModelInfos</td><td/><td>0</td><td/></row>
@@ -1532,9 +1442,6 @@
 		<row><td>MY_PRODUCT_NAME</td><td>PLOOBS</td><td>MYPROD~1|My Product Name</td><td/><td>0</td><td/></row>
 		<row><td>MyPicturesFolder</td><td>TARGETDIR</td><td>.:MyPict~1|MyPictures</td><td/><td>0</td><td/></row>
 		<row><td>NetHoodFolder</td><td>TARGETDIR</td><td>.:NetHood</td><td/><td>0</td><td/></row>
-		<row><td>OBJ</td><td>GRAPHICSAPP1</td><td>obj</td><td/><td>0</td><td/></row>
-		<row><td>OBJ1</td><td>GRAPHICSAPP1LIBRARY</td><td>obj</td><td/><td>0</td><td/></row>
-		<row><td>OBJ2</td><td>GRAPHICSAPP1LIBRARYCONTENT</td><td>obj</td><td/><td>0</td><td/></row>
 		<row><td>PARTICLE3D</td><td>PLOOBSPROJECTTEMPLATE</td><td>PARTIC~1|Particle3D</td><td/><td>0</td><td/></row>
 		<row><td>PHONE7</td><td>PHONESILVERLIGHTDEMO</td><td>Phone7</td><td/><td>0</td><td/></row>
 		<row><td>PHONESILVERLIGHTDEMO</td><td>DEMOSSOURCECODE</td><td>PHONES~1|PhoneSilverLightDemo</td><td/><td>0</td><td/></row>
@@ -1557,12 +1464,6 @@
 		<row><td>ProgramMenuFolder</td><td>TARGETDIR</td><td>.:Programs</td><td/><td>3</td><td/></row>
 		<row><td>REACHDEMOS</td><td>DEMOSSOURCECODE</td><td>REACHD~1|ReachDemos</td><td/><td>0</td><td/></row>
 		<row><td>REACHDEMOS1</td><td>REACHDEMOS</td><td>REACHD~1|ReachDemos</td><td/><td>0</td><td/></row>
-		<row><td>RELEASE</td><td>BIN</td><td>Release</td><td/><td>0</td><td/></row>
-		<row><td>RELEASE1</td><td>OBJ</td><td>Release</td><td/><td>0</td><td/></row>
-		<row><td>RELEASE2</td><td>WINDOWS_PHONE</td><td>Release</td><td/><td>0</td><td/></row>
-		<row><td>RELEASE3</td><td>WINDOWS_PHONE1</td><td>Release</td><td/><td>0</td><td/></row>
-		<row><td>RELEASE4</td><td>WINDOWS_PHONE2</td><td>Release</td><td/><td>0</td><td/></row>
-		<row><td>RELEASE5</td><td>WINDOWS_PHONE3</td><td>Release</td><td/><td>0</td><td/></row>
 		<row><td>RVO</td><td>DEMO9___AI</td><td>RVO</td><td/><td>0</td><td/></row>
 		<row><td>RVO1</td><td>_D_DEMOS1</td><td>RVO</td><td/><td>0</td><td/></row>
 		<row><td>RVO2</td><td>DEMO9___AI</td><td>RVO2</td><td/><td>0</td><td/></row>
@@ -1584,19 +1485,12 @@
 		<row><td>TARGETDIR</td><td/><td>SourceDir</td><td/><td>0</td><td/></row>
 		<row><td>TEMPLATES</td><td>VISUAL_STUDIO_2010</td><td>TEMPLA~1|Templates</td><td/><td>0</td><td/></row>
 		<row><td>TEMPLATESCREENS</td><td>PLOOBSPROJECTTEMPLATE</td><td>TEMPLA~1|TemplateScreens</td><td/><td>0</td><td/></row>
-		<row><td>TEMPPE</td><td>DEBUG1</td><td>TempPE</td><td/><td>0</td><td/></row>
-		<row><td>TEMPPE1</td><td>RELEASE1</td><td>TempPE</td><td/><td>0</td><td/></row>
-		<row><td>TEMPPE2</td><td>DEBUG3</td><td>TempPE</td><td/><td>0</td><td/></row>
-		<row><td>TEMPPE3</td><td>RELEASE3</td><td>TempPE</td><td/><td>0</td><td/></row>
-		<row><td>TEMPPE4</td><td>DEBUG5</td><td>TempPE</td><td/><td>0</td><td/></row>
 		<row><td>TERRAIN</td><td>PLOOBSPROJECTTEMPLATECONTENT</td><td>Terrain</td><td/><td>0</td><td/></row>
 		<row><td>TERRAIN1</td><td>GRAPHICSAPP1LIBRARYCONTENT</td><td>Terrain</td><td/><td>0</td><td/></row>
 		<row><td>TEXTURES</td><td>CONTENT</td><td>Textures</td><td/><td>0</td><td/></row>
 		<row><td>TEXTURES1</td><td>ADVANCEDDEMOSCONTENT</td><td>Textures</td><td/><td>0</td><td/></row>
 		<row><td>TEXTURES2</td><td>INTRODUCTIONDEMO4.0CONTENT</td><td>Textures</td><td/><td>0</td><td/></row>
-		<row><td>TEXTURES3</td><td>CONTENT1</td><td>Textures</td><td/><td>0</td><td/></row>
 		<row><td>TEXTURES4</td><td>PLOOBSPROJECTTEMPLATECONTENT</td><td>Textures</td><td/><td>0</td><td/></row>
-		<row><td>TEXTURES5</td><td>CONTENT2</td><td>Textures</td><td/><td>0</td><td/></row>
 		<row><td>TEXTURES6</td><td>GRAPHICSAPP1LIBRARYCONTENT</td><td>Textures</td><td/><td>0</td><td/></row>
 		<row><td>TRIGGER</td><td>DEMO9.8_PHYSX_2.8.X</td><td>Trigger</td><td/><td>0</td><td/></row>
 		<row><td>TempFolder</td><td>TARGETDIR</td><td>.:Temp</td><td/><td>0</td><td/></row>
@@ -1606,10 +1500,6 @@
 		<row><td>VISUAL_STUDIO_2010</td><td>PersonalFolder</td><td>VISUAL~1|Visual Studio 2010</td><td/><td>0</td><td/></row>
 		<row><td>WAYPOINTS</td><td>DEMO9___AI</td><td>WAYPOI~1|Waypoints</td><td/><td>0</td><td/></row>
 		<row><td>WINDOWS_HIDEF</td><td>INSTALLDIR</td><td>WINDOW~1|Windows HiDef</td><td/><td>0</td><td/></row>
-		<row><td>WINDOWS_PHONE</td><td>BIN1</td><td>WINDOW~1|Windows Phone</td><td/><td>0</td><td/></row>
-		<row><td>WINDOWS_PHONE1</td><td>OBJ1</td><td>WINDOW~1|Windows Phone</td><td/><td>0</td><td/></row>
-		<row><td>WINDOWS_PHONE2</td><td>BIN2</td><td>WINDOW~1|Windows Phone</td><td/><td>0</td><td/></row>
-		<row><td>WINDOWS_PHONE3</td><td>OBJ2</td><td>WINDOW~1|Windows Phone</td><td/><td>0</td><td/></row>
 		<row><td>WINDOWS_PHONE_7</td><td>INSTALLDIR</td><td>WINDOW~1|Windows Phone 7</td><td/><td>0</td><td/></row>
 		<row><td>WINDOWS_REACH</td><td>INSTALLDIR</td><td>WINDOW~1|Windows Reach</td><td/><td>0</td><td/></row>
 		<row><td>WindowsFolder</td><td>TARGETDIR</td><td>.:Windows</td><td/><td>0</td><td/></row>
@@ -2315,21 +2205,12 @@
 		<row><td>AlwaysInstall</td><td>AdvancedDemos.exe</td></row>
 		<row><td>AlwaysInstall</td><td>Assimp.Interop.dll</td></row>
 		<row><td>AlwaysInstall</td><td>Assimp.dll</td></row>
-		<row><td>AlwaysInstall</td><td>BEPUphysics.dll</td></row>
 		<row><td>AlwaysInstall</td><td>BEPUphysics.dll1</td></row>
-		<row><td>AlwaysInstall</td><td>BEPUphysics.dll2</td></row>
 		<row><td>AlwaysInstall</td><td>BEPUphysics.dll3</td></row>
-		<row><td>AlwaysInstall</td><td>DPSFPhone.dll</td></row>
 		<row><td>AlwaysInstall</td><td>DPSFPhone.dll1</td></row>
-		<row><td>AlwaysInstall</td><td>DPSFPhone.dll2</td></row>
 		<row><td>AlwaysInstall</td><td>DPSFPhone.dll3</td></row>
-		<row><td>AlwaysInstall</td><td>FarseerPhysicsXNA.dll</td></row>
 		<row><td>AlwaysInstall</td><td>FarseerPhysicsXNA.dll1</td></row>
-		<row><td>AlwaysInstall</td><td>FarseerPhysicsXNA.dll2</td></row>
 		<row><td>AlwaysInstall</td><td>FarseerPhysicsXNA.dll3</td></row>
-		<row><td>AlwaysInstall</td><td>GraphicsApp1LibraryTest.dll</td></row>
-		<row><td>AlwaysInstall</td><td>GraphicsApp1LibraryTest.dll1</td></row>
-		<row><td>AlwaysInstall</td><td>GraphicsApp1LibraryTest.dll2</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT1</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT10</td></row>
@@ -2367,7 +2248,6 @@
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT129</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT13</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT130</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT131</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT132</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT133</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT134</td></row>
@@ -2380,35 +2260,11 @@
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT140</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT141</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT142</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT143</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT144</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT145</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT146</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT147</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT148</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT149</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT15</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT150</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT151</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT152</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT153</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT154</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT155</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT156</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT157</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT158</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT159</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT16</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT160</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT161</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT162</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT163</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT164</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT165</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT166</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT167</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT168</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT169</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT17</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT170</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT171</td></row>
@@ -2486,24 +2342,13 @@
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT81</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT82</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT83</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT84</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT85</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT86</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT87</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT88</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT89</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT9</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT90</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT91</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT92</td></row>
-		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT93</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT94</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT95</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT96</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT97</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT98</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT99</td></row>
-		<row><td>AlwaysInstall</td><td>Microsoft.Phone.Controls.dll</td></row>
 		<row><td>AlwaysInstall</td><td>ModelImporter.dll</td></row>
 		<row><td>AlwaysInstall</td><td>NewComponent1</td></row>
 		<row><td>AlwaysInstall</td><td>NxCharacter.dll</td></row>
@@ -2523,17 +2368,13 @@
 		<row><td>AlwaysInstall</td><td>PloobsEngineDebug.dll3</td></row>
 		<row><td>AlwaysInstall</td><td>PloobsEngineDebug.dll4</td></row>
 		<row><td>AlwaysInstall</td><td>PloobsEngineDebug.dll5</td></row>
-		<row><td>AlwaysInstall</td><td>PloobsEnginePhone7.dll</td></row>
 		<row><td>AlwaysInstall</td><td>PloobsEnginePhone7.dll1</td></row>
-		<row><td>AlwaysInstall</td><td>PloobsEnginePhone7.dll2</td></row>
 		<row><td>AlwaysInstall</td><td>PloobsEnginePhone7.dll3</td></row>
 		<row><td>AlwaysInstall</td><td>PloobsEnginePipelineDebug.dll</td></row>
 		<row><td>AlwaysInstall</td><td>PloobsEnginePipelineDebug.dll1</td></row>
 		<row><td>AlwaysInstall</td><td>PloobsEnginePipelineDebug.dll2</td></row>
 		<row><td>AlwaysInstall</td><td>PloobsEnginePipelineDebug.dll3</td></row>
 		<row><td>AlwaysInstall</td><td>PloobsEnginePipelineDebug.dll4</td></row>
-		<row><td>AlwaysInstall</td><td>PloobsFeatures.dll</td></row>
-		<row><td>AlwaysInstall</td><td>PloobsFeatures.dll1</td></row>
 		<row><td>AlwaysInstall</td><td>PloobsScripts.dll</td></row>
 		<row><td>AlwaysInstall</td><td>PloobsSerializator.dll</td></row>
 		<row><td>AlwaysInstall</td><td>Ploobs_Engine_Help.chm</td></row>
@@ -2545,9 +2386,7 @@
 		<row><td>AlwaysInstall</td><td>SkinnedModelPipeline.dll</td></row>
 		<row><td>AlwaysInstall</td><td>StillDesign.PhysX.Net.dll</td></row>
 		<row><td>AlwaysInstall</td><td>StillDesign.PhysX.Net.dll1</td></row>
-		<row><td>AlwaysInstall</td><td>XNAnimation.dll</td></row>
 		<row><td>AlwaysInstall</td><td>XNAnimation.dll1</td></row>
-		<row><td>AlwaysInstall</td><td>XNAnimation.dll2</td></row>
 		<row><td>AlwaysInstall</td><td>XNAnimation.dll3</td></row>
 		<row><td>AlwaysInstall</td><td>XNAnimationPipeline.dll</td></row>
 		<row><td>AlwaysInstall</td><td>XNAnimationPipeline.dll1</td></row>
@@ -2590,13 +2429,9 @@
 		<row><td>animscreen.cs</td><td>ISX_DEFAULTCOMPONENT32</td><td>ANIMSC~1.CS|AnimScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\Demo7 - AnimationSample\ModelAnim\AnimScreen.cs</td><td>1</td><td/></row>
 		<row><td>app.config</td><td>ISX_DEFAULTCOMPONENT21</td><td>APP~1.CON|app.config</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\app.config</td><td>1</td><td/></row>
 		<row><td>app.config1</td><td>ISX_DEFAULTCOMPONENT54</td><td>APP~1.CON|app.config</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\app.config</td><td>1</td><td/></row>
-		<row><td>app.g.cs</td><td>ISX_DEFAULTCOMPONENT93</td><td>APPG~1.CS|App.g.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\App.g.cs</td><td>1</td><td/></row>
-		<row><td>app.g.i.cs</td><td>ISX_DEFAULTCOMPONENT93</td><td>APPGI~1.CS|App.g.i.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\App.g.i.cs</td><td>1</td><td/></row>
 		<row><td>app.xaml</td><td>ISX_DEFAULTCOMPONENT83</td><td>APP~1.XAM|App.xaml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\App.xaml</td><td>1</td><td/></row>
 		<row><td>app.xaml.cs</td><td>ISX_DEFAULTCOMPONENT83</td><td>APPXAM~1.CS|App.xaml.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\App.xaml.cs</td><td>1</td><td/></row>
 		<row><td>applicationicon.jpg</td><td>ISX_DEFAULTCOMPONENT83</td><td>APPLIC~1.JPG|ApplicationIcon.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\ApplicationIcon.jpg</td><td>1</td><td/></row>
-		<row><td>applicationicon.jpg1</td><td>ISX_DEFAULTCOMPONENT86</td><td>APPLIC~1.JPG|ApplicationIcon.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\ApplicationIcon.jpg</td><td>1</td><td/></row>
-		<row><td>appmanifest.xaml</td><td>ISX_DEFAULTCOMPONENT86</td><td>APPMAN~1.XAM|AppManifest.xaml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\AppManifest.xaml</td><td>1</td><td/></row>
 		<row><td>appmanifest.xml</td><td>ISX_DEFAULTCOMPONENT132</td><td>APPMAN~1.XML|AppManifest.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Properties\AppManifest.xml</td><td>1</td><td/></row>
 		<row><td>assemblyinfo.cs</td><td>ISX_DEFAULTCOMPONENT50</td><td>ASSEMB~1.CS|AssemblyInfo.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\Properties\AssemblyInfo.cs</td><td>1</td><td/></row>
 		<row><td>assemblyinfo.cs1</td><td>ISX_DEFAULTCOMPONENT76</td><td>ASSEMB~1.CS|AssemblyInfo.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Properties\AssemblyInfo.cs</td><td>1</td><td/></row>
@@ -2606,52 +2441,34 @@
 		<row><td>assimp.dll</td><td>Assimp.dll</td><td>Assimp.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\Dlls\Assimp.dll</td><td>1</td><td/></row>
 		<row><td>assimp.interop.dll</td><td>Assimp.Interop.dll</td><td>ASSIMP~1.DLL|Assimp.Interop.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\Dlls\Assimp.Interop.dll</td><td>1</td><td/></row>
 		<row><td>background.jpg</td><td>ISX_DEFAULTCOMPONENT83</td><td>BACKGR~1.JPG|Background.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Background.jpg</td><td>1</td><td/></row>
-		<row><td>background.jpg1</td><td>ISX_DEFAULTCOMPONENT86</td><td>BACKGR~1.JPG|Background.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Background.jpg</td><td>1</td><td/></row>
 		<row><td>ball.x</td><td>ISX_DEFAULTCOMPONENT105</td><td>ball.X</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Model\ball.X</td><td>1</td><td/></row>
 		<row><td>ball.x1</td><td>ISX_DEFAULTCOMPONENT79</td><td>ball.X</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0Content\Model\ball.X</td><td>1</td><td/></row>
 		<row><td>ball.x2</td><td>ISX_DEFAULTCOMPONENT164</td><td>ball.X</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Model\ball.X</td><td>1</td><td/></row>
 		<row><td>ball.xnb</td><td>ISX_DEFAULTCOMPONENT9</td><td>ball.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Model\ball.xnb</td><td>1</td><td/></row>
-		<row><td>ball.xnb1</td><td>ISX_DEFAULTCOMPONENT88</td><td>ball.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Model\ball.xnb</td><td>1</td><td/></row>
-		<row><td>ball.xnb2</td><td>ISX_DEFAULTCOMPONENT148</td><td>ball.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Model\ball.xnb</td><td>1</td><td/></row>
-		<row><td>ball_0.xml</td><td>ISX_DEFAULTCOMPONENT155</td><td>ball_0.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\obj\Windows Phone\Release\Model\ball_0.xml</td><td>1</td><td/></row>
 		<row><td>ballthrowbepu.cs</td><td>ISX_DEFAULTCOMPONENT133</td><td>BALLTH~1.CS|BallThrowBepu.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\BallThrowBepu.cs</td><td>1</td><td/></row>
 		<row><td>ballthrowphysx28.cs</td><td>ISX_DEFAULTCOMPONENT42</td><td>BALLTH~1.CS|BallThrowPhysx28.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\Demo9.8 Physx 2.8.x\BallThrowPhysx28.cs</td><td>1</td><td/></row>
 		<row><td>base.jpg</td><td>ISX_DEFAULTCOMPONENT171</td><td>base.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\base.jpg</td><td>1</td><td/></row>
-		<row><td>base.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>base.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\base.xnb</td><td>1</td><td/></row>
-		<row><td>base.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>base.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\base.xnb</td><td>1</td><td/></row>
 		<row><td>baseobject.cs</td><td>ISX_DEFAULTCOMPONENT67</td><td>BASEOB~1.CS|BaseObject.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo9 - AI\Behavior Tree\BaseObject.cs</td><td>1</td><td/></row>
 		<row><td>baseobject.cs1</td><td>ISX_DEFAULTCOMPONENT137</td><td>BASEOB~1.CS|BaseObject.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\3D Demos\Behaviors\BaseObject.cs</td><td>1</td><td/></row>
-		<row><td>basic2d.g.cs</td><td>ISX_DEFAULTCOMPONENT93</td><td>BASIC2~1.CS|Basic2D.g.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\Basic2D.g.cs</td><td>1</td><td/></row>
-		<row><td>basic2d.g.i.cs</td><td>ISX_DEFAULTCOMPONENT93</td><td>BASIC2~1.CS|Basic2D.g.i.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\Basic2D.g.i.cs</td><td>1</td><td/></row>
 		<row><td>basic2d.xaml</td><td>ISX_DEFAULTCOMPONENT83</td><td>BASIC2~1.XAM|Basic2D.xaml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Basic2D.xaml</td><td>1</td><td/></row>
 		<row><td>basic2d.xaml.cs</td><td>ISX_DEFAULTCOMPONENT83</td><td>BASIC2~1.CS|Basic2D.xaml.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Basic2D.xaml.cs</td><td>1</td><td/></row>
-		<row><td>basic2dcamera.g.cs</td><td>ISX_DEFAULTCOMPONENT93</td><td>BASIC2~1.CS|Basic2DCamera.g.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\Basic2DCamera.g.cs</td><td>1</td><td/></row>
-		<row><td>basic2dcamera.g.i.cs</td><td>ISX_DEFAULTCOMPONENT93</td><td>BASIC2~1.CS|Basic2DCamera.g.i.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\Basic2DCamera.g.i.cs</td><td>1</td><td/></row>
 		<row><td>basic2dcamera.xaml</td><td>ISX_DEFAULTCOMPONENT83</td><td>BASIC2~1.XAM|Basic2DCamera.xaml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Basic2DCamera.xaml</td><td>1</td><td/></row>
 		<row><td>basic2dcamera.xaml.cs</td><td>ISX_DEFAULTCOMPONENT83</td><td>BASIC2~1.CS|Basic2DCamera.xaml.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Basic2DCamera.xaml.cs</td><td>1</td><td/></row>
 		<row><td>basic2dcamerascreen.cs</td><td>ISX_DEFAULTCOMPONENT134</td><td>BASIC2~1.CS|Basic2DCameraScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\2D Demos\Basic2DCameraScreen.cs</td><td>1</td><td/></row>
 		<row><td>basic2dcamerascreen.cs1</td><td>ISX_DEFAULTCOMPONENT118</td><td>BASIC2~1.CS|Basic2DCameraScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplate\2D Demos\Basic2DCameraScreen.cs</td><td>1</td><td/></row>
 		<row><td>basic2dparticle.cs</td><td>ISX_DEFAULTCOMPONENT118</td><td>BASIC2~1.CS|Basic2DParticle.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplate\2D Demos\Basic2DParticle.cs</td><td>1</td><td/></row>
-		<row><td>basic2dparticles.g.cs</td><td>ISX_DEFAULTCOMPONENT93</td><td>BASIC2~1.CS|Basic2DParticles.g.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\Basic2DParticles.g.cs</td><td>1</td><td/></row>
-		<row><td>basic2dparticles.g.i.cs</td><td>ISX_DEFAULTCOMPONENT93</td><td>BASIC2~1.CS|Basic2DParticles.g.i.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\Basic2DParticles.g.i.cs</td><td>1</td><td/></row>
 		<row><td>basic2dparticles.xaml</td><td>ISX_DEFAULTCOMPONENT83</td><td>BASIC2~1.XAM|Basic2DParticles.xaml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Basic2DParticles.xaml</td><td>1</td><td/></row>
 		<row><td>basic2dparticles.xaml.cs</td><td>ISX_DEFAULTCOMPONENT83</td><td>BASIC2~1.CS|Basic2DParticles.xaml.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Basic2DParticles.xaml.cs</td><td>1</td><td/></row>
 		<row><td>basic2dparticlescreen.cs</td><td>ISX_DEFAULTCOMPONENT134</td><td>BASIC2~1.CS|Basic2DParticleScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\2D Demos\Basic2DParticleScreen.cs</td><td>1</td><td/></row>
-		<row><td>basic2dphysic.g.cs</td><td>ISX_DEFAULTCOMPONENT93</td><td>BASIC2~1.CS|Basic2DPhysic.g.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\Basic2DPhysic.g.cs</td><td>1</td><td/></row>
-		<row><td>basic2dphysic.g.i.cs</td><td>ISX_DEFAULTCOMPONENT93</td><td>BASIC2~1.CS|Basic2DPhysic.g.i.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\Basic2DPhysic.g.i.cs</td><td>1</td><td/></row>
 		<row><td>basic2dphysic.xaml</td><td>ISX_DEFAULTCOMPONENT83</td><td>BASIC2~1.XAM|Basic2DPhysic.xaml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Basic2DPhysic.xaml</td><td>1</td><td/></row>
 		<row><td>basic2dphysic.xaml.cs</td><td>ISX_DEFAULTCOMPONENT83</td><td>BASIC2~1.CS|Basic2DPhysic.xaml.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Basic2DPhysic.xaml.cs</td><td>1</td><td/></row>
 		<row><td>basic2dphysicscreen.cs</td><td>ISX_DEFAULTCOMPONENT134</td><td>BASIC2~1.CS|Basic2DPhysicScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\2D Demos\Basic2DPhysicScreen.cs</td><td>1</td><td/></row>
 		<row><td>basic2dphysicscreen.cs1</td><td>ISX_DEFAULTCOMPONENT118</td><td>BASIC2~1.CS|Basic2DPhysicScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplate\2D Demos\Basic2DPhysicScreen.cs</td><td>1</td><td/></row>
-		<row><td>basic2dpositioning.g.cs</td><td>ISX_DEFAULTCOMPONENT93</td><td>BASIC2~1.CS|Basic2DPositioning.g.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\Basic2DPositioning.g.cs</td><td>1</td><td/></row>
-		<row><td>basic2dpositioning.g.i.cs</td><td>ISX_DEFAULTCOMPONENT93</td><td>BASIC2~1.CS|Basic2DPositioning.g.i.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\Basic2DPositioning.g.i.cs</td><td>1</td><td/></row>
 		<row><td>basic2dpositioning.xaml</td><td>ISX_DEFAULTCOMPONENT83</td><td>BASIC2~1.XAM|Basic2DPositioning.xaml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Basic2DPositioning.xaml</td><td>1</td><td/></row>
 		<row><td>basic2dpositioning.xaml.cs</td><td>ISX_DEFAULTCOMPONENT83</td><td>BASIC2~1.CS|Basic2DPositioning.xaml.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Basic2DPositioning.xaml.cs</td><td>1</td><td/></row>
 		<row><td>basic2dpositioningscreen.cs</td><td>ISX_DEFAULTCOMPONENT134</td><td>BASIC2~1.CS|Basic2DPositioningScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\2D Demos\Basic2DPositioningScreen.cs</td><td>1</td><td/></row>
 		<row><td>basic2dpositioningscreen.cs1</td><td>ISX_DEFAULTCOMPONENT118</td><td>BASIC2~1.CS|Basic2DPositioningScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplate\2D Demos\Basic2DPositioningScreen.cs</td><td>1</td><td/></row>
 		<row><td>basic2dscreen.cs</td><td>ISX_DEFAULTCOMPONENT134</td><td>BASIC2~1.CS|Basic2DScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\2D Demos\Basic2DScreen.cs</td><td>1</td><td/></row>
-		<row><td>basic2dsprite.g.cs</td><td>ISX_DEFAULTCOMPONENT93</td><td>BASIC2~1.CS|Basic2DSprite.g.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\Basic2DSprite.g.cs</td><td>1</td><td/></row>
-		<row><td>basic2dsprite.g.i.cs</td><td>ISX_DEFAULTCOMPONENT93</td><td>BASIC2~1.CS|Basic2DSprite.g.i.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\Basic2DSprite.g.i.cs</td><td>1</td><td/></row>
 		<row><td>basic2dsprite.xaml</td><td>ISX_DEFAULTCOMPONENT83</td><td>BASIC2~1.XAM|Basic2DSprite.xaml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Basic2DSprite.xaml</td><td>1</td><td/></row>
 		<row><td>basic2dsprite.xaml.cs</td><td>ISX_DEFAULTCOMPONENT83</td><td>BASIC2~1.CS|Basic2DSprite.xaml.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Basic2DSprite.xaml.cs</td><td>1</td><td/></row>
 		<row><td>basic2dspritescreen.cs</td><td>ISX_DEFAULTCOMPONENT134</td><td>BASIC2~1.CS|Basic2DSpriteScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\2D Demos\Basic2DSpriteScreen.cs</td><td>1</td><td/></row>
@@ -2664,13 +2481,9 @@
 		<row><td>behaviors.jpg</td><td>ISX_DEFAULTCOMPONENT83</td><td>BEHAVI~1.JPG|Behaviors.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Behaviors.jpg</td><td>1</td><td/></row>
 		<row><td>behaviortreescreen.cs</td><td>ISX_DEFAULTCOMPONENT67</td><td>BEHAVI~1.CS|BehaviorTreeScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo9 - AI\Behavior Tree\BehaviorTreeScreen.cs</td><td>1</td><td/></row>
 		<row><td>behaviortreescreen.cs1</td><td>ISX_DEFAULTCOMPONENT137</td><td>BEHAVI~1.CS|BehaviorTreeScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\3D Demos\Behaviors\BehaviorTreeScreen.cs</td><td>1</td><td/></row>
-		<row><td>bepuphysics.dll</td><td>BEPUphysics.dll</td><td>BEPUPH~1.DLL|BEPUphysics.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\BEPUphysics.dll</td><td>1</td><td/></row>
 		<row><td>bepuphysics.dll1</td><td>BEPUphysics.dll1</td><td>BEPUPH~1.DLL|BEPUphysics.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\PloobsEngineWindowsPhone\BEPUphysics.dll</td><td>1</td><td/></row>
-		<row><td>bepuphysics.dll2</td><td>BEPUphysics.dll2</td><td>BEPUPH~1.DLL|BEPUphysics.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\BEPUphysics.dll</td><td>1</td><td/></row>
 		<row><td>bepuphysics.dll3</td><td>BEPUphysics.dll3</td><td>BEPUPH~1.DLL|BEPUphysics.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\Phone7\BEPUphysics.dll</td><td>1</td><td/></row>
-		<row><td>bepuphysics.xml</td><td>ISX_DEFAULTCOMPONENT86</td><td>BEPUPH~1.XML|BEPUphysics.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\BEPUphysics.xml</td><td>1</td><td/></row>
 		<row><td>bepuphysics.xml1</td><td>ISX_DEFAULTCOMPONENT96</td><td>BEPUPH~1.XML|BEPUphysics.XML</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\PloobsEngineWindowsPhone\BEPUphysics.XML</td><td>1</td><td/></row>
-		<row><td>bepuphysics.xml2</td><td>ISX_DEFAULTCOMPONENT146</td><td>BEPUPH~1.XML|BEPUphysics.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\BEPUphysics.xml</td><td>1</td><td/></row>
 		<row><td>bepuphysics.xml3</td><td>ISX_DEFAULTCOMPONENT172</td><td>BEPUPH~1.XML|BEPUphysics.XML</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\Phone7\BEPUphysics.XML</td><td>1</td><td/></row>
 		<row><td>bilboard3d.cs</td><td>ISX_DEFAULTCOMPONENT121</td><td>BILBOA~1.CS|Bilboard3D.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplate\Bilboard\Bilboard3D.cs</td><td>1</td><td/></row>
 		<row><td>block.x</td><td>ISX_DEFAULTCOMPONENT105</td><td>block.X</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Model\block.X</td><td>1</td><td/></row>
@@ -2681,16 +2494,8 @@
 		<row><td>border.cs</td><td>ISX_DEFAULTCOMPONENT135</td><td>Border.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\2D Demos\Helpers\Border.cs</td><td>1</td><td/></row>
 		<row><td>border.cs1</td><td>ISX_DEFAULTCOMPONENT119</td><td>Border.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplate\2D Demos\Helpers\Border.cs</td><td>1</td><td/></row>
 		<row><td>box_occlusion.jpg</td><td>ISX_DEFAULTCOMPONENT171</td><td>BOX_OC~1.JPG|box_occlusion.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\box_occlusion.jpg</td><td>1</td><td/></row>
-		<row><td>box_occlusion.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>BOX_OC~1.XNB|box_occlusion.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\box_occlusion.xnb</td><td>1</td><td/></row>
-		<row><td>box_occlusion.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>BOX_OC~1.XNB|box_occlusion.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\box_occlusion.xnb</td><td>1</td><td/></row>
-		<row><td>box_occlusion_0.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>BOX_OC~1.XNB|box_occlusion_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\box_occlusion_0.xnb</td><td>1</td><td/></row>
-		<row><td>box_occlusion_0.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>BOX_OC~1.XNB|box_occlusion_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\box_occlusion_0.xnb</td><td>1</td><td/></row>
 		<row><td>boxcloth28screen.cs</td><td>ISX_DEFAULTCOMPONENT45</td><td>BOXCLO~1.CS|BoxCloth28Screen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\Demo9.8 Physx 2.8.x\Cloth\Screens\BoxCloth28Screen.cs</td><td>1</td><td/></row>
 		<row><td>brown_metal.jpg</td><td>ISX_DEFAULTCOMPONENT171</td><td>BROWN-~1.JPG|brown-metal.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\brown-metal.jpg</td><td>1</td><td/></row>
-		<row><td>brown_metal.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>BROWN-~1.XNB|brown-metal.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\brown-metal.xnb</td><td>1</td><td/></row>
-		<row><td>brown_metal.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>BROWN-~1.XNB|brown-metal.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\brown-metal.xnb</td><td>1</td><td/></row>
-		<row><td>brown_metal_0.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>BROWN-~1.XNB|brown-metal_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\brown-metal_0.xnb</td><td>1</td><td/></row>
-		<row><td>brown_metal_0.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>BROWN-~1.XNB|brown-metal_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\brown-metal_0.xnb</td><td>1</td><td/></row>
 		<row><td>bumpspeculardemo.cs</td><td>ISX_DEFAULTCOMPONENT24</td><td>BUMPSP~1.CS|BumpSpecularDemo.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\Demo2 - Materials\BumpSpecularDemo.cs</td><td>1</td><td/></row>
 		<row><td>busy.cur</td><td>ISX_DEFAULTCOMPONENT110</td><td>Busy.cur</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Skins\Default\Cursors\Busy.cur</td><td>1</td><td/></row>
 		<row><td>busy.xnb</td><td>ISX_DEFAULTCOMPONENT14</td><td>Busy.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Skins\Default\Cursors\Busy.xnb</td><td>1</td><td/></row>
@@ -2698,7 +2503,6 @@
 		<row><td>button.xnb</td><td>ISX_DEFAULTCOMPONENT16</td><td>Button.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Skins\Default\Images\Button.xnb</td><td>1</td><td/></row>
 		<row><td>bye.wav</td><td>ISX_DEFAULTCOMPONENT113</td><td>bye.wav</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Songs\bye.wav</td><td>1</td><td/></row>
 		<row><td>bye.xnb</td><td>ISX_DEFAULTCOMPONENT17</td><td>bye.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Songs\bye.xnb</td><td>1</td><td/></row>
-		<row><td>cachefile__8879cc64_f366_4dd</td><td>ISX_DEFAULTCOMPONENT154</td><td>CACHEF~1.TXT|cachefile-{8879CC64-F366-4DD4-ABDB-4CB24F732D37}-targetpath.txt</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\obj\Windows Phone\Release\cachefile-{8879CC64-F366-4DD4-ABDB-4CB24F732D37}-targetpath.txt</td><td>1</td><td/></row>
 		<row><td>camera2d.jpg</td><td>ISX_DEFAULTCOMPONENT83</td><td>camera2d.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\camera2d.jpg</td><td>1</td><td/></row>
 		<row><td>camerapathscreen.cs</td><td>ISX_DEFAULTCOMPONENT62</td><td>CAMERA~1.CS|CameraPathScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo5 - Cameras\CameraPathScreen.cs</td><td>1</td><td/></row>
 		<row><td>camerascreens.cs</td><td>ISX_DEFAULTCOMPONENT62</td><td>CAMERA~1.CS|CameraScreens.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo5 - Cameras\CameraScreens.cs</td><td>1</td><td/></row>
@@ -2707,31 +2511,15 @@
 		<row><td>cena.x1</td><td>ISX_DEFAULTCOMPONENT105</td><td>cena.X</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Model\cena.X</td><td>1</td><td/></row>
 		<row><td>cena.xml</td><td>ISX_DEFAULTCOMPONENT107</td><td>cena.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\ModelInfos\cena.xml</td><td>1</td><td/></row>
 		<row><td>cena.xml1</td><td>ISX_DEFAULTCOMPONENT11</td><td>cena.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\ModelInfos\cena.xml</td><td>1</td><td/></row>
-		<row><td>cena.xnb</td><td>ISX_DEFAULTCOMPONENT88</td><td>cena.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Model\cena.xnb</td><td>1</td><td/></row>
-		<row><td>cena.xnb1</td><td>ISX_DEFAULTCOMPONENT148</td><td>cena.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Model\cena.xnb</td><td>1</td><td/></row>
 		<row><td>cena.xnb2</td><td>ISX_DEFAULTCOMPONENT9</td><td>cena.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Model\cena.xnb</td><td>1</td><td/></row>
-		<row><td>cena_0.xml</td><td>ISX_DEFAULTCOMPONENT155</td><td>cena_0.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\obj\Windows Phone\Release\Model\cena_0.xml</td><td>1</td><td/></row>
 		<row><td>cenario.x</td><td>ISX_DEFAULTCOMPONENT105</td><td>cenario.X</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Model\cenario.X</td><td>1</td><td/></row>
 		<row><td>cenario.x1</td><td>ISX_DEFAULTCOMPONENT79</td><td>cenario.X</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0Content\Model\cenario.X</td><td>1</td><td/></row>
 		<row><td>cenario.x2</td><td>ISX_DEFAULTCOMPONENT164</td><td>cenario.X</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Model\cenario.X</td><td>1</td><td/></row>
 		<row><td>cenario.x3</td><td>ISX_DEFAULTCOMPONENT128</td><td>cenario.X</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplateContent\Model\cenario.X</td><td>1</td><td/></row>
 		<row><td>cenario.xnb</td><td>ISX_DEFAULTCOMPONENT9</td><td>cenario.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Model\cenario.xnb</td><td>1</td><td/></row>
-		<row><td>cenario.xnb1</td><td>ISX_DEFAULTCOMPONENT88</td><td>cenario.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Model\cenario.xnb</td><td>1</td><td/></row>
-		<row><td>cenario.xnb2</td><td>ISX_DEFAULTCOMPONENT148</td><td>cenario.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Model\cenario.xnb</td><td>1</td><td/></row>
-		<row><td>cenario_0.xml</td><td>ISX_DEFAULTCOMPONENT155</td><td>CENARI~1.XML|cenario_0.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\obj\Windows Phone\Release\Model\cenario_0.xml</td><td>1</td><td/></row>
 		<row><td>cerca_curva_diffuse.jpg</td><td>ISX_DEFAULTCOMPONENT171</td><td>CERCA_~1.JPG|cerca_curva_diffuse.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\cerca_curva_diffuse.jpg</td><td>1</td><td/></row>
-		<row><td>cerca_curva_diffuse.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>CERCA_~1.XNB|cerca_curva_diffuse.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\cerca_curva_diffuse.xnb</td><td>1</td><td/></row>
-		<row><td>cerca_curva_diffuse.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>CERCA_~1.XNB|cerca_curva_diffuse.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\cerca_curva_diffuse.xnb</td><td>1</td><td/></row>
 		<row><td>cerca_diffuse.jpg</td><td>ISX_DEFAULTCOMPONENT171</td><td>CERCA_~1.JPG|CERCA_DIFFUSE.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\CERCA_DIFFUSE.jpg</td><td>1</td><td/></row>
-		<row><td>cerca_diffuse.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>CERCA_~1.XNB|CERCA_DIFFUSE.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\CERCA_DIFFUSE.xnb</td><td>1</td><td/></row>
-		<row><td>cerca_diffuse.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>CERCA_~1.XNB|CERCA_DIFFUSE.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\CERCA_DIFFUSE.xnb</td><td>1</td><td/></row>
-		<row><td>cerca_diffuse_0.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>CERCA_~1.XNB|CERCA_DIFFUSE_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\CERCA_DIFFUSE_0.xnb</td><td>1</td><td/></row>
-		<row><td>cerca_diffuse_0.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>CERCA_~1.XNB|CERCA_DIFFUSE_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\CERCA_DIFFUSE_0.xnb</td><td>1</td><td/></row>
 		<row><td>cerca_ponte_diffuse.jpg</td><td>ISX_DEFAULTCOMPONENT171</td><td>CERCA_~1.JPG|cerca_ponte_diffuse.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\cerca_ponte_diffuse.jpg</td><td>1</td><td/></row>
-		<row><td>cerca_ponte_diffuse.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>CERCA_~1.XNB|cerca_ponte_diffuse.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\cerca_ponte_diffuse.xnb</td><td>1</td><td/></row>
-		<row><td>cerca_ponte_diffuse.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>CERCA_~1.XNB|cerca_ponte_diffuse.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\cerca_ponte_diffuse.xnb</td><td>1</td><td/></row>
-		<row><td>cerca_ponte_diffuse_0.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>CERCA_~1.XNB|cerca_ponte_diffuse_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\cerca_ponte_diffuse_0.xnb</td><td>1</td><td/></row>
-		<row><td>cerca_ponte_diffuse_0.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>CERCA_~1.XNB|cerca_ponte_diffuse_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\cerca_ponte_diffuse_0.xnb</td><td>1</td><td/></row>
 		<row><td>changingmessagesscreen.cs</td><td>ISX_DEFAULTCOMPONENT75</td><td>CHANGI~1.CS|ChangingMessagesScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demos Extras\ChangingMessagesScreen.cs</td><td>1</td><td/></row>
 		<row><td>chao.jpg</td><td>ISX_DEFAULTCOMPONENT114</td><td>chao.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Textures\chao.jpg</td><td>1</td><td/></row>
 		<row><td>chao.xnb</td><td>ISX_DEFAULTCOMPONENT69</td><td>chao.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Textures\chao.xnb</td><td>1</td><td/></row>
@@ -2748,17 +2536,12 @@
 		<row><td>cilos.x</td><td>ISX_DEFAULTCOMPONENT105</td><td>cilos.X</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Model\cilos.X</td><td>1</td><td/></row>
 		<row><td>cilos.x1</td><td>ISX_DEFAULTCOMPONENT164</td><td>cilos.x</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Model\cilos.x</td><td>1</td><td/></row>
 		<row><td>cilos.xnb</td><td>ISX_DEFAULTCOMPONENT9</td><td>cilos.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Model\cilos.xnb</td><td>1</td><td/></row>
-		<row><td>cilos.xnb1</td><td>ISX_DEFAULTCOMPONENT88</td><td>cilos.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Model\cilos.xnb</td><td>1</td><td/></row>
-		<row><td>cilos.xnb2</td><td>ISX_DEFAULTCOMPONENT148</td><td>cilos.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Model\cilos.xnb</td><td>1</td><td/></row>
-		<row><td>cilos_0.xml</td><td>ISX_DEFAULTCOMPONENT155</td><td>cilos_0.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\obj\Windows Phone\Release\Model\cilos_0.xml</td><td>1</td><td/></row>
 		<row><td>clothmaterial.cs</td><td>ISX_DEFAULTCOMPONENT44</td><td>CLOTHM~1.CS|ClothMaterial.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\Demo9.8 Physx 2.8.x\Cloth\ClothMaterial.cs</td><td>1</td><td/></row>
 		<row><td>clothmodel.cs</td><td>ISX_DEFAULTCOMPONENT44</td><td>CLOTHM~1.CS|ClothModel.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\Demo9.8 Physx 2.8.x\Cloth\ClothModel.cs</td><td>1</td><td/></row>
 		<row><td>cloudlight.tga</td><td>ISX_DEFAULTCOMPONENT114</td><td>CLOUDL~1.TGA|CloudLight.tga</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Textures\CloudLight.tga</td><td>1</td><td/></row>
 		<row><td>cloudlight.tga1</td><td>ISX_DEFAULTCOMPONENT171</td><td>CLOUDL~1.TGA|CloudLight.tga</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\CloudLight.tga</td><td>1</td><td/></row>
 		<row><td>cloudlight.tga2</td><td>ISX_DEFAULTCOMPONENT130</td><td>CLOUDL~1.TGA|CloudLight.tga</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplateContent\Textures\CloudLight.tga</td><td>1</td><td/></row>
 		<row><td>cloudlight.xnb</td><td>ISX_DEFAULTCOMPONENT69</td><td>CLOUDL~1.XNB|CloudLight.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Textures\CloudLight.xnb</td><td>1</td><td/></row>
-		<row><td>cloudlight.xnb1</td><td>ISX_DEFAULTCOMPONENT89</td><td>CLOUDL~1.XNB|CloudLight.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\CloudLight.xnb</td><td>1</td><td/></row>
-		<row><td>cloudlight.xnb2</td><td>ISX_DEFAULTCOMPONENT149</td><td>CLOUDL~1.XNB|CloudLight.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\CloudLight.xnb</td><td>1</td><td/></row>
 		<row><td>coin.png</td><td>ISX_DEFAULTCOMPONENT114</td><td>coin.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Textures\coin.png</td><td>1</td><td/></row>
 		<row><td>coin.xnb</td><td>ISX_DEFAULTCOMPONENT69</td><td>coin.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Textures\coin.xnb</td><td>1</td><td/></row>
 		<row><td>colladaformatscreen.cs</td><td>ISX_DEFAULTCOMPONENT125</td><td>COLLAD~1.CS|ColladaFormatScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplate\TemplateScreens\ColladaFormatScreen.cs</td><td>1</td><td/></row>
@@ -2772,7 +2555,6 @@
 		<row><td>combobox.png</td><td>ISX_DEFAULTCOMPONENT112</td><td>ComboBox.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Skins\Default\Images\ComboBox.png</td><td>1</td><td/></row>
 		<row><td>combobox.xnb</td><td>ISX_DEFAULTCOMPONENT16</td><td>ComboBox.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Skins\Default\Images\ComboBox.xnb</td><td>1</td><td/></row>
 		<row><td>constraintscreen.cs</td><td>ISX_DEFAULTCOMPONENT75</td><td>CONSTR~1.CS|ConstraintScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demos Extras\ConstraintScreen.cs</td><td>1</td><td/></row>
-		<row><td>contentpipeline__8879cc64_f3</td><td>ISX_DEFAULTCOMPONENT154</td><td>CONTEN~1.XML|ContentPipeline-{8879CC64-F366-4DD4-ABDB-4CB24F732D37}.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\obj\Windows Phone\Release\ContentPipeline-{8879CC64-F366-4DD4-ABDB-4CB24F732D37}.xml</td><td>1</td><td/></row>
 		<row><td>contextmenu.png</td><td>ISX_DEFAULTCOMPONENT112</td><td>CONTEX~1.PNG|ContextMenu.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Skins\Default\Images\ContextMenu.png</td><td>1</td><td/></row>
 		<row><td>contextmenu.selection.png</td><td>ISX_DEFAULTCOMPONENT112</td><td>CONTEX~1.PNG|ContextMenu.Selection.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Skins\Default\Images\ContextMenu.Selection.png</td><td>1</td><td/></row>
 		<row><td>contextmenu.selection.xnb</td><td>ISX_DEFAULTCOMPONENT16</td><td>CONTEX~1.XNB|ContextMenu.Selection.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Skins\Default\Images\ContextMenu.Selection.xnb</td><td>1</td><td/></row>
@@ -2793,15 +2575,10 @@
 		<row><td>cubemap.dds</td><td>ISX_DEFAULTCOMPONENT114</td><td>cubeMap.dds</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Textures\cubeMap.dds</td><td>1</td><td/></row>
 		<row><td>cubemap.dds1</td><td>ISX_DEFAULTCOMPONENT171</td><td>cubeMap.dds</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\cubeMap.dds</td><td>1</td><td/></row>
 		<row><td>cubemap.xnb</td><td>ISX_DEFAULTCOMPONENT69</td><td>cubeMap.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Textures\cubeMap.xnb</td><td>1</td><td/></row>
-		<row><td>cubemap.xnb1</td><td>ISX_DEFAULTCOMPONENT89</td><td>cubeMap.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\cubeMap.xnb</td><td>1</td><td/></row>
-		<row><td>cubemap.xnb2</td><td>ISX_DEFAULTCOMPONENT149</td><td>cubeMap.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\cubeMap.xnb</td><td>1</td><td/></row>
 		<row><td>cubo.x</td><td>ISX_DEFAULTCOMPONENT105</td><td>cubo.X</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Model\cubo.X</td><td>1</td><td/></row>
 		<row><td>cubo.x1</td><td>ISX_DEFAULTCOMPONENT79</td><td>cubo.X</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0Content\Model\cubo.X</td><td>1</td><td/></row>
 		<row><td>cubo.x2</td><td>ISX_DEFAULTCOMPONENT164</td><td>cubo.X</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Model\cubo.X</td><td>1</td><td/></row>
 		<row><td>cubo.xnb</td><td>ISX_DEFAULTCOMPONENT9</td><td>cubo.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Model\cubo.xnb</td><td>1</td><td/></row>
-		<row><td>cubo.xnb1</td><td>ISX_DEFAULTCOMPONENT88</td><td>cubo.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Model\cubo.xnb</td><td>1</td><td/></row>
-		<row><td>cubo.xnb2</td><td>ISX_DEFAULTCOMPONENT148</td><td>cubo.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Model\cubo.xnb</td><td>1</td><td/></row>
-		<row><td>cubo_0.xml</td><td>ISX_DEFAULTCOMPONENT155</td><td>cubo_0.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\obj\Windows Phone\Release\Model\cubo_0.xml</td><td>1</td><td/></row>
 		<row><td>cudart32_30_9.dll</td><td>cudart32_30_9.dll</td><td>CUDART~1.DLL|cudart32_30_9.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\cudart32_30_9.dll</td><td>1</td><td/></row>
 		<row><td>cudart32_30_9.dll1</td><td>cudart32_30_9.dll1</td><td>CUDART~1.DLL|cudart32_30_9.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\cudart32_30_9.dll</td><td>1</td><td/></row>
 		<row><td>cylindricbillboardcomponent.</td><td>ISX_DEFAULTCOMPONENT121</td><td>CYLIND~1.CS|CylindricBillboardComponent.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplate\Bilboard\CylindricBillboardComponent.cs</td><td>1</td><td/></row>
@@ -2824,21 +2601,14 @@
 		<row><td>demoshomescreen.cs</td><td>ISX_DEFAULTCOMPONENT21</td><td>DEMOSH~1.CS|DemosHomeScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\DemosHomeScreen.cs</td><td>1</td><td/></row>
 		<row><td>demoshomescreen.cs1</td><td>ISX_DEFAULTCOMPONENT54</td><td>DEMOSH~1.CS|DemosHomeScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\DemosHomeScreen.cs</td><td>1</td><td/></row>
 		<row><td>demoshomescreen.cs2</td><td>ISX_DEFAULTCOMPONENT117</td><td>DEMOSH~1.CS|DemosHomeScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplate\DemosHomeScreen.cs</td><td>1</td><td/></row>
-		<row><td>designtimeresolveassemblyref</td><td>ISX_DEFAULTCOMPONENT93</td><td>DESIGN~1.CAC|DesignTimeResolveAssemblyReferencesInput.cache</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\DesignTimeResolveAssemblyReferencesInput.cache</td><td>1</td><td/></row>
-		<row><td>designtimeresolveassemblyref1</td><td>ISX_DEFAULTCOMPONENT154</td><td>DESIGN~1.CAC|DesignTimeResolveAssemblyReferencesInput.cache</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\obj\Windows Phone\Release\DesignTimeResolveAssemblyReferencesInput.cache</td><td>1</td><td/></row>
-		<row><td>designtimeresolveassemblyref2</td><td>ISX_DEFAULTCOMPONENT166</td><td>DESIGN~1.CAC|DesignTimeResolveAssemblyReferencesInput.cache</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache</td><td>1</td><td/></row>
 		<row><td>dguiscreen.cs</td><td>ISX_DEFAULTCOMPONENT33</td><td>DGUISC~1.CS|DGUIScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\Demo8 - GUI\DGUIScreen.cs</td><td>1</td><td/></row>
 		<row><td>diagonalleft.cur</td><td>ISX_DEFAULTCOMPONENT110</td><td>DIAGON~1.CUR|DiagonalLeft.cur</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Skins\Default\Cursors\DiagonalLeft.cur</td><td>1</td><td/></row>
 		<row><td>diagonalleft.xnb</td><td>ISX_DEFAULTCOMPONENT14</td><td>DIAGON~1.XNB|DiagonalLeft.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Skins\Default\Cursors\DiagonalLeft.xnb</td><td>1</td><td/></row>
 		<row><td>diagonalright.cur</td><td>ISX_DEFAULTCOMPONENT110</td><td>DIAGON~1.CUR|DiagonalRight.cur</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Skins\Default\Cursors\DiagonalRight.cur</td><td>1</td><td/></row>
 		<row><td>diagonalright.xnb</td><td>ISX_DEFAULTCOMPONENT14</td><td>DIAGON~1.XNB|DiagonalRight.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Skins\Default\Cursors\DiagonalRight.xnb</td><td>1</td><td/></row>
-		<row><td>dpsfphone.dll</td><td>DPSFPhone.dll</td><td>DPSFPH~1.DLL|DPSFPhone.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\DPSFPhone.dll</td><td>1</td><td/></row>
 		<row><td>dpsfphone.dll1</td><td>DPSFPhone.dll1</td><td>DPSFPH~1.DLL|DPSFPhone.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\PloobsEngineWindowsPhone\DPSFPhone.dll</td><td>1</td><td/></row>
-		<row><td>dpsfphone.dll2</td><td>DPSFPhone.dll2</td><td>DPSFPH~1.DLL|DPSFPhone.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\DPSFPhone.dll</td><td>1</td><td/></row>
 		<row><td>dpsfphone.dll3</td><td>DPSFPhone.dll3</td><td>DPSFPH~1.DLL|DPSFPhone.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\Phone7\DPSFPhone.dll</td><td>1</td><td/></row>
-		<row><td>dpsfphone.xml</td><td>ISX_DEFAULTCOMPONENT86</td><td>DPSFPH~1.XML|DPSFPhone.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\DPSFPhone.xml</td><td>1</td><td/></row>
 		<row><td>dpsfphone.xml1</td><td>ISX_DEFAULTCOMPONENT96</td><td>DPSFPH~1.XML|DPSFPhone.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\PloobsEngineWindowsPhone\DPSFPhone.xml</td><td>1</td><td/></row>
-		<row><td>dpsfphone.xml2</td><td>ISX_DEFAULTCOMPONENT146</td><td>DPSFPH~1.XML|DPSFPhone.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\DPSFPhone.xml</td><td>1</td><td/></row>
 		<row><td>dpsfphone.xml3</td><td>ISX_DEFAULTCOMPONENT172</td><td>DPSFPH~1.XML|DPSFPhone.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\Phone7\DPSFPhone.xml</td><td>1</td><td/></row>
 		<row><td>duck.dae</td><td>ISX_DEFAULTCOMPONENT127</td><td>duck.dae</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplateContent\duck.dae</td><td>1</td><td/></row>
 		<row><td>duckcm.tga</td><td>ISX_DEFAULTCOMPONENT127</td><td>duckCM.tga</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplateContent\duckCM.tga</td><td>1</td><td/></row>
@@ -2848,13 +2618,7 @@
 		<row><td>dude.xnb1</td><td>ISX_DEFAULTCOMPONENT9</td><td>Dude.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Model\Dude.xnb</td><td>1</td><td/></row>
 		<row><td>dudesheet.png</td><td>ISX_DEFAULTCOMPONENT171</td><td>DUDESH~1.PNG|DudeSheet.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\DudeSheet.png</td><td>1</td><td/></row>
 		<row><td>dudesheet.png1</td><td>ISX_DEFAULTCOMPONENT130</td><td>DUDESH~1.PNG|DudeSheet.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplateContent\Textures\DudeSheet.png</td><td>1</td><td/></row>
-		<row><td>dudesheet.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>DUDESH~1.XNB|DudeSheet.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\DudeSheet.xnb</td><td>1</td><td/></row>
-		<row><td>dudesheet.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>DUDESH~1.XNB|DudeSheet.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\DudeSheet.xnb</td><td>1</td><td/></row>
 		<row><td>duto_occlusion_occlusion.jpg</td><td>ISX_DEFAULTCOMPONENT171</td><td>DUTO_O~1.JPG|duto_occlusion_occlusion.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\duto_occlusion_occlusion.jpg</td><td>1</td><td/></row>
-		<row><td>duto_occlusion_occlusion.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>DUTO_O~1.XNB|duto_occlusion_occlusion.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\duto_occlusion_occlusion.xnb</td><td>1</td><td/></row>
-		<row><td>duto_occlusion_occlusion.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>DUTO_O~1.XNB|duto_occlusion_occlusion.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\duto_occlusion_occlusion.xnb</td><td>1</td><td/></row>
-		<row><td>duto_occlusion_occlusion_0.x</td><td>ISX_DEFAULTCOMPONENT89</td><td>DUTO_O~1.XNB|duto_occlusion_occlusion_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\duto_occlusion_occlusion_0.xnb</td><td>1</td><td/></row>
-		<row><td>duto_occlusion_occlusion_0.x1</td><td>ISX_DEFAULTCOMPONENT149</td><td>DUTO_O~1.XNB|duto_occlusion_occlusion_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\duto_occlusion_occlusion_0.xnb</td><td>1</td><td/></row>
 		<row><td>dynamicenvmapscreen.cs</td><td>ISX_DEFAULTCOMPONENT125</td><td>DYNAMI~1.CS|DynamicEnvMapScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplate\TemplateScreens\DynamicEnvMapScreen.cs</td><td>1</td><td/></row>
 		<row><td>dynamicobjectsaver.cs</td><td>ISX_DEFAULTCOMPONENT65</td><td>DYNAMI~1.CS|DynamicObjectSaver.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo8 - Serialization\DynamicObjectSaver.cs</td><td>1</td><td/></row>
 		<row><td>dynenvmaterial.cs</td><td>ISX_DEFAULTCOMPONENT126</td><td>DYNENV~1.CS|DynEnvMaterial.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplate\TemplateScreens\helper\DynEnvMaterial.cs</td><td>1</td><td/></row>
@@ -2864,20 +2628,13 @@
 		<row><td>emtransparencyshader.fx</td><td>ISX_DEFAULTCOMPONENT104</td><td>EMTRAN~1.FX|EMTransparencySHADER.fx</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Effects\EMTransparencySHADER.fx</td><td>1</td><td/></row>
 		<row><td>emtransparencyshader.xnb</td><td>ISX_DEFAULTCOMPONENT8</td><td>EMTRAN~1.XNB|EMTransparencySHADER.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Effects\EMTransparencySHADER.xnb</td><td>1</td><td/></row>
 		<row><td>enemybeast.fbx</td><td>ISX_DEFAULTCOMPONENT164</td><td>ENEMYB~1.FBX|EnemyBeast.fbx</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Model\EnemyBeast.fbx</td><td>1</td><td/></row>
-		<row><td>enemybeast.xnb</td><td>ISX_DEFAULTCOMPONENT88</td><td>ENEMYB~1.XNB|EnemyBeast.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Model\EnemyBeast.xnb</td><td>1</td><td/></row>
-		<row><td>enemybeast.xnb1</td><td>ISX_DEFAULTCOMPONENT148</td><td>ENEMYB~1.XNB|EnemyBeast.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Model\EnemyBeast.xnb</td><td>1</td><td/></row>
-		<row><td>enemybeast_0.xml</td><td>ISX_DEFAULTCOMPONENT155</td><td>ENEMYB~1.XML|EnemyBeast_0.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\obj\Windows Phone\Release\Model\EnemyBeast_0.xml</td><td>1</td><td/></row>
 		<row><td>enemybeastdiffuse.jpg</td><td>ISX_DEFAULTCOMPONENT171</td><td>ENEMYB~1.JPG|EnemyBeastDiffuse.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\EnemyBeastDiffuse.jpg</td><td>1</td><td/></row>
-		<row><td>enemybeastdiffuse.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>ENEMYB~1.XNB|EnemyBeastDiffuse.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\EnemyBeastDiffuse.xnb</td><td>1</td><td/></row>
-		<row><td>enemybeastdiffuse.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>ENEMYB~1.XNB|EnemyBeastDiffuse.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\EnemyBeastDiffuse.xnb</td><td>1</td><td/></row>
 		<row><td>engine_diff_tex.tga</td><td>ISX_DEFAULTCOMPONENT105</td><td>ENGINE~1.TGA|engine_diff_tex.tga</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Model\engine_diff_tex.tga</td><td>1</td><td/></row>
 		<row><td>engine_diff_tex.xnb</td><td>ISX_DEFAULTCOMPONENT9</td><td>ENGINE~1.XNB|engine_diff_tex.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Model\engine_diff_tex.xnb</td><td>1</td><td/></row>
 		<row><td>engine_diff_tex_0.xnb</td><td>ISX_DEFAULTCOMPONENT9</td><td>ENGINE~1.XNB|engine_diff_tex_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Model\engine_diff_tex_0.xnb</td><td>1</td><td/></row>
 		<row><td>engine_logo.png</td><td>ISX_DEFAULTCOMPONENT83</td><td>ENGINE~1.PNG|engine_logo.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\engine_logo.png</td><td>1</td><td/></row>
 		<row><td>engine_logo.png1</td><td>ISX_DEFAULTCOMPONENT81</td><td>ENGINE~1.PNG|engine_logo.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0Content\Textures\engine_logo.png</td><td>1</td><td/></row>
 		<row><td>enginesetup.cs</td><td>ISX_DEFAULTCOMPONENT117</td><td>ENGINE~1.CS|EngineSetup.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplate\EngineSetup.cs</td><td>1</td><td/></row>
-		<row><td>environmentpage.g.cs</td><td>ISX_DEFAULTCOMPONENT93</td><td>ENVIRO~1.CS|EnvironmentPage.g.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\EnvironmentPage.g.cs</td><td>1</td><td/></row>
-		<row><td>environmentpage.g.i.cs</td><td>ISX_DEFAULTCOMPONENT93</td><td>ENVIRO~1.CS|EnvironmentPage.g.i.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\EnvironmentPage.g.i.cs</td><td>1</td><td/></row>
 		<row><td>environmentpage.xaml</td><td>ISX_DEFAULTCOMPONENT83</td><td>ENVIRO~1.XAM|EnvironmentPage.xaml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\EnvironmentPage.xaml</td><td>1</td><td/></row>
 		<row><td>environmentpage.xaml.cs</td><td>ISX_DEFAULTCOMPONENT83</td><td>ENVIRO~1.CS|EnvironmentPage.xaml.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\EnvironmentPage.xaml.cs</td><td>1</td><td/></row>
 		<row><td>environmentplate.jpg</td><td>ISX_DEFAULTCOMPONENT83</td><td>ENVIRO~1.JPG|environmentplate.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\environmentplate.jpg</td><td>1</td><td/></row>
@@ -2895,13 +2652,9 @@
 		<row><td>explosionsmoketrailsps.cs</td><td>ISX_DEFAULTCOMPONENT40</td><td>EXPLOS~1.CS|ExplosionSmokeTrailsPS.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\Demo9.6 Explosion\ExplosionSmokeTrailsPS.cs</td><td>1</td><td/></row>
 		<row><td>fabric.jpg</td><td>ISX_DEFAULTCOMPONENT114</td><td>fabric.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Textures\fabric.jpg</td><td>1</td><td/></row>
 		<row><td>fabric.xnb</td><td>ISX_DEFAULTCOMPONENT69</td><td>fabric.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Textures\fabric.xnb</td><td>1</td><td/></row>
-		<row><td>farseerphysicsxna.dll</td><td>FarseerPhysicsXNA.dll</td><td>FARSEE~1.DLL|FarseerPhysicsXNA.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\FarseerPhysicsXNA.dll</td><td>1</td><td/></row>
 		<row><td>farseerphysicsxna.dll1</td><td>FarseerPhysicsXNA.dll1</td><td>FARSEE~1.DLL|FarseerPhysicsXNA.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\PloobsEngineWindowsPhone\FarseerPhysicsXNA.dll</td><td>1</td><td/></row>
-		<row><td>farseerphysicsxna.dll2</td><td>FarseerPhysicsXNA.dll2</td><td>FARSEE~1.DLL|FarseerPhysicsXNA.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\FarseerPhysicsXNA.dll</td><td>1</td><td/></row>
 		<row><td>farseerphysicsxna.dll3</td><td>FarseerPhysicsXNA.dll3</td><td>FARSEE~1.DLL|FarseerPhysicsXNA.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\Phone7\FarseerPhysicsXNA.dll</td><td>1</td><td/></row>
-		<row><td>farseerphysicsxna.xml</td><td>ISX_DEFAULTCOMPONENT86</td><td>FARSEE~1.XML|FarseerPhysicsXNA.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\FarseerPhysicsXNA.xml</td><td>1</td><td/></row>
 		<row><td>farseerphysicsxna.xml1</td><td>ISX_DEFAULTCOMPONENT96</td><td>FARSEE~1.XML|FarseerPhysicsXNA.XML</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\PloobsEngineWindowsPhone\FarseerPhysicsXNA.XML</td><td>1</td><td/></row>
-		<row><td>farseerphysicsxna.xml2</td><td>ISX_DEFAULTCOMPONENT146</td><td>FARSEE~1.XML|FarseerPhysicsXNA.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\FarseerPhysicsXNA.xml</td><td>1</td><td/></row>
 		<row><td>farseerphysicsxna.xml3</td><td>ISX_DEFAULTCOMPONENT172</td><td>FARSEE~1.XML|FarseerPhysicsXNA.XML</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\Phone7\FarseerPhysicsXNA.XML</td><td>1</td><td/></row>
 		<row><td>fguiscreen.cs</td><td>ISX_DEFAULTCOMPONENT33</td><td>FGUISC~1.CS|FGUIScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\Demo8 - GUI\FGUIScreen.cs</td><td>1</td><td/></row>
 		<row><td>fire.png</td><td>ISX_DEFAULTCOMPONENT114</td><td>Fire.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Textures\Fire.png</td><td>1</td><td/></row>
@@ -2921,8 +2674,6 @@
 		<row><td>game.ico</td><td>ISX_DEFAULTCOMPONENT21</td><td>Game.ico</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\Game.ico</td><td>1</td><td/></row>
 		<row><td>game.ico1</td><td>ISX_DEFAULTCOMPONENT54</td><td>Game.ico</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Game.ico</td><td>1</td><td/></row>
 		<row><td>game.ico2</td><td>ISX_DEFAULTCOMPONENT117</td><td>Game.ico</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplate\Game.ico</td><td>1</td><td/></row>
-		<row><td>gamepage.g.cs</td><td>ISX_DEFAULTCOMPONENT93</td><td>GAMEPA~1.CS|GamePage.g.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\GamePage.g.cs</td><td>1</td><td/></row>
-		<row><td>gamepage.g.i.cs</td><td>ISX_DEFAULTCOMPONENT93</td><td>GAMEPA~1.CS|GamePage.g.i.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\GamePage.g.i.cs</td><td>1</td><td/></row>
 		<row><td>gamepage.xaml</td><td>ISX_DEFAULTCOMPONENT83</td><td>GAMEPA~1.XAM|GamePage.xaml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\GamePage.xaml</td><td>1</td><td/></row>
 		<row><td>gamepage.xaml.cs</td><td>ISX_DEFAULTCOMPONENT83</td><td>GAMEPA~1.CS|GamePage.xaml.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\GamePage.xaml.cs</td><td>1</td><td/></row>
 		<row><td>gamethumbnail.png</td><td>ISX_DEFAULTCOMPONENT21</td><td>GAMETH~1.PNG|GameThumbnail.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\GameThumbnail.png</td><td>1</td><td/></row>
@@ -2936,8 +2687,6 @@
 		<row><td>goo.png1</td><td>ISX_DEFAULTCOMPONENT130</td><td>goo.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplateContent\Textures\goo.png</td><td>1</td><td/></row>
 		<row><td>goo.png2</td><td>ISX_DEFAULTCOMPONENT114</td><td>goo.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Textures\goo.png</td><td>1</td><td/></row>
 		<row><td>goo.xnb</td><td>ISX_DEFAULTCOMPONENT69</td><td>goo.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Textures\goo.xnb</td><td>1</td><td/></row>
-		<row><td>goo.xnb1</td><td>ISX_DEFAULTCOMPONENT89</td><td>goo.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\goo.xnb</td><td>1</td><td/></row>
-		<row><td>goo.xnb2</td><td>ISX_DEFAULTCOMPONENT149</td><td>goo.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\goo.xnb</td><td>1</td><td/></row>
 		<row><td>grama1.png</td><td>ISX_DEFAULTCOMPONENT114</td><td>grama1.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Textures\grama1.png</td><td>1</td><td/></row>
 		<row><td>grama1.xnb</td><td>ISX_DEFAULTCOMPONENT69</td><td>grama1.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Textures\grama1.xnb</td><td>1</td><td/></row>
 		<row><td>grama2.png</td><td>ISX_DEFAULTCOMPONENT114</td><td>grama2.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Textures\grama2.png</td><td>1</td><td/></row>
@@ -2945,20 +2694,11 @@
 		<row><td>graphicsapp1.csproj</td><td>ISX_DEFAULTCOMPONENT83</td><td>GRAPHI~1.CSP|GraphicsApp1.csproj</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\GraphicsApp1.csproj</td><td>1</td><td/></row>
 		<row><td>graphicsapp1.csproj.user</td><td>ISX_DEFAULTCOMPONENT83</td><td>GRAPHI~1.USE|GraphicsApp1.csproj.user</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\GraphicsApp1.csproj.user</td><td>1</td><td/></row>
 		<row><td>graphicsapp1.sln</td><td>ISX_DEFAULTCOMPONENT82</td><td>GRAPHI~1.SLN|GraphicsApp1.sln</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1.sln</td><td>1</td><td/></row>
-		<row><td>graphicsapp1.suo</td><td>ISX_DEFAULTCOMPONENT82</td><td>GRAPHI~1.SUO|GraphicsApp1.suo</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1.suo</td><td>1</td><td/></row>
 		<row><td>graphicsapp1library.csproj</td><td>ISX_DEFAULTCOMPONENT133</td><td>GRAPHI~1.CSP|GraphicsApp1Library.csproj</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\GraphicsApp1Library.csproj</td><td>1</td><td/></row>
 		<row><td>graphicsapp1library.csproj.d</td><td>ISX_DEFAULTCOMPONENT133</td><td>GRAPHI~1.CAC|GraphicsApp1Library.csproj.Debug.cachefile</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\GraphicsApp1Library.csproj.Debug.cachefile</td><td>1</td><td/></row>
-		<row><td>graphicsapp1library.csproj.f</td><td>ISX_DEFAULTCOMPONENT154</td><td>GRAPHI~1.TXT|GraphicsApp1Library.csproj.FileListAbsolute.txt</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\obj\Windows Phone\Release\GraphicsApp1Library.csproj.FileListAbsolute.txt</td><td>1</td><td/></row>
 		<row><td>graphicsapp1library.csproj.r</td><td>ISX_DEFAULTCOMPONENT133</td><td>GRAPHI~1.CAC|GraphicsApp1Library.csproj.Release.cachefile</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\GraphicsApp1Library.csproj.Release.cachefile</td><td>1</td><td/></row>
 		<row><td>graphicsapp1library.csproj.u</td><td>ISX_DEFAULTCOMPONENT133</td><td>GRAPHI~1.USE|GraphicsApp1Library.csproj.user</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\GraphicsApp1Library.csproj.user</td><td>1</td><td/></row>
 		<row><td>graphicsapp1librarycontent.c</td><td>ISX_DEFAULTCOMPONENT158</td><td>GRAPHI~1.CON|GraphicsApp1LibraryContent.contentproj</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\GraphicsApp1LibraryContent.contentproj</td><td>1</td><td/></row>
-		<row><td>graphicsapp1librarycontent.c1</td><td>ISX_DEFAULTCOMPONENT169</td><td>GRAPHI~1.TXT|GraphicsApp1LibraryContent.contentproj.FileListAbsolute.txt</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\obj\Windows Phone\Release\GraphicsApp1LibraryContent.contentproj.FileListAbsolute.txt</td><td>1</td><td/></row>
-		<row><td>graphicsapp1librarytest.dll</td><td>GraphicsApp1LibraryTest.dll</td><td>GRAPHI~1.DLL|GraphicsApp1LibraryTest.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\GraphicsApp1LibraryTest.dll</td><td>1</td><td/></row>
-		<row><td>graphicsapp1librarytest.dll1</td><td>GraphicsApp1LibraryTest.dll1</td><td>GRAPHI~1.DLL|GraphicsApp1LibraryTest.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\GraphicsApp1LibraryTest.dll</td><td>1</td><td/></row>
-		<row><td>graphicsapp1librarytest.dll2</td><td>GraphicsApp1LibraryTest.dll2</td><td>GRAPHI~1.DLL|GraphicsApp1LibraryTest.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\obj\Windows Phone\Release\GraphicsApp1LibraryTest.dll</td><td>1</td><td/></row>
-		<row><td>graphicsapp1librarytest.pdb</td><td>ISX_DEFAULTCOMPONENT86</td><td>GRAPHI~1.PDB|GraphicsApp1LibraryTest.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\GraphicsApp1LibraryTest.pdb</td><td>1</td><td/></row>
-		<row><td>graphicsapp1librarytest.pdb1</td><td>ISX_DEFAULTCOMPONENT146</td><td>GRAPHI~1.PDB|GraphicsApp1LibraryTest.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\GraphicsApp1LibraryTest.pdb</td><td>1</td><td/></row>
-		<row><td>graphicsapp1librarytest.pdb2</td><td>ISX_DEFAULTCOMPONENT154</td><td>GRAPHI~1.PDB|GraphicsApp1LibraryTest.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\obj\Windows Phone\Release\GraphicsApp1LibraryTest.pdb</td><td>1</td><td/></row>
 		<row><td>grasscube.dds</td><td>ISX_DEFAULTCOMPONENT114</td><td>GRASSC~1.DDS|grassCUBE.dds</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Textures\grassCUBE.dds</td><td>1</td><td/></row>
 		<row><td>grasscube.xnb</td><td>ISX_DEFAULTCOMPONENT69</td><td>GRASSC~1.XNB|grassCUBE.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Textures\grassCUBE.xnb</td><td>1</td><td/></row>
 		<row><td>gravitation.jpg</td><td>ISX_DEFAULTCOMPONENT83</td><td>GRAVIT~1.JPG|Gravitation.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Gravitation.jpg</td><td>1</td><td/></row>
@@ -2980,8 +2720,6 @@
 		<row><td>heightmap.raw</td><td>ISX_DEFAULTCOMPONENT129</td><td>HEIGHT~1.RAW|HeightMap.raw</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplateContent\Terrain\HeightMap.raw</td><td>1</td><td/></row>
 		<row><td>heightmap.raw1</td><td>ISX_DEFAULTCOMPONENT170</td><td>HEIGHT~1.RAW|HeightMap.raw</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Terrain\HeightMap.raw</td><td>1</td><td/></row>
 		<row><td>hmap.jpg</td><td>ISX_DEFAULTCOMPONENT171</td><td>hmap.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\hmap.jpg</td><td>1</td><td/></row>
-		<row><td>hmap.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>hmap.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\hmap.xnb</td><td>1</td><td/></row>
-		<row><td>hmap.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>hmap.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\hmap.xnb</td><td>1</td><td/></row>
 		<row><td>horizontal.cur</td><td>ISX_DEFAULTCOMPONENT110</td><td>HORIZO~1.CUR|Horizontal.cur</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Skins\Default\Cursors\Horizontal.cur</td><td>1</td><td/></row>
 		<row><td>horizontal.xnb</td><td>ISX_DEFAULTCOMPONENT14</td><td>HORIZO~1.XNB|Horizontal.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Skins\Default\Cursors\Horizontal.xnb</td><td>1</td><td/></row>
 		<row><td>iapathfindingscreen.cs</td><td>ISX_DEFAULTCOMPONENT74</td><td>IAPATH~1.CS|IaPathFindingScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo9 - AI\Waypoints\IaPathFindingScreen.cs</td><td>1</td><td/></row>
@@ -3013,11 +2751,7 @@
 		<row><td>islandmap.png2</td><td>ISX_DEFAULTCOMPONENT171</td><td>ISLAND~1.PNG|islandmap.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\islandmap.png</td><td>1</td><td/></row>
 		<row><td>islandmap.png3</td><td>ISX_DEFAULTCOMPONENT130</td><td>ISLAND~1.PNG|islandmap.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplateContent\Textures\islandmap.png</td><td>1</td><td/></row>
 		<row><td>islandmap.xnb</td><td>ISX_DEFAULTCOMPONENT69</td><td>ISLAND~1.XNB|islandmap.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Textures\islandmap.xnb</td><td>1</td><td/></row>
-		<row><td>islandmap.xnb1</td><td>ISX_DEFAULTCOMPONENT89</td><td>ISLAND~1.XNB|islandmap.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\islandmap.xnb</td><td>1</td><td/></row>
-		<row><td>islandmap.xnb2</td><td>ISX_DEFAULTCOMPONENT149</td><td>ISLAND~1.XNB|islandmap.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\islandmap.xnb</td><td>1</td><td/></row>
 		<row><td>islandmap_0.xnb</td><td>ISX_DEFAULTCOMPONENT69</td><td>ISLAND~1.XNB|islandmap_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Textures\islandmap_0.xnb</td><td>1</td><td/></row>
-		<row><td>islandmap_0.xnb1</td><td>ISX_DEFAULTCOMPONENT89</td><td>ISLAND~1.XNB|islandmap_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\islandmap_0.xnb</td><td>1</td><td/></row>
-		<row><td>islandmap_0.xnb2</td><td>ISX_DEFAULTCOMPONENT149</td><td>ISLAND~1.XNB|islandmap_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\islandmap_0.xnb</td><td>1</td><td/></row>
 		<row><td>jacket.tga</td><td>ISX_DEFAULTCOMPONENT106</td><td>jacket.tga</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Model\Dude\jacket.tga</td><td>1</td><td/></row>
 		<row><td>jacket.xnb</td><td>ISX_DEFAULTCOMPONENT10</td><td>jacket.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Model\Dude\jacket.xnb</td><td>1</td><td/></row>
 		<row><td>jacket_0.xnb</td><td>ISX_DEFAULTCOMPONENT10</td><td>jacket_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Model\Dude\jacket_0.xnb</td><td>1</td><td/></row>
@@ -3026,14 +2760,8 @@
 		<row><td>jointupdateable.cs1</td><td>ISX_DEFAULTCOMPONENT119</td><td>JOINTU~1.CS|JointUpdateable.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplate\2D Demos\Helpers\JointUpdateable.cs</td><td>1</td><td/></row>
 		<row><td>keyboardinputscreen.cs</td><td>ISX_DEFAULTCOMPONENT57</td><td>KEYBOA~1.CS|KeyboardInputScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo2 - Input\KeyboardInputScreen.cs</td><td>1</td><td/></row>
 		<row><td>kwxport_1.5.0_win32.msi</td><td>ISX_DEFAULTCOMPONENT99</td><td>KWXPOR~1.MSI|kwxport-1.5.0-win32.msi</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\Extra\kwxport-1.5.0-win32.msi</td><td>1</td><td/></row>
-		<row><td>lampada_occlusion_occlusion.</td><td>ISX_DEFAULTCOMPONENT89</td><td>LAMPAD~1.XNB|lampada_occlusion_occlusion.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\lampada_occlusion_occlusion.xnb</td><td>1</td><td/></row>
-		<row><td>lampada_occlusion_occlusion.1</td><td>ISX_DEFAULTCOMPONENT149</td><td>LAMPAD~1.XNB|lampada_occlusion_occlusion.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\lampada_occlusion_occlusion.xnb</td><td>1</td><td/></row>
 		<row><td>lampada_occlusion_occlusion.2</td><td>ISX_DEFAULTCOMPONENT171</td><td>LAMPAD~1.JPG|lampada_occlusion_occlusion.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\lampada_occlusion_occlusion.jpg</td><td>1</td><td/></row>
-		<row><td>lampada_occlusion_occlusion_</td><td>ISX_DEFAULTCOMPONENT89</td><td>LAMPAD~1.XNB|lampada_occlusion_occlusion_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\lampada_occlusion_occlusion_0.xnb</td><td>1</td><td/></row>
-		<row><td>lampada_occlusion_occlusion_1</td><td>ISX_DEFAULTCOMPONENT149</td><td>LAMPAD~1.XNB|lampada_occlusion_occlusion_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\lampada_occlusion_occlusion_0.xnb</td><td>1</td><td/></row>
 		<row><td>lcyl_l_occlusion.jpg</td><td>ISX_DEFAULTCOMPONENT171</td><td>LCYL_L~1.JPG|lcyl_l_occlusion.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\lcyl_l_occlusion.jpg</td><td>1</td><td/></row>
-		<row><td>lcyl_l_occlusion.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>LCYL_L~1.XNB|lcyl_l_occlusion.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\lcyl_l_occlusion.xnb</td><td>1</td><td/></row>
-		<row><td>lcyl_l_occlusion.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>LCYL_L~1.XNB|lcyl_l_occlusion.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\lcyl_l_occlusion.xnb</td><td>1</td><td/></row>
 		<row><td>lightinterpolationscreen.cs</td><td>ISX_DEFAULTCOMPONENT58</td><td>LIGHTI~1.CS|LightInterpolationScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo3 - Lights\LightInterpolationScreen.cs</td><td>1</td><td/></row>
 		<row><td>lightthrowbepu.cs</td><td>ISX_DEFAULTCOMPONENT22</td><td>LIGHTT~1.CS|LightThrowBepu.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\Commons\LightThrowBepu.cs</td><td>1</td><td/></row>
 		<row><td>lightthrowbepu.cs1</td><td>ISX_DEFAULTCOMPONENT55</td><td>LIGHTT~1.CS|LightThrowBepu.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Commons\LightThrowBepu.cs</td><td>1</td><td/></row>
@@ -3060,22 +2788,15 @@
 		<row><td>mainmenu.selection.png</td><td>ISX_DEFAULTCOMPONENT112</td><td>MAINME~1.PNG|MainMenu.Selection.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Skins\Default\Images\MainMenu.Selection.png</td><td>1</td><td/></row>
 		<row><td>mainmenu.selection.xnb</td><td>ISX_DEFAULTCOMPONENT16</td><td>MAINME~1.XNB|MainMenu.Selection.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Skins\Default\Images\MainMenu.Selection.xnb</td><td>1</td><td/></row>
 		<row><td>mainmenu.xnb</td><td>ISX_DEFAULTCOMPONENT16</td><td>MainMenu.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Skins\Default\Images\MainMenu.xnb</td><td>1</td><td/></row>
-		<row><td>mainpage.g.cs</td><td>ISX_DEFAULTCOMPONENT93</td><td>MAINPA~1.CS|MainPage.g.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\MainPage.g.cs</td><td>1</td><td/></row>
-		<row><td>mainpage.g.i.cs</td><td>ISX_DEFAULTCOMPONENT93</td><td>MAINPA~1.CS|MainPage.g.i.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\MainPage.g.i.cs</td><td>1</td><td/></row>
 		<row><td>mainpage.xaml</td><td>ISX_DEFAULTCOMPONENT83</td><td>MAINPA~1.XAM|MainPage.xaml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\MainPage.xaml</td><td>1</td><td/></row>
 		<row><td>mainpage.xaml.cs</td><td>ISX_DEFAULTCOMPONENT83</td><td>MAINPA~1.CS|MainPage.xaml.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\MainPage.xaml.cs</td><td>1</td><td/></row>
 		<row><td>material.jpg</td><td>ISX_DEFAULTCOMPONENT127</td><td>Material.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplateContent\Material.jpg</td><td>1</td><td/></row>
 		<row><td>meiofio.jpg</td><td>ISX_DEFAULTCOMPONENT114</td><td>meiofio.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Textures\meiofio.jpg</td><td>1</td><td/></row>
 		<row><td>meiofio.xnb</td><td>ISX_DEFAULTCOMPONENT69</td><td>meiofio.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Textures\meiofio.xnb</td><td>1</td><td/></row>
-		<row><td>microsoft.phone.controls.dll</td><td>Microsoft.Phone.Controls.dll</td><td>MICROS~1.DLL|Microsoft.Phone.Controls.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Microsoft.Phone.Controls.dll</td><td>1</td><td/></row>
-		<row><td>microsoft.phone.controls.xml</td><td>ISX_DEFAULTCOMPONENT86</td><td>MICROS~1.XML|Microsoft.Phone.Controls.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Microsoft.Phone.Controls.xml</td><td>1</td><td/></row>
-		<row><td>microsoft.xna.framework.runt</td><td>ISX_DEFAULTCOMPONENT154</td><td>MICROS~1.TXT|Microsoft.Xna.Framework.RuntimeProfile.txt</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\obj\Windows Phone\Release\Microsoft.Xna.Framework.RuntimeProfile.txt</td><td>1</td><td/></row>
 		<row><td>milkshakeformatscreen.cs</td><td>ISX_DEFAULTCOMPONENT125</td><td>MILKSH~1.CS|MilkShakeFormatScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplate\TemplateScreens\MilkShakeFormatScreen.cs</td><td>1</td><td/></row>
 		<row><td>mobilephysicscreen.cs</td><td>ISX_DEFAULTCOMPONENT75</td><td>MOBILE~1.CS|MobilePhysicScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demos Extras\MobilePhysicScreen.cs</td><td>1</td><td/></row>
 		<row><td>model.ms3d</td><td>ISX_DEFAULTCOMPONENT127</td><td>MODEL~1.MS3|model.ms3d</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplateContent\model.ms3d</td><td>1</td><td/></row>
 		<row><td>modelimporter.dll</td><td>ModelImporter.dll</td><td>MODELI~1.DLL|ModelImporter.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\Dlls\ModelImporter.dll</td><td>1</td><td/></row>
-		<row><td>modelmanipulationpage.g.cs</td><td>ISX_DEFAULTCOMPONENT93</td><td>MODELM~1.CS|ModelManipulationPage.g.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\ModelManipulationPage.g.cs</td><td>1</td><td/></row>
-		<row><td>modelmanipulationpage.g.i.cs</td><td>ISX_DEFAULTCOMPONENT93</td><td>MODELM~1.CS|ModelManipulationPage.g.i.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\ModelManipulationPage.g.i.cs</td><td>1</td><td/></row>
 		<row><td>modelmanipulationpage.xaml</td><td>ISX_DEFAULTCOMPONENT83</td><td>MODELM~1.XAM|ModelManipulationPage.xaml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\ModelManipulationPage.xaml</td><td>1</td><td/></row>
 		<row><td>modelmanipulationpage.xaml.c</td><td>ISX_DEFAULTCOMPONENT83</td><td>MODELM~1.CS|ModelManipulationPage.xaml.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\ModelManipulationPage.xaml.cs</td><td>1</td><td/></row>
 		<row><td>modelmanipulationplate.jpg</td><td>ISX_DEFAULTCOMPONENT83</td><td>MODELM~1.JPG|modelmanipulationplate.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\modelmanipulationplate.jpg</td><td>1</td><td/></row>
@@ -3110,11 +2831,7 @@
 		<row><td>particle.bmp</td><td>ISX_DEFAULTCOMPONENT171</td><td>Particle.bmp</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\Particle.bmp</td><td>1</td><td/></row>
 		<row><td>particle.bmp1</td><td>ISX_DEFAULTCOMPONENT130</td><td>Particle.bmp</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplateContent\Textures\Particle.bmp</td><td>1</td><td/></row>
 		<row><td>particle.jpg</td><td>ISX_DEFAULTCOMPONENT83</td><td>particle.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\particle.jpg</td><td>1</td><td/></row>
-		<row><td>particle.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>Particle.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\Particle.xnb</td><td>1</td><td/></row>
-		<row><td>particle.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>Particle.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\Particle.xnb</td><td>1</td><td/></row>
 		<row><td>particles2d.jpg</td><td>ISX_DEFAULTCOMPONENT83</td><td>PARTIC~1.JPG|particles2d.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\particles2d.jpg</td><td>1</td><td/></row>
-		<row><td>particles3d.g.cs</td><td>ISX_DEFAULTCOMPONENT93</td><td>PARTIC~1.CS|Particles3D.g.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\Particles3D.g.cs</td><td>1</td><td/></row>
-		<row><td>particles3d.g.i.cs</td><td>ISX_DEFAULTCOMPONENT93</td><td>PARTIC~1.CS|Particles3D.g.i.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\Particles3D.g.i.cs</td><td>1</td><td/></row>
 		<row><td>particles3d.xaml</td><td>ISX_DEFAULTCOMPONENT83</td><td>PARTIC~1.XAM|Particles3D.xaml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Particles3D.xaml</td><td>1</td><td/></row>
 		<row><td>particles3d.xaml.cs</td><td>ISX_DEFAULTCOMPONENT83</td><td>PARTIC~1.CS|Particles3D.xaml.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Particles3D.xaml.cs</td><td>1</td><td/></row>
 		<row><td>particlescreen.cs</td><td>ISX_DEFAULTCOMPONENT27</td><td>PARTIC~1.CS|ParticleScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\Demo5 - ParticleSamples\ParticleScreen.cs</td><td>1</td><td/></row>
@@ -3144,36 +2861,17 @@
 		<row><td>pianosong.xnb</td><td>ISX_DEFAULTCOMPONENT17</td><td>PIANOS~1.XNB|pianosong.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Songs\pianosong.xnb</td><td>1</td><td/></row>
 		<row><td>pickingscreen.cs</td><td>ISX_DEFAULTCOMPONENT75</td><td>PICKIN~1.CS|PickingScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demos Extras\PickingScreen.cs</td><td>1</td><td/></row>
 		<row><td>pillar_texture.jpg</td><td>ISX_DEFAULTCOMPONENT171</td><td>PILLAR~1.JPG|pillar_texture.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\pillar_texture.jpg</td><td>1</td><td/></row>
-		<row><td>pillar_texture.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>PILLAR~1.XNB|pillar_texture.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\pillar_texture.xnb</td><td>1</td><td/></row>
-		<row><td>pillar_texture.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>PILLAR~1.XNB|pillar_texture.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\pillar_texture.xnb</td><td>1</td><td/></row>
-		<row><td>pillar_texture_0.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>PILLAR~1.XNB|pillar_texture_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\pillar_texture_0.xnb</td><td>1</td><td/></row>
-		<row><td>pillar_texture_0.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>PILLAR~1.XNB|pillar_texture_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\pillar_texture_0.xnb</td><td>1</td><td/></row>
 		<row><td>pipes.jpg</td><td>ISX_DEFAULTCOMPONENT171</td><td>pipes.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\pipes.jpg</td><td>1</td><td/></row>
-		<row><td>pipes.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>pipes.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\pipes.xnb</td><td>1</td><td/></row>
-		<row><td>pipes.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>pipes.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\pipes.xnb</td><td>1</td><td/></row>
-		<row><td>pipes_0.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>pipes_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\pipes_0.xnb</td><td>1</td><td/></row>
-		<row><td>pipes_0.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>pipes_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\pipes_0.xnb</td><td>1</td><td/></row>
 		<row><td>piso_core_difusse.jpg</td><td>ISX_DEFAULTCOMPONENT171</td><td>PISO_C~1.JPG|piso_core_difusse.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\piso_core_difusse.jpg</td><td>1</td><td/></row>
-		<row><td>piso_core_difusse.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>PISO_C~1.XNB|piso_core_difusse.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\piso_core_difusse.xnb</td><td>1</td><td/></row>
-		<row><td>piso_core_difusse.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>PISO_C~1.XNB|piso_core_difusse.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\piso_core_difusse.xnb</td><td>1</td><td/></row>
-		<row><td>piso_core_difusse_0.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>PISO_C~1.XNB|piso_core_difusse_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\piso_core_difusse_0.xnb</td><td>1</td><td/></row>
-		<row><td>piso_core_difusse_0.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>PISO_C~1.XNB|piso_core_difusse_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\piso_core_difusse_0.xnb</td><td>1</td><td/></row>
 		<row><td>piso_diffuse.jpg</td><td>ISX_DEFAULTCOMPONENT171</td><td>PISO_D~1.JPG|piso_diffuse.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\piso_diffuse.jpg</td><td>1</td><td/></row>
-		<row><td>piso_diffuse.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>PISO_D~1.XNB|piso_diffuse.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\piso_diffuse.xnb</td><td>1</td><td/></row>
-		<row><td>piso_diffuse.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>PISO_D~1.XNB|piso_diffuse.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\piso_diffuse.xnb</td><td>1</td><td/></row>
 		<row><td>playermarine.fbx</td><td>ISX_DEFAULTCOMPONENT105</td><td>PLAYER~1.FBX|PlayerMarine.fbx</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Model\PlayerMarine.fbx</td><td>1</td><td/></row>
 		<row><td>playermarine.fbx1</td><td>ISX_DEFAULTCOMPONENT164</td><td>PLAYER~1.FBX|PlayerMarine.fbx</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Model\PlayerMarine.fbx</td><td>1</td><td/></row>
 		<row><td>playermarine.fbx2</td><td>ISX_DEFAULTCOMPONENT128</td><td>PLAYER~1.FBX|PlayerMarine.fbx</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplateContent\Model\PlayerMarine.fbx</td><td>1</td><td/></row>
 		<row><td>playermarine.xnb</td><td>ISX_DEFAULTCOMPONENT9</td><td>PLAYER~1.XNB|PlayerMarine.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Model\PlayerMarine.xnb</td><td>1</td><td/></row>
-		<row><td>playermarine.xnb1</td><td>ISX_DEFAULTCOMPONENT88</td><td>PLAYER~1.XNB|PlayerMarine.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Model\PlayerMarine.xnb</td><td>1</td><td/></row>
-		<row><td>playermarine.xnb2</td><td>ISX_DEFAULTCOMPONENT148</td><td>PLAYER~1.XNB|PlayerMarine.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Model\PlayerMarine.xnb</td><td>1</td><td/></row>
-		<row><td>playermarine_0.xml</td><td>ISX_DEFAULTCOMPONENT155</td><td>PLAYER~1.XML|PlayerMarine_0.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\obj\Windows Phone\Release\Model\PlayerMarine_0.xml</td><td>1</td><td/></row>
 		<row><td>playermarinediffuse.jpg</td><td>ISX_DEFAULTCOMPONENT114</td><td>PLAYER~1.JPG|PlayerMarineDiffuse.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Textures\PlayerMarineDiffuse.jpg</td><td>1</td><td/></row>
 		<row><td>playermarinediffuse.jpg1</td><td>ISX_DEFAULTCOMPONENT171</td><td>PLAYER~1.JPG|PlayerMarineDiffuse.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\PlayerMarineDiffuse.jpg</td><td>1</td><td/></row>
 		<row><td>playermarinediffuse.jpg2</td><td>ISX_DEFAULTCOMPONENT130</td><td>PLAYER~1.JPG|PlayerMarineDiffuse.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplateContent\Textures\PlayerMarineDiffuse.jpg</td><td>1</td><td/></row>
 		<row><td>playermarinediffuse.xnb</td><td>ISX_DEFAULTCOMPONENT69</td><td>PLAYER~1.XNB|PlayerMarineDiffuse.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Textures\PlayerMarineDiffuse.xnb</td><td>1</td><td/></row>
-		<row><td>playermarinediffuse.xnb1</td><td>ISX_DEFAULTCOMPONENT89</td><td>PLAYER~1.XNB|PlayerMarineDiffuse.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\PlayerMarineDiffuse.xnb</td><td>1</td><td/></row>
-		<row><td>playermarinediffuse.xnb2</td><td>ISX_DEFAULTCOMPONENT149</td><td>PLAYER~1.XNB|PlayerMarineDiffuse.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\PlayerMarineDiffuse.xnb</td><td>1</td><td/></row>
 		<row><td>ploobs_engine_help.chm</td><td>Ploobs_Engine_Help.chm</td><td>PLOOBS~1.CHM|Ploobs Engine Help.chm</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\Help\Ploobs Engine Help.chm</td><td>1</td><td/></row>
 		<row><td>ploobs_entry.wmv</td><td>ISX_DEFAULTCOMPONENT103</td><td>PLOOBS~1.WMV|ploobs_entry.wmv</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\ploobs_entry.wmv</td><td>1</td><td/></row>
 		<row><td>ploobs_entry.wmv1</td><td>ISX_DEFAULTCOMPONENT7</td><td>PLOOBS~1.WMV|ploobs_entry.wmv</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\ploobs_entry.wmv</td><td>1</td><td/></row>
@@ -3197,16 +2895,10 @@
 		<row><td>ploobsenginedebug.xml3</td><td>ISX_DEFAULTCOMPONENT6</td><td>PLOOBS~1.XML|PloobsEngineDebug.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\PloobsEngineDebug.xml</td><td>1</td><td/></row>
 		<row><td>ploobsenginedebug.xml4</td><td>ISX_DEFAULTCOMPONENT95</td><td>PLOOBS~1.XML|PloobsEngineDebug.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\PloobsEngineHiDef\PloobsEngineDebug.xml</td><td>1</td><td/></row>
 		<row><td>ploobsenginedebug.xml5</td><td>ISX_DEFAULTCOMPONENT97</td><td>PLOOBS~1.XML|PloobsEngineDebug.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\PloobsEngineReach\PloobsEngineDebug.xml</td><td>1</td><td/></row>
-		<row><td>ploobsenginephone7.dll</td><td>PloobsEnginePhone7.dll</td><td>PLOOBS~1.DLL|PloobsEnginePhone7.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\PloobsEnginePhone7.dll</td><td>1</td><td/></row>
 		<row><td>ploobsenginephone7.dll1</td><td>PloobsEnginePhone7.dll1</td><td>PLOOBS~1.DLL|PloobsEnginePhone7.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\PloobsEngineWindowsPhone\PloobsEnginePhone7.dll</td><td>1</td><td/></row>
-		<row><td>ploobsenginephone7.dll2</td><td>PloobsEnginePhone7.dll2</td><td>PLOOBS~1.DLL|PloobsEnginePhone7.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\PloobsEnginePhone7.dll</td><td>1</td><td/></row>
 		<row><td>ploobsenginephone7.dll3</td><td>PloobsEnginePhone7.dll3</td><td>PLOOBS~1.DLL|PloobsEnginePhone7.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\Phone7\PloobsEnginePhone7.dll</td><td>1</td><td/></row>
-		<row><td>ploobsenginephone7.pdb</td><td>ISX_DEFAULTCOMPONENT86</td><td>PLOOBS~1.PDB|PloobsEnginePhone7.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\PloobsEnginePhone7.pdb</td><td>1</td><td/></row>
-		<row><td>ploobsenginephone7.pdb1</td><td>ISX_DEFAULTCOMPONENT146</td><td>PLOOBS~1.PDB|PloobsEnginePhone7.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\PloobsEnginePhone7.pdb</td><td>1</td><td/></row>
 		<row><td>ploobsenginephone7.pdb2</td><td>ISX_DEFAULTCOMPONENT172</td><td>PLOOBS~1.PDB|PloobsEnginePhone7.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\Phone7\PloobsEnginePhone7.pdb</td><td>1</td><td/></row>
-		<row><td>ploobsenginephone7.xml</td><td>ISX_DEFAULTCOMPONENT86</td><td>PLOOBS~1.XML|PloobsEnginePhone7.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\PloobsEnginePhone7.xml</td><td>1</td><td/></row>
 		<row><td>ploobsenginephone7.xml1</td><td>ISX_DEFAULTCOMPONENT96</td><td>PLOOBS~1.XML|PloobsEnginePhone7.XML</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\PloobsEngineWindowsPhone\PloobsEnginePhone7.XML</td><td>1</td><td/></row>
-		<row><td>ploobsenginephone7.xml2</td><td>ISX_DEFAULTCOMPONENT146</td><td>PLOOBS~1.XML|PloobsEnginePhone7.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\PloobsEnginePhone7.xml</td><td>1</td><td/></row>
 		<row><td>ploobsenginephone7.xml3</td><td>ISX_DEFAULTCOMPONENT172</td><td>PLOOBS~1.XML|PloobsEnginePhone7.XML</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\Phone7\PloobsEnginePhone7.XML</td><td>1</td><td/></row>
 		<row><td>ploobsenginepipelinedebug.dl</td><td>PloobsEnginePipelineDebug.dll</td><td>PLOOBS~1.DLL|PloobsEnginePipelineDebug.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\Dll\PloobsEnginePipelineDebug.dll</td><td>1</td><td/></row>
 		<row><td>ploobsenginepipelinedebug.dl1</td><td>PloobsEnginePipelineDebug.dll1</td><td>PLOOBS~1.DLL|PloobsEnginePipelineDebug.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\Dll\PloobsEnginePipelineDebug.dll</td><td>1</td><td/></row>
@@ -3214,14 +2906,7 @@
 		<row><td>ploobsenginepipelinedebug.dl3</td><td>PloobsEnginePipelineDebug.dll3</td><td>PLOOBS~1.DLL|PloobsEnginePipelineDebug.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\PloobsEngineReach\PloobsEnginePipelineDebug.dll</td><td>1</td><td/></row>
 		<row><td>ploobsenginepipelinedebug.dl4</td><td>PloobsEnginePipelineDebug.dll4</td><td>PLOOBS~1.DLL|PloobsEnginePipelineDebug.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\Dlls\PloobsEnginePipelineDebug.dll</td><td>1</td><td/></row>
 		<row><td>ploobsfeatures.csproj</td><td>ISX_DEFAULTCOMPONENT83</td><td>PLOOBS~1.CSP|PloobsFeatures.csproj</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\PloobsFeatures.csproj</td><td>1</td><td/></row>
-		<row><td>ploobsfeatures.csproj.fileli</td><td>ISX_DEFAULTCOMPONENT93</td><td>PLOOBS~1.TXT|PloobsFeatures.csproj.FileListAbsolute.txt</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\PloobsFeatures.csproj.FileListAbsolute.txt</td><td>1</td><td/></row>
 		<row><td>ploobsfeatures.csproj.user</td><td>ISX_DEFAULTCOMPONENT83</td><td>PLOOBS~1.USE|PloobsFeatures.csproj.user</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\PloobsFeatures.csproj.user</td><td>1</td><td/></row>
-		<row><td>ploobsfeatures.dll</td><td>PloobsFeatures.dll</td><td>PLOOBS~1.DLL|PloobsFeatures.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\PloobsFeatures.dll</td><td>1</td><td/></row>
-		<row><td>ploobsfeatures.dll1</td><td>PloobsFeatures.dll1</td><td>PLOOBS~1.DLL|PloobsFeatures.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\PloobsFeatures.dll</td><td>1</td><td/></row>
-		<row><td>ploobsfeatures.g.resources</td><td>ISX_DEFAULTCOMPONENT93</td><td>PLOOBS~1.RES|PloobsFeatures.g.resources</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\PloobsFeatures.g.resources</td><td>1</td><td/></row>
-		<row><td>ploobsfeatures.pdb</td><td>ISX_DEFAULTCOMPONENT86</td><td>PLOOBS~1.PDB|PloobsFeatures.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\PloobsFeatures.pdb</td><td>1</td><td/></row>
-		<row><td>ploobsfeatures.pdb1</td><td>ISX_DEFAULTCOMPONENT93</td><td>PLOOBS~1.PDB|PloobsFeatures.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\PloobsFeatures.pdb</td><td>1</td><td/></row>
-		<row><td>ploobsfeatures.xap</td><td>ISX_DEFAULTCOMPONENT86</td><td>PLOOBS~1.XAP|PloobsFeatures.xap</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\PloobsFeatures.xap</td><td>1</td><td/></row>
 		<row><td>ploobslevelexporter.ms</td><td>ISX_DEFAULTCOMPONENT98</td><td>PLOOBS~1.MS|PloobsLevelExporter.ms</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\Extra\ExporterScripts\PloobsLevelExporter.ms</td><td>1</td><td/></row>
 		<row><td>ploobsprojecttemplate.csproj</td><td>ISX_DEFAULTCOMPONENT117</td><td>PLOOBS~1.CSP|PloobsProjectTemplate.csproj</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplate\PloobsProjectTemplate.csproj</td><td>1</td><td/></row>
 		<row><td>ploobsprojecttemplatecontent</td><td>ISX_DEFAULTCOMPONENT127</td><td>PLOOBS~1.CON|PloobsProjectTemplateContent.contentproj</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplateContent\PloobsProjectTemplateContent.contentproj</td><td>1</td><td/></row>
@@ -3230,10 +2915,6 @@
 		<row><td>pointlightcircularupdater.cs</td><td>ISX_DEFAULTCOMPONENT59</td><td>POINTL~1.CS|PointLightCircularUpdater.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo3 - Lights\Helpers\PointLightCircularUpdater.cs</td><td>1</td><td/></row>
 		<row><td>pointlightscreen.cs</td><td>ISX_DEFAULTCOMPONENT58</td><td>POINTL~1.CS|PointLightScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo3 - Lights\PointLightScreen.cs</td><td>1</td><td/></row>
 		<row><td>ponte_suporte.jpg</td><td>ISX_DEFAULTCOMPONENT171</td><td>PONTE_~1.JPG|ponte_suporte.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\ponte_suporte.jpg</td><td>1</td><td/></row>
-		<row><td>ponte_suporte.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>PONTE_~1.XNB|ponte_suporte.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\ponte_suporte.xnb</td><td>1</td><td/></row>
-		<row><td>ponte_suporte.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>PONTE_~1.XNB|ponte_suporte.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\ponte_suporte.xnb</td><td>1</td><td/></row>
-		<row><td>ponte_suporte_0.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>PONTE_~1.XNB|ponte_suporte_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\ponte_suporte_0.xnb</td><td>1</td><td/></row>
-		<row><td>ponte_suporte_0.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>PONTE_~1.XNB|ponte_suporte_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\ponte_suporte_0.xnb</td><td>1</td><td/></row>
 		<row><td>positioning2d.jpg</td><td>ISX_DEFAULTCOMPONENT83</td><td>POSITI~1.JPG|positioning2d.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\positioning2d.jpg</td><td>1</td><td/></row>
 		<row><td>posteffect.jpg</td><td>ISX_DEFAULTCOMPONENT83</td><td>POSTEF~1.JPG|PostEffect.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\PostEffect.jpg</td><td>1</td><td/></row>
 		<row><td>posteffectscreen.cs</td><td>ISX_DEFAULTCOMPONENT141</td><td>POSTEF~1.CS|PostEffectScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\3D Demos\PostEffect\PostEffectScreen.cs</td><td>1</td><td/></row>
@@ -3256,9 +2937,6 @@
 		<row><td>reachdemos.sln</td><td>ISX_DEFAULTCOMPONENT100</td><td>REACHD~1.SLN|ReachDemos.sln</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos.sln</td><td>1</td><td/></row>
 		<row><td>reachdemos.suo</td><td>ISX_DEFAULTCOMPONENT100</td><td>REACHD~1.SUO|ReachDemos.suo</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos.suo</td><td>1</td><td/></row>
 		<row><td>repeatuntil.cs</td><td>ISX_DEFAULTCOMPONENT137</td><td>REPEAT~1.CS|RepeatUntil.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\3D Demos\Behaviors\RepeatUntil.cs</td><td>1</td><td/></row>
-		<row><td>resolveassemblyreference.cac</td><td>ISX_DEFAULTCOMPONENT93</td><td>RESOLV~1.CAC|ResolveAssemblyReference.cache</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\ResolveAssemblyReference.cache</td><td>1</td><td/></row>
-		<row><td>resolveassemblyreference.cac1</td><td>ISX_DEFAULTCOMPONENT154</td><td>RESOLV~1.CAC|ResolveAssemblyReference.cache</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\obj\Windows Phone\Release\ResolveAssemblyReference.cache</td><td>1</td><td/></row>
-		<row><td>resolveassemblyreference.cac2</td><td>ISX_DEFAULTCOMPONENT169</td><td>RESOLV~1.CAC|ResolveAssemblyReference.cache</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\obj\Windows Phone\Release\ResolveAssemblyReference.cache</td><td>1</td><td/></row>
 		<row><td>rock.dds</td><td>ISX_DEFAULTCOMPONENT114</td><td>rock.dds</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Textures\rock.dds</td><td>1</td><td/></row>
 		<row><td>rock.xnb</td><td>ISX_DEFAULTCOMPONENT69</td><td>rock.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Textures\rock.xnb</td><td>1</td><td/></row>
 		<row><td>rotatingcamera.cs</td><td>ISX_DEFAULTCOMPONENT133</td><td>ROTATI~1.CS|RotatingCamera.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\RotatingCamera.cs</td><td>1</td><td/></row>
@@ -3327,14 +3005,10 @@
 		<row><td>skinnedmodelpipeline.dll</td><td>SkinnedModelPipeline.dll</td><td>SKINNE~1.DLL|SkinnedModelPipeline.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\Dll\Skinned\SkinnedModelPipeline.dll</td><td>1</td><td/></row>
 		<row><td>skyboxscreen.cs</td><td>ISX_DEFAULTCOMPONENT136</td><td>SKYBOX~1.CS|SkyBoxScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\3D Demos\SkyBoxScreen.cs</td><td>1</td><td/></row>
 		<row><td>skycube.dds</td><td>ISX_DEFAULTCOMPONENT171</td><td>skyCube.dds</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\skyCube.dds</td><td>1</td><td/></row>
-		<row><td>skycube.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>skyCube.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\skyCube.xnb</td><td>1</td><td/></row>
-		<row><td>skycube.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>skyCube.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\skyCube.xnb</td><td>1</td><td/></row>
 		<row><td>smoke.png</td><td>ISX_DEFAULTCOMPONENT114</td><td>Smoke.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Textures\Smoke.png</td><td>1</td><td/></row>
 		<row><td>smoke.png1</td><td>ISX_DEFAULTCOMPONENT171</td><td>Smoke.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\Smoke.png</td><td>1</td><td/></row>
 		<row><td>smoke.png2</td><td>ISX_DEFAULTCOMPONENT130</td><td>Smoke.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplateContent\Textures\Smoke.png</td><td>1</td><td/></row>
 		<row><td>smoke.xnb</td><td>ISX_DEFAULTCOMPONENT69</td><td>Smoke.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Textures\Smoke.xnb</td><td>1</td><td/></row>
-		<row><td>smoke.xnb1</td><td>ISX_DEFAULTCOMPONENT89</td><td>Smoke.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\Smoke.xnb</td><td>1</td><td/></row>
-		<row><td>smoke.xnb2</td><td>ISX_DEFAULTCOMPONENT149</td><td>Smoke.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\Smoke.xnb</td><td>1</td><td/></row>
 		<row><td>smokeps.cs</td><td>ISX_DEFAULTCOMPONENT27</td><td>SmokePS.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\Demo5 - ParticleSamples\SmokePS.cs</td><td>1</td><td/></row>
 		<row><td>snow.dds</td><td>ISX_DEFAULTCOMPONENT114</td><td>snow.dds</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Textures\snow.dds</td><td>1</td><td/></row>
 		<row><td>snow.xnb</td><td>ISX_DEFAULTCOMPONENT69</td><td>snow.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Textures\snow.xnb</td><td>1</td><td/></row>
@@ -3388,8 +3062,6 @@
 		<row><td>stilldesign.physx.net.dll</td><td>StillDesign.PhysX.Net.dll</td><td>STILLD~1.DLL|StillDesign.PhysX.Net.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\StillDesign.PhysX.Net.dll</td><td>1</td><td/></row>
 		<row><td>stilldesign.physx.net.dll1</td><td>StillDesign.PhysX.Net.dll1</td><td>STILLD~1.DLL|StillDesign.PhysX.Net.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\StillDesign.PhysX.Net.dll</td><td>1</td><td/></row>
 		<row><td>stressbepuscreen.cs</td><td>ISX_DEFAULTCOMPONENT60</td><td>STRESS~1.CS|StressBepuScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\Demo4 - Physics\StressBepuScreen.cs</td><td>1</td><td/></row>
-		<row><td>stresspage.g.cs</td><td>ISX_DEFAULTCOMPONENT93</td><td>STRESS~1.CS|StressPage.g.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\StressPage.g.cs</td><td>1</td><td/></row>
-		<row><td>stresspage.g.i.cs</td><td>ISX_DEFAULTCOMPONENT93</td><td>STRESS~1.CS|StressPage.g.i.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\StressPage.g.i.cs</td><td>1</td><td/></row>
 		<row><td>stresspage.xaml</td><td>ISX_DEFAULTCOMPONENT83</td><td>STRESS~1.XAM|StressPage.xaml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\StressPage.xaml</td><td>1</td><td/></row>
 		<row><td>stresspage.xaml.cs</td><td>ISX_DEFAULTCOMPONENT83</td><td>STRESS~1.CS|StressPage.xaml.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\StressPage.xaml.cs</td><td>1</td><td/></row>
 		<row><td>stressplate.jpg</td><td>ISX_DEFAULTCOMPONENT83</td><td>STRESS~1.JPG|stressplate.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\stressplate.jpg</td><td>1</td><td/></row>
@@ -3407,9 +3079,6 @@
 		<row><td>teapot.x</td><td>ISX_DEFAULTCOMPONENT105</td><td>teapot.X</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Model\teapot.X</td><td>1</td><td/></row>
 		<row><td>teapot.x1</td><td>ISX_DEFAULTCOMPONENT164</td><td>teapot.X</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Model\teapot.X</td><td>1</td><td/></row>
 		<row><td>teapot.xnb</td><td>ISX_DEFAULTCOMPONENT9</td><td>teapot.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Model\teapot.xnb</td><td>1</td><td/></row>
-		<row><td>teapot.xnb1</td><td>ISX_DEFAULTCOMPONENT88</td><td>teapot.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Model\teapot.xnb</td><td>1</td><td/></row>
-		<row><td>teapot.xnb2</td><td>ISX_DEFAULTCOMPONENT148</td><td>teapot.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Model\teapot.xnb</td><td>1</td><td/></row>
-		<row><td>teapot_0.xml</td><td>ISX_DEFAULTCOMPONENT155</td><td>teapot_0.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\obj\Windows Phone\Release\Model\teapot_0.xml</td><td>1</td><td/></row>
 		<row><td>techtruthscreen.cs</td><td>ISX_DEFAULTCOMPONENT136</td><td>TECHTR~1.CS|TechTruthScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\3D Demos\TechTruthScreen.cs</td><td>1</td><td/></row>
 		<row><td>templateforwardscreen.cs</td><td>ISX_DEFAULTCOMPONENT125</td><td>TEMPLA~1.CS|TemplateForwardScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplate\TemplateScreens\TemplateForwardScreen.cs</td><td>1</td><td/></row>
 		<row><td>terrain.cs</td><td>ISX_DEFAULTCOMPONENT117</td><td>Terrain.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplate\Terrain.cs</td><td>1</td><td/></row>
@@ -3424,10 +3093,6 @@
 		<row><td>terraingrass.dds1</td><td>ISX_DEFAULTCOMPONENT171</td><td>TERRAI~1.DDS|Terraingrass.dds</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\Terraingrass.dds</td><td>1</td><td/></row>
 		<row><td>terraingrass.dds2</td><td>ISX_DEFAULTCOMPONENT130</td><td>TERRAI~1.DDS|Terraingrass.dds</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplateContent\Textures\Terraingrass.dds</td><td>1</td><td/></row>
 		<row><td>terraingrass.xnb</td><td>ISX_DEFAULTCOMPONENT69</td><td>TERRAI~1.XNB|Terraingrass.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Textures\Terraingrass.xnb</td><td>1</td><td/></row>
-		<row><td>terraingrass.xnb1</td><td>ISX_DEFAULTCOMPONENT89</td><td>TERRAI~1.XNB|Terraingrass.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\Terraingrass.xnb</td><td>1</td><td/></row>
-		<row><td>terraingrass.xnb2</td><td>ISX_DEFAULTCOMPONENT149</td><td>TERRAI~1.XNB|Terraingrass.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\Terraingrass.xnb</td><td>1</td><td/></row>
-		<row><td>terrainpage.g.cs</td><td>ISX_DEFAULTCOMPONENT93</td><td>TERRAI~1.CS|TerrainPage.g.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\TerrainPage.g.cs</td><td>1</td><td/></row>
-		<row><td>terrainpage.g.i.cs</td><td>ISX_DEFAULTCOMPONENT93</td><td>TERRAI~1.CS|TerrainPage.g.i.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\TerrainPage.g.i.cs</td><td>1</td><td/></row>
 		<row><td>terrainpage.xaml</td><td>ISX_DEFAULTCOMPONENT83</td><td>TERRAI~1.XAM|TerrainPage.xaml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\TerrainPage.xaml</td><td>1</td><td/></row>
 		<row><td>terrainpage.xaml.cs</td><td>ISX_DEFAULTCOMPONENT83</td><td>TERRAI~1.CS|TerrainPage.xaml.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\TerrainPage.xaml.cs</td><td>1</td><td/></row>
 		<row><td>terrainscreen.cs</td><td>ISX_DEFAULTCOMPONENT26</td><td>TERRAI~1.CS|TerrainScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\Demo4 - Terrain\TerrainScreen.cs</td><td>1</td><td/></row>
@@ -3441,8 +3106,6 @@
 		<row><td>throwparticlesobject.cs</td><td>ISX_DEFAULTCOMPONENT28</td><td>THROWP~1.CS|ThrowParticlesObject.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\Demo5 - ParticleSamples\Helpers\ThrowParticlesObject.cs</td><td>1</td><td/></row>
 		<row><td>tile.jpg</td><td>ISX_DEFAULTCOMPONENT171</td><td>tile.JPG</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\tile.JPG</td><td>1</td><td/></row>
 		<row><td>tile.jpg1</td><td>ISX_DEFAULTCOMPONENT130</td><td>tile.JPG</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\ReachDemos\ReachDemos\PloobsProjectTemplateContent\Textures\tile.JPG</td><td>1</td><td/></row>
-		<row><td>tile.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>tile.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\tile.xnb</td><td>1</td><td/></row>
-		<row><td>tile.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>tile.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\tile.xnb</td><td>1</td><td/></row>
 		<row><td>titlescreen.cs</td><td>ISX_DEFAULTCOMPONENT21</td><td>TITLES~1.CS|TitleScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\TitleScreen.cs</td><td>1</td><td/></row>
 		<row><td>titlescreen.cs1</td><td>ISX_DEFAULTCOMPONENT54</td><td>TITLES~1.CS|TitleScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\TitleScreen.cs</td><td>1</td><td/></row>
 		<row><td>toolbar.png</td><td>ISX_DEFAULTCOMPONENT112</td><td>ToolBar.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Skins\Default\Images\ToolBar.png</td><td>1</td><td/></row>
@@ -3487,18 +3150,8 @@
 		<row><td>vertical.cur</td><td>ISX_DEFAULTCOMPONENT110</td><td>Vertical.cur</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Skins\Default\Cursors\Vertical.cur</td><td>1</td><td/></row>
 		<row><td>vertical.xnb</td><td>ISX_DEFAULTCOMPONENT14</td><td>Vertical.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Skins\Default\Cursors\Vertical.xnb</td><td>1</td><td/></row>
 		<row><td>wall_texture_diffuse.jpg</td><td>ISX_DEFAULTCOMPONENT171</td><td>WALL_T~1.JPG|wall_texture_diffuse.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\wall_texture_diffuse.jpg</td><td>1</td><td/></row>
-		<row><td>wall_texture_diffuse.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>WALL_T~1.XNB|wall_texture_diffuse.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\wall_texture_diffuse.xnb</td><td>1</td><td/></row>
-		<row><td>wall_texture_diffuse.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>WALL_T~1.XNB|wall_texture_diffuse.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\wall_texture_diffuse.xnb</td><td>1</td><td/></row>
-		<row><td>wall_texture_diffuse_0.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>WALL_T~1.XNB|wall_texture_diffuse_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\wall_texture_diffuse_0.xnb</td><td>1</td><td/></row>
-		<row><td>wall_texture_diffuse_0.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>WALL_T~1.XNB|wall_texture_diffuse_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\wall_texture_diffuse_0.xnb</td><td>1</td><td/></row>
 		<row><td>wall_texture_especular.jpg</td><td>ISX_DEFAULTCOMPONENT171</td><td>WALL_T~1.JPG|wall_texture_especular.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\wall_texture_especular.jpg</td><td>1</td><td/></row>
-		<row><td>wall_texture_especular.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>WALL_T~1.XNB|wall_texture_especular.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\wall_texture_especular.xnb</td><td>1</td><td/></row>
-		<row><td>wall_texture_especular.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>WALL_T~1.XNB|wall_texture_especular.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\wall_texture_especular.xnb</td><td>1</td><td/></row>
 		<row><td>water.png</td><td>ISX_DEFAULTCOMPONENT171</td><td>water.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\water.png</td><td>1</td><td/></row>
-		<row><td>water.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>water.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\water.xnb</td><td>1</td><td/></row>
-		<row><td>water.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>water.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\water.xnb</td><td>1</td><td/></row>
-		<row><td>water_0.xnb</td><td>ISX_DEFAULTCOMPONENT89</td><td>water_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\water_0.xnb</td><td>1</td><td/></row>
-		<row><td>water_0.xnb1</td><td>ISX_DEFAULTCOMPONENT149</td><td>water_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\water_0.xnb</td><td>1</td><td/></row>
 		<row><td>watercompletescreen.cs</td><td>ISX_DEFAULTCOMPONENT35</td><td>WATERC~1.CS|WaterCompleteScreen.cs</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemos\Demo9.1 Water and Ocean\WaterCompleteScreen.cs</td><td>1</td><td/></row>
 		<row><td>waypoints.xml</td><td>ISX_DEFAULTCOMPONENT54</td><td>WAYPOI~1.XML|waypoints.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\IntroductionDemo\IntroductionDemo4.0\IntroductionDemo4.0\waypoints.xml</td><td>1</td><td/></row>
 		<row><td>weaponmachinegun.fbx</td><td>ISX_DEFAULTCOMPONENT105</td><td>WEAPON~1.FBX|WeaponMachineGun.fbx</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Model\WeaponMachineGun.fbx</td><td>1</td><td/></row>
@@ -3508,11 +3161,7 @@
 		<row><td>white.jpg</td><td>ISX_DEFAULTCOMPONENT114</td><td>white.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Textures\white.jpg</td><td>1</td><td/></row>
 		<row><td>white.jpg1</td><td>ISX_DEFAULTCOMPONENT171</td><td>white.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1LibraryContent\Textures\white.jpg</td><td>1</td><td/></row>
 		<row><td>white.xnb</td><td>ISX_DEFAULTCOMPONENT69</td><td>white.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Textures\white.xnb</td><td>1</td><td/></row>
-		<row><td>white.xnb1</td><td>ISX_DEFAULTCOMPONENT89</td><td>white.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\white.xnb</td><td>1</td><td/></row>
-		<row><td>white.xnb2</td><td>ISX_DEFAULTCOMPONENT149</td><td>white.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\white.xnb</td><td>1</td><td/></row>
 		<row><td>white_0.xnb</td><td>ISX_DEFAULTCOMPONENT69</td><td>white_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Textures\white_0.xnb</td><td>1</td><td/></row>
-		<row><td>white_0.xnb1</td><td>ISX_DEFAULTCOMPONENT89</td><td>white_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\Content\Textures\white_0.xnb</td><td>1</td><td/></row>
-		<row><td>white_0.xnb2</td><td>ISX_DEFAULTCOMPONENT149</td><td>white_0.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\Content\Textures\white_0.xnb</td><td>1</td><td/></row>
 		<row><td>window.caption.png</td><td>ISX_DEFAULTCOMPONENT112</td><td>WINDOW~1.PNG|Window.Caption.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Skins\Default\Images\Window.Caption.png</td><td>1</td><td/></row>
 		<row><td>window.caption.xnb</td><td>ISX_DEFAULTCOMPONENT16</td><td>WINDOW~1.XNB|Window.Caption.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Skins\Default\Images\Window.Caption.xnb</td><td>1</td><td/></row>
 		<row><td>window.closebutton.png</td><td>ISX_DEFAULTCOMPONENT112</td><td>WINDOW~1.PNG|Window.CloseButton.png</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Skins\Default\Images\Window.CloseButton.png</td><td>1</td><td/></row>
@@ -3536,10 +3185,7 @@
 		<row><td>wmappmanifest.xml</td><td>ISX_DEFAULTCOMPONENT132</td><td>WMAPPM~1.XML|WMAppManifest.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Properties\WMAppManifest.xml</td><td>1</td><td/></row>
 		<row><td>wood_dark.jpg</td><td>ISX_DEFAULTCOMPONENT114</td><td>WOOD_D~1.JPG|wood_dark.jpg</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\SourceCodeDemos\AdvancedDemos\AdvancedDemos\AdvancedDemosContent\Textures\wood_dark.jpg</td><td>1</td><td/></row>
 		<row><td>wood_dark.xnb</td><td>ISX_DEFAULTCOMPONENT69</td><td>WOOD_D~1.XNB|wood_dark.xnb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\AdvDemosBin\Content\Textures\wood_dark.xnb</td><td>1</td><td/></row>
-		<row><td>xapcachefile.xml</td><td>ISX_DEFAULTCOMPONENT93</td><td>XAPCAC~1.XML|XapCacheFile.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\obj\Release\XapCacheFile.xml</td><td>1</td><td/></row>
-		<row><td>xnanimation.dll</td><td>XNAnimation.dll</td><td>XNANIM~1.DLL|XNAnimation.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1\Bin\Release\XNAnimation.dll</td><td>1</td><td/></row>
 		<row><td>xnanimation.dll1</td><td>XNAnimation.dll1</td><td>XNANIM~1.DLL|XNAnimation.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\PloobsEngineWindowsPhone\XNAnimation.dll</td><td>1</td><td/></row>
-		<row><td>xnanimation.dll2</td><td>XNAnimation.dll2</td><td>XNANIM~1.DLL|XNAnimation.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\GraphicsApp1Library\bin\Windows Phone\Release\XNAnimation.dll</td><td>1</td><td/></row>
 		<row><td>xnanimation.dll3</td><td>XNAnimation.dll3</td><td>XNANIM~1.DLL|XNAnimation.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\Phone7\XNAnimation.dll</td><td>1</td><td/></row>
 		<row><td>xnanimationpipeline.dll</td><td>XNAnimationPipeline.dll</td><td>XNANIM~1.DLL|XNAnimationPipeline.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\port-ploobsengine\PhoneSilverLightDemo\Phone7\XNAnimationPipeline.dll</td><td>1</td><td/></row>
 		<row><td>xnanimationpipeline.dll1</td><td>XNAnimationPipeline.dll1</td><td>XNANIM~1.DLL|XNAnimationPipeline.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\PloobsPackages\PloobsEngineWindowsPhone\XNAnimationPipeline.dll</td><td>1</td><td/></row>
@@ -3804,21 +3450,12 @@
 		<row><td>AdvancedDemos.exe</td><td/><td/><td>_41843FFB_4609_42B3_A6A5_88E85EA24896_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>Assimp.Interop.dll</td><td/><td/><td>_ECCF85DB_52C3_4863_99E7_A41459C57F32_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>Assimp.dll</td><td/><td/><td>_6BDED409_16A7_4E1E_83CA_500B46B75E67_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>BEPUphysics.dll</td><td/><td/><td>_D1B5A130_34F2_4427_8C7C_9A13B10BFD5A_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>BEPUphysics.dll1</td><td/><td/><td>_B52C90D3_36F0_4D5B_97A8_6C693E34CC78_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>BEPUphysics.dll2</td><td/><td/><td>_A0874CC7_35AE_4221_85C3_744CA8896523_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>BEPUphysics.dll3</td><td/><td/><td>_7A1582C1_2185_4D8F_9F84_A4EDCAD15DF8_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>DPSFPhone.dll</td><td/><td/><td>_0E5B7255_2BD1_4E2A_AD73_C368D1099E54_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DPSFPhone.dll1</td><td/><td/><td>_A9325092_E6ED_4BEC_9D29_3717C7FFF301_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>DPSFPhone.dll2</td><td/><td/><td>_4F7C682A_663D_45E5_BDC3_74C992EFF996_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>DPSFPhone.dll3</td><td/><td/><td>_BC8AB636_E04C_4991_B588_88A7471618BC_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>FarseerPhysicsXNA.dll</td><td/><td/><td>_C72D84F1_6A74_4262_8862_B9FC36FC1836_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>FarseerPhysicsXNA.dll1</td><td/><td/><td>_809C4A99_E461_4BD0_8902_F815AA304908_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>FarseerPhysicsXNA.dll2</td><td/><td/><td>_77B8CC40_46DB_43A8_AC1F_640A7E03A0E4_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>FarseerPhysicsXNA.dll3</td><td/><td/><td>_11B22136_8269_49E6_8053_55F0DF271AE9_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>GraphicsApp1LibraryTest.dll</td><td/><td/><td>_78B37487_9B59_43C5_8D7D_6B32DFC72A31_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>GraphicsApp1LibraryTest.dll1</td><td/><td/><td>_EE817615_C035_4B0E_AB22_A9639D3E655C_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>GraphicsApp1LibraryTest.dll2</td><td/><td/><td>_D856F985_619E_43FA_8789_1D6EEC004430_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td/><td/><td>_CFFDEAC2_6F95_4CA7_B0D7_65E917B90B8A_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT1</td><td/><td/><td>_D5C11F16_80C1_4555_8B2F_2E3F9DE51A51_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT10</td><td/><td/><td>_747B4F84_73F3_4153_A6C3_FE4392DC81BA_FILTER</td><td/><td/><td/><td/></row>
@@ -3856,7 +3493,6 @@
 		<row><td>ISX_DEFAULTCOMPONENT129</td><td/><td/><td>_6D9F44A8_5D79_4E96_8CF7_6262108F1568_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT13</td><td/><td/><td>_1E3F5D3F_3203_4C18_8FB0_E8D6D08626A6_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT130</td><td/><td/><td>_B4B93E2D_E9B1_4661_87B1_66AEBCE42DAC_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT131</td><td/><td/><td>_A673328C_2DB9_43DB_B99A_88A4D0E6775C_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT132</td><td/><td/><td>_FA9C899A_BED8_47A8_9D09_79FD52821A5C_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT133</td><td/><td/><td>_792586B5_D9A8_4F64_9E5E_FE6E05B0C202_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT134</td><td/><td/><td>_2A1822CB_03F1_477B_987D_367A11A7090B_FILTER</td><td/><td/><td/><td/></row>
@@ -3869,35 +3505,11 @@
 		<row><td>ISX_DEFAULTCOMPONENT140</td><td/><td/><td>_F7720032_567D_4236_9592_B1C79C5BDA5E_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT141</td><td/><td/><td>_CCCA42A0_1545_46CC_ADBA_2F214FB44A1E_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT142</td><td/><td/><td>_BEB626AF_E18A_41F4_BA9A_AAF49D9E407A_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT143</td><td/><td/><td>_D692A164_77D6_4D24_8E99_1EE98FC050B7_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT144</td><td/><td/><td>_3FAA6758_FC5A_4E3A_8E59_EB4232022C4F_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT145</td><td/><td/><td>_C33AAA04_CA44_4B21_893D_57D83D1AFF8D_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT146</td><td/><td/><td>_CD399157_A7CC_4AEC_AE14_1E59450875DD_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT147</td><td/><td/><td>_A2FE2B3E_E249_401C_964A_F8C927B1D553_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT148</td><td/><td/><td>_204CE44E_62C4_4211_AE26_721F7DD9B375_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT149</td><td/><td/><td>_E48C20D1_46A7_41CC_AF26_AF30BB81A837_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT15</td><td/><td/><td>_1F2B0325_FEDD_4F4F_9DE9_4B8F86505BD7_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT150</td><td/><td/><td>_1599644D_B49B_4BA0_930C_993DCE0D4D13_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT151</td><td/><td/><td>_31D8CFD9_EA4B_45F2_8CF7_8225698E9018_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT152</td><td/><td/><td>_E26327BA_56D8_4234_A0CB_7A91E2CC0E23_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT153</td><td/><td/><td>_2FCA3D03_C697_4F10_9451_E7A12DC579F3_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT154</td><td/><td/><td>_9127B4A5_5000_47A1_8E31_2CC77C08820A_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT155</td><td/><td/><td>_F6845364_134A_4392_B8E8_F028056F304B_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT156</td><td/><td/><td>_1B282260_41CC_491B_9EE0_690E54AE1153_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT157</td><td/><td/><td>_AE2E89EB_3D78_4D50_96FB_61F159DDC147_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT158</td><td/><td/><td>_26C7D255_82E4_4E83_BA19_7FD68BE92A80_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT159</td><td/><td/><td>_2367F93E_13F7_4030_B57C_2D567CF3CF20_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT16</td><td/><td/><td>_E173AA17_E473_4A64_B6CE_7AAD26E5C5E0_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT160</td><td/><td/><td>_45AB0B26_72CD_46E0_953E_C5F4D2D73BD2_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT161</td><td/><td/><td>_B7461F71_4ED6_4D70_8C8E_B832F3F2E695_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT162</td><td/><td/><td>_C69021DD_72C6_4317_8F90_87A1BF13B334_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT163</td><td/><td/><td>_E3C69B41_781D_45BC_B43B_F231F18A6597_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT164</td><td/><td/><td>_B2D0DD54_7626_4115_A589_E00741C57E65_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT165</td><td/><td/><td>_1F78A821_F0ED_4203_88EE_279ECB461B76_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT166</td><td/><td/><td>_0633A1B9_1BA4_4109_B7F3_9B1FA0547A5C_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT167</td><td/><td/><td>_3E472D24_9041_4ED2_AACE_E5B00D2BAE37_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT168</td><td/><td/><td>_AEA188A1_4C0E_47AF_A896_121C81C5BB5C_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT169</td><td/><td/><td>_662F8FF7_B840_4525_9F87_83898F345992_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT17</td><td/><td/><td>_8D2C8F5E_4673_4D69_A944_42A3FDDF9CA7_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT170</td><td/><td/><td>_34F2248C_0F9D_47F3_A034_9A61C4B44624_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT171</td><td/><td/><td>_58A7C0BF_DCA3_428D_9E10_3D7F3EB3C3B5_FILTER</td><td/><td/><td/><td/></row>
@@ -3975,24 +3587,13 @@
 		<row><td>ISX_DEFAULTCOMPONENT81</td><td/><td/><td>_B49AAB90_6907_4C64_969C_CD88D0479000_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT82</td><td/><td/><td>_5767030D_1748_4490_89D9_118265A590FC_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT83</td><td/><td/><td>_4F9F458B_6396_4FA6_9FCE_4A9978ACA33C_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT84</td><td/><td/><td>_CAB108D5_4E77_45BF_92FD_94B23DE2ADF0_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT85</td><td/><td/><td>_5489D683_8338_45D4_AD9D_EEA96D7FE205_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT86</td><td/><td/><td>_7A71B288_C84B_486A_8C1C_3EA76519E78A_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT87</td><td/><td/><td>_AF1CDC16_6220_4CC4_ABA5_ED022DD32EAF_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT88</td><td/><td/><td>_CEC8A68E_6CAD_489F_B197_1625366DAA7B_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT89</td><td/><td/><td>_DD43315E_A1A9_40AA_8B5B_FE9A05995DBE_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT9</td><td/><td/><td>_3AA0B123_18C5_4D5E_8DBC_4103D697FCC6_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT90</td><td/><td/><td>_EE7F7CFE_BE58_416C_A97D_59FDF9A95AD8_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT91</td><td/><td/><td>_97753053_F11F_403E_829F_B1DF46675C5B_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT92</td><td/><td/><td>_F81CBADC_C6B0_4C50_9680_BA853763E0F8_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ISX_DEFAULTCOMPONENT93</td><td/><td/><td>_C70565E5_2AB5_435E_9D1F_1D0B9307EC66_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT94</td><td/><td/><td>_A69EA1E5_6428_4762_A998_BF02C70716E6_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT95</td><td/><td/><td>_38DA05DE_796C_4307_A2A5_A8D00613ED77_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT96</td><td/><td/><td>_20C6B217_3CB5_4C2E_B17C_523B76F326F9_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT97</td><td/><td/><td>_5E84348E_5FDE_428C_9847_C85731A48AE5_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT98</td><td/><td/><td>_073D71DB_6253_465C_9A93_48ED67977A96_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT99</td><td/><td/><td>_E4AEF84E_8D76_4DBC_8831_BDC1127E605F_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>Microsoft.Phone.Controls.dll</td><td/><td/><td>_777B6FD5_026F_452C_8598_CA23125180A7_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ModelImporter.dll</td><td/><td/><td>_E80FD1E6_8EDA_4BE5_B97A_3BB3D7668F15_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>NewComponent1</td><td/><td/><td>_1E3A9096_A28D_4640_9732_75153379F168_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>NxCharacter.dll</td><td/><td/><td>_0368F970_8145_411C_9910_05DB85FCD944_FILTER</td><td/><td/><td/><td/></row>
@@ -4012,17 +3613,13 @@
 		<row><td>PloobsEngineDebug.dll3</td><td/><td/><td>_E7765FA4_7757_4005_B35E_A75A1DA284E1_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>PloobsEngineDebug.dll4</td><td/><td/><td>_8B10201C_9BDF_449D_A7DB_34328222FF1B_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>PloobsEngineDebug.dll5</td><td/><td/><td>_0ED43E27_81CC_412F_B52E_0D8A79758EA4_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>PloobsEnginePhone7.dll</td><td/><td/><td>_09F1E31D_B03D_4CE9_9449_1326583F3781_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>PloobsEnginePhone7.dll1</td><td/><td/><td>_0465CB3B_FBAB_4E68_A8CB_3C78E2565906_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>PloobsEnginePhone7.dll2</td><td/><td/><td>_A9071CF8_DAFB_4029_B7AC_3EBD86E82312_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>PloobsEnginePhone7.dll3</td><td/><td/><td>_3595CC6F_8524_4946_83A9_7473B4FB873C_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>PloobsEnginePipelineDebug.dll</td><td/><td/><td>_5E0089BC_E6C9_4E72_87C8_181BD168BD83_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>PloobsEnginePipelineDebug.dll1</td><td/><td/><td>_B94AE8F1_BD4B_4A25_BFC3_941CC77B60B3_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>PloobsEnginePipelineDebug.dll2</td><td/><td/><td>_555ADEAE_5514_4FEE_BB7C_320E8BC032FA_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>PloobsEnginePipelineDebug.dll3</td><td/><td/><td>_325DDC25_CD78_4563_89A8_6064D2BE5020_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>PloobsEnginePipelineDebug.dll4</td><td/><td/><td>_A3B01EDA_5744_42C1_ADC9_C431F1A241B4_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>PloobsFeatures.dll</td><td/><td/><td>_87C057B4_D36C_4924_8F24_0F05668B1390_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>PloobsFeatures.dll1</td><td/><td/><td>_84CA3D6F_E6C3_4750_A7D7_43C62B8DC0C0_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>PloobsScripts.dll</td><td/><td/><td>_426E4959_952D_48DC_9703_4E4789381FDB_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>PloobsSerializator.dll</td><td/><td/><td>_D862ED74_9B09_4488_ACAC_8BE54C53B122_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>Ploobs_Engine_Help.chm</td><td/><td/><td>_98DD2D38_5A24_4AB2_B332_F22E15A54F42_FILTER</td><td/><td/><td/><td/></row>
@@ -4034,9 +3631,7 @@
 		<row><td>SkinnedModelPipeline.dll</td><td/><td/><td>_DD305051_9164_41FB_9AE5_4040B5084F00_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>StillDesign.PhysX.Net.dll</td><td/><td/><td>_CE05AA6E_3D2F_4EE8_A316_C1BB8106A8DA_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>StillDesign.PhysX.Net.dll1</td><td/><td/><td>_35F64A9B_6853_477D_A029_44B208D271B1_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>XNAnimation.dll</td><td/><td/><td>_3E26EE5D_8F0A_416D_821F_529FB19EDDAE_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>XNAnimation.dll1</td><td/><td/><td>_E168F6E1_E165_4FA8_BB94_D2D48E702AD5_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>XNAnimation.dll2</td><td/><td/><td>_7C9914B5_FB37_448A_982A_EF7767465511_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>XNAnimation.dll3</td><td/><td/><td>_67A42FC6_157E_4A6D_B526_37AC32B7D2C8_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>XNAnimationPipeline.dll</td><td/><td/><td>_AFA34A1E_6BE5_49D9_AA0A_81E65AC20C8E_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>XNAnimationPipeline.dll1</td><td/><td/><td>_939090D6_E712_469E_B3A2_691C0C217C21_FILTER</td><td/><td/><td/><td/></row>
