@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{5080C6EF-C571-4C8B-A2CD-4AAB942A999E}</ProjectGuid>
+    <ProjectTypeGuids>{6D335F3A-9D43-41b4-9D22-F6F17C4BE596};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">Windows Phone</Platform>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GraphicsApp1LibraryTest</RootNamespace>
+    <AssemblyName>GraphicsApp1LibraryTest</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
+    <XnaPlatform>Windows Phone</XnaPlatform>
+    <XnaProfile>Reach</XnaProfile>
+    <XnaCrossPlatformGroupID>1d8564b2-7891-46c9-a083-46ec18f20cba</XnaCrossPlatformGroupID>
+    <XnaOutputType>Library</XnaOutputType>
+    <XnaRefreshLevel>1</XnaRefreshLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Windows Phone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Windows Phone\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;WINDOWS_PHONE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoStdLib>true</NoStdLib>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <XnaCompressContent>false</XnaCompressContent>
+    <LangVersion>default</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Windows Phone' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Windows Phone\Release</OutputPath>
+    <DefineConstants>TRACE;WINDOWS_PHONE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoStdLib>true</NoStdLib>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <XnaCompressContent>false</XnaCompressContent>
+    <LangVersion>default</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BEPUphysics">
+      <HintPath>..\Phone7\BEPUphysics.dll</HintPath>
+    </Reference>
+    <Reference Include="DPSFPhone">
+      <HintPath>..\Phone7\DPSFPhone.dll</HintPath>
+    </Reference>
+    <Reference Include="FarseerPhysicsXNA">
+      <HintPath>..\Phone7\FarseerPhysicsXNA.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Game">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Graphics">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.GamerServices">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Input.Touch">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="mscorlib">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PloobsEnginePhone7">
+      <HintPath>..\Phone7\PloobsEnginePhone7.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="XNAnimation">
+      <HintPath>..\Phone7\XNAnimation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="2D Demos\Basic2DCameraScreen.cs" />
+    <Compile Include="2D Demos\Basic2DParticleScreen.cs" />
+    <Compile Include="2D Demos\Basic2DPhysicScreen.cs" />
+    <Compile Include="2D Demos\Basic2DPositioningScreen.cs" />
+    <Compile Include="2D Demos\Basic2DSpriteScreen.cs" />
+    <Compile Include="2D Demos\Helpers\Border.cs" />
+    <Compile Include="2D Demos\Helpers\JointUpdateable.cs" />
+    <Compile Include="2D Demos\Helpers\SpriteParticle.cs" />
+    <Compile Include="2D Demos\Basic2DScreen.cs" />
+    <Compile Include="3D Demos\AnimationScreen1.cs" />
+    <Compile Include="BallThrowBepu.cs" />
+    <Compile Include="3D Demos\ParticleScreen.cs" />
+    <Compile Include="3D Demos\SnowPS.cs" />
+    <Compile Include="3D Demos\Behaviors\BaseObject.cs" />
+    <Compile Include="3D Demos\Behaviors\BehaviorTreeScreen.cs" />
+    <Compile Include="3D Demos\Behaviors\CharacterControllerInput.cs" />
+    <Compile Include="3D Demos\Behaviors\RepeatUntil.cs" />
+    <Compile Include="3D Demos\Crowed\CrowedScreen.cs" />
+    <Compile Include="3D Demos\GravitationalDemo\GravitationalBepuScreen.cs" />
+    <Compile Include="3D Demos\helper\DynEnvMaterial.cs" />
+    <Compile Include="3D Demos\PostEffect\PostEffectScreen.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RotatingCamera.cs" />
+    <Compile Include="3D Demos\SkyBoxScreen.cs" />
+    <Compile Include="3D Demos\StressScreen.cs" />
+    <Compile Include="3D Demos\TechTruthScreen.cs" />
+    <Compile Include="3D Demos\TerrainScreen.cs" />
+    <Compile Include="3D Demos\RVO\RVOObject.cs" />
+    <Compile Include="3D Demos\RVO\RVOScreen.cs" />
+    <Compile Include="3D Demos\TerrainGeoClipMap.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GraphicsApp1LibraryContent\GraphicsApp1LibraryContent.contentproj">
+      <Name>GraphicsApp1LibraryContent %28Content%29</Name>
+      <XnaReferenceType>Content</XnaReferenceType>
+      <Project>{8879CC64-F366-4DD4-ABDB-4CB24F732D37}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
+  <!--
+      To modify your build process, add your task inside one of the targets below and uncomment it. 
+      Other similar extension points exist, see Microsoft.Common.targets.
+      <Target Name="BeforeBuild">
+      </Target>
+      <Target Name="AfterBuild">
+      </Target>
+    -->
+</Project>

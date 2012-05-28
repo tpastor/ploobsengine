@@ -1,0 +1,5355 @@
+<!-- Comments: -->
+<SCENE>
+	<body 	 name="sponza_117" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_floor_a_diff.tga" />
+		</material>
+	</body> 
+		<pointlight name="Omni02">
+		<position>
+			<x> -712.206 </x>
+			<y> 95.445 </y>
+			<z> -975.109 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<pointlight name="Omni01">
+		<position>
+			<x> -712.206 </x>
+			<y> -90.8438 </y>
+			<z> -975.109 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<dummy name="Group06">
+		<position>
+			<x> -773.33 </x>
+			<y> -1.18382 </y>
+			<z> -947.1 </z>
+		</position>
+	</dummy>
+	<body 	 name="sponza_268" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_269" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_270" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_271" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_272" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_273" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_274" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_275" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_276" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_277" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_278" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+		<dummy name="Group08">
+		<position>
+			<x> -773.33 </x>
+			<y> -1.18382 </y>
+			<z> -469.571 </z>
+		</position>
+	</dummy>
+	<body 	 name="sponza_279" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_280" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_281" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_282" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_283" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_284" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_285" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_286" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_287" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_288" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_289" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+		<pointlight name="Omni03">
+		<position>
+			<x> -712.206 </x>
+			<y> 95.445 </y>
+			<z> -497.58 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<pointlight name="Omni04">
+		<position>
+			<x> -712.206 </x>
+			<y> -90.8438 </y>
+			<z> -497.58 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<dummy name="Group10">
+		<position>
+			<x> -773.33 </x>
+			<y> -1.18382 </y>
+			<z> 7.95809 </z>
+		</position>
+	</dummy>
+	<body 	 name="sponza_290" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_291" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_292" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_293" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_294" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_295" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_296" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_297" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_298" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_299" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_300" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+		<pointlight name="Omni05">
+		<position>
+			<x> -712.206 </x>
+			<y> 95.445 </y>
+			<z> -20.0511 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<pointlight name="Omni06">
+		<position>
+			<x> -712.206 </x>
+			<y> -90.8438 </y>
+			<z> -20.0511 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<dummy name="Group12">
+		<position>
+			<x> -773.33 </x>
+			<y> -1.18382 </y>
+			<z> 485.487 </z>
+		</position>
+	</dummy>
+	<body 	 name="sponza_301" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_302" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_303" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_304" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_305" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_306" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_307" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_308" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_309" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_310" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_311" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+		<pointlight name="Omni07">
+		<position>
+			<x> -712.206 </x>
+			<y> 95.445 </y>
+			<z> 457.478 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<pointlight name="Omni08">
+		<position>
+			<x> -712.206 </x>
+			<y> -90.8438 </y>
+			<z> 457.478 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<dummy name="Group14">
+		<position>
+			<x> -773.33 </x>
+			<y> -1.18382 </y>
+			<z> 963.016 </z>
+		</position>
+	</dummy>
+	<body 	 name="sponza_312" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_313" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_314" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_315" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_316" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_317" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_318" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_319" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_320" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_321" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_322" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+		<pointlight name="Omni09">
+		<position>
+			<x> -712.206 </x>
+			<y> 95.445 </y>
+			<z> 935.007 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<pointlight name="Omni10">
+		<position>
+			<x> -712.206 </x>
+			<y> -90.8438 </y>
+			<z> 935.007 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<dummy name="Group16">
+		<position>
+			<x> -773.33 </x>
+			<y> -1.18382 </y>
+			<z> 1440.54 </z>
+		</position>
+	</dummy>
+	<body 	 name="sponza_323" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_324" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_325" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_326" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_327" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_328" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_329" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_330" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_331" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_332" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_333" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+		<pointlight name="Omni11">
+		<position>
+			<x> -712.206 </x>
+			<y> 95.445 </y>
+			<z> 1412.54 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<pointlight name="Omni12">
+		<position>
+			<x> -712.206 </x>
+			<y> -90.8438 </y>
+			<z> 1412.54 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<dummy name="Group23">
+		<position>
+			<x> -193.3 </x>
+			<y> -1.18382 </y>
+			<z> 1440.54 </z>
+		</position>
+	</dummy>
+	<body 	 name="sponza_334" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_335" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_336" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_359" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_360" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_372" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_373" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_385" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_386" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_398" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_399" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+		<pointlight name="Omni23">
+		<position>
+			<x> -132.175 </x>
+			<y> 95.445 </y>
+			<z> 1412.54 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<pointlight name="Omni24">
+		<position>
+			<x> -132.175 </x>
+			<y> -90.8438 </y>
+			<z> 1412.54 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<dummy name="Group18">
+		<position>
+			<x> -193.3 </x>
+			<y> -1.18382 </y>
+			<z> -947.1 </z>
+		</position>
+	</dummy>
+	<body 	 name="sponza_337" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_338" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_339" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_340" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_341" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_342" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_343" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_344" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_345" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_346" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_347" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+		<pointlight name="Omni20">
+		<position>
+			<x> -132.175 </x>
+			<y> -90.8438 </y>
+			<z> -975.109 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<pointlight name="Omni21">
+		<position>
+			<x> -132.175 </x>
+			<y> 95.445 </y>
+			<z> -975.109 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<dummy name="Group19">
+		<position>
+			<x> -193.3 </x>
+			<y> -1.18382 </y>
+			<z> -469.571 </z>
+		</position>
+	</dummy>
+	<body 	 name="sponza_348" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_349" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_350" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_351" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_352" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_353" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_354" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_355" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_356" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_357" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_358" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+		<pointlight name="Omni18">
+		<position>
+			<x> -132.175 </x>
+			<y> -90.8438 </y>
+			<z> -497.58 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<pointlight name="Omni19">
+		<position>
+			<x> -132.175 </x>
+			<y> 95.445 </y>
+			<z> -497.58 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<dummy name="Group20">
+		<position>
+			<x> -193.3 </x>
+			<y> -1.18382 </y>
+			<z> 7.95809 </z>
+		</position>
+	</dummy>
+	<body 	 name="sponza_361" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_362" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_363" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_364" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_365" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_366" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_367" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_368" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_369" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_370" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_371" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+		<pointlight name="Omni17">
+		<position>
+			<x> -132.175 </x>
+			<y> -90.8438 </y>
+			<z> -20.0511 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<pointlight name="Omni22">
+		<position>
+			<x> -132.175 </x>
+			<y> 95.445 </y>
+			<z> -20.0511 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<dummy name="Group21">
+		<position>
+			<x> -193.3 </x>
+			<y> -1.18382 </y>
+			<z> 485.487 </z>
+		</position>
+	</dummy>
+	<body 	 name="sponza_374" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_375" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_376" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_377" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_378" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_379" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_380" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_381" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_382" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_383" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_384" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+		<pointlight name="Omni15">
+		<position>
+			<x> -132.175 </x>
+			<y> -90.8438 </y>
+			<z> 457.478 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<pointlight name="Omni16">
+		<position>
+			<x> -132.175 </x>
+			<y> 95.445 </y>
+			<z> 457.478 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<dummy name="Group22">
+		<position>
+			<x> -193.3 </x>
+			<y> -1.18382 </y>
+			<z> 963.016 </z>
+		</position>
+	</dummy>
+	<body 	 name="sponza_387" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_388" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_389" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_390" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_391" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_392" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_393" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_394" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_395" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_396" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_397" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+		<pointlight name="Omni13">
+		<position>
+			<x> -132.175 </x>
+			<y> -90.8438 </y>
+			<z> 935.007 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<pointlight name="Omni14">
+		<position>
+			<x> -132.175 </x>
+			<y> 95.445 </y>
+			<z> 935.007 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<dummy name="Group35">
+		<position>
+			<x> 386.731 </x>
+			<y> -1.18382 </y>
+			<z> 1440.54 </z>
+		</position>
+	</dummy>
+	<body 	 name="sponza_400" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_401" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_402" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_425" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_426" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_438" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_439" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_451" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_452" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_464" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_465" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+		<pointlight name="Omni35">
+		<position>
+			<x> 447.855 </x>
+			<y> 95.445 </y>
+			<z> 1412.54 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<pointlight name="Omni36">
+		<position>
+			<x> 447.855 </x>
+			<y> -90.8438 </y>
+			<z> 1412.54 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<dummy name="Group30">
+		<position>
+			<x> 386.731 </x>
+			<y> -1.18382 </y>
+			<z> -947.1 </z>
+		</position>
+	</dummy>
+	<body 	 name="sponza_403" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_404" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_405" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_406" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_407" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_408" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_409" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_410" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_411" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_412" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_413" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+		<pointlight name="Omni32">
+		<position>
+			<x> 447.855 </x>
+			<y> -90.8438 </y>
+			<z> -975.109 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<pointlight name="Omni33">
+		<position>
+			<x> 447.855 </x>
+			<y> 95.445 </y>
+			<z> -975.109 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<dummy name="Group31">
+		<position>
+			<x> 386.731 </x>
+			<y> -1.18382 </y>
+			<z> -469.571 </z>
+		</position>
+	</dummy>
+	<body 	 name="sponza_414" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_415" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_416" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_417" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_418" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_419" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_420" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_421" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_422" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_423" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_424" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+		<pointlight name="Omni30">
+		<position>
+			<x> 447.855 </x>
+			<y> -90.8438 </y>
+			<z> -497.58 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<pointlight name="Omni31">
+		<position>
+			<x> 447.855 </x>
+			<y> 95.445 </y>
+			<z> -497.58 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<dummy name="Group32">
+		<position>
+			<x> 386.731 </x>
+			<y> -1.18382 </y>
+			<z> 7.95809 </z>
+		</position>
+	</dummy>
+	<body 	 name="sponza_427" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_428" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_429" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_430" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_431" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_432" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_433" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_434" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_435" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_436" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_437" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+		<pointlight name="Omni29">
+		<position>
+			<x> 447.855 </x>
+			<y> -90.8438 </y>
+			<z> -20.0511 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<pointlight name="Omni34">
+		<position>
+			<x> 447.855 </x>
+			<y> 95.445 </y>
+			<z> -20.0511 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<dummy name="Group33">
+		<position>
+			<x> 386.731 </x>
+			<y> -1.18382 </y>
+			<z> 485.487 </z>
+		</position>
+	</dummy>
+	<body 	 name="sponza_440" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_441" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_442" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_443" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_444" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_445" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_446" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_447" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_448" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_449" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_450" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+		<pointlight name="Omni27">
+		<position>
+			<x> 447.855 </x>
+			<y> -90.8438 </y>
+			<z> 457.478 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<pointlight name="Omni28">
+		<position>
+			<x> 447.855 </x>
+			<y> 95.445 </y>
+			<z> 457.478 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<dummy name="Group34">
+		<position>
+			<x> 386.731 </x>
+			<y> -1.18382 </y>
+			<z> 963.016 </z>
+		</position>
+	</dummy>
+	<body 	 name="sponza_453" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_454" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_455" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_456" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_457" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_458" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_459" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_460" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_461" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_462" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_463" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+		<pointlight name="Omni25">
+		<position>
+			<x> 447.855 </x>
+			<y> -90.8438 </y>
+			<z> 935.007 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<pointlight name="Omni26">
+		<position>
+			<x> 447.855 </x>
+			<y> 95.445 </y>
+			<z> 935.007 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<dummy name="Group47">
+		<position>
+			<x> 966.762 </x>
+			<y> -1.18382 </y>
+			<z> 1440.54 </z>
+		</position>
+	</dummy>
+	<body 	 name="sponza_466" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_467" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_468" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_491" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_492" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_504" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_505" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_517" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_518" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_530" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_531" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+		<pointlight name="Omni47">
+		<position>
+			<x> 1027.89 </x>
+			<y> 95.445 </y>
+			<z> 1412.54 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<pointlight name="Omni48">
+		<position>
+			<x> 1027.89 </x>
+			<y> -90.8438 </y>
+			<z> 1412.54 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<dummy name="Group42">
+		<position>
+			<x> 966.762 </x>
+			<y> -1.18382 </y>
+			<z> -947.1 </z>
+		</position>
+	</dummy>
+	<body 	 name="sponza_469" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_470" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_471" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_472" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_473" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_474" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_475" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_476" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_477" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_478" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_479" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+		<pointlight name="Omni44">
+		<position>
+			<x> 1027.89 </x>
+			<y> -90.8438 </y>
+			<z> -975.109 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<pointlight name="Omni45">
+		<position>
+			<x> 1027.89 </x>
+			<y> 95.445 </y>
+			<z> -975.109 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<dummy name="Group43">
+		<position>
+			<x> 966.762 </x>
+			<y> -1.18382 </y>
+			<z> -469.571 </z>
+		</position>
+	</dummy>
+	<body 	 name="sponza_480" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_481" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_482" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_483" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_484" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_485" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_486" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_487" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_488" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_489" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_490" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+		<pointlight name="Omni42">
+		<position>
+			<x> 1027.89 </x>
+			<y> -90.8438 </y>
+			<z> -497.58 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<pointlight name="Omni43">
+		<position>
+			<x> 1027.89 </x>
+			<y> 95.445 </y>
+			<z> -497.58 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<dummy name="Group44">
+		<position>
+			<x> 966.762 </x>
+			<y> -1.18382 </y>
+			<z> 7.95809 </z>
+		</position>
+	</dummy>
+	<body 	 name="sponza_493" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_494" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_495" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_496" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_497" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_498" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_499" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_500" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_501" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_502" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_503" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+		<pointlight name="Omni41">
+		<position>
+			<x> 1027.89 </x>
+			<y> -90.8438 </y>
+			<z> -20.0511 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<pointlight name="Omni46">
+		<position>
+			<x> 1027.89 </x>
+			<y> 95.445 </y>
+			<z> -20.0511 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<dummy name="Group45">
+		<position>
+			<x> 966.762 </x>
+			<y> -1.18382 </y>
+			<z> 485.487 </z>
+		</position>
+	</dummy>
+	<body 	 name="sponza_506" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_507" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_508" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_509" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_510" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_511" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_512" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_513" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_514" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_515" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_516" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+		<pointlight name="Omni39">
+		<position>
+			<x> 1027.89 </x>
+			<y> -90.8438 </y>
+			<z> 457.478 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<pointlight name="Omni40">
+		<position>
+			<x> 1027.89 </x>
+			<y> 95.445 </y>
+			<z> 457.478 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<dummy name="Group46">
+		<position>
+			<x> 966.762 </x>
+			<y> -1.18382 </y>
+			<z> 963.016 </z>
+		</position>
+	</dummy>
+	<body 	 name="sponza_519" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_520" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_521" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_522" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_523" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_524" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_525" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_526" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_527" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_528" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_529" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+		<pointlight name="Omni37">
+		<position>
+			<x> 1027.89 </x>
+			<y> -90.8438 </y>
+			<z> 935.007 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<pointlight name="Omni38">
+		<position>
+			<x> 1027.89 </x>
+			<y> 95.445 </y>
+			<z> 935.007 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<dummy name="Group59">
+		<position>
+			<x> 1546.79 </x>
+			<y> -1.18382 </y>
+			<z> 1440.54 </z>
+		</position>
+	</dummy>
+	<body 	 name="sponza_532" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_533" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_534" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_557" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_558" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_570" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_571" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_583" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_584" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_596" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_597" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+		<pointlight name="Omni59">
+		<position>
+			<x> 1607.92 </x>
+			<y> 95.445 </y>
+			<z> 1412.54 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<pointlight name="Omni60">
+		<position>
+			<x> 1607.92 </x>
+			<y> -90.8438 </y>
+			<z> 1412.54 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<dummy name="Group54">
+		<position>
+			<x> 1546.79 </x>
+			<y> -1.18382 </y>
+			<z> -947.1 </z>
+		</position>
+	</dummy>
+	<body 	 name="sponza_535" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_536" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_537" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_538" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_539" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_540" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_541" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_542" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_543" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_544" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_545" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+		<pointlight name="Omni56">
+		<position>
+			<x> 1607.92 </x>
+			<y> -90.8438 </y>
+			<z> -975.109 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<pointlight name="Omni57">
+		<position>
+			<x> 1607.92 </x>
+			<y> 95.445 </y>
+			<z> -975.109 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<dummy name="Group55">
+		<position>
+			<x> 1546.79 </x>
+			<y> -1.18382 </y>
+			<z> -469.571 </z>
+		</position>
+	</dummy>
+	<body 	 name="sponza_546" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_547" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_548" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_549" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_550" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_551" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_552" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_553" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_554" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_555" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_556" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+		<pointlight name="Omni54">
+		<position>
+			<x> 1607.92 </x>
+			<y> -90.8438 </y>
+			<z> -497.58 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<pointlight name="Omni55">
+		<position>
+			<x> 1607.92 </x>
+			<y> 95.445 </y>
+			<z> -497.58 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<dummy name="Group56">
+		<position>
+			<x> 1546.79 </x>
+			<y> -1.18382 </y>
+			<z> 7.95809 </z>
+		</position>
+	</dummy>
+	<body 	 name="sponza_559" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_560" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_561" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_562" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_563" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_564" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_565" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_566" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_567" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_568" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_569" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+		<pointlight name="Omni53">
+		<position>
+			<x> 1607.92 </x>
+			<y> -90.8438 </y>
+			<z> -20.0511 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<pointlight name="Omni58">
+		<position>
+			<x> 1607.92 </x>
+			<y> 95.445 </y>
+			<z> -20.0511 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<dummy name="Group57">
+		<position>
+			<x> 1546.79 </x>
+			<y> -1.18382 </y>
+			<z> 485.487 </z>
+		</position>
+	</dummy>
+	<body 	 name="sponza_572" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_573" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_574" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_575" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_576" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_577" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_578" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_579" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_580" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_581" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_582" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+		<pointlight name="Omni51">
+		<position>
+			<x> 1607.92 </x>
+			<y> -90.8438 </y>
+			<z> 457.478 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<pointlight name="Omni52">
+		<position>
+			<x> 1607.92 </x>
+			<y> 95.445 </y>
+			<z> 457.478 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<dummy name="Group58">
+		<position>
+			<x> 1546.79 </x>
+			<y> -1.18382 </y>
+			<z> 963.016 </z>
+		</position>
+	</dummy>
+	<body 	 name="sponza_585" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_586" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_587" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_588" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_589" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_590" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_591" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_592" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_593" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_594" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+	<body 	 name="sponza_595" >
+		<collision type="Editable_Poly"/>
+		<material>
+			<SpecularIntensity>
+			10.0
+			</SpecularIntensity>
+			<SpecularPower>
+			0.0
+			</SpecularPower>
+			<diffuse name ="sponza_column_b_diff.tga" />
+			<bump name ="sponza_column_b_ddn.tga" />
+		</material>
+	</body> 
+		<pointlight name="Omni49">
+		<position>
+			<x> 1607.92 </x>
+			<y> -90.8438 </y>
+			<z> 935.007 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+		<pointlight name="Omni50">
+		<position>
+			<x> 1607.92 </x>
+			<y> 95.445 </y>
+			<z> 935.007 </z>
+		</position>
+		<color>
+			<x> 255.0 </x>
+			<y> 255.0 </y>
+			<z> 255.0 </z>
+		</color>
+			<multiplier amount="2.0" />
+			<decay value ="306.0" />
+	</pointlight>
+</SCENE>
