@@ -62,11 +62,10 @@ namespace PloobsProjectTemplate.TemplateScreens
         RenderTargetCube RenderTargetCube;
         public void PreDrawnPhase(Microsoft.Xna.Framework.GameTime gt, PloobsEngine.SceneControl.IWorld mundo, PloobsEngine.SceneControl.IObject obj, PloobsEngine.Cameras.ICamera cam, IList<PloobsEngine.Light.ILight> lights, PloobsEngine.SceneControl.RenderHelper render)
         {
-            Vector3 pos =  cam.Position;
-            Matrix proj = cam.Projection;            
+            Vector3 pos =  obj.PhysicObject.Position;             
             render.PushRasterizerState(d);
             render.RenderSceneToTextureCube(RenderTargetCube,
-                Color.AliceBlue, mundo, ref pos, ref proj, gt, true, false, new List<PloobsEngine.SceneControl.IObject>() { obj });
+                Color.AliceBlue, mundo, ref pos, gt, true, false, new List<PloobsEngine.SceneControl.IObject>() { obj });
             render.PopRasterizerState();
         }
 

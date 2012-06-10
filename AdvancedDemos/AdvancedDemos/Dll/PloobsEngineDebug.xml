@@ -658,6 +658,7 @@
       <summary>
             Draw the physic world in debug mode.
             </summary>
+      <param name="render">The render.</param>
       <param name="gt">The gt.</param>
       <param name="cam">The cam.</param>
     </member>
@@ -1018,6 +1019,31 @@
             is fist time that this shader is updated
             </summary>
     </member>
+    <member name="F:PloobsEngine.Material.IShader.isInitialized">
+      <summary>
+            if this instance has the init method called
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Material.IShader.basicDraw">
+      <summary>
+            Effect basicDraw (used mainly when the object needs to be draw in low details)
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Material.IShader.getDepth">
+      <summary>
+            Effect getDepth (Used mainly by shadow algorithms)
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Material.IShader.OcclusionQuery">
+      <summary>
+            OcclusionQuery
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Material.IShader.GraphicFactory">
+      <summary>
+            GraphicFactory
+            </summary>
+    </member>
     <member name="F:PloobsEngine.Material.IShader.shaderId">
       <summary>
             Shader ID that the object rendered by this shader will have        
@@ -1113,6 +1139,23 @@
       <param name="clippingPlane">The clipping plane.</param>
       <param name="useAlphaBlending">if set to <c>true</c> [use alpha blending].</param>
     </member>
+    <member name="M:PloobsEngine.Material.IShader.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+            Populates a <see cref="T:System.Runtime.Serialization.SerializationInfo" /> with the data needed to serialize the target object.
+            </summary>
+      <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> to populate with data.</param>
+      <param name="context">The destination (see <see cref="T:System.Runtime.Serialization.StreamingContext" />) for this serialization.</param>
+      <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
+    </member>
+    <member name="P:PloobsEngine.Material.IShader.UseOcclusionCulling">
+      <summary>
+            Gets or sets a value indicating whether [use occlusion culling].
+            Default False 
+            </summary>
+      <value>
+        <c>true</c> if [use occlusion culling]; otherwise, <c>false</c>.
+            </value>
+    </member>
     <member name="P:PloobsEngine.Material.IShader.MaterialType">
       <summary>
             Gets the type of the material.
@@ -1125,6 +1168,19 @@
       <summary>
             Used to Recover the object in PostProcces
             </summary>
+    </member>
+    <member name="P:PloobsEngine.Material.IShader.PixelsRendered">
+      <summary>
+            Gets the pixels rendered. (when Occlusion culling enabled)
+            </summary>
+    </member>
+    <member name="P:PloobsEngine.Material.IShader.BasicDrawSamplerState">
+      <summary>
+            Gets or sets the Sampler used by basicdraw shader.
+            </summary>
+      <value>
+            The state of the Sampler used by basicdraw shader..
+            </value>
     </member>
     <member name="T:PloobsEngine.Material.DeferredCustomAnimationShader">
       <summary>
@@ -1492,6 +1548,13 @@
             Designed to be VERY low coupled
             </summary>
     </member>
+    <member name="M:PloobsEngine.Components.IComponent.#ctor(System.Int32,System.Int32)">
+      <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Components.IComponent" /> class.
+            </summary>
+      <param name="drawpriority">The drawpriority.</param>
+      <param name="updatepriority">The updatepriority.</param>
+    </member>
     <member name="M:PloobsEngine.Components.IComponent.Initialize">
       <summary>
             Initializes this instance.
@@ -1596,6 +1659,22 @@
             eh possivel fazer broadcast e enviar apenas para um grupo usando as tags 
             USEI components (nessa arquitetura) pra ficar mais facil de "plugar"    
             </summary>
+    </member>
+    <member name="F:PloobsEngine.MessageSystem.MessageDeliver.SendToALLTag">
+      <summary>
+            Tag to SendToALL 
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.MessageSystem.MessageDeliver.#ctor">
+      <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.MessageSystem.MessageDeliver" /> class.
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.MessageSystem.MessageDeliver.#ctor(System.Int32)">
+      <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.MessageSystem.MessageDeliver" /> class.
+            </summary>
+      <param name="Num">The num.</param>
     </member>
     <member name="M:PloobsEngine.MessageSystem.MessageDeliver.Update(Microsoft.Xna.Framework.GameTime)">
       <summary>
@@ -2409,6 +2488,17 @@
             New Kind of Model specific for Animations
             </summary>
     </member>
+    <member name="M:PloobsEngine.Modelo.Animation.IAnimatedModel.#ctor(PloobsEngine.Engine.GraphicFactory,System.String,System.String,System.String,System.String,System.String)">
+      <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Modelo.Animation.IAnimatedModel" /> class.
+            </summary>
+      <param name="factory">The factory.</param>
+      <param name="modelName">Name of the model.</param>
+      <param name="diffuseTextureName">Name of the diffuse texture.</param>
+      <param name="bumpTextureName">Name of the bump texture.</param>
+      <param name="specularTextureName">Name of the specular texture.</param>
+      <param name="glowTextureName">Name of the glow texture.</param>
+    </member>
     <member name="M:PloobsEngine.Modelo.Animation.IAnimatedModel.GetAnimation">
       <summary>
             Gets the animation Information from Model
@@ -2417,6 +2507,13 @@
             </summary>
       <returns>
       </returns>
+    </member>
+    <member name="M:PloobsEngine.Modelo.Animation.IAnimatedModel.CleanUp(PloobsEngine.Engine.GraphicFactory)">
+      <summary>
+            Cleans up the IModelo
+            </summary>
+      <param name="factory">
+      </param>
     </member>
     <member name="T:PloobsEngine.Modelo.Animation.AnimatedModel">
       <summary>
@@ -2434,6 +2531,35 @@
       <param name="specularTextureName">Name of the specular texture.</param>
       <param name="glowTextureName">Name of the glow texture.</param>
     </member>
+    <member name="M:PloobsEngine.Modelo.Animation.AnimatedModel.LoadModel(PloobsEngine.Engine.GraphicFactory,PloobsEngine.Modelo.BatchInformation[][]@,PloobsEngine.Modelo.TextureInformation[][]@)">
+      <summary>
+            Loads the model.
+            </summary>
+      <param name="factory">The factory.</param>
+      <param name="BatchInformations">The batch informations.</param>
+      <param name="TextureInformations">The texture informations.</param>
+    </member>
+    <member name="M:PloobsEngine.Modelo.Animation.AnimatedModel.GetModelRadius">
+      <summary>
+            Gets the model radius.
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:PloobsEngine.Modelo.Animation.AnimatedModel.GetAnimatedModel">
+      <summary>
+            Gets the animated model.
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:PloobsEngine.Modelo.Animation.AnimatedModel.getBonesTransformation">
+      <summary>
+            Gets the bones transformation.
+            </summary>
+      <returns>
+      </returns>
+    </member>
     <member name="M:PloobsEngine.Modelo.Animation.AnimatedModel.GetAnimation">
       <summary>
             Gets the animation Information from Model
@@ -2449,6 +2575,12 @@
             </summary>
       <returns>
       </returns>
+    </member>
+    <member name="M:PloobsEngine.Modelo.Animation.AnimatedModel.CleanUp(PloobsEngine.Engine.GraphicFactory)">
+      <summary>
+            Cleans up.
+            </summary>
+      <param name="factory">The factory.</param>
     </member>
     <member name="P:PloobsEngine.Modelo.Animation.AnimatedModel.MeshNumber">
       <summary>
@@ -2601,7 +2733,7 @@
             </summary>
       <param name="gametime">The gametime.</param>
       <param name="obj">The obj.</param>
-      <param name="lights">The lights.</param>
+      <param name="world">The world.</param>
     </member>
     <member name="M:PloobsEngine.Material.ForwardAnimatedMaterial.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
       <summary>
@@ -2956,7 +3088,7 @@
       <summary>
             Base class for nodes which decorate other nodes with additional functionality.
             </summary>
-      <typeparam name="T">
+      <typeparam name="E">
       </typeparam>
     </member>
     <member name="T:BehaviorTrees.ForceSuccess`1">
@@ -2979,6 +3111,15 @@
             </summary>
       <typeparam name="E">
       </typeparam>
+    </member>
+    <member name="M:BehaviorTrees.Task`1.Execute(`0,Microsoft.Xna.Framework.GameTime)">
+      <summary>
+            Executes the specified Task.
+            </summary>
+      <param name="entity">The entity.</param>
+      <param name="gameTime">The game time.</param>
+      <returns>
+      </returns>
     </member>
     <member name="T:BehaviorTrees.DecoratorTask`1">
       <summary>
@@ -3191,6 +3332,11 @@
     <member name="F:PloobsEngine.Engine.InitialEngineDescription.OnExit">
       <summary>
             handler Called when engine exit
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Engine.InitialEngineDescription.SupportedOrientations">
+      <summary>
+            SupportedOrientations by the APP (Use or | operation to define more than one)
             </summary>
     </member>
     <member name="M:PloobsEngine.Engine.InitialEngineDescription.Default">
@@ -4033,6 +4179,7 @@
       <param name="worldTransformation">The world transformation.</param>
       <param name="scale">The scale.</param>
       <param name="density">The density.</param>
+      <param name="material">The material.</param>
     </member>
     <member name="M:PloobsEngine.Physics.PhysxTriangleMesh.#ctor(PloobsEngine.Physics.PhysxPhysicWorld,System.IO.FileStream,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Vector3,PloobsEngine.Physics.MaterialDescription)">
       <summary>
@@ -4050,6 +4197,66 @@
       <summary>
             Model implementation responsible for holding a specific mesh of a larger model
             Used by our World loader (from 3ds exporter)
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Modelo.CustomModel.model">
+      <summary>
+            XNA Model 
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.Modelo.CustomModel.#ctor(PloobsEngine.Engine.GraphicFactory,System.String,System.Int32,PloobsEngine.Modelo.BatchInformation[],Microsoft.Xna.Framework.Graphics.Texture2D)">
+      <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Modelo.CustomModel" /> class.
+            </summary>
+      <param name="factory">The factory.</param>
+      <param name="modelName">Name of the model.</param>
+      <param name="meshindex">The meshindex.</param>
+      <param name="binfo">The binfo.</param>
+      <param name="diffuse">The diffuse.</param>
+    </member>
+    <member name="M:PloobsEngine.Modelo.CustomModel.#ctor(PloobsEngine.Engine.GraphicFactory,PloobsEngine.Loader.ObjectInformation[])">
+      <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Modelo.CustomModel" /> class.
+            </summary>
+      <param name="factory">The factory.</param>
+      <param name="loader">The loader.</param>
+    </member>
+    <member name="M:PloobsEngine.Modelo.CustomModel.#ctor(PloobsEngine.Engine.GraphicFactory,System.String,PloobsEngine.Modelo.BatchInformation,PloobsEngine.Modelo.TextureInformation,System.Int32,System.Int32)">
+      <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Modelo.CustomModel" /> class.
+            </summary>
+      <param name="factory">The factory.</param>
+      <param name="modelName">Name of the model.</param>
+      <param name="BatchInformation">The batch information.</param>
+      <param name="TextureInformation">The texture information.</param>
+      <param name="meshindex">The meshindex.</param>
+      <param name="meshpartIndex">Index of the meshpart.</param>
+    </member>
+    <member name="M:PloobsEngine.Modelo.CustomModel.LoadModel(PloobsEngine.Engine.GraphicFactory,PloobsEngine.Modelo.BatchInformation[][]@,PloobsEngine.Modelo.TextureInformation[][]@)">
+      <summary>
+            Loads the model.
+            </summary>
+      <param name="factory">The factory.</param>
+      <param name="BatchInformations">The batch informations.</param>
+      <param name="TextureInformations">The texture informations.</param>
+    </member>
+    <member name="M:PloobsEngine.Modelo.CustomModel.GetModelRadius">
+      <summary>
+            Gets the model radius.
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:PloobsEngine.Modelo.CustomModel.CleanUp(PloobsEngine.Engine.GraphicFactory)">
+      <summary>
+            Cleans up the IModelo
+            </summary>
+      <param name="factory">
+      </param>
+    </member>
+    <member name="P:PloobsEngine.Modelo.CustomModel.MeshNumber">
+      <summary>
+            Gets the Total mesh number.
             </summary>
     </member>
     <member name="T:PloobsEngine.Material.DeferredSimpleAnimationShader">
@@ -5121,15 +5328,21 @@
       <summary>
             Calcula o ganho de um atributo
             </summary>
+      <param name="samples">The samples.</param>
       <param name="attribute">Atributo a ser calculado</param>
-      <returns>O ganho do atributo</returns>
+      <returns>
+            O ganho do atributo
+            </returns>
     </member>
     <member name="M:PloobsEngine.IA.DecisionTreeID3.getBestAttribute(System.Data.DataTable,PloobsEngine.IA.Attribute[])">
       <summary>
             Retorna o melhor atributo.
             </summary>
+      <param name="samples">The samples.</param>
       <param name="attributes">Um vetor com os atributos</param>
-      <returns>Retorna o que tiver maior ganho</returns>
+      <returns>
+            Retorna o que tiver maior ganho
+            </returns>
     </member>
     <member name="M:PloobsEngine.IA.DecisionTreeID3.allSamplesPositives(System.Data.DataTable,System.String)">
       <summary>
@@ -5162,6 +5375,27 @@
       <param name="samples">DataTable com as amostras</param>
       <param name="targetAttribute">Atributo (coluna) da tabela a qual será verificado</param>
       <returns>Retorna o objeto com maior incidência dentro da tabela de amostras</returns>
+    </member>
+    <member name="M:PloobsEngine.IA.DecisionTreeID3.internalMountTree(System.Data.DataTable,System.String,PloobsEngine.IA.Attribute[])">
+      <summary>
+            Monta uma árvore de decisão baseado nas amostragens apresentadas
+            </summary>
+      <param name="samples">Tabela com as amostragens que serão apresentadas para a montagem da árvore</param>
+      <param name="targetAttribute">Nome da coluna da tabela que possue o valor true ou false para 
+            validar ou não uma amostragem</param>
+      <returns>A raiz da árvore de decisão montada</returns>
+    </member>
+    <member name="M:PloobsEngine.IA.DecisionTreeID3.mountTree(System.Data.DataTable,System.String,PloobsEngine.IA.Attribute[])">
+      <summary>
+            Monta uma árvore de decisão baseado nas amostragens apresentadas
+            </summary>
+      <param name="samples">Tabela com as amostragens que serão apresentadas para a montagem da árvore</param>
+      <param name="targetAttribute">Nome da coluna da tabela que possue o valor true ou false para
+            validar ou não uma amostragem</param>
+      <param name="attributes">The attributes.</param>
+      <returns>
+            A raiz da árvore de decisão montada
+            </returns>
     </member>
     <member name="T:PloobsEngine.Utils.Spline.UnitTestSpline">
       <summary>
@@ -6714,6 +6948,14 @@
       <returns>
       </returns>
     </member>
+    <member name="M:PloobsEngine.Utils.VectorUtils.SetYtoZero(Microsoft.Xna.Framework.Vector3)">
+      <summary>
+            forces a 3d position onto the XZ (aka y=0) plane
+            </summary>
+      <param name="vector">The vector.</param>
+      <returns>
+      </returns>
+    </member>
     <member name="M:PloobsEngine.Utils.VectorUtils.RotateAboutGlobalY(Microsoft.Xna.Framework.Vector3,System.Single)">
       <summary>
             rotate this vector about the global Y (up) axis by the given angle
@@ -7843,6 +8085,21 @@
             3D sound that follows a 3D object
             </summary>
     </member>
+    <member name="M:PloobsEngine.Audio.ObjectFollower3DSound.#ctor(PloobsEngine.Engine.GraphicFactory,System.String,PloobsEngine.SceneControl.IObject)">
+      <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.Audio.ObjectFollower3DSound" /> class.
+            </summary>
+      <param name="factory">The factory.</param>
+      <param name="audioname">The audioname.</param>
+      <param name="follow">The follow.</param>
+    </member>
+    <member name="M:PloobsEngine.Audio.ObjectFollower3DSound.Update(Microsoft.Xna.Framework.GameTime,PloobsEngine.Cameras.ICamera)">
+      <summary>
+            Updates !!!
+            </summary>
+      <param name="gt">The gt.</param>
+      <param name="camera">The camera.</param>
+    </member>
     <member name="T:BehaviorTrees.Watch`1">
       <summary>
             Watch decorator is a node which executes its subnode unless some condition is met.
@@ -7854,8 +8111,8 @@
       <summary>
             Instantiates watch decorator with a given condition
             </summary>
-      <param name="condition">
-      </param>
+      <param name="condition">The condition.</param>
+      <param name="node">The node.</param>
     </member>
     <member name="M:BehaviorTrees.Watch`1.Evaluate(`0)">
       <summary>
@@ -7891,6 +8148,21 @@
     <member name="T:BehaviorTrees.TaskResult">
       <summary>
             The result of executing the node.
+            </summary>
+    </member>
+    <member name="F:BehaviorTrees.TaskResult.Success">
+      <summary>
+            Success
+            </summary>
+    </member>
+    <member name="F:BehaviorTrees.TaskResult.Running">
+      <summary>
+            Running
+            </summary>
+    </member>
+    <member name="F:BehaviorTrees.TaskResult.Failure">
+      <summary>
+            Failure
             </summary>
     </member>
     <member name="T:BehaviorTrees.Sequence`1">
@@ -8684,10 +8956,179 @@
             FireBeginsContaining 
             </summary>
     </member>
+    <member name="T:PloobsEngine.Material.TerrainMaterial">
+      <summary>
+            Terrain Material
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.Material.TerrainMaterial.Initialization(PloobsEngine.Engine.GraphicInfo,PloobsEngine.Engine.GraphicFactory,PloobsEngine.SceneControl.IObject)">
+      <summary>
+            Initializations the specified Material.
+            </summary>
+      <param name="ginfo">The ginfo.</param>
+      <param name="factory">The factory.</param>
+      <param name="obj">The obj.</param>
+    </member>
+    <member name="M:PloobsEngine.Material.TerrainMaterial.PreDrawnPhase(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IWorld,PloobsEngine.SceneControl.IObject,PloobsEngine.Cameras.ICamera,System.Collections.Generic.IList{PloobsEngine.Light.ILight},PloobsEngine.SceneControl.RenderHelper)">
+      <summary>
+            Pre drawn Function.
+            Called before all the objects are draw
+            </summary>
+      <param name="gt">The gt.</param>
+      <param name="mundo">The mundo.</param>
+      <param name="obj">The obj.</param>
+      <param name="cam">The cam.</param>
+      <param name="lights">The lights.</param>
+      <param name="render">The render.</param>
+    </member>
+    <member name="M:PloobsEngine.Material.TerrainMaterial.PosDrawnPhase(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IObject,PloobsEngine.Cameras.ICamera,System.Collections.Generic.IList{PloobsEngine.Light.ILight},PloobsEngine.SceneControl.RenderHelper)">
+      <summary>
+            Pos drawn Function.
+            Called after all objects are Draw
+            </summary>
+      <param name="gt">The gt.</param>
+      <param name="obj">The obj.</param>
+      <param name="cam">The cam.</param>
+      <param name="lights">The lights.</param>
+      <param name="render">The render.</param>
+    </member>
+    <member name="M:PloobsEngine.Material.TerrainMaterial.Drawn(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IObject,PloobsEngine.Cameras.ICamera,System.Collections.Generic.IList{PloobsEngine.Light.ILight},PloobsEngine.SceneControl.RenderHelper)">
+      <summary>
+            Normal Drawn Function.
+            </summary>
+      <param name="gt">The gt.</param>
+      <param name="obj">The obj.</param>
+      <param name="cam">The cam.</param>
+      <param name="lights">The lights.</param>
+      <param name="render">The render.</param>
+    </member>
+    <member name="M:PloobsEngine.Material.TerrainMaterial.Update(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IObject,PloobsEngine.SceneControl.IWorld)">
+      <summary>
+            Update.
+            </summary>
+      <param name="gametime">The gametime.</param>
+      <param name="obj">The obj.</param>
+      <param name="world">The world.</param>
+            ///
+        </member>
+    <member name="M:PloobsEngine.Material.TerrainMaterial.CleanUp(PloobsEngine.Engine.GraphicFactory)">
+      <summary>
+            Cleans up.
+            </summary>
+      <param name="factory">
+      </param>
+    </member>
+    <member name="M:PloobsEngine.Material.TerrainMaterial.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+            Populates a <see cref="T:System.Runtime.Serialization.SerializationInfo" /> with the data needed to serialize the target object.
+            </summary>
+      <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> to populate with data.</param>
+      <param name="context">The destination (see <see cref="T:System.Runtime.Serialization.StreamingContext" />) for this serialization.</param>
+      <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
+    </member>
+    <member name="M:PloobsEngine.Material.TerrainMaterial.AfterAdded(PloobsEngine.SceneControl.IObject)">
+      <summary>
+            Called After the IObject is Added.
+            </summary>
+      <param name="obj">The obj.</param>
+    </member>
+    <member name="P:PloobsEngine.Material.TerrainMaterial.Shader">
+      <summary>
+            Gets or sets the shadder.
+            </summary>
+      <value>
+            The shadder.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Material.TerrainMaterial.MaterialType">
+      <summary>
+            Gets or sets the type of the material.
+            </summary>
+      <value>
+            The type of the material.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Material.TerrainMaterial.CanCreateShadow">
+      <summary>
+            Gets or sets a value indicating whether this material is [Create shadow on others objects].
+            </summary>
+      <value>
+        <c>true</c> if [affected by shadow]; otherwise, <c>false</c>.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Material.TerrainMaterial.CanAppearOfReflectionRefraction">
+      <summary>
+            Gets or sets a value indicating whether this instance can appear of reflection and refraction.
+            </summary>
+      <value>
+        <c>true</c> if this instance can appear of reflection/refraction; otherwise, <c>false</c>.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Material.TerrainMaterial.IsVisible">
+      <summary>
+            Gets or sets a value indicating whether this instance is visible.
+            </summary>
+      <value>
+        <c>true</c> if this instance is visible; otherwise, <c>false</c>.
+            </value>
+    </member>
     <member name="T:PloobsEngine.Material.GeoclipShader">
       <summary>
-            Dummy Dummy Dummy
+            Hack shader used for Geoclip technic
             </summary>
+    </member>
+    <member name="M:PloobsEngine.Material.GeoclipShader.Draw(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IObject,PloobsEngine.SceneControl.RenderHelper,PloobsEngine.Cameras.ICamera,System.Collections.Generic.IList{PloobsEngine.Light.ILight})">
+      <summary>
+            Draws the specified gt.
+            </summary>
+      <param name="gt">The gt.</param>
+      <param name="obj">The obj.</param>
+      <param name="render">The render.</param>
+      <param name="cam">The cam.</param>
+      <param name="lights">The lights.</param>
+    </member>
+    <member name="M:PloobsEngine.Material.GeoclipShader.BasicDraw(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IObject,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@,System.Collections.Generic.IList{PloobsEngine.Light.ILight},PloobsEngine.SceneControl.RenderHelper,System.Nullable{Microsoft.Xna.Framework.Plane},System.Boolean)">
+      <summary>
+            Draw the object in a simple way (WITH MINIMUM EFFECTS,....)
+            USED IN RELECTIONS, REFRACTION .....
+            </summary>
+      <param name="gt">The gt.</param>
+      <param name="obj">The obj.</param>
+      <param name="view">The view.</param>
+      <param name="projection">The projection.</param>
+      <param name="lights">The lights.</param>
+      <param name="render">The render.</param>
+      <param name="clippingPlane">The clipping plane.</param>
+      <param name="useAlphaBlending">if set to <c>true</c> [use alpha blending].</param>
+    </member>
+    <member name="M:PloobsEngine.Material.GeoclipShader.DepthExtractor(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IObject,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@,PloobsEngine.SceneControl.RenderHelper)">
+      <summary>
+            Exctract the depth from an object
+            </summary>
+      <param name="gt">The gt.</param>
+      <param name="obj">The obj.</param>
+      <param name="View">The view.</param>
+      <param name="projection">The projection.</param>
+      <param name="render">The render.</param>
+    </member>
+    <member name="M:PloobsEngine.Material.GeoclipShader.Initialize(PloobsEngine.Engine.GraphicInfo,PloobsEngine.Engine.GraphicFactory,PloobsEngine.SceneControl.IObject)">
+      <summary>
+            Initializes this instance.
+            </summary>
+      <param name="ginfo">
+      </param>
+      <param name="factory">
+      </param>
+      <param name="obj">
+      </param>
+    </member>
+    <member name="P:PloobsEngine.Material.GeoclipShader.MaterialType">
+      <summary>
+            Gets the type of the material.
+            </summary>
+      <value>
+            The type of the material.
+            </value>
     </member>
     <member name="T:PloobsEngine.Modelo2D.SpriteAnimated">
       <summary>
@@ -9499,6 +9940,12 @@
             Node that can perform some action.
             </summary>
       <typeparam name="E">Entity type.</typeparam>
+    </member>
+    <member name="M:BehaviorTrees.Action`1.#ctor(BehaviorTrees.ActionDelegate{`0})">
+      <summary>
+            Initializes a new instance of the <see cref="T:BehaviorTrees.Action`1" /> class.
+            </summary>
+      <param name="method">The method.</param>
     </member>
     <member name="M:BehaviorTrees.Action`1.Evaluate(`0)">
       <summary>
@@ -10939,7 +11386,7 @@
             </summary>
       <param name="gt">The gt.</param>
       <param name="cam">The cam.</param>
-      <param name="luzes">The luzes.</param>
+      <param name="world">The world.</param>
     </member>
     <member name="M:PloobsEngine.SceneControl.IObject.CleanUp(PloobsEngine.Engine.GraphicFactory)">
       <summary>
@@ -11225,6 +11672,21 @@
             Generic Sound 2D Emiter 
             </summary>
     </member>
+    <member name="F:PloobsEngine.Audio.ISoundEmitter2D.soundEngineInstance">
+      <summary>
+            SoundEffectInstance soundEngineInstance
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Audio.ISoundEmitter2D.emiter">
+      <summary>
+            AudioEmitter emiter
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Audio.ISoundEmitter2D.listener">
+      <summary>
+            AudioListener listener
+            </summary>
+    </member>
     <member name="M:PloobsEngine.Audio.ISoundEmitter2D.CleanUp(PloobsEngine.Engine.GraphicFactory,System.Boolean)">
       <summary>
             Cleans up.
@@ -11257,6 +11719,31 @@
     <member name="M:PloobsEngine.Audio.ISoundEmitter2D.Stop(System.Boolean)">
       <summary>
             Stops the sound
+            </summary>
+    </member>
+    <member name="P:PloobsEngine.Audio.ISoundEmitter2D.Duration">
+      <summary>
+            Gets the duration.
+            </summary>
+    </member>
+    <member name="P:PloobsEngine.Audio.ISoundEmitter2D.Name">
+      <summary>
+            Gets the name.
+            </summary>
+    </member>
+    <member name="P:PloobsEngine.Audio.ISoundEmitter2D.SoundEngineInstance">
+      <summary>
+            Gets the sound engine instance.
+            </summary>
+    </member>
+    <member name="P:PloobsEngine.Audio.ISoundEmitter2D.Listener">
+      <summary>
+            Gets the listener.
+            </summary>
+    </member>
+    <member name="P:PloobsEngine.Audio.ISoundEmitter2D.Emiter">
+      <summary>
+            Gets the emiter.
             </summary>
     </member>
     <member name="P:PloobsEngine.Audio.ISoundEmitter2D.State">
@@ -11395,8 +11882,7 @@
             Adds an object to the world.
             </summary>
       <param name="obj">The obj.</param>
-      <returns>
-      </returns>
+      <param name="InitMaterial">if set to <c>true</c> [init material].</param>
     </member>
     <member name="M:PloobsEngine.SceneControl.IWorld.ContainsObject(PloobsEngine.SceneControl.IObject)">
       <summary>
@@ -11559,11 +12045,12 @@
     </member>
     <member name="M:PloobsEngine.Physics.PhysxGhostObject.#ctor(Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Vector3,System.Nullable{Microsoft.Xna.Framework.BoundingBox})">
       <summary>
-            Initializes a new instance of the <see cref="!:GhostObject" /> class.
+            Initializes a new instance of the <see cref="T:PloobsEngine.Physics.PhysxGhostObject" /> class.
             </summary>
       <param name="position">The position.</param>
       <param name="orientation">The orientation.</param>
       <param name="scale">The scale.</param>
+      <param name="bb">The bb.</param>
     </member>
     <member name="M:PloobsEngine.Physics.PhysxGhostObject.#ctor(System.Nullable{Microsoft.Xna.Framework.BoundingBox})">
       <summary>
@@ -11594,12 +12081,9 @@
             http://local.wasp.uwa.edu.au/~pbourke/other/interpolation/
             Cosine interpolation
             </summary>
-      <param name="a">
-      </param>
-      <param name="b">
-      </param>
-      <param name="x">
-      </param>
+      <param name="y1">The y1.</param>
+      <param name="y2">The y2.</param>
+      <param name="mu">The mu.</param>
       <returns>
       </returns>
     </member>
@@ -12927,6 +13411,16 @@
             Represent each billboard
             </summary>
     </member>
+    <member name="F:PloobsEngine.Modelo.BilboardInstance.Position">
+      <summary>
+            Position
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Modelo.BilboardInstance.Scale">
+      <summary>
+            Scale
+            </summary>
+    </member>
     <member name="M:PloobsEngine.Modelo.InstancedBilboardModel.#ctor(PloobsEngine.Engine.GraphicFactory,System.String,System.String,PloobsEngine.Modelo.BilboardInstance[],System.Int32)">
       <summary>
             Initializes a new instance of the <see cref="T:PloobsEngine.Modelo.InstancedBilboardModel" /> class.
@@ -12950,6 +13444,46 @@
       <returns>
       </returns>
     </member>
+    <member name="M:PloobsEngine.Modelo.InstancedBilboardModel.LoadModel(PloobsEngine.Engine.GraphicFactory,PloobsEngine.Modelo.BatchInformation[][]@,PloobsEngine.Modelo.TextureInformation[][]@)">
+      <summary>
+            Loads the model.
+            </summary>
+      <param name="factory">The factory.</param>
+      <param name="BatchInformations">The batch informations.</param>
+      <param name="TextureInformations">The texture informations.</param>
+    </member>
+    <member name="M:PloobsEngine.Modelo.InstancedBilboardModel.GetModelRadius">
+      <summary>
+            Gets the model radius.
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="P:PloobsEngine.Modelo.InstancedBilboardModel.MeshNumber">
+      <summary>
+            Gets the Total mesh number.
+            </summary>
+    </member>
+    <member name="T:PloobsEngine.Material.ReflectionType">
+      <summary>
+            ReflectionType
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Material.ReflectionType.PerfectMirror">
+      <summary>
+            PerfectMirror
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.Material.ReflectionType.ReflexiveSurface">
+      <summary>
+            ReflexiveSurface
+            </summary>
+    </member>
+    <member name="T:PloobsEngine.Material.DeferredEMReflectiveShader">
+      <summary>
+            Deferred rnvironment Mapping Reflective Shader
+            </summary>
+    </member>
     <member name="F:PloobsEngine.Material.DeferredEMReflectiveShader.reflectionIndex">
       <summary>
             from 0 to 1 
@@ -12971,6 +13505,98 @@
             </summary>
       <param name="texName">Name of the tex.</param>
       <param name="reflectionIndex">Index of the reflection.</param>
+    </member>
+    <member name="M:PloobsEngine.Material.DeferredEMReflectiveShader.PreUpdate(PloobsEngine.SceneControl.IObject,System.Collections.Generic.IList{PloobsEngine.Light.ILight})">
+      <summary>
+            Called Once only, before all draws
+            </summary>
+      <param name="ent">The current entity.</param>
+      <param name="lights">All The lights</param>
+    </member>
+    <member name="M:PloobsEngine.Material.DeferredEMReflectiveShader.Draw(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IObject,PloobsEngine.SceneControl.RenderHelper,PloobsEngine.Cameras.ICamera,System.Collections.Generic.IList{PloobsEngine.Light.ILight})">
+      <summary>
+            Draws the specified gt.
+            </summary>
+      <param name="gt">The gt.</param>
+      <param name="obj">The obj.</param>
+      <param name="render">The render.</param>
+      <param name="camera">The camera.</param>
+      <param name="lights">The lights.</param>
+    </member>
+    <member name="M:PloobsEngine.Material.DeferredEMReflectiveShader.Initialize(PloobsEngine.Engine.GraphicInfo,PloobsEngine.Engine.GraphicFactory,PloobsEngine.SceneControl.IObject)">
+      <summary>
+            Initializes this instance.
+            </summary>
+      <param name="ginfo">
+      </param>
+      <param name="factory">
+      </param>
+      <param name="obj">
+      </param>
+    </member>
+    <member name="M:PloobsEngine.Material.DeferredEMReflectiveShader.BasicDraw(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IObject,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@,System.Collections.Generic.IList{PloobsEngine.Light.ILight},PloobsEngine.SceneControl.RenderHelper,System.Nullable{Microsoft.Xna.Framework.Plane},System.Boolean)">
+      <summary>
+            Draw the object in a simple way (WITH MINIMUM EFFECTS,....)
+            USED IN RELECTIONS, REFRACTION .....
+            </summary>
+      <param name="gt">The gt.</param>
+      <param name="obj">The obj.</param>
+      <param name="view">The view.</param>
+      <param name="projection">The projection.</param>
+      <param name="lights">The lights.</param>
+      <param name="render">The render.</param>
+      <param name="clippingPlane">The clipping plane.</param>
+      <param name="useAlphaBlending">if set to <c>true</c> [use alpha blending].</param>
+    </member>
+    <member name="M:PloobsEngine.Material.DeferredEMReflectiveShader.DepthExtractor(Microsoft.Xna.Framework.GameTime,PloobsEngine.SceneControl.IObject,Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@,PloobsEngine.SceneControl.RenderHelper)">
+      <summary>
+            Exctract the depth from an object
+            </summary>
+      <param name="gt">The gt.</param>
+      <param name="obj">The obj.</param>
+      <param name="View">The view.</param>
+      <param name="projection">The projection.</param>
+      <param name="render">The render.</param>
+    </member>
+    <member name="P:PloobsEngine.Material.DeferredEMReflectiveShader.ReflectionIndex">
+      <summary>
+            Gets or sets the index of the reflection.
+            </summary>
+      <value>
+            The index of the reflection.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Material.DeferredEMReflectiveShader.TextureCube">
+      <summary>
+            Gets or sets the texture cube.
+            </summary>
+      <value>
+            The texture cube.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Material.DeferredEMReflectiveShader.SpecularIntensity">
+      <summary>
+            Gets or sets the specular intensity.
+            </summary>
+      <value>
+            The specular intensity.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Material.DeferredEMReflectiveShader.SpecularPower">
+      <summary>
+            Gets or sets the specular power.
+            </summary>
+      <value>
+            The specular power.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Material.DeferredEMReflectiveShader.MaterialType">
+      <summary>
+            Gets the type of the material.
+            </summary>
+      <value>
+            The type of the material.
+            </value>
     </member>
     <member name="T:PloobsEngine.Material.DeferredAnimatedMaterial">
       <summary>
@@ -13180,6 +13806,12 @@
             </summary>
       <param name="name">The name.</param>
     </member>
+    <member name="M:PloobsEngine.Audio.LocalMediaAudioPlayer.PlaySpecificMusic(Microsoft.Xna.Framework.Media.Song)">
+      <summary>
+            Plays the specific music.
+            </summary>
+      <param name="song">The song.</param>
+    </member>
     <member name="M:PloobsEngine.Audio.LocalMediaAudioPlayer.AdvanceOneMusicInQueue">
       <summary>
             Advances one music in queue.
@@ -13211,6 +13843,14 @@
       <summary>
             Stops the current music.
             </summary>
+    </member>
+    <member name="P:PloobsEngine.Audio.LocalMediaAudioPlayer.MediaLibrary">
+      <summary>
+            Gets or sets the media library.
+            </summary>
+      <value>
+            The media library.
+            </value>
     </member>
     <member name="P:PloobsEngine.Audio.LocalMediaAudioPlayer.Loop">
       <summary>
@@ -14108,6 +14748,62 @@
             </summary>
       <param name="gt">The gt.</param>
     </member>
+    <member name="P:PloobsEngine.Cameras.CameraFirstPerson.MoveSpeed">
+      <summary>
+            Gets or sets the move speed.
+            </summary>
+      <value>
+            The move speed.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Cameras.CameraFirstPerson.RotationSpeed">
+      <summary>
+            Gets or sets the rotation speed.
+            </summary>
+      <value>
+            The rotation speed.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Cameras.CameraFirstPerson.Sensibility">
+      <summary>
+            Gets or sets the sensibility.
+            </summary>
+      <value>
+            The sensibility.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Cameras.CameraFirstPerson.Hasmoved">
+      <summary>
+            Gets a value indicating whether this <see cref="T:PloobsEngine.Cameras.ICamera" /> has moved.
+            </summary>
+      <value>
+        <c>true</c> if hasmoved; otherwise, <c>false</c>.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Cameras.CameraFirstPerson.Position">
+      <summary>
+            Gets or sets the position.
+            </summary>
+      <value>
+            The position.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Cameras.CameraFirstPerson.Up">
+      <summary>
+            Gets or sets up vector.
+            </summary>
+      <value>
+            Up.
+            </value>
+    </member>
+    <member name="P:PloobsEngine.Cameras.CameraFirstPerson.Rotation">
+      <summary>
+            Gets or sets the rotation.
+            </summary>
+      <value>
+            The rotation.
+            </value>
+    </member>
     <member name="P:PloobsEngine.Cameras.CameraFirstPerson.View">
       <summary>
             Gets the view.
@@ -14496,6 +15192,12 @@
       <param name="SamplerState">State of the sampler.</param>
       <param name="registers">The registers to change.</param>
     </member>
+    <member name="M:PloobsEngine.SceneControl.RenderHelper.ValidateSamplerStates">
+      <summary>
+            Validates the sampler states.
+            Only present on DEBUG build
+            </summary>
+    </member>
     <member name="M:PloobsEngine.SceneControl.RenderHelper.SetVertexSamplerStates(Microsoft.Xna.Framework.Graphics.SamplerState,System.Int32)">
       <summary>
             Sets the vertex sampler states.
@@ -14537,6 +15239,23 @@
             </summary>
       <param name="binding">
       </param>
+    </member>
+    <member name="M:PloobsEngine.SceneControl.RenderHelper.SetCubeRenderTarget(Microsoft.Xna.Framework.Graphics.RenderTargetCube,Microsoft.Xna.Framework.Graphics.CubeMapFace)">
+      <summary>
+            Sets a cube render target. 
+            DOES NOT PUT IT INTO THE RENDER TARGETS STACK
+            Used RestorePreviousRenderTarget() to restore to the stack peak state
+            </summary>
+      <param name="RenderTargetCube">The render target cube.</param>
+      <param name="face">The face.</param>
+    </member>
+    <member name="M:PloobsEngine.SceneControl.RenderHelper.RestorePreviousRenderTarget">
+      <summary>
+            Restores the previous render target. (DOES NOT POP from RenderTargetStack)
+            Used to recover the RenderTargetStack top (when not using the push to set a new render target)
+            </summary>
+      <returns>
+      </returns>
     </member>
     <member name="M:PloobsEngine.SceneControl.RenderHelper.PushRenderTarget(Microsoft.Xna.Framework.Graphics.RenderTarget2D[])">
       <summary>
@@ -14834,6 +15553,12 @@
             THIS IS BECAUSE THE SPRITEBATCH KILLS THE RENDER STATES, NO SAVE STATE. XNA DOCUMENTATION FAILS !!!!
             </summary>
     </member>
+    <member name="M:PloobsEngine.SceneControl.RenderHelper.DettachBindedTextures(System.Int32)">
+      <summary>
+            Dettaches binded textures to the Device
+            </summary>
+      <param name="numberofTextures">The numberof textures.</param>
+    </member>
     <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderFullScreenQuadVertexPixel(Microsoft.Xna.Framework.Graphics.Effect,Microsoft.Xna.Framework.Graphics.SamplerState[])">
       <summary>
             Renders the texture to full screen using vertex and pixel shader .
@@ -14874,6 +15599,22 @@
       <param name="samplerState">State of the sampler.</param>
       <param name="blenderState">State of the blender.</param>
       <param name="sync">if set to <c>true</c> [sync].</param>
+    </member>
+    <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderSceneToTextureCube(Microsoft.Xna.Framework.Graphics.RenderTargetCube,Microsoft.Xna.Framework.Color,PloobsEngine.SceneControl.IWorld,Microsoft.Xna.Framework.Vector3@,Microsoft.Xna.Framework.GameTime,System.Boolean,System.Boolean,System.Collections.Generic.List{PloobsEngine.SceneControl.IObject},System.Single,System.Single)">
+      <summary>
+            Renders the scene to a texture cube.
+            Usefull for high quality reflections
+            </summary>
+      <param name="renderTargetCube">The render target cube.</param>
+      <param name="backGroundColor">Color of the back ground.</param>
+      <param name="world">The world.</param>
+      <param name="objPos">The obj pos.</param>
+      <param name="gt">The gt.</param>
+      <param name="drawComponentsPreDraw">if set to <c>true</c> [draw components pre draw].</param>
+      <param name="useCuller">if set to <c>true</c> [use culler].</param>
+      <param name="objListException">The obj list exception.</param>
+      <param name="nearPlane">The near plane.</param>
+      <param name="farPlane">The far plane.</param>
     </member>
     <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderSceneWithBasicMaterial(PloobsEngine.SceneControl.IWorld,Microsoft.Xna.Framework.GameTime,System.Collections.Generic.List{PloobsEngine.SceneControl.IObject},Microsoft.Xna.Framework.Matrix@,Microsoft.Xna.Framework.Matrix@,System.Boolean,System.Boolean)">
       <summary>
@@ -15105,7 +15846,7 @@
             </summary>
       <param name="gametime">The gametime.</param>
       <param name="obj">The obj.</param>
-      <param name="lights">The lights.</param>
+      <param name="world">The world.</param>
     </member>
     <member name="M:PloobsEngine.Material.ForwardMaterial.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
       <summary>
@@ -15536,6 +16277,13 @@
             If it doesn't have traction, but is still supported by something, it will jump in the direction of the surface normal.
             </summary>
     </member>
+    <member name="M:BEPUphysicsDemos.AlternateMovement.Character.CharacterController.OnAdditionToSpace(BEPUphysics.ISpace)">
+      <summary>
+            Called after the object is added to a space.
+            </summary>
+      <param name="newSpace">
+      </param>
+    </member>
     <member name="P:BEPUphysicsDemos.AlternateMovement.Character.CharacterController.Body">
       <summary>
             Gets the physical body of the character.
@@ -15617,6 +16365,14 @@
       <summary>
             Instance of a render target that belongs to a pool
             </summary>
+    </member>
+    <member name="T:PloobsEngine.DataStructure.BinaryNode`1">
+      <summary>
+            A class which represents a binary node, which is a node that can have two child nodes,
+            which in turn can have two child nodes, and so on. Each node is capable of storing a
+            user data object, which could be anything from a number to a spatial node.
+            </summary>
+      <typeparam name="UserType">Type of data to store in this node.</typeparam>
     </member>
     <member name="M:PloobsEngine.DataStructure.BinaryNode`1.#ctor(`0)">
       <summary>
@@ -15925,6 +16681,12 @@
             than the real master list, because screens should only ever be added
             or removed using the AddScreen and RemoveScreen methods.
             </summary>
+    </member>
+    <member name="T:PloobsEngine.Modelo.Animation.HandleAnimationObserverCall">
+      <summary>
+            HandleAnimationObserverCall delegate
+            </summary>
+      <param name="obj">The obj.</param>
     </member>
     <member name="T:PloobsEngine.Modelo.Animation.IAnimatedController">
       <summary>
@@ -16431,7 +17193,7 @@
             </summary>
       <param name="gametime">The gametime.</param>
       <param name="obj">The obj.</param>
-      <param name="lights">The lights.</param>
+      <param name="world">The world.</param>
     </member>
     <member name="M:PloobsEngine.Material.DeferredMaterial.CleanUp(PloobsEngine.Engine.GraphicFactory)">
       <summary>
@@ -16648,16 +17410,12 @@
             Creates and instance of InstancedTriangleMesh
             Call the Static Method GetInstacedMesh to get the InstancedMeshShape obj
             </summary>
-      <param name="InstancedMeshShape">
-      </param>
-      <param name="pos">
-      </param>
-      <param name="rotation">
-      </param>
-      <param name="scale">
-      </param>
-      <param name="materialDescription">
-      </param>
+      <param name="InstancedMeshShape">The instanced mesh shape.</param>
+      <param name="pos">The pos.</param>
+      <param name="rotation">The rotation.</param>
+      <param name="scale">The scale.</param>
+      <param name="materialDescription">The material description.</param>
+      <param name="TriangleSidedness">The triangle sidedness.</param>
     </member>
     <member name="M:PloobsEngine.Physics.Bepu.InstancedTriangleMeshObject.GetInstacedMesh(PloobsEngine.Modelo.IModelo)">
       <summary>
@@ -17470,6 +18228,46 @@
             Avaliable Sender Types
             </summary>
     </member>
+    <member name="F:PloobsEngine.MessageSystem.SenderType.SYSTEM">
+      <summary>
+            SYSTEM 
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.MessageSystem.SenderType.NORMAL">
+      <summary>
+            NORMAL
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.MessageSystem.SenderType.IA">
+      <summary>
+            IA 
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.MessageSystem.SenderType.HUD">
+      <summary>
+            HUD
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.MessageSystem.SenderType.SOUND">
+      <summary>
+            SOUND
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.MessageSystem.SenderType.EVENT">
+      <summary>
+            EVENT
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.MessageSystem.SenderType.MAIL">
+      <summary>
+            MAIL
+            </summary>
+    </member>
+    <member name="F:PloobsEngine.MessageSystem.SenderType.OBJECT">
+      <summary>
+            OBJECT
+            </summary>
+    </member>
     <member name="T:PloobsEngine.MessageSystem.Checks">
       <summary>
             Types of checking
@@ -17921,6 +18719,14 @@
       <returns>
       </returns>
     </member>
+    <member name="P:PloobsEngine.Modelo.Animation.AnimatedController.AnimationController">
+      <summary>
+            Gets or sets the animation controller.
+            </summary>
+      <value>
+            The animation controller.
+            </value>
+    </member>
     <member name="P:PloobsEngine.Modelo.Animation.AnimatedController.TransitionBetweenAnimationTimeInSeconds">
       <summary>
             Gets or sets the transition between animation time in seconds.
@@ -18275,6 +19081,31 @@
       <param name="pan">The pan (-1 to 1).</param>
       <param name="isLooped">if set to <c>true</c> [is looped].</param>
     </member>
+    <member name="M:PloobsEngine.Audio.SimpleSoundEffect.ForcePlay">
+      <summary>
+            Forces the play.
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.Audio.SimpleSoundEffect.Play">
+      <summary>
+            Plays this instance.
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.Audio.SimpleSoundEffect.Stop">
+      <summary>
+            Stops this instance.
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.Audio.SimpleSoundEffect.Pause">
+      <summary>
+            Pauses this instance.
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.Audio.SimpleSoundEffect.Resume">
+      <summary>
+            Resumes this instance.
+            </summary>
+    </member>
     <member name="M:PloobsEngine.Audio.SimpleSoundEffect.CleanUp">
       <summary>
             Cleans up.
@@ -18288,6 +19119,64 @@
             </summary>
       <param name="factory">The factory.</param>
       <param name="removeSoundGeneratorAlso">if set to <c>true</c> [remove sound generator also].</param>
+    </member>
+    <member name="M:PloobsEngine.Audio.SimpleSoundEffect.setVolume(System.Single)">
+      <summary>
+            Sets the volume.
+            </summary>
+      <param name="volume">The volume.</param>
+    </member>
+    <member name="P:PloobsEngine.Audio.SimpleSoundEffect.Duration">
+      <summary>
+            Gets the duration.
+            </summary>
+    </member>
+    <member name="P:PloobsEngine.Audio.SimpleSoundEffect.Name">
+      <summary>
+            Gets the name.
+            </summary>
+    </member>
+    <member name="P:PloobsEngine.Audio.SimpleSoundEffect.MySoundEffectInstance">
+      <summary>
+            Gets my sound effect instance.
+            </summary>
+    </member>
+    <member name="P:PloobsEngine.Audio.SimpleSoundEffect.State">
+      <summary>
+            Gets the state.
+            </summary>
+    </member>
+    <member name="T:PloobsEngine.IA.TriggerMultiCondition">
+      <summary>
+            TriggerMultiCondition 
+            Checks for more than one condition to fire
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.IA.TriggerMultiCondition.#ctor(System.Func{PloobsEngine.IA.BlackBoard,PloobsEngine.IA.TriggerState,System.Boolean},System.Action{PloobsEngine.IA.TriggerState},System.String[])">
+      <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.IA.TriggerMultiCondition" /> class.
+            </summary>
+      <param name="Condition">The condition.</param>
+      <param name="onFire">The on fire.</param>
+      <param name="Names">The names.</param>
+    </member>
+    <member name="M:PloobsEngine.IA.TriggerMultiCondition.RemoveThisTrigger">
+      <summary>
+            Removes this trigger form the blackboard
+            </summary>
+    </member>
+    <member name="M:PloobsEngine.IA.TriggerMultiCondition.CheckConditionToFire">
+      <summary>
+            Checks the conditions to fire.
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:PloobsEngine.IA.TriggerMultiCondition.CalledOnFire(PloobsEngine.IA.TriggerState)">
+      <summary>
+            Called on triggers fire.
+            </summary>
+      <param name="TriggerState">State of the trigger.</param>
     </member>
     <member name="T:BehaviorTrees.Parallel`1">
       <summary>
@@ -18327,6 +19216,7 @@
             Executes children nodes' task in parallel.
             </summary>
       <param name="entity">Entity which is used in the process of executing task.</param>
+      <param name="gameTime">The game time.</param>
       <returns>
             Success if master node succeeds or all of the children succeeds.
             Failure if one of the children fails.
@@ -18537,6 +19427,16 @@
       <param name="instanceCount">The instance count.</param>
       <param name="PrimitiveType">Type of the primitive.</param>
     </member>
+    <member name="M:PloobsEngine.Modelo.BatchInformation.MergeIndexedBatchInformation``1(PloobsEngine.Engine.GraphicFactory,Microsoft.Xna.Framework.Graphics.IndexElementSize,PloobsEngine.Modelo.BatchInformation[])">
+      <summary>
+            Merges some indexedbatchinformation objects.
+            </summary>
+      <typeparam name="T">
+      </typeparam>
+      <param name="GraphicFactory">The graphic factory.</param>
+      <param name="IndexElementSize">Size of the index element.</param>
+      <param name="ExtraBatchInformation">The extra batch information.</param>
+    </member>
     <member name="T:PloobsEngine.MessageSystem.SystemRecieverMessage">
       <summary>    
             Helper to Handle some message
@@ -18546,6 +19446,12 @@
       <summary>
             Initializes a new instance of the <see cref="T:PloobsEngine.MessageSystem.SystemRecieverMessage" /> class.
             </summary>
+    </member>
+    <member name="M:PloobsEngine.MessageSystem.SystemRecieverMessage.#ctor(System.Int64)">
+      <summary>
+            Initializes a new instance of the <see cref="T:PloobsEngine.MessageSystem.SystemRecieverMessage" /> class.
+            </summary>
+      <param name="id">The id.</param>
     </member>
     <member name="M:PloobsEngine.MessageSystem.SystemRecieverMessage.HandleThisMessageType(PloobsEngine.MessageSystem.SenderType)">
       <summary>
@@ -18724,6 +19630,14 @@
             </summary>
       <param name="characterController">Character to be governed by this constraint.</param>
     </member>
+    <member name="M:BEPUphysicsDemos.AlternateMovement.Character.HorizontalMotionConstraint.CollectInvolvedEntities(BEPUphysics.DataStructures.RawList{BEPUphysics.Entities.Entity})">
+      <summary>
+            Adds entities associated with the solver item to the involved entities list.
+            This allows the non-batched multithreading system to lock properly.
+            </summary>
+      <param name="outputInvolvedEntities">
+      </param>
+    </member>
     <member name="M:BEPUphysicsDemos.AlternateMovement.Character.HorizontalMotionConstraint.Update(System.Single)">
       <summary>
             Computes per-frame information necessary for the constraint.
@@ -18815,6 +19729,26 @@
     <member name="P:BEPUphysicsDemos.AlternateMovement.Character.HorizontalMotionConstraint.RelativeWorldVelocity">
       <summary>
             Gets the current velocity between the character and its support.
+            </summary>
+    </member>
+    <member name="T:BEPUphysicsDemos.AlternateMovement.Character.MovementMode">
+      <summary>
+            MovementMode
+            </summary>
+    </member>
+    <member name="F:BEPUphysicsDemos.AlternateMovement.Character.MovementMode.Traction">
+      <summary>
+            Traction
+            </summary>
+    </member>
+    <member name="F:BEPUphysicsDemos.AlternateMovement.Character.MovementMode.Sliding">
+      <summary>
+            Sliding
+            </summary>
+    </member>
+    <member name="F:BEPUphysicsDemos.AlternateMovement.Character.MovementMode.Floating">
+      <summary>
+            Floating
             </summary>
     </member>
     <member name="T:PloobsEngine.Physics.DisplayTransformable">
