@@ -61,7 +61,7 @@ namespace PloobsEngine.SceneControl
             effect = new BasicEffect(device);
             qrender = new QuadRender(device);
             this.componentManager = componentManager;
-            defaultFont = cmanager.GetAsset<Microsoft.Xna.Framework.Graphics.SpriteFont>("ConsoleFont", true);            
+            defaultFont = cmanager.GetAsset<Microsoft.Xna.Framework.Graphics.SpriteFont>("ConsoleFont", true);
         }
 
         /// <summary>
@@ -879,14 +879,29 @@ namespace PloobsEngine.SceneControl
             if (sync)
                 ResyncStates();
         }
-        
+
+        /// <summary>
+        /// Renders the scene to a texture cube.
+        /// Usefull for high quality reflections
+        /// </summary>
+        /// <param name="renderTargetCube">The render target cube.</param>
+        /// <param name="backGroundColor">Color of the back ground.</param>
+        /// <param name="world">The world.</param>
+        /// <param name="objPos">The obj pos.</param>
+        /// <param name="gt">The gt.</param>
+        /// <param name="drawComponentsPreDraw">if set to <c>true</c> [draw components pre draw].</param>
+        /// <param name="useCuller">if set to <c>true</c> [use culler].</param>
+        /// <param name="objListException">The obj list exception.</param>
         public void RenderSceneToTextureCube(RenderTargetCube renderTargetCube, Color backGroundColor, IWorld world,
-            ref Vector3 camPos, ref Matrix projection, GameTime gt,bool drawComponentsPreDraw = true,bool useCuller = false
-            , List<IObject> objListException = null
+            ref Vector3 objPos, GameTime gt,bool drawComponentsPreDraw = true,bool useCuller = false
+            , List<IObject> objListException = null, float nearPlane = 1, float farPlane = 1000
             )
         {
             System.Diagnostics.Debug.Assert(renderTargetCube != null);
-
+            
+            Matrix proj = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver2, 1, nearPlane, farPlane);
+            proj.M33 *= -1;
+            proj.M34 *= -1;
             Matrix viewMatrix = new Matrix();
             // Render our cube map, once for each cube face( 6 times ).
             for (int i = 0; i < 6; i++)
@@ -898,42 +913,41 @@ namespace PloobsEngine.SceneControl
                 {
                     case CubeMapFace.NegativeX:
                         {
-                            viewMatrix = Matrix.CreateLookAt(camPos, camPos + Vector3.Left, Vector3.Up);
+                            viewMatrix = Matrix.CreateLookAt(objPos, objPos -  Vector3.Left, Vector3.Up);
                             break;
                         }
                     case CubeMapFace.NegativeY:
                         {
-                            viewMatrix = Matrix.CreateLookAt(camPos, camPos + Vector3.Down, Vector3.Forward);
+                            viewMatrix = Matrix.CreateLookAt(objPos, objPos - Vector3.Down,-Vector3.Forward);
                             break;
                         }
                     case CubeMapFace.NegativeZ:
                         {
-                            viewMatrix = Matrix.CreateLookAt(camPos, camPos + Vector3.Backward, Vector3.Up);
+                            viewMatrix = Matrix.CreateLookAt(objPos, objPos + Vector3.Backward, Vector3.Up);
                             break;
                         }
                     case CubeMapFace.PositiveX:
                         {
-                            viewMatrix = Matrix.CreateLookAt(camPos, camPos + Vector3.Right, Vector3.Up);
+                            viewMatrix = Matrix.CreateLookAt(objPos, objPos - Vector3.Right, Vector3.Up);
                             break;
                         }
                     case CubeMapFace.PositiveY:
                         {
-                            viewMatrix = Matrix.CreateLookAt(camPos, camPos + Vector3.Up, Vector3.Backward);
+                            viewMatrix = Matrix.CreateLookAt(objPos, objPos - Vector3.Up, -Vector3.Backward);
                             break;
                         }
                     case CubeMapFace.PositiveZ:
                         {
-                            viewMatrix = Matrix.CreateLookAt(camPos, camPos + Vector3.Forward, Vector3.Up);
+                            viewMatrix = Matrix.CreateLookAt(objPos, objPos + Vector3.Forward, Vector3.Up);
                             break;
                         }
-                }
-
+                }                
                 
                 // Set the cubemap render target, using the selected face
                 SetCubeRenderTarget(renderTargetCube, cubeMapFace);
                 Clear(backGroundColor);
-                RenderSceneWithBasicMaterial(world, gt, objListException, ref viewMatrix, ref projection, drawComponentsPreDraw, useCuller);
-                RestorePreviousRenderTarget();
+                RenderSceneWithBasicMaterial(world, gt, objListException, ref viewMatrix, ref proj, drawComponentsPreDraw, useCuller);
+                RestorePreviousRenderTarget();                
             }
                         
         }
@@ -982,22 +996,18 @@ namespace PloobsEngine.SceneControl
 
                 if (obj.Modelo == null)
                     continue;
-                
-                Matrix wld = obj.WorldMatrix;
+
                 for (int i = 0; i < obj.Modelo.MeshNumber; i++)
                 {
-                    BatchInformation[] bi = obj.Modelo.GetBatchInformation(i);                    
-
+                    BatchInformation[] bi = obj.Modelo.GetBatchInformation(i);
                     for (int j = 0; j < bi.Count(); j++)
-                    {                        
-                        Matrix w1 = Matrix.Multiply(wld, bi[j].ModelLocalTransformation);
-                        effect.World = w1;                                               
-                        device.SetVertexBuffer(bi[j].VertexBuffer, bi[j].StreamOffset);
-                        device.Indices = bi[j].IndexBuffer;
-                        effect.CurrentTechnique.Passes[0].Apply();
-                        device.DrawIndexedPrimitives(PrimitiveType.TriangleList, bi[j].BaseVertex, 0, bi[j].NumVertices, bi[j].StartIndex, bi[j].PrimitiveCount);                                                
+                    {
+                        effect.Texture = obj.Modelo.GetTextureInformation(i)[j].getTexture(TextureType.DIFFUSE);
+                        effect.World = bi[j].ModelLocalTransformation * obj.WorldMatrix;
+                        RenderBatch(bi[j], effect);
                     }
                 }
+
             }
         }
 

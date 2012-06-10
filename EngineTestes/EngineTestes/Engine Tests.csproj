@@ -260,6 +260,8 @@
     <Compile Include="PRT\ILightReader.cs" />
     <Compile Include="PRT\MonteCarlo.cs" />
     <Compile Include="PRT\SphericalHarmonicEvaluator.cs" />
+    <Compile Include="ReflectionMix\DynamicEnvMapScreen.cs" />
+    <Compile Include="ReflectionMix\helper\DynEnvMaterial.cs" />
     <Compile Include="ScreenTests\InterTest\AlgoTest.cs" />
     <Compile Include="SphereCharacterControllerInput.cs" />
     <Compile Include="FullCharacterControllerInput.cs" />
