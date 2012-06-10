@@ -26,6 +26,10 @@ using System.Runtime.Serialization;
 
 namespace PloobsEngine.Modelo.Animation
 {
+    /// <summary>
+    /// HandleAnimationObserverCall delegate
+    /// </summary>
+    /// <param name="obj">The obj.</param>
     public delegate void HandleAnimationObserverCall(Object obj );
 
     /// <summary>

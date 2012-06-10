@@ -1,4 +1,4 @@
-﻿///CREDITS FOR XNA WIKI !!!!
+﻿//CREDITS FOR XNA WIKI !!!!
 using System;
 using System.Collections.Generic;
 using System.Linq;

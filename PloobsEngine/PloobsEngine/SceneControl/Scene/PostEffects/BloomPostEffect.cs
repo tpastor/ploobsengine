@@ -132,7 +132,7 @@ namespace PloobsEngine.SceneControl
 
         int brightNess = 70;
 
-        // <summary>
+        /// <summary>
         /// Bloom Parameter
         /// 0 TO 255
         /// </summary>
@@ -175,7 +175,7 @@ namespace PloobsEngine.SceneControl
         /// <param name="useFloatingBuffer">if set to <c>true</c> [use floating buffer].</param>
         public override void Draw(Texture2D ImageToProcess, RenderHelper render, GameTime gt, Engine.GraphicInfo GraphicInfo, IWorld world, bool useFloatingBuffer)
         {
-            ///NOSSO threshold FILTER KKKKK =P
+            //NOSSO threshold FILTER KKKKK =P
             render.PushRenderTarget(rt);
             render.Clear(Color.FromNonPremultiplied(bloomThreshold, bloomThreshold, bloomThreshold, 255));
             render.RenderTextureComplete(ImageToProcess, Color.White, GraphicInfo.FullScreenRectangle, Matrix.Identity, null, true, SpriteSortMode.Deferred, SamplerState.LinearClamp, subBlend);
@@ -184,7 +184,7 @@ namespace PloobsEngine.SceneControl
             render.Clear(Color.Black);
             render.RenderTextureComplete(ImageToProcess, Color.White, GraphicInfo.FullScreenRectangle, Matrix.Identity);
 
-            ///NOSSO BLUR KKKKK (mais KKKK)
+            //NOSSO BLUR KKKKK (mais KKKK)
             render.RenderTextureComplete(rt, Color.FromNonPremultiplied(255, 255, 255, brightNess), GraphicInfo.FullScreenRectangle, Matrix.CreateTranslation(2, 2, 0), null, true, SpriteSortMode.Deferred, SamplerState.AnisotropicClamp, additiveBlend);
             render.RenderTextureComplete(rt, Color.FromNonPremultiplied(255, 255, 255, brightNess), GraphicInfo.FullScreenRectangle, Matrix.CreateTranslation(-2, -2, 0), null, true, SpriteSortMode.Deferred, SamplerState.AnisotropicClamp, additiveBlend);
             render.RenderTextureComplete(rt, Color.FromNonPremultiplied(255, 255, 255, brightNess), GraphicInfo.FullScreenRectangle, Matrix.CreateTranslation(2, -2, 0), null, true, SpriteSortMode.Deferred, SamplerState.AnisotropicClamp, additiveBlend);

@@ -211,7 +211,38 @@ namespace PloobsEngine.MessageSystem
     /// </summary>
     public enum SenderType
     {
-        SYSTEM = 0 , NORMAL , IA ,HUD,SOUND,EVENT,MAIL,OBJECT
+        /// <summary>
+        /// SYSTEM 
+        /// </summary>
+        SYSTEM = 0 ,
+        /// <summary>
+        /// NORMAL
+        /// </summary>
+        NORMAL ,
+        /// <summary>
+        /// IA 
+        /// </summary>
+        IA ,
+        /// <summary>
+        /// HUD
+        /// </summary>
+        HUD,
+        /// <summary>
+        /// SOUND
+        /// </summary>
+        SOUND,
+        /// <summary>
+        /// EVENT
+        /// </summary>
+        EVENT,
+        /// <summary>
+        /// MAIL
+        /// </summary>
+        MAIL,
+        /// <summary>
+        /// OBJECT
+        /// </summary>
+        OBJECT
     }
 
     /// <summary>

@@ -130,13 +130,13 @@ namespace PloobsEngine.Material
                 rasterStateFlag = false;
             }
         }
-        
+
         /// <summary>
         /// Update.
         /// </summary>
         /// <param name="gametime">The gametime.</param>
         /// <param name="obj">The obj.</param>
-        /// <param name="lights">The lights.</param>
+        /// <param name="world">The world.</param>        
         public void Update(Microsoft.Xna.Framework.GameTime gametime, SceneControl.IObject obj, IWorld world)
         {
             shader.Update(gametime, obj, world.Lights);

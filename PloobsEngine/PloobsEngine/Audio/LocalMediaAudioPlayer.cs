@@ -35,6 +35,12 @@ namespace PloobsEngine.Audio
     {
         private MediaLibrary sampleMediaLibrary = new MediaLibrary();
 
+        /// <summary>
+        /// Gets or sets the media library.
+        /// </summary>
+        /// <value>
+        /// The media library.
+        /// </value>
         public MediaLibrary MediaLibrary
         {
             get { return sampleMediaLibrary; }
@@ -96,6 +102,10 @@ namespace PloobsEngine.Audio
             MediaPlayer.Play(sampleMediaLibrary.Songs.First((a) => a.Name == name));
         }
 
+        /// <summary>
+        /// Plays the specific music.
+        /// </summary>
+        /// <param name="song">The song.</param>
         public void PlaySpecificMusic(Song song)
         {
             MediaPlayer.Play(song);            

@@ -528,6 +528,10 @@ namespace BEPUphysicsDemos.AlternateMovement.Character
             tryToJump = true;
         }
 
+        /// <summary>
+        /// Called after the object is added to a space.
+        /// </summary>
+        /// <param name="newSpace"></param>
         public override void OnAdditionToSpace(ISpace newSpace)
         {
             //Add any supplements to the space too.

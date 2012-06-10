@@ -36,6 +36,11 @@ namespace PloobsEngine.Components
     /// </summary>
     public abstract class IComponent : IReciever , IEntity 
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IComponent"/> class.
+        /// </summary>
+        /// <param name="drawpriority">The drawpriority.</param>
+        /// <param name="updatepriority">The updatepriority.</param>
         public IComponent(int drawpriority = 0, int updatepriority = 0)
         {
             DrawPriority = drawpriority;

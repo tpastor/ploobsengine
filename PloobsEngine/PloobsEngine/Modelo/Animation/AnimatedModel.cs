@@ -55,6 +55,12 @@ namespace PloobsEngine.Modelo.Animation
         private float modelRadius;
         protected SkinnedModel skinnedModel;
 
+        /// <summary>
+        /// Loads the model.
+        /// </summary>
+        /// <param name="factory">The factory.</param>
+        /// <param name="BatchInformations">The batch informations.</param>
+        /// <param name="TextureInformations">The texture informations.</param>
         protected override void LoadModel(GraphicFactory factory, out BatchInformation[][] BatchInformations, out TextureInformation[][] TextureInformations)
         {
             skinnedModel = factory.GetAnimatedModel(Name);
@@ -67,16 +73,28 @@ namespace PloobsEngine.Modelo.Animation
             modelRadius = sphere.Radius;                     
         }
 
+        /// <summary>
+        /// Gets the model radius.
+        /// </summary>
+        /// <returns></returns>
         public override float GetModelRadius()
         {
             return modelRadius;
         }
-        
+
+        /// <summary>
+        /// Gets the animated model.
+        /// </summary>
+        /// <returns></returns>
         public Model GetAnimatedModel()
         {
             return skinnedModel.Model;
         }
 
+        /// <summary>
+        /// Gets the bones transformation.
+        /// </summary>
+        /// <returns></returns>
         public Matrix[] getBonesTransformation()
         {
             Matrix[] m = new Matrix[skinnedModel.Model.Bones.Count];
@@ -114,6 +132,10 @@ namespace PloobsEngine.Modelo.Animation
             get { return skinnedModel.Model.Meshes.Count; }
         }
 
+        /// <summary>
+        /// Cleans up.
+        /// </summary>
+        /// <param name="factory">The factory.</param>
         public override void CleanUp(GraphicFactory factory)
         {            
 

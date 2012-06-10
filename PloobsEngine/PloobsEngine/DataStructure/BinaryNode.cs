@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-/// <summary>
-/// A class which represents a binary node, which is a node that can have two child nodes,
-/// which in turn can have two child nodes, and so on. Each node is capable of storing a
-/// user data object, which could be anything from a number to a spatial node.
-/// </summary>
-/// <typeparam name="UserType">Type of data to store in this node.</typeparam>
-/// 
 
 namespace PloobsEngine.DataStructure
 {
+    /// <summary>
+    /// A class which represents a binary node, which is a node that can have two child nodes,
+    /// which in turn can have two child nodes, and so on. Each node is capable of storing a
+    /// user data object, which could be anything from a number to a spatial node.
+    /// </summary>
+    /// <typeparam name="UserType">Type of data to store in this node.</typeparam>
     public class BinaryNode<UserType> : IDisposable where UserType : class
     {
         UserType m_userData;

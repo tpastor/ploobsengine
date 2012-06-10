@@ -196,6 +196,10 @@ namespace PloobsEngine.SceneControl
             }            
         }
 
+       /// <summary>
+       /// Validates the sampler states.
+       /// Only present on DEBUG build
+       /// </summary>
         [Conditional("DEBUG")]
         public void ValidateSamplerStates()
         {
@@ -286,11 +290,23 @@ namespace PloobsEngine.SceneControl
             }
         }
 
+        /// <summary>
+        /// Sets a cube render target. 
+        /// DOES NOT PUT IT INTO THE RENDER TARGETS STACK
+        /// Used RestorePreviousRenderTarget() to restore to the stack peak state
+        /// </summary>
+        /// <param name="RenderTargetCube">The render target cube.</param>
+        /// <param name="face">The face.</param>
         public void SetCubeRenderTarget(RenderTargetCube RenderTargetCube,CubeMapFace face)
         {
             device.SetRenderTarget(RenderTargetCube,face);
         }
 
+        /// <summary>
+        /// Restores the previous render target. (DOES NOT POP from RenderTargetStack)
+        /// Used to recover the RenderTargetStack top (when not using the push to set a new render target)
+        /// </summary>
+        /// <returns></returns>
         public RenderTargetBinding[] RestorePreviousRenderTarget()
         {
             RenderTargetBinding[] rt = RenderStatesStack.Peek();                        
@@ -760,6 +776,10 @@ namespace PloobsEngine.SceneControl
         if(numberofTextures > 2)
             numberofTextures = 2;
 #else
+        /// <summary>
+        /// Dettaches binded textures to the Device
+        /// </summary>
+        /// <param name="numberofTextures">The numberof textures.</param>
         public void DettachBindedTextures(int numberofTextures = 16)
         {
 #endif
@@ -892,6 +912,8 @@ namespace PloobsEngine.SceneControl
         /// <param name="drawComponentsPreDraw">if set to <c>true</c> [draw components pre draw].</param>
         /// <param name="useCuller">if set to <c>true</c> [use culler].</param>
         /// <param name="objListException">The obj list exception.</param>
+        /// <param name="nearPlane">The near plane.</param>
+        /// <param name="farPlane">The far plane.</param>
         public void RenderSceneToTextureCube(RenderTargetCube renderTargetCube, Color backGroundColor, IWorld world,
             ref Vector3 objPos, GameTime gt,bool drawComponentsPreDraw = true,bool useCuller = false
             , List<IObject> objListException = null, float nearPlane = 1, float farPlane = 1000

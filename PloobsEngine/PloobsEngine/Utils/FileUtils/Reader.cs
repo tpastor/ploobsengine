@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
-///Credits to Mathias Gehlhaar
+//Credits to Mathias Gehlhaar
 namespace PloobsEngine.Utils
 {
     public abstract class Reader

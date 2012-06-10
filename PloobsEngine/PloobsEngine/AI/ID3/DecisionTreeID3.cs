@@ -264,8 +264,11 @@ namespace PloobsEngine.IA
         /// <summary>
         /// Calcula o ganho de um atributo
         /// </summary>
+        /// <param name="samples">The samples.</param>
         /// <param name="attribute">Atributo a ser calculado</param>
-        /// <returns>O ganho do atributo</returns>
+        /// <returns>
+        /// O ganho do atributo
+        /// </returns>
         private double gain(DataTable samples, Attribute attribute)
         {
             string[] values = attribute.values;
@@ -288,8 +291,11 @@ namespace PloobsEngine.IA
         /// <summary>
         /// Retorna o melhor atributo.
         /// </summary>
+        /// <param name="samples">The samples.</param>
         /// <param name="attributes">Um vetor com os atributos</param>
-        /// <returns>Retorna o que tiver maior ganho</returns>
+        /// <returns>
+        /// Retorna o que tiver maior ganho
+        /// </returns>
         private Attribute getBestAttribute(DataTable samples, Attribute[] attributes)
         {
             double maxGain = 0.0;
@@ -398,7 +404,7 @@ namespace PloobsEngine.IA
         /// <param name="samples">Tabela com as amostragens que serão apresentadas para a montagem da árvore</param>
         /// <param name="targetAttribute">Nome da coluna da tabela que possue o valor true ou false para 
         /// validar ou não uma amostragem</param>
-        /// <returns>A raiz da árvore de decisão montada</returns></returns?>
+        /// <returns>A raiz da árvore de decisão montada</returns>
         private TreeNode internalMountTree(DataTable samples, string targetAttribute, Attribute[] attributes)
         {
             if (allSamplesPositives(samples, targetAttribute) == true)
@@ -464,9 +470,12 @@ namespace PloobsEngine.IA
         /// Monta uma árvore de decisão baseado nas amostragens apresentadas
         /// </summary>
         /// <param name="samples">Tabela com as amostragens que serão apresentadas para a montagem da árvore</param>
-        /// <param name="targetAttribute">Nome da coluna da tabela que possue o valor true ou false para 
+        /// <param name="targetAttribute">Nome da coluna da tabela que possue o valor true ou false para
         /// validar ou não uma amostragem</param>
-        /// <returns>A raiz da árvore de decisão montada</returns></returns?>
+        /// <param name="attributes">The attributes.</param>
+        /// <returns>
+        /// A raiz da árvore de decisão montada
+        /// </returns>
         public TreeNode mountTree(DataTable samples, string targetAttribute, Attribute[] attributes)
         {
             mSamples = samples;

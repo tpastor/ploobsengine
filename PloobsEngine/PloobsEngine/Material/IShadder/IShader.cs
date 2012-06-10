@@ -49,19 +49,41 @@ namespace PloobsEngine.Material
         /// is fist time that this shader is updated
         /// </summary>
         protected bool firstTime = true;
+        /// <summary>
+        /// if this instance has the init method called
+        /// </summary>
         protected bool isInitialized = false;
 #if !WINDOWS_PHONE && !REACH
+        /// <summary>
+        /// Effect basicDraw (used mainly when the object needs to be draw in low details)
+        /// </summary>
         protected Effect basicDraw = null;
+        /// <summary>
+        /// Effect getDepth (Used mainly by shadow algorithms)
+        /// </summary>
         protected Effect getDepth = null;
 #endif
-        protected OcclusionQuery OcclusionQuery;
-        protected bool useOcclusionCulling = false;
+        /// <summary>
+        /// OcclusionQuery
+        /// </summary>
+        protected OcclusionQuery OcclusionQuery;        
+        private bool useOcclusionCulling = false;
+        /// <summary>
+        /// GraphicFactory
+        /// </summary>
         protected GraphicFactory GraphicFactory;
 
         private static BlendState BlendState;
         private static IModelo Modelo;
-        private static BasicEffect BasicEffect;        
+        private static BasicEffect BasicEffect;
 
+        /// <summary>
+        /// Gets or sets a value indicating whether [use occlusion culling].
+        /// Default False 
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [use occlusion culling]; otherwise, <c>false</c>.
+        /// </value>
         public  bool UseOcclusionCulling
         {
             get { return useOcclusionCulling; }
@@ -219,6 +241,9 @@ namespace PloobsEngine.Material
         {
         }
 
+        /// <summary>
+        /// Gets the pixels rendered. (when Occlusion culling enabled)
+        /// </summary>
         public int PixelsRendered
         {
             get;
@@ -369,6 +394,12 @@ namespace PloobsEngine.Material
             render.SetSamplerState(s0, 0);
         }
 
+        /// <summary>
+        /// Gets or sets the Sampler used by basicdraw shader.
+        /// </summary>
+        /// <value>
+        /// The state of the Sampler used by basicdraw shader..
+        /// </value>
         public SamplerState BasicDrawSamplerState
         {
             get;
@@ -379,6 +410,12 @@ namespace PloobsEngine.Material
 
 
 #if WINDOWS
+        /// <summary>
+        /// Populates a <see cref="T:System.Runtime.Serialization.SerializationInfo"/> with the data needed to serialize the target object.
+        /// </summary>
+        /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> to populate with data.</param>
+        /// <param name="context">The destination (see <see cref="T:System.Runtime.Serialization.StreamingContext"/>) for this serialization.</param>
+        /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
               public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             

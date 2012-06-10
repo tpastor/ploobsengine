@@ -250,8 +250,9 @@ namespace PloobsEngine.Components
                   _comps[comp.getMyName()].iLoadContent(this.GraphicInfo,factory);
                   CommandProcessor.getCommandProcessor().Register(_comps[comp.getMyName()]);
 
-                ///cold code 
-                ///does not need to be optimized
+                
+                //cold code 
+                //does not need to be optimized
                 _preDrawables.Sort(this.drawComparer);
                 _updateables.Sort(this.updateComparer);
                 _preDrawables.Sort(this.drawComparer);

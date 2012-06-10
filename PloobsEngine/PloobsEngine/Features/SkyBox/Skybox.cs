@@ -274,7 +274,7 @@ namespace PloobsEngine.Features
 {
     public class SkyBox : IComponent
     {
-        String textureCubeName;
+        
         bool enable = false;        
         
         internal void setParameters(String texCubeName)

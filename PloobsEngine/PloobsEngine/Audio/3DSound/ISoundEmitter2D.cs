@@ -81,32 +81,56 @@ namespace PloobsEngine.Audio
             soundEngineInstance.Apply3D(listener, emiter);
         }
 
+        /// <summary>
+        /// Gets the duration.
+        /// </summary>
         public TimeSpan Duration
         {
             get;
             internal set;
         }
 
+        /// <summary>
+        /// Gets the name.
+        /// </summary>
         public String Name
         {
             get;
             internal set;
         }
 
+        /// <summary>
+        /// SoundEffectInstance soundEngineInstance
+        /// </summary>
         protected SoundEffectInstance soundEngineInstance;
+        /// <summary>
+        /// AudioEmitter emiter
+        /// </summary>
         protected AudioEmitter emiter;
+        /// <summary>
+        /// AudioListener listener
+        /// </summary>
         protected AudioListener listener;
 
+        /// <summary>
+        /// Gets the sound engine instance.
+        /// </summary>
         public SoundEffectInstance SoundEngineInstance
         {
             get { return soundEngineInstance; }            
-        }        
+        }
 
+        /// <summary>
+        /// Gets the listener.
+        /// </summary>
         public AudioListener Listener
         {
             get { return listener; }            
         }
 
+        /// <summary>
+        /// Gets the emiter.
+        /// </summary>
         public AudioEmitter Emiter
         {
             get { return emiter; }            

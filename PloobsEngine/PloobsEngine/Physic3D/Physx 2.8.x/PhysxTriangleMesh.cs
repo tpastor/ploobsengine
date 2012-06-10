@@ -24,6 +24,7 @@ namespace PloobsEngine.Physics
         /// <param name="worldTransformation">The world transformation.</param>
         /// <param name="scale">The scale.</param>
         /// <param name="density">The density.</param>
+        /// <param name="material">The material.</param>
         public PhysxTriangleMesh(PhysxPhysicWorld PhysxPhysicWorld, IModelo model, Microsoft.Xna.Framework.Matrix worldTransformation, Microsoft.Xna.Framework.Vector3 scale, float density = 1,StillDesign.PhysX.Material material = null)
         {
             Microsoft.Xna.Framework.Vector3[] vertices = null;

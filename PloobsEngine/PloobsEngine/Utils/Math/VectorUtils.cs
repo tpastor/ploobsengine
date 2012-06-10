@@ -331,7 +331,7 @@ namespace PloobsEngine.Utils
 
 
         /// <summary>
-        //// forces a 3d position onto the XZ (aka y=0) plane
+        /// forces a 3d position onto the XZ (aka y=0) plane
         /// </summary>
         /// <param name="vector">The vector.</param>
         /// <returns></returns>

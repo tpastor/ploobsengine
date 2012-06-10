@@ -196,14 +196,14 @@ namespace PloobsEngine.SceneControl
                 lock (materialLock) 
                     return material;
             }
-        }        
-        
+        }
+
         /// <summary>
         /// Updates the object.
         /// </summary>
         /// <param name="gt">The gt.</param>
         /// <param name="cam">The cam.</param>
-        /// <param name="luzes">The luzes.</param>
+        /// <param name="world">The world.</param>
         protected virtual void UpdateObject(GameTime gt, ICamera cam, IWorld world) { }
         internal void iUpdateObject(GameTime gt, ICamera cam, IWorld world)
         {

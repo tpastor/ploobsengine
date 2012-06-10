@@ -67,15 +67,16 @@ namespace BehaviorTrees
 				tasks.Add(task);
 			}
 		}
-		/// <summary>
-		/// Executes children nodes' task in parallel.
-		/// </summary>
-		/// <param name="entity">Entity which is used in the process of executing task.</param>
-		/// <returns>
-		/// Success if master node succeeds or all of the children succeeds.
-		/// Failure if one of the children fails.
-		/// Running otherwise.
-		/// </returns>
+        /// <summary>
+        /// Executes children nodes' task in parallel.
+        /// </summary>
+        /// <param name="entity">Entity which is used in the process of executing task.</param>
+        /// <param name="gameTime">The game time.</param>
+        /// <returns>
+        /// Success if master node succeeds or all of the children succeeds.
+        /// Failure if one of the children fails.
+        /// Running otherwise.
+        /// </returns>
 		public override TaskResult Execute(E entity, GameTime gameTime)
 		{
 			TaskResult result;

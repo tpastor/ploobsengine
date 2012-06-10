@@ -43,8 +43,18 @@ namespace PloobsEngine.MessageSystem
 
     public class MessageDeliver :  IComponent
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MessageDeliver"/> class.
+        /// </summary>
         public MessageDeliver() {  }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MessageDeliver"/> class.
+        /// </summary>
+        /// <param name="Num">The num.</param>
         public MessageDeliver( int Num)  { numMessagerdeliveredByFrame = Num; }
+        /// <summary>
+        /// Tag to SendToALL 
+        /// </summary>
         public const String SendToALLTag = "all";
         private static GameTime gt = new GameTime();
         private static PriorityQueueB<Message> fila = new PriorityQueueB<Message>(new MessageComparer());

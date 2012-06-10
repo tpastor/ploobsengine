@@ -234,6 +234,13 @@ namespace PloobsEngine.Modelo
         }
 
 
+        /// <summary>
+        /// Merges some indexedbatchinformation objects.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="GraphicFactory">The graphic factory.</param>
+        /// <param name="IndexElementSize">Size of the index element.</param>
+        /// <param name="ExtraBatchInformation">The extra batch information.</param>
         public static void MergeIndexedBatchInformation<T>(GraphicFactory GraphicFactory, IndexElementSize IndexElementSize, params BatchInformation[] ExtraBatchInformation)
         where T : struct,IVertexType        
         {   
@@ -282,11 +289,11 @@ namespace PloobsEngine.Modelo
                 int IndexOffset = 0;
                 for (int i = 1; i < ExtraBatchInformation.Count(); i++)
                 {
-                    ///extra vertex
+                    //extra vertex
                     T[] ExtravertexBuffer = new T[ExtraBatchInformation[i].VertexBuffer.VertexCount];
                     ExtraBatchInformation[i].VertexBuffer.GetData<T>(vertexBuffer);
 
-                    ///extra index
+                    //extra index
                     int[] ExtraindexBuffer = new int[ExtraBatchInformation[i].IndexBuffer.IndexCount];                    
                     switch (IndexElementSize)
                     {

@@ -61,6 +61,7 @@ namespace PloobsEngine.Physics
         /// <summary>
         /// Draw the physic world in debug mode.
         /// </summary>
+        /// <param name="render">The render.</param>
         /// <param name="gt">The gt.</param>
         /// <param name="cam">The cam.</param>
         protected abstract void DebugDrawn(RenderHelper render,GameTime gt, ICamera cam);

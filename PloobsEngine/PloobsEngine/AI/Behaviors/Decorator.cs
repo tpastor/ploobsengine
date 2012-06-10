@@ -4,10 +4,10 @@ using System.Text;
 
 namespace BehaviorTrees
 {
-	/// <summary>
-	/// Base class for nodes which decorate other nodes with additional functionality.
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
+    /// <summary>
+    /// Base class for nodes which decorate other nodes with additional functionality.
+    /// </summary>
+    /// <typeparam name="E"></typeparam>
 	public abstract class Decorator<E> : Node<E> where E : Entity
 	{
 		// decorated node

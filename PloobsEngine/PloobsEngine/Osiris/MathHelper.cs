@@ -114,14 +114,14 @@ namespace Osiris
 			return (float) Math.Exp(f);
 		}
 
-		/// <summary>
-		/// http://local.wasp.uwa.edu.au/~pbourke/other/interpolation/
-		/// Cosine interpolation
-		/// </summary>
-		/// <param name="a"></param>
-		/// <param name="b"></param>
-		/// <param name="x"></param>
-		/// <returns></returns>
+        /// <summary>
+        /// http://local.wasp.uwa.edu.au/~pbourke/other/interpolation/
+        /// Cosine interpolation
+        /// </summary>
+        /// <param name="y1">The y1.</param>
+        /// <param name="y2">The y2.</param>
+        /// <param name="mu">The mu.</param>
+        /// <returns></returns>
 		public static float InterpolateCosine(float y1, float y2, float mu)
 		{
 			float f = (1 - Cos(mu * Microsoft.Xna.Framework.MathHelper.Pi)) * 0.5f;
