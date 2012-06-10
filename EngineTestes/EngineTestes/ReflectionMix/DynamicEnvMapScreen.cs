@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework;
 using PloobsEngine.Cameras;
 using PloobsProjectTemplate.TemplateScreens;
 using Microsoft.Xna.Framework.Graphics;
+using EngineTestes;
 
 namespace ProjectTemplate
 {
@@ -113,6 +114,8 @@ namespace ProjectTemplate
 
                 }
             }
+
+            this.AttachCleanUpAble(new LightThrowForward(World,GraphicFactory));
 
             ///add a camera
             this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo));
