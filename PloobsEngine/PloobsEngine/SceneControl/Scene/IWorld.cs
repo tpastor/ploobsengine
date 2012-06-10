@@ -181,14 +181,14 @@ namespace PloobsEngine.SceneControl
             get { return graphicFactory; }
             set { graphicFactory = value; }
         }
-                
+
 
 
         /// <summary>
         /// Adds an object to the world.
         /// </summary>
         /// <param name="obj">The obj.</param>
-        /// <returns></returns>
+        /// <param name="InitMaterial">if set to <c>true</c> [init material].</param>
         public virtual void AddObject(IObject obj, bool InitMaterial = true)
         {
             if (obj == null)

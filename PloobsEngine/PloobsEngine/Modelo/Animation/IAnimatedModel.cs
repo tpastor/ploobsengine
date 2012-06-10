@@ -32,6 +32,15 @@ namespace PloobsEngine.Modelo.Animation
     /// </summary>
     public abstract class IAnimatedModel : IModelo
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IAnimatedModel"/> class.
+        /// </summary>
+        /// <param name="factory">The factory.</param>
+        /// <param name="modelName">Name of the model.</param>
+        /// <param name="diffuseTextureName">Name of the diffuse texture.</param>
+        /// <param name="bumpTextureName">Name of the bump texture.</param>
+        /// <param name="specularTextureName">Name of the specular texture.</param>
+        /// <param name="glowTextureName">Name of the glow texture.</param>
         public IAnimatedModel(GraphicFactory factory, String modelName, String diffuseTextureName, String bumpTextureName = null, String specularTextureName = null, String glowTextureName = null)
             : base(factory, modelName,false)
         {
@@ -54,6 +63,10 @@ namespace PloobsEngine.Modelo.Animation
         /// <returns></returns>
         public abstract Object GetAnimation();
 
+        /// <summary>
+        /// Cleans up the IModelo
+        /// </summary>
+        /// <param name="factory"></param>
         public override void CleanUp(GraphicFactory factory)
         {
             for (int i = 0; i < MeshNumber; i++)

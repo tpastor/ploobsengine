@@ -31,11 +31,12 @@ namespace PloobsEngine.Physics.Bepu
         /// Creates and instance of InstancedTriangleMesh
         /// Call the Static Method GetInstacedMesh to get the InstancedMeshShape obj
         /// </summary>
-        /// <param name="InstancedMeshShape"></param>
-        /// <param name="pos"></param>
-        /// <param name="rotation"></param>
-        /// <param name="scale"></param>
-        /// <param name="materialDescription"></param>
+        /// <param name="InstancedMeshShape">The instanced mesh shape.</param>
+        /// <param name="pos">The pos.</param>
+        /// <param name="rotation">The rotation.</param>
+        /// <param name="scale">The scale.</param>
+        /// <param name="materialDescription">The material description.</param>
+        /// <param name="TriangleSidedness">The triangle sidedness.</param>
         public InstancedTriangleMeshObject(InstancedMeshShape InstancedMeshShape, Vector3 pos, Matrix rotation, Vector3 scale, MaterialDescription materialDescription, TriangleSidedness TriangleSidedness = TriangleSidedness.Counterclockwise)
         {
             instancedMesh = new InstancedMesh(InstancedMeshShape,new BEPUphysics.MathExtensions.AffineTransform(scale,Quaternion.CreateFromRotationMatrix(rotation),pos));
@@ -205,14 +206,13 @@ namespace PloobsEngine.Physics.Bepu
                 ActiveLogger.LogMessage("Rotation in triangle mesh should not be called", LogLevel.Warning);
             }
         }
-
-        private Vector3 faceVector;
+                
         /// <summary>
         /// Vector pointing to the front
         /// </summary>
         public override Vector3 FaceVector
         {
-            get { return faceVector; }
+            get { return rotation.Forward; }
         }
 
         /// <summary>

@@ -87,7 +87,7 @@ namespace PloobsEngine.Engine
         /// <param name="isMultiSampling">if set to <c>true</c> [is multi sampling].</param>
         /// <param name="isFixedGameTime">if set to <c>true</c> [is fixed game time].</param>
         /// <param name="logger">The logger.</param>
-        /// <param name="useMipMapWhenPossible">if set to <c>true</c> [use mip map when possible].</param>        
+        /// <param name="useMipMapWhenPossible">if set to <c>true</c> [use mip map when possible].</param>
         /// <param name="supportedOrientation">The supported orientation.</param>
         #if !REACH
         internal InitialEngineDescription(String ScreenName = "PloobsEngine", int BackBufferWidth = 800, int BackBufferHeight = 600, bool isFullScreen = false, GraphicsProfile graphicsProfile = GraphicsProfile.HiDef, bool useVerticalSyncronization = false, bool isMultiSampling = false, bool isFixedGameTime = false, ILogger logger = null, bool useMipMapWhenPossible = false, DisplayOrientation supportedOrientation = DisplayOrientation.Portrait | DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight)
@@ -194,6 +194,10 @@ namespace PloobsEngine.Engine
 
         internal UnhandledExceptionEventHandler UnhandledExceptionEventHandler;
         internal EventHandler<EventArgs> onExitHandler;
+
+        /// <summary>
+        /// SupportedOrientations by the APP (Use or | operation to define more than one)
+        /// </summary>
         public DisplayOrientation SupportedOrientations;        
  
     }
@@ -606,8 +610,7 @@ namespace PloobsEngine.Engine
         /// <param name="isMultiSampling">if set to <c>true</c> [is multi sampling].</param>
         /// <param name="isFixedGameTime">if set to <c>true</c> [is fixed game time].</param>
         /// <param name="logger">The logger.</param>
-        /// <param name="useMipMapWhenPossible">if set to <c>true</c> [use mip map when possible].</param>
-        /// <param name="UseAnisotropicFiltering">if set to <c>true</c> [use anisotropic filtering].</param>
+        /// <param name="useMipMapWhenPossible">if set to <c>true</c> [use mip map when possible].</param>        
         internal InitialEngineDescription(String ScreenName = "PloobsEngine", int BackBufferWidth = 800, int BackBufferHeight = 600, bool isFullScreen = false, GraphicsProfile graphicsProfile = GraphicsProfile.HiDef, bool useVerticalSyncronization = false, bool isMultiSampling = false, bool isFixedGameTime = false, ILogger logger = null, bool useMipMapWhenPossible = false, DisplayOrientation supportedOrientation = DisplayOrientation.Default | DisplayOrientation.Portrait | DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight)
         {
             this.UseVerticalSyncronization = useVerticalSyncronization;

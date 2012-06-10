@@ -63,44 +63,68 @@ namespace PloobsEngine.Audio
             mySoundEffectInstance.Volume = volume;
             mySoundEffectInstance.IsLooped = isLooped;
         }
-        
+
+        /// <summary>
+        /// Gets the duration.
+        /// </summary>
         public TimeSpan Duration
         {
             get;
             internal set;
         }
 
+        /// <summary>
+        /// Gets the name.
+        /// </summary>
         public String Name
         {
             get;
             internal set;
         }
 
+        /// <summary>
+        /// Gets my sound effect instance.
+        /// </summary>
         public SoundEffectInstance MySoundEffectInstance
         {
             get { return mySoundEffectInstance; }
-        }        
+        }
 
+        /// <summary>
+        /// Forces the play.
+        /// </summary>
         public void ForcePlay()
         {
             this.mySoundEffect.Play();
         }
+        /// <summary>
+        /// Plays this instance.
+        /// </summary>
         public void Play()
         {
 
             this.mySoundEffectInstance.Play();
         }
+        /// <summary>
+        /// Stops this instance.
+        /// </summary>
         public void Stop()
         {
             this.mySoundEffectInstance.Stop();
 
         }
 
+        /// <summary>
+        /// Pauses this instance.
+        /// </summary>
         public void Pause()
         {
             this.mySoundEffectInstance.Pause();
         }
 
+        /// <summary>
+        /// Resumes this instance.
+        /// </summary>
         public void Resume()
         {
             this.mySoundEffectInstance.Resume();
@@ -128,6 +152,9 @@ namespace PloobsEngine.Audio
             mySoundEffect.Dispose();
         }
 
+        /// <summary>
+        /// Gets the state.
+        /// </summary>
         public SoundState State
         {
             get
@@ -136,6 +163,10 @@ namespace PloobsEngine.Audio
             }
         }
 
+        /// <summary>
+        /// Sets the volume.
+        /// </summary>
+        /// <param name="volume">The volume.</param>
         public void setVolume(float volume)
         {
             System.Diagnostics.Debug.Assert(volume >= -1 && volume <= 1);

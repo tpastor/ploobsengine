@@ -50,7 +50,7 @@ namespace PloobsEngine.Features.DebugDraw
             this.Position = position;
             Visible = true;
         }
-        Color color;
+        
         /// <summary>
         /// Initializes
         /// </summary>

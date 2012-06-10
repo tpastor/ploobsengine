@@ -32,6 +32,12 @@ namespace PloobsEngine.Audio
     /// </summary>
     public class ObjectFollower3DSound : ISoundEmitter3D
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ObjectFollower3DSound"/> class.
+        /// </summary>
+        /// <param name="factory">The factory.</param>
+        /// <param name="audioname">The audioname.</param>
+        /// <param name="follow">The follow.</param>
         public ObjectFollower3DSound(GraphicFactory factory, string audioname, IObject follow)
             : base(factory, audioname)
         {
@@ -41,6 +47,11 @@ namespace PloobsEngine.Audio
 
         IObject follower;
 
+        /// <summary>
+        /// Updates !!!
+        /// </summary>
+        /// <param name="gt">The gt.</param>
+        /// <param name="camera">The camera.</param>
         protected override void Update(Microsoft.Xna.Framework.GameTime gt, Cameras.ICamera camera)
         {
             Emiter.Position = follower.PhysicObject.Position;

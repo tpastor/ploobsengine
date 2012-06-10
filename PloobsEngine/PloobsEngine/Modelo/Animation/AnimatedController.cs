@@ -59,6 +59,12 @@ namespace PloobsEngine.Modelo.Animation
         private SkinnedModel skinnedModel;
         private AnimationController animationController;
 
+        /// <summary>
+        /// Gets or sets the animation controller.
+        /// </summary>
+        /// <value>
+        /// The animation controller.
+        /// </value>
         public AnimationController AnimationController
         {
             get { return animationController; }

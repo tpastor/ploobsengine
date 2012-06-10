@@ -35,7 +35,13 @@ namespace PloobsEngine.Modelo
     /// </summary>
     public struct BilboardInstance
     {
+        /// <summary>
+        /// Position
+        /// </summary>
         public Vector3 Position;
+        /// <summary>
+        /// Scale
+        /// </summary>
         public Vector2 Scale;            
     }
 
@@ -96,6 +102,12 @@ namespace PloobsEngine.Modelo
         }
 
         VertexDeclaration vd;
+        /// <summary>
+        /// Loads the model.
+        /// </summary>
+        /// <param name="factory">The factory.</param>
+        /// <param name="BatchInformations">The batch informations.</param>
+        /// <param name="TextureInformations">The texture informations.</param>
         protected override void LoadModel(GraphicFactory factory, out BatchInformation[][] BatchInformations, out TextureInformation[][] TextureInformations)
         {
             VertexPositionTexture[] billboardVertices = new VertexPositionTexture[4];
@@ -146,11 +158,18 @@ namespace PloobsEngine.Modelo
         }
 
 
+        /// <summary>
+        /// Gets the Total mesh number.
+        /// </summary>
         public override int MeshNumber
         {
             get { return 1; }
         }
 
+        /// <summary>
+        /// Gets the model radius.
+        /// </summary>
+        /// <returns></returns>
         public override float GetModelRadius()
         {
             return modelRadius;

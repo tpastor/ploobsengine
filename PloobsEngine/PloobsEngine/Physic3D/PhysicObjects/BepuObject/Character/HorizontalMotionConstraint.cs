@@ -267,6 +267,11 @@ namespace BEPUphysicsDemos.AlternateMovement.Character
         }
 
 
+        /// <summary>
+        /// Adds entities associated with the solver item to the involved entities list.
+        /// This allows the non-batched multithreading system to lock properly.
+        /// </summary>
+        /// <param name="outputInvolvedEntities"></param>
         protected override void CollectInvolvedEntities(RawList<Entity> outputInvolvedEntities)
         {
             var entityCollidable = supportData.SupportObject as EntityCollidable;
@@ -710,10 +715,22 @@ namespace BEPUphysicsDemos.AlternateMovement.Character
 
 
     }
+    /// <summary>
+    /// MovementMode
+    /// </summary>
     public enum MovementMode
     {
+        /// <summary>
+        /// Traction
+        /// </summary>
         Traction,
+        /// <summary>
+        /// Sliding
+        /// </summary>
         Sliding,
+        /// <summary>
+        /// Floating
+        /// </summary>
         Floating
     }
 }

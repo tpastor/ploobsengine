@@ -36,6 +36,14 @@ namespace PloobsEngine.Modelo
     /// </summary>
     public class CustomModel : IModelo
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CustomModel"/> class.
+        /// </summary>
+        /// <param name="factory">The factory.</param>
+        /// <param name="modelName">Name of the model.</param>
+        /// <param name="meshindex">The meshindex.</param>
+        /// <param name="binfo">The binfo.</param>
+        /// <param name="diffuse">The diffuse.</param>
         public CustomModel(GraphicFactory factory, String modelName, int meshindex, BatchInformation[] binfo, Texture2D diffuse = null)
             : base(factory, modelName,false)
         {
@@ -79,6 +87,11 @@ namespace PloobsEngine.Modelo
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CustomModel"/> class.
+        /// </summary>
+        /// <param name="factory">The factory.</param>
+        /// <param name="loader">The loader.</param>
         public CustomModel(GraphicFactory factory, ObjectInformation[] loader)
             : base(factory, loader[0].modelName, false)
         {
@@ -102,8 +115,17 @@ namespace PloobsEngine.Modelo
                 bs = BoundingSphere.CreateMerged(bs, new BoundingSphere(center, radius));
             }            
             modelRadius = bs.Radius;
-        }        
+        }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CustomModel"/> class.
+        /// </summary>
+        /// <param name="factory">The factory.</param>
+        /// <param name="modelName">Name of the model.</param>
+        /// <param name="BatchInformation">The batch information.</param>
+        /// <param name="TextureInformation">The texture information.</param>
+        /// <param name="meshindex">The meshindex.</param>
+        /// <param name="meshpartIndex">Index of the meshpart.</param>
         public CustomModel(GraphicFactory factory, String modelName, BatchInformation BatchInformation, TextureInformation TextureInformation, int meshindex = 0, int meshpartIndex = 0)        
             : base(factory, modelName, false)
        {
@@ -139,11 +161,20 @@ namespace PloobsEngine.Modelo
                    }
                }
            }           
-       }         
-        
+       }
+
+        /// <summary>
+        /// XNA Model 
+        /// </summary>
         protected Model model;        
         private float modelRadius;
 
+        /// <summary>
+        /// Loads the model.
+        /// </summary>
+        /// <param name="factory">The factory.</param>
+        /// <param name="BatchInformations">The batch informations.</param>
+        /// <param name="TextureInformations">The texture informations.</param>
         protected override void LoadModel(GraphicFactory factory, out BatchInformation[][] BatchInformations, out TextureInformation[][] TextureInformations)
         {
             //code not called !!!
@@ -165,16 +196,27 @@ namespace PloobsEngine.Modelo
             TextureInformations[0][0].LoadTexture();
         }
 
+        /// <summary>
+        /// Gets the Total mesh number.
+        /// </summary>
         public override int MeshNumber
         {
             get { return BatchInformations.Count(); }
         }
 
+        /// <summary>
+        /// Gets the model radius.
+        /// </summary>
+        /// <returns></returns>
         public override float GetModelRadius()
         {
             return modelRadius;
         }
 
+        /// <summary>
+        /// Cleans up the IModelo
+        /// </summary>
+        /// <param name="factory"></param>
         public override void CleanUp(GraphicFactory factory)
         {            
         }

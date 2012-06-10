@@ -37,11 +37,12 @@ namespace PloobsEngine.Physics
     {
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GhostObject"/> class.
+        /// Initializes a new instance of the <see cref="PhysxGhostObject"/> class.
         /// </summary>
         /// <param name="position">The position.</param>
         /// <param name="orientation">The orientation.</param>
         /// <param name="scale">The scale.</param>
+        /// <param name="bb">The bb.</param>
      public PhysxGhostObject(Vector3 position, Matrix orientation, Vector3 scale, BoundingBox? bb = null) 
      {
          this.pos = position;

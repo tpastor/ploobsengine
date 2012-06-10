@@ -41,7 +41,7 @@ namespace PloobsEngine.SceneControl
         RenderTarget2D RenderTarget2D2;
         public override void Draw(Microsoft.Xna.Framework.Graphics.Texture2D ImageToProcess, RenderHelper rHelper, Microsoft.Xna.Framework.GameTime gt, PloobsEngine.Engine.GraphicInfo GraphicInfo, IWorld world, bool useFloatBuffer)
         {          
-            ///ssao
+            //ssao
             rHelper.PushRenderTarget(RenderTarget2D);
             rHelper.Textures[0] = rHelper[PrincipalConstants.normalRt];
             SamplerState s0 = rHelper.SetSamplerState(SamplerState.LinearClamp, 0);
@@ -59,7 +59,7 @@ namespace PloobsEngine.SceneControl
             Effect.Parameters["View"].SetValue(world.CameraManager.ActiveCamera.View);
             Effect.Parameters["halfPixel"].SetValue(GraphicInfo.HalfPixel);
 
-            ///artist parameters
+            //artist parameters
             Effect.Parameters["g_sample_rad"].SetValue(radius);
             Effect.Parameters["g_intensity"].SetValue(intensity);
             Effect.Parameters["g_scale"].SetValue(scale);
@@ -72,14 +72,14 @@ namespace PloobsEngine.SceneControl
             rHelper.SetSamplerState(s1, 1);
             rHelper.SetSamplerState(s2, 2);
 
-            ///blur
+            //blur
             rHelper.PushRenderTarget(RenderTarget2D2);
             sBlurPost.Draw(RenderTarget2D, rHelper, gt, GraphicInfo, world, useFloatBuffer);
             rHelper.PopRenderTarget();            
             
             rHelper[PrincipalConstants.SSAORT] = RenderTarget2D2;
 
-            ///Mix
+            //Mix
             Effect.CurrentTechnique = Effect.Techniques[1];
             Effect.Parameters["SSAOCombineIntensityity"].SetValue(SSAOCombineIntensityity);
             rHelper.Textures[0] = RenderTarget2D2;

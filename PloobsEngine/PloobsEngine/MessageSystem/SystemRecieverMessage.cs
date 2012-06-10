@@ -40,6 +40,10 @@ namespace PloobsEngine.MessageSystem
             EntityMapper.getInstance().AddEntity(this);
         }
         SenderType AcceptableMessagesTypes;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SystemRecieverMessage"/> class.
+        /// </summary>
+        /// <param name="id">The id.</param>
         public SystemRecieverMessage(long id)
         {
             this.id = id;

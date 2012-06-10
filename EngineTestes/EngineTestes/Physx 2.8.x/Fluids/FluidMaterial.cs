@@ -84,8 +84,7 @@ namespace PloobsEngine.Material
         {
             shader.PosDrawPhase(gt, obj, render, cam, lights);
         }
-
-        private bool rasterStateFlag = false;
+        
         /// <summary>
         /// Normal Draw Function.
         /// </summary>

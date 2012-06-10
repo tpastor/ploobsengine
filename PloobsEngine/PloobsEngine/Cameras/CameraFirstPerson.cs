@@ -274,6 +274,12 @@ namespace PloobsEngine.Cameras
 
         #endregion
 
+        /// <summary>
+        /// Gets or sets the move speed.
+        /// </summary>
+        /// <value>
+        /// The move speed.
+        /// </value>
         public float MoveSpeed
         {
             get { return moveSpeed; }
@@ -289,6 +295,12 @@ namespace PloobsEngine.Cameras
             }
         }
 
+        /// <summary>
+        /// Gets or sets the rotation speed.
+        /// </summary>
+        /// <value>
+        /// The rotation speed.
+        /// </value>
         public float RotationSpeed
         {
             set
@@ -310,6 +322,12 @@ namespace PloobsEngine.Cameras
 
 
 
+        /// <summary>
+        /// Gets or sets the sensibility.
+        /// </summary>
+        /// <value>
+        /// The sensibility.
+        /// </value>
         public float Sensibility
         {
             set
@@ -333,11 +351,23 @@ namespace PloobsEngine.Cameras
 
         #region ICamera Members
 
+        /// <summary>
+        /// Gets a value indicating whether this <see cref="ICamera"/> has moved.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if hasmoved; otherwise, <c>false</c>.
+        /// </value>
         public override bool Hasmoved
         {
             get { return _hasmoved; }
         }
 
+        /// <summary>
+        /// Gets or sets the position.
+        /// </summary>
+        /// <value>
+        /// The position.
+        /// </value>
         public override Vector3 Position
         {
 
@@ -352,6 +382,12 @@ namespace PloobsEngine.Cameras
             }
         }
 
+        /// <summary>
+        /// Gets or sets up vector.
+        /// </summary>
+        /// <value>
+        /// Up.
+        /// </value>
         public override Vector3 Up
         {
             get
@@ -365,6 +401,12 @@ namespace PloobsEngine.Cameras
             }
         }
 
+        /// <summary>
+        /// Gets or sets the rotation.
+        /// </summary>
+        /// <value>
+        /// The rotation.
+        /// </value>
         public override Quaternion Rotation
         {
             get

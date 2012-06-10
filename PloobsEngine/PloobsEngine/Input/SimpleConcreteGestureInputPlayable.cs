@@ -35,7 +35,7 @@ namespace PloobsEngine.Input
 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SimpleConcreteMousePositionInputPlayable"/> class.
+        /// Initializes a new instance of the <see cref="SimpleConcreteGestureInputPlayable"/> class.
         /// </summary>
         /// <param name="mst">The MST.</param>
         /// <param name="mask">The mask.</param>

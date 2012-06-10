@@ -21,6 +21,10 @@ namespace BehaviorTrees
 	{
 		ActionDelegate<E> method;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Action&lt;E&gt;"/> class.
+        /// </summary>
+        /// <param name="method">The method.</param>
         public Action(ActionDelegate<E> method)
 			: base()
         {

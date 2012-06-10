@@ -31,11 +31,24 @@ using PloobsEngine.Light;
 
 namespace PloobsEngine.Material
 {
+    /// <summary>
+    /// ReflectionType
+    /// </summary>
     public enum ReflectionType
     {
-        PerfectMirror, ReflexiveSurface
+        /// <summary>
+        /// PerfectMirror
+        /// </summary>
+        PerfectMirror,
+        /// <summary>
+        /// ReflexiveSurface
+        /// </summary>
+        ReflexiveSurface
     }
 
+    /// <summary>
+    /// Deferred rnvironment Mapping Reflective Shader
+    /// </summary>
     public class DeferredEMReflectiveShader : IShader
     {        
         private Effect _shader;  
@@ -51,6 +64,12 @@ namespace PloobsEngine.Material
         /// </summary>
         private float reflectionIndex = 0.5f;
 
+        /// <summary>
+        /// Gets or sets the index of the reflection.
+        /// </summary>
+        /// <value>
+        /// The index of the reflection.
+        /// </value>
         public float ReflectionIndex
         {
             get { return reflectionIndex; }
@@ -58,9 +77,15 @@ namespace PloobsEngine.Material
             if(isInitialized)
                 this._shader.Parameters["reflectionIndex"].SetValue(reflectionIndex);
             }
-        }  
-        
+        }
 
+
+        /// <summary>
+        /// Gets or sets the texture cube.
+        /// </summary>
+        /// <value>
+        /// The texture cube.
+        /// </value>
         public TextureCube TextureCube
         {
             get { return texCube; }
@@ -96,6 +121,12 @@ namespace PloobsEngine.Material
 
         private float specularPower = 0f;
 
+        /// <summary>
+        /// Gets or sets the specular intensity.
+        /// </summary>
+        /// <value>
+        /// The specular intensity.
+        /// </value>
         public float SpecularIntensity
         {
             get { return specularIntensity; }
@@ -103,8 +134,14 @@ namespace PloobsEngine.Material
             if(isInitialized)
                 this._shader.Parameters["specularIntensity"].SetValue(specularIntensity);
             }
-        }        
+        }
 
+        /// <summary>
+        /// Gets or sets the specular power.
+        /// </summary>
+        /// <value>
+        /// The specular power.
+        /// </value>
         public float SpecularPower
         {
             get { return specularPower; }
@@ -114,6 +151,11 @@ namespace PloobsEngine.Material
             }
         }
 
+        /// <summary>
+        /// Called Once only, before all draws
+        /// </summary>
+        /// <param name="ent">The current entity.</param>
+        /// <param name="lights">All The lights</param>
         public override void PreUpdate(IObject ent, IList<ILight> lights)
         {
             if (rType == ReflectionType.PerfectMirror)
@@ -127,6 +169,14 @@ namespace PloobsEngine.Material
 
         }
 
+        /// <summary>
+        /// Draws the specified gt.
+        /// </summary>
+        /// <param name="gt">The gt.</param>
+        /// <param name="obj">The obj.</param>
+        /// <param name="render">The render.</param>
+        /// <param name="camera">The camera.</param>
+        /// <param name="lights">The lights.</param>
         protected override void Draw(GameTime gt, IObject obj, RenderHelper render, ICamera camera, IList<ILight> lights)
         {                
                 this._shader.Parameters["View"].SetValue(camera.View);
@@ -154,11 +204,23 @@ namespace PloobsEngine.Material
                 }
         }
 
+        /// <summary>
+        /// Gets the type of the material.
+        /// </summary>
+        /// <value>
+        /// The type of the material.
+        /// </value>
         public override MaterialType MaterialType
         {
             get { return MaterialType.DEFERRED; }
         }
 
+        /// <summary>
+        /// Initializes this instance.
+        /// </summary>
+        /// <param name="ginfo"></param>
+        /// <param name="factory"></param>
+        /// <param name="obj"></param>
         public override void  Initialize(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, IObject obj)        
  	    {
             this._shader = factory.GetEffect("EMSHADER",true,true);
@@ -172,11 +234,31 @@ namespace PloobsEngine.Material
             base.Initialize(ginfo, factory, obj);
         }
 
+        /// <summary>
+        /// Draw the object in a simple way (WITH MINIMUM EFFECTS,....)
+        /// USED IN RELECTIONS, REFRACTION .....
+        /// </summary>
+        /// <param name="gt">The gt.</param>
+        /// <param name="obj">The obj.</param>
+        /// <param name="view">The view.</param>
+        /// <param name="projection">The projection.</param>
+        /// <param name="lights">The lights.</param>
+        /// <param name="render">The render.</param>
+        /// <param name="clippingPlane">The clipping plane.</param>
+        /// <param name="useAlphaBlending">if set to <c>true</c> [use alpha blending].</param>
         public override void BasicDraw(GameTime gt, IObject obj, ref Matrix view, ref Matrix projection, IList<ILight> lights, RenderHelper render, Plane? clippingPlane, bool useAlphaBlending = false)
         {
             //no reflection refraction
         }
 
+        /// <summary>
+        /// Exctract the depth from an object
+        /// </summary>
+        /// <param name="gt">The gt.</param>
+        /// <param name="obj">The obj.</param>
+        /// <param name="View">The view.</param>
+        /// <param name="projection">The projection.</param>
+        /// <param name="render">The render.</param>
         public override void DepthExtractor(GameTime gt, IObject obj, ref Matrix View, ref Matrix projection, RenderHelper render)
         {
             //no shadow

@@ -101,11 +101,7 @@ namespace PloobsEngine.Loader
     internal struct ConstraintInformation
     {
         public String name;
-        public String type;
-        public Vector3 pos;
-        public String bodyA;
-        public String bodyB;
-        public bool breakable;
+        public String type;        
     }
 
 

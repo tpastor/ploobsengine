@@ -13,10 +13,11 @@ namespace BehaviorTrees
 	{
 		ConditionDelegate<E> condition;
 
-		/// <summary>
-		/// Instantiates watch decorator with a given condition
-		/// </summary>
-		/// <param name="condition"></param>
+        /// <summary>
+        /// Instantiates watch decorator with a given condition
+        /// </summary>
+        /// <param name="condition">The condition.</param>
+        /// <param name="node">The node.</param>
 		public Watch(ConditionDelegate<E> condition, Node<E> node)
 			: base(node)
 		{
