@@ -176,7 +176,7 @@ namespace PloobsEngine.SceneControl
 
             if (desc.UsePostDrawPhase)
             {
-                for (int i = objList.Count -1; i < 0 ; i--)
+                for (int i = objList.Count -1; i > 0 ; i--)
                 {
                     objList[i].Material.PosDrawnPhase(gameTime, objList[i], world.CameraManager.ActiveCamera, world.Lights, render);
                 }
