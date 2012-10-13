@@ -41,15 +41,6 @@ namespace BehaviorTrees
 		}
 
 		/// <summary>
-		/// Adds subnode with default weight.
-		/// </summary>
-		public new void Add(Node<E> node)
-		{
-			// or maybe disallow such usage?
-			throw new Exception("You MUST specify weight");
-		}
-
-		/// <summary>
 		/// Execute one of the child nodes, randomly selected.
 		/// </summary>
 		/// <param name="entity"></param>
