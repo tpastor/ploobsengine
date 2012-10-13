@@ -287,8 +287,9 @@ namespace PloobsEngine.Material
                     BoundingBox BoundingBox = obj.PhysicObject.BoundingBox.Value;
                     BasicEffect.View = cam.View;
                     BasicEffect.Projection = cam.Projection;
-                    Vector3 centerPos = (BoundingBox.Max + BoundingBox.Min) / 2;
-                    Vector3 scale = BoundingBox.Max - centerPos;
+                    Vector3 centerPos = obj.PhysicObject.Position;
+                    Vector3 scale = BoundingBox.Max - BoundingBox.Min;
+                    
                     Matrix world = Matrix.CreateScale(scale);
                     world.Translation = centerPos;
                     BasicEffect.World = world;

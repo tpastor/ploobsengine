@@ -26,6 +26,7 @@ namespace EngineTestes
 
             ForwardRenderTecnichDescription desc = ForwardRenderTecnichDescription.Default();
             desc.BackGroundColor = Color.CornflowerBlue;
+            desc.UsePostDrawPhase = true;
             renderTech = new ForwardRenderTecnich(desc);
         }
 
@@ -67,6 +68,38 @@ namespace EngineTestes
                 obj.Name = "Block";
                 this.World.AddObject(obj);
             }
+
+
+            {
+                SimpleModel simpleModel = new SimpleModel(factory, "Model//block");
+                simpleModel.SetTexture(factory.CreateTexture2DColor(1, 1, Color.Red), TextureType.DIFFUSE);
+                TriangleMeshObject tmesh = new TriangleMeshObject(simpleModel, new Vector3(150, 20, 250), Matrix.Identity, new Vector3(300, 300, 5), MaterialDescription.DefaultBepuMaterial());
+                ForwardXNABasicShader sh = new ForwardXNABasicShader(ForwardXNABasicShaderDescription.Default());
+                sh.UseOcclusionCulling = false;
+                ForwardMaterial fmaterial = new ForwardMaterial(sh);
+                IObject obj = new IObject(fmaterial, simpleModel, tmesh);
+                obj.Name = "Block";
+                this.World.AddObject(obj);
+            }
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 10; j++)
+                {
+                    ///Cria modelo com textura procedural amarela
+                    SimpleModel sm = new SimpleModel(factory, "Model\\block");
+                    sm.SetTexture(factory.CreateTexture2DColor(1, 1, Color.Yellow), TextureType.DIFFUSE);
+                    ///Objeto fisico Ghost (nao tem colisao, nem formato)
+                    GhostObject pi = new GhostObject(new Vector3(i * 10, 50, j * 10), Matrix.Identity, new Vector3(5));
+                    pi.isMotionLess = true;
+                    ForwardTransparenteShader s = new ForwardTransparenteShader();
+                    s.TransparencyLevel = 0.3f;                    
+                    ForwardMaterial mat = new ForwardMaterial(s);
+                    IObject obj4 = new IObject(mat, sm, pi);
+                    this.World.AddObject(obj4);
+                }
+
+            }
+            
 
             this.World.CameraManager.AddCamera(new CameraFirstPerson(GraphicInfo));
         }
