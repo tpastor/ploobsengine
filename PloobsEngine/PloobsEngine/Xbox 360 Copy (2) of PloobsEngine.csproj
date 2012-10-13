@@ -85,7 +85,9 @@
     <Compile Include="AI\Behaviors\Parallel.cs" />
     <Compile Include="AI\Behaviors\ProbabilitySelector.cs" />
     <Compile Include="AI\Behaviors\Repeater.cs" />
-    <Compile Include="AI\Behaviors\Selector.cs" />
+    <Compile Include="AI\Behaviors\Selector.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="AI\Behaviors\Sequence.cs" />
     <Compile Include="AI\Behaviors\Task.cs" />
     <Compile Include="AI\Behaviors\Wait.cs" />

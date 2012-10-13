@@ -43,7 +43,7 @@ namespace BehaviorTrees
 	/// to reference other nodes that will be evaluated if the previous task finishes.
 	/// </summary>
 	/// <typeparam name="E"></typeparam>
-	abstract class CompositeTask<E> :
+	public abstract class CompositeTask<E> :
 		Task<E>,
 		IEnumerable
 		where E : Entity
