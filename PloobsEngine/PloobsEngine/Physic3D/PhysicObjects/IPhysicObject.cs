@@ -32,7 +32,7 @@ namespace PloobsEngine.Physics
     /// <summary>
     /// 3D Physic Material Description
     /// </summary>
-    public struct MaterialDescription
+    public class MaterialDescription
     {
         public MaterialDescription(float StaticFriction, float DinamicFriction, float Bounciness)
         {

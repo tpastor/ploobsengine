@@ -48,7 +48,7 @@ namespace PloobsEngine.Light
         /// <param name="color">Color</param>
         /// <param name="lightRadius">Radius</param>
         /// <param name="lightIntensity">Intensity</param>
-        public PointLightPE(Vector3 lightPosition, Color color, float lightRadius, float lightIntensity)
+        public PointLightPE(Vector3 lightPosition, Color color, float lightRadius, float lightIntensity =1 )
         {
             this.lightPosition = lightPosition;
             this.color = color;

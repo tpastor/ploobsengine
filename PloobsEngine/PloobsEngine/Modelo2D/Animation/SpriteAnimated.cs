@@ -63,6 +63,13 @@ namespace PloobsEngine.Modelo2D
         private string animation;
 
         private int frames;
+
+        public float GlobalAnimationSpeedControl
+        {
+            set;
+            get;
+        }
+
         public int Frame
         {
             get
@@ -92,7 +99,8 @@ namespace PloobsEngine.Modelo2D
             this.Texture = Texture;
             width = Texture.Width / Frames;
             height = Texture.Height / animations;
-            Origin = new Vector2(width / 2, height / 2);            
+            Origin = new Vector2(width / 2, height / 2);
+            GlobalAnimationSpeedControl = 1;
         }
 
         /// <summary>
@@ -134,7 +142,7 @@ namespace PloobsEngine.Modelo2D
             if (running)
             {
                 timeElapsed += (float)
-                    gameTime.ElapsedGameTime.TotalSeconds;
+                    gameTime.ElapsedGameTime.TotalSeconds * GlobalAnimationSpeedControl;
 
                 if (timeElapsed > animations[animation].timeToUpdate)
                 {

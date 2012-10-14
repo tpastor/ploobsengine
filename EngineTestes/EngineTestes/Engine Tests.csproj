@@ -218,6 +218,7 @@
     <Compile Include="Bullet\BallThrowBullet.cs" />
     <Compile Include="CharacterControllerInput.cs" />
     <Compile Include="CharacterSample\CharacterScreen.cs" />
+    <Compile Include="Defaults\ForwardBepuScreen.cs" />
     <Compile Include="LightPrePassIdea2\PreLightThrowBepu.cs" />
     <Compile Include="LightPrePassIdea2\PrePassScreen.cs" />
     <Compile Include="LightPrePassIdea2\PreRenderTechnic.cs" />

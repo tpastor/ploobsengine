@@ -48,6 +48,10 @@ namespace PloobsEngine.Modelo2D
         public float FramesPerSecond
         {            
             get { return 1f / timeToUpdate; }
+            set
+            {
+                timeToUpdate = 1f/value;
+            }
         }
 
 

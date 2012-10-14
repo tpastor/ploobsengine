@@ -47,9 +47,9 @@ namespace PloobsEngine.Light
         /// <param name="coneDecay">The cone decay.</param>
         /// <param name="lightRadius">The light radius.</param>
         /// <param name="Color">The color.</param>
-        /// <param name="lightAngleCosine">The light angle cosine.</param>
+        /// <param name="lightAngleCosine">The light angle cosine (radians).</param>
         /// <param name="lightIntensity">The light intensity.</param>
-        public SpotLightPE(Vector3 position, Vector3 direction, float coneDecay, float lightRadius, Color Color, float lightAngleCosine, float lightIntensity)
+        public SpotLightPE(Vector3 position, Vector3 direction, Color Color, float coneDecay = 1, float lightRadius = 1000, float lightAngleCosine = 0.5f, float lightIntensity =1)
         {
             this.position = position;
             this.direction = direction;

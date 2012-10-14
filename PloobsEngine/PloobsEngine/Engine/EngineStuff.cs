@@ -291,6 +291,7 @@ namespace PloobsEngine.Engine
             graphics.PreferredDepthStencilFormat = DepthFormat.Depth24Stencil8;
             graphics.SupportedOrientations = initialDescription.SupportedOrientations;
             graphics.ApplyChanges();            
+
         }        
         
 

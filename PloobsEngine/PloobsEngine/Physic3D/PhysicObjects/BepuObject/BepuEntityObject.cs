@@ -149,6 +149,8 @@ namespace PloobsEngine.Physics.Bepu
         /// <param name="mass">The mass.</param>
         public BepuEntityObject(MaterialDescription md, float mass)
         {
+            if (md == null)
+                md = MaterialDescription.DefaultBepuMaterial();
             this.materialDecription = md;
             this.mass = mass;            
         }

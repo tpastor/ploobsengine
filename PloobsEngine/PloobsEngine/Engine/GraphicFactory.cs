@@ -267,8 +267,9 @@ namespace PloobsEngine.Engine
             Texture2D.Tag = "CREATED";
             return Texture2D;
         }
+
         /// <summary>
-        /// Creates the color of the texture2D.
+        /// Creates the texture2D.
         /// </summary>
         /// <param name="width">The width.</param>
         /// <param name="height">The height.</param>
@@ -281,6 +282,19 @@ namespace PloobsEngine.Engine
             Texture2D.Tag = "CREATED";
             return Texture2D;
         }
+
+        /// <summary>
+        /// Creates 
+        /// </summary>
+        /// <param name="color">The color.</param>
+        /// <returns></returns>
+        public Texture2D CreateTexture2DColor(Color color)
+        {
+            Texture2D Texture2D = texCreator.CreateColorTexture(1, 1, color, false);
+            Texture2D.Tag = "CREATED";
+            return Texture2D;
+        }
+
         /// <summary>
         /// Creates the texture2D random color
         /// </summary>

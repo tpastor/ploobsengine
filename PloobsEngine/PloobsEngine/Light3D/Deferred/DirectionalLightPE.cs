@@ -62,8 +62,10 @@ namespace PloobsEngine.Light
         /// </summary>
         /// <param name="direction">The direction.</param>
         /// <param name="color">The color.</param>
-        public DirectionalLightPE(Vector3 direction, Color color)
+        /// <param name="lightIntensity">The light intensity.</param>
+        public DirectionalLightPE(Vector3 direction, Color color, float lightIntensity = 1)
         {
+            this.lightIntensity = lightIntensity;
             this.lightDirection = direction;
             this.color = color;
             target = lightDirection;

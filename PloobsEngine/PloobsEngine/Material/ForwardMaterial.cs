@@ -46,6 +46,16 @@ namespace PloobsEngine.Material
             IsVisible = true;
         }
 
+        /// <summary>
+        /// Default Forward material. (uses ForwardXNABasicShader)
+        /// </summary>
+        /// <returns></returns>
+        public static ForwardMaterial DefaultForwardMaterial()
+        {
+            return new ForwardMaterial(new ForwardXNABasicShader());
+        }
+
+
         RasterizerState rasterizerState = null;
 
         public RasterizerState RasterizerState

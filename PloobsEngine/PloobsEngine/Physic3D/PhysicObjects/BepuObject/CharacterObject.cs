@@ -36,13 +36,15 @@ namespace PloobsEngine.Physics.Bepu
         float YAlignement;
         Matrix rotation;
 
-        public CharacterObject(Vector3 position, Matrix rotation, float characterHeight, float characterWidth, float mass, float supportHeight, Vector3 scale, float YAlignement = 0)
+        public CharacterObject(Vector3 position, Matrix rotation, float characterHeight, float characterWidth, float mass = 10, float supportHeight = 1, Vector3? scale = null, float YAlignement = 0)
         {
+            if (scale == null)
+                scale = Vector3.One;
+
             this.rotation = rotation;
-            this.YAlignement = YAlignement * scale.Y;
-            this.characterController = new CharacterController(position, characterHeight, characterWidth, supportHeight,mass, scale);
-            this.entity = characterController.Body;
-            
+            this.YAlignement = YAlignement * scale.Value.Y;
+            this.characterController = new CharacterController(position, characterHeight, characterWidth, supportHeight,mass, scale.Value);
+            this.entity = characterController.Body;           
         
         }        
 

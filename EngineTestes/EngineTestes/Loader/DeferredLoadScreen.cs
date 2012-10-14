@@ -109,7 +109,7 @@ namespace EngineTestes
             //ld1.LightIntensity = li;
             //this.World.AddLight(ld1);
 
-            SpotLightPE sl = new SpotLightPE(new Vector3(-56, 700, 30), new Vector3(0.1f, -0.8f, 0.3f), 1f, 100000, Color.White, (float)Math.Cos(Math.PI / 3), 1f);
+            SpotLightPE sl = new SpotLightPE(new Vector3(-56, 700, 30), new Vector3(0.1f, -0.8f, 0.3f), Color.White, 1f, 100000, (float)Math.Cos(Math.PI / 3), 1f);
             sl.CastShadown = true;
             this.World.AddLight(sl);
 

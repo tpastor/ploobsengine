@@ -567,9 +567,12 @@ namespace PloobsEngine.SceneControl
         /// <param name="rasterizerState">State of the rasterizer.</param>
         /// <param name="depthState">State of the depth.</param>
         /// <param name="effect">The effect.</param>
-        public void RenderTextComplete(String text, Vector2 position, Color color, Matrix transform, SpriteFont font = null,bool resyncState = true, SpriteSortMode SpriteSortMode = SpriteSortMode.Deferred, SamplerState samplerState = null, BlendState blenderState = null, RasterizerState rasterizerState = null, DepthStencilState depthState = null, Effect effect = null)
-        {            
-            spriteBatch.Begin(SpriteSortMode, blenderState, samplerState, depthState, rasterizerState, effect, transform);
+        public void RenderTextComplete(String text, Vector2 position, Color color, Matrix? transform = null, SpriteFont font = null,bool resyncState = true, SpriteSortMode SpriteSortMode = SpriteSortMode.Deferred, SamplerState samplerState = null, BlendState blenderState = null, RasterizerState rasterizerState = null, DepthStencilState depthState = null, Effect effect = null)
+        {
+            if (transform == null)
+                transform = Matrix.Identity;
+
+            spriteBatch.Begin(SpriteSortMode, blenderState, samplerState, depthState, rasterizerState, effect, transform.Value);
             if (font == null)
                 font = defaultFont;
             spriteBatch.DrawString(font, text, position, color);
@@ -628,9 +631,11 @@ namespace PloobsEngine.SceneControl
         /// <param name="rasterizerState">State of the rasterizer.</param>
         /// <param name="depthState">State of the depth.</param>
         /// <param name="effect">The effect.</param>
-        public void RenderBegin(Matrix transform, Rectangle? source = null, SpriteSortMode SpriteSortMode = SpriteSortMode.Deferred, SamplerState samplerState = null, BlendState blenderState = null, RasterizerState rasterizerState = null, DepthStencilState depthState = null, Effect effect = null)
+        public void RenderBegin(Matrix? transform = null, Rectangle? source = null, SpriteSortMode SpriteSortMode = SpriteSortMode.Deferred, SamplerState samplerState = null, BlendState blenderState = null, RasterizerState rasterizerState = null, DepthStencilState depthState = null, Effect effect = null)
         {
-            spriteBatch.Begin(SpriteSortMode, blenderState, samplerState, depthState, rasterizerState, effect, transform);
+            if (transform == null)
+                transform = Matrix.Identity;
+            spriteBatch.Begin(SpriteSortMode, blenderState, samplerState, depthState, rasterizerState, effect, transform.Value);
         }
 
         /// <summary>
@@ -727,9 +732,11 @@ namespace PloobsEngine.SceneControl
         /// <param name="rasterizerState">State of the rasterizer.</param>
         /// <param name="depthState">State of the depth.</param>
         /// <param name="effect">The effect.</param>
-        public void RenderTextureComplete(Texture2D texture, Color color, Rectangle destination, Matrix transform, Rectangle? source = null, bool resyncState = true, SpriteSortMode SpriteSortMode = SpriteSortMode.Deferred, SamplerState samplerState = null, BlendState blenderState = null, RasterizerState rasterizerState = null, DepthStencilState depthState = null, Effect effect = null)
+        public void RenderTextureComplete(Texture2D texture, Color color, Rectangle destination, Matrix? transform = null, Rectangle? source = null, bool resyncState = true, SpriteSortMode SpriteSortMode = SpriteSortMode.Deferred, SamplerState samplerState = null, BlendState blenderState = null, RasterizerState rasterizerState = null, DepthStencilState depthState = null, Effect effect = null)
         {
-            spriteBatch.Begin(SpriteSortMode, blenderState, samplerState, depthState, rasterizerState, effect, transform);
+            if (transform == null)
+                transform = Matrix.Identity;
+            spriteBatch.Begin(SpriteSortMode, blenderState, samplerState, depthState, rasterizerState, effect, transform.Value);
             spriteBatch.Draw(texture, destination,source, color);
             spriteBatch.End();
             if (resyncState)

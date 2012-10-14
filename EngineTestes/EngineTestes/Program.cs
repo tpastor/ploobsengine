@@ -34,7 +34,8 @@ namespace EngineTestes
 
         static void LoadScreen(ScreenManager manager)
         {
-            manager.AddScreen(new DynamicEnvMapScreen());                                 
+            manager.AddScreen(new TransparentForwardScreen());                                 
+            //manager.AddScreen(new DynamicEnvMapScreen());                                 
             //manager.AddScreen(new PRTScreen());                                 
             //manager.AddScreen(new DeferredEmitterFluids28Screen3());  
             //manager.AddScreen(new PrePassScreen());

@@ -30,12 +30,18 @@ namespace PloobsEngine.Physics.Bepu
 {
     public class CylinderObject : BepuEntityObject
     {
-        public CylinderObject(Vector3 pos, float altura, float raio, Vector3 scale, float mass,Matrix orientation,MaterialDescription md)
+        public CylinderObject(Vector3 pos, float altura, float raio, Vector3? scale = null, float mass = 10,Matrix? orientation = null,MaterialDescription md=null)
             : base(md,mass)
         {
-            entity = new Cylinder(pos, altura * scale.Y, raio * scale.X, mass);
-            this.scale = scale;
-            entity.Orientation = Quaternion.CreateFromRotationMatrix(orientation);            
+            if (!orientation.HasValue)
+                orientation = Matrix.Identity;
+
+            if (!scale.HasValue)
+                scale = Vector3.One;
+
+            entity = new Cylinder(pos, altura * scale.Value.Y, raio * scale.Value.X, mass);
+            this.scale = scale.Value;
+            entity.Orientation = Quaternion.CreateFromRotationMatrix(orientation.Value);            
         }
         public override PhysicObjectTypes PhysicObjectTypes
         {

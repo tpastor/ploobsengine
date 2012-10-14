@@ -115,12 +115,16 @@ namespace PloobsEngine.Physics.Bepu
         /// <param name="XSpacing">The X spacing.</param>
         /// <param name="ZSpacing">The Z spacing.</param>
         /// <param name="heightMultipler">The height multipler.</param>
-        public TerrainObject(GraphicFactory gfactory, Texture2D heightmapTexture, Vector3 translation, Matrix rotation, MaterialDescription materialDesc, float XSpacing = 1, float ZSpacing = 1, float heightMultipler = 10)
+        public TerrainObject(GraphicFactory gfactory, Texture2D heightmapTexture, Vector3 translation, Matrix? rotation =  null, MaterialDescription materialDesc = null, float XSpacing = 1, float ZSpacing = 1, float heightMultipler = 10)
         {
 
+            if (!rotation.HasValue)
+                rotation = Matrix.Identity;
+
+            if (materialDecription == null)
+                materialDecription = MaterialDescription.DefaultBepuMaterial();
+
             this.heightMultipler = heightMultipler;
-
-
 
             //Used to calculate ther proportion of the xNormalized in the getHeightFast method
             xScale = XSpacing;
@@ -133,7 +137,7 @@ namespace PloobsEngine.Physics.Bepu
             terrainWidth = xLength;
             terrainHeight = yLength;
 
-            this.rotation = rotation;
+            this.rotation = rotation.Value;
             //this.scale = scale;
 
             Color[] colorData = new Color[xLength * yLength];
@@ -161,7 +165,7 @@ namespace PloobsEngine.Physics.Bepu
             //Create the terrain.
             BEPUphysics.CollisionShapes.TerrainShape shape = new BEPUphysics.CollisionShapes.TerrainShape(heightStore, BEPUphysics.CollisionShapes.QuadTriangleOrganization.BottomLeftUpperRight);
 
-            terrain = new Terrain(shape, new BEPUphysics.MathExtensions.AffineTransform(new Vector3(XSpacing, 1, ZSpacing), Quaternion.CreateFromRotationMatrix(rotation), new Vector3(-xLength * XSpacing / 2, 0, -yLength * ZSpacing / 2) + translation));
+            terrain = new Terrain(shape, new BEPUphysics.MathExtensions.AffineTransform(new Vector3(XSpacing, 1, ZSpacing), Quaternion.CreateFromRotationMatrix(rotation.Value), new Vector3(-xLength * XSpacing / 2, 0, -yLength * ZSpacing / 2) + translation));
             terrain.ImproveBoundaryBehavior = true;
 
             SetMaterialDescription(materialDesc);
@@ -179,8 +183,13 @@ namespace PloobsEngine.Physics.Bepu
         /// <param name="XSpacing">The X spacing.</param>
         /// <param name="ZSpacing">The Z spacing.</param>
         /// <param name="heightMultipler">Default 10 - controla a altura, menor mais alto</param>
-        public TerrainObject(GraphicFactory gfactory, String heighmapName, Vector3 translation, Matrix rotation, MaterialDescription materialDesc, float XSpacing = 1, float ZSpacing = 1, float heightMultipler = 10)
+        public TerrainObject(GraphicFactory gfactory, String heighmapName, Vector3 translation, Matrix? rotation = null, MaterialDescription materialDesc = null, float XSpacing = 1, float ZSpacing = 1, float heightMultipler = 10)
         {
+            if (!rotation.HasValue)
+                rotation = Matrix.Identity;
+
+            if (materialDecription == null)
+                materialDecription = MaterialDescription.DefaultBepuMaterial();
 
 
             //Used to calculate ther proportion of the xNormalized in the getHeightFast method
@@ -199,7 +208,7 @@ namespace PloobsEngine.Physics.Bepu
             terrainHeight = yLength;
 
 
-            this.rotation = rotation;
+            this.rotation = rotation.Value;
             //this.scale = scale;
 
             Color[] colorData = new Color[xLength * yLength];
@@ -227,7 +236,7 @@ namespace PloobsEngine.Physics.Bepu
             //Create the terrain.
             BEPUphysics.CollisionShapes.TerrainShape shape = new BEPUphysics.CollisionShapes.TerrainShape(heightStore, BEPUphysics.CollisionShapes.QuadTriangleOrganization.BottomLeftUpperRight);
 
-            terrain = new Terrain(shape, new BEPUphysics.MathExtensions.AffineTransform(new Vector3(XSpacing, 1, ZSpacing), Quaternion.CreateFromRotationMatrix(rotation), new Vector3(-xLength * XSpacing / 2, 0, -yLength * ZSpacing / 2) + translation));
+            terrain = new Terrain(shape, new BEPUphysics.MathExtensions.AffineTransform(new Vector3(XSpacing, 1, ZSpacing), Quaternion.CreateFromRotationMatrix(rotation.Value), new Vector3(-xLength * XSpacing / 2, 0, -yLength * ZSpacing / 2) + translation));
             terrain.ImproveBoundaryBehavior = true;
 
             SetMaterialDescription(materialDesc);
