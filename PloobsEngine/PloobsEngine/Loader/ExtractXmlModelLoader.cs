@@ -386,7 +386,7 @@ namespace PloobsEngine.Loader
             {
                 SpotLightInformation si = item.Value;
                 targetInfo ti = targets[item.Key + ".Target"];
-                SpotLightPE sl = new SpotLightPE(si.pos, Vector3.Normalize(ti.targetPos - si.pos), si.decay, (ti.targetPos - si.pos).Length() * 10f, si.color, (float)Math.Cos(si.angle / 2), si.multiplier);
+                SpotLightPE sl = new SpotLightPE(si.pos, Vector3.Normalize(ti.targetPos - si.pos), si.color,si.decay, (ti.targetPos - si.pos).Length() * 10f, (float)Math.Cos(si.angle / 2), si.multiplier);
                 sl.CastShadown = si.castShadow;
                 sl.Name = si.name;
                 elements.LightsInfo.Add(sl);

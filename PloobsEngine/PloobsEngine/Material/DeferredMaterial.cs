@@ -46,6 +46,16 @@ namespace PloobsEngine.Material
             CanCreateShadow = true;
             IsVisible = true;
         }
+
+        /// <summary>
+        /// Defaults Deferred Material with DeferredNormalShader
+        /// </summary>
+        /// <returns></returns>
+        public static DeferredMaterial DefaultDeferredMaterial()
+        {
+            return new DeferredMaterial(new DeferredNormalShader());
+        }
+
         
         IShader shader = null;        
 

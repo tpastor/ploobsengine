@@ -49,7 +49,7 @@ namespace PloobsEngine.Modelo
 
         protected IModelo() { }
 
-        public IModelo(bool isinternal, GraphicFactory factory, String modelName, bool callLoadContent = true)
+        internal IModelo(bool isinternal, GraphicFactory factory, String modelName, bool callLoadContent = true)
         {
             this.isInternal = isinternal;
 
@@ -109,6 +109,10 @@ namespace PloobsEngine.Modelo
             this.AfterAdded(obj);
         }
 
+        /// <summary>
+        /// Called Afters the objets has been added to the world
+        /// </summary>
+        /// <param name="obj">The obj.</param>
         protected virtual void AfterAdded(IObject obj)
         {
         }
@@ -120,7 +124,7 @@ namespace PloobsEngine.Modelo
         /// <param name="meshIndex">Index of the mesh.</param>
         /// <param name="meshPartIndex">Index of the mesh part.</param>
         /// <returns></returns>
-        public Texture2D getTexture(TextureType type, int meshIndex = 0, int meshPartIndex = 0)
+        public Texture2D getTexture(TextureType type = TextureType.DIFFUSE, int meshIndex = 0, int meshPartIndex = 0)
         {
             return TextureInformations[meshIndex][meshPartIndex].getTexture(type);
         }
@@ -132,7 +136,7 @@ namespace PloobsEngine.Modelo
         /// <param name="type">The type.</param>
         /// <param name="meshIndex">Index of the mesh.</param>
         /// <param name="meshPartIndex">Index of the mesh part.</param>
-        public void SetTexture(String textureName, TextureType type, int meshIndex = 0, int meshPartIndex = 0)
+        public void SetTexture(String textureName, TextureType type = TextureType.DIFFUSE, int meshIndex = 0, int meshPartIndex = 0)
         {
             TextureInformation ti = TextureInformations[meshIndex][meshPartIndex];
             ti.SetTexture(textureName, type);            
@@ -144,7 +148,7 @@ namespace PloobsEngine.Modelo
         /// <param name="textureCube"></param>
         /// <param name="meshIndex"></param>
         /// <param name="meshPartIndex"></param>
-        public void SetCubeTexture(TextureCube textureCube, TextureType TextureType, int meshIndex = 0, int meshPartIndex = 0)
+        public void SetCubeTexture(TextureCube textureCube, TextureType TextureType = TextureType.ENVIRONMENT, int meshIndex = 0, int meshPartIndex = 0)
         {
             TextureInformation ti = TextureInformations[meshIndex][meshPartIndex];
             ti.SetCubeTexture(textureCube, TextureType);
@@ -159,7 +163,7 @@ namespace PloobsEngine.Modelo
         /// <param name="meshIndex"></param>
         /// <param name="meshPartIndex"></param>
         /// <returns></returns>
-        public TextureCube GetCubeTexture(TextureType TextureType, int meshIndex = 0, int meshPartIndex = 0)
+        public TextureCube GetCubeTexture(TextureType TextureType = TextureType.ENVIRONMENT, int meshIndex = 0, int meshPartIndex = 0)
         {
             TextureInformation ti = TextureInformations[meshIndex][meshPartIndex];
             return ti.getCubeTexture(TextureType);
@@ -198,6 +202,19 @@ namespace PloobsEngine.Modelo
         }
 
         /// <summary>
+        /// Sets the texture.
+        /// </summary>
+        /// <param name="color">The color.</param>
+        /// <param name="type">The type.</param>
+        /// <param name="meshIndex">Index of the mesh.</param>
+        /// <param name="meshPartIndex">Index of the mesh part.</param>
+        public void SetTexture(Color color, TextureType type = TextureType.DIFFUSE, int meshIndex = 0, int meshPartIndex = 0)
+        {
+
+            TextureInformations[meshIndex][meshPartIndex].SetTexture(factory.CreateTexture2DColor(color), type);
+        }
+
+        /// <summary>
         /// Gets the Total mesh number.
         /// </summary>
         public abstract int MeshNumber{get;}
@@ -213,12 +230,17 @@ namespace PloobsEngine.Modelo
         /// </summary>
         /// <param name="meshNumber">The mesh number.</param>
         /// <returns></returns>
-        public BatchInformation[] GetBatchInformation(int meshNumber)
+        public BatchInformation[] GetBatchInformation(int meshNumber = 0)
         {
             return BatchInformations[meshNumber];
         }
 
-        public TextureInformation[] GetTextureInformation(int meshNumber)
+        /// <summary>
+        /// Gets the texture information.
+        /// </summary>
+        /// <param name="meshNumber">The mesh number.</param>
+        /// <returns></returns>
+        public TextureInformation[] GetTextureInformation(int meshNumber = 0)
         {
             return TextureInformations[meshNumber];
         }
@@ -284,6 +306,9 @@ namespace PloobsEngine.Modelo
     /// </summary>
     public enum TextureType
     {
+        /// <summary>
+        /// EnvironmentMap used for environment lightining
+        /// </summary>
         AMBIENT_CUBE_MAP,
         /// <summary>
         /// EnvironmentMap

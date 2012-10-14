@@ -75,6 +75,8 @@ namespace BehaviorTrees
 				case TaskResult.Running:
 					return TaskResult.Running;
 				case TaskResult.Failure:
+                    step = 0;
+                    task = null;
 					return TaskResult.Failure;
 				default:
 					throw new Exception("You shouldn't reach that code");

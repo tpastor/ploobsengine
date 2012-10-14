@@ -52,10 +52,23 @@ namespace PloobsEngine.Material
         /// <param name="transparencyLevel">The transparency level.</param>
         public ForwardTransparenteShader(float transparencyLevel)
         {
+            useTextureAlpha = false;
             this.TransparencyLevel = TransparencyLevel;
         }
 
-        bool useTextureAlpha = true;
+        /// <summary>
+        /// Gets or sets a value indicating whether [use texture alpha]. as transparency level
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [use texture alpha]; otherwise, <c>false</c>.
+        /// </value>
+        public bool UseTextureAlpha
+        {
+            get { return useTextureAlpha; }
+            set { useTextureAlpha = value; }
+        }
+
+        bool useTextureAlpha = true;        
         float transparencyLevel = 0;
         Effect _shader;
         RasterizerState cullMode = RasterizerState.CullNone;
@@ -83,6 +96,8 @@ namespace PloobsEngine.Material
                 useTextureAlpha = false; 
             }
         }
+
+        
              
 
         public override MaterialType MaterialType

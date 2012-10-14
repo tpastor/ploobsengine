@@ -31,12 +31,18 @@ namespace PloobsEngine.Physics.Bepu
 {
     public class BoxObject : BepuEntityObject
     {
-        public BoxObject(Vector3 pos, float xlen, float ylen, float zlen, float mass, Vector3 scale, Matrix orientation, MaterialDescription materialDescription)
+        public BoxObject(Vector3 pos, float xlen , float ylen , float zlen, float mass = 10, Vector3? scale = null, Matrix? orientation = null, MaterialDescription materialDescription = null)
             : base(materialDescription, mass)
         {
-            this.scale = scale;
-            entity = new Box(pos, xlen * scale.X, ylen* scale.Y, zlen* scale.Z, mass);
-            entity.Orientation = Quaternion.CreateFromRotationMatrix(orientation);
+            if (!orientation.HasValue)
+                orientation = Matrix.Identity;
+
+            if (!scale.HasValue)
+                scale = Vector3.One;
+
+            this.scale = scale.Value;
+            entity = new Box(pos, xlen * this.scale.X, ylen * this.scale.Y, zlen * this.scale.Z, mass);
+            entity.Orientation = Quaternion.CreateFromRotationMatrix(orientation.Value);
             SetMaterialDescription(materialDescription);
         }        
         

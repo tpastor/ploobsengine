@@ -38,9 +38,10 @@ namespace PloobsEngine.Physics.Bepu
         /// <param name="mass">The mass.</param>
         /// <param name="scale">The scale.</param>
         /// <param name="materialDescription">The material description.</param>
-        public SphereObject(Vector3 pos, float raio, float mass,float scale,MaterialDescription materialDescription)
+        public SphereObject(Vector3 pos, float raio, float mass = 10,float scale = 1,MaterialDescription materialDescription = null)
             : base(materialDescription,mass)
         {
+        
             this.scale = new Vector3(scale);
             entity = new Sphere(pos, raio * scale, mass);
             SetMaterialDescription(materialDescription);

@@ -62,16 +62,26 @@ namespace PloobsEngine.Physics.Bepu
         /// <param name="materialDescription">The material description.</param>
         /// <param name="MobileMeshSolidity">The mobile mesh solidity.</param>
         /// <param name="mass">The mass.</param>
-        public MobileMeshObject(IModelo model, Vector3 pos, Matrix rotation, Vector3 scale, MaterialDescription materialDescription,MobileMeshSolidity MobileMeshSolidity,float mass)
+        public MobileMeshObject(IModelo model, Vector3 pos, Matrix? rotation = null, Vector3? scale = null, MaterialDescription materialDescription = null,MobileMeshSolidity MobileMeshSolidity = MobileMeshSolidity.Solid,float mass = 10)
         {
-            System.Diagnostics.Debug.Assert(model != null);
+            if (materialDescription == null)
+                materialDescription = MaterialDescription.DefaultBepuMaterial();
+
+            if (!rotation.HasValue)
+                rotation = Matrix.Identity;
+
+            if (!scale.HasValue)
+                scale = Vector3.One;
+
+
             System.Diagnostics.Debug.Assert(scale != Vector3.Zero);
+            System.Diagnostics.Debug.Assert(model != null);
             
-            this.scale = scale;            
+            this.scale = scale.Value;            
             Vector3[] vertices = null;
             int[] indices = null;
             ExtractData(ref vertices, ref indices, model);
-            triangleGroup = new MobileMesh(vertices, indices, new AffineTransform(scale, Quaternion.CreateFromRotationMatrix(rotation), pos), MobileMeshSolidity,mass);        
+            triangleGroup = new MobileMesh(vertices, indices, new AffineTransform(scale.Value, Quaternion.CreateFromRotationMatrix(rotation.Value), pos), MobileMeshSolidity,mass);        
             triangleGroup.Material = new BEPUphysics.Materials.Material(materialDescription.StaticFriction, materialDescription.DynamicFriction, materialDescription.Bounciness);
         }
 
@@ -85,16 +95,25 @@ namespace PloobsEngine.Physics.Bepu
         /// <param name="materialDescription">The material description.</param>
         /// <param name="MobileMeshSolidity">The mobile mesh solidity.</param>
         /// <param name="mass">The mass.</param>
-        public MobileMeshObject(Model model, Vector3 pos, Matrix rotation, Vector3 scale, MaterialDescription materialDescription, MobileMeshSolidity MobileMeshSolidity,float mass)
+        public MobileMeshObject(Model model, Vector3 pos, Matrix? rotation = null, Vector3? scale = null, MaterialDescription materialDescription = null, MobileMeshSolidity MobileMeshSolidity = MobileMeshSolidity.Solid,float mass = 10)
         {
+            if (materialDescription == null)
+                materialDescription = MaterialDescription.DefaultBepuMaterial();
+
+            if (!rotation.HasValue)
+                rotation = Matrix.Identity;
+
+            if (!scale.HasValue)
+                scale = Vector3.One;
+
             System.Diagnostics.Debug.Assert(model != null);
             System.Diagnostics.Debug.Assert(scale != Vector3.Zero);
                         
-            this.scale = scale;            
+            this.scale = scale.Value;            
             Vector3[] vertices;
             int[] indices;
             TriangleMesh.GetVerticesAndIndicesFromModel(model, out vertices, out indices);
-            triangleGroup = new MobileMesh(vertices, indices, new AffineTransform(scale, Quaternion.CreateFromRotationMatrix(rotation), pos), MobileMeshSolidity, mass);            
+            triangleGroup = new MobileMesh(vertices, indices, new AffineTransform(scale.Value, Quaternion.CreateFromRotationMatrix(rotation.Value), pos), MobileMeshSolidity, mass);            
             triangleGroup.Material = new BEPUphysics.Materials.Material(materialDescription.StaticFriction,materialDescription.DynamicFriction,materialDescription.Bounciness);
         }
 

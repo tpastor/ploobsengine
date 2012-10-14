@@ -59,18 +59,27 @@ namespace PloobsEngine.Physics.Bepu
         /// <param name="rotation">The rotation.</param>
         /// <param name="scale">The scale.</param>
         /// <param name="materialDescription">The material description.</param>
-        public TriangleMeshObject(IModelo model, Vector3 pos, Matrix rotation, Vector3 scale, MaterialDescription materialDescription)
+        public TriangleMeshObject(IModelo model, Vector3 pos, Matrix? rotation = null, Vector3? scale= null, MaterialDescription materialDescription = null)
         {
+            if (materialDescription == null)
+                materialDescription = MaterialDescription.DefaultBepuMaterial();
+
+            if (!rotation.HasValue)
+                rotation = Matrix.Identity;
+
+            if (!scale.HasValue)
+                scale = Vector3.One;
+
             System.Diagnostics.Debug.Assert(model != null);
             System.Diagnostics.Debug.Assert(scale != Vector3.Zero);
 
-            this.rotation = rotation;
-            this.scale = scale;
+            this.rotation = rotation.Value;
+            this.scale = scale.Value;
             this.position = pos;
             Vector3[] vertices = null;
             int[] indices = null;
             ExtractData(ref vertices, ref indices, model);
-            triangleGroup = new StaticMesh(vertices, indices, new AffineTransform(scale, Quaternion.CreateFromRotationMatrix(rotation), position));
+            triangleGroup = new StaticMesh(vertices, indices, new AffineTransform(scale.Value, Quaternion.CreateFromRotationMatrix(rotation.Value), position));
             faceVector = Vector3.Transform(Vector3.Forward, triangleGroup.WorldTransform.Matrix);
             triangleGroup.Material = new BEPUphysics.Materials.Material(materialDescription.StaticFriction, materialDescription.DynamicFriction, materialDescription.Bounciness);
             
@@ -84,18 +93,27 @@ namespace PloobsEngine.Physics.Bepu
         /// <param name="rotation">The rotation.</param>
         /// <param name="scale">The scale.</param>
         /// <param name="materialDescription">The material description.</param>
-        public TriangleMeshObject(Model model, Vector3 pos, Matrix rotation, Vector3 scale, MaterialDescription materialDescription)
+        public TriangleMeshObject(Model model, Vector3 pos, Matrix? rotation = null, Vector3? scale = null, MaterialDescription materialDescription = null)
         {
+            if (materialDescription == null)
+                materialDescription = MaterialDescription.DefaultBepuMaterial();
+
+            if (!rotation.HasValue)
+                rotation = Matrix.Identity;
+
+            if (!scale.HasValue)
+                scale = Vector3.One;
+
             System.Diagnostics.Debug.Assert(model != null);
             System.Diagnostics.Debug.Assert(scale != Vector3.Zero);
 
-            this.rotation = rotation;
-            this.scale = scale;
+            this.rotation = rotation.Value;
+            this.scale = scale.Value;
             this.position = pos;
             Vector3[] vertices;
             int[] indices;
             TriangleMesh.GetVerticesAndIndicesFromModel(model, out vertices, out indices);
-            triangleGroup = new StaticMesh(vertices, indices, new AffineTransform(scale, Quaternion.CreateFromRotationMatrix(rotation), position));
+            triangleGroup = new StaticMesh(vertices, indices, new AffineTransform(scale.Value, Quaternion.CreateFromRotationMatrix(rotation.Value), position));
             faceVector = Vector3.Transform(Vector3.Forward, triangleGroup.WorldTransform.Matrix);            
             triangleGroup.Material = new BEPUphysics.Materials.Material(materialDescription.StaticFriction,materialDescription.DynamicFriction,materialDescription.Bounciness);
         }
