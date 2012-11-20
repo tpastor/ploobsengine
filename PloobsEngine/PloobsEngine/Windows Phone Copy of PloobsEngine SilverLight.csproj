@@ -55,6 +55,7 @@
     <XnaCompressContent>false</XnaCompressContent>
     <LangVersion>default</LangVersion>
     <DocumentationFile>bin\Windows Phone\Release\PloobsEnginePhone7.XML</DocumentationFile>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Windows Phone' ">
     <OutputPath>bin\Windows Phone\Debug</OutputPath>

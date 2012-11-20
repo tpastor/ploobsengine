@@ -43,6 +43,7 @@
     <PlatformTarget>x86</PlatformTarget>
     <XnaCompressContent>true</XnaCompressContent>
     <DocumentationFile>bin\x86\Release\PloobsEngineReach.XML</DocumentationFile>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AI\Behaviors\Action.cs" />
