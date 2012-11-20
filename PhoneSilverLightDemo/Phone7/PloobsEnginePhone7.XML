@@ -635,7 +635,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:PloobsEngine.Physics.Bepu.TerrainObject.#ctor(PloobsEngine.Engine.GraphicFactory,Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Matrix,PloobsEngine.Physics.MaterialDescription,System.Single,System.Single,System.Single)">
+        <member name="M:PloobsEngine.Physics.Bepu.TerrainObject.#ctor(PloobsEngine.Engine.GraphicFactory,Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Vector3,System.Nullable{Microsoft.Xna.Framework.Matrix},PloobsEngine.Physics.MaterialDescription,System.Single,System.Single,System.Single)">
             <summary>
             Initializes a new instance of the <see cref="T:PloobsEngine.Physics.Bepu.TerrainObject"/> class.
             </summary>
@@ -648,7 +648,7 @@
             <param name="ZSpacing">The Z spacing.</param>
             <param name="heightMultipler">The height multipler.</param>
         </member>
-        <member name="M:PloobsEngine.Physics.Bepu.TerrainObject.#ctor(PloobsEngine.Engine.GraphicFactory,System.String,Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Matrix,PloobsEngine.Physics.MaterialDescription,System.Single,System.Single,System.Single)">
+        <member name="M:PloobsEngine.Physics.Bepu.TerrainObject.#ctor(PloobsEngine.Engine.GraphicFactory,System.String,Microsoft.Xna.Framework.Vector3,System.Nullable{Microsoft.Xna.Framework.Matrix},PloobsEngine.Physics.MaterialDescription,System.Single,System.Single,System.Single)">
             <summary>
             Create a Terrain Physic Object
             </summary>
@@ -1807,6 +1807,12 @@
             Graphic Factory
             </summary>
         </member>
+        <member name="M:PloobsEngine.Modelo.IModelo.AfterAdded(PloobsEngine.SceneControl.IObject)">
+            <summary>
+            Called Afters the objets has been added to the world
+            </summary>
+            <param name="obj">The obj.</param>
+        </member>
         <member name="M:PloobsEngine.Modelo.IModelo.getTexture(PloobsEngine.Modelo.TextureType,System.Int32,System.Int32)">
             <summary>
             Gets one texture of the model.
@@ -1866,6 +1872,15 @@
             <param name="meshIndex">Index of the mesh.</param>S
             <param name="meshPartIndex">Index of the mesh part.</param>
         </member>
+        <member name="M:PloobsEngine.Modelo.IModelo.SetTexture(Microsoft.Xna.Framework.Color,PloobsEngine.Modelo.TextureType,System.Int32,System.Int32)">
+            <summary>
+            Sets the texture.
+            </summary>
+            <param name="color">The color.</param>
+            <param name="type">The type.</param>
+            <param name="meshIndex">Index of the mesh.</param>
+            <param name="meshPartIndex">Index of the mesh part.</param>
+        </member>
         <member name="M:PloobsEngine.Modelo.IModelo.GetModelRadius">
             <summary>
             Gets the model radius.
@@ -1875,6 +1890,13 @@
         <member name="M:PloobsEngine.Modelo.IModelo.GetBatchInformation(System.Int32)">
             <summary>
             Gets the batch information.
+            </summary>
+            <param name="meshNumber">The mesh number.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Modelo.IModelo.GetTextureInformation(System.Int32)">
+            <summary>
+            Gets the texture information.
             </summary>
             <param name="meshNumber">The mesh number.</param>
             <returns></returns>
@@ -3748,6 +3770,12 @@
             Gets the current waypoints collection.
             </summary>
         </member>
+        <member name="T:BehaviorTrees.Selector`1">
+            <summary>
+            Node which selects the children to be run	
+            </summary>
+            <typeparam name="E">Entity type.</typeparam>
+        </member>
         <member name="T:BehaviorTrees.Composite`1">
             <summary>
             Base class for nodes that are containing a children nodes.
@@ -3759,6 +3787,13 @@
             Add child node.
             </summary>
             <param name="child">Node to add.</param>
+        </member>
+        <member name="M:BehaviorTrees.Selector`1.Evaluate(`0)">
+            <summary>
+            Execute one of the child nodes
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
         </member>
         <member name="T:BehaviorTrees.Entity">
             <summary>
@@ -4334,6 +4369,11 @@
             Textures Types avaliable
             </summary>
         </member>
+        <member name="F:PloobsEngine.Modelo.TextureType.AMBIENT_CUBE_MAP">
+            <summary>
+            EnvironmentMap used for environment lightining
+            </summary>
+        </member>
         <member name="F:PloobsEngine.Modelo.TextureType.ENVIRONMENT">
             <summary>
             EnvironmentMap
@@ -4731,7 +4771,7 @@
             Dynamic Mesh Physic Object
             </summary>
         </member>
-        <member name="M:PloobsEngine.Physics.Bepu.MobileMeshObject.#ctor(PloobsEngine.Modelo.IModelo,Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Vector3,PloobsEngine.Physics.MaterialDescription,BEPUphysics.CollisionShapes.MobileMeshSolidity,System.Single)">
+        <member name="M:PloobsEngine.Physics.Bepu.MobileMeshObject.#ctor(PloobsEngine.Modelo.IModelo,Microsoft.Xna.Framework.Vector3,System.Nullable{Microsoft.Xna.Framework.Matrix},System.Nullable{Microsoft.Xna.Framework.Vector3},PloobsEngine.Physics.MaterialDescription,BEPUphysics.CollisionShapes.MobileMeshSolidity,System.Single)">
             <summary>
             Initializes a new instance of the <see cref="T:PloobsEngine.Physics.Bepu.MobileMeshObject"/> class.
             </summary>
@@ -4743,7 +4783,7 @@
             <param name="MobileMeshSolidity">The mobile mesh solidity.</param>
             <param name="mass">The mass.</param>
         </member>
-        <member name="M:PloobsEngine.Physics.Bepu.MobileMeshObject.#ctor(Microsoft.Xna.Framework.Graphics.Model,Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Vector3,PloobsEngine.Physics.MaterialDescription,BEPUphysics.CollisionShapes.MobileMeshSolidity,System.Single)">
+        <member name="M:PloobsEngine.Physics.Bepu.MobileMeshObject.#ctor(Microsoft.Xna.Framework.Graphics.Model,Microsoft.Xna.Framework.Vector3,System.Nullable{Microsoft.Xna.Framework.Matrix},System.Nullable{Microsoft.Xna.Framework.Vector3},PloobsEngine.Physics.MaterialDescription,BEPUphysics.CollisionShapes.MobileMeshSolidity,System.Single)">
             <summary>
             Initializes a new instance of the <see cref="T:PloobsEngine.Physics.Bepu.MobileMeshObject"/> class.
             </summary>
@@ -7150,12 +7190,19 @@
         </member>
         <member name="M:PloobsEngine.Engine.GraphicFactory.CreateTexture2DColor(System.Int32,System.Int32,Microsoft.Xna.Framework.Color,System.Boolean)">
             <summary>
-            Creates the color of the texture2D.
+            Creates the texture2D.
             </summary>
             <param name="width">The width.</param>
             <param name="height">The height.</param>
             <param name="color">The color.</param>
             <param name="mipmap">if set to <c>true</c> [mipmap].</param>
+            <returns></returns>
+        </member>
+        <member name="M:PloobsEngine.Engine.GraphicFactory.CreateTexture2DColor(Microsoft.Xna.Framework.Color)">
+            <summary>
+            Creates 
+            </summary>
+            <param name="color">The color.</param>
             <returns></returns>
         </member>
         <member name="M:PloobsEngine.Engine.GraphicFactory.CreateTexture2DRandom(System.Int32,System.Int32,System.Boolean)">
@@ -9733,12 +9780,13 @@
             Initializes a new instance of the <see cref="T:PloobsEngine.Light.DirectionalLightPE"/> class.
             </summary>
         </member>
-        <member name="M:PloobsEngine.Light.DirectionalLightPE.#ctor(Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Color)">
+        <member name="M:PloobsEngine.Light.DirectionalLightPE.#ctor(Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Color,System.Single)">
             <summary>
             Initializes a new instance of the <see cref="T:PloobsEngine.Light.DirectionalLightPE"/> class.
             </summary>
             <param name="direction">The direction.</param>
             <param name="color">The color.</param>
+            <param name="lightIntensity">The light intensity.</param>
         </member>
         <member name="M:PloobsEngine.Light.DirectionalLightPE.FakeViewProjection(PloobsEngine.Cameras.ICamera)">
             <summary>
@@ -12089,7 +12137,7 @@
             <param name="index">The index.</param>
             <returns></returns>
         </member>
-        <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderTextComplete(System.String,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Color,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Graphics.SpriteFont,System.Boolean,Microsoft.Xna.Framework.Graphics.SpriteSortMode,Microsoft.Xna.Framework.Graphics.SamplerState,Microsoft.Xna.Framework.Graphics.BlendState,Microsoft.Xna.Framework.Graphics.RasterizerState,Microsoft.Xna.Framework.Graphics.DepthStencilState,Microsoft.Xna.Framework.Graphics.Effect)">
+        <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderTextComplete(System.String,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Color,System.Nullable{Microsoft.Xna.Framework.Matrix},Microsoft.Xna.Framework.Graphics.SpriteFont,System.Boolean,Microsoft.Xna.Framework.Graphics.SpriteSortMode,Microsoft.Xna.Framework.Graphics.SamplerState,Microsoft.Xna.Framework.Graphics.BlendState,Microsoft.Xna.Framework.Graphics.RasterizerState,Microsoft.Xna.Framework.Graphics.DepthStencilState,Microsoft.Xna.Framework.Graphics.Effect)">
             <summary>
             Renders the text complete. (THIS FUNCTION ALREADY CALLS BEGIN AND END)
             </summary>
@@ -12134,7 +12182,7 @@
             <param name="effects">The effects.</param>
             <param name="layerDepth">The layer depth.</param>
         </member>
-        <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderBegin(Microsoft.Xna.Framework.Matrix,System.Nullable{Microsoft.Xna.Framework.Rectangle},Microsoft.Xna.Framework.Graphics.SpriteSortMode,Microsoft.Xna.Framework.Graphics.SamplerState,Microsoft.Xna.Framework.Graphics.BlendState,Microsoft.Xna.Framework.Graphics.RasterizerState,Microsoft.Xna.Framework.Graphics.DepthStencilState,Microsoft.Xna.Framework.Graphics.Effect)">
+        <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderBegin(System.Nullable{Microsoft.Xna.Framework.Matrix},System.Nullable{Microsoft.Xna.Framework.Rectangle},Microsoft.Xna.Framework.Graphics.SpriteSortMode,Microsoft.Xna.Framework.Graphics.SamplerState,Microsoft.Xna.Framework.Graphics.BlendState,Microsoft.Xna.Framework.Graphics.RasterizerState,Microsoft.Xna.Framework.Graphics.DepthStencilState,Microsoft.Xna.Framework.Graphics.Effect)">
             <summary>
             Begin render Texture.
             DO NOT USE THIS WITH RenderTextureComplete (RenderTextureComplete does all the job inside)
@@ -12203,7 +12251,7 @@
             <param name="texture">The texture.</param>
             <param name="resyncState">if set to <c>true</c> [resync state].</param>
         </member>
-        <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderTextureComplete(Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Color,Microsoft.Xna.Framework.Rectangle,Microsoft.Xna.Framework.Matrix,System.Nullable{Microsoft.Xna.Framework.Rectangle},System.Boolean,Microsoft.Xna.Framework.Graphics.SpriteSortMode,Microsoft.Xna.Framework.Graphics.SamplerState,Microsoft.Xna.Framework.Graphics.BlendState,Microsoft.Xna.Framework.Graphics.RasterizerState,Microsoft.Xna.Framework.Graphics.DepthStencilState,Microsoft.Xna.Framework.Graphics.Effect)">
+        <member name="M:PloobsEngine.SceneControl.RenderHelper.RenderTextureComplete(Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Color,Microsoft.Xna.Framework.Rectangle,System.Nullable{Microsoft.Xna.Framework.Matrix},System.Nullable{Microsoft.Xna.Framework.Rectangle},System.Boolean,Microsoft.Xna.Framework.Graphics.SpriteSortMode,Microsoft.Xna.Framework.Graphics.SamplerState,Microsoft.Xna.Framework.Graphics.BlendState,Microsoft.Xna.Framework.Graphics.RasterizerState,Microsoft.Xna.Framework.Graphics.DepthStencilState,Microsoft.Xna.Framework.Graphics.Effect)">
             <summary>
             Renders the texture (Begin, render , End)
             </summary>
@@ -12437,6 +12485,12 @@
             Initializes a new instance of the <see cref="T:PloobsEngine.Material.ForwardMaterial"/> class.
             </summary>
             <param name="shader">The shader.</param>
+        </member>
+        <member name="M:PloobsEngine.Material.ForwardMaterial.DefaultForwardMaterial">
+            <summary>
+            Default Forward material. (uses ForwardXNABasicShader)
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:PloobsEngine.Material.ForwardMaterial.Initialization(PloobsEngine.Engine.GraphicInfo,PloobsEngine.Engine.GraphicFactory,PloobsEngine.SceneControl.IObject)">
             <summary>
@@ -14091,7 +14145,7 @@
             Serialization 
             </summary>
         </member>
-        <member name="M:PloobsEngine.Light.SpotLightPE.#ctor(Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Vector3,System.Single,System.Single,Microsoft.Xna.Framework.Color,System.Single,System.Single)">
+        <member name="M:PloobsEngine.Light.SpotLightPE.#ctor(Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Color,System.Single,System.Single,System.Single,System.Single)">
             <summary>
             Initializes a new instance of the <see cref="T:PloobsEngine.Light.SpotLightPE"/> class.
             </summary>
@@ -14100,7 +14154,7 @@
             <param name="coneDecay">The cone decay.</param>
             <param name="lightRadius">The light radius.</param>
             <param name="Color">The color.</param>
-            <param name="lightAngleCosine">The light angle cosine.</param>
+            <param name="lightAngleCosine">The light angle cosine (radians).</param>
             <param name="lightIntensity">The light intensity.</param>
         </member>
         <member name="P:PloobsEngine.Light.SpotLightPE.ProjMatrix">
@@ -14339,11 +14393,6 @@
         <member name="M:BehaviorTrees.ProbabilitySelector`1.Add(System.Single,BehaviorTrees.Node{`0})">
             <summary>
             Adds subnode with assigned weight.
-            </summary>
-        </member>
-        <member name="M:BehaviorTrees.ProbabilitySelector`1.Add(BehaviorTrees.Node{`0})">
-            <summary>
-            Adds subnode with default weight.
             </summary>
         </member>
         <member name="M:BehaviorTrees.ProbabilitySelector`1.Evaluate(`0)">
@@ -15470,7 +15519,7 @@
             Static Triangle Mesh Physic Object
             </summary>
         </member>
-        <member name="M:PloobsEngine.Physics.Bepu.TriangleMeshObject.#ctor(PloobsEngine.Modelo.IModelo,Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Vector3,PloobsEngine.Physics.MaterialDescription)">
+        <member name="M:PloobsEngine.Physics.Bepu.TriangleMeshObject.#ctor(PloobsEngine.Modelo.IModelo,Microsoft.Xna.Framework.Vector3,System.Nullable{Microsoft.Xna.Framework.Matrix},System.Nullable{Microsoft.Xna.Framework.Vector3},PloobsEngine.Physics.MaterialDescription)">
             <summary>
             Initializes a new instance of the <see cref="T:PloobsEngine.Physics.Bepu.TriangleMeshObject"/> class.
             </summary>
@@ -15480,7 +15529,7 @@
             <param name="scale">The scale.</param>
             <param name="materialDescription">The material description.</param>
         </member>
-        <member name="M:PloobsEngine.Physics.Bepu.TriangleMeshObject.#ctor(Microsoft.Xna.Framework.Graphics.Model,Microsoft.Xna.Framework.Vector3,Microsoft.Xna.Framework.Matrix,Microsoft.Xna.Framework.Vector3,PloobsEngine.Physics.MaterialDescription)">
+        <member name="M:PloobsEngine.Physics.Bepu.TriangleMeshObject.#ctor(Microsoft.Xna.Framework.Graphics.Model,Microsoft.Xna.Framework.Vector3,System.Nullable{Microsoft.Xna.Framework.Matrix},System.Nullable{Microsoft.Xna.Framework.Vector3},PloobsEngine.Physics.MaterialDescription)">
             <summary>
             Initializes a new instance of the <see cref="T:PloobsEngine.Physics.Bepu.TriangleMeshObject"/> class.
             </summary>
