@@ -132,8 +132,8 @@ namespace IntroductionDemo4._0
         }
 
         protected SpotLightPE CreateSpotLight(Vector3 position, Vector3 direction, float coneDecay,float lightRadius ,Color color,float angleInDegrees,float intensity)
-        {            
-            return new SpotLightPE(position, direction, coneDecay, lightRadius, color, (float)Math.Cos(MathHelper.ToRadians(angleInDegrees)), intensity);
+        {
+            return new SpotLightPE(position, direction, color,coneDecay, lightRadius, (float)Math.Cos(MathHelper.ToRadians(angleInDegrees)), intensity);
         }
 
         protected void ChangeModelTexture(IObject obj,String textureName)
