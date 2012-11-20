@@ -56,56 +56,56 @@ namespace IntroductionDemo4._0
             this.World.CameraManager.AddCamera(cam);
 
             {
-                SpotLightPE sp1 = new SpotLightPE(new Vector3(0, 150, 0), new Vector3(0, -1, 0), 1, 600, Color.YellowGreen, (float)Math.Cos(Math.PI / 7), 0.5f);
+                SpotLightPE sp1 = new SpotLightPE(new Vector3(0, 150, 0), new Vector3(0, -1, 0), Color.YellowGreen, 1, 600, (float)Math.Cos(Math.PI / 7), 0.5f);
                 SpotLightCircularUpdater spc1 = new SpotLightCircularUpdater(this, sp1, 0.01f, 1, 0, true);
                 this.World.AddLight(sp1);
 
-                SpotLightPE sp2 = new SpotLightPE(new Vector3(0, 150, 0), new Vector3(0, -1, 0), 1, 600, Color.Red, (float)Math.Cos(Math.PI / 7), 0.5f);
+                SpotLightPE sp2 = new SpotLightPE(new Vector3(0, 150, 0), new Vector3(0, -1, 0),Color.Red, 1, 600, (float)Math.Cos(Math.PI / 7), 0.5f);
                 SpotLightCircularUpdater spc2 = new SpotLightCircularUpdater(this, sp2, 0.01f, 1, (float)Math.PI / 2, true);
                 this.World.AddLight(sp2);
 
-                SpotLightPE sp3 = new SpotLightPE(new Vector3(0, 150, 0), new Vector3(0, -1, 0), 1, 600, Color.Blue, (float)Math.Cos(Math.PI / 7), 0.5f);
+                SpotLightPE sp3 = new SpotLightPE(new Vector3(0, 150, 0), new Vector3(0, -1, 0), Color.Red, 1, 600, (float)Math.Cos(Math.PI / 7), 0.5f);
                 SpotLightCircularUpdater spc3 = new SpotLightCircularUpdater(this, sp3, 0.01f, 1, (float)Math.PI, true);
                 this.World.AddLight(sp3);
 
-                SpotLightPE sp4 = new SpotLightPE(new Vector3(0, 150, 0), new Vector3(0, -1, 0), 1, 600, Color.Green, (float)Math.Cos(Math.PI / 7), 0.5f);
+                SpotLightPE sp4 = new SpotLightPE(new Vector3(0, 150, 0), new Vector3(0, -1, 0), Color.Green, 1, 600, (float)Math.Cos(Math.PI / 7), 0.5f);
                 SpotLightCircularUpdater spc4 = new SpotLightCircularUpdater(this, sp4, 0.01f, 1, (float)(Math.PI * 3) / 2, true);
                 this.World.AddLight(sp4);
             }
 
             {
-                SpotLightPE sp1 = new SpotLightPE(new Vector3(0, 150, 0), new Vector3(0, -1, 0), 1, 600, Color.Purple, (float)Math.Cos(Math.PI / 7), 0.5f);
+                SpotLightPE sp1 = new SpotLightPE(new Vector3(0, 150, 0), new Vector3(0, -1, 0), Color.Purple, 1, 600, (float)Math.Cos(Math.PI / 7), 0.5f);
                 SpotLightCircularUpdater spc1 = new SpotLightCircularUpdater(this, sp1, 0.02f, 2, 0, false);
                 this.World.AddLight(sp1);
 
-                SpotLightPE sp2 = new SpotLightPE(new Vector3(0, 150, 0), new Vector3(0, -1, 0), 1, 600, Color.PowderBlue, (float)Math.Cos(Math.PI / 7), 0.5f);
+                SpotLightPE sp2 = new SpotLightPE(new Vector3(0, 150, 0), new Vector3(0, -1, 0), Color.PowderBlue, 1, 600, (float)Math.Cos(Math.PI / 7), 0.5f);
                 SpotLightCircularUpdater spc2 = new SpotLightCircularUpdater(this, sp2, 0.02f, 2, (float)Math.PI / 2, false);
                 this.World.AddLight(sp2);
 
-                SpotLightPE sp3 = new SpotLightPE(new Vector3(0, 150, 0), new Vector3(0, -1, 0), 1, 600, Color.YellowGreen, (float)Math.Cos(Math.PI / 7), 0.5f);
+                SpotLightPE sp3 = new SpotLightPE(new Vector3(0, 150, 0), new Vector3(0, -1, 0),Color.YellowGreen, 1, 600 , (float)Math.Cos(Math.PI / 7), 0.5f);
                 SpotLightCircularUpdater spc3 = new SpotLightCircularUpdater(this, sp3, 0.02f, 2, (float)Math.PI, false);
                 this.World.AddLight(sp3);
 
-                SpotLightPE sp4 = new SpotLightPE(new Vector3(0, 150, 0), new Vector3(0, -1, 0), 1, 600, Color.Maroon, (float)Math.Cos(Math.PI / 7), 0.5f);
+                SpotLightPE sp4 = new SpotLightPE(new Vector3(0, 150, 0), new Vector3(0, -1, 0), Color.Maroon, 1, 600, (float)Math.Cos(Math.PI / 7), 0.5f);
                 SpotLightCircularUpdater spc4 = new SpotLightCircularUpdater(this, sp4, 0.02f, 2, (float)(Math.PI * 3) / 2, false);
                 this.World.AddLight(sp4);
             }
 
 
             {
-                SpotLightPE sp1 = new SpotLightPE(new Vector3(0, 150, 0), new Vector3(0, -1, 0), 1, 600, Color.PapayaWhip, (float)Math.Cos(Math.PI / 7), 0.5f);
+                SpotLightPE sp1 = new SpotLightPE(new Vector3(0, 150, 0), new Vector3(0, -1, 0), Color.PapayaWhip,1, 600 , (float)Math.Cos(Math.PI / 7), 0.5f);
                 SpotLightCircularUpdater spc1 = new SpotLightCircularUpdater(this, sp1, 0.03f, 3, (float)Math.PI / 4, true);
                 this.World.AddLight(sp1);
 
-                SpotLightPE sp2 = new SpotLightPE(new Vector3(0, 150, 0), new Vector3(0, -1, 0), 1, 600, Color.LightSeaGreen, (float)Math.Cos(Math.PI / 7), 0.5f);
+                SpotLightPE sp2 = new SpotLightPE(new Vector3(0, 150, 0), new Vector3(0, -1, 0), Color.LightSeaGreen, 1, 600, (float)Math.Cos(Math.PI / 7), 0.5f);
                 SpotLightCircularUpdater spc2 = new SpotLightCircularUpdater(this, sp2, 0.03f, 3, (float)Math.PI / 4 + (float)Math.PI / 2, true);
                 this.World.AddLight(sp2);
 
-                SpotLightPE sp3 = new SpotLightPE(new Vector3(0, 150, 0), new Vector3(0, -1, 0), 1, 600, Color.Gold, (float)Math.Cos(Math.PI / 7), 0.5f);
+                SpotLightPE sp3 = new SpotLightPE(new Vector3(0, 150, 0), new Vector3(0, -1, 0), Color.Gold, 1, 600, (float)Math.Cos(Math.PI / 7), 0.5f);
                 SpotLightCircularUpdater spc3 = new SpotLightCircularUpdater(this, sp3, 0.03f, 3, (float)Math.PI / 4 + (float)Math.PI, true);
                 this.World.AddLight(sp3);
 
-                SpotLightPE sp4 = new SpotLightPE(new Vector3(0, 150, 0), new Vector3(0, -1, 0), 1, 600, Color.Aqua, (float)Math.Cos(Math.PI / 7), 0.5f);
+                SpotLightPE sp4 = new SpotLightPE(new Vector3(0, 150, 0), new Vector3(0, -1, 0), Color.Aqua,1, 600 , (float)Math.Cos(Math.PI / 7), 0.5f);
                 SpotLightCircularUpdater spc4 = new SpotLightCircularUpdater(this, sp4, 0.03f, 3, (float)Math.PI / 4 + (float)(Math.PI * 3) / 2, true);
                 this.World.AddLight(sp4);
             }
