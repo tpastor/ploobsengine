@@ -45,6 +45,7 @@ namespace PloobsEngine.Physics.Bepu
         /// <param name="materialDescription">The material description.</param>
         public void SetMaterialDescription(MaterialDescription materialDescription)
         {
+            System.Diagnostics.Debug.Assert(materialDescription != null);
             this.materialDecription = materialDescription;
             entity.Material = new BEPUphysics.Materials.Material(materialDescription.StaticFriction, materialDescription.DynamicFriction, materialDescription.Bounciness);
         }

@@ -43,8 +43,7 @@ namespace PloobsEngine.Physics.Bepu
         {
         
             this.scale = new Vector3(scale);
-            entity = new Sphere(pos, raio * scale, mass);
-            SetMaterialDescription(materialDescription);
+            entity = new Sphere(pos, raio * scale, mass);            
         }
         
         public override PhysicObjectTypes PhysicObjectTypes
