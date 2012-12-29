@@ -42,8 +42,7 @@ namespace PloobsEngine.Physics.Bepu
 
             this.scale = scale.Value;
             entity = new Box(pos, xlen * this.scale.X, ylen * this.scale.Y, zlen * this.scale.Z, mass);
-            entity.Orientation = Quaternion.CreateFromRotationMatrix(orientation.Value);
-            SetMaterialDescription(materialDescription);
+            entity.Orientation = Quaternion.CreateFromRotationMatrix(orientation.Value);            
         }        
         
         public override PhysicObjectTypes PhysicObjectTypes
