@@ -168,6 +168,32 @@ namespace PloobsEngine.Physics.Bepu
         private IObject obj;
         protected Vector3 scale = Vector3.One;
 
+        /// <summary>
+        /// Gets or sets the mass of the object
+        /// </summary>
+        /// <value>
+        /// The mass.
+        /// </value>
+        public float Mass
+        {
+            get
+            {
+                return mass;
+            }
+            set
+            {
+                this.entity.Mass = value;
+                this.mass = value;
+            }
+        }
+
+
+        /// <summary>
+        /// Limits the rotation axis of the object.
+        /// </summary>
+        /// <param name="x">if set to <c>true</c> object is allowed to rotate around the x axis.</param>
+        /// <param name="y">if set to <c>true</c> object is allowed to rotate around the y axis.</param>
+        /// <param name="z">if set to <c>true</c> object is allowed to rotate around the z axis.</param>
         public void LimitRotationAxis(bool x, bool y, bool z)
         {
             Matrix3X3 m = entity.LocalInertiaTensorInverse;
