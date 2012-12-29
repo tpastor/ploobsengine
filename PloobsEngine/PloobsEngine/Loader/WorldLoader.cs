@@ -99,7 +99,7 @@ namespace PloobsEngine.Loader
                 case "Cylinder":
 
                     binf.ModelLocalTransformation = Matrix.Identity;
-                    bb = ModelBuilderHelper.CreateBoundingBoxFromModel(binf, model);
+                    bb = ModelBuilderHelper.CreateBoundingBoxFromModel(binf);
                     Vector3 len = bb.Max - bb.Min;
 
                     po = new CylinderObject(mi[0].position, len.Y, len.X / 2,Vector3.Up ,mi[0].mass, Matrix.CreateFromQuaternion(mi[0].rotation), material);
@@ -117,7 +117,7 @@ namespace PloobsEngine.Loader
 
                 case "Box":
 
-                    bb = ModelBuilderHelper.CreateBoundingBoxFromModel(binf, model);
+                    bb = ModelBuilderHelper.CreateBoundingBoxFromModel(binf);
 
                     len = bb.Max - bb.Min;
 

@@ -214,7 +214,7 @@ namespace PloobsEngine.Modelo
             }                                    
         }
 
-        public static BoundingBox CreateBoundingBoxFromModel(BatchInformation bi, IModelo model)
+        public static BoundingBox CreateBoundingBoxFromModel(BatchInformation bi)
         {
 
             bi.ModelLocalTransformation = Matrix.Identity;
