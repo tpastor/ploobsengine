@@ -216,37 +216,44 @@ namespace PloobsEngine.Modelo
 
         public static BoundingBox CreateBoundingBoxFromModel(BatchInformation bi)
         {
-
-            bi.ModelLocalTransformation = Matrix.Identity;
             // Read the format of the vertex buffer  
             VertexDeclaration declaration = bi.VertexBuffer.VertexDeclaration;
             VertexElement[] vertexElements = declaration.GetVertexElements();
             // Find the element that holds the position  
             VertexElement vertexPosition = new VertexElement();
-
-            Vector3[] vertices = new Vector3[bi.VertexBuffer.VertexCount];
-
-            bi.VertexBuffer.GetData<Vector3>(vertices);
-
-
-
+            foreach (VertexElement vert in vertexElements)
+            {
+                if (vert.VertexElementUsage == VertexElementUsage.Position &&
+                    vert.VertexElementFormat == VertexElementFormat.Vector3)
+                {
+                    vertexPosition = vert;
+                    // There should only be one  
+                    break;
+                }
+            }
+            // Check the position element found is valid  
+            if (vertexPosition == null ||
+                vertexPosition.VertexElementUsage != VertexElementUsage.Position ||
+                vertexPosition.VertexElementFormat != VertexElementFormat.Vector3)
+            {
+                throw new Exception("Model uses unsupported vertex format!");
+            }
             // This where we store the vertices until transformed  
-            Vector3[] allVertex = new Vector3[bi.VertexBuffer.VertexCount];
+            Vector3[] allVertex = new Vector3[bi.NumVertices];
             // Read the vertices from the buffer in to the array  
             bi.VertexBuffer.GetData<Vector3>(
-                bi.BaseVertex * declaration.VertexStride + vertexPosition.Offset,
+                bi.StreamOffset * declaration.VertexStride + vertexPosition.Offset,
                 allVertex,
                 0,
                 bi.NumVertices,
                 declaration.VertexStride);
-
-
-            return BoundingBox.CreateFromPoints(allVertex);
-        
-        
-        
+            // Transform them based on the relative bone location and the world if provided  
+            for (int i = 0; i != allVertex.Length; ++i)
+            {
+                Vector3.Transform(ref allVertex[i], ref bi.ModelLocalTransformation, out allVertex[i]);
+            }                     
+            return BoundingBox.CreateFromPoints(allVertex);       
         }
-
 
         /// <summary>
         /// Extracts the model radius and center.
