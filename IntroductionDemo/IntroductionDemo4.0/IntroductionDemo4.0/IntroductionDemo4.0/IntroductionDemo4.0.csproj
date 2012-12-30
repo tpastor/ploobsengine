@@ -156,6 +156,7 @@
     <Compile Include="Demo8 - Serialization\ObjectMock.cs" />
     <Compile Include="Demo8 - Serialization\SerializationScreen.cs" />
     <Compile Include="Demo8 - Serialization\SerializatorWrapper.cs" />
+    <Compile Include="Demos Extras\SpotManipulationScreen.cs" />
     <Compile Include="TitleScreen.cs" />
     <Compile Include="Demo1 - BasicScreen\BasicScreenDeferredDemo.cs" />
     <Compile Include="Demo1 - BasicScreen\BasicScreenForwardDemo.cs" />
