@@ -84,6 +84,71 @@ namespace PloobsEngine.Utils
         }
 
         /// <summary>
+        /// Creates the color texture from other two textures (you provide the way both textures are mixed)
+        /// </summary>
+        /// <param name="t1">The texture 1.</param>
+        /// <param name="t2">The texture 2.</param>
+        /// <param name="operation">The operation that will mix both textures.</param>
+        /// <returns></returns>
+        public Texture2D CreateColorTextureFromOthertexture(Texture2D t1, Texture2D t2, Func<Vector4, Vector4,Vector4> operation)
+        {
+            System.Diagnostics.Debug.Assert(t1.Width == t2.Width);
+            System.Diagnostics.Debug.Assert(t1.Height == t2.Height);
+            System.Diagnostics.Debug.Assert(t1.LevelCount == t2.LevelCount);
+            System.Diagnostics.Debug.Assert(t1.Format == t2.Format);
+            System.Diagnostics.Debug.Assert(operation != null);
+
+            Color[] c1 = new Color[t1.Height * t1.Width];
+            Color[] c2 = new Color[t2.Height * t2.Width];
+            t1.GetData<Color>(c1);
+            t2.SetData<Color>(c2);
+
+            Texture2D t = factory.CreateTexture2D(t1.Height, t1.Width, t1.LevelCount > 1);
+            Color[] cor = new Color[t1.Height * t1.Width];
+            for (int i = 0; i < t1.Height; i++)
+            {
+                for (int j = 0; j < t1.Width; j++)
+                {                    
+                    cor[i + j * t1.Height] = Color.FromNonPremultiplied(operation(c1[i + j * t1.Height].ToVector4(),c2[i + j * t1.Height].ToVector4()));
+                }
+            }
+            t.SetData<Color>(cor);
+            return t;
+        }
+
+        /// <summary>
+        /// Multiplies two color textures.
+        /// </summary>
+        /// <param name="t1">The t1.</param>
+        /// <param name="t2">The t2.</param>
+        /// <returns></returns>
+        public Texture2D MultiplyColorTexture(Texture2D t1, Texture2D t2)
+        {
+            System.Diagnostics.Debug.Assert(t1.Width == t2.Width);
+            System.Diagnostics.Debug.Assert(t1.Height == t2.Height);
+            System.Diagnostics.Debug.Assert(t1.LevelCount == t2.LevelCount);
+            System.Diagnostics.Debug.Assert(t1.Format == t2.Format);
+
+            Color[] c1 = new Color[t1.Height * t1.Width];
+            Color[] c2 = new Color[t2.Height * t2.Width];
+            t1.GetData<Color>(c1);
+            t2.SetData<Color>(c2);
+
+            Texture2D t = factory.CreateTexture2D(t1.Height, t1.Width, t1.LevelCount > 1);
+            Color[] cor = new Color[t1.Height * t1.Width];
+            for (int i = 0; i < t1.Height; i++)
+            {
+                for (int j = 0; j < t1.Width; j++)
+                {
+                    Vector4 cv = c1[i + j * t1.Height].ToVector4() * c2[i + j * t1.Height].ToVector4();
+                    cor[i + j * t1.Height] = Color.FromNonPremultiplied(cv);
+                }
+            }
+            t.SetData<Color>(cor);
+            return t;
+        }
+
+        /// <summary>
         /// Creates the complete random color texture.
         /// squared size
         /// </summary>

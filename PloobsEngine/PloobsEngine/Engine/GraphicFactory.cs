@@ -284,13 +284,41 @@ namespace PloobsEngine.Engine
         }
 
         /// <summary>
-        /// Creates 
+        /// Creates the texture2D.
         /// </summary>
         /// <param name="color">The color.</param>
         /// <returns></returns>
         public Texture2D CreateTexture2DColor(Color color)
         {
             Texture2D Texture2D = texCreator.CreateColorTexture(1, 1, color, false);
+            Texture2D.Tag = "CREATED";
+            return Texture2D;
+        }
+
+
+        /// <summary>
+        /// Creates the texture2D by multiplying other two textures.
+        /// </summary>
+        /// <param name="t1">The t1.</param>
+        /// <param name="t2">The t2.</param>
+        /// <returns></returns>
+        public Texture2D CreateTexture2DMultiplyTextures(Texture2D t1, Texture2D t2)
+        {
+            Texture2D Texture2D = texCreator.MultiplyColorTexture(t1,t2);
+            Texture2D.Tag = "CREATED";
+            return Texture2D;
+        }
+
+        /// <summary>
+        /// Creates the color texture from other two textures (you provide the way both textures are mixed)
+        /// </summary>
+        /// <param name="t1">The texture 1.</param>
+        /// <param name="t2">The texture 2.</param>
+        /// <param name="operation">The operation that will mix both textures.</param>
+        /// <returns></returns>
+        public Texture2D CreateTexture2DCustomOperationTextures(Texture2D t1, Texture2D t2,Func<Vector4,Vector4,Vector4> operation)
+        {
+            Texture2D Texture2D = texCreator.CreateColorTextureFromOthertexture(t1, t2, operation);
             Texture2D.Tag = "CREATED";
             return Texture2D;
         }
@@ -470,6 +498,45 @@ namespace PloobsEngine.Engine
             return cNewRenderTarget;
         }
 
+        /// <summary>
+        /// Processes a texture using a Custom Effect (Pixel Shader 3.0 only, compatible with SpriteBatch)
+        /// </summary>
+        /// <param name="texture">The texture.</param>
+        /// <param name="effect">The effect.</param>
+        /// <param name="mipmap">if set to <c>true</c> [mipmap].</param>
+        /// <param name="samplerState">State of the sampler.</param>
+        /// <returns></returns>
+        public Texture2D ProcessTexture(Texture2D texture, Effect effect, bool mipmap = false, SamplerState samplerState = null)
+        {
+            RenderTarget2D cNewRenderTarget = CreateRenderTarget(texture.Width, texture.Height, texture.Format, mipmap, DepthFormat.None, ginfo.MultiSample);
+            render.Clear(Color.Black, ClearOptions.Target);
+            render.PushRenderTarget(cNewRenderTarget);
+            render.RenderTextureToFullScreenSpriteBatch(texture, effect, texture.Bounds,samplerState);            
+            render.PopRenderTarget();            
+            return cNewRenderTarget;
+        }
+
+
+#if !WINDOWS_PHONE && !REACH
+        /// <summary>
+        /// Processes a texture using a Custom Effect (Full post Process Shader)
+        /// REMEMBER, The shader parameters MUST BE ALREADY SETTED, inclusive the Texture2D parameters !!!
+        /// </summary>
+        /// <param name="texture">The texture.</param>
+        /// <param name="effect">The effect.</param>
+        /// <param name="mipmap">if set to <c>true</c> [mipmap].</param>
+        /// <param name="samplerState">State of the sampler.</param>
+        /// <returns></returns>
+        public Texture2D ProcessTextureWithFullShader(Texture2D texture, Effect effect, bool mipmap = false, SamplerState samplerState = null)
+        {
+            RenderTarget2D cNewRenderTarget = CreateRenderTarget(texture.Width, texture.Height, texture.Format, mipmap, DepthFormat.None, ginfo.MultiSample);
+            render.Clear(Color.Black, ClearOptions.Target);
+            render.PushRenderTarget(cNewRenderTarget);
+            render.RenderFullScreenQuadVertexPixel(effect,samplerState);
+            render.PopRenderTarget();
+            return cNewRenderTarget;
+        }
+#endif
         /// <summary>
         /// Gets a texture part from a bigger texture.
         /// </summary>

@@ -30,13 +30,13 @@ namespace PloobsEngine.Physics.Bepu
 {
     public class CapsuleObject : BepuEntityObject
     {
-        public CapsuleObject(Vector3 pos, float altura, float raio, float mass,Matrix? orientation,MaterialDescription md = null)
+        public CapsuleObject(Vector3 pos, float height, float radius, float mass,Matrix? orientation,MaterialDescription md = null)
             : base(md,mass)
         {
             if (!orientation.HasValue)
                 orientation = Matrix.Identity;
             
-            entity = new Capsule(pos, altura, raio, mass);
+            entity = new Capsule(pos, height, radius, mass);
             entity.Orientation = Quaternion.CreateFromRotationMatrix(orientation.Value);            
         }
         public override PhysicObjectTypes PhysicObjectTypes
