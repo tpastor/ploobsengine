@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F9B4BA56-CAE3-445B-983D-E7906FC7CCE7}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PloobsEngineTest</RootNamespace>
+    <AssemblyName>PloobsEngineTest</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BEPUphysics, Version=1.2.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\PloobsEngine\PloobsEngine\Dlls\MonoGame\$(Configuration)\BEPUphysics.dll</HintPath>
+    </Reference>
+    <Reference Include="FarseerPhysicsXNA, Version=3.3.4753.2760, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\PloobsEngine\PloobsEngine\Dlls\MonoGame\$(Configuration)\FarseerPhysicsXNA.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\PloobsEngine\PloobsEngine\Dlls\MonoGame\$(Configuration)\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="2D Demos\Basic2DCameraScreen.cs" />
+    <Compile Include="2D Demos\Basic2DScreen.cs" />
+    <Compile Include="2D Demos\Basic2DSpriteScreen.cs" />
+    <Compile Include="2D Demos\Helpers\Border.cs" />
+    <Compile Include="2D Demos\Helpers\JointUpdateable.cs" />
+    <Compile Include="3D Demos\SkyBoxScreen.cs" />
+    <Compile Include="3D Demos\StressScreen.cs" />
+    <Compile Include="3D Demos\TechTruthScreen.cs" />
+    <Compile Include="3D Demos\TerrainScreen.cs" />
+    <Compile Include="AI\Behavior Tree\BaseObject.cs" />
+    <Compile Include="AI\Behavior Tree\BehaviorTreeScreen.cs" />
+    <Compile Include="AI\FSM\FSMScreen.cs" />
+    <Compile Include="AI\FSM\StateSample.cs" />
+    <Compile Include="AI\Pathfinding and Waypoints\IaPathFinding.cs" />
+    <Compile Include="AI\Pathfinding and Waypoints\IaWaypoints.cs" />
+    <Compile Include="AI\Pathfinding and Waypoints\moverAtachment.cs" />
+    <Compile Include="AI\RVO\RVOObject.cs" />
+    <Compile Include="AI\RVO\RVOScreen.cs" />
+    <Compile Include="AI\Steering\Globals.cs" />
+    <Compile Include="AI\Steering\Pedestrian.cs" />
+    <Compile Include="AI\Steering\PedestrianPlugIn.cs" />
+    <Compile Include="AI\Steering\SteerAtachment.cs" />
+    <Compile Include="AI\Steering\SteerScreen.cs" />
+    <Compile Include="CharacterControllerInput.cs" />
+    <Compile Include="FirstScreen.cs" />
+    <Compile Include="BallThrowBepu.cs" />
+    <Compile Include="FullCharacterControllerInput.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SphereCharacterControllerInput.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Model\Textures\islandmap.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Content\Model\ball.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Model\block.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Model\cenario.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Model\Textures\islandmap.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Model\Textures\islandmap_0.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PloobsEngine\PloobsEngine\PloobsEngineMono.csproj">
+      <Project>{73D8A9CD-9BA9-4101-9B8D-0CCF0AE1EFAF}</Project>
+      <Name>PloobsEngineMono</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
