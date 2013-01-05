@@ -59,7 +59,7 @@ namespace PloobsEngine.MessageSystem
         private static GameTime gt = new GameTime();
         private static PriorityQueueB<Message> fila = new PriorityQueueB<Message>(new MessageComparer());
         private static PriorityQueueB<Message> delayedfila = new PriorityQueueB<Message>(new DelayComparer());
-        private static int numMessagerdeliveredByFrame = 2; // numero de mensagems q podem ser entregues por frame (deslentiar) , so vale para as q n tem tempo
+        private static int numMessagerdeliveredByFrame = 20; // numero de mensagems q podem ser entregues por frame
 
         /// <summary>
         /// Gets or sets the messagerdelivered by frame.
