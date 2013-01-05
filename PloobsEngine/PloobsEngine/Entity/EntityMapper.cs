@@ -80,6 +80,7 @@ namespace PloobsEngine.Entity
         /// <returns></returns>
             public long AddEntity(IEntity Agente)
             {
+                System.Diagnostics.Debug.Assert(Agente != null);
                 long id;
                 if (Agente.GetId() > 0)
                 {                    
@@ -155,6 +156,8 @@ namespace PloobsEngine.Entity
             /// <param name="Agente">agents list</param>
             public void AddgrouptagRecieveEntity(string tag, WeakList<IRecieveMessageEntity> Agente)
             {
+                System.Diagnostics.Debug.Assert(Agente != null);
+                System.Diagnostics.Debug.Assert(!String.IsNullOrEmpty(tag));
 
                 foreach (IRecieveMessageEntity item in Agente)
                 {
@@ -198,6 +201,9 @@ namespace PloobsEngine.Entity
             /// <param name="Agente"></param>
             public void RemovegrouptagRecieveEntity(string tag, IRecieveMessageEntity Agente)
             {
+                System.Diagnostics.Debug.Assert(!String.IsNullOrEmpty(tag));
+                System.Diagnostics.Debug.Assert(Agente!=null);
+
                 if (tagRecieveEntity.ContainsKey(tag))
                 {
                     tagRecieveEntity[tag].Remove(Agente);
@@ -212,6 +218,8 @@ namespace PloobsEngine.Entity
             /// <param name="Agente"></param>
             public void AddgrouptagRecieveEntity(string tag, IRecieveMessageEntity Agente)
             {
+                System.Diagnostics.Debug.Assert(!String.IsNullOrEmpty(tag));
+                System.Diagnostics.Debug.Assert(Agente != null);
                 if (!IdEntity.ContainsKey(Agente.GetId()))
                 {
                     throw new Exception("The following instance is not in the mapper, add it beforing calling this: " + Agente.ToString());
@@ -246,7 +254,9 @@ namespace PloobsEngine.Entity
             /// <param name="tag">tag</param>
             /// <returns></returns>
             public IList<IRecieveMessageEntity> GetTagRecieveEntity(string tag)
-            {
+            {                
+                System.Diagnostics.Debug.Assert(tag != null);
+
                 if (tagRecieveEntity.ContainsKey(tag))
                 {
                     return tagRecieveEntity[tag];
@@ -375,6 +385,8 @@ namespace PloobsEngine.Entity
             /// <param name="ent"></param>
             public bool RemoveEntity(IEntity ent)
             {
+                System.Diagnostics.Debug.Assert(ent != null);
+
                 long cod = ent.GetId();
                 if (IdEntity.ContainsKey(cod))
                 {

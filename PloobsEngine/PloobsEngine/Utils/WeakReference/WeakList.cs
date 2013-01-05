@@ -36,7 +36,7 @@ namespace PloobsEngine.Utils.WeakReference
         }
 
         /// <summary>
-        /// Removes at.
+        /// Removes at a specific index
         /// </summary>
         /// <param name="index">The index.</param>
         public void RemoveAt(int index)
@@ -45,7 +45,7 @@ namespace PloobsEngine.Utils.WeakReference
         }
 
         /// <summary>
-        /// Gets or sets the <see cref="T"/> at the specified index.
+        /// Gets or sets the reference at the specified index.
         /// </summary>
         public T this[int index]
         {

@@ -52,9 +52,10 @@ namespace PloobsEngine.Physics
      }
 
      /// <summary>
-     /// Initializes a new instance of the <see cref="GhostObject"/> class.
+     /// Initializes a new instance of the GhostObject class.
      /// DEfault Object in 0,0,0 identity rotation and 1,1,1 scale
      /// </summary>
+     /// <param name="bb">The bb.</param>
      public PhysxGhostObject(BoundingBox? bb = null)         
      {
          this.pos = Vector3.Zero;
