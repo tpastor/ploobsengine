@@ -23,8 +23,7 @@ namespace EngineTestes
     public class SponzaScreen : IScene
     {
 
-        Vec3Interpolator inter = new Vec3Interpolator();
-        DirectionalLightPE ld1;
+        Vec3Interpolator inter = new Vec3Interpolator();        
 
         protected override void SetWorldAndRenderTechnich(out IRenderTechnic renderTech, out IWorld world)
         {

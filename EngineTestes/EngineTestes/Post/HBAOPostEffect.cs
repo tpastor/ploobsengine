@@ -142,8 +142,7 @@ namespace EngineTestes.Post
             /// <summary>
             /// Effect handles
             /// </summary>
-            private static EffectParameter  // Textures
-                                            epNormalTexture,
+            private static EffectParameter  // Textures                                            
                                             epDepthTexture,
                 // Parameters
                                             epResolution,
@@ -472,7 +471,7 @@ namespace EngineTestes.Post
                 rHelper.SetSamplerStates(SamplerState.PointWrap);
                 rHelper.Clear(Color.White);
                 rHelper.RenderFullScreenQuadVertexPixel(shader, SamplerState.PointWrap);
-                return;
+                //return;
 
                 Texture2D t = rHelper.PopRenderTargetAsSingleRenderTarget2D();
                                

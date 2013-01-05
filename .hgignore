@@ -1,0 +1,7 @@
+syntax: glob
+*.suo
+*.Cache
+bin/*
+obj/*
+*.cachefile
+*.orig

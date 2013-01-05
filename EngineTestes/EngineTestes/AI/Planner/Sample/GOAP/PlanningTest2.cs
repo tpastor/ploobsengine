@@ -76,7 +76,7 @@ namespace SettlersConsoleTests
                 }
                 Task.WaitAll(task.ToArray());
             }
-            catch (Exception ex)            
+            catch (Exception)            
             {
                 throw new NotImplementedException();
             }

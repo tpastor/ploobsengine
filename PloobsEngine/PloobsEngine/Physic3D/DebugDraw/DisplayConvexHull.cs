@@ -24,8 +24,12 @@ namespace PloobsEngine.Physics
                 throw new ArgumentException("Wrong shape type.");
 
             var hullTriangleVertices = new List<Vector3>();
-            var hullTriangleIndices = new List<int>();
+            var hullTriangleIndices = new List<int>();                        
+#if !MONO
             Toolbox.GetConvexHull(convexHullShape.Vertices, hullTriangleIndices, hullTriangleVertices);
+#else
+            ConvexHullHelper.GetConvexHull(convexHullShape.Vertices, hullTriangleIndices, hullTriangleVertices);
+#endif
             //The hull triangle vertices are used as a dummy to get the unnecessary hull vertices, which are cleared afterwards.
             hullTriangleVertices.Clear();
             foreach (int i in hullTriangleIndices)

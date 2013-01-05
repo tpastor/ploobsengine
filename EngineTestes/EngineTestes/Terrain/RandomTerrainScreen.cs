@@ -106,11 +106,9 @@ namespace EngineTestes
             if (obj != null)
             {
                
-                this.ri = SegmentInterceptInfo;
-                changed = true;
+                this.ri = SegmentInterceptInfo;                
             }
         }
-        bool changed = false;
         protected override void Draw(GameTime gameTime, RenderHelper render)
         {
            
@@ -122,7 +120,6 @@ namespace EngineTestes
                 render.RenderTextComplete("Position " + ri.ImpactPosition, new Vector2(20, 40), Color.White, Matrix.Identity);
                 render.RenderTextComplete("Interpolated Lite " +new Vector3(ri.ImpactPosition.X,to.getLiteHeight(ri.ImpactPosition.X,ri.ImpactPosition.Z),ri.ImpactPosition.Z) , new Vector2(20, 60), Color.White, Matrix.Identity);
                 render.RenderTextComplete("Interpolated " + new Vector3(ri.ImpactPosition.X, to.getHeightFast(ri.ImpactPosition.X, ri.ImpactPosition.Z), ri.ImpactPosition.Z), new Vector2(20, 80), Color.White, Matrix.Identity);
-                changed = false;
             }
         }
 

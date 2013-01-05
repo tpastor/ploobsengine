@@ -42,6 +42,10 @@ using Microsoft.Xna.Framework.Graphics;
 using BEPUphysics.MathExtensions;
 using BEPUphysics.CollisionShapes;
 
+#if MONO
+using BroadPhaseEntry = BEPUphysics.BroadPhaseEntries.BroadPhaseEntry;
+#endif
+
 namespace PloobsEngine.Physics
 {
     internal class DebugInfo

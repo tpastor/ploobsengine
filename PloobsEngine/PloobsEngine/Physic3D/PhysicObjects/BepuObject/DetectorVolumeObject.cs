@@ -36,19 +36,31 @@ namespace PloobsEngine.Physics.Bepu
     public class DetectorVolumeObject : IPhysicObject
     {                
         TriangleMeshObject mesh;
+#if !MONO
         DetectorVolume detectorVolume;
-
         public DetectorVolume DetectorVolume
         {
             get { return detectorVolume; }
             set { detectorVolume = value; }
         }
-
         public DetectorVolumeObject(BepuPhysicWorld bepuPhysicWorld,TriangleMeshObject mesh) 
         {
             this.mesh = mesh;
             detectorVolume = new DetectorVolume(mesh.StaticMesh.Mesh.Data, bepuPhysicWorld.Space.BroadPhase.QueryAccelerator);            
         }
+#else
+        BEPUphysics.Collidables.DetectorVolume detectorVolume;
+        public BEPUphysics.Collidables.DetectorVolume DetectorVolume
+        {
+            get { return detectorVolume; }
+            set { detectorVolume = value; }
+        }
+        public DetectorVolumeObject(TriangleMeshObject mesh) 
+        {
+            this.mesh = mesh;
+            detectorVolume = new BEPUphysics.Collidables.DetectorVolume(mesh.StaticMesh.Mesh);            
+        }
+#endif
 
         public override PhysicObjectTypes PhysicObjectTypes
         {

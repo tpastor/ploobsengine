@@ -179,6 +179,8 @@ namespace PloobsEngine.Engine
             return new RenderTarget2D(device, width, height, mipmap, SurfaceFormat, DepthFormat, preferedMultisampleCount, RenderTargetUsage);
         }
 
+#if !MONO
+
         /// <summary>
         /// Creates the Render Target Cube
         /// </summary>
@@ -193,7 +195,7 @@ namespace PloobsEngine.Engine
         {
             return new RenderTargetCube(device, size, mipmap, SurfaceFormat, DepthFormat, preferedMultisampleCount, RenderTargetUsage);
         }
-
+#endif
 
         /// <summary>
         /// Gets the render target from pool.

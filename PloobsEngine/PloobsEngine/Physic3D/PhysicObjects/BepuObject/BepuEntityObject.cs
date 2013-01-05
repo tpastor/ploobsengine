@@ -109,7 +109,11 @@ namespace PloobsEngine.Physics.Bepu
         /// </summary>
         /// <param name="entry">The entry.</param>
         /// <returns></returns>
+#if !MONO
         public static IObject RecoverObjectFromBroadPhase(BroadPhaseEntry entry)
+#else
+        public static IObject RecoverObjectFromBroadPhase(BEPUphysics.BroadPhaseEntries.BroadPhaseEntry entry)
+#endif
         {
             IPhysicObject phyObj = null;
             if (entry is Collidable)
@@ -130,7 +134,11 @@ namespace PloobsEngine.Physics.Bepu
         /// </summary>
         /// <param name="entry">The entry.</param>
         /// <returns></returns>
+#if !MONO
         public static IPhysicObject RecoverIPhysicObjectFromBroadPhase(BroadPhaseEntry entry)
+#else
+        public static IPhysicObject RecoverIPhysicObjectFromBroadPhase(BEPUphysics.BroadPhaseEntries.BroadPhaseEntry entry)
+#endif
         {
             IPhysicObject phyObj = null;
             if (entry is Collidable)

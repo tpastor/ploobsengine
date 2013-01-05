@@ -225,7 +225,8 @@ namespace PloobsEngine.Material
         {
             QuadTerrain.CleanUp();            
         }
-                
+
+#if !MONO        
         public override void DepthExtractor(GameTime gt, IObject obj, ref Matrix View, ref Matrix projection, RenderHelper render)
         {
             isupdated = false;
@@ -236,6 +237,7 @@ namespace PloobsEngine.Material
             this.getDepth.Parameters["WVP"].SetValue(obj.PhysicObject.WorldMatrix * vp);
             QuadTerrain.DrawTerrain(getDepth, render.device);
         }
+
 
         public override void BasicDraw(GameTime gt, IObject obj, ref Matrix view, ref Matrix projection, IList<Light.ILight> lights, RenderHelper render, Plane? clippingPlane, bool useAlphaBlending = false)
         {
@@ -253,6 +255,7 @@ namespace PloobsEngine.Material
             QuadTerrain.DrawTerrain(TerrainShader, render.device);
             render.SetSamplerStates(ginfo.SamplerState, 8);
         }
+#endif
 
         public void AfterAdded(SceneControl.IObject obj)
         {

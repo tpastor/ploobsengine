@@ -297,6 +297,7 @@ namespace PloobsEngine.Loader
                     OnProcessDummies(world, item);
             }
 
+#if !MONO
             foreach (var item in worldData.ParticleInfo)
             {
                 if (OnCreateIParticle != null)
@@ -312,6 +313,7 @@ namespace PloobsEngine.Loader
                 }
                 
             }
+#endif
         }
     }
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿#if !MONO
+using Microsoft.Xna.Framework;
 
 namespace Tutorial1.Terrain
 {
@@ -622,3 +623,4 @@ namespace Tutorial1.Terrain
 }
 
 
+#endif
