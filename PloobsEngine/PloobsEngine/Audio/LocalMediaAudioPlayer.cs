@@ -83,7 +83,7 @@ namespace PloobsEngine.Audio
             { return sampleMediaLibrary.Songs; }
         }
 
-
+#if !MONO
         /// <summary>
         /// Plays the album.
         /// </summary>
@@ -92,6 +92,7 @@ namespace PloobsEngine.Audio
         {
             MediaPlayer.Play(album.Songs);
         }
+#endif
 
         /// <summary>
         /// Plays the specific music.

@@ -50,11 +50,12 @@ namespace PloobsEngine.Engine
 #endif
             
             SamplerState = DefaultSamplerState;
-        
-#if !WINDOWS_PHONE || SILVER
-            GraphicsAdapter = engine.GraphicsDevice.Adapter;
-#else
-            GraphicsAdapter = engine.game.GraphicsDevice.Adapter;
+#if !MONO        
+    #if !WINDOWS_PHONE || SILVER
+                GraphicsAdapter = engine.GraphicsDevice.Adapter;
+    #else
+                GraphicsAdapter = engine.game.GraphicsDevice.Adapter;
+    #endif
 #endif
         }
 

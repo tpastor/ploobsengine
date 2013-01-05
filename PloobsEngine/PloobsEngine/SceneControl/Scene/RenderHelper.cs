@@ -226,7 +226,9 @@ namespace PloobsEngine.SceneControl
         public void SetVertexSamplerStates(SamplerState SamplerState, int index)
         {
             System.Diagnostics.Debug.Assert(index >= 0);
+#if !MONO
             device.VertexSamplerStates[index] = SamplerState;
+#endif
         }
 
         /// <summary>
@@ -290,6 +292,7 @@ namespace PloobsEngine.SceneControl
             }
         }
 
+#if !MONO
         /// <summary>
         /// Sets a cube render target. 
         /// DOES NOT PUT IT INTO THE RENDER TARGETS STACK
@@ -301,7 +304,7 @@ namespace PloobsEngine.SceneControl
         {
             device.SetRenderTarget(RenderTargetCube,face);
         }
-
+#endif
         /// <summary>
         /// Restores the previous render target. (DOES NOT POP from RenderTargetStack)
         /// Used to recover the RenderTargetStack top (when not using the push to set a new render target)
@@ -410,7 +413,7 @@ namespace PloobsEngine.SceneControl
         {
             effect.CurrentTechnique.Passes[0].Apply();
             RenderBatch(bi);
-        }
+        } 
 
         /// <summary>
         /// Renders user primitive.
@@ -529,6 +532,7 @@ namespace PloobsEngine.SceneControl
                         device.SetVertexBuffer(bi.VertexBuffer);
                         device.DrawPrimitives(bi.PrimitiveType, bi.StartVertex, bi.PrimitiveCount);                                            
                         break;
+#if !MONO
                     case BatchType.INSTANCED:
                         System.Diagnostics.Debug.Assert(bi.InstancedVertexBuffer != null);
                         System.Diagnostics.Debug.Assert(bi.InstanceCount > 0);
@@ -536,6 +540,7 @@ namespace PloobsEngine.SceneControl
                         device.Indices = bi.IndexBuffer;
                         device.DrawInstancedPrimitives(PrimitiveType.TriangleList, bi.BaseVertex, 0, bi.NumVertices, bi.StartIndex, bi.PrimitiveCount, bi.InstanceCount);
                         break;
+#endif
                     default:
                         ActiveLogger.LogMessage("Batch Type not supported ", LogLevel.RecoverableError);
                         break;
@@ -812,7 +817,7 @@ namespace PloobsEngine.SceneControl
             }
         }
 
-#if !WINDOWS_PHONE && !REACH
+#if (!WINDOWS_PHONE && !REACH) || MONO
         /// <summary>
         /// Renders the texture to full screen using vertex and pixel shader .
         /// </summary>
@@ -907,6 +912,7 @@ namespace PloobsEngine.SceneControl
                 ResyncStates();
         }
 
+#if !MONO
         /// <summary>
         /// Renders the scene to a texture cube.
         /// Usefull for high quality reflections
@@ -980,7 +986,7 @@ namespace PloobsEngine.SceneControl
             }
                         
         }
-
+#endif
         /// <summary>
         /// Renders the scene without material.
         /// Uses XNA Basic Effect

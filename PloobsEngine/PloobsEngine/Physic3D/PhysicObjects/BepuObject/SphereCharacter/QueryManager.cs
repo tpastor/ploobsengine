@@ -16,6 +16,10 @@ using BEPUphysics.Settings;
 using BEPUphysics;
 using BEPUphysics.BroadPhaseSystems;
 
+#if MONO
+using BroadPhaseEntry = BEPUphysics.BroadPhaseEntries.BroadPhaseEntry;
+#endif
+
 namespace BEPUphysicsDemos.AlternateMovement.SphereCharacter
 {
     /// <summary>
@@ -55,11 +59,20 @@ namespace BEPUphysicsDemos.AlternateMovement.SphereCharacter
 
 
         Func<BroadPhaseEntry, bool> SupportRayFilter;
+
+#if !MONO
         bool SupportRayFilterFunction(BroadPhaseEntry entry)
         {
             //Only permit an object to be used as a support if it fully collides with the character.
             return CollisionRules.CollisionRuleCalculator(entry.CollisionRules, character.Body.CollisionInformation.CollisionRules) == CollisionRule.Normal;
         }
+#else
+        bool SupportRayFilterFunction(BroadPhaseEntry entry)
+        {
+            //Only permit an object to be used as a support if it fully collides with the character.
+            return CollisionRules.CollisionRuleCalculator(entry, character.Body.CollisionInformation) == CollisionRule.Normal;
+        }
+#endif
 
         /// <summary>
         /// Computes the intersection, if any, between a ray and the objects in the character's bounding box.

@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Content", "Content\Content.contentproj", "{37D7C7ED-7177-4C3A-87EA-55765EFFACC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XNAnimationReach", "XNAnimation\XNAnimationReach.csproj", "{9A926239-4757-407D-B9C5-66915EED4108}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|Windows Phone = Debug|Windows Phone
+		Debug|x86 = Debug|x86
+		Debug|Xbox 360 = Debug|Xbox 360
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|Windows Phone = Release|Windows Phone
+		Release|x86 = Release|x86
+		Release|Xbox 360 = Release|Xbox 360
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{37D7C7ED-7177-4C3A-87EA-55765EFFACC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37D7C7ED-7177-4C3A-87EA-55765EFFACC7}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{37D7C7ED-7177-4C3A-87EA-55765EFFACC7}.Debug|Windows Phone.ActiveCfg = Debug|Any CPU
+		{37D7C7ED-7177-4C3A-87EA-55765EFFACC7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{37D7C7ED-7177-4C3A-87EA-55765EFFACC7}.Debug|Xbox 360.ActiveCfg = Debug|Any CPU
+		{37D7C7ED-7177-4C3A-87EA-55765EFFACC7}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{37D7C7ED-7177-4C3A-87EA-55765EFFACC7}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{37D7C7ED-7177-4C3A-87EA-55765EFFACC7}.Release|Windows Phone.ActiveCfg = Debug|Any CPU
+		{37D7C7ED-7177-4C3A-87EA-55765EFFACC7}.Release|x86.ActiveCfg = Debug|Any CPU
+		{37D7C7ED-7177-4C3A-87EA-55765EFFACC7}.Release|Xbox 360.ActiveCfg = Debug|Any CPU
+		{9A926239-4757-407D-B9C5-66915EED4108}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{9A926239-4757-407D-B9C5-66915EED4108}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{9A926239-4757-407D-B9C5-66915EED4108}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{9A926239-4757-407D-B9C5-66915EED4108}.Debug|Windows Phone.ActiveCfg = Debug|x86
+		{9A926239-4757-407D-B9C5-66915EED4108}.Debug|x86.ActiveCfg = Debug|x86
+		{9A926239-4757-407D-B9C5-66915EED4108}.Debug|x86.Build.0 = Debug|x86
+		{9A926239-4757-407D-B9C5-66915EED4108}.Debug|Xbox 360.ActiveCfg = Debug|x86
+		{9A926239-4757-407D-B9C5-66915EED4108}.Release|Any CPU.ActiveCfg = Release|x86
+		{9A926239-4757-407D-B9C5-66915EED4108}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{9A926239-4757-407D-B9C5-66915EED4108}.Release|Mixed Platforms.Build.0 = Release|x86
+		{9A926239-4757-407D-B9C5-66915EED4108}.Release|Windows Phone.ActiveCfg = Release|x86
+		{9A926239-4757-407D-B9C5-66915EED4108}.Release|x86.ActiveCfg = Release|x86
+		{9A926239-4757-407D-B9C5-66915EED4108}.Release|x86.Build.0 = Release|x86
+		{9A926239-4757-407D-B9C5-66915EED4108}.Release|Xbox 360.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

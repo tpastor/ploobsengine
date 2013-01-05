@@ -69,11 +69,12 @@ namespace PloobsEngine.SceneControl
     /// </summary>
     public abstract class IScreen
     {
+        
+#if !WINDOWS_PHONE
         /// <summary>
         /// Initializes a new instance of the <see cref="IScreen"/> class.
         /// </summary>
-        /// <param name="gui">The GUI Component, if null you cant use GUI in this screen.</param>
-        #if !WINDOWS_PHONE
+        /// <param name="gui">The GUI Component, if null you cant use GUI in this screen.</param>        
         public IScreen(IGui gui = null)
         {
             this.gui = gui;

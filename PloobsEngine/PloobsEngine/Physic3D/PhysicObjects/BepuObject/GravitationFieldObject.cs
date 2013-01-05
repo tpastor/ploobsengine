@@ -35,10 +35,15 @@ namespace PloobsEngine.Physic.PhysicObjects.BepuObject
             /// <param name="shape">Shape representing the volume of the force field.</param>
             /// <param name="origin">Location that entities will be pushed toward.</param>
             /// <param name="multiplier">Represents the gravitational constant of the field times the effective mass at the center of the field.</param>
-            /// <param name="maxForce">Maximum force the field can apply.</param>
+            /// <param name="maxForce">Maximum force the field can apply.</param>            
+#if !MONO
             /// <param name="physicWorld">The physic world.</param>
             public GravitationalFieldObject(ForceFieldShape shape, Vector3 origin, float multiplier, float maxForce, BepuPhysicWorld physicWorld)
                 : base(shape, physicWorld.Space.BroadPhase.QueryAccelerator)
+#else
+            public GravitationalFieldObject(ForceFieldShape shape, Vector3 origin, float multiplier, float maxForce)
+                : base(shape)
+#endif
             {
                 this.Multiplier = multiplier;
                 this.Origin = origin;

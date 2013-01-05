@@ -281,6 +281,10 @@ namespace PloobsEngine.Engine
             
             this.Window.Title = initialDescription.ScreenName;
 
+#if MONO
+            this.Content.RootDirectory = "Content";
+#endif
+
             graphics = new GraphicsDeviceManager(this);
             graphics.GraphicsProfile = initialDescription.GraphicsProfile;
             graphics.IsFullScreen = initialDescription.isFullScreen;
@@ -511,6 +515,7 @@ namespace PloobsEngine.Engine
             }
         }
 
+#if !MONO
 
         /// <summary>
         /// This is used to display an error message if there is no suitable graphics device or sound card.
@@ -522,7 +527,7 @@ namespace PloobsEngine.Engine
             ActiveLogger.LogMessage(exception.Message, LogLevel.FatalError);
             return base.ShowMissingRequirementMessage(exception);
         }
-
+#endif
         /// <summary>
         /// Updates the engine, called by XNA
         /// </summary>

@@ -20,6 +20,10 @@ using Microsoft.Xna.Framework.Input;
 using BEPUphysics.Entities;
 using BEPUphysics.Threading;
 
+#if MONO
+using BroadPhaseEntry = BEPUphysics.BroadPhaseEntries.BroadPhaseEntry;
+#endif
+
 namespace BEPUphysicsDemos.AlternateMovement.SphereCharacter
 {
     /// <summary>

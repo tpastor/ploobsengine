@@ -56,7 +56,11 @@ namespace PloobsEngine.Physics
 
             var hullTriangleVertices = new List<Vector3>();
             var hullTriangleIndices = new List<int>();
+#if !MONO
             Toolbox.GetConvexHull(points, hullTriangleIndices, hullTriangleVertices);
+#else
+            ConvexHullHelper.GetConvexHull(points, hullTriangleIndices, hullTriangleVertices);
+#endif
             //The hull triangle vertices are used as a dummy to get the unnecessary hull vertices, which are cleared afterwards.
             hullTriangleVertices.Clear();
             foreach (int i in hullTriangleIndices)

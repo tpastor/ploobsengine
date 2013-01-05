@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿#if !MONO
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Tutorial1.Terrain.Culling;
@@ -109,3 +110,4 @@ namespace Tutorial1.Terrain
         }
     }
 }
+#endif

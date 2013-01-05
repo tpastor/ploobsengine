@@ -41,10 +41,13 @@ namespace PloobsEngine.Modelo
         /// Draw without index
         /// </summary>
         NORMAL,
+#if !MONO
         /// <summary>
         /// Draw Instanced Geometry
         /// </summary>
-        INSTANCED,        
+        INSTANCED,    
+#endif
+
     }
 
 
@@ -72,9 +75,11 @@ namespace PloobsEngine.Modelo
         /// <param name="PrimitiveType">Type of the primitive.</param>
         public BatchInformation(int BaseVertex, int NumVertices, int PrimitiveCount, int StartIndexOrVertex, int StreamOffset, VertexDeclaration VertexDeclaration, int VertexStride, BatchType BatchType,PrimitiveType PrimitiveType = PrimitiveType.TriangleList)
         {
+#if!MONO
             if (BatchType == BatchType.INSTANCED)
                 throw new Exception("This constructor cannot be used to creat instanced BatchInformation, use the other one");
-
+#endif
+            
             this.BaseVertex = BaseVertex;
             this.NumVertices = NumVertices;
             this.PrimitiveCount = PrimitiveCount;            
@@ -118,6 +123,7 @@ namespace PloobsEngine.Modelo
             this.BatchType = BatchType.INDEXED;
         }
 
+#if !MONO
         /// <summary>
         /// Initializes a new instance of the <see cref="BatchInformation"/> class.
         /// INSTACED CONSTRUCTOR
@@ -144,7 +150,7 @@ namespace PloobsEngine.Modelo
             this.InstanceCount = instanceCount;
             this.BatchType = BatchType.INSTANCED;
         }
-
+#endif
         /// <summary>
         /// For Instancing, the number of objects
         /// </summary>

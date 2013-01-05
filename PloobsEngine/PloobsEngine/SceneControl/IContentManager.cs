@@ -54,6 +54,8 @@ namespace PloobsEngine.SceneControl
         {
 #if XBOX360
             cmanagerInternal = new ResourceContentManager(game.Services, ResourcesXbox.ResourceManager);
+#elif MONO 
+            cmanagerInternal = new ResourceContentManager(game.Services, PloobsEngine.ResourcesPC.ResourceManager);
 #elif REACH 
             cmanagerInternal = new ResourceContentManager(game.Services, PloobsEngineReach.Resource2.ResourceManager);
 #elif WINDOWS_PHONE && !SILVER

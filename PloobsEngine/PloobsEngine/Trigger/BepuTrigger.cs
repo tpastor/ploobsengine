@@ -28,6 +28,11 @@ using PloobsEngine.Events;
 using PloobsEngine.SceneControl;
 using BEPUphysics.UpdateableSystems;
 
+#if MONO
+    using DetectorVolume = BEPUphysics.Collidables.DetectorVolume;
+#endif
+
+
 namespace PloobsEngine.Trigger
 {
     /// <summary>
@@ -66,9 +71,10 @@ namespace PloobsEngine.Trigger
         /// <param name="fireEndsTouching">if set to <c>true</c> [fire ends touching].</param>
         /// <param name="fireBeginsContaining">if set to <c>true</c> [fire begins containing].</param>
         /// <param name="fireEndsContaining">if set to <c>true</c> [fire ends containing].</param>
+        #if !MONO
         public BepuTrigger(BepuPhysicWorld physicWorld, TriangleMeshObject triangleMesh, TriggerEvent evt, bool fireBeginsTouching, bool fireEndsTouching, bool fireBeginsContaining, bool fireEndsContaining)
-        {
-            this.volumeobject = new DetectorVolumeObject(physicWorld,triangleMesh);
+        {        
+            this.volumeobject = new DetectorVolumeObject(physicWorld,triangleMesh);            
             DetectorVolume detectorVolume = this.volumeobject.DetectorVolume;
             if(fireBeginsTouching)
                 detectorVolume.EntityBeginsTouching += new EntityBeginsTouchingVolumeEventHandler(detectorVolume_EntityBeginsTouching);
@@ -78,6 +84,22 @@ namespace PloobsEngine.Trigger
                 detectorVolume.VolumeBeginsContainingEntity += new VolumeBeginsContainingEntityEventHandler(detectorVolume_VolumeBeginsContainingEntity);
             if(fireEndsContaining)
                 detectorVolume.VolumeStopsContainingEntity += new VolumeStopsContainingEntityEventHandler(detectorVolume_VolumeStopsContainingEntity);            
+#else
+        public BepuTrigger(TriangleMeshObject triangleMesh, TriggerEvent evt, bool fireBeginsTouching, bool fireEndsTouching, bool fireBeginsContaining, bool fireEndsContaining)
+        {        
+            this.volumeobject = new DetectorVolumeObject(triangleMesh);            
+            BEPUphysics.Collidables.DetectorVolume detectorVolume = this.volumeobject.DetectorVolume;
+            if(fireBeginsTouching)
+                detectorVolume.EntityBeganTouching += detectorVolume_EntityBeginsTouching;
+            if(fireEndsTouching)
+                detectorVolume.EntityStoppedTouching+= detectorVolume_EntityStopsTouching;
+            if(fireBeginsContaining)
+                detectorVolume.VolumeBeganContainingEntity+=  detectorVolume_VolumeBeginsContainingEntity;
+            if(fireEndsContaining)
+                detectorVolume.VolumeStoppedContainingEntity += detectorVolume_VolumeStopsContainingEntity;            
+            
+#endif
+
             this.evt = evt;
         }        
 
@@ -95,14 +117,23 @@ namespace PloobsEngine.Trigger
             evt.FireEvent(this);
         }
 
+#if !MONO
         void detectorVolume_EntityStopsTouching(BEPUphysics.Entities.Entity toucher, DetectorVolume volume)
+#else
+        void detectorVolume_EntityStopsTouching(DetectorVolume volume,BEPUphysics.Entities.Entity toucher)
+#endif
         {
             contactEntity = BepuEntityObject.RecoverObjectFromEntity(toucher);
             evt.Code = FireEndsTouching;
             evt.FireEvent(this);
         }
 
+#if !MONO
         void detectorVolume_EntityBeginsTouching(BEPUphysics.Entities.Entity toucher, DetectorVolume volume)
+#else
+        void detectorVolume_EntityBeginsTouching(DetectorVolume volume,BEPUphysics.Entities.Entity toucher)
+#endif
+        
         {
             contactEntity = BepuEntityObject.RecoverObjectFromEntity(toucher);
             evt.Code = FireBeginsTouching;

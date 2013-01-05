@@ -1,4 +1,5 @@
-﻿#region License
+﻿#if !MONO
+#region License
 /*
     PloobsEngine Game Engine Version 0.3 Beta
     Copyright (C) 2011  Ploobs
@@ -196,3 +197,4 @@ namespace PloobsEngine.Particles
         }
     }
 }
+#endif
