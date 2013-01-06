@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !WINDOWS8
+using System;
 using System.Collections.Generic;
 using System.Threading;
 
@@ -366,3 +367,126 @@ namespace BEPUphysics.Threading
         }
     }
 }
+#else
+using System;
+using System.Collections.Generic;
+using System.Threading;
+
+namespace BEPUphysics.Threading
+{
+    /// <summary>
+    /// Keeps track of the threads currently available to the physics engine.
+    /// </summary>
+    public class ThreadTaskManager : IThreadManager
+    {
+        
+        /// <summary>
+        /// Constructs a new thread task manager.
+        /// </summary>
+        public ThreadTaskManager()
+        {            
+            
+        }
+
+        /// <summary>
+        /// Releases resources used by the object.
+        /// </summary>
+        ~ThreadTaskManager()
+        {
+            Dispose();
+        }
+
+        /// <summary>
+        /// Gets or sets the number of tasks to create per thread when doing forLoops.
+        /// </summary>
+        public int LoopTasksPerThread
+        {
+            get { return 1; }
+            set
+            {                
+            }
+        }
+
+        #region IThreadManager Members
+
+        /// <summary>
+        /// Gets the number of threads currently handled by the manager.
+        /// </summary>
+        public int ThreadCount
+        {
+            get { return 1; }
+        }
+
+        /// <summary>
+        /// Blocks the current thread until all tasks have been completed.
+        /// </summary>
+        public void WaitForTaskCompletion()
+        {            
+        }
+
+
+        /// <summary>
+        /// Adds a thread to the manager.
+        /// </summary>
+        public void AddThread()
+        {        
+        }
+
+        /// <summary>
+        /// Adds a thread to the manager.
+        /// </summary>
+        /// <param name="initialization">A function to run to perform any initialization on the new thread.</param>
+        /// <param name="initializationInformation">Data to give the ParameterizedThreadStart for initialization.</param>
+        public void AddThread(Action<object> initialization, object initializationInformation)
+        {
+        
+        }
+
+
+        /// <summary>
+        /// Removes a thread from the manager.
+        /// </summary>
+        public void RemoveThread()
+        {
+        }
+
+
+        /// <summary>
+        /// Gives the thread manager a new task to run.
+        /// </summary>
+        /// <param name="task">Task to run.</param>
+        /// <param name="taskInformation">Information to be used by the task.</param>
+        public void EnqueueTask(Action<object> task, object taskInformation)
+        {
+         
+        }
+
+        /// <summary>
+        /// Loops from the starting index (inclusive) to the ending index (exclusive), calling the loopBody at each iteration.
+        /// The forLoop function will not return until all iterations are complete.
+        /// This is meant to be used in a 'fork-join' model; only a single thread should be running a forLoop
+        /// at any time.
+        /// </summary>
+        /// <param name="startIndex">Inclusive starting index.</param>
+        /// <param name="endIndex">Exclusive ending index.</param>
+        /// <param name="loopBody">Function that handles an individual iteration of the loop.</param>
+        public void ForLoop(int startIndex, int endIndex, Action<int> loopBody)
+        {
+            System.Threading.Tasks.Parallel.For(startIndex, endIndex, loopBody);   
+        }
+
+        /// <summary>
+        /// Releases resources used by the object.
+        /// </summary>
+        public void Dispose()
+        {
+         
+        }
+
+        #endregion
+
+
+    }
+}
+
+#endif

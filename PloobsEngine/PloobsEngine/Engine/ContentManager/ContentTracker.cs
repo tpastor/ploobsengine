@@ -254,6 +254,7 @@ namespace PloobsEngine.Engine
             }
             untrackedAssets.Clear();
 
+#if !WINRT
             // Stop and cleanup the loading thread
             if (loadThread != null)
             {
@@ -266,6 +267,7 @@ namespace PloobsEngine.Engine
                 }
                 catch { }
             }
+#endif
         }
 
         #endregion

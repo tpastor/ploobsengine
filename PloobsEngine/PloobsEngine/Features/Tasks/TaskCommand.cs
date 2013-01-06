@@ -1,4 +1,4 @@
-﻿
+﻿#if !WINRT
 #region License
 /*
     PloobsEngine Game Engine Version 0.3 Beta
@@ -76,3 +76,4 @@ namespace PloobsEngine.Features
         #endregion
     }
 }
+#endif

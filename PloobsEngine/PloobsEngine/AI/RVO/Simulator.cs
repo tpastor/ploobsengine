@@ -1,3 +1,4 @@
+#if !WINRT
 /*
  * RVO Library / RVO2 Library
  * 
@@ -335,3 +336,4 @@ namespace RVO
         }
     }
 }
+#endif

@@ -69,7 +69,9 @@ namespace Poly2Tri.Triangulation
 
         public abstract TriangulationConstraint NewConstraint(TriangulationPoint a, TriangulationPoint b);
 
+#if !W8
         [MethodImpl(MethodImplOptions.Synchronized)]
+#endif
         public void Update(string message)
         {
         }
