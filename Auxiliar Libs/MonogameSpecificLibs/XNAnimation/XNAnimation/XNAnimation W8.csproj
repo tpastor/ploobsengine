@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{9A926239-4757-407D-B9C5-66915EED4108}</ProjectGuid>
+    <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XNAnimation</RootNamespace>
+    <AssemblyName>XNAnimation</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\W8\x86\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;WINDOWS,MONOGAME;WINDOWS8;WINDOWS_PHONE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoStdLib>true</NoStdLib>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <PlatformTarget>x86</PlatformTarget>
+    <NoWarn>
+    </NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\W8\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;WINDOWS,MONOGAME;WINDOWS8;WINDOWS_PHONE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoStdLib>true</NoStdLib>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <PlatformTarget>x86</PlatformTarget>
+    <DocumentationFile>bin\W8\x86\Release\XNAnimation.XML</DocumentationFile>
+    <NoWarn>
+    </NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>XNAnimation.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AnimationChannel.cs" />
+    <Compile Include="AnimationChannelDictionary.cs" />
+    <Compile Include="AnimationChannelKeyframe.cs" />
+    <Compile Include="AnimationClip.cs" />
+    <Compile Include="AnimationClipDictionary.cs" />
+    <Compile Include="Controllers\AnimationController.cs" />
+    <Compile Include="Controllers\IAnimationController.cs" />
+    <Compile Include="Controllers\IBlendable.cs" />
+    <Compile Include="Controllers\IBlendController.cs" />
+    <Compile Include="Controllers\ISkeletonController.cs" />
+    <Compile Include="Controllers\SkeletonController.cs" />
+    <Compile Include="Effects\ILight.cs" />
+    <Compile Include="Effects\IMaterial.cs" />
+    <Compile Include="Effects\IPointLight.cs" />
+    <Compile Include="Effects\Material.cs" />
+    <Compile Include="Effects\PointLight.cs" />
+    <Compile Include="Effects\PointLightCollection.cs" />
+    <Compile Include="Effects\SkinnedModelBasicEffect.cs.cs" />
+    <Compile Include="Effects\SkinnedModelBasicEffectCode.cs" />
+    <Compile Include="Pipeline\AnimationClipReader.cs" />
+    <Compile Include="Pipeline\SkinnedModelBasicEffectReader.cs" />
+    <Compile Include="Pipeline\SkinnedModelBoneReader.cs" />
+    <Compile Include="Pipeline\SkinnedModelReader.cs" />
+    <Compile Include="Pose.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReadOnlyDictionary.cs" />
+    <Compile Include="Resource1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SkinnedModel.cs" />
+    <Compile Include="SkinnedModelBone.cs" />
+    <Compile Include="SkinnedModelBoneCollection.cs" />
+    <Compile Include="SkinnedModelBoneDictionary.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\x86\Debug\Content\SkinnedModelEffect.xnb" />
+    <None Include="Resources\SkinnedModelEffect.bin" />
+    <None Include="XNAnimation.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="MonoGame.Framework" Condition="'$(Configuration)' == 'Debug'">
+      <HintPath>..\..\..\..\PloobsEngine\PloobsEngine\Dlls\MonoGameWindows8\Debug\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework" Condition="'$(Configuration)' == 'Release'">
+      <HintPath>..\..\..\..\PloobsEngine\PloobsEngine\Dlls\MonoGameWindows8\Release\MonoGame.Framework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!--
+      To modify your build process, add your task inside one of the targets below and uncomment it. 
+      Other similar extension points exist, see Microsoft.Common.targets.
+      <Target Name="BeforeBuild">
+      </Target>
+      <Target Name="AfterBuild">
+      </Target>
+    -->
+</Project>

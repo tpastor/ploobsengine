@@ -125,15 +125,21 @@ namespace PloobsEngine.SceneControl
         /// Adds a new screen to the screen manager.
         /// </summary>
         /// <param name="definitiveScreen">The definitive screen.</param>
+#if !WINRT        
         /// <param name="LoadingScreen">The loading screen.</param>
         /// <param name="loadAndInitScreen">if set to <c>true</c> [load and init definitiveScreen].</param>
         public void AddScreen(IScreen definitiveScreen, IScreen LoadingScreen = null, bool loadAndInitScreen = true)
         {
-            
+#else                
+        public void AddScreen(IScreen definitiveScreen)
+        {
+#endif            
             System.Diagnostics.Debug.Assert(definitiveScreen != null);            
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE && !WINRT
             definitiveScreen.Page = engine.PhoneApplicationPage;
 #endif
+#if !WINRT
+
             if (LoadingScreen != null)
             {
                 LoadingScreen.screenManager = this;
@@ -169,6 +175,16 @@ namespace PloobsEngine.SceneControl
                 screens.Add(definitiveScreen);
                 definitiveScreen.ScreenState = ScreenState.Active;
             }
+#else
+            definitiveScreen.screenManager = this;
+            definitiveScreen.graphicFactory = GraphicFactory;
+            definitiveScreen.graphicInfo = GraphicInfo;
+            definitiveScreen.iInitScreen(GraphicInfo, engine);
+            definitiveScreen.iLoadContent(GraphicInfo, GraphicFactory, contentManager);
+            definitiveScreen.iAfterLoadContent(contentManager, GraphicInfo, GraphicFactory);      
+            screens.Add(definitiveScreen);
+            definitiveScreen.ScreenState = ScreenState.Active;
+#endif
         }
 
         /// <summary>

@@ -31,7 +31,11 @@ namespace BEPUphysics.MathExtensions
         {
             if (IsInvalid(f))
             {
+#if !WINDOWS8
                 throw new NotFiniteNumberException("Invalid value.");
+#else
+                throw new Exception("Invalid value passed");
+#endif
             }
         }
 
@@ -44,7 +48,11 @@ namespace BEPUphysics.MathExtensions
         {
             if (IsInvalid(v.X) || IsInvalid(v.Y) || IsInvalid(v.Z))
             {
+#if !WINDOWS8
                 throw new NotFiniteNumberException("Invalid value.");
+#else
+                throw new Exception("Invalid value passed");
+#endif
             }
         }
 
@@ -58,7 +66,11 @@ namespace BEPUphysics.MathExtensions
             if (IsInvalid(m.M11) || IsInvalid(m.M12) ||
                 IsInvalid(m.M21) || IsInvalid(m.M22))
             {
+#if !WINDOWS8
                 throw new NotFiniteNumberException("Invalid value.");
+#else
+                throw new Exception("Invalid value passed");
+#endif
             }
         }
 
@@ -73,7 +85,11 @@ namespace BEPUphysics.MathExtensions
                 IsInvalid(m.M21) || IsInvalid(m.M22) ||
                 IsInvalid(m.M31) || IsInvalid(m.M32))
             {
+#if !WINDOWS8
                 throw new NotFiniteNumberException("Invalid value.");
+#else
+                throw new Exception("Invalid value passed");
+#endif
             }
         }
 
@@ -87,7 +103,11 @@ namespace BEPUphysics.MathExtensions
             if (IsInvalid(m.M11) || IsInvalid(m.M12) || IsInvalid(m.M13) ||
                 IsInvalid(m.M21) || IsInvalid(m.M22) || IsInvalid(m.M23))
             {
+#if !WINDOWS8
                 throw new NotFiniteNumberException("Invalid value.");
+#else
+                throw new Exception("Invalid value passed");
+#endif
             }
         }
 
@@ -102,7 +122,11 @@ namespace BEPUphysics.MathExtensions
                 IsInvalid(m.M21) || IsInvalid(m.M22) || IsInvalid(m.M23) ||
                 IsInvalid(m.M31) || IsInvalid(m.M32) || IsInvalid(m.M33))
             {
+#if !WINDOWS8
                 throw new NotFiniteNumberException("Invalid value.");
+#else
+                throw new Exception("Invalid value passed");
+#endif
             }
         }
 
@@ -118,7 +142,11 @@ namespace BEPUphysics.MathExtensions
                 IsInvalid(m.M31) || IsInvalid(m.M32) || IsInvalid(m.M33) || IsInvalid(m.M34) ||
                 IsInvalid(m.M41) || IsInvalid(m.M42) || IsInvalid(m.M43) || IsInvalid(m.M44))
             {
+#if !WINDOWS8
                 throw new NotFiniteNumberException("Invalid value.");
+#else
+                throw new Exception("Invalid value passed");
+#endif
             }
         }
 
@@ -131,7 +159,11 @@ namespace BEPUphysics.MathExtensions
         {
             if (IsInvalid(q.W) || IsInvalid(q.X) || IsInvalid(q.Y) || IsInvalid(q.Z))
             {
+#if !WINDOWS8
                 throw new NotFiniteNumberException("Invalid value.");
+#else 
+                throw new Exception("Invalid value passed");
+#endif
             }
         }
 
@@ -177,7 +209,11 @@ namespace BEPUphysics.MathExtensions
         {
             b.Center.Validate();
             if(IsInvalid(b.Radius))
+#if !WINDOWS8
                 throw new NotFiniteNumberException("Invalid value.");
+#else
+                throw new Exception("Invalid value passed");
+#endif
         }
 
     }

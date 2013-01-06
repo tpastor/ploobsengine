@@ -115,8 +115,9 @@ namespace PloobsEngine.IA
                 iter++;
                 if (iter > MaxIteration)
                     return null;
-
+#if !WINRT
                 Debug(processing, iter);
+#endif
             }
 
             if (current != null)
@@ -132,6 +133,7 @@ namespace PloobsEngine.IA
             return PlanSet;
         }
 
+#if !WINRT
         [Conditional("DEBUG")]
         void Debug(PriorityQueueB<pathrecnode> processing, int iter)
         {
@@ -142,6 +144,7 @@ namespace PloobsEngine.IA
                 Console.WriteLine(processing[i].ToString());
             }
         }
+#endif
 
     }
 }

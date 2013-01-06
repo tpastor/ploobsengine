@@ -31,12 +31,25 @@ namespace PloobsEngine.Utils
     /// </summary>
     public class XmlContentLoader
     {
+
+#if WINRT
         /// <summary>
         /// Saves the content of the obj in XML.
         /// </summary>
         /// <param name="obj">The obj.</param>
         /// <param name="tipo">The type.</param>
         /// <param name="Path">The path.</param>
+        public async static void SaveXmlContent(Object obj, Type tipo, String Path)
+        {
+            Windows.Storage.StorageFolder folder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            Windows.Storage.StorageFile file = await folder.CreateFileAsync(Path, Windows.Storage.CreationCollisionOption.ReplaceExisting);
+            using (Stream s = await file.OpenStreamForWriteAsync())
+            {
+                XmlSerializer xmlSerializer = new XmlSerializer(tipo);
+                xmlSerializer.Serialize(s, obj);
+                s.Flush();                
+            }
+#else
         public static void SaveXmlContent(Object obj, Type tipo, String Path)
         {
                 FileStream saveFile = File.Open(Path, FileMode.Create );
@@ -44,10 +57,12 @@ namespace PloobsEngine.Utils
                 xmlSerializer.Serialize(saveFile, obj);
                 saveFile.Flush();
                 saveFile.Close();
+#endif
 
         }
 
 
+#if !WINRT
         /// <summary>
         /// Loads the content of the XML.
         /// </summary>
@@ -55,21 +70,33 @@ namespace PloobsEngine.Utils
         /// <param name="tipo">The type.</param>
         /// <returns>object</returns>
         public static Object LoadXmlContent(String name, Type tipo)
-        {
-            if (File.Exists(name))
-            {
-
+        {            
                 FileStream saveFile = File.Open(name, FileMode.Open);                
                 XmlSerializer xmlSerializer = new XmlSerializer(tipo);
                 Object obj = xmlSerializer.Deserialize(saveFile);
                 saveFile.Close();
                 return obj;
-            }
-            else
+            
+        }
+#else
+        /// <summary>
+        /// Loads the content of the XML.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="tipo">The type.</param>
+        /// <returns>object</returns>
+        public async static System.Threading.Tasks.Task<Object> LoadXmlContent(String name, Type tipo)
+        {
+            Windows.Storage.StorageFolder folder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            Windows.Storage.StorageFile file = await folder.CreateFileAsync(name, Windows.Storage.CreationCollisionOption.OpenIfExists);
+            using (Stream s = await file.OpenStreamForWriteAsync())
             {
-                throw new Exception("Arquivo nao encontrado");
+                XmlSerializer xmlSerializer = new XmlSerializer(tipo);
+                Object obj = xmlSerializer.Deserialize(s);
+                return obj;
             }
         }
+#endif
 
     }
 }

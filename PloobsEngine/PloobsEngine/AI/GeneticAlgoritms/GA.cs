@@ -90,6 +90,7 @@ namespace PloobsEngine.IA.Genetic
 			CreateGenomes();
 			RankPopulation();
 
+#if !WINRT
 			StreamWriter outputFitness = null;
 			bool write = false;
 			if (m_strFitness != "")
@@ -107,12 +108,13 @@ namespace PloobsEngine.IA.Genetic
 					if (outputFitness != null)
 					{
 						double d = (double)((Genome)m_thisGeneration[m_populationSize-1]).Fitness;
-						outputFitness.WriteLine("{0},{1}",i,d);
+						//outputFitness.WriteLine("{0},{1}",i,d);
 					}
 				}
 			}
 			if (outputFitness != null)
 				outputFitness.Close();
+#endif
 		}
 
 		/// <summary>

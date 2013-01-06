@@ -55,8 +55,8 @@ namespace PloobsEngine.Entity
             }
 
 
-            IDictionary<long, WeakReference<IEntity>> IdEntity = new Dictionary<long, WeakReference<IEntity>>();
-            IDictionary<long, WeakReference<IRecieveMessageEntity>> IdRecieveEntity = new Dictionary<long, WeakReference<IRecieveMessageEntity>>();
+            IDictionary<long, PloobsEngine.Utils.WeakReference<IEntity>> IdEntity = new Dictionary<long, PloobsEngine.Utils.WeakReference<IEntity>>();
+            IDictionary<long, PloobsEngine.Utils.WeakReference<IRecieveMessageEntity>> IdRecieveEntity = new Dictionary<long, PloobsEngine.Utils.WeakReference<IRecieveMessageEntity>>();
 
             IDictionary<long, IList<String>> recieveEntityTag = new Dictionary<long, IList<String>>();
             IDictionary<String, WeakList<IRecieveMessageEntity>> tagRecieveEntity = new Dictionary<String, WeakList<IRecieveMessageEntity>>();
@@ -93,20 +93,20 @@ namespace PloobsEngine.Entity
                         id = Agente.GetId();
                         ids.Add(id, null);
                     }
-                    IdEntity.Add(id, new WeakReference<IEntity>(Agente));
+                    IdEntity.Add(id, new PloobsEngine.Utils.WeakReference<IEntity>(Agente));
                     if (Agente is IRecieveMessageEntity)
                     {
-                        IdRecieveEntity.Add(id, new WeakReference<IRecieveMessageEntity>(Agente as IRecieveMessageEntity));
+                        IdRecieveEntity.Add(id, new PloobsEngine.Utils.WeakReference<IRecieveMessageEntity>(Agente as IRecieveMessageEntity));
                     }
                 }
                 else
                 {
                     id = getNextAvaliableId();
                     Agente.SetId(id);
-                    IdEntity.Add(id, new WeakReference<IEntity>(Agente));
+                    IdEntity.Add(id, new PloobsEngine.Utils.WeakReference<IEntity>(Agente));
                     if (Agente is IRecieveMessageEntity)
                     {
-                        IdRecieveEntity.Add(id, new WeakReference<IRecieveMessageEntity>(Agente as IRecieveMessageEntity));
+                        IdRecieveEntity.Add(id, new PloobsEngine.Utils.WeakReference<IRecieveMessageEntity>(Agente as IRecieveMessageEntity));
                     }
                 }
                 return id;

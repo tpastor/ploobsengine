@@ -146,7 +146,12 @@ namespace PloobsEngine.IA
                 throw new Exception("MapName cannot be null");
             }            
             
+#if !WINRT
             this.col = XmlContentLoader.LoadXmlContent(FileName, col.GetType()) as WaypointsCollection;
+#else
+            this.col = XmlContentLoader.LoadXmlContent(FileName, col.GetType()).Result as WaypointsCollection;
+#endif
+
             foreach (Waypoint item in col.GetWaypointsList())
             {             
                 if (item.Id > id)
@@ -168,8 +173,12 @@ namespace PloobsEngine.IA
             if (FileName == null)
             {
                 throw new Exception("MapName cannot be null");
-            }            
+            }  
+#if !WINRT
             this.col =  XmlContentLoader.LoadXmlContent(FileName,col.GetType()) as WaypointsCollection;
+#else 
+            this.col  = ( XmlContentLoader.LoadXmlContent(FileName, col.GetType()) ).Result as WaypointsCollection;            
+#endif
             if(col.State == WaypointsState.Connected)
             Unconnect();
 
@@ -193,7 +202,11 @@ namespace PloobsEngine.IA
             int toadd = 0;
             foreach (var item in waypoints)
             {
+#if WINRT
+                WaypointsCollection w = (XmlContentLoader.LoadXmlContent(item, col.GetType())).Result as WaypointsCollection;
+#else
                 WaypointsCollection w = XmlContentLoader.LoadXmlContent(item, col.GetType()) as WaypointsCollection;
+#endif                
                 foreach (Waypoint way in w.IdWaypoint.Values)
                 {
                     way.Id = way.Id + toadd;

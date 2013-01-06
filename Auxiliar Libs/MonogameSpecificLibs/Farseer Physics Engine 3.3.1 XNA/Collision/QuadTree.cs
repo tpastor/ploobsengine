@@ -256,7 +256,10 @@ public class QuadTree<T>
 
         Clear();
 
-        allNodes.ForEach(AddNode);
+        foreach (var item in allNodes)
+        {
+            AddNode(item);
+        }        
     }
 
     public void Clear()

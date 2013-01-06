@@ -28,7 +28,7 @@ using PloobsEngine.Engine;
 using PloobsEngine.SceneControl.GUI;
 using PloobsEngine.Input;
 using PloobsEngine.Commands;
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE && !WINRT
 using Microsoft.Phone.Controls;
 #endif
 #endregion
@@ -70,7 +70,7 @@ namespace PloobsEngine.SceneControl
     public abstract class IScreen
     {
         
-#if !WINDOWS_PHONE
+#if !WINDOWS_PHONE || WINRT
         /// <summary>
         /// Initializes a new instance of the <see cref="IScreen"/> class.
         /// </summary>
@@ -99,9 +99,13 @@ namespace PloobsEngine.SceneControl
         }
 #endif
 
-#if WINDOWS
+#if WINDOWS 
         private Dictionary<IInput, BindKeyCommand> KeyBinds = new Dictionary<IInput, BindKeyCommand>();
         private Dictionary<IInput, BindMouseCommand> MouseBinds = new Dictionary<IInput, BindMouseCommand>();        
+#elif WINRT
+        private Dictionary<IInput, BindKeyCommand> KeyBinds = new Dictionary<IInput, BindKeyCommand>();
+        private Dictionary<IInput, BindMouseCommand> MouseBinds = new Dictionary<IInput, BindMouseCommand>();
+        private Dictionary<IInput, BindGestureCommand> GestureBinds = new Dictionary<IInput, BindGestureCommand>();
 #elif !XBOX
         private Dictionary<IInput, BindGestureCommand> GestureBinds= new Dictionary<IInput, BindGestureCommand>();
 #endif
@@ -132,7 +136,7 @@ namespace PloobsEngine.SceneControl
             set;
         }
 
-#if WINDOWS
+#if WINDOWS || WINRT
         /// <summary>
         /// Binds the KeyBoard input.
         /// </summary>
@@ -440,6 +444,22 @@ namespace PloobsEngine.SceneControl
                     CommandProcessor.getCommandProcessor().SendCommandAssyncronous(item);
                 }
                 foreach (var item in MouseBinds.Values)
+                {
+                    item.BindAction = BindAction.REMOVE;
+                    CommandProcessor.getCommandProcessor().SendCommandAssyncronous(item);
+                }
+#elif WINRT
+                foreach (var item in KeyBinds.Values)
+                {
+                    item.BindAction = BindAction.REMOVE;
+                    CommandProcessor.getCommandProcessor().SendCommandAssyncronous(item);
+                }
+                foreach (var item in MouseBinds.Values)
+                {
+                    item.BindAction = BindAction.REMOVE;
+                    CommandProcessor.getCommandProcessor().SendCommandAssyncronous(item);
+                }
+                foreach (var item in GestureBinds.Values)
                 {
                     item.BindAction = BindAction.REMOVE;
                     CommandProcessor.getCommandProcessor().SendCommandAssyncronous(item);

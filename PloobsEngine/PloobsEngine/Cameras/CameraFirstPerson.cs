@@ -29,7 +29,7 @@ using PloobsEngine.MessageSystem;
 using PloobsEngine.SceneControl;
 using PloobsEngine.Engine.Logger;
 using PloobsEngine.Engine;
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE && !WINRT
 using Microsoft.Xna.Framework.Input.Touch;
 #endif
 
@@ -42,7 +42,7 @@ namespace PloobsEngine.Cameras
     /// </summary>
     public class CameraFirstPerson : ICamera
     {
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE && !WINRT
         bool useAcelerometer = false;
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace PloobsEngine.Cameras
         /// <param name="udRot">The updown rotation.</param>
         /// <param name="startingPos">The starting pos.</param>
         /// <param name="graphicInfo">The graphic info.</param>
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE && !WINRT
         /// <param name="useAcelerometer">if set to <c>true</c> [use acelerometer].</param>
         public CameraFirstPerson(float lrRot, float udRot, Vector3 startingPos, GraphicInfo graphicInfo, bool useAcelerometer = false)
 #else
@@ -124,7 +124,7 @@ namespace PloobsEngine.Cameras
         {            
             init(lrRot, udRot, startingPos,graphicInfo);
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE && !WINRT
             this.useAcelerometer = useAcelerometer;
             if (useAcelerometer)
             {
@@ -151,7 +151,7 @@ namespace PloobsEngine.Cameras
 
         }
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE && !WINRT
         void accelSensor_ReadingChanged(object sender, Microsoft.Devices.Sensors.AccelerometerReadingEventArgs e)
         {
             speedAcel.X = (float)e.X;
@@ -267,7 +267,7 @@ namespace PloobsEngine.Cameras
         private float rotationSpeed = 0.005f;        
         private float sensibility = 0.5f;        
         private float moveSpeed = 1f;
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE && !WINRT
         Microsoft.Devices.Sensors.Accelerometer accelSensor;
         Vector3 speedAcel = new Vector3();
 #endif
@@ -639,7 +639,7 @@ namespace PloobsEngine.Cameras
 
         #endregion       
               
-        #if WINDOWS_PHONE
+        #if WINDOWS_PHONE && !WINRT
         TouchCollection tcpressed;        
         #endif
 

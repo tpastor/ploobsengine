@@ -19,7 +19,7 @@ using System.Globalization;
 
 namespace XNAnimation
 {
-#if WINDOWS
+#if WINDOWS && !WINDOWS8
     [Serializable]
 #endif
     public struct Pose : IEquatable<Pose>

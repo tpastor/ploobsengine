@@ -200,7 +200,11 @@ namespace BEPUphysics
         /// Uses the SpecializedThreadManager.
         ///</summary>
         public Space()
+#if !WINDOWS8
             : this(new SpecializedThreadManager())
+#else
+            : this(new ThreadManagerTPL())
+#endif
         {
         }
 

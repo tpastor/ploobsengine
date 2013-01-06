@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !WINDOWS8
+using System;
 
 namespace BEPUphysics.Threading
 {
@@ -149,3 +150,4 @@ namespace BEPUphysics.Threading
         #endregion
     }
 }
+#endif

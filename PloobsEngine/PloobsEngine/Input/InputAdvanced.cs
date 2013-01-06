@@ -36,7 +36,7 @@ namespace PloobsEngine.Input
         IOBJECT, CAMERA, COMPONENT, TOOLS
     }
 
-#if WINDOWS
+#if WINDOWS || WINRT
     /// <summary>
     /// Mouse Buttoms
     /// </summary>
@@ -66,7 +66,7 @@ namespace PloobsEngine.Input
         //private Dictionary<Buttons, float>[] buttonCache;
         //private GamePadState[] currentPadState;
         //private GamePadState[] previousPadState;
-#elif WINDOWS
+#elif WINDOWS 
         private IDictionary<Keys, InputPlayableKeyBoard> _Mapper = new Dictionary<Keys, InputPlayableKeyBoard>();
         private Dictionary<Keys, float> keyCache;
         private List<Keys> kcache = new List<Keys>();
@@ -78,6 +78,67 @@ namespace PloobsEngine.Input
 
         private MouseState currentMouseState;
         private MouseState previousMouseState;
+#elif WINRT
+        private IDictionary<Keys, InputPlayableKeyBoard> _Mapper = new Dictionary<Keys, InputPlayableKeyBoard>();
+        private Dictionary<Keys, float> keyCache;
+        private List<Keys> kcache = new List<Keys>();
+        private KeyboardState currentKeyState;
+        private KeyboardState previousKeyState;
+
+        private Dictionary<MouseButtons, float> mouseCache;
+        private List<MouseButtons> mcache = new List<MouseButtons>();
+
+        private MouseState currentMouseState;
+        private MouseState previousMouseState;
+        private Dictionary<GestureType, List<InputPlaybleGesture>> _gestureMapper = new Dictionary<GestureType, List<InputPlaybleGesture>>();
+        bool addedgesture = false;
+        internal void BindGesture(InputPlaybleGesture ip, BindAction ba)
+        {
+            if (ba == BindAction.ADD)
+            {
+                addedgesture = true;
+                if (_gestureMapper.ContainsKey(ip.GestureType))
+                {
+                    _gestureMapper[ip.GestureType].Add(ip);
+                }
+                else
+                {
+
+                    TouchPanel.EnabledGestures = TouchPanel.EnabledGestures | ip.GestureType;
+                    List<InputPlaybleGesture> gest = new List<InputPlaybleGesture>();
+                    gest.Add(ip);
+                    _gestureMapper.Add(ip.GestureType, gest);
+                }
+
+            }
+            else if (ba == BindAction.REMOVE)
+            {
+                List<InputPlaybleGesture> gest = _gestureMapper[ip.GestureType];
+                gest.Remove(ip);
+            }
+        }
+
+        internal void ProcessGesture()
+        {
+            if (addedgesture)
+            {
+                while (TouchPanel.IsGestureAvailable)
+                {
+                    GestureSample sample = TouchPanel.ReadGesture();
+                    if (_gestureMapper.ContainsKey(sample.GestureType))
+                    {
+                        foreach (var item in _gestureMapper[sample.GestureType])
+                        {
+                            if (processMask(item.InputMask))
+                            {
+                                item.FireEvent(sample);
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
 #elif WINDOWS_PHONE
         private Dictionary<GestureType, List<InputPlaybleGesture>> _gestureMapper = new Dictionary<GestureType, List<InputPlaybleGesture>>();
         bool addedgesture = false;
@@ -152,7 +213,7 @@ namespace PloobsEngine.Input
 
             //foreach (Buttons button in Enum.GetValues(Buttons))
             //    buttonCache.Add(button, 0.0f);
-#elif WINDOWS
+#elif WINDOWS || WINRT
             keyCache = new Dictionary<Keys, float>();
             previousKeyState = currentKeyState = Keyboard.GetState();
             mouseCache = new Dictionary<MouseButtons, float>();
@@ -196,7 +257,7 @@ namespace PloobsEngine.Input
             //    else
             //        buttonCache[b] = 0.0f;
             //}
-#elif WINDOWS
+#elif WINDOWS || WINRT
             // We set the Previous states to the Current states
             // since the Current states will be updated with
             // the ACTUAL Current states.
@@ -234,6 +295,10 @@ namespace PloobsEngine.Input
 #if WINDOWS
             ProcessKeys();
             ProcessMouse();
+#elif WINRT
+            ProcessKeys();
+            ProcessMouse();
+            ProcessGesture();
 #elif WINDOWS_PHONE
             ProcessGesture();
 #endif
@@ -277,7 +342,7 @@ namespace PloobsEngine.Input
         //{
         //    return currentPadState[(int)player].Thumbsticks.Right;
         //}
-#elif WINDOWS
+#elif WINDOWS || WINRT
         #region Mouse Input
         // Mouse Buttons Elapsed Time
         
@@ -422,7 +487,7 @@ namespace PloobsEngine.Input
             this.mask = this.mask | mask;
         }
 
-        #if WINDOWS
+        #if WINDOWS || WINRT
         internal void Clear()
         {
 
@@ -553,7 +618,7 @@ namespace PloobsEngine.Input
             return false;
         }
 
-#if WINDOWS
+#if WINDOWS || WINRT
         private void ProcessMouse()
         {            
             foreach (InputPlaybleMouseBottom ip in _mouseMapperDown)
@@ -614,7 +679,7 @@ namespace PloobsEngine.Input
             get { return ComponentType.UPDATEABLE; }
         }
 
-#if WINDOWS
+#if WINDOWS || WINRT
         private void ProcessKeys()
         {
             foreach (InputPlayableKeyBoard ip in _keysMapperDown)

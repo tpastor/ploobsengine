@@ -1,3 +1,4 @@
+#if !WINDOWS8
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -169,3 +170,4 @@ namespace BEPUphysics.Threading
         #endregion
     }
 }
+#endif

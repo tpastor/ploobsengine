@@ -98,6 +98,7 @@ namespace PloobsEngine.IA.Genetic
 			return m_genes;
 		}
 
+#if !WINRT
 		public void Output()
 		{
 			for (int i = 0 ; i < m_length ; i++)
@@ -106,6 +107,7 @@ namespace PloobsEngine.IA.Genetic
 			}
 			System.Console.Write("\n");
 		}
+#endif
 
 		public void GetValues(ref double[] values)
 		{

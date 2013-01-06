@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !WINDOWS8
+using System;
 using System.Collections.Generic;
 using System.Threading;
 
@@ -392,3 +393,4 @@ namespace BEPUphysics.Threading
         }
     }
 }
+#endif

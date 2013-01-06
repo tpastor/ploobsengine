@@ -27,6 +27,7 @@ using System.Reflection;
 namespace PloobsEngine.Utils
 {
 
+#if !WINRT
     public static class EnumExtension
     {
         public static IEnumerable<T> GetValues<T>()
@@ -45,7 +46,7 @@ namespace PloobsEngine.Utils
         }  
 
     }
-
+#endif
 
     public static class EnumerableExtension
     {

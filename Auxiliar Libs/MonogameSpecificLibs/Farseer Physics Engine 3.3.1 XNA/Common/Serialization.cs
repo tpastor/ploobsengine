@@ -8,13 +8,53 @@ using FarseerPhysics.Dynamics;
 using FarseerPhysics.Dynamics.Joints;
 using Microsoft.Xna.Framework;
 
+#if W8
+    using Windows.Storage;
+    using System.Threading.Tasks;
+#endif
+
 namespace FarseerPhysics.Common
 {
+#if W8
+     
+    public static class WorldSerializer
+    {
+        public static async void Serialize(World world, string filename)
+        {
+            StorageFolder folder = ApplicationData.Current.LocalFolder;
+            StorageFile file = await folder.CreateFileAsync(filename, CreationCollisionOption.ReplaceExisting);
+            using (Stream s = await file.OpenStreamForWriteAsync())
+            {
+                new WorldXmlSerializer().Serialize(world, s);
+            }
+        }
+
+        public static async void Deserialize(World world, string filename)
+        {
+            StorageFolder folder = ApplicationData.Current.LocalFolder;
+            StorageFile file = await folder.CreateFileAsync(filename, CreationCollisionOption.OpenIfExists);
+            using (Stream s = await file.OpenStreamForReadAsync())
+            {
+                new WorldXmlDeserializer().Deserialize(world, s);
+            }
+        }
+
+        public static async Task<World> Deserialize(string filename)
+        {
+            StorageFolder folder = ApplicationData.Current.LocalFolder;
+            StorageFile file = await folder.CreateFileAsync(filename, CreationCollisionOption.OpenIfExists);
+            using (Stream s = await file.OpenStreamForReadAsync())
+            {
+                return new WorldXmlDeserializer().Deserialize(s);
+            }
+        }
+    }
+#else
     public static class WorldSerializer
     {
         public static void Serialize(World world, string filename)
         {
-            using (FileStream fs = new FileStream(filename, FileMode.Create))
+            using (FileStream fs = new FileStream(filename, System.IO.FileMode.Create))
             {
                 new WorldXmlSerializer().Serialize(world, fs);
             }
@@ -22,7 +62,7 @@ namespace FarseerPhysics.Common
 
         public static void Deserialize(World world, string filename)
         {
-            using (FileStream fs = new FileStream(filename, FileMode.Open))
+            using (FileStream fs = new FileStream(filename, System.IO.FileMode.Open))
             {
                 new WorldXmlDeserializer().Deserialize(world, fs);
             }
@@ -30,12 +70,13 @@ namespace FarseerPhysics.Common
 
         public static World Deserialize(string filename)
         {
-            using (FileStream fs = new FileStream(filename, FileMode.Open))
+            using (FileStream fs = new FileStream(filename, System.IO.FileMode.Open))
             {
                 return new WorldXmlDeserializer().Deserialize(fs);
             }
         }
     }
+#endif
 
     ///<summary>
     ///</summary>
@@ -428,7 +469,12 @@ namespace FarseerPhysics.Common
             _writer.WriteEndElement();
 
             _writer.Flush();
+#if !W8
             _writer.Close();
+#else
+            _writer.Dispose();
+#endif
+
         }
 
         private int FindBodyIndex(Body body)
@@ -1218,11 +1264,30 @@ namespace FarseerPhysics.Common
             Load(stream);
         }
 
+        #if !W8
         public XMLFragmentParser(string fileName)
         {
+
             using (FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read))
                 Load(fs);
         }
+#else
+        public XMLFragmentParser()
+        {
+        }
+
+        public async void XMLLoad(string fileName)
+        {
+            StorageFolder folder = ApplicationData.Current.LocalFolder;
+            StorageFile file = await folder.CreateFileAsync(fileName, CreationCollisionOption.OpenIfExists);
+            using (Stream s = await file.OpenStreamForWriteAsync())
+            {
+                Load(s);
+            }                
+        }
+            
+#endif
+        
 
         public XMLFragmentElement RootNode
         {
@@ -1236,7 +1301,12 @@ namespace FarseerPhysics.Common
 
         public static XMLFragmentElement LoadFromFile(string fileName)
         {
-            XMLFragmentParser x = new XMLFragmentParser(fileName);
+#if W8
+            XMLFragmentParser x = new XMLFragmentParser();
+            x.XMLLoad(fileName);
+#else
+           XMLFragmentParser x = new XMLFragmentParser(fileName);
+#endif
             x.Parse();
             return x.RootNode;
         }

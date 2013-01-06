@@ -35,6 +35,8 @@ namespace PloobsEngine.SceneControl
     public class IContentManager 
     {
         ContentManager cmanagerInternal;
+
+#if !WINRT
         protected ContentTracker externalContentManager;
 
         /// <summary>
@@ -44,9 +46,20 @@ namespace PloobsEngine.SceneControl
         {
             get { return externalContentManager; }
         }
+#else
+        protected ContentManager externalContentManager;
+
+        /// <summary>
+        /// Gets the content manager.
+        /// </summary>
+        public ContentManager ContentManager
+        {
+            get { return externalContentManager; }
+        }
+#endif
 
 
-#if SILVER
+#if SILVER 
         public IContentManager(ContentManager ContentManager)
 #else
         public IContentManager(Game game)
@@ -54,27 +67,34 @@ namespace PloobsEngine.SceneControl
         {
 #if XBOX360
             cmanagerInternal = new ResourceContentManager(game.Services, ResourcesXbox.ResourceManager);
+#elif WINRT
+            cmanagerInternal = new ContentManager(game.Content.ServiceProvider);
 #elif MONO 
             cmanagerInternal = new ResourceContentManager(game.Services, PloobsEngine.ResourcesPC.ResourceManager);
 #elif REACH 
             cmanagerInternal = new ResourceContentManager(game.Services, PloobsEngineReach.Resource2.ResourceManager);
 #elif WINDOWS_PHONE && !SILVER
             cmanagerInternal = new ResourceContentManager(game.Services, Resource3.ResourceManager);
-#elif SILVER
+#elif SILVER 
             cmanagerInternal = new ResourceContentManager(ContentManager.ServiceProvider, Resource3.ResourceManager);
 #else
             cmanagerInternal = new ResourceContentManager(game.Services, ResourcesPC.ResourceManager);
      
 #endif
 
-#if SILVER
+#if SILVER 
             ContentTracker ContentTracker = new ContentTracker(ContentManager.ServiceProvider,"Content");
-#else
-            ContentTracker ContentTracker = game.Content as ContentTracker;
-#endif
-
             System.Diagnostics.Debug.Assert(ContentTracker != null);
             this.externalContentManager = ContentTracker;
+#elif WINRT
+            this.externalContentManager = game.Content;
+#else
+            ContentTracker ContentTracker = game.Content as ContentTracker;
+            System.Diagnostics.Debug.Assert(ContentTracker != null);
+            this.externalContentManager = ContentTracker;
+#endif
+
+
         }
 
         private static IDictionary<String, object> _modelDicInt = new Dictionary<String, object>();        
@@ -118,7 +138,11 @@ namespace PloobsEngine.SceneControl
             {
                 if (fromDisk)
                 {
+#if !WINRT
                     return this.externalContentManager.LoadFromDisk<T>(fileName);
+#else
+                    return this.externalContentManager.Load<T>(fileName);
+#endif
                 }
                 else
                 {
@@ -156,6 +180,7 @@ namespace PloobsEngine.SceneControl
 
         #endregion
 
+#if !WINRT
         /// <summary>
         /// Gets the asset assync.
         /// </summary>
@@ -169,6 +194,7 @@ namespace PloobsEngine.SceneControl
             System.Diagnostics.Debug.Assert(AssetLoaded != null);
             return externalContentManager.LoadAsync<T>(fileName, AssetLoaded);
         }
+#endif
 
         /// <summary>
         /// Unload an asset
@@ -178,7 +204,9 @@ namespace PloobsEngine.SceneControl
         public void UnloadAsset(string assetName, bool releaseChildren = true)
         {
             System.Diagnostics.Debug.Assert(assetName != null);
+#if !WINRT
             externalContentManager.Unload(assetName, releaseChildren);
+#endif
         }
 
         /// <summary>
@@ -189,6 +217,7 @@ namespace PloobsEngine.SceneControl
             externalContentManager.Unload();
         }
 
+#if !WINRT
         public Dictionary<String, int> DumpAssetReferenceCount()
         {
             Dictionary<String, int> refs = new Dictionary<string, int>();
@@ -198,6 +227,7 @@ namespace PloobsEngine.SceneControl
             }
             return refs;
         }
+#endif
 
         /// <summary>
         /// Releases the asset.
@@ -207,7 +237,9 @@ namespace PloobsEngine.SceneControl
         {
             if (String.IsNullOrEmpty(assetName))
                 return;
+#if !WINRT
             externalContentManager.Release(assetName);
+#endif
         }
     }
 }

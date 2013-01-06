@@ -53,7 +53,9 @@ namespace BEPUphysics.Threading
         {
             if (attempt == SleepInterval)
             {
-#if WINDOWS
+#if WINDOWS8
+                System.Threading.Tasks.Task.Delay(0);
+#elif WINDOWS
                 Thread.Yield();
 #else
                 Thread.Sleep(0);
@@ -65,7 +67,16 @@ namespace BEPUphysics.Threading
             }
             else
             {
+#if WINDOWS8                
+                ///dummy busy wait for winrt
+                int min = Math.Min(3 << attempt, MaximumSpinWait);
+                for (int i = 0; i < min; i++)
+                {
+                    
+                }
+#else
                 Thread.SpinWait(Math.Min(3 << attempt, MaximumSpinWait));
+#endif
             }
         }
     }

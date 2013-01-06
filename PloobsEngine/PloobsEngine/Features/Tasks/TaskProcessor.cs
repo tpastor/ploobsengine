@@ -1,4 +1,4 @@
-﻿
+﻿#if !WINRT
 #region License
 /*
     PloobsEngine Game Engine Version 0.3 Beta
@@ -28,7 +28,7 @@ using System.IO;
 using PloobsEngine.Engine.Logger;
 using System.Threading;
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE 
 using Worker = System.ComponentModel.BackgroundWorker;
 #endif
 
@@ -173,3 +173,4 @@ namespace PloobsEngine.Features
 
 
 }
+#endif
