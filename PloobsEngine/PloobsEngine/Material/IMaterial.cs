@@ -159,4 +159,136 @@ namespace PloobsEngine.Material
         /// </summary>
         FORWARD
     }
+
+    /// <summary>
+    /// Invisible Material (Used when your object should not be rendered)
+    /// Call the static GetInstance to get one shared instance
+    /// </summary>
+    public class InvisibleMaterial : IMaterial
+    {
+        /// <summary>
+        /// Gets the instance of InvisibleMaterial
+        /// </summary>
+        /// <param name="MaterialType">Type of the material.</param>
+        /// <returns></returns>
+        public static InvisibleMaterial GetInstance(MaterialType MaterialType = MaterialType.DEFERRED)
+        {
+            if (MaterialType == Material.MaterialType.DEFERRED)
+                return InvisibleMaterialDeferred;
+            else
+                return InvisibleMaterialForward;
+        }
+
+        private static InvisibleMaterial InvisibleMaterialDeferred = new InvisibleMaterial(MaterialType.DEFERRED);
+        private static InvisibleMaterial InvisibleMaterialForward = new InvisibleMaterial(MaterialType.FORWARD);
+
+        MaterialType materialType;
+        private InvisibleMaterial(MaterialType MaterialType)
+        {
+            this.materialType = MaterialType;
+        }
+
+        #region IMaterial Members
+
+        public void Initialization(GraphicInfo ginfo, GraphicFactory factory, IObject obj)
+        {            
+        }
+
+        public void AfterAdded(IObject obj)
+        {
+         
+        }
+
+        public void PreDrawnPhase(GameTime gt, IWorld mundo, IObject obj, ICamera cam, IList<ILight> lights, RenderHelper render)
+        {
+         
+        }
+
+        public void PosDrawnPhase(GameTime gt, IObject obj, ICamera cam, IList<ILight> lights, RenderHelper render)
+        {
+         
+        }
+
+        public void Drawn(GameTime gt, IObject obj, ICamera cam, IList<ILight> lights, RenderHelper render)
+        {
+         
+        }
+
+        public void Update(GameTime gametime, IObject obj, IWorld world)
+        {
+         
+        }
+
+        public IShader Shader
+        {
+            get
+            {
+                return null;
+            }
+            set
+            {
+                
+            }
+        }
+
+        public MaterialType MaterialType
+        {
+            get { return materialType; }
+        }
+
+#if !WINDOWS_PHONE && !REACH
+        public bool CanCreateShadow
+        {
+            get
+            {
+                return false;
+            }
+            set
+            {
+                
+            }
+        }
+
+        public bool CanAppearOfReflectionRefraction
+        {
+            get
+            {
+                return false;
+            }
+            set
+            {                
+            }
+        }
+
+#endif
+        public bool IsVisible
+        {
+            get
+            {
+                return true;
+            }
+            set
+            {                
+            }
+        }
+
+        public void CleanUp(GraphicFactory factory)
+        {
+            
+        }
+
+        #endregion
+
+#if WINDOWS
+        #region ISerializable Members
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            
+        }
+        #endregion
+#endif
+    }
+
+
 }
