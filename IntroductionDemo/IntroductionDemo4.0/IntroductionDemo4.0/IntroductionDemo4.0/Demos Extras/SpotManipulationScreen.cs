@@ -17,6 +17,13 @@ using System;
 
 namespace IntroductionDemo4._0
 {
+    /// <summary>
+    /// Spot Light Interaction
+    /// When the mouse points to somewhere with not objects (like the horizon), the light direction wont change cause
+    /// the picking wont hit anything.
+    /// A better clever way to change the direction of the spot light in these situations is just using teh camera forward vector insted of the picking result !!!
+    /// This demo is automatically displayed when this project is ran
+    /// </summary>
     public class SpotManipulationScreen : IScene
     {        
         ICamera cam;
@@ -114,10 +121,7 @@ namespace IntroductionDemo4._0
             int wd = 64;
             int hg = 48;
             render.RenderTextureComplete(logo, new Rectangle(this.GraphicInfo.BackBufferWidth - wd, this.GraphicInfo.BackBufferHeight - hg, wd, hg));
-
-            render.RenderTextComplete("Picking", new Vector2(GraphicInfo.Viewport.Width - 315, 15), Color.White,Matrix.Identity);
-            render.RenderTextComplete("Left click to pick an object", new Vector2(GraphicInfo.Viewport.Width - 315, 40), Color.White, Matrix.Identity);
-
+            render.RenderTextComplete("Spot Light Direction Controlled By Mouse Position", new Vector2(GraphicInfo.Viewport.Width - 315, 15), Color.White,Matrix.Identity);            
         }
 
         protected override void Update(GameTime gameTime)
