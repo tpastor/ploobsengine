@@ -74,19 +74,28 @@ namespace PloobsEngine.SceneControl
         /// <summary>
         /// Initializes a new instance of the <see cref="IObject"/> class.
         /// </summary>
-        /// <param name="Material">The material.</param>
-        /// <param name="Modelo">The modelo.</param>
-        /// <param name="PhysicObject">The physic object.</param>
-        public IObject(IMaterial Material, IModelo Modelo, IPhysicObject PhysicObject)
+        /// <param name="Material">The material. (cannot be null, use the InvisibleMaterial.GetInstance when you dont need Material)</param>
+        /// <param name="Modelo">The modelo. (can be null)</param>
+        /// <param name="PhysicObject">The physic object. (cannot be null)</param>
+        /// <param name="name">The name of the IObject (just an identifier).</param>
+        public IObject(IMaterial Material, IModelo Modelo, IPhysicObject PhysicObject,String name = null)
         {            
             System.Diagnostics.Debug.Assert(Material != null);
             System.Diagnostics.Debug.Assert(PhysicObject != null);            
 
             this.Material = Material;
             this.Modelo = Modelo;
-            this.PhysicObject = PhysicObject;            
+            this.PhysicObject = PhysicObject;
+            this.Name = name;
             IObjectAttachment = new List<IObjectAttachment>();
-            Name = null;
+
+            if (this.Modelo == null && this.Material != null)
+            {
+                Material.IsVisible = false;
+                Material.CanAppearOfReflectionRefraction = false;
+                Material.CanCreateShadow = false;
+            }
+
         }
 
         /// <summary>
@@ -168,8 +177,16 @@ namespace PloobsEngine.SceneControl
         {
             set
             {
-                lock(modelLock)
+                lock (modelLock)
+                {
                     this.modelo = value;
+                    if (modelo == null)
+                    {
+                        Material.IsVisible = false;
+                        Material.CanAppearOfReflectionRefraction = false;
+                        Material.CanCreateShadow = false;
+                    }                    
+                }
             }
             get
             {
@@ -188,6 +205,8 @@ namespace PloobsEngine.SceneControl
         {
             set
             {
+                System.Diagnostics.Debug.Assert(value!=null);
+
                 lock (materialLock) 
                     this.material = value;
             }
