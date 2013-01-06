@@ -74,7 +74,7 @@ namespace PloobsEngine.Cameras
             : this(0, 0, new Vector3(0, 100, 150), graphicInfo)
         {            
         }
-#if WINDOWS
+#if WINDOWS || WINRT
         /// <summary>
         /// Initializes a new instance of the <see cref="CameraFirstPerson"/> class.
         /// </summary>
@@ -225,7 +225,7 @@ namespace PloobsEngine.Cameras
             _aspectRatio = graphicInfo.Viewport.AspectRatio;
             graphicInfo.OnGraphicInfoChange+=new EventHandler(graphicInfo_OnGraphicInfoChange);
             UpdateViewMatrix();
-#if WINDOWS
+#if WINDOWS || WINRT
             Mouse.SetPosition(graphicInfo.Viewport.Width / 2, graphicInfo.Viewport.Height / 2);
             originalMouseState = Mouse.GetState();
 #endif
@@ -246,7 +246,7 @@ namespace PloobsEngine.Cameras
 
         private Matrix viewProjection;
         private Vector3 _position = Vector3.Right;
-#if WINDOWS
+#if WINDOWS || WINRT
         private bool useMouse = true;
         private MouseState originalMouseState;
 #endif
@@ -264,8 +264,13 @@ namespace PloobsEngine.Cameras
         private BoundingFrustum _frustrum;
         private float leftrightRot;
         private float updownRot;
+#if !WINRT
         private float rotationSpeed = 0.005f;        
+#else
+        private float rotationSpeed = 0.0005f;        
+#endif
         private float sensibility = 0.5f;        
+
         private float moveSpeed = 1f;
 #if WINDOWS_PHONE && !WINRT
         Microsoft.Devices.Sensors.Accelerometer accelSensor;
@@ -564,9 +569,12 @@ namespace PloobsEngine.Cameras
         private void UpdateCamera(MouseState currentMouseState, KeyboardState keyState)
         {
             _hasmoved = false;
-#if WINDOWS
+#if WINDOWS || WINRT
+
+            #if !WINRT
             if (currentMouseState != originalMouseState && useMouse == true)
             {
+
                 float xDifference = currentMouseState.X - originalMouseState.X;
                 float yDifference = currentMouseState.Y - originalMouseState.Y;
                 leftrightRot -= rotationSpeed * xDifference;
@@ -575,6 +583,18 @@ namespace PloobsEngine.Cameras
                 UpdateViewMatrix();
                 _hasmoved = true;
             }
+#else 
+            if (currentMouseState != originalMouseState && useMouse == true)
+            {                
+                float xDifference = currentMouseState.X - originalMouseState.X ;
+                float yDifference = currentMouseState.Y - originalMouseState.Y ;
+                leftrightRot -= rotationSpeed * xDifference;
+                updownRot -= rotationSpeed * yDifference;
+                originalMouseState = currentMouseState;
+                UpdateViewMatrix();
+                _hasmoved = true;
+            }
+#endif
 
             if (keyState.IsKeyDown(Keys.Up) || keyState.IsKeyDown(Keys.W))      //Forward
             {
@@ -633,7 +653,7 @@ namespace PloobsEngine.Cameras
                 }
             }
 
-        #endif
+#endif
 
         }
 
