@@ -1,9 +1,0 @@
-﻿<Application
-	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	x:Class="EntitySystemGUI.App"
-	StartupUri="MainWindow.xaml">
-    <Application.Resources>
-        <ResourceDictionary Source="Templates/BasicShape.xaml"/>
-    </Application.Resources>
-</Application>
