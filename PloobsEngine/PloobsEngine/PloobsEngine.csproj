@@ -641,6 +641,7 @@
     <Compile Include="Utils\Math\Circle.cs" />
     <Compile Include="Utils\PolygonUnion.cs" />
     <Compile Include="Utils\Primitives.cs" />
+    <Compile Include="Utils\StageVariable.cs" />
     <Compile Include="Utils\RPN\Calculator.cs" />
     <Compile Include="Utils\RPN\InfixTransformer.cs" />
     <Compile Include="Utils\RPN\TokenHelper.cs" />
