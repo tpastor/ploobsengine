@@ -554,6 +554,7 @@
     <Compile Include="Utils\RPN\InfixTransformer.cs" />
     <Compile Include="Utils\RPN\TokenHelper.cs" />
     <Compile Include="Utils\ShaderUtil\ShaderUtils.cs" />
+    <Compile Include="Utils\StageVariable.cs" />
     <Compile Include="Utils\TextureCreator.cs" />
     <Compile Include="Trigger\BepuTrigger.cs" />
     <Compile Include="Trigger\GenericEventHandler.cs" />
