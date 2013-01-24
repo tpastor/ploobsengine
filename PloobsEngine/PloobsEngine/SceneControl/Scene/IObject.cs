@@ -92,8 +92,10 @@ namespace PloobsEngine.SceneControl
             if (this.Modelo == null && this.Material != null)
             {
                 Material.IsVisible = false;
+#if !WINDOWS_PHONE && !REACH
                 Material.CanAppearOfReflectionRefraction = false;
                 Material.CanCreateShadow = false;
+#endif
             }
 
         }
@@ -183,8 +185,10 @@ namespace PloobsEngine.SceneControl
                     if (modelo == null)
                     {
                         Material.IsVisible = false;
+#if !WINDOWS_PHONE && !REACH
                         Material.CanAppearOfReflectionRefraction = false;
                         Material.CanCreateShadow = false;
+#endif
                     }                    
                 }
             }
