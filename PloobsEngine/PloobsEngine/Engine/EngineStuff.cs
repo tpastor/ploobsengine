@@ -1356,7 +1356,7 @@ namespace PloobsEngine.Engine
         /// <returns></returns>
         public static InitialEngineDescription Default()
         {
-            return new InitialEngineDescription("PloobsEngine",800,600,false,GraphicsProfile.Reach,false,false,true,null,false,false);
+            return new InitialEngineDescription("PloobsEngine",800,600,GraphicsProfile.Reach,false,false,true,null,false,false);
 
         }
         /// <summary>
@@ -1364,8 +1364,7 @@ namespace PloobsEngine.Engine
         /// </summary>
         /// <param name="ScreenName">Name of the screen.</param>
         /// <param name="BackBufferWidth">Width of the back buffer.</param>
-        /// <param name="BackBufferHeight">Height of the back buffer.</param>
-        /// <param name="isFullScreen">if set to <c>true</c> [is full screen].</param>
+        /// <param name="BackBufferHeight">Height of the back buffer.</param>        
         /// <param name="graphicsProfile">The graphics profile.</param>
         /// <param name="useVerticalSyncronization">if set to <c>true</c> [use vertical syncronization].</param>
         /// <param name="isMultiSampling">if set to <c>true</c> [is multi sampling].</param>
@@ -1373,17 +1372,15 @@ namespace PloobsEngine.Engine
         /// <param name="logger">The logger.</param>
         /// <param name="useMipMapWhenPossible">if set to <c>true</c> [use mip map when possible].</param>
         /// <param name="supportedOrientation">The supported orientation.</param>
-        internal InitialEngineDescription(String ScreenName = "PloobsEngine", int BackBufferWidth = 800, int BackBufferHeight = 600, bool isFullScreen = false, GraphicsProfile graphicsProfile = GraphicsProfile.Reach, bool useVerticalSyncronization = false, bool isMultiSampling = false, bool isFixedGameTime = false, ILogger logger = null, bool useMipMapWhenPossible = false, bool UseAnisotropicFiltering = false, DisplayOrientation supportedOrientation = DisplayOrientation.Default | DisplayOrientation.Portrait | DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight)
+        internal InitialEngineDescription(String ScreenName = "PloobsEngine", int BackBufferWidth = 800, int BackBufferHeight = 600, GraphicsProfile graphicsProfile = GraphicsProfile.Reach, bool useVerticalSyncronization = false, bool isMultiSampling = false, bool isFixedGameTime = false, ILogger logger = null, bool useMipMapWhenPossible = false, bool UseAnisotropicFiltering = false, DisplayOrientation supportedOrientation = DisplayOrientation.Default | DisplayOrientation.Portrait | DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight)
         {            
             this.UseVerticalSyncronization = useVerticalSyncronization;
             this.BackBufferHeight = BackBufferHeight;
             this.BackBufferWidth = BackBufferWidth;
             this.Logger = logger;
             this.isMultiSampling = isMultiSampling;
-            this.GraphicsProfile = graphicsProfile;
-            this.isFullScreen = isFullScreen;
-            this.isFixedGameTime = isFixedGameTime;
-            
+            this.GraphicsProfile = graphicsProfile;            
+            this.isFixedGameTime = isFixedGameTime;            
             OnExit = null;
             onExitHandler = null;
             this.ScreenName = ScreenName;
@@ -1446,12 +1443,7 @@ namespace PloobsEngine.Engine
         ///     and Windows Phone.
         /// </summary>
         internal GraphicsProfile GraphicsProfile;
-
-        /// <summary>
-        /// FullScreen Mode ?
-        /// </summary>
-        public bool isFullScreen;
-
+                
         /// <summary>
         /// If the engine should force 60 fps
         /// </summary>
@@ -1522,12 +1514,16 @@ namespace PloobsEngine.Engine
             set { contentManager = value; }
         }
 
+        public EngineStuff()
+        {
+        }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="EngineStuff"/> class.
         /// </summary>
         /// <param name="initialDescription">The initial description.</param>
         /// <param name="LoadScreen">The load screen function.</param>
-        public EngineStuff(ref InitialEngineDescription initialDescription, LoadScreen LoadScreen)
+        public void Initialize(ref InitialEngineDescription initialDescription, LoadScreen LoadScreen)
         {            
             System.Diagnostics.Debug.Assert(LoadScreen != null);
             this.LoadScreen = LoadScreen;
@@ -1545,8 +1541,7 @@ namespace PloobsEngine.Engine
             this.Window.Title = initialDescription.ScreenName;
             this.Content.RootDirectory = "Content";
             graphics = new GraphicsDeviceManager(this);
-            graphics.GraphicsProfile = initialDescription.GraphicsProfile;
-            graphics.IsFullScreen = initialDescription.isFullScreen;
+            graphics.GraphicsProfile = initialDescription.GraphicsProfile;            
             graphics.SynchronizeWithVerticalRetrace = initialDescription.UseVerticalSyncronization;
             graphics.PreferMultiSampling = initialDescription.isMultiSampling;
             graphics.PreferredBackBufferHeight = initialDescription.BackBufferHeight;
@@ -1586,7 +1581,6 @@ namespace PloobsEngine.Engine
             if (ActiveLogger.logger != null)
                 ActiveLogger.logger.ScreenManager = ScreenManager;
             graphics.GraphicsProfile = initialDescription.GraphicsProfile;
-            graphics.IsFullScreen = initialDescription.isFullScreen;
             graphics.SynchronizeWithVerticalRetrace = initialDescription.UseVerticalSyncronization;
             graphics.PreferMultiSampling = initialDescription.isMultiSampling;
             graphics.PreferredBackBufferHeight = initialDescription.BackBufferHeight;
@@ -1769,7 +1763,7 @@ namespace PloobsEngine.Engine
         /// <param name="gameTime">Time passed since the last call to Update.</param>
         protected override void Update(GameTime gameTime)
         {
-            if ( (initialDescription.isFullScreen == true && this.IsActive) || initialDescription.isFullScreen == false)
+            if (this.IsActive)
             {
                 CommandProcessor.getCommandProcessor().ProcessCommands();
                 ComponentManager.Update(gameTime);
@@ -1786,7 +1780,7 @@ namespace PloobsEngine.Engine
         /// <param name="gameTime">Time passed since the last call to Draw.</param>
         protected override void Draw(GameTime gameTime)
         {
-            if ((initialDescription.isFullScreen == true && this.IsActive) || initialDescription.isFullScreen == false)
+            if (this.IsActive)
             {
                 ScreenManager.Draw(gameTime);             
             }

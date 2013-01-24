@@ -17,16 +17,15 @@ namespace PloobsWindowsStore
         /// </summary>
         static void Main()
         {
-            var factory = new MonoGame.Framework.GameFrameworkViewSourceByDelegate<EngineStuff>(GameFactory);
+            var factory = new MonoGame.Framework.GameFrameworkViewSource<EngineStuff>(GameFactory);
             Windows.ApplicationModel.Core.CoreApplication.Run(factory);
         }
 
-        static EngineStuff GameFactory(CoreApplicationView voceview, IActivatedEventArgs args)
+        static void GameFactory( EngineStuff engine, IActivatedEventArgs args)
         {
             InitialEngineDescription desc = InitialEngineDescription.Default();
             desc.useMipMapWhenPossible = true;
-            EngineStuff engine = new EngineStuff(ref desc, LoadScreen);
-            return engine;
+            engine.Initialize(ref desc, LoadScreen);            
         }
 
         static void LoadScreen(ScreenManager manager)
