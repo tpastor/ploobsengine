@@ -137,37 +137,37 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="BEPUphysics">
-      <HintPath>..\PloobsEngine\PloobsEngine\Dlls\MonoGameWindows8\Debug\BEPUphysics.dll</HintPath>
+      <HintPath>..\PloobsEngine\PloobsEngine\Dlls\MonoGameWindows8\$(Configuration)\BEPUphysics.dll</HintPath>
     </Reference>
     <Reference Include="FarseerPhysicsXNA">
-      <HintPath>..\PloobsEngine\PloobsEngine\Dlls\MonoGameWindows8\Debug\FarseerPhysicsXNA.dll</HintPath>
+      <HintPath>..\PloobsEngine\PloobsEngine\Dlls\MonoGameWindows8\$(Configuration)\FarseerPhysicsXNA.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Framework">
-      <HintPath>..\PloobsEngine\PloobsEngine\Dlls\MonoGameWindows8\Debug\MonoGame.Framework.dll</HintPath>
+      <HintPath>..\PloobsEngine\PloobsEngine\Dlls\MonoGameWindows8\$(Configuration)\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX">
-      <HintPath>..\PloobsEngine\PloobsEngine\Dlls\MonoGameWindows8\Debug\SharpDX.dll</HintPath>
+      <HintPath>..\PloobsEngine\PloobsEngine\Dlls\MonoGameWindows8\$(Configuration)\SharpDX.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX.Direct2D1">
-      <HintPath>..\PloobsEngine\PloobsEngine\Dlls\MonoGameWindows8\Debug\SharpDX.Direct2D1.dll</HintPath>
+      <HintPath>..\PloobsEngine\PloobsEngine\Dlls\MonoGameWindows8\$(Configuration)\SharpDX.Direct2D1.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX.Direct3D11">
-      <HintPath>..\PloobsEngine\PloobsEngine\Dlls\MonoGameWindows8\Debug\SharpDX.Direct3D11.dll</HintPath>
+      <HintPath>..\PloobsEngine\PloobsEngine\Dlls\MonoGameWindows8\$(Configuration)\SharpDX.Direct3D11.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX.DXGI">
-      <HintPath>..\PloobsEngine\PloobsEngine\Dlls\MonoGameWindows8\Debug\SharpDX.DXGI.dll</HintPath>
+      <HintPath>..\PloobsEngine\PloobsEngine\Dlls\MonoGameWindows8\$(Configuration)\SharpDX.DXGI.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX.MediaFoundation">
-      <HintPath>..\PloobsEngine\PloobsEngine\Dlls\MonoGameWindows8\Debug\SharpDX.MediaFoundation.dll</HintPath>
+      <HintPath>..\PloobsEngine\PloobsEngine\Dlls\MonoGameWindows8\$(Configuration)\SharpDX.MediaFoundation.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX.XAudio2">
-      <HintPath>..\PloobsEngine\PloobsEngine\Dlls\MonoGameWindows8\Debug\SharpDX.XAudio2.dll</HintPath>
+      <HintPath>..\PloobsEngine\PloobsEngine\Dlls\MonoGameWindows8\$(Configuration)\SharpDX.XAudio2.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX.XInput">
-      <HintPath>..\PloobsEngine\PloobsEngine\Dlls\MonoGameWindows8\Debug\SharpDX.XInput.dll</HintPath>
+      <HintPath>..\PloobsEngine\PloobsEngine\Dlls\MonoGameWindows8\$(Configuration)\SharpDX.XInput.dll</HintPath>
     </Reference>
     <Reference Include="XNAnimation">
-      <HintPath>..\PloobsEngine\PloobsEngine\Dlls\MonoGameWindows8\Debug\XNAnimation.dll</HintPath>
+      <HintPath>..\PloobsEngine\PloobsEngine\Dlls\MonoGameWindows8\$(Configuration)\XNAnimation.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
