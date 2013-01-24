@@ -47,7 +47,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\x86\Release</OutputPath>
-    <DefineConstants>TRACE;WINDOWS</DefineConstants>
+    <DefineConstants>WINDOWS_PHONE,REACH,MONO;WINRT</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoStdLib>true</NoStdLib>
@@ -61,7 +61,7 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
-  <ItemGroup>  
+  <ItemGroup>
     <Reference Include="BEPUphysics, Version=1.2.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Dlls\MonoGameWindows8\$(Configuration)\BEPUphysics.dll</HintPath>
@@ -582,7 +582,7 @@
     <Compile Include="Utils\WeakReference\EnumerableExtensions.cs" />
     <Compile Include="Utils\WeakReference\WeakList.cs" />
     <Compile Include="Utils\WeakReference\WeakReference.cs" />
-  </ItemGroup>  
+  </ItemGroup>
   <ItemGroup>
     <None Include="PloobsEngine.licenseheader" />
     <None Include="Resources\ConsoleFont.spritefont" />
