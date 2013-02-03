@@ -567,10 +567,22 @@ namespace PloobsEngine.Physics
         /// <param name="col">The col.</param>
         public override void DetectCollisions(IPhysicObject po,List<IPhysicObject> col)
         {
+            System.Diagnostics.Debug.Assert(col!=null);
+            System.Diagnostics.Debug.Assert(po != null);
             col.Clear();
-            BepuEntityObject bo = (BepuEntityObject)po;            
-            
-            foreach (var item in bo.Entity.CollisionInformation.OverlappedCollidables) 
+
+            CollidableCollection CollidableCollection;
+
+            if (po is TriangleMeshObject)
+            {
+                CollidableCollection = (po as TriangleMeshObject).StaticMesh.OverlappedCollidables;
+            }            
+            else
+            {
+                CollidableCollection = (po as BepuEntityObject).Entity.CollisionInformation.OverlappedCollidables;
+            }
+
+            foreach (var item in CollidableCollection) 
 	        {
                 IPhysicObject candidate = BepuEntityObject.RecoverIPhysicObjectFromCollidable(item);
                 if(candidate!=null)
