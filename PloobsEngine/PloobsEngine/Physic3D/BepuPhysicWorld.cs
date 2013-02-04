@@ -538,7 +538,7 @@ namespace PloobsEngine.Physics
 
 
         /// <summary>
-        /// Raycast
+        /// Raycast (Closest Result)
         /// </summary>
         /// <param name="raio">The raio.</param>
         /// <param name="filter"></param>
@@ -559,6 +559,33 @@ namespace PloobsEngine.Physics
             return null;            
         }
 
+
+        /// <summary>
+        /// Raycast (Multiples Results)
+        /// </summary>
+        /// <param name="raio">The raio.</param>
+        /// <param name="filter">The filter.</param>
+        /// <param name="maxDistance">The max distance.</param>
+        /// <returns></returns>
+        public List<SegmentInterceptInfo> SegmentIntersectMultiple(Ray raio, Func<IPhysicObject, bool> filter, float maxDistance)
+        {
+            List<SegmentInterceptInfo> rp = new List<SegmentInterceptInfo>();
+
+            List<RayCastResult> result = new List<RayCastResult>();
+            if (space.RayCast(raio, maxDistance, (a) => { return filter(BepuEntityObject.RecoverIPhysicObjectFromBroadPhase(a)); }, result))
+            {
+                for (int i = 0; i < result.Count; i++)
+                {
+                    SegmentInterceptInfo resp = new SegmentInterceptInfo();
+                    resp.Distance = Vector3.Distance(result[i].HitData.Location, raio.Position);
+                    resp.ImpactNormal = result[i].HitData.Normal;
+                    resp.ImpactPosition = result[i].HitData.Location;
+                    resp.PhysicObject = BepuEntityObject.RecoverIPhysicObjectFromBroadPhase(result[i].HitObject);
+                    rp.Add(resp);
+                }                
+            }
+            return rp;
+        }
 
         /// <summary>
         /// Detects the collisions.
