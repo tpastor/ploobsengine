@@ -53,6 +53,9 @@ namespace PloobsEngine.SceneControl
         /// </summary>
         public readonly PriorityQueueB<IPostEffect> PostEffects = new PriorityQueueB<IPostEffect>(new PostEffectComparer());
 
+        protected GraphicInfo ginfo;
+        protected GraphicFactory factory;
+
         /// <summary>
         /// Adds one post effect.
         /// </summary>
@@ -65,7 +68,9 @@ namespace PloobsEngine.SceneControl
                 ActiveLogger.LogMessage("Trying to add a wrong post effect for this Render Technich, pls check if the PostEffectType of the IPostEffect is All or " + PostEffectType + ", The engine is ignoring this operation", LogLevel.RecoverableError);
             }
             else
-            {                
+            {
+                if (ginfo != null && factory != null)
+                    postEffect.Init(ginfo, factory);
                 PostEffects.Push(postEffect);
                 postEffect.tech = this;
 
@@ -133,14 +138,15 @@ namespace PloobsEngine.SceneControl
         protected virtual void AfterLoadContent(IContentManager manager, GraphicInfo ginfo, GraphicFactory factory) { }
         internal void iAfterLoadContent(IContentManager manager, GraphicInfo ginfo, GraphicFactory factory)
         {
-
             for (int i = 0; i < PostEffects.Count; i++)			
             {
-                PostEffects[i].Init(ginfo,factory);
+                PostEffects[i].Init(ginfo,factory);                
             }
 
             AfterLoadContent(manager,ginfo,factory);
-            
+
+            this.ginfo = ginfo;
+            this.factory = factory;            
         }
         /// <summary>
         /// Gets the name of the technic.
