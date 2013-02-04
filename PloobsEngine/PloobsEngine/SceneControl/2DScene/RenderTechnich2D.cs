@@ -46,6 +46,9 @@ namespace PloobsEngine.SceneControl._2DScene
 
         protected PostEffectType PostEffectType;
 
+        protected GraphicInfo ginfo;
+        protected GraphicFactory factory;
+
         /// <summary>
         /// List off all PostEffects
         /// </summary>
@@ -63,7 +66,9 @@ namespace PloobsEngine.SceneControl._2DScene
                 ActiveLogger.LogMessage("Trying to add a wrong post effect for this Render Technich, pls check if the PostEffectType of the IPostEffect is All or " + PostEffectType + ", The engine is ignoring this operation", LogLevel.RecoverableError);
             }
             else
-            {                
+            {
+                if (ginfo != null && factory != null)
+                    postEffect.Init(ginfo, factory);
                 PostEffects.Push(postEffect);
                 postEffect.tech = this;
 
@@ -131,12 +136,14 @@ namespace PloobsEngine.SceneControl._2DScene
         protected virtual void AfterLoadContent(IContentManager manager, GraphicInfo ginfo, GraphicFactory factory) { }
         internal void iAfterLoadContent(IContentManager manager, GraphicInfo ginfo, GraphicFactory factory)
         {
-
             for (int i = 0; i < PostEffects.Count; i++)			
             {
-                PostEffects[i].Init(ginfo,factory);
+                PostEffects[i].Init(ginfo,factory);                
             }
             AfterLoadContent(manager,ginfo,factory);
+
+            this.ginfo = ginfo;
+            this.factory = factory;            
             
         }
         /// <summary>

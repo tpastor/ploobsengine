@@ -134,15 +134,16 @@ namespace PloobsEngine.SceneControl
         }
 
         protected virtual void InitWorld()
+        {            
+        }
+        internal void iInitWorld()
         {
             if (particleManager != null)
             {
                 particleManager.GraphicInfo = graphicsInfo;
                 particleManager.GraphicFactory = graphicFactory;
             }
-        }
-        internal void iInitWorld()
-        {
+
             InitWorld();
         }
 
@@ -232,7 +233,7 @@ namespace PloobsEngine.SceneControl
         {
             if (obj == null)
             {
-                ActiveLogger.LogMessage("Cant remove with null obj", LogLevel.RecoverableError);
+                ActiveLogger.LogMessage("Cant remove a null obj", LogLevel.RecoverableError);
                 return;
             }
             obj.RemoveThisObject();
@@ -364,7 +365,7 @@ namespace PloobsEngine.SceneControl
             bool resp = Lights.Remove(light);
             if (!resp)
             {
-                ActiveLogger.LogMessage("light not found: " + light.Name, LogLevel.Warning);
+                ActiveLogger.LogMessage("Light not found: " + light.Name, LogLevel.Warning);
             }
         }
         /// <summary>
