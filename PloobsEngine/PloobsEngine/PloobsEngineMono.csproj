@@ -681,6 +681,7 @@
     <EmbeddedResource Include="ResourcesPC.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourcesPC.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
