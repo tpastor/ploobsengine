@@ -131,6 +131,7 @@ namespace PloobsEngine.SceneControl._2DScene
         {
             System.Diagnostics.Debug.Assert(Light != null);
             Light.RenderTarget = graphicsFactory.CreateRenderTarget(Light.baseSize, Light.baseSize);
+            Light.RenderTargetNS = graphicsFactory.CreateRenderTarget(Light.baseSize, Light.baseSize);
             Lights2D.Add(Light);
         }
 
@@ -140,7 +141,10 @@ namespace PloobsEngine.SceneControl._2DScene
         /// <param name="Light">The light.</param>
         public void RemoveLight(PloobsEngine.Light2D.Light2D Light)
         {
+            Light.RenderTarget.Dispose();
             Light.RenderTarget = null;
+            Light.RenderTargetNS.Dispose();
+            Light.RenderTargetNS = null;
             Lights2D.Remove(Light);
         }
 
