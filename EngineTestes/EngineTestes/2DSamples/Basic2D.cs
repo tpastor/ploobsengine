@@ -125,12 +125,12 @@ namespace EngineTestes._2DSamples
             }
 
             {
-                PointLight2D l = new PointLight2D(new Vector2(-GraphicInfo.BackBufferWidth / 4, -GraphicInfo.BackBufferWidth / 4), Color.Red, 1);
+                PointLight2D l = new PointLight2D(new Vector2(-GraphicInfo.BackBufferWidth / 4, -GraphicInfo.BackBufferWidth / 4), Color.White, 1f,ShadowmapSize.Size512);
                 this.World.AddLight(l);
             }
 
             {
-                SpotLight2D l = new SpotLight2D(new Vector2(+GraphicInfo.BackBufferWidth / 4, -GraphicInfo.BackBufferWidth / 4), Color.Blue, new Vector2(0, 1), MathHelper.ToRadians(45));
+                SpotLight2D l = new SpotLight2D(new Vector2(+GraphicInfo.BackBufferWidth / 4, -GraphicInfo.BackBufferWidth / 4), Color.Green, new Vector2(0, 1), MathHelper.ToRadians(45), 0.7f);
                 this.World.AddLight(l);
             }
             
