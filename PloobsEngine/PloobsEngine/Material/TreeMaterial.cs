@@ -17,7 +17,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
-#if !WINDOWS_PHONE && !REACH && !XBOX360
+#if !WINDOWS_PHONE && !REACH && !XBOX360 && !MONO
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -183,7 +183,7 @@ namespace PloobsEngine.Material
             animator.Animate(tree.Skeleton, tree.AnimationState, gametime);            
         }
 
-        #endregion
+#endregion
 
 #region ISerializable Members
 
@@ -192,7 +192,7 @@ namespace PloobsEngine.Material
             
         }
 
-        #endregion
+#endregion
 
 #region IMaterial Members
 
@@ -203,7 +203,7 @@ namespace PloobsEngine.Material
             set;
         }
 
-        #endregion
+#endregion
 
 #region IMaterial Members
 
@@ -220,7 +220,7 @@ namespace PloobsEngine.Material
             set;
         }
 
-        #endregion
+#endregion
     }
 
         

@@ -28,7 +28,7 @@ namespace PloobsEngineTest
 
         static void LoadScreen(ScreenManager manager)
         {
-            manager.AddScreen(new FirstScreen());
+            manager.AddScreen(new FirstScreenDeferred());
          
         }
     }

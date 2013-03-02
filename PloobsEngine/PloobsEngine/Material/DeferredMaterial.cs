@@ -51,9 +51,12 @@ namespace PloobsEngine.Material
         /// Defaults Deferred Material with DeferredNormalShader
         /// </summary>
         /// <returns></returns>
-        public static DeferredMaterial DefaultDeferredMaterial()
+        public static DeferredMaterial DefaultDeferredMaterial
         {
-            return new DeferredMaterial(new DeferredNormalShader());
+            get
+            {
+                return new DeferredMaterial(new DeferredNormalShader());
+            }
         }
 
         

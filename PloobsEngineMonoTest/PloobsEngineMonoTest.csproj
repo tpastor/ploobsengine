@@ -80,6 +80,7 @@
     <Compile Include="AI\Steering\SteerAtachment.cs" />
     <Compile Include="AI\Steering\SteerScreen.cs" />
     <Compile Include="CharacterControllerInput.cs" />
+    <Compile Include="FirstScreenDeferred.cs" />
     <Compile Include="FirstScreen.cs" />
     <Compile Include="BallThrowBepu.cs" />
     <Compile Include="FullCharacterControllerInput.cs" />

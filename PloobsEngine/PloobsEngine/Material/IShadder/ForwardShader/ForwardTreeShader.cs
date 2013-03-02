@@ -17,7 +17,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion 
-#if !WINDOWS_PHONE && !REACH && !XBOX360
+#if !WINDOWS_PHONE && !REACH && !XBOX360 && !MONO
 using System;
 using System.Collections.Generic;
 using System.Linq;

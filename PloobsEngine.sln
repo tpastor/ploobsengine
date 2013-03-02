@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PloobsEngine", "PloobsEngine\PloobsEngine\PloobsEngine.csproj", "{1D050978-A350-47A8-B495-090DF10242B2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PloobsEngineContent", "PloobsEngine\PloobsEngineContent\PloobsEngineContent.contentproj", "{7ED0C250-A783-40B2-912E-4A4C222C4CE5}"
@@ -22,6 +22,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xbox 360 Copy (2) of PloobsEngine", "PloobsEngine\PloobsEngine\Xbox 360 Copy (2) of PloobsEngine.csproj", "{6A255D79-A0C3-40B5-A8F7-055FA8547CE8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PloobsEngineMono", "PloobsEngine\PloobsEngine\PloobsEngineMono.csproj", "{73D8A9CD-9BA9-4101-9B8D-0CCF0AE1EFAF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1D050978-A350-47A8-B495-090DF10242B2} = {1D050978-A350-47A8-B495-090DF10242B2}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PloobsEngineContentMono", "PloobsEngine\PloobsEngineContent\PloobsEngineContentMono.contentproj", "{3ED0C250-A783-40B2-912E-4A4C222C4CE5}"
 EndProject
