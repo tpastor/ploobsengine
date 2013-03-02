@@ -81,6 +81,9 @@ namespace PloobsEngine.SceneControl._2DScene
         
         Engine.GraphicInfo ginfo;
 #if !WINDOWS_PHONE && !REACH        
+
+        BlendState blend;
+
         /// <summary>
         /// Default
         /// Color.Gray
@@ -96,8 +99,18 @@ namespace PloobsEngine.SceneControl._2DScene
           get { return useLights; }
           set { useLights = value; }
         }
+
+        public bool UseShadow
+        {
+            get;
+            set;
+        }
+
         BlendState blendState;
         RenderTarget2D screenShadows;
+        RenderTarget2D screenShadowsNS;
+        RenderTarget2D screenShadowsTESTE;
+        RenderTarget2D lalalala;
         PloobsEngine.Light2D.ShadowmapResolver shadowmapResolver;        
 
         public Basic2DRenderTechnich() : base(PostEffectType.Forward2D)
@@ -105,6 +118,7 @@ namespace PloobsEngine.SceneControl._2DScene
             MaterialProcessors.Add(typeof(Basic2DTextureMaterial), new Basic2DTextureMaterialProcessor());
             UseLayerInPreDraw = false;
             UseLayerInDraw = false;
+            UseShadow = true;
         }
 #else
         public Basic2DRenderTechnich()
@@ -122,23 +136,38 @@ namespace PloobsEngine.SceneControl._2DScene
         public bool UsePostProcessing = false;
         RenderTarget2D renderTarget;
         RenderTarget2D postEffectTarget;
+        RenderTarget2D postEffectTargetScene;
 
         protected override void AfterLoadContent(IContentManager manager, Engine.GraphicInfo ginfo, Engine.GraphicFactory factory)
         {
             this.ginfo = ginfo;
             this.factory = factory;
 #if !WINDOWS_PHONE && !REACH
+            blend = new BlendState();
+            blend.ColorBlendFunction = BlendFunction.Add;
+            blend.ColorSourceBlend = Blend.DestinationColor;
+            blend.ColorDestinationBlend = Blend.Zero;
+
             blendState = new BlendState();
             blendState.ColorSourceBlend = Blend.DestinationColor;
-            blendState.ColorDestinationBlend = Blend.SourceColor;            
-            shadowmapResolver = new PloobsEngine.Light2D.ShadowmapResolver(factory,new QuadRender(factory.device), PloobsEngine.Light2D.ShadowmapSize.Size512, PloobsEngine.Light2D.ShadowmapSize.Size512);
-            screenShadows = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);                        
+            blendState.ColorDestinationBlend = Blend.SourceColor;
+
+            shadowmapResolver = new PloobsEngine.Light2D.ShadowmapResolver(factory, new QuadRender(factory.device), PloobsEngine.Light2D.ShadowmapSize.Size512, PloobsEngine.Light2D.ShadowmapSize.Size512);
+            if (UseShadow)
+            {                
+                screenShadowsNS = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
+                screenShadowsTESTE = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
+                lalalala = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
+            }
+            screenShadows = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
+            renderTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);            
+            
 #endif
             this.ginfo.OnGraphicInfoChange+=new EventHandler(ginfo_OnGraphicInfoChange); 
             if (UsePostProcessing)
-            {
-                renderTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
+            {                
                 postEffectTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
+                postEffectTargetScene = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
             }
             base.AfterLoadContent(manager, ginfo, factory);
         }
@@ -146,13 +175,31 @@ namespace PloobsEngine.SceneControl._2DScene
         void ginfo_OnGraphicInfoChange(object sender, EventArgs e)
         {
             GraphicInfo ginfo = (GraphicInfo)sender;
-            if (renderTarget != null && postEffectTarget != null)
-            {
-                renderTarget.Dispose();
+            if (postEffectTarget != null)
+            {                
                 postEffectTarget.Dispose();
-                renderTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
+                postEffectTargetScene.Dispose();                
                 postEffectTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
+                postEffectTargetScene = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
             }
+
+#if !WINDOWS_PHONE && !REACH
+            if (UseShadow)
+            {                
+                screenShadowsNS.Dispose();
+                screenShadowsNS = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
+                screenShadowsTESTE.Dispose();
+                screenShadowsTESTE = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
+                lalalala.Dispose();
+                lalalala = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
+                
+            }
+
+            screenShadows.Dispose();
+            screenShadows = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight);
+            renderTarget.Dispose();
+            renderTarget = factory.CreateRenderTarget(ginfo.BackBufferWidth, ginfo.BackBufferHeight, SurfaceFormat.Color, ginfo.UseMipMap, DepthFormat.Depth24Stencil8, ginfo.MultiSample, RenderTargetUsage.DiscardContents);
+#endif
         }
 
 
@@ -183,87 +230,50 @@ namespace PloobsEngine.SceneControl._2DScene
                         {
                             if (iobj.PhysicObject.Enabled == true)
                             {
-                                iobj.Material.Draw(gameTime, iobj, render);
+                                iobj.Material.PreDrawnPhase(gameTime,world , iobj, render);
                             }
                         }
                     }
                 }
             }
 
-            if (UsePostProcessing)
-            {
-                render.PushRenderTarget(renderTarget);
-            }
-
 #if !WINDOWS_PHONE && !REACH
-        
-            if (UseLights)
-            {
-                BoundingFrustum bf = world.Camera2D.BoundingFrustrum;
-                foreach (var item in world.Lights2D)
-                {                    
-                    item.BeginDrawingShadowCasters(render);
-                    item.UpdateLight(world.Camera2D.View);
 
-                    foreach (var item2 in objs.Keys)
+                if (UseShadow)
+                {
+                    render.PushRenderTarget(screenShadowsTESTE);
+                    render.Clear(Color.Black);
+                    foreach (var item in objs.Keys)
                     {
-                        IMaterialProcessor MaterialProcessor = MaterialProcessors[item2];
+                        IMaterialProcessor MaterialProcessor = MaterialProcessors[item];
 
                         if (MaterialProcessor != null)
                         {
-                            MaterialProcessor.ProcessLightDraw(gameTime, render, world.Camera2D, objs[item2], Color.Black, item);
+                            MaterialProcessor.ProcessDraw(UseLayerInDraw, gameTime, render, world.Camera2D, objs[item]);
                         }
                         else
                         {
-                            foreach (var iobj in objs[item2])
+                            foreach (var iobj in objs[item])
                             {
                                 if (iobj.PhysicObject.Enabled == true)
                                 {
-                                    iobj.Material.LightDraw(gameTime, iobj, render, Color.Black, item);
+                                    iobj.Material.Draw(gameTime, iobj, render);
                                 }
                             }
                         }
                     }
+                    render.PopRenderTarget();
+                }           
 
-                    item.EndDrawingShadowCasters(render);   
-                    shadowmapResolver.ResolveShadows(item);
-
-                }
-
-                render.PushRenderTarget(screenShadows);
-                render.Clear(AmbientColor);
-
-                if (RenderBackGround != null)
-                    RenderBackGround(ginfo, render);
-
-                render.RenderBegin(Matrix.Identity, null, SpriteSortMode.Deferred, SamplerState.LinearClamp, BlendState.Additive);
-
-                foreach (var item in world.Lights2D)
-                {
-                    render.RenderTexture(item.RenderTarget, item.LightPosition - item.LightAreaSize * 0.5f, item.Color, 0, Vector2.Zero, 1);
-                }
-                render.RenderEnd();                                                
-
-                render.PopRenderTarget();
-
-                render.Clear(LightMaskAttenuation);
-
-                render.RenderBegin(Matrix.Identity, null, SpriteSortMode.Immediate, SamplerState.LinearClamp, blendState);
-                render.RenderTexture(screenShadows, Vector2.Zero, Color.White, 0, Vector2.Zero, 1);
-                render.RenderEnd();
-            }
-            else
-            {
-                render.Clear(AmbientColor);
-                if (RenderBackGround != null)
-                    RenderBackGround(ginfo, render);
-            }
             
-#else
-            render.Clear(AmbientColor);
-            if(RenderBackGround!=null)
-                RenderBackGround(ginfo,render);
-#endif
+            render.PushRenderTarget(renderTarget);
+            render.Clear(Color.Black);
+
+            if (RenderBackGround != null)
+            {
+                RenderBackGround(ginfo, render);
+            }
+
             if (UseDrawComponents)
                 render.RenderPreComponents(gameTime, ref view, ref projection);
 
@@ -299,6 +309,188 @@ namespace PloobsEngine.SceneControl._2DScene
             if (AfterDrawBeforePostEffects != null)
                 AfterDrawBeforePostEffects(ginfo, render);
 
+            render.PopRenderTarget();
+
+            if (UseLights)
+            {
+                BoundingFrustum bf = world.Camera2D.BoundingFrustrum;
+                foreach (var item in world.Lights2D)
+                {
+                    if (UseShadow)
+                    {                        
+                        item.BeginDrawingShadowCasters(render);
+                        item.UpdateLight(world.Camera2D.View);
+
+                        if (item.CasShadow)
+                        {
+                            foreach (var item2 in objs.Keys)
+                            {
+                                IMaterialProcessor MaterialProcessor = MaterialProcessors[item2];
+
+                                if (MaterialProcessor != null)
+                                {
+                                    MaterialProcessor.ProcessLightDraw(gameTime, render, world.Camera2D, objs[item2], Color.Black, item);
+                                }
+                                else
+                                {
+                                    foreach (var iobj in objs[item2])
+                                    {
+                                        if (iobj.PhysicObject.Enabled == true)
+                                        {
+                                            iobj.Material.LightDraw(gameTime, iobj, render, Color.Black, item);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            render.Clear(Color.Black);
+                        }
+                        item.EndDrawingShadowCasters(render);
+                        shadowmapResolver.ResolveShadows(item);
+                        shadowmapResolver.ResolveNoShadow(item);
+                    }
+                    else
+                    {
+                        item.UpdateLight(world.Camera2D.View);
+                        shadowmapResolver.ResolveNoShadow(item);
+                    }
+                }
+
+                render.PushRenderTarget(screenShadows);               
+                render.Clear(ambientColor);
+                render.RenderBegin(Matrix.Identity, null, SpriteSortMode.Deferred, SamplerState.LinearClamp, BlendState.Additive);
+
+                if (UseShadow)
+                {
+                    foreach (var item in world.Lights2D)
+                    {
+                        render.RenderTexture(item.RenderTarget, item.LightPosition - item.LightAreaSize * 0.5f, item.Color, 0, Vector2.Zero, 1);
+                    }
+                }
+                else
+                {
+                    foreach (var item in world.Lights2D)
+                    {
+                        render.RenderTexture(item.RenderTargetNS, item.LightPosition - item.LightAreaSize * 0.5f, item.Color, 0, Vector2.Zero, 1);
+                    }
+                }
+
+                render.RenderEnd();        
+                render.PopRenderTarget();
+
+                if (UseShadow)
+                {
+                    render.PushRenderTarget(screenShadowsNS);
+                    render.Clear(AmbientColor);
+                    render.RenderBegin(Matrix.Identity, null, SpriteSortMode.Deferred, SamplerState.LinearClamp, BlendState.Additive);
+                    foreach (var item in world.Lights2D)
+                    {
+                        render.RenderTexture(item.RenderTargetNS, item.LightPosition - item.LightAreaSize * 0.5f, item.Color, 0, Vector2.Zero, 1);
+                    }
+                    render.RenderEnd();
+                    render.PopRenderTarget();
+
+                    render.PushRenderTarget(lalalala);
+
+                    render.Clear(Color.Black);
+                    render.RenderBegin(Matrix.Identity, null, SpriteSortMode.Immediate, SamplerState.LinearClamp, BlendState.Opaque);
+                    render.RenderTexture(screenShadowsNS, Vector2.Zero, LightMaskAttenuation, 0, Vector2.Zero, 1);
+                    render.RenderEnd();
+
+                    render.RenderBegin(Matrix.Identity, null, SpriteSortMode.Immediate, SamplerState.LinearClamp, blend);
+                    render.RenderTexture(screenShadowsTESTE, Vector2.Zero, Color.White, 0, Vector2.Zero, 1);
+                    render.RenderEnd();
+
+                    render.PopRenderTarget();
+
+                    if (UsePostProcessing)
+                    {
+                        render.PushRenderTarget(postEffectTargetScene);
+                    }
+
+                    render.RenderBegin(Matrix.Identity, null, SpriteSortMode.Immediate, SamplerState.LinearClamp, BlendState.Opaque);
+                    render.RenderTexture(screenShadows, Vector2.Zero, Color.White, 0, Vector2.Zero, 1);
+                    render.RenderEnd();
+
+                    render.RenderBegin(Matrix.Identity, null, SpriteSortMode.Immediate, SamplerState.LinearClamp, blend);
+                    render.RenderTexture(renderTarget, Vector2.Zero, Color.White, 0, Vector2.Zero, 1);
+                    render.RenderEnd();
+
+                    render.RenderBegin(Matrix.Identity, null, SpriteSortMode.Immediate, SamplerState.LinearClamp, BlendState.Additive);                    
+                    render.RenderTexture(lalalala, Vector2.Zero, Color.White, 0, Vector2.Zero, 1);
+                    render.RenderEnd();
+                }
+                else
+                {
+                    if (UsePostProcessing)
+                    {
+                        render.PushRenderTarget(postEffectTargetScene);
+                    }
+
+                    render.RenderBegin(Matrix.Identity, null, SpriteSortMode.Immediate, SamplerState.LinearClamp, BlendState.Opaque);
+                    render.RenderTexture(screenShadows, Vector2.Zero, Color.White, 0, Vector2.Zero, 1);
+                    render.RenderEnd();
+
+                    render.RenderBegin(Matrix.Identity, null, SpriteSortMode.Immediate, SamplerState.LinearClamp, blend);
+                    render.RenderTexture(renderTarget, Vector2.Zero, Color.White, 0, Vector2.Zero, 1);
+                    render.RenderEnd();
+                }
+            }
+            else
+            {
+#endif
+                if (UsePostProcessing)
+                {
+                    render.PushRenderTarget(postEffectTargetScene);
+                }
+
+                render.Clear(AmbientColor);
+
+                if (RenderBackGround != null)
+                    RenderBackGround(ginfo, render);
+
+                if (UseDrawComponents)
+                    render.RenderPreComponents(gameTime, ref view, ref projection);
+
+                if (BeforeDraw != null)
+                    BeforeDraw(ginfo, render);
+
+                foreach (var item in objs.Keys)
+                {
+                    IMaterialProcessor MaterialProcessor = MaterialProcessors[item];
+
+                    if (MaterialProcessor != null)
+                    {
+                        MaterialProcessor.ProcessDraw(UseLayerInDraw, gameTime, render, world.Camera2D, objs[item]);
+                    }
+                    else
+                    {
+                        foreach (var iobj in objs[item])
+                        {
+                            if (iobj.PhysicObject.Enabled == true)
+                            {
+                                iobj.Material.Draw(gameTime, iobj, render);
+                            }
+                        }
+                    }
+                }
+
+                if (UseDrawComponents)
+                    render.RenderPosWithDepthComponents(gameTime, ref view, ref projection);
+
+                if (world.ParticleManager != null)
+                    world.ParticleManager.iDraw(gameTime, world.Camera2D.View, world.Camera2D.SimProjection, render);
+
+                if (AfterDrawBeforePostEffects != null)
+                    AfterDrawBeforePostEffects(ginfo, render);
+
+#if !WINDOWS_PHONE && !REACH        
+            }
+#endif
+
+
             if (UsePostProcessing)
             {
                 render[PrincipalConstants.CurrentImage] = render.PopRenderTarget()[0].RenderTarget as Texture2D;
@@ -329,12 +521,21 @@ namespace PloobsEngine.SceneControl._2DScene
         public override void CleanUp()
         {
             this.ginfo.OnGraphicInfoChange -= ginfo_OnGraphicInfoChange;
-            if (renderTarget != null && postEffectTarget != null)
-            {
-                renderTarget.Dispose();
+            if (postEffectTarget != null)
+            {                
                 postEffectTarget.Dispose();
             }
 
+#if !WINDOWS_PHONE && !REACH
+            if (UseShadow)
+            {
+                screenShadowsNS.Dispose();
+                screenShadowsTESTE.Dispose();
+                lalalala.Dispose();                
+            }
+            screenShadows.Dispose();
+            renderTarget.Dispose();
+#endif
             for (int i = 0; i < PostEffects.Count; i++)
             {
                 PostEffects[i].CleanUp();

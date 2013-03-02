@@ -134,13 +134,47 @@ float4 DrawShadowsPSPoint(float2 TexCoord  : TEXCOORD0) : COLOR0
 	  
 	  float4 result = light;
 	  result.b = length(TexCoord - 0.5f);
+	  result.a = light;
+      return result;
+}
+
+float4 DrawShadowsPSPointNS(float2 TexCoord  : TEXCOORD0) : COLOR0
+{		
+	  float4 result = 1;
+	  result.b = length(TexCoord - 0.5f);
 	  result.a = 1;
       return result;
 }
 
-
 float2 Direction;
 float anglecossine;
+float4 DrawSpotNS(float2 TexCoord  : TEXCOORD0) : COLOR0
+{
+	  // distance of this pixel from the center
+	  float distance = length(TexCoord - 0.5f);
+	  distance *= renderTargetSize.x;
+	  //apply a 2-pixel bias
+	  distance -=2;
+	  	  
+	  float2 dirVector = TexCoord - 0.5f;
+	  dirVector  = normalize(dirVector);
+	  if(dot(dirVector,normalize(Direction)) > anglecossine)
+	  {
+	  float4 result = 1;
+	  result.b = length(TexCoord - 0.5f);
+	  result.a = 1;
+      return result;
+	  }	  
+	  else
+	  {
+	  float4 result = float4(0,0,0,0);	 
+	  result.b = length(TexCoord - 0.5f); 
+	  result.a = 1;
+      return result;
+	  }
+}
+
+
 float4 DrawShadowsPSSpot(float2 TexCoord  : TEXCOORD0) : COLOR0
 {
 	  // distance of this pixel from the center
@@ -183,7 +217,7 @@ float4 DrawShadowsPSSpot(float2 TexCoord  : TEXCOORD0) : COLOR0
 	  {
 	  float4 result = float4(0,0,0,0);	 
 	  result.b = length(TexCoord - 0.5f); 
-	  result.a = 1;
+	  result.a = 0;
       return result;
 	  }
 }
@@ -277,6 +311,21 @@ float4 BlurHorizontallyPS(float2 TexCoord  : TEXCOORD0) : COLOR0
       return result;
 }
 
+/*
+float4 MixShadow(float2 TexCoord  : TEXCOORD0) : COLOR0
+{
+	 
+     float4 screen= tex2D( inputSampler, TexCoord );
+	 float4 shadow= tex2D( ShadowMapTexture, TexCoord );
+     
+	 if(shadow 
+
+	  float4 result = sum;
+	  result.b = distance;
+	  result.a = 1;
+      return result;
+}
+*/
 float4 BlurVerticallyPS(float2 TexCoord  : TEXCOORD0) : COLOR0
 {
 	  float sum=0;
@@ -321,6 +370,24 @@ technique DrawShadowsPoint
     {          
         VertexShader = compile vs_3_0 FullScreenVS();
         PixelShader  = compile ps_3_0 DrawShadowsPSPoint();
+    }
+}
+
+technique DrawShadowsPointNS
+{
+    pass P0
+    {          
+        VertexShader = compile vs_3_0 FullScreenVS();
+        PixelShader  = compile ps_3_0 DrawShadowsPSPointNS();
+    }
+}
+
+technique DrawShadowsSpotNS
+{
+    pass P0
+    {          
+        VertexShader = compile vs_3_0 FullScreenVS();
+        PixelShader  = compile ps_3_0 DrawSpotNS();
     }
 }
 

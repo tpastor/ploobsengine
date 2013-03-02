@@ -34,6 +34,7 @@ namespace PloobsEngine.Light2D
     public abstract class Light2D
     {
         internal RenderTarget2D RenderTarget { get; set; }
+        internal RenderTarget2D RenderTargetNS { get; set; }
         public Vector2 LightPosition 
         {
             get
@@ -46,6 +47,12 @@ namespace PloobsEngine.Light2D
             }
         }
 
+        public bool CasShadow
+        {
+            get;
+            set;
+        }
+
         Vector2 pos;
         internal int baseSize;
         public Vector2 LightAreaSize { get; set; }
@@ -54,6 +61,7 @@ namespace PloobsEngine.Light2D
 
         public Light2D(Vector2 LightPosition, Color color,float intensity, ShadowmapSize size = ShadowmapSize.Size1024)
         {
+            CasShadow = true;
             this.Intensity = intensity;
             this.Color = color;
             this.LightPosition = LightPosition;

@@ -93,6 +93,32 @@ namespace PloobsEngine.Light2D
             processedShadowsRT = new RenderTarget2D(graphicsDevice, baseSize, baseSize);
         }
 
+        public void ResolveNoShadow(Light2D light)
+        {
+            graphicsDevice.BlendState = BlendState.Opaque;
+
+            resolveShadowsEffect.Parameters["intensity"].SetValue(light.Intensity);
+            if (light is PointLight2D)
+            {
+                resolveShadowsEffect.CurrentTechnique = resolveShadowsEffect.Techniques["DrawShadowsPointNS"];
+            }
+            else if (light is SpotLight2D)
+            {
+                SpotLight2D sl = (SpotLight2D)light;
+                resolveShadowsEffect.CurrentTechnique = resolveShadowsEffect.Techniques["DrawShadowsSpotNS"];
+                resolveShadowsEffect.Parameters["Direction"].SetValue(sl.Direction);
+                resolveShadowsEffect.Parameters["anglecossine"].SetValue((float)Math.Cos(sl.Angle));
+            }
+            else
+            {
+                throw new Exception("Unsupported Light type =P");
+            }
+
+            ExecuteTechnique(null, shadowsRT, null, shadowMap);
+            ExecuteTechnique(shadowsRT, processedShadowsRT, "BlurHorizontally");
+            ExecuteTechnique(processedShadowsRT, light.RenderTargetNS, "BlurVerticallyAndAttenuate");
+        }
+
         public void ResolveShadows(Light2D light)
         {
             graphicsDevice.BlendState = BlendState.Opaque;
