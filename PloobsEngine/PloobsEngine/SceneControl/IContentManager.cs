@@ -69,6 +69,8 @@ namespace PloobsEngine.SceneControl
             cmanagerInternal = new ResourceContentManager(game.Services, ResourcesXbox.ResourceManager);
 #elif WINRT
             cmanagerInternal = new ContentManager(game.Content.ServiceProvider);
+#elif MONODX
+            cmanagerInternal = new ResourceContentManager(game.Services, PloobsEngine.MonoResources.ResourceManager);
 #elif MONO 
             cmanagerInternal = new ResourceContentManager(game.Services, PloobsEngine.ResourcesPC.ResourceManager);
 #elif REACH 
