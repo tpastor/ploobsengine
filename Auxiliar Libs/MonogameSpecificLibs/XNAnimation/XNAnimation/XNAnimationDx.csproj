@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{9A5AD957-9FD8-4B4F-A871-9B1F9699C2CC}</ProjectGuid>    
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XNAnimation</RootNamespace>
+    <AssemblyName>XNAnimation</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>    
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\x86\Debug</OutputPath>
+    <DefineConstants>TRACE;DEBUG;WINDOWS,MONOGAME</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoStdLib>true</NoStdLib>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <PlatformTarget>x86</PlatformTarget>
+    <XnaCompressContent>false</XnaCompressContent>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\x86\Release</OutputPath>
+    <DefineConstants>TRACE;WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoStdLib>true</NoStdLib>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <PlatformTarget>x86</PlatformTarget>
+    <XnaCompressContent>true</XnaCompressContent>
+    <DocumentationFile>bin\x86\Release\XNAnimation.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>XNAnimation.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Net">
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AnimationChannel.cs" />
+    <Compile Include="AnimationChannelDictionary.cs" />
+    <Compile Include="AnimationChannelKeyframe.cs" />
+    <Compile Include="AnimationClip.cs" />
+    <Compile Include="AnimationClipDictionary.cs" />
+    <Compile Include="Controllers\AnimationController.cs" />
+    <Compile Include="Controllers\IAnimationController.cs" />
+    <Compile Include="Controllers\IBlendable.cs" />
+    <Compile Include="Controllers\IBlendController.cs" />
+    <Compile Include="Controllers\ISkeletonController.cs" />
+    <Compile Include="Controllers\SkeletonController.cs" />
+    <Compile Include="Effects\ILight.cs" />
+    <Compile Include="Effects\IMaterial.cs" />
+    <Compile Include="Effects\IPointLight.cs" />
+    <Compile Include="Effects\Material.cs" />
+    <Compile Include="Effects\PointLight.cs" />
+    <Compile Include="Effects\PointLightCollection.cs" />
+    <Compile Include="Effects\SkinnedModelBasicEffect.cs.cs" />
+    <Compile Include="Effects\SkinnedModelBasicEffectCode.cs" />
+    <Compile Include="Pipeline\AnimationClipReader.cs" />
+    <Compile Include="Pipeline\SkinnedModelBasicEffectReader.cs" />
+    <Compile Include="Pipeline\SkinnedModelBoneReader.cs" />
+    <Compile Include="Pipeline\SkinnedModelReader.cs" />
+    <Compile Include="Pose.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReadOnlyDictionary.cs" />
+    <Compile Include="Resource1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SkinnedModel.cs" />
+    <Compile Include="SkinnedModelBone.cs" />
+    <Compile Include="SkinnedModelBoneCollection.cs" />
+    <Compile Include="SkinnedModelBoneDictionary.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\x86\Debug\Content\SkinnedModelEffect.xnb" />
+    <None Include="Resources\SkinnedModelEffect.bin" />
+    <None Include="Resources\SkinnedModelEffect2.bin" />
+    <None Include="XNAnimation.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="MonoGame.Framework" Condition="'$(Configuration)' == 'Debug'">
+      <HintPath>..\..\..\..\PloobsEngine\PloobsEngine\Dlls\MonoGameDirectX11\Debug\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework" Condition="'$(Configuration)' == 'Release'">
+      <HintPath>..\..\..\..\PloobsEngine\PloobsEngine\Dlls\MonoGameDirectX11\Release\MonoGame.Framework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />  
+  <!--
+      To modify your build process, add your task inside one of the targets below and uncomment it. 
+      Other similar extension points exist, see Microsoft.Common.targets.
+      <Target Name="BeforeBuild">
+      </Target>
+      <Target Name="AfterBuild">
+      </Target>
+    -->
+</Project>
