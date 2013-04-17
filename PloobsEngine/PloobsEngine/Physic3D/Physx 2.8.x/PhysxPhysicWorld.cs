@@ -274,7 +274,10 @@ namespace PloobsEngine.Physics
                         PhysxPhysicObject.Actor.Shapes[i].UserData = PhysxPhysicObject.ActorDesc.Shapes[i].UserData;
                     }
                 }
-
+                else
+                {
+                    PhysxPhysicObject.Actor.UserData = obj;
+                }
             }
 
             else if (obj is PhysxClothObject)
