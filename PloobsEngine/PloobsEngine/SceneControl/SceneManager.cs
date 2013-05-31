@@ -180,12 +180,16 @@ namespace PloobsEngine.SceneControl
         {
             System.Diagnostics.Debug.Assert(screen != null);
 
-            if(cleanUp)
-                screen.RemoveThisScreen(engine);
-            screen.ScreenState = ScreenState.Inactive;
-            screens.Remove(screen);
-            screensToUpdate.Remove(screen);
-            
+            PloobsDispatcher.Dispatch(
+                new Action(() =>
+                          {
+                              if (cleanUp)
+                                  screen.RemoveThisScreen(engine);
+                              screen.ScreenState = ScreenState.Inactive;
+                              screens.Remove(screen);
+                              screensToUpdate.Remove(screen);
+                          })
+                );
         }
 
 

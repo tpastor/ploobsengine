@@ -14,7 +14,7 @@ namespace PloobsEngine.Engine
         }
 
         private  static object lockobj = new object();
-        private static List<idata> list = new List<idata>();
+        private static LinkedList<idata> list = new LinkedList<idata>();
         public static void Dispatch(Delegate function, params object[] parameter)
         {
             idata idata = new idata();
@@ -22,7 +22,7 @@ namespace PloobsEngine.Engine
             idata.parameters = parameter;
             lock (lockobj)
             {                
-                list.Add(idata);
+                list.AddLast(idata);
             }
         }
 
