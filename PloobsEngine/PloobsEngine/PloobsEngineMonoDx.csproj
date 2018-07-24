@@ -91,16 +91,12 @@
     <Reference Include="Microsoft.Build" />
     <Reference Include="Microsoft.Build.Engine" />
     <Reference Include="Microsoft.Build.Framework" />
-    <Reference Include="MonoGame.Framework, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="MonoGame.Framework, Version=3.6.0.1625, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Dlls\MonoGame\$(Configuration)\MonoGame.Framework.dll</HintPath>
+      <HintPath>Dlls\MonoGameDirectX11\Release\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <Private>False</Private>
-    </Reference>
-    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Dlls\MonoGame\$(Configuration)\OpenTK.dll</HintPath>
     </Reference>
     <Reference Include="PhysX.Net">
       <HintPath>Dlls\PhysX.Net.dll</HintPath>
@@ -680,7 +676,112 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="PloobsEngine.licenseheader" />
-    <None Include="Resources\ConsoleFont.spritefont" />
+    <None Include="Resources\AllBuffer.xnb" />
+    <None Include="Resources\AllBufferEnvironment.xnb" />
+    <None Include="Resources\AnimatedBillboard.xnb" />
+    <None Include="Resources\AntiAliasing.xnb" />
+    <None Include="Resources\AntiAliasingtabulastalker.xnb" />
+    <None Include="Resources\BlackWhite.xnb" />
+    <None Include="Resources\BlinkGBuffer.xnb" />
+    <None Include="Resources\block.xnb" />
+    <None Include="Resources\blur.xnb" />
+    <None Include="Resources\BumpGBuffer.xnb" />
+    <None Include="Resources\ByPassEffect.xnb" />
+    <None Include="Resources\checker.xnb" />
+    <None Include="Resources\cilBilboard.xnb" />
+    <None Include="Resources\cilBilboardForward.xnb" />
+    <None Include="Resources\ClearGBuffer.xnb" />
+    <None Include="Resources\clippingPlane.xnb" />
+    <None Include="Resources\colorCorrection.xnb" />
+    <None Include="Resources\color_map.xnb" />
+    <None Include="Resources\Combine.xnb" />
+    <None Include="Resources\CombineFinal.xnb" />
+    <None Include="Resources\ConsoleFont.xnb" />
+    <None Include="Resources\contrast.xnb" />
+    <None Include="Resources\CopyToScreen.xnb" />
+    <None Include="Resources\CuingDepth.xnb" />
+    <None Include="Resources\Depth.xnb" />
+    <None Include="Resources\DirectionalLight.xnb" />
+    <None Include="Resources\dome.xnb" />
+    <None Include="Resources\Dsphere.xnb" />
+    <None Include="Resources\Embossed.xnb" />
+    <None Include="Resources\EMSHADER.xnb" />
+    <None Include="Resources\explosion.xnb" />
+    <None Include="Resources\fire.xnb" />
+    <None Include="Resources\flare.xnb" />
+    <None Include="Resources\Fog.xnb" />
+    <None Include="Resources\gamma.xnb" />
+    <None Include="Resources\GaussianBlur.xnb" />
+    <None Include="Resources\gblur.xnb" />
+    <None Include="Resources\gcpublur.xnb" />
+    <None Include="Resources\glow.xnb" />
+    <None Include="Resources\glowPost.xnb" />
+    <None Include="Resources\GrassBillboard.xnb" />
+    <None Include="Resources\Heat.xnb" />
+    <None Include="Resources\HSV.xnb" />
+    <None Include="Resources\InstancedBilboard.xnb" />
+    <None Include="Resources\InstanceRenderGBuffer.xnb" />
+    <None Include="Resources\Inverse.xnb" />
+    <None Include="Resources\LineDetection.xnb" />
+    <None Include="Resources\Luminance.xnb" />
+    <None Include="Resources\Night.xnb" />
+    <None Include="Resources\noise.xnb" />
+    <None Include="Resources\noisetex.xnb" />
+    <None Include="Resources\noise_tex6.xnb" />
+    <None Include="Resources\normal.xnb" />
+    <None Include="Resources\opacity.xnb" />
+    <None Include="Resources\ParticleEffect.xnb" />
+    <None Include="Resources\PlanarOriented.xnb" />
+    <None Include="Resources\PointLight.xnb" />
+    <None Include="Resources\Posterize.xnb" />
+    <None Include="Resources\random.xnb" />
+    <None Include="Resources\RANDOMNORMAL.xnb" />
+    <None Include="Resources\reductionEffect.xnb" />
+    <None Include="Resources\Reflection.xnb" />
+    <None Include="Resources\RenderGBuffer.xnb" />
+    <None Include="Resources\RenderGlowBuffer.xnb" />
+    <None Include="Resources\resolveShadowsEffect.xnb" />
+    <None Include="Resources\RestoreDepth.xnb" />
+    <None Include="Resources\Ripple.xnb" />
+    <None Include="Resources\RoundLine.xnb" />
+    <None Include="Resources\Saturate.xnb" />
+    <None Include="Resources\saturation.xnb" />
+    <None Include="Resources\sblur.xnb" />
+    <None Include="Resources\sblur2.xnb" />
+    <None Include="Resources\sblur3.xnb" />
+    <None Include="Resources\Scatter.xnb" />
+    <None Include="Resources\ShadowDepth.xnb" />
+    <None Include="Resources\ShadowDirectionalCascade.xnb" />
+    <None Include="Resources\ShadowPoint.xnb" />
+    <None Include="Resources\SimpleAlphaDraw.xnb" />
+    <None Include="Resources\skybox.xnb" />
+    <None Include="Resources\smoke.xnb" />
+    <None Include="Resources\SpecularBumpBuffer.xnb" />
+    <None Include="Resources\SpecularMapBuffer.xnb" />
+    <None Include="Resources\sphere.xnb" />
+    <None Include="Resources\SphericalBillboard.xnb" />
+    <None Include="Resources\SpotLight.xnb" />
+    <None Include="Resources\ssao.xnb" />
+    <None Include="Resources\ssaoblur.xnb" />
+    <None Include="Resources\SSAOBlur1.xnb" />
+    <None Include="Resources\SSAOBlur2.xnb" />
+    <None Include="Resources\ssaofinal.xnb" />
+    <None Include="Resources\SSAOPOST.xnb" />
+    <None Include="Resources\Sunset.xnb" />
+    <None Include="Resources\Terrain.xnb" />
+    <None Include="Resources\terrainShader.xnb" />
+    <None Include="Resources\teste.xnb" />
+    <None Include="Resources\Tilling.xnb" />
+    <None Include="Resources\ToBlack.xnb" />
+    <None Include="Resources\Toon.xnb" />
+    <None Include="Resources\toon1.xnb" />
+    <None Include="Resources\TransparentEffect.xnb" />
+    <None Include="Resources\Vidro.xnb" />
+    <None Include="Resources\Water.xnb" />
+    <None Include="Resources\WaterComplete.xnb" />
+    <None Include="Resources\waves2.xnb" />
+    <None Include="Resources\white.xnb" />
+    <None Include="Resources\wiggle.xnb" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="License.txt" />
@@ -688,7 +789,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MonoResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>MonoResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>

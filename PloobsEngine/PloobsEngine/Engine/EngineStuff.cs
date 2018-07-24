@@ -72,7 +72,7 @@ namespace PloobsEngine.Engine
         public static InitialEngineDescription Default()
         {
 #if !REACH
-            return new InitialEngineDescription("PloobsEngine",800,600,false,GraphicsProfile.HiDef,false,false,true,null,false);
+            return new InitialEngineDescription("PloobsEngine",1024,800,false,GraphicsProfile.HiDef,false,false,true,null,false);
 #else
             return new InitialEngineDescription("PloobsEngine",800,600,false,GraphicsProfile.Reach,false,false,true,null,false,false);
 #endif

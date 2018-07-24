@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using PloobsEngine.SceneControl;
-using PloobsEngine.Physics;
-using PloobsEngine.Modelo;
-using PloobsEngine.Material;
-using PloobsEngine.Engine;
-using PloobsEngine.Physics.Bepu;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
 using PloobsEngine.Cameras;
+using PloobsEngine.Engine;
+using PloobsEngine.Material;
+using PloobsEngine.Modelo;
+using PloobsEngine.Physics;
+using PloobsEngine.Physics.Bepu;
+using PloobsEngine.SceneControl;
 
 namespace EngineTestes
 {

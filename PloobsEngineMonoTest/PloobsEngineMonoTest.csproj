@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PloobsEngineTest</RootNamespace>
     <AssemblyName>PloobsEngineTest</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -33,6 +34,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BEPUphysics, Version=1.2.0.0, Culture=neutral, processorArchitecture=x86">
@@ -43,9 +45,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\PloobsEngine\PloobsEngine\Dlls\MonoGame\$(Configuration)\FarseerPhysicsXNA.dll</HintPath>
     </Reference>
-    <Reference Include="MonoGame.Framework, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="MonoGame.Framework, Version=3.6.0.1625, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\PloobsEngine\PloobsEngine\Dlls\MonoGame\$(Configuration)\MonoGame.Framework.dll</HintPath>
+      <HintPath>..\PloobsEngine\PloobsEngine\Dlls\MonoGameDirectX11\Release\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -56,15 +58,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="2D Demos\Basic2DCameraScreen.cs" />
-    <Compile Include="2D Demos\Basic2DScreen.cs" />
-    <Compile Include="2D Demos\Basic2DSpriteScreen.cs" />
-    <Compile Include="2D Demos\Helpers\Border.cs" />
-    <Compile Include="2D Demos\Helpers\JointUpdateable.cs" />
-    <Compile Include="3D Demos\SkyBoxScreen.cs" />
-    <Compile Include="3D Demos\StressScreen.cs" />
-    <Compile Include="3D Demos\TechTruthScreen.cs" />
-    <Compile Include="3D Demos\TerrainScreen.cs" />
     <Compile Include="AI\Behavior Tree\BaseObject.cs" />
     <Compile Include="AI\Behavior Tree\BehaviorTreeScreen.cs" />
     <Compile Include="AI\FSM\FSMScreen.cs" />
@@ -80,7 +73,6 @@
     <Compile Include="AI\Steering\SteerAtachment.cs" />
     <Compile Include="AI\Steering\SteerScreen.cs" />
     <Compile Include="CharacterControllerInput.cs" />
-    <Compile Include="FirstScreenDeferred.cs" />
     <Compile Include="FirstScreen.cs" />
     <Compile Include="BallThrowBepu.cs" />
     <Compile Include="FullCharacterControllerInput.cs" />
@@ -95,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="app.manifest" />
     <None Include="Content\Model\ball.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -112,9 +105,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PloobsEngine\PloobsEngine\PloobsEngineMono.csproj">
-      <Project>{73D8A9CD-9BA9-4101-9B8D-0CCF0AE1EFAF}</Project>
-      <Name>PloobsEngineMono</Name>
+    <ProjectReference Include="..\PloobsEngine\PloobsEngine\PloobsEngineMonoDx.csproj">
+      <Project>{73d8a9cd-9ba9-4101-9b8d-0ccf0ae1efaf}</Project>
+      <Name>PloobsEngineMonoDx</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

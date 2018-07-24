@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using PloobsEngine.Engine;
 using PloobsEngine.SceneControl;
 using EngineTestes;
@@ -13,6 +10,7 @@ namespace PloobsEngineTest
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        [STAThread]
         static void Main(string[] args)
         {
             InitialEngineDescription desc = InitialEngineDescription.Default();
@@ -28,7 +26,7 @@ namespace PloobsEngineTest
 
         static void LoadScreen(ScreenManager manager)
         {
-            manager.AddScreen(new FirstScreenDeferred());
+            manager.AddScreen(new FirstScreen());
          
         }
     }
