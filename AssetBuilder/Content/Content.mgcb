@@ -68,12 +68,6 @@
 /processorParam:DebugMode=Auto
 /build:ShadowDirectionalCascade.fx
 
-#begin ShadowMap.fx
-/importer:EffectImporter
-/processor:EffectProcessor
-/processorParam:DebugMode=Auto
-/build:ShadowMap.fx
-
 #begin skybox.fx
 /importer:EffectImporter
 /processor:EffectProcessor
@@ -95,7 +89,8 @@
 #begin AllBuffer.fx
 /importer:EffectImporter
 /processor:EffectProcessor
-/processorParam:DebugMode=Auto
+/processorParam:DebugMode=Debug
+/processorParam:Defines=
 /build:AllBuffer.fx
 
 #begin AllBufferEnvironment.fx
@@ -320,12 +315,6 @@
 /processorParam:DebugMode=Auto
 /build:Luminance.fx
 
-#begin MotionBlur.fx
-/importer:EffectImporter
-/processor:EffectProcessor
-/processorParam:DebugMode=Auto
-/build:MotionBlur.fx
-
 #begin Night.fx
 /importer:EffectImporter
 /processor:EffectProcessor
@@ -440,23 +429,11 @@
 /processorParam:DebugMode=Auto
 /build:ShadowDepth.fx
 
-#begin ShadowDirectional.fx
-/importer:EffectImporter
-/processor:EffectProcessor
-/processorParam:DebugMode=Auto
-/build:ShadowDirectional.fx
-
 #begin ShadowPoint.fx
 /importer:EffectImporter
 /processor:EffectProcessor
 /processorParam:DebugMode=Auto
 /build:ShadowPoint.fx
-
-#begin ShadowSpot.fx
-/importer:EffectImporter
-/processor:EffectProcessor
-/processorParam:DebugMode=Auto
-/build:ShadowSpot.fx
 
 #begin SimpleAlphaDraw.fx
 /importer:EffectImporter
@@ -524,23 +501,11 @@
 /processorParam:DebugMode=Auto
 /build:SSAOPOST.fx
 
-#begin Sun.fx
-/importer:EffectImporter
-/processor:EffectProcessor
-/processorParam:DebugMode=Auto
-/build:Sun.fx
-
 #begin Terrain.fx
 /importer:EffectImporter
 /processor:EffectProcessor
 /processorParam:DebugMode=Auto
 /build:Terrain.fx
-
-#begin Threshold.fx
-/importer:EffectImporter
-/processor:EffectProcessor
-/processorParam:DebugMode=Auto
-/build:Threshold.fx
 
 #begin Tilling.fx
 /importer:EffectImporter
@@ -553,18 +518,6 @@
 /processor:EffectProcessor
 /processorParam:DebugMode=Auto
 /build:ToBlack.fx
-
-#begin ToneHdr.fx
-/importer:EffectImporter
-/processor:EffectProcessor
-/processorParam:DebugMode=Auto
-/build:ToneHdr.fx
-
-#begin ToneMapping.fx
-/importer:EffectImporter
-/processor:EffectProcessor
-/processorParam:DebugMode=Auto
-/build:ToneMapping.fx
 
 #begin toon1.fx
 /importer:EffectImporter
@@ -595,18 +548,6 @@
 /processor:EffectProcessor
 /processorParam:DebugMode=Auto
 /build:wiggle.fx
-
-#begin wave1.dds
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:wave1.dds
 
 #begin waves2.dds
 /importer:TextureImporter
@@ -800,18 +741,6 @@
 /processorParam:TextureFormat=Color
 /build:Toon.bmp
 
-#begin wave0.dds
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:wave0.dds
-
 #begin block.X
 /importer:XImporter
 /processor:ModelProcessor
@@ -819,7 +748,7 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:DefaultEffect=BasicEffect
 /processorParam:GenerateMipmaps=True
-/processorParam:GenerateTangentFrames=False
+/processorParam:GenerateTangentFrames=True
 /processorParam:PremultiplyTextureAlpha=True
 /processorParam:PremultiplyVertexColors=True
 /processorParam:ResizeTexturesToPowerOfTwo=False
@@ -887,4 +816,7 @@
 /processorParam:SwapWindingOrder=False
 /processorParam:TextureFormat=Compressed
 /build:sphere.X
+
+#begin TextureMacros.fxh
+/copy:TextureMacros.fxh
 

@@ -16,7 +16,7 @@ using BEPUphysics.Settings;
 using BEPUphysics;
 using BEPUphysics.BroadPhaseSystems;
 
-#if MONO
+#if MONO || MONODX
 using BroadPhaseEntry = BEPUphysics.BroadPhaseEntries.BroadPhaseEntry;
 #endif
 
@@ -60,7 +60,7 @@ namespace BEPUphysicsDemos.AlternateMovement.SphereCharacter
 
         Func<BroadPhaseEntry, bool> SupportRayFilter;
 
-#if !MONO
+#if !MONO && !MONODX
         bool SupportRayFilterFunction(BroadPhaseEntry entry)
         {
             //Only permit an object to be used as a support if it fully collides with the character.

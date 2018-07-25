@@ -28,7 +28,7 @@ using PloobsEngine.Events;
 using PloobsEngine.SceneControl;
 using BEPUphysics.UpdateableSystems;
 
-#if MONO
+#if MONO || MONODX
     using DetectorVolume = BEPUphysics.Collidables.DetectorVolume;
 #endif
 
@@ -71,7 +71,7 @@ namespace PloobsEngine.Trigger
         /// <param name="fireEndsTouching">if set to <c>true</c> [fire ends touching].</param>
         /// <param name="fireBeginsContaining">if set to <c>true</c> [fire begins containing].</param>
         /// <param name="fireEndsContaining">if set to <c>true</c> [fire ends containing].</param>
-        #if !MONO
+#if !MONO && !MONODX
         public BepuTrigger(BepuPhysicWorld physicWorld, TriangleMeshObject triangleMesh, TriggerEvent evt, bool fireBeginsTouching, bool fireEndsTouching, bool fireBeginsContaining, bool fireEndsContaining)
         {        
             this.volumeobject = new DetectorVolumeObject(physicWorld,triangleMesh);            
@@ -117,7 +117,7 @@ namespace PloobsEngine.Trigger
             evt.FireEvent(this);
         }
 
-#if !MONO
+#if !MONO && !MONODX
         void detectorVolume_EntityStopsTouching(BEPUphysics.Entities.Entity toucher, DetectorVolume volume)
 #else
         void detectorVolume_EntityStopsTouching(DetectorVolume volume,BEPUphysics.Entities.Entity toucher)
@@ -128,7 +128,7 @@ namespace PloobsEngine.Trigger
             evt.FireEvent(this);
         }
 
-#if !MONO
+#if !MONO && !MONODX
         void detectorVolume_EntityBeginsTouching(BEPUphysics.Entities.Entity toucher, DetectorVolume volume)
 #else
         void detectorVolume_EntityBeginsTouching(DetectorVolume volume,BEPUphysics.Entities.Entity toucher)

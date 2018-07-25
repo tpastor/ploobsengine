@@ -169,7 +169,7 @@ namespace BEPUphysicsDemos.AlternateMovement.Character
             //If you change that correction speed, watch out!!! It could significantly change the way the character behaves when trying to glue to surfaces.
             if (supportData.Depth > 0)
             {
-#if MONO
+#if MONO || MONODX
                 permittedVelocity = CollisionResponseSettings.MaximumPenetrationCorrectionSpeed;
 #else
                 permittedVelocity = CollisionResponseSettings.MaximumPositionCorrectionSpeed;

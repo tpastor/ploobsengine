@@ -1,12 +1,14 @@
+#include "TextureMacros.fxh"
+
 float3 lightDirection;
 float  lightIntensity = 1;
 float3 Color; 
 float3 cameraPosition; 
 float4x4 InvertViewProjection; 
 
-sampler colorSampler : register(s0);
-sampler normalSampler : register(s1);
-sampler depthSampler : register(s2);
+DECLARE_TEXTURE(color,0);
+DECLARE_TEXTURE(normal,1);
+DECLARE_TEXTURE(depth,2);
 
 struct VertexShaderInput
 {
@@ -38,16 +40,16 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 float4 PixelShaderFunction(VertexShaderOutput input) : COLOR0
 {	
 	//get normal data from the normalMap
-    float4 normalData = tex2D(normalSampler,input.TexCoord);
+    float4 normalData = SAMPLE_TEXTURE(normal,input.TexCoord);
     //tranform normal back into [-1,1] range
     float3 normal = 2.0f * normalData.xyz - 1.0f;
     //get specular power, and get it into [0,255] range]
     float specularPower = normalData.a * 255;
     //get specular intensity from the colorMap
-    float specularIntensity = tex2D(colorSampler, input.TexCoord).a;
+    float specularIntensity = SAMPLE_TEXTURE(color, input.TexCoord).a;
     
     //read depth
-    float depthVal = 1- tex2D(depthSampler,input.TexCoord).r;
+    float depthVal = 1- SAMPLE_TEXTURE(depth,input.TexCoord).r;
 
     //compute screen-space position
     float4 position;

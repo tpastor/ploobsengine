@@ -62,9 +62,9 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
     {    
 		// calculate tangent space to world space matrix using the world space tangent,
 		// binormal, and normal as basis vectors
-		output.tangentToWorld[0] = mul(input.Tangent, WorldInverseTranspose);
-		output.tangentToWorld[1] = mul(input.Binormal, WorldInverseTranspose);
-		output.tangentToWorld[2] = mul(input.Normal, WorldInverseTranspose );    
+		output.tangentToWorld[0] = mul(input.Tangent, (float3x3) WorldInverseTranspose);
+		output.tangentToWorld[1] = mul(input.Binormal, (float3x3)WorldInverseTranspose);
+		output.tangentToWorld[2] = mul(input.Normal, (float3x3)WorldInverseTranspose );    
 		output.Normal = 0; 
 
 		
@@ -76,7 +76,7 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
     }
     else
     {  
-		output.Normal =mul(input.Normal,World);                       //get normal into world space   
+		output.Normal =mul(input.Normal,(float3x3)World);                       //get normal into world space   
 		
     }
     
@@ -102,12 +102,12 @@ PixelShaderOutput PixelShaderFunction(VertexShaderOutput input)
 	}
 
     PixelShaderOutput output;
-    output.Color = tex2D(diffuseSampler, input.TexCoord);
+    output.Color = float4(1,0,0,0);
     
     if(useBump)
     {       
 	// read the normal from the normal map
-    float3 normalFromMap = tex2D(normalSampler, input.TexCoord);
+    float3 normalFromMap = tex2D(normalSampler, input.TexCoord).xyz;
     //tranform to [-1,1]
     normalFromMap = 2.0f * normalFromMap - 1.0f;
     //transform into world space
@@ -167,12 +167,12 @@ PixelShaderOutput PixelShaderFunctionAmbient(VertexShaderOutput input)
 	}
 
     PixelShaderOutput output;
-    output.Color = tex2D(diffuseSampler, input.TexCoord);
+    output.Color = float4(1,0,0,0);
     
     if(useBump)
     {       
 	// read the normal from the normal map
-    float3 normalFromMap = tex2D(normalSampler, input.TexCoord);
+    float3 normalFromMap = tex2D(normalSampler, input.TexCoord).xyz;
     //tranform to [-1,1]
     normalFromMap = 2.0f * normalFromMap - 1.0f;
     //transform into world space

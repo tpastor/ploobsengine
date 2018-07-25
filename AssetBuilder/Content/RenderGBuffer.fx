@@ -5,8 +5,21 @@ float specularPower = 0;
 float id;
 float ambientScale;
 
-sampler diffuseSampler : register(s0);
-samplerCUBE map_diffuse : register(s4);
+#define DECLARE_TEXTURE(Name, index) \
+    Texture2D<float4> Name : register(t##index); \
+    sampler Name##Sampler : register(s##index)
+
+#define SAMPLE_TEXTURE(Name, texCoord)  Name.Sample(Name##Sampler, texCoord)
+
+DECLARE_TEXTURE(diffuse,0);
+
+#define DECLARE_CUBEMAP(Name, index) \
+    TextureCube<float4> Name : register(t##index); \
+    sampler Name##Sampler : register(s##index)
+
+#define SAMPLE_CUBEMAP(Name, texCoord)  Name.Sample(Name##Sampler, texCoord)
+
+DECLARE_CUBEMAP(map_diffuse,4);
 
 struct VertexShaderInput
 {
@@ -46,7 +59,8 @@ struct PixelShaderOutput
 PixelShaderOutput PixelShaderFunction(VertexShaderOutput input)
 {
     PixelShaderOutput output;
-    output.Color = tex2D(diffuseSampler, input.TexCoord);					   //output Color
+//    output.Color = SAMPLE_TEXTURE(diffuse, input.TexCoord);					   //output Color
+    output.Color = SAMPLE_TEXTURE(diffuse, input.TexCoord);					   //output Color
     output.Color.a = specularIntensity;                                        //output SpecularIntensity
     output.Normal.rgb = 0.5f * (normalize(input.Normal) + 1.0f);               //transform normal domain
     output.Normal.a = specularPower;                                           //output SpecularPower
@@ -60,13 +74,13 @@ PixelShaderOutput PixelShaderFunction(VertexShaderOutput input)
 PixelShaderOutput PixelShaderFunction2(VertexShaderOutput input)
 {
     PixelShaderOutput output;
-    output.Color = tex2D(diffuseSampler, input.TexCoord);					   //output Color
+    output.Color = SAMPLE_TEXTURE(diffuse, input.TexCoord);					   //output Color
     output.Color.a = specularIntensity;                                        //output SpecularIntensity
 	float3 nnormal = normalize(input.Normal);
     output.Normal.rgb = 0.5f * (nnormal + 1.0f);               //transform normal domain
     output.Normal.a = specularPower;                                           //output SpecularPower
     output.Depth = 1 - input.Depth.x / input.Depth.y;                              //output Depth      
-	output.Extra1.rgb = texCUBE(map_diffuse , nnormal ) * ambientScale;
+	output.Extra1.rgb = SAMPLE_CUBEMAP(map_diffuse , nnormal ) * ambientScale;
     output.Extra1.a =  id/ 255.0f;  
         
     return output;
@@ -77,8 +91,8 @@ technique Technique1
 {
     pass Pass1
     {
-        VertexShader = compile vs_4_0 VertexShaderFunction();
-        PixelShader = compile ps_4_0 PixelShaderFunction();
+        VertexShader = compile vs_4_0_level_9_1 VertexShaderFunction();
+        PixelShader = compile ps_4_0_level_9_1 PixelShaderFunction();
     }
 }
 
@@ -86,7 +100,7 @@ technique Technique2
 {
     pass Pass1
     {
-        VertexShader = compile vs_4_0 VertexShaderFunction();
-        PixelShader = compile ps_4_0 PixelShaderFunction2();
+        VertexShader = compile vs_4_0_level_9_1 VertexShaderFunction();
+        PixelShader = compile ps_4_0_level_9_1 PixelShaderFunction2();
     }
 }

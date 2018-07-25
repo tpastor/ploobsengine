@@ -24,8 +24,8 @@ namespace PloobsEngine.Physics
                 throw new ArgumentException("Wrong shape type.");
 
             var hullTriangleVertices = new List<Vector3>();
-            var hullTriangleIndices = new List<int>();                        
-#if !MONO
+            var hullTriangleIndices = new List<int>();
+#if !MONO && !MONODX
             Toolbox.GetConvexHull(convexHullShape.Vertices, hullTriangleIndices, hullTriangleVertices);
 #else
             ConvexHullHelper.GetConvexHull(convexHullShape.Vertices, hullTriangleIndices, hullTriangleVertices);

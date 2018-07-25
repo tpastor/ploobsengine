@@ -61,8 +61,8 @@ namespace BEPUphysicsDemos.AlternateMovement.Character
             SupportRayFilter = SupportRayFilterFunction;
         }
 
-        
-#if !MONO
+
+#if !MONO && !MONODX
         Func<BroadPhaseEntry, bool> SupportRayFilter;
         bool SupportRayFilterFunction(BroadPhaseEntry entry)
         {

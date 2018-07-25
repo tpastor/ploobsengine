@@ -17,7 +17,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #endregion
-#if !WINDOWS_PHONE && !MONO
+#if !WINDOWS_PHONE && !MONO && !MONODX
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -14,7 +14,8 @@ namespace PloobsEngineTest
         static void Main(string[] args)
         {
             InitialEngineDescription desc = InitialEngineDescription.Default();
-            desc.useMipMapWhenPossible = true;                        
+            desc.useMipMapWhenPossible = true;
+            //desc.isFullScreen = true;
             //desc.isMultiSampling = true;                        
 
             using (EngineStuff engine = new EngineStuff(ref desc, LoadScreen))
@@ -26,7 +27,7 @@ namespace PloobsEngineTest
 
         static void LoadScreen(ScreenManager manager)
         {
-            manager.AddScreen(new FirstScreen());
+            manager.AddScreen(new DeferredScreen());
          
         }
     }

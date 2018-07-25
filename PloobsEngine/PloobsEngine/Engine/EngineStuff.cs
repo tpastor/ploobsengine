@@ -538,7 +538,7 @@ namespace PloobsEngine.Engine
             }
         }
 
-#if !MONO
+#if !MONO && !MONODX
 
         /// <summary>
         /// This is used to display an error message if there is no suitable graphics device or sound card.

@@ -42,7 +42,7 @@ using Microsoft.Xna.Framework.Graphics;
 using BEPUphysics.MathExtensions;
 using BEPUphysics.CollisionShapes;
 
-#if MONO
+#if MONO || MONODX
 using BroadPhaseEntry = BEPUphysics.BroadPhaseEntries.BroadPhaseEntry;
 #endif
 

@@ -41,13 +41,13 @@ namespace PloobsEngine.Material
     {
         private Effect _shader;        
         EffectParameter ViewProjectionParameter;          
-        //EffectParameter TextureParameter;  
+        EffectParameter TextureParameter;  
         EffectParameter SpecularPowerParameter;  
         EffectParameter SpecularIntensityParameter;
         EffectParameter IdParameter;  
         EffectParameter WorldParameter;
         EffectParameter PAmbientCubeMapScale;
-        //EffectParameter PAmbientCubeTexture;
+        EffectParameter PAmbientCubeTexture;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DeferredNormalShader"/> class.
@@ -151,7 +151,7 @@ namespace PloobsEngine.Material
         protected override void Draw(GameTime gt, IObject obj, RenderHelper render, ICamera camera, IList<ILight> lights)
         {   
                 IModelo modelo = obj.Modelo;           
-                IdParameter.SetValue(shaderId);
+                IdParameter.SetValue((float)shaderId);
                 SpecularIntensityParameter.SetValue(specularIntensity);
                 SpecularPowerParameter.SetValue(specularPower);                
                 ViewProjectionParameter.SetValue(camera.ViewProjection);
@@ -164,12 +164,12 @@ namespace PloobsEngine.Material
 
                         if (useAmbientCubeMap)
                         {
-                            render.Textures[4] = modelo.GetCubeTexture(TextureType.AMBIENT_CUBE_MAP, i, j);
-                            //PAmbientCubeTexture.SetValue(modelo.GetCubeTexture(TextureType.AMBIENT_CUBE_MAP, i, j));
+                            PAmbientCubeTexture.SetValue(modelo.GetCubeTexture(TextureType.AMBIENT_CUBE_MAP, i, j));
                             PAmbientCubeMapScale.SetValue(AmbientCubeMapScale);
                         }
-                        render.Textures[0] = modelo.getTexture(TextureType.DIFFUSE, i, j);
-                        //TextureParameter.SetValue(modelo.getTexture(TextureType.DIFFUSE,i,j));
+                        
+                        //render.Textures[0] = modelo.getTexture(TextureType.DIFFUSE, i, j);
+                        TextureParameter.SetValue(modelo.getTexture(TextureType.DIFFUSE,i,j));
                         WorldParameter.SetValue(bi[j].ModelLocalTransformation * obj.WorldMatrix);
                         render.RenderBatch(bi[j], _shader);                        
                     }
@@ -185,17 +185,16 @@ namespace PloobsEngine.Material
         public override void Initialize(Engine.GraphicInfo ginfo, Engine.GraphicFactory factory, IObject obj)
         {
             base.Initialize(ginfo, factory, obj);      
-            this._shader = factory.GetEffect("RenderGBuffer",true,true);            
+            this._shader = factory.GetEffect("RenderGBuffer",true,false);            
 
             ViewProjectionParameter = this._shader.Parameters["ViewProjection"];              
-            //TextureParameter = this._shader.Parameters["Texture"];
+            TextureParameter = this._shader.Parameters["diffuse"];
             IdParameter = this._shader.Parameters["id"];
             SpecularIntensityParameter = this._shader.Parameters["specularIntensity"];
             SpecularPowerParameter = this._shader.Parameters["specularPower"];  
             WorldParameter = this._shader.Parameters["World"];
-            
 
-            //PAmbientCubeTexture = this._shader.Parameters["ambientcube"];
+            PAmbientCubeTexture = this._shader.Parameters["map_diffuse"];
             PAmbientCubeMapScale = this._shader.Parameters["ambientScale"];
 
             if (useAmbientCubeMap == true)

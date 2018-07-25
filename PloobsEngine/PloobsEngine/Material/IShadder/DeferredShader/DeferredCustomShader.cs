@@ -273,7 +273,7 @@ namespace PloobsEngine.Material
         /// <param name="lights"></param>
         protected override void Draw(GameTime gt, IObject obj, RenderHelper render, ICamera cam, IList<Light.ILight> lights)
         {                 
-               Pid.SetValue(shaderId);
+               Pid.SetValue((float)shaderId);
                PuseParalax.SetValue(useParalax);
                PuseGlow.SetValue(useGlow);
                PuseBump.SetValue(useBump);
@@ -347,7 +347,7 @@ namespace PloobsEngine.Material
         /// <param name="obj"></param>
         public override void Initialize(PloobsEngine.Engine.GraphicInfo ginfo, PloobsEngine.Engine.GraphicFactory factory, PloobsEngine.SceneControl.IObject obj)
         {
-            this._shader = factory.GetEffect(effect,true,true);            
+            this._shader = factory.GetEffect(effect,true,false);            
             base.Initialize(ginfo, factory, obj);
 
             PProjection = this._shader.Parameters["Projection"];

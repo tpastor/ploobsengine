@@ -1,8 +1,12 @@
 
+#include "TextureMacros.fxh"
+
+
 float2 halfPixel;
 
-sampler ColorSampler : register(s0) ;
-sampler DepthSampler : register(s1) ;
+DECLARE_TEXTURE(Color,0);
+DECLARE_TEXTURE(Depth,1);
+
 
 struct VertexShaderOutput
 {
@@ -26,10 +30,10 @@ void RestoreBuffersPixelShader2(VertexShaderOutput input ,
 								out float4 color: COLOR0,
 								out float depth : DEPTH)
 {	//write the color
-	color = tex2D(ColorSampler, input.TexCoord);
+	color = SAMPLE_TEXTURE(Color, input.TexCoord);
 	
 	//write the depth
-	depth = 1-tex2D(DepthSampler, input.TexCoord).r;
+	depth = 1-SAMPLE_TEXTURE(Depth, input.TexCoord).r;
 	
 }
 

@@ -492,7 +492,7 @@ namespace PloobsEngine.SceneControl
                     else
                         render.RenderBegin(Matrix.Identity, null, SpriteSortMode.Immediate, ginfo.SamplerState);
                     
-                    render.RenderTexture(render[desc.RenderTargetsNameToDefferedDebug[0]] ,Color.White, new Rectangle(0, 0, halfWidth, halfHeight));
+                    render.RenderTexture(render[desc.RenderTargetsNameToDefferedDebug[0]], Color.White, new Rectangle(0, 0, halfWidth, halfHeight));
                     render.RenderTexture(render[desc.RenderTargetsNameToDefferedDebug[1]], Color.White, new Rectangle(0, halfHeight, halfWidth, halfHeight));
                     render.RenderTexture(render[desc.RenderTargetsNameToDefferedDebug[2]], Color.White, new Rectangle(halfWidth, 0, halfWidth, halfHeight));
                     render.RenderTexture(render[desc.RenderTargetsNameToDefferedDebug[3]], Color.White, new Rectangle(halfWidth, halfHeight, halfWidth, halfHeight));                    

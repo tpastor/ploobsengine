@@ -297,7 +297,7 @@ namespace PloobsEngine.Loader
                     OnProcessDummies(world, item);
             }
 
-#if !MONO
+#if !MONO && !MONODX
             foreach (var item in worldData.ParticleInfo)
             {
                 if (OnCreateIParticle != null)

@@ -118,9 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="AllBuffer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\AllBuffer.xnb;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="AllBufferEnvironment" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\AllBufferEnvironment.xnb;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -435,5 +432,8 @@
   </data>
   <data name="wiggle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\wiggle.xnb;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="AllBuffer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\AllBuffer.xnb;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

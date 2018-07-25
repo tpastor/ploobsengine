@@ -283,7 +283,6 @@ namespace PloobsEngine.Engine
         /// <returns></returns>
         public bool CheckIfRenderTargetFormatIsSupported(SurfaceFormat format, DepthFormat depthFormat, bool useMipMap, int multisample, GraphicsProfile GraphicsProfile = GraphicsProfile.HiDef)
         {
-#if !MONO
             SurfaceFormat outformat;
             DepthFormat outdepthFormat;
             int outmultisample;
@@ -310,9 +309,6 @@ namespace PloobsEngine.Engine
             {
                 return true;
             }
-#else
-            return false;
-#endif
         }
 
         /// <summary>
@@ -325,9 +321,7 @@ namespace PloobsEngine.Engine
         /// <param name="GraphicsProfile">The graphics profile.</param>
         public void GetRenderTargetSupportedFormat(ref SurfaceFormat format, ref DepthFormat depthFormat, ref bool useMipMap, ref int multisample, GraphicsProfile GraphicsProfile = GraphicsProfile.HiDef)
         {
-#if !MONO
             GraphicsAdapter.QueryRenderTargetFormat(GraphicsProfile, format, depthFormat, multisample, out format, out depthFormat, out multisample);
-#endif
         }
 
         /// <summary>
@@ -340,10 +334,7 @@ namespace PloobsEngine.Engine
         /// <param name="GraphicsProfile">The graphics profile.</param>
         public void GetBackBufferSupportedFormat(ref SurfaceFormat format, ref DepthFormat depthFormat, ref bool useMipMap, ref int multisample, GraphicsProfile GraphicsProfile = GraphicsProfile.HiDef)
         {
-#if !MONO
             GraphicsAdapter.QueryRenderTargetFormat(GraphicsProfile, format, depthFormat, multisample, out format, out depthFormat, out multisample);
-#endif
-            }
-
+        }
     }
 }

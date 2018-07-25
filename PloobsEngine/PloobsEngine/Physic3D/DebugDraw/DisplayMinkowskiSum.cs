@@ -56,7 +56,7 @@ namespace PloobsEngine.Physics
 
             var hullTriangleVertices = new List<Vector3>();
             var hullTriangleIndices = new List<int>();
-#if !MONO
+#if !MONO && !MONODX
             Toolbox.GetConvexHull(points, hullTriangleIndices, hullTriangleVertices);
 #else
             ConvexHullHelper.GetConvexHull(points, hullTriangleIndices, hullTriangleVertices);

@@ -41,7 +41,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\MonoDx\x86\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;WINDOWS,MONO;MONODX</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;WINDOWS;MONODX</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoStdLib>true</NoStdLib>
@@ -792,6 +792,12 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>MonoResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AssetBuilder\AssetBuilder.csproj">
+      <Project>{f2287cb5-6d5e-41b5-84f0-5e84aedd0b83}</Project>
+      <Name>AssetBuilder</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

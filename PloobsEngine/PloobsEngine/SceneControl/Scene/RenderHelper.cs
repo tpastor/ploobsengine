@@ -521,6 +521,9 @@ namespace PloobsEngine.SceneControl
             if(bi.PrimitiveCount ==0)
                 return;
 
+            var vd = bi.VertexBuffer.VertexDeclaration;
+            var el = vd.GetVertexElements();
+
             switch ( bi.BatchType)
 	            {
 		            case BatchType.INDEXED:
@@ -536,7 +539,7 @@ namespace PloobsEngine.SceneControl
                     case BatchType.INSTANCED:
                         System.Diagnostics.Debug.Assert(bi.InstancedVertexBuffer != null);
                         System.Diagnostics.Debug.Assert(bi.InstanceCount > 0);
-                        device.SetVertexBuffers(bi.VertexBuffer, new VertexBufferBinding(bi.InstancedVertexBuffer, 0, 1));                        
+                        device.SetVertexBuffers(new VertexBufferBinding(bi.InstancedVertexBuffer, 0, 1));                        
                         device.Indices = bi.IndexBuffer;
                         device.DrawInstancedPrimitives(PrimitiveType.TriangleList, bi.BaseVertex, 0, bi.NumVertices, bi.StartIndex, bi.PrimitiveCount, bi.InstanceCount);
                         break;

@@ -20,7 +20,7 @@ using Microsoft.Xna.Framework.Input;
 using BEPUphysics.Entities;
 using BEPUphysics.Threading;
 
-#if MONO
+#if MONO || MONODX
 using BroadPhaseEntry = BEPUphysics.BroadPhaseEntries.BroadPhaseEntry;
 #endif
 

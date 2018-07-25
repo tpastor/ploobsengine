@@ -1,8 +1,11 @@
+
+#include "TextureMacros.fxh"
+
 float3 ambientColor;
 
-sampler lightSampler :register(s0);
-sampler extraSampler :register(s1);
-sampler colorSampler :register(s2);
+DECLARE_TEXTURE(light,0);
+DECLARE_TEXTURE(extra,1);
+DECLARE_TEXTURE(color,2);
 
 struct VertexShaderInput
 {
@@ -29,9 +32,9 @@ VertexShaderOutput VertexShaderFunction(VertexShaderInput input)
 
 float4 PixelShaderFunctionNormal(VertexShaderOutput input) : COLOR0
 {	
-	float4 extra =  tex2D(extraSampler,input.TexCoord).rgba;
-	int procces = round(extra.a * 255 );
-	float3 diffuseColor = tex2D(colorSampler,input.TexCoord).rgb;	
+	float4 extrav =  SAMPLE_TEXTURE(extra,input.TexCoord).rgba;
+	int procces = round(extrav.a * 255 );
+	float3 diffuseColor = SAMPLE_TEXTURE(color,input.TexCoord).rgb;	
 	
 	bool DoNotIlluminate = fmod(procces, 2) == 1; 
 	bool isBackGround = fmod(procces, 4) >= 2; 
@@ -44,16 +47,16 @@ float4 PixelShaderFunctionNormal(VertexShaderOutput input) : COLOR0
 	}
 	else if(isAmbienteCubeMap)
 	{
-		float4 light = tex2D(lightSampler,input.TexCoord);		
-		float3 diffuseLight = light.rgb;
-		float specularLight = light.a;		
-		return float4( extra.rgb + (diffuseColor * (diffuseLight)+ specularLight),1);
+		float4 l4 = SAMPLE_TEXTURE(light,input.TexCoord);		
+		float3 diffuseLight = l4.rgb;
+		float specularLight = l4.a;		
+		return float4( extrav.rgb + (diffuseColor * (diffuseLight)+ specularLight),1);
 	}
 	else	
 	{		
-		float4 light = tex2D(lightSampler,input.TexCoord);		
-		float3 diffuseLight = light.rgb;
-		float specularLight = light.a;
+		float4 l4 = SAMPLE_TEXTURE(light,input.TexCoord);		
+		float3 diffuseLight = l4.rgb;
+		float specularLight = l4.a;
 		return float4(ambientColor + (diffuseColor * (diffuseLight)+ specularLight),1);
     }
     

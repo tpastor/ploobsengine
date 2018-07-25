@@ -382,6 +382,7 @@ namespace PloobsEngine.Loader
             }
 
             ///////PROCCESS LIGHTS /////////////////////
+#if !MONODX
             foreach (var item in spotLights)
             {
                 SpotLightInformation si = item.Value;
@@ -392,7 +393,7 @@ namespace PloobsEngine.Loader
                 elements.LightsInfo.Add(sl);
 
             }
-
+#endif
             ///////PROCCESS CAMERAS/////////////////////
             foreach (var item in cameras)
             {
@@ -530,9 +531,9 @@ namespace PloobsEngine.Loader
             texturesNames.Clear();
         }
 
-        #endregion
+#endregion
     }
 
-        #endregion
+#endregion
 }
 #endif

@@ -36,7 +36,7 @@ namespace PloobsEngine.Physics.Bepu
     public class DetectorVolumeObject : IPhysicObject
     {                
         TriangleMeshObject mesh;
-#if !MONO
+#if !MONO && !MONODX
         DetectorVolume detectorVolume;
         public DetectorVolume DetectorVolume
         {
