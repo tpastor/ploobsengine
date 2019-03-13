@@ -145,6 +145,7 @@ namespace PloobsEngine.Loader
                 (shader as DeferredEMReflectiveShader).TextureCube = mi[0].textureInformation.getCubeTexture(TextureType.ENVIRONMENT);
                 
             }
+#if !MONODX
             else if (mi[0].collisionType != null && mi[0].collisionType.Contains("Water"))
             {
                 Vector3 position = (Vector3)(mi[0].extra["position"]);
@@ -152,7 +153,7 @@ namespace PloobsEngine.Loader
                 var height = (mi[0].extra["length"]);
                 shader = new DeferredWaterCompleteShader((int)width,(int)height, new Plane(position.X, position.Y, position.Z, 1),10.0f);
             }
-            
+#endif 
             else
             {
                 shader = new DeferredCustomShader(mi[0].HasTexture(TextureType.GLOW), mi[0].HasTexture(TextureType.BUMP), mi[0].HasTexture(TextureType.SPECULAR), mi[0].HasTexture(TextureType.PARALAX)); 

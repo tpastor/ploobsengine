@@ -19,9 +19,7 @@
 #endregion
 #if !WINDOWS_PHONE
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Microsoft.Xna.Framework;
 using PloobsEngine.Engine.Logger;
 using Microsoft.Xna.Framework.Graphics;
@@ -31,6 +29,8 @@ using PloobsEngine.Commands;
 using Microsoft.Xna.Framework.Audio;
 using PloobsEngine.Input;
 using PloobsEngine.Features;
+using System.Collections.Generic;
+using System.Collections;
 
 #if WINRT
 using Windows.UI.Xaml;
@@ -251,6 +251,16 @@ namespace PloobsEngine.Engine
         LoadScreen LoadScreen;
         IContentManager contentManager;
         RenderHelper render;
+        private static List<IEnumerator> coRoutines = new List<IEnumerator>();
+
+        public static void AddCoroutine(IEnumerator enumerable)
+        {
+            lock (coRoutines)
+            {
+                coRoutines.Add(enumerable);
+            }
+        }
+
 
         /// <summary>
         /// Gets or sets the content manager.
@@ -565,6 +575,11 @@ namespace PloobsEngine.Engine
                 ScreenManager.Update(gameTime);                
             }
             base.Update(gameTime);
+
+            lock (coRoutines)
+            {
+                coRoutines.RemoveAll(item => !item.MoveNext());
+            }
         }
 
         
